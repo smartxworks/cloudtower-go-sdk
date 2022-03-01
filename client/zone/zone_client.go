@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetZones(params *GetZonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZonesOK, error)
+	GetZones(params *GetZonesParams, opts ...ClientOption) (*GetZonesOK, error)
 
-	GetZonesConnection(params *GetZonesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZonesConnectionOK, error)
+	GetZonesConnection(params *GetZonesConnectionParams, opts ...ClientOption) (*GetZonesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetZones get zones API
 */
-func (a *Client) GetZones(params *GetZonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZonesOK, error) {
+func (a *Client) GetZones(params *GetZonesParams, opts ...ClientOption) (*GetZonesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetZonesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetZones(params *GetZonesParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetZonesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetZones(params *GetZonesParams, authInfo runtime.ClientAuthInf
 /*
   GetZonesConnection get zones connection API
 */
-func (a *Client) GetZonesConnection(params *GetZonesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZonesConnectionOK, error) {
+func (a *Client) GetZonesConnection(params *GetZonesConnectionParams, opts ...ClientOption) (*GetZonesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetZonesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetZonesConnection(params *GetZonesConnectionParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetZonesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

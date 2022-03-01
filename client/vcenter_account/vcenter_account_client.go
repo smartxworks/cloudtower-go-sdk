@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetVcenterAccounts(params *GetVcenterAccountsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVcenterAccountsOK, error)
+	GetVcenterAccounts(params *GetVcenterAccountsParams, opts ...ClientOption) (*GetVcenterAccountsOK, error)
 
-	GetVcenterAccountsConnection(params *GetVcenterAccountsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVcenterAccountsConnectionOK, error)
+	GetVcenterAccountsConnection(params *GetVcenterAccountsConnectionParams, opts ...ClientOption) (*GetVcenterAccountsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetVcenterAccounts get vcenter accounts API
 */
-func (a *Client) GetVcenterAccounts(params *GetVcenterAccountsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVcenterAccountsOK, error) {
+func (a *Client) GetVcenterAccounts(params *GetVcenterAccountsParams, opts ...ClientOption) (*GetVcenterAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVcenterAccountsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetVcenterAccounts(params *GetVcenterAccountsParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVcenterAccountsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetVcenterAccounts(params *GetVcenterAccountsParams, authInfo r
 /*
   GetVcenterAccountsConnection get vcenter accounts connection API
 */
-func (a *Client) GetVcenterAccountsConnection(params *GetVcenterAccountsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVcenterAccountsConnectionOK, error) {
+func (a *Client) GetVcenterAccountsConnection(params *GetVcenterAccountsConnectionParams, opts ...ClientOption) (*GetVcenterAccountsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVcenterAccountsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetVcenterAccountsConnection(params *GetVcenterAccountsConnecti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVcenterAccountsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

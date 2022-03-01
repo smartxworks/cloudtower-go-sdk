@@ -30,21 +30,21 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateSnapshotPlan(params *CreateSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnapshotPlanOK, error)
+	CreateSnapshotPlan(params *CreateSnapshotPlanParams, opts ...ClientOption) (*CreateSnapshotPlanOK, error)
 
-	DeleteSnapshotPlan(params *DeleteSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnapshotPlanOK, error)
+	DeleteSnapshotPlan(params *DeleteSnapshotPlanParams, opts ...ClientOption) (*DeleteSnapshotPlanOK, error)
 
-	ExecuteSnapshotPlan(params *ExecuteSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExecuteSnapshotPlanOK, error)
+	ExecuteSnapshotPlan(params *ExecuteSnapshotPlanParams, opts ...ClientOption) (*ExecuteSnapshotPlanOK, error)
 
-	GetSnapshotPlans(params *GetSnapshotPlansParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotPlansOK, error)
+	GetSnapshotPlans(params *GetSnapshotPlansParams, opts ...ClientOption) (*GetSnapshotPlansOK, error)
 
-	GetSnapshotPlansConnection(params *GetSnapshotPlansConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotPlansConnectionOK, error)
+	GetSnapshotPlansConnection(params *GetSnapshotPlansConnectionParams, opts ...ClientOption) (*GetSnapshotPlansConnectionOK, error)
 
-	ResumeSnapshotPlan(params *ResumeSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ResumeSnapshotPlanOK, error)
+	ResumeSnapshotPlan(params *ResumeSnapshotPlanParams, opts ...ClientOption) (*ResumeSnapshotPlanOK, error)
 
-	SuspendSnapshotPlan(params *SuspendSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SuspendSnapshotPlanOK, error)
+	SuspendSnapshotPlan(params *SuspendSnapshotPlanParams, opts ...ClientOption) (*SuspendSnapshotPlanOK, error)
 
-	UpdateSnapshotPlan(params *UpdateSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSnapshotPlanOK, error)
+	UpdateSnapshotPlan(params *UpdateSnapshotPlanParams, opts ...ClientOption) (*UpdateSnapshotPlanOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -52,7 +52,7 @@ type ClientService interface {
 /*
   CreateSnapshotPlan create snapshot plan API
 */
-func (a *Client) CreateSnapshotPlan(params *CreateSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnapshotPlanOK, error) {
+func (a *Client) CreateSnapshotPlan(params *CreateSnapshotPlanParams, opts ...ClientOption) (*CreateSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSnapshotPlanParams()
@@ -66,7 +66,6 @@ func (a *Client) CreateSnapshotPlan(params *CreateSnapshotPlanParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateSnapshotPlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -91,7 +90,7 @@ func (a *Client) CreateSnapshotPlan(params *CreateSnapshotPlanParams, authInfo r
 /*
   DeleteSnapshotPlan delete snapshot plan API
 */
-func (a *Client) DeleteSnapshotPlan(params *DeleteSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnapshotPlanOK, error) {
+func (a *Client) DeleteSnapshotPlan(params *DeleteSnapshotPlanParams, opts ...ClientOption) (*DeleteSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSnapshotPlanParams()
@@ -105,7 +104,6 @@ func (a *Client) DeleteSnapshotPlan(params *DeleteSnapshotPlanParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteSnapshotPlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -130,7 +128,7 @@ func (a *Client) DeleteSnapshotPlan(params *DeleteSnapshotPlanParams, authInfo r
 /*
   ExecuteSnapshotPlan execute snapshot plan API
 */
-func (a *Client) ExecuteSnapshotPlan(params *ExecuteSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExecuteSnapshotPlanOK, error) {
+func (a *Client) ExecuteSnapshotPlan(params *ExecuteSnapshotPlanParams, opts ...ClientOption) (*ExecuteSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewExecuteSnapshotPlanParams()
@@ -144,7 +142,6 @@ func (a *Client) ExecuteSnapshotPlan(params *ExecuteSnapshotPlanParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ExecuteSnapshotPlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -169,7 +166,7 @@ func (a *Client) ExecuteSnapshotPlan(params *ExecuteSnapshotPlanParams, authInfo
 /*
   GetSnapshotPlans get snapshot plans API
 */
-func (a *Client) GetSnapshotPlans(params *GetSnapshotPlansParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotPlansOK, error) {
+func (a *Client) GetSnapshotPlans(params *GetSnapshotPlansParams, opts ...ClientOption) (*GetSnapshotPlansOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnapshotPlansParams()
@@ -183,7 +180,6 @@ func (a *Client) GetSnapshotPlans(params *GetSnapshotPlansParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnapshotPlansReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -208,7 +204,7 @@ func (a *Client) GetSnapshotPlans(params *GetSnapshotPlansParams, authInfo runti
 /*
   GetSnapshotPlansConnection get snapshot plans connection API
 */
-func (a *Client) GetSnapshotPlansConnection(params *GetSnapshotPlansConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotPlansConnectionOK, error) {
+func (a *Client) GetSnapshotPlansConnection(params *GetSnapshotPlansConnectionParams, opts ...ClientOption) (*GetSnapshotPlansConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnapshotPlansConnectionParams()
@@ -222,7 +218,6 @@ func (a *Client) GetSnapshotPlansConnection(params *GetSnapshotPlansConnectionPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnapshotPlansConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -247,7 +242,7 @@ func (a *Client) GetSnapshotPlansConnection(params *GetSnapshotPlansConnectionPa
 /*
   ResumeSnapshotPlan resume snapshot plan API
 */
-func (a *Client) ResumeSnapshotPlan(params *ResumeSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ResumeSnapshotPlanOK, error) {
+func (a *Client) ResumeSnapshotPlan(params *ResumeSnapshotPlanParams, opts ...ClientOption) (*ResumeSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewResumeSnapshotPlanParams()
@@ -261,7 +256,6 @@ func (a *Client) ResumeSnapshotPlan(params *ResumeSnapshotPlanParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ResumeSnapshotPlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -286,7 +280,7 @@ func (a *Client) ResumeSnapshotPlan(params *ResumeSnapshotPlanParams, authInfo r
 /*
   SuspendSnapshotPlan suspend snapshot plan API
 */
-func (a *Client) SuspendSnapshotPlan(params *SuspendSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SuspendSnapshotPlanOK, error) {
+func (a *Client) SuspendSnapshotPlan(params *SuspendSnapshotPlanParams, opts ...ClientOption) (*SuspendSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSuspendSnapshotPlanParams()
@@ -300,7 +294,6 @@ func (a *Client) SuspendSnapshotPlan(params *SuspendSnapshotPlanParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &SuspendSnapshotPlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -325,7 +318,7 @@ func (a *Client) SuspendSnapshotPlan(params *SuspendSnapshotPlanParams, authInfo
 /*
   UpdateSnapshotPlan update snapshot plan API
 */
-func (a *Client) UpdateSnapshotPlan(params *UpdateSnapshotPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSnapshotPlanOK, error) {
+func (a *Client) UpdateSnapshotPlan(params *UpdateSnapshotPlanParams, opts ...ClientOption) (*UpdateSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateSnapshotPlanParams()
@@ -339,7 +332,6 @@ func (a *Client) UpdateSnapshotPlan(params *UpdateSnapshotPlanParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateSnapshotPlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

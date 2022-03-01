@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetSecurityPolicies(params *GetSecurityPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSecurityPoliciesOK, error)
+	GetSecurityPolicies(params *GetSecurityPoliciesParams, opts ...ClientOption) (*GetSecurityPoliciesOK, error)
 
-	GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSecurityPoliciesConnectionOK, error)
+	GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnectionParams, opts ...ClientOption) (*GetSecurityPoliciesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetSecurityPolicies get security policies API
 */
-func (a *Client) GetSecurityPolicies(params *GetSecurityPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSecurityPoliciesOK, error) {
+func (a *Client) GetSecurityPolicies(params *GetSecurityPoliciesParams, opts ...ClientOption) (*GetSecurityPoliciesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSecurityPoliciesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetSecurityPolicies(params *GetSecurityPoliciesParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSecurityPoliciesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetSecurityPolicies(params *GetSecurityPoliciesParams, authInfo
 /*
   GetSecurityPoliciesConnection get security policies connection API
 */
-func (a *Client) GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSecurityPoliciesConnectionOK, error) {
+func (a *Client) GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnectionParams, opts ...ClientOption) (*GetSecurityPoliciesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSecurityPoliciesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnec
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSecurityPoliciesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

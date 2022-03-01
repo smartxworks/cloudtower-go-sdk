@@ -30,17 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateBrickTopo(params *CreateBrickTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBrickTopoOK, error)
+	CreateBrickTopo(params *CreateBrickTopoParams, opts ...ClientOption) (*CreateBrickTopoOK, error)
 
-	DeleteBrickTopo(params *DeleteBrickTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteBrickTopoOK, error)
+	DeleteBrickTopo(params *DeleteBrickTopoParams, opts ...ClientOption) (*DeleteBrickTopoOK, error)
 
-	GetBrickTopoes(params *GetBrickTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBrickTopoesOK, error)
+	GetBrickTopoes(params *GetBrickTopoesParams, opts ...ClientOption) (*GetBrickTopoesOK, error)
 
-	GetBrickTopoesConnection(params *GetBrickTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBrickTopoesConnectionOK, error)
+	GetBrickTopoesConnection(params *GetBrickTopoesConnectionParams, opts ...ClientOption) (*GetBrickTopoesConnectionOK, error)
 
-	MoveBrickTopo(params *MoveBrickTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MoveBrickTopoOK, error)
+	MoveBrickTopo(params *MoveBrickTopoParams, opts ...ClientOption) (*MoveBrickTopoOK, error)
 
-	UpdateBrickTopo(params *UpdateBrickTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateBrickTopoOK, error)
+	UpdateBrickTopo(params *UpdateBrickTopoParams, opts ...ClientOption) (*UpdateBrickTopoOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -48,7 +48,7 @@ type ClientService interface {
 /*
   CreateBrickTopo create brick topo API
 */
-func (a *Client) CreateBrickTopo(params *CreateBrickTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateBrickTopoOK, error) {
+func (a *Client) CreateBrickTopo(params *CreateBrickTopoParams, opts ...ClientOption) (*CreateBrickTopoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBrickTopoParams()
@@ -62,7 +62,6 @@ func (a *Client) CreateBrickTopo(params *CreateBrickTopoParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateBrickTopoReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -87,7 +86,7 @@ func (a *Client) CreateBrickTopo(params *CreateBrickTopoParams, authInfo runtime
 /*
   DeleteBrickTopo delete brick topo API
 */
-func (a *Client) DeleteBrickTopo(params *DeleteBrickTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteBrickTopoOK, error) {
+func (a *Client) DeleteBrickTopo(params *DeleteBrickTopoParams, opts ...ClientOption) (*DeleteBrickTopoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteBrickTopoParams()
@@ -101,7 +100,6 @@ func (a *Client) DeleteBrickTopo(params *DeleteBrickTopoParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteBrickTopoReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -126,7 +124,7 @@ func (a *Client) DeleteBrickTopo(params *DeleteBrickTopoParams, authInfo runtime
 /*
   GetBrickTopoes get brick topoes API
 */
-func (a *Client) GetBrickTopoes(params *GetBrickTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBrickTopoesOK, error) {
+func (a *Client) GetBrickTopoes(params *GetBrickTopoesParams, opts ...ClientOption) (*GetBrickTopoesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBrickTopoesParams()
@@ -140,7 +138,6 @@ func (a *Client) GetBrickTopoes(params *GetBrickTopoesParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBrickTopoesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -165,7 +162,7 @@ func (a *Client) GetBrickTopoes(params *GetBrickTopoesParams, authInfo runtime.C
 /*
   GetBrickTopoesConnection get brick topoes connection API
 */
-func (a *Client) GetBrickTopoesConnection(params *GetBrickTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBrickTopoesConnectionOK, error) {
+func (a *Client) GetBrickTopoesConnection(params *GetBrickTopoesConnectionParams, opts ...ClientOption) (*GetBrickTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBrickTopoesConnectionParams()
@@ -179,7 +176,6 @@ func (a *Client) GetBrickTopoesConnection(params *GetBrickTopoesConnectionParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBrickTopoesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -204,7 +200,7 @@ func (a *Client) GetBrickTopoesConnection(params *GetBrickTopoesConnectionParams
 /*
   MoveBrickTopo move brick topo API
 */
-func (a *Client) MoveBrickTopo(params *MoveBrickTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MoveBrickTopoOK, error) {
+func (a *Client) MoveBrickTopo(params *MoveBrickTopoParams, opts ...ClientOption) (*MoveBrickTopoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewMoveBrickTopoParams()
@@ -218,7 +214,6 @@ func (a *Client) MoveBrickTopo(params *MoveBrickTopoParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &MoveBrickTopoReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -243,7 +238,7 @@ func (a *Client) MoveBrickTopo(params *MoveBrickTopoParams, authInfo runtime.Cli
 /*
   UpdateBrickTopo update brick topo API
 */
-func (a *Client) UpdateBrickTopo(params *UpdateBrickTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateBrickTopoOK, error) {
+func (a *Client) UpdateBrickTopo(params *UpdateBrickTopoParams, opts ...ClientOption) (*UpdateBrickTopoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateBrickTopoParams()
@@ -257,7 +252,6 @@ func (a *Client) UpdateBrickTopo(params *UpdateBrickTopoParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateBrickTopoReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

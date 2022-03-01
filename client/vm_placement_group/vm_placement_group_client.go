@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateVMPlacementGroup(params *CreateVMPlacementGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMPlacementGroupOK, error)
+	CreateVMPlacementGroup(params *CreateVMPlacementGroupParams, opts ...ClientOption) (*CreateVMPlacementGroupOK, error)
 
-	DeleteVMPlacementGroup(params *DeleteVMPlacementGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMPlacementGroupOK, error)
+	DeleteVMPlacementGroup(params *DeleteVMPlacementGroupParams, opts ...ClientOption) (*DeleteVMPlacementGroupOK, error)
 
-	GetVMPlacementGroups(params *GetVMPlacementGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMPlacementGroupsOK, error)
+	GetVMPlacementGroups(params *GetVMPlacementGroupsParams, opts ...ClientOption) (*GetVMPlacementGroupsOK, error)
 
-	GetVMPlacementGroupsConnection(params *GetVMPlacementGroupsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMPlacementGroupsConnectionOK, error)
+	GetVMPlacementGroupsConnection(params *GetVMPlacementGroupsConnectionParams, opts ...ClientOption) (*GetVMPlacementGroupsConnectionOK, error)
 
-	UpdateVMPlacementGroup(params *UpdateVMPlacementGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMPlacementGroupOK, error)
+	UpdateVMPlacementGroup(params *UpdateVMPlacementGroupParams, opts ...ClientOption) (*UpdateVMPlacementGroupOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateVMPlacementGroup create Vm placement group API
 */
-func (a *Client) CreateVMPlacementGroup(params *CreateVMPlacementGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMPlacementGroupOK, error) {
+func (a *Client) CreateVMPlacementGroup(params *CreateVMPlacementGroupParams, opts ...ClientOption) (*CreateVMPlacementGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVMPlacementGroupParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateVMPlacementGroup(params *CreateVMPlacementGroupParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVMPlacementGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateVMPlacementGroup(params *CreateVMPlacementGroupParams, au
 /*
   DeleteVMPlacementGroup delete Vm placement group API
 */
-func (a *Client) DeleteVMPlacementGroup(params *DeleteVMPlacementGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMPlacementGroupOK, error) {
+func (a *Client) DeleteVMPlacementGroup(params *DeleteVMPlacementGroupParams, opts ...ClientOption) (*DeleteVMPlacementGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVMPlacementGroupParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteVMPlacementGroup(params *DeleteVMPlacementGroupParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteVMPlacementGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteVMPlacementGroup(params *DeleteVMPlacementGroupParams, au
 /*
   GetVMPlacementGroups get Vm placement groups API
 */
-func (a *Client) GetVMPlacementGroups(params *GetVMPlacementGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMPlacementGroupsOK, error) {
+func (a *Client) GetVMPlacementGroups(params *GetVMPlacementGroupsParams, opts ...ClientOption) (*GetVMPlacementGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMPlacementGroupsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetVMPlacementGroups(params *GetVMPlacementGroupsParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMPlacementGroupsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetVMPlacementGroups(params *GetVMPlacementGroupsParams, authIn
 /*
   GetVMPlacementGroupsConnection get Vm placement groups connection API
 */
-func (a *Client) GetVMPlacementGroupsConnection(params *GetVMPlacementGroupsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMPlacementGroupsConnectionOK, error) {
+func (a *Client) GetVMPlacementGroupsConnection(params *GetVMPlacementGroupsConnectionParams, opts ...ClientOption) (*GetVMPlacementGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMPlacementGroupsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetVMPlacementGroupsConnection(params *GetVMPlacementGroupsConn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMPlacementGroupsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetVMPlacementGroupsConnection(params *GetVMPlacementGroupsConn
 /*
   UpdateVMPlacementGroup update Vm placement group API
 */
-func (a *Client) UpdateVMPlacementGroup(params *UpdateVMPlacementGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMPlacementGroupOK, error) {
+func (a *Client) UpdateVMPlacementGroup(params *UpdateVMPlacementGroupParams, opts ...ClientOption) (*UpdateVMPlacementGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVMPlacementGroupParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateVMPlacementGroup(params *UpdateVMPlacementGroupParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateVMPlacementGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

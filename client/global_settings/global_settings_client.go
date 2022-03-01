@@ -30,17 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateClusterRecycleBinSetting(params *CreateClusterRecycleBinSettingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateClusterRecycleBinSettingOK, error)
+	CreateClusterRecycleBinSetting(params *CreateClusterRecycleBinSettingParams, opts ...ClientOption) (*CreateClusterRecycleBinSettingOK, error)
 
-	DeleteClusterRecycleBinSetting(params *DeleteClusterRecycleBinSettingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteClusterRecycleBinSettingOK, error)
+	DeleteClusterRecycleBinSetting(params *DeleteClusterRecycleBinSettingParams, opts ...ClientOption) (*DeleteClusterRecycleBinSettingOK, error)
 
-	GetGlobalSettingses(params *GetGlobalSettingsesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalSettingsesOK, error)
+	GetGlobalSettingses(params *GetGlobalSettingsesParams, opts ...ClientOption) (*GetGlobalSettingsesOK, error)
 
-	GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalSettingsesConnectionOK, error)
+	GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnectionParams, opts ...ClientOption) (*GetGlobalSettingsesConnectionOK, error)
 
-	UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinSettingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateClusterRecycleBinSettingOK, error)
+	UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinSettingParams, opts ...ClientOption) (*UpdateClusterRecycleBinSettingOK, error)
 
-	UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSettingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateGlobalRecycleBinSettingOK, error)
+	UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSettingParams, opts ...ClientOption) (*UpdateGlobalRecycleBinSettingOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -48,7 +48,7 @@ type ClientService interface {
 /*
   CreateClusterRecycleBinSetting create cluster recycle bin setting API
 */
-func (a *Client) CreateClusterRecycleBinSetting(params *CreateClusterRecycleBinSettingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateClusterRecycleBinSettingOK, error) {
+func (a *Client) CreateClusterRecycleBinSetting(params *CreateClusterRecycleBinSettingParams, opts ...ClientOption) (*CreateClusterRecycleBinSettingOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateClusterRecycleBinSettingParams()
@@ -62,7 +62,6 @@ func (a *Client) CreateClusterRecycleBinSetting(params *CreateClusterRecycleBinS
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateClusterRecycleBinSettingReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -87,7 +86,7 @@ func (a *Client) CreateClusterRecycleBinSetting(params *CreateClusterRecycleBinS
 /*
   DeleteClusterRecycleBinSetting delete cluster recycle bin setting API
 */
-func (a *Client) DeleteClusterRecycleBinSetting(params *DeleteClusterRecycleBinSettingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteClusterRecycleBinSettingOK, error) {
+func (a *Client) DeleteClusterRecycleBinSetting(params *DeleteClusterRecycleBinSettingParams, opts ...ClientOption) (*DeleteClusterRecycleBinSettingOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteClusterRecycleBinSettingParams()
@@ -101,7 +100,6 @@ func (a *Client) DeleteClusterRecycleBinSetting(params *DeleteClusterRecycleBinS
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteClusterRecycleBinSettingReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -126,7 +124,7 @@ func (a *Client) DeleteClusterRecycleBinSetting(params *DeleteClusterRecycleBinS
 /*
   GetGlobalSettingses get global settingses API
 */
-func (a *Client) GetGlobalSettingses(params *GetGlobalSettingsesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalSettingsesOK, error) {
+func (a *Client) GetGlobalSettingses(params *GetGlobalSettingsesParams, opts ...ClientOption) (*GetGlobalSettingsesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGlobalSettingsesParams()
@@ -140,7 +138,6 @@ func (a *Client) GetGlobalSettingses(params *GetGlobalSettingsesParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetGlobalSettingsesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -165,7 +162,7 @@ func (a *Client) GetGlobalSettingses(params *GetGlobalSettingsesParams, authInfo
 /*
   GetGlobalSettingsesConnection get global settingses connection API
 */
-func (a *Client) GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalSettingsesConnectionOK, error) {
+func (a *Client) GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnectionParams, opts ...ClientOption) (*GetGlobalSettingsesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGlobalSettingsesConnectionParams()
@@ -179,7 +176,6 @@ func (a *Client) GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnec
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetGlobalSettingsesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -204,7 +200,7 @@ func (a *Client) GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnec
 /*
   UpdateClusterRecycleBinSetting update cluster recycle bin setting API
 */
-func (a *Client) UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinSettingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateClusterRecycleBinSettingOK, error) {
+func (a *Client) UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinSettingParams, opts ...ClientOption) (*UpdateClusterRecycleBinSettingOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateClusterRecycleBinSettingParams()
@@ -218,7 +214,6 @@ func (a *Client) UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinS
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateClusterRecycleBinSettingReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -243,7 +238,7 @@ func (a *Client) UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinS
 /*
   UpdateGlobalRecycleBinSetting update global recycle bin setting API
 */
-func (a *Client) UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSettingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateGlobalRecycleBinSettingOK, error) {
+func (a *Client) UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSettingParams, opts ...ClientOption) (*UpdateGlobalRecycleBinSettingOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateGlobalRecycleBinSettingParams()
@@ -257,7 +252,6 @@ func (a *Client) UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSet
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateGlobalRecycleBinSettingReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

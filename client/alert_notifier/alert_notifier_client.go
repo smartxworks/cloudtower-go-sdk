@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetAlertNotifiers(params *GetAlertNotifiersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertNotifiersOK, error)
+	GetAlertNotifiers(params *GetAlertNotifiersParams, opts ...ClientOption) (*GetAlertNotifiersOK, error)
 
-	GetAlertNotifiersConnection(params *GetAlertNotifiersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertNotifiersConnectionOK, error)
+	GetAlertNotifiersConnection(params *GetAlertNotifiersConnectionParams, opts ...ClientOption) (*GetAlertNotifiersConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetAlertNotifiers get alert notifiers API
 */
-func (a *Client) GetAlertNotifiers(params *GetAlertNotifiersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertNotifiersOK, error) {
+func (a *Client) GetAlertNotifiers(params *GetAlertNotifiersParams, opts ...ClientOption) (*GetAlertNotifiersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAlertNotifiersParams()
@@ -54,7 +54,6 @@ func (a *Client) GetAlertNotifiers(params *GetAlertNotifiersParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetAlertNotifiersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetAlertNotifiers(params *GetAlertNotifiersParams, authInfo run
 /*
   GetAlertNotifiersConnection get alert notifiers connection API
 */
-func (a *Client) GetAlertNotifiersConnection(params *GetAlertNotifiersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertNotifiersConnectionOK, error) {
+func (a *Client) GetAlertNotifiersConnection(params *GetAlertNotifiersConnectionParams, opts ...ClientOption) (*GetAlertNotifiersConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAlertNotifiersConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetAlertNotifiersConnection(params *GetAlertNotifiersConnection
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetAlertNotifiersConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateSnmpTrapReceiver(params *CreateSnmpTrapReceiverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnmpTrapReceiverOK, error)
+	CreateSnmpTrapReceiver(params *CreateSnmpTrapReceiverParams, opts ...ClientOption) (*CreateSnmpTrapReceiverOK, error)
 
-	DeleteSnmpTrapReceiver(params *DeleteSnmpTrapReceiverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnmpTrapReceiverOK, error)
+	DeleteSnmpTrapReceiver(params *DeleteSnmpTrapReceiverParams, opts ...ClientOption) (*DeleteSnmpTrapReceiverOK, error)
 
-	GetSnmpTrapReceivers(params *GetSnmpTrapReceiversParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnmpTrapReceiversOK, error)
+	GetSnmpTrapReceivers(params *GetSnmpTrapReceiversParams, opts ...ClientOption) (*GetSnmpTrapReceiversOK, error)
 
-	GetSnmpTrapReceiversConnection(params *GetSnmpTrapReceiversConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnmpTrapReceiversConnectionOK, error)
+	GetSnmpTrapReceiversConnection(params *GetSnmpTrapReceiversConnectionParams, opts ...ClientOption) (*GetSnmpTrapReceiversConnectionOK, error)
 
-	UpdateSnmpTrapReceiver(params *UpdateSnmpTrapReceiverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSnmpTrapReceiverOK, error)
+	UpdateSnmpTrapReceiver(params *UpdateSnmpTrapReceiverParams, opts ...ClientOption) (*UpdateSnmpTrapReceiverOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateSnmpTrapReceiver create snmp trap receiver API
 */
-func (a *Client) CreateSnmpTrapReceiver(params *CreateSnmpTrapReceiverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnmpTrapReceiverOK, error) {
+func (a *Client) CreateSnmpTrapReceiver(params *CreateSnmpTrapReceiverParams, opts ...ClientOption) (*CreateSnmpTrapReceiverOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSnmpTrapReceiverParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateSnmpTrapReceiver(params *CreateSnmpTrapReceiverParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateSnmpTrapReceiverReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateSnmpTrapReceiver(params *CreateSnmpTrapReceiverParams, au
 /*
   DeleteSnmpTrapReceiver delete snmp trap receiver API
 */
-func (a *Client) DeleteSnmpTrapReceiver(params *DeleteSnmpTrapReceiverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnmpTrapReceiverOK, error) {
+func (a *Client) DeleteSnmpTrapReceiver(params *DeleteSnmpTrapReceiverParams, opts ...ClientOption) (*DeleteSnmpTrapReceiverOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSnmpTrapReceiverParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteSnmpTrapReceiver(params *DeleteSnmpTrapReceiverParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteSnmpTrapReceiverReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteSnmpTrapReceiver(params *DeleteSnmpTrapReceiverParams, au
 /*
   GetSnmpTrapReceivers get snmp trap receivers API
 */
-func (a *Client) GetSnmpTrapReceivers(params *GetSnmpTrapReceiversParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnmpTrapReceiversOK, error) {
+func (a *Client) GetSnmpTrapReceivers(params *GetSnmpTrapReceiversParams, opts ...ClientOption) (*GetSnmpTrapReceiversOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnmpTrapReceiversParams()
@@ -138,7 +136,6 @@ func (a *Client) GetSnmpTrapReceivers(params *GetSnmpTrapReceiversParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnmpTrapReceiversReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetSnmpTrapReceivers(params *GetSnmpTrapReceiversParams, authIn
 /*
   GetSnmpTrapReceiversConnection get snmp trap receivers connection API
 */
-func (a *Client) GetSnmpTrapReceiversConnection(params *GetSnmpTrapReceiversConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnmpTrapReceiversConnectionOK, error) {
+func (a *Client) GetSnmpTrapReceiversConnection(params *GetSnmpTrapReceiversConnectionParams, opts ...ClientOption) (*GetSnmpTrapReceiversConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnmpTrapReceiversConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetSnmpTrapReceiversConnection(params *GetSnmpTrapReceiversConn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnmpTrapReceiversConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetSnmpTrapReceiversConnection(params *GetSnmpTrapReceiversConn
 /*
   UpdateSnmpTrapReceiver update snmp trap receiver API
 */
-func (a *Client) UpdateSnmpTrapReceiver(params *UpdateSnmpTrapReceiverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSnmpTrapReceiverOK, error) {
+func (a *Client) UpdateSnmpTrapReceiver(params *UpdateSnmpTrapReceiverParams, opts ...ClientOption) (*UpdateSnmpTrapReceiverOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateSnmpTrapReceiverParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateSnmpTrapReceiver(params *UpdateSnmpTrapReceiverParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateSnmpTrapReceiverReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

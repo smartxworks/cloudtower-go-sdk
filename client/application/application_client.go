@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetApplications(params *GetApplicationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetApplicationsOK, error)
+	GetApplications(params *GetApplicationsParams, opts ...ClientOption) (*GetApplicationsOK, error)
 
-	GetApplicationsConnection(params *GetApplicationsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetApplicationsConnectionOK, error)
+	GetApplicationsConnection(params *GetApplicationsConnectionParams, opts ...ClientOption) (*GetApplicationsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetApplications get applications API
 */
-func (a *Client) GetApplications(params *GetApplicationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetApplicationsOK, error) {
+func (a *Client) GetApplications(params *GetApplicationsParams, opts ...ClientOption) (*GetApplicationsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetApplicationsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetApplications(params *GetApplicationsParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetApplicationsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetApplications(params *GetApplicationsParams, authInfo runtime
 /*
   GetApplicationsConnection get applications connection API
 */
-func (a *Client) GetApplicationsConnection(params *GetApplicationsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetApplicationsConnectionOK, error) {
+func (a *Client) GetApplicationsConnection(params *GetApplicationsConnectionParams, opts ...ClientOption) (*GetApplicationsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetApplicationsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetApplicationsConnection(params *GetApplicationsConnectionPara
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetApplicationsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

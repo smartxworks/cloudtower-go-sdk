@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetVMDisks(params *GetVMDisksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMDisksOK, error)
+	GetVMDisks(params *GetVMDisksParams, opts ...ClientOption) (*GetVMDisksOK, error)
 
-	GetVMDisksConnection(params *GetVMDisksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMDisksConnectionOK, error)
+	GetVMDisksConnection(params *GetVMDisksConnectionParams, opts ...ClientOption) (*GetVMDisksConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetVMDisks get Vm disks API
 */
-func (a *Client) GetVMDisks(params *GetVMDisksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMDisksOK, error) {
+func (a *Client) GetVMDisks(params *GetVMDisksParams, opts ...ClientOption) (*GetVMDisksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMDisksParams()
@@ -54,7 +54,6 @@ func (a *Client) GetVMDisks(params *GetVMDisksParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMDisksReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetVMDisks(params *GetVMDisksParams, authInfo runtime.ClientAut
 /*
   GetVMDisksConnection get Vm disks connection API
 */
-func (a *Client) GetVMDisksConnection(params *GetVMDisksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMDisksConnectionOK, error) {
+func (a *Client) GetVMDisksConnection(params *GetVMDisksConnectionParams, opts ...ClientOption) (*GetVMDisksConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMDisksConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetVMDisksConnection(params *GetVMDisksConnectionParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMDisksConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

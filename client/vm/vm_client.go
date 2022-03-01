@@ -30,67 +30,67 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AddVMCdRom(params *AddVMCdRomParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddVMCdRomOK, error)
+	AddVMCdRom(params *AddVMCdRomParams, opts ...ClientOption) (*AddVMCdRomOK, error)
 
-	AddVMDisk(params *AddVMDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddVMDiskOK, error)
+	AddVMDisk(params *AddVMDiskParams, opts ...ClientOption) (*AddVMDiskOK, error)
 
-	AddVMNic(params *AddVMNicParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddVMNicOK, error)
+	AddVMNic(params *AddVMNicParams, opts ...ClientOption) (*AddVMNicOK, error)
 
-	AddVMToFolder(params *AddVMToFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddVMToFolderOK, error)
+	AddVMToFolder(params *AddVMToFolderParams, opts ...ClientOption) (*AddVMToFolderOK, error)
 
-	CloneVM(params *CloneVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloneVMOK, error)
+	CloneVM(params *CloneVMParams, opts ...ClientOption) (*CloneVMOK, error)
 
-	ConvertVMTemplateToVM(params *ConvertVMTemplateToVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConvertVMTemplateToVMOK, error)
+	ConvertVMTemplateToVM(params *ConvertVMTemplateToVMParams, opts ...ClientOption) (*ConvertVMTemplateToVMOK, error)
 
-	CreateVM(params *CreateVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMOK, error)
+	CreateVM(params *CreateVMParams, opts ...ClientOption) (*CreateVMOK, error)
 
-	CreateVMFromTemplate(params *CreateVMFromTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMFromTemplateOK, error)
+	CreateVMFromTemplate(params *CreateVMFromTemplateParams, opts ...ClientOption) (*CreateVMFromTemplateOK, error)
 
-	DeleteVM(params *DeleteVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMOK, error)
+	DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*DeleteVMOK, error)
 
-	ForceRestartVM(params *ForceRestartVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ForceRestartVMOK, error)
+	ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOption) (*ForceRestartVMOK, error)
 
-	ForceShutDownVM(params *ForceShutDownVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ForceShutDownVMOK, error)
+	ForceShutDownVM(params *ForceShutDownVMParams, opts ...ClientOption) (*ForceShutDownVMOK, error)
 
-	GetVms(params *GetVmsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVmsOK, error)
+	GetVms(params *GetVmsParams, opts ...ClientOption) (*GetVmsOK, error)
 
-	GetVmsConnection(params *GetVmsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVmsConnectionOK, error)
+	GetVmsConnection(params *GetVmsConnectionParams, opts ...ClientOption) (*GetVmsConnectionOK, error)
 
-	InstallVmtools(params *InstallVmtoolsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InstallVmtoolsOK, error)
+	InstallVmtools(params *InstallVmtoolsParams, opts ...ClientOption) (*InstallVmtoolsOK, error)
 
-	MigRateVM(params *MigRateVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MigRateVMOK, error)
+	MigRateVM(params *MigRateVMParams, opts ...ClientOption) (*MigRateVMOK, error)
 
-	MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MoveVMToRecycleBinOK, error)
+	MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, opts ...ClientOption) (*MoveVMToRecycleBinOK, error)
 
-	RebuildVM(params *RebuildVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RebuildVMOK, error)
+	RebuildVM(params *RebuildVMParams, opts ...ClientOption) (*RebuildVMOK, error)
 
-	RecoverVMFromRecycleBin(params *RecoverVMFromRecycleBinParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RecoverVMFromRecycleBinOK, error)
+	RecoverVMFromRecycleBin(params *RecoverVMFromRecycleBinParams, opts ...ClientOption) (*RecoverVMFromRecycleBinOK, error)
 
-	RemoveVMCdRom(params *RemoveVMCdRomParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveVMCdRomOK, error)
+	RemoveVMCdRom(params *RemoveVMCdRomParams, opts ...ClientOption) (*RemoveVMCdRomOK, error)
 
-	RemoveVMDisk(params *RemoveVMDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveVMDiskOK, error)
+	RemoveVMDisk(params *RemoveVMDiskParams, opts ...ClientOption) (*RemoveVMDiskOK, error)
 
-	RemoveVMNic(params *RemoveVMNicParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveVMNicOK, error)
+	RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*RemoveVMNicOK, error)
 
-	RemoveVMToFolder(params *RemoveVMToFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveVMToFolderOK, error)
+	RemoveVMToFolder(params *RemoveVMToFolderParams, opts ...ClientOption) (*RemoveVMToFolderOK, error)
 
-	RestartVM(params *RestartVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RestartVMOK, error)
+	RestartVM(params *RestartVMParams, opts ...ClientOption) (*RestartVMOK, error)
 
-	ResumeVM(params *ResumeVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ResumeVMOK, error)
+	ResumeVM(params *ResumeVMParams, opts ...ClientOption) (*ResumeVMOK, error)
 
-	RollbackVM(params *RollbackVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RollbackVMOK, error)
+	RollbackVM(params *RollbackVMParams, opts ...ClientOption) (*RollbackVMOK, error)
 
-	ShutDownVM(params *ShutDownVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShutDownVMOK, error)
+	ShutDownVM(params *ShutDownVMParams, opts ...ClientOption) (*ShutDownVMOK, error)
 
-	StartVM(params *StartVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StartVMOK, error)
+	StartVM(params *StartVMParams, opts ...ClientOption) (*StartVMOK, error)
 
-	SuspendVM(params *SuspendVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SuspendVMOK, error)
+	SuspendVM(params *SuspendVMParams, opts ...ClientOption) (*SuspendVMOK, error)
 
-	UpdateVM(params *UpdateVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMOK, error)
+	UpdateVM(params *UpdateVMParams, opts ...ClientOption) (*UpdateVMOK, error)
 
-	UpdateVMDisk(params *UpdateVMDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMDiskOK, error)
+	UpdateVMDisk(params *UpdateVMDiskParams, opts ...ClientOption) (*UpdateVMDiskOK, error)
 
-	UpdateVMNic(params *UpdateVMNicParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMNicOK, error)
+	UpdateVMNic(params *UpdateVMNicParams, opts ...ClientOption) (*UpdateVMNicOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -98,7 +98,7 @@ type ClientService interface {
 /*
   AddVMCdRom add Vm cd rom API
 */
-func (a *Client) AddVMCdRom(params *AddVMCdRomParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddVMCdRomOK, error) {
+func (a *Client) AddVMCdRom(params *AddVMCdRomParams, opts ...ClientOption) (*AddVMCdRomOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddVMCdRomParams()
@@ -112,7 +112,6 @@ func (a *Client) AddVMCdRom(params *AddVMCdRomParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AddVMCdRomReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -137,7 +136,7 @@ func (a *Client) AddVMCdRom(params *AddVMCdRomParams, authInfo runtime.ClientAut
 /*
   AddVMDisk add Vm disk API
 */
-func (a *Client) AddVMDisk(params *AddVMDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddVMDiskOK, error) {
+func (a *Client) AddVMDisk(params *AddVMDiskParams, opts ...ClientOption) (*AddVMDiskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddVMDiskParams()
@@ -151,7 +150,6 @@ func (a *Client) AddVMDisk(params *AddVMDiskParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AddVMDiskReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -176,7 +174,7 @@ func (a *Client) AddVMDisk(params *AddVMDiskParams, authInfo runtime.ClientAuthI
 /*
   AddVMNic add Vm nic API
 */
-func (a *Client) AddVMNic(params *AddVMNicParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddVMNicOK, error) {
+func (a *Client) AddVMNic(params *AddVMNicParams, opts ...ClientOption) (*AddVMNicOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddVMNicParams()
@@ -190,7 +188,6 @@ func (a *Client) AddVMNic(params *AddVMNicParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AddVMNicReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -215,7 +212,7 @@ func (a *Client) AddVMNic(params *AddVMNicParams, authInfo runtime.ClientAuthInf
 /*
   AddVMToFolder add Vm to folder API
 */
-func (a *Client) AddVMToFolder(params *AddVMToFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddVMToFolderOK, error) {
+func (a *Client) AddVMToFolder(params *AddVMToFolderParams, opts ...ClientOption) (*AddVMToFolderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddVMToFolderParams()
@@ -229,7 +226,6 @@ func (a *Client) AddVMToFolder(params *AddVMToFolderParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AddVMToFolderReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -254,7 +250,7 @@ func (a *Client) AddVMToFolder(params *AddVMToFolderParams, authInfo runtime.Cli
 /*
   CloneVM clone Vm API
 */
-func (a *Client) CloneVM(params *CloneVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloneVMOK, error) {
+func (a *Client) CloneVM(params *CloneVMParams, opts ...ClientOption) (*CloneVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCloneVMParams()
@@ -268,7 +264,6 @@ func (a *Client) CloneVM(params *CloneVMParams, authInfo runtime.ClientAuthInfoW
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CloneVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -293,7 +288,7 @@ func (a *Client) CloneVM(params *CloneVMParams, authInfo runtime.ClientAuthInfoW
 /*
   ConvertVMTemplateToVM convert Vm template to Vm API
 */
-func (a *Client) ConvertVMTemplateToVM(params *ConvertVMTemplateToVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConvertVMTemplateToVMOK, error) {
+func (a *Client) ConvertVMTemplateToVM(params *ConvertVMTemplateToVMParams, opts ...ClientOption) (*ConvertVMTemplateToVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewConvertVMTemplateToVMParams()
@@ -307,7 +302,6 @@ func (a *Client) ConvertVMTemplateToVM(params *ConvertVMTemplateToVMParams, auth
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ConvertVMTemplateToVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -332,7 +326,7 @@ func (a *Client) ConvertVMTemplateToVM(params *ConvertVMTemplateToVMParams, auth
 /*
   CreateVM create Vm API
 */
-func (a *Client) CreateVM(params *CreateVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMOK, error) {
+func (a *Client) CreateVM(params *CreateVMParams, opts ...ClientOption) (*CreateVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVMParams()
@@ -346,7 +340,6 @@ func (a *Client) CreateVM(params *CreateVMParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -371,7 +364,7 @@ func (a *Client) CreateVM(params *CreateVMParams, authInfo runtime.ClientAuthInf
 /*
   CreateVMFromTemplate create Vm from template API
 */
-func (a *Client) CreateVMFromTemplate(params *CreateVMFromTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMFromTemplateOK, error) {
+func (a *Client) CreateVMFromTemplate(params *CreateVMFromTemplateParams, opts ...ClientOption) (*CreateVMFromTemplateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVMFromTemplateParams()
@@ -385,7 +378,6 @@ func (a *Client) CreateVMFromTemplate(params *CreateVMFromTemplateParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVMFromTemplateReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -410,7 +402,7 @@ func (a *Client) CreateVMFromTemplate(params *CreateVMFromTemplateParams, authIn
 /*
   DeleteVM delete Vm API
 */
-func (a *Client) DeleteVM(params *DeleteVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMOK, error) {
+func (a *Client) DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*DeleteVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVMParams()
@@ -424,7 +416,6 @@ func (a *Client) DeleteVM(params *DeleteVMParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -449,7 +440,7 @@ func (a *Client) DeleteVM(params *DeleteVMParams, authInfo runtime.ClientAuthInf
 /*
   ForceRestartVM force restart Vm API
 */
-func (a *Client) ForceRestartVM(params *ForceRestartVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ForceRestartVMOK, error) {
+func (a *Client) ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOption) (*ForceRestartVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewForceRestartVMParams()
@@ -463,7 +454,6 @@ func (a *Client) ForceRestartVM(params *ForceRestartVMParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ForceRestartVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -488,7 +478,7 @@ func (a *Client) ForceRestartVM(params *ForceRestartVMParams, authInfo runtime.C
 /*
   ForceShutDownVM force shut down Vm API
 */
-func (a *Client) ForceShutDownVM(params *ForceShutDownVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ForceShutDownVMOK, error) {
+func (a *Client) ForceShutDownVM(params *ForceShutDownVMParams, opts ...ClientOption) (*ForceShutDownVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewForceShutDownVMParams()
@@ -502,7 +492,6 @@ func (a *Client) ForceShutDownVM(params *ForceShutDownVMParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ForceShutDownVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -527,7 +516,7 @@ func (a *Client) ForceShutDownVM(params *ForceShutDownVMParams, authInfo runtime
 /*
   GetVms get vms API
 */
-func (a *Client) GetVms(params *GetVmsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVmsOK, error) {
+func (a *Client) GetVms(params *GetVmsParams, opts ...ClientOption) (*GetVmsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVmsParams()
@@ -541,7 +530,6 @@ func (a *Client) GetVms(params *GetVmsParams, authInfo runtime.ClientAuthInfoWri
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVmsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -566,7 +554,7 @@ func (a *Client) GetVms(params *GetVmsParams, authInfo runtime.ClientAuthInfoWri
 /*
   GetVmsConnection get vms connection API
 */
-func (a *Client) GetVmsConnection(params *GetVmsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVmsConnectionOK, error) {
+func (a *Client) GetVmsConnection(params *GetVmsConnectionParams, opts ...ClientOption) (*GetVmsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVmsConnectionParams()
@@ -580,7 +568,6 @@ func (a *Client) GetVmsConnection(params *GetVmsConnectionParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVmsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -605,7 +592,7 @@ func (a *Client) GetVmsConnection(params *GetVmsConnectionParams, authInfo runti
 /*
   InstallVmtools install vmtools API
 */
-func (a *Client) InstallVmtools(params *InstallVmtoolsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InstallVmtoolsOK, error) {
+func (a *Client) InstallVmtools(params *InstallVmtoolsParams, opts ...ClientOption) (*InstallVmtoolsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewInstallVmtoolsParams()
@@ -619,7 +606,6 @@ func (a *Client) InstallVmtools(params *InstallVmtoolsParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &InstallVmtoolsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -644,7 +630,7 @@ func (a *Client) InstallVmtools(params *InstallVmtoolsParams, authInfo runtime.C
 /*
   MigRateVM mig rate Vm API
 */
-func (a *Client) MigRateVM(params *MigRateVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MigRateVMOK, error) {
+func (a *Client) MigRateVM(params *MigRateVMParams, opts ...ClientOption) (*MigRateVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewMigRateVMParams()
@@ -658,7 +644,6 @@ func (a *Client) MigRateVM(params *MigRateVMParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &MigRateVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -683,7 +668,7 @@ func (a *Client) MigRateVM(params *MigRateVMParams, authInfo runtime.ClientAuthI
 /*
   MoveVMToRecycleBin move Vm to recycle bin API
 */
-func (a *Client) MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MoveVMToRecycleBinOK, error) {
+func (a *Client) MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, opts ...ClientOption) (*MoveVMToRecycleBinOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewMoveVMToRecycleBinParams()
@@ -697,7 +682,6 @@ func (a *Client) MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &MoveVMToRecycleBinReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -722,7 +706,7 @@ func (a *Client) MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, authInfo r
 /*
   RebuildVM rebuild Vm API
 */
-func (a *Client) RebuildVM(params *RebuildVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RebuildVMOK, error) {
+func (a *Client) RebuildVM(params *RebuildVMParams, opts ...ClientOption) (*RebuildVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRebuildVMParams()
@@ -736,7 +720,6 @@ func (a *Client) RebuildVM(params *RebuildVMParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RebuildVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -761,7 +744,7 @@ func (a *Client) RebuildVM(params *RebuildVMParams, authInfo runtime.ClientAuthI
 /*
   RecoverVMFromRecycleBin recover Vm from recycle bin API
 */
-func (a *Client) RecoverVMFromRecycleBin(params *RecoverVMFromRecycleBinParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RecoverVMFromRecycleBinOK, error) {
+func (a *Client) RecoverVMFromRecycleBin(params *RecoverVMFromRecycleBinParams, opts ...ClientOption) (*RecoverVMFromRecycleBinOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRecoverVMFromRecycleBinParams()
@@ -775,7 +758,6 @@ func (a *Client) RecoverVMFromRecycleBin(params *RecoverVMFromRecycleBinParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RecoverVMFromRecycleBinReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -800,7 +782,7 @@ func (a *Client) RecoverVMFromRecycleBin(params *RecoverVMFromRecycleBinParams, 
 /*
   RemoveVMCdRom remove Vm cd rom API
 */
-func (a *Client) RemoveVMCdRom(params *RemoveVMCdRomParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveVMCdRomOK, error) {
+func (a *Client) RemoveVMCdRom(params *RemoveVMCdRomParams, opts ...ClientOption) (*RemoveVMCdRomOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRemoveVMCdRomParams()
@@ -814,7 +796,6 @@ func (a *Client) RemoveVMCdRom(params *RemoveVMCdRomParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RemoveVMCdRomReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -839,7 +820,7 @@ func (a *Client) RemoveVMCdRom(params *RemoveVMCdRomParams, authInfo runtime.Cli
 /*
   RemoveVMDisk remove Vm disk API
 */
-func (a *Client) RemoveVMDisk(params *RemoveVMDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveVMDiskOK, error) {
+func (a *Client) RemoveVMDisk(params *RemoveVMDiskParams, opts ...ClientOption) (*RemoveVMDiskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRemoveVMDiskParams()
@@ -853,7 +834,6 @@ func (a *Client) RemoveVMDisk(params *RemoveVMDiskParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RemoveVMDiskReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -878,7 +858,7 @@ func (a *Client) RemoveVMDisk(params *RemoveVMDiskParams, authInfo runtime.Clien
 /*
   RemoveVMNic remove Vm nic API
 */
-func (a *Client) RemoveVMNic(params *RemoveVMNicParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveVMNicOK, error) {
+func (a *Client) RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*RemoveVMNicOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRemoveVMNicParams()
@@ -892,7 +872,6 @@ func (a *Client) RemoveVMNic(params *RemoveVMNicParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RemoveVMNicReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -917,7 +896,7 @@ func (a *Client) RemoveVMNic(params *RemoveVMNicParams, authInfo runtime.ClientA
 /*
   RemoveVMToFolder remove Vm to folder API
 */
-func (a *Client) RemoveVMToFolder(params *RemoveVMToFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveVMToFolderOK, error) {
+func (a *Client) RemoveVMToFolder(params *RemoveVMToFolderParams, opts ...ClientOption) (*RemoveVMToFolderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRemoveVMToFolderParams()
@@ -931,7 +910,6 @@ func (a *Client) RemoveVMToFolder(params *RemoveVMToFolderParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RemoveVMToFolderReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -956,7 +934,7 @@ func (a *Client) RemoveVMToFolder(params *RemoveVMToFolderParams, authInfo runti
 /*
   RestartVM restart Vm API
 */
-func (a *Client) RestartVM(params *RestartVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RestartVMOK, error) {
+func (a *Client) RestartVM(params *RestartVMParams, opts ...ClientOption) (*RestartVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRestartVMParams()
@@ -970,7 +948,6 @@ func (a *Client) RestartVM(params *RestartVMParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RestartVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -995,7 +972,7 @@ func (a *Client) RestartVM(params *RestartVMParams, authInfo runtime.ClientAuthI
 /*
   ResumeVM resume Vm API
 */
-func (a *Client) ResumeVM(params *ResumeVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ResumeVMOK, error) {
+func (a *Client) ResumeVM(params *ResumeVMParams, opts ...ClientOption) (*ResumeVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewResumeVMParams()
@@ -1009,7 +986,6 @@ func (a *Client) ResumeVM(params *ResumeVMParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ResumeVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1034,7 +1010,7 @@ func (a *Client) ResumeVM(params *ResumeVMParams, authInfo runtime.ClientAuthInf
 /*
   RollbackVM rollback Vm API
 */
-func (a *Client) RollbackVM(params *RollbackVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RollbackVMOK, error) {
+func (a *Client) RollbackVM(params *RollbackVMParams, opts ...ClientOption) (*RollbackVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRollbackVMParams()
@@ -1048,7 +1024,6 @@ func (a *Client) RollbackVM(params *RollbackVMParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RollbackVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1073,7 +1048,7 @@ func (a *Client) RollbackVM(params *RollbackVMParams, authInfo runtime.ClientAut
 /*
   ShutDownVM shut down Vm API
 */
-func (a *Client) ShutDownVM(params *ShutDownVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShutDownVMOK, error) {
+func (a *Client) ShutDownVM(params *ShutDownVMParams, opts ...ClientOption) (*ShutDownVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewShutDownVMParams()
@@ -1087,7 +1062,6 @@ func (a *Client) ShutDownVM(params *ShutDownVMParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ShutDownVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1112,7 +1086,7 @@ func (a *Client) ShutDownVM(params *ShutDownVMParams, authInfo runtime.ClientAut
 /*
   StartVM start Vm API
 */
-func (a *Client) StartVM(params *StartVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StartVMOK, error) {
+func (a *Client) StartVM(params *StartVMParams, opts ...ClientOption) (*StartVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewStartVMParams()
@@ -1126,7 +1100,6 @@ func (a *Client) StartVM(params *StartVMParams, authInfo runtime.ClientAuthInfoW
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &StartVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1151,7 +1124,7 @@ func (a *Client) StartVM(params *StartVMParams, authInfo runtime.ClientAuthInfoW
 /*
   SuspendVM suspend Vm API
 */
-func (a *Client) SuspendVM(params *SuspendVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SuspendVMOK, error) {
+func (a *Client) SuspendVM(params *SuspendVMParams, opts ...ClientOption) (*SuspendVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSuspendVMParams()
@@ -1165,7 +1138,6 @@ func (a *Client) SuspendVM(params *SuspendVMParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &SuspendVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1190,7 +1162,7 @@ func (a *Client) SuspendVM(params *SuspendVMParams, authInfo runtime.ClientAuthI
 /*
   UpdateVM update Vm API
 */
-func (a *Client) UpdateVM(params *UpdateVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMOK, error) {
+func (a *Client) UpdateVM(params *UpdateVMParams, opts ...ClientOption) (*UpdateVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVMParams()
@@ -1204,7 +1176,6 @@ func (a *Client) UpdateVM(params *UpdateVMParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1229,7 +1200,7 @@ func (a *Client) UpdateVM(params *UpdateVMParams, authInfo runtime.ClientAuthInf
 /*
   UpdateVMDisk update Vm disk API
 */
-func (a *Client) UpdateVMDisk(params *UpdateVMDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMDiskOK, error) {
+func (a *Client) UpdateVMDisk(params *UpdateVMDiskParams, opts ...ClientOption) (*UpdateVMDiskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVMDiskParams()
@@ -1243,7 +1214,6 @@ func (a *Client) UpdateVMDisk(params *UpdateVMDiskParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateVMDiskReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1268,7 +1238,7 @@ func (a *Client) UpdateVMDisk(params *UpdateVMDiskParams, authInfo runtime.Clien
 /*
   UpdateVMNic update Vm nic API
 */
-func (a *Client) UpdateVMNic(params *UpdateVMNicParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMNicOK, error) {
+func (a *Client) UpdateVMNic(params *UpdateVMNicParams, opts ...ClientOption) (*UpdateVMNicOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVMNicParams()
@@ -1282,7 +1252,6 @@ func (a *Client) UpdateVMNic(params *UpdateVMNicParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateVMNicReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

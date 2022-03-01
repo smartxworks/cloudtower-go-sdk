@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateGraph(params *CreateGraphParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateGraphOK, error)
+	CreateGraph(params *CreateGraphParams, opts ...ClientOption) (*CreateGraphOK, error)
 
-	DeleteGraph(params *DeleteGraphParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteGraphOK, error)
+	DeleteGraph(params *DeleteGraphParams, opts ...ClientOption) (*DeleteGraphOK, error)
 
-	GetGraphs(params *GetGraphsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGraphsOK, error)
+	GetGraphs(params *GetGraphsParams, opts ...ClientOption) (*GetGraphsOK, error)
 
-	GetGraphsConnection(params *GetGraphsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGraphsConnectionOK, error)
+	GetGraphsConnection(params *GetGraphsConnectionParams, opts ...ClientOption) (*GetGraphsConnectionOK, error)
 
-	UpdateGraph(params *UpdateGraphParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateGraphOK, error)
+	UpdateGraph(params *UpdateGraphParams, opts ...ClientOption) (*UpdateGraphOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateGraph create graph API
 */
-func (a *Client) CreateGraph(params *CreateGraphParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateGraphOK, error) {
+func (a *Client) CreateGraph(params *CreateGraphParams, opts ...ClientOption) (*CreateGraphOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateGraphParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateGraph(params *CreateGraphParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateGraphReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateGraph(params *CreateGraphParams, authInfo runtime.ClientA
 /*
   DeleteGraph delete graph API
 */
-func (a *Client) DeleteGraph(params *DeleteGraphParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteGraphOK, error) {
+func (a *Client) DeleteGraph(params *DeleteGraphParams, opts ...ClientOption) (*DeleteGraphOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteGraphParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteGraph(params *DeleteGraphParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteGraphReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteGraph(params *DeleteGraphParams, authInfo runtime.ClientA
 /*
   GetGraphs get graphs API
 */
-func (a *Client) GetGraphs(params *GetGraphsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGraphsOK, error) {
+func (a *Client) GetGraphs(params *GetGraphsParams, opts ...ClientOption) (*GetGraphsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGraphsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetGraphs(params *GetGraphsParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetGraphsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetGraphs(params *GetGraphsParams, authInfo runtime.ClientAuthI
 /*
   GetGraphsConnection get graphs connection API
 */
-func (a *Client) GetGraphsConnection(params *GetGraphsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGraphsConnectionOK, error) {
+func (a *Client) GetGraphsConnection(params *GetGraphsConnectionParams, opts ...ClientOption) (*GetGraphsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGraphsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetGraphsConnection(params *GetGraphsConnectionParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetGraphsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetGraphsConnection(params *GetGraphsConnectionParams, authInfo
 /*
   UpdateGraph update graph API
 */
-func (a *Client) UpdateGraph(params *UpdateGraphParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateGraphOK, error) {
+func (a *Client) UpdateGraph(params *UpdateGraphParams, opts ...ClientOption) (*UpdateGraphOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateGraphParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateGraph(params *UpdateGraphParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateGraphReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

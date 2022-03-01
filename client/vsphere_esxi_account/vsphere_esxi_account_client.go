@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetVsphereEsxiAccounts(params *GetVsphereEsxiAccountsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVsphereEsxiAccountsOK, error)
+	GetVsphereEsxiAccounts(params *GetVsphereEsxiAccountsParams, opts ...ClientOption) (*GetVsphereEsxiAccountsOK, error)
 
-	GetVsphereEsxiAccountsConnection(params *GetVsphereEsxiAccountsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVsphereEsxiAccountsConnectionOK, error)
+	GetVsphereEsxiAccountsConnection(params *GetVsphereEsxiAccountsConnectionParams, opts ...ClientOption) (*GetVsphereEsxiAccountsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetVsphereEsxiAccounts get vsphere esxi accounts API
 */
-func (a *Client) GetVsphereEsxiAccounts(params *GetVsphereEsxiAccountsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVsphereEsxiAccountsOK, error) {
+func (a *Client) GetVsphereEsxiAccounts(params *GetVsphereEsxiAccountsParams, opts ...ClientOption) (*GetVsphereEsxiAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVsphereEsxiAccountsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetVsphereEsxiAccounts(params *GetVsphereEsxiAccountsParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVsphereEsxiAccountsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetVsphereEsxiAccounts(params *GetVsphereEsxiAccountsParams, au
 /*
   GetVsphereEsxiAccountsConnection get vsphere esxi accounts connection API
 */
-func (a *Client) GetVsphereEsxiAccountsConnection(params *GetVsphereEsxiAccountsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVsphereEsxiAccountsConnectionOK, error) {
+func (a *Client) GetVsphereEsxiAccountsConnection(params *GetVsphereEsxiAccountsConnectionParams, opts ...ClientOption) (*GetVsphereEsxiAccountsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVsphereEsxiAccountsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetVsphereEsxiAccountsConnection(params *GetVsphereEsxiAccounts
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVsphereEsxiAccountsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateNamespaceGroup(params *CreateNamespaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNamespaceGroupOK, error)
+	CreateNamespaceGroup(params *CreateNamespaceGroupParams, opts ...ClientOption) (*CreateNamespaceGroupOK, error)
 
-	DeleteNamespaceGroup(params *DeleteNamespaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNamespaceGroupOK, error)
+	DeleteNamespaceGroup(params *DeleteNamespaceGroupParams, opts ...ClientOption) (*DeleteNamespaceGroupOK, error)
 
-	GetNamespaceGroups(params *GetNamespaceGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNamespaceGroupsOK, error)
+	GetNamespaceGroups(params *GetNamespaceGroupsParams, opts ...ClientOption) (*GetNamespaceGroupsOK, error)
 
-	GetNamespaceGroupsConnection(params *GetNamespaceGroupsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNamespaceGroupsConnectionOK, error)
+	GetNamespaceGroupsConnection(params *GetNamespaceGroupsConnectionParams, opts ...ClientOption) (*GetNamespaceGroupsConnectionOK, error)
 
-	UpdateNamespaceGroup(params *UpdateNamespaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNamespaceGroupOK, error)
+	UpdateNamespaceGroup(params *UpdateNamespaceGroupParams, opts ...ClientOption) (*UpdateNamespaceGroupOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateNamespaceGroup create namespace group API
 */
-func (a *Client) CreateNamespaceGroup(params *CreateNamespaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNamespaceGroupOK, error) {
+func (a *Client) CreateNamespaceGroup(params *CreateNamespaceGroupParams, opts ...ClientOption) (*CreateNamespaceGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNamespaceGroupParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateNamespaceGroup(params *CreateNamespaceGroupParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateNamespaceGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateNamespaceGroup(params *CreateNamespaceGroupParams, authIn
 /*
   DeleteNamespaceGroup delete namespace group API
 */
-func (a *Client) DeleteNamespaceGroup(params *DeleteNamespaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNamespaceGroupOK, error) {
+func (a *Client) DeleteNamespaceGroup(params *DeleteNamespaceGroupParams, opts ...ClientOption) (*DeleteNamespaceGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNamespaceGroupParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteNamespaceGroup(params *DeleteNamespaceGroupParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteNamespaceGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteNamespaceGroup(params *DeleteNamespaceGroupParams, authIn
 /*
   GetNamespaceGroups get namespace groups API
 */
-func (a *Client) GetNamespaceGroups(params *GetNamespaceGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNamespaceGroupsOK, error) {
+func (a *Client) GetNamespaceGroups(params *GetNamespaceGroupsParams, opts ...ClientOption) (*GetNamespaceGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNamespaceGroupsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetNamespaceGroups(params *GetNamespaceGroupsParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNamespaceGroupsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetNamespaceGroups(params *GetNamespaceGroupsParams, authInfo r
 /*
   GetNamespaceGroupsConnection get namespace groups connection API
 */
-func (a *Client) GetNamespaceGroupsConnection(params *GetNamespaceGroupsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNamespaceGroupsConnectionOK, error) {
+func (a *Client) GetNamespaceGroupsConnection(params *GetNamespaceGroupsConnectionParams, opts ...ClientOption) (*GetNamespaceGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNamespaceGroupsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetNamespaceGroupsConnection(params *GetNamespaceGroupsConnecti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNamespaceGroupsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetNamespaceGroupsConnection(params *GetNamespaceGroupsConnecti
 /*
   UpdateNamespaceGroup update namespace group API
 */
-func (a *Client) UpdateNamespaceGroup(params *UpdateNamespaceGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNamespaceGroupOK, error) {
+func (a *Client) UpdateNamespaceGroup(params *UpdateNamespaceGroupParams, opts ...ClientOption) (*UpdateNamespaceGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNamespaceGroupParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateNamespaceGroup(params *UpdateNamespaceGroupParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateNamespaceGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

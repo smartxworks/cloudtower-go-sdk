@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateElfImage(params *CreateElfImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateElfImageOK, error)
+	CreateElfImage(params *CreateElfImageParams, opts ...ClientOption) (*CreateElfImageOK, error)
 
-	DeleteElfImage(params *DeleteElfImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteElfImageOK, error)
+	DeleteElfImage(params *DeleteElfImageParams, opts ...ClientOption) (*DeleteElfImageOK, error)
 
-	GetElfImages(params *GetElfImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfImagesOK, error)
+	GetElfImages(params *GetElfImagesParams, opts ...ClientOption) (*GetElfImagesOK, error)
 
-	GetElfImagesConnection(params *GetElfImagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfImagesConnectionOK, error)
+	GetElfImagesConnection(params *GetElfImagesConnectionParams, opts ...ClientOption) (*GetElfImagesConnectionOK, error)
 
-	UpdateElfImage(params *UpdateElfImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateElfImageOK, error)
+	UpdateElfImage(params *UpdateElfImageParams, opts ...ClientOption) (*UpdateElfImageOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateElfImage create elf image API
 */
-func (a *Client) CreateElfImage(params *CreateElfImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateElfImageOK, error) {
+func (a *Client) CreateElfImage(params *CreateElfImageParams, opts ...ClientOption) (*CreateElfImageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateElfImageParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateElfImage(params *CreateElfImageParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateElfImageReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateElfImage(params *CreateElfImageParams, authInfo runtime.C
 /*
   DeleteElfImage delete elf image API
 */
-func (a *Client) DeleteElfImage(params *DeleteElfImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteElfImageOK, error) {
+func (a *Client) DeleteElfImage(params *DeleteElfImageParams, opts ...ClientOption) (*DeleteElfImageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteElfImageParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteElfImage(params *DeleteElfImageParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteElfImageReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteElfImage(params *DeleteElfImageParams, authInfo runtime.C
 /*
   GetElfImages get elf images API
 */
-func (a *Client) GetElfImages(params *GetElfImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfImagesOK, error) {
+func (a *Client) GetElfImages(params *GetElfImagesParams, opts ...ClientOption) (*GetElfImagesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetElfImagesParams()
@@ -138,7 +136,6 @@ func (a *Client) GetElfImages(params *GetElfImagesParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetElfImagesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetElfImages(params *GetElfImagesParams, authInfo runtime.Clien
 /*
   GetElfImagesConnection get elf images connection API
 */
-func (a *Client) GetElfImagesConnection(params *GetElfImagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfImagesConnectionOK, error) {
+func (a *Client) GetElfImagesConnection(params *GetElfImagesConnectionParams, opts ...ClientOption) (*GetElfImagesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetElfImagesConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetElfImagesConnection(params *GetElfImagesConnectionParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetElfImagesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetElfImagesConnection(params *GetElfImagesConnectionParams, au
 /*
   UpdateElfImage update elf image API
 */
-func (a *Client) UpdateElfImage(params *UpdateElfImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateElfImageOK, error) {
+func (a *Client) UpdateElfImage(params *UpdateElfImageParams, opts ...ClientOption) (*UpdateElfImageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateElfImageParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateElfImage(params *UpdateElfImageParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateElfImageReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

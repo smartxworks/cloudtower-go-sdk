@@ -30,13 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateVMSnapshot(params *CreateVMSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMSnapshotOK, error)
+	CreateVMSnapshot(params *CreateVMSnapshotParams, opts ...ClientOption) (*CreateVMSnapshotOK, error)
 
-	DeleteVMSnapshot(params *DeleteVMSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMSnapshotOK, error)
+	DeleteVMSnapshot(params *DeleteVMSnapshotParams, opts ...ClientOption) (*DeleteVMSnapshotOK, error)
 
-	GetVMSnapshots(params *GetVMSnapshotsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMSnapshotsOK, error)
+	GetVMSnapshots(params *GetVMSnapshotsParams, opts ...ClientOption) (*GetVMSnapshotsOK, error)
 
-	GetVMSnapshotsConnection(params *GetVMSnapshotsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMSnapshotsConnectionOK, error)
+	GetVMSnapshotsConnection(params *GetVMSnapshotsConnectionParams, opts ...ClientOption) (*GetVMSnapshotsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -44,7 +44,7 @@ type ClientService interface {
 /*
   CreateVMSnapshot create Vm snapshot API
 */
-func (a *Client) CreateVMSnapshot(params *CreateVMSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMSnapshotOK, error) {
+func (a *Client) CreateVMSnapshot(params *CreateVMSnapshotParams, opts ...ClientOption) (*CreateVMSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVMSnapshotParams()
@@ -58,7 +58,6 @@ func (a *Client) CreateVMSnapshot(params *CreateVMSnapshotParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVMSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -83,7 +82,7 @@ func (a *Client) CreateVMSnapshot(params *CreateVMSnapshotParams, authInfo runti
 /*
   DeleteVMSnapshot delete Vm snapshot API
 */
-func (a *Client) DeleteVMSnapshot(params *DeleteVMSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMSnapshotOK, error) {
+func (a *Client) DeleteVMSnapshot(params *DeleteVMSnapshotParams, opts ...ClientOption) (*DeleteVMSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVMSnapshotParams()
@@ -97,7 +96,6 @@ func (a *Client) DeleteVMSnapshot(params *DeleteVMSnapshotParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteVMSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -122,7 +120,7 @@ func (a *Client) DeleteVMSnapshot(params *DeleteVMSnapshotParams, authInfo runti
 /*
   GetVMSnapshots get Vm snapshots API
 */
-func (a *Client) GetVMSnapshots(params *GetVMSnapshotsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMSnapshotsOK, error) {
+func (a *Client) GetVMSnapshots(params *GetVMSnapshotsParams, opts ...ClientOption) (*GetVMSnapshotsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMSnapshotsParams()
@@ -136,7 +134,6 @@ func (a *Client) GetVMSnapshots(params *GetVMSnapshotsParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMSnapshotsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -161,7 +158,7 @@ func (a *Client) GetVMSnapshots(params *GetVMSnapshotsParams, authInfo runtime.C
 /*
   GetVMSnapshotsConnection get Vm snapshots connection API
 */
-func (a *Client) GetVMSnapshotsConnection(params *GetVMSnapshotsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMSnapshotsConnectionOK, error) {
+func (a *Client) GetVMSnapshotsConnection(params *GetVMSnapshotsConnectionParams, opts ...ClientOption) (*GetVMSnapshotsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMSnapshotsConnectionParams()
@@ -175,7 +172,6 @@ func (a *Client) GetVMSnapshotsConnection(params *GetVMSnapshotsConnectionParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMSnapshotsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

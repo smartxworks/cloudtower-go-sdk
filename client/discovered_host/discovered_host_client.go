@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetDiscoverHosts(params *GetDiscoverHostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDiscoverHostsOK, error)
+	GetDiscoverHosts(params *GetDiscoverHostsParams, opts ...ClientOption) (*GetDiscoverHostsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -38,7 +38,7 @@ type ClientService interface {
 /*
   GetDiscoverHosts get discover hosts API
 */
-func (a *Client) GetDiscoverHosts(params *GetDiscoverHostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDiscoverHostsOK, error) {
+func (a *Client) GetDiscoverHosts(params *GetDiscoverHostsParams, opts ...ClientOption) (*GetDiscoverHostsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDiscoverHostsParams()
@@ -52,7 +52,6 @@ func (a *Client) GetDiscoverHosts(params *GetDiscoverHostsParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetDiscoverHostsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

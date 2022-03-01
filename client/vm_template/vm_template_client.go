@@ -30,17 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CloneVMTemplateFromVM(params *CloneVMTemplateFromVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloneVMTemplateFromVMOK, error)
+	CloneVMTemplateFromVM(params *CloneVMTemplateFromVMParams, opts ...ClientOption) (*CloneVMTemplateFromVMOK, error)
 
-	ConvertVMTemplateFromVM(params *ConvertVMTemplateFromVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConvertVMTemplateFromVMOK, error)
+	ConvertVMTemplateFromVM(params *ConvertVMTemplateFromVMParams, opts ...ClientOption) (*ConvertVMTemplateFromVMOK, error)
 
-	DeleteVMTemplate(params *DeleteVMTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMTemplateOK, error)
+	DeleteVMTemplate(params *DeleteVMTemplateParams, opts ...ClientOption) (*DeleteVMTemplateOK, error)
 
-	GetVMTemplates(params *GetVMTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMTemplatesOK, error)
+	GetVMTemplates(params *GetVMTemplatesParams, opts ...ClientOption) (*GetVMTemplatesOK, error)
 
-	GetVMTemplatesConnection(params *GetVMTemplatesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMTemplatesConnectionOK, error)
+	GetVMTemplatesConnection(params *GetVMTemplatesConnectionParams, opts ...ClientOption) (*GetVMTemplatesConnectionOK, error)
 
-	UpdateVMTemplate(params *UpdateVMTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMTemplateOK, error)
+	UpdateVMTemplate(params *UpdateVMTemplateParams, opts ...ClientOption) (*UpdateVMTemplateOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -48,7 +48,7 @@ type ClientService interface {
 /*
   CloneVMTemplateFromVM clone Vm template from Vm API
 */
-func (a *Client) CloneVMTemplateFromVM(params *CloneVMTemplateFromVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloneVMTemplateFromVMOK, error) {
+func (a *Client) CloneVMTemplateFromVM(params *CloneVMTemplateFromVMParams, opts ...ClientOption) (*CloneVMTemplateFromVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCloneVMTemplateFromVMParams()
@@ -62,7 +62,6 @@ func (a *Client) CloneVMTemplateFromVM(params *CloneVMTemplateFromVMParams, auth
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CloneVMTemplateFromVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -87,7 +86,7 @@ func (a *Client) CloneVMTemplateFromVM(params *CloneVMTemplateFromVMParams, auth
 /*
   ConvertVMTemplateFromVM convert Vm template from Vm API
 */
-func (a *Client) ConvertVMTemplateFromVM(params *ConvertVMTemplateFromVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConvertVMTemplateFromVMOK, error) {
+func (a *Client) ConvertVMTemplateFromVM(params *ConvertVMTemplateFromVMParams, opts ...ClientOption) (*ConvertVMTemplateFromVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewConvertVMTemplateFromVMParams()
@@ -101,7 +100,6 @@ func (a *Client) ConvertVMTemplateFromVM(params *ConvertVMTemplateFromVMParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ConvertVMTemplateFromVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -126,7 +124,7 @@ func (a *Client) ConvertVMTemplateFromVM(params *ConvertVMTemplateFromVMParams, 
 /*
   DeleteVMTemplate delete Vm template API
 */
-func (a *Client) DeleteVMTemplate(params *DeleteVMTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMTemplateOK, error) {
+func (a *Client) DeleteVMTemplate(params *DeleteVMTemplateParams, opts ...ClientOption) (*DeleteVMTemplateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVMTemplateParams()
@@ -140,7 +138,6 @@ func (a *Client) DeleteVMTemplate(params *DeleteVMTemplateParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteVMTemplateReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -165,7 +162,7 @@ func (a *Client) DeleteVMTemplate(params *DeleteVMTemplateParams, authInfo runti
 /*
   GetVMTemplates get Vm templates API
 */
-func (a *Client) GetVMTemplates(params *GetVMTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMTemplatesOK, error) {
+func (a *Client) GetVMTemplates(params *GetVMTemplatesParams, opts ...ClientOption) (*GetVMTemplatesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMTemplatesParams()
@@ -179,7 +176,6 @@ func (a *Client) GetVMTemplates(params *GetVMTemplatesParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMTemplatesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -204,7 +200,7 @@ func (a *Client) GetVMTemplates(params *GetVMTemplatesParams, authInfo runtime.C
 /*
   GetVMTemplatesConnection get Vm templates connection API
 */
-func (a *Client) GetVMTemplatesConnection(params *GetVMTemplatesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMTemplatesConnectionOK, error) {
+func (a *Client) GetVMTemplatesConnection(params *GetVMTemplatesConnectionParams, opts ...ClientOption) (*GetVMTemplatesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMTemplatesConnectionParams()
@@ -218,7 +214,6 @@ func (a *Client) GetVMTemplatesConnection(params *GetVMTemplatesConnectionParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMTemplatesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -243,7 +238,7 @@ func (a *Client) GetVMTemplatesConnection(params *GetVMTemplatesConnectionParams
 /*
   UpdateVMTemplate update Vm template API
 */
-func (a *Client) UpdateVMTemplate(params *UpdateVMTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMTemplateOK, error) {
+func (a *Client) UpdateVMTemplate(params *UpdateVMTemplateParams, opts ...ClientOption) (*UpdateVMTemplateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVMTemplateParams()
@@ -257,7 +252,6 @@ func (a *Client) UpdateVMTemplate(params *UpdateVMTemplateParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateVMTemplateReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

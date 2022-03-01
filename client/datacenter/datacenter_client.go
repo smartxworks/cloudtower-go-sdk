@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateDatacenter(params *CreateDatacenterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateDatacenterOK, error)
+	CreateDatacenter(params *CreateDatacenterParams, opts ...ClientOption) (*CreateDatacenterOK, error)
 
-	DeleteDatacenter(params *DeleteDatacenterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteDatacenterOK, error)
+	DeleteDatacenter(params *DeleteDatacenterParams, opts ...ClientOption) (*DeleteDatacenterOK, error)
 
-	GetDatacenters(params *GetDatacentersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDatacentersOK, error)
+	GetDatacenters(params *GetDatacentersParams, opts ...ClientOption) (*GetDatacentersOK, error)
 
-	GetDatacentersConnection(params *GetDatacentersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDatacentersConnectionOK, error)
+	GetDatacentersConnection(params *GetDatacentersConnectionParams, opts ...ClientOption) (*GetDatacentersConnectionOK, error)
 
-	UpdateDatacenter(params *UpdateDatacenterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateDatacenterOK, error)
+	UpdateDatacenter(params *UpdateDatacenterParams, opts ...ClientOption) (*UpdateDatacenterOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateDatacenter create datacenter API
 */
-func (a *Client) CreateDatacenter(params *CreateDatacenterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateDatacenterOK, error) {
+func (a *Client) CreateDatacenter(params *CreateDatacenterParams, opts ...ClientOption) (*CreateDatacenterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateDatacenterParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateDatacenter(params *CreateDatacenterParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateDatacenterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateDatacenter(params *CreateDatacenterParams, authInfo runti
 /*
   DeleteDatacenter delete datacenter API
 */
-func (a *Client) DeleteDatacenter(params *DeleteDatacenterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteDatacenterOK, error) {
+func (a *Client) DeleteDatacenter(params *DeleteDatacenterParams, opts ...ClientOption) (*DeleteDatacenterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteDatacenterParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteDatacenter(params *DeleteDatacenterParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteDatacenterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteDatacenter(params *DeleteDatacenterParams, authInfo runti
 /*
   GetDatacenters get datacenters API
 */
-func (a *Client) GetDatacenters(params *GetDatacentersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDatacentersOK, error) {
+func (a *Client) GetDatacenters(params *GetDatacentersParams, opts ...ClientOption) (*GetDatacentersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDatacentersParams()
@@ -138,7 +136,6 @@ func (a *Client) GetDatacenters(params *GetDatacentersParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetDatacentersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetDatacenters(params *GetDatacentersParams, authInfo runtime.C
 /*
   GetDatacentersConnection get datacenters connection API
 */
-func (a *Client) GetDatacentersConnection(params *GetDatacentersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDatacentersConnectionOK, error) {
+func (a *Client) GetDatacentersConnection(params *GetDatacentersConnectionParams, opts ...ClientOption) (*GetDatacentersConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDatacentersConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetDatacentersConnection(params *GetDatacentersConnectionParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetDatacentersConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetDatacentersConnection(params *GetDatacentersConnectionParams
 /*
   UpdateDatacenter update datacenter API
 */
-func (a *Client) UpdateDatacenter(params *UpdateDatacenterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateDatacenterOK, error) {
+func (a *Client) UpdateDatacenter(params *UpdateDatacenterParams, opts ...ClientOption) (*UpdateDatacenterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateDatacenterParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateDatacenter(params *UpdateDatacenterParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateDatacenterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

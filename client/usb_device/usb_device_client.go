@@ -30,13 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetUsbDevices(params *GetUsbDevicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsbDevicesOK, error)
+	GetUsbDevices(params *GetUsbDevicesParams, opts ...ClientOption) (*GetUsbDevicesOK, error)
 
-	GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsbDevicesConnectionOK, error)
+	GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, opts ...ClientOption) (*GetUsbDevicesConnectionOK, error)
 
-	MountUsbDevice(params *MountUsbDeviceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MountUsbDeviceOK, error)
+	MountUsbDevice(params *MountUsbDeviceParams, opts ...ClientOption) (*MountUsbDeviceOK, error)
 
-	UnmountUsbDevice(params *UnmountUsbDeviceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UnmountUsbDeviceOK, error)
+	UnmountUsbDevice(params *UnmountUsbDeviceParams, opts ...ClientOption) (*UnmountUsbDeviceOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -44,7 +44,7 @@ type ClientService interface {
 /*
   GetUsbDevices get usb devices API
 */
-func (a *Client) GetUsbDevices(params *GetUsbDevicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsbDevicesOK, error) {
+func (a *Client) GetUsbDevices(params *GetUsbDevicesParams, opts ...ClientOption) (*GetUsbDevicesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsbDevicesParams()
@@ -58,7 +58,6 @@ func (a *Client) GetUsbDevices(params *GetUsbDevicesParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUsbDevicesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -83,7 +82,7 @@ func (a *Client) GetUsbDevices(params *GetUsbDevicesParams, authInfo runtime.Cli
 /*
   GetUsbDevicesConnection get usb devices connection API
 */
-func (a *Client) GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsbDevicesConnectionOK, error) {
+func (a *Client) GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, opts ...ClientOption) (*GetUsbDevicesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsbDevicesConnectionParams()
@@ -97,7 +96,6 @@ func (a *Client) GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUsbDevicesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -122,7 +120,7 @@ func (a *Client) GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, 
 /*
   MountUsbDevice mount usb device API
 */
-func (a *Client) MountUsbDevice(params *MountUsbDeviceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MountUsbDeviceOK, error) {
+func (a *Client) MountUsbDevice(params *MountUsbDeviceParams, opts ...ClientOption) (*MountUsbDeviceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewMountUsbDeviceParams()
@@ -136,7 +134,6 @@ func (a *Client) MountUsbDevice(params *MountUsbDeviceParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &MountUsbDeviceReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -161,7 +158,7 @@ func (a *Client) MountUsbDevice(params *MountUsbDeviceParams, authInfo runtime.C
 /*
   UnmountUsbDevice unmount usb device API
 */
-func (a *Client) UnmountUsbDevice(params *UnmountUsbDeviceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UnmountUsbDeviceOK, error) {
+func (a *Client) UnmountUsbDevice(params *UnmountUsbDeviceParams, opts ...ClientOption) (*UnmountUsbDeviceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUnmountUsbDeviceParams()
@@ -175,7 +172,6 @@ func (a *Client) UnmountUsbDevice(params *UnmountUsbDeviceParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UnmountUsbDeviceReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

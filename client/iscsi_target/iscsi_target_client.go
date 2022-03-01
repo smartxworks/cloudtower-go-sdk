@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateIscsiTarget(params *CreateIscsiTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIscsiTargetOK, error)
+	CreateIscsiTarget(params *CreateIscsiTargetParams, opts ...ClientOption) (*CreateIscsiTargetOK, error)
 
-	DeleteIscsiTarget(params *DeleteIscsiTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIscsiTargetOK, error)
+	DeleteIscsiTarget(params *DeleteIscsiTargetParams, opts ...ClientOption) (*DeleteIscsiTargetOK, error)
 
-	GetIscsiTargets(params *GetIscsiTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiTargetsOK, error)
+	GetIscsiTargets(params *GetIscsiTargetsParams, opts ...ClientOption) (*GetIscsiTargetsOK, error)
 
-	GetIscsiTargetsConnection(params *GetIscsiTargetsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiTargetsConnectionOK, error)
+	GetIscsiTargetsConnection(params *GetIscsiTargetsConnectionParams, opts ...ClientOption) (*GetIscsiTargetsConnectionOK, error)
 
-	UpdateIscsiTarget(params *UpdateIscsiTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIscsiTargetOK, error)
+	UpdateIscsiTarget(params *UpdateIscsiTargetParams, opts ...ClientOption) (*UpdateIscsiTargetOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateIscsiTarget create iscsi target API
 */
-func (a *Client) CreateIscsiTarget(params *CreateIscsiTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIscsiTargetOK, error) {
+func (a *Client) CreateIscsiTarget(params *CreateIscsiTargetParams, opts ...ClientOption) (*CreateIscsiTargetOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateIscsiTargetParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateIscsiTarget(params *CreateIscsiTargetParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateIscsiTargetReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateIscsiTarget(params *CreateIscsiTargetParams, authInfo run
 /*
   DeleteIscsiTarget delete iscsi target API
 */
-func (a *Client) DeleteIscsiTarget(params *DeleteIscsiTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIscsiTargetOK, error) {
+func (a *Client) DeleteIscsiTarget(params *DeleteIscsiTargetParams, opts ...ClientOption) (*DeleteIscsiTargetOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteIscsiTargetParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteIscsiTarget(params *DeleteIscsiTargetParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteIscsiTargetReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteIscsiTarget(params *DeleteIscsiTargetParams, authInfo run
 /*
   GetIscsiTargets get iscsi targets API
 */
-func (a *Client) GetIscsiTargets(params *GetIscsiTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiTargetsOK, error) {
+func (a *Client) GetIscsiTargets(params *GetIscsiTargetsParams, opts ...ClientOption) (*GetIscsiTargetsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIscsiTargetsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetIscsiTargets(params *GetIscsiTargetsParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetIscsiTargetsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetIscsiTargets(params *GetIscsiTargetsParams, authInfo runtime
 /*
   GetIscsiTargetsConnection get iscsi targets connection API
 */
-func (a *Client) GetIscsiTargetsConnection(params *GetIscsiTargetsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiTargetsConnectionOK, error) {
+func (a *Client) GetIscsiTargetsConnection(params *GetIscsiTargetsConnectionParams, opts ...ClientOption) (*GetIscsiTargetsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIscsiTargetsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetIscsiTargetsConnection(params *GetIscsiTargetsConnectionPara
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetIscsiTargetsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetIscsiTargetsConnection(params *GetIscsiTargetsConnectionPara
 /*
   UpdateIscsiTarget update iscsi target API
 */
-func (a *Client) UpdateIscsiTarget(params *UpdateIscsiTargetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIscsiTargetOK, error) {
+func (a *Client) UpdateIscsiTarget(params *UpdateIscsiTargetParams, opts ...ClientOption) (*UpdateIscsiTargetOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateIscsiTargetParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateIscsiTarget(params *UpdateIscsiTargetParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateIscsiTargetReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

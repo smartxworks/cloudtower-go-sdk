@@ -30,17 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateUser(params *CreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserOK, error)
+	CreateUser(params *CreateUserParams, opts ...ClientOption) (*CreateUserOK, error)
 
-	DeleteUser(params *DeleteUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteUserOK, error)
+	DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserOK, error)
 
-	GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsersOK, error)
+	GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error)
 
-	GetUsersConnection(params *GetUsersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsersConnectionOK, error)
+	GetUsersConnection(params *GetUsersConnectionParams, opts ...ClientOption) (*GetUsersConnectionOK, error)
 
 	Login(params *LoginParams, opts ...ClientOption) (*LoginOK, error)
 
-	UpdateUser(params *UpdateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateUserOK, error)
+	UpdateUser(params *UpdateUserParams, opts ...ClientOption) (*UpdateUserOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -48,7 +48,7 @@ type ClientService interface {
 /*
   CreateUser create user API
 */
-func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateUserOK, error) {
+func (a *Client) CreateUser(params *CreateUserParams, opts ...ClientOption) (*CreateUserOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateUserParams()
@@ -62,7 +62,6 @@ func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateUserReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -87,7 +86,7 @@ func (a *Client) CreateUser(params *CreateUserParams, authInfo runtime.ClientAut
 /*
   DeleteUser delete user API
 */
-func (a *Client) DeleteUser(params *DeleteUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteUserOK, error) {
+func (a *Client) DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteUserParams()
@@ -101,7 +100,6 @@ func (a *Client) DeleteUser(params *DeleteUserParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteUserReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -126,7 +124,7 @@ func (a *Client) DeleteUser(params *DeleteUserParams, authInfo runtime.ClientAut
 /*
   GetUsers get users API
 */
-func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsersOK, error) {
+func (a *Client) GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsersParams()
@@ -140,7 +138,6 @@ func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUsersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -165,7 +162,7 @@ func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInf
 /*
   GetUsersConnection get users connection API
 */
-func (a *Client) GetUsersConnection(params *GetUsersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUsersConnectionOK, error) {
+func (a *Client) GetUsersConnection(params *GetUsersConnectionParams, opts ...ClientOption) (*GetUsersConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsersConnectionParams()
@@ -179,7 +176,6 @@ func (a *Client) GetUsersConnection(params *GetUsersConnectionParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUsersConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -242,7 +238,7 @@ func (a *Client) Login(params *LoginParams, opts ...ClientOption) (*LoginOK, err
 /*
   UpdateUser update user API
 */
-func (a *Client) UpdateUser(params *UpdateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateUserOK, error) {
+func (a *Client) UpdateUser(params *UpdateUserParams, opts ...ClientOption) (*UpdateUserOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateUserParams()
@@ -256,7 +252,6 @@ func (a *Client) UpdateUser(params *UpdateUserParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateUserReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

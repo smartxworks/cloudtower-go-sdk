@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetWitnesses(params *GetWitnessesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetWitnessesOK, error)
+	GetWitnesses(params *GetWitnessesParams, opts ...ClientOption) (*GetWitnessesOK, error)
 
-	GetWitnessesConnection(params *GetWitnessesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetWitnessesConnectionOK, error)
+	GetWitnessesConnection(params *GetWitnessesConnectionParams, opts ...ClientOption) (*GetWitnessesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetWitnesses get witnesses API
 */
-func (a *Client) GetWitnesses(params *GetWitnessesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetWitnessesOK, error) {
+func (a *Client) GetWitnesses(params *GetWitnessesParams, opts ...ClientOption) (*GetWitnessesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetWitnessesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetWitnesses(params *GetWitnessesParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetWitnessesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetWitnesses(params *GetWitnessesParams, authInfo runtime.Clien
 /*
   GetWitnessesConnection get witnesses connection API
 */
-func (a *Client) GetWitnessesConnection(params *GetWitnessesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetWitnessesConnectionOK, error) {
+func (a *Client) GetWitnessesConnection(params *GetWitnessesConnectionParams, opts ...ClientOption) (*GetWitnessesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetWitnessesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetWitnessesConnection(params *GetWitnessesConnectionParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetWitnessesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

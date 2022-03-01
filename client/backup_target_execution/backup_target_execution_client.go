@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetBackupTargetExecutions(params *GetBackupTargetExecutionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupTargetExecutionsOK, error)
+	GetBackupTargetExecutions(params *GetBackupTargetExecutionsParams, opts ...ClientOption) (*GetBackupTargetExecutionsOK, error)
 
-	GetBackupTargetExecutionsConnection(params *GetBackupTargetExecutionsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupTargetExecutionsConnectionOK, error)
+	GetBackupTargetExecutionsConnection(params *GetBackupTargetExecutionsConnectionParams, opts ...ClientOption) (*GetBackupTargetExecutionsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetBackupTargetExecutions get backup target executions API
 */
-func (a *Client) GetBackupTargetExecutions(params *GetBackupTargetExecutionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupTargetExecutionsOK, error) {
+func (a *Client) GetBackupTargetExecutions(params *GetBackupTargetExecutionsParams, opts ...ClientOption) (*GetBackupTargetExecutionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupTargetExecutionsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetBackupTargetExecutions(params *GetBackupTargetExecutionsPara
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupTargetExecutionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetBackupTargetExecutions(params *GetBackupTargetExecutionsPara
 /*
   GetBackupTargetExecutionsConnection get backup target executions connection API
 */
-func (a *Client) GetBackupTargetExecutionsConnection(params *GetBackupTargetExecutionsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupTargetExecutionsConnectionOK, error) {
+func (a *Client) GetBackupTargetExecutionsConnection(params *GetBackupTargetExecutionsConnectionParams, opts ...ClientOption) (*GetBackupTargetExecutionsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupTargetExecutionsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetBackupTargetExecutionsConnection(params *GetBackupTargetExec
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupTargetExecutionsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

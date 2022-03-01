@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetBackupPlans(params *GetBackupPlansParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupPlansOK, error)
+	GetBackupPlans(params *GetBackupPlansParams, opts ...ClientOption) (*GetBackupPlansOK, error)
 
-	GetBackupPlansConnection(params *GetBackupPlansConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupPlansConnectionOK, error)
+	GetBackupPlansConnection(params *GetBackupPlansConnectionParams, opts ...ClientOption) (*GetBackupPlansConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetBackupPlans get backup plans API
 */
-func (a *Client) GetBackupPlans(params *GetBackupPlansParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupPlansOK, error) {
+func (a *Client) GetBackupPlans(params *GetBackupPlansParams, opts ...ClientOption) (*GetBackupPlansOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupPlansParams()
@@ -54,7 +54,6 @@ func (a *Client) GetBackupPlans(params *GetBackupPlansParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupPlansReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetBackupPlans(params *GetBackupPlansParams, authInfo runtime.C
 /*
   GetBackupPlansConnection get backup plans connection API
 */
-func (a *Client) GetBackupPlansConnection(params *GetBackupPlansConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupPlansConnectionOK, error) {
+func (a *Client) GetBackupPlansConnection(params *GetBackupPlansConnectionParams, opts ...ClientOption) (*GetBackupPlansConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupPlansConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetBackupPlansConnection(params *GetBackupPlansConnectionParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupPlansConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

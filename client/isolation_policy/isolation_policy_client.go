@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetIsolationPolicies(params *GetIsolationPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIsolationPoliciesOK, error)
+	GetIsolationPolicies(params *GetIsolationPoliciesParams, opts ...ClientOption) (*GetIsolationPoliciesOK, error)
 
-	GetIsolationPoliciesConnection(params *GetIsolationPoliciesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIsolationPoliciesConnectionOK, error)
+	GetIsolationPoliciesConnection(params *GetIsolationPoliciesConnectionParams, opts ...ClientOption) (*GetIsolationPoliciesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetIsolationPolicies get isolation policies API
 */
-func (a *Client) GetIsolationPolicies(params *GetIsolationPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIsolationPoliciesOK, error) {
+func (a *Client) GetIsolationPolicies(params *GetIsolationPoliciesParams, opts ...ClientOption) (*GetIsolationPoliciesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIsolationPoliciesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetIsolationPolicies(params *GetIsolationPoliciesParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetIsolationPoliciesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetIsolationPolicies(params *GetIsolationPoliciesParams, authIn
 /*
   GetIsolationPoliciesConnection get isolation policies connection API
 */
-func (a *Client) GetIsolationPoliciesConnection(params *GetIsolationPoliciesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIsolationPoliciesConnectionOK, error) {
+func (a *Client) GetIsolationPoliciesConnection(params *GetIsolationPoliciesConnectionParams, opts ...ClientOption) (*GetIsolationPoliciesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIsolationPoliciesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetIsolationPoliciesConnection(params *GetIsolationPoliciesConn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetIsolationPoliciesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

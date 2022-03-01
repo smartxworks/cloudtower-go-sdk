@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetSnapshotPlanTasks(params *GetSnapshotPlanTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotPlanTasksOK, error)
+	GetSnapshotPlanTasks(params *GetSnapshotPlanTasksParams, opts ...ClientOption) (*GetSnapshotPlanTasksOK, error)
 
-	GetSnapshotPlanTasksConnection(params *GetSnapshotPlanTasksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotPlanTasksConnectionOK, error)
+	GetSnapshotPlanTasksConnection(params *GetSnapshotPlanTasksConnectionParams, opts ...ClientOption) (*GetSnapshotPlanTasksConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetSnapshotPlanTasks get snapshot plan tasks API
 */
-func (a *Client) GetSnapshotPlanTasks(params *GetSnapshotPlanTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotPlanTasksOK, error) {
+func (a *Client) GetSnapshotPlanTasks(params *GetSnapshotPlanTasksParams, opts ...ClientOption) (*GetSnapshotPlanTasksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnapshotPlanTasksParams()
@@ -54,7 +54,6 @@ func (a *Client) GetSnapshotPlanTasks(params *GetSnapshotPlanTasksParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnapshotPlanTasksReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetSnapshotPlanTasks(params *GetSnapshotPlanTasksParams, authIn
 /*
   GetSnapshotPlanTasksConnection get snapshot plan tasks connection API
 */
-func (a *Client) GetSnapshotPlanTasksConnection(params *GetSnapshotPlanTasksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotPlanTasksConnectionOK, error) {
+func (a *Client) GetSnapshotPlanTasksConnection(params *GetSnapshotPlanTasksConnectionParams, opts ...ClientOption) (*GetSnapshotPlanTasksConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnapshotPlanTasksConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetSnapshotPlanTasksConnection(params *GetSnapshotPlanTasksConn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnapshotPlanTasksConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

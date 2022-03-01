@@ -30,11 +30,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetAlerts(params *GetAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertsOK, error)
+	GetAlerts(params *GetAlertsParams, opts ...ClientOption) (*GetAlertsOK, error)
 
-	GetAlertsConnection(params *GetAlertsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertsConnectionOK, error)
+	GetAlertsConnection(params *GetAlertsConnectionParams, opts ...ClientOption) (*GetAlertsConnectionOK, error)
 
-	ResolveAlert(params *ResolveAlertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ResolveAlertOK, error)
+	ResolveAlert(params *ResolveAlertParams, opts ...ClientOption) (*ResolveAlertOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -42,7 +42,7 @@ type ClientService interface {
 /*
   GetAlerts get alerts API
 */
-func (a *Client) GetAlerts(params *GetAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertsOK, error) {
+func (a *Client) GetAlerts(params *GetAlertsParams, opts ...ClientOption) (*GetAlertsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAlertsParams()
@@ -56,7 +56,6 @@ func (a *Client) GetAlerts(params *GetAlertsParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetAlertsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -81,7 +80,7 @@ func (a *Client) GetAlerts(params *GetAlertsParams, authInfo runtime.ClientAuthI
 /*
   GetAlertsConnection get alerts connection API
 */
-func (a *Client) GetAlertsConnection(params *GetAlertsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertsConnectionOK, error) {
+func (a *Client) GetAlertsConnection(params *GetAlertsConnectionParams, opts ...ClientOption) (*GetAlertsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAlertsConnectionParams()
@@ -95,7 +94,6 @@ func (a *Client) GetAlertsConnection(params *GetAlertsConnectionParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetAlertsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -120,7 +118,7 @@ func (a *Client) GetAlertsConnection(params *GetAlertsConnectionParams, authInfo
 /*
   ResolveAlert resolve alert API
 */
-func (a *Client) ResolveAlert(params *ResolveAlertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ResolveAlertOK, error) {
+func (a *Client) ResolveAlert(params *ResolveAlertParams, opts ...ClientOption) (*ResolveAlertOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewResolveAlertParams()
@@ -134,7 +132,6 @@ func (a *Client) ResolveAlert(params *ResolveAlertParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ResolveAlertReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -30,13 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetDisks(params *GetDisksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDisksOK, error)
+	GetDisks(params *GetDisksParams, opts ...ClientOption) (*GetDisksOK, error)
 
-	GetDisksConnection(params *GetDisksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDisksConnectionOK, error)
+	GetDisksConnection(params *GetDisksConnectionParams, opts ...ClientOption) (*GetDisksConnectionOK, error)
 
-	MountDisk(params *MountDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MountDiskOK, error)
+	MountDisk(params *MountDiskParams, opts ...ClientOption) (*MountDiskOK, error)
 
-	UnmountDisk(params *UnmountDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UnmountDiskOK, error)
+	UnmountDisk(params *UnmountDiskParams, opts ...ClientOption) (*UnmountDiskOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -44,7 +44,7 @@ type ClientService interface {
 /*
   GetDisks get disks API
 */
-func (a *Client) GetDisks(params *GetDisksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDisksOK, error) {
+func (a *Client) GetDisks(params *GetDisksParams, opts ...ClientOption) (*GetDisksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDisksParams()
@@ -58,7 +58,6 @@ func (a *Client) GetDisks(params *GetDisksParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetDisksReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -83,7 +82,7 @@ func (a *Client) GetDisks(params *GetDisksParams, authInfo runtime.ClientAuthInf
 /*
   GetDisksConnection get disks connection API
 */
-func (a *Client) GetDisksConnection(params *GetDisksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDisksConnectionOK, error) {
+func (a *Client) GetDisksConnection(params *GetDisksConnectionParams, opts ...ClientOption) (*GetDisksConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDisksConnectionParams()
@@ -97,7 +96,6 @@ func (a *Client) GetDisksConnection(params *GetDisksConnectionParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetDisksConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -122,7 +120,7 @@ func (a *Client) GetDisksConnection(params *GetDisksConnectionParams, authInfo r
 /*
   MountDisk mount disk API
 */
-func (a *Client) MountDisk(params *MountDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*MountDiskOK, error) {
+func (a *Client) MountDisk(params *MountDiskParams, opts ...ClientOption) (*MountDiskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewMountDiskParams()
@@ -136,7 +134,6 @@ func (a *Client) MountDisk(params *MountDiskParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &MountDiskReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -161,7 +158,7 @@ func (a *Client) MountDisk(params *MountDiskParams, authInfo runtime.ClientAuthI
 /*
   UnmountDisk unmount disk API
 */
-func (a *Client) UnmountDisk(params *UnmountDiskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UnmountDiskOK, error) {
+func (a *Client) UnmountDisk(params *UnmountDiskParams, opts ...ClientOption) (*UnmountDiskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUnmountDiskParams()
@@ -175,7 +172,6 @@ func (a *Client) UnmountDisk(params *UnmountDiskParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UnmountDiskReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

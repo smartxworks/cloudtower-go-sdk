@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetIscsiConnectionsConnection(params *GetIscsiConnectionsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiConnectionsConnectionOK, error)
+	GetIscsiConnectionsConnection(params *GetIscsiConnectionsConnectionParams, opts ...ClientOption) (*GetIscsiConnectionsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -38,7 +38,7 @@ type ClientService interface {
 /*
   GetIscsiConnectionsConnection get iscsi connections connection API
 */
-func (a *Client) GetIscsiConnectionsConnection(params *GetIscsiConnectionsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiConnectionsConnectionOK, error) {
+func (a *Client) GetIscsiConnectionsConnection(params *GetIscsiConnectionsConnectionParams, opts ...ClientOption) (*GetIscsiConnectionsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIscsiConnectionsConnectionParams()
@@ -52,7 +52,6 @@ func (a *Client) GetIscsiConnectionsConnection(params *GetIscsiConnectionsConnec
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetIscsiConnectionsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

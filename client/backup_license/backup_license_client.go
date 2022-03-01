@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetBackupLicenses(params *GetBackupLicensesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupLicensesOK, error)
+	GetBackupLicenses(params *GetBackupLicensesParams, opts ...ClientOption) (*GetBackupLicensesOK, error)
 
-	GetBackupLicensesConnection(params *GetBackupLicensesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupLicensesConnectionOK, error)
+	GetBackupLicensesConnection(params *GetBackupLicensesConnectionParams, opts ...ClientOption) (*GetBackupLicensesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetBackupLicenses get backup licenses API
 */
-func (a *Client) GetBackupLicenses(params *GetBackupLicensesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupLicensesOK, error) {
+func (a *Client) GetBackupLicenses(params *GetBackupLicensesParams, opts ...ClientOption) (*GetBackupLicensesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupLicensesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetBackupLicenses(params *GetBackupLicensesParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupLicensesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetBackupLicenses(params *GetBackupLicensesParams, authInfo run
 /*
   GetBackupLicensesConnection get backup licenses connection API
 */
-func (a *Client) GetBackupLicensesConnection(params *GetBackupLicensesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupLicensesConnectionOK, error) {
+func (a *Client) GetBackupLicensesConnection(params *GetBackupLicensesConnectionParams, opts ...ClientOption) (*GetBackupLicensesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupLicensesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetBackupLicensesConnection(params *GetBackupLicensesConnection
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupLicensesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

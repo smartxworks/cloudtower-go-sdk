@@ -37,13 +37,13 @@ type MountNewCreateDisksParams struct {
 	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
-	MaxBandwidthPolicy VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
+	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
 
 	// max iops
 	MaxIops *int32 `json:"max_iops,omitempty"`
 
 	// max iops policy
-	MaxIopsPolicy VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
+	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
 
 	// vm volume
 	// Required: true
@@ -118,13 +118,15 @@ func (m *MountNewCreateDisksParams) validateMaxBandwidthPolicy(formats strfmt.Re
 		return nil
 	}
 
-	if err := m.MaxBandwidthPolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("max_bandwidth_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("max_bandwidth_policy")
+	if m.MaxBandwidthPolicy != nil {
+		if err := m.MaxBandwidthPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -135,13 +137,15 @@ func (m *MountNewCreateDisksParams) validateMaxIopsPolicy(formats strfmt.Registr
 		return nil
 	}
 
-	if err := m.MaxIopsPolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("max_iops_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("max_iops_policy")
+	if m.MaxIopsPolicy != nil {
+		if err := m.MaxIopsPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -211,13 +215,15 @@ func (m *MountNewCreateDisksParams) contextValidateBus(ctx context.Context, form
 
 func (m *MountNewCreateDisksParams) contextValidateMaxBandwidthPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.MaxBandwidthPolicy.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("max_bandwidth_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("max_bandwidth_policy")
+	if m.MaxBandwidthPolicy != nil {
+		if err := m.MaxBandwidthPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -225,13 +231,15 @@ func (m *MountNewCreateDisksParams) contextValidateMaxBandwidthPolicy(ctx contex
 
 func (m *MountNewCreateDisksParams) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.MaxIopsPolicy.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("max_iops_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("max_iops_policy")
+	if m.MaxIopsPolicy != nil {
+		if err := m.MaxIopsPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateConsistencyGroupSnapshot(params *CreateConsistencyGroupSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConsistencyGroupSnapshotOK, error)
+	CreateConsistencyGroupSnapshot(params *CreateConsistencyGroupSnapshotParams, opts ...ClientOption) (*CreateConsistencyGroupSnapshotOK, error)
 
-	DeleteConsistencyGroupSnapshot(params *DeleteConsistencyGroupSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConsistencyGroupSnapshotOK, error)
+	DeleteConsistencyGroupSnapshot(params *DeleteConsistencyGroupSnapshotParams, opts ...ClientOption) (*DeleteConsistencyGroupSnapshotOK, error)
 
-	GetConsistencyGroupSnapshots(params *GetConsistencyGroupSnapshotsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsistencyGroupSnapshotsOK, error)
+	GetConsistencyGroupSnapshots(params *GetConsistencyGroupSnapshotsParams, opts ...ClientOption) (*GetConsistencyGroupSnapshotsOK, error)
 
-	GetConsistencyGroupSnapshotsConnection(params *GetConsistencyGroupSnapshotsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsistencyGroupSnapshotsConnectionOK, error)
+	GetConsistencyGroupSnapshotsConnection(params *GetConsistencyGroupSnapshotsConnectionParams, opts ...ClientOption) (*GetConsistencyGroupSnapshotsConnectionOK, error)
 
-	UpdateConsistencyGroupSnapshot(params *UpdateConsistencyGroupSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateConsistencyGroupSnapshotOK, error)
+	UpdateConsistencyGroupSnapshot(params *UpdateConsistencyGroupSnapshotParams, opts ...ClientOption) (*UpdateConsistencyGroupSnapshotOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateConsistencyGroupSnapshot create consistency group snapshot API
 */
-func (a *Client) CreateConsistencyGroupSnapshot(params *CreateConsistencyGroupSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConsistencyGroupSnapshotOK, error) {
+func (a *Client) CreateConsistencyGroupSnapshot(params *CreateConsistencyGroupSnapshotParams, opts ...ClientOption) (*CreateConsistencyGroupSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateConsistencyGroupSnapshotParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateConsistencyGroupSnapshot(params *CreateConsistencyGroupSn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateConsistencyGroupSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateConsistencyGroupSnapshot(params *CreateConsistencyGroupSn
 /*
   DeleteConsistencyGroupSnapshot delete consistency group snapshot API
 */
-func (a *Client) DeleteConsistencyGroupSnapshot(params *DeleteConsistencyGroupSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConsistencyGroupSnapshotOK, error) {
+func (a *Client) DeleteConsistencyGroupSnapshot(params *DeleteConsistencyGroupSnapshotParams, opts ...ClientOption) (*DeleteConsistencyGroupSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteConsistencyGroupSnapshotParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteConsistencyGroupSnapshot(params *DeleteConsistencyGroupSn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteConsistencyGroupSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteConsistencyGroupSnapshot(params *DeleteConsistencyGroupSn
 /*
   GetConsistencyGroupSnapshots get consistency group snapshots API
 */
-func (a *Client) GetConsistencyGroupSnapshots(params *GetConsistencyGroupSnapshotsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsistencyGroupSnapshotsOK, error) {
+func (a *Client) GetConsistencyGroupSnapshots(params *GetConsistencyGroupSnapshotsParams, opts ...ClientOption) (*GetConsistencyGroupSnapshotsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetConsistencyGroupSnapshotsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetConsistencyGroupSnapshots(params *GetConsistencyGroupSnapsho
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetConsistencyGroupSnapshotsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetConsistencyGroupSnapshots(params *GetConsistencyGroupSnapsho
 /*
   GetConsistencyGroupSnapshotsConnection get consistency group snapshots connection API
 */
-func (a *Client) GetConsistencyGroupSnapshotsConnection(params *GetConsistencyGroupSnapshotsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsistencyGroupSnapshotsConnectionOK, error) {
+func (a *Client) GetConsistencyGroupSnapshotsConnection(params *GetConsistencyGroupSnapshotsConnectionParams, opts ...ClientOption) (*GetConsistencyGroupSnapshotsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetConsistencyGroupSnapshotsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetConsistencyGroupSnapshotsConnection(params *GetConsistencyGr
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetConsistencyGroupSnapshotsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetConsistencyGroupSnapshotsConnection(params *GetConsistencyGr
 /*
   UpdateConsistencyGroupSnapshot update consistency group snapshot API
 */
-func (a *Client) UpdateConsistencyGroupSnapshot(params *UpdateConsistencyGroupSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateConsistencyGroupSnapshotOK, error) {
+func (a *Client) UpdateConsistencyGroupSnapshot(params *UpdateConsistencyGroupSnapshotParams, opts ...ClientOption) (*UpdateConsistencyGroupSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateConsistencyGroupSnapshotParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateConsistencyGroupSnapshot(params *UpdateConsistencyGroupSn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateConsistencyGroupSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

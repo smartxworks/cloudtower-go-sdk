@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetBackupStoreRepositories(params *GetBackupStoreRepositoriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupStoreRepositoriesOK, error)
+	GetBackupStoreRepositories(params *GetBackupStoreRepositoriesParams, opts ...ClientOption) (*GetBackupStoreRepositoriesOK, error)
 
-	GetBackupStoreRepositoriesConnection(params *GetBackupStoreRepositoriesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupStoreRepositoriesConnectionOK, error)
+	GetBackupStoreRepositoriesConnection(params *GetBackupStoreRepositoriesConnectionParams, opts ...ClientOption) (*GetBackupStoreRepositoriesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetBackupStoreRepositories get backup store repositories API
 */
-func (a *Client) GetBackupStoreRepositories(params *GetBackupStoreRepositoriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupStoreRepositoriesOK, error) {
+func (a *Client) GetBackupStoreRepositories(params *GetBackupStoreRepositoriesParams, opts ...ClientOption) (*GetBackupStoreRepositoriesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupStoreRepositoriesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetBackupStoreRepositories(params *GetBackupStoreRepositoriesPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupStoreRepositoriesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetBackupStoreRepositories(params *GetBackupStoreRepositoriesPa
 /*
   GetBackupStoreRepositoriesConnection get backup store repositories connection API
 */
-func (a *Client) GetBackupStoreRepositoriesConnection(params *GetBackupStoreRepositoriesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupStoreRepositoriesConnectionOK, error) {
+func (a *Client) GetBackupStoreRepositoriesConnection(params *GetBackupStoreRepositoriesConnectionParams, opts ...ClientOption) (*GetBackupStoreRepositoriesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupStoreRepositoriesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetBackupStoreRepositoriesConnection(params *GetBackupStoreRepo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupStoreRepositoriesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetElfDataStores(params *GetElfDataStoresParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfDataStoresOK, error)
+	GetElfDataStores(params *GetElfDataStoresParams, opts ...ClientOption) (*GetElfDataStoresOK, error)
 
-	GetElfDataStoresConnection(params *GetElfDataStoresConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfDataStoresConnectionOK, error)
+	GetElfDataStoresConnection(params *GetElfDataStoresConnectionParams, opts ...ClientOption) (*GetElfDataStoresConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetElfDataStores get elf data stores API
 */
-func (a *Client) GetElfDataStores(params *GetElfDataStoresParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfDataStoresOK, error) {
+func (a *Client) GetElfDataStores(params *GetElfDataStoresParams, opts ...ClientOption) (*GetElfDataStoresOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetElfDataStoresParams()
@@ -54,7 +54,6 @@ func (a *Client) GetElfDataStores(params *GetElfDataStoresParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetElfDataStoresReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetElfDataStores(params *GetElfDataStoresParams, authInfo runti
 /*
   GetElfDataStoresConnection get elf data stores connection API
 */
-func (a *Client) GetElfDataStoresConnection(params *GetElfDataStoresConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfDataStoresConnectionOK, error) {
+func (a *Client) GetElfDataStoresConnection(params *GetElfDataStoresConnectionParams, opts ...ClientOption) (*GetElfDataStoresConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetElfDataStoresConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetElfDataStoresConnection(params *GetElfDataStoresConnectionPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetElfDataStoresConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

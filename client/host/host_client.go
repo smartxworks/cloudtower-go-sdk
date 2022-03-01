@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateHost(params *CreateHostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHostOK, error)
+	CreateHost(params *CreateHostParams, opts ...ClientOption) (*CreateHostOK, error)
 
-	GetHosts(params *GetHostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHostsOK, error)
+	GetHosts(params *GetHostsParams, opts ...ClientOption) (*GetHostsOK, error)
 
-	GetHostsConnection(params *GetHostsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHostsConnectionOK, error)
+	GetHostsConnection(params *GetHostsConnectionParams, opts ...ClientOption) (*GetHostsConnectionOK, error)
 
-	TriggerDiskBlink(params *TriggerDiskBlinkParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TriggerDiskBlinkOK, error)
+	TriggerDiskBlink(params *TriggerDiskBlinkParams, opts ...ClientOption) (*TriggerDiskBlinkOK, error)
 
-	UpdateHost(params *UpdateHostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateHostOK, error)
+	UpdateHost(params *UpdateHostParams, opts ...ClientOption) (*UpdateHostOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateHost create host API
 */
-func (a *Client) CreateHost(params *CreateHostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateHostOK, error) {
+func (a *Client) CreateHost(params *CreateHostParams, opts ...ClientOption) (*CreateHostOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateHostParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateHost(params *CreateHostParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateHostReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateHost(params *CreateHostParams, authInfo runtime.ClientAut
 /*
   GetHosts get hosts API
 */
-func (a *Client) GetHosts(params *GetHostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHostsOK, error) {
+func (a *Client) GetHosts(params *GetHostsParams, opts ...ClientOption) (*GetHostsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetHostsParams()
@@ -99,7 +98,6 @@ func (a *Client) GetHosts(params *GetHostsParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetHostsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) GetHosts(params *GetHostsParams, authInfo runtime.ClientAuthInf
 /*
   GetHostsConnection get hosts connection API
 */
-func (a *Client) GetHostsConnection(params *GetHostsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetHostsConnectionOK, error) {
+func (a *Client) GetHostsConnection(params *GetHostsConnectionParams, opts ...ClientOption) (*GetHostsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetHostsConnectionParams()
@@ -138,7 +136,6 @@ func (a *Client) GetHostsConnection(params *GetHostsConnectionParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetHostsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetHostsConnection(params *GetHostsConnectionParams, authInfo r
 /*
   TriggerDiskBlink trigger disk blink API
 */
-func (a *Client) TriggerDiskBlink(params *TriggerDiskBlinkParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TriggerDiskBlinkOK, error) {
+func (a *Client) TriggerDiskBlink(params *TriggerDiskBlinkParams, opts ...ClientOption) (*TriggerDiskBlinkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewTriggerDiskBlinkParams()
@@ -177,7 +174,6 @@ func (a *Client) TriggerDiskBlink(params *TriggerDiskBlinkParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TriggerDiskBlinkReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) TriggerDiskBlink(params *TriggerDiskBlinkParams, authInfo runti
 /*
   UpdateHost update host API
 */
-func (a *Client) UpdateHost(params *UpdateHostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateHostOK, error) {
+func (a *Client) UpdateHost(params *UpdateHostParams, opts ...ClientOption) (*UpdateHostOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateHostParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateHost(params *UpdateHostParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateHostReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

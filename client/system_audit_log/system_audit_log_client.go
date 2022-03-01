@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetSystemAuditLogs(params *GetSystemAuditLogsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSystemAuditLogsOK, error)
+	GetSystemAuditLogs(params *GetSystemAuditLogsParams, opts ...ClientOption) (*GetSystemAuditLogsOK, error)
 
-	GetSystemAuditLogsConnection(params *GetSystemAuditLogsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSystemAuditLogsConnectionOK, error)
+	GetSystemAuditLogsConnection(params *GetSystemAuditLogsConnectionParams, opts ...ClientOption) (*GetSystemAuditLogsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetSystemAuditLogs get system audit logs API
 */
-func (a *Client) GetSystemAuditLogs(params *GetSystemAuditLogsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSystemAuditLogsOK, error) {
+func (a *Client) GetSystemAuditLogs(params *GetSystemAuditLogsParams, opts ...ClientOption) (*GetSystemAuditLogsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSystemAuditLogsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetSystemAuditLogs(params *GetSystemAuditLogsParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSystemAuditLogsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetSystemAuditLogs(params *GetSystemAuditLogsParams, authInfo r
 /*
   GetSystemAuditLogsConnection get system audit logs connection API
 */
-func (a *Client) GetSystemAuditLogsConnection(params *GetSystemAuditLogsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSystemAuditLogsConnectionOK, error) {
+func (a *Client) GetSystemAuditLogsConnection(params *GetSystemAuditLogsConnectionParams, opts ...ClientOption) (*GetSystemAuditLogsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSystemAuditLogsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetSystemAuditLogsConnection(params *GetSystemAuditLogsConnecti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSystemAuditLogsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -30,19 +30,19 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CloneNvmfNamespaceFromSnapshot(params *CloneNvmfNamespaceFromSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloneNvmfNamespaceFromSnapshotOK, error)
+	CloneNvmfNamespaceFromSnapshot(params *CloneNvmfNamespaceFromSnapshotParams, opts ...ClientOption) (*CloneNvmfNamespaceFromSnapshotOK, error)
 
-	CreateNvmfNamespace(params *CreateNvmfNamespaceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNvmfNamespaceOK, error)
+	CreateNvmfNamespace(params *CreateNvmfNamespaceParams, opts ...ClientOption) (*CreateNvmfNamespaceOK, error)
 
-	DeleteNvmfNamespace(params *DeleteNvmfNamespaceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNvmfNamespaceOK, error)
+	DeleteNvmfNamespace(params *DeleteNvmfNamespaceParams, opts ...ClientOption) (*DeleteNvmfNamespaceOK, error)
 
-	GetNvmfNamespaces(params *GetNvmfNamespacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNvmfNamespacesOK, error)
+	GetNvmfNamespaces(params *GetNvmfNamespacesParams, opts ...ClientOption) (*GetNvmfNamespacesOK, error)
 
-	GetNvmfNamespacesConnection(params *GetNvmfNamespacesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNvmfNamespacesConnectionOK, error)
+	GetNvmfNamespacesConnection(params *GetNvmfNamespacesConnectionParams, opts ...ClientOption) (*GetNvmfNamespacesConnectionOK, error)
 
-	RollbackNvmfNamespaceFromSnapshot(params *RollbackNvmfNamespaceFromSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RollbackNvmfNamespaceFromSnapshotOK, error)
+	RollbackNvmfNamespaceFromSnapshot(params *RollbackNvmfNamespaceFromSnapshotParams, opts ...ClientOption) (*RollbackNvmfNamespaceFromSnapshotOK, error)
 
-	UpdateNvmfNamespace(params *UpdateNvmfNamespaceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNvmfNamespaceOK, error)
+	UpdateNvmfNamespace(params *UpdateNvmfNamespaceParams, opts ...ClientOption) (*UpdateNvmfNamespaceOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -50,7 +50,7 @@ type ClientService interface {
 /*
   CloneNvmfNamespaceFromSnapshot clone nvmf namespace from snapshot API
 */
-func (a *Client) CloneNvmfNamespaceFromSnapshot(params *CloneNvmfNamespaceFromSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloneNvmfNamespaceFromSnapshotOK, error) {
+func (a *Client) CloneNvmfNamespaceFromSnapshot(params *CloneNvmfNamespaceFromSnapshotParams, opts ...ClientOption) (*CloneNvmfNamespaceFromSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCloneNvmfNamespaceFromSnapshotParams()
@@ -64,7 +64,6 @@ func (a *Client) CloneNvmfNamespaceFromSnapshot(params *CloneNvmfNamespaceFromSn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CloneNvmfNamespaceFromSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -89,7 +88,7 @@ func (a *Client) CloneNvmfNamespaceFromSnapshot(params *CloneNvmfNamespaceFromSn
 /*
   CreateNvmfNamespace create nvmf namespace API
 */
-func (a *Client) CreateNvmfNamespace(params *CreateNvmfNamespaceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNvmfNamespaceOK, error) {
+func (a *Client) CreateNvmfNamespace(params *CreateNvmfNamespaceParams, opts ...ClientOption) (*CreateNvmfNamespaceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNvmfNamespaceParams()
@@ -103,7 +102,6 @@ func (a *Client) CreateNvmfNamespace(params *CreateNvmfNamespaceParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateNvmfNamespaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -128,7 +126,7 @@ func (a *Client) CreateNvmfNamespace(params *CreateNvmfNamespaceParams, authInfo
 /*
   DeleteNvmfNamespace delete nvmf namespace API
 */
-func (a *Client) DeleteNvmfNamespace(params *DeleteNvmfNamespaceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNvmfNamespaceOK, error) {
+func (a *Client) DeleteNvmfNamespace(params *DeleteNvmfNamespaceParams, opts ...ClientOption) (*DeleteNvmfNamespaceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNvmfNamespaceParams()
@@ -142,7 +140,6 @@ func (a *Client) DeleteNvmfNamespace(params *DeleteNvmfNamespaceParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteNvmfNamespaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -167,7 +164,7 @@ func (a *Client) DeleteNvmfNamespace(params *DeleteNvmfNamespaceParams, authInfo
 /*
   GetNvmfNamespaces get nvmf namespaces API
 */
-func (a *Client) GetNvmfNamespaces(params *GetNvmfNamespacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNvmfNamespacesOK, error) {
+func (a *Client) GetNvmfNamespaces(params *GetNvmfNamespacesParams, opts ...ClientOption) (*GetNvmfNamespacesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNvmfNamespacesParams()
@@ -181,7 +178,6 @@ func (a *Client) GetNvmfNamespaces(params *GetNvmfNamespacesParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNvmfNamespacesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -206,7 +202,7 @@ func (a *Client) GetNvmfNamespaces(params *GetNvmfNamespacesParams, authInfo run
 /*
   GetNvmfNamespacesConnection get nvmf namespaces connection API
 */
-func (a *Client) GetNvmfNamespacesConnection(params *GetNvmfNamespacesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNvmfNamespacesConnectionOK, error) {
+func (a *Client) GetNvmfNamespacesConnection(params *GetNvmfNamespacesConnectionParams, opts ...ClientOption) (*GetNvmfNamespacesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNvmfNamespacesConnectionParams()
@@ -220,7 +216,6 @@ func (a *Client) GetNvmfNamespacesConnection(params *GetNvmfNamespacesConnection
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNvmfNamespacesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -245,7 +240,7 @@ func (a *Client) GetNvmfNamespacesConnection(params *GetNvmfNamespacesConnection
 /*
   RollbackNvmfNamespaceFromSnapshot rollback nvmf namespace from snapshot API
 */
-func (a *Client) RollbackNvmfNamespaceFromSnapshot(params *RollbackNvmfNamespaceFromSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RollbackNvmfNamespaceFromSnapshotOK, error) {
+func (a *Client) RollbackNvmfNamespaceFromSnapshot(params *RollbackNvmfNamespaceFromSnapshotParams, opts ...ClientOption) (*RollbackNvmfNamespaceFromSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRollbackNvmfNamespaceFromSnapshotParams()
@@ -259,7 +254,6 @@ func (a *Client) RollbackNvmfNamespaceFromSnapshot(params *RollbackNvmfNamespace
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RollbackNvmfNamespaceFromSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -284,7 +278,7 @@ func (a *Client) RollbackNvmfNamespaceFromSnapshot(params *RollbackNvmfNamespace
 /*
   UpdateNvmfNamespace update nvmf namespace API
 */
-func (a *Client) UpdateNvmfNamespace(params *UpdateNvmfNamespaceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNvmfNamespaceOK, error) {
+func (a *Client) UpdateNvmfNamespace(params *UpdateNvmfNamespaceParams, opts ...ClientOption) (*UpdateNvmfNamespaceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNvmfNamespaceParams()
@@ -298,7 +292,6 @@ func (a *Client) UpdateNvmfNamespace(params *UpdateNvmfNamespaceParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateNvmfNamespaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

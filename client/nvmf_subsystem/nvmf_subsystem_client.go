@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetNvmfSubsystems(params *GetNvmfSubsystemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNvmfSubsystemsOK, error)
+	GetNvmfSubsystems(params *GetNvmfSubsystemsParams, opts ...ClientOption) (*GetNvmfSubsystemsOK, error)
 
-	GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNvmfSubsystemsConnectionOK, error)
+	GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnectionParams, opts ...ClientOption) (*GetNvmfSubsystemsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetNvmfSubsystems get nvmf subsystems API
 */
-func (a *Client) GetNvmfSubsystems(params *GetNvmfSubsystemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNvmfSubsystemsOK, error) {
+func (a *Client) GetNvmfSubsystems(params *GetNvmfSubsystemsParams, opts ...ClientOption) (*GetNvmfSubsystemsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNvmfSubsystemsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetNvmfSubsystems(params *GetNvmfSubsystemsParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNvmfSubsystemsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetNvmfSubsystems(params *GetNvmfSubsystemsParams, authInfo run
 /*
   GetNvmfSubsystemsConnection get nvmf subsystems connection API
 */
-func (a *Client) GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNvmfSubsystemsConnectionOK, error) {
+func (a *Client) GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnectionParams, opts ...ClientOption) (*GetNvmfSubsystemsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNvmfSubsystemsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnection
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNvmfSubsystemsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

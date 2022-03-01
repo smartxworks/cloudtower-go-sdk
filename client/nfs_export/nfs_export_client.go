@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateNfsExport(params *CreateNfsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNfsExportOK, error)
+	CreateNfsExport(params *CreateNfsExportParams, opts ...ClientOption) (*CreateNfsExportOK, error)
 
-	DeleteNfsExport(params *DeleteNfsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNfsExportOK, error)
+	DeleteNfsExport(params *DeleteNfsExportParams, opts ...ClientOption) (*DeleteNfsExportOK, error)
 
-	GetNfsExports(params *GetNfsExportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNfsExportsOK, error)
+	GetNfsExports(params *GetNfsExportsParams, opts ...ClientOption) (*GetNfsExportsOK, error)
 
-	GetNfsExportsConnection(params *GetNfsExportsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNfsExportsConnectionOK, error)
+	GetNfsExportsConnection(params *GetNfsExportsConnectionParams, opts ...ClientOption) (*GetNfsExportsConnectionOK, error)
 
-	UpdateNfsExport(params *UpdateNfsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNfsExportOK, error)
+	UpdateNfsExport(params *UpdateNfsExportParams, opts ...ClientOption) (*UpdateNfsExportOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateNfsExport create nfs export API
 */
-func (a *Client) CreateNfsExport(params *CreateNfsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNfsExportOK, error) {
+func (a *Client) CreateNfsExport(params *CreateNfsExportParams, opts ...ClientOption) (*CreateNfsExportOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNfsExportParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateNfsExport(params *CreateNfsExportParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateNfsExportReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateNfsExport(params *CreateNfsExportParams, authInfo runtime
 /*
   DeleteNfsExport delete nfs export API
 */
-func (a *Client) DeleteNfsExport(params *DeleteNfsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNfsExportOK, error) {
+func (a *Client) DeleteNfsExport(params *DeleteNfsExportParams, opts ...ClientOption) (*DeleteNfsExportOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNfsExportParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteNfsExport(params *DeleteNfsExportParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteNfsExportReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteNfsExport(params *DeleteNfsExportParams, authInfo runtime
 /*
   GetNfsExports get nfs exports API
 */
-func (a *Client) GetNfsExports(params *GetNfsExportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNfsExportsOK, error) {
+func (a *Client) GetNfsExports(params *GetNfsExportsParams, opts ...ClientOption) (*GetNfsExportsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNfsExportsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetNfsExports(params *GetNfsExportsParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNfsExportsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetNfsExports(params *GetNfsExportsParams, authInfo runtime.Cli
 /*
   GetNfsExportsConnection get nfs exports connection API
 */
-func (a *Client) GetNfsExportsConnection(params *GetNfsExportsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNfsExportsConnectionOK, error) {
+func (a *Client) GetNfsExportsConnection(params *GetNfsExportsConnectionParams, opts ...ClientOption) (*GetNfsExportsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNfsExportsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetNfsExportsConnection(params *GetNfsExportsConnectionParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNfsExportsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetNfsExportsConnection(params *GetNfsExportsConnectionParams, 
 /*
   UpdateNfsExport update nfs export API
 */
-func (a *Client) UpdateNfsExport(params *UpdateNfsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNfsExportOK, error) {
+func (a *Client) UpdateNfsExport(params *UpdateNfsExportParams, opts ...ClientOption) (*UpdateNfsExportOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNfsExportParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateNfsExport(params *UpdateNfsExportParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateNfsExportReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

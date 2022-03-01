@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateView(params *CreateViewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateViewOK, error)
+	CreateView(params *CreateViewParams, opts ...ClientOption) (*CreateViewOK, error)
 
-	DeleteView(params *DeleteViewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteViewOK, error)
+	DeleteView(params *DeleteViewParams, opts ...ClientOption) (*DeleteViewOK, error)
 
-	GetViews(params *GetViewsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetViewsOK, error)
+	GetViews(params *GetViewsParams, opts ...ClientOption) (*GetViewsOK, error)
 
-	GetViewsConnection(params *GetViewsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetViewsConnectionOK, error)
+	GetViewsConnection(params *GetViewsConnectionParams, opts ...ClientOption) (*GetViewsConnectionOK, error)
 
-	UpdateView(params *UpdateViewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateViewOK, error)
+	UpdateView(params *UpdateViewParams, opts ...ClientOption) (*UpdateViewOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateView create view API
 */
-func (a *Client) CreateView(params *CreateViewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateViewOK, error) {
+func (a *Client) CreateView(params *CreateViewParams, opts ...ClientOption) (*CreateViewOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateViewParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateView(params *CreateViewParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateViewReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateView(params *CreateViewParams, authInfo runtime.ClientAut
 /*
   DeleteView delete view API
 */
-func (a *Client) DeleteView(params *DeleteViewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteViewOK, error) {
+func (a *Client) DeleteView(params *DeleteViewParams, opts ...ClientOption) (*DeleteViewOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteViewParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteView(params *DeleteViewParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteViewReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteView(params *DeleteViewParams, authInfo runtime.ClientAut
 /*
   GetViews get views API
 */
-func (a *Client) GetViews(params *GetViewsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetViewsOK, error) {
+func (a *Client) GetViews(params *GetViewsParams, opts ...ClientOption) (*GetViewsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetViewsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetViews(params *GetViewsParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetViewsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetViews(params *GetViewsParams, authInfo runtime.ClientAuthInf
 /*
   GetViewsConnection get views connection API
 */
-func (a *Client) GetViewsConnection(params *GetViewsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetViewsConnectionOK, error) {
+func (a *Client) GetViewsConnection(params *GetViewsConnectionParams, opts ...ClientOption) (*GetViewsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetViewsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetViewsConnection(params *GetViewsConnectionParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetViewsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetViewsConnection(params *GetViewsConnectionParams, authInfo r
 /*
   UpdateView update view API
 */
-func (a *Client) UpdateView(params *UpdateViewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateViewOK, error) {
+func (a *Client) UpdateView(params *UpdateViewParams, opts ...ClientOption) (*UpdateViewOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateViewParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateView(params *UpdateViewParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateViewReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

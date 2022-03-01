@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetUserAuditLogs(params *GetUserAuditLogsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserAuditLogsOK, error)
+	GetUserAuditLogs(params *GetUserAuditLogsParams, opts ...ClientOption) (*GetUserAuditLogsOK, error)
 
-	GetUserAuditLogsConnection(params *GetUserAuditLogsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserAuditLogsConnectionOK, error)
+	GetUserAuditLogsConnection(params *GetUserAuditLogsConnectionParams, opts ...ClientOption) (*GetUserAuditLogsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetUserAuditLogs get user audit logs API
 */
-func (a *Client) GetUserAuditLogs(params *GetUserAuditLogsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserAuditLogsOK, error) {
+func (a *Client) GetUserAuditLogs(params *GetUserAuditLogsParams, opts ...ClientOption) (*GetUserAuditLogsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUserAuditLogsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetUserAuditLogs(params *GetUserAuditLogsParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUserAuditLogsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetUserAuditLogs(params *GetUserAuditLogsParams, authInfo runti
 /*
   GetUserAuditLogsConnection get user audit logs connection API
 */
-func (a *Client) GetUserAuditLogsConnection(params *GetUserAuditLogsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserAuditLogsConnectionOK, error) {
+func (a *Client) GetUserAuditLogsConnection(params *GetUserAuditLogsConnectionParams, opts ...ClientOption) (*GetUserAuditLogsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUserAuditLogsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetUserAuditLogsConnection(params *GetUserAuditLogsConnectionPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUserAuditLogsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

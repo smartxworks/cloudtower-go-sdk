@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetNfsInodes(params *GetNfsInodesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNfsInodesOK, error)
+	GetNfsInodes(params *GetNfsInodesParams, opts ...ClientOption) (*GetNfsInodesOK, error)
 
-	GetNfsInodesConnection(params *GetNfsInodesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNfsInodesConnectionOK, error)
+	GetNfsInodesConnection(params *GetNfsInodesConnectionParams, opts ...ClientOption) (*GetNfsInodesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetNfsInodes get nfs inodes API
 */
-func (a *Client) GetNfsInodes(params *GetNfsInodesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNfsInodesOK, error) {
+func (a *Client) GetNfsInodes(params *GetNfsInodesParams, opts ...ClientOption) (*GetNfsInodesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNfsInodesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetNfsInodes(params *GetNfsInodesParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNfsInodesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetNfsInodes(params *GetNfsInodesParams, authInfo runtime.Clien
 /*
   GetNfsInodesConnection get nfs inodes connection API
 */
-func (a *Client) GetNfsInodesConnection(params *GetNfsInodesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNfsInodesConnectionOK, error) {
+func (a *Client) GetNfsInodesConnection(params *GetNfsInodesConnectionParams, opts ...ClientOption) (*GetNfsInodesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNfsInodesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetNfsInodesConnection(params *GetNfsInodesConnectionParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNfsInodesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

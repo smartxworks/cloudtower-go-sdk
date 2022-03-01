@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateRackTopo(params *CreateRackTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRackTopoOK, error)
+	CreateRackTopo(params *CreateRackTopoParams, opts ...ClientOption) (*CreateRackTopoOK, error)
 
-	DeleteRackTopo(params *DeleteRackTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRackTopoOK, error)
+	DeleteRackTopo(params *DeleteRackTopoParams, opts ...ClientOption) (*DeleteRackTopoOK, error)
 
-	GetRackTopoes(params *GetRackTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRackTopoesOK, error)
+	GetRackTopoes(params *GetRackTopoesParams, opts ...ClientOption) (*GetRackTopoesOK, error)
 
-	GetRackTopoesConnection(params *GetRackTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRackTopoesConnectionOK, error)
+	GetRackTopoesConnection(params *GetRackTopoesConnectionParams, opts ...ClientOption) (*GetRackTopoesConnectionOK, error)
 
-	UpdateRackTopo(params *UpdateRackTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRackTopoOK, error)
+	UpdateRackTopo(params *UpdateRackTopoParams, opts ...ClientOption) (*UpdateRackTopoOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateRackTopo create rack topo API
 */
-func (a *Client) CreateRackTopo(params *CreateRackTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRackTopoOK, error) {
+func (a *Client) CreateRackTopo(params *CreateRackTopoParams, opts ...ClientOption) (*CreateRackTopoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateRackTopoParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateRackTopo(params *CreateRackTopoParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateRackTopoReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateRackTopo(params *CreateRackTopoParams, authInfo runtime.C
 /*
   DeleteRackTopo delete rack topo API
 */
-func (a *Client) DeleteRackTopo(params *DeleteRackTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRackTopoOK, error) {
+func (a *Client) DeleteRackTopo(params *DeleteRackTopoParams, opts ...ClientOption) (*DeleteRackTopoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteRackTopoParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteRackTopo(params *DeleteRackTopoParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteRackTopoReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteRackTopo(params *DeleteRackTopoParams, authInfo runtime.C
 /*
   GetRackTopoes get rack topoes API
 */
-func (a *Client) GetRackTopoes(params *GetRackTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRackTopoesOK, error) {
+func (a *Client) GetRackTopoes(params *GetRackTopoesParams, opts ...ClientOption) (*GetRackTopoesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRackTopoesParams()
@@ -138,7 +136,6 @@ func (a *Client) GetRackTopoes(params *GetRackTopoesParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetRackTopoesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetRackTopoes(params *GetRackTopoesParams, authInfo runtime.Cli
 /*
   GetRackTopoesConnection get rack topoes connection API
 */
-func (a *Client) GetRackTopoesConnection(params *GetRackTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRackTopoesConnectionOK, error) {
+func (a *Client) GetRackTopoesConnection(params *GetRackTopoesConnectionParams, opts ...ClientOption) (*GetRackTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRackTopoesConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetRackTopoesConnection(params *GetRackTopoesConnectionParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetRackTopoesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetRackTopoesConnection(params *GetRackTopoesConnectionParams, 
 /*
   UpdateRackTopo update rack topo API
 */
-func (a *Client) UpdateRackTopo(params *UpdateRackTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRackTopoOK, error) {
+func (a *Client) UpdateRackTopo(params *UpdateRackTopoParams, opts ...ClientOption) (*UpdateRackTopoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateRackTopoParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateRackTopo(params *UpdateRackTopoParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateRackTopoReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

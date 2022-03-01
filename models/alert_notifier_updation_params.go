@@ -31,7 +31,7 @@ type AlertNotifierUpdationParams struct {
 	EmailTos []string `json:"email_tos,omitempty"`
 
 	// language code
-	LanguageCode NotifierLanguageCode `json:"language_code,omitempty"`
+	LanguageCode *NotifierLanguageCode `json:"language_code,omitempty"`
 
 	// notice severities
 	NoticeSeverities []string `json:"notice_severities,omitempty"`
@@ -60,13 +60,15 @@ func (m *AlertNotifierUpdationParams) validateLanguageCode(formats strfmt.Regist
 		return nil
 	}
 
-	if err := m.LanguageCode.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("language_code")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("language_code")
+	if m.LanguageCode != nil {
+		if err := m.LanguageCode.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("language_code")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("language_code")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -124,13 +126,15 @@ func (m *AlertNotifierUpdationParams) ContextValidate(ctx context.Context, forma
 
 func (m *AlertNotifierUpdationParams) contextValidateLanguageCode(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.LanguageCode.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("language_code")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("language_code")
+	if m.LanguageCode != nil {
+		if err := m.LanguageCode.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("language_code")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("language_code")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateVMFolder(params *CreateVMFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMFolderOK, error)
+	CreateVMFolder(params *CreateVMFolderParams, opts ...ClientOption) (*CreateVMFolderOK, error)
 
-	DeleteVMFolder(params *DeleteVMFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMFolderOK, error)
+	DeleteVMFolder(params *DeleteVMFolderParams, opts ...ClientOption) (*DeleteVMFolderOK, error)
 
-	GetVMFolders(params *GetVMFoldersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMFoldersOK, error)
+	GetVMFolders(params *GetVMFoldersParams, opts ...ClientOption) (*GetVMFoldersOK, error)
 
-	GetVMFoldersConnection(params *GetVMFoldersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMFoldersConnectionOK, error)
+	GetVMFoldersConnection(params *GetVMFoldersConnectionParams, opts ...ClientOption) (*GetVMFoldersConnectionOK, error)
 
-	UpdateVMFolder(params *UpdateVMFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMFolderOK, error)
+	UpdateVMFolder(params *UpdateVMFolderParams, opts ...ClientOption) (*UpdateVMFolderOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateVMFolder create Vm folder API
 */
-func (a *Client) CreateVMFolder(params *CreateVMFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMFolderOK, error) {
+func (a *Client) CreateVMFolder(params *CreateVMFolderParams, opts ...ClientOption) (*CreateVMFolderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVMFolderParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateVMFolder(params *CreateVMFolderParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVMFolderReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateVMFolder(params *CreateVMFolderParams, authInfo runtime.C
 /*
   DeleteVMFolder delete Vm folder API
 */
-func (a *Client) DeleteVMFolder(params *DeleteVMFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMFolderOK, error) {
+func (a *Client) DeleteVMFolder(params *DeleteVMFolderParams, opts ...ClientOption) (*DeleteVMFolderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVMFolderParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteVMFolder(params *DeleteVMFolderParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteVMFolderReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteVMFolder(params *DeleteVMFolderParams, authInfo runtime.C
 /*
   GetVMFolders get Vm folders API
 */
-func (a *Client) GetVMFolders(params *GetVMFoldersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMFoldersOK, error) {
+func (a *Client) GetVMFolders(params *GetVMFoldersParams, opts ...ClientOption) (*GetVMFoldersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMFoldersParams()
@@ -138,7 +136,6 @@ func (a *Client) GetVMFolders(params *GetVMFoldersParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMFoldersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetVMFolders(params *GetVMFoldersParams, authInfo runtime.Clien
 /*
   GetVMFoldersConnection get Vm folders connection API
 */
-func (a *Client) GetVMFoldersConnection(params *GetVMFoldersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMFoldersConnectionOK, error) {
+func (a *Client) GetVMFoldersConnection(params *GetVMFoldersConnectionParams, opts ...ClientOption) (*GetVMFoldersConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMFoldersConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetVMFoldersConnection(params *GetVMFoldersConnectionParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMFoldersConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetVMFoldersConnection(params *GetVMFoldersConnectionParams, au
 /*
   UpdateVMFolder update Vm folder API
 */
-func (a *Client) UpdateVMFolder(params *UpdateVMFolderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVMFolderOK, error) {
+func (a *Client) UpdateVMFolder(params *UpdateVMFolderParams, opts ...ClientOption) (*UpdateVMFolderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVMFolderParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateVMFolder(params *UpdateVMFolderParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateVMFolderReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

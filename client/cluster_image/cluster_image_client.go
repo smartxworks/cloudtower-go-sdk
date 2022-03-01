@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetClusterImages(params *GetClusterImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterImagesOK, error)
+	GetClusterImages(params *GetClusterImagesParams, opts ...ClientOption) (*GetClusterImagesOK, error)
 
-	GetClusterImagesConnection(params *GetClusterImagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterImagesConnectionOK, error)
+	GetClusterImagesConnection(params *GetClusterImagesConnectionParams, opts ...ClientOption) (*GetClusterImagesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetClusterImages get cluster images API
 */
-func (a *Client) GetClusterImages(params *GetClusterImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterImagesOK, error) {
+func (a *Client) GetClusterImages(params *GetClusterImagesParams, opts ...ClientOption) (*GetClusterImagesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClusterImagesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetClusterImages(params *GetClusterImagesParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClusterImagesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetClusterImages(params *GetClusterImagesParams, authInfo runti
 /*
   GetClusterImagesConnection get cluster images connection API
 */
-func (a *Client) GetClusterImagesConnection(params *GetClusterImagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterImagesConnectionOK, error) {
+func (a *Client) GetClusterImagesConnection(params *GetClusterImagesConnectionParams, opts ...ClientOption) (*GetClusterImagesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClusterImagesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetClusterImagesConnection(params *GetClusterImagesConnectionPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClusterImagesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

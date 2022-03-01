@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetClusterUpgradeHistories(params *GetClusterUpgradeHistoriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterUpgradeHistoriesOK, error)
+	GetClusterUpgradeHistories(params *GetClusterUpgradeHistoriesParams, opts ...ClientOption) (*GetClusterUpgradeHistoriesOK, error)
 
-	GetClusterUpgradeHistoriesConnection(params *GetClusterUpgradeHistoriesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterUpgradeHistoriesConnectionOK, error)
+	GetClusterUpgradeHistoriesConnection(params *GetClusterUpgradeHistoriesConnectionParams, opts ...ClientOption) (*GetClusterUpgradeHistoriesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetClusterUpgradeHistories get cluster upgrade histories API
 */
-func (a *Client) GetClusterUpgradeHistories(params *GetClusterUpgradeHistoriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterUpgradeHistoriesOK, error) {
+func (a *Client) GetClusterUpgradeHistories(params *GetClusterUpgradeHistoriesParams, opts ...ClientOption) (*GetClusterUpgradeHistoriesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClusterUpgradeHistoriesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetClusterUpgradeHistories(params *GetClusterUpgradeHistoriesPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClusterUpgradeHistoriesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetClusterUpgradeHistories(params *GetClusterUpgradeHistoriesPa
 /*
   GetClusterUpgradeHistoriesConnection get cluster upgrade histories connection API
 */
-func (a *Client) GetClusterUpgradeHistoriesConnection(params *GetClusterUpgradeHistoriesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterUpgradeHistoriesConnectionOK, error) {
+func (a *Client) GetClusterUpgradeHistoriesConnection(params *GetClusterUpgradeHistoriesConnectionParams, opts ...ClientOption) (*GetClusterUpgradeHistoriesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClusterUpgradeHistoriesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetClusterUpgradeHistoriesConnection(params *GetClusterUpgradeH
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClusterUpgradeHistoriesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetClusterSettingses(params *GetClusterSettingsesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterSettingsesOK, error)
+	GetClusterSettingses(params *GetClusterSettingsesParams, opts ...ClientOption) (*GetClusterSettingsesOK, error)
 
-	GetClusterSettingsesConnection(params *GetClusterSettingsesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterSettingsesConnectionOK, error)
+	GetClusterSettingsesConnection(params *GetClusterSettingsesConnectionParams, opts ...ClientOption) (*GetClusterSettingsesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetClusterSettingses get cluster settingses API
 */
-func (a *Client) GetClusterSettingses(params *GetClusterSettingsesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterSettingsesOK, error) {
+func (a *Client) GetClusterSettingses(params *GetClusterSettingsesParams, opts ...ClientOption) (*GetClusterSettingsesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClusterSettingsesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetClusterSettingses(params *GetClusterSettingsesParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClusterSettingsesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetClusterSettingses(params *GetClusterSettingsesParams, authIn
 /*
   GetClusterSettingsesConnection get cluster settingses connection API
 */
-func (a *Client) GetClusterSettingsesConnection(params *GetClusterSettingsesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterSettingsesConnectionOK, error) {
+func (a *Client) GetClusterSettingsesConnection(params *GetClusterSettingsesConnectionParams, opts ...ClientOption) (*GetClusterSettingsesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClusterSettingsesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetClusterSettingsesConnection(params *GetClusterSettingsesConn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClusterSettingsesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -23,7 +23,7 @@ type SnmpTrapReceiverCreationParams struct {
 	AuthPassPhrase *string `json:"auth_pass_phrase,omitempty"`
 
 	// auth protocol
-	AuthProtocol SnmpAuthProtocol `json:"auth_protocol,omitempty"`
+	AuthProtocol *SnmpAuthProtocol `json:"auth_protocol,omitempty"`
 
 	// cluster id
 	// Required: true
@@ -61,7 +61,7 @@ type SnmpTrapReceiverCreationParams struct {
 	PrivacyPassPhrase *string `json:"privacy_pass_phrase,omitempty"`
 
 	// privacy protocol
-	PrivacyProtocol SnmpPrivacyProtocol `json:"privacy_protocol,omitempty"`
+	PrivacyProtocol *SnmpPrivacyProtocol `json:"privacy_protocol,omitempty"`
 
 	// protocol
 	// Required: true
@@ -126,13 +126,15 @@ func (m *SnmpTrapReceiverCreationParams) validateAuthProtocol(formats strfmt.Reg
 		return nil
 	}
 
-	if err := m.AuthProtocol.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("auth_protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("auth_protocol")
+	if m.AuthProtocol != nil {
+		if err := m.AuthProtocol.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("auth_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("auth_protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -203,13 +205,15 @@ func (m *SnmpTrapReceiverCreationParams) validatePrivacyProtocol(formats strfmt.
 		return nil
 	}
 
-	if err := m.PrivacyProtocol.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("privacy_protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("privacy_protocol")
+	if m.PrivacyProtocol != nil {
+		if err := m.PrivacyProtocol.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("privacy_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("privacy_protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -295,13 +299,15 @@ func (m *SnmpTrapReceiverCreationParams) ContextValidate(ctx context.Context, fo
 
 func (m *SnmpTrapReceiverCreationParams) contextValidateAuthProtocol(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.AuthProtocol.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("auth_protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("auth_protocol")
+	if m.AuthProtocol != nil {
+		if err := m.AuthProtocol.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("auth_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("auth_protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -325,13 +331,15 @@ func (m *SnmpTrapReceiverCreationParams) contextValidateLanguageCode(ctx context
 
 func (m *SnmpTrapReceiverCreationParams) contextValidatePrivacyProtocol(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.PrivacyProtocol.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("privacy_protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("privacy_protocol")
+	if m.PrivacyProtocol != nil {
+		if err := m.PrivacyProtocol.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("privacy_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("privacy_protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

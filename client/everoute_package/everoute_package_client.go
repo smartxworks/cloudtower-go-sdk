@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetEveroutePackages(params *GetEveroutePackagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEveroutePackagesOK, error)
+	GetEveroutePackages(params *GetEveroutePackagesParams, opts ...ClientOption) (*GetEveroutePackagesOK, error)
 
-	GetEveroutePackagesConnection(params *GetEveroutePackagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEveroutePackagesConnectionOK, error)
+	GetEveroutePackagesConnection(params *GetEveroutePackagesConnectionParams, opts ...ClientOption) (*GetEveroutePackagesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetEveroutePackages get everoute packages API
 */
-func (a *Client) GetEveroutePackages(params *GetEveroutePackagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEveroutePackagesOK, error) {
+func (a *Client) GetEveroutePackages(params *GetEveroutePackagesParams, opts ...ClientOption) (*GetEveroutePackagesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEveroutePackagesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetEveroutePackages(params *GetEveroutePackagesParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetEveroutePackagesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetEveroutePackages(params *GetEveroutePackagesParams, authInfo
 /*
   GetEveroutePackagesConnection get everoute packages connection API
 */
-func (a *Client) GetEveroutePackagesConnection(params *GetEveroutePackagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEveroutePackagesConnectionOK, error) {
+func (a *Client) GetEveroutePackagesConnection(params *GetEveroutePackagesConnectionParams, opts ...ClientOption) (*GetEveroutePackagesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEveroutePackagesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetEveroutePackagesConnection(params *GetEveroutePackagesConnec
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetEveroutePackagesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

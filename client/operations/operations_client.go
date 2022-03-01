@@ -32,17 +32,17 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateLogCollection(params *CreateLogCollectionParams, opts ...ClientOption) (*CreateLogCollectionOK, error)
 
-	CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNvmfSubsystemOK, error)
+	CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, opts ...ClientOption) (*CreateNvmfSubsystemOK, error)
 
 	DeleteLogCollection(params *DeleteLogCollectionParams, opts ...ClientOption) (*DeleteLogCollectionOK, error)
 
-	DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNvmfSubsystemOK, error)
+	DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, opts ...ClientOption) (*DeleteNvmfSubsystemOK, error)
 
 	ForceStopLogCollection(params *ForceStopLogCollectionParams, opts ...ClientOption) (*ForceStopLogCollectionOK, error)
 
 	UpdateAlertNotifier(params *UpdateAlertNotifierParams, opts ...ClientOption) (*UpdateAlertNotifierOK, error)
 
-	UpdateNvmfSubsystem(params *UpdateNvmfSubsystemParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNvmfSubsystemOK, error)
+	UpdateNvmfSubsystem(params *UpdateNvmfSubsystemParams, opts ...ClientOption) (*UpdateNvmfSubsystemOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -88,7 +88,7 @@ func (a *Client) CreateLogCollection(params *CreateLogCollectionParams, opts ...
 /*
   CreateNvmfSubsystem create nvmf subsystem API
 */
-func (a *Client) CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNvmfSubsystemOK, error) {
+func (a *Client) CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, opts ...ClientOption) (*CreateNvmfSubsystemOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNvmfSubsystemParams()
@@ -102,7 +102,6 @@ func (a *Client) CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateNvmfSubsystemReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -165,7 +164,7 @@ func (a *Client) DeleteLogCollection(params *DeleteLogCollectionParams, opts ...
 /*
   DeleteNvmfSubsystem delete nvmf subsystem API
 */
-func (a *Client) DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNvmfSubsystemOK, error) {
+func (a *Client) DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, opts ...ClientOption) (*DeleteNvmfSubsystemOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNvmfSubsystemParams()
@@ -179,7 +178,6 @@ func (a *Client) DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteNvmfSubsystemReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -280,7 +278,7 @@ func (a *Client) UpdateAlertNotifier(params *UpdateAlertNotifierParams, opts ...
 /*
   UpdateNvmfSubsystem update nvmf subsystem API
 */
-func (a *Client) UpdateNvmfSubsystem(params *UpdateNvmfSubsystemParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNvmfSubsystemOK, error) {
+func (a *Client) UpdateNvmfSubsystem(params *UpdateNvmfSubsystemParams, opts ...ClientOption) (*UpdateNvmfSubsystemOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNvmfSubsystemParams()
@@ -294,7 +292,6 @@ func (a *Client) UpdateNvmfSubsystem(params *UpdateNvmfSubsystemParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateNvmfSubsystemReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

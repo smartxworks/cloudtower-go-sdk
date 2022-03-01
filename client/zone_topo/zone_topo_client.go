@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetZoneTopoes(params *GetZoneTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZoneTopoesOK, error)
+	GetZoneTopoes(params *GetZoneTopoesParams, opts ...ClientOption) (*GetZoneTopoesOK, error)
 
-	GetZoneTopoesConnection(params *GetZoneTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZoneTopoesConnectionOK, error)
+	GetZoneTopoesConnection(params *GetZoneTopoesConnectionParams, opts ...ClientOption) (*GetZoneTopoesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetZoneTopoes get zone topoes API
 */
-func (a *Client) GetZoneTopoes(params *GetZoneTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZoneTopoesOK, error) {
+func (a *Client) GetZoneTopoes(params *GetZoneTopoesParams, opts ...ClientOption) (*GetZoneTopoesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetZoneTopoesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetZoneTopoes(params *GetZoneTopoesParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetZoneTopoesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetZoneTopoes(params *GetZoneTopoesParams, authInfo runtime.Cli
 /*
   GetZoneTopoesConnection get zone topoes connection API
 */
-func (a *Client) GetZoneTopoesConnection(params *GetZoneTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZoneTopoesConnectionOK, error) {
+func (a *Client) GetZoneTopoesConnection(params *GetZoneTopoesConnectionParams, opts ...ClientOption) (*GetZoneTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetZoneTopoesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetZoneTopoesConnection(params *GetZoneTopoesConnectionParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetZoneTopoesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

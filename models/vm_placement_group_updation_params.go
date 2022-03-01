@@ -187,7 +187,7 @@ type VMPlacementGroupUpdationParamsData struct {
 	VMHostPreferPolicy *bool `json:"vm_host_prefer_policy,omitempty"`
 
 	// vm vm policy
-	VMVMPolicy VMVMPolicy `json:"vm_vm_policy,omitempty"`
+	VMVMPolicy *VMVMPolicy `json:"vm_vm_policy,omitempty"`
 
 	// vm vm policy enabled
 	VMVMPolicyEnabled *bool `json:"vm_vm_policy_enabled,omitempty"`
@@ -265,13 +265,15 @@ func (m *VMPlacementGroupUpdationParamsData) validateVMVMPolicy(formats strfmt.R
 		return nil
 	}
 
-	if err := m.VMVMPolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "vm_vm_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "vm_vm_policy")
+	if m.VMVMPolicy != nil {
+		if err := m.VMVMPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "vm_vm_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "vm_vm_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -356,13 +358,15 @@ func (m *VMPlacementGroupUpdationParamsData) contextValidatePreferHosts(ctx cont
 
 func (m *VMPlacementGroupUpdationParamsData) contextValidateVMVMPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.VMVMPolicy.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "vm_vm_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "vm_vm_policy")
+	if m.VMVMPolicy != nil {
+		if err := m.VMVMPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "vm_vm_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "vm_vm_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

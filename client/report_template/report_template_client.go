@@ -30,17 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateReportTemplate(params *CreateReportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportTemplateOK, error)
+	CreateReportTemplate(params *CreateReportTemplateParams, opts ...ClientOption) (*CreateReportTemplateOK, error)
 
-	DeleteReportTemplate(params *DeleteReportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteReportTemplateOK, error)
+	DeleteReportTemplate(params *DeleteReportTemplateParams, opts ...ClientOption) (*DeleteReportTemplateOK, error)
 
-	GenerateFromReportTemplate(params *GenerateFromReportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenerateFromReportTemplateOK, error)
+	GenerateFromReportTemplate(params *GenerateFromReportTemplateParams, opts ...ClientOption) (*GenerateFromReportTemplateOK, error)
 
-	GetReportTemplates(params *GetReportTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportTemplatesOK, error)
+	GetReportTemplates(params *GetReportTemplatesParams, opts ...ClientOption) (*GetReportTemplatesOK, error)
 
-	GetReportTemplatesConnection(params *GetReportTemplatesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportTemplatesConnectionOK, error)
+	GetReportTemplatesConnection(params *GetReportTemplatesConnectionParams, opts ...ClientOption) (*GetReportTemplatesConnectionOK, error)
 
-	UpdateReportTemplate(params *UpdateReportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateReportTemplateOK, error)
+	UpdateReportTemplate(params *UpdateReportTemplateParams, opts ...ClientOption) (*UpdateReportTemplateOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -48,7 +48,7 @@ type ClientService interface {
 /*
   CreateReportTemplate create report template API
 */
-func (a *Client) CreateReportTemplate(params *CreateReportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateReportTemplateOK, error) {
+func (a *Client) CreateReportTemplate(params *CreateReportTemplateParams, opts ...ClientOption) (*CreateReportTemplateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateReportTemplateParams()
@@ -62,7 +62,6 @@ func (a *Client) CreateReportTemplate(params *CreateReportTemplateParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateReportTemplateReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -87,7 +86,7 @@ func (a *Client) CreateReportTemplate(params *CreateReportTemplateParams, authIn
 /*
   DeleteReportTemplate delete report template API
 */
-func (a *Client) DeleteReportTemplate(params *DeleteReportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteReportTemplateOK, error) {
+func (a *Client) DeleteReportTemplate(params *DeleteReportTemplateParams, opts ...ClientOption) (*DeleteReportTemplateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteReportTemplateParams()
@@ -101,7 +100,6 @@ func (a *Client) DeleteReportTemplate(params *DeleteReportTemplateParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteReportTemplateReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -126,7 +124,7 @@ func (a *Client) DeleteReportTemplate(params *DeleteReportTemplateParams, authIn
 /*
   GenerateFromReportTemplate generate from report template API
 */
-func (a *Client) GenerateFromReportTemplate(params *GenerateFromReportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenerateFromReportTemplateOK, error) {
+func (a *Client) GenerateFromReportTemplate(params *GenerateFromReportTemplateParams, opts ...ClientOption) (*GenerateFromReportTemplateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGenerateFromReportTemplateParams()
@@ -140,7 +138,6 @@ func (a *Client) GenerateFromReportTemplate(params *GenerateFromReportTemplatePa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GenerateFromReportTemplateReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -165,7 +162,7 @@ func (a *Client) GenerateFromReportTemplate(params *GenerateFromReportTemplatePa
 /*
   GetReportTemplates get report templates API
 */
-func (a *Client) GetReportTemplates(params *GetReportTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportTemplatesOK, error) {
+func (a *Client) GetReportTemplates(params *GetReportTemplatesParams, opts ...ClientOption) (*GetReportTemplatesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReportTemplatesParams()
@@ -179,7 +176,6 @@ func (a *Client) GetReportTemplates(params *GetReportTemplatesParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetReportTemplatesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -204,7 +200,7 @@ func (a *Client) GetReportTemplates(params *GetReportTemplatesParams, authInfo r
 /*
   GetReportTemplatesConnection get report templates connection API
 */
-func (a *Client) GetReportTemplatesConnection(params *GetReportTemplatesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportTemplatesConnectionOK, error) {
+func (a *Client) GetReportTemplatesConnection(params *GetReportTemplatesConnectionParams, opts ...ClientOption) (*GetReportTemplatesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReportTemplatesConnectionParams()
@@ -218,7 +214,6 @@ func (a *Client) GetReportTemplatesConnection(params *GetReportTemplatesConnecti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetReportTemplatesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -243,7 +238,7 @@ func (a *Client) GetReportTemplatesConnection(params *GetReportTemplatesConnecti
 /*
   UpdateReportTemplate update report template API
 */
-func (a *Client) UpdateReportTemplate(params *UpdateReportTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateReportTemplateOK, error) {
+func (a *Client) UpdateReportTemplate(params *UpdateReportTemplateParams, opts ...ClientOption) (*UpdateReportTemplateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateReportTemplateParams()
@@ -257,7 +252,6 @@ func (a *Client) UpdateReportTemplate(params *UpdateReportTemplateParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateReportTemplateReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

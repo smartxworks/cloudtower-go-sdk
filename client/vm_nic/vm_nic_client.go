@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetVMNics(params *GetVMNicsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMNicsOK, error)
+	GetVMNics(params *GetVMNicsParams, opts ...ClientOption) (*GetVMNicsOK, error)
 
-	GetVMNicsConnection(params *GetVMNicsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMNicsConnectionOK, error)
+	GetVMNicsConnection(params *GetVMNicsConnectionParams, opts ...ClientOption) (*GetVMNicsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetVMNics get Vm nics API
 */
-func (a *Client) GetVMNics(params *GetVMNicsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMNicsOK, error) {
+func (a *Client) GetVMNics(params *GetVMNicsParams, opts ...ClientOption) (*GetVMNicsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMNicsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetVMNics(params *GetVMNicsParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMNicsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetVMNics(params *GetVMNicsParams, authInfo runtime.ClientAuthI
 /*
   GetVMNicsConnection get Vm nics connection API
 */
-func (a *Client) GetVMNicsConnection(params *GetVMNicsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMNicsConnectionOK, error) {
+func (a *Client) GetVMNicsConnection(params *GetVMNicsConnectionParams, opts ...ClientOption) (*GetVMNicsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMNicsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetVMNicsConnection(params *GetVMNicsConnectionParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMNicsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -163,7 +163,7 @@ type SnmpTransportUpdationParamsData struct {
 	AuthPassPhrase *string `json:"auth_pass_phrase,omitempty"`
 
 	// auth protocol
-	AuthProtocol SnmpAuthProtocol `json:"auth_protocol,omitempty"`
+	AuthProtocol *SnmpAuthProtocol `json:"auth_protocol,omitempty"`
 
 	// community
 	Community *string `json:"community,omitempty"`
@@ -181,16 +181,16 @@ type SnmpTransportUpdationParamsData struct {
 	PrivacyPassPhrase *string `json:"privacy_pass_phrase,omitempty"`
 
 	// privacy protocol
-	PrivacyProtocol SnmpPrivacyProtocol `json:"privacy_protocol,omitempty"`
+	PrivacyProtocol *SnmpPrivacyProtocol `json:"privacy_protocol,omitempty"`
 
 	// protocol
-	Protocol SnmpProtocol `json:"protocol,omitempty"`
+	Protocol *SnmpProtocol `json:"protocol,omitempty"`
 
 	// username
 	Username *string `json:"username,omitempty"`
 
 	// version
-	Version SnmpVersion `json:"version,omitempty"`
+	Version *SnmpVersion `json:"version,omitempty"`
 }
 
 // Validate validates this snmp transport updation params data
@@ -224,13 +224,15 @@ func (m *SnmpTransportUpdationParamsData) validateAuthProtocol(formats strfmt.Re
 		return nil
 	}
 
-	if err := m.AuthProtocol.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "auth_protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "auth_protocol")
+	if m.AuthProtocol != nil {
+		if err := m.AuthProtocol.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "auth_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "auth_protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -241,13 +243,15 @@ func (m *SnmpTransportUpdationParamsData) validatePrivacyProtocol(formats strfmt
 		return nil
 	}
 
-	if err := m.PrivacyProtocol.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "privacy_protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "privacy_protocol")
+	if m.PrivacyProtocol != nil {
+		if err := m.PrivacyProtocol.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "privacy_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "privacy_protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -258,13 +262,15 @@ func (m *SnmpTransportUpdationParamsData) validateProtocol(formats strfmt.Regist
 		return nil
 	}
 
-	if err := m.Protocol.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "protocol")
+	if m.Protocol != nil {
+		if err := m.Protocol.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -275,13 +281,15 @@ func (m *SnmpTransportUpdationParamsData) validateVersion(formats strfmt.Registr
 		return nil
 	}
 
-	if err := m.Version.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "version")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "version")
+	if m.Version != nil {
+		if err := m.Version.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "version")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "version")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -315,13 +323,15 @@ func (m *SnmpTransportUpdationParamsData) ContextValidate(ctx context.Context, f
 
 func (m *SnmpTransportUpdationParamsData) contextValidateAuthProtocol(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.AuthProtocol.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "auth_protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "auth_protocol")
+	if m.AuthProtocol != nil {
+		if err := m.AuthProtocol.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "auth_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "auth_protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -329,13 +339,15 @@ func (m *SnmpTransportUpdationParamsData) contextValidateAuthProtocol(ctx contex
 
 func (m *SnmpTransportUpdationParamsData) contextValidatePrivacyProtocol(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.PrivacyProtocol.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "privacy_protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "privacy_protocol")
+	if m.PrivacyProtocol != nil {
+		if err := m.PrivacyProtocol.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "privacy_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "privacy_protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -343,13 +355,15 @@ func (m *SnmpTransportUpdationParamsData) contextValidatePrivacyProtocol(ctx con
 
 func (m *SnmpTransportUpdationParamsData) contextValidateProtocol(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Protocol.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "protocol")
+	if m.Protocol != nil {
+		if err := m.Protocol.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "protocol")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -357,13 +371,15 @@ func (m *SnmpTransportUpdationParamsData) contextValidateProtocol(ctx context.Co
 
 func (m *SnmpTransportUpdationParamsData) contextValidateVersion(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Version.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "version")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "version")
+	if m.Version != nil {
+		if err := m.Version.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "version")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "version")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

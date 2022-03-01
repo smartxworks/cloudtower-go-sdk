@@ -124,7 +124,7 @@ func (m *VMSnapshotCreationParams) UnmarshalBinary(b []byte) error {
 type VMSnapshotCreationParamsDataItems0 struct {
 
 	// consistent type
-	ConsistentType ConsistentType `json:"consistent_type,omitempty"`
+	ConsistentType *ConsistentType `json:"consistent_type,omitempty"`
 
 	// name
 	// Required: true
@@ -162,13 +162,15 @@ func (m *VMSnapshotCreationParamsDataItems0) validateConsistentType(formats strf
 		return nil
 	}
 
-	if err := m.ConsistentType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("consistent_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("consistent_type")
+	if m.ConsistentType != nil {
+		if err := m.ConsistentType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("consistent_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("consistent_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -208,13 +210,15 @@ func (m *VMSnapshotCreationParamsDataItems0) ContextValidate(ctx context.Context
 
 func (m *VMSnapshotCreationParamsDataItems0) contextValidateConsistentType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.ConsistentType.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("consistent_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("consistent_type")
+	if m.ConsistentType != nil {
+		if err := m.ConsistentType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("consistent_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("consistent_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

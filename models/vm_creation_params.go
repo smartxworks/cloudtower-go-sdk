@@ -43,7 +43,7 @@ type VMCreationParams struct {
 	FolderID *string `json:"folder_id,omitempty"`
 
 	// guest os type
-	GuestOsType VMGuestsOperationSystem `json:"guest_os_type,omitempty"`
+	GuestOsType *VMGuestsOperationSystem `json:"guest_os_type,omitempty"`
 
 	// ha
 	// Required: true
@@ -53,19 +53,19 @@ type VMCreationParams struct {
 	HostID *string `json:"host_id,omitempty"`
 
 	// io policy
-	IoPolicy VMDiskIoPolicy `json:"io_policy,omitempty"`
+	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
 
 	// max bandwidth
 	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
-	MaxBandwidthPolicy VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
+	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
 
 	// max iops
 	MaxIops *int32 `json:"max_iops,omitempty"`
 
 	// max iops policy
-	MaxIopsPolicy VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
+	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
 
 	// memory
 	// Required: true
@@ -218,13 +218,15 @@ func (m *VMCreationParams) validateGuestOsType(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.GuestOsType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("guest_os_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("guest_os_type")
+	if m.GuestOsType != nil {
+		if err := m.GuestOsType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("guest_os_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("guest_os_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -244,13 +246,15 @@ func (m *VMCreationParams) validateIoPolicy(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.IoPolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("io_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("io_policy")
+	if m.IoPolicy != nil {
+		if err := m.IoPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -261,13 +265,15 @@ func (m *VMCreationParams) validateMaxBandwidthPolicy(formats strfmt.Registry) e
 		return nil
 	}
 
-	if err := m.MaxBandwidthPolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("max_bandwidth_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("max_bandwidth_policy")
+	if m.MaxBandwidthPolicy != nil {
+		if err := m.MaxBandwidthPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -278,13 +284,15 @@ func (m *VMCreationParams) validateMaxIopsPolicy(formats strfmt.Registry) error 
 		return nil
 	}
 
-	if err := m.MaxIopsPolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("max_iops_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("max_iops_policy")
+	if m.MaxIopsPolicy != nil {
+		if err := m.MaxIopsPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -448,13 +456,15 @@ func (m *VMCreationParams) contextValidateFirmware(ctx context.Context, formats 
 
 func (m *VMCreationParams) contextValidateGuestOsType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.GuestOsType.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("guest_os_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("guest_os_type")
+	if m.GuestOsType != nil {
+		if err := m.GuestOsType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("guest_os_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("guest_os_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -462,13 +472,15 @@ func (m *VMCreationParams) contextValidateGuestOsType(ctx context.Context, forma
 
 func (m *VMCreationParams) contextValidateIoPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.IoPolicy.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("io_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("io_policy")
+	if m.IoPolicy != nil {
+		if err := m.IoPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -476,13 +488,15 @@ func (m *VMCreationParams) contextValidateIoPolicy(ctx context.Context, formats 
 
 func (m *VMCreationParams) contextValidateMaxBandwidthPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.MaxBandwidthPolicy.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("max_bandwidth_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("max_bandwidth_policy")
+	if m.MaxBandwidthPolicy != nil {
+		if err := m.MaxBandwidthPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -490,13 +504,15 @@ func (m *VMCreationParams) contextValidateMaxBandwidthPolicy(ctx context.Context
 
 func (m *VMCreationParams) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.MaxIopsPolicy.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("max_iops_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("max_iops_policy")
+	if m.MaxIopsPolicy != nil {
+		if err := m.MaxIopsPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

@@ -30,13 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateIscsiLunSnapshot(params *CreateIscsiLunSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIscsiLunSnapshotOK, error)
+	CreateIscsiLunSnapshot(params *CreateIscsiLunSnapshotParams, opts ...ClientOption) (*CreateIscsiLunSnapshotOK, error)
 
-	DeleteIscsiLunSnapshot(params *DeleteIscsiLunSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIscsiLunSnapshotOK, error)
+	DeleteIscsiLunSnapshot(params *DeleteIscsiLunSnapshotParams, opts ...ClientOption) (*DeleteIscsiLunSnapshotOK, error)
 
-	GetIscsiLunSnapshots(params *GetIscsiLunSnapshotsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiLunSnapshotsOK, error)
+	GetIscsiLunSnapshots(params *GetIscsiLunSnapshotsParams, opts ...ClientOption) (*GetIscsiLunSnapshotsOK, error)
 
-	GetIscsiLunSnapshotsConnection(params *GetIscsiLunSnapshotsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiLunSnapshotsConnectionOK, error)
+	GetIscsiLunSnapshotsConnection(params *GetIscsiLunSnapshotsConnectionParams, opts ...ClientOption) (*GetIscsiLunSnapshotsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -44,7 +44,7 @@ type ClientService interface {
 /*
   CreateIscsiLunSnapshot create iscsi lun snapshot API
 */
-func (a *Client) CreateIscsiLunSnapshot(params *CreateIscsiLunSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIscsiLunSnapshotOK, error) {
+func (a *Client) CreateIscsiLunSnapshot(params *CreateIscsiLunSnapshotParams, opts ...ClientOption) (*CreateIscsiLunSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateIscsiLunSnapshotParams()
@@ -58,7 +58,6 @@ func (a *Client) CreateIscsiLunSnapshot(params *CreateIscsiLunSnapshotParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateIscsiLunSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -83,7 +82,7 @@ func (a *Client) CreateIscsiLunSnapshot(params *CreateIscsiLunSnapshotParams, au
 /*
   DeleteIscsiLunSnapshot delete iscsi lun snapshot API
 */
-func (a *Client) DeleteIscsiLunSnapshot(params *DeleteIscsiLunSnapshotParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIscsiLunSnapshotOK, error) {
+func (a *Client) DeleteIscsiLunSnapshot(params *DeleteIscsiLunSnapshotParams, opts ...ClientOption) (*DeleteIscsiLunSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteIscsiLunSnapshotParams()
@@ -97,7 +96,6 @@ func (a *Client) DeleteIscsiLunSnapshot(params *DeleteIscsiLunSnapshotParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteIscsiLunSnapshotReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -122,7 +120,7 @@ func (a *Client) DeleteIscsiLunSnapshot(params *DeleteIscsiLunSnapshotParams, au
 /*
   GetIscsiLunSnapshots get iscsi lun snapshots API
 */
-func (a *Client) GetIscsiLunSnapshots(params *GetIscsiLunSnapshotsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiLunSnapshotsOK, error) {
+func (a *Client) GetIscsiLunSnapshots(params *GetIscsiLunSnapshotsParams, opts ...ClientOption) (*GetIscsiLunSnapshotsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIscsiLunSnapshotsParams()
@@ -136,7 +134,6 @@ func (a *Client) GetIscsiLunSnapshots(params *GetIscsiLunSnapshotsParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetIscsiLunSnapshotsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -161,7 +158,7 @@ func (a *Client) GetIscsiLunSnapshots(params *GetIscsiLunSnapshotsParams, authIn
 /*
   GetIscsiLunSnapshotsConnection get iscsi lun snapshots connection API
 */
-func (a *Client) GetIscsiLunSnapshotsConnection(params *GetIscsiLunSnapshotsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIscsiLunSnapshotsConnectionOK, error) {
+func (a *Client) GetIscsiLunSnapshotsConnection(params *GetIscsiLunSnapshotsConnectionParams, opts ...ClientOption) (*GetIscsiLunSnapshotsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIscsiLunSnapshotsConnectionParams()
@@ -175,7 +172,6 @@ func (a *Client) GetIscsiLunSnapshotsConnection(params *GetIscsiLunSnapshotsConn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetIscsiLunSnapshotsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

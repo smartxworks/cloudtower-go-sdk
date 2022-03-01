@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetTasks(params *GetTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTasksOK, error)
+	GetTasks(params *GetTasksParams, opts ...ClientOption) (*GetTasksOK, error)
 
-	GetTasksConnection(params *GetTasksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTasksConnectionOK, error)
+	GetTasksConnection(params *GetTasksConnectionParams, opts ...ClientOption) (*GetTasksConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetTasks get tasks API
 */
-func (a *Client) GetTasks(params *GetTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTasksOK, error) {
+func (a *Client) GetTasks(params *GetTasksParams, opts ...ClientOption) (*GetTasksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTasksParams()
@@ -54,7 +54,6 @@ func (a *Client) GetTasks(params *GetTasksParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetTasksReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetTasks(params *GetTasksParams, authInfo runtime.ClientAuthInf
 /*
   GetTasksConnection get tasks connection API
 */
-func (a *Client) GetTasksConnection(params *GetTasksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTasksConnectionOK, error) {
+func (a *Client) GetTasksConnection(params *GetTasksConnectionParams, opts ...ClientOption) (*GetTasksConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTasksConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetTasksConnection(params *GetTasksConnectionParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetTasksConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

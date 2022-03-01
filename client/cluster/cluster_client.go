@@ -30,17 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ConnectCluster(params *ConnectClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConnectClusterOK, error)
+	ConnectCluster(params *ConnectClusterParams, opts ...ClientOption) (*ConnectClusterOK, error)
 
-	DeleteCluster(params *DeleteClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteClusterOK, error)
+	DeleteCluster(params *DeleteClusterParams, opts ...ClientOption) (*DeleteClusterOK, error)
 
-	GetClusters(params *GetClustersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClustersOK, error)
+	GetClusters(params *GetClustersParams, opts ...ClientOption) (*GetClustersOK, error)
 
-	GetClustersConnection(params *GetClustersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClustersConnectionOK, error)
+	GetClustersConnection(params *GetClustersConnectionParams, opts ...ClientOption) (*GetClustersConnectionOK, error)
 
-	UpdateCluster(params *UpdateClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateClusterOK, error)
+	UpdateCluster(params *UpdateClusterParams, opts ...ClientOption) (*UpdateClusterOK, error)
 
-	UpdateClusterLicense(params *UpdateClusterLicenseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateClusterLicenseOK, error)
+	UpdateClusterLicense(params *UpdateClusterLicenseParams, opts ...ClientOption) (*UpdateClusterLicenseOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -48,7 +48,7 @@ type ClientService interface {
 /*
   ConnectCluster connect cluster API
 */
-func (a *Client) ConnectCluster(params *ConnectClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConnectClusterOK, error) {
+func (a *Client) ConnectCluster(params *ConnectClusterParams, opts ...ClientOption) (*ConnectClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewConnectClusterParams()
@@ -62,7 +62,6 @@ func (a *Client) ConnectCluster(params *ConnectClusterParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ConnectClusterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -87,7 +86,7 @@ func (a *Client) ConnectCluster(params *ConnectClusterParams, authInfo runtime.C
 /*
   DeleteCluster delete cluster API
 */
-func (a *Client) DeleteCluster(params *DeleteClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteClusterOK, error) {
+func (a *Client) DeleteCluster(params *DeleteClusterParams, opts ...ClientOption) (*DeleteClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteClusterParams()
@@ -101,7 +100,6 @@ func (a *Client) DeleteCluster(params *DeleteClusterParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteClusterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -126,7 +124,7 @@ func (a *Client) DeleteCluster(params *DeleteClusterParams, authInfo runtime.Cli
 /*
   GetClusters get clusters API
 */
-func (a *Client) GetClusters(params *GetClustersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClustersOK, error) {
+func (a *Client) GetClusters(params *GetClustersParams, opts ...ClientOption) (*GetClustersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClustersParams()
@@ -140,7 +138,6 @@ func (a *Client) GetClusters(params *GetClustersParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClustersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -165,7 +162,7 @@ func (a *Client) GetClusters(params *GetClustersParams, authInfo runtime.ClientA
 /*
   GetClustersConnection get clusters connection API
 */
-func (a *Client) GetClustersConnection(params *GetClustersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClustersConnectionOK, error) {
+func (a *Client) GetClustersConnection(params *GetClustersConnectionParams, opts ...ClientOption) (*GetClustersConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClustersConnectionParams()
@@ -179,7 +176,6 @@ func (a *Client) GetClustersConnection(params *GetClustersConnectionParams, auth
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClustersConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -204,7 +200,7 @@ func (a *Client) GetClustersConnection(params *GetClustersConnectionParams, auth
 /*
   UpdateCluster update cluster API
 */
-func (a *Client) UpdateCluster(params *UpdateClusterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateClusterOK, error) {
+func (a *Client) UpdateCluster(params *UpdateClusterParams, opts ...ClientOption) (*UpdateClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateClusterParams()
@@ -218,7 +214,6 @@ func (a *Client) UpdateCluster(params *UpdateClusterParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateClusterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -243,7 +238,7 @@ func (a *Client) UpdateCluster(params *UpdateClusterParams, authInfo runtime.Cli
 /*
   UpdateClusterLicense update cluster license API
 */
-func (a *Client) UpdateClusterLicense(params *UpdateClusterLicenseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateClusterLicenseOK, error) {
+func (a *Client) UpdateClusterLicense(params *UpdateClusterLicenseParams, opts ...ClientOption) (*UpdateClusterLicenseOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateClusterLicenseParams()
@@ -257,7 +252,6 @@ func (a *Client) UpdateClusterLicense(params *UpdateClusterLicenseParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateClusterLicenseReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

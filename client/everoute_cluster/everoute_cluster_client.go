@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetEverouteClusters(params *GetEverouteClustersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEverouteClustersOK, error)
+	GetEverouteClusters(params *GetEverouteClustersParams, opts ...ClientOption) (*GetEverouteClustersOK, error)
 
-	GetEverouteClustersConnection(params *GetEverouteClustersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEverouteClustersConnectionOK, error)
+	GetEverouteClustersConnection(params *GetEverouteClustersConnectionParams, opts ...ClientOption) (*GetEverouteClustersConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetEverouteClusters get everoute clusters API
 */
-func (a *Client) GetEverouteClusters(params *GetEverouteClustersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEverouteClustersOK, error) {
+func (a *Client) GetEverouteClusters(params *GetEverouteClustersParams, opts ...ClientOption) (*GetEverouteClustersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEverouteClustersParams()
@@ -54,7 +54,6 @@ func (a *Client) GetEverouteClusters(params *GetEverouteClustersParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetEverouteClustersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetEverouteClusters(params *GetEverouteClustersParams, authInfo
 /*
   GetEverouteClustersConnection get everoute clusters connection API
 */
-func (a *Client) GetEverouteClustersConnection(params *GetEverouteClustersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEverouteClustersConnectionOK, error) {
+func (a *Client) GetEverouteClustersConnection(params *GetEverouteClustersConnectionParams, opts ...ClientOption) (*GetEverouteClustersConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEverouteClustersConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetEverouteClustersConnection(params *GetEverouteClustersConnec
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetEverouteClustersConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

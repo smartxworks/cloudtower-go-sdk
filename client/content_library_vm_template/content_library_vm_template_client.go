@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContentLibraryVMTemplatesOK, error)
+	GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplatesParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesOK, error)
 
-	GetContentLibraryVMTemplatesConnection(params *GetContentLibraryVMTemplatesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContentLibraryVMTemplatesConnectionOK, error)
+	GetContentLibraryVMTemplatesConnection(params *GetContentLibraryVMTemplatesConnectionParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetContentLibraryVMTemplates get content library Vm templates API
 */
-func (a *Client) GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContentLibraryVMTemplatesOK, error) {
+func (a *Client) GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplatesParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetContentLibraryVMTemplatesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplat
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetContentLibraryVMTemplatesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplat
 /*
   GetContentLibraryVMTemplatesConnection get content library Vm templates connection API
 */
-func (a *Client) GetContentLibraryVMTemplatesConnection(params *GetContentLibraryVMTemplatesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContentLibraryVMTemplatesConnectionOK, error) {
+func (a *Client) GetContentLibraryVMTemplatesConnection(params *GetContentLibraryVMTemplatesConnectionParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetContentLibraryVMTemplatesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetContentLibraryVMTemplatesConnection(params *GetContentLibrar
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetContentLibraryVMTemplatesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

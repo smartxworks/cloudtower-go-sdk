@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetAlertRules(params *GetAlertRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertRulesOK, error)
+	GetAlertRules(params *GetAlertRulesParams, opts ...ClientOption) (*GetAlertRulesOK, error)
 
-	GetAlertRulesConnection(params *GetAlertRulesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertRulesConnectionOK, error)
+	GetAlertRulesConnection(params *GetAlertRulesConnectionParams, opts ...ClientOption) (*GetAlertRulesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetAlertRules get alert rules API
 */
-func (a *Client) GetAlertRules(params *GetAlertRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertRulesOK, error) {
+func (a *Client) GetAlertRules(params *GetAlertRulesParams, opts ...ClientOption) (*GetAlertRulesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAlertRulesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetAlertRules(params *GetAlertRulesParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetAlertRulesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetAlertRules(params *GetAlertRulesParams, authInfo runtime.Cli
 /*
   GetAlertRulesConnection get alert rules connection API
 */
-func (a *Client) GetAlertRulesConnection(params *GetAlertRulesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAlertRulesConnectionOK, error) {
+func (a *Client) GetAlertRulesConnection(params *GetAlertRulesConnectionParams, opts ...ClientOption) (*GetAlertRulesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAlertRulesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetAlertRulesConnection(params *GetAlertRulesConnectionParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetAlertRulesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

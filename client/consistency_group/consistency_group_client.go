@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateConsistencyGroup(params *CreateConsistencyGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConsistencyGroupOK, error)
+	CreateConsistencyGroup(params *CreateConsistencyGroupParams, opts ...ClientOption) (*CreateConsistencyGroupOK, error)
 
-	DeleteConsistencyGroup(params *DeleteConsistencyGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConsistencyGroupOK, error)
+	DeleteConsistencyGroup(params *DeleteConsistencyGroupParams, opts ...ClientOption) (*DeleteConsistencyGroupOK, error)
 
-	GetConsistencyGroups(params *GetConsistencyGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsistencyGroupsOK, error)
+	GetConsistencyGroups(params *GetConsistencyGroupsParams, opts ...ClientOption) (*GetConsistencyGroupsOK, error)
 
-	GetConsistencyGroupsConnection(params *GetConsistencyGroupsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsistencyGroupsConnectionOK, error)
+	GetConsistencyGroupsConnection(params *GetConsistencyGroupsConnectionParams, opts ...ClientOption) (*GetConsistencyGroupsConnectionOK, error)
 
-	UpdateConsistencyGroup(params *UpdateConsistencyGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateConsistencyGroupOK, error)
+	UpdateConsistencyGroup(params *UpdateConsistencyGroupParams, opts ...ClientOption) (*UpdateConsistencyGroupOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateConsistencyGroup create consistency group API
 */
-func (a *Client) CreateConsistencyGroup(params *CreateConsistencyGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConsistencyGroupOK, error) {
+func (a *Client) CreateConsistencyGroup(params *CreateConsistencyGroupParams, opts ...ClientOption) (*CreateConsistencyGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateConsistencyGroupParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateConsistencyGroup(params *CreateConsistencyGroupParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateConsistencyGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateConsistencyGroup(params *CreateConsistencyGroupParams, au
 /*
   DeleteConsistencyGroup delete consistency group API
 */
-func (a *Client) DeleteConsistencyGroup(params *DeleteConsistencyGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteConsistencyGroupOK, error) {
+func (a *Client) DeleteConsistencyGroup(params *DeleteConsistencyGroupParams, opts ...ClientOption) (*DeleteConsistencyGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteConsistencyGroupParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteConsistencyGroup(params *DeleteConsistencyGroupParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteConsistencyGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteConsistencyGroup(params *DeleteConsistencyGroupParams, au
 /*
   GetConsistencyGroups get consistency groups API
 */
-func (a *Client) GetConsistencyGroups(params *GetConsistencyGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsistencyGroupsOK, error) {
+func (a *Client) GetConsistencyGroups(params *GetConsistencyGroupsParams, opts ...ClientOption) (*GetConsistencyGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetConsistencyGroupsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetConsistencyGroups(params *GetConsistencyGroupsParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetConsistencyGroupsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetConsistencyGroups(params *GetConsistencyGroupsParams, authIn
 /*
   GetConsistencyGroupsConnection get consistency groups connection API
 */
-func (a *Client) GetConsistencyGroupsConnection(params *GetConsistencyGroupsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetConsistencyGroupsConnectionOK, error) {
+func (a *Client) GetConsistencyGroupsConnection(params *GetConsistencyGroupsConnectionParams, opts ...ClientOption) (*GetConsistencyGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetConsistencyGroupsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetConsistencyGroupsConnection(params *GetConsistencyGroupsConn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetConsistencyGroupsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetConsistencyGroupsConnection(params *GetConsistencyGroupsConn
 /*
   UpdateConsistencyGroup update consistency group API
 */
-func (a *Client) UpdateConsistencyGroup(params *UpdateConsistencyGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateConsistencyGroupOK, error) {
+func (a *Client) UpdateConsistencyGroup(params *UpdateConsistencyGroupParams, opts ...ClientOption) (*UpdateConsistencyGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateConsistencyGroupParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateConsistencyGroup(params *UpdateConsistencyGroupParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateConsistencyGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

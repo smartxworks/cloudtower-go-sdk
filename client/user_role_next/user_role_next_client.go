@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateRole(params *CreateRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRoleOK, error)
+	CreateRole(params *CreateRoleParams, opts ...ClientOption) (*CreateRoleOK, error)
 
-	DeleteRole(params *DeleteRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRoleOK, error)
+	DeleteRole(params *DeleteRoleParams, opts ...ClientOption) (*DeleteRoleOK, error)
 
-	GetUserRoleNexts(params *GetUserRoleNextsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserRoleNextsOK, error)
+	GetUserRoleNexts(params *GetUserRoleNextsParams, opts ...ClientOption) (*GetUserRoleNextsOK, error)
 
-	GetUserRoleNextsConnection(params *GetUserRoleNextsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserRoleNextsConnectionOK, error)
+	GetUserRoleNextsConnection(params *GetUserRoleNextsConnectionParams, opts ...ClientOption) (*GetUserRoleNextsConnectionOK, error)
 
-	UpdateRole(params *UpdateRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRoleOK, error)
+	UpdateRole(params *UpdateRoleParams, opts ...ClientOption) (*UpdateRoleOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateRole create role API
 */
-func (a *Client) CreateRole(params *CreateRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRoleOK, error) {
+func (a *Client) CreateRole(params *CreateRoleParams, opts ...ClientOption) (*CreateRoleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateRoleParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateRole(params *CreateRoleParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateRoleReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateRole(params *CreateRoleParams, authInfo runtime.ClientAut
 /*
   DeleteRole delete role API
 */
-func (a *Client) DeleteRole(params *DeleteRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRoleOK, error) {
+func (a *Client) DeleteRole(params *DeleteRoleParams, opts ...ClientOption) (*DeleteRoleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteRoleParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteRole(params *DeleteRoleParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteRoleReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteRole(params *DeleteRoleParams, authInfo runtime.ClientAut
 /*
   GetUserRoleNexts get user role nexts API
 */
-func (a *Client) GetUserRoleNexts(params *GetUserRoleNextsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserRoleNextsOK, error) {
+func (a *Client) GetUserRoleNexts(params *GetUserRoleNextsParams, opts ...ClientOption) (*GetUserRoleNextsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUserRoleNextsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetUserRoleNexts(params *GetUserRoleNextsParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUserRoleNextsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetUserRoleNexts(params *GetUserRoleNextsParams, authInfo runti
 /*
   GetUserRoleNextsConnection get user role nexts connection API
 */
-func (a *Client) GetUserRoleNextsConnection(params *GetUserRoleNextsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserRoleNextsConnectionOK, error) {
+func (a *Client) GetUserRoleNextsConnection(params *GetUserRoleNextsConnectionParams, opts ...ClientOption) (*GetUserRoleNextsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUserRoleNextsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetUserRoleNextsConnection(params *GetUserRoleNextsConnectionPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUserRoleNextsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetUserRoleNextsConnection(params *GetUserRoleNextsConnectionPa
 /*
   UpdateRole update role API
 */
-func (a *Client) UpdateRole(params *UpdateRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRoleOK, error) {
+func (a *Client) UpdateRole(params *UpdateRoleParams, opts ...ClientOption) (*UpdateRoleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateRoleParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateRole(params *UpdateRoleParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateRoleReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

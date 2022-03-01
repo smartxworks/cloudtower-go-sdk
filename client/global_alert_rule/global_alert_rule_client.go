@@ -30,13 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetGlobalAlertRules(params *GetGlobalAlertRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalAlertRulesOK, error)
+	GetGlobalAlertRules(params *GetGlobalAlertRulesParams, opts ...ClientOption) (*GetGlobalAlertRulesOK, error)
 
-	GetGlobalAlertRulesConnection(params *GetGlobalAlertRulesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalAlertRulesConnectionOK, error)
+	GetGlobalAlertRulesConnection(params *GetGlobalAlertRulesConnectionParams, opts ...ClientOption) (*GetGlobalAlertRulesConnectionOK, error)
 
-	UpdateCustomizeAlertRule(params *UpdateCustomizeAlertRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCustomizeAlertRuleOK, error)
+	UpdateCustomizeAlertRule(params *UpdateCustomizeAlertRuleParams, opts ...ClientOption) (*UpdateCustomizeAlertRuleOK, error)
 
-	UpdateGlobalAlertRule(params *UpdateGlobalAlertRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateGlobalAlertRuleOK, error)
+	UpdateGlobalAlertRule(params *UpdateGlobalAlertRuleParams, opts ...ClientOption) (*UpdateGlobalAlertRuleOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -44,7 +44,7 @@ type ClientService interface {
 /*
   GetGlobalAlertRules get global alert rules API
 */
-func (a *Client) GetGlobalAlertRules(params *GetGlobalAlertRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalAlertRulesOK, error) {
+func (a *Client) GetGlobalAlertRules(params *GetGlobalAlertRulesParams, opts ...ClientOption) (*GetGlobalAlertRulesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGlobalAlertRulesParams()
@@ -58,7 +58,6 @@ func (a *Client) GetGlobalAlertRules(params *GetGlobalAlertRulesParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetGlobalAlertRulesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -83,7 +82,7 @@ func (a *Client) GetGlobalAlertRules(params *GetGlobalAlertRulesParams, authInfo
 /*
   GetGlobalAlertRulesConnection get global alert rules connection API
 */
-func (a *Client) GetGlobalAlertRulesConnection(params *GetGlobalAlertRulesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetGlobalAlertRulesConnectionOK, error) {
+func (a *Client) GetGlobalAlertRulesConnection(params *GetGlobalAlertRulesConnectionParams, opts ...ClientOption) (*GetGlobalAlertRulesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGlobalAlertRulesConnectionParams()
@@ -97,7 +96,6 @@ func (a *Client) GetGlobalAlertRulesConnection(params *GetGlobalAlertRulesConnec
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetGlobalAlertRulesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -122,7 +120,7 @@ func (a *Client) GetGlobalAlertRulesConnection(params *GetGlobalAlertRulesConnec
 /*
   UpdateCustomizeAlertRule update customize alert rule API
 */
-func (a *Client) UpdateCustomizeAlertRule(params *UpdateCustomizeAlertRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCustomizeAlertRuleOK, error) {
+func (a *Client) UpdateCustomizeAlertRule(params *UpdateCustomizeAlertRuleParams, opts ...ClientOption) (*UpdateCustomizeAlertRuleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateCustomizeAlertRuleParams()
@@ -136,7 +134,6 @@ func (a *Client) UpdateCustomizeAlertRule(params *UpdateCustomizeAlertRuleParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateCustomizeAlertRuleReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -161,7 +158,7 @@ func (a *Client) UpdateCustomizeAlertRule(params *UpdateCustomizeAlertRuleParams
 /*
   UpdateGlobalAlertRule update global alert rule API
 */
-func (a *Client) UpdateGlobalAlertRule(params *UpdateGlobalAlertRuleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateGlobalAlertRuleOK, error) {
+func (a *Client) UpdateGlobalAlertRule(params *UpdateGlobalAlertRuleParams, opts ...ClientOption) (*UpdateGlobalAlertRuleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateGlobalAlertRuleParams()
@@ -175,7 +172,6 @@ func (a *Client) UpdateGlobalAlertRule(params *UpdateGlobalAlertRuleParams, auth
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateGlobalAlertRuleReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

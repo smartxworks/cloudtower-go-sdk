@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetContentLibraryImages(params *GetContentLibraryImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContentLibraryImagesOK, error)
+	GetContentLibraryImages(params *GetContentLibraryImagesParams, opts ...ClientOption) (*GetContentLibraryImagesOK, error)
 
-	GetContentLibraryImagesConnection(params *GetContentLibraryImagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContentLibraryImagesConnectionOK, error)
+	GetContentLibraryImagesConnection(params *GetContentLibraryImagesConnectionParams, opts ...ClientOption) (*GetContentLibraryImagesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetContentLibraryImages get content library images API
 */
-func (a *Client) GetContentLibraryImages(params *GetContentLibraryImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContentLibraryImagesOK, error) {
+func (a *Client) GetContentLibraryImages(params *GetContentLibraryImagesParams, opts ...ClientOption) (*GetContentLibraryImagesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetContentLibraryImagesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetContentLibraryImages(params *GetContentLibraryImagesParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetContentLibraryImagesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetContentLibraryImages(params *GetContentLibraryImagesParams, 
 /*
   GetContentLibraryImagesConnection get content library images connection API
 */
-func (a *Client) GetContentLibraryImagesConnection(params *GetContentLibraryImagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetContentLibraryImagesConnectionOK, error) {
+func (a *Client) GetContentLibraryImagesConnection(params *GetContentLibraryImagesConnectionParams, opts ...ClientOption) (*GetContentLibraryImagesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetContentLibraryImagesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetContentLibraryImagesConnection(params *GetContentLibraryImag
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetContentLibraryImagesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

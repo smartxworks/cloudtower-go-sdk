@@ -164,7 +164,7 @@ type ViewUpdationParamsData struct {
 	TimeSpan *int32 `json:"time_span,omitempty"`
 
 	// time unit
-	TimeUnit TimeUnit `json:"time_unit,omitempty"`
+	TimeUnit *TimeUnit `json:"time_unit,omitempty"`
 }
 
 // Validate validates this view updation params data
@@ -186,13 +186,15 @@ func (m *ViewUpdationParamsData) validateTimeUnit(formats strfmt.Registry) error
 		return nil
 	}
 
-	if err := m.TimeUnit.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "time_unit")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "time_unit")
+	if m.TimeUnit != nil {
+		if err := m.TimeUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "time_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "time_unit")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -214,13 +216,15 @@ func (m *ViewUpdationParamsData) ContextValidate(ctx context.Context, formats st
 
 func (m *ViewUpdationParamsData) contextValidateTimeUnit(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.TimeUnit.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "time_unit")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "time_unit")
+	if m.TimeUnit != nil {
+		if err := m.TimeUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "time_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "time_unit")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

@@ -30,19 +30,19 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateVds(params *CreateVdsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVdsOK, error)
+	CreateVds(params *CreateVdsParams, opts ...ClientOption) (*CreateVdsOK, error)
 
-	CreateVdsWithAccessVlan(params *CreateVdsWithAccessVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVdsWithAccessVlanOK, error)
+	CreateVdsWithAccessVlan(params *CreateVdsWithAccessVlanParams, opts ...ClientOption) (*CreateVdsWithAccessVlanOK, error)
 
-	CreateVdsWithMigrateVlan(params *CreateVdsWithMigrateVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVdsWithMigrateVlanOK, error)
+	CreateVdsWithMigrateVlan(params *CreateVdsWithMigrateVlanParams, opts ...ClientOption) (*CreateVdsWithMigrateVlanOK, error)
 
-	DeleteVds(params *DeleteVdsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVdsOK, error)
+	DeleteVds(params *DeleteVdsParams, opts ...ClientOption) (*DeleteVdsOK, error)
 
-	GetVdses(params *GetVdsesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVdsesOK, error)
+	GetVdses(params *GetVdsesParams, opts ...ClientOption) (*GetVdsesOK, error)
 
-	GetVdsesConnection(params *GetVdsesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVdsesConnectionOK, error)
+	GetVdsesConnection(params *GetVdsesConnectionParams, opts ...ClientOption) (*GetVdsesConnectionOK, error)
 
-	UpdateVds(params *UpdateVdsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVdsOK, error)
+	UpdateVds(params *UpdateVdsParams, opts ...ClientOption) (*UpdateVdsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -50,7 +50,7 @@ type ClientService interface {
 /*
   CreateVds create vds API
 */
-func (a *Client) CreateVds(params *CreateVdsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVdsOK, error) {
+func (a *Client) CreateVds(params *CreateVdsParams, opts ...ClientOption) (*CreateVdsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVdsParams()
@@ -64,7 +64,6 @@ func (a *Client) CreateVds(params *CreateVdsParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVdsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -89,7 +88,7 @@ func (a *Client) CreateVds(params *CreateVdsParams, authInfo runtime.ClientAuthI
 /*
   CreateVdsWithAccessVlan create vds with access vlan API
 */
-func (a *Client) CreateVdsWithAccessVlan(params *CreateVdsWithAccessVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVdsWithAccessVlanOK, error) {
+func (a *Client) CreateVdsWithAccessVlan(params *CreateVdsWithAccessVlanParams, opts ...ClientOption) (*CreateVdsWithAccessVlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVdsWithAccessVlanParams()
@@ -103,7 +102,6 @@ func (a *Client) CreateVdsWithAccessVlan(params *CreateVdsWithAccessVlanParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVdsWithAccessVlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -128,7 +126,7 @@ func (a *Client) CreateVdsWithAccessVlan(params *CreateVdsWithAccessVlanParams, 
 /*
   CreateVdsWithMigrateVlan create vds with migrate vlan API
 */
-func (a *Client) CreateVdsWithMigrateVlan(params *CreateVdsWithMigrateVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVdsWithMigrateVlanOK, error) {
+func (a *Client) CreateVdsWithMigrateVlan(params *CreateVdsWithMigrateVlanParams, opts ...ClientOption) (*CreateVdsWithMigrateVlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVdsWithMigrateVlanParams()
@@ -142,7 +140,6 @@ func (a *Client) CreateVdsWithMigrateVlan(params *CreateVdsWithMigrateVlanParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVdsWithMigrateVlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -167,7 +164,7 @@ func (a *Client) CreateVdsWithMigrateVlan(params *CreateVdsWithMigrateVlanParams
 /*
   DeleteVds delete vds API
 */
-func (a *Client) DeleteVds(params *DeleteVdsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVdsOK, error) {
+func (a *Client) DeleteVds(params *DeleteVdsParams, opts ...ClientOption) (*DeleteVdsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVdsParams()
@@ -181,7 +178,6 @@ func (a *Client) DeleteVds(params *DeleteVdsParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteVdsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -206,7 +202,7 @@ func (a *Client) DeleteVds(params *DeleteVdsParams, authInfo runtime.ClientAuthI
 /*
   GetVdses get vdses API
 */
-func (a *Client) GetVdses(params *GetVdsesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVdsesOK, error) {
+func (a *Client) GetVdses(params *GetVdsesParams, opts ...ClientOption) (*GetVdsesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVdsesParams()
@@ -220,7 +216,6 @@ func (a *Client) GetVdses(params *GetVdsesParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVdsesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -245,7 +240,7 @@ func (a *Client) GetVdses(params *GetVdsesParams, authInfo runtime.ClientAuthInf
 /*
   GetVdsesConnection get vdses connection API
 */
-func (a *Client) GetVdsesConnection(params *GetVdsesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVdsesConnectionOK, error) {
+func (a *Client) GetVdsesConnection(params *GetVdsesConnectionParams, opts ...ClientOption) (*GetVdsesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVdsesConnectionParams()
@@ -259,7 +254,6 @@ func (a *Client) GetVdsesConnection(params *GetVdsesConnectionParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVdsesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -284,7 +278,7 @@ func (a *Client) GetVdsesConnection(params *GetVdsesConnectionParams, authInfo r
 /*
   UpdateVds update vds API
 */
-func (a *Client) UpdateVds(params *UpdateVdsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVdsOK, error) {
+func (a *Client) UpdateVds(params *UpdateVdsParams, opts ...ClientOption) (*UpdateVdsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVdsParams()
@@ -298,7 +292,6 @@ func (a *Client) UpdateVds(params *UpdateVdsParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateVdsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

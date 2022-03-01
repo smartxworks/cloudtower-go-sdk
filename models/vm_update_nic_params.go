@@ -178,7 +178,7 @@ type VMUpdateNicParamsData struct {
 	Mirror *bool `json:"mirror,omitempty"`
 
 	// model
-	Model VMNicModel `json:"model,omitempty"`
+	Model *VMNicModel `json:"model,omitempty"`
 
 	// nic id
 	NicID *string `json:"nic_id,omitempty"`
@@ -214,13 +214,15 @@ func (m *VMUpdateNicParamsData) validateModel(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.Model.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "model")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "model")
+	if m.Model != nil {
+		if err := m.Model.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "model")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "model")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -251,13 +253,15 @@ func (m *VMUpdateNicParamsData) ContextValidate(ctx context.Context, formats str
 
 func (m *VMUpdateNicParamsData) contextValidateModel(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Model.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "model")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "model")
+	if m.Model != nil {
+		if err := m.Model.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "model")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "model")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

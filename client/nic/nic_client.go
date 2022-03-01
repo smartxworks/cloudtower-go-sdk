@@ -30,11 +30,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetNics(params *GetNicsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNicsOK, error)
+	GetNics(params *GetNicsParams, opts ...ClientOption) (*GetNicsOK, error)
 
-	GetNicsConnection(params *GetNicsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNicsConnectionOK, error)
+	GetNicsConnection(params *GetNicsConnectionParams, opts ...ClientOption) (*GetNicsConnectionOK, error)
 
-	UpdateNic(params *UpdateNicParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNicOK, error)
+	UpdateNic(params *UpdateNicParams, opts ...ClientOption) (*UpdateNicOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -42,7 +42,7 @@ type ClientService interface {
 /*
   GetNics get nics API
 */
-func (a *Client) GetNics(params *GetNicsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNicsOK, error) {
+func (a *Client) GetNics(params *GetNicsParams, opts ...ClientOption) (*GetNicsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNicsParams()
@@ -56,7 +56,6 @@ func (a *Client) GetNics(params *GetNicsParams, authInfo runtime.ClientAuthInfoW
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNicsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -81,7 +80,7 @@ func (a *Client) GetNics(params *GetNicsParams, authInfo runtime.ClientAuthInfoW
 /*
   GetNicsConnection get nics connection API
 */
-func (a *Client) GetNicsConnection(params *GetNicsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNicsConnectionOK, error) {
+func (a *Client) GetNicsConnection(params *GetNicsConnectionParams, opts ...ClientOption) (*GetNicsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNicsConnectionParams()
@@ -95,7 +94,6 @@ func (a *Client) GetNicsConnection(params *GetNicsConnectionParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNicsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -120,7 +118,7 @@ func (a *Client) GetNicsConnection(params *GetNicsConnectionParams, authInfo run
 /*
   UpdateNic update nic API
 */
-func (a *Client) UpdateNic(params *UpdateNicParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNicOK, error) {
+func (a *Client) UpdateNic(params *UpdateNicParams, opts ...ClientOption) (*UpdateNicOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNicParams()
@@ -134,7 +132,6 @@ func (a *Client) UpdateNic(params *UpdateNicParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateNicReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

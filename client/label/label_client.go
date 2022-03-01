@@ -30,19 +30,19 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AddLabelsToResources(params *AddLabelsToResourcesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddLabelsToResourcesOK, error)
+	AddLabelsToResources(params *AddLabelsToResourcesParams, opts ...ClientOption) (*AddLabelsToResourcesOK, error)
 
-	CreateLabel(params *CreateLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLabelOK, error)
+	CreateLabel(params *CreateLabelParams, opts ...ClientOption) (*CreateLabelOK, error)
 
-	DeleteLabel(params *DeleteLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLabelOK, error)
+	DeleteLabel(params *DeleteLabelParams, opts ...ClientOption) (*DeleteLabelOK, error)
 
-	GetLabels(params *GetLabelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLabelsOK, error)
+	GetLabels(params *GetLabelsParams, opts ...ClientOption) (*GetLabelsOK, error)
 
-	GetLabelsConnection(params *GetLabelsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLabelsConnectionOK, error)
+	GetLabelsConnection(params *GetLabelsConnectionParams, opts ...ClientOption) (*GetLabelsConnectionOK, error)
 
-	RemoveLabelsFromResources(params *RemoveLabelsFromResourcesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveLabelsFromResourcesOK, error)
+	RemoveLabelsFromResources(params *RemoveLabelsFromResourcesParams, opts ...ClientOption) (*RemoveLabelsFromResourcesOK, error)
 
-	UpdateLabel(params *UpdateLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateLabelOK, error)
+	UpdateLabel(params *UpdateLabelParams, opts ...ClientOption) (*UpdateLabelOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -50,7 +50,7 @@ type ClientService interface {
 /*
   AddLabelsToResources add labels to resources API
 */
-func (a *Client) AddLabelsToResources(params *AddLabelsToResourcesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddLabelsToResourcesOK, error) {
+func (a *Client) AddLabelsToResources(params *AddLabelsToResourcesParams, opts ...ClientOption) (*AddLabelsToResourcesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddLabelsToResourcesParams()
@@ -64,7 +64,6 @@ func (a *Client) AddLabelsToResources(params *AddLabelsToResourcesParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AddLabelsToResourcesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -89,7 +88,7 @@ func (a *Client) AddLabelsToResources(params *AddLabelsToResourcesParams, authIn
 /*
   CreateLabel create label API
 */
-func (a *Client) CreateLabel(params *CreateLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLabelOK, error) {
+func (a *Client) CreateLabel(params *CreateLabelParams, opts ...ClientOption) (*CreateLabelOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateLabelParams()
@@ -103,7 +102,6 @@ func (a *Client) CreateLabel(params *CreateLabelParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateLabelReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -128,7 +126,7 @@ func (a *Client) CreateLabel(params *CreateLabelParams, authInfo runtime.ClientA
 /*
   DeleteLabel delete label API
 */
-func (a *Client) DeleteLabel(params *DeleteLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLabelOK, error) {
+func (a *Client) DeleteLabel(params *DeleteLabelParams, opts ...ClientOption) (*DeleteLabelOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLabelParams()
@@ -142,7 +140,6 @@ func (a *Client) DeleteLabel(params *DeleteLabelParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteLabelReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -167,7 +164,7 @@ func (a *Client) DeleteLabel(params *DeleteLabelParams, authInfo runtime.ClientA
 /*
   GetLabels get labels API
 */
-func (a *Client) GetLabels(params *GetLabelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLabelsOK, error) {
+func (a *Client) GetLabels(params *GetLabelsParams, opts ...ClientOption) (*GetLabelsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLabelsParams()
@@ -181,7 +178,6 @@ func (a *Client) GetLabels(params *GetLabelsParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetLabelsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -206,7 +202,7 @@ func (a *Client) GetLabels(params *GetLabelsParams, authInfo runtime.ClientAuthI
 /*
   GetLabelsConnection get labels connection API
 */
-func (a *Client) GetLabelsConnection(params *GetLabelsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLabelsConnectionOK, error) {
+func (a *Client) GetLabelsConnection(params *GetLabelsConnectionParams, opts ...ClientOption) (*GetLabelsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLabelsConnectionParams()
@@ -220,7 +216,6 @@ func (a *Client) GetLabelsConnection(params *GetLabelsConnectionParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetLabelsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -245,7 +240,7 @@ func (a *Client) GetLabelsConnection(params *GetLabelsConnectionParams, authInfo
 /*
   RemoveLabelsFromResources remove labels from resources API
 */
-func (a *Client) RemoveLabelsFromResources(params *RemoveLabelsFromResourcesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RemoveLabelsFromResourcesOK, error) {
+func (a *Client) RemoveLabelsFromResources(params *RemoveLabelsFromResourcesParams, opts ...ClientOption) (*RemoveLabelsFromResourcesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRemoveLabelsFromResourcesParams()
@@ -259,7 +254,6 @@ func (a *Client) RemoveLabelsFromResources(params *RemoveLabelsFromResourcesPara
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RemoveLabelsFromResourcesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -284,7 +278,7 @@ func (a *Client) RemoveLabelsFromResources(params *RemoveLabelsFromResourcesPara
 /*
   UpdateLabel update label API
 */
-func (a *Client) UpdateLabel(params *UpdateLabelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateLabelOK, error) {
+func (a *Client) UpdateLabel(params *UpdateLabelParams, opts ...ClientOption) (*UpdateLabelOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateLabelParams()
@@ -298,7 +292,6 @@ func (a *Client) UpdateLabel(params *UpdateLabelParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateLabelReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

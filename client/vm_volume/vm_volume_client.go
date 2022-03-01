@@ -30,13 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateVMVolume(params *CreateVMVolumeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMVolumeOK, error)
+	CreateVMVolume(params *CreateVMVolumeParams, opts ...ClientOption) (*CreateVMVolumeOK, error)
 
-	DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMVolumeFromVMOK, error)
+	DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, opts ...ClientOption) (*DeleteVMVolumeFromVMOK, error)
 
-	GetVMVolumes(params *GetVMVolumesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMVolumesOK, error)
+	GetVMVolumes(params *GetVMVolumesParams, opts ...ClientOption) (*GetVMVolumesOK, error)
 
-	GetVMVolumesConnection(params *GetVMVolumesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMVolumesConnectionOK, error)
+	GetVMVolumesConnection(params *GetVMVolumesConnectionParams, opts ...ClientOption) (*GetVMVolumesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -44,7 +44,7 @@ type ClientService interface {
 /*
   CreateVMVolume create Vm volume API
 */
-func (a *Client) CreateVMVolume(params *CreateVMVolumeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMVolumeOK, error) {
+func (a *Client) CreateVMVolume(params *CreateVMVolumeParams, opts ...ClientOption) (*CreateVMVolumeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVMVolumeParams()
@@ -58,7 +58,6 @@ func (a *Client) CreateVMVolume(params *CreateVMVolumeParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVMVolumeReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -83,7 +82,7 @@ func (a *Client) CreateVMVolume(params *CreateVMVolumeParams, authInfo runtime.C
 /*
   DeleteVMVolumeFromVM delete Vm volume from Vm API
 */
-func (a *Client) DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVMVolumeFromVMOK, error) {
+func (a *Client) DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, opts ...ClientOption) (*DeleteVMVolumeFromVMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVMVolumeFromVMParams()
@@ -97,7 +96,6 @@ func (a *Client) DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteVMVolumeFromVMReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -122,7 +120,7 @@ func (a *Client) DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, authIn
 /*
   GetVMVolumes get Vm volumes API
 */
-func (a *Client) GetVMVolumes(params *GetVMVolumesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMVolumesOK, error) {
+func (a *Client) GetVMVolumes(params *GetVMVolumesParams, opts ...ClientOption) (*GetVMVolumesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMVolumesParams()
@@ -136,7 +134,6 @@ func (a *Client) GetVMVolumes(params *GetVMVolumesParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMVolumesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -161,7 +158,7 @@ func (a *Client) GetVMVolumes(params *GetVMVolumesParams, authInfo runtime.Clien
 /*
   GetVMVolumesConnection get Vm volumes connection API
 */
-func (a *Client) GetVMVolumesConnection(params *GetVMVolumesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMVolumesConnectionOK, error) {
+func (a *Client) GetVMVolumesConnection(params *GetVMVolumesConnectionParams, opts ...ClientOption) (*GetVMVolumesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMVolumesConnectionParams()
@@ -175,7 +172,6 @@ func (a *Client) GetVMVolumesConnection(params *GetVMVolumesConnectionParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMVolumesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

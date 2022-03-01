@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetReportTasks(params *GetReportTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportTasksOK, error)
+	GetReportTasks(params *GetReportTasksParams, opts ...ClientOption) (*GetReportTasksOK, error)
 
-	GetReportTasksConnection(params *GetReportTasksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportTasksConnectionOK, error)
+	GetReportTasksConnection(params *GetReportTasksConnectionParams, opts ...ClientOption) (*GetReportTasksConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetReportTasks get report tasks API
 */
-func (a *Client) GetReportTasks(params *GetReportTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportTasksOK, error) {
+func (a *Client) GetReportTasks(params *GetReportTasksParams, opts ...ClientOption) (*GetReportTasksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReportTasksParams()
@@ -54,7 +54,6 @@ func (a *Client) GetReportTasks(params *GetReportTasksParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetReportTasksReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetReportTasks(params *GetReportTasksParams, authInfo runtime.C
 /*
   GetReportTasksConnection get report tasks connection API
 */
-func (a *Client) GetReportTasksConnection(params *GetReportTasksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetReportTasksConnectionOK, error) {
+func (a *Client) GetReportTasksConnection(params *GetReportTasksConnectionParams, opts ...ClientOption) (*GetReportTasksConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReportTasksConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetReportTasksConnection(params *GetReportTasksConnectionParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetReportTasksConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

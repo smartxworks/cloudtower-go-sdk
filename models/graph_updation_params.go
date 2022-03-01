@@ -182,10 +182,10 @@ type GraphUpdationParamsData struct {
 	MetricName *string `json:"metric_name,omitempty"`
 
 	// metric type
-	MetricType MetricType `json:"metric_type,omitempty"`
+	MetricType *MetricType `json:"metric_type,omitempty"`
 
 	// network
-	Network NetworkType `json:"network,omitempty"`
+	Network *NetworkType `json:"network,omitempty"`
 
 	// nics
 	Nics *NicWhereInput `json:"nics,omitempty"`
@@ -200,7 +200,7 @@ type GraphUpdationParamsData struct {
 	Title *string `json:"title,omitempty"`
 
 	// type
-	Type GraphType `json:"type,omitempty"`
+	Type *GraphType `json:"type,omitempty"`
 
 	// vm nics
 	VMNics *VMNicWhereInput `json:"vmNics,omitempty"`
@@ -347,13 +347,15 @@ func (m *GraphUpdationParamsData) validateMetricType(formats strfmt.Registry) er
 		return nil
 	}
 
-	if err := m.MetricType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "metric_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "metric_type")
+	if m.MetricType != nil {
+		if err := m.MetricType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "metric_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "metric_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -364,13 +366,15 @@ func (m *GraphUpdationParamsData) validateNetwork(formats strfmt.Registry) error
 		return nil
 	}
 
-	if err := m.Network.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "network")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "network")
+	if m.Network != nil {
+		if err := m.Network.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "network")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "network")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -400,13 +404,15 @@ func (m *GraphUpdationParamsData) validateType(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.Type.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "type")
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -589,13 +595,15 @@ func (m *GraphUpdationParamsData) contextValidateLuns(ctx context.Context, forma
 
 func (m *GraphUpdationParamsData) contextValidateMetricType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.MetricType.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "metric_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "metric_type")
+	if m.MetricType != nil {
+		if err := m.MetricType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "metric_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "metric_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -603,13 +611,15 @@ func (m *GraphUpdationParamsData) contextValidateMetricType(ctx context.Context,
 
 func (m *GraphUpdationParamsData) contextValidateNetwork(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Network.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "network")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "network")
+	if m.Network != nil {
+		if err := m.Network.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "network")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "network")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -633,13 +643,15 @@ func (m *GraphUpdationParamsData) contextValidateNics(ctx context.Context, forma
 
 func (m *GraphUpdationParamsData) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Type.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "type")
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

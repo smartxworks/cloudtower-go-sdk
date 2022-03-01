@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetIpmis(params *GetIpmisParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIpmisOK, error)
+	GetIpmis(params *GetIpmisParams, opts ...ClientOption) (*GetIpmisOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -38,7 +38,7 @@ type ClientService interface {
 /*
   GetIpmis get ipmis API
 */
-func (a *Client) GetIpmis(params *GetIpmisParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIpmisOK, error) {
+func (a *Client) GetIpmis(params *GetIpmisParams, opts ...ClientOption) (*GetIpmisOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetIpmisParams()
@@ -52,7 +52,6 @@ func (a *Client) GetIpmis(params *GetIpmisParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetIpmisReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

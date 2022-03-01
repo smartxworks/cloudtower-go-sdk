@@ -53,7 +53,7 @@ type VMPlacementGroupCreationParams struct {
 	VMHostPreferPolicy *bool `json:"vm_host_prefer_policy,omitempty"`
 
 	// vm vm policy
-	VMVMPolicy VMVMPolicy `json:"vm_vm_policy,omitempty"`
+	VMVMPolicy *VMVMPolicy `json:"vm_vm_policy,omitempty"`
 
 	// vm vm policy enabled
 	VMVMPolicyEnabled *bool `json:"vm_vm_policy_enabled,omitempty"`
@@ -170,13 +170,15 @@ func (m *VMPlacementGroupCreationParams) validateVMVMPolicy(formats strfmt.Regis
 		return nil
 	}
 
-	if err := m.VMVMPolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("vm_vm_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("vm_vm_policy")
+	if m.VMVMPolicy != nil {
+		if err := m.VMVMPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_vm_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_vm_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -261,13 +263,15 @@ func (m *VMPlacementGroupCreationParams) contextValidatePreferHosts(ctx context.
 
 func (m *VMPlacementGroupCreationParams) contextValidateVMVMPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.VMVMPolicy.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("vm_vm_policy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("vm_vm_policy")
+	if m.VMVMPolicy != nil {
+		if err := m.VMVMPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_vm_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_vm_policy")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

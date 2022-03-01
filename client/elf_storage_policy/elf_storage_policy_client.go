@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetElfStoragePolicies(params *GetElfStoragePoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfStoragePoliciesOK, error)
+	GetElfStoragePolicies(params *GetElfStoragePoliciesParams, opts ...ClientOption) (*GetElfStoragePoliciesOK, error)
 
-	GetElfStoragePoliciesConnection(params *GetElfStoragePoliciesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfStoragePoliciesConnectionOK, error)
+	GetElfStoragePoliciesConnection(params *GetElfStoragePoliciesConnectionParams, opts ...ClientOption) (*GetElfStoragePoliciesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetElfStoragePolicies get elf storage policies API
 */
-func (a *Client) GetElfStoragePolicies(params *GetElfStoragePoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfStoragePoliciesOK, error) {
+func (a *Client) GetElfStoragePolicies(params *GetElfStoragePoliciesParams, opts ...ClientOption) (*GetElfStoragePoliciesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetElfStoragePoliciesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetElfStoragePolicies(params *GetElfStoragePoliciesParams, auth
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetElfStoragePoliciesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetElfStoragePolicies(params *GetElfStoragePoliciesParams, auth
 /*
   GetElfStoragePoliciesConnection get elf storage policies connection API
 */
-func (a *Client) GetElfStoragePoliciesConnection(params *GetElfStoragePoliciesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetElfStoragePoliciesConnectionOK, error) {
+func (a *Client) GetElfStoragePoliciesConnection(params *GetElfStoragePoliciesConnectionParams, opts ...ClientOption) (*GetElfStoragePoliciesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetElfStoragePoliciesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetElfStoragePoliciesConnection(params *GetElfStoragePoliciesCo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetElfStoragePoliciesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

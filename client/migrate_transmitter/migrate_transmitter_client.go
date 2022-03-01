@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetMigrateTransmitters(params *GetMigrateTransmittersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMigrateTransmittersOK, error)
+	GetMigrateTransmitters(params *GetMigrateTransmittersParams, opts ...ClientOption) (*GetMigrateTransmittersOK, error)
 
-	GetMigrateTransmittersConnection(params *GetMigrateTransmittersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMigrateTransmittersConnectionOK, error)
+	GetMigrateTransmittersConnection(params *GetMigrateTransmittersConnectionParams, opts ...ClientOption) (*GetMigrateTransmittersConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetMigrateTransmitters get migrate transmitters API
 */
-func (a *Client) GetMigrateTransmitters(params *GetMigrateTransmittersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMigrateTransmittersOK, error) {
+func (a *Client) GetMigrateTransmitters(params *GetMigrateTransmittersParams, opts ...ClientOption) (*GetMigrateTransmittersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMigrateTransmittersParams()
@@ -54,7 +54,6 @@ func (a *Client) GetMigrateTransmitters(params *GetMigrateTransmittersParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetMigrateTransmittersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetMigrateTransmitters(params *GetMigrateTransmittersParams, au
 /*
   GetMigrateTransmittersConnection get migrate transmitters connection API
 */
-func (a *Client) GetMigrateTransmittersConnection(params *GetMigrateTransmittersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMigrateTransmittersConnectionOK, error) {
+func (a *Client) GetMigrateTransmittersConnection(params *GetMigrateTransmittersConnectionParams, opts ...ClientOption) (*GetMigrateTransmittersConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMigrateTransmittersConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetMigrateTransmittersConnection(params *GetMigrateTransmitters
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetMigrateTransmittersConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -167,7 +167,7 @@ type SnapshotPlanUpdationParamsData struct {
 	ExecuteIntervals []int32 `json:"execute_intervals,omitempty"`
 
 	// execute plan type
-	ExecutePlanType SnapshotPlanExecuteType `json:"execute_plan_type,omitempty"`
+	ExecutePlanType *SnapshotPlanExecuteType `json:"execute_plan_type,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`
@@ -198,13 +198,15 @@ func (m *SnapshotPlanUpdationParamsData) validateExecutePlanType(formats strfmt.
 		return nil
 	}
 
-	if err := m.ExecutePlanType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "execute_plan_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "execute_plan_type")
+	if m.ExecutePlanType != nil {
+		if err := m.ExecutePlanType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "execute_plan_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "execute_plan_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -226,13 +228,15 @@ func (m *SnapshotPlanUpdationParamsData) ContextValidate(ctx context.Context, fo
 
 func (m *SnapshotPlanUpdationParamsData) contextValidateExecutePlanType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.ExecutePlanType.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "execute_plan_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "execute_plan_type")
+	if m.ExecutePlanType != nil {
+		if err := m.ExecutePlanType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "execute_plan_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "execute_plan_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

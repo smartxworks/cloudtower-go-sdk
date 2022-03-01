@@ -38,10 +38,10 @@ type GraphCreationParams struct {
 	MetricName *string `json:"metric_name"`
 
 	// metric type
-	MetricType MetricType `json:"metric_type,omitempty"`
+	MetricType *MetricType `json:"metric_type,omitempty"`
 
 	// network
-	Network NetworkType `json:"network,omitempty"`
+	Network *NetworkType `json:"network,omitempty"`
 
 	// resource type
 	// Required: true
@@ -141,13 +141,15 @@ func (m *GraphCreationParams) validateMetricType(formats strfmt.Registry) error 
 		return nil
 	}
 
-	if err := m.MetricType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("metric_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("metric_type")
+	if m.MetricType != nil {
+		if err := m.MetricType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metric_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metric_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -158,13 +160,15 @@ func (m *GraphCreationParams) validateNetwork(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.Network.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("network")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("network")
+	if m.Network != nil {
+		if err := m.Network.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("network")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("network")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -245,13 +249,15 @@ func (m *GraphCreationParams) ContextValidate(ctx context.Context, formats strfm
 
 func (m *GraphCreationParams) contextValidateMetricType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.MetricType.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("metric_type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("metric_type")
+	if m.MetricType != nil {
+		if err := m.MetricType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metric_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metric_type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -259,13 +265,15 @@ func (m *GraphCreationParams) contextValidateMetricType(ctx context.Context, for
 
 func (m *GraphCreationParams) contextValidateNetwork(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Network.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("network")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("network")
+	if m.Network != nil {
+		if err := m.Network.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("network")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("network")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

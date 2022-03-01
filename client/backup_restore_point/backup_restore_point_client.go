@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetBackupRestorePoints(params *GetBackupRestorePointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupRestorePointsOK, error)
+	GetBackupRestorePoints(params *GetBackupRestorePointsParams, opts ...ClientOption) (*GetBackupRestorePointsOK, error)
 
-	GetBackupRestorePointsConnection(params *GetBackupRestorePointsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupRestorePointsConnectionOK, error)
+	GetBackupRestorePointsConnection(params *GetBackupRestorePointsConnectionParams, opts ...ClientOption) (*GetBackupRestorePointsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetBackupRestorePoints get backup restore points API
 */
-func (a *Client) GetBackupRestorePoints(params *GetBackupRestorePointsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupRestorePointsOK, error) {
+func (a *Client) GetBackupRestorePoints(params *GetBackupRestorePointsParams, opts ...ClientOption) (*GetBackupRestorePointsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupRestorePointsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetBackupRestorePoints(params *GetBackupRestorePointsParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupRestorePointsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetBackupRestorePoints(params *GetBackupRestorePointsParams, au
 /*
   GetBackupRestorePointsConnection get backup restore points connection API
 */
-func (a *Client) GetBackupRestorePointsConnection(params *GetBackupRestorePointsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupRestorePointsConnectionOK, error) {
+func (a *Client) GetBackupRestorePointsConnection(params *GetBackupRestorePointsConnectionParams, opts ...ClientOption) (*GetBackupRestorePointsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupRestorePointsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetBackupRestorePointsConnection(params *GetBackupRestorePoints
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupRestorePointsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -30,17 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CloneSnapshotGroup(params *CloneSnapshotGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloneSnapshotGroupOK, error)
+	CloneSnapshotGroup(params *CloneSnapshotGroupParams, opts ...ClientOption) (*CloneSnapshotGroupOK, error)
 
-	DeleteSnapshotGroup(params *DeleteSnapshotGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnapshotGroupOK, error)
+	DeleteSnapshotGroup(params *DeleteSnapshotGroupParams, opts ...ClientOption) (*DeleteSnapshotGroupOK, error)
 
-	GetSnapshotGroups(params *GetSnapshotGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotGroupsOK, error)
+	GetSnapshotGroups(params *GetSnapshotGroupsParams, opts ...ClientOption) (*GetSnapshotGroupsOK, error)
 
-	GetSnapshotGroupsConnection(params *GetSnapshotGroupsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotGroupsConnectionOK, error)
+	GetSnapshotGroupsConnection(params *GetSnapshotGroupsConnectionParams, opts ...ClientOption) (*GetSnapshotGroupsConnectionOK, error)
 
-	KeepSnapshotGroup(params *KeepSnapshotGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeepSnapshotGroupOK, error)
+	KeepSnapshotGroup(params *KeepSnapshotGroupParams, opts ...ClientOption) (*KeepSnapshotGroupOK, error)
 
-	RollbackSnapshotGroup(params *RollbackSnapshotGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RollbackSnapshotGroupOK, error)
+	RollbackSnapshotGroup(params *RollbackSnapshotGroupParams, opts ...ClientOption) (*RollbackSnapshotGroupOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -48,7 +48,7 @@ type ClientService interface {
 /*
   CloneSnapshotGroup clone snapshot group API
 */
-func (a *Client) CloneSnapshotGroup(params *CloneSnapshotGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloneSnapshotGroupOK, error) {
+func (a *Client) CloneSnapshotGroup(params *CloneSnapshotGroupParams, opts ...ClientOption) (*CloneSnapshotGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCloneSnapshotGroupParams()
@@ -62,7 +62,6 @@ func (a *Client) CloneSnapshotGroup(params *CloneSnapshotGroupParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CloneSnapshotGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -87,7 +86,7 @@ func (a *Client) CloneSnapshotGroup(params *CloneSnapshotGroupParams, authInfo r
 /*
   DeleteSnapshotGroup delete snapshot group API
 */
-func (a *Client) DeleteSnapshotGroup(params *DeleteSnapshotGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnapshotGroupOK, error) {
+func (a *Client) DeleteSnapshotGroup(params *DeleteSnapshotGroupParams, opts ...ClientOption) (*DeleteSnapshotGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSnapshotGroupParams()
@@ -101,7 +100,6 @@ func (a *Client) DeleteSnapshotGroup(params *DeleteSnapshotGroupParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteSnapshotGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -126,7 +124,7 @@ func (a *Client) DeleteSnapshotGroup(params *DeleteSnapshotGroupParams, authInfo
 /*
   GetSnapshotGroups get snapshot groups API
 */
-func (a *Client) GetSnapshotGroups(params *GetSnapshotGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotGroupsOK, error) {
+func (a *Client) GetSnapshotGroups(params *GetSnapshotGroupsParams, opts ...ClientOption) (*GetSnapshotGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnapshotGroupsParams()
@@ -140,7 +138,6 @@ func (a *Client) GetSnapshotGroups(params *GetSnapshotGroupsParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnapshotGroupsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -165,7 +162,7 @@ func (a *Client) GetSnapshotGroups(params *GetSnapshotGroupsParams, authInfo run
 /*
   GetSnapshotGroupsConnection get snapshot groups connection API
 */
-func (a *Client) GetSnapshotGroupsConnection(params *GetSnapshotGroupsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnapshotGroupsConnectionOK, error) {
+func (a *Client) GetSnapshotGroupsConnection(params *GetSnapshotGroupsConnectionParams, opts ...ClientOption) (*GetSnapshotGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnapshotGroupsConnectionParams()
@@ -179,7 +176,6 @@ func (a *Client) GetSnapshotGroupsConnection(params *GetSnapshotGroupsConnection
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnapshotGroupsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -204,7 +200,7 @@ func (a *Client) GetSnapshotGroupsConnection(params *GetSnapshotGroupsConnection
 /*
   KeepSnapshotGroup keep snapshot group API
 */
-func (a *Client) KeepSnapshotGroup(params *KeepSnapshotGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeepSnapshotGroupOK, error) {
+func (a *Client) KeepSnapshotGroup(params *KeepSnapshotGroupParams, opts ...ClientOption) (*KeepSnapshotGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewKeepSnapshotGroupParams()
@@ -218,7 +214,6 @@ func (a *Client) KeepSnapshotGroup(params *KeepSnapshotGroupParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &KeepSnapshotGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -243,7 +238,7 @@ func (a *Client) KeepSnapshotGroup(params *KeepSnapshotGroupParams, authInfo run
 /*
   RollbackSnapshotGroup rollback snapshot group API
 */
-func (a *Client) RollbackSnapshotGroup(params *RollbackSnapshotGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RollbackSnapshotGroupOK, error) {
+func (a *Client) RollbackSnapshotGroup(params *RollbackSnapshotGroupParams, opts ...ClientOption) (*RollbackSnapshotGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRollbackSnapshotGroupParams()
@@ -257,7 +252,6 @@ func (a *Client) RollbackSnapshotGroup(params *RollbackSnapshotGroupParams, auth
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &RollbackSnapshotGroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

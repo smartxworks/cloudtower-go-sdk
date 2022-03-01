@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetUploadTasks(params *GetUploadTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUploadTasksOK, error)
+	GetUploadTasks(params *GetUploadTasksParams, opts ...ClientOption) (*GetUploadTasksOK, error)
 
-	GetUploadTasksConnection(params *GetUploadTasksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUploadTasksConnectionOK, error)
+	GetUploadTasksConnection(params *GetUploadTasksConnectionParams, opts ...ClientOption) (*GetUploadTasksConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetUploadTasks get upload tasks API
 */
-func (a *Client) GetUploadTasks(params *GetUploadTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUploadTasksOK, error) {
+func (a *Client) GetUploadTasks(params *GetUploadTasksParams, opts ...ClientOption) (*GetUploadTasksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUploadTasksParams()
@@ -54,7 +54,6 @@ func (a *Client) GetUploadTasks(params *GetUploadTasksParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUploadTasksReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetUploadTasks(params *GetUploadTasksParams, authInfo runtime.C
 /*
   GetUploadTasksConnection get upload tasks connection API
 */
-func (a *Client) GetUploadTasksConnection(params *GetUploadTasksConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUploadTasksConnectionOK, error) {
+func (a *Client) GetUploadTasksConnection(params *GetUploadTasksConnectionParams, opts ...ClientOption) (*GetUploadTasksConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUploadTasksConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetUploadTasksConnection(params *GetUploadTasksConnectionParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetUploadTasksConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

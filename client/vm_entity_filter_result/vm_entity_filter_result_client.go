@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetVMEntityFilterResults(params *GetVMEntityFilterResultsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMEntityFilterResultsOK, error)
+	GetVMEntityFilterResults(params *GetVMEntityFilterResultsParams, opts ...ClientOption) (*GetVMEntityFilterResultsOK, error)
 
-	GetVMEntityFilterResultsConnection(params *GetVMEntityFilterResultsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMEntityFilterResultsConnectionOK, error)
+	GetVMEntityFilterResultsConnection(params *GetVMEntityFilterResultsConnectionParams, opts ...ClientOption) (*GetVMEntityFilterResultsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetVMEntityFilterResults get Vm entity filter results API
 */
-func (a *Client) GetVMEntityFilterResults(params *GetVMEntityFilterResultsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMEntityFilterResultsOK, error) {
+func (a *Client) GetVMEntityFilterResults(params *GetVMEntityFilterResultsParams, opts ...ClientOption) (*GetVMEntityFilterResultsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMEntityFilterResultsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetVMEntityFilterResults(params *GetVMEntityFilterResultsParams
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMEntityFilterResultsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetVMEntityFilterResults(params *GetVMEntityFilterResultsParams
 /*
   GetVMEntityFilterResultsConnection get Vm entity filter results connection API
 */
-func (a *Client) GetVMEntityFilterResultsConnection(params *GetVMEntityFilterResultsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVMEntityFilterResultsConnectionOK, error) {
+func (a *Client) GetVMEntityFilterResultsConnection(params *GetVMEntityFilterResultsConnectionParams, opts ...ClientOption) (*GetVMEntityFilterResultsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVMEntityFilterResultsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetVMEntityFilterResultsConnection(params *GetVMEntityFilterRes
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVMEntityFilterResultsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

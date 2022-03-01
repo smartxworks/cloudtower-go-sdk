@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetWitnessServices(params *GetWitnessServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetWitnessServicesOK, error)
+	GetWitnessServices(params *GetWitnessServicesParams, opts ...ClientOption) (*GetWitnessServicesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -38,7 +38,7 @@ type ClientService interface {
 /*
   GetWitnessServices get witness services API
 */
-func (a *Client) GetWitnessServices(params *GetWitnessServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetWitnessServicesOK, error) {
+func (a *Client) GetWitnessServices(params *GetWitnessServicesParams, opts ...ClientOption) (*GetWitnessServicesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetWitnessServicesParams()
@@ -52,7 +52,6 @@ func (a *Client) GetWitnessServices(params *GetWitnessServicesParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetWitnessServicesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

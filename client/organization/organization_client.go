@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateOrganization(params *CreateOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateOrganizationOK, error)
+	CreateOrganization(params *CreateOrganizationParams, opts ...ClientOption) (*CreateOrganizationOK, error)
 
-	DeleteOrganization(params *DeleteOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteOrganizationOK, error)
+	DeleteOrganization(params *DeleteOrganizationParams, opts ...ClientOption) (*DeleteOrganizationOK, error)
 
-	GetOrganizations(params *GetOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrganizationsOK, error)
+	GetOrganizations(params *GetOrganizationsParams, opts ...ClientOption) (*GetOrganizationsOK, error)
 
-	GetOrganizationsConnection(params *GetOrganizationsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrganizationsConnectionOK, error)
+	GetOrganizationsConnection(params *GetOrganizationsConnectionParams, opts ...ClientOption) (*GetOrganizationsConnectionOK, error)
 
-	UpdateOrganization(params *UpdateOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateOrganizationOK, error)
+	UpdateOrganization(params *UpdateOrganizationParams, opts ...ClientOption) (*UpdateOrganizationOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateOrganization create organization API
 */
-func (a *Client) CreateOrganization(params *CreateOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateOrganizationOK, error) {
+func (a *Client) CreateOrganization(params *CreateOrganizationParams, opts ...ClientOption) (*CreateOrganizationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateOrganizationParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateOrganization(params *CreateOrganizationParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateOrganizationReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateOrganization(params *CreateOrganizationParams, authInfo r
 /*
   DeleteOrganization delete organization API
 */
-func (a *Client) DeleteOrganization(params *DeleteOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteOrganizationOK, error) {
+func (a *Client) DeleteOrganization(params *DeleteOrganizationParams, opts ...ClientOption) (*DeleteOrganizationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteOrganizationParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteOrganization(params *DeleteOrganizationParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteOrganizationReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteOrganization(params *DeleteOrganizationParams, authInfo r
 /*
   GetOrganizations get organizations API
 */
-func (a *Client) GetOrganizations(params *GetOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrganizationsOK, error) {
+func (a *Client) GetOrganizations(params *GetOrganizationsParams, opts ...ClientOption) (*GetOrganizationsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOrganizationsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetOrganizations(params *GetOrganizationsParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetOrganizationsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetOrganizations(params *GetOrganizationsParams, authInfo runti
 /*
   GetOrganizationsConnection get organizations connection API
 */
-func (a *Client) GetOrganizationsConnection(params *GetOrganizationsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetOrganizationsConnectionOK, error) {
+func (a *Client) GetOrganizationsConnection(params *GetOrganizationsConnectionParams, opts ...ClientOption) (*GetOrganizationsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetOrganizationsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetOrganizationsConnection(params *GetOrganizationsConnectionPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetOrganizationsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetOrganizationsConnection(params *GetOrganizationsConnectionPa
 /*
   UpdateOrganization update organization API
 */
-func (a *Client) UpdateOrganization(params *UpdateOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateOrganizationOK, error) {
+func (a *Client) UpdateOrganization(params *UpdateOrganizationParams, opts ...ClientOption) (*UpdateOrganizationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateOrganizationParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateOrganization(params *UpdateOrganizationParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateOrganizationReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

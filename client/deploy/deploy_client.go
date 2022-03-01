@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetDeploys(params *GetDeploysParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeploysOK, error)
+	GetDeploys(params *GetDeploysParams, opts ...ClientOption) (*GetDeploysOK, error)
 
-	GetDeploysConnection(params *GetDeploysConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeploysConnectionOK, error)
+	GetDeploysConnection(params *GetDeploysConnectionParams, opts ...ClientOption) (*GetDeploysConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetDeploys get deploys API
 */
-func (a *Client) GetDeploys(params *GetDeploysParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeploysOK, error) {
+func (a *Client) GetDeploys(params *GetDeploysParams, opts ...ClientOption) (*GetDeploysOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploysParams()
@@ -54,7 +54,6 @@ func (a *Client) GetDeploys(params *GetDeploysParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetDeploysReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetDeploys(params *GetDeploysParams, authInfo runtime.ClientAut
 /*
   GetDeploysConnection get deploys connection API
 */
-func (a *Client) GetDeploysConnection(params *GetDeploysConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetDeploysConnectionOK, error) {
+func (a *Client) GetDeploysConnection(params *GetDeploysConnectionParams, opts ...ClientOption) (*GetDeploysConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploysConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetDeploysConnection(params *GetDeploysConnectionParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetDeploysConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

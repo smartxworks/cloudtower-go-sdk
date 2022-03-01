@@ -30,11 +30,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetNodeTopoes(params *GetNodeTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeTopoesOK, error)
+	GetNodeTopoes(params *GetNodeTopoesParams, opts ...ClientOption) (*GetNodeTopoesOK, error)
 
-	GetNodeTopoesConnection(params *GetNodeTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeTopoesConnectionOK, error)
+	GetNodeTopoesConnection(params *GetNodeTopoesConnectionParams, opts ...ClientOption) (*GetNodeTopoesConnectionOK, error)
 
-	UpdateNodeTopo(params *UpdateNodeTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNodeTopoOK, error)
+	UpdateNodeTopo(params *UpdateNodeTopoParams, opts ...ClientOption) (*UpdateNodeTopoOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -42,7 +42,7 @@ type ClientService interface {
 /*
   GetNodeTopoes get node topoes API
 */
-func (a *Client) GetNodeTopoes(params *GetNodeTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeTopoesOK, error) {
+func (a *Client) GetNodeTopoes(params *GetNodeTopoesParams, opts ...ClientOption) (*GetNodeTopoesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNodeTopoesParams()
@@ -56,7 +56,6 @@ func (a *Client) GetNodeTopoes(params *GetNodeTopoesParams, authInfo runtime.Cli
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNodeTopoesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -81,7 +80,7 @@ func (a *Client) GetNodeTopoes(params *GetNodeTopoesParams, authInfo runtime.Cli
 /*
   GetNodeTopoesConnection get node topoes connection API
 */
-func (a *Client) GetNodeTopoesConnection(params *GetNodeTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNodeTopoesConnectionOK, error) {
+func (a *Client) GetNodeTopoesConnection(params *GetNodeTopoesConnectionParams, opts ...ClientOption) (*GetNodeTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNodeTopoesConnectionParams()
@@ -95,7 +94,6 @@ func (a *Client) GetNodeTopoesConnection(params *GetNodeTopoesConnectionParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetNodeTopoesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -120,7 +118,7 @@ func (a *Client) GetNodeTopoesConnection(params *GetNodeTopoesConnectionParams, 
 /*
   UpdateNodeTopo update node topo API
 */
-func (a *Client) UpdateNodeTopo(params *UpdateNodeTopoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNodeTopoOK, error) {
+func (a *Client) UpdateNodeTopo(params *UpdateNodeTopoParams, opts ...ClientOption) (*UpdateNodeTopoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNodeTopoParams()
@@ -134,7 +132,6 @@ func (a *Client) UpdateNodeTopo(params *UpdateNodeTopoParams, authInfo runtime.C
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateNodeTopoReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

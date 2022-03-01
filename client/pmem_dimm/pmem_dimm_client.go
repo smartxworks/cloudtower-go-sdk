@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetPmemDimms(params *GetPmemDimmsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPmemDimmsOK, error)
+	GetPmemDimms(params *GetPmemDimmsParams, opts ...ClientOption) (*GetPmemDimmsOK, error)
 
-	GetPmemDimmsConnection(params *GetPmemDimmsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPmemDimmsConnectionOK, error)
+	GetPmemDimmsConnection(params *GetPmemDimmsConnectionParams, opts ...ClientOption) (*GetPmemDimmsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetPmemDimms get pmem dimms API
 */
-func (a *Client) GetPmemDimms(params *GetPmemDimmsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPmemDimmsOK, error) {
+func (a *Client) GetPmemDimms(params *GetPmemDimmsParams, opts ...ClientOption) (*GetPmemDimmsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPmemDimmsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetPmemDimms(params *GetPmemDimmsParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetPmemDimmsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetPmemDimms(params *GetPmemDimmsParams, authInfo runtime.Clien
 /*
   GetPmemDimmsConnection get pmem dimms connection API
 */
-func (a *Client) GetPmemDimmsConnection(params *GetPmemDimmsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPmemDimmsConnectionOK, error) {
+func (a *Client) GetPmemDimmsConnection(params *GetPmemDimmsConnectionParams, opts ...ClientOption) (*GetPmemDimmsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPmemDimmsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetPmemDimmsConnection(params *GetPmemDimmsConnectionParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetPmemDimmsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

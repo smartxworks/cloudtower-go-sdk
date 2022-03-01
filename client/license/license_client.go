@@ -30,11 +30,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetLicenses(params *GetLicensesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLicensesOK, error)
+	GetLicenses(params *GetLicensesParams, opts ...ClientOption) (*GetLicensesOK, error)
 
-	GetLicensesConnection(params *GetLicensesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLicensesConnectionOK, error)
+	GetLicensesConnection(params *GetLicensesConnectionParams, opts ...ClientOption) (*GetLicensesConnectionOK, error)
 
-	UpdateDeploy(params *UpdateDeployParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateDeployOK, error)
+	UpdateDeploy(params *UpdateDeployParams, opts ...ClientOption) (*UpdateDeployOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -42,7 +42,7 @@ type ClientService interface {
 /*
   GetLicenses get licenses API
 */
-func (a *Client) GetLicenses(params *GetLicensesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLicensesOK, error) {
+func (a *Client) GetLicenses(params *GetLicensesParams, opts ...ClientOption) (*GetLicensesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLicensesParams()
@@ -56,7 +56,6 @@ func (a *Client) GetLicenses(params *GetLicensesParams, authInfo runtime.ClientA
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetLicensesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -81,7 +80,7 @@ func (a *Client) GetLicenses(params *GetLicensesParams, authInfo runtime.ClientA
 /*
   GetLicensesConnection get licenses connection API
 */
-func (a *Client) GetLicensesConnection(params *GetLicensesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLicensesConnectionOK, error) {
+func (a *Client) GetLicensesConnection(params *GetLicensesConnectionParams, opts ...ClientOption) (*GetLicensesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLicensesConnectionParams()
@@ -95,7 +94,6 @@ func (a *Client) GetLicensesConnection(params *GetLicensesConnectionParams, auth
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetLicensesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -120,7 +118,7 @@ func (a *Client) GetLicensesConnection(params *GetLicensesConnectionParams, auth
 /*
   UpdateDeploy update deploy API
 */
-func (a *Client) UpdateDeploy(params *UpdateDeployParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateDeployOK, error) {
+func (a *Client) UpdateDeploy(params *UpdateDeployParams, opts ...ClientOption) (*UpdateDeployOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateDeployParams()
@@ -134,7 +132,6 @@ func (a *Client) UpdateDeploy(params *UpdateDeployParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateDeployReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

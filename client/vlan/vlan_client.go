@@ -30,19 +30,19 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateVMVlan(params *CreateVMVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMVlanOK, error)
+	CreateVMVlan(params *CreateVMVlanParams, opts ...ClientOption) (*CreateVMVlanOK, error)
 
-	DeleteVlan(params *DeleteVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVlanOK, error)
+	DeleteVlan(params *DeleteVlanParams, opts ...ClientOption) (*DeleteVlanOK, error)
 
-	GetVlans(params *GetVlansParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVlansOK, error)
+	GetVlans(params *GetVlansParams, opts ...ClientOption) (*GetVlansOK, error)
 
-	GetVlansConnection(params *GetVlansConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVlansConnectionOK, error)
+	GetVlansConnection(params *GetVlansConnectionParams, opts ...ClientOption) (*GetVlansConnectionOK, error)
 
-	UpdateManagementVlan(params *UpdateManagementVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateManagementVlanOK, error)
+	UpdateManagementVlan(params *UpdateManagementVlanParams, opts ...ClientOption) (*UpdateManagementVlanOK, error)
 
-	UpdateMigrationVlan(params *UpdateMigrationVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateMigrationVlanOK, error)
+	UpdateMigrationVlan(params *UpdateMigrationVlanParams, opts ...ClientOption) (*UpdateMigrationVlanOK, error)
 
-	UpdateVlan(params *UpdateVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVlanOK, error)
+	UpdateVlan(params *UpdateVlanParams, opts ...ClientOption) (*UpdateVlanOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -50,7 +50,7 @@ type ClientService interface {
 /*
   CreateVMVlan create Vm vlan API
 */
-func (a *Client) CreateVMVlan(params *CreateVMVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateVMVlanOK, error) {
+func (a *Client) CreateVMVlan(params *CreateVMVlanParams, opts ...ClientOption) (*CreateVMVlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVMVlanParams()
@@ -64,7 +64,6 @@ func (a *Client) CreateVMVlan(params *CreateVMVlanParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateVMVlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -89,7 +88,7 @@ func (a *Client) CreateVMVlan(params *CreateVMVlanParams, authInfo runtime.Clien
 /*
   DeleteVlan delete vlan API
 */
-func (a *Client) DeleteVlan(params *DeleteVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteVlanOK, error) {
+func (a *Client) DeleteVlan(params *DeleteVlanParams, opts ...ClientOption) (*DeleteVlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVlanParams()
@@ -103,7 +102,6 @@ func (a *Client) DeleteVlan(params *DeleteVlanParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteVlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -128,7 +126,7 @@ func (a *Client) DeleteVlan(params *DeleteVlanParams, authInfo runtime.ClientAut
 /*
   GetVlans get vlans API
 */
-func (a *Client) GetVlans(params *GetVlansParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVlansOK, error) {
+func (a *Client) GetVlans(params *GetVlansParams, opts ...ClientOption) (*GetVlansOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVlansParams()
@@ -142,7 +140,6 @@ func (a *Client) GetVlans(params *GetVlansParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVlansReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -167,7 +164,7 @@ func (a *Client) GetVlans(params *GetVlansParams, authInfo runtime.ClientAuthInf
 /*
   GetVlansConnection get vlans connection API
 */
-func (a *Client) GetVlansConnection(params *GetVlansConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVlansConnectionOK, error) {
+func (a *Client) GetVlansConnection(params *GetVlansConnectionParams, opts ...ClientOption) (*GetVlansConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVlansConnectionParams()
@@ -181,7 +178,6 @@ func (a *Client) GetVlansConnection(params *GetVlansConnectionParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetVlansConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -206,7 +202,7 @@ func (a *Client) GetVlansConnection(params *GetVlansConnectionParams, authInfo r
 /*
   UpdateManagementVlan update management vlan API
 */
-func (a *Client) UpdateManagementVlan(params *UpdateManagementVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateManagementVlanOK, error) {
+func (a *Client) UpdateManagementVlan(params *UpdateManagementVlanParams, opts ...ClientOption) (*UpdateManagementVlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateManagementVlanParams()
@@ -220,7 +216,6 @@ func (a *Client) UpdateManagementVlan(params *UpdateManagementVlanParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateManagementVlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -245,7 +240,7 @@ func (a *Client) UpdateManagementVlan(params *UpdateManagementVlanParams, authIn
 /*
   UpdateMigrationVlan update migration vlan API
 */
-func (a *Client) UpdateMigrationVlan(params *UpdateMigrationVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateMigrationVlanOK, error) {
+func (a *Client) UpdateMigrationVlan(params *UpdateMigrationVlanParams, opts ...ClientOption) (*UpdateMigrationVlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateMigrationVlanParams()
@@ -259,7 +254,6 @@ func (a *Client) UpdateMigrationVlan(params *UpdateMigrationVlanParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateMigrationVlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -284,7 +278,7 @@ func (a *Client) UpdateMigrationVlan(params *UpdateMigrationVlanParams, authInfo
 /*
   UpdateVlan update vlan API
 */
-func (a *Client) UpdateVlan(params *UpdateVlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVlanOK, error) {
+func (a *Client) UpdateVlan(params *UpdateVlanParams, opts ...ClientOption) (*UpdateVlanOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVlanParams()
@@ -298,7 +292,6 @@ func (a *Client) UpdateVlan(params *UpdateVlanParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateVlanReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

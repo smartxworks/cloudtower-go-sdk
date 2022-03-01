@@ -160,7 +160,7 @@ func (m *VMUpdateDiskParams) UnmarshalBinary(b []byte) error {
 type VMUpdateDiskParamsData struct {
 
 	// bus
-	Bus Bus `json:"bus,omitempty"`
+	Bus *Bus `json:"bus,omitempty"`
 
 	// elf image id
 	ElfImageID *string `json:"elf_image_id,omitempty"`
@@ -196,13 +196,15 @@ func (m *VMUpdateDiskParamsData) validateBus(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.Bus.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "bus")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "bus")
+	if m.Bus != nil {
+		if err := m.Bus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "bus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "bus")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -233,13 +235,15 @@ func (m *VMUpdateDiskParamsData) ContextValidate(ctx context.Context, formats st
 
 func (m *VMUpdateDiskParamsData) contextValidateBus(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Bus.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("data" + "." + "bus")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("data" + "." + "bus")
+	if m.Bus != nil {
+		if err := m.Bus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "bus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "bus")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

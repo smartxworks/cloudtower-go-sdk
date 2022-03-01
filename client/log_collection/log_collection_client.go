@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetLogCollections(params *GetLogCollectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogCollectionsOK, error)
+	GetLogCollections(params *GetLogCollectionsParams, opts ...ClientOption) (*GetLogCollectionsOK, error)
 
-	GetLogCollectionsConnection(params *GetLogCollectionsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogCollectionsConnectionOK, error)
+	GetLogCollectionsConnection(params *GetLogCollectionsConnectionParams, opts ...ClientOption) (*GetLogCollectionsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetLogCollections get log collections API
 */
-func (a *Client) GetLogCollections(params *GetLogCollectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogCollectionsOK, error) {
+func (a *Client) GetLogCollections(params *GetLogCollectionsParams, opts ...ClientOption) (*GetLogCollectionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLogCollectionsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetLogCollections(params *GetLogCollectionsParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetLogCollectionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetLogCollections(params *GetLogCollectionsParams, authInfo run
 /*
   GetLogCollectionsConnection get log collections connection API
 */
-func (a *Client) GetLogCollectionsConnection(params *GetLogCollectionsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogCollectionsConnectionOK, error) {
+func (a *Client) GetLogCollectionsConnection(params *GetLogCollectionsConnectionParams, opts ...ClientOption) (*GetLogCollectionsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLogCollectionsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetLogCollectionsConnection(params *GetLogCollectionsConnection
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetLogCollectionsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetEverouteLicenses(params *GetEverouteLicensesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEverouteLicensesOK, error)
+	GetEverouteLicenses(params *GetEverouteLicensesParams, opts ...ClientOption) (*GetEverouteLicensesOK, error)
 
-	GetEverouteLicensesConnection(params *GetEverouteLicensesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEverouteLicensesConnectionOK, error)
+	GetEverouteLicensesConnection(params *GetEverouteLicensesConnectionParams, opts ...ClientOption) (*GetEverouteLicensesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetEverouteLicenses get everoute licenses API
 */
-func (a *Client) GetEverouteLicenses(params *GetEverouteLicensesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEverouteLicensesOK, error) {
+func (a *Client) GetEverouteLicenses(params *GetEverouteLicensesParams, opts ...ClientOption) (*GetEverouteLicensesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEverouteLicensesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetEverouteLicenses(params *GetEverouteLicensesParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetEverouteLicensesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetEverouteLicenses(params *GetEverouteLicensesParams, authInfo
 /*
   GetEverouteLicensesConnection get everoute licenses connection API
 */
-func (a *Client) GetEverouteLicensesConnection(params *GetEverouteLicensesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEverouteLicensesConnectionOK, error) {
+func (a *Client) GetEverouteLicensesConnection(params *GetEverouteLicensesConnectionParams, opts ...ClientOption) (*GetEverouteLicensesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEverouteLicensesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetEverouteLicensesConnection(params *GetEverouteLicensesConnec
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetEverouteLicensesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

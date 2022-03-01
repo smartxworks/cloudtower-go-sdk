@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetSvtImages(params *GetSvtImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSvtImagesOK, error)
+	GetSvtImages(params *GetSvtImagesParams, opts ...ClientOption) (*GetSvtImagesOK, error)
 
-	GetSvtImagesConnection(params *GetSvtImagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSvtImagesConnectionOK, error)
+	GetSvtImagesConnection(params *GetSvtImagesConnectionParams, opts ...ClientOption) (*GetSvtImagesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetSvtImages get svt images API
 */
-func (a *Client) GetSvtImages(params *GetSvtImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSvtImagesOK, error) {
+func (a *Client) GetSvtImages(params *GetSvtImagesParams, opts ...ClientOption) (*GetSvtImagesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSvtImagesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetSvtImages(params *GetSvtImagesParams, authInfo runtime.Clien
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSvtImagesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetSvtImages(params *GetSvtImagesParams, authInfo runtime.Clien
 /*
   GetSvtImagesConnection get svt images connection API
 */
-func (a *Client) GetSvtImagesConnection(params *GetSvtImagesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSvtImagesConnectionOK, error) {
+func (a *Client) GetSvtImagesConnection(params *GetSvtImagesConnectionParams, opts ...ClientOption) (*GetSvtImagesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSvtImagesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetSvtImagesConnection(params *GetSvtImagesConnectionParams, au
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSvtImagesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

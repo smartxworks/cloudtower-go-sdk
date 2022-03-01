@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetBackupPlanExecutions(params *GetBackupPlanExecutionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupPlanExecutionsOK, error)
+	GetBackupPlanExecutions(params *GetBackupPlanExecutionsParams, opts ...ClientOption) (*GetBackupPlanExecutionsOK, error)
 
-	GetBackupPlanExecutionsConnection(params *GetBackupPlanExecutionsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupPlanExecutionsConnectionOK, error)
+	GetBackupPlanExecutionsConnection(params *GetBackupPlanExecutionsConnectionParams, opts ...ClientOption) (*GetBackupPlanExecutionsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetBackupPlanExecutions get backup plan executions API
 */
-func (a *Client) GetBackupPlanExecutions(params *GetBackupPlanExecutionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupPlanExecutionsOK, error) {
+func (a *Client) GetBackupPlanExecutions(params *GetBackupPlanExecutionsParams, opts ...ClientOption) (*GetBackupPlanExecutionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupPlanExecutionsParams()
@@ -54,7 +54,6 @@ func (a *Client) GetBackupPlanExecutions(params *GetBackupPlanExecutionsParams, 
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupPlanExecutionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetBackupPlanExecutions(params *GetBackupPlanExecutionsParams, 
 /*
   GetBackupPlanExecutionsConnection get backup plan executions connection API
 */
-func (a *Client) GetBackupPlanExecutionsConnection(params *GetBackupPlanExecutionsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBackupPlanExecutionsConnectionOK, error) {
+func (a *Client) GetBackupPlanExecutionsConnection(params *GetBackupPlanExecutionsConnectionParams, opts ...ClientOption) (*GetBackupPlanExecutionsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBackupPlanExecutionsConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetBackupPlanExecutionsConnection(params *GetBackupPlanExecutio
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetBackupPlanExecutionsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

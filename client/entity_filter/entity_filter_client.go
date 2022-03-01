@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateEntityFilter(params *CreateEntityFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEntityFilterOK, error)
+	CreateEntityFilter(params *CreateEntityFilterParams, opts ...ClientOption) (*CreateEntityFilterOK, error)
 
-	DeleteEntityFilter(params *DeleteEntityFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntityFilterOK, error)
+	DeleteEntityFilter(params *DeleteEntityFilterParams, opts ...ClientOption) (*DeleteEntityFilterOK, error)
 
-	GetEntityFilters(params *GetEntityFiltersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntityFiltersOK, error)
+	GetEntityFilters(params *GetEntityFiltersParams, opts ...ClientOption) (*GetEntityFiltersOK, error)
 
-	GetEntityFiltersConnection(params *GetEntityFiltersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntityFiltersConnectionOK, error)
+	GetEntityFiltersConnection(params *GetEntityFiltersConnectionParams, opts ...ClientOption) (*GetEntityFiltersConnectionOK, error)
 
-	UpdateEntityFilter(params *UpdateEntityFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateEntityFilterOK, error)
+	UpdateEntityFilter(params *UpdateEntityFilterParams, opts ...ClientOption) (*UpdateEntityFilterOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateEntityFilter create entity filter API
 */
-func (a *Client) CreateEntityFilter(params *CreateEntityFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEntityFilterOK, error) {
+func (a *Client) CreateEntityFilter(params *CreateEntityFilterParams, opts ...ClientOption) (*CreateEntityFilterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateEntityFilterParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateEntityFilter(params *CreateEntityFilterParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateEntityFilterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateEntityFilter(params *CreateEntityFilterParams, authInfo r
 /*
   DeleteEntityFilter delete entity filter API
 */
-func (a *Client) DeleteEntityFilter(params *DeleteEntityFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEntityFilterOK, error) {
+func (a *Client) DeleteEntityFilter(params *DeleteEntityFilterParams, opts ...ClientOption) (*DeleteEntityFilterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteEntityFilterParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteEntityFilter(params *DeleteEntityFilterParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteEntityFilterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteEntityFilter(params *DeleteEntityFilterParams, authInfo r
 /*
   GetEntityFilters get entity filters API
 */
-func (a *Client) GetEntityFilters(params *GetEntityFiltersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntityFiltersOK, error) {
+func (a *Client) GetEntityFilters(params *GetEntityFiltersParams, opts ...ClientOption) (*GetEntityFiltersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntityFiltersParams()
@@ -138,7 +136,6 @@ func (a *Client) GetEntityFilters(params *GetEntityFiltersParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetEntityFiltersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetEntityFilters(params *GetEntityFiltersParams, authInfo runti
 /*
   GetEntityFiltersConnection get entity filters connection API
 */
-func (a *Client) GetEntityFiltersConnection(params *GetEntityFiltersConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetEntityFiltersConnectionOK, error) {
+func (a *Client) GetEntityFiltersConnection(params *GetEntityFiltersConnectionParams, opts ...ClientOption) (*GetEntityFiltersConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntityFiltersConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetEntityFiltersConnection(params *GetEntityFiltersConnectionPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetEntityFiltersConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetEntityFiltersConnection(params *GetEntityFiltersConnectionPa
 /*
   UpdateEntityFilter update entity filter API
 */
-func (a *Client) UpdateEntityFilter(params *UpdateEntityFilterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateEntityFilterOK, error) {
+func (a *Client) UpdateEntityFilter(params *UpdateEntityFilterParams, opts ...ClientOption) (*UpdateEntityFilterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateEntityFilterParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateEntityFilter(params *UpdateEntityFilterParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateEntityFilterReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

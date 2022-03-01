@@ -30,15 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateSnmpTransport(params *CreateSnmpTransportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnmpTransportOK, error)
+	CreateSnmpTransport(params *CreateSnmpTransportParams, opts ...ClientOption) (*CreateSnmpTransportOK, error)
 
-	DeleteSnmpTransport(params *DeleteSnmpTransportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnmpTransportOK, error)
+	DeleteSnmpTransport(params *DeleteSnmpTransportParams, opts ...ClientOption) (*DeleteSnmpTransportOK, error)
 
-	GetSnmpTransports(params *GetSnmpTransportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnmpTransportsOK, error)
+	GetSnmpTransports(params *GetSnmpTransportsParams, opts ...ClientOption) (*GetSnmpTransportsOK, error)
 
-	GetSnmpTransportsConnection(params *GetSnmpTransportsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnmpTransportsConnectionOK, error)
+	GetSnmpTransportsConnection(params *GetSnmpTransportsConnectionParams, opts ...ClientOption) (*GetSnmpTransportsConnectionOK, error)
 
-	UpdateSnmpTransport(params *UpdateSnmpTransportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSnmpTransportOK, error)
+	UpdateSnmpTransport(params *UpdateSnmpTransportParams, opts ...ClientOption) (*UpdateSnmpTransportOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -46,7 +46,7 @@ type ClientService interface {
 /*
   CreateSnmpTransport create snmp transport API
 */
-func (a *Client) CreateSnmpTransport(params *CreateSnmpTransportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSnmpTransportOK, error) {
+func (a *Client) CreateSnmpTransport(params *CreateSnmpTransportParams, opts ...ClientOption) (*CreateSnmpTransportOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateSnmpTransportParams()
@@ -60,7 +60,6 @@ func (a *Client) CreateSnmpTransport(params *CreateSnmpTransportParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CreateSnmpTransportReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -85,7 +84,7 @@ func (a *Client) CreateSnmpTransport(params *CreateSnmpTransportParams, authInfo
 /*
   DeleteSnmpTransport delete snmp transport API
 */
-func (a *Client) DeleteSnmpTransport(params *DeleteSnmpTransportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSnmpTransportOK, error) {
+func (a *Client) DeleteSnmpTransport(params *DeleteSnmpTransportParams, opts ...ClientOption) (*DeleteSnmpTransportOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSnmpTransportParams()
@@ -99,7 +98,6 @@ func (a *Client) DeleteSnmpTransport(params *DeleteSnmpTransportParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DeleteSnmpTransportReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -124,7 +122,7 @@ func (a *Client) DeleteSnmpTransport(params *DeleteSnmpTransportParams, authInfo
 /*
   GetSnmpTransports get snmp transports API
 */
-func (a *Client) GetSnmpTransports(params *GetSnmpTransportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnmpTransportsOK, error) {
+func (a *Client) GetSnmpTransports(params *GetSnmpTransportsParams, opts ...ClientOption) (*GetSnmpTransportsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnmpTransportsParams()
@@ -138,7 +136,6 @@ func (a *Client) GetSnmpTransports(params *GetSnmpTransportsParams, authInfo run
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnmpTransportsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +160,7 @@ func (a *Client) GetSnmpTransports(params *GetSnmpTransportsParams, authInfo run
 /*
   GetSnmpTransportsConnection get snmp transports connection API
 */
-func (a *Client) GetSnmpTransportsConnection(params *GetSnmpTransportsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSnmpTransportsConnectionOK, error) {
+func (a *Client) GetSnmpTransportsConnection(params *GetSnmpTransportsConnectionParams, opts ...ClientOption) (*GetSnmpTransportsConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSnmpTransportsConnectionParams()
@@ -177,7 +174,6 @@ func (a *Client) GetSnmpTransportsConnection(params *GetSnmpTransportsConnection
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetSnmpTransportsConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +198,7 @@ func (a *Client) GetSnmpTransportsConnection(params *GetSnmpTransportsConnection
 /*
   UpdateSnmpTransport update snmp transport API
 */
-func (a *Client) UpdateSnmpTransport(params *UpdateSnmpTransportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSnmpTransportOK, error) {
+func (a *Client) UpdateSnmpTransport(params *UpdateSnmpTransportParams, opts ...ClientOption) (*UpdateSnmpTransportOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateSnmpTransportParams()
@@ -216,7 +212,6 @@ func (a *Client) UpdateSnmpTransport(params *UpdateSnmpTransportParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &UpdateSnmpTransportReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

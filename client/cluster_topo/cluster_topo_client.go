@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetClusterTopoes(params *GetClusterTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterTopoesOK, error)
+	GetClusterTopoes(params *GetClusterTopoesParams, opts ...ClientOption) (*GetClusterTopoesOK, error)
 
-	GetClusterTopoesConnection(params *GetClusterTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterTopoesConnectionOK, error)
+	GetClusterTopoesConnection(params *GetClusterTopoesConnectionParams, opts ...ClientOption) (*GetClusterTopoesConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
   GetClusterTopoes get cluster topoes API
 */
-func (a *Client) GetClusterTopoes(params *GetClusterTopoesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterTopoesOK, error) {
+func (a *Client) GetClusterTopoes(params *GetClusterTopoesParams, opts ...ClientOption) (*GetClusterTopoesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClusterTopoesParams()
@@ -54,7 +54,6 @@ func (a *Client) GetClusterTopoes(params *GetClusterTopoesParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClusterTopoesReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) GetClusterTopoes(params *GetClusterTopoesParams, authInfo runti
 /*
   GetClusterTopoesConnection get cluster topoes connection API
 */
-func (a *Client) GetClusterTopoesConnection(params *GetClusterTopoesConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetClusterTopoesConnectionOK, error) {
+func (a *Client) GetClusterTopoesConnection(params *GetClusterTopoesConnectionParams, opts ...ClientOption) (*GetClusterTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetClusterTopoesConnectionParams()
@@ -93,7 +92,6 @@ func (a *Client) GetClusterTopoesConnection(params *GetClusterTopoesConnectionPa
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetClusterTopoesConnectionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

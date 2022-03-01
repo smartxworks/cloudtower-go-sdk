@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetLogServiceConfigs(params *GetLogServiceConfigsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogServiceConfigsOK, error)
+	GetLogServiceConfigs(params *GetLogServiceConfigsParams, opts ...ClientOption) (*GetLogServiceConfigsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -38,7 +38,7 @@ type ClientService interface {
 /*
   GetLogServiceConfigs get log service configs API
 */
-func (a *Client) GetLogServiceConfigs(params *GetLogServiceConfigsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLogServiceConfigsOK, error) {
+func (a *Client) GetLogServiceConfigs(params *GetLogServiceConfigsParams, opts ...ClientOption) (*GetLogServiceConfigsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLogServiceConfigsParams()
@@ -52,7 +52,6 @@ func (a *Client) GetLogServiceConfigs(params *GetLogServiceConfigsParams, authIn
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetLogServiceConfigsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
