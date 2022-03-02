@@ -33,7 +33,7 @@ func WaitTask(client *apiclient.Cloudtower, id string) error {
 		},
 	}
 	for {
-		tasks, err := client.Task.GetTasks(taskParams, nil)
+		tasks, err := client.Task.GetTasks(taskParams)
 		if err != nil {
 			return err
 		}
@@ -65,7 +65,7 @@ func WaitTasks(client *apiclient.Cloudtower, ids []string) error {
 				IDIn: queryIds,
 			},
 		}
-		tasks, err := client.Task.GetTasks(taskParams, nil)
+		tasks, err := client.Task.GetTasks(taskParams)
 		if err != nil {
 			return err
 		}
