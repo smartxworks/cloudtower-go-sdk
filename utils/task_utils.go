@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/openlyinc/pointy"
 	"github.com/thoas/go-funk"
 
 	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
@@ -24,12 +23,15 @@ func checkTaskFinished(task *models.Task) int8 {
 	}
 }
 
-func WaitTask(client *apiclient.Cloudtower, id string) error {
+func WaitTask(client *apiclient.Cloudtower, id *string) error {
+	if id == nil {
+		return nil
+	}
 	start := time.Now()
 	taskParams := task.NewGetTasksParams()
 	taskParams.RequestBody = &models.GetTasksRequestBody{
 		Where: &models.TaskWhereInput{
-			ID: pointy.String(id),
+			ID: id,
 		},
 	}
 	for {

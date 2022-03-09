@@ -1,6 +1,6 @@
 # Cloudtower Go SDK
 
-Golang 环境下的 Cloudtower SDK，适用于 Java 1.8 及以上版本
+Golang 环境下的 Cloudtower SDK，适用于 golang 1.16 及以上版本
 
 - [源码地址](https://github.com/Sczlog/cloudtower-go-sdk)
 - [下载地址](https://github.com/Sczlog/cloudtower-go-sdk/releases)
@@ -251,7 +251,7 @@ if err != nil {
 	return err
 }
 withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -322,7 +322,7 @@ if err != nil {
 	return err
 }
 withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -363,7 +363,7 @@ if err != nil {
 	return err
 }
 withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -408,7 +408,7 @@ if err != nil {
 	return err
 }
 withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -460,7 +460,7 @@ if err != nil {
 	return err
 }
 withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
   panic(err.Error())
 }
@@ -511,7 +511,7 @@ if err != nil {
 	return err
 }
 withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -566,7 +566,7 @@ if err != nil {
 	return err
 }
 withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -613,7 +613,7 @@ if err != nil {
 	return err
 }
 withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -655,7 +655,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -696,7 +696,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -730,7 +730,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -778,7 +778,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -820,7 +820,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -854,7 +854,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -908,7 +908,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -948,7 +948,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -982,7 +982,7 @@ if err != nil {
 	return err
 }
 withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1018,7 +1018,7 @@ if err != nil {
 	return err
 }
 withTaskVm := migrateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1049,7 +1049,7 @@ if err != nil {
 	return err
 }
 withTaskVm := migrateRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1084,7 +1084,7 @@ if err != nil {
 	return err
 }
 withTaskVm := startRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1161,7 +1161,7 @@ if err != nil {
 	return err
 }
 withTaskVm := startRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1194,7 +1194,7 @@ if err != nil {
 	return err
 }
 withTaskVm := shutdownRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1268,7 +1268,7 @@ if err != nil {
 	return err
 }
 withTaskVm := shutdownRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1344,7 +1344,7 @@ if err != nil {
 	return err
 }
 withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1418,7 +1418,7 @@ if err != nil {
 	return err
 }
 withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1494,7 +1494,7 @@ if err != nil {
 	return err
 }
 withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1570,7 +1570,7 @@ if err != nil {
 	return err
 }
 withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1648,7 +1648,7 @@ if err != nil {
 	return err
 }
 withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1679,7 +1679,7 @@ if err != nil {
 	return err
 }
 withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1710,7 +1710,7 @@ if err != nil {
 	return err
 }
 withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, *withTaskVm.TaskID)
+err = utils.WaitTask(client, withTaskVm.TaskID)
 if err != nil {
 	return err
 }
@@ -1781,7 +1781,7 @@ func create_vm_snapshot(
 	}
 	withTaskSnapshot := createRes.Payload[0]
 	// 3. 等待Task完成
-	err = utils.WaitTask(client, *withTaskSnapshot.TaskID)
+	err = utils.WaitTask(client, withTaskSnapshot.TaskID)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -2104,7 +2104,7 @@ func buildMetricsInfo(client *apiclient.Cloudtower, clusters []*models.Cluster, 
 			cpu.TotalCore += uint32(*cluster.TotalCPUCores)
 			cpu.TotalInHz += uint64(*cluster.TotalCPUHz)
 			cpu.UsedInHz += uint64(*cluster.UsedCPUHz)
-			if *cluster.Hypervisor == models.HypervisorVMWARE {
+			if cluster.Hypervisor != nil && *cluster.Hypervisor == models.HypervisorVMWARE {
 				memory.TotalInByte += uint64(*cluster.TotalMemoryBytes)
 				memory.UsedInByte += uint64(*cluster.UsedMemoryBytes)
 			}
