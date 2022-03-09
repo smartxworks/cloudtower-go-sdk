@@ -1,0 +1,24 @@
+package integration
+
+import (
+	"github.com/Sczlog/cloudtower-go-sdk/client/vm_disk"
+	"github.com/Sczlog/cloudtower-go-sdk/models"
+
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
+)
+
+var _ = Describe("Vm disk api", Ordered, func() {
+	It("should get vm disks", func() {
+		params := vm_disk.NewGetVMDisksParams()
+		params.RequestBody = &models.GetVMDisksRequestBody{}
+		connectionParams := vm_disk.NewGetVMDisksConnectionParams()
+		connectionParams.RequestBody = &models.GetVMDisksConnectionRequestBody{}
+		res, err := Client.VMDisk.GetVMDisks(params)
+		Expect(err).To(BeNil())
+		Expect(res).ToNot(BeNil())
+		connectionRes, err := Client.VMDisk.GetVMDisksConnection(connectionParams)
+		Expect(err).To(BeNil())
+		Expect(connectionRes).ToNot(BeNil())
+	})
+})
