@@ -2,14 +2,14 @@
 
 Golang 环境下的 Cloudtower SDK，适用于 golang 1.16 及以上版本
 
-- [源码地址](https://github.com/Sczlog/cloudtower-go-sdk)
-- [下载地址](https://github.com/Sczlog/cloudtower-go-sdk/releases)
+- [源码地址](https://github.com/smartxworks/cloudtower-go-sdk)
+- [下载地址](https://github.com/smartxworks/cloudtower-go-sdk/releases)
 - [通用指南](https://cloudtower-api-doc.vercel.app)
 
 ## 安装
 
 ```shell
-go get https://github.com/Sczlog/cloudtower-go-sdk
+go get https://github.com/smartxworks/cloudtower-go-sdk
 ```
 
 ## 使用
@@ -22,7 +22,7 @@ go get https://github.com/Sczlog/cloudtower-go-sdk
 
 ```go
 import (
-	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
@@ -38,7 +38,7 @@ client := apiclient.New(transport, strfmt.Default)
 
 ```go
 import (
-  	vm "github.com/Sczlog/cloudtower-go-sdk/client/vm"
+  	vm "github.com/smartxworks/cloudtower-go-sdk/client/vm"
 )
 ```
 
@@ -46,7 +46,7 @@ import (
 
 ```go
 import (
-  User "github.com/Sczlog/cloudtower-go-sdk/client/user"
+  User "github.com/smartxworks/cloudtower-go-sdk/client/user"
 )
 loginParams := User.NewLoginParams()
 loginParams.RequestBody = &models.LoginInput{
@@ -1726,13 +1726,13 @@ package main
 import (
 	"fmt"
 
-	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
-	"github.com/Sczlog/cloudtower-go-sdk/client/iscsi_lun_snapshot"
-	"github.com/Sczlog/cloudtower-go-sdk/client/user"
-	"github.com/Sczlog/cloudtower-go-sdk/client/vm"
-	"github.com/Sczlog/cloudtower-go-sdk/client/vm_snapshot"
-	"github.com/Sczlog/cloudtower-go-sdk/models"
-	"github.com/Sczlog/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_lun_snapshot"
+	"github.com/smartxworks/cloudtower-go-sdk/client/user"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm_snapshot"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
 	"github.com/openlyinc/pointy"
 	"github.com/thoas/go-funk"
 
@@ -1827,13 +1827,13 @@ func create_vm_snapshot(
 import (
 	"fmt"
 
-	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
-	"github.com/Sczlog/cloudtower-go-sdk/client/alert"
-	"github.com/Sczlog/cloudtower-go-sdk/client/cluster"
-	"github.com/Sczlog/cloudtower-go-sdk/client/disk"
-	"github.com/Sczlog/cloudtower-go-sdk/client/host"
-	"github.com/Sczlog/cloudtower-go-sdk/client/user"
-	"github.com/Sczlog/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/alert"
+	"github.com/smartxworks/cloudtower-go-sdk/client/cluster"
+	"github.com/smartxworks/cloudtower-go-sdk/client/disk"
+	"github.com/smartxworks/cloudtower-go-sdk/client/host"
+	"github.com/smartxworks/cloudtower-go-sdk/client/user"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
 	"github.com/openlyinc/pointy"
 	"github.com/thoas/go-funk"
 

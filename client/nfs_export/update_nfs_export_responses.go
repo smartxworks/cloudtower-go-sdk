@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/Sczlog/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
 )
 
 // UpdateNfsExportReader is a Reader for the UpdateNfsExport structure.

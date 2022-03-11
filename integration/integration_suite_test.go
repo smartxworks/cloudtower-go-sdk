@@ -3,10 +3,10 @@ package integration
 import (
 	"testing"
 
-	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
-	"github.com/Sczlog/cloudtower-go-sdk/integration/fixture"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/integration/fixture"
 )
 
 func TestIntegration(t *testing.T) {

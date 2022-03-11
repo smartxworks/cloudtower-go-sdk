@@ -3,14 +3,14 @@ package fixture
 import (
 	"os"
 
-	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
-	"github.com/Sczlog/cloudtower-go-sdk/client/cluster"
-	"github.com/Sczlog/cloudtower-go-sdk/client/user"
-	"github.com/Sczlog/cloudtower-go-sdk/client/vlan"
-	"github.com/Sczlog/cloudtower-go-sdk/models"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	. "github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/cluster"
+	"github.com/smartxworks/cloudtower-go-sdk/client/user"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vlan"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
 )
 
 var client *apiclient.Cloudtower = nil

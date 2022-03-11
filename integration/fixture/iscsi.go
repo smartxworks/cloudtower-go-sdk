@@ -5,13 +5,13 @@ import (
 	"sync"
 	"time"
 
-	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
-	"github.com/Sczlog/cloudtower-go-sdk/client/iscsi_lun"
-	"github.com/Sczlog/cloudtower-go-sdk/client/iscsi_lun_snapshot"
-	"github.com/Sczlog/cloudtower-go-sdk/client/iscsi_target"
-	"github.com/Sczlog/cloudtower-go-sdk/models"
-	taskutil "github.com/Sczlog/cloudtower-go-sdk/utils"
 	. "github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_lun"
+	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_lun_snapshot"
+	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_target"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	taskutil "github.com/smartxworks/cloudtower-go-sdk/utils"
 )
 
 func CreateIscsiTarget(client *apiclient.Cloudtower, clusterId *string) (*string, func()) {

@@ -1,8 +1,8 @@
 package integration
 
 import (
-	"github.com/Sczlog/cloudtower-go-sdk/client/iscsi_connection"
-	"github.com/Sczlog/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_connection"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

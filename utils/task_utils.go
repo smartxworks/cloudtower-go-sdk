@@ -6,9 +6,9 @@ import (
 
 	"github.com/thoas/go-funk"
 
-	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
-	"github.com/Sczlog/cloudtower-go-sdk/client/task"
-	"github.com/Sczlog/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/task"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
 )
 
 // < 0 mean not finished, 0 mean succeed, 1 mean failed

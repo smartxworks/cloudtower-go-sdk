@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Sczlog/cloudtower-go-sdk/client/vm"
-	"github.com/Sczlog/cloudtower-go-sdk/client/vm_snapshot"
-	"github.com/Sczlog/cloudtower-go-sdk/integration/fixture"
-	"github.com/Sczlog/cloudtower-go-sdk/models"
-	taskutil "github.com/Sczlog/cloudtower-go-sdk/utils"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm_snapshot"
+	"github.com/smartxworks/cloudtower-go-sdk/integration/fixture"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	taskutil "github.com/smartxworks/cloudtower-go-sdk/utils"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

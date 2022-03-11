@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/Sczlog/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
 )
 
 // GetBackupRestoreExecutionsConnectionReader is a Reader for the GetBackupRestoreExecutionsConnection structure.

@@ -1,4 +1,4 @@
-module github.com/Sczlog/cloudtower-go-sdk
+module github.com/smartxworks/cloudtower-go-sdk
 
 go 1.16
 

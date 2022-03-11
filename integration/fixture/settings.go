@@ -3,11 +3,11 @@ package fixture
 import (
 	"sync"
 
-	apiclient "github.com/Sczlog/cloudtower-go-sdk/client"
-	"github.com/Sczlog/cloudtower-go-sdk/client/cluster_settings"
-	"github.com/Sczlog/cloudtower-go-sdk/client/global_settings"
-	"github.com/Sczlog/cloudtower-go-sdk/models"
 	. "github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/cluster_settings"
+	"github.com/smartxworks/cloudtower-go-sdk/client/global_settings"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
 )
 
 func OpenRecycleBinIfClosed(client *apiclient.Cloudtower, clusterId *string) func() {

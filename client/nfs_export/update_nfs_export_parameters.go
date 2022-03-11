@@ -15,7 +15,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/Sczlog/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
 )
 
 // NewUpdateNfsExportParams creates a new UpdateNfsExportParams object,
