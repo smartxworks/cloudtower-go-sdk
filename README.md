@@ -9,7 +9,7 @@ Golang 环境下的 Cloudtower SDK，适用于 golang 1.16 及以上版本
 ## 安装
 
 ```shell
-go get https://github.com/smartxworks/cloudtower-go-sdk
+go get github.com/smartxworks/cloudtower-go-sdk
 ```
 
 ## 使用
