@@ -40,16 +40,16 @@ func WaitTask(client *apiclient.Cloudtower, id *string) error {
 			return err
 		}
 		if len(tasks.GetPayload()) <= 0 {
-			return fmt.Errorf("task %s not found", id)
+			return fmt.Errorf("task %s not found", *id)
 		} else if checkTaskFinished(tasks.Payload[0]) >= 0 {
-			if tasks.Payload[0].Status == models.TaskStatusFAILED.Pointer() {
-				return fmt.Errorf("task %s failed", id)
+			if *tasks.Payload[0].Status == models.TaskStatusFAILED {
+				return fmt.Errorf("task %s failed", *id)
 			}
 			return nil
 		} else {
 			time.Sleep(5 * time.Second)
 			if time.Since(start) > 5*time.Minute {
-				return fmt.Errorf("task %s timeout", id)
+				return fmt.Errorf("task %s timeout", *id)
 			}
 		}
 	}
