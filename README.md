@@ -1,10 +1,15 @@
+---
+sidebar_position: 1
+id: go-sdk
+slug: /go-sdk
+---
+
 # Cloudtower Go SDK
 
 Golang 环境下的 Cloudtower SDK，适用于 golang 1.16 及以上版本
 
 - [源码地址](https://github.com/smartxworks/cloudtower-go-sdk)
 - [下载地址](https://github.com/smartxworks/cloudtower-go-sdk/releases)
-- [通用指南](https://cloudtower-api-doc.vercel.app)
 
 ## 安装
 
@@ -161,75 +166,214 @@ taskZhRes, err := client.Task.GetTasks(getTaskZhParams)
 #### 获取所有虚拟机
 
 ```go
-getAllVmsParams := vm.NewGetVmsParams()
-getAllVmsParams.RequestBody = &models.GetVmsRequestBody{}
-vmsRes, err := client.VM.GetVms(getAllVmsParams)
-if err != nil {
-	return err
+package main
+
+import (
+	"fmt"
+
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+
+	httptransport "github.com/go-openapi/runtime/client"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	vms, err := getAllVms(client)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle queried vms
 }
-vms := vmsRes.Payload
+
+func getAllVms(
+	client *apiclient.Cloudtower) ([]*models.VM, error) {
+	getAllVmsParams := vm.NewGetVmsParams()
+	getAllVmsParams.RequestBody = &models.GetVmsRequestBody{}
+	vmsRes, err := client.VM.GetVms(getAllVmsParams)
+	if err != nil {
+		return nil, err
+	}
+	return vmsRes.Payload, nil
+}
 ```
 
 #### 分页获取虚拟机
 
 ```go
-getVmsFrom51to100Params := vm.NewGetVmsParams()
-getVmsFrom51to100Params.RequestBody = &models.GetVmsRequestBody{
-	First: pointy.Int32(50),
-	Skip:  pointy.Int32(50),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	vms, err := getVmsWithPagination(client)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle queried vms
 }
-vmsRes, err := client.VM.GetVms(getVmsFrom51to100Params)
-if err != nil {
-	return err
+
+func getVmsWithPagination(
+	client *apiclient.Cloudtower,
+  from int32,
+  to int32) ([]*models.VM, error) {
+	getVmsWithPaginationParams := vm.NewGetVmsParams()
+	getVmsWithPaginationParams.RequestBody = &models.GetVmsRequestBody{
+		First: pointy.Int32(from+1),
+		Skip:  pointy.Int32(to-from),
+	}
+	vmsRes, err := client.VM.GetVms(getVmsWithPaginationParams)
+	if err != nil {
+		return nil, err
+	}
+	return vmsRes.Payload, nil
 }
-vms := vmsRes.Payload
 ```
 
 #### 获取所有已开机虚拟机
 
 ```go
-getAllRunningVmsParams := vm.NewGetVmsParams()
-getAllRunningVmsParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		Status: models.VMStatusRUNNING.Pointer(),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	vms, err := getAllRunningVms(client)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle queried vms
 }
-vmsRes, err := client.VM.GetVms(getAllRunningVmsParams)
-if err != nil {
-	return err
+
+func getAllRunningVms(
+	client *apiclient.Cloudtower) ([]*models.VM, error) {
+	getAllRunningVmsParams := vm.NewGetVmsParams()
+	getAllRunningVmsParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			Status: models.VMStatusRUNNING.Pointer(),
+		},
+	}
+	vmsRes, err := client.VM.GetVms(getAllRunningVmsParams)
+	if err != nil {
+		return nil, err
+	}
+	return vmsRes.Payload, nil
 }
-vms := vmsRes.Payload
 ```
 
 #### 获取名称或描述中包含特定字符串的虚拟机
 
 ```go
-getAllVmNameMatchStrParams := vm.NewGetVmsParams()
-getAllVmNameMatchStrParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		NameContains: pointy.String("STR"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	vms, err := getVmsMatchStr(client, "matchStr")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle queried vms
 }
-vmsRes, err := client.VM.GetVms(getAllVmNameMatchStrParams)
-if err != nil {
-	return err
+
+func getVmsMatchStr(
+	client *apiclient.Cloudtower,
+	match string) ([]*models.VM, error) {
+	getAllVmNameMatchStrParams := vm.NewGetVmsParams()
+	getAllVmNameMatchStrParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			NameContains: pointy.String(match),
+		},
+	}
+	vmsRes, err := client.VM.GetVms(getAllVmNameMatchStrParams)
+	if err != nil {
+		return nil, err
+	}
+	return vmsRes.Payload, nil
 }
 ```
 
 #### 获取所有 vcpu > n 的虚拟机
 
 ```go
-getAllVmCoreGtNParams := vm.NewGetVmsParams()
-getAllVmCoreGtNParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		VcpuGt: pointy.Int32(n),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	vms, err := getVmshasNMoreCpuCore(client, 4)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle queried vms
 }
-vmsRes, err := client.VM.GetVms(getAllVmCoreGtNParams)
-if err != nil {
-	return err
+
+func getVmshasNMoreCpuCore(
+	client *apiclient.Cloudtower,
+	n int32) ([]*models.VM, error) {
+	getAllVmCoreGtNParams := vm.NewGetVmsParams()
+	getAllVmCoreGtNParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			VcpuGt: pointy.Int32(n),
+		},
+	}
+	vmsRes, err := client.VM.GetVms(getAllVmCoreGtNParams)
+	if err != nil {
+		return nil, err
+	}
+	return vmsRes.Payload, nil
 }
-vms := vmsRes.Payload
 ```
 
 ### 从模版创建虚拟机
@@ -237,147 +381,241 @@ vms := vmsRes.Payload
 #### 仅指定 id
 
 ```go
-createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
-createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
-	{
-		TemplateID: pointy.String("template_id"),
-		ClusterID:  pointy.String("target_cluster_id"),
-		Name:       pointy.String("vm_name"),
-		IsFullCopy: pointy.Bool(false),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	createdVm, err := createVmFromTemplate(client, "templateId", "clusterId", "vm_name")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
 }
-createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
-if err != nil {
-	return err
+
+func createVmFromTemplate(
+	client *apiclient.Cloudtower,
+	templateId string,
+	clusterId string,
+	name string) (*models.VM, error) {
+	createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
+	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
+		{
+			TemplateID: pointy.String(templateId),
+			ClusterID:  pointy.String(clusterId),
+			Name:       pointy.String(name),
+			IsFullCopy: pointy.Bool(false),
+		},
+	}
+	createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := createRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-createdVm := queryRes.Payload[0]
 ```
 
 #### 配置与模板不同的虚拟盘参数
 
 ```go
-createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
-createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
-	{
-		TemplateID: pointy.String("template_id"),
-		ClusterID:  pointy.String("target_cluster_id"),
-		Name:       pointy.String("vm_name"),
-		DiskOperate: &models.VMCreateVMFromTemplateParamsDiskOperate{
-			RemoveDisks: &models.VMCreateVMFromTemplateParamsDiskOperateRemoveDisks{
-				DiskIndex: []int32{0, 1},
-			},
-			ModifyDisks: []*models.VMCreateVMFromTemplateParamsDiskOperateModifyDisksItems0{
-				{
-					DiskIndex:  pointy.Int32(2),
-					VMVolumeID: pointy.String("target_volume_id"),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	createdVm, err := createVmFromTemplate(client, "templateId", "clusterId", "vm_name")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
+}
+
+func createVmFromTemplate(
+	client *apiclient.Cloudtower,
+	templateId string,
+	clusterId string,
+	name string) (*models.VM, error) {
+	createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
+	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
+		{
+			TemplateID: pointy.String(templateId),
+			ClusterID:  pointy.String(clusterId),
+			Name:       pointy.String(name),
+			DiskOperate: &models.VMCreateVMFromTemplateParamsDiskOperate{
+				RemoveDisks: &models.VMCreateVMFromTemplateParamsDiskOperateRemoveDisks{
+					DiskIndex: []int32{2, 3},
 				},
-			},
-			NewDisks: &models.VMDiskParams{
-				MountCdRoms: []*models.VMCdRomParams{
+				ModifyDisks: []*models.VMCreateVMFromTemplateParamsDiskOperateModifyDisksItems0{
 					{
-						Boot:       pointy.Int32(0),
-						ElfImageID: pointy.String("target_image_id"),
+						DiskIndex:  pointy.Int32(0),
+						VMVolumeID: pointy.String("vmVolumeId1"),
 					},
 				},
-				MountDisks: []*models.MountDisksParams{
-					{
-						Bus:        models.BusVIRTIO.Pointer(),
-						Boot:       pointy.Int32(1),
-						VMVolumeID: pointy.String("target_volume_id"),
-					},
-				},
-				MountNewCreateDisks: []*models.MountNewCreateDisksParams{
-					{
-						VMVolume: &models.MountNewCreateDisksParamsVMVolume{
-							ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
-							Size:             pointy.Float64(4 * 1024 * 1024 * 1024),
-							Name:             pointy.String("disk_name"),
+				NewDisks: &models.VMDiskParams{
+					MountCdRoms: []*models.VMCdRomParams{
+						{
+							Index:      pointy.Int32(2),
+							Boot:       pointy.Int32(0),
+							ElfImageID: pointy.String("elfImageId"),
 						},
-						Boot: pointy.Int32(2),
-						Bus:  models.BusVIRTIO.Pointer(),
+					},
+					MountDisks: []*models.MountDisksParams{
+						{
+							Index:      pointy.Int32(3),
+							Bus:        models.BusVIRTIO.Pointer(),
+							Boot:       pointy.Int32(1),
+							VMVolumeID: pointy.String("vmVolumeId2"),
+						},
+					},
+					MountNewCreateDisks: []*models.MountNewCreateDisksParams{
+						{
+							VMVolume: &models.MountNewCreateDisksParamsVMVolume{
+								ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
+								Size:             pointy.Float64(4 * 1024 * 1024 * 1024),
+								Name:             pointy.String("disk_name"),
+							},
+							Boot: pointy.Int32(2),
+							Bus:  models.BusVIRTIO.Pointer(),
+						},
 					},
 				},
 			},
+			IsFullCopy: pointy.Bool(false),
 		},
-		IsFullCopy: pointy.Bool(false),
-	},
+	}
+	createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := createRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
-if err != nil {
-	return err
-}
-withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-createdVm := queryRes.Payload[0]
 ```
 
 #### 配置与模版不同的网卡参数
 
 ```go
-createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
-createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
-	{
-		TemplateID: pointy.String("template_id"),
-		ClusterID:  pointy.String("target_cluster_id"),
-		Name:       pointy.String("vm_name"),
-		VMNics: []*models.VMNicParams{
-			{
-				ConnectVlanID: pointy.String("alternate_vlan_id"),
-				Enabled:       pointy.Bool(true),
-				Model:         models.VMNicModelSRIOV.Pointer(),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
+	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
+		{
+			TemplateID: pointy.String("templateId"),
+			ClusterID:  pointy.String("clusterId"),
+			Name:       pointy.String("vm_name"),
+			VMNics: []*models.VMNicParams{
+				{
+					ConnectVlanID: pointy.String("vlanId2"),
+					Enabled:       pointy.Bool(true),
+					Model:         models.VMNicModelVIRTIO.Pointer(),
+				},
 			},
+			IsFullCopy: pointy.Bool(false),
 		},
-		IsFullCopy: pointy.Bool(false),
-	},
+	}
+	createdVm, err := createVmFromTemplate(client, createVmFromTemplateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
 }
-createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
-if err != nil {
-	return err
+
+func createVmFromTemplate(
+	client *apiclient.Cloudtower,
+	createVmFromTemplateParams *vm.CreateVMFromTemplateParams) (*models.VM, error) {
+
+	createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := createRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-createdVm := queryRes.Payload[0]
 ```
 
 ### 创建空白虚拟机
@@ -385,51 +623,82 @@ createdVm := queryRes.Payload[0]
 #### 简单创建
 
 ```go
-createParams := vm.NewCreateVMParams()
-createParams.RequestBody = []*models.VMCreationParams{
-	{
-		ClusterID:  pointy.String("target_cluster_id"),
-		Name:       pointy.String("test_vm_name"),
-		Ha:         pointy.Bool(true),
-		CPUCores:   pointy.Int32(4),
-		CPUSockets: pointy.Int32(2),
-		Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
-		Vcpu:       pointy.Int32(4 * 2),
-		Status:     models.VMStatusSTOPPED.Pointer(),
-		Firmware:   models.VMFirmwareBIOS.Pointer(),
-		VMNics: []*models.VMNicParams{
-			{ConnectVlanID: pointy.String("target_vlan_id")},
-		},
-		VMDisks: &models.VMDiskParams{
-			MountCdRoms: []*models.VMCdRomParams{
-				{
-					Boot:  pointy.Int32(1),
-					Index: pointy.Int32(1),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	createParams := vm.NewCreateVMParams()
+	createParams.RequestBody = []*models.VMCreationParams{
+		{
+			ClusterID:  pointy.String("clusterId"),
+			Name:       pointy.String("test_vm_name"),
+			Ha:         pointy.Bool(true),
+			CPUCores:   pointy.Int32(4),
+			CPUSockets: pointy.Int32(2),
+			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Vcpu:       pointy.Int32(4 * 2),
+			Status:     models.VMStatusSTOPPED.Pointer(),
+			Firmware:   models.VMFirmwareBIOS.Pointer(),
+			VMNics: []*models.VMNicParams{
+				{ConnectVlanID: pointy.String("vlanId1")},
+			},
+			VMDisks: &models.VMDiskParams{
+				MountCdRoms: []*models.VMCdRomParams{
+					{
+						Boot:  pointy.Int32(0),
+						Index: pointy.Int32(0),
+					},
 				},
 			},
 		},
-  },
+	}
+	createdVm, err := createVm(client, createParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
 }
-createRes, err := client.VM.CreateVM(createParams)
-if err != nil {
-	return err
+
+func createVm(
+	client *apiclient.Cloudtower,
+	createParams *vm.CreateVMParams) (*models.VM, error) {
+
+	createRes, err := client.VM.CreateVM(createParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := createRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-createdVm := queryRes.Payload[0]
+
 ```
 
 #### 创建时配置虚拟盘
@@ -437,205 +706,334 @@ createdVm := queryRes.Payload[0]
 ##### CD-ROM 加载 ISO
 
 ```go
-createParams := vm.NewCreateVMParams()
-createParams.RequestBody = []*models.VMCreationParams{
-	{
-		ClusterID:  pointy.String("target_cluster_id"),
-		Name:       pointy.String("test_vm_name"),
-		Ha:         pointy.Bool(true),
-		CPUCores:   pointy.Int32(4),
-		CPUSockets: pointy.Int32(2),
-		Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
-		Vcpu:       pointy.Int32(4 * 2),
-		Status:     models.VMStatusSTOPPED.Pointer(),
-		Firmware:   models.VMFirmwareBIOS.Pointer(),
-		VMNics: []*models.VMNicParams{
-			{ConnectVlanID: pointy.String("target_vlan_id")},
-		},
-		VMDisks: &models.VMDiskParams{
-			MountCdRoms: []*models.VMCdRomParams{
-				{
-					Boot:       pointy.Int32(1),
-					ElfImageID: pointy.String("target_elf_image_id"),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	createParams := vm.NewCreateVMParams()
+	createParams.RequestBody = []*models.VMCreationParams{
+		{
+			ClusterID:  pointy.String("clusterId"),
+			Name:       pointy.String("test_vm_name"),
+			Ha:         pointy.Bool(true),
+			CPUCores:   pointy.Int32(4),
+			CPUSockets: pointy.Int32(2),
+			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Vcpu:       pointy.Int32(4 * 2),
+			Status:     models.VMStatusSTOPPED.Pointer(),
+			Firmware:   models.VMFirmwareBIOS.Pointer(),
+			VMNics: []*models.VMNicParams{
+				{ConnectVlanID: pointy.String("vlanId1")},
+			},
+			VMDisks: &models.VMDiskParams{
+				MountCdRoms: []*models.VMCdRomParams{
+					{
+						Index:      pointy.Int32(0),
+						Boot:       pointy.Int32(0),
+						ElfImageID: pointy.String("elfImageId"),
+					},
 				},
 			},
 		},
-	},
+	}
+	createdVm, err := createVm(client, createParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
 }
-createRes, err := client.VM.CreateVM(createParams)
-if err != nil {
-	return err
+
+func createVm(
+	client *apiclient.Cloudtower,
+	createParams *vm.CreateVMParams) (*models.VM, error) {
+
+	createRes, err := client.VM.CreateVM(createParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := createRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-  panic(err.Error())
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-	createdVm := queryRes.Payload[0]
 ```
 
 ##### 挂载虚拟卷为虚拟盘
 
 ```go
-createParams := vm.NewCreateVMParams()
-createParams.RequestBody = []*models.VMCreationParams{
-	{
-		ClusterID:  pointy.String("target_cluster_id"),
-		Name:       pointy.String("test_vm_name"),
-		Ha:         pointy.Bool(true),
-		CPUCores:   pointy.Int32(4),
-		CPUSockets: pointy.Int32(2),
-		Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
-		Vcpu:       pointy.Int32(4 * 2),
-		Status:     models.VMStatusSTOPPED.Pointer(),
-		Firmware:   models.VMFirmwareBIOS.Pointer(),
-		VMNics: []*models.VMNicParams{
-			{ConnectVlanID: pointy.String("target_vlan_id")},
-		},
-		VMDisks: &models.VMDiskParams{
-			MountDisks: []*models.MountDisksParams{
-				{
-					Boot:       pointy.Int32(0),
-					Bus:        models.BusVIRTIO.Pointer(),
-					VMVolumeID: pointy.String("target_volume_id"),
-          Index:      pointy.Int32(0),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	createParams := vm.NewCreateVMParams()
+	createParams.RequestBody = []*models.VMCreationParams{
+		{
+			ClusterID:  pointy.String("clusterId"),
+			Name:       pointy.String("test_vm_name"),
+			Ha:         pointy.Bool(true),
+			CPUCores:   pointy.Int32(4),
+			CPUSockets: pointy.Int32(2),
+			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Vcpu:       pointy.Int32(4 * 2),
+			Status:     models.VMStatusSTOPPED.Pointer(),
+			Firmware:   models.VMFirmwareBIOS.Pointer(),
+			VMNics: []*models.VMNicParams{
+				{ConnectVlanID: pointy.String("vlanId1")},
+			},
+			VMDisks: &models.VMDiskParams{
+				MountDisks: []*models.MountDisksParams{
+					{
+						Boot:       pointy.Int32(0),
+						Bus:        models.BusVIRTIO.Pointer(),
+						VMVolumeID: pointy.String("vmVolumeId1"),
+						Index:      pointy.Int32(0),
+					},
 				},
 			},
 		},
-	},
+	}
+	createdVm, err := createVm(client, createParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
 }
-createRes, err := client.VM.CreateVM(createParams)
-if err != nil {
-	return err
+
+func createVm(
+	client *apiclient.Cloudtower,
+	createParams *vm.CreateVMParams) (*models.VM, error) {
+
+	createRes, err := client.VM.CreateVM(createParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := createRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-createdVm := queryRes.Payload[0]
 ```
 
 ##### 挂载新增虚拟盘
 
 ```go
-createParams := vm.NewCreateVMParams()
-createParams.RequestBody = []*models.VMCreationParams{
-	{
-		ClusterID:  pointy.String("target_cluster_id"),
-		Name:       pointy.String("test_vm_name"),
-		Ha:         pointy.Bool(true),
-		CPUCores:   pointy.Int32(4),
-		CPUSockets: pointy.Int32(2),
-		Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
-		Vcpu:       pointy.Int32(4 * 2),
-		Status:     models.VMStatusSTOPPED.Pointer(),
-		Firmware:   models.VMFirmwareBIOS.Pointer(),
-		VMNics: []*models.VMNicParams{
-			{ConnectVlanID: pointy.String("target_vlan_id")},
-		},
-		VMDisks: &models.VMDiskParams{
-			MountNewCreateDisks: []*models.MountNewCreateDisksParams{
-				{
-					Boot: pointy.Int32(0),
-					Bus:  models.BusIDE.Pointer(),
-					VMVolume: &models.MountNewCreateDisksParamsVMVolume{
-						Size:             pointy.Float64(20 * 1024 * 1024 * 1024),
-						ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
-						Name:             pointy.String("new_vm_disk_name"),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	createParams := vm.NewCreateVMParams()
+	createParams.RequestBody = []*models.VMCreationParams{
+		{
+			ClusterID:  pointy.String("clusterId"),
+			Name:       pointy.String("test_vm_name"),
+			Ha:         pointy.Bool(true),
+			CPUCores:   pointy.Int32(4),
+			CPUSockets: pointy.Int32(2),
+			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Vcpu:       pointy.Int32(4 * 2),
+			Status:     models.VMStatusSTOPPED.Pointer(),
+			Firmware:   models.VMFirmwareBIOS.Pointer(),
+			VMNics: []*models.VMNicParams{
+				{ConnectVlanID: pointy.String("vlanId1")},
+			},
+			VMDisks: &models.VMDiskParams{
+				MountNewCreateDisks: []*models.MountNewCreateDisksParams{
+					{
+						Boot: pointy.Int32(0),
+						Bus:  models.BusVIRTIO.Pointer(),
+						VMVolume: &models.MountNewCreateDisksParamsVMVolume{
+							Size:             pointy.Float64(10 * 1024 * 1024 * 1024),
+							ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
+							Name:             pointy.String("new_vm_disk_name"),
+						},
 					},
 				},
 			},
 		},
-	},
+	}
+	createdVm, err := createVm(client, createParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
 }
-createRes, err := client.VM.CreateVM(createParams)
-if err != nil {
-	return err
+
+func createVm(
+	client *apiclient.Cloudtower,
+	createParams *vm.CreateVMParams) (*models.VM, error) {
+
+	createRes, err := client.VM.CreateVM(createParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := createRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-createdVm := queryRes.Payload[0]
 ```
 
 #### 创建时配置虚拟网卡
 
 ```go
-createParams := vm.NewCreateVMParams()
-createParams.RequestBody = []*models.VMCreationParams{
-	{
-		ClusterID:  pointy.String("target_cluster_id"),
-		Name:       pointy.String("test_vm_name"),
-		Ha:         pointy.Bool(true),
-		CPUCores:   pointy.Int32(4),
-		CPUSockets: pointy.Int32(2),
-		Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
-		Vcpu:       pointy.Int32(4 * 2),
-		Status:     models.VMStatusSTOPPED.Pointer(),
-		Firmware:   models.VMFirmwareBIOS.Pointer(),
-		VMNics: []*models.VMNicParams{
-			{
-				ConnectVlanID: pointy.String("target_vlan_id"),
-				Mirror:        pointy.Bool(true),
-				Model:         models.VMNicModelSRIOV.Pointer(),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	createParams := vm.NewCreateVMParams()
+	createParams.RequestBody = []*models.VMCreationParams{
+		{
+			ClusterID:  pointy.String("clusterId"),
+			Name:       pointy.String("test_vm_name"),
+			Ha:         pointy.Bool(true),
+			CPUCores:   pointy.Int32(4),
+			CPUSockets: pointy.Int32(2),
+			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Vcpu:       pointy.Int32(4 * 2),
+			Status:     models.VMStatusSTOPPED.Pointer(),
+			Firmware:   models.VMFirmwareBIOS.Pointer(),
+			VMNics: []*models.VMNicParams{
+				{
+					ConnectVlanID: pointy.String("vlanId1"),
+					Mirror:        pointy.Bool(true),
+					Enabled:       pointy.Bool(false),
+					Model:         models.VMNicModelE1000.Pointer(),
+				},
+			},
+			VMDisks: &models.VMDiskParams{
+				MountCdRoms: []*models.VMCdRomParams{
+					{
+						Boot:  pointy.Int32(0),
+						Index: pointy.Int32(0),
+					},
+				},
 			},
 		},
-    VMDisks: &models.VMDiskParams{},
-	},
+	}
+	createdVm, err := createVm(client, createParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
 }
-createRes, err := client.VM.CreateVM(createParams)
-if err != nil {
-	return err
+
+func createVm(
+	client *apiclient.Cloudtower,
+	createParams *vm.CreateVMParams) (*models.VM, error) {
+
+	createRes, err := client.VM.CreateVM(createParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := createRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := createRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-createdVm := queryRes.Payload[0]
 ```
 
 ### 编辑虚拟机
@@ -643,41 +1041,70 @@ createdVm := queryRes.Payload[0]
 #### 编辑基本信息
 
 ```go
-updateParams := vm.NewUpdateVMParams()
-updateParams.RequestBody = &models.VMUpdateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMUpdateParamsData{
-		Name:        pointy.String("updated_name"),
-		Description: pointy.String("updated description"),
-		Ha:          pointy.Bool(true),
-		CPUCores:    pointy.Int32(2),
-		CPUSockets:  pointy.Int32(8),
-		Vcpu:        pointy.Int32(2 * 8),
-		Memory:      pointy.Float64(16 * 1024 * 1024 * 1024),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	updateParams := vm.NewUpdateVMParams()
+	updateParams.RequestBody = &models.VMUpdateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMUpdateParamsData{
+			Name:        pointy.String("updated_name"),
+			Description: pointy.String("updated description"),
+			Ha:          pointy.Bool(true),
+			CPUCores:    pointy.Int32(2),
+			CPUSockets:  pointy.Int32(8),
+			Vcpu:        pointy.Int32(2 * 8),
+			Memory:      pointy.Float64(16 * 1024 * 1024 * 1024),
+		},
+	}
+	updatedVm, err := updateVm(client, updateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle updated vm
 }
-updateRes, err := client.VM.UpdateVM(updateParams)
-if err != nil {
-	return err
+
+func updateVm(
+	client *apiclient.Cloudtower,
+	updateParams *vm.UpdateVMParams) (*models.VM, error) {
+	updateRes, err := client.VM.UpdateVM(updateParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
 ```
 
 #### CD-ROM 编辑
@@ -685,74 +1112,133 @@ updatedVm := queryRes.Payload[0]
 ##### 添加 CD-ROM
 
 ```go
-updateParams := vm.NewAddVMCdRomParams()
-updateParams.RequestBody = &models.VMAddCdRomParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMAddCdRomParamsData{
-		VMCdRoms: []*models.VMCdRomParams{
-			{
-				ElfImageID: pointy.String("target_elf_image_id"),
-				Boot:       pointy.Int32(0),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	addCdRomParams := vm.NewAddVMCdRomParams()
+	addCdRomParams.RequestBody = &models.VMAddCdRomParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMAddCdRomParamsData{
+			VMCdRoms: []*models.VMCdRomParams{
+				{
+					Index:      pointy.Int32(0),
+					ElfImageID: pointy.String("elfImageId"),
+					Boot:       pointy.Int32(0),
+				},
 			},
 		},
-	},
+	}
+	updatedVm, err := addVmCdRom(client, addCdRomParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle updated vm
 }
-updateRes, err := client.VM.AddVMCdRom(updateParams)
-if err != nil {
-	return err
+
+func addVmCdRom(
+	client *apiclient.Cloudtower,
+	addCdRomParams *vm.AddVMCdRomParams) (*models.VM, error) {
+	updateRes, err := client.VM.AddVMCdRom(addCdRomParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
 ```
 
 ##### 删除 CD-ROM
 
 ```go
-updateParams := vm.NewRemoveVMCdRomParams()
-updateParams.RequestBody = &models.VMRemoveCdRomParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMRemoveCdRomParamsData{
-		CdRomIds: []string{"id1", "id2"},
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	updateParams := vm.NewRemoveVMCdRomParams()
+	updateParams.RequestBody = &models.VMRemoveCdRomParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMRemoveCdRomParamsData{
+			CdRomIds: []string{"cdRomId1", "cdRomId2"},
+		},
+	}
+	updatedVm, err := removeVmCdRom(client, updateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle updated vm
 }
-updateRes, err := client.VM.RemoveVMCdRom(updateParams)
-if err != nil {
-	return err
+
+func removeVmCdRom(
+	client *apiclient.Cloudtower,
+	removeCdRomParams *vm.RemoveVMCdRomParams) (*models.VM, error) {
+	updateRes, err := client.VM.RemoveVMCdRom(removeCdRomParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
 ```
 
 #### 虚拟卷操作
@@ -760,123 +1246,211 @@ updatedVm := queryRes.Payload[0]
 ##### 添加新虚拟卷
 
 ```go
-updateParams := vm.NewAddVMDiskParams()
-updateParams.RequestBody = &models.VMAddDiskParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMAddDiskParamsData{
-		VMDisks: &models.VMAddDiskParamsDataVMDisks{
-			MountNewCreateDisks: []*models.MountNewCreateDisksParams{
-				{
-					VMVolume: &models.MountNewCreateDisksParamsVMVolume{
-						ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
-						Size:             pointy.Float64(20 * 1024 * 1024 * 1024),
-						Name:             pointy.String("new_disk_name"),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	updateParams := vm.NewAddVMDiskParams()
+	updateParams.RequestBody = &models.VMAddDiskParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMAddDiskParamsData{
+			VMDisks: &models.VMAddDiskParamsDataVMDisks{
+				MountNewCreateDisks: []*models.MountNewCreateDisksParams{
+					{
+						VMVolume: &models.MountNewCreateDisksParamsVMVolume{
+							ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
+							Size:             pointy.Float64(10 * 1024 * 1024 * 1024),
+							Name:             pointy.String("new_disk_name"),
+						},
+						Boot: pointy.Int32(1),
+						Bus:  models.BusVIRTIO.Pointer(),
 					},
-					Boot: pointy.Int32(1),
-					Bus:  models.BusVIRTIO.Pointer(),
 				},
 			},
 		},
-	},
+	}
+	updatedVm, err := addVmDisk(client, updateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
 }
-updateRes, err := client.VM.AddVMDisk(updateParams)
-if err != nil {
-	return err
+
+func addVmDisk(
+	client *apiclient.Cloudtower,
+	addVMDiskParams *vm.AddVMDiskParams) (*models.VM, error) {
+	updateRes, err := client.VM.AddVMDisk(addVMDiskParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
 ```
 
 ##### 挂载已存在虚拟卷为虚拟盘
 
 ```go
-updateParams := vm.NewAddVMDiskParams()
-updateParams.RequestBody = &models.VMAddDiskParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMAddDiskParamsData{
-		VMDisks: &models.VMAddDiskParamsDataVMDisks{
-			MountDisks: []*models.MountDisksParams{
-				{
-					VMVolumeID: pointy.String("target_vm_volume_id"),
-					Boot:       pointy.Int32(1),
-					Bus:        models.BusVIRTIO.Pointer(),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	updateParams := vm.NewAddVMDiskParams()
+	updateParams.RequestBody = &models.VMAddDiskParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMAddDiskParamsData{
+			VMDisks: &models.VMAddDiskParamsDataVMDisks{
+				MountDisks: []*models.MountDisksParams{
+					{
+						Index:      pointy.Int32(0),
+						VMVolumeID: pointy.String("vmVolumeId"),
+						Boot:       pointy.Int32(0),
+						Bus:        models.BusVIRTIO.Pointer(),
+					},
 				},
 			},
 		},
-	},
+	}
+	updatedVm, err := addVmDisk(client, updateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle updated vm
 }
-updateRes, err := client.VM.AddVMDisk(updateParams)
-if err != nil {
-	return err
+
+func addVmDisk(
+	client *apiclient.Cloudtower,
+	addVMDiskParams *vm.AddVMDiskParams) (*models.VM, error) {
+	updateRes, err := client.VM.AddVMDisk(addVMDiskParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
 ```
 
 ##### 卸载虚拟盘
 
 ```go
-updateParams := vm.NewRemoveVMDiskParams()
-updateParams.RequestBody = &models.VMRemoveDiskParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMRemoveDiskParamsData{
-		DiskIds: []string{"id1", "id2"},
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	updateParams := vm.NewRemoveVMDiskParams()
+	updateParams.RequestBody = &models.VMRemoveDiskParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMRemoveDiskParamsData{
+			DiskIds: []string{"diskId1", "diskId2"},
+		},
+	}
+	updatedVm, err := removeVmDisk(client, updateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle updated vm
 }
-updateRes, err := client.VM.RemoveVMDisk(updateParams)
-if err != nil {
-	return err
+
+func removeVmDisk(
+	client *apiclient.Cloudtower,
+	removeVmDiskParams *vm.RemoveVMDiskParams) (*models.VM, error) {
+	updateRes, err := client.VM.RemoveVMDisk(removeVmDiskParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
 ```
 
 #### 网卡操作
@@ -884,127 +1458,199 @@ updatedVm := queryRes.Payload[0]
 ##### 添加网卡
 
 ```go
-updateParams := vm.NewAddVMNicParams()
-updateParams.RequestBody = &models.VMAddNicParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMAddNicParamsData{
-		VMNics: []*models.VMNicParams{
-			{
-				ConnectVlanID: pointy.String("target_vlan_id"),
-				Enabled:       pointy.Bool(true),
-				Model:         models.VMNicModelVIRTIO.Pointer(),
-				IPAddress:     pointy.String("ip_address"),
-				Gateway:       pointy.String("gateway"),
-				SubnetMask:    pointy.String("subnetmask"),
-			},
-			{
-				ConnectVlanID: pointy.String("target_vlan_id_2"),
-				Enabled:       pointy.Bool(true),
-				Mirror:        pointy.Bool(true),
-				Model:         models.VMNicModelVIRTIO.Pointer(),
-				IPAddress:     pointy.String("ip_address_2"),
-				Gateway:       pointy.String("gateway"),
-				SubnetMask:    pointy.String("subnetmask"),
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	updateParams := vm.NewAddVMNicParams()
+	updateParams.RequestBody = &models.VMAddNicParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMAddNicParamsData{
+			VMNics: []*models.VMNicParams{
+				{
+					ConnectVlanID: pointy.String("vlanId2"),
+					Enabled:       pointy.Bool(true),
+					Model:         models.VMNicModelVIRTIO.Pointer(),
+				},
 			},
 		},
-	},
+	}
+	updatedVm, err := addVmNic(client, updateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle updated vm
 }
-updateRes, err := client.VM.AddVMNic(updateParams)
-if err != nil {
-	return err
+
+func addVmNic(
+	client *apiclient.Cloudtower,
+	addVMNicParams *vm.AddVMNicParams) (*models.VM, error) {
+	updateRes, err := client.VM.AddVMNic(addVMNicParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
 ```
 
 ##### 编辑网卡
 
 ```go
-updateParams := vm.NewUpdateVMNicParams()
-updateParams.RequestBody = &models.VMUpdateNicParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMUpdateNicParamsData{
-		NicIndex:   pointy.Int32(0),
-		Enabled:    pointy.Bool(false),
-		Mirror:     pointy.Bool(false),
-		MacAddress: pointy.String("new_mac_address"),
-		IPAddress:  pointy.String("new_ip"),
-		Gateway:    pointy.String("new_gateway"),
-		SubnetMask: pointy.String("new_subnet_mask"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	updateParams := vm.NewUpdateVMNicParams()
+	updateParams.RequestBody = &models.VMUpdateNicParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMUpdateNicParamsData{
+			NicIndex: pointy.Int32(0),
+			Enabled:  pointy.Bool(false),
+			Mirror:   pointy.Bool(false),
+		},
+	}
+	updatedVm, err := updateVmNic(client, updateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle updated vm
 }
-updateRes, err := client.VM.UpdateVMNic(updateParams)
-if err != nil {
-	return err
+
+func updateVmNic(
+	client *apiclient.Cloudtower,
+	updateVMNicParams *vm.UpdateVMNicParams) (*models.VM, error) {
+	updateRes, err := client.VM.UpdateVMNic(updateVMNicParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
 ```
 
 ##### 移除网卡
 
 ```go
-updateParams := vm.NewRemoveVMNicParams()
-updateParams.RequestBody = &models.VMRemoveNicParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMRemoveNicParamsData{
-		NicIndex: []int32{0, 1},
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+	updateParams := vm.NewRemoveVMNicParams()
+	updateParams.RequestBody = &models.VMRemoveNicParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String("vmId"),
+		},
+		Data: &models.VMRemoveNicParamsData{
+			NicIndex: []int32{0, 1},
+		},
+	}
+	updatedVm, err := removeVmNic(client, updateParams)
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle updated vm
 }
-updateRes, err := client.VM.RemoveVMNic(updateParams)
-if err != nil {
-	return err
+
+func removeVmNic(
+	client *apiclient.Cloudtower,
+	removeVmDiskParams *vm.RemoveVMNicParams) (*models.VM, error) {
+	updateRes, err := client.VM.RemoveVMNic(removeVmDiskParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := updateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := updateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-updatedVm := queryRes.Payload[0]
+
 ```
 
 #### 虚拟机迁移
@@ -1012,66 +1658,127 @@ updatedVm := queryRes.Payload[0]
 ##### 迁移至指定主机
 
 ```go
-migrateParams := vm.NewMigRateVMParams()
-migrateParams.RequestBody = &models.VMMigrateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMMigrateParamsData{
-		HostID: pointy.String("host_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	migratedVm, err := migrateVmToHost(client, "vmId", "hostId")
+	if err != nil {
+		panic(err.Error())
+	}
+	// handle migrated vm
 }
-migrateRes, err := client.VM.MigRateVM(migrateParams)
-if err != nil {
-	return err
+
+func migrateVmToHost(
+	client *apiclient.Cloudtower,
+	vmId string,
+	hostId string) (*models.VM, error) {
+	migrateParams := vm.NewMigRateVMParams()
+	migrateParams.RequestBody = &models.VMMigrateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+		Data: &models.VMMigrateParamsData{
+			HostID: pointy.String(hostId),
+		},
+	}
+	migrateRes, err := client.VM.MigRateVM(migrateParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := migrateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := migrateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-migratedVm := queryRes.Payload[0]
 ```
 
 ##### 自动调度到合适的主机
 
 ```go
-migrateParams := vm.NewMigRateVMParams()
-migrateParams.RequestBody = &models.VMMigrateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	migratedVm, err := migrateVmAutoSchedule(client, "vmId")
+	if err != nil {
+		panic(err.Error())
+	}
+	// handle migrated vm
 }
-migrateRes, err := client.VM.MigRateVM(migrateParams)
-if err != nil {
-	return err
+
+func migrateVmAutoSchedule(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	migrateParams := vm.NewMigRateVMParams()
+	migrateParams.RequestBody = &models.VMMigrateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	migrateRes, err := client.VM.MigRateVM(migrateParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := migrateRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := migrateRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-migratedVm := queryRes.Payload[0]
 ```
 
 ### 虚拟机电源操作
@@ -1081,109 +1788,202 @@ migratedVm := queryRes.Payload[0]
 ##### 指定虚拟机开机，自动调度到合适的虚拟机
 
 ```go
-startParams := vm.NewStartVMParams()
-startParams.RequestBody = &models.VMStartParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	startedVm, err := startVm(client, "vmId")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle started vm
 }
-startRes, err := client.VM.StartVM(startParams)
-if err != nil {
-	return err
+
+func startVm(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	startParams := vm.NewStartVMParams()
+	startParams.RequestBody = &models.VMStartParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	startRes, err := client.VM.StartVM(startParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := startRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := startRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-startedVm := queryRes.Payload[0]
 ```
 
 ##### 批量虚拟机开机，自动调度到合适的虚拟机
 
 ```go
-startParams := vm.NewStartVMParams()
-startParams.RequestBody = &models.VMStartParams{
-	Where: &models.VMWhereInput{
-		IDIn: []string{"vm_id_1", "vm_id_2"},
-	},
+package main
+
+import (
+	"fmt"
+
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	"github.com/thoas/go-funk"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	startedVms, err := startVmsByQuery(client, &models.VMWhereInput{
+		IDIn: []string{"vmId"},
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle started vms
 }
-startRes, err := client.VM.StartVM(startParams)
-if err != nil {
-	return err
+
+func startVmsByQuery(client *apiclient.Cloudtower,
+	where *models.VMWhereInput) ([]*models.VM, error) {
+	startParams := vm.NewStartVMParams()
+	startParams.RequestBody = &models.VMStartParams{
+		Where: where,
+	}
+	startRes, err := client.VM.StartVM(startParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVms := startRes.Payload
+	taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.TaskID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse task ids")
+	}
+	vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.Data.ID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse vm ids")
+	}
+	err = utils.WaitTasks(client, taskIds)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			IDIn: vmIds,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload, nil
 }
-withTaskVms := startRes.Payload
-taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.TaskID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse task ids")
-}
-vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.Data.ID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse vm ids")
-}
-err = utils.WaitTasks(client, taskIds)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		IDIn: vmIds,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-startedVms := queryRes.Payload
 ```
 
 ##### 开机至指定主机
 
 ```go
-startParams := vm.NewStartVMParams()
-startParams.RequestBody = &models.VMStartParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
-	Data: &models.VMStartParamsData{
-		HostID: pointy.String("host_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	startedVm, err := startVmOnHost(client, "vmId", "hostId2")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle started vm
 }
-startRes, err := client.VM.StartVM(startParams)
-if err != nil {
-	return err
+
+func startVmOnHost(
+	client *apiclient.Cloudtower,
+	vmId string,
+	hostId string) (*models.VM, error) {
+	startParams := vm.NewStartVMParams()
+	startParams.RequestBody = &models.VMStartParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+		Data: &models.VMStartParamsData{
+			HostID: pointy.String(hostId),
+		},
+	}
+	startRes, err := client.VM.StartVM(startParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := startRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := startRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-startedVm := queryRes.Payload[0]
 ```
 
 #### 虚拟机关机
@@ -1191,149 +1991,274 @@ startedVm := queryRes.Payload[0]
 ##### 指定虚拟机关机
 
 ```go
-shutdownParams := vm.NewShutDownVMParams()
-shutdownParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	shutdownVm, err := shutdownVm(client, "vmId")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle shutdown vm
 }
-shutdownRes, err := client.VM.ShutDownVM(shutdownParams)
-if err != nil {
-	return err
+
+func shutdownVm(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	shutdownParams := vm.NewShutDownVMParams()
+	shutdownParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	shutdownRes, err := client.VM.ShutDownVM(shutdownParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := shutdownRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := shutdownRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-shutdownVm := queryRes.Payload[0]
 ```
 
 ##### 批量虚拟机关机
 
 ```go
-shutdownParams := vm.NewShutDownVMParams()
-shutdownParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		IDIn: []string{"vm_id_1", "vm_id_2"},
-	},
+package main
+
+import (
+	"fmt"
+
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	"github.com/thoas/go-funk"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	shutdownVms, err := shutdownVmsByQuery(client, &models.VMWhereInput{
+		IDIn: []string{"vmId"},
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle shutdown vms
 }
-startRes, err := client.VM.ShutDownVM(shutdownParams)
-if err != nil {
-	return err
+
+func shutdownVmsByQuery(client *apiclient.Cloudtower,
+	where *models.VMWhereInput) ([]*models.VM, error) {
+	shutdownParams := vm.NewShutDownVMParams()
+	shutdownParams.RequestBody = &models.VMOperateParams{
+		Where: where,
+	}
+	shutdownRes, err := client.VM.ShutDownVM(shutdownParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVms := shutdownRes.Payload
+	taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.TaskID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse task ids")
+	}
+	vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.Data.ID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse vm ids")
+	}
+	err = utils.WaitTasks(client, taskIds)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			IDIn: vmIds,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload, nil
 }
-withTaskVms := startRes.Payload
-taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.TaskID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse task ids")
-}
-vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.Data.ID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse vm ids")
-}
-err = utils.WaitTasks(client, taskIds)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		IDIn: vmIds,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-shutdownVms := queryRes.Payload
 ```
 
 ##### 强制关机指定虚拟机
 
 ```go
-shutdownParams := vm.NewForceShutDownVMParams()
-shutdownParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	shutdownVm, err := forceShutdownVm(client, "vmId")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle shutdown vm
 }
-shutdownRes, err := client.VM.ForceShutDownVM(shutdownParams)
-if err != nil {
-	return err
+
+func forceShutdownVm(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	shutdownParams := vm.NewForceShutDownVMParams()
+	shutdownParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	shutdownRes, err := client.VM.ForceShutDownVM(shutdownParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := shutdownRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := shutdownRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-shutdownVm := queryRes.Payload[0]
 ```
 
 ##### 强制关机批量虚拟机
 
 ```go
-shutdownParams := vm.NewForceShutDownVMParams()
-shutdownParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		IDIn: []string{"vm_id_1", "vm_id_2"},
-	},
+package main
+
+import (
+	"fmt"
+
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	"github.com/thoas/go-funk"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	shutdownVms, err := forceshutdownVmsByQuery(client, &models.VMWhereInput{
+		IDIn: []string{"vmId"},
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle shutdown vms
 }
-startRes, err := client.VM.ForceShutDownVM(shutdownParams)
-if err != nil {
-	return err
+
+
+func forceshutdownVmsByQuery(client *apiclient.Cloudtower,
+	where *models.VMWhereInput) ([]*models.VM, error) {
+	shutdownParams := vm.NewForceShutDownVMParams()
+	shutdownParams.RequestBody = &models.VMOperateParams{
+		Where: where,
+	}
+	shutdownRes, err := client.VM.ForceShutDownVM(shutdownParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVms := shutdownRes.Payload
+	taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.TaskID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse task ids")
+	}
+	vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.Data.ID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse vm ids")
+	}
+	err = utils.WaitTasks(client, taskIds)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			IDIn: vmIds,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload, nil
 }
-withTaskVms := startRes.Payload
-taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.TaskID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse task ids")
-}
-vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.Data.ID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse vm ids")
-}
-err = utils.WaitTasks(client, taskIds)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		IDIn: vmIds,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-shutdownVms := queryRes.Payload
+
 ```
 
 #### 虚拟机重启
@@ -1341,149 +2266,271 @@ shutdownVms := queryRes.Payload
 ##### 重启指定虚拟机
 
 ```go
-restartParams := vm.NewRestartVMParams()
-restartParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	restartedVm, err := restartVm(client, "vmId")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle restarted vm
 }
-restartRes, err := client.VM.RestartVM(restartParams)
-if err != nil {
-	return err
+
+func restartVm(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	restartParams := vm.NewRestartVMParams()
+	restartParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	restartRes, err := client.VM.RestartVM(restartParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := restartRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-restartedVm := queryRes.Payload[0]
 ```
 
 ##### 重启批量虚拟机
 
 ```go
-restartParams := vm.NewRestartVMParams()
-restartParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		IDIn: []string{"vm_id_1", "vm_id_2"},
-	},
+package main
+
+import (
+	"fmt"
+
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	"github.com/thoas/go-funk"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+  	restartedVms, err := restartVmsByQuery(client, &models.VMWhereInput{
+		IDIn: []string{"vmId"},
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle restarted vms
 }
-startRes, err := client.VM.RestartVM(restartParams)
-if err != nil {
-	return err
+
+func restartVmsByQuery(client *apiclient.Cloudtower,
+	where *models.VMWhereInput) ([]*models.VM, error) {
+	restartParams := vm.NewRestartVMParams()
+	restartParams.RequestBody = &models.VMOperateParams{
+		Where: where,
+	}
+	restartRes, err := client.VM.RestartVM(restartParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVms := restartRes.Payload
+	taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.TaskID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse task ids")
+	}
+	vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.Data.ID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse vm ids")
+	}
+	err = utils.WaitTasks(client, taskIds)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			IDIn: vmIds,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload, nil
 }
-withTaskVms := startRes.Payload
-taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.TaskID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse task ids")
-}
-vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.Data.ID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse vm ids")
-}
-err = utils.WaitTasks(client, taskIds)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		IDIn: vmIds,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-restartedVms := queryRes.Payload
 ```
 
 ##### 强制重启指定虚拟机
 
 ```go
-restartParams := vm.NewForceRestartVMParams()
-restartParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	restartedVm, err := forceRestartVm(client, "vmId")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle restarted vm
 }
-restartRes, err := client.VM.ForceRestartVM(restartParams)
-if err != nil {
-	return err
+
+func forceRestartVm(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	restartParams := vm.NewForceRestartVMParams()
+	restartParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	shutdownRes, err := client.VM.ForceRestartVM(restartParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := shutdownRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-restartedVm := queryRes.Payload[0]
 ```
 
 ##### 强制重启批量虚拟机
 
 ```go
-restartParams := vm.NewForceRestartVMParams()
-restartParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		IDIn: []string{"vm_id_1", "vm_id_2"},
-	},
+package main
+
+import (
+	"fmt"
+
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	"github.com/thoas/go-funk"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	restartedVms, err := forceRestartVmsByQuery(client, &models.VMWhereInput{
+		IDIn: []string{"vmId"},
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle restarted vms
 }
-startRes, err := client.VM.ForceRestartVM(restartParams)
-if err != nil {
-	return err
+
+func forceRestartVmsByQuery(client *apiclient.Cloudtower,
+	where *models.VMWhereInput) ([]*models.VM, error) {
+	restartParams := vm.NewForceRestartVMParams()
+	restartParams.RequestBody = &models.VMOperateParams{
+		Where: where,
+	}
+	startRes, err := client.VM.ForceRestartVM(restartParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVms := startRes.Payload
+	taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.TaskID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse task ids")
+	}
+	vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.Data.ID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse vm ids")
+	}
+	err = utils.WaitTasks(client, taskIds)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			IDIn: vmIds,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload, nil
 }
-withTaskVms := startRes.Payload
-taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.TaskID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse task ids")
-}
-vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.Data.ID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse vm ids")
-}
-err = utils.WaitTasks(client, taskIds)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		IDIn: vmIds,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-restartedVms := queryRes.Payload
 ```
 
 #### 虚拟机暂停
@@ -1491,75 +2538,138 @@ restartedVms := queryRes.Payload
 ##### 暂停指定虚拟机
 
 ```go
-suspendParams := vm.NewSuspendVMParams()
-suspendParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	suspendedVm, err := suspendVm(client, "vmId")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle suspended vm
 }
-restartRes, err := client.VM.SuspendVM(suspendParams)
-if err != nil {
-	return err
+
+func suspendVm(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	suspendParams := vm.NewSuspendVMParams()
+	suspendParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	shutdownRes, err := client.VM.SuspendVM(suspendParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := shutdownRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-suspendedVm := queryRes.Payload[0]
 ```
 
 ##### 暂停批量虚拟机
 
 ```go
-suspendParams := vm.NewSuspendVMParams()
-suspendParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		IDIn: []string{"vm_id_1", "vm_id_2"},
-	},
+package main
+
+import (
+	"fmt"
+
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	"github.com/thoas/go-funk"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	suspendedVms, err := suspendVmsByQuery(client, &models.VMWhereInput{
+		IDIn: []string{"vmId"},
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+	// handle restarted vms
+	print(suspendedVms)
 }
-startRes, err := client.VM.SuspendVM(suspendParams)
-if err != nil {
-	return err
+
+func suspendVmsByQuery(client *apiclient.Cloudtower,
+	where *models.VMWhereInput) ([]*models.VM, error) {
+	suspendParams := vm.NewSuspendVMParams()
+	suspendParams.RequestBody = &models.VMOperateParams{
+		Where: where,
+	}
+	suspendRes, err := client.VM.SuspendVM(suspendParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVms := suspendRes.Payload
+	taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.TaskID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse task ids")
+	}
+	vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.Data.ID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse vm ids")
+	}
+	err = utils.WaitTasks(client, taskIds)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			IDIn: vmIds,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload, nil
 }
-withTaskVms := startRes.Payload
-taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.TaskID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse task ids")
-}
-vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.Data.ID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse vm ids")
-}
-err = utils.WaitTasks(client, taskIds)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		IDIn: vmIds,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-suspendedVms := queryRes.Payload
+
 ```
 
 #### 虚拟机恢复
@@ -1567,75 +2677,137 @@ suspendedVms := queryRes.Payload
 ##### 恢复指定虚拟机
 
 ```go
-resumeParams := vm.NewResumeVMParams()
-resumeParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	resumedVm, err := resumeVm(client, "vmId")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle resumed vm
 }
-restartRes, err := client.VM.ResumeVM(resumeParams)
-if err != nil {
-	return err
+
+func resumeVm(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	resumeVmParams := vm.NewResumeVMParams()
+	resumeVmParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	resumeRes, err := client.VM.ResumeVM(resumeVmParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := resumeRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-resumedVm := queryRes.Payload[0]
 ```
 
 ##### 恢复批量虚拟机
 
 ```go
-resumeParams := vm.NewResumeVMParams()
-resumeParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		IDIn: []string{"vm_id_1", "vm_id_2"},
-	},
+package main
+
+import (
+	"fmt"
+
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	"github.com/thoas/go-funk"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	resumedVms, err := resumeVmsByQuery(client, &models.VMWhereInput{
+		IDIn: []string{"vmId"},
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle resumed vms
 }
-startRes, err := client.VM.ResumeVM(resumeParams)
-if err != nil {
-	return err
+
+func resumeVmsByQuery(client *apiclient.Cloudtower,
+	where *models.VMWhereInput) ([]*models.VM, error) {
+	resumeParams := vm.NewResumeVMParams()
+	resumeParams.RequestBody = &models.VMOperateParams{
+		Where: where,
+	}
+	resumeRes, err := client.VM.ResumeVM(resumeParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVms := resumeRes.Payload
+	taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.TaskID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse task ids")
+	}
+	vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
+		return *vm.Data.ID
+	}).([]string)
+	if !valid {
+		return nil, fmt.Errorf("failed to parse vm ids")
+	}
+	err = utils.WaitTasks(client, taskIds)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			IDIn: vmIds,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload, nil
 }
-withTaskVms := startRes.Payload
-taskIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.TaskID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse task ids")
-}
-vmIds, valid := funk.Map(withTaskVms, func(vm *models.WithTaskVM) string {
-	return *vm.Data.ID
-}).([]string)
-if !valid {
-	return fmt.Errorf("failed to parse vm ids")
-}
-err = utils.WaitTasks(client, taskIds)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		IDIn: vmIds,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-resumedVms := queryRes.Payload
+
 ```
 
 ### 删除虚拟机
@@ -1645,82 +2817,177 @@ resumedVms := queryRes.Payload
 ##### 移入回收站
 
 ```go
-moveToBinParams := vm.NewMoveVMToRecycleBinParams()
-moveToBinParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	vmInRecycleBin, err := moveVmToRecycleBin(client, "vmId")
+
+	if err != nil {
+		panic(err.Error())
+	}
+	// fmt.Print(vms)
+	print(vmInRecycleBin)
 }
-restartRes, err := client.VM.MoveVMToRecycleBin(moveToBinParams)
-if err != nil {
-	return err
+
+func moveVmToRecycleBin(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	moveParams := vm.NewMoveVMToRecycleBinParams()
+	moveParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	moveRes, err := client.VM.MoveVMToRecycleBin(moveParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := moveRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-vmInBin := queryRes.Payload[0]
 ```
 
 ##### 从回收站恢复
 
 ```go
-recoveryParams := vm.NewRecoverVMFromRecycleBinParams()
-recoveryParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	vmInRecycleBin, err := recoverVmFromRecycleBin(client, "vmId")
+
+	if err != nil {
+		panic(err.Error())
+	}
+	// fmt.Print(vms)
+	print(vmInRecycleBin)
 }
-restartRes, err := client.VM.RecoverVMFromRecycleBin(recoveryParams)
-if err != nil {
-	return err
+
+func recoverVmFromRecycleBin(
+	client *apiclient.Cloudtower,
+	vmId string) (*models.VM, error) {
+	recoverParams := vm.NewRecoverVMFromRecycleBinParams()
+	recoverParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	recoverRes, err := client.VM.RecoverVMFromRecycleBin(recoverParams)
+	if err != nil {
+		return nil, err
+	}
+	withTaskVm := recoverRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return nil, err
+	}
+	getVmParams := vm.NewGetVmsParams()
+	getVmParams.RequestBody = &models.GetVmsRequestBody{
+		Where: &models.VMWhereInput{
+			ID: withTaskVm.Data.ID,
+		},
+	}
+	queryRes, err := client.VM.GetVms(getVmParams)
+	if err != nil {
+		return nil, err
+	}
+	return queryRes.Payload[0], nil
 }
-withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
-}
-getVmParams := vm.NewGetVmsParams()
-getVmParams.RequestBody = &models.GetVmsRequestBody{
-	Where: &models.VMWhereInput{
-		ID: withTaskVm.Data.ID,
-	},
-}
-queryRes, err := client.VM.GetVms(getVmParams)
-if err != nil {
-	return err
-}
-recoveredVm := queryRes.Payload[0]
 ```
 
 #### 永久删除
 
 ```go
-deleteParams := vm.NewDeleteVMParams()
-deleteParams.RequestBody = &models.VMOperateParams{
-	Where: &models.VMWhereInput{
-		ID: pointy.String("vm_id"),
-	},
+package main
+
+import (
+	"github.com/openlyinc/pointy"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/utils"
+
+	httptransport "github.com/go-openapi/runtime/client"
+
+	"github.com/go-openapi/strfmt"
+)
+
+func main() {
+	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	client := apiclient.New(transport, strfmt.Default)
+	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
+
+	err := deleteVm(client, "vmId")
+
+	if err != nil {
+		panic(err.Error())
+	}
 }
-restartRes, err := client.VM.DeleteVM(deleteParams)
-if err != nil {
-	return err
-}
-withTaskVm := restartRes.Payload[0]
-err = utils.WaitTask(client, withTaskVm.TaskID)
-if err != nil {
-	return err
+
+func deleteVm(
+	client *apiclient.Cloudtower,
+	vmId string) error {
+	deleteParams := vm.NewDeleteVMParams()
+	deleteParams.RequestBody = &models.VMOperateParams{
+		Where: &models.VMWhereInput{
+			ID: pointy.String(vmId),
+		},
+	}
+	deleteRes, err := client.VM.DeleteVM(deleteParams)
+	if err != nil {
+		return err
+	}
+	withTaskVm := deleteRes.Payload[0]
+	err = utils.WaitTask(client, withTaskVm.TaskID)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 ```
 
