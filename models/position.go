@@ -25,10 +25,10 @@ type Position struct {
 	Typename *string `json:"__typename,omitempty"`
 
 	// column
-	Column *MaybeScalarsAtInt `json:"column,omitempty"`
+	Column *int32 `json:"column,omitempty"`
 
 	// row
-	Row *MaybeScalarsAtInt `json:"row,omitempty"`
+	Row *int32 `json:"row,omitempty"`
 }
 
 // Validate validates this position
@@ -36,14 +36,6 @@ func (m *Position) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateTypename(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateColumn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRow(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -92,91 +84,8 @@ func (m *Position) validateTypename(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Position) validateColumn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Column) { // not required
-		return nil
-	}
-
-	if m.Column != nil {
-		if err := m.Column.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("column")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("column")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *Position) validateRow(formats strfmt.Registry) error {
-	if swag.IsZero(m.Row) { // not required
-		return nil
-	}
-
-	if m.Row != nil {
-		if err := m.Row.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("row")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("row")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this position based on the context it is used
+// ContextValidate validates this position based on context it is used
 func (m *Position) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateColumn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateRow(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *Position) contextValidateColumn(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Column != nil {
-		if err := m.Column.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("column")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("column")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *Position) contextValidateRow(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Row != nil {
-		if err := m.Row.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("row")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("row")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 

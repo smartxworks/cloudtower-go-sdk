@@ -24,10 +24,10 @@ type HostBatchCreateDiskInput struct {
 	Drive *string `json:"drive"`
 
 	// function
-	Function *MaybeDiskFunction `json:"function,omitempty"`
+	Function *DiskFunction `json:"function,omitempty"`
 
 	// type
-	Type *MaybeDiskType `json:"type,omitempty"`
+	Type *DiskType `json:"type,omitempty"`
 }
 
 // Validate validates this host batch create disk input

@@ -8,7 +8,6 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -19,115 +18,19 @@ import (
 type NodeTopoWhereUniqueInput struct {
 
 	// id
-	ID *MaybeScalarsAtID `json:"id,omitempty"`
+	ID *string `json:"id,omitempty"`
 
 	// local id
-	LocalID *MaybeScalarsAtString `json:"local_id,omitempty"`
+	LocalID *string `json:"local_id,omitempty"`
 }
 
 // Validate validates this node topo where unique input
 func (m *NodeTopoWhereUniqueInput) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLocalID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (m *NodeTopoWhereUniqueInput) validateID(formats strfmt.Registry) error {
-	if swag.IsZero(m.ID) { // not required
-		return nil
-	}
-
-	if m.ID != nil {
-		if err := m.ID.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("id")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("id")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NodeTopoWhereUniqueInput) validateLocalID(formats strfmt.Registry) error {
-	if swag.IsZero(m.LocalID) { // not required
-		return nil
-	}
-
-	if m.LocalID != nil {
-		if err := m.LocalID.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("local_id")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("local_id")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this node topo where unique input based on the context it is used
+// ContextValidate validates this node topo where unique input based on context it is used
 func (m *NodeTopoWhereUniqueInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateID(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLocalID(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *NodeTopoWhereUniqueInput) contextValidateID(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ID != nil {
-		if err := m.ID.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("id")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("id")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NodeTopoWhereUniqueInput) contextValidateLocalID(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LocalID != nil {
-		if err := m.LocalID.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("local_id")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("local_id")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
