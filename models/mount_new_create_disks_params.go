@@ -34,7 +34,7 @@ type MountNewCreateDisksParams struct {
 	Key *int32 `json:"key,omitempty"`
 
 	// max bandwidth
-	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
@@ -297,7 +297,7 @@ type MountNewCreateDisksParamsVMVolume struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 }
 
 // Validate validates this mount new create disks params VM volume

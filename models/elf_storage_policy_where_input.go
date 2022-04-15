@@ -261,28 +261,28 @@ type ElfStoragePolicyWhereInput struct {
 	StripeNumNotIn []int32 `json:"stripe_num_not_in,omitempty"`
 
 	// stripe size
-	StripeSize *float64 `json:"stripe_size,omitempty"`
+	StripeSize *int64 `json:"stripe_size,omitempty"`
 
 	// stripe size gt
-	StripeSizeGt *float64 `json:"stripe_size_gt,omitempty"`
+	StripeSizeGt *int64 `json:"stripe_size_gt,omitempty"`
 
 	// stripe size gte
-	StripeSizeGte *float64 `json:"stripe_size_gte,omitempty"`
+	StripeSizeGte *int64 `json:"stripe_size_gte,omitempty"`
 
 	// stripe size in
-	StripeSizeIn []float64 `json:"stripe_size_in,omitempty"`
+	StripeSizeIn []int64 `json:"stripe_size_in,omitempty"`
 
 	// stripe size lt
-	StripeSizeLt *float64 `json:"stripe_size_lt,omitempty"`
+	StripeSizeLt *int64 `json:"stripe_size_lt,omitempty"`
 
 	// stripe size lte
-	StripeSizeLte *float64 `json:"stripe_size_lte,omitempty"`
+	StripeSizeLte *int64 `json:"stripe_size_lte,omitempty"`
 
 	// stripe size not
-	StripeSizeNot *float64 `json:"stripe_size_not,omitempty"`
+	StripeSizeNot *int64 `json:"stripe_size_not,omitempty"`
 
 	// stripe size not in
-	StripeSizeNotIn []float64 `json:"stripe_size_not_in,omitempty"`
+	StripeSizeNotIn []int64 `json:"stripe_size_not_in,omitempty"`
 
 	// thin provision
 	ThinProvision *bool `json:"thin_provision,omitempty"`

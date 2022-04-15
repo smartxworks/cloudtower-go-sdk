@@ -201,28 +201,28 @@ type ApplicationWhereInput struct {
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
 	// memory
-	Memory *float64 `json:"memory,omitempty"`
+	Memory *int64 `json:"memory,omitempty"`
 
 	// memory gt
-	MemoryGt *float64 `json:"memory_gt,omitempty"`
+	MemoryGt *int64 `json:"memory_gt,omitempty"`
 
 	// memory gte
-	MemoryGte *float64 `json:"memory_gte,omitempty"`
+	MemoryGte *int64 `json:"memory_gte,omitempty"`
 
 	// memory in
-	MemoryIn []float64 `json:"memory_in,omitempty"`
+	MemoryIn []int64 `json:"memory_in,omitempty"`
 
 	// memory lt
-	MemoryLt *float64 `json:"memory_lt,omitempty"`
+	MemoryLt *int64 `json:"memory_lt,omitempty"`
 
 	// memory lte
-	MemoryLte *float64 `json:"memory_lte,omitempty"`
+	MemoryLte *int64 `json:"memory_lte,omitempty"`
 
 	// memory not
-	MemoryNot *float64 `json:"memory_not,omitempty"`
+	MemoryNot *int64 `json:"memory_not,omitempty"`
 
 	// memory not in
-	MemoryNotIn []float64 `json:"memory_not_in,omitempty"`
+	MemoryNotIn []int64 `json:"memory_not_in,omitempty"`
 
 	// state
 	State *ApplicationState `json:"state,omitempty"`
@@ -384,28 +384,28 @@ type ApplicationWhereInput struct {
 	VM *VMWhereInput `json:"vm,omitempty"`
 
 	// volume size
-	VolumeSize *float64 `json:"volume_size,omitempty"`
+	VolumeSize *int64 `json:"volume_size,omitempty"`
 
 	// volume size gt
-	VolumeSizeGt *float64 `json:"volume_size_gt,omitempty"`
+	VolumeSizeGt *int64 `json:"volume_size_gt,omitempty"`
 
 	// volume size gte
-	VolumeSizeGte *float64 `json:"volume_size_gte,omitempty"`
+	VolumeSizeGte *int64 `json:"volume_size_gte,omitempty"`
 
 	// volume size in
-	VolumeSizeIn []float64 `json:"volume_size_in,omitempty"`
+	VolumeSizeIn []int64 `json:"volume_size_in,omitempty"`
 
 	// volume size lt
-	VolumeSizeLt *float64 `json:"volume_size_lt,omitempty"`
+	VolumeSizeLt *int64 `json:"volume_size_lt,omitempty"`
 
 	// volume size lte
-	VolumeSizeLte *float64 `json:"volume_size_lte,omitempty"`
+	VolumeSizeLte *int64 `json:"volume_size_lte,omitempty"`
 
 	// volume size not
-	VolumeSizeNot *float64 `json:"volume_size_not,omitempty"`
+	VolumeSizeNot *int64 `json:"volume_size_not,omitempty"`
 
 	// volume size not in
-	VolumeSizeNotIn []float64 `json:"volume_size_not_in,omitempty"`
+	VolumeSizeNotIn []int64 `json:"volume_size_not_in,omitempty"`
 }
 
 // Validate validates this application where input

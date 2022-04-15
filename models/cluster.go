@@ -63,7 +63,7 @@ type Cluster struct {
 	EverouteCluster *NestedEverouteCluster `json:"everoute_cluster,omitempty"`
 
 	// failure data space
-	FailureDataSpace *float64 `json:"failure_data_space,omitempty"`
+	FailureDataSpace *int64 `json:"failure_data_space,omitempty"`
 
 	// has metrox
 	HasMetrox *bool `json:"has_metrox,omitempty"`
@@ -125,10 +125,10 @@ type Cluster struct {
 	MaxChunkNum *int32 `json:"max_chunk_num,omitempty"`
 
 	// max physical data capacity
-	MaxPhysicalDataCapacity *float64 `json:"max_physical_data_capacity,omitempty"`
+	MaxPhysicalDataCapacity *int64 `json:"max_physical_data_capacity,omitempty"`
 
 	// max physical data capacity per node
-	MaxPhysicalDataCapacityPerNode *float64 `json:"max_physical_data_capacity_per_node,omitempty"`
+	MaxPhysicalDataCapacityPerNode *int64 `json:"max_physical_data_capacity_per_node,omitempty"`
 
 	// metro availability checklist
 	MetroAvailabilityChecklist *NestedMetroAvailabilityChecklist `json:"metro_availability_checklist,omitempty"`
@@ -140,10 +140,10 @@ type Cluster struct {
 	MgtNetmask *string `json:"mgt_netmask,omitempty"`
 
 	// migration data size
-	MigrationDataSize *float64 `json:"migration_data_size,omitempty"`
+	MigrationDataSize *int64 `json:"migration_data_size,omitempty"`
 
 	// migration speed
-	MigrationSpeed *float64 `json:"migration_speed,omitempty"`
+	MigrationSpeed *int64 `json:"migration_speed,omitempty"`
 
 	// name
 	// Required: true
@@ -172,7 +172,7 @@ type Cluster struct {
 	ProvisionedForActiveVMRatio *float64 `json:"provisioned_for_active_vm_ratio,omitempty"`
 
 	// provisioned memory bytes
-	ProvisionedMemoryBytes *float64 `json:"provisioned_memory_bytes,omitempty"`
+	ProvisionedMemoryBytes *int64 `json:"provisioned_memory_bytes,omitempty"`
 
 	// provisioned ratio
 	ProvisionedRatio *float64 `json:"provisioned_ratio,omitempty"`
@@ -185,10 +185,10 @@ type Cluster struct {
 	RecommendedCPUModels []string `json:"recommended_cpu_models"`
 
 	// recover data size
-	RecoverDataSize *float64 `json:"recover_data_size,omitempty"`
+	RecoverDataSize *int64 `json:"recover_data_size,omitempty"`
 
 	// recover speed
-	RecoverSpeed *float64 `json:"recover_speed,omitempty"`
+	RecoverSpeed *int64 `json:"recover_speed,omitempty"`
 
 	// reserved cpu cores for system service
 	ReservedCPUCoresForSystemService *int32 `json:"reserved_cpu_cores_for_system_service,omitempty"`
@@ -212,13 +212,13 @@ type Cluster struct {
 	SuspendedVMNum *int32 `json:"suspended_vm_num,omitempty"`
 
 	// total cache capacity
-	TotalCacheCapacity *float64 `json:"total_cache_capacity,omitempty"`
+	TotalCacheCapacity *int64 `json:"total_cache_capacity,omitempty"`
 
 	// total cpu cores
 	TotalCPUCores *int32 `json:"total_cpu_cores,omitempty"`
 
 	// total cpu hz
-	TotalCPUHz *float64 `json:"total_cpu_hz,omitempty"`
+	TotalCPUHz *int64 `json:"total_cpu_hz,omitempty"`
 
 	// total cpu models
 	// Required: true
@@ -228,10 +228,10 @@ type Cluster struct {
 	TotalCPUSockets *int32 `json:"total_cpu_sockets,omitempty"`
 
 	// total data capacity
-	TotalDataCapacity *float64 `json:"total_data_capacity,omitempty"`
+	TotalDataCapacity *int64 `json:"total_data_capacity,omitempty"`
 
 	// total memory bytes
-	TotalMemoryBytes *float64 `json:"total_memory_bytes,omitempty"`
+	TotalMemoryBytes *int64 `json:"total_memory_bytes,omitempty"`
 
 	// type
 	// Required: true
@@ -241,16 +241,16 @@ type Cluster struct {
 	UpgradeToolVersion *string `json:"upgrade_tool_version,omitempty"`
 
 	// used cpu hz
-	UsedCPUHz *float64 `json:"used_cpu_hz,omitempty"`
+	UsedCPUHz *int64 `json:"used_cpu_hz,omitempty"`
 
 	// used data space
-	UsedDataSpace *float64 `json:"used_data_space,omitempty"`
+	UsedDataSpace *int64 `json:"used_data_space,omitempty"`
 
 	// used memory bytes
-	UsedMemoryBytes *float64 `json:"used_memory_bytes,omitempty"`
+	UsedMemoryBytes *int64 `json:"used_memory_bytes,omitempty"`
 
 	// valid data space
-	ValidDataSpace *float64 `json:"valid_data_space,omitempty"`
+	ValidDataSpace *int64 `json:"valid_data_space,omitempty"`
 
 	// vcenter account
 	VcenterAccount *NestedVcenterAccount `json:"vcenterAccount,omitempty"`

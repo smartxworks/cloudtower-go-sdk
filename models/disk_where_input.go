@@ -525,28 +525,28 @@ type DiskWhereInput struct {
 	SerialStartsWith *string `json:"serial_starts_with,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// size gt
-	SizeGt *float64 `json:"size_gt,omitempty"`
+	SizeGt *int64 `json:"size_gt,omitempty"`
 
 	// size gte
-	SizeGte *float64 `json:"size_gte,omitempty"`
+	SizeGte *int64 `json:"size_gte,omitempty"`
 
 	// size in
-	SizeIn []float64 `json:"size_in,omitempty"`
+	SizeIn []int64 `json:"size_in,omitempty"`
 
 	// size lt
-	SizeLt *float64 `json:"size_lt,omitempty"`
+	SizeLt *int64 `json:"size_lt,omitempty"`
 
 	// size lte
-	SizeLte *float64 `json:"size_lte,omitempty"`
+	SizeLte *int64 `json:"size_lte,omitempty"`
 
 	// size not
-	SizeNot *float64 `json:"size_not,omitempty"`
+	SizeNot *int64 `json:"size_not,omitempty"`
 
 	// size not in
-	SizeNotIn []float64 `json:"size_not_in,omitempty"`
+	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
 	// type
 	Type *DiskType `json:"type,omitempty"`

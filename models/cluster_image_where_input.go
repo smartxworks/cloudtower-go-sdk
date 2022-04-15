@@ -129,28 +129,28 @@ type ClusterImageWhereInput struct {
 	MetaNameStartsWith *string `json:"meta_name_starts_with,omitempty"`
 
 	// meta size
-	MetaSize *float64 `json:"meta_size,omitempty"`
+	MetaSize *int64 `json:"meta_size,omitempty"`
 
 	// meta size gt
-	MetaSizeGt *float64 `json:"meta_size_gt,omitempty"`
+	MetaSizeGt *int64 `json:"meta_size_gt,omitempty"`
 
 	// meta size gte
-	MetaSizeGte *float64 `json:"meta_size_gte,omitempty"`
+	MetaSizeGte *int64 `json:"meta_size_gte,omitempty"`
 
 	// meta size in
-	MetaSizeIn []float64 `json:"meta_size_in,omitempty"`
+	MetaSizeIn []int64 `json:"meta_size_in,omitempty"`
 
 	// meta size lt
-	MetaSizeLt *float64 `json:"meta_size_lt,omitempty"`
+	MetaSizeLt *int64 `json:"meta_size_lt,omitempty"`
 
 	// meta size lte
-	MetaSizeLte *float64 `json:"meta_size_lte,omitempty"`
+	MetaSizeLte *int64 `json:"meta_size_lte,omitempty"`
 
 	// meta size not
-	MetaSizeNot *float64 `json:"meta_size_not,omitempty"`
+	MetaSizeNot *int64 `json:"meta_size_not,omitempty"`
 
 	// meta size not in
-	MetaSizeNotIn []float64 `json:"meta_size_not_in,omitempty"`
+	MetaSizeNotIn []int64 `json:"meta_size_not_in,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`
@@ -195,28 +195,28 @@ type ClusterImageWhereInput struct {
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// size gt
-	SizeGt *float64 `json:"size_gt,omitempty"`
+	SizeGt *int64 `json:"size_gt,omitempty"`
 
 	// size gte
-	SizeGte *float64 `json:"size_gte,omitempty"`
+	SizeGte *int64 `json:"size_gte,omitempty"`
 
 	// size in
-	SizeIn []float64 `json:"size_in,omitempty"`
+	SizeIn []int64 `json:"size_in,omitempty"`
 
 	// size lt
-	SizeLt *float64 `json:"size_lt,omitempty"`
+	SizeLt *int64 `json:"size_lt,omitempty"`
 
 	// size lte
-	SizeLte *float64 `json:"size_lte,omitempty"`
+	SizeLte *int64 `json:"size_lte,omitempty"`
 
 	// size not
-	SizeNot *float64 `json:"size_not,omitempty"`
+	SizeNot *int64 `json:"size_not,omitempty"`
 
 	// size not in
-	SizeNotIn []float64 `json:"size_not_in,omitempty"`
+	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
 	// upgrade tool version
 	UpgradeToolVersion *string `json:"upgrade_tool_version,omitempty"`

@@ -48,7 +48,7 @@ type EveroutePackage struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// upload task
 	UploadTask *NestedUploadTask `json:"upload_task,omitempty"`

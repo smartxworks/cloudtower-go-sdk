@@ -86,7 +86,7 @@ type Nic struct {
 	Running *bool `json:"running"`
 
 	// speed
-	Speed *float64 `json:"speed,omitempty"`
+	Speed *int64 `json:"speed,omitempty"`
 
 	// subnet mask
 	SubnetMask *string `json:"subnet_mask,omitempty"`

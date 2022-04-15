@@ -21,7 +21,7 @@ type NvmfNamespaceCreationParams struct {
 
 	// assigned size
 	// Required: true
-	AssignedSize *float64 `json:"assigned_size"`
+	AssignedSize *int64 `json:"assigned_size"`
 
 	// group id
 	GroupID *string `json:"group_id,omitempty"`
@@ -51,7 +51,7 @@ type NvmfNamespaceCreationParams struct {
 func (m *NvmfNamespaceCreationParams) UnmarshalJSON(raw []byte) error {
 	// AO0
 	var dataAO0 struct {
-		AssignedSize *float64 `json:"assigned_size"`
+		AssignedSize *int64 `json:"assigned_size"`
 
 		GroupID *string `json:"group_id,omitempty"`
 
@@ -98,7 +98,7 @@ func (m NvmfNamespaceCreationParams) MarshalJSON() ([]byte, error) {
 	_parts := make([][]byte, 0, 2)
 
 	var dataAO0 struct {
-		AssignedSize *float64 `json:"assigned_size"`
+		AssignedSize *int64 `json:"assigned_size"`
 
 		GroupID *string `json:"group_id,omitempty"`
 

@@ -36,7 +36,7 @@ type ClusterImage struct {
 
 	// meta size
 	// Required: true
-	MetaSize *float64 `json:"meta_size"`
+	MetaSize *int64 `json:"meta_size"`
 
 	// name
 	// Required: true
@@ -44,7 +44,7 @@ type ClusterImage struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// upgrade from
 	// Required: true

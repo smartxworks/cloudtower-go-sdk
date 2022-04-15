@@ -189,28 +189,28 @@ type BackupRestoreExecutionWhereInput struct {
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
 	// read bytes
-	ReadBytes *float64 `json:"read_bytes,omitempty"`
+	ReadBytes *int64 `json:"read_bytes,omitempty"`
 
 	// read bytes gt
-	ReadBytesGt *float64 `json:"read_bytes_gt,omitempty"`
+	ReadBytesGt *int64 `json:"read_bytes_gt,omitempty"`
 
 	// read bytes gte
-	ReadBytesGte *float64 `json:"read_bytes_gte,omitempty"`
+	ReadBytesGte *int64 `json:"read_bytes_gte,omitempty"`
 
 	// read bytes in
-	ReadBytesIn []float64 `json:"read_bytes_in,omitempty"`
+	ReadBytesIn []int64 `json:"read_bytes_in,omitempty"`
 
 	// read bytes lt
-	ReadBytesLt *float64 `json:"read_bytes_lt,omitempty"`
+	ReadBytesLt *int64 `json:"read_bytes_lt,omitempty"`
 
 	// read bytes lte
-	ReadBytesLte *float64 `json:"read_bytes_lte,omitempty"`
+	ReadBytesLte *int64 `json:"read_bytes_lte,omitempty"`
 
 	// read bytes not
-	ReadBytesNot *float64 `json:"read_bytes_not,omitempty"`
+	ReadBytesNot *int64 `json:"read_bytes_not,omitempty"`
 
 	// read bytes not in
-	ReadBytesNotIn []float64 `json:"read_bytes_not_in,omitempty"`
+	ReadBytesNotIn []int64 `json:"read_bytes_not_in,omitempty"`
 
 	// rebuild name
 	RebuildName *string `json:"rebuild_name,omitempty"`
@@ -300,28 +300,28 @@ type BackupRestoreExecutionWhereInput struct {
 	StatusNotIn []BackupExecutionStatus `json:"status_not_in,omitempty"`
 
 	// total bytes
-	TotalBytes *float64 `json:"total_bytes,omitempty"`
+	TotalBytes *int64 `json:"total_bytes,omitempty"`
 
 	// total bytes gt
-	TotalBytesGt *float64 `json:"total_bytes_gt,omitempty"`
+	TotalBytesGt *int64 `json:"total_bytes_gt,omitempty"`
 
 	// total bytes gte
-	TotalBytesGte *float64 `json:"total_bytes_gte,omitempty"`
+	TotalBytesGte *int64 `json:"total_bytes_gte,omitempty"`
 
 	// total bytes in
-	TotalBytesIn []float64 `json:"total_bytes_in,omitempty"`
+	TotalBytesIn []int64 `json:"total_bytes_in,omitempty"`
 
 	// total bytes lt
-	TotalBytesLt *float64 `json:"total_bytes_lt,omitempty"`
+	TotalBytesLt *int64 `json:"total_bytes_lt,omitempty"`
 
 	// total bytes lte
-	TotalBytesLte *float64 `json:"total_bytes_lte,omitempty"`
+	TotalBytesLte *int64 `json:"total_bytes_lte,omitempty"`
 
 	// total bytes not
-	TotalBytesNot *float64 `json:"total_bytes_not,omitempty"`
+	TotalBytesNot *int64 `json:"total_bytes_not,omitempty"`
 
 	// total bytes not in
-	TotalBytesNotIn []float64 `json:"total_bytes_not_in,omitempty"`
+	TotalBytesNotIn []int64 `json:"total_bytes_not_in,omitempty"`
 }
 
 // Validate validates this backup restore execution where input

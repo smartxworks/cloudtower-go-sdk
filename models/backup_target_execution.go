@@ -55,13 +55,13 @@ type BackupTargetExecution struct {
 	ParentBackup *string `json:"parent_backup"`
 
 	// read bytes
-	ReadBytes *float64 `json:"read_bytes,omitempty"`
+	ReadBytes *int64 `json:"read_bytes,omitempty"`
 
 	// status
 	Status *BackupExecutionStatus `json:"status,omitempty"`
 
 	// total bytes
-	TotalBytes *float64 `json:"total_bytes,omitempty"`
+	TotalBytes *int64 `json:"total_bytes,omitempty"`
 
 	// type
 	// Required: true

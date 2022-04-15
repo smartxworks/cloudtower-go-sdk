@@ -150,28 +150,28 @@ type BackupLicenseWhereInput struct {
 	LicenseSerialStartsWith *string `json:"license_serial_starts_with,omitempty"`
 
 	// max capacity
-	MaxCapacity *float64 `json:"max_capacity,omitempty"`
+	MaxCapacity *int64 `json:"max_capacity,omitempty"`
 
 	// max capacity gt
-	MaxCapacityGt *float64 `json:"max_capacity_gt,omitempty"`
+	MaxCapacityGt *int64 `json:"max_capacity_gt,omitempty"`
 
 	// max capacity gte
-	MaxCapacityGte *float64 `json:"max_capacity_gte,omitempty"`
+	MaxCapacityGte *int64 `json:"max_capacity_gte,omitempty"`
 
 	// max capacity in
-	MaxCapacityIn []float64 `json:"max_capacity_in,omitempty"`
+	MaxCapacityIn []int64 `json:"max_capacity_in,omitempty"`
 
 	// max capacity lt
-	MaxCapacityLt *float64 `json:"max_capacity_lt,omitempty"`
+	MaxCapacityLt *int64 `json:"max_capacity_lt,omitempty"`
 
 	// max capacity lte
-	MaxCapacityLte *float64 `json:"max_capacity_lte,omitempty"`
+	MaxCapacityLte *int64 `json:"max_capacity_lte,omitempty"`
 
 	// max capacity not
-	MaxCapacityNot *float64 `json:"max_capacity_not,omitempty"`
+	MaxCapacityNot *int64 `json:"max_capacity_not,omitempty"`
 
 	// max capacity not in
-	MaxCapacityNotIn []float64 `json:"max_capacity_not_in,omitempty"`
+	MaxCapacityNotIn []int64 `json:"max_capacity_not_in,omitempty"`
 
 	// sign date
 	SignDate *string `json:"sign_date,omitempty"`

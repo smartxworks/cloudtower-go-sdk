@@ -25,7 +25,7 @@ type Host struct {
 
 	// allocatable memory bytes
 	// Required: true
-	AllocatableMemoryBytes *float64 `json:"allocatable_memory_bytes"`
+	AllocatableMemoryBytes *int64 `json:"allocatable_memory_bytes"`
 
 	// chunk id
 	// Required: true
@@ -52,7 +52,7 @@ type Host struct {
 
 	// cpu hz per core
 	// Required: true
-	CPUHzPerCore *float64 `json:"cpu_hz_per_core"`
+	CPUHzPerCore *int64 `json:"cpu_hz_per_core"`
 
 	// cpu model
 	// Required: true
@@ -70,11 +70,11 @@ type Host struct {
 
 	// failure data space
 	// Required: true
-	FailureDataSpace *float64 `json:"failure_data_space"`
+	FailureDataSpace *int64 `json:"failure_data_space"`
 
 	// hdd data capacity
 	// Required: true
-	HddDataCapacity *float64 `json:"hdd_data_capacity"`
+	HddDataCapacity *int64 `json:"hdd_data_capacity"`
 
 	// hdd disk count
 	// Required: true
@@ -129,14 +129,14 @@ type Host struct {
 
 	// os memory bytes
 	// Required: true
-	OsMemoryBytes *float64 `json:"os_memory_bytes"`
+	OsMemoryBytes *int64 `json:"os_memory_bytes"`
 
 	// os version
 	OsVersion *string `json:"os_version,omitempty"`
 
 	// pmem dimm capacity
 	// Required: true
-	PmemDimmCapacity *float64 `json:"pmem_dimm_capacity"`
+	PmemDimmCapacity *int64 `json:"pmem_dimm_capacity"`
 
 	// pmem dimm count
 	// Required: true
@@ -155,20 +155,20 @@ type Host struct {
 
 	// provisioned memory bytes
 	// Required: true
-	ProvisionedMemoryBytes *float64 `json:"provisioned_memory_bytes"`
+	ProvisionedMemoryBytes *int64 `json:"provisioned_memory_bytes"`
 
 	// running pause vm memory bytes
 	// Required: true
-	RunningPauseVMMemoryBytes *float64 `json:"running_pause_vm_memory_bytes"`
+	RunningPauseVMMemoryBytes *int64 `json:"running_pause_vm_memory_bytes"`
 
 	// running vm num
 	RunningVMNum *int32 `json:"running_vm_num,omitempty"`
 
 	// scvm cpu
-	ScvmCPU *float64 `json:"scvm_cpu,omitempty"`
+	ScvmCPU *int32 `json:"scvm_cpu,omitempty"`
 
 	// scvm memory
-	ScvmMemory *float64 `json:"scvm_memory,omitempty"`
+	ScvmMemory *int64 `json:"scvm_memory,omitempty"`
 
 	// scvm name
 	ScvmName *string `json:"scvm_name,omitempty"`
@@ -178,7 +178,7 @@ type Host struct {
 
 	// ssd data capacity
 	// Required: true
-	SsdDataCapacity *float64 `json:"ssd_data_capacity"`
+	SsdDataCapacity *int64 `json:"ssd_data_capacity"`
 
 	// ssd disk count
 	// Required: true
@@ -199,7 +199,7 @@ type Host struct {
 	SuspendedVMNum *int32 `json:"suspended_vm_num,omitempty"`
 
 	// total cache capacity
-	TotalCacheCapacity *float64 `json:"total_cache_capacity,omitempty"`
+	TotalCacheCapacity *int64 `json:"total_cache_capacity,omitempty"`
 
 	// total cpu cores
 	// Required: true
@@ -207,31 +207,31 @@ type Host struct {
 
 	// total cpu hz
 	// Required: true
-	TotalCPUHz *float64 `json:"total_cpu_hz"`
+	TotalCPUHz *int64 `json:"total_cpu_hz"`
 
 	// total cpu sockets
 	TotalCPUSockets *int32 `json:"total_cpu_sockets,omitempty"`
 
 	// total data capacity
 	// Required: true
-	TotalDataCapacity *float64 `json:"total_data_capacity"`
+	TotalDataCapacity *int64 `json:"total_data_capacity"`
 
 	// total memory bytes
 	// Required: true
-	TotalMemoryBytes *float64 `json:"total_memory_bytes"`
+	TotalMemoryBytes *int64 `json:"total_memory_bytes"`
 
 	// usb devices
 	UsbDevices []*NestedUsbDevice `json:"usb_devices,omitempty"`
 
 	// used cpu hz
-	UsedCPUHz *float64 `json:"used_cpu_hz,omitempty"`
+	UsedCPUHz *int64 `json:"used_cpu_hz,omitempty"`
 
 	// used data space
 	// Required: true
-	UsedDataSpace *float64 `json:"used_data_space"`
+	UsedDataSpace *int64 `json:"used_data_space"`
 
 	// used memory bytes
-	UsedMemoryBytes *float64 `json:"used_memory_bytes,omitempty"`
+	UsedMemoryBytes *int64 `json:"used_memory_bytes,omitempty"`
 
 	// vm num
 	VMNum *int32 `json:"vm_num,omitempty"`

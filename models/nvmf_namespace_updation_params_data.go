@@ -19,7 +19,7 @@ import (
 type NvmfNamespaceUpdationParamsData struct {
 
 	// assigned size
-	AssignedSize *float64 `json:"assigned_size,omitempty"`
+	AssignedSize *int64 `json:"assigned_size,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`
@@ -31,7 +31,7 @@ type NvmfNamespaceUpdationParamsData struct {
 func (m *NvmfNamespaceUpdationParamsData) UnmarshalJSON(raw []byte) error {
 	// AO0
 	var dataAO0 struct {
-		AssignedSize *float64 `json:"assigned_size,omitempty"`
+		AssignedSize *int64 `json:"assigned_size,omitempty"`
 
 		Name *string `json:"name,omitempty"`
 	}
@@ -58,7 +58,7 @@ func (m NvmfNamespaceUpdationParamsData) MarshalJSON() ([]byte, error) {
 	_parts := make([][]byte, 0, 2)
 
 	var dataAO0 struct {
-		AssignedSize *float64 `json:"assigned_size,omitempty"`
+		AssignedSize *int64 `json:"assigned_size,omitempty"`
 
 		Name *string `json:"name,omitempty"`
 	}

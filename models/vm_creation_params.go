@@ -56,7 +56,7 @@ type VMCreationParams struct {
 	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
 
 	// max bandwidth
-	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
@@ -69,7 +69,7 @@ type VMCreationParams struct {
 
 	// memory
 	// Required: true
-	Memory *float64 `json:"memory"`
+	Memory *int64 `json:"memory"`
 
 	// name
 	// Required: true

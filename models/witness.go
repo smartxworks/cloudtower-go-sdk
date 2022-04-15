@@ -25,7 +25,7 @@ type Witness struct {
 
 	// cpu hz per core
 	// Required: true
-	CPUHzPerCore *float64 `json:"cpu_hz_per_core"`
+	CPUHzPerCore *int64 `json:"cpu_hz_per_core"`
 
 	// data ip
 	// Required: true
@@ -44,11 +44,11 @@ type Witness struct {
 
 	// system data capacity
 	// Required: true
-	SystemDataCapacity *float64 `json:"system_data_capacity"`
+	SystemDataCapacity *int64 `json:"system_data_capacity"`
 
 	// system used data space
 	// Required: true
-	SystemUsedDataSpace *float64 `json:"system_used_data_space"`
+	SystemUsedDataSpace *int64 `json:"system_used_data_space"`
 
 	// total cpu cores
 	// Required: true
@@ -56,11 +56,11 @@ type Witness struct {
 
 	// total cpu hz
 	// Required: true
-	TotalCPUHz *float64 `json:"total_cpu_hz"`
+	TotalCPUHz *int64 `json:"total_cpu_hz"`
 
 	// total memory bytes
 	// Required: true
-	TotalMemoryBytes *float64 `json:"total_memory_bytes"`
+	TotalMemoryBytes *int64 `json:"total_memory_bytes"`
 }
 
 // Validate validates this witness

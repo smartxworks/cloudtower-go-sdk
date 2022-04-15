@@ -73,7 +73,7 @@ type BackupStoreRepository struct {
 
 	// total capacity
 	// Required: true
-	TotalCapacity *float64 `json:"total_capacity"`
+	TotalCapacity *int64 `json:"total_capacity"`
 
 	// type
 	// Required: true
@@ -81,10 +81,10 @@ type BackupStoreRepository struct {
 
 	// used data space
 	// Required: true
-	UsedDataSpace *float64 `json:"used_data_space"`
+	UsedDataSpace *int64 `json:"used_data_space"`
 
 	// valid data space
-	ValidDataSpace *float64 `json:"valid_data_space,omitempty"`
+	ValidDataSpace *int64 `json:"valid_data_space,omitempty"`
 }
 
 // Validate validates this backup store repository

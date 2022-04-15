@@ -540,28 +540,28 @@ type BackupStoreRepositoryWhereInput struct {
 	StatusNotIn []BackupStoreStatus `json:"status_not_in,omitempty"`
 
 	// total capacity
-	TotalCapacity *float64 `json:"total_capacity,omitempty"`
+	TotalCapacity *int64 `json:"total_capacity,omitempty"`
 
 	// total capacity gt
-	TotalCapacityGt *float64 `json:"total_capacity_gt,omitempty"`
+	TotalCapacityGt *int64 `json:"total_capacity_gt,omitempty"`
 
 	// total capacity gte
-	TotalCapacityGte *float64 `json:"total_capacity_gte,omitempty"`
+	TotalCapacityGte *int64 `json:"total_capacity_gte,omitempty"`
 
 	// total capacity in
-	TotalCapacityIn []float64 `json:"total_capacity_in,omitempty"`
+	TotalCapacityIn []int64 `json:"total_capacity_in,omitempty"`
 
 	// total capacity lt
-	TotalCapacityLt *float64 `json:"total_capacity_lt,omitempty"`
+	TotalCapacityLt *int64 `json:"total_capacity_lt,omitempty"`
 
 	// total capacity lte
-	TotalCapacityLte *float64 `json:"total_capacity_lte,omitempty"`
+	TotalCapacityLte *int64 `json:"total_capacity_lte,omitempty"`
 
 	// total capacity not
-	TotalCapacityNot *float64 `json:"total_capacity_not,omitempty"`
+	TotalCapacityNot *int64 `json:"total_capacity_not,omitempty"`
 
 	// total capacity not in
-	TotalCapacityNotIn []float64 `json:"total_capacity_not_in,omitempty"`
+	TotalCapacityNotIn []int64 `json:"total_capacity_not_in,omitempty"`
 
 	// type
 	Type *BackupStoreType `json:"type,omitempty"`
@@ -576,52 +576,52 @@ type BackupStoreRepositoryWhereInput struct {
 	TypeNotIn []BackupStoreType `json:"type_not_in,omitempty"`
 
 	// used data space
-	UsedDataSpace *float64 `json:"used_data_space,omitempty"`
+	UsedDataSpace *int64 `json:"used_data_space,omitempty"`
 
 	// used data space gt
-	UsedDataSpaceGt *float64 `json:"used_data_space_gt,omitempty"`
+	UsedDataSpaceGt *int64 `json:"used_data_space_gt,omitempty"`
 
 	// used data space gte
-	UsedDataSpaceGte *float64 `json:"used_data_space_gte,omitempty"`
+	UsedDataSpaceGte *int64 `json:"used_data_space_gte,omitempty"`
 
 	// used data space in
-	UsedDataSpaceIn []float64 `json:"used_data_space_in,omitempty"`
+	UsedDataSpaceIn []int64 `json:"used_data_space_in,omitempty"`
 
 	// used data space lt
-	UsedDataSpaceLt *float64 `json:"used_data_space_lt,omitempty"`
+	UsedDataSpaceLt *int64 `json:"used_data_space_lt,omitempty"`
 
 	// used data space lte
-	UsedDataSpaceLte *float64 `json:"used_data_space_lte,omitempty"`
+	UsedDataSpaceLte *int64 `json:"used_data_space_lte,omitempty"`
 
 	// used data space not
-	UsedDataSpaceNot *float64 `json:"used_data_space_not,omitempty"`
+	UsedDataSpaceNot *int64 `json:"used_data_space_not,omitempty"`
 
 	// used data space not in
-	UsedDataSpaceNotIn []float64 `json:"used_data_space_not_in,omitempty"`
+	UsedDataSpaceNotIn []int64 `json:"used_data_space_not_in,omitempty"`
 
 	// valid data space
-	ValidDataSpace *float64 `json:"valid_data_space,omitempty"`
+	ValidDataSpace *int64 `json:"valid_data_space,omitempty"`
 
 	// valid data space gt
-	ValidDataSpaceGt *float64 `json:"valid_data_space_gt,omitempty"`
+	ValidDataSpaceGt *int64 `json:"valid_data_space_gt,omitempty"`
 
 	// valid data space gte
-	ValidDataSpaceGte *float64 `json:"valid_data_space_gte,omitempty"`
+	ValidDataSpaceGte *int64 `json:"valid_data_space_gte,omitempty"`
 
 	// valid data space in
-	ValidDataSpaceIn []float64 `json:"valid_data_space_in,omitempty"`
+	ValidDataSpaceIn []int64 `json:"valid_data_space_in,omitempty"`
 
 	// valid data space lt
-	ValidDataSpaceLt *float64 `json:"valid_data_space_lt,omitempty"`
+	ValidDataSpaceLt *int64 `json:"valid_data_space_lt,omitempty"`
 
 	// valid data space lte
-	ValidDataSpaceLte *float64 `json:"valid_data_space_lte,omitempty"`
+	ValidDataSpaceLte *int64 `json:"valid_data_space_lte,omitempty"`
 
 	// valid data space not
-	ValidDataSpaceNot *float64 `json:"valid_data_space_not,omitempty"`
+	ValidDataSpaceNot *int64 `json:"valid_data_space_not,omitempty"`
 
 	// valid data space not in
-	ValidDataSpaceNotIn []float64 `json:"valid_data_space_not_in,omitempty"`
+	ValidDataSpaceNotIn []int64 `json:"valid_data_space_not_in,omitempty"`
 }
 
 // Validate validates this backup store repository where input

@@ -41,7 +41,7 @@ type NvmfSubsystemCreationParams struct {
 
 	// stripe size
 	// Required: true
-	StripeSize *float64 `json:"stripe_size"`
+	StripeSize *int64 `json:"stripe_size"`
 
 	// thin provision
 	// Required: true
@@ -64,7 +64,7 @@ func (m *NvmfSubsystemCreationParams) UnmarshalJSON(raw []byte) error {
 
 		StripeNum *int32 `json:"stripe_num"`
 
-		StripeSize *float64 `json:"stripe_size"`
+		StripeSize *int64 `json:"stripe_size"`
 
 		ThinProvision *bool `json:"thin_provision"`
 	}
@@ -111,7 +111,7 @@ func (m NvmfSubsystemCreationParams) MarshalJSON() ([]byte, error) {
 
 		StripeNum *int32 `json:"stripe_num"`
 
-		StripeSize *float64 `json:"stripe_size"`
+		StripeSize *int64 `json:"stripe_size"`
 
 		ThinProvision *bool `json:"thin_provision"`
 	}

@@ -51,7 +51,7 @@ type ContentLibraryVMTemplate struct {
 
 	// memory
 	// Required: true
-	Memory *float64 `json:"memory"`
+	Memory *int64 `json:"memory"`
 
 	// name
 	// Required: true
@@ -62,7 +62,7 @@ type ContentLibraryVMTemplate struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// vcpu
 	// Required: true

@@ -21,7 +21,7 @@ type NestedFrozenDisks struct {
 
 	// boot
 	// Required: true
-	Boot *float64 `json:"boot"`
+	Boot *int64 `json:"boot"`
 
 	// bus
 	// Required: true
@@ -48,7 +48,7 @@ type NestedFrozenDisks struct {
 	Key *int32 `json:"key,omitempty"`
 
 	// max bandwidth
-	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
@@ -65,7 +65,7 @@ type NestedFrozenDisks struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// snapshot local id
 	SnapshotLocalID *string `json:"snapshot_local_id,omitempty"`

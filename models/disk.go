@@ -103,7 +103,7 @@ type Disk struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// type
 	// Required: true

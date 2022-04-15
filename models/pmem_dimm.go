@@ -21,7 +21,7 @@ type PmemDimm struct {
 
 	// capacity
 	// Required: true
-	Capacity *float64 `json:"capacity"`
+	Capacity *int64 `json:"capacity"`
 
 	// device locator
 	// Required: true

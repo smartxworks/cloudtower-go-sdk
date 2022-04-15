@@ -240,28 +240,28 @@ type BackupRestorePointWhereInput struct {
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
 	// logical size
-	LogicalSize *float64 `json:"logical_size,omitempty"`
+	LogicalSize *int64 `json:"logical_size,omitempty"`
 
 	// logical size gt
-	LogicalSizeGt *float64 `json:"logical_size_gt,omitempty"`
+	LogicalSizeGt *int64 `json:"logical_size_gt,omitempty"`
 
 	// logical size gte
-	LogicalSizeGte *float64 `json:"logical_size_gte,omitempty"`
+	LogicalSizeGte *int64 `json:"logical_size_gte,omitempty"`
 
 	// logical size in
-	LogicalSizeIn []float64 `json:"logical_size_in,omitempty"`
+	LogicalSizeIn []int64 `json:"logical_size_in,omitempty"`
 
 	// logical size lt
-	LogicalSizeLt *float64 `json:"logical_size_lt,omitempty"`
+	LogicalSizeLt *int64 `json:"logical_size_lt,omitempty"`
 
 	// logical size lte
-	LogicalSizeLte *float64 `json:"logical_size_lte,omitempty"`
+	LogicalSizeLte *int64 `json:"logical_size_lte,omitempty"`
 
 	// logical size not
-	LogicalSizeNot *float64 `json:"logical_size_not,omitempty"`
+	LogicalSizeNot *int64 `json:"logical_size_not,omitempty"`
 
 	// logical size not in
-	LogicalSizeNotIn []float64 `json:"logical_size_not_in,omitempty"`
+	LogicalSizeNotIn []int64 `json:"logical_size_not_in,omitempty"`
 
 	// parent restore point
 	ParentRestorePoint *string `json:"parent_restore_point,omitempty"`
@@ -306,28 +306,28 @@ type BackupRestorePointWhereInput struct {
 	ParentRestorePointStartsWith *string `json:"parent_restore_point_starts_with,omitempty"`
 
 	// physical size
-	PhysicalSize *float64 `json:"physical_size,omitempty"`
+	PhysicalSize *int64 `json:"physical_size,omitempty"`
 
 	// physical size gt
-	PhysicalSizeGt *float64 `json:"physical_size_gt,omitempty"`
+	PhysicalSizeGt *int64 `json:"physical_size_gt,omitempty"`
 
 	// physical size gte
-	PhysicalSizeGte *float64 `json:"physical_size_gte,omitempty"`
+	PhysicalSizeGte *int64 `json:"physical_size_gte,omitempty"`
 
 	// physical size in
-	PhysicalSizeIn []float64 `json:"physical_size_in,omitempty"`
+	PhysicalSizeIn []int64 `json:"physical_size_in,omitempty"`
 
 	// physical size lt
-	PhysicalSizeLt *float64 `json:"physical_size_lt,omitempty"`
+	PhysicalSizeLt *int64 `json:"physical_size_lt,omitempty"`
 
 	// physical size lte
-	PhysicalSizeLte *float64 `json:"physical_size_lte,omitempty"`
+	PhysicalSizeLte *int64 `json:"physical_size_lte,omitempty"`
 
 	// physical size not
-	PhysicalSizeNot *float64 `json:"physical_size_not,omitempty"`
+	PhysicalSizeNot *int64 `json:"physical_size_not,omitempty"`
 
 	// physical size not in
-	PhysicalSizeNotIn []float64 `json:"physical_size_not_in,omitempty"`
+	PhysicalSizeNotIn []int64 `json:"physical_size_not_in,omitempty"`
 
 	// resource version gt
 	ResourceVersionGt *int32 `json:"resource_version_gt,omitempty"`
@@ -351,28 +351,28 @@ type BackupRestorePointWhereInput struct {
 	ResourceVersionNotIn []int32 `json:"resource_version_not_in,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// size gt
-	SizeGt *float64 `json:"size_gt,omitempty"`
+	SizeGt *int64 `json:"size_gt,omitempty"`
 
 	// size gte
-	SizeGte *float64 `json:"size_gte,omitempty"`
+	SizeGte *int64 `json:"size_gte,omitempty"`
 
 	// size in
-	SizeIn []float64 `json:"size_in,omitempty"`
+	SizeIn []int64 `json:"size_in,omitempty"`
 
 	// size lt
-	SizeLt *float64 `json:"size_lt,omitempty"`
+	SizeLt *int64 `json:"size_lt,omitempty"`
 
 	// size lte
-	SizeLte *float64 `json:"size_lte,omitempty"`
+	SizeLte *int64 `json:"size_lte,omitempty"`
 
 	// size not
-	SizeNot *float64 `json:"size_not,omitempty"`
+	SizeNot *int64 `json:"size_not,omitempty"`
 
 	// size not in
-	SizeNotIn []float64 `json:"size_not_in,omitempty"`
+	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
 	// slice
 	Slice *string `json:"slice,omitempty"`
@@ -429,52 +429,52 @@ type BackupRestorePointWhereInput struct {
 	TypeNotIn []BackupRestorePointType `json:"type_not_in,omitempty"`
 
 	// valid capacity
-	ValidCapacity *float64 `json:"valid_capacity,omitempty"`
+	ValidCapacity *int64 `json:"valid_capacity,omitempty"`
 
 	// valid capacity gt
-	ValidCapacityGt *float64 `json:"valid_capacity_gt,omitempty"`
+	ValidCapacityGt *int64 `json:"valid_capacity_gt,omitempty"`
 
 	// valid capacity gte
-	ValidCapacityGte *float64 `json:"valid_capacity_gte,omitempty"`
+	ValidCapacityGte *int64 `json:"valid_capacity_gte,omitempty"`
 
 	// valid capacity in
-	ValidCapacityIn []float64 `json:"valid_capacity_in,omitempty"`
+	ValidCapacityIn []int64 `json:"valid_capacity_in,omitempty"`
 
 	// valid capacity lt
-	ValidCapacityLt *float64 `json:"valid_capacity_lt,omitempty"`
+	ValidCapacityLt *int64 `json:"valid_capacity_lt,omitempty"`
 
 	// valid capacity lte
-	ValidCapacityLte *float64 `json:"valid_capacity_lte,omitempty"`
+	ValidCapacityLte *int64 `json:"valid_capacity_lte,omitempty"`
 
 	// valid capacity not
-	ValidCapacityNot *float64 `json:"valid_capacity_not,omitempty"`
+	ValidCapacityNot *int64 `json:"valid_capacity_not,omitempty"`
 
 	// valid capacity not in
-	ValidCapacityNotIn []float64 `json:"valid_capacity_not_in,omitempty"`
+	ValidCapacityNotIn []int64 `json:"valid_capacity_not_in,omitempty"`
 
 	// valid size
-	ValidSize *float64 `json:"valid_size,omitempty"`
+	ValidSize *int64 `json:"valid_size,omitempty"`
 
 	// valid size gt
-	ValidSizeGt *float64 `json:"valid_size_gt,omitempty"`
+	ValidSizeGt *int64 `json:"valid_size_gt,omitempty"`
 
 	// valid size gte
-	ValidSizeGte *float64 `json:"valid_size_gte,omitempty"`
+	ValidSizeGte *int64 `json:"valid_size_gte,omitempty"`
 
 	// valid size in
-	ValidSizeIn []float64 `json:"valid_size_in,omitempty"`
+	ValidSizeIn []int64 `json:"valid_size_in,omitempty"`
 
 	// valid size lt
-	ValidSizeLt *float64 `json:"valid_size_lt,omitempty"`
+	ValidSizeLt *int64 `json:"valid_size_lt,omitempty"`
 
 	// valid size lte
-	ValidSizeLte *float64 `json:"valid_size_lte,omitempty"`
+	ValidSizeLte *int64 `json:"valid_size_lte,omitempty"`
 
 	// valid size not
-	ValidSizeNot *float64 `json:"valid_size_not,omitempty"`
+	ValidSizeNot *int64 `json:"valid_size_not,omitempty"`
 
 	// valid size not in
-	ValidSizeNotIn []float64 `json:"valid_size_not_in,omitempty"`
+	ValidSizeNotIn []int64 `json:"valid_size_not_in,omitempty"`
 
 	// vm
 	VM *VMWhereInput `json:"vm,omitempty"`

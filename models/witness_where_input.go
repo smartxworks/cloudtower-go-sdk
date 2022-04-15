@@ -33,28 +33,28 @@ type WitnessWhereInput struct {
 	Cluster *ClusterWhereInput `json:"cluster,omitempty"`
 
 	// cpu hz per core
-	CPUHzPerCore *float64 `json:"cpu_hz_per_core,omitempty"`
+	CPUHzPerCore *int64 `json:"cpu_hz_per_core,omitempty"`
 
 	// cpu hz per core gt
-	CPUHzPerCoreGt *float64 `json:"cpu_hz_per_core_gt,omitempty"`
+	CPUHzPerCoreGt *int64 `json:"cpu_hz_per_core_gt,omitempty"`
 
 	// cpu hz per core gte
-	CPUHzPerCoreGte *float64 `json:"cpu_hz_per_core_gte,omitempty"`
+	CPUHzPerCoreGte *int64 `json:"cpu_hz_per_core_gte,omitempty"`
 
 	// cpu hz per core in
-	CPUHzPerCoreIn []float64 `json:"cpu_hz_per_core_in,omitempty"`
+	CPUHzPerCoreIn []int64 `json:"cpu_hz_per_core_in,omitempty"`
 
 	// cpu hz per core lt
-	CPUHzPerCoreLt *float64 `json:"cpu_hz_per_core_lt,omitempty"`
+	CPUHzPerCoreLt *int64 `json:"cpu_hz_per_core_lt,omitempty"`
 
 	// cpu hz per core lte
-	CPUHzPerCoreLte *float64 `json:"cpu_hz_per_core_lte,omitempty"`
+	CPUHzPerCoreLte *int64 `json:"cpu_hz_per_core_lte,omitempty"`
 
 	// cpu hz per core not
-	CPUHzPerCoreNot *float64 `json:"cpu_hz_per_core_not,omitempty"`
+	CPUHzPerCoreNot *int64 `json:"cpu_hz_per_core_not,omitempty"`
 
 	// cpu hz per core not in
-	CPUHzPerCoreNotIn []float64 `json:"cpu_hz_per_core_not_in,omitempty"`
+	CPUHzPerCoreNotIn []int64 `json:"cpu_hz_per_core_not_in,omitempty"`
 
 	// data ip
 	DataIP *string `json:"data_ip,omitempty"`
@@ -225,52 +225,52 @@ type WitnessWhereInput struct {
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
 	// system data capacity
-	SystemDataCapacity *float64 `json:"system_data_capacity,omitempty"`
+	SystemDataCapacity *int64 `json:"system_data_capacity,omitempty"`
 
 	// system data capacity gt
-	SystemDataCapacityGt *float64 `json:"system_data_capacity_gt,omitempty"`
+	SystemDataCapacityGt *int64 `json:"system_data_capacity_gt,omitempty"`
 
 	// system data capacity gte
-	SystemDataCapacityGte *float64 `json:"system_data_capacity_gte,omitempty"`
+	SystemDataCapacityGte *int64 `json:"system_data_capacity_gte,omitempty"`
 
 	// system data capacity in
-	SystemDataCapacityIn []float64 `json:"system_data_capacity_in,omitempty"`
+	SystemDataCapacityIn []int64 `json:"system_data_capacity_in,omitempty"`
 
 	// system data capacity lt
-	SystemDataCapacityLt *float64 `json:"system_data_capacity_lt,omitempty"`
+	SystemDataCapacityLt *int64 `json:"system_data_capacity_lt,omitempty"`
 
 	// system data capacity lte
-	SystemDataCapacityLte *float64 `json:"system_data_capacity_lte,omitempty"`
+	SystemDataCapacityLte *int64 `json:"system_data_capacity_lte,omitempty"`
 
 	// system data capacity not
-	SystemDataCapacityNot *float64 `json:"system_data_capacity_not,omitempty"`
+	SystemDataCapacityNot *int64 `json:"system_data_capacity_not,omitempty"`
 
 	// system data capacity not in
-	SystemDataCapacityNotIn []float64 `json:"system_data_capacity_not_in,omitempty"`
+	SystemDataCapacityNotIn []int64 `json:"system_data_capacity_not_in,omitempty"`
 
 	// system used data space
-	SystemUsedDataSpace *float64 `json:"system_used_data_space,omitempty"`
+	SystemUsedDataSpace *int64 `json:"system_used_data_space,omitempty"`
 
 	// system used data space gt
-	SystemUsedDataSpaceGt *float64 `json:"system_used_data_space_gt,omitempty"`
+	SystemUsedDataSpaceGt *int64 `json:"system_used_data_space_gt,omitempty"`
 
 	// system used data space gte
-	SystemUsedDataSpaceGte *float64 `json:"system_used_data_space_gte,omitempty"`
+	SystemUsedDataSpaceGte *int64 `json:"system_used_data_space_gte,omitempty"`
 
 	// system used data space in
-	SystemUsedDataSpaceIn []float64 `json:"system_used_data_space_in,omitempty"`
+	SystemUsedDataSpaceIn []int64 `json:"system_used_data_space_in,omitempty"`
 
 	// system used data space lt
-	SystemUsedDataSpaceLt *float64 `json:"system_used_data_space_lt,omitempty"`
+	SystemUsedDataSpaceLt *int64 `json:"system_used_data_space_lt,omitempty"`
 
 	// system used data space lte
-	SystemUsedDataSpaceLte *float64 `json:"system_used_data_space_lte,omitempty"`
+	SystemUsedDataSpaceLte *int64 `json:"system_used_data_space_lte,omitempty"`
 
 	// system used data space not
-	SystemUsedDataSpaceNot *float64 `json:"system_used_data_space_not,omitempty"`
+	SystemUsedDataSpaceNot *int64 `json:"system_used_data_space_not,omitempty"`
 
 	// system used data space not in
-	SystemUsedDataSpaceNotIn []float64 `json:"system_used_data_space_not_in,omitempty"`
+	SystemUsedDataSpaceNotIn []int64 `json:"system_used_data_space_not_in,omitempty"`
 
 	// total cpu cores
 	TotalCPUCores *int32 `json:"total_cpu_cores,omitempty"`
@@ -297,52 +297,52 @@ type WitnessWhereInput struct {
 	TotalCPUCoresNotIn []int32 `json:"total_cpu_cores_not_in,omitempty"`
 
 	// total cpu hz
-	TotalCPUHz *float64 `json:"total_cpu_hz,omitempty"`
+	TotalCPUHz *int64 `json:"total_cpu_hz,omitempty"`
 
 	// total cpu hz gt
-	TotalCPUHzGt *float64 `json:"total_cpu_hz_gt,omitempty"`
+	TotalCPUHzGt *int64 `json:"total_cpu_hz_gt,omitempty"`
 
 	// total cpu hz gte
-	TotalCPUHzGte *float64 `json:"total_cpu_hz_gte,omitempty"`
+	TotalCPUHzGte *int64 `json:"total_cpu_hz_gte,omitempty"`
 
 	// total cpu hz in
-	TotalCPUHzIn []float64 `json:"total_cpu_hz_in,omitempty"`
+	TotalCPUHzIn []int64 `json:"total_cpu_hz_in,omitempty"`
 
 	// total cpu hz lt
-	TotalCPUHzLt *float64 `json:"total_cpu_hz_lt,omitempty"`
+	TotalCPUHzLt *int64 `json:"total_cpu_hz_lt,omitempty"`
 
 	// total cpu hz lte
-	TotalCPUHzLte *float64 `json:"total_cpu_hz_lte,omitempty"`
+	TotalCPUHzLte *int64 `json:"total_cpu_hz_lte,omitempty"`
 
 	// total cpu hz not
-	TotalCPUHzNot *float64 `json:"total_cpu_hz_not,omitempty"`
+	TotalCPUHzNot *int64 `json:"total_cpu_hz_not,omitempty"`
 
 	// total cpu hz not in
-	TotalCPUHzNotIn []float64 `json:"total_cpu_hz_not_in,omitempty"`
+	TotalCPUHzNotIn []int64 `json:"total_cpu_hz_not_in,omitempty"`
 
 	// total memory bytes
-	TotalMemoryBytes *float64 `json:"total_memory_bytes,omitempty"`
+	TotalMemoryBytes *int64 `json:"total_memory_bytes,omitempty"`
 
 	// total memory bytes gt
-	TotalMemoryBytesGt *float64 `json:"total_memory_bytes_gt,omitempty"`
+	TotalMemoryBytesGt *int64 `json:"total_memory_bytes_gt,omitempty"`
 
 	// total memory bytes gte
-	TotalMemoryBytesGte *float64 `json:"total_memory_bytes_gte,omitempty"`
+	TotalMemoryBytesGte *int64 `json:"total_memory_bytes_gte,omitempty"`
 
 	// total memory bytes in
-	TotalMemoryBytesIn []float64 `json:"total_memory_bytes_in,omitempty"`
+	TotalMemoryBytesIn []int64 `json:"total_memory_bytes_in,omitempty"`
 
 	// total memory bytes lt
-	TotalMemoryBytesLt *float64 `json:"total_memory_bytes_lt,omitempty"`
+	TotalMemoryBytesLt *int64 `json:"total_memory_bytes_lt,omitempty"`
 
 	// total memory bytes lte
-	TotalMemoryBytesLte *float64 `json:"total_memory_bytes_lte,omitempty"`
+	TotalMemoryBytesLte *int64 `json:"total_memory_bytes_lte,omitempty"`
 
 	// total memory bytes not
-	TotalMemoryBytesNot *float64 `json:"total_memory_bytes_not,omitempty"`
+	TotalMemoryBytesNot *int64 `json:"total_memory_bytes_not,omitempty"`
 
 	// total memory bytes not in
-	TotalMemoryBytesNotIn []float64 `json:"total_memory_bytes_not_in,omitempty"`
+	TotalMemoryBytesNotIn []int64 `json:"total_memory_bytes_not_in,omitempty"`
 }
 
 // Validate validates this witness where input

@@ -36,7 +36,7 @@ type BackupLicense struct {
 
 	// max capacity
 	// Required: true
-	MaxCapacity *float64 `json:"max_capacity"`
+	MaxCapacity *int64 `json:"max_capacity"`
 
 	// sign date
 	// Required: true

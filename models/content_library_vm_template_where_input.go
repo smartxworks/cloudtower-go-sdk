@@ -186,28 +186,28 @@ type ContentLibraryVMTemplateWhereInput struct {
 	LabelsSome *LabelWhereInput `json:"labels_some,omitempty"`
 
 	// memory
-	Memory *float64 `json:"memory,omitempty"`
+	Memory *int64 `json:"memory,omitempty"`
 
 	// memory gt
-	MemoryGt *float64 `json:"memory_gt,omitempty"`
+	MemoryGt *int64 `json:"memory_gt,omitempty"`
 
 	// memory gte
-	MemoryGte *float64 `json:"memory_gte,omitempty"`
+	MemoryGte *int64 `json:"memory_gte,omitempty"`
 
 	// memory in
-	MemoryIn []float64 `json:"memory_in,omitempty"`
+	MemoryIn []int64 `json:"memory_in,omitempty"`
 
 	// memory lt
-	MemoryLt *float64 `json:"memory_lt,omitempty"`
+	MemoryLt *int64 `json:"memory_lt,omitempty"`
 
 	// memory lte
-	MemoryLte *float64 `json:"memory_lte,omitempty"`
+	MemoryLte *int64 `json:"memory_lte,omitempty"`
 
 	// memory not
-	MemoryNot *float64 `json:"memory_not,omitempty"`
+	MemoryNot *int64 `json:"memory_not,omitempty"`
 
 	// memory not in
-	MemoryNotIn []float64 `json:"memory_not_in,omitempty"`
+	MemoryNotIn []int64 `json:"memory_not_in,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`
@@ -294,28 +294,28 @@ type ContentLibraryVMTemplateWhereInput struct {
 	OsStartsWith *string `json:"os_starts_with,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// size gt
-	SizeGt *float64 `json:"size_gt,omitempty"`
+	SizeGt *int64 `json:"size_gt,omitempty"`
 
 	// size gte
-	SizeGte *float64 `json:"size_gte,omitempty"`
+	SizeGte *int64 `json:"size_gte,omitempty"`
 
 	// size in
-	SizeIn []float64 `json:"size_in,omitempty"`
+	SizeIn []int64 `json:"size_in,omitempty"`
 
 	// size lt
-	SizeLt *float64 `json:"size_lt,omitempty"`
+	SizeLt *int64 `json:"size_lt,omitempty"`
 
 	// size lte
-	SizeLte *float64 `json:"size_lte,omitempty"`
+	SizeLte *int64 `json:"size_lte,omitempty"`
 
 	// size not
-	SizeNot *float64 `json:"size_not,omitempty"`
+	SizeNot *int64 `json:"size_not,omitempty"`
 
 	// size not in
-	SizeNotIn []float64 `json:"size_not_in,omitempty"`
+	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
 	// vcpu
 	Vcpu *int32 `json:"vcpu,omitempty"`

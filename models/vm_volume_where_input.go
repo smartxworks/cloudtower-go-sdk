@@ -87,52 +87,52 @@ type VMVolumeWhereInput struct {
 	ElfStoragePolicyNotIn []VMVolumeElfStoragePolicyType `json:"elf_storage_policy_not_in,omitempty"`
 
 	// guest size usage
-	GuestSizeUsage *float64 `json:"guest_size_usage,omitempty"`
+	GuestSizeUsage *int64 `json:"guest_size_usage,omitempty"`
 
 	// guest size usage gt
-	GuestSizeUsageGt *float64 `json:"guest_size_usage_gt,omitempty"`
+	GuestSizeUsageGt *int64 `json:"guest_size_usage_gt,omitempty"`
 
 	// guest size usage gte
-	GuestSizeUsageGte *float64 `json:"guest_size_usage_gte,omitempty"`
+	GuestSizeUsageGte *int64 `json:"guest_size_usage_gte,omitempty"`
 
 	// guest size usage in
-	GuestSizeUsageIn []float64 `json:"guest_size_usage_in,omitempty"`
+	GuestSizeUsageIn []int64 `json:"guest_size_usage_in,omitempty"`
 
 	// guest size usage lt
-	GuestSizeUsageLt *float64 `json:"guest_size_usage_lt,omitempty"`
+	GuestSizeUsageLt *int64 `json:"guest_size_usage_lt,omitempty"`
 
 	// guest size usage lte
-	GuestSizeUsageLte *float64 `json:"guest_size_usage_lte,omitempty"`
+	GuestSizeUsageLte *int64 `json:"guest_size_usage_lte,omitempty"`
 
 	// guest size usage not
-	GuestSizeUsageNot *float64 `json:"guest_size_usage_not,omitempty"`
+	GuestSizeUsageNot *int64 `json:"guest_size_usage_not,omitempty"`
 
 	// guest size usage not in
-	GuestSizeUsageNotIn []float64 `json:"guest_size_usage_not_in,omitempty"`
+	GuestSizeUsageNotIn []int64 `json:"guest_size_usage_not_in,omitempty"`
 
 	// guest used size
-	GuestUsedSize *float64 `json:"guest_used_size,omitempty"`
+	GuestUsedSize *int64 `json:"guest_used_size,omitempty"`
 
 	// guest used size gt
-	GuestUsedSizeGt *float64 `json:"guest_used_size_gt,omitempty"`
+	GuestUsedSizeGt *int64 `json:"guest_used_size_gt,omitempty"`
 
 	// guest used size gte
-	GuestUsedSizeGte *float64 `json:"guest_used_size_gte,omitempty"`
+	GuestUsedSizeGte *int64 `json:"guest_used_size_gte,omitempty"`
 
 	// guest used size in
-	GuestUsedSizeIn []float64 `json:"guest_used_size_in,omitempty"`
+	GuestUsedSizeIn []int64 `json:"guest_used_size_in,omitempty"`
 
 	// guest used size lt
-	GuestUsedSizeLt *float64 `json:"guest_used_size_lt,omitempty"`
+	GuestUsedSizeLt *int64 `json:"guest_used_size_lt,omitempty"`
 
 	// guest used size lte
-	GuestUsedSizeLte *float64 `json:"guest_used_size_lte,omitempty"`
+	GuestUsedSizeLte *int64 `json:"guest_used_size_lte,omitempty"`
 
 	// guest used size not
-	GuestUsedSizeNot *float64 `json:"guest_used_size_not,omitempty"`
+	GuestUsedSizeNot *int64 `json:"guest_used_size_not,omitempty"`
 
 	// guest used size not in
-	GuestUsedSizeNotIn []float64 `json:"guest_used_size_not_in,omitempty"`
+	GuestUsedSizeNotIn []int64 `json:"guest_used_size_not_in,omitempty"`
 
 	// id
 	ID *string `json:"id,omitempty"`
@@ -351,52 +351,52 @@ type VMVolumeWhereInput struct {
 	SharingNot *bool `json:"sharing_not,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// size gt
-	SizeGt *float64 `json:"size_gt,omitempty"`
+	SizeGt *int64 `json:"size_gt,omitempty"`
 
 	// size gte
-	SizeGte *float64 `json:"size_gte,omitempty"`
+	SizeGte *int64 `json:"size_gte,omitempty"`
 
 	// size in
-	SizeIn []float64 `json:"size_in,omitempty"`
+	SizeIn []int64 `json:"size_in,omitempty"`
 
 	// size lt
-	SizeLt *float64 `json:"size_lt,omitempty"`
+	SizeLt *int64 `json:"size_lt,omitempty"`
 
 	// size lte
-	SizeLte *float64 `json:"size_lte,omitempty"`
+	SizeLte *int64 `json:"size_lte,omitempty"`
 
 	// size not
-	SizeNot *float64 `json:"size_not,omitempty"`
+	SizeNot *int64 `json:"size_not,omitempty"`
 
 	// size not in
-	SizeNotIn []float64 `json:"size_not_in,omitempty"`
+	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
 	// unique size
-	UniqueSize *float64 `json:"unique_size,omitempty"`
+	UniqueSize *int64 `json:"unique_size,omitempty"`
 
 	// unique size gt
-	UniqueSizeGt *float64 `json:"unique_size_gt,omitempty"`
+	UniqueSizeGt *int64 `json:"unique_size_gt,omitempty"`
 
 	// unique size gte
-	UniqueSizeGte *float64 `json:"unique_size_gte,omitempty"`
+	UniqueSizeGte *int64 `json:"unique_size_gte,omitempty"`
 
 	// unique size in
-	UniqueSizeIn []float64 `json:"unique_size_in,omitempty"`
+	UniqueSizeIn []int64 `json:"unique_size_in,omitempty"`
 
 	// unique size lt
-	UniqueSizeLt *float64 `json:"unique_size_lt,omitempty"`
+	UniqueSizeLt *int64 `json:"unique_size_lt,omitempty"`
 
 	// unique size lte
-	UniqueSizeLte *float64 `json:"unique_size_lte,omitempty"`
+	UniqueSizeLte *int64 `json:"unique_size_lte,omitempty"`
 
 	// unique size not
-	UniqueSizeNot *float64 `json:"unique_size_not,omitempty"`
+	UniqueSizeNot *int64 `json:"unique_size_not,omitempty"`
 
 	// unique size not in
-	UniqueSizeNotIn []float64 `json:"unique_size_not_in,omitempty"`
+	UniqueSizeNotIn []int64 `json:"unique_size_not_in,omitempty"`
 
 	// vm disks every
 	VMDisksEvery *VMDiskWhereInput `json:"vm_disks_every,omitempty"`

@@ -53,7 +53,7 @@ type ConsistencyGroupSnapshot struct {
 
 	// unique size
 	// Required: true
-	UniqueSize *float64 `json:"unique_size"`
+	UniqueSize *int64 `json:"unique_size"`
 }
 
 // Validate validates this consistency group snapshot
