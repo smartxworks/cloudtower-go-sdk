@@ -172,7 +172,7 @@ type VMUpdateParamsData struct {
 	Ha *bool `json:"ha,omitempty"`
 
 	// memory
-	Memory *float64 `json:"memory,omitempty"`
+	Memory *int64 `json:"memory,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`

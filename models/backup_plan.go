@@ -41,7 +41,7 @@ type BackupPlan struct {
 	BackupStoreRepository *NestedBackupStoreRepository `json:"backup_store_repository"`
 
 	// backup total size
-	BackupTotalSize *float64 `json:"backup_total_size,omitempty"`
+	BackupTotalSize *int64 `json:"backup_total_size,omitempty"`
 
 	// compression
 	Compression *bool `json:"compression,omitempty"`

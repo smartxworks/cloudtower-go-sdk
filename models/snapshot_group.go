@@ -55,7 +55,7 @@ type SnapshotGroup struct {
 
 	// logical size bytes
 	// Required: true
-	LogicalSizeBytes *float64 `json:"logical_size_bytes"`
+	LogicalSizeBytes *int64 `json:"logical_size_bytes"`
 
 	// name
 	// Required: true

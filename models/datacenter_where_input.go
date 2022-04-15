@@ -63,28 +63,28 @@ type DatacenterWhereInput struct {
 	ClustersSome *ClusterWhereInput `json:"clusters_some,omitempty"`
 
 	// failure data space
-	FailureDataSpace *float64 `json:"failure_data_space,omitempty"`
+	FailureDataSpace *int64 `json:"failure_data_space,omitempty"`
 
 	// failure data space gt
-	FailureDataSpaceGt *float64 `json:"failure_data_space_gt,omitempty"`
+	FailureDataSpaceGt *int64 `json:"failure_data_space_gt,omitempty"`
 
 	// failure data space gte
-	FailureDataSpaceGte *float64 `json:"failure_data_space_gte,omitempty"`
+	FailureDataSpaceGte *int64 `json:"failure_data_space_gte,omitempty"`
 
 	// failure data space in
-	FailureDataSpaceIn []float64 `json:"failure_data_space_in,omitempty"`
+	FailureDataSpaceIn []int64 `json:"failure_data_space_in,omitempty"`
 
 	// failure data space lt
-	FailureDataSpaceLt *float64 `json:"failure_data_space_lt,omitempty"`
+	FailureDataSpaceLt *int64 `json:"failure_data_space_lt,omitempty"`
 
 	// failure data space lte
-	FailureDataSpaceLte *float64 `json:"failure_data_space_lte,omitempty"`
+	FailureDataSpaceLte *int64 `json:"failure_data_space_lte,omitempty"`
 
 	// failure data space not
-	FailureDataSpaceNot *float64 `json:"failure_data_space_not,omitempty"`
+	FailureDataSpaceNot *int64 `json:"failure_data_space_not,omitempty"`
 
 	// failure data space not in
-	FailureDataSpaceNotIn []float64 `json:"failure_data_space_not_in,omitempty"`
+	FailureDataSpaceNotIn []int64 `json:"failure_data_space_not_in,omitempty"`
 
 	// host num
 	HostNum *int32 `json:"host_num,omitempty"`
@@ -207,148 +207,148 @@ type DatacenterWhereInput struct {
 	Organization *OrganizationWhereInput `json:"organization,omitempty"`
 
 	// total cpu hz
-	TotalCPUHz *float64 `json:"total_cpu_hz,omitempty"`
+	TotalCPUHz *int64 `json:"total_cpu_hz,omitempty"`
 
 	// total cpu hz gt
-	TotalCPUHzGt *float64 `json:"total_cpu_hz_gt,omitempty"`
+	TotalCPUHzGt *int64 `json:"total_cpu_hz_gt,omitempty"`
 
 	// total cpu hz gte
-	TotalCPUHzGte *float64 `json:"total_cpu_hz_gte,omitempty"`
+	TotalCPUHzGte *int64 `json:"total_cpu_hz_gte,omitempty"`
 
 	// total cpu hz in
-	TotalCPUHzIn []float64 `json:"total_cpu_hz_in,omitempty"`
+	TotalCPUHzIn []int64 `json:"total_cpu_hz_in,omitempty"`
 
 	// total cpu hz lt
-	TotalCPUHzLt *float64 `json:"total_cpu_hz_lt,omitempty"`
+	TotalCPUHzLt *int64 `json:"total_cpu_hz_lt,omitempty"`
 
 	// total cpu hz lte
-	TotalCPUHzLte *float64 `json:"total_cpu_hz_lte,omitempty"`
+	TotalCPUHzLte *int64 `json:"total_cpu_hz_lte,omitempty"`
 
 	// total cpu hz not
-	TotalCPUHzNot *float64 `json:"total_cpu_hz_not,omitempty"`
+	TotalCPUHzNot *int64 `json:"total_cpu_hz_not,omitempty"`
 
 	// total cpu hz not in
-	TotalCPUHzNotIn []float64 `json:"total_cpu_hz_not_in,omitempty"`
+	TotalCPUHzNotIn []int64 `json:"total_cpu_hz_not_in,omitempty"`
 
 	// total data capacity
-	TotalDataCapacity *float64 `json:"total_data_capacity,omitempty"`
+	TotalDataCapacity *int64 `json:"total_data_capacity,omitempty"`
 
 	// total data capacity gt
-	TotalDataCapacityGt *float64 `json:"total_data_capacity_gt,omitempty"`
+	TotalDataCapacityGt *int64 `json:"total_data_capacity_gt,omitempty"`
 
 	// total data capacity gte
-	TotalDataCapacityGte *float64 `json:"total_data_capacity_gte,omitempty"`
+	TotalDataCapacityGte *int64 `json:"total_data_capacity_gte,omitempty"`
 
 	// total data capacity in
-	TotalDataCapacityIn []float64 `json:"total_data_capacity_in,omitempty"`
+	TotalDataCapacityIn []int64 `json:"total_data_capacity_in,omitempty"`
 
 	// total data capacity lt
-	TotalDataCapacityLt *float64 `json:"total_data_capacity_lt,omitempty"`
+	TotalDataCapacityLt *int64 `json:"total_data_capacity_lt,omitempty"`
 
 	// total data capacity lte
-	TotalDataCapacityLte *float64 `json:"total_data_capacity_lte,omitempty"`
+	TotalDataCapacityLte *int64 `json:"total_data_capacity_lte,omitempty"`
 
 	// total data capacity not
-	TotalDataCapacityNot *float64 `json:"total_data_capacity_not,omitempty"`
+	TotalDataCapacityNot *int64 `json:"total_data_capacity_not,omitempty"`
 
 	// total data capacity not in
-	TotalDataCapacityNotIn []float64 `json:"total_data_capacity_not_in,omitempty"`
+	TotalDataCapacityNotIn []int64 `json:"total_data_capacity_not_in,omitempty"`
 
 	// total memory bytes
-	TotalMemoryBytes *float64 `json:"total_memory_bytes,omitempty"`
+	TotalMemoryBytes *int64 `json:"total_memory_bytes,omitempty"`
 
 	// total memory bytes gt
-	TotalMemoryBytesGt *float64 `json:"total_memory_bytes_gt,omitempty"`
+	TotalMemoryBytesGt *int64 `json:"total_memory_bytes_gt,omitempty"`
 
 	// total memory bytes gte
-	TotalMemoryBytesGte *float64 `json:"total_memory_bytes_gte,omitempty"`
+	TotalMemoryBytesGte *int64 `json:"total_memory_bytes_gte,omitempty"`
 
 	// total memory bytes in
-	TotalMemoryBytesIn []float64 `json:"total_memory_bytes_in,omitempty"`
+	TotalMemoryBytesIn []int64 `json:"total_memory_bytes_in,omitempty"`
 
 	// total memory bytes lt
-	TotalMemoryBytesLt *float64 `json:"total_memory_bytes_lt,omitempty"`
+	TotalMemoryBytesLt *int64 `json:"total_memory_bytes_lt,omitempty"`
 
 	// total memory bytes lte
-	TotalMemoryBytesLte *float64 `json:"total_memory_bytes_lte,omitempty"`
+	TotalMemoryBytesLte *int64 `json:"total_memory_bytes_lte,omitempty"`
 
 	// total memory bytes not
-	TotalMemoryBytesNot *float64 `json:"total_memory_bytes_not,omitempty"`
+	TotalMemoryBytesNot *int64 `json:"total_memory_bytes_not,omitempty"`
 
 	// total memory bytes not in
-	TotalMemoryBytesNotIn []float64 `json:"total_memory_bytes_not_in,omitempty"`
+	TotalMemoryBytesNotIn []int64 `json:"total_memory_bytes_not_in,omitempty"`
 
 	// used cpu hz
-	UsedCPUHz *float64 `json:"used_cpu_hz,omitempty"`
+	UsedCPUHz *int64 `json:"used_cpu_hz,omitempty"`
 
 	// used cpu hz gt
-	UsedCPUHzGt *float64 `json:"used_cpu_hz_gt,omitempty"`
+	UsedCPUHzGt *int64 `json:"used_cpu_hz_gt,omitempty"`
 
 	// used cpu hz gte
-	UsedCPUHzGte *float64 `json:"used_cpu_hz_gte,omitempty"`
+	UsedCPUHzGte *int64 `json:"used_cpu_hz_gte,omitempty"`
 
 	// used cpu hz in
-	UsedCPUHzIn []float64 `json:"used_cpu_hz_in,omitempty"`
+	UsedCPUHzIn []int64 `json:"used_cpu_hz_in,omitempty"`
 
 	// used cpu hz lt
-	UsedCPUHzLt *float64 `json:"used_cpu_hz_lt,omitempty"`
+	UsedCPUHzLt *int64 `json:"used_cpu_hz_lt,omitempty"`
 
 	// used cpu hz lte
-	UsedCPUHzLte *float64 `json:"used_cpu_hz_lte,omitempty"`
+	UsedCPUHzLte *int64 `json:"used_cpu_hz_lte,omitempty"`
 
 	// used cpu hz not
-	UsedCPUHzNot *float64 `json:"used_cpu_hz_not,omitempty"`
+	UsedCPUHzNot *int64 `json:"used_cpu_hz_not,omitempty"`
 
 	// used cpu hz not in
-	UsedCPUHzNotIn []float64 `json:"used_cpu_hz_not_in,omitempty"`
+	UsedCPUHzNotIn []int64 `json:"used_cpu_hz_not_in,omitempty"`
 
 	// used data space
-	UsedDataSpace *float64 `json:"used_data_space,omitempty"`
+	UsedDataSpace *int64 `json:"used_data_space,omitempty"`
 
 	// used data space gt
-	UsedDataSpaceGt *float64 `json:"used_data_space_gt,omitempty"`
+	UsedDataSpaceGt *int64 `json:"used_data_space_gt,omitempty"`
 
 	// used data space gte
-	UsedDataSpaceGte *float64 `json:"used_data_space_gte,omitempty"`
+	UsedDataSpaceGte *int64 `json:"used_data_space_gte,omitempty"`
 
 	// used data space in
-	UsedDataSpaceIn []float64 `json:"used_data_space_in,omitempty"`
+	UsedDataSpaceIn []int64 `json:"used_data_space_in,omitempty"`
 
 	// used data space lt
-	UsedDataSpaceLt *float64 `json:"used_data_space_lt,omitempty"`
+	UsedDataSpaceLt *int64 `json:"used_data_space_lt,omitempty"`
 
 	// used data space lte
-	UsedDataSpaceLte *float64 `json:"used_data_space_lte,omitempty"`
+	UsedDataSpaceLte *int64 `json:"used_data_space_lte,omitempty"`
 
 	// used data space not
-	UsedDataSpaceNot *float64 `json:"used_data_space_not,omitempty"`
+	UsedDataSpaceNot *int64 `json:"used_data_space_not,omitempty"`
 
 	// used data space not in
-	UsedDataSpaceNotIn []float64 `json:"used_data_space_not_in,omitempty"`
+	UsedDataSpaceNotIn []int64 `json:"used_data_space_not_in,omitempty"`
 
 	// used memory bytes
-	UsedMemoryBytes *float64 `json:"used_memory_bytes,omitempty"`
+	UsedMemoryBytes *int64 `json:"used_memory_bytes,omitempty"`
 
 	// used memory bytes gt
-	UsedMemoryBytesGt *float64 `json:"used_memory_bytes_gt,omitempty"`
+	UsedMemoryBytesGt *int64 `json:"used_memory_bytes_gt,omitempty"`
 
 	// used memory bytes gte
-	UsedMemoryBytesGte *float64 `json:"used_memory_bytes_gte,omitempty"`
+	UsedMemoryBytesGte *int64 `json:"used_memory_bytes_gte,omitempty"`
 
 	// used memory bytes in
-	UsedMemoryBytesIn []float64 `json:"used_memory_bytes_in,omitempty"`
+	UsedMemoryBytesIn []int64 `json:"used_memory_bytes_in,omitempty"`
 
 	// used memory bytes lt
-	UsedMemoryBytesLt *float64 `json:"used_memory_bytes_lt,omitempty"`
+	UsedMemoryBytesLt *int64 `json:"used_memory_bytes_lt,omitempty"`
 
 	// used memory bytes lte
-	UsedMemoryBytesLte *float64 `json:"used_memory_bytes_lte,omitempty"`
+	UsedMemoryBytesLte *int64 `json:"used_memory_bytes_lte,omitempty"`
 
 	// used memory bytes not
-	UsedMemoryBytesNot *float64 `json:"used_memory_bytes_not,omitempty"`
+	UsedMemoryBytesNot *int64 `json:"used_memory_bytes_not,omitempty"`
 
 	// used memory bytes not in
-	UsedMemoryBytesNotIn []float64 `json:"used_memory_bytes_not_in,omitempty"`
+	UsedMemoryBytesNotIn []int64 `json:"used_memory_bytes_not_in,omitempty"`
 
 	// vm num
 	VMNum *int32 `json:"vm_num,omitempty"`

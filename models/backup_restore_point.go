@@ -59,16 +59,16 @@ type BackupRestorePoint struct {
 	LocalID *string `json:"local_id"`
 
 	// logical size
-	LogicalSize *float64 `json:"logical_size,omitempty"`
+	LogicalSize *int64 `json:"logical_size,omitempty"`
 
 	// parent restore point
 	ParentRestorePoint *string `json:"parent_restore_point,omitempty"`
 
 	// physical size
-	PhysicalSize *float64 `json:"physical_size,omitempty"`
+	PhysicalSize *int64 `json:"physical_size,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// slice
 	// Required: true
@@ -78,10 +78,10 @@ type BackupRestorePoint struct {
 	Type *BackupRestorePointType `json:"type,omitempty"`
 
 	// valid capacity
-	ValidCapacity *float64 `json:"valid_capacity,omitempty"`
+	ValidCapacity *int64 `json:"valid_capacity,omitempty"`
 
 	// valid size
-	ValidSize *float64 `json:"valid_size,omitempty"`
+	ValidSize *int64 `json:"valid_size,omitempty"`
 
 	// vm
 	VM *NestedVM `json:"vm,omitempty"`

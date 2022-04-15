@@ -52,7 +52,7 @@ type ElfStoragePolicy struct {
 
 	// stripe size
 	// Required: true
-	StripeSize *float64 `json:"stripe_size"`
+	StripeSize *int64 `json:"stripe_size"`
 
 	// thin provision
 	// Required: true

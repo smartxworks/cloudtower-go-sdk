@@ -37,7 +37,7 @@ type VMVolumeCreationParams struct {
 
 	// size
 	// Required: true
-	Size *int32 `json:"size"`
+	Size *int64 `json:"size"`
 }
 
 // Validate validates this Vm volume creation params

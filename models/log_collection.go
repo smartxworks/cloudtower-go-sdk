@@ -65,7 +65,7 @@ type LogCollection struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// started at
 	// Required: true

@@ -74,7 +74,7 @@ type VM struct {
 	GuestSizeUsage *float64 `json:"guest_size_usage,omitempty"`
 
 	// guest used size
-	GuestUsedSize *float64 `json:"guest_used_size,omitempty"`
+	GuestUsedSize *int64 `json:"guest_used_size,omitempty"`
 
 	// ha
 	// Required: true
@@ -128,10 +128,10 @@ type VM struct {
 	LocalID *string `json:"local_id"`
 
 	// logical size bytes
-	LogicalSizeBytes *float64 `json:"logical_size_bytes,omitempty"`
+	LogicalSizeBytes *int64 `json:"logical_size_bytes,omitempty"`
 
 	// max bandwidth
-	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
@@ -144,7 +144,7 @@ type VM struct {
 
 	// memory
 	// Required: true
-	Memory *float64 `json:"memory"`
+	Memory *int64 `json:"memory"`
 
 	// memory usage
 	MemoryUsage *float64 `json:"memory_usage,omitempty"`
@@ -176,10 +176,10 @@ type VM struct {
 	Protected *bool `json:"protected"`
 
 	// provisioned size
-	ProvisionedSize *float64 `json:"provisioned_size,omitempty"`
+	ProvisionedSize *int64 `json:"provisioned_size,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// snapshot plan
 	SnapshotPlan *NestedSnapshotPlan `json:"snapshot_plan,omitempty"`
@@ -192,7 +192,7 @@ type VM struct {
 	Status *VMStatus `json:"status"`
 
 	// unique size
-	UniqueSize *float64 `json:"unique_size,omitempty"`
+	UniqueSize *int64 `json:"unique_size,omitempty"`
 
 	// usb devices
 	UsbDevices []*NestedUsbDevice `json:"usb_devices,omitempty"`

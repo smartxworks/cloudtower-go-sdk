@@ -33,7 +33,7 @@ type NestedDiskFailureInformation struct {
 	IostatLatency *bool `json:"iostat_latency,omitempty"`
 
 	// iostat latency ms
-	IostatLatencyMs *float64 `json:"iostat_latency_ms,omitempty"`
+	IostatLatencyMs *int64 `json:"iostat_latency_ms,omitempty"`
 
 	// smart check
 	SmartCheck *bool `json:"smart_check,omitempty"`

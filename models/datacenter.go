@@ -27,7 +27,7 @@ type Datacenter struct {
 	Clusters []*NestedCluster `json:"clusters,omitempty"`
 
 	// failure data space
-	FailureDataSpace *float64 `json:"failure_data_space,omitempty"`
+	FailureDataSpace *int64 `json:"failure_data_space,omitempty"`
 
 	// host num
 	HostNum *int32 `json:"host_num,omitempty"`
@@ -48,22 +48,22 @@ type Datacenter struct {
 	Organization *NestedOrganization `json:"organization"`
 
 	// total cpu hz
-	TotalCPUHz *float64 `json:"total_cpu_hz,omitempty"`
+	TotalCPUHz *int64 `json:"total_cpu_hz,omitempty"`
 
 	// total data capacity
-	TotalDataCapacity *float64 `json:"total_data_capacity,omitempty"`
+	TotalDataCapacity *int64 `json:"total_data_capacity,omitempty"`
 
 	// total memory bytes
-	TotalMemoryBytes *float64 `json:"total_memory_bytes,omitempty"`
+	TotalMemoryBytes *int64 `json:"total_memory_bytes,omitempty"`
 
 	// used cpu hz
-	UsedCPUHz *float64 `json:"used_cpu_hz,omitempty"`
+	UsedCPUHz *int64 `json:"used_cpu_hz,omitempty"`
 
 	// used data space
-	UsedDataSpace *float64 `json:"used_data_space,omitempty"`
+	UsedDataSpace *int64 `json:"used_data_space,omitempty"`
 
 	// used memory bytes
-	UsedMemoryBytes *float64 `json:"used_memory_bytes,omitempty"`
+	UsedMemoryBytes *int64 `json:"used_memory_bytes,omitempty"`
 
 	// vm num
 	VMNum *int32 `json:"vm_num,omitempty"`

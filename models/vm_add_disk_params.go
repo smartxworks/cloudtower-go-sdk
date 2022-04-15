@@ -164,7 +164,7 @@ type VMAddDiskParamsData struct {
 	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
 
 	// max bandwidth
-	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`

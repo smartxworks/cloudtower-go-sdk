@@ -30,28 +30,28 @@ type NfsInodeWhereInput struct {
 	OR []*NfsInodeWhereInput `json:"OR,omitempty"`
 
 	// assigned size
-	AssignedSize *float64 `json:"assigned_size,omitempty"`
+	AssignedSize *int64 `json:"assigned_size,omitempty"`
 
 	// assigned size gt
-	AssignedSizeGt *float64 `json:"assigned_size_gt,omitempty"`
+	AssignedSizeGt *int64 `json:"assigned_size_gt,omitempty"`
 
 	// assigned size gte
-	AssignedSizeGte *float64 `json:"assigned_size_gte,omitempty"`
+	AssignedSizeGte *int64 `json:"assigned_size_gte,omitempty"`
 
 	// assigned size in
-	AssignedSizeIn []float64 `json:"assigned_size_in,omitempty"`
+	AssignedSizeIn []int64 `json:"assigned_size_in,omitempty"`
 
 	// assigned size lt
-	AssignedSizeLt *float64 `json:"assigned_size_lt,omitempty"`
+	AssignedSizeLt *int64 `json:"assigned_size_lt,omitempty"`
 
 	// assigned size lte
-	AssignedSizeLte *float64 `json:"assigned_size_lte,omitempty"`
+	AssignedSizeLte *int64 `json:"assigned_size_lte,omitempty"`
 
 	// assigned size not
-	AssignedSizeNot *float64 `json:"assigned_size_not,omitempty"`
+	AssignedSizeNot *int64 `json:"assigned_size_not,omitempty"`
 
 	// assigned size not in
-	AssignedSizeNotIn []float64 `json:"assigned_size_not_in,omitempty"`
+	AssignedSizeNotIn []int64 `json:"assigned_size_not_in,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -276,28 +276,28 @@ type NfsInodeWhereInput struct {
 	ParentIDStartsWith *string `json:"parent_id_starts_with,omitempty"`
 
 	// shared size
-	SharedSize *float64 `json:"shared_size,omitempty"`
+	SharedSize *int64 `json:"shared_size,omitempty"`
 
 	// shared size gt
-	SharedSizeGt *float64 `json:"shared_size_gt,omitempty"`
+	SharedSizeGt *int64 `json:"shared_size_gt,omitempty"`
 
 	// shared size gte
-	SharedSizeGte *float64 `json:"shared_size_gte,omitempty"`
+	SharedSizeGte *int64 `json:"shared_size_gte,omitempty"`
 
 	// shared size in
-	SharedSizeIn []float64 `json:"shared_size_in,omitempty"`
+	SharedSizeIn []int64 `json:"shared_size_in,omitempty"`
 
 	// shared size lt
-	SharedSizeLt *float64 `json:"shared_size_lt,omitempty"`
+	SharedSizeLt *int64 `json:"shared_size_lt,omitempty"`
 
 	// shared size lte
-	SharedSizeLte *float64 `json:"shared_size_lte,omitempty"`
+	SharedSizeLte *int64 `json:"shared_size_lte,omitempty"`
 
 	// shared size not
-	SharedSizeNot *float64 `json:"shared_size_not,omitempty"`
+	SharedSizeNot *int64 `json:"shared_size_not,omitempty"`
 
 	// shared size not in
-	SharedSizeNotIn []float64 `json:"shared_size_not_in,omitempty"`
+	SharedSizeNotIn []int64 `json:"shared_size_not_in,omitempty"`
 
 	// snapshot num
 	SnapshotNum *int32 `json:"snapshot_num,omitempty"`
@@ -324,28 +324,28 @@ type NfsInodeWhereInput struct {
 	SnapshotNumNotIn []int32 `json:"snapshot_num_not_in,omitempty"`
 
 	// unique size
-	UniqueSize *float64 `json:"unique_size,omitempty"`
+	UniqueSize *int64 `json:"unique_size,omitempty"`
 
 	// unique size gt
-	UniqueSizeGt *float64 `json:"unique_size_gt,omitempty"`
+	UniqueSizeGt *int64 `json:"unique_size_gt,omitempty"`
 
 	// unique size gte
-	UniqueSizeGte *float64 `json:"unique_size_gte,omitempty"`
+	UniqueSizeGte *int64 `json:"unique_size_gte,omitempty"`
 
 	// unique size in
-	UniqueSizeIn []float64 `json:"unique_size_in,omitempty"`
+	UniqueSizeIn []int64 `json:"unique_size_in,omitempty"`
 
 	// unique size lt
-	UniqueSizeLt *float64 `json:"unique_size_lt,omitempty"`
+	UniqueSizeLt *int64 `json:"unique_size_lt,omitempty"`
 
 	// unique size lte
-	UniqueSizeLte *float64 `json:"unique_size_lte,omitempty"`
+	UniqueSizeLte *int64 `json:"unique_size_lte,omitempty"`
 
 	// unique size not
-	UniqueSizeNot *float64 `json:"unique_size_not,omitempty"`
+	UniqueSizeNot *int64 `json:"unique_size_not,omitempty"`
 
 	// unique size not in
-	UniqueSizeNotIn []float64 `json:"unique_size_not_in,omitempty"`
+	UniqueSizeNotIn []int64 `json:"unique_size_not_in,omitempty"`
 }
 
 // Validate validates this nfs inode where input

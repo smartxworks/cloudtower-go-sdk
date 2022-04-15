@@ -21,31 +21,31 @@ import (
 type IscsiTarget struct {
 
 	// bps
-	Bps *float64 `json:"bps,omitempty"`
+	Bps *int64 `json:"bps,omitempty"`
 
 	// bps max
-	BpsMax *float64 `json:"bps_max,omitempty"`
+	BpsMax *int64 `json:"bps_max,omitempty"`
 
 	// bps max length
-	BpsMaxLength *float64 `json:"bps_max_length,omitempty"`
+	BpsMaxLength *int64 `json:"bps_max_length,omitempty"`
 
 	// bps rd
-	BpsRd *float64 `json:"bps_rd,omitempty"`
+	BpsRd *int64 `json:"bps_rd,omitempty"`
 
 	// bps rd max
-	BpsRdMax *float64 `json:"bps_rd_max,omitempty"`
+	BpsRdMax *int64 `json:"bps_rd_max,omitempty"`
 
 	// bps rd max length
-	BpsRdMaxLength *float64 `json:"bps_rd_max_length,omitempty"`
+	BpsRdMaxLength *int64 `json:"bps_rd_max_length,omitempty"`
 
 	// bps wr
-	BpsWr *float64 `json:"bps_wr,omitempty"`
+	BpsWr *int64 `json:"bps_wr,omitempty"`
 
 	// bps wr max
-	BpsWrMax *float64 `json:"bps_wr_max,omitempty"`
+	BpsWrMax *int64 `json:"bps_wr_max,omitempty"`
 
 	// bps wr max length
-	BpsWrMaxLength *float64 `json:"bps_wr_max_length,omitempty"`
+	BpsWrMaxLength *int64 `json:"bps_wr_max_length,omitempty"`
 
 	// chap enabled
 	// Required: true
@@ -84,34 +84,34 @@ type IscsiTarget struct {
 	Internal *bool `json:"internal"`
 
 	// io size
-	IoSize *float64 `json:"io_size,omitempty"`
+	IoSize *int64 `json:"io_size,omitempty"`
 
 	// iops
-	Iops *float64 `json:"iops,omitempty"`
+	Iops *int64 `json:"iops,omitempty"`
 
 	// iops max
-	IopsMax *float64 `json:"iops_max,omitempty"`
+	IopsMax *int64 `json:"iops_max,omitempty"`
 
 	// iops max length
-	IopsMaxLength *float64 `json:"iops_max_length,omitempty"`
+	IopsMaxLength *int64 `json:"iops_max_length,omitempty"`
 
 	// iops rd
-	IopsRd *float64 `json:"iops_rd,omitempty"`
+	IopsRd *int64 `json:"iops_rd,omitempty"`
 
 	// iops rd max
-	IopsRdMax *float64 `json:"iops_rd_max,omitempty"`
+	IopsRdMax *int64 `json:"iops_rd_max,omitempty"`
 
 	// iops rd max length
-	IopsRdMaxLength *float64 `json:"iops_rd_max_length,omitempty"`
+	IopsRdMaxLength *int64 `json:"iops_rd_max_length,omitempty"`
 
 	// iops wr
-	IopsWr *float64 `json:"iops_wr,omitempty"`
+	IopsWr *int64 `json:"iops_wr,omitempty"`
 
 	// iops wr max
-	IopsWrMax *float64 `json:"iops_wr_max,omitempty"`
+	IopsWrMax *int64 `json:"iops_wr_max,omitempty"`
 
 	// iops wr max length
-	IopsWrMaxLength *float64 `json:"iops_wr_max_length,omitempty"`
+	IopsWrMaxLength *int64 `json:"iops_wr_max_length,omitempty"`
 
 	// ip whitelist
 	// Required: true
@@ -149,7 +149,7 @@ type IscsiTarget struct {
 
 	// stripe size
 	// Required: true
-	StripeSize *float64 `json:"stripe_size"`
+	StripeSize *int64 `json:"stripe_size"`
 
 	// thin provision
 	// Required: true

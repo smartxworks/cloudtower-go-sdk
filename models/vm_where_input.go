@@ -342,28 +342,28 @@ type VMWhereInput struct {
 	GuestSizeUsageNotIn []float64 `json:"guest_size_usage_not_in,omitempty"`
 
 	// guest used size
-	GuestUsedSize *float64 `json:"guest_used_size,omitempty"`
+	GuestUsedSize *int64 `json:"guest_used_size,omitempty"`
 
 	// guest used size gt
-	GuestUsedSizeGt *float64 `json:"guest_used_size_gt,omitempty"`
+	GuestUsedSizeGt *int64 `json:"guest_used_size_gt,omitempty"`
 
 	// guest used size gte
-	GuestUsedSizeGte *float64 `json:"guest_used_size_gte,omitempty"`
+	GuestUsedSizeGte *int64 `json:"guest_used_size_gte,omitempty"`
 
 	// guest used size in
-	GuestUsedSizeIn []float64 `json:"guest_used_size_in,omitempty"`
+	GuestUsedSizeIn []int64 `json:"guest_used_size_in,omitempty"`
 
 	// guest used size lt
-	GuestUsedSizeLt *float64 `json:"guest_used_size_lt,omitempty"`
+	GuestUsedSizeLt *int64 `json:"guest_used_size_lt,omitempty"`
 
 	// guest used size lte
-	GuestUsedSizeLte *float64 `json:"guest_used_size_lte,omitempty"`
+	GuestUsedSizeLte *int64 `json:"guest_used_size_lte,omitempty"`
 
 	// guest used size not
-	GuestUsedSizeNot *float64 `json:"guest_used_size_not,omitempty"`
+	GuestUsedSizeNot *int64 `json:"guest_used_size_not,omitempty"`
 
 	// guest used size not in
-	GuestUsedSizeNotIn []float64 `json:"guest_used_size_not_in,omitempty"`
+	GuestUsedSizeNotIn []int64 `json:"guest_used_size_not_in,omitempty"`
 
 	// ha
 	Ha *bool `json:"ha,omitempty"`
@@ -672,52 +672,52 @@ type VMWhereInput struct {
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
 	// logical size bytes
-	LogicalSizeBytes *float64 `json:"logical_size_bytes,omitempty"`
+	LogicalSizeBytes *int64 `json:"logical_size_bytes,omitempty"`
 
 	// logical size bytes gt
-	LogicalSizeBytesGt *float64 `json:"logical_size_bytes_gt,omitempty"`
+	LogicalSizeBytesGt *int64 `json:"logical_size_bytes_gt,omitempty"`
 
 	// logical size bytes gte
-	LogicalSizeBytesGte *float64 `json:"logical_size_bytes_gte,omitempty"`
+	LogicalSizeBytesGte *int64 `json:"logical_size_bytes_gte,omitempty"`
 
 	// logical size bytes in
-	LogicalSizeBytesIn []float64 `json:"logical_size_bytes_in,omitempty"`
+	LogicalSizeBytesIn []int64 `json:"logical_size_bytes_in,omitempty"`
 
 	// logical size bytes lt
-	LogicalSizeBytesLt *float64 `json:"logical_size_bytes_lt,omitempty"`
+	LogicalSizeBytesLt *int64 `json:"logical_size_bytes_lt,omitempty"`
 
 	// logical size bytes lte
-	LogicalSizeBytesLte *float64 `json:"logical_size_bytes_lte,omitempty"`
+	LogicalSizeBytesLte *int64 `json:"logical_size_bytes_lte,omitempty"`
 
 	// logical size bytes not
-	LogicalSizeBytesNot *float64 `json:"logical_size_bytes_not,omitempty"`
+	LogicalSizeBytesNot *int64 `json:"logical_size_bytes_not,omitempty"`
 
 	// logical size bytes not in
-	LogicalSizeBytesNotIn []float64 `json:"logical_size_bytes_not_in,omitempty"`
+	LogicalSizeBytesNotIn []int64 `json:"logical_size_bytes_not_in,omitempty"`
 
 	// max bandwidth
-	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth gt
-	MaxBandwidthGt *float64 `json:"max_bandwidth_gt,omitempty"`
+	MaxBandwidthGt *int64 `json:"max_bandwidth_gt,omitempty"`
 
 	// max bandwidth gte
-	MaxBandwidthGte *float64 `json:"max_bandwidth_gte,omitempty"`
+	MaxBandwidthGte *int64 `json:"max_bandwidth_gte,omitempty"`
 
 	// max bandwidth in
-	MaxBandwidthIn []float64 `json:"max_bandwidth_in,omitempty"`
+	MaxBandwidthIn []int64 `json:"max_bandwidth_in,omitempty"`
 
 	// max bandwidth lt
-	MaxBandwidthLt *float64 `json:"max_bandwidth_lt,omitempty"`
+	MaxBandwidthLt *int64 `json:"max_bandwidth_lt,omitempty"`
 
 	// max bandwidth lte
-	MaxBandwidthLte *float64 `json:"max_bandwidth_lte,omitempty"`
+	MaxBandwidthLte *int64 `json:"max_bandwidth_lte,omitempty"`
 
 	// max bandwidth not
-	MaxBandwidthNot *float64 `json:"max_bandwidth_not,omitempty"`
+	MaxBandwidthNot *int64 `json:"max_bandwidth_not,omitempty"`
 
 	// max bandwidth not in
-	MaxBandwidthNotIn []float64 `json:"max_bandwidth_not_in,omitempty"`
+	MaxBandwidthNotIn []int64 `json:"max_bandwidth_not_in,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
@@ -768,28 +768,28 @@ type VMWhereInput struct {
 	MaxIopsPolicyNotIn []VMDiskIoRestrictType `json:"max_iops_policy_not_in,omitempty"`
 
 	// memory
-	Memory *float64 `json:"memory,omitempty"`
+	Memory *int64 `json:"memory,omitempty"`
 
 	// memory gt
-	MemoryGt *float64 `json:"memory_gt,omitempty"`
+	MemoryGt *int64 `json:"memory_gt,omitempty"`
 
 	// memory gte
-	MemoryGte *float64 `json:"memory_gte,omitempty"`
+	MemoryGte *int64 `json:"memory_gte,omitempty"`
 
 	// memory in
-	MemoryIn []float64 `json:"memory_in,omitempty"`
+	MemoryIn []int64 `json:"memory_in,omitempty"`
 
 	// memory lt
-	MemoryLt *float64 `json:"memory_lt,omitempty"`
+	MemoryLt *int64 `json:"memory_lt,omitempty"`
 
 	// memory lte
-	MemoryLte *float64 `json:"memory_lte,omitempty"`
+	MemoryLte *int64 `json:"memory_lte,omitempty"`
 
 	// memory not
-	MemoryNot *float64 `json:"memory_not,omitempty"`
+	MemoryNot *int64 `json:"memory_not,omitempty"`
 
 	// memory not in
-	MemoryNotIn []float64 `json:"memory_not_in,omitempty"`
+	MemoryNotIn []int64 `json:"memory_not_in,omitempty"`
 
 	// memory usage
 	MemoryUsage *float64 `json:"memory_usage,omitempty"`
@@ -996,52 +996,52 @@ type VMWhereInput struct {
 	ProtectedNot *bool `json:"protected_not,omitempty"`
 
 	// provisioned size
-	ProvisionedSize *float64 `json:"provisioned_size,omitempty"`
+	ProvisionedSize *int64 `json:"provisioned_size,omitempty"`
 
 	// provisioned size gt
-	ProvisionedSizeGt *float64 `json:"provisioned_size_gt,omitempty"`
+	ProvisionedSizeGt *int64 `json:"provisioned_size_gt,omitempty"`
 
 	// provisioned size gte
-	ProvisionedSizeGte *float64 `json:"provisioned_size_gte,omitempty"`
+	ProvisionedSizeGte *int64 `json:"provisioned_size_gte,omitempty"`
 
 	// provisioned size in
-	ProvisionedSizeIn []float64 `json:"provisioned_size_in,omitempty"`
+	ProvisionedSizeIn []int64 `json:"provisioned_size_in,omitempty"`
 
 	// provisioned size lt
-	ProvisionedSizeLt *float64 `json:"provisioned_size_lt,omitempty"`
+	ProvisionedSizeLt *int64 `json:"provisioned_size_lt,omitempty"`
 
 	// provisioned size lte
-	ProvisionedSizeLte *float64 `json:"provisioned_size_lte,omitempty"`
+	ProvisionedSizeLte *int64 `json:"provisioned_size_lte,omitempty"`
 
 	// provisioned size not
-	ProvisionedSizeNot *float64 `json:"provisioned_size_not,omitempty"`
+	ProvisionedSizeNot *int64 `json:"provisioned_size_not,omitempty"`
 
 	// provisioned size not in
-	ProvisionedSizeNotIn []float64 `json:"provisioned_size_not_in,omitempty"`
+	ProvisionedSizeNotIn []int64 `json:"provisioned_size_not_in,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// size gt
-	SizeGt *float64 `json:"size_gt,omitempty"`
+	SizeGt *int64 `json:"size_gt,omitempty"`
 
 	// size gte
-	SizeGte *float64 `json:"size_gte,omitempty"`
+	SizeGte *int64 `json:"size_gte,omitempty"`
 
 	// size in
-	SizeIn []float64 `json:"size_in,omitempty"`
+	SizeIn []int64 `json:"size_in,omitempty"`
 
 	// size lt
-	SizeLt *float64 `json:"size_lt,omitempty"`
+	SizeLt *int64 `json:"size_lt,omitempty"`
 
 	// size lte
-	SizeLte *float64 `json:"size_lte,omitempty"`
+	SizeLte *int64 `json:"size_lte,omitempty"`
 
 	// size not
-	SizeNot *float64 `json:"size_not,omitempty"`
+	SizeNot *int64 `json:"size_not,omitempty"`
 
 	// size not in
-	SizeNotIn []float64 `json:"size_not_in,omitempty"`
+	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
 	// snapshot plan
 	SnapshotPlan *SnapshotPlanWhereInput `json:"snapshot_plan,omitempty"`
@@ -1068,28 +1068,28 @@ type VMWhereInput struct {
 	StatusNotIn []VMStatus `json:"status_not_in,omitempty"`
 
 	// unique size
-	UniqueSize *float64 `json:"unique_size,omitempty"`
+	UniqueSize *int64 `json:"unique_size,omitempty"`
 
 	// unique size gt
-	UniqueSizeGt *float64 `json:"unique_size_gt,omitempty"`
+	UniqueSizeGt *int64 `json:"unique_size_gt,omitempty"`
 
 	// unique size gte
-	UniqueSizeGte *float64 `json:"unique_size_gte,omitempty"`
+	UniqueSizeGte *int64 `json:"unique_size_gte,omitempty"`
 
 	// unique size in
-	UniqueSizeIn []float64 `json:"unique_size_in,omitempty"`
+	UniqueSizeIn []int64 `json:"unique_size_in,omitempty"`
 
 	// unique size lt
-	UniqueSizeLt *float64 `json:"unique_size_lt,omitempty"`
+	UniqueSizeLt *int64 `json:"unique_size_lt,omitempty"`
 
 	// unique size lte
-	UniqueSizeLte *float64 `json:"unique_size_lte,omitempty"`
+	UniqueSizeLte *int64 `json:"unique_size_lte,omitempty"`
 
 	// unique size not
-	UniqueSizeNot *float64 `json:"unique_size_not,omitempty"`
+	UniqueSizeNot *int64 `json:"unique_size_not,omitempty"`
 
 	// unique size not in
-	UniqueSizeNotIn []float64 `json:"unique_size_not_in,omitempty"`
+	UniqueSizeNotIn []int64 `json:"unique_size_not_in,omitempty"`
 
 	// usb devices every
 	UsbDevicesEvery *UsbDeviceWhereInput `json:"usb_devices_every,omitempty"`

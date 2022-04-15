@@ -546,28 +546,28 @@ type NicWhereInput struct {
 	RunningNot *bool `json:"running_not,omitempty"`
 
 	// speed
-	Speed *float64 `json:"speed,omitempty"`
+	Speed *int64 `json:"speed,omitempty"`
 
 	// speed gt
-	SpeedGt *float64 `json:"speed_gt,omitempty"`
+	SpeedGt *int64 `json:"speed_gt,omitempty"`
 
 	// speed gte
-	SpeedGte *float64 `json:"speed_gte,omitempty"`
+	SpeedGte *int64 `json:"speed_gte,omitempty"`
 
 	// speed in
-	SpeedIn []float64 `json:"speed_in,omitempty"`
+	SpeedIn []int64 `json:"speed_in,omitempty"`
 
 	// speed lt
-	SpeedLt *float64 `json:"speed_lt,omitempty"`
+	SpeedLt *int64 `json:"speed_lt,omitempty"`
 
 	// speed lte
-	SpeedLte *float64 `json:"speed_lte,omitempty"`
+	SpeedLte *int64 `json:"speed_lte,omitempty"`
 
 	// speed not
-	SpeedNot *float64 `json:"speed_not,omitempty"`
+	SpeedNot *int64 `json:"speed_not,omitempty"`
 
 	// speed not in
-	SpeedNotIn []float64 `json:"speed_not_in,omitempty"`
+	SpeedNotIn []int64 `json:"speed_not_in,omitempty"`
 
 	// subnet mask
 	SubnetMask *string `json:"subnet_mask,omitempty"`

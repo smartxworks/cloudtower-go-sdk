@@ -267,28 +267,28 @@ type VMDiskWhereInput struct {
 	KeyNotIn []int32 `json:"key_not_in,omitempty"`
 
 	// max bandwidth
-	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth gt
-	MaxBandwidthGt *float64 `json:"max_bandwidth_gt,omitempty"`
+	MaxBandwidthGt *int64 `json:"max_bandwidth_gt,omitempty"`
 
 	// max bandwidth gte
-	MaxBandwidthGte *float64 `json:"max_bandwidth_gte,omitempty"`
+	MaxBandwidthGte *int64 `json:"max_bandwidth_gte,omitempty"`
 
 	// max bandwidth in
-	MaxBandwidthIn []float64 `json:"max_bandwidth_in,omitempty"`
+	MaxBandwidthIn []int64 `json:"max_bandwidth_in,omitempty"`
 
 	// max bandwidth lt
-	MaxBandwidthLt *float64 `json:"max_bandwidth_lt,omitempty"`
+	MaxBandwidthLt *int64 `json:"max_bandwidth_lt,omitempty"`
 
 	// max bandwidth lte
-	MaxBandwidthLte *float64 `json:"max_bandwidth_lte,omitempty"`
+	MaxBandwidthLte *int64 `json:"max_bandwidth_lte,omitempty"`
 
 	// max bandwidth not
-	MaxBandwidthNot *float64 `json:"max_bandwidth_not,omitempty"`
+	MaxBandwidthNot *int64 `json:"max_bandwidth_not,omitempty"`
 
 	// max bandwidth not in
-	MaxBandwidthNotIn []float64 `json:"max_bandwidth_not_in,omitempty"`
+	MaxBandwidthNotIn []int64 `json:"max_bandwidth_not_in,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`

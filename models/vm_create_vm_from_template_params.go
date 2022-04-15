@@ -61,7 +61,7 @@ type VMCreateVMFromTemplateParams struct {
 	IsFullCopy *bool `json:"is_full_copy"`
 
 	// max bandwidth
-	MaxBandwidth *float64 `json:"max_bandwidth,omitempty"`
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
@@ -73,7 +73,7 @@ type VMCreateVMFromTemplateParams struct {
 	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
 
 	// memory
-	Memory *float64 `json:"memory,omitempty"`
+	Memory *int64 `json:"memory,omitempty"`
 
 	// name
 	// Required: true

@@ -26,43 +26,43 @@ type IscsiLun struct {
 
 	// assigned size
 	// Required: true
-	AssignedSize *float64 `json:"assigned_size"`
+	AssignedSize *int64 `json:"assigned_size"`
 
 	// bps
 	// Required: true
-	Bps *float64 `json:"bps"`
+	Bps *int64 `json:"bps"`
 
 	// bps max
 	// Required: true
-	BpsMax *float64 `json:"bps_max"`
+	BpsMax *int64 `json:"bps_max"`
 
 	// bps max length
 	// Required: true
-	BpsMaxLength *float64 `json:"bps_max_length"`
+	BpsMaxLength *int64 `json:"bps_max_length"`
 
 	// bps rd
 	// Required: true
-	BpsRd *float64 `json:"bps_rd"`
+	BpsRd *int64 `json:"bps_rd"`
 
 	// bps rd max
 	// Required: true
-	BpsRdMax *float64 `json:"bps_rd_max"`
+	BpsRdMax *int64 `json:"bps_rd_max"`
 
 	// bps rd max length
 	// Required: true
-	BpsRdMaxLength *float64 `json:"bps_rd_max_length"`
+	BpsRdMaxLength *int64 `json:"bps_rd_max_length"`
 
 	// bps wr
 	// Required: true
-	BpsWr *float64 `json:"bps_wr"`
+	BpsWr *int64 `json:"bps_wr"`
 
 	// bps wr max
 	// Required: true
-	BpsWrMax *float64 `json:"bps_wr_max"`
+	BpsWrMax *int64 `json:"bps_wr_max"`
 
 	// bps wr max length
 	// Required: true
-	BpsWrMaxLength *float64 `json:"bps_wr_max_length"`
+	BpsWrMaxLength *int64 `json:"bps_wr_max_length"`
 
 	// consistency group
 	ConsistencyGroup *NestedConsistencyGroup `json:"consistency_group,omitempty"`
@@ -76,43 +76,43 @@ type IscsiLun struct {
 
 	// io size
 	// Required: true
-	IoSize *float64 `json:"io_size"`
+	IoSize *int64 `json:"io_size"`
 
 	// iops
 	// Required: true
-	Iops *float64 `json:"iops"`
+	Iops *int64 `json:"iops"`
 
 	// iops max
 	// Required: true
-	IopsMax *float64 `json:"iops_max"`
+	IopsMax *int64 `json:"iops_max"`
 
 	// iops max length
 	// Required: true
-	IopsMaxLength *float64 `json:"iops_max_length"`
+	IopsMaxLength *int64 `json:"iops_max_length"`
 
 	// iops rd
 	// Required: true
-	IopsRd *float64 `json:"iops_rd"`
+	IopsRd *int64 `json:"iops_rd"`
 
 	// iops rd max
 	// Required: true
-	IopsRdMax *float64 `json:"iops_rd_max"`
+	IopsRdMax *int64 `json:"iops_rd_max"`
 
 	// iops rd max length
 	// Required: true
-	IopsRdMaxLength *float64 `json:"iops_rd_max_length"`
+	IopsRdMaxLength *int64 `json:"iops_rd_max_length"`
 
 	// iops wr
 	// Required: true
-	IopsWr *float64 `json:"iops_wr"`
+	IopsWr *int64 `json:"iops_wr"`
 
 	// iops wr max
 	// Required: true
-	IopsWrMax *float64 `json:"iops_wr_max"`
+	IopsWrMax *int64 `json:"iops_wr_max"`
 
 	// iops wr max length
 	// Required: true
-	IopsWrMaxLength *float64 `json:"iops_wr_max_length"`
+	IopsWrMaxLength *int64 `json:"iops_wr_max_length"`
 
 	// iscsi target
 	// Required: true
@@ -143,7 +143,7 @@ type IscsiLun struct {
 
 	// shared size
 	// Required: true
-	SharedSize *float64 `json:"shared_size"`
+	SharedSize *int64 `json:"shared_size"`
 
 	// snapshot num
 	// Required: true
@@ -155,7 +155,7 @@ type IscsiLun struct {
 
 	// stripe size
 	// Required: true
-	StripeSize *float64 `json:"stripe_size"`
+	StripeSize *int64 `json:"stripe_size"`
 
 	// thin provision
 	// Required: true
@@ -163,7 +163,7 @@ type IscsiLun struct {
 
 	// unique size
 	// Required: true
-	UniqueSize *float64 `json:"unique_size"`
+	UniqueSize *int64 `json:"unique_size"`
 
 	// zbs volume id
 	// Required: true

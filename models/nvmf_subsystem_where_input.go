@@ -30,220 +30,220 @@ type NvmfSubsystemWhereInput struct {
 	OR []*NvmfSubsystemWhereInput `json:"OR,omitempty"`
 
 	// bps
-	Bps *float64 `json:"bps,omitempty"`
+	Bps *int64 `json:"bps,omitempty"`
 
 	// bps gt
-	BpsGt *float64 `json:"bps_gt,omitempty"`
+	BpsGt *int64 `json:"bps_gt,omitempty"`
 
 	// bps gte
-	BpsGte *float64 `json:"bps_gte,omitempty"`
+	BpsGte *int64 `json:"bps_gte,omitempty"`
 
 	// bps in
-	BpsIn []float64 `json:"bps_in,omitempty"`
+	BpsIn []int64 `json:"bps_in,omitempty"`
 
 	// bps lt
-	BpsLt *float64 `json:"bps_lt,omitempty"`
+	BpsLt *int64 `json:"bps_lt,omitempty"`
 
 	// bps lte
-	BpsLte *float64 `json:"bps_lte,omitempty"`
+	BpsLte *int64 `json:"bps_lte,omitempty"`
 
 	// bps max
-	BpsMax *float64 `json:"bps_max,omitempty"`
+	BpsMax *int64 `json:"bps_max,omitempty"`
 
 	// bps max gt
-	BpsMaxGt *float64 `json:"bps_max_gt,omitempty"`
+	BpsMaxGt *int64 `json:"bps_max_gt,omitempty"`
 
 	// bps max gte
-	BpsMaxGte *float64 `json:"bps_max_gte,omitempty"`
+	BpsMaxGte *int64 `json:"bps_max_gte,omitempty"`
 
 	// bps max in
-	BpsMaxIn []float64 `json:"bps_max_in,omitempty"`
+	BpsMaxIn []int64 `json:"bps_max_in,omitempty"`
 
 	// bps max length
-	BpsMaxLength *float64 `json:"bps_max_length,omitempty"`
+	BpsMaxLength *int64 `json:"bps_max_length,omitempty"`
 
 	// bps max length gt
-	BpsMaxLengthGt *float64 `json:"bps_max_length_gt,omitempty"`
+	BpsMaxLengthGt *int64 `json:"bps_max_length_gt,omitempty"`
 
 	// bps max length gte
-	BpsMaxLengthGte *float64 `json:"bps_max_length_gte,omitempty"`
+	BpsMaxLengthGte *int64 `json:"bps_max_length_gte,omitempty"`
 
 	// bps max length in
-	BpsMaxLengthIn []float64 `json:"bps_max_length_in,omitempty"`
+	BpsMaxLengthIn []int64 `json:"bps_max_length_in,omitempty"`
 
 	// bps max length lt
-	BpsMaxLengthLt *float64 `json:"bps_max_length_lt,omitempty"`
+	BpsMaxLengthLt *int64 `json:"bps_max_length_lt,omitempty"`
 
 	// bps max length lte
-	BpsMaxLengthLte *float64 `json:"bps_max_length_lte,omitempty"`
+	BpsMaxLengthLte *int64 `json:"bps_max_length_lte,omitempty"`
 
 	// bps max length not
-	BpsMaxLengthNot *float64 `json:"bps_max_length_not,omitempty"`
+	BpsMaxLengthNot *int64 `json:"bps_max_length_not,omitempty"`
 
 	// bps max length not in
-	BpsMaxLengthNotIn []float64 `json:"bps_max_length_not_in,omitempty"`
+	BpsMaxLengthNotIn []int64 `json:"bps_max_length_not_in,omitempty"`
 
 	// bps max lt
-	BpsMaxLt *float64 `json:"bps_max_lt,omitempty"`
+	BpsMaxLt *int64 `json:"bps_max_lt,omitempty"`
 
 	// bps max lte
-	BpsMaxLte *float64 `json:"bps_max_lte,omitempty"`
+	BpsMaxLte *int64 `json:"bps_max_lte,omitempty"`
 
 	// bps max not
-	BpsMaxNot *float64 `json:"bps_max_not,omitempty"`
+	BpsMaxNot *int64 `json:"bps_max_not,omitempty"`
 
 	// bps max not in
-	BpsMaxNotIn []float64 `json:"bps_max_not_in,omitempty"`
+	BpsMaxNotIn []int64 `json:"bps_max_not_in,omitempty"`
 
 	// bps not
-	BpsNot *float64 `json:"bps_not,omitempty"`
+	BpsNot *int64 `json:"bps_not,omitempty"`
 
 	// bps not in
-	BpsNotIn []float64 `json:"bps_not_in,omitempty"`
+	BpsNotIn []int64 `json:"bps_not_in,omitempty"`
 
 	// bps rd
-	BpsRd *float64 `json:"bps_rd,omitempty"`
+	BpsRd *int64 `json:"bps_rd,omitempty"`
 
 	// bps rd gt
-	BpsRdGt *float64 `json:"bps_rd_gt,omitempty"`
+	BpsRdGt *int64 `json:"bps_rd_gt,omitempty"`
 
 	// bps rd gte
-	BpsRdGte *float64 `json:"bps_rd_gte,omitempty"`
+	BpsRdGte *int64 `json:"bps_rd_gte,omitempty"`
 
 	// bps rd in
-	BpsRdIn []float64 `json:"bps_rd_in,omitempty"`
+	BpsRdIn []int64 `json:"bps_rd_in,omitempty"`
 
 	// bps rd lt
-	BpsRdLt *float64 `json:"bps_rd_lt,omitempty"`
+	BpsRdLt *int64 `json:"bps_rd_lt,omitempty"`
 
 	// bps rd lte
-	BpsRdLte *float64 `json:"bps_rd_lte,omitempty"`
+	BpsRdLte *int64 `json:"bps_rd_lte,omitempty"`
 
 	// bps rd max
-	BpsRdMax *float64 `json:"bps_rd_max,omitempty"`
+	BpsRdMax *int64 `json:"bps_rd_max,omitempty"`
 
 	// bps rd max gt
-	BpsRdMaxGt *float64 `json:"bps_rd_max_gt,omitempty"`
+	BpsRdMaxGt *int64 `json:"bps_rd_max_gt,omitempty"`
 
 	// bps rd max gte
-	BpsRdMaxGte *float64 `json:"bps_rd_max_gte,omitempty"`
+	BpsRdMaxGte *int64 `json:"bps_rd_max_gte,omitempty"`
 
 	// bps rd max in
-	BpsRdMaxIn []float64 `json:"bps_rd_max_in,omitempty"`
+	BpsRdMaxIn []int64 `json:"bps_rd_max_in,omitempty"`
 
 	// bps rd max length
-	BpsRdMaxLength *float64 `json:"bps_rd_max_length,omitempty"`
+	BpsRdMaxLength *int64 `json:"bps_rd_max_length,omitempty"`
 
 	// bps rd max length gt
-	BpsRdMaxLengthGt *float64 `json:"bps_rd_max_length_gt,omitempty"`
+	BpsRdMaxLengthGt *int64 `json:"bps_rd_max_length_gt,omitempty"`
 
 	// bps rd max length gte
-	BpsRdMaxLengthGte *float64 `json:"bps_rd_max_length_gte,omitempty"`
+	BpsRdMaxLengthGte *int64 `json:"bps_rd_max_length_gte,omitempty"`
 
 	// bps rd max length in
-	BpsRdMaxLengthIn []float64 `json:"bps_rd_max_length_in,omitempty"`
+	BpsRdMaxLengthIn []int64 `json:"bps_rd_max_length_in,omitempty"`
 
 	// bps rd max length lt
-	BpsRdMaxLengthLt *float64 `json:"bps_rd_max_length_lt,omitempty"`
+	BpsRdMaxLengthLt *int64 `json:"bps_rd_max_length_lt,omitempty"`
 
 	// bps rd max length lte
-	BpsRdMaxLengthLte *float64 `json:"bps_rd_max_length_lte,omitempty"`
+	BpsRdMaxLengthLte *int64 `json:"bps_rd_max_length_lte,omitempty"`
 
 	// bps rd max length not
-	BpsRdMaxLengthNot *float64 `json:"bps_rd_max_length_not,omitempty"`
+	BpsRdMaxLengthNot *int64 `json:"bps_rd_max_length_not,omitempty"`
 
 	// bps rd max length not in
-	BpsRdMaxLengthNotIn []float64 `json:"bps_rd_max_length_not_in,omitempty"`
+	BpsRdMaxLengthNotIn []int64 `json:"bps_rd_max_length_not_in,omitempty"`
 
 	// bps rd max lt
-	BpsRdMaxLt *float64 `json:"bps_rd_max_lt,omitempty"`
+	BpsRdMaxLt *int64 `json:"bps_rd_max_lt,omitempty"`
 
 	// bps rd max lte
-	BpsRdMaxLte *float64 `json:"bps_rd_max_lte,omitempty"`
+	BpsRdMaxLte *int64 `json:"bps_rd_max_lte,omitempty"`
 
 	// bps rd max not
-	BpsRdMaxNot *float64 `json:"bps_rd_max_not,omitempty"`
+	BpsRdMaxNot *int64 `json:"bps_rd_max_not,omitempty"`
 
 	// bps rd max not in
-	BpsRdMaxNotIn []float64 `json:"bps_rd_max_not_in,omitempty"`
+	BpsRdMaxNotIn []int64 `json:"bps_rd_max_not_in,omitempty"`
 
 	// bps rd not
-	BpsRdNot *float64 `json:"bps_rd_not,omitempty"`
+	BpsRdNot *int64 `json:"bps_rd_not,omitempty"`
 
 	// bps rd not in
-	BpsRdNotIn []float64 `json:"bps_rd_not_in,omitempty"`
+	BpsRdNotIn []int64 `json:"bps_rd_not_in,omitempty"`
 
 	// bps wr
-	BpsWr *float64 `json:"bps_wr,omitempty"`
+	BpsWr *int64 `json:"bps_wr,omitempty"`
 
 	// bps wr gt
-	BpsWrGt *float64 `json:"bps_wr_gt,omitempty"`
+	BpsWrGt *int64 `json:"bps_wr_gt,omitempty"`
 
 	// bps wr gte
-	BpsWrGte *float64 `json:"bps_wr_gte,omitempty"`
+	BpsWrGte *int64 `json:"bps_wr_gte,omitempty"`
 
 	// bps wr in
-	BpsWrIn []float64 `json:"bps_wr_in,omitempty"`
+	BpsWrIn []int64 `json:"bps_wr_in,omitempty"`
 
 	// bps wr lt
-	BpsWrLt *float64 `json:"bps_wr_lt,omitempty"`
+	BpsWrLt *int64 `json:"bps_wr_lt,omitempty"`
 
 	// bps wr lte
-	BpsWrLte *float64 `json:"bps_wr_lte,omitempty"`
+	BpsWrLte *int64 `json:"bps_wr_lte,omitempty"`
 
 	// bps wr max
-	BpsWrMax *float64 `json:"bps_wr_max,omitempty"`
+	BpsWrMax *int64 `json:"bps_wr_max,omitempty"`
 
 	// bps wr max gt
-	BpsWrMaxGt *float64 `json:"bps_wr_max_gt,omitempty"`
+	BpsWrMaxGt *int64 `json:"bps_wr_max_gt,omitempty"`
 
 	// bps wr max gte
-	BpsWrMaxGte *float64 `json:"bps_wr_max_gte,omitempty"`
+	BpsWrMaxGte *int64 `json:"bps_wr_max_gte,omitempty"`
 
 	// bps wr max in
-	BpsWrMaxIn []float64 `json:"bps_wr_max_in,omitempty"`
+	BpsWrMaxIn []int64 `json:"bps_wr_max_in,omitempty"`
 
 	// bps wr max length
-	BpsWrMaxLength *float64 `json:"bps_wr_max_length,omitempty"`
+	BpsWrMaxLength *int64 `json:"bps_wr_max_length,omitempty"`
 
 	// bps wr max length gt
-	BpsWrMaxLengthGt *float64 `json:"bps_wr_max_length_gt,omitempty"`
+	BpsWrMaxLengthGt *int64 `json:"bps_wr_max_length_gt,omitempty"`
 
 	// bps wr max length gte
-	BpsWrMaxLengthGte *float64 `json:"bps_wr_max_length_gte,omitempty"`
+	BpsWrMaxLengthGte *int64 `json:"bps_wr_max_length_gte,omitempty"`
 
 	// bps wr max length in
-	BpsWrMaxLengthIn []float64 `json:"bps_wr_max_length_in,omitempty"`
+	BpsWrMaxLengthIn []int64 `json:"bps_wr_max_length_in,omitempty"`
 
 	// bps wr max length lt
-	BpsWrMaxLengthLt *float64 `json:"bps_wr_max_length_lt,omitempty"`
+	BpsWrMaxLengthLt *int64 `json:"bps_wr_max_length_lt,omitempty"`
 
 	// bps wr max length lte
-	BpsWrMaxLengthLte *float64 `json:"bps_wr_max_length_lte,omitempty"`
+	BpsWrMaxLengthLte *int64 `json:"bps_wr_max_length_lte,omitempty"`
 
 	// bps wr max length not
-	BpsWrMaxLengthNot *float64 `json:"bps_wr_max_length_not,omitempty"`
+	BpsWrMaxLengthNot *int64 `json:"bps_wr_max_length_not,omitempty"`
 
 	// bps wr max length not in
-	BpsWrMaxLengthNotIn []float64 `json:"bps_wr_max_length_not_in,omitempty"`
+	BpsWrMaxLengthNotIn []int64 `json:"bps_wr_max_length_not_in,omitempty"`
 
 	// bps wr max lt
-	BpsWrMaxLt *float64 `json:"bps_wr_max_lt,omitempty"`
+	BpsWrMaxLt *int64 `json:"bps_wr_max_lt,omitempty"`
 
 	// bps wr max lte
-	BpsWrMaxLte *float64 `json:"bps_wr_max_lte,omitempty"`
+	BpsWrMaxLte *int64 `json:"bps_wr_max_lte,omitempty"`
 
 	// bps wr max not
-	BpsWrMaxNot *float64 `json:"bps_wr_max_not,omitempty"`
+	BpsWrMaxNot *int64 `json:"bps_wr_max_not,omitempty"`
 
 	// bps wr max not in
-	BpsWrMaxNotIn []float64 `json:"bps_wr_max_not_in,omitempty"`
+	BpsWrMaxNotIn []int64 `json:"bps_wr_max_not_in,omitempty"`
 
 	// bps wr not
-	BpsWrNot *float64 `json:"bps_wr_not,omitempty"`
+	BpsWrNot *int64 `json:"bps_wr_not,omitempty"`
 
 	// bps wr not in
-	BpsWrNotIn []float64 `json:"bps_wr_not_in,omitempty"`
+	BpsWrNotIn []int64 `json:"bps_wr_not_in,omitempty"`
 
 	// cluster
 	Cluster *ClusterWhereInput `json:"cluster,omitempty"`
@@ -357,244 +357,244 @@ type NvmfSubsystemWhereInput struct {
 	InternalNot *bool `json:"internal_not,omitempty"`
 
 	// io size
-	IoSize *float64 `json:"io_size,omitempty"`
+	IoSize *int64 `json:"io_size,omitempty"`
 
 	// io size gt
-	IoSizeGt *float64 `json:"io_size_gt,omitempty"`
+	IoSizeGt *int64 `json:"io_size_gt,omitempty"`
 
 	// io size gte
-	IoSizeGte *float64 `json:"io_size_gte,omitempty"`
+	IoSizeGte *int64 `json:"io_size_gte,omitempty"`
 
 	// io size in
-	IoSizeIn []float64 `json:"io_size_in,omitempty"`
+	IoSizeIn []int64 `json:"io_size_in,omitempty"`
 
 	// io size lt
-	IoSizeLt *float64 `json:"io_size_lt,omitempty"`
+	IoSizeLt *int64 `json:"io_size_lt,omitempty"`
 
 	// io size lte
-	IoSizeLte *float64 `json:"io_size_lte,omitempty"`
+	IoSizeLte *int64 `json:"io_size_lte,omitempty"`
 
 	// io size not
-	IoSizeNot *float64 `json:"io_size_not,omitempty"`
+	IoSizeNot *int64 `json:"io_size_not,omitempty"`
 
 	// io size not in
-	IoSizeNotIn []float64 `json:"io_size_not_in,omitempty"`
+	IoSizeNotIn []int64 `json:"io_size_not_in,omitempty"`
 
 	// iops
-	Iops *float64 `json:"iops,omitempty"`
+	Iops *int64 `json:"iops,omitempty"`
 
 	// iops gt
-	IopsGt *float64 `json:"iops_gt,omitempty"`
+	IopsGt *int64 `json:"iops_gt,omitempty"`
 
 	// iops gte
-	IopsGte *float64 `json:"iops_gte,omitempty"`
+	IopsGte *int64 `json:"iops_gte,omitempty"`
 
 	// iops in
-	IopsIn []float64 `json:"iops_in,omitempty"`
+	IopsIn []int64 `json:"iops_in,omitempty"`
 
 	// iops lt
-	IopsLt *float64 `json:"iops_lt,omitempty"`
+	IopsLt *int64 `json:"iops_lt,omitempty"`
 
 	// iops lte
-	IopsLte *float64 `json:"iops_lte,omitempty"`
+	IopsLte *int64 `json:"iops_lte,omitempty"`
 
 	// iops max
-	IopsMax *float64 `json:"iops_max,omitempty"`
+	IopsMax *int64 `json:"iops_max,omitempty"`
 
 	// iops max gt
-	IopsMaxGt *float64 `json:"iops_max_gt,omitempty"`
+	IopsMaxGt *int64 `json:"iops_max_gt,omitempty"`
 
 	// iops max gte
-	IopsMaxGte *float64 `json:"iops_max_gte,omitempty"`
+	IopsMaxGte *int64 `json:"iops_max_gte,omitempty"`
 
 	// iops max in
-	IopsMaxIn []float64 `json:"iops_max_in,omitempty"`
+	IopsMaxIn []int64 `json:"iops_max_in,omitempty"`
 
 	// iops max length
-	IopsMaxLength *float64 `json:"iops_max_length,omitempty"`
+	IopsMaxLength *int64 `json:"iops_max_length,omitempty"`
 
 	// iops max length gt
-	IopsMaxLengthGt *float64 `json:"iops_max_length_gt,omitempty"`
+	IopsMaxLengthGt *int64 `json:"iops_max_length_gt,omitempty"`
 
 	// iops max length gte
-	IopsMaxLengthGte *float64 `json:"iops_max_length_gte,omitempty"`
+	IopsMaxLengthGte *int64 `json:"iops_max_length_gte,omitempty"`
 
 	// iops max length in
-	IopsMaxLengthIn []float64 `json:"iops_max_length_in,omitempty"`
+	IopsMaxLengthIn []int64 `json:"iops_max_length_in,omitempty"`
 
 	// iops max length lt
-	IopsMaxLengthLt *float64 `json:"iops_max_length_lt,omitempty"`
+	IopsMaxLengthLt *int64 `json:"iops_max_length_lt,omitempty"`
 
 	// iops max length lte
-	IopsMaxLengthLte *float64 `json:"iops_max_length_lte,omitempty"`
+	IopsMaxLengthLte *int64 `json:"iops_max_length_lte,omitempty"`
 
 	// iops max length not
-	IopsMaxLengthNot *float64 `json:"iops_max_length_not,omitempty"`
+	IopsMaxLengthNot *int64 `json:"iops_max_length_not,omitempty"`
 
 	// iops max length not in
-	IopsMaxLengthNotIn []float64 `json:"iops_max_length_not_in,omitempty"`
+	IopsMaxLengthNotIn []int64 `json:"iops_max_length_not_in,omitempty"`
 
 	// iops max lt
-	IopsMaxLt *float64 `json:"iops_max_lt,omitempty"`
+	IopsMaxLt *int64 `json:"iops_max_lt,omitempty"`
 
 	// iops max lte
-	IopsMaxLte *float64 `json:"iops_max_lte,omitempty"`
+	IopsMaxLte *int64 `json:"iops_max_lte,omitempty"`
 
 	// iops max not
-	IopsMaxNot *float64 `json:"iops_max_not,omitempty"`
+	IopsMaxNot *int64 `json:"iops_max_not,omitempty"`
 
 	// iops max not in
-	IopsMaxNotIn []float64 `json:"iops_max_not_in,omitempty"`
+	IopsMaxNotIn []int64 `json:"iops_max_not_in,omitempty"`
 
 	// iops not
-	IopsNot *float64 `json:"iops_not,omitempty"`
+	IopsNot *int64 `json:"iops_not,omitempty"`
 
 	// iops not in
-	IopsNotIn []float64 `json:"iops_not_in,omitempty"`
+	IopsNotIn []int64 `json:"iops_not_in,omitempty"`
 
 	// iops rd
-	IopsRd *float64 `json:"iops_rd,omitempty"`
+	IopsRd *int64 `json:"iops_rd,omitempty"`
 
 	// iops rd gt
-	IopsRdGt *float64 `json:"iops_rd_gt,omitempty"`
+	IopsRdGt *int64 `json:"iops_rd_gt,omitempty"`
 
 	// iops rd gte
-	IopsRdGte *float64 `json:"iops_rd_gte,omitempty"`
+	IopsRdGte *int64 `json:"iops_rd_gte,omitempty"`
 
 	// iops rd in
-	IopsRdIn []float64 `json:"iops_rd_in,omitempty"`
+	IopsRdIn []int64 `json:"iops_rd_in,omitempty"`
 
 	// iops rd lt
-	IopsRdLt *float64 `json:"iops_rd_lt,omitempty"`
+	IopsRdLt *int64 `json:"iops_rd_lt,omitempty"`
 
 	// iops rd lte
-	IopsRdLte *float64 `json:"iops_rd_lte,omitempty"`
+	IopsRdLte *int64 `json:"iops_rd_lte,omitempty"`
 
 	// iops rd max
-	IopsRdMax *float64 `json:"iops_rd_max,omitempty"`
+	IopsRdMax *int64 `json:"iops_rd_max,omitempty"`
 
 	// iops rd max gt
-	IopsRdMaxGt *float64 `json:"iops_rd_max_gt,omitempty"`
+	IopsRdMaxGt *int64 `json:"iops_rd_max_gt,omitempty"`
 
 	// iops rd max gte
-	IopsRdMaxGte *float64 `json:"iops_rd_max_gte,omitempty"`
+	IopsRdMaxGte *int64 `json:"iops_rd_max_gte,omitempty"`
 
 	// iops rd max in
-	IopsRdMaxIn []float64 `json:"iops_rd_max_in,omitempty"`
+	IopsRdMaxIn []int64 `json:"iops_rd_max_in,omitempty"`
 
 	// iops rd max length
-	IopsRdMaxLength *float64 `json:"iops_rd_max_length,omitempty"`
+	IopsRdMaxLength *int64 `json:"iops_rd_max_length,omitempty"`
 
 	// iops rd max length gt
-	IopsRdMaxLengthGt *float64 `json:"iops_rd_max_length_gt,omitempty"`
+	IopsRdMaxLengthGt *int64 `json:"iops_rd_max_length_gt,omitempty"`
 
 	// iops rd max length gte
-	IopsRdMaxLengthGte *float64 `json:"iops_rd_max_length_gte,omitempty"`
+	IopsRdMaxLengthGte *int64 `json:"iops_rd_max_length_gte,omitempty"`
 
 	// iops rd max length in
-	IopsRdMaxLengthIn []float64 `json:"iops_rd_max_length_in,omitempty"`
+	IopsRdMaxLengthIn []int64 `json:"iops_rd_max_length_in,omitempty"`
 
 	// iops rd max length lt
-	IopsRdMaxLengthLt *float64 `json:"iops_rd_max_length_lt,omitempty"`
+	IopsRdMaxLengthLt *int64 `json:"iops_rd_max_length_lt,omitempty"`
 
 	// iops rd max length lte
-	IopsRdMaxLengthLte *float64 `json:"iops_rd_max_length_lte,omitempty"`
+	IopsRdMaxLengthLte *int64 `json:"iops_rd_max_length_lte,omitempty"`
 
 	// iops rd max length not
-	IopsRdMaxLengthNot *float64 `json:"iops_rd_max_length_not,omitempty"`
+	IopsRdMaxLengthNot *int64 `json:"iops_rd_max_length_not,omitempty"`
 
 	// iops rd max length not in
-	IopsRdMaxLengthNotIn []float64 `json:"iops_rd_max_length_not_in,omitempty"`
+	IopsRdMaxLengthNotIn []int64 `json:"iops_rd_max_length_not_in,omitempty"`
 
 	// iops rd max lt
-	IopsRdMaxLt *float64 `json:"iops_rd_max_lt,omitempty"`
+	IopsRdMaxLt *int64 `json:"iops_rd_max_lt,omitempty"`
 
 	// iops rd max lte
-	IopsRdMaxLte *float64 `json:"iops_rd_max_lte,omitempty"`
+	IopsRdMaxLte *int64 `json:"iops_rd_max_lte,omitempty"`
 
 	// iops rd max not
-	IopsRdMaxNot *float64 `json:"iops_rd_max_not,omitempty"`
+	IopsRdMaxNot *int64 `json:"iops_rd_max_not,omitempty"`
 
 	// iops rd max not in
-	IopsRdMaxNotIn []float64 `json:"iops_rd_max_not_in,omitempty"`
+	IopsRdMaxNotIn []int64 `json:"iops_rd_max_not_in,omitempty"`
 
 	// iops rd not
-	IopsRdNot *float64 `json:"iops_rd_not,omitempty"`
+	IopsRdNot *int64 `json:"iops_rd_not,omitempty"`
 
 	// iops rd not in
-	IopsRdNotIn []float64 `json:"iops_rd_not_in,omitempty"`
+	IopsRdNotIn []int64 `json:"iops_rd_not_in,omitempty"`
 
 	// iops wr
-	IopsWr *float64 `json:"iops_wr,omitempty"`
+	IopsWr *int64 `json:"iops_wr,omitempty"`
 
 	// iops wr gt
-	IopsWrGt *float64 `json:"iops_wr_gt,omitempty"`
+	IopsWrGt *int64 `json:"iops_wr_gt,omitempty"`
 
 	// iops wr gte
-	IopsWrGte *float64 `json:"iops_wr_gte,omitempty"`
+	IopsWrGte *int64 `json:"iops_wr_gte,omitempty"`
 
 	// iops wr in
-	IopsWrIn []float64 `json:"iops_wr_in,omitempty"`
+	IopsWrIn []int64 `json:"iops_wr_in,omitempty"`
 
 	// iops wr lt
-	IopsWrLt *float64 `json:"iops_wr_lt,omitempty"`
+	IopsWrLt *int64 `json:"iops_wr_lt,omitempty"`
 
 	// iops wr lte
-	IopsWrLte *float64 `json:"iops_wr_lte,omitempty"`
+	IopsWrLte *int64 `json:"iops_wr_lte,omitempty"`
 
 	// iops wr max
-	IopsWrMax *float64 `json:"iops_wr_max,omitempty"`
+	IopsWrMax *int64 `json:"iops_wr_max,omitempty"`
 
 	// iops wr max gt
-	IopsWrMaxGt *float64 `json:"iops_wr_max_gt,omitempty"`
+	IopsWrMaxGt *int64 `json:"iops_wr_max_gt,omitempty"`
 
 	// iops wr max gte
-	IopsWrMaxGte *float64 `json:"iops_wr_max_gte,omitempty"`
+	IopsWrMaxGte *int64 `json:"iops_wr_max_gte,omitempty"`
 
 	// iops wr max in
-	IopsWrMaxIn []float64 `json:"iops_wr_max_in,omitempty"`
+	IopsWrMaxIn []int64 `json:"iops_wr_max_in,omitempty"`
 
 	// iops wr max length
-	IopsWrMaxLength *float64 `json:"iops_wr_max_length,omitempty"`
+	IopsWrMaxLength *int64 `json:"iops_wr_max_length,omitempty"`
 
 	// iops wr max length gt
-	IopsWrMaxLengthGt *float64 `json:"iops_wr_max_length_gt,omitempty"`
+	IopsWrMaxLengthGt *int64 `json:"iops_wr_max_length_gt,omitempty"`
 
 	// iops wr max length gte
-	IopsWrMaxLengthGte *float64 `json:"iops_wr_max_length_gte,omitempty"`
+	IopsWrMaxLengthGte *int64 `json:"iops_wr_max_length_gte,omitempty"`
 
 	// iops wr max length in
-	IopsWrMaxLengthIn []float64 `json:"iops_wr_max_length_in,omitempty"`
+	IopsWrMaxLengthIn []int64 `json:"iops_wr_max_length_in,omitempty"`
 
 	// iops wr max length lt
-	IopsWrMaxLengthLt *float64 `json:"iops_wr_max_length_lt,omitempty"`
+	IopsWrMaxLengthLt *int64 `json:"iops_wr_max_length_lt,omitempty"`
 
 	// iops wr max length lte
-	IopsWrMaxLengthLte *float64 `json:"iops_wr_max_length_lte,omitempty"`
+	IopsWrMaxLengthLte *int64 `json:"iops_wr_max_length_lte,omitempty"`
 
 	// iops wr max length not
-	IopsWrMaxLengthNot *float64 `json:"iops_wr_max_length_not,omitempty"`
+	IopsWrMaxLengthNot *int64 `json:"iops_wr_max_length_not,omitempty"`
 
 	// iops wr max length not in
-	IopsWrMaxLengthNotIn []float64 `json:"iops_wr_max_length_not_in,omitempty"`
+	IopsWrMaxLengthNotIn []int64 `json:"iops_wr_max_length_not_in,omitempty"`
 
 	// iops wr max lt
-	IopsWrMaxLt *float64 `json:"iops_wr_max_lt,omitempty"`
+	IopsWrMaxLt *int64 `json:"iops_wr_max_lt,omitempty"`
 
 	// iops wr max lte
-	IopsWrMaxLte *float64 `json:"iops_wr_max_lte,omitempty"`
+	IopsWrMaxLte *int64 `json:"iops_wr_max_lte,omitempty"`
 
 	// iops wr max not
-	IopsWrMaxNot *float64 `json:"iops_wr_max_not,omitempty"`
+	IopsWrMaxNot *int64 `json:"iops_wr_max_not,omitempty"`
 
 	// iops wr max not in
-	IopsWrMaxNotIn []float64 `json:"iops_wr_max_not_in,omitempty"`
+	IopsWrMaxNotIn []int64 `json:"iops_wr_max_not_in,omitempty"`
 
 	// iops wr not
-	IopsWrNot *float64 `json:"iops_wr_not,omitempty"`
+	IopsWrNot *int64 `json:"iops_wr_not,omitempty"`
 
 	// iops wr not in
-	IopsWrNotIn []float64 `json:"iops_wr_not_in,omitempty"`
+	IopsWrNotIn []int64 `json:"iops_wr_not_in,omitempty"`
 
 	// ip whitelist
 	IPWhitelist *string `json:"ip_whitelist,omitempty"`
@@ -894,28 +894,28 @@ type NvmfSubsystemWhereInput struct {
 	StripeNumNotIn []int32 `json:"stripe_num_not_in,omitempty"`
 
 	// stripe size
-	StripeSize *float64 `json:"stripe_size,omitempty"`
+	StripeSize *int64 `json:"stripe_size,omitempty"`
 
 	// stripe size gt
-	StripeSizeGt *float64 `json:"stripe_size_gt,omitempty"`
+	StripeSizeGt *int64 `json:"stripe_size_gt,omitempty"`
 
 	// stripe size gte
-	StripeSizeGte *float64 `json:"stripe_size_gte,omitempty"`
+	StripeSizeGte *int64 `json:"stripe_size_gte,omitempty"`
 
 	// stripe size in
-	StripeSizeIn []float64 `json:"stripe_size_in,omitempty"`
+	StripeSizeIn []int64 `json:"stripe_size_in,omitempty"`
 
 	// stripe size lt
-	StripeSizeLt *float64 `json:"stripe_size_lt,omitempty"`
+	StripeSizeLt *int64 `json:"stripe_size_lt,omitempty"`
 
 	// stripe size lte
-	StripeSizeLte *float64 `json:"stripe_size_lte,omitempty"`
+	StripeSizeLte *int64 `json:"stripe_size_lte,omitempty"`
 
 	// stripe size not
-	StripeSizeNot *float64 `json:"stripe_size_not,omitempty"`
+	StripeSizeNot *int64 `json:"stripe_size_not,omitempty"`
 
 	// stripe size not in
-	StripeSizeNotIn []float64 `json:"stripe_size_not_in,omitempty"`
+	StripeSizeNotIn []int64 `json:"stripe_size_not_in,omitempty"`
 
 	// thin provision
 	ThinProvision *bool `json:"thin_provision,omitempty"`

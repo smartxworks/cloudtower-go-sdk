@@ -53,7 +53,7 @@ type UsbDevice struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// status
 	// Required: true

@@ -195,28 +195,28 @@ type SnapshotGroupWhereInput struct {
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
 	// logical size bytes
-	LogicalSizeBytes *float64 `json:"logical_size_bytes,omitempty"`
+	LogicalSizeBytes *int64 `json:"logical_size_bytes,omitempty"`
 
 	// logical size bytes gt
-	LogicalSizeBytesGt *float64 `json:"logical_size_bytes_gt,omitempty"`
+	LogicalSizeBytesGt *int64 `json:"logical_size_bytes_gt,omitempty"`
 
 	// logical size bytes gte
-	LogicalSizeBytesGte *float64 `json:"logical_size_bytes_gte,omitempty"`
+	LogicalSizeBytesGte *int64 `json:"logical_size_bytes_gte,omitempty"`
 
 	// logical size bytes in
-	LogicalSizeBytesIn []float64 `json:"logical_size_bytes_in,omitempty"`
+	LogicalSizeBytesIn []int64 `json:"logical_size_bytes_in,omitempty"`
 
 	// logical size bytes lt
-	LogicalSizeBytesLt *float64 `json:"logical_size_bytes_lt,omitempty"`
+	LogicalSizeBytesLt *int64 `json:"logical_size_bytes_lt,omitempty"`
 
 	// logical size bytes lte
-	LogicalSizeBytesLte *float64 `json:"logical_size_bytes_lte,omitempty"`
+	LogicalSizeBytesLte *int64 `json:"logical_size_bytes_lte,omitempty"`
 
 	// logical size bytes not
-	LogicalSizeBytesNot *float64 `json:"logical_size_bytes_not,omitempty"`
+	LogicalSizeBytesNot *int64 `json:"logical_size_bytes_not,omitempty"`
 
 	// logical size bytes not in
-	LogicalSizeBytesNotIn []float64 `json:"logical_size_bytes_not_in,omitempty"`
+	LogicalSizeBytesNotIn []int64 `json:"logical_size_bytes_not_in,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`

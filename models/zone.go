@@ -29,7 +29,7 @@ type Zone struct {
 	Datacenter *NestedDatacenter `json:"datacenter"`
 
 	// failure data space
-	FailureDataSpace *float64 `json:"failure_data_space,omitempty"`
+	FailureDataSpace *int64 `json:"failure_data_space,omitempty"`
 
 	// host num
 	HostNum *int32 `json:"host_num,omitempty"`
@@ -55,10 +55,10 @@ type Zone struct {
 	ProvisionedCPUCoresForActiveVM *int32 `json:"provisioned_cpu_cores_for_active_vm,omitempty"`
 
 	// provisioned data space
-	ProvisionedDataSpace *float64 `json:"provisioned_data_space,omitempty"`
+	ProvisionedDataSpace *int64 `json:"provisioned_data_space,omitempty"`
 
 	// provisioned memory bytes
-	ProvisionedMemoryBytes *float64 `json:"provisioned_memory_bytes,omitempty"`
+	ProvisionedMemoryBytes *int64 `json:"provisioned_memory_bytes,omitempty"`
 
 	// running vm num
 	RunningVMNum *int32 `json:"running_vm_num,omitempty"`
@@ -70,25 +70,25 @@ type Zone struct {
 	SuspendedVMNum *int32 `json:"suspended_vm_num,omitempty"`
 
 	// total cache capacity
-	TotalCacheCapacity *float64 `json:"total_cache_capacity,omitempty"`
+	TotalCacheCapacity *int64 `json:"total_cache_capacity,omitempty"`
 
 	// total cpu cores
 	TotalCPUCores *int32 `json:"total_cpu_cores,omitempty"`
 
 	// total cpu hz
-	TotalCPUHz *float64 `json:"total_cpu_hz,omitempty"`
+	TotalCPUHz *int64 `json:"total_cpu_hz,omitempty"`
 
 	// total data capacity
-	TotalDataCapacity *float64 `json:"total_data_capacity,omitempty"`
+	TotalDataCapacity *int64 `json:"total_data_capacity,omitempty"`
 
 	// total memory bytes
-	TotalMemoryBytes *float64 `json:"total_memory_bytes,omitempty"`
+	TotalMemoryBytes *int64 `json:"total_memory_bytes,omitempty"`
 
 	// used data space
-	UsedDataSpace *float64 `json:"used_data_space,omitempty"`
+	UsedDataSpace *int64 `json:"used_data_space,omitempty"`
 
 	// valid data space
-	ValidDataSpace *float64 `json:"valid_data_space,omitempty"`
+	ValidDataSpace *int64 `json:"valid_data_space,omitempty"`
 
 	// vm num
 	VMNum *int32 `json:"vm_num,omitempty"`

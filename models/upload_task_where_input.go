@@ -30,28 +30,28 @@ type UploadTaskWhereInput struct {
 	OR []*UploadTaskWhereInput `json:"OR,omitempty"`
 
 	// chunk size
-	ChunkSize *float64 `json:"chunk_size,omitempty"`
+	ChunkSize *int64 `json:"chunk_size,omitempty"`
 
 	// chunk size gt
-	ChunkSizeGt *float64 `json:"chunk_size_gt,omitempty"`
+	ChunkSizeGt *int64 `json:"chunk_size_gt,omitempty"`
 
 	// chunk size gte
-	ChunkSizeGte *float64 `json:"chunk_size_gte,omitempty"`
+	ChunkSizeGte *int64 `json:"chunk_size_gte,omitempty"`
 
 	// chunk size in
-	ChunkSizeIn []float64 `json:"chunk_size_in,omitempty"`
+	ChunkSizeIn []int64 `json:"chunk_size_in,omitempty"`
 
 	// chunk size lt
-	ChunkSizeLt *float64 `json:"chunk_size_lt,omitempty"`
+	ChunkSizeLt *int64 `json:"chunk_size_lt,omitempty"`
 
 	// chunk size lte
-	ChunkSizeLte *float64 `json:"chunk_size_lte,omitempty"`
+	ChunkSizeLte *int64 `json:"chunk_size_lte,omitempty"`
 
 	// chunk size not
-	ChunkSizeNot *float64 `json:"chunk_size_not,omitempty"`
+	ChunkSizeNot *int64 `json:"chunk_size_not,omitempty"`
 
 	// chunk size not in
-	ChunkSizeNotIn []float64 `json:"chunk_size_not_in,omitempty"`
+	ChunkSizeNotIn []int64 `json:"chunk_size_not_in,omitempty"`
 
 	// current chunk
 	CurrentChunk *int32 `json:"current_chunk,omitempty"`
@@ -156,28 +156,28 @@ type UploadTaskWhereInput struct {
 	ResourceTypeNotIn []UploadResourceType `json:"resource_type_not_in,omitempty"`
 
 	// size
-	Size *float64 `json:"size,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 
 	// size gt
-	SizeGt *float64 `json:"size_gt,omitempty"`
+	SizeGt *int64 `json:"size_gt,omitempty"`
 
 	// size gte
-	SizeGte *float64 `json:"size_gte,omitempty"`
+	SizeGte *int64 `json:"size_gte,omitempty"`
 
 	// size in
-	SizeIn []float64 `json:"size_in,omitempty"`
+	SizeIn []int64 `json:"size_in,omitempty"`
 
 	// size lt
-	SizeLt *float64 `json:"size_lt,omitempty"`
+	SizeLt *int64 `json:"size_lt,omitempty"`
 
 	// size lte
-	SizeLte *float64 `json:"size_lte,omitempty"`
+	SizeLte *int64 `json:"size_lte,omitempty"`
 
 	// size not
-	SizeNot *float64 `json:"size_not,omitempty"`
+	SizeNot *int64 `json:"size_not,omitempty"`
 
 	// size not in
-	SizeNotIn []float64 `json:"size_not_in,omitempty"`
+	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
 	// started at
 	StartedAt *string `json:"started_at,omitempty"`

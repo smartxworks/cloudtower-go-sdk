@@ -49,7 +49,7 @@ type SvtImage struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// version
 	// Required: true

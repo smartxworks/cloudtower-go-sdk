@@ -37,7 +37,7 @@ type IscsiTargetCreationParams struct {
 
 	// stripe size
 	// Required: true
-	StripeSize *float64 `json:"stripe_size"`
+	StripeSize *int64 `json:"stripe_size"`
 
 	// thin provision
 	// Required: true
@@ -58,7 +58,7 @@ func (m *IscsiTargetCreationParams) UnmarshalJSON(raw []byte) error {
 
 		StripeNum *int32 `json:"stripe_num"`
 
-		StripeSize *float64 `json:"stripe_size"`
+		StripeSize *int64 `json:"stripe_size"`
 
 		ThinProvision *bool `json:"thin_provision"`
 	}
@@ -101,7 +101,7 @@ func (m IscsiTargetCreationParams) MarshalJSON() ([]byte, error) {
 
 		StripeNum *int32 `json:"stripe_num"`
 
-		StripeSize *float64 `json:"stripe_size"`
+		StripeSize *int64 `json:"stripe_size"`
 
 		ThinProvision *bool `json:"thin_provision"`
 	}

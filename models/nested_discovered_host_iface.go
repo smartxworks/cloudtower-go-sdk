@@ -44,7 +44,7 @@ type NestedDiscoveredHostIface struct {
 	RdmaEnabled *bool `json:"rdma_enabled,omitempty"`
 
 	// speed
-	Speed *float64 `json:"speed,omitempty"`
+	Speed *int64 `json:"speed,omitempty"`
 
 	// up
 	// Required: true

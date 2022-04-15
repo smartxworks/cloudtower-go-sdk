@@ -22,7 +22,7 @@ type NfsInode struct {
 
 	// assigned size
 	// Required: true
-	AssignedSize *float64 `json:"assigned_size"`
+	AssignedSize *int64 `json:"assigned_size"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -60,7 +60,7 @@ type NfsInode struct {
 
 	// shared size
 	// Required: true
-	SharedSize *float64 `json:"shared_size"`
+	SharedSize *int64 `json:"shared_size"`
 
 	// snapshot num
 	// Required: true
@@ -68,7 +68,7 @@ type NfsInode struct {
 
 	// unique size
 	// Required: true
-	UniqueSize *float64 `json:"unique_size"`
+	UniqueSize *int64 `json:"unique_size"`
 }
 
 // Validate validates this nfs inode

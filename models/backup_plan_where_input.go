@@ -90,28 +90,28 @@ type BackupPlanWhereInput struct {
 	BackupStoreRepository *BackupStoreRepositoryWhereInput `json:"backup_store_repository,omitempty"`
 
 	// backup total size
-	BackupTotalSize *float64 `json:"backup_total_size,omitempty"`
+	BackupTotalSize *int64 `json:"backup_total_size,omitempty"`
 
 	// backup total size gt
-	BackupTotalSizeGt *float64 `json:"backup_total_size_gt,omitempty"`
+	BackupTotalSizeGt *int64 `json:"backup_total_size_gt,omitempty"`
 
 	// backup total size gte
-	BackupTotalSizeGte *float64 `json:"backup_total_size_gte,omitempty"`
+	BackupTotalSizeGte *int64 `json:"backup_total_size_gte,omitempty"`
 
 	// backup total size in
-	BackupTotalSizeIn []float64 `json:"backup_total_size_in,omitempty"`
+	BackupTotalSizeIn []int64 `json:"backup_total_size_in,omitempty"`
 
 	// backup total size lt
-	BackupTotalSizeLt *float64 `json:"backup_total_size_lt,omitempty"`
+	BackupTotalSizeLt *int64 `json:"backup_total_size_lt,omitempty"`
 
 	// backup total size lte
-	BackupTotalSizeLte *float64 `json:"backup_total_size_lte,omitempty"`
+	BackupTotalSizeLte *int64 `json:"backup_total_size_lte,omitempty"`
 
 	// backup total size not
-	BackupTotalSizeNot *float64 `json:"backup_total_size_not,omitempty"`
+	BackupTotalSizeNot *int64 `json:"backup_total_size_not,omitempty"`
 
 	// backup total size not in
-	BackupTotalSizeNotIn []float64 `json:"backup_total_size_not_in,omitempty"`
+	BackupTotalSizeNotIn []int64 `json:"backup_total_size_not_in,omitempty"`
 
 	// compression
 	Compression *bool `json:"compression,omitempty"`

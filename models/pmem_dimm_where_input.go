@@ -30,28 +30,28 @@ type PmemDimmWhereInput struct {
 	OR []*PmemDimmWhereInput `json:"OR,omitempty"`
 
 	// capacity
-	Capacity *float64 `json:"capacity,omitempty"`
+	Capacity *int64 `json:"capacity,omitempty"`
 
 	// capacity gt
-	CapacityGt *float64 `json:"capacity_gt,omitempty"`
+	CapacityGt *int64 `json:"capacity_gt,omitempty"`
 
 	// capacity gte
-	CapacityGte *float64 `json:"capacity_gte,omitempty"`
+	CapacityGte *int64 `json:"capacity_gte,omitempty"`
 
 	// capacity in
-	CapacityIn []float64 `json:"capacity_in,omitempty"`
+	CapacityIn []int64 `json:"capacity_in,omitempty"`
 
 	// capacity lt
-	CapacityLt *float64 `json:"capacity_lt,omitempty"`
+	CapacityLt *int64 `json:"capacity_lt,omitempty"`
 
 	// capacity lte
-	CapacityLte *float64 `json:"capacity_lte,omitempty"`
+	CapacityLte *int64 `json:"capacity_lte,omitempty"`
 
 	// capacity not
-	CapacityNot *float64 `json:"capacity_not,omitempty"`
+	CapacityNot *int64 `json:"capacity_not,omitempty"`
 
 	// capacity not in
-	CapacityNotIn []float64 `json:"capacity_not_in,omitempty"`
+	CapacityNotIn []int64 `json:"capacity_not_in,omitempty"`
 
 	// device locator
 	DeviceLocator *string `json:"device_locator,omitempty"`

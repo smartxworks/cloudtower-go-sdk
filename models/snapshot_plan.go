@@ -80,7 +80,7 @@ type SnapshotPlan struct {
 
 	// logical size bytes
 	// Required: true
-	LogicalSizeBytes *float64 `json:"logical_size_bytes"`
+	LogicalSizeBytes *int64 `json:"logical_size_bytes"`
 
 	// manual delete num
 	// Required: true
@@ -107,7 +107,7 @@ type SnapshotPlan struct {
 
 	// physical size bytes
 	// Required: true
-	PhysicalSizeBytes *float64 `json:"physical_size_bytes"`
+	PhysicalSizeBytes *int64 `json:"physical_size_bytes"`
 
 	// remain snapshot num
 	// Required: true

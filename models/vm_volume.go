@@ -32,10 +32,10 @@ type VMVolume struct {
 	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy"`
 
 	// guest size usage
-	GuestSizeUsage *float64 `json:"guest_size_usage,omitempty"`
+	GuestSizeUsage *int64 `json:"guest_size_usage,omitempty"`
 
 	// guest used size
-	GuestUsedSize *float64 `json:"guest_used_size,omitempty"`
+	GuestUsedSize *int64 `json:"guest_used_size,omitempty"`
 
 	// id
 	// Required: true
@@ -73,10 +73,10 @@ type VMVolume struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// unique size
-	UniqueSize *float64 `json:"unique_size,omitempty"`
+	UniqueSize *int64 `json:"unique_size,omitempty"`
 
 	// vm disks
 	VMDisks []*NestedVMDisk `json:"vm_disks,omitempty"`

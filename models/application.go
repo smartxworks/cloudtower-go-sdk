@@ -39,7 +39,7 @@ type Application struct {
 
 	// memory
 	// Required: true
-	Memory *float64 `json:"memory"`
+	Memory *int64 `json:"memory"`
 
 	// state
 	// Required: true
@@ -69,7 +69,7 @@ type Application struct {
 
 	// volume size
 	// Required: true
-	VolumeSize *float64 `json:"volume_size"`
+	VolumeSize *int64 `json:"volume_size"`
 }
 
 // Validate validates this application

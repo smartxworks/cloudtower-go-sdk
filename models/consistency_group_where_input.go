@@ -273,28 +273,28 @@ type ConsistencyGroupWhereInput struct {
 	NamespacesSome *NvmfNamespaceWhereInput `json:"namespaces_some,omitempty"`
 
 	// unique size
-	UniqueSize *float64 `json:"unique_size,omitempty"`
+	UniqueSize *int64 `json:"unique_size,omitempty"`
 
 	// unique size gt
-	UniqueSizeGt *float64 `json:"unique_size_gt,omitempty"`
+	UniqueSizeGt *int64 `json:"unique_size_gt,omitempty"`
 
 	// unique size gte
-	UniqueSizeGte *float64 `json:"unique_size_gte,omitempty"`
+	UniqueSizeGte *int64 `json:"unique_size_gte,omitempty"`
 
 	// unique size in
-	UniqueSizeIn []float64 `json:"unique_size_in,omitempty"`
+	UniqueSizeIn []int64 `json:"unique_size_in,omitempty"`
 
 	// unique size lt
-	UniqueSizeLt *float64 `json:"unique_size_lt,omitempty"`
+	UniqueSizeLt *int64 `json:"unique_size_lt,omitempty"`
 
 	// unique size lte
-	UniqueSizeLte *float64 `json:"unique_size_lte,omitempty"`
+	UniqueSizeLte *int64 `json:"unique_size_lte,omitempty"`
 
 	// unique size not
-	UniqueSizeNot *float64 `json:"unique_size_not,omitempty"`
+	UniqueSizeNot *int64 `json:"unique_size_not,omitempty"`
 
 	// unique size not in
-	UniqueSizeNotIn []float64 `json:"unique_size_not_in,omitempty"`
+	UniqueSizeNotIn []int64 `json:"unique_size_not_in,omitempty"`
 }
 
 // Validate validates this consistency group where input

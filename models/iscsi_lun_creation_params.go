@@ -21,7 +21,7 @@ type IscsiLunCreationParams struct {
 
 	// assigned size
 	// Required: true
-	AssignedSize *float64 `json:"assigned_size"`
+	AssignedSize *int64 `json:"assigned_size"`
 
 	// iscsi target id
 	// Required: true
@@ -45,7 +45,7 @@ type IscsiLunCreationParams struct {
 func (m *IscsiLunCreationParams) UnmarshalJSON(raw []byte) error {
 	// AO0
 	var dataAO0 struct {
-		AssignedSize *float64 `json:"assigned_size"`
+		AssignedSize *int64 `json:"assigned_size"`
 
 		IscsiTargetID *string `json:"iscsi_target_id"`
 
@@ -84,7 +84,7 @@ func (m IscsiLunCreationParams) MarshalJSON() ([]byte, error) {
 	_parts := make([][]byte, 0, 2)
 
 	var dataAO0 struct {
-		AssignedSize *float64 `json:"assigned_size"`
+		AssignedSize *int64 `json:"assigned_size"`
 
 		IscsiTargetID *string `json:"iscsi_target_id"`
 

@@ -25,7 +25,7 @@ type UploadTask struct {
 
 	// chunk size
 	// Required: true
-	ChunkSize *float64 `json:"chunk_size"`
+	ChunkSize *int64 `json:"chunk_size"`
 
 	// current chunk
 	// Required: true
@@ -44,7 +44,7 @@ type UploadTask struct {
 
 	// size
 	// Required: true
-	Size *float64 `json:"size"`
+	Size *int64 `json:"size"`
 
 	// started at
 	StartedAt *string `json:"started_at,omitempty"`

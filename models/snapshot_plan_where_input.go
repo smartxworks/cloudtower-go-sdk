@@ -330,28 +330,28 @@ type SnapshotPlanWhereInput struct {
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
 	// logical size bytes
-	LogicalSizeBytes *float64 `json:"logical_size_bytes,omitempty"`
+	LogicalSizeBytes *int64 `json:"logical_size_bytes,omitempty"`
 
 	// logical size bytes gt
-	LogicalSizeBytesGt *float64 `json:"logical_size_bytes_gt,omitempty"`
+	LogicalSizeBytesGt *int64 `json:"logical_size_bytes_gt,omitempty"`
 
 	// logical size bytes gte
-	LogicalSizeBytesGte *float64 `json:"logical_size_bytes_gte,omitempty"`
+	LogicalSizeBytesGte *int64 `json:"logical_size_bytes_gte,omitempty"`
 
 	// logical size bytes in
-	LogicalSizeBytesIn []float64 `json:"logical_size_bytes_in,omitempty"`
+	LogicalSizeBytesIn []int64 `json:"logical_size_bytes_in,omitempty"`
 
 	// logical size bytes lt
-	LogicalSizeBytesLt *float64 `json:"logical_size_bytes_lt,omitempty"`
+	LogicalSizeBytesLt *int64 `json:"logical_size_bytes_lt,omitempty"`
 
 	// logical size bytes lte
-	LogicalSizeBytesLte *float64 `json:"logical_size_bytes_lte,omitempty"`
+	LogicalSizeBytesLte *int64 `json:"logical_size_bytes_lte,omitempty"`
 
 	// logical size bytes not
-	LogicalSizeBytesNot *float64 `json:"logical_size_bytes_not,omitempty"`
+	LogicalSizeBytesNot *int64 `json:"logical_size_bytes_not,omitempty"`
 
 	// logical size bytes not in
-	LogicalSizeBytesNotIn []float64 `json:"logical_size_bytes_not_in,omitempty"`
+	LogicalSizeBytesNotIn []int64 `json:"logical_size_bytes_not_in,omitempty"`
 
 	// manual delete num
 	ManualDeleteNum *int32 `json:"manual_delete_num,omitempty"`
@@ -498,28 +498,28 @@ type SnapshotPlanWhereInput struct {
 	ObjectNumNotIn []int32 `json:"object_num_not_in,omitempty"`
 
 	// physical size bytes
-	PhysicalSizeBytes *float64 `json:"physical_size_bytes,omitempty"`
+	PhysicalSizeBytes *int64 `json:"physical_size_bytes,omitempty"`
 
 	// physical size bytes gt
-	PhysicalSizeBytesGt *float64 `json:"physical_size_bytes_gt,omitempty"`
+	PhysicalSizeBytesGt *int64 `json:"physical_size_bytes_gt,omitempty"`
 
 	// physical size bytes gte
-	PhysicalSizeBytesGte *float64 `json:"physical_size_bytes_gte,omitempty"`
+	PhysicalSizeBytesGte *int64 `json:"physical_size_bytes_gte,omitempty"`
 
 	// physical size bytes in
-	PhysicalSizeBytesIn []float64 `json:"physical_size_bytes_in,omitempty"`
+	PhysicalSizeBytesIn []int64 `json:"physical_size_bytes_in,omitempty"`
 
 	// physical size bytes lt
-	PhysicalSizeBytesLt *float64 `json:"physical_size_bytes_lt,omitempty"`
+	PhysicalSizeBytesLt *int64 `json:"physical_size_bytes_lt,omitempty"`
 
 	// physical size bytes lte
-	PhysicalSizeBytesLte *float64 `json:"physical_size_bytes_lte,omitempty"`
+	PhysicalSizeBytesLte *int64 `json:"physical_size_bytes_lte,omitempty"`
 
 	// physical size bytes not
-	PhysicalSizeBytesNot *float64 `json:"physical_size_bytes_not,omitempty"`
+	PhysicalSizeBytesNot *int64 `json:"physical_size_bytes_not,omitempty"`
 
 	// physical size bytes not in
-	PhysicalSizeBytesNotIn []float64 `json:"physical_size_bytes_not_in,omitempty"`
+	PhysicalSizeBytesNotIn []int64 `json:"physical_size_bytes_not_in,omitempty"`
 
 	// remain snapshot num
 	RemainSnapshotNum *int32 `json:"remain_snapshot_num,omitempty"`

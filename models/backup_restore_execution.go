@@ -46,7 +46,7 @@ type BackupRestoreExecution struct {
 	Name *string `json:"name"`
 
 	// read bytes
-	ReadBytes *float64 `json:"read_bytes,omitempty"`
+	ReadBytes *int64 `json:"read_bytes,omitempty"`
 
 	// rebuild name
 	RebuildName *string `json:"rebuild_name,omitempty"`
@@ -70,7 +70,7 @@ type BackupRestoreExecution struct {
 	Status *BackupExecutionStatus `json:"status"`
 
 	// total bytes
-	TotalBytes *float64 `json:"total_bytes,omitempty"`
+	TotalBytes *int64 `json:"total_bytes,omitempty"`
 }
 
 // Validate validates this backup restore execution
