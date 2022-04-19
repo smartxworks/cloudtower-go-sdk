@@ -40,7 +40,7 @@ var _ = Describe("Iscsi target api", Ordered, func() {
 				ThinProvision: Bool(true),
 				ReplicaNum:    Int32(2),
 				StripeNum:     Int32(4),
-				StripeSize:    Float64(256 * 1024),
+				StripeSize:    Int64(256 * 1024),
 				Name:          String(fmt.Sprintf("tower-go-sdk-iscsi-target-%d", time.Now().Unix())),
 			},
 		}
@@ -56,7 +56,7 @@ var _ = Describe("Iscsi target api", Ordered, func() {
 				ID: createRes.Payload[0].Data.ID,
 			},
 			Data: &models.IscsiTargetCommonParams{
-				Iops: Float64(1024),
+				Iops: Int64(1024),
 			},
 		}
 		updateRes, err := Client.IscsiTarget.UpdateIscsiTarget(updateParams)

@@ -52,7 +52,7 @@ func CreateVm(client *apiclient.Cloudtower, clusterId *string, vlanId *string, i
 			Ha:         Bool(true),
 			CPUCores:   Int32(1),
 			CPUSockets: Int32(1),
-			Memory:     Float64(1 * 1024 * 1024 * 1024),
+			Memory:     Int64(1 * 1024 * 1024 * 1024),
 			Vcpu:       Int32(1),
 			Status:     status,
 			Firmware:   models.VMFirmwareBIOS.Pointer(),
