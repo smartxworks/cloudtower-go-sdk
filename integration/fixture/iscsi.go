@@ -44,7 +44,7 @@ func CreateIscsiTarget(client *apiclient.Cloudtower, clusterId *string) (*string
 			ThinProvision: Bool(true),
 			ReplicaNum:    Int32(2),
 			StripeNum:     Int32(4),
-			StripeSize:    Float64(256 * 1024),
+			StripeSize:    Int64(256 * 1024),
 			Name:          String(fmt.Sprintf("tower-go-sdk-iscsi-target-%d", time.Now().Unix())),
 		},
 	}
@@ -96,7 +96,7 @@ func CreateIscsiLun(client *apiclient.Cloudtower, clusterId *string) (*string, *
 			IscsiTargetID: targetId,
 			Name:          String(fmt.Sprintf("tower-go-sdk-iscsi-lun-%d", time.Now().Unix())),
 			ReplicaNum:    Int32(2),
-			AssignedSize:  Float64(30 * 1024 * 1024 * 1024),
+			AssignedSize:  Int64(30 * 1024 * 1024 * 1024),
 		},
 	}
 	res, err := client.IscsiLun.CreateIscsiLun(createParams)

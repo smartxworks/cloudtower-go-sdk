@@ -51,7 +51,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 				Ha:         Bool(true),
 				CPUCores:   Int32(1),
 				CPUSockets: Int32(1),
-				Memory:     Float64(1 * 1024 * 1024 * 1024),
+				Memory:     Int64(1 * 1024 * 1024 * 1024),
 				Vcpu:       Int32(1),
 				Status:     models.VMStatusSTOPPED.Pointer(),
 				Firmware:   models.VMFirmwareBIOS.Pointer(),
@@ -337,7 +337,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 							VMVolume: &models.MountNewCreateDisksParamsVMVolume{
 								ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
 								Name:             String(fmt.Sprintf("tower-go-sdk-added-vm-volume-%d", time.Now().Unix())),
-								Size:             Float64(1 * 1024 * 1024 * 1024),
+								Size:             Int64(1 * 1024 * 1024 * 1024),
 							},
 						},
 					},

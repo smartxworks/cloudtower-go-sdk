@@ -40,7 +40,7 @@ var _ = Describe("Vm volume api", Ordered, func() {
 				ClusterID:        cluster.ID,
 				Name:             String(fmt.Sprintf("tower-go-sdk-vm-volume-%d", time.Now().Unix())),
 				ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
-				Size:             Int32(1024 * 1024 * 1024),
+				Size:             Int64(1024 * 1024 * 1024),
 				Sharing:          Bool(false),
 			},
 		}

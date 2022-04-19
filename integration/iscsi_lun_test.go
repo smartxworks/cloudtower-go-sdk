@@ -41,7 +41,7 @@ var _ = Describe("Iscsi lun api", Ordered, func() {
 				IscsiTargetID: targetId,
 				Name:          String(fmt.Sprintf("tower-go-sdk-iscsi-lun-%d", time.Now().Unix())),
 				ReplicaNum:    Int32(2),
-				AssignedSize:  Float64(30 * 1024 * 1024 * 1024),
+				AssignedSize:  Int64(30 * 1024 * 1024 * 1024),
 			},
 		}
 		createRes, err := Client.IscsiLun.CreateIscsiLun(createParams)
@@ -57,7 +57,7 @@ var _ = Describe("Iscsi lun api", Ordered, func() {
 			},
 			Data: &models.IscsiLunUpdationParamsData{
 				IscsiLunCommonParams: models.IscsiLunCommonParams{
-					Iops: Float64(1024),
+					Iops: Int64(1024),
 				},
 			},
 		}
