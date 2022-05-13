@@ -1,8 +1,8 @@
 package integration
 
 import (
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm_entity_filter_result"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_entity_filter_result"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

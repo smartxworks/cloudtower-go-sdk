@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm_placement_group"
-	"github.com/smartxworks/cloudtower-go-sdk/integration/fixture"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	taskutil "github.com/smartxworks/cloudtower-go-sdk/utils"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_placement_group"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/integration/fixture"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	taskutil "github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 )
 
 // UpdateVMNicAdvanceInfoReader is a Reader for the UpdateVMNicAdvanceInfo structure.

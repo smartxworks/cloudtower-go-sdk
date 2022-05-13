@@ -4,10 +4,10 @@ import (
 	"sync"
 
 	. "github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/cluster_settings"
-	"github.com/smartxworks/cloudtower-go-sdk/client/global_settings"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster_settings"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/global_settings"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 )
 
 func OpenRecycleBinIfClosed(client *apiclient.Cloudtower, clusterId *string) func() {

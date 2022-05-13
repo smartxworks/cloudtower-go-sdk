@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 )
 
 // GetEverouteLicensesConnectionReader is a Reader for the GetEverouteLicensesConnection structure.

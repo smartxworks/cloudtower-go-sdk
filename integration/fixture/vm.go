@@ -6,13 +6,13 @@ import (
 	"time"
 
 	. "github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm_folder"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm_snapshot"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm_template"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	taskutil "github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_folder"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_snapshot"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_template"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	taskutil "github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 )
 
 func CreateVm(client *apiclient.Cloudtower, clusterId *string, vlanId *string, isRunning bool) (*string, func()) {
