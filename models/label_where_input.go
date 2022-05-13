@@ -127,6 +127,72 @@ type LabelWhereInput struct {
 	// consistency groups some
 	ConsistencyGroupsSome *ConsistencyGroupWhereInput `json:"consistency_groups_some,omitempty"`
 
+	// content library image num
+	ContentLibraryImageNum *int32 `json:"content_library_image_num,omitempty"`
+
+	// content library image num gt
+	ContentLibraryImageNumGt *int32 `json:"content_library_image_num_gt,omitempty"`
+
+	// content library image num gte
+	ContentLibraryImageNumGte *int32 `json:"content_library_image_num_gte,omitempty"`
+
+	// content library image num in
+	ContentLibraryImageNumIn []int32 `json:"content_library_image_num_in,omitempty"`
+
+	// content library image num lt
+	ContentLibraryImageNumLt *int32 `json:"content_library_image_num_lt,omitempty"`
+
+	// content library image num lte
+	ContentLibraryImageNumLte *int32 `json:"content_library_image_num_lte,omitempty"`
+
+	// content library image num not
+	ContentLibraryImageNumNot *int32 `json:"content_library_image_num_not,omitempty"`
+
+	// content library image num not in
+	ContentLibraryImageNumNotIn []int32 `json:"content_library_image_num_not_in,omitempty"`
+
+	// content library images every
+	ContentLibraryImagesEvery *ContentLibraryImageWhereInput `json:"content_library_images_every,omitempty"`
+
+	// content library images none
+	ContentLibraryImagesNone *ContentLibraryImageWhereInput `json:"content_library_images_none,omitempty"`
+
+	// content library images some
+	ContentLibraryImagesSome *ContentLibraryImageWhereInput `json:"content_library_images_some,omitempty"`
+
+	// content library vm template num
+	ContentLibraryVMTemplateNum *int32 `json:"content_library_vm_template_num,omitempty"`
+
+	// content library vm template num gt
+	ContentLibraryVMTemplateNumGt *int32 `json:"content_library_vm_template_num_gt,omitempty"`
+
+	// content library vm template num gte
+	ContentLibraryVMTemplateNumGte *int32 `json:"content_library_vm_template_num_gte,omitempty"`
+
+	// content library vm template num in
+	ContentLibraryVMTemplateNumIn []int32 `json:"content_library_vm_template_num_in,omitempty"`
+
+	// content library vm template num lt
+	ContentLibraryVMTemplateNumLt *int32 `json:"content_library_vm_template_num_lt,omitempty"`
+
+	// content library vm template num lte
+	ContentLibraryVMTemplateNumLte *int32 `json:"content_library_vm_template_num_lte,omitempty"`
+
+	// content library vm template num not
+	ContentLibraryVMTemplateNumNot *int32 `json:"content_library_vm_template_num_not,omitempty"`
+
+	// content library vm template num not in
+	ContentLibraryVMTemplateNumNotIn []int32 `json:"content_library_vm_template_num_not_in,omitempty"`
+
+	// content library vm templates every
+	ContentLibraryVMTemplatesEvery *ContentLibraryVMTemplateWhereInput `json:"content_library_vm_templates_every,omitempty"`
+
+	// content library vm templates none
+	ContentLibraryVMTemplatesNone *ContentLibraryVMTemplateWhereInput `json:"content_library_vm_templates_none,omitempty"`
+
+	// content library vm templates some
+	ContentLibraryVMTemplatesSome *ContentLibraryVMTemplateWhereInput `json:"content_library_vm_templates_some,omitempty"`
+
 	// created at
 	CreatedAt *string `json:"createdAt,omitempty"`
 
@@ -1104,6 +1170,30 @@ func (m *LabelWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateContentLibraryImagesEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryImagesNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryImagesSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryVMTemplatesEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryVMTemplatesNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryVMTemplatesSome(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDatacentersEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1615,6 +1705,120 @@ func (m *LabelWhereInput) validateConsistencyGroupsSome(formats strfmt.Registry)
 				return ve.ValidateName("consistency_groups_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("consistency_groups_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) validateContentLibraryImagesEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryImagesEvery) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryImagesEvery != nil {
+		if err := m.ContentLibraryImagesEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_images_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_images_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) validateContentLibraryImagesNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryImagesNone) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryImagesNone != nil {
+		if err := m.ContentLibraryImagesNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_images_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_images_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) validateContentLibraryImagesSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryImagesSome) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryImagesSome != nil {
+		if err := m.ContentLibraryImagesSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_images_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_images_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) validateContentLibraryVMTemplatesEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryVMTemplatesEvery) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryVMTemplatesEvery != nil {
+		if err := m.ContentLibraryVMTemplatesEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_vm_templates_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_vm_templates_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) validateContentLibraryVMTemplatesNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryVMTemplatesNone) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryVMTemplatesNone != nil {
+		if err := m.ContentLibraryVMTemplatesNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_vm_templates_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_vm_templates_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) validateContentLibraryVMTemplatesSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryVMTemplatesSome) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryVMTemplatesSome != nil {
+		if err := m.ContentLibraryVMTemplatesSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_vm_templates_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_vm_templates_some")
 			}
 			return err
 		}
@@ -2929,6 +3133,30 @@ func (m *LabelWhereInput) ContextValidate(ctx context.Context, formats strfmt.Re
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateContentLibraryImagesEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentLibraryImagesNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentLibraryImagesSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentLibraryVMTemplatesEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentLibraryVMTemplatesNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentLibraryVMTemplatesSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDatacentersEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3395,6 +3623,102 @@ func (m *LabelWhereInput) contextValidateConsistencyGroupsSome(ctx context.Conte
 				return ve.ValidateName("consistency_groups_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("consistency_groups_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateContentLibraryImagesEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryImagesEvery != nil {
+		if err := m.ContentLibraryImagesEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_images_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_images_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateContentLibraryImagesNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryImagesNone != nil {
+		if err := m.ContentLibraryImagesNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_images_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_images_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateContentLibraryImagesSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryImagesSome != nil {
+		if err := m.ContentLibraryImagesSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_images_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_images_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateContentLibraryVMTemplatesEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryVMTemplatesEvery != nil {
+		if err := m.ContentLibraryVMTemplatesEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_vm_templates_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_vm_templates_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateContentLibraryVMTemplatesNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryVMTemplatesNone != nil {
+		if err := m.ContentLibraryVMTemplatesNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_vm_templates_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_vm_templates_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateContentLibraryVMTemplatesSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryVMTemplatesSome != nil {
+		if err := m.ContentLibraryVMTemplatesSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_vm_templates_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_vm_templates_some")
 			}
 			return err
 		}

@@ -32,6 +32,9 @@ type VMTemplate struct {
 	// Required: true
 	Cluster *NestedCluster `json:"cluster"`
 
+	// content library vm template
+	ContentLibraryVMTemplate *NestedContentLibraryVMTemplate `json:"content_library_vm_template,omitempty"`
+
 	// cpu
 	// Required: true
 	CPU *NestedCPU `json:"cpu"`
@@ -127,6 +130,10 @@ func (m *VMTemplate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCluster(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryVMTemplate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -257,6 +264,25 @@ func (m *VMTemplate) validateCluster(formats strfmt.Registry) error {
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMTemplate) validateContentLibraryVMTemplate(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryVMTemplate) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryVMTemplate != nil {
+		if err := m.ContentLibraryVMTemplate.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_vm_template")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_vm_template")
 			}
 			return err
 		}
@@ -565,6 +591,10 @@ func (m *VMTemplate) ContextValidate(ctx context.Context, formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateContentLibraryVMTemplate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCPU(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -631,6 +661,22 @@ func (m *VMTemplate) contextValidateCluster(ctx context.Context, formats strfmt.
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMTemplate) contextValidateContentLibraryVMTemplate(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryVMTemplate != nil {
+		if err := m.ContentLibraryVMTemplate.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_vm_template")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_vm_template")
 			}
 			return err
 		}

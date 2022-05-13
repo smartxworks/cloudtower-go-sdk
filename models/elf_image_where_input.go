@@ -31,6 +31,9 @@ type ElfImageWhereInput struct {
 	// cluster
 	Cluster *ClusterWhereInput `json:"cluster,omitempty"`
 
+	// content library image
+	ContentLibraryImage *ContentLibraryImageWhereInput `json:"content_library_image,omitempty"`
+
 	// description
 	Description *string `json:"description,omitempty"`
 
@@ -358,6 +361,10 @@ func (m *ElfImageWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateContentLibraryImage(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -517,6 +524,25 @@ func (m *ElfImageWhereInput) validateCluster(formats strfmt.Registry) error {
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ElfImageWhereInput) validateContentLibraryImage(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryImage) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryImage != nil {
+		if err := m.ContentLibraryImage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_image")
 			}
 			return err
 		}
@@ -853,6 +879,10 @@ func (m *ElfImageWhereInput) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateContentLibraryImage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -991,6 +1021,22 @@ func (m *ElfImageWhereInput) contextValidateCluster(ctx context.Context, formats
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ElfImageWhereInput) contextValidateContentLibraryImage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryImage != nil {
+		if err := m.ContentLibraryImage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_image")
 			}
 			return err
 		}

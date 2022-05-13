@@ -22,6 +22,8 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/client/cluster_upgrade_history"
 	"github.com/smartxworks/cloudtower-go-sdk/client/consistency_group"
 	"github.com/smartxworks/cloudtower-go-sdk/client/consistency_group_snapshot"
+	"github.com/smartxworks/cloudtower-go-sdk/client/content_library_image"
+	"github.com/smartxworks/cloudtower-go-sdk/client/content_library_vm_template"
 	"github.com/smartxworks/cloudtower-go-sdk/client/datacenter"
 	"github.com/smartxworks/cloudtower-go-sdk/client/deploy"
 	"github.com/smartxworks/cloudtower-go-sdk/client/discovered_host"
@@ -47,6 +49,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/client/license"
 	"github.com/smartxworks/cloudtower-go-sdk/client/log_collection"
 	"github.com/smartxworks/cloudtower-go-sdk/client/log_service_config"
+	"github.com/smartxworks/cloudtower-go-sdk/client/metrics"
 	"github.com/smartxworks/cloudtower-go-sdk/client/namespace_group"
 	"github.com/smartxworks/cloudtower-go-sdk/client/nfs_export"
 	"github.com/smartxworks/cloudtower-go-sdk/client/nfs_inode"
@@ -148,6 +151,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.ClusterUpgradeHistory = cluster_upgrade_history.New(transport, formats)
 	cli.ConsistencyGroup = consistency_group.New(transport, formats)
 	cli.ConsistencyGroupSnapshot = consistency_group_snapshot.New(transport, formats)
+	cli.ContentLibraryImage = content_library_image.New(transport, formats)
+	cli.ContentLibraryVMTemplate = content_library_vm_template.New(transport, formats)
 	cli.Datacenter = datacenter.New(transport, formats)
 	cli.Deploy = deploy.New(transport, formats)
 	cli.DiscoveredHost = discovered_host.New(transport, formats)
@@ -173,6 +178,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.License = license.New(transport, formats)
 	cli.LogCollection = log_collection.New(transport, formats)
 	cli.LogServiceConfig = log_service_config.New(transport, formats)
+	cli.Metrics = metrics.New(transport, formats)
 	cli.NamespaceGroup = namespace_group.New(transport, formats)
 	cli.NfsExport = nfs_export.New(transport, formats)
 	cli.NfsInode = nfs_inode.New(transport, formats)
@@ -286,6 +292,10 @@ type Cloudtower struct {
 
 	ConsistencyGroupSnapshot consistency_group_snapshot.ClientService
 
+	ContentLibraryImage content_library_image.ClientService
+
+	ContentLibraryVMTemplate content_library_vm_template.ClientService
+
 	Datacenter datacenter.ClientService
 
 	Deploy deploy.ClientService
@@ -335,6 +345,8 @@ type Cloudtower struct {
 	LogCollection log_collection.ClientService
 
 	LogServiceConfig log_service_config.ClientService
+
+	Metrics metrics.ClientService
 
 	NamespaceGroup namespace_group.ClientService
 
@@ -444,6 +456,8 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.ClusterUpgradeHistory.SetTransport(transport)
 	c.ConsistencyGroup.SetTransport(transport)
 	c.ConsistencyGroupSnapshot.SetTransport(transport)
+	c.ContentLibraryImage.SetTransport(transport)
+	c.ContentLibraryVMTemplate.SetTransport(transport)
 	c.Datacenter.SetTransport(transport)
 	c.Deploy.SetTransport(transport)
 	c.DiscoveredHost.SetTransport(transport)
@@ -469,6 +483,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.License.SetTransport(transport)
 	c.LogCollection.SetTransport(transport)
 	c.LogServiceConfig.SetTransport(transport)
+	c.Metrics.SetTransport(transport)
 	c.NamespaceGroup.SetTransport(transport)
 	c.NfsExport.SetTransport(transport)
 	c.NfsInode.SetTransport(transport)
