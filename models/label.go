@@ -38,6 +38,18 @@ type Label struct {
 	// consistency groups
 	ConsistencyGroups []*NestedConsistencyGroup `json:"consistency_groups,omitempty"`
 
+	// content library image num
+	ContentLibraryImageNum *int32 `json:"content_library_image_num,omitempty"`
+
+	// content library images
+	ContentLibraryImages []*NestedContentLibraryImage `json:"content_library_images,omitempty"`
+
+	// content library vm template num
+	ContentLibraryVMTemplateNum *int32 `json:"content_library_vm_template_num,omitempty"`
+
+	// content library vm templates
+	ContentLibraryVMTemplates []*NestedContentLibraryVMTemplate `json:"content_library_vm_templates,omitempty"`
+
 	// created at
 	// Required: true
 	CreatedAt *string `json:"createdAt"`
@@ -205,6 +217,14 @@ func (m *Label) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateConsistencyGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryImages(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryVMTemplates(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -382,6 +402,58 @@ func (m *Label) validateConsistencyGroups(formats strfmt.Registry) error {
 					return ve.ValidateName("consistency_groups" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("consistency_groups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Label) validateContentLibraryImages(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryImages) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ContentLibraryImages); i++ {
+		if swag.IsZero(m.ContentLibraryImages[i]) { // not required
+			continue
+		}
+
+		if m.ContentLibraryImages[i] != nil {
+			if err := m.ContentLibraryImages[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("content_library_images" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content_library_images" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Label) validateContentLibraryVMTemplates(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryVMTemplates) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ContentLibraryVMTemplates); i++ {
+		if swag.IsZero(m.ContentLibraryVMTemplates[i]) { // not required
+			continue
+		}
+
+		if m.ContentLibraryVMTemplates[i] != nil {
+			if err := m.ContentLibraryVMTemplates[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("content_library_vm_templates" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content_library_vm_templates" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -1007,6 +1079,14 @@ func (m *Label) ContextValidate(ctx context.Context, formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateContentLibraryImages(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentLibraryVMTemplates(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDatacenters(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1151,6 +1231,46 @@ func (m *Label) contextValidateConsistencyGroups(ctx context.Context, formats st
 					return ve.ValidateName("consistency_groups" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("consistency_groups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Label) contextValidateContentLibraryImages(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ContentLibraryImages); i++ {
+
+		if m.ContentLibraryImages[i] != nil {
+			if err := m.ContentLibraryImages[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("content_library_images" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content_library_images" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Label) contextValidateContentLibraryVMTemplates(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ContentLibraryVMTemplates); i++ {
+
+		if m.ContentLibraryVMTemplates[i] != nil {
+			if err := m.ContentLibraryVMTemplates[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("content_library_vm_templates" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content_library_vm_templates" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

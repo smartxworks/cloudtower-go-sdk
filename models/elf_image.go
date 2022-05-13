@@ -23,6 +23,9 @@ type ElfImage struct {
 	// cluster
 	Cluster *NestedCluster `json:"cluster,omitempty"`
 
+	// content library image
+	ContentLibraryImage *NestedContentLibraryImage `json:"content_library_image,omitempty"`
+
 	// description
 	// Required: true
 	Description *string `json:"description"`
@@ -72,6 +75,10 @@ func (m *ElfImage) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCluster(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryImage(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -140,6 +147,25 @@ func (m *ElfImage) validateCluster(formats strfmt.Registry) error {
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ElfImage) validateContentLibraryImage(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryImage) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryImage != nil {
+		if err := m.ContentLibraryImage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_image")
 			}
 			return err
 		}
@@ -342,6 +368,10 @@ func (m *ElfImage) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateContentLibraryImage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -376,6 +406,22 @@ func (m *ElfImage) contextValidateCluster(ctx context.Context, formats strfmt.Re
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ElfImage) contextValidateContentLibraryImage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryImage != nil {
+		if err := m.ContentLibraryImage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content_library_image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content_library_image")
 			}
 			return err
 		}
