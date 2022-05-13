@@ -15,7 +15,6 @@ import (
 )
 
 // NodeTopoWhereInput node topo where input
-// Example: {"AND":"NodeTopoWhereInput[]","NOT":"NodeTopoWhereInput[]","OR":"NodeTopoWhereInput[]","brick_topo":"BrickTopoWhereInput","cluster":"ClusterWhereInput","cluster_topo":"ClusterTopoWhereInput","host":"HostWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","local_id":"string","local_id_contains":"string","local_id_ends_with":"string","local_id_gt":"string","local_id_gte":"string","local_id_in":["string"],"local_id_lt":"string","local_id_lte":"string","local_id_not":"string","local_id_not_contains":"string","local_id_not_ends_with":"string","local_id_not_in":["string"],"local_id_not_starts_with":"string","local_id_starts_with":"string","name":"string","name_contains":"string","name_ends_with":"string","name_gt":"string","name_gte":"string","name_in":["string"],"name_lt":"string","name_lte":"string","name_not":"string","name_not_contains":"string","name_not_ends_with":"string","name_not_in":["string"],"name_not_starts_with":"string","name_starts_with":"string"}
 //
 // swagger:model NodeTopoWhereInput
 type NodeTopoWhereInput struct {

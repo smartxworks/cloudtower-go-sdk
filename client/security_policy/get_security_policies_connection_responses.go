@@ -35,6 +35,18 @@ func (o *GetSecurityPoliciesConnectionReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSecurityPoliciesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSecurityPoliciesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetSecurityPoliciesConnectionBadRequest() *GetSecurityPoliciesConnection
 
 /* GetSecurityPoliciesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetSecurityPoliciesConnectionBadRequest get security policies connection bad request
+Bad request
 */
 type GetSecurityPoliciesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSecurityPoliciesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-security-policies-connection][%d] getSecurityPoliciesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSecurityPoliciesConnectionBadRequest) GetPayload() string {
+func (o *GetSecurityPoliciesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSecurityPoliciesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSecurityPoliciesConnectionNotFound creates a GetSecurityPoliciesConnectionNotFound with default headers values
+func NewGetSecurityPoliciesConnectionNotFound() *GetSecurityPoliciesConnectionNotFound {
+	return &GetSecurityPoliciesConnectionNotFound{}
+}
+
+/* GetSecurityPoliciesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSecurityPoliciesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSecurityPoliciesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-security-policies-connection][%d] getSecurityPoliciesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSecurityPoliciesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSecurityPoliciesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSecurityPoliciesConnectionInternalServerError creates a GetSecurityPoliciesConnectionInternalServerError with default headers values
+func NewGetSecurityPoliciesConnectionInternalServerError() *GetSecurityPoliciesConnectionInternalServerError {
+	return &GetSecurityPoliciesConnectionInternalServerError{}
+}
+
+/* GetSecurityPoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSecurityPoliciesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSecurityPoliciesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-security-policies-connection][%d] getSecurityPoliciesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSecurityPoliciesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSecurityPoliciesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

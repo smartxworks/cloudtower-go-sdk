@@ -35,6 +35,18 @@ func (o *CreateHostReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateHostNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateHostInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateHostBadRequest() *CreateHostBadRequest {
 
 /* CreateHostBadRequest describes a response with status code 400, with default header values.
 
-CreateHostBadRequest create host bad request
+Bad request
 */
 type CreateHostBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateHostBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-host][%d] createHostBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateHostBadRequest) GetPayload() string {
+func (o *CreateHostBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateHostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateHostNotFound creates a CreateHostNotFound with default headers values
+func NewCreateHostNotFound() *CreateHostNotFound {
+	return &CreateHostNotFound{}
+}
+
+/* CreateHostNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateHostNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateHostNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-host][%d] createHostNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateHostNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateHostNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateHostInternalServerError creates a CreateHostInternalServerError with default headers values
+func NewCreateHostInternalServerError() *CreateHostInternalServerError {
+	return &CreateHostInternalServerError{}
+}
+
+/* CreateHostInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateHostInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateHostInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-host][%d] createHostInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateHostInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateHostInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

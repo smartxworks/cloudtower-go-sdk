@@ -62,7 +62,7 @@ type VMCreationParams struct {
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
 
 	// max iops
-	MaxIops *int32 `json:"max_iops,omitempty"`
+	MaxIops *int64 `json:"max_iops,omitempty"`
 
 	// max iops policy
 	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
@@ -80,8 +80,7 @@ type VMCreationParams struct {
 	Status *VMStatus `json:"status"`
 
 	// vcpu
-	// Required: true
-	Vcpu *int32 `json:"vcpu"`
+	Vcpu *int32 `json:"vcpu,omitempty"`
 
 	// vm disks
 	// Required: true
@@ -141,10 +140,6 @@ func (m *VMCreationParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStatus(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVcpu(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -335,15 +330,6 @@ func (m *VMCreationParams) validateStatus(formats strfmt.Registry) error {
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *VMCreationParams) validateVcpu(formats strfmt.Registry) error {
-
-	if err := validate.Required("vcpu", "body", m.Vcpu); err != nil {
-		return err
 	}
 
 	return nil

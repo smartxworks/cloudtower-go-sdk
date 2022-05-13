@@ -35,6 +35,18 @@ func (o *GetVMSnapshotsConnectionReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVMSnapshotsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVMSnapshotsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetVMSnapshotsConnectionBadRequest() *GetVMSnapshotsConnectionBadRequest
 
 /* GetVMSnapshotsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetVMSnapshotsConnectionBadRequest get Vm snapshots connection bad request
+Bad request
 */
 type GetVMSnapshotsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVMSnapshotsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vm-snapshots-connection][%d] getVmSnapshotsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVMSnapshotsConnectionBadRequest) GetPayload() string {
+func (o *GetVMSnapshotsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVMSnapshotsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMSnapshotsConnectionNotFound creates a GetVMSnapshotsConnectionNotFound with default headers values
+func NewGetVMSnapshotsConnectionNotFound() *GetVMSnapshotsConnectionNotFound {
+	return &GetVMSnapshotsConnectionNotFound{}
+}
+
+/* GetVMSnapshotsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVMSnapshotsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMSnapshotsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vm-snapshots-connection][%d] getVmSnapshotsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVMSnapshotsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMSnapshotsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMSnapshotsConnectionInternalServerError creates a GetVMSnapshotsConnectionInternalServerError with default headers values
+func NewGetVMSnapshotsConnectionInternalServerError() *GetVMSnapshotsConnectionInternalServerError {
+	return &GetVMSnapshotsConnectionInternalServerError{}
+}
+
+/* GetVMSnapshotsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVMSnapshotsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMSnapshotsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vm-snapshots-connection][%d] getVmSnapshotsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVMSnapshotsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMSnapshotsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

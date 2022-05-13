@@ -35,6 +35,18 @@ func (o *UpdateNicReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateNicNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateNicInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateNicBadRequest() *UpdateNicBadRequest {
 
 /* UpdateNicBadRequest describes a response with status code 400, with default header values.
 
-UpdateNicBadRequest update nic bad request
+Bad request
 */
 type UpdateNicBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateNicBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-nic][%d] updateNicBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateNicBadRequest) GetPayload() string {
+func (o *UpdateNicBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateNicBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateNicNotFound creates a UpdateNicNotFound with default headers values
+func NewUpdateNicNotFound() *UpdateNicNotFound {
+	return &UpdateNicNotFound{}
+}
+
+/* UpdateNicNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateNicNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateNicNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-nic][%d] updateNicNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateNicNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateNicNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateNicInternalServerError creates a UpdateNicInternalServerError with default headers values
+func NewUpdateNicInternalServerError() *UpdateNicInternalServerError {
+	return &UpdateNicInternalServerError{}
+}
+
+/* UpdateNicInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateNicInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateNicInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-nic][%d] updateNicInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateNicInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateNicInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

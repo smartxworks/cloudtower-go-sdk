@@ -35,6 +35,18 @@ func (o *UpdateConsistencyGroupSnapshotReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateConsistencyGroupSnapshotNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateConsistencyGroupSnapshotInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateConsistencyGroupSnapshotBadRequest() *UpdateConsistencyGroupSnapsh
 
 /* UpdateConsistencyGroupSnapshotBadRequest describes a response with status code 400, with default header values.
 
-UpdateConsistencyGroupSnapshotBadRequest update consistency group snapshot bad request
+Bad request
 */
 type UpdateConsistencyGroupSnapshotBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateConsistencyGroupSnapshotBadRequest) Error() string {
 	return fmt.Sprintf("[POST /rollback-consistency-snapshot-group][%d] updateConsistencyGroupSnapshotBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateConsistencyGroupSnapshotBadRequest) GetPayload() string {
+func (o *UpdateConsistencyGroupSnapshotBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateConsistencyGroupSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateConsistencyGroupSnapshotNotFound creates a UpdateConsistencyGroupSnapshotNotFound with default headers values
+func NewUpdateConsistencyGroupSnapshotNotFound() *UpdateConsistencyGroupSnapshotNotFound {
+	return &UpdateConsistencyGroupSnapshotNotFound{}
+}
+
+/* UpdateConsistencyGroupSnapshotNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateConsistencyGroupSnapshotNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateConsistencyGroupSnapshotNotFound) Error() string {
+	return fmt.Sprintf("[POST /rollback-consistency-snapshot-group][%d] updateConsistencyGroupSnapshotNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateConsistencyGroupSnapshotNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateConsistencyGroupSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateConsistencyGroupSnapshotInternalServerError creates a UpdateConsistencyGroupSnapshotInternalServerError with default headers values
+func NewUpdateConsistencyGroupSnapshotInternalServerError() *UpdateConsistencyGroupSnapshotInternalServerError {
+	return &UpdateConsistencyGroupSnapshotInternalServerError{}
+}
+
+/* UpdateConsistencyGroupSnapshotInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateConsistencyGroupSnapshotInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateConsistencyGroupSnapshotInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /rollback-consistency-snapshot-group][%d] updateConsistencyGroupSnapshotInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateConsistencyGroupSnapshotInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateConsistencyGroupSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *DeleteVMReader) ReadResponse(response runtime.ClientResponse, consumer 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteVMBadRequest() *DeleteVMBadRequest {
 
 /* DeleteVMBadRequest describes a response with status code 400, with default header values.
 
-DeleteVMBadRequest delete Vm bad request
+Bad request
 */
 type DeleteVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-vm][%d] deleteVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteVMBadRequest) GetPayload() string {
+func (o *DeleteVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVMNotFound creates a DeleteVMNotFound with default headers values
+func NewDeleteVMNotFound() *DeleteVMNotFound {
+	return &DeleteVMNotFound{}
+}
+
+/* DeleteVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-vm][%d] deleteVmNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVMInternalServerError creates a DeleteVMInternalServerError with default headers values
+func NewDeleteVMInternalServerError() *DeleteVMInternalServerError {
+	return &DeleteVMInternalServerError{}
+}
+
+/* DeleteVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-vm][%d] deleteVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

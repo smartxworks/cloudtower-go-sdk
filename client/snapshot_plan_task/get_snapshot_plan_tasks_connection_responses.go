@@ -35,6 +35,18 @@ func (o *GetSnapshotPlanTasksConnectionReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSnapshotPlanTasksConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSnapshotPlanTasksConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetSnapshotPlanTasksConnectionBadRequest() *GetSnapshotPlanTasksConnecti
 
 /* GetSnapshotPlanTasksConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetSnapshotPlanTasksConnectionBadRequest get snapshot plan tasks connection bad request
+Bad request
 */
 type GetSnapshotPlanTasksConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSnapshotPlanTasksConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-snapshot-plan-tasks-connection][%d] getSnapshotPlanTasksConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSnapshotPlanTasksConnectionBadRequest) GetPayload() string {
+func (o *GetSnapshotPlanTasksConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSnapshotPlanTasksConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnapshotPlanTasksConnectionNotFound creates a GetSnapshotPlanTasksConnectionNotFound with default headers values
+func NewGetSnapshotPlanTasksConnectionNotFound() *GetSnapshotPlanTasksConnectionNotFound {
+	return &GetSnapshotPlanTasksConnectionNotFound{}
+}
+
+/* GetSnapshotPlanTasksConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSnapshotPlanTasksConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnapshotPlanTasksConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-snapshot-plan-tasks-connection][%d] getSnapshotPlanTasksConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSnapshotPlanTasksConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnapshotPlanTasksConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnapshotPlanTasksConnectionInternalServerError creates a GetSnapshotPlanTasksConnectionInternalServerError with default headers values
+func NewGetSnapshotPlanTasksConnectionInternalServerError() *GetSnapshotPlanTasksConnectionInternalServerError {
+	return &GetSnapshotPlanTasksConnectionInternalServerError{}
+}
+
+/* GetSnapshotPlanTasksConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSnapshotPlanTasksConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnapshotPlanTasksConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-snapshot-plan-tasks-connection][%d] getSnapshotPlanTasksConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSnapshotPlanTasksConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnapshotPlanTasksConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

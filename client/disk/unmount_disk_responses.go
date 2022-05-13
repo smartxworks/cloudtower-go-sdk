@@ -35,6 +35,18 @@ func (o *UnmountDiskReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUnmountDiskNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUnmountDiskInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUnmountDiskBadRequest() *UnmountDiskBadRequest {
 
 /* UnmountDiskBadRequest describes a response with status code 400, with default header values.
 
-UnmountDiskBadRequest unmount disk bad request
+Bad request
 */
 type UnmountDiskBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UnmountDiskBadRequest) Error() string {
 	return fmt.Sprintf("[POST /unmount-disk][%d] unmountDiskBadRequest  %+v", 400, o.Payload)
 }
-func (o *UnmountDiskBadRequest) GetPayload() string {
+func (o *UnmountDiskBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UnmountDiskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUnmountDiskNotFound creates a UnmountDiskNotFound with default headers values
+func NewUnmountDiskNotFound() *UnmountDiskNotFound {
+	return &UnmountDiskNotFound{}
+}
+
+/* UnmountDiskNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UnmountDiskNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UnmountDiskNotFound) Error() string {
+	return fmt.Sprintf("[POST /unmount-disk][%d] unmountDiskNotFound  %+v", 404, o.Payload)
+}
+func (o *UnmountDiskNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UnmountDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUnmountDiskInternalServerError creates a UnmountDiskInternalServerError with default headers values
+func NewUnmountDiskInternalServerError() *UnmountDiskInternalServerError {
+	return &UnmountDiskInternalServerError{}
+}
+
+/* UnmountDiskInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UnmountDiskInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UnmountDiskInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /unmount-disk][%d] unmountDiskInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UnmountDiskInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UnmountDiskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

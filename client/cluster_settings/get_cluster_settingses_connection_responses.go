@@ -35,6 +35,18 @@ func (o *GetClusterSettingsesConnectionReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClusterSettingsesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetClusterSettingsesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetClusterSettingsesConnectionBadRequest() *GetClusterSettingsesConnecti
 
 /* GetClusterSettingsesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetClusterSettingsesConnectionBadRequest get cluster settingses connection bad request
+Bad request
 */
 type GetClusterSettingsesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetClusterSettingsesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-cluster-settingses-connection][%d] getClusterSettingsesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetClusterSettingsesConnectionBadRequest) GetPayload() string {
+func (o *GetClusterSettingsesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetClusterSettingsesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterSettingsesConnectionNotFound creates a GetClusterSettingsesConnectionNotFound with default headers values
+func NewGetClusterSettingsesConnectionNotFound() *GetClusterSettingsesConnectionNotFound {
+	return &GetClusterSettingsesConnectionNotFound{}
+}
+
+/* GetClusterSettingsesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetClusterSettingsesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterSettingsesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-settingses-connection][%d] getClusterSettingsesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetClusterSettingsesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterSettingsesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterSettingsesConnectionInternalServerError creates a GetClusterSettingsesConnectionInternalServerError with default headers values
+func NewGetClusterSettingsesConnectionInternalServerError() *GetClusterSettingsesConnectionInternalServerError {
+	return &GetClusterSettingsesConnectionInternalServerError{}
+}
+
+/* GetClusterSettingsesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetClusterSettingsesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterSettingsesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-settingses-connection][%d] getClusterSettingsesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClusterSettingsesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterSettingsesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *GetUsbDevicesConnectionReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetUsbDevicesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetUsbDevicesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetUsbDevicesConnectionBadRequest() *GetUsbDevicesConnectionBadRequest {
 
 /* GetUsbDevicesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetUsbDevicesConnectionBadRequest get usb devices connection bad request
+Bad request
 */
 type GetUsbDevicesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetUsbDevicesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-usb-devices-connection][%d] getUsbDevicesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetUsbDevicesConnectionBadRequest) GetPayload() string {
+func (o *GetUsbDevicesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetUsbDevicesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUsbDevicesConnectionNotFound creates a GetUsbDevicesConnectionNotFound with default headers values
+func NewGetUsbDevicesConnectionNotFound() *GetUsbDevicesConnectionNotFound {
+	return &GetUsbDevicesConnectionNotFound{}
+}
+
+/* GetUsbDevicesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetUsbDevicesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUsbDevicesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-usb-devices-connection][%d] getUsbDevicesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetUsbDevicesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUsbDevicesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUsbDevicesConnectionInternalServerError creates a GetUsbDevicesConnectionInternalServerError with default headers values
+func NewGetUsbDevicesConnectionInternalServerError() *GetUsbDevicesConnectionInternalServerError {
+	return &GetUsbDevicesConnectionInternalServerError{}
+}
+
+/* GetUsbDevicesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetUsbDevicesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUsbDevicesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-usb-devices-connection][%d] getUsbDevicesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetUsbDevicesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUsbDevicesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

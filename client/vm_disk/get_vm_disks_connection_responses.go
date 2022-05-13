@@ -35,6 +35,18 @@ func (o *GetVMDisksConnectionReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVMDisksConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVMDisksConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetVMDisksConnectionBadRequest() *GetVMDisksConnectionBadRequest {
 
 /* GetVMDisksConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetVMDisksConnectionBadRequest get Vm disks connection bad request
+Bad request
 */
 type GetVMDisksConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVMDisksConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vm-disks-connection][%d] getVmDisksConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVMDisksConnectionBadRequest) GetPayload() string {
+func (o *GetVMDisksConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVMDisksConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMDisksConnectionNotFound creates a GetVMDisksConnectionNotFound with default headers values
+func NewGetVMDisksConnectionNotFound() *GetVMDisksConnectionNotFound {
+	return &GetVMDisksConnectionNotFound{}
+}
+
+/* GetVMDisksConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVMDisksConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMDisksConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vm-disks-connection][%d] getVmDisksConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVMDisksConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMDisksConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMDisksConnectionInternalServerError creates a GetVMDisksConnectionInternalServerError with default headers values
+func NewGetVMDisksConnectionInternalServerError() *GetVMDisksConnectionInternalServerError {
+	return &GetVMDisksConnectionInternalServerError{}
+}
+
+/* GetVMDisksConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVMDisksConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMDisksConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vm-disks-connection][%d] getVmDisksConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVMDisksConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMDisksConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

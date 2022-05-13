@@ -35,6 +35,18 @@ func (o *AddVMToFolderReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewAddVMToFolderNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewAddVMToFolderInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewAddVMToFolderBadRequest() *AddVMToFolderBadRequest {
 
 /* AddVMToFolderBadRequest describes a response with status code 400, with default header values.
 
-AddVMToFolderBadRequest add Vm to folder bad request
+Bad request
 */
 type AddVMToFolderBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *AddVMToFolderBadRequest) Error() string {
 	return fmt.Sprintf("[POST /add-vm-to-folder][%d] addVmToFolderBadRequest  %+v", 400, o.Payload)
 }
-func (o *AddVMToFolderBadRequest) GetPayload() string {
+func (o *AddVMToFolderBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *AddVMToFolderBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddVMToFolderNotFound creates a AddVMToFolderNotFound with default headers values
+func NewAddVMToFolderNotFound() *AddVMToFolderNotFound {
+	return &AddVMToFolderNotFound{}
+}
+
+/* AddVMToFolderNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type AddVMToFolderNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddVMToFolderNotFound) Error() string {
+	return fmt.Sprintf("[POST /add-vm-to-folder][%d] addVmToFolderNotFound  %+v", 404, o.Payload)
+}
+func (o *AddVMToFolderNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddVMToFolderNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddVMToFolderInternalServerError creates a AddVMToFolderInternalServerError with default headers values
+func NewAddVMToFolderInternalServerError() *AddVMToFolderInternalServerError {
+	return &AddVMToFolderInternalServerError{}
+}
+
+/* AddVMToFolderInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type AddVMToFolderInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddVMToFolderInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /add-vm-to-folder][%d] addVmToFolderInternalServerError  %+v", 500, o.Payload)
+}
+func (o *AddVMToFolderInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddVMToFolderInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

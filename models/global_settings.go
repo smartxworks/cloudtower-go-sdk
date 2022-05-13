@@ -19,6 +19,9 @@ import (
 // swagger:model GlobalSettings
 type GlobalSettings struct {
 
+	// auth
+	Auth *NestedAuthSettings `json:"auth,omitempty"`
+
 	// id
 	// Required: true
 	ID *string `json:"id"`
@@ -32,6 +35,10 @@ type GlobalSettings struct {
 func (m *GlobalSettings) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAuth(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -43,6 +50,25 @@ func (m *GlobalSettings) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *GlobalSettings) validateAuth(formats strfmt.Registry) error {
+	if swag.IsZero(m.Auth) { // not required
+		return nil
+	}
+
+	if m.Auth != nil {
+		if err := m.Auth.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("auth")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("auth")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -79,6 +105,10 @@ func (m *GlobalSettings) validateVMRecycleBin(formats strfmt.Registry) error {
 func (m *GlobalSettings) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateAuth(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVMRecycleBin(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -86,6 +116,22 @@ func (m *GlobalSettings) ContextValidate(ctx context.Context, formats strfmt.Reg
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *GlobalSettings) contextValidateAuth(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Auth != nil {
+		if err := m.Auth.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("auth")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("auth")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

@@ -38,10 +38,6 @@ type VcenterAccount struct {
 	// Required: true
 	LocalID *string `json:"local_id"`
 
-	// password
-	// Required: true
-	Password *string `json:"password"`
-
 	// port
 	// Required: true
 	Port *int32 `json:"port"`
@@ -72,10 +68,6 @@ func (m *VcenterAccount) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLocalID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePassword(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -142,15 +134,6 @@ func (m *VcenterAccount) validateIsValid(formats strfmt.Registry) error {
 func (m *VcenterAccount) validateLocalID(formats strfmt.Registry) error {
 
 	if err := validate.Required("local_id", "body", m.LocalID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VcenterAccount) validatePassword(formats strfmt.Registry) error {
-
-	if err := validate.Required("password", "body", m.Password); err != nil {
 		return err
 	}
 

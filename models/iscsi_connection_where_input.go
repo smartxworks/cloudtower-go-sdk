@@ -15,7 +15,6 @@ import (
 )
 
 // IscsiConnectionWhereInput iscsi connection where input
-// Example: {"AND":"IscsiConnectionWhereInput[]","NOT":"IscsiConnectionWhereInput[]","OR":"IscsiConnectionWhereInput[]","client_port":0,"client_port_gt":0,"client_port_gte":0,"client_port_in":[0],"client_port_lt":0,"client_port_lte":0,"client_port_not":0,"client_port_not_in":[0],"cluster":"ClusterWhereInput","host":"HostWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","initiator_ip":"string","initiator_ip_contains":"string","initiator_ip_ends_with":"string","initiator_ip_gt":"string","initiator_ip_gte":"string","initiator_ip_in":["string"],"initiator_ip_lt":"string","initiator_ip_lte":"string","initiator_ip_not":"string","initiator_ip_not_contains":"string","initiator_ip_not_ends_with":"string","initiator_ip_not_in":["string"],"initiator_ip_not_starts_with":"string","initiator_ip_starts_with":"string","iscsi_target":"IscsiTargetWhereInput","nvmf_subsystem":"NvmfSubsystemWhereInput","type":"ISCSI","type_in":["ISCSI"],"type_not":"ISCSI","type_not_in":["ISCSI"]}
 //
 // swagger:model IscsiConnectionWhereInput
 type IscsiConnectionWhereInput struct {
@@ -149,6 +148,18 @@ type IscsiConnectionWhereInput struct {
 	// nvmf subsystem
 	NvmfSubsystem *NvmfSubsystemWhereInput `json:"nvmf_subsystem,omitempty"`
 
+	// tr type
+	TrType *StoreTransportType `json:"tr_type,omitempty"`
+
+	// tr type in
+	TrTypeIn []StoreTransportType `json:"tr_type_in,omitempty"`
+
+	// tr type not
+	TrTypeNot *StoreTransportType `json:"tr_type_not,omitempty"`
+
+	// tr type not in
+	TrTypeNotIn []StoreTransportType `json:"tr_type_not_in,omitempty"`
+
 	// type
 	Type *StoreConnectionType `json:"type,omitempty"`
 
@@ -191,6 +202,22 @@ func (m *IscsiConnectionWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNvmfSubsystem(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrTypeIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrTypeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrTypeNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -370,6 +397,86 @@ func (m *IscsiConnectionWhereInput) validateNvmfSubsystem(formats strfmt.Registr
 	return nil
 }
 
+func (m *IscsiConnectionWhereInput) validateTrType(formats strfmt.Registry) error {
+	if swag.IsZero(m.TrType) { // not required
+		return nil
+	}
+
+	if m.TrType != nil {
+		if err := m.TrType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiConnectionWhereInput) validateTrTypeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.TrTypeIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.TrTypeIn); i++ {
+
+		if err := m.TrTypeIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiConnectionWhereInput) validateTrTypeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.TrTypeNot) { // not required
+		return nil
+	}
+
+	if m.TrTypeNot != nil {
+		if err := m.TrTypeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiConnectionWhereInput) validateTrTypeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.TrTypeNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.TrTypeNotIn); i++ {
+
+		if err := m.TrTypeNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *IscsiConnectionWhereInput) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
@@ -479,6 +586,22 @@ func (m *IscsiConnectionWhereInput) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidateNvmfSubsystem(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTrType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTrTypeIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTrTypeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTrTypeNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -623,6 +746,74 @@ func (m *IscsiConnectionWhereInput) contextValidateNvmfSubsystem(ctx context.Con
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *IscsiConnectionWhereInput) contextValidateTrType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TrType != nil {
+		if err := m.TrType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiConnectionWhereInput) contextValidateTrTypeIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TrTypeIn); i++ {
+
+		if err := m.TrTypeIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiConnectionWhereInput) contextValidateTrTypeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TrTypeNot != nil {
+		if err := m.TrTypeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiConnectionWhereInput) contextValidateTrTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TrTypeNotIn); i++ {
+
+		if err := m.TrTypeNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil

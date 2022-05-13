@@ -35,6 +35,18 @@ func (o *GetSnapshotPlanTasksReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSnapshotPlanTasksNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSnapshotPlanTasksInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetSnapshotPlanTasksBadRequest() *GetSnapshotPlanTasksBadRequest {
 
 /* GetSnapshotPlanTasksBadRequest describes a response with status code 400, with default header values.
 
-GetSnapshotPlanTasksBadRequest get snapshot plan tasks bad request
+Bad request
 */
 type GetSnapshotPlanTasksBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSnapshotPlanTasksBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-snapshot-plan-tasks][%d] getSnapshotPlanTasksBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSnapshotPlanTasksBadRequest) GetPayload() string {
+func (o *GetSnapshotPlanTasksBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSnapshotPlanTasksBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnapshotPlanTasksNotFound creates a GetSnapshotPlanTasksNotFound with default headers values
+func NewGetSnapshotPlanTasksNotFound() *GetSnapshotPlanTasksNotFound {
+	return &GetSnapshotPlanTasksNotFound{}
+}
+
+/* GetSnapshotPlanTasksNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSnapshotPlanTasksNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnapshotPlanTasksNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-snapshot-plan-tasks][%d] getSnapshotPlanTasksNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSnapshotPlanTasksNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnapshotPlanTasksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnapshotPlanTasksInternalServerError creates a GetSnapshotPlanTasksInternalServerError with default headers values
+func NewGetSnapshotPlanTasksInternalServerError() *GetSnapshotPlanTasksInternalServerError {
+	return &GetSnapshotPlanTasksInternalServerError{}
+}
+
+/* GetSnapshotPlanTasksInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSnapshotPlanTasksInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnapshotPlanTasksInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-snapshot-plan-tasks][%d] getSnapshotPlanTasksInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSnapshotPlanTasksInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnapshotPlanTasksInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

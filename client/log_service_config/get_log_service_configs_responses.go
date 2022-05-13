@@ -35,6 +35,18 @@ func (o *GetLogServiceConfigsReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetLogServiceConfigsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetLogServiceConfigsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetLogServiceConfigsBadRequest() *GetLogServiceConfigsBadRequest {
 
 /* GetLogServiceConfigsBadRequest describes a response with status code 400, with default header values.
 
-GetLogServiceConfigsBadRequest get log service configs bad request
+Bad request
 */
 type GetLogServiceConfigsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetLogServiceConfigsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-log-service-configs][%d] getLogServiceConfigsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetLogServiceConfigsBadRequest) GetPayload() string {
+func (o *GetLogServiceConfigsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetLogServiceConfigsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetLogServiceConfigsNotFound creates a GetLogServiceConfigsNotFound with default headers values
+func NewGetLogServiceConfigsNotFound() *GetLogServiceConfigsNotFound {
+	return &GetLogServiceConfigsNotFound{}
+}
+
+/* GetLogServiceConfigsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetLogServiceConfigsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetLogServiceConfigsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-log-service-configs][%d] getLogServiceConfigsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetLogServiceConfigsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetLogServiceConfigsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetLogServiceConfigsInternalServerError creates a GetLogServiceConfigsInternalServerError with default headers values
+func NewGetLogServiceConfigsInternalServerError() *GetLogServiceConfigsInternalServerError {
+	return &GetLogServiceConfigsInternalServerError{}
+}
+
+/* GetLogServiceConfigsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetLogServiceConfigsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetLogServiceConfigsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-log-service-configs][%d] getLogServiceConfigsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetLogServiceConfigsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetLogServiceConfigsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

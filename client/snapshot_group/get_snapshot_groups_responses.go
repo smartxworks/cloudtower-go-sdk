@@ -35,6 +35,18 @@ func (o *GetSnapshotGroupsReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSnapshotGroupsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSnapshotGroupsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetSnapshotGroupsBadRequest() *GetSnapshotGroupsBadRequest {
 
 /* GetSnapshotGroupsBadRequest describes a response with status code 400, with default header values.
 
-GetSnapshotGroupsBadRequest get snapshot groups bad request
+Bad request
 */
 type GetSnapshotGroupsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSnapshotGroupsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-snapshot-groups][%d] getSnapshotGroupsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSnapshotGroupsBadRequest) GetPayload() string {
+func (o *GetSnapshotGroupsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSnapshotGroupsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnapshotGroupsNotFound creates a GetSnapshotGroupsNotFound with default headers values
+func NewGetSnapshotGroupsNotFound() *GetSnapshotGroupsNotFound {
+	return &GetSnapshotGroupsNotFound{}
+}
+
+/* GetSnapshotGroupsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSnapshotGroupsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnapshotGroupsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-snapshot-groups][%d] getSnapshotGroupsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSnapshotGroupsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnapshotGroupsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnapshotGroupsInternalServerError creates a GetSnapshotGroupsInternalServerError with default headers values
+func NewGetSnapshotGroupsInternalServerError() *GetSnapshotGroupsInternalServerError {
+	return &GetSnapshotGroupsInternalServerError{}
+}
+
+/* GetSnapshotGroupsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSnapshotGroupsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnapshotGroupsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-snapshot-groups][%d] getSnapshotGroupsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSnapshotGroupsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnapshotGroupsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

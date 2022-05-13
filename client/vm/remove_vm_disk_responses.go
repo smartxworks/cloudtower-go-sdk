@@ -35,6 +35,18 @@ func (o *RemoveVMDiskReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewRemoveVMDiskNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewRemoveVMDiskInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewRemoveVMDiskBadRequest() *RemoveVMDiskBadRequest {
 
 /* RemoveVMDiskBadRequest describes a response with status code 400, with default header values.
 
-RemoveVMDiskBadRequest remove Vm disk bad request
+Bad request
 */
 type RemoveVMDiskBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *RemoveVMDiskBadRequest) Error() string {
 	return fmt.Sprintf("[POST /remove-vm-disk][%d] removeVmDiskBadRequest  %+v", 400, o.Payload)
 }
-func (o *RemoveVMDiskBadRequest) GetPayload() string {
+func (o *RemoveVMDiskBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *RemoveVMDiskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRemoveVMDiskNotFound creates a RemoveVMDiskNotFound with default headers values
+func NewRemoveVMDiskNotFound() *RemoveVMDiskNotFound {
+	return &RemoveVMDiskNotFound{}
+}
+
+/* RemoveVMDiskNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type RemoveVMDiskNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RemoveVMDiskNotFound) Error() string {
+	return fmt.Sprintf("[POST /remove-vm-disk][%d] removeVmDiskNotFound  %+v", 404, o.Payload)
+}
+func (o *RemoveVMDiskNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RemoveVMDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRemoveVMDiskInternalServerError creates a RemoveVMDiskInternalServerError with default headers values
+func NewRemoveVMDiskInternalServerError() *RemoveVMDiskInternalServerError {
+	return &RemoveVMDiskInternalServerError{}
+}
+
+/* RemoveVMDiskInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type RemoveVMDiskInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RemoveVMDiskInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /remove-vm-disk][%d] removeVmDiskInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RemoveVMDiskInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RemoveVMDiskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

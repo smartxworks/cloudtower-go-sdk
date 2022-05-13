@@ -35,6 +35,18 @@ func (o *GetGlobalSettingsesConnectionReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetGlobalSettingsesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetGlobalSettingsesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetGlobalSettingsesConnectionBadRequest() *GetGlobalSettingsesConnection
 
 /* GetGlobalSettingsesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetGlobalSettingsesConnectionBadRequest get global settingses connection bad request
+Bad request
 */
 type GetGlobalSettingsesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetGlobalSettingsesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-global-settingses-connection][%d] getGlobalSettingsesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetGlobalSettingsesConnectionBadRequest) GetPayload() string {
+func (o *GetGlobalSettingsesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetGlobalSettingsesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetGlobalSettingsesConnectionNotFound creates a GetGlobalSettingsesConnectionNotFound with default headers values
+func NewGetGlobalSettingsesConnectionNotFound() *GetGlobalSettingsesConnectionNotFound {
+	return &GetGlobalSettingsesConnectionNotFound{}
+}
+
+/* GetGlobalSettingsesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetGlobalSettingsesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetGlobalSettingsesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-global-settingses-connection][%d] getGlobalSettingsesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetGlobalSettingsesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetGlobalSettingsesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetGlobalSettingsesConnectionInternalServerError creates a GetGlobalSettingsesConnectionInternalServerError with default headers values
+func NewGetGlobalSettingsesConnectionInternalServerError() *GetGlobalSettingsesConnectionInternalServerError {
+	return &GetGlobalSettingsesConnectionInternalServerError{}
+}
+
+/* GetGlobalSettingsesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetGlobalSettingsesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetGlobalSettingsesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-global-settingses-connection][%d] getGlobalSettingsesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetGlobalSettingsesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetGlobalSettingsesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

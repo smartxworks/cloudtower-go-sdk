@@ -23,9 +23,6 @@ type ElfImage struct {
 	// cluster
 	Cluster *NestedCluster `json:"cluster,omitempty"`
 
-	// content library image
-	ContentLibraryImage *NestedContentLibraryImage `json:"content_library_image,omitempty"`
-
 	// description
 	// Required: true
 	Description *string `json:"description"`
@@ -60,9 +57,6 @@ type ElfImage struct {
 	// Required: true
 	Size *int64 `json:"size"`
 
-	// upload task
-	UploadTask *NestedUploadTask `json:"upload_task,omitempty"`
-
 	// vm disks
 	VMDisks []*NestedVMDisk `json:"vm_disks,omitempty"`
 
@@ -78,10 +72,6 @@ func (m *ElfImage) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCluster(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateContentLibraryImage(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -121,10 +111,6 @@ func (m *ElfImage) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateUploadTask(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateVMDisks(formats); err != nil {
 		res = append(res, err)
 	}
@@ -154,25 +140,6 @@ func (m *ElfImage) validateCluster(formats strfmt.Registry) error {
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ElfImage) validateContentLibraryImage(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContentLibraryImage) { // not required
-		return nil
-	}
-
-	if m.ContentLibraryImage != nil {
-		if err := m.ContentLibraryImage.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_image")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_image")
 			}
 			return err
 		}
@@ -289,25 +256,6 @@ func (m *ElfImage) validateSize(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ElfImage) validateUploadTask(formats strfmt.Registry) error {
-	if swag.IsZero(m.UploadTask) { // not required
-		return nil
-	}
-
-	if m.UploadTask != nil {
-		if err := m.UploadTask.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("upload_task")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("upload_task")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ElfImage) validateVMDisks(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMDisks) { // not required
 		return nil
@@ -394,19 +342,11 @@ func (m *ElfImage) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateContentLibraryImage(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateUploadTask(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -436,22 +376,6 @@ func (m *ElfImage) contextValidateCluster(ctx context.Context, formats strfmt.Re
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ElfImage) contextValidateContentLibraryImage(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContentLibraryImage != nil {
-		if err := m.ContentLibraryImage.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_image")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_image")
 			}
 			return err
 		}
@@ -491,22 +415,6 @@ func (m *ElfImage) contextValidateLabels(ctx context.Context, formats strfmt.Reg
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ElfImage) contextValidateUploadTask(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.UploadTask != nil {
-		if err := m.UploadTask.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("upload_task")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("upload_task")
-			}
-			return err
-		}
 	}
 
 	return nil

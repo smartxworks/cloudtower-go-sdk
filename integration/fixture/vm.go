@@ -150,7 +150,7 @@ func CreateSnapshot(client *apiclient.Cloudtower, clusterId *string, vlanId *str
 		}
 	}()
 	createParams.RequestBody = &models.VMSnapshotCreationParams{
-		Data: []*models.VMSnapshotCreationParamsDataItems0{
+		Data: []*models.VMSnapshotCreationParamsData{
 			{
 				VMID: vmId,
 				Name: String(fmt.Sprintf("tower-go-sdk-vm-snapshot-%d", time.Now().Unix())),

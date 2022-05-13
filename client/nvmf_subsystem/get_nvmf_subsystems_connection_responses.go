@@ -35,6 +35,18 @@ func (o *GetNvmfSubsystemsConnectionReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNvmfSubsystemsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNvmfSubsystemsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetNvmfSubsystemsConnectionBadRequest() *GetNvmfSubsystemsConnectionBadR
 
 /* GetNvmfSubsystemsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetNvmfSubsystemsConnectionBadRequest get nvmf subsystems connection bad request
+Bad request
 */
 type GetNvmfSubsystemsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNvmfSubsystemsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nvmf-subsystems-connection][%d] getNvmfSubsystemsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNvmfSubsystemsConnectionBadRequest) GetPayload() string {
+func (o *GetNvmfSubsystemsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNvmfSubsystemsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfSubsystemsConnectionNotFound creates a GetNvmfSubsystemsConnectionNotFound with default headers values
+func NewGetNvmfSubsystemsConnectionNotFound() *GetNvmfSubsystemsConnectionNotFound {
+	return &GetNvmfSubsystemsConnectionNotFound{}
+}
+
+/* GetNvmfSubsystemsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNvmfSubsystemsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfSubsystemsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-subsystems-connection][%d] getNvmfSubsystemsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNvmfSubsystemsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfSubsystemsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfSubsystemsConnectionInternalServerError creates a GetNvmfSubsystemsConnectionInternalServerError with default headers values
+func NewGetNvmfSubsystemsConnectionInternalServerError() *GetNvmfSubsystemsConnectionInternalServerError {
+	return &GetNvmfSubsystemsConnectionInternalServerError{}
+}
+
+/* GetNvmfSubsystemsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNvmfSubsystemsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfSubsystemsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-subsystems-connection][%d] getNvmfSubsystemsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNvmfSubsystemsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfSubsystemsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

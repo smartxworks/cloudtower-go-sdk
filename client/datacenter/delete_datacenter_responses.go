@@ -35,6 +35,18 @@ func (o *DeleteDatacenterReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteDatacenterNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteDatacenterInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteDatacenterBadRequest() *DeleteDatacenterBadRequest {
 
 /* DeleteDatacenterBadRequest describes a response with status code 400, with default header values.
 
-DeleteDatacenterBadRequest delete datacenter bad request
+Bad request
 */
 type DeleteDatacenterBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteDatacenterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-datacenter][%d] deleteDatacenterBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteDatacenterBadRequest) GetPayload() string {
+func (o *DeleteDatacenterBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteDatacenterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteDatacenterNotFound creates a DeleteDatacenterNotFound with default headers values
+func NewDeleteDatacenterNotFound() *DeleteDatacenterNotFound {
+	return &DeleteDatacenterNotFound{}
+}
+
+/* DeleteDatacenterNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteDatacenterNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteDatacenterNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-datacenter][%d] deleteDatacenterNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteDatacenterNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteDatacenterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteDatacenterInternalServerError creates a DeleteDatacenterInternalServerError with default headers values
+func NewDeleteDatacenterInternalServerError() *DeleteDatacenterInternalServerError {
+	return &DeleteDatacenterInternalServerError{}
+}
+
+/* DeleteDatacenterInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteDatacenterInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteDatacenterInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-datacenter][%d] deleteDatacenterInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteDatacenterInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteDatacenterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

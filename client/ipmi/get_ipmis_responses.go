@@ -35,6 +35,18 @@ func (o *GetIpmisReader) ReadResponse(response runtime.ClientResponse, consumer 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetIpmisNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetIpmisInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetIpmisBadRequest() *GetIpmisBadRequest {
 
 /* GetIpmisBadRequest describes a response with status code 400, with default header values.
 
-GetIpmisBadRequest get ipmis bad request
+Bad request
 */
 type GetIpmisBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetIpmisBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-ipmis][%d] getIpmisBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetIpmisBadRequest) GetPayload() string {
+func (o *GetIpmisBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetIpmisBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIpmisNotFound creates a GetIpmisNotFound with default headers values
+func NewGetIpmisNotFound() *GetIpmisNotFound {
+	return &GetIpmisNotFound{}
+}
+
+/* GetIpmisNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetIpmisNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIpmisNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-ipmis][%d] getIpmisNotFound  %+v", 404, o.Payload)
+}
+func (o *GetIpmisNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIpmisNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIpmisInternalServerError creates a GetIpmisInternalServerError with default headers values
+func NewGetIpmisInternalServerError() *GetIpmisInternalServerError {
+	return &GetIpmisInternalServerError{}
+}
+
+/* GetIpmisInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetIpmisInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIpmisInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-ipmis][%d] getIpmisInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetIpmisInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIpmisInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

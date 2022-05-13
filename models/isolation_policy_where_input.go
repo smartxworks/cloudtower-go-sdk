@@ -15,7 +15,6 @@ import (
 )
 
 // IsolationPolicyWhereInput isolation policy where input
-// Example: {"AND":"IsolationPolicyWhereInput[]","NOT":"IsolationPolicyWhereInput[]","OR":"IsolationPolicyWhereInput[]","everoute_cluster":"EverouteClusterWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","labels_every":"LabelWhereInput","labels_none":"LabelWhereInput","labels_some":"LabelWhereInput","mode":"ALL","mode_in":["ALL"],"mode_not":"ALL","mode_not_in":["ALL"],"vm":"VmWhereInput"}
 //
 // swagger:model IsolationPolicyWhereInput
 type IsolationPolicyWhereInput struct {

@@ -35,6 +35,18 @@ func (o *GetVsphereEsxiAccountsConnectionReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVsphereEsxiAccountsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVsphereEsxiAccountsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetVsphereEsxiAccountsConnectionBadRequest() *GetVsphereEsxiAccountsConn
 
 /* GetVsphereEsxiAccountsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetVsphereEsxiAccountsConnectionBadRequest get vsphere esxi accounts connection bad request
+Bad request
 */
 type GetVsphereEsxiAccountsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVsphereEsxiAccountsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vsphere-esxi-accounts-connection][%d] getVsphereEsxiAccountsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVsphereEsxiAccountsConnectionBadRequest) GetPayload() string {
+func (o *GetVsphereEsxiAccountsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVsphereEsxiAccountsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVsphereEsxiAccountsConnectionNotFound creates a GetVsphereEsxiAccountsConnectionNotFound with default headers values
+func NewGetVsphereEsxiAccountsConnectionNotFound() *GetVsphereEsxiAccountsConnectionNotFound {
+	return &GetVsphereEsxiAccountsConnectionNotFound{}
+}
+
+/* GetVsphereEsxiAccountsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVsphereEsxiAccountsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVsphereEsxiAccountsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vsphere-esxi-accounts-connection][%d] getVsphereEsxiAccountsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVsphereEsxiAccountsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVsphereEsxiAccountsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVsphereEsxiAccountsConnectionInternalServerError creates a GetVsphereEsxiAccountsConnectionInternalServerError with default headers values
+func NewGetVsphereEsxiAccountsConnectionInternalServerError() *GetVsphereEsxiAccountsConnectionInternalServerError {
+	return &GetVsphereEsxiAccountsConnectionInternalServerError{}
+}
+
+/* GetVsphereEsxiAccountsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVsphereEsxiAccountsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVsphereEsxiAccountsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vsphere-esxi-accounts-connection][%d] getVsphereEsxiAccountsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVsphereEsxiAccountsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVsphereEsxiAccountsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *DeleteConsistencyGroupReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteConsistencyGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteConsistencyGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteConsistencyGroupBadRequest() *DeleteConsistencyGroupBadRequest {
 
 /* DeleteConsistencyGroupBadRequest describes a response with status code 400, with default header values.
 
-DeleteConsistencyGroupBadRequest delete consistency group bad request
+Bad request
 */
 type DeleteConsistencyGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteConsistencyGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-consistency-group][%d] deleteConsistencyGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteConsistencyGroupBadRequest) GetPayload() string {
+func (o *DeleteConsistencyGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteConsistencyGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteConsistencyGroupNotFound creates a DeleteConsistencyGroupNotFound with default headers values
+func NewDeleteConsistencyGroupNotFound() *DeleteConsistencyGroupNotFound {
+	return &DeleteConsistencyGroupNotFound{}
+}
+
+/* DeleteConsistencyGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteConsistencyGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteConsistencyGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-consistency-group][%d] deleteConsistencyGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteConsistencyGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteConsistencyGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteConsistencyGroupInternalServerError creates a DeleteConsistencyGroupInternalServerError with default headers values
+func NewDeleteConsistencyGroupInternalServerError() *DeleteConsistencyGroupInternalServerError {
+	return &DeleteConsistencyGroupInternalServerError{}
+}
+
+/* DeleteConsistencyGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteConsistencyGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteConsistencyGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-consistency-group][%d] deleteConsistencyGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteConsistencyGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteConsistencyGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

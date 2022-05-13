@@ -15,7 +15,6 @@ import (
 )
 
 // VMTemplateWhereInput Vm template where input
-// Example: {"AND":"VmTemplateWhereInput[]","NOT":"VmTemplateWhereInput[]","OR":"VmTemplateWhereInput[]","clock_offset":"LOCALTIME","clock_offset_in":["LOCALTIME"],"clock_offset_not":"LOCALTIME","clock_offset_not_in":["LOCALTIME"],"cloud_init_supported":false,"cloud_init_supported_not":false,"cluster":"ClusterWhereInput","content_library_vm_template":"ContentLibraryVmTemplateWhereInput","cpu_model":"string","cpu_model_contains":"string","cpu_model_ends_with":"string","cpu_model_gt":"string","cpu_model_gte":"string","cpu_model_in":["string"],"cpu_model_lt":"string","cpu_model_lte":"string","cpu_model_not":"string","cpu_model_not_contains":"string","cpu_model_not_ends_with":"string","cpu_model_not_in":["string"],"cpu_model_not_starts_with":"string","cpu_model_starts_with":"string","description":"string","description_contains":"string","description_ends_with":"string","description_gt":"string","description_gte":"string","description_in":["string"],"description_lt":"string","description_lte":"string","description_not":"string","description_not_contains":"string","description_not_ends_with":"string","description_not_in":["string"],"description_not_starts_with":"string","description_starts_with":"string","entityAsyncStatus":"CREATING","entityAsyncStatus_in":["CREATING"],"entityAsyncStatus_not":"CREATING","entityAsyncStatus_not_in":["CREATING"],"firmware":"BIOS","firmware_in":["BIOS"],"firmware_not":"BIOS","firmware_not_in":["BIOS"],"ha":false,"ha_not":false,"id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","io_policy":"RESTRICT_EACH_DISK","io_policy_in":["RESTRICT_EACH_DISK"],"io_policy_not":"RESTRICT_EACH_DISK","io_policy_not_in":["RESTRICT_EACH_DISK"],"labels_every":"LabelWhereInput","labels_none":"LabelWhereInput","labels_some":"LabelWhereInput","local_created_at":"string","local_created_at_gt":"string","local_created_at_gte":"string","local_created_at_in":["string"],"local_created_at_lt":"string","local_created_at_lte":"string","local_created_at_not":"string","local_created_at_not_in":["string"],"local_id":"string","local_id_contains":"string","local_id_ends_with":"string","local_id_gt":"string","local_id_gte":"string","local_id_in":["string"],"local_id_lt":"string","local_id_lte":"string","local_id_not":"string","local_id_not_contains":"string","local_id_not_ends_with":"string","local_id_not_in":["string"],"local_id_not_starts_with":"string","local_id_starts_with":"string","max_bandwidth":0,"max_bandwidth_gt":0,"max_bandwidth_gte":0,"max_bandwidth_in":[0],"max_bandwidth_lt":0,"max_bandwidth_lte":0,"max_bandwidth_not":0,"max_bandwidth_not_in":[0],"max_bandwidth_policy":"DYNAMIC","max_bandwidth_policy_in":["DYNAMIC"],"max_bandwidth_policy_not":"DYNAMIC","max_bandwidth_policy_not_in":["DYNAMIC"],"max_iops":0,"max_iops_gt":0,"max_iops_gte":0,"max_iops_in":[0],"max_iops_lt":0,"max_iops_lte":0,"max_iops_not":0,"max_iops_not_in":[0],"max_iops_policy":"DYNAMIC","max_iops_policy_in":["DYNAMIC"],"max_iops_policy_not":"DYNAMIC","max_iops_policy_not_in":["DYNAMIC"],"memory":0,"memory_gt":0,"memory_gte":0,"memory_in":[0],"memory_lt":0,"memory_lte":0,"memory_not":0,"memory_not_in":[0],"name":"string","name_contains":"string","name_ends_with":"string","name_gt":"string","name_gte":"string","name_in":["string"],"name_lt":"string","name_lte":"string","name_not":"string","name_not_contains":"string","name_not_ends_with":"string","name_not_in":["string"],"name_not_starts_with":"string","name_starts_with":"string","size":0,"size_gt":0,"size_gte":0,"size_in":[0],"size_lt":0,"size_lte":0,"size_not":0,"size_not_in":[0],"vcpu":0,"vcpu_gt":0,"vcpu_gte":0,"vcpu_in":[0],"vcpu_lt":0,"vcpu_lte":0,"vcpu_not":0,"vcpu_not_in":[0],"video_type":"string","video_type_contains":"string","video_type_ends_with":"string","video_type_gt":"string","video_type_gte":"string","video_type_in":["string"],"video_type_lt":"string","video_type_lte":"string","video_type_not":"string","video_type_not_contains":"string","video_type_not_ends_with":"string","video_type_not_in":["string"],"video_type_not_starts_with":"string","video_type_starts_with":"string","win_opt":false,"win_opt_not":false}
 //
 // swagger:model VmTemplateWhereInput
 type VMTemplateWhereInput struct {
@@ -49,9 +48,6 @@ type VMTemplateWhereInput struct {
 
 	// cluster
 	Cluster *ClusterWhereInput `json:"cluster,omitempty"`
-
-	// content library vm template
-	ContentLibraryVMTemplate *ContentLibraryVMTemplateWhereInput `json:"content_library_vm_template,omitempty"`
 
 	// cpu model
 	CPUModel *string `json:"cpu_model,omitempty"`
@@ -567,10 +563,6 @@ func (m *VMTemplateWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateContentLibraryVMTemplate(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -838,25 +830,6 @@ func (m *VMTemplateWhereInput) validateCluster(formats strfmt.Registry) error {
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMTemplateWhereInput) validateContentLibraryVMTemplate(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContentLibraryVMTemplate) { // not required
-		return nil
-	}
-
-	if m.ContentLibraryVMTemplate != nil {
-		if err := m.ContentLibraryVMTemplate.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_vm_template")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_vm_template")
 			}
 			return err
 		}
@@ -1358,10 +1331,6 @@ func (m *VMTemplateWhereInput) ContextValidate(ctx context.Context, formats strf
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateContentLibraryVMTemplate(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1596,22 +1565,6 @@ func (m *VMTemplateWhereInput) contextValidateCluster(ctx context.Context, forma
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMTemplateWhereInput) contextValidateContentLibraryVMTemplate(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContentLibraryVMTemplate != nil {
-		if err := m.ContentLibraryVMTemplate.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_vm_template")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_vm_template")
 			}
 			return err
 		}

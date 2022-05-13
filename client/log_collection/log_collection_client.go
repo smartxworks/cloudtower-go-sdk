@@ -30,11 +30,131 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateLogCollection(params *CreateLogCollectionParams, opts ...ClientOption) (*CreateLogCollectionOK, error)
+
+	DeleteLogCollection(params *DeleteLogCollectionParams, opts ...ClientOption) (*DeleteLogCollectionOK, error)
+
+	ForceStopLogCollection(params *ForceStopLogCollectionParams, opts ...ClientOption) (*ForceStopLogCollectionOK, error)
+
 	GetLogCollections(params *GetLogCollectionsParams, opts ...ClientOption) (*GetLogCollectionsOK, error)
 
 	GetLogCollectionsConnection(params *GetLogCollectionsConnectionParams, opts ...ClientOption) (*GetLogCollectionsConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateLogCollection create log collection API
+*/
+func (a *Client) CreateLogCollection(params *CreateLogCollectionParams, opts ...ClientOption) (*CreateLogCollectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateLogCollectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateLogCollection",
+		Method:             "POST",
+		PathPattern:        "/create-log-collection",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateLogCollectionReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateLogCollectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateLogCollection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteLogCollection delete log collection API
+*/
+func (a *Client) DeleteLogCollection(params *DeleteLogCollectionParams, opts ...ClientOption) (*DeleteLogCollectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteLogCollectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "DeleteLogCollection",
+		Method:             "POST",
+		PathPattern:        "/delete-log-collection",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteLogCollectionReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteLogCollectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for DeleteLogCollection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ForceStopLogCollection force stop log collection API
+*/
+func (a *Client) ForceStopLogCollection(params *ForceStopLogCollectionParams, opts ...ClientOption) (*ForceStopLogCollectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewForceStopLogCollectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ForceStopLogCollection",
+		Method:             "POST",
+		PathPattern:        "/force-stop-log-collection",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ForceStopLogCollectionReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ForceStopLogCollectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ForceStopLogCollection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*

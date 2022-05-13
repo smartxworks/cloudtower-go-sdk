@@ -35,6 +35,18 @@ func (o *GetVMEntityFilterResultsReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVMEntityFilterResultsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVMEntityFilterResultsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetVMEntityFilterResultsBadRequest() *GetVMEntityFilterResultsBadRequest
 
 /* GetVMEntityFilterResultsBadRequest describes a response with status code 400, with default header values.
 
-GetVMEntityFilterResultsBadRequest get Vm entity filter results bad request
+Bad request
 */
 type GetVMEntityFilterResultsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVMEntityFilterResultsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vm-entity-filter-results][%d] getVmEntityFilterResultsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVMEntityFilterResultsBadRequest) GetPayload() string {
+func (o *GetVMEntityFilterResultsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVMEntityFilterResultsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMEntityFilterResultsNotFound creates a GetVMEntityFilterResultsNotFound with default headers values
+func NewGetVMEntityFilterResultsNotFound() *GetVMEntityFilterResultsNotFound {
+	return &GetVMEntityFilterResultsNotFound{}
+}
+
+/* GetVMEntityFilterResultsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVMEntityFilterResultsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMEntityFilterResultsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vm-entity-filter-results][%d] getVmEntityFilterResultsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVMEntityFilterResultsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMEntityFilterResultsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMEntityFilterResultsInternalServerError creates a GetVMEntityFilterResultsInternalServerError with default headers values
+func NewGetVMEntityFilterResultsInternalServerError() *GetVMEntityFilterResultsInternalServerError {
+	return &GetVMEntityFilterResultsInternalServerError{}
+}
+
+/* GetVMEntityFilterResultsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVMEntityFilterResultsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMEntityFilterResultsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vm-entity-filter-results][%d] getVmEntityFilterResultsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVMEntityFilterResultsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMEntityFilterResultsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

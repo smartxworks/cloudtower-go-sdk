@@ -35,6 +35,18 @@ func (o *UpdateVMPlacementGroupReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateVMPlacementGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateVMPlacementGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateVMPlacementGroupBadRequest() *UpdateVMPlacementGroupBadRequest {
 
 /* UpdateVMPlacementGroupBadRequest describes a response with status code 400, with default header values.
 
-UpdateVMPlacementGroupBadRequest update Vm placement group bad request
+Bad request
 */
 type UpdateVMPlacementGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateVMPlacementGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-vm-placement-group][%d] updateVmPlacementGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateVMPlacementGroupBadRequest) GetPayload() string {
+func (o *UpdateVMPlacementGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateVMPlacementGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateVMPlacementGroupNotFound creates a UpdateVMPlacementGroupNotFound with default headers values
+func NewUpdateVMPlacementGroupNotFound() *UpdateVMPlacementGroupNotFound {
+	return &UpdateVMPlacementGroupNotFound{}
+}
+
+/* UpdateVMPlacementGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateVMPlacementGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateVMPlacementGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-vm-placement-group][%d] updateVmPlacementGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateVMPlacementGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateVMPlacementGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateVMPlacementGroupInternalServerError creates a UpdateVMPlacementGroupInternalServerError with default headers values
+func NewUpdateVMPlacementGroupInternalServerError() *UpdateVMPlacementGroupInternalServerError {
+	return &UpdateVMPlacementGroupInternalServerError{}
+}
+
+/* UpdateVMPlacementGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateVMPlacementGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateVMPlacementGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-vm-placement-group][%d] updateVmPlacementGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateVMPlacementGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateVMPlacementGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

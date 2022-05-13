@@ -35,6 +35,18 @@ func (o *GetVcenterAccountsReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVcenterAccountsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVcenterAccountsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetVcenterAccountsBadRequest() *GetVcenterAccountsBadRequest {
 
 /* GetVcenterAccountsBadRequest describes a response with status code 400, with default header values.
 
-GetVcenterAccountsBadRequest get vcenter accounts bad request
+Bad request
 */
 type GetVcenterAccountsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVcenterAccountsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vcenter-accounts][%d] getVcenterAccountsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVcenterAccountsBadRequest) GetPayload() string {
+func (o *GetVcenterAccountsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVcenterAccountsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVcenterAccountsNotFound creates a GetVcenterAccountsNotFound with default headers values
+func NewGetVcenterAccountsNotFound() *GetVcenterAccountsNotFound {
+	return &GetVcenterAccountsNotFound{}
+}
+
+/* GetVcenterAccountsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVcenterAccountsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVcenterAccountsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vcenter-accounts][%d] getVcenterAccountsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVcenterAccountsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVcenterAccountsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVcenterAccountsInternalServerError creates a GetVcenterAccountsInternalServerError with default headers values
+func NewGetVcenterAccountsInternalServerError() *GetVcenterAccountsInternalServerError {
+	return &GetVcenterAccountsInternalServerError{}
+}
+
+/* GetVcenterAccountsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVcenterAccountsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVcenterAccountsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vcenter-accounts][%d] getVcenterAccountsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVcenterAccountsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVcenterAccountsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

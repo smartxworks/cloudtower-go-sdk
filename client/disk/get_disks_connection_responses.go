@@ -35,6 +35,18 @@ func (o *GetDisksConnectionReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetDisksConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetDisksConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetDisksConnectionBadRequest() *GetDisksConnectionBadRequest {
 
 /* GetDisksConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetDisksConnectionBadRequest get disks connection bad request
+Bad request
 */
 type GetDisksConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetDisksConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-disks-connection][%d] getDisksConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetDisksConnectionBadRequest) GetPayload() string {
+func (o *GetDisksConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetDisksConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDisksConnectionNotFound creates a GetDisksConnectionNotFound with default headers values
+func NewGetDisksConnectionNotFound() *GetDisksConnectionNotFound {
+	return &GetDisksConnectionNotFound{}
+}
+
+/* GetDisksConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetDisksConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDisksConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-disks-connection][%d] getDisksConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetDisksConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDisksConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDisksConnectionInternalServerError creates a GetDisksConnectionInternalServerError with default headers values
+func NewGetDisksConnectionInternalServerError() *GetDisksConnectionInternalServerError {
+	return &GetDisksConnectionInternalServerError{}
+}
+
+/* GetDisksConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetDisksConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDisksConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-disks-connection][%d] getDisksConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetDisksConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDisksConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

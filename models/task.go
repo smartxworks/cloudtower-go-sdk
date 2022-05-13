@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,12 +21,16 @@ import (
 // swagger:model Task
 type Task struct {
 
+	// typename
+	// Enum: [Task]
+	Typename *string `json:"__typename,omitempty"`
+
 	// args
 	// Required: true
 	Args interface{} `json:"args"`
 
 	// cluster
-	Cluster *NestedCluster `json:"cluster,omitempty"`
+	Cluster *Cluster `json:"cluster,omitempty"`
 
 	// description
 	// Required: true
@@ -38,7 +43,7 @@ type Task struct {
 	ErrorMessage *string `json:"error_message,omitempty"`
 
 	// finished at
-	FinishedAt *string `json:"finished_at,omitempty"`
+	FinishedAt interface{} `json:"finished_at,omitempty"`
 
 	// id
 	// Required: true
@@ -48,9 +53,12 @@ type Task struct {
 	// Required: true
 	Internal *bool `json:"internal"`
 
+	// key
+	Key *string `json:"key,omitempty"`
+
 	// local created at
 	// Required: true
-	LocalCreatedAt *string `json:"local_created_at"`
+	LocalCreatedAt interface{} `json:"local_created_at"`
 
 	// progress
 	// Required: true
@@ -79,7 +87,7 @@ type Task struct {
 	Snapshot *string `json:"snapshot"`
 
 	// started at
-	StartedAt *string `json:"started_at,omitempty"`
+	StartedAt interface{} `json:"started_at,omitempty"`
 
 	// status
 	// Required: true
@@ -87,15 +95,22 @@ type Task struct {
 
 	// steps
 	// Required: true
-	Steps []*NestedStep `json:"steps"`
+	Steps []*Step `json:"steps"`
+
+	// type
+	Type *TaskType `json:"type,omitempty"`
 
 	// user
-	User *NestedUser `json:"user,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // Validate validates this task
 func (m *Task) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateTypename(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateArgs(formats); err != nil {
 		res = append(res, err)
@@ -137,6 +152,10 @@ func (m *Task) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateUser(formats); err != nil {
 		res = append(res, err)
 	}
@@ -144,6 +163,45 @@ func (m *Task) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var taskTypeTypenamePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["Task"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		taskTypeTypenamePropEnum = append(taskTypeTypenamePropEnum, v)
+	}
+}
+
+const (
+
+	// TaskTypenameTask captures enum value "Task"
+	TaskTypenameTask string = "Task"
+)
+
+// prop value enum
+func (m *Task) validateTypenameEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, taskTypeTypenamePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Task) validateTypename(formats strfmt.Registry) error {
+	if swag.IsZero(m.Typename) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTypenameEnum("__typename", "body", *m.Typename); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -204,8 +262,8 @@ func (m *Task) validateInternal(formats strfmt.Registry) error {
 
 func (m *Task) validateLocalCreatedAt(formats strfmt.Registry) error {
 
-	if err := validate.Required("local_created_at", "body", m.LocalCreatedAt); err != nil {
-		return err
+	if m.LocalCreatedAt == nil {
+		return errors.Required("local_created_at", "body", nil)
 	}
 
 	return nil
@@ -280,6 +338,25 @@ func (m *Task) validateSteps(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Task) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Task) validateUser(formats strfmt.Registry) error {
 	if swag.IsZero(m.User) { // not required
 		return nil
@@ -312,6 +389,10 @@ func (m *Task) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 	}
 
 	if err := m.contextValidateSteps(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -372,6 +453,22 @@ func (m *Task) contextValidateSteps(ctx context.Context, formats strfmt.Registry
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Task) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
 	}
 
 	return nil

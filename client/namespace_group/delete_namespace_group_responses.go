@@ -35,6 +35,18 @@ func (o *DeleteNamespaceGroupReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteNamespaceGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteNamespaceGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteNamespaceGroupBadRequest() *DeleteNamespaceGroupBadRequest {
 
 /* DeleteNamespaceGroupBadRequest describes a response with status code 400, with default header values.
 
-DeleteNamespaceGroupBadRequest delete namespace group bad request
+Bad request
 */
 type DeleteNamespaceGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteNamespaceGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-namespace-group][%d] deleteNamespaceGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteNamespaceGroupBadRequest) GetPayload() string {
+func (o *DeleteNamespaceGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteNamespaceGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteNamespaceGroupNotFound creates a DeleteNamespaceGroupNotFound with default headers values
+func NewDeleteNamespaceGroupNotFound() *DeleteNamespaceGroupNotFound {
+	return &DeleteNamespaceGroupNotFound{}
+}
+
+/* DeleteNamespaceGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteNamespaceGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteNamespaceGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-namespace-group][%d] deleteNamespaceGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteNamespaceGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteNamespaceGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteNamespaceGroupInternalServerError creates a DeleteNamespaceGroupInternalServerError with default headers values
+func NewDeleteNamespaceGroupInternalServerError() *DeleteNamespaceGroupInternalServerError {
+	return &DeleteNamespaceGroupInternalServerError{}
+}
+
+/* DeleteNamespaceGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteNamespaceGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteNamespaceGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-namespace-group][%d] deleteNamespaceGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteNamespaceGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteNamespaceGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *GetNvmfSubsystemsReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNvmfSubsystemsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNvmfSubsystemsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetNvmfSubsystemsBadRequest() *GetNvmfSubsystemsBadRequest {
 
 /* GetNvmfSubsystemsBadRequest describes a response with status code 400, with default header values.
 
-GetNvmfSubsystemsBadRequest get nvmf subsystems bad request
+Bad request
 */
 type GetNvmfSubsystemsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNvmfSubsystemsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nvmf-subsystems][%d] getNvmfSubsystemsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNvmfSubsystemsBadRequest) GetPayload() string {
+func (o *GetNvmfSubsystemsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNvmfSubsystemsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfSubsystemsNotFound creates a GetNvmfSubsystemsNotFound with default headers values
+func NewGetNvmfSubsystemsNotFound() *GetNvmfSubsystemsNotFound {
+	return &GetNvmfSubsystemsNotFound{}
+}
+
+/* GetNvmfSubsystemsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNvmfSubsystemsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfSubsystemsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-subsystems][%d] getNvmfSubsystemsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNvmfSubsystemsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfSubsystemsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfSubsystemsInternalServerError creates a GetNvmfSubsystemsInternalServerError with default headers values
+func NewGetNvmfSubsystemsInternalServerError() *GetNvmfSubsystemsInternalServerError {
+	return &GetNvmfSubsystemsInternalServerError{}
+}
+
+/* GetNvmfSubsystemsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNvmfSubsystemsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfSubsystemsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-subsystems][%d] getNvmfSubsystemsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNvmfSubsystemsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfSubsystemsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

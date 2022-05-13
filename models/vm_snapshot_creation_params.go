@@ -22,7 +22,7 @@ type VMSnapshotCreationParams struct {
 
 	// data
 	// Required: true
-	Data []*VMSnapshotCreationParamsDataItems0 `json:"data"`
+	Data []*VMSnapshotCreationParamsData `json:"data"`
 }
 
 // Validate validates this Vm snapshot creation params
@@ -111,130 +111,6 @@ func (m *VMSnapshotCreationParams) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *VMSnapshotCreationParams) UnmarshalBinary(b []byte) error {
 	var res VMSnapshotCreationParams
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// VMSnapshotCreationParamsDataItems0 VM snapshot creation params data items0
-//
-// swagger:model VMSnapshotCreationParamsDataItems0
-type VMSnapshotCreationParamsDataItems0 struct {
-
-	// consistent type
-	ConsistentType *ConsistentType `json:"consistent_type,omitempty"`
-
-	// name
-	// Required: true
-	Name *string `json:"name"`
-
-	// vm id
-	// Required: true
-	VMID *string `json:"vm_id"`
-}
-
-// Validate validates this VM snapshot creation params data items0
-func (m *VMSnapshotCreationParamsDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateConsistentType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVMID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *VMSnapshotCreationParamsDataItems0) validateConsistentType(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsistentType) { // not required
-		return nil
-	}
-
-	if m.ConsistentType != nil {
-		if err := m.ConsistentType.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistent_type")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistent_type")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMSnapshotCreationParamsDataItems0) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VMSnapshotCreationParamsDataItems0) validateVMID(formats strfmt.Registry) error {
-
-	if err := validate.Required("vm_id", "body", m.VMID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this VM snapshot creation params data items0 based on the context it is used
-func (m *VMSnapshotCreationParamsDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateConsistentType(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *VMSnapshotCreationParamsDataItems0) contextValidateConsistentType(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ConsistentType != nil {
-		if err := m.ConsistentType.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistent_type")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistent_type")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *VMSnapshotCreationParamsDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *VMSnapshotCreationParamsDataItems0) UnmarshalBinary(b []byte) error {
-	var res VMSnapshotCreationParamsDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

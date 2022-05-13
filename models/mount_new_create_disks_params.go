@@ -40,7 +40,7 @@ type MountNewCreateDisksParams struct {
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
 
 	// max iops
-	MaxIops *int32 `json:"max_iops,omitempty"`
+	MaxIops *int64 `json:"max_iops,omitempty"`
 
 	// max iops policy
 	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`

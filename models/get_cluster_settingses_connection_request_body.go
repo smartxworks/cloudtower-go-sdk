@@ -14,7 +14,6 @@ import (
 )
 
 // GetClusterSettingsesConnectionRequestBody get cluster settingses connection request body
-// Example: {"after":"clusterSettingsesConnection-id-string","before":"clusterSettingsesConnection-id-string","first":0,"last":0,"orderBy":"createdAt_ASC","skip":0,"where":{"AND":"ClusterSettingsWhereInput[]","NOT":"ClusterSettingsWhereInput[]","OR":"ClusterSettingsWhereInput[]","cluster":"ClusterWhereInput","default_ha":false,"default_ha_not":false,"id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string"}}
 //
 // swagger:model GetClusterSettingsesConnectionRequestBody
 type GetClusterSettingsesConnectionRequestBody struct {

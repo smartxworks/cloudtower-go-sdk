@@ -35,6 +35,18 @@ func (o *GetLicensesReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetLicensesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetLicensesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetLicensesBadRequest() *GetLicensesBadRequest {
 
 /* GetLicensesBadRequest describes a response with status code 400, with default header values.
 
-GetLicensesBadRequest get licenses bad request
+Bad request
 */
 type GetLicensesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetLicensesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-licenses][%d] getLicensesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetLicensesBadRequest) GetPayload() string {
+func (o *GetLicensesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetLicensesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetLicensesNotFound creates a GetLicensesNotFound with default headers values
+func NewGetLicensesNotFound() *GetLicensesNotFound {
+	return &GetLicensesNotFound{}
+}
+
+/* GetLicensesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetLicensesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetLicensesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-licenses][%d] getLicensesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetLicensesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetLicensesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetLicensesInternalServerError creates a GetLicensesInternalServerError with default headers values
+func NewGetLicensesInternalServerError() *GetLicensesInternalServerError {
+	return &GetLicensesInternalServerError{}
+}
+
+/* GetLicensesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetLicensesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetLicensesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-licenses][%d] getLicensesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetLicensesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetLicensesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

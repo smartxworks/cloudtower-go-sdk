@@ -35,6 +35,18 @@ func (o *DeleteClusterRecycleBinSettingReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteClusterRecycleBinSettingNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteClusterRecycleBinSettingInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteClusterRecycleBinSettingBadRequest() *DeleteClusterRecycleBinSetti
 
 /* DeleteClusterRecycleBinSettingBadRequest describes a response with status code 400, with default header values.
 
-DeleteClusterRecycleBinSettingBadRequest delete cluster recycle bin setting bad request
+Bad request
 */
 type DeleteClusterRecycleBinSettingBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteClusterRecycleBinSettingBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-cluster-recycle-bin-setting][%d] deleteClusterRecycleBinSettingBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteClusterRecycleBinSettingBadRequest) GetPayload() string {
+func (o *DeleteClusterRecycleBinSettingBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteClusterRecycleBinSettingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteClusterRecycleBinSettingNotFound creates a DeleteClusterRecycleBinSettingNotFound with default headers values
+func NewDeleteClusterRecycleBinSettingNotFound() *DeleteClusterRecycleBinSettingNotFound {
+	return &DeleteClusterRecycleBinSettingNotFound{}
+}
+
+/* DeleteClusterRecycleBinSettingNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteClusterRecycleBinSettingNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteClusterRecycleBinSettingNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-cluster-recycle-bin-setting][%d] deleteClusterRecycleBinSettingNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteClusterRecycleBinSettingNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteClusterRecycleBinSettingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteClusterRecycleBinSettingInternalServerError creates a DeleteClusterRecycleBinSettingInternalServerError with default headers values
+func NewDeleteClusterRecycleBinSettingInternalServerError() *DeleteClusterRecycleBinSettingInternalServerError {
+	return &DeleteClusterRecycleBinSettingInternalServerError{}
+}
+
+/* DeleteClusterRecycleBinSettingInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteClusterRecycleBinSettingInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteClusterRecycleBinSettingInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-cluster-recycle-bin-setting][%d] deleteClusterRecycleBinSettingInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteClusterRecycleBinSettingInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteClusterRecycleBinSettingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

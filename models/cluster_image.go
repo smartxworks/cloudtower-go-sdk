@@ -30,6 +30,9 @@ type ClusterImage struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// local id
+	LocalID *string `json:"local_id,omitempty"`
+
 	// meta name
 	// Required: true
 	MetaName *string `json:"meta_name"`
@@ -56,6 +59,9 @@ type ClusterImage struct {
 	// version
 	// Required: true
 	Version *string `json:"version"`
+
+	// zbs version
+	ZbsVersion *string `json:"zbs_version,omitempty"`
 }
 
 // Validate validates this cluster image

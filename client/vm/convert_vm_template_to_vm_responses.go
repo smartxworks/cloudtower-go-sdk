@@ -35,6 +35,18 @@ func (o *ConvertVMTemplateToVMReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewConvertVMTemplateToVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewConvertVMTemplateToVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewConvertVMTemplateToVMBadRequest() *ConvertVMTemplateToVMBadRequest {
 
 /* ConvertVMTemplateToVMBadRequest describes a response with status code 400, with default header values.
 
-ConvertVMTemplateToVMBadRequest convert Vm template to Vm bad request
+Bad request
 */
 type ConvertVMTemplateToVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *ConvertVMTemplateToVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /convert-vm-template-to-vm][%d] convertVmTemplateToVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *ConvertVMTemplateToVMBadRequest) GetPayload() string {
+func (o *ConvertVMTemplateToVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *ConvertVMTemplateToVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewConvertVMTemplateToVMNotFound creates a ConvertVMTemplateToVMNotFound with default headers values
+func NewConvertVMTemplateToVMNotFound() *ConvertVMTemplateToVMNotFound {
+	return &ConvertVMTemplateToVMNotFound{}
+}
+
+/* ConvertVMTemplateToVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type ConvertVMTemplateToVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ConvertVMTemplateToVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /convert-vm-template-to-vm][%d] convertVmTemplateToVmNotFound  %+v", 404, o.Payload)
+}
+func (o *ConvertVMTemplateToVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ConvertVMTemplateToVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewConvertVMTemplateToVMInternalServerError creates a ConvertVMTemplateToVMInternalServerError with default headers values
+func NewConvertVMTemplateToVMInternalServerError() *ConvertVMTemplateToVMInternalServerError {
+	return &ConvertVMTemplateToVMInternalServerError{}
+}
+
+/* ConvertVMTemplateToVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type ConvertVMTemplateToVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ConvertVMTemplateToVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /convert-vm-template-to-vm][%d] convertVmTemplateToVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *ConvertVMTemplateToVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ConvertVMTemplateToVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *GetVlansConnectionReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVlansConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVlansConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetVlansConnectionBadRequest() *GetVlansConnectionBadRequest {
 
 /* GetVlansConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetVlansConnectionBadRequest get vlans connection bad request
+Bad request
 */
 type GetVlansConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVlansConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vlans-connection][%d] getVlansConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVlansConnectionBadRequest) GetPayload() string {
+func (o *GetVlansConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVlansConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVlansConnectionNotFound creates a GetVlansConnectionNotFound with default headers values
+func NewGetVlansConnectionNotFound() *GetVlansConnectionNotFound {
+	return &GetVlansConnectionNotFound{}
+}
+
+/* GetVlansConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVlansConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVlansConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vlans-connection][%d] getVlansConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVlansConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVlansConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVlansConnectionInternalServerError creates a GetVlansConnectionInternalServerError with default headers values
+func NewGetVlansConnectionInternalServerError() *GetVlansConnectionInternalServerError {
+	return &GetVlansConnectionInternalServerError{}
+}
+
+/* GetVlansConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVlansConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVlansConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vlans-connection][%d] getVlansConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVlansConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVlansConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

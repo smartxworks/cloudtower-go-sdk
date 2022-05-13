@@ -35,6 +35,18 @@ func (o *GetClusterTopoesReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClusterTopoesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetClusterTopoesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetClusterTopoesBadRequest() *GetClusterTopoesBadRequest {
 
 /* GetClusterTopoesBadRequest describes a response with status code 400, with default header values.
 
-GetClusterTopoesBadRequest get cluster topoes bad request
+Bad request
 */
 type GetClusterTopoesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetClusterTopoesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-cluster-topoes][%d] getClusterTopoesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetClusterTopoesBadRequest) GetPayload() string {
+func (o *GetClusterTopoesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetClusterTopoesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterTopoesNotFound creates a GetClusterTopoesNotFound with default headers values
+func NewGetClusterTopoesNotFound() *GetClusterTopoesNotFound {
+	return &GetClusterTopoesNotFound{}
+}
+
+/* GetClusterTopoesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetClusterTopoesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterTopoesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-topoes][%d] getClusterTopoesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetClusterTopoesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterTopoesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterTopoesInternalServerError creates a GetClusterTopoesInternalServerError with default headers values
+func NewGetClusterTopoesInternalServerError() *GetClusterTopoesInternalServerError {
+	return &GetClusterTopoesInternalServerError{}
+}
+
+/* GetClusterTopoesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetClusterTopoesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterTopoesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-topoes][%d] getClusterTopoesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClusterTopoesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterTopoesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

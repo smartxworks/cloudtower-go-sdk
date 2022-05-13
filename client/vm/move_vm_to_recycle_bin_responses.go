@@ -35,6 +35,18 @@ func (o *MoveVMToRecycleBinReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewMoveVMToRecycleBinNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewMoveVMToRecycleBinInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewMoveVMToRecycleBinBadRequest() *MoveVMToRecycleBinBadRequest {
 
 /* MoveVMToRecycleBinBadRequest describes a response with status code 400, with default header values.
 
-MoveVMToRecycleBinBadRequest move Vm to recycle bin bad request
+Bad request
 */
 type MoveVMToRecycleBinBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *MoveVMToRecycleBinBadRequest) Error() string {
 	return fmt.Sprintf("[POST /move-vm-to-recycle][%d] moveVmToRecycleBinBadRequest  %+v", 400, o.Payload)
 }
-func (o *MoveVMToRecycleBinBadRequest) GetPayload() string {
+func (o *MoveVMToRecycleBinBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *MoveVMToRecycleBinBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewMoveVMToRecycleBinNotFound creates a MoveVMToRecycleBinNotFound with default headers values
+func NewMoveVMToRecycleBinNotFound() *MoveVMToRecycleBinNotFound {
+	return &MoveVMToRecycleBinNotFound{}
+}
+
+/* MoveVMToRecycleBinNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type MoveVMToRecycleBinNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *MoveVMToRecycleBinNotFound) Error() string {
+	return fmt.Sprintf("[POST /move-vm-to-recycle][%d] moveVmToRecycleBinNotFound  %+v", 404, o.Payload)
+}
+func (o *MoveVMToRecycleBinNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *MoveVMToRecycleBinNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewMoveVMToRecycleBinInternalServerError creates a MoveVMToRecycleBinInternalServerError with default headers values
+func NewMoveVMToRecycleBinInternalServerError() *MoveVMToRecycleBinInternalServerError {
+	return &MoveVMToRecycleBinInternalServerError{}
+}
+
+/* MoveVMToRecycleBinInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type MoveVMToRecycleBinInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *MoveVMToRecycleBinInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /move-vm-to-recycle][%d] moveVmToRecycleBinInternalServerError  %+v", 500, o.Payload)
+}
+func (o *MoveVMToRecycleBinInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *MoveVMToRecycleBinInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

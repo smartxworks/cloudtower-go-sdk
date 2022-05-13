@@ -35,6 +35,18 @@ func (o *ResumeVMReader) ReadResponse(response runtime.ClientResponse, consumer 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewResumeVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewResumeVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewResumeVMBadRequest() *ResumeVMBadRequest {
 
 /* ResumeVMBadRequest describes a response with status code 400, with default header values.
 
-ResumeVMBadRequest resume Vm bad request
+Bad request
 */
 type ResumeVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *ResumeVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /resume-vm][%d] resumeVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *ResumeVMBadRequest) GetPayload() string {
+func (o *ResumeVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *ResumeVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewResumeVMNotFound creates a ResumeVMNotFound with default headers values
+func NewResumeVMNotFound() *ResumeVMNotFound {
+	return &ResumeVMNotFound{}
+}
+
+/* ResumeVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type ResumeVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ResumeVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /resume-vm][%d] resumeVmNotFound  %+v", 404, o.Payload)
+}
+func (o *ResumeVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ResumeVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewResumeVMInternalServerError creates a ResumeVMInternalServerError with default headers values
+func NewResumeVMInternalServerError() *ResumeVMInternalServerError {
+	return &ResumeVMInternalServerError{}
+}
+
+/* ResumeVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type ResumeVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ResumeVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /resume-vm][%d] resumeVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *ResumeVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ResumeVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *CreateUserReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateUserNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateUserInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateUserBadRequest() *CreateUserBadRequest {
 
 /* CreateUserBadRequest describes a response with status code 400, with default header values.
 
-CreateUserBadRequest create user bad request
+Bad request
 */
 type CreateUserBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateUserBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-user][%d] createUserBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateUserBadRequest) GetPayload() string {
+func (o *CreateUserBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateUserBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateUserNotFound creates a CreateUserNotFound with default headers values
+func NewCreateUserNotFound() *CreateUserNotFound {
+	return &CreateUserNotFound{}
+}
+
+/* CreateUserNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateUserNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateUserNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-user][%d] createUserNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateUserNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateUserInternalServerError creates a CreateUserInternalServerError with default headers values
+func NewCreateUserInternalServerError() *CreateUserInternalServerError {
+	return &CreateUserInternalServerError{}
+}
+
+/* CreateUserInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateUserInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateUserInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-user][%d] createUserInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateUserInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateUserInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

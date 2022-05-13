@@ -35,6 +35,18 @@ func (o *GetDeploysConnectionReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetDeploysConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetDeploysConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetDeploysConnectionBadRequest() *GetDeploysConnectionBadRequest {
 
 /* GetDeploysConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetDeploysConnectionBadRequest get deploys connection bad request
+Bad request
 */
 type GetDeploysConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetDeploysConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-deploys-connection][%d] getDeploysConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetDeploysConnectionBadRequest) GetPayload() string {
+func (o *GetDeploysConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetDeploysConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDeploysConnectionNotFound creates a GetDeploysConnectionNotFound with default headers values
+func NewGetDeploysConnectionNotFound() *GetDeploysConnectionNotFound {
+	return &GetDeploysConnectionNotFound{}
+}
+
+/* GetDeploysConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetDeploysConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDeploysConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-deploys-connection][%d] getDeploysConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetDeploysConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDeploysConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDeploysConnectionInternalServerError creates a GetDeploysConnectionInternalServerError with default headers values
+func NewGetDeploysConnectionInternalServerError() *GetDeploysConnectionInternalServerError {
+	return &GetDeploysConnectionInternalServerError{}
+}
+
+/* GetDeploysConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetDeploysConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDeploysConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-deploys-connection][%d] getDeploysConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetDeploysConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDeploysConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

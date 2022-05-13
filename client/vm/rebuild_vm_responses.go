@@ -35,6 +35,18 @@ func (o *RebuildVMReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewRebuildVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewRebuildVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewRebuildVMBadRequest() *RebuildVMBadRequest {
 
 /* RebuildVMBadRequest describes a response with status code 400, with default header values.
 
-RebuildVMBadRequest rebuild Vm bad request
+Bad request
 */
 type RebuildVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *RebuildVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /rebuild-vm-from-snapshot][%d] rebuildVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *RebuildVMBadRequest) GetPayload() string {
+func (o *RebuildVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *RebuildVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRebuildVMNotFound creates a RebuildVMNotFound with default headers values
+func NewRebuildVMNotFound() *RebuildVMNotFound {
+	return &RebuildVMNotFound{}
+}
+
+/* RebuildVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type RebuildVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RebuildVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /rebuild-vm-from-snapshot][%d] rebuildVmNotFound  %+v", 404, o.Payload)
+}
+func (o *RebuildVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RebuildVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRebuildVMInternalServerError creates a RebuildVMInternalServerError with default headers values
+func NewRebuildVMInternalServerError() *RebuildVMInternalServerError {
+	return &RebuildVMInternalServerError{}
+}
+
+/* RebuildVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type RebuildVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RebuildVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /rebuild-vm-from-snapshot][%d] rebuildVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RebuildVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RebuildVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

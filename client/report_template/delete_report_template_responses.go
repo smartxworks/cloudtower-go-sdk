@@ -35,6 +35,18 @@ func (o *DeleteReportTemplateReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteReportTemplateNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteReportTemplateInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteReportTemplateBadRequest() *DeleteReportTemplateBadRequest {
 
 /* DeleteReportTemplateBadRequest describes a response with status code 400, with default header values.
 
-DeleteReportTemplateBadRequest delete report template bad request
+Bad request
 */
 type DeleteReportTemplateBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteReportTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-report-template][%d] deleteReportTemplateBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteReportTemplateBadRequest) GetPayload() string {
+func (o *DeleteReportTemplateBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteReportTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteReportTemplateNotFound creates a DeleteReportTemplateNotFound with default headers values
+func NewDeleteReportTemplateNotFound() *DeleteReportTemplateNotFound {
+	return &DeleteReportTemplateNotFound{}
+}
+
+/* DeleteReportTemplateNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteReportTemplateNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteReportTemplateNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-report-template][%d] deleteReportTemplateNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteReportTemplateNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteReportTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteReportTemplateInternalServerError creates a DeleteReportTemplateInternalServerError with default headers values
+func NewDeleteReportTemplateInternalServerError() *DeleteReportTemplateInternalServerError {
+	return &DeleteReportTemplateInternalServerError{}
+}
+
+/* DeleteReportTemplateInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteReportTemplateInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteReportTemplateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-report-template][%d] deleteReportTemplateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteReportTemplateInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteReportTemplateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

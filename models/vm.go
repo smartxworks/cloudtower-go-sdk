@@ -20,12 +20,12 @@ import (
 // swagger:model Vm
 type VM struct {
 
-	// backup plans
-	BackupPlans []*NestedBackupPlan `json:"backup_plans,omitempty"`
-
 	// clock offset
 	// Required: true
 	ClockOffset *VMClockOffset `json:"clock_offset"`
+
+	// cloud init supported
+	CloudInitSupported *bool `json:"cloud_init_supported,omitempty"`
 
 	// cluster
 	Cluster *NestedCluster `json:"cluster,omitempty"`
@@ -93,9 +93,6 @@ type VM struct {
 	// in recycle bin
 	// Required: true
 	InRecycleBin *bool `json:"in_recycle_bin"`
-
-	// installed backup service
-	InstalledBackupService *NestedBackupService `json:"installed_backup_service,omitempty"`
 
 	// internal
 	// Required: true
@@ -232,10 +229,6 @@ type VM struct {
 func (m *VM) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateBackupPlans(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateClockOffset(formats); err != nil {
 		res = append(res, err)
 	}
@@ -289,10 +282,6 @@ func (m *VM) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateInRecycleBin(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateInstalledBackupService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -403,32 +392,6 @@ func (m *VM) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *VM) validateBackupPlans(formats strfmt.Registry) error {
-	if swag.IsZero(m.BackupPlans) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.BackupPlans); i++ {
-		if swag.IsZero(m.BackupPlans[i]) { // not required
-			continue
-		}
-
-		if m.BackupPlans[i] != nil {
-			if err := m.BackupPlans[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("backup_plans" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("backup_plans" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 
@@ -661,25 +624,6 @@ func (m *VM) validateInRecycleBin(formats strfmt.Registry) error {
 
 	if err := validate.Required("in_recycle_bin", "body", m.InRecycleBin); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-func (m *VM) validateInstalledBackupService(formats strfmt.Registry) error {
-	if swag.IsZero(m.InstalledBackupService) { // not required
-		return nil
-	}
-
-	if m.InstalledBackupService != nil {
-		if err := m.InstalledBackupService.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("installed_backup_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("installed_backup_service")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -1125,10 +1069,6 @@ func (m *VM) validateWinOpt(formats strfmt.Registry) error {
 func (m *VM) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateBackupPlans(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateClockOffset(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1162,10 +1102,6 @@ func (m *VM) ContextValidate(ctx context.Context, formats strfmt.Registry) error
 	}
 
 	if err := m.contextValidateHost(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateInstalledBackupService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1232,26 +1168,6 @@ func (m *VM) ContextValidate(ctx context.Context, formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *VM) contextValidateBackupPlans(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.BackupPlans); i++ {
-
-		if m.BackupPlans[i] != nil {
-			if err := m.BackupPlans[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("backup_plans" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("backup_plans" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 
@@ -1395,22 +1311,6 @@ func (m *VM) contextValidateHost(ctx context.Context, formats strfmt.Registry) e
 				return ve.ValidateName("host")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("host")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VM) contextValidateInstalledBackupService(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.InstalledBackupService != nil {
-		if err := m.InstalledBackupService.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("installed_backup_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("installed_backup_service")
 			}
 			return err
 		}

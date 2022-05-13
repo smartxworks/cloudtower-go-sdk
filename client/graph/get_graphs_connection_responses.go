@@ -35,6 +35,18 @@ func (o *GetGraphsConnectionReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetGraphsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetGraphsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetGraphsConnectionBadRequest() *GetGraphsConnectionBadRequest {
 
 /* GetGraphsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetGraphsConnectionBadRequest get graphs connection bad request
+Bad request
 */
 type GetGraphsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetGraphsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-graphs-connection][%d] getGraphsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetGraphsConnectionBadRequest) GetPayload() string {
+func (o *GetGraphsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetGraphsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetGraphsConnectionNotFound creates a GetGraphsConnectionNotFound with default headers values
+func NewGetGraphsConnectionNotFound() *GetGraphsConnectionNotFound {
+	return &GetGraphsConnectionNotFound{}
+}
+
+/* GetGraphsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetGraphsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetGraphsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-graphs-connection][%d] getGraphsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetGraphsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetGraphsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetGraphsConnectionInternalServerError creates a GetGraphsConnectionInternalServerError with default headers values
+func NewGetGraphsConnectionInternalServerError() *GetGraphsConnectionInternalServerError {
+	return &GetGraphsConnectionInternalServerError{}
+}
+
+/* GetGraphsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetGraphsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetGraphsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-graphs-connection][%d] getGraphsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetGraphsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetGraphsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

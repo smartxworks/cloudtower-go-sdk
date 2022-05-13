@@ -35,6 +35,18 @@ func (o *GetDeploysReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetDeploysNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetDeploysInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetDeploysBadRequest() *GetDeploysBadRequest {
 
 /* GetDeploysBadRequest describes a response with status code 400, with default header values.
 
-GetDeploysBadRequest get deploys bad request
+Bad request
 */
 type GetDeploysBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetDeploysBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-deploys][%d] getDeploysBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetDeploysBadRequest) GetPayload() string {
+func (o *GetDeploysBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetDeploysBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDeploysNotFound creates a GetDeploysNotFound with default headers values
+func NewGetDeploysNotFound() *GetDeploysNotFound {
+	return &GetDeploysNotFound{}
+}
+
+/* GetDeploysNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetDeploysNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDeploysNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-deploys][%d] getDeploysNotFound  %+v", 404, o.Payload)
+}
+func (o *GetDeploysNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDeploysNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDeploysInternalServerError creates a GetDeploysInternalServerError with default headers values
+func NewGetDeploysInternalServerError() *GetDeploysInternalServerError {
+	return &GetDeploysInternalServerError{}
+}
+
+/* GetDeploysInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetDeploysInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDeploysInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-deploys][%d] getDeploysInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetDeploysInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDeploysInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

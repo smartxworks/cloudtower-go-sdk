@@ -35,6 +35,18 @@ func (o *GetNfsInodesConnectionReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNfsInodesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNfsInodesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetNfsInodesConnectionBadRequest() *GetNfsInodesConnectionBadRequest {
 
 /* GetNfsInodesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetNfsInodesConnectionBadRequest get nfs inodes connection bad request
+Bad request
 */
 type GetNfsInodesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNfsInodesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nfs-inodes-connection][%d] getNfsInodesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNfsInodesConnectionBadRequest) GetPayload() string {
+func (o *GetNfsInodesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNfsInodesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNfsInodesConnectionNotFound creates a GetNfsInodesConnectionNotFound with default headers values
+func NewGetNfsInodesConnectionNotFound() *GetNfsInodesConnectionNotFound {
+	return &GetNfsInodesConnectionNotFound{}
+}
+
+/* GetNfsInodesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNfsInodesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNfsInodesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nfs-inodes-connection][%d] getNfsInodesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNfsInodesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNfsInodesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNfsInodesConnectionInternalServerError creates a GetNfsInodesConnectionInternalServerError with default headers values
+func NewGetNfsInodesConnectionInternalServerError() *GetNfsInodesConnectionInternalServerError {
+	return &GetNfsInodesConnectionInternalServerError{}
+}
+
+/* GetNfsInodesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNfsInodesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNfsInodesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nfs-inodes-connection][%d] getNfsInodesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNfsInodesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNfsInodesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

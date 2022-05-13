@@ -35,6 +35,18 @@ func (o *UpdateEntityFilterReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateEntityFilterNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateEntityFilterInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateEntityFilterBadRequest() *UpdateEntityFilterBadRequest {
 
 /* UpdateEntityFilterBadRequest describes a response with status code 400, with default header values.
 
-UpdateEntityFilterBadRequest update entity filter bad request
+Bad request
 */
 type UpdateEntityFilterBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateEntityFilterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-entity-filter][%d] updateEntityFilterBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateEntityFilterBadRequest) GetPayload() string {
+func (o *UpdateEntityFilterBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateEntityFilterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateEntityFilterNotFound creates a UpdateEntityFilterNotFound with default headers values
+func NewUpdateEntityFilterNotFound() *UpdateEntityFilterNotFound {
+	return &UpdateEntityFilterNotFound{}
+}
+
+/* UpdateEntityFilterNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateEntityFilterNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateEntityFilterNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-entity-filter][%d] updateEntityFilterNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateEntityFilterNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateEntityFilterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateEntityFilterInternalServerError creates a UpdateEntityFilterInternalServerError with default headers values
+func NewUpdateEntityFilterInternalServerError() *UpdateEntityFilterInternalServerError {
+	return &UpdateEntityFilterInternalServerError{}
+}
+
+/* UpdateEntityFilterInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateEntityFilterInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateEntityFilterInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-entity-filter][%d] updateEntityFilterInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateEntityFilterInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateEntityFilterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

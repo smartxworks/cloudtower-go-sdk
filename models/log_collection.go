@@ -59,6 +59,9 @@ type LogCollection struct {
 	// Required: true
 	Progress *float64 `json:"progress"`
 
+	// service groups
+	ServiceGroups interface{} `json:"service_groups,omitempty"`
+
 	// services
 	// Required: true
 	Services []string `json:"services"`

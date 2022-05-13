@@ -35,6 +35,18 @@ func (o *RollbackIscsiLunFromSnapshotReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewRollbackIscsiLunFromSnapshotNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewRollbackIscsiLunFromSnapshotInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewRollbackIscsiLunFromSnapshotBadRequest() *RollbackIscsiLunFromSnapshotBa
 
 /* RollbackIscsiLunFromSnapshotBadRequest describes a response with status code 400, with default header values.
 
-RollbackIscsiLunFromSnapshotBadRequest rollback iscsi lun from snapshot bad request
+Bad request
 */
 type RollbackIscsiLunFromSnapshotBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *RollbackIscsiLunFromSnapshotBadRequest) Error() string {
 	return fmt.Sprintf("[POST /rollback-iscsi-lun-from-snapshot][%d] rollbackIscsiLunFromSnapshotBadRequest  %+v", 400, o.Payload)
 }
-func (o *RollbackIscsiLunFromSnapshotBadRequest) GetPayload() string {
+func (o *RollbackIscsiLunFromSnapshotBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *RollbackIscsiLunFromSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRollbackIscsiLunFromSnapshotNotFound creates a RollbackIscsiLunFromSnapshotNotFound with default headers values
+func NewRollbackIscsiLunFromSnapshotNotFound() *RollbackIscsiLunFromSnapshotNotFound {
+	return &RollbackIscsiLunFromSnapshotNotFound{}
+}
+
+/* RollbackIscsiLunFromSnapshotNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type RollbackIscsiLunFromSnapshotNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RollbackIscsiLunFromSnapshotNotFound) Error() string {
+	return fmt.Sprintf("[POST /rollback-iscsi-lun-from-snapshot][%d] rollbackIscsiLunFromSnapshotNotFound  %+v", 404, o.Payload)
+}
+func (o *RollbackIscsiLunFromSnapshotNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RollbackIscsiLunFromSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRollbackIscsiLunFromSnapshotInternalServerError creates a RollbackIscsiLunFromSnapshotInternalServerError with default headers values
+func NewRollbackIscsiLunFromSnapshotInternalServerError() *RollbackIscsiLunFromSnapshotInternalServerError {
+	return &RollbackIscsiLunFromSnapshotInternalServerError{}
+}
+
+/* RollbackIscsiLunFromSnapshotInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type RollbackIscsiLunFromSnapshotInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RollbackIscsiLunFromSnapshotInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /rollback-iscsi-lun-from-snapshot][%d] rollbackIscsiLunFromSnapshotInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RollbackIscsiLunFromSnapshotInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RollbackIscsiLunFromSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

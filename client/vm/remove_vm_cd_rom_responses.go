@@ -35,6 +35,18 @@ func (o *RemoveVMCdRomReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewRemoveVMCdRomNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewRemoveVMCdRomInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewRemoveVMCdRomBadRequest() *RemoveVMCdRomBadRequest {
 
 /* RemoveVMCdRomBadRequest describes a response with status code 400, with default header values.
 
-RemoveVMCdRomBadRequest remove Vm cd rom bad request
+Bad request
 */
 type RemoveVMCdRomBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *RemoveVMCdRomBadRequest) Error() string {
 	return fmt.Sprintf("[POST /remove-vm-cd-rom][%d] removeVmCdRomBadRequest  %+v", 400, o.Payload)
 }
-func (o *RemoveVMCdRomBadRequest) GetPayload() string {
+func (o *RemoveVMCdRomBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *RemoveVMCdRomBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRemoveVMCdRomNotFound creates a RemoveVMCdRomNotFound with default headers values
+func NewRemoveVMCdRomNotFound() *RemoveVMCdRomNotFound {
+	return &RemoveVMCdRomNotFound{}
+}
+
+/* RemoveVMCdRomNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type RemoveVMCdRomNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RemoveVMCdRomNotFound) Error() string {
+	return fmt.Sprintf("[POST /remove-vm-cd-rom][%d] removeVmCdRomNotFound  %+v", 404, o.Payload)
+}
+func (o *RemoveVMCdRomNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RemoveVMCdRomNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRemoveVMCdRomInternalServerError creates a RemoveVMCdRomInternalServerError with default headers values
+func NewRemoveVMCdRomInternalServerError() *RemoveVMCdRomInternalServerError {
+	return &RemoveVMCdRomInternalServerError{}
+}
+
+/* RemoveVMCdRomInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type RemoveVMCdRomInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RemoveVMCdRomInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /remove-vm-cd-rom][%d] removeVmCdRomInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RemoveVMCdRomInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RemoveVMCdRomInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

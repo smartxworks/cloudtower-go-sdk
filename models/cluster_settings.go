@@ -26,6 +26,9 @@ type ClusterSettings struct {
 	// default ha
 	DefaultHa *bool `json:"default_ha,omitempty"`
 
+	// enabled iscsi
+	EnabledIscsi *bool `json:"enabled_iscsi,omitempty"`
+
 	// id
 	// Required: true
 	ID *string `json:"id"`

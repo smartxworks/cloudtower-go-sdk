@@ -35,6 +35,18 @@ func (o *UpdateLabelReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateLabelNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateLabelInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateLabelBadRequest() *UpdateLabelBadRequest {
 
 /* UpdateLabelBadRequest describes a response with status code 400, with default header values.
 
-UpdateLabelBadRequest update label bad request
+Bad request
 */
 type UpdateLabelBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateLabelBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-label][%d] updateLabelBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateLabelBadRequest) GetPayload() string {
+func (o *UpdateLabelBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateLabelBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateLabelNotFound creates a UpdateLabelNotFound with default headers values
+func NewUpdateLabelNotFound() *UpdateLabelNotFound {
+	return &UpdateLabelNotFound{}
+}
+
+/* UpdateLabelNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateLabelNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateLabelNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-label][%d] updateLabelNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateLabelNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateLabelNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateLabelInternalServerError creates a UpdateLabelInternalServerError with default headers values
+func NewUpdateLabelInternalServerError() *UpdateLabelInternalServerError {
+	return &UpdateLabelInternalServerError{}
+}
+
+/* UpdateLabelInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateLabelInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateLabelInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-label][%d] updateLabelInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateLabelInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateLabelInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

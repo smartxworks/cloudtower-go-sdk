@@ -35,6 +35,18 @@ func (o *GetClusterUpgradeHistoriesConnectionReader) ReadResponse(response runti
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClusterUpgradeHistoriesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetClusterUpgradeHistoriesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetClusterUpgradeHistoriesConnectionBadRequest() *GetClusterUpgradeHisto
 
 /* GetClusterUpgradeHistoriesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetClusterUpgradeHistoriesConnectionBadRequest get cluster upgrade histories connection bad request
+Bad request
 */
 type GetClusterUpgradeHistoriesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetClusterUpgradeHistoriesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-cluster-upgrade-histories-connection][%d] getClusterUpgradeHistoriesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetClusterUpgradeHistoriesConnectionBadRequest) GetPayload() string {
+func (o *GetClusterUpgradeHistoriesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetClusterUpgradeHistoriesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterUpgradeHistoriesConnectionNotFound creates a GetClusterUpgradeHistoriesConnectionNotFound with default headers values
+func NewGetClusterUpgradeHistoriesConnectionNotFound() *GetClusterUpgradeHistoriesConnectionNotFound {
+	return &GetClusterUpgradeHistoriesConnectionNotFound{}
+}
+
+/* GetClusterUpgradeHistoriesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetClusterUpgradeHistoriesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterUpgradeHistoriesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-upgrade-histories-connection][%d] getClusterUpgradeHistoriesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetClusterUpgradeHistoriesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterUpgradeHistoriesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterUpgradeHistoriesConnectionInternalServerError creates a GetClusterUpgradeHistoriesConnectionInternalServerError with default headers values
+func NewGetClusterUpgradeHistoriesConnectionInternalServerError() *GetClusterUpgradeHistoriesConnectionInternalServerError {
+	return &GetClusterUpgradeHistoriesConnectionInternalServerError{}
+}
+
+/* GetClusterUpgradeHistoriesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetClusterUpgradeHistoriesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterUpgradeHistoriesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-upgrade-histories-connection][%d] getClusterUpgradeHistoriesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClusterUpgradeHistoriesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterUpgradeHistoriesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *DeleteNfsExportReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteNfsExportNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteNfsExportInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteNfsExportBadRequest() *DeleteNfsExportBadRequest {
 
 /* DeleteNfsExportBadRequest describes a response with status code 400, with default header values.
 
-DeleteNfsExportBadRequest delete nfs export bad request
+Bad request
 */
 type DeleteNfsExportBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteNfsExportBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-nfs-export][%d] deleteNfsExportBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteNfsExportBadRequest) GetPayload() string {
+func (o *DeleteNfsExportBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteNfsExportBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteNfsExportNotFound creates a DeleteNfsExportNotFound with default headers values
+func NewDeleteNfsExportNotFound() *DeleteNfsExportNotFound {
+	return &DeleteNfsExportNotFound{}
+}
+
+/* DeleteNfsExportNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteNfsExportNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteNfsExportNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-nfs-export][%d] deleteNfsExportNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteNfsExportNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteNfsExportNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteNfsExportInternalServerError creates a DeleteNfsExportInternalServerError with default headers values
+func NewDeleteNfsExportInternalServerError() *DeleteNfsExportInternalServerError {
+	return &DeleteNfsExportInternalServerError{}
+}
+
+/* DeleteNfsExportInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteNfsExportInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteNfsExportInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-nfs-export][%d] deleteNfsExportInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteNfsExportInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteNfsExportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

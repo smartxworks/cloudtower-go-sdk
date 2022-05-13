@@ -35,6 +35,18 @@ func (o *GetRackTopoesConnectionReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetRackTopoesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetRackTopoesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetRackTopoesConnectionBadRequest() *GetRackTopoesConnectionBadRequest {
 
 /* GetRackTopoesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetRackTopoesConnectionBadRequest get rack topoes connection bad request
+Bad request
 */
 type GetRackTopoesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetRackTopoesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-rack-topoes-connection][%d] getRackTopoesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetRackTopoesConnectionBadRequest) GetPayload() string {
+func (o *GetRackTopoesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetRackTopoesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetRackTopoesConnectionNotFound creates a GetRackTopoesConnectionNotFound with default headers values
+func NewGetRackTopoesConnectionNotFound() *GetRackTopoesConnectionNotFound {
+	return &GetRackTopoesConnectionNotFound{}
+}
+
+/* GetRackTopoesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetRackTopoesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetRackTopoesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-rack-topoes-connection][%d] getRackTopoesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetRackTopoesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetRackTopoesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetRackTopoesConnectionInternalServerError creates a GetRackTopoesConnectionInternalServerError with default headers values
+func NewGetRackTopoesConnectionInternalServerError() *GetRackTopoesConnectionInternalServerError {
+	return &GetRackTopoesConnectionInternalServerError{}
+}
+
+/* GetRackTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetRackTopoesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetRackTopoesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-rack-topoes-connection][%d] getRackTopoesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetRackTopoesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetRackTopoesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

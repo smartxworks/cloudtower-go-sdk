@@ -35,6 +35,18 @@ func (o *ShutDownVMReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewShutDownVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShutDownVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewShutDownVMBadRequest() *ShutDownVMBadRequest {
 
 /* ShutDownVMBadRequest describes a response with status code 400, with default header values.
 
-ShutDownVMBadRequest shut down Vm bad request
+Bad request
 */
 type ShutDownVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *ShutDownVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /shutdown-vm][%d] shutDownVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *ShutDownVMBadRequest) GetPayload() string {
+func (o *ShutDownVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *ShutDownVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShutDownVMNotFound creates a ShutDownVMNotFound with default headers values
+func NewShutDownVMNotFound() *ShutDownVMNotFound {
+	return &ShutDownVMNotFound{}
+}
+
+/* ShutDownVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type ShutDownVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ShutDownVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /shutdown-vm][%d] shutDownVmNotFound  %+v", 404, o.Payload)
+}
+func (o *ShutDownVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ShutDownVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShutDownVMInternalServerError creates a ShutDownVMInternalServerError with default headers values
+func NewShutDownVMInternalServerError() *ShutDownVMInternalServerError {
+	return &ShutDownVMInternalServerError{}
+}
+
+/* ShutDownVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type ShutDownVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ShutDownVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /shutdown-vm][%d] shutDownVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *ShutDownVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ShutDownVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

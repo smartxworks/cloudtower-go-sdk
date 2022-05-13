@@ -35,6 +35,18 @@ func (o *DeleteIscsiLunReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteIscsiLunNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteIscsiLunInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteIscsiLunBadRequest() *DeleteIscsiLunBadRequest {
 
 /* DeleteIscsiLunBadRequest describes a response with status code 400, with default header values.
 
-DeleteIscsiLunBadRequest delete iscsi lun bad request
+Bad request
 */
 type DeleteIscsiLunBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteIscsiLunBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-iscsi-lun][%d] deleteIscsiLunBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteIscsiLunBadRequest) GetPayload() string {
+func (o *DeleteIscsiLunBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteIscsiLunBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteIscsiLunNotFound creates a DeleteIscsiLunNotFound with default headers values
+func NewDeleteIscsiLunNotFound() *DeleteIscsiLunNotFound {
+	return &DeleteIscsiLunNotFound{}
+}
+
+/* DeleteIscsiLunNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteIscsiLunNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteIscsiLunNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-iscsi-lun][%d] deleteIscsiLunNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteIscsiLunNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteIscsiLunNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteIscsiLunInternalServerError creates a DeleteIscsiLunInternalServerError with default headers values
+func NewDeleteIscsiLunInternalServerError() *DeleteIscsiLunInternalServerError {
+	return &DeleteIscsiLunInternalServerError{}
+}
+
+/* DeleteIscsiLunInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteIscsiLunInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteIscsiLunInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-iscsi-lun][%d] deleteIscsiLunInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteIscsiLunInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteIscsiLunInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

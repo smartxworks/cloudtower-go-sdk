@@ -15,7 +15,6 @@ import (
 )
 
 // SecurityPolicyWhereInput security policy where input
-// Example: {"AND":"SecurityPolicyWhereInput[]","NOT":"SecurityPolicyWhereInput[]","OR":"SecurityPolicyWhereInput[]","description":"string","description_contains":"string","description_ends_with":"string","description_gt":"string","description_gte":"string","description_in":["string"],"description_lt":"string","description_lte":"string","description_not":"string","description_not_contains":"string","description_not_ends_with":"string","description_not_in":["string"],"description_not_starts_with":"string","description_starts_with":"string","everoute_cluster":"EverouteClusterWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","labels_every":"LabelWhereInput","labels_none":"LabelWhereInput","labels_some":"LabelWhereInput","name":"string","name_contains":"string","name_ends_with":"string","name_gt":"string","name_gte":"string","name_in":["string"],"name_lt":"string","name_lte":"string","name_not":"string","name_not_contains":"string","name_not_ends_with":"string","name_not_in":["string"],"name_not_starts_with":"string","name_starts_with":"string"}
 //
 // swagger:model SecurityPolicyWhereInput
 type SecurityPolicyWhereInput struct {
@@ -116,15 +115,6 @@ type SecurityPolicyWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// labels every
-	LabelsEvery *LabelWhereInput `json:"labels_every,omitempty"`
-
-	// labels none
-	LabelsNone *LabelWhereInput `json:"labels_none,omitempty"`
-
-	// labels some
-	LabelsSome *LabelWhereInput `json:"labels_some,omitempty"`
-
 	// name
 	Name *string `json:"name,omitempty"`
 
@@ -166,6 +156,18 @@ type SecurityPolicyWhereInput struct {
 
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
+
+	// policy mode
+	PolicyMode *PolicyMode `json:"policy_mode,omitempty"`
+
+	// policy mode in
+	PolicyModeIn []PolicyMode `json:"policy_mode_in,omitempty"`
+
+	// policy mode not
+	PolicyModeNot *PolicyMode `json:"policy_mode_not,omitempty"`
+
+	// policy mode not in
+	PolicyModeNotIn []PolicyMode `json:"policy_mode_not_in,omitempty"`
 }
 
 // Validate validates this security policy where input
@@ -188,15 +190,19 @@ func (m *SecurityPolicyWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateLabelsEvery(formats); err != nil {
+	if err := m.validatePolicyMode(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateLabelsNone(formats); err != nil {
+	if err := m.validatePolicyModeIn(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateLabelsSome(formats); err != nil {
+	if err := m.validatePolicyModeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePolicyModeNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -303,17 +309,17 @@ func (m *SecurityPolicyWhereInput) validateEverouteCluster(formats strfmt.Regist
 	return nil
 }
 
-func (m *SecurityPolicyWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsEvery) { // not required
+func (m *SecurityPolicyWhereInput) validatePolicyMode(formats strfmt.Registry) error {
+	if swag.IsZero(m.PolicyMode) { // not required
 		return nil
 	}
 
-	if m.LabelsEvery != nil {
-		if err := m.LabelsEvery.Validate(formats); err != nil {
+	if m.PolicyMode != nil {
+		if err := m.PolicyMode.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_every")
+				return ve.ValidateName("policy_mode")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_every")
+				return ce.ValidateName("policy_mode")
 			}
 			return err
 		}
@@ -322,17 +328,38 @@ func (m *SecurityPolicyWhereInput) validateLabelsEvery(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *SecurityPolicyWhereInput) validateLabelsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsNone) { // not required
+func (m *SecurityPolicyWhereInput) validatePolicyModeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.PolicyModeIn) { // not required
 		return nil
 	}
 
-	if m.LabelsNone != nil {
-		if err := m.LabelsNone.Validate(formats); err != nil {
+	for i := 0; i < len(m.PolicyModeIn); i++ {
+
+		if err := m.PolicyModeIn[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_none")
+				return ve.ValidateName("policy_mode_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_none")
+				return ce.ValidateName("policy_mode_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *SecurityPolicyWhereInput) validatePolicyModeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.PolicyModeNot) { // not required
+		return nil
+	}
+
+	if m.PolicyModeNot != nil {
+		if err := m.PolicyModeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("policy_mode_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("policy_mode_not")
 			}
 			return err
 		}
@@ -341,20 +368,22 @@ func (m *SecurityPolicyWhereInput) validateLabelsNone(formats strfmt.Registry) e
 	return nil
 }
 
-func (m *SecurityPolicyWhereInput) validateLabelsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsSome) { // not required
+func (m *SecurityPolicyWhereInput) validatePolicyModeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.PolicyModeNotIn) { // not required
 		return nil
 	}
 
-	if m.LabelsSome != nil {
-		if err := m.LabelsSome.Validate(formats); err != nil {
+	for i := 0; i < len(m.PolicyModeNotIn); i++ {
+
+		if err := m.PolicyModeNotIn[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_some")
+				return ve.ValidateName("policy_mode_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_some")
+				return ce.ValidateName("policy_mode_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
+
 	}
 
 	return nil
@@ -380,15 +409,19 @@ func (m *SecurityPolicyWhereInput) ContextValidate(ctx context.Context, formats 
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLabelsEvery(ctx, formats); err != nil {
+	if err := m.contextValidatePolicyMode(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLabelsNone(ctx, formats); err != nil {
+	if err := m.contextValidatePolicyModeIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLabelsSome(ctx, formats); err != nil {
+	if err := m.contextValidatePolicyModeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePolicyModeNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -474,14 +507,14 @@ func (m *SecurityPolicyWhereInput) contextValidateEverouteCluster(ctx context.Co
 	return nil
 }
 
-func (m *SecurityPolicyWhereInput) contextValidateLabelsEvery(ctx context.Context, formats strfmt.Registry) error {
+func (m *SecurityPolicyWhereInput) contextValidatePolicyMode(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.LabelsEvery != nil {
-		if err := m.LabelsEvery.ContextValidate(ctx, formats); err != nil {
+	if m.PolicyMode != nil {
+		if err := m.PolicyMode.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_every")
+				return ve.ValidateName("policy_mode")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_every")
+				return ce.ValidateName("policy_mode")
 			}
 			return err
 		}
@@ -490,14 +523,32 @@ func (m *SecurityPolicyWhereInput) contextValidateLabelsEvery(ctx context.Contex
 	return nil
 }
 
-func (m *SecurityPolicyWhereInput) contextValidateLabelsNone(ctx context.Context, formats strfmt.Registry) error {
+func (m *SecurityPolicyWhereInput) contextValidatePolicyModeIn(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.LabelsNone != nil {
-		if err := m.LabelsNone.ContextValidate(ctx, formats); err != nil {
+	for i := 0; i < len(m.PolicyModeIn); i++ {
+
+		if err := m.PolicyModeIn[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_none")
+				return ve.ValidateName("policy_mode_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_none")
+				return ce.ValidateName("policy_mode_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *SecurityPolicyWhereInput) contextValidatePolicyModeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PolicyModeNot != nil {
+		if err := m.PolicyModeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("policy_mode_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("policy_mode_not")
 			}
 			return err
 		}
@@ -506,17 +557,19 @@ func (m *SecurityPolicyWhereInput) contextValidateLabelsNone(ctx context.Context
 	return nil
 }
 
-func (m *SecurityPolicyWhereInput) contextValidateLabelsSome(ctx context.Context, formats strfmt.Registry) error {
+func (m *SecurityPolicyWhereInput) contextValidatePolicyModeNotIn(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.LabelsSome != nil {
-		if err := m.LabelsSome.ContextValidate(ctx, formats); err != nil {
+	for i := 0; i < len(m.PolicyModeNotIn); i++ {
+
+		if err := m.PolicyModeNotIn[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_some")
+				return ve.ValidateName("policy_mode_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_some")
+				return ce.ValidateName("policy_mode_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
+
 	}
 
 	return nil

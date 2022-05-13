@@ -35,6 +35,18 @@ func (o *GetConsistencyGroupSnapshotsConnectionReader) ReadResponse(response run
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetConsistencyGroupSnapshotsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetConsistencyGroupSnapshotsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetConsistencyGroupSnapshotsConnectionBadRequest() *GetConsistencyGroupS
 
 /* GetConsistencyGroupSnapshotsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetConsistencyGroupSnapshotsConnectionBadRequest get consistency group snapshots connection bad request
+Bad request
 */
 type GetConsistencyGroupSnapshotsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetConsistencyGroupSnapshotsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-consistency-group-snapshots-connection][%d] getConsistencyGroupSnapshotsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetConsistencyGroupSnapshotsConnectionBadRequest) GetPayload() string {
+func (o *GetConsistencyGroupSnapshotsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetConsistencyGroupSnapshotsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetConsistencyGroupSnapshotsConnectionNotFound creates a GetConsistencyGroupSnapshotsConnectionNotFound with default headers values
+func NewGetConsistencyGroupSnapshotsConnectionNotFound() *GetConsistencyGroupSnapshotsConnectionNotFound {
+	return &GetConsistencyGroupSnapshotsConnectionNotFound{}
+}
+
+/* GetConsistencyGroupSnapshotsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetConsistencyGroupSnapshotsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetConsistencyGroupSnapshotsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-consistency-group-snapshots-connection][%d] getConsistencyGroupSnapshotsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetConsistencyGroupSnapshotsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetConsistencyGroupSnapshotsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetConsistencyGroupSnapshotsConnectionInternalServerError creates a GetConsistencyGroupSnapshotsConnectionInternalServerError with default headers values
+func NewGetConsistencyGroupSnapshotsConnectionInternalServerError() *GetConsistencyGroupSnapshotsConnectionInternalServerError {
+	return &GetConsistencyGroupSnapshotsConnectionInternalServerError{}
+}
+
+/* GetConsistencyGroupSnapshotsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetConsistencyGroupSnapshotsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetConsistencyGroupSnapshotsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-consistency-group-snapshots-connection][%d] getConsistencyGroupSnapshotsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetConsistencyGroupSnapshotsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetConsistencyGroupSnapshotsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

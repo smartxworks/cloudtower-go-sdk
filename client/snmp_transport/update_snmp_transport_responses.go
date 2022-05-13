@@ -35,6 +35,18 @@ func (o *UpdateSnmpTransportReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateSnmpTransportNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateSnmpTransportInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateSnmpTransportBadRequest() *UpdateSnmpTransportBadRequest {
 
 /* UpdateSnmpTransportBadRequest describes a response with status code 400, with default header values.
 
-UpdateSnmpTransportBadRequest update snmp transport bad request
+Bad request
 */
 type UpdateSnmpTransportBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateSnmpTransportBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-snmp-transport][%d] updateSnmpTransportBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateSnmpTransportBadRequest) GetPayload() string {
+func (o *UpdateSnmpTransportBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateSnmpTransportBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateSnmpTransportNotFound creates a UpdateSnmpTransportNotFound with default headers values
+func NewUpdateSnmpTransportNotFound() *UpdateSnmpTransportNotFound {
+	return &UpdateSnmpTransportNotFound{}
+}
+
+/* UpdateSnmpTransportNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateSnmpTransportNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateSnmpTransportNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-snmp-transport][%d] updateSnmpTransportNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateSnmpTransportNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateSnmpTransportNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateSnmpTransportInternalServerError creates a UpdateSnmpTransportInternalServerError with default headers values
+func NewUpdateSnmpTransportInternalServerError() *UpdateSnmpTransportInternalServerError {
+	return &UpdateSnmpTransportInternalServerError{}
+}
+
+/* UpdateSnmpTransportInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateSnmpTransportInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateSnmpTransportInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-snmp-transport][%d] updateSnmpTransportInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateSnmpTransportInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateSnmpTransportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

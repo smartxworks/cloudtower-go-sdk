@@ -22,7 +22,7 @@ type SnapshotGroupCloneParams struct {
 
 	// clone
 	// Required: true
-	Clone []*SnapshotGroupCloneParamsCloneItems0 `json:"clone"`
+	Clone []*SnapshotGroupCloneParam `json:"clone"`
 
 	// id
 	// Required: true
@@ -128,79 +128,6 @@ func (m *SnapshotGroupCloneParams) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *SnapshotGroupCloneParams) UnmarshalBinary(b []byte) error {
 	var res SnapshotGroupCloneParams
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// SnapshotGroupCloneParamsCloneItems0 snapshot group clone params clone items0
-//
-// swagger:model SnapshotGroupCloneParamsCloneItems0
-type SnapshotGroupCloneParamsCloneItems0 struct {
-
-	// from source vm id
-	// Required: true
-	FromSourceVMID *string `json:"from_source_vm_id"`
-
-	// to cloned vm name
-	// Required: true
-	ToClonedVMName *string `json:"to_cloned_vm_name"`
-}
-
-// Validate validates this snapshot group clone params clone items0
-func (m *SnapshotGroupCloneParamsCloneItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateFromSourceVMID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateToClonedVMName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *SnapshotGroupCloneParamsCloneItems0) validateFromSourceVMID(formats strfmt.Registry) error {
-
-	if err := validate.Required("from_source_vm_id", "body", m.FromSourceVMID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *SnapshotGroupCloneParamsCloneItems0) validateToClonedVMName(formats strfmt.Registry) error {
-
-	if err := validate.Required("to_cloned_vm_name", "body", m.ToClonedVMName); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this snapshot group clone params clone items0 based on context it is used
-func (m *SnapshotGroupCloneParamsCloneItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *SnapshotGroupCloneParamsCloneItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *SnapshotGroupCloneParamsCloneItems0) UnmarshalBinary(b []byte) error {
-	var res SnapshotGroupCloneParamsCloneItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

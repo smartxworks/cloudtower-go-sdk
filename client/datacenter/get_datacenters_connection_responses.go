@@ -35,6 +35,18 @@ func (o *GetDatacentersConnectionReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetDatacentersConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetDatacentersConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetDatacentersConnectionBadRequest() *GetDatacentersConnectionBadRequest
 
 /* GetDatacentersConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetDatacentersConnectionBadRequest get datacenters connection bad request
+Bad request
 */
 type GetDatacentersConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetDatacentersConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-datacenters-connection][%d] getDatacentersConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetDatacentersConnectionBadRequest) GetPayload() string {
+func (o *GetDatacentersConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetDatacentersConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatacentersConnectionNotFound creates a GetDatacentersConnectionNotFound with default headers values
+func NewGetDatacentersConnectionNotFound() *GetDatacentersConnectionNotFound {
+	return &GetDatacentersConnectionNotFound{}
+}
+
+/* GetDatacentersConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetDatacentersConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDatacentersConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-datacenters-connection][%d] getDatacentersConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetDatacentersConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDatacentersConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatacentersConnectionInternalServerError creates a GetDatacentersConnectionInternalServerError with default headers values
+func NewGetDatacentersConnectionInternalServerError() *GetDatacentersConnectionInternalServerError {
+	return &GetDatacentersConnectionInternalServerError{}
+}
+
+/* GetDatacentersConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetDatacentersConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDatacentersConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-datacenters-connection][%d] getDatacentersConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetDatacentersConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDatacentersConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

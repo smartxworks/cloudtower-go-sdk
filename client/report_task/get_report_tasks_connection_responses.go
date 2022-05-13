@@ -35,6 +35,18 @@ func (o *GetReportTasksConnectionReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetReportTasksConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetReportTasksConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetReportTasksConnectionBadRequest() *GetReportTasksConnectionBadRequest
 
 /* GetReportTasksConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetReportTasksConnectionBadRequest get report tasks connection bad request
+Bad request
 */
 type GetReportTasksConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetReportTasksConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-report-tasks-connection][%d] getReportTasksConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetReportTasksConnectionBadRequest) GetPayload() string {
+func (o *GetReportTasksConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetReportTasksConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetReportTasksConnectionNotFound creates a GetReportTasksConnectionNotFound with default headers values
+func NewGetReportTasksConnectionNotFound() *GetReportTasksConnectionNotFound {
+	return &GetReportTasksConnectionNotFound{}
+}
+
+/* GetReportTasksConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetReportTasksConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetReportTasksConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-report-tasks-connection][%d] getReportTasksConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetReportTasksConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetReportTasksConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetReportTasksConnectionInternalServerError creates a GetReportTasksConnectionInternalServerError with default headers values
+func NewGetReportTasksConnectionInternalServerError() *GetReportTasksConnectionInternalServerError {
+	return &GetReportTasksConnectionInternalServerError{}
+}
+
+/* GetReportTasksConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetReportTasksConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetReportTasksConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-report-tasks-connection][%d] getReportTasksConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetReportTasksConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetReportTasksConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

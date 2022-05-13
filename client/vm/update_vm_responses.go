@@ -35,6 +35,18 @@ func (o *UpdateVMReader) ReadResponse(response runtime.ClientResponse, consumer 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateVMBadRequest() *UpdateVMBadRequest {
 
 /* UpdateVMBadRequest describes a response with status code 400, with default header values.
 
-UpdateVMBadRequest update Vm bad request
+Bad request
 */
 type UpdateVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-vm-basic-info][%d] updateVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateVMBadRequest) GetPayload() string {
+func (o *UpdateVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateVMNotFound creates a UpdateVMNotFound with default headers values
+func NewUpdateVMNotFound() *UpdateVMNotFound {
+	return &UpdateVMNotFound{}
+}
+
+/* UpdateVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-vm-basic-info][%d] updateVmNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateVMInternalServerError creates a UpdateVMInternalServerError with default headers values
+func NewUpdateVMInternalServerError() *UpdateVMInternalServerError {
+	return &UpdateVMInternalServerError{}
+}
+
+/* UpdateVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-vm-basic-info][%d] updateVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

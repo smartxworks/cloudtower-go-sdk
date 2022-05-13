@@ -35,6 +35,18 @@ func (o *CreateNamespaceGroupReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateNamespaceGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateNamespaceGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateNamespaceGroupBadRequest() *CreateNamespaceGroupBadRequest {
 
 /* CreateNamespaceGroupBadRequest describes a response with status code 400, with default header values.
 
-CreateNamespaceGroupBadRequest create namespace group bad request
+Bad request
 */
 type CreateNamespaceGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateNamespaceGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-namespace-group][%d] createNamespaceGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateNamespaceGroupBadRequest) GetPayload() string {
+func (o *CreateNamespaceGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateNamespaceGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateNamespaceGroupNotFound creates a CreateNamespaceGroupNotFound with default headers values
+func NewCreateNamespaceGroupNotFound() *CreateNamespaceGroupNotFound {
+	return &CreateNamespaceGroupNotFound{}
+}
+
+/* CreateNamespaceGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateNamespaceGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateNamespaceGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-namespace-group][%d] createNamespaceGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateNamespaceGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateNamespaceGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateNamespaceGroupInternalServerError creates a CreateNamespaceGroupInternalServerError with default headers values
+func NewCreateNamespaceGroupInternalServerError() *CreateNamespaceGroupInternalServerError {
+	return &CreateNamespaceGroupInternalServerError{}
+}
+
+/* CreateNamespaceGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateNamespaceGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateNamespaceGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-namespace-group][%d] createNamespaceGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateNamespaceGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateNamespaceGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

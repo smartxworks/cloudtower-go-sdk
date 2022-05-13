@@ -35,6 +35,18 @@ func (o *GetVMSnapshotsReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVMSnapshotsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVMSnapshotsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetVMSnapshotsBadRequest() *GetVMSnapshotsBadRequest {
 
 /* GetVMSnapshotsBadRequest describes a response with status code 400, with default header values.
 
-GetVMSnapshotsBadRequest get Vm snapshots bad request
+Bad request
 */
 type GetVMSnapshotsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVMSnapshotsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vm-snapshots][%d] getVmSnapshotsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVMSnapshotsBadRequest) GetPayload() string {
+func (o *GetVMSnapshotsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVMSnapshotsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMSnapshotsNotFound creates a GetVMSnapshotsNotFound with default headers values
+func NewGetVMSnapshotsNotFound() *GetVMSnapshotsNotFound {
+	return &GetVMSnapshotsNotFound{}
+}
+
+/* GetVMSnapshotsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVMSnapshotsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMSnapshotsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vm-snapshots][%d] getVmSnapshotsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVMSnapshotsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMSnapshotsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMSnapshotsInternalServerError creates a GetVMSnapshotsInternalServerError with default headers values
+func NewGetVMSnapshotsInternalServerError() *GetVMSnapshotsInternalServerError {
+	return &GetVMSnapshotsInternalServerError{}
+}
+
+/* GetVMSnapshotsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVMSnapshotsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMSnapshotsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vm-snapshots][%d] getVmSnapshotsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVMSnapshotsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMSnapshotsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

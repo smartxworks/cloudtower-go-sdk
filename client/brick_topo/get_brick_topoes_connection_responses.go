@@ -35,6 +35,18 @@ func (o *GetBrickTopoesConnectionReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetBrickTopoesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetBrickTopoesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetBrickTopoesConnectionBadRequest() *GetBrickTopoesConnectionBadRequest
 
 /* GetBrickTopoesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetBrickTopoesConnectionBadRequest get brick topoes connection bad request
+Bad request
 */
 type GetBrickTopoesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetBrickTopoesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-brick-topoes-connection][%d] getBrickTopoesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetBrickTopoesConnectionBadRequest) GetPayload() string {
+func (o *GetBrickTopoesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetBrickTopoesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetBrickTopoesConnectionNotFound creates a GetBrickTopoesConnectionNotFound with default headers values
+func NewGetBrickTopoesConnectionNotFound() *GetBrickTopoesConnectionNotFound {
+	return &GetBrickTopoesConnectionNotFound{}
+}
+
+/* GetBrickTopoesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetBrickTopoesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetBrickTopoesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-brick-topoes-connection][%d] getBrickTopoesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetBrickTopoesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetBrickTopoesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetBrickTopoesConnectionInternalServerError creates a GetBrickTopoesConnectionInternalServerError with default headers values
+func NewGetBrickTopoesConnectionInternalServerError() *GetBrickTopoesConnectionInternalServerError {
+	return &GetBrickTopoesConnectionInternalServerError{}
+}
+
+/* GetBrickTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetBrickTopoesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetBrickTopoesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-brick-topoes-connection][%d] getBrickTopoesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetBrickTopoesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetBrickTopoesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *DeleteGraphReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteGraphNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteGraphInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteGraphBadRequest() *DeleteGraphBadRequest {
 
 /* DeleteGraphBadRequest describes a response with status code 400, with default header values.
 
-DeleteGraphBadRequest delete graph bad request
+Bad request
 */
 type DeleteGraphBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteGraphBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-graph][%d] deleteGraphBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteGraphBadRequest) GetPayload() string {
+func (o *DeleteGraphBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteGraphBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteGraphNotFound creates a DeleteGraphNotFound with default headers values
+func NewDeleteGraphNotFound() *DeleteGraphNotFound {
+	return &DeleteGraphNotFound{}
+}
+
+/* DeleteGraphNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteGraphNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteGraphNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-graph][%d] deleteGraphNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteGraphNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteGraphNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteGraphInternalServerError creates a DeleteGraphInternalServerError with default headers values
+func NewDeleteGraphInternalServerError() *DeleteGraphInternalServerError {
+	return &DeleteGraphInternalServerError{}
+}
+
+/* DeleteGraphInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteGraphInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteGraphInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-graph][%d] deleteGraphInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteGraphInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteGraphInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

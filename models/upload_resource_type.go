@@ -30,6 +30,9 @@ func (m UploadResourceType) Pointer() *UploadResourceType {
 
 const (
 
+	// UploadResourceTypeCLOUDTOWERAPPLICATIONPACKAGE captures enum value "CLOUDTOWER_APPLICATION_PACKAGE"
+	UploadResourceTypeCLOUDTOWERAPPLICATIONPACKAGE UploadResourceType = "CLOUDTOWER_APPLICATION_PACKAGE"
+
 	// UploadResourceTypeCLUSTERIMAGE captures enum value "CLUSTER_IMAGE"
 	UploadResourceTypeCLUSTERIMAGE UploadResourceType = "CLUSTER_IMAGE"
 
@@ -57,7 +60,7 @@ var uploadResourceTypeEnum []interface{}
 
 func init() {
 	var res []UploadResourceType
-	if err := json.Unmarshal([]byte(`["CLUSTER_IMAGE","CLUSTER_IMAGE_META","CONTENT_LIBRARY_IMAGE","ELF_IMAGE","EVEROUTE_PACKAGE","MONITOR_IMAGE","SVT_IMAGE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CLOUDTOWER_APPLICATION_PACKAGE","CLUSTER_IMAGE","CLUSTER_IMAGE_META","CONTENT_LIBRARY_IMAGE","ELF_IMAGE","EVEROUTE_PACKAGE","MONITOR_IMAGE","SVT_IMAGE"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

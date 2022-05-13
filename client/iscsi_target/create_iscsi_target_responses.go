@@ -35,6 +35,18 @@ func (o *CreateIscsiTargetReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateIscsiTargetNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateIscsiTargetInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateIscsiTargetBadRequest() *CreateIscsiTargetBadRequest {
 
 /* CreateIscsiTargetBadRequest describes a response with status code 400, with default header values.
 
-CreateIscsiTargetBadRequest create iscsi target bad request
+Bad request
 */
 type CreateIscsiTargetBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateIscsiTargetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-iscsi-target][%d] createIscsiTargetBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateIscsiTargetBadRequest) GetPayload() string {
+func (o *CreateIscsiTargetBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateIscsiTargetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateIscsiTargetNotFound creates a CreateIscsiTargetNotFound with default headers values
+func NewCreateIscsiTargetNotFound() *CreateIscsiTargetNotFound {
+	return &CreateIscsiTargetNotFound{}
+}
+
+/* CreateIscsiTargetNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateIscsiTargetNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateIscsiTargetNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-iscsi-target][%d] createIscsiTargetNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateIscsiTargetNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateIscsiTargetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateIscsiTargetInternalServerError creates a CreateIscsiTargetInternalServerError with default headers values
+func NewCreateIscsiTargetInternalServerError() *CreateIscsiTargetInternalServerError {
+	return &CreateIscsiTargetInternalServerError{}
+}
+
+/* CreateIscsiTargetInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateIscsiTargetInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateIscsiTargetInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-iscsi-target][%d] createIscsiTargetInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateIscsiTargetInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateIscsiTargetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

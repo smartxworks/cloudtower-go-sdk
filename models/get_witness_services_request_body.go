@@ -15,7 +15,6 @@ import (
 )
 
 // GetWitnessServicesRequestBody get witness services request body
-// Example: {"where":{"id":"string","local_id":"string"}}
 //
 // swagger:model GetWitnessServicesRequestBody
 type GetWitnessServicesRequestBody struct {

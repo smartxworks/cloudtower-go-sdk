@@ -36,6 +36,9 @@ const (
 	// TaskStatusFAILED captures enum value "FAILED"
 	TaskStatusFAILED TaskStatus = "FAILED"
 
+	// TaskStatusPAUSED captures enum value "PAUSED"
+	TaskStatusPAUSED TaskStatus = "PAUSED"
+
 	// TaskStatusPENDING captures enum value "PENDING"
 	TaskStatusPENDING TaskStatus = "PENDING"
 
@@ -48,7 +51,7 @@ var taskStatusEnum []interface{}
 
 func init() {
 	var res []TaskStatus
-	if err := json.Unmarshal([]byte(`["EXECUTING","FAILED","PENDING","SUCCESSED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["EXECUTING","FAILED","PAUSED","PENDING","SUCCESSED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

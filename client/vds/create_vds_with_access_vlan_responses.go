@@ -35,6 +35,18 @@ func (o *CreateVdsWithAccessVlanReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateVdsWithAccessVlanNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateVdsWithAccessVlanInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateVdsWithAccessVlanBadRequest() *CreateVdsWithAccessVlanBadRequest {
 
 /* CreateVdsWithAccessVlanBadRequest describes a response with status code 400, with default header values.
 
-CreateVdsWithAccessVlanBadRequest create vds with access vlan bad request
+Bad request
 */
 type CreateVdsWithAccessVlanBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateVdsWithAccessVlanBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-vds-with-access-vlan][%d] createVdsWithAccessVlanBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateVdsWithAccessVlanBadRequest) GetPayload() string {
+func (o *CreateVdsWithAccessVlanBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateVdsWithAccessVlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateVdsWithAccessVlanNotFound creates a CreateVdsWithAccessVlanNotFound with default headers values
+func NewCreateVdsWithAccessVlanNotFound() *CreateVdsWithAccessVlanNotFound {
+	return &CreateVdsWithAccessVlanNotFound{}
+}
+
+/* CreateVdsWithAccessVlanNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateVdsWithAccessVlanNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateVdsWithAccessVlanNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-vds-with-access-vlan][%d] createVdsWithAccessVlanNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateVdsWithAccessVlanNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateVdsWithAccessVlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateVdsWithAccessVlanInternalServerError creates a CreateVdsWithAccessVlanInternalServerError with default headers values
+func NewCreateVdsWithAccessVlanInternalServerError() *CreateVdsWithAccessVlanInternalServerError {
+	return &CreateVdsWithAccessVlanInternalServerError{}
+}
+
+/* CreateVdsWithAccessVlanInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateVdsWithAccessVlanInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateVdsWithAccessVlanInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-vds-with-access-vlan][%d] createVdsWithAccessVlanInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateVdsWithAccessVlanInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateVdsWithAccessVlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

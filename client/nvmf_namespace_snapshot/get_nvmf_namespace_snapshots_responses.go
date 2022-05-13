@@ -35,6 +35,18 @@ func (o *GetNvmfNamespaceSnapshotsReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNvmfNamespaceSnapshotsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNvmfNamespaceSnapshotsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetNvmfNamespaceSnapshotsBadRequest() *GetNvmfNamespaceSnapshotsBadReque
 
 /* GetNvmfNamespaceSnapshotsBadRequest describes a response with status code 400, with default header values.
 
-GetNvmfNamespaceSnapshotsBadRequest get nvmf namespace snapshots bad request
+Bad request
 */
 type GetNvmfNamespaceSnapshotsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNvmfNamespaceSnapshotsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nvmf-namespace-snapshots][%d] getNvmfNamespaceSnapshotsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNvmfNamespaceSnapshotsBadRequest) GetPayload() string {
+func (o *GetNvmfNamespaceSnapshotsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNvmfNamespaceSnapshotsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfNamespaceSnapshotsNotFound creates a GetNvmfNamespaceSnapshotsNotFound with default headers values
+func NewGetNvmfNamespaceSnapshotsNotFound() *GetNvmfNamespaceSnapshotsNotFound {
+	return &GetNvmfNamespaceSnapshotsNotFound{}
+}
+
+/* GetNvmfNamespaceSnapshotsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNvmfNamespaceSnapshotsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfNamespaceSnapshotsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-namespace-snapshots][%d] getNvmfNamespaceSnapshotsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNvmfNamespaceSnapshotsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfNamespaceSnapshotsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfNamespaceSnapshotsInternalServerError creates a GetNvmfNamespaceSnapshotsInternalServerError with default headers values
+func NewGetNvmfNamespaceSnapshotsInternalServerError() *GetNvmfNamespaceSnapshotsInternalServerError {
+	return &GetNvmfNamespaceSnapshotsInternalServerError{}
+}
+
+/* GetNvmfNamespaceSnapshotsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNvmfNamespaceSnapshotsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfNamespaceSnapshotsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-namespace-snapshots][%d] getNvmfNamespaceSnapshotsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNvmfNamespaceSnapshotsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfNamespaceSnapshotsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

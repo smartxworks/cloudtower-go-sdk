@@ -35,6 +35,18 @@ func (o *GetConsistencyGroupsConnectionReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetConsistencyGroupsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetConsistencyGroupsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetConsistencyGroupsConnectionBadRequest() *GetConsistencyGroupsConnecti
 
 /* GetConsistencyGroupsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetConsistencyGroupsConnectionBadRequest get consistency groups connection bad request
+Bad request
 */
 type GetConsistencyGroupsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetConsistencyGroupsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-consistency-groups-connection][%d] getConsistencyGroupsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetConsistencyGroupsConnectionBadRequest) GetPayload() string {
+func (o *GetConsistencyGroupsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetConsistencyGroupsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetConsistencyGroupsConnectionNotFound creates a GetConsistencyGroupsConnectionNotFound with default headers values
+func NewGetConsistencyGroupsConnectionNotFound() *GetConsistencyGroupsConnectionNotFound {
+	return &GetConsistencyGroupsConnectionNotFound{}
+}
+
+/* GetConsistencyGroupsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetConsistencyGroupsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetConsistencyGroupsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-consistency-groups-connection][%d] getConsistencyGroupsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetConsistencyGroupsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetConsistencyGroupsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetConsistencyGroupsConnectionInternalServerError creates a GetConsistencyGroupsConnectionInternalServerError with default headers values
+func NewGetConsistencyGroupsConnectionInternalServerError() *GetConsistencyGroupsConnectionInternalServerError {
+	return &GetConsistencyGroupsConnectionInternalServerError{}
+}
+
+/* GetConsistencyGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetConsistencyGroupsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetConsistencyGroupsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-consistency-groups-connection][%d] getConsistencyGroupsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetConsistencyGroupsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetConsistencyGroupsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *UpdateClusterLicenseReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateClusterLicenseNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateClusterLicenseInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateClusterLicenseBadRequest() *UpdateClusterLicenseBadRequest {
 
 /* UpdateClusterLicenseBadRequest describes a response with status code 400, with default header values.
 
-UpdateClusterLicenseBadRequest update cluster license bad request
+Bad request
 */
 type UpdateClusterLicenseBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateClusterLicenseBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-cluster-license][%d] updateClusterLicenseBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateClusterLicenseBadRequest) GetPayload() string {
+func (o *UpdateClusterLicenseBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateClusterLicenseBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateClusterLicenseNotFound creates a UpdateClusterLicenseNotFound with default headers values
+func NewUpdateClusterLicenseNotFound() *UpdateClusterLicenseNotFound {
+	return &UpdateClusterLicenseNotFound{}
+}
+
+/* UpdateClusterLicenseNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateClusterLicenseNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateClusterLicenseNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-cluster-license][%d] updateClusterLicenseNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateClusterLicenseNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateClusterLicenseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateClusterLicenseInternalServerError creates a UpdateClusterLicenseInternalServerError with default headers values
+func NewUpdateClusterLicenseInternalServerError() *UpdateClusterLicenseInternalServerError {
+	return &UpdateClusterLicenseInternalServerError{}
+}
+
+/* UpdateClusterLicenseInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateClusterLicenseInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateClusterLicenseInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-cluster-license][%d] updateClusterLicenseInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateClusterLicenseInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateClusterLicenseInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

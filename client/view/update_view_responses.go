@@ -35,6 +35,18 @@ func (o *UpdateViewReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateViewNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateViewInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateViewBadRequest() *UpdateViewBadRequest {
 
 /* UpdateViewBadRequest describes a response with status code 400, with default header values.
 
-UpdateViewBadRequest update view bad request
+Bad request
 */
 type UpdateViewBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateViewBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-view][%d] updateViewBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateViewBadRequest) GetPayload() string {
+func (o *UpdateViewBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateViewBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateViewNotFound creates a UpdateViewNotFound with default headers values
+func NewUpdateViewNotFound() *UpdateViewNotFound {
+	return &UpdateViewNotFound{}
+}
+
+/* UpdateViewNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateViewNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateViewNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-view][%d] updateViewNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateViewNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateViewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateViewInternalServerError creates a UpdateViewInternalServerError with default headers values
+func NewUpdateViewInternalServerError() *UpdateViewInternalServerError {
+	return &UpdateViewInternalServerError{}
+}
+
+/* UpdateViewInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateViewInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateViewInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-view][%d] updateViewInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateViewInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateViewInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

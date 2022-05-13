@@ -35,6 +35,18 @@ func (o *GetPmemDimmsConnectionReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetPmemDimmsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetPmemDimmsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetPmemDimmsConnectionBadRequest() *GetPmemDimmsConnectionBadRequest {
 
 /* GetPmemDimmsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetPmemDimmsConnectionBadRequest get pmem dimms connection bad request
+Bad request
 */
 type GetPmemDimmsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetPmemDimmsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-pmem-dimms-connection][%d] getPmemDimmsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetPmemDimmsConnectionBadRequest) GetPayload() string {
+func (o *GetPmemDimmsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetPmemDimmsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetPmemDimmsConnectionNotFound creates a GetPmemDimmsConnectionNotFound with default headers values
+func NewGetPmemDimmsConnectionNotFound() *GetPmemDimmsConnectionNotFound {
+	return &GetPmemDimmsConnectionNotFound{}
+}
+
+/* GetPmemDimmsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetPmemDimmsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetPmemDimmsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-pmem-dimms-connection][%d] getPmemDimmsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetPmemDimmsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetPmemDimmsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetPmemDimmsConnectionInternalServerError creates a GetPmemDimmsConnectionInternalServerError with default headers values
+func NewGetPmemDimmsConnectionInternalServerError() *GetPmemDimmsConnectionInternalServerError {
+	return &GetPmemDimmsConnectionInternalServerError{}
+}
+
+/* GetPmemDimmsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetPmemDimmsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetPmemDimmsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-pmem-dimms-connection][%d] getPmemDimmsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetPmemDimmsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetPmemDimmsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

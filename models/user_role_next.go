@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,6 +20,10 @@ import (
 //
 // swagger:model UserRoleNext
 type UserRoleNext struct {
+
+	// typename
+	// Enum: [UserRoleNext]
+	Typename *string `json:"__typename,omitempty"`
 
 	// actions
 	// Required: true
@@ -40,12 +45,16 @@ type UserRoleNext struct {
 	Preset *UserRolePreset `json:"preset,omitempty"`
 
 	// users
-	Users []*NestedUser `json:"users,omitempty"`
+	Users []*User `json:"users,omitempty"`
 }
 
 // Validate validates this user role next
 func (m *UserRoleNext) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateTypename(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateActions(formats); err != nil {
 		res = append(res, err)
@@ -74,6 +83,45 @@ func (m *UserRoleNext) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var userRoleNextTypeTypenamePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["UserRoleNext"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		userRoleNextTypeTypenamePropEnum = append(userRoleNextTypeTypenamePropEnum, v)
+	}
+}
+
+const (
+
+	// UserRoleNextTypenameUserRoleNext captures enum value "UserRoleNext"
+	UserRoleNextTypenameUserRoleNext string = "UserRoleNext"
+)
+
+// prop value enum
+func (m *UserRoleNext) validateTypenameEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, userRoleNextTypeTypenamePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *UserRoleNext) validateTypename(formats strfmt.Registry) error {
+	if swag.IsZero(m.Typename) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTypenameEnum("__typename", "body", *m.Typename); err != nil {
+		return err
+	}
+
 	return nil
 }
 

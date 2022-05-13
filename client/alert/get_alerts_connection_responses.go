@@ -35,6 +35,18 @@ func (o *GetAlertsConnectionReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetAlertsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetAlertsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetAlertsConnectionBadRequest() *GetAlertsConnectionBadRequest {
 
 /* GetAlertsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetAlertsConnectionBadRequest get alerts connection bad request
+Bad request
 */
 type GetAlertsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetAlertsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-alerts-connection][%d] getAlertsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetAlertsConnectionBadRequest) GetPayload() string {
+func (o *GetAlertsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetAlertsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetAlertsConnectionNotFound creates a GetAlertsConnectionNotFound with default headers values
+func NewGetAlertsConnectionNotFound() *GetAlertsConnectionNotFound {
+	return &GetAlertsConnectionNotFound{}
+}
+
+/* GetAlertsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetAlertsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetAlertsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-alerts-connection][%d] getAlertsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetAlertsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetAlertsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetAlertsConnectionInternalServerError creates a GetAlertsConnectionInternalServerError with default headers values
+func NewGetAlertsConnectionInternalServerError() *GetAlertsConnectionInternalServerError {
+	return &GetAlertsConnectionInternalServerError{}
+}
+
+/* GetAlertsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetAlertsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetAlertsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-alerts-connection][%d] getAlertsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetAlertsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetAlertsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

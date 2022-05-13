@@ -35,6 +35,18 @@ func (o *GetBrickTopoesReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetBrickTopoesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetBrickTopoesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetBrickTopoesBadRequest() *GetBrickTopoesBadRequest {
 
 /* GetBrickTopoesBadRequest describes a response with status code 400, with default header values.
 
-GetBrickTopoesBadRequest get brick topoes bad request
+Bad request
 */
 type GetBrickTopoesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetBrickTopoesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-brick-topoes][%d] getBrickTopoesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetBrickTopoesBadRequest) GetPayload() string {
+func (o *GetBrickTopoesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetBrickTopoesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetBrickTopoesNotFound creates a GetBrickTopoesNotFound with default headers values
+func NewGetBrickTopoesNotFound() *GetBrickTopoesNotFound {
+	return &GetBrickTopoesNotFound{}
+}
+
+/* GetBrickTopoesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetBrickTopoesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetBrickTopoesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-brick-topoes][%d] getBrickTopoesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetBrickTopoesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetBrickTopoesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetBrickTopoesInternalServerError creates a GetBrickTopoesInternalServerError with default headers values
+func NewGetBrickTopoesInternalServerError() *GetBrickTopoesInternalServerError {
+	return &GetBrickTopoesInternalServerError{}
+}
+
+/* GetBrickTopoesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetBrickTopoesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetBrickTopoesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-brick-topoes][%d] getBrickTopoesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetBrickTopoesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetBrickTopoesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

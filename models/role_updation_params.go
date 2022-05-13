@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -160,7 +161,7 @@ func (m *RoleUpdationParams) UnmarshalBinary(b []byte) error {
 type RoleUpdationParamsData struct {
 
 	// actions
-	Actions []string `json:"actions,omitempty"`
+	Actions []ROLEACTION `json:"actions,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`
@@ -168,11 +169,68 @@ type RoleUpdationParamsData struct {
 
 // Validate validates this role updation params data
 func (m *RoleUpdationParamsData) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateActions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this role updation params data based on context it is used
+func (m *RoleUpdationParamsData) validateActions(formats strfmt.Registry) error {
+	if swag.IsZero(m.Actions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Actions); i++ {
+
+		if err := m.Actions[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "actions" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "actions" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this role updation params data based on the context it is used
 func (m *RoleUpdationParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateActions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *RoleUpdationParamsData) contextValidateActions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Actions); i++ {
+
+		if err := m.Actions[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "actions" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "actions" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
 	return nil
 }
 

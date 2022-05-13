@@ -161,7 +161,7 @@ func (m *ManagementVlanUpdationParams) UnmarshalBinary(b []byte) error {
 type ManagementVlanUpdationParamsData struct {
 
 	// extra ip
-	ExtraIP []*ManagementVlanUpdationParamsDataExtraIPItems0 `json:"extra_ip,omitempty"`
+	ExtraIP []*ExtraIP `json:"extra_ip,omitempty"`
 
 	// gateway ip
 	GatewayIP *string `json:"gateway_ip,omitempty"`
@@ -258,79 +258,6 @@ func (m *ManagementVlanUpdationParamsData) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ManagementVlanUpdationParamsData) UnmarshalBinary(b []byte) error {
 	var res ManagementVlanUpdationParamsData
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ManagementVlanUpdationParamsDataExtraIPItems0 management vlan updation params data extra IP items0
-//
-// swagger:model ManagementVlanUpdationParamsDataExtraIPItems0
-type ManagementVlanUpdationParamsDataExtraIPItems0 struct {
-
-	// host id
-	// Required: true
-	HostID *string `json:"host_id"`
-
-	// management ip
-	// Required: true
-	ManagementIP *string `json:"management_ip"`
-}
-
-// Validate validates this management vlan updation params data extra IP items0
-func (m *ManagementVlanUpdationParamsDataExtraIPItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateHostID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateManagementIP(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ManagementVlanUpdationParamsDataExtraIPItems0) validateHostID(formats strfmt.Registry) error {
-
-	if err := validate.Required("host_id", "body", m.HostID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *ManagementVlanUpdationParamsDataExtraIPItems0) validateManagementIP(formats strfmt.Registry) error {
-
-	if err := validate.Required("management_ip", "body", m.ManagementIP); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this management vlan updation params data extra IP items0 based on context it is used
-func (m *ManagementVlanUpdationParamsDataExtraIPItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ManagementVlanUpdationParamsDataExtraIPItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ManagementVlanUpdationParamsDataExtraIPItems0) UnmarshalBinary(b []byte) error {
-	var res ManagementVlanUpdationParamsDataExtraIPItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

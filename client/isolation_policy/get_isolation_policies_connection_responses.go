@@ -35,6 +35,18 @@ func (o *GetIsolationPoliciesConnectionReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetIsolationPoliciesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetIsolationPoliciesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetIsolationPoliciesConnectionBadRequest() *GetIsolationPoliciesConnecti
 
 /* GetIsolationPoliciesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetIsolationPoliciesConnectionBadRequest get isolation policies connection bad request
+Bad request
 */
 type GetIsolationPoliciesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetIsolationPoliciesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-isolation-policies-connection][%d] getIsolationPoliciesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetIsolationPoliciesConnectionBadRequest) GetPayload() string {
+func (o *GetIsolationPoliciesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetIsolationPoliciesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIsolationPoliciesConnectionNotFound creates a GetIsolationPoliciesConnectionNotFound with default headers values
+func NewGetIsolationPoliciesConnectionNotFound() *GetIsolationPoliciesConnectionNotFound {
+	return &GetIsolationPoliciesConnectionNotFound{}
+}
+
+/* GetIsolationPoliciesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetIsolationPoliciesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIsolationPoliciesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-isolation-policies-connection][%d] getIsolationPoliciesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetIsolationPoliciesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIsolationPoliciesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIsolationPoliciesConnectionInternalServerError creates a GetIsolationPoliciesConnectionInternalServerError with default headers values
+func NewGetIsolationPoliciesConnectionInternalServerError() *GetIsolationPoliciesConnectionInternalServerError {
+	return &GetIsolationPoliciesConnectionInternalServerError{}
+}
+
+/* GetIsolationPoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetIsolationPoliciesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIsolationPoliciesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-isolation-policies-connection][%d] getIsolationPoliciesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetIsolationPoliciesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIsolationPoliciesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

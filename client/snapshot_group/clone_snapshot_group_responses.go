@@ -35,6 +35,18 @@ func (o *CloneSnapshotGroupReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCloneSnapshotGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCloneSnapshotGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCloneSnapshotGroupBadRequest() *CloneSnapshotGroupBadRequest {
 
 /* CloneSnapshotGroupBadRequest describes a response with status code 400, with default header values.
 
-CloneSnapshotGroupBadRequest clone snapshot group bad request
+Bad request
 */
 type CloneSnapshotGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CloneSnapshotGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /clone-snapshot-group][%d] cloneSnapshotGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *CloneSnapshotGroupBadRequest) GetPayload() string {
+func (o *CloneSnapshotGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CloneSnapshotGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloneSnapshotGroupNotFound creates a CloneSnapshotGroupNotFound with default headers values
+func NewCloneSnapshotGroupNotFound() *CloneSnapshotGroupNotFound {
+	return &CloneSnapshotGroupNotFound{}
+}
+
+/* CloneSnapshotGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CloneSnapshotGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CloneSnapshotGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /clone-snapshot-group][%d] cloneSnapshotGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *CloneSnapshotGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CloneSnapshotGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloneSnapshotGroupInternalServerError creates a CloneSnapshotGroupInternalServerError with default headers values
+func NewCloneSnapshotGroupInternalServerError() *CloneSnapshotGroupInternalServerError {
+	return &CloneSnapshotGroupInternalServerError{}
+}
+
+/* CloneSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CloneSnapshotGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CloneSnapshotGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /clone-snapshot-group][%d] cloneSnapshotGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CloneSnapshotGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CloneSnapshotGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -48,6 +48,12 @@ const (
 	// ClusterImageOrderByInputIDDESC captures enum value "id_DESC"
 	ClusterImageOrderByInputIDDESC ClusterImageOrderByInput = "id_DESC"
 
+	// ClusterImageOrderByInputLocalIDASC captures enum value "local_id_ASC"
+	ClusterImageOrderByInputLocalIDASC ClusterImageOrderByInput = "local_id_ASC"
+
+	// ClusterImageOrderByInputLocalIDDESC captures enum value "local_id_DESC"
+	ClusterImageOrderByInputLocalIDDESC ClusterImageOrderByInput = "local_id_DESC"
+
 	// ClusterImageOrderByInputMetaNameASC captures enum value "meta_name_ASC"
 	ClusterImageOrderByInputMetaNameASC ClusterImageOrderByInput = "meta_name_ASC"
 
@@ -89,6 +95,12 @@ const (
 
 	// ClusterImageOrderByInputVersionDESC captures enum value "version_DESC"
 	ClusterImageOrderByInputVersionDESC ClusterImageOrderByInput = "version_DESC"
+
+	// ClusterImageOrderByInputZbsVersionASC captures enum value "zbs_version_ASC"
+	ClusterImageOrderByInputZbsVersionASC ClusterImageOrderByInput = "zbs_version_ASC"
+
+	// ClusterImageOrderByInputZbsVersionDESC captures enum value "zbs_version_DESC"
+	ClusterImageOrderByInputZbsVersionDESC ClusterImageOrderByInput = "zbs_version_DESC"
 )
 
 // for schema
@@ -96,7 +108,7 @@ var clusterImageOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterImageOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","meta_name_ASC","meta_name_DESC","meta_size_ASC","meta_size_DESC","name_ASC","name_DESC","size_ASC","size_DESC","updatedAt_ASC","updatedAt_DESC","upgrade_tool_version_ASC","upgrade_tool_version_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","meta_name_ASC","meta_name_DESC","meta_size_ASC","meta_size_DESC","name_ASC","name_DESC","size_ASC","size_DESC","updatedAt_ASC","updatedAt_DESC","upgrade_tool_version_ASC","upgrade_tool_version_DESC","version_ASC","version_DESC","zbs_version_ASC","zbs_version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

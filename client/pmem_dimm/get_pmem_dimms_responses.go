@@ -35,6 +35,18 @@ func (o *GetPmemDimmsReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetPmemDimmsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetPmemDimmsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetPmemDimmsBadRequest() *GetPmemDimmsBadRequest {
 
 /* GetPmemDimmsBadRequest describes a response with status code 400, with default header values.
 
-GetPmemDimmsBadRequest get pmem dimms bad request
+Bad request
 */
 type GetPmemDimmsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetPmemDimmsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-pmem-dimms][%d] getPmemDimmsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetPmemDimmsBadRequest) GetPayload() string {
+func (o *GetPmemDimmsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetPmemDimmsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetPmemDimmsNotFound creates a GetPmemDimmsNotFound with default headers values
+func NewGetPmemDimmsNotFound() *GetPmemDimmsNotFound {
+	return &GetPmemDimmsNotFound{}
+}
+
+/* GetPmemDimmsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetPmemDimmsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetPmemDimmsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-pmem-dimms][%d] getPmemDimmsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetPmemDimmsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetPmemDimmsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetPmemDimmsInternalServerError creates a GetPmemDimmsInternalServerError with default headers values
+func NewGetPmemDimmsInternalServerError() *GetPmemDimmsInternalServerError {
+	return &GetPmemDimmsInternalServerError{}
+}
+
+/* GetPmemDimmsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetPmemDimmsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetPmemDimmsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-pmem-dimms][%d] getPmemDimmsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetPmemDimmsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetPmemDimmsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

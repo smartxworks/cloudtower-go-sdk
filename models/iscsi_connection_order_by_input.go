@@ -54,6 +54,12 @@ const (
 	// IscsiConnectionOrderByInputInitiatorIPDESC captures enum value "initiator_ip_DESC"
 	IscsiConnectionOrderByInputInitiatorIPDESC IscsiConnectionOrderByInput = "initiator_ip_DESC"
 
+	// IscsiConnectionOrderByInputTrTypeASC captures enum value "tr_type_ASC"
+	IscsiConnectionOrderByInputTrTypeASC IscsiConnectionOrderByInput = "tr_type_ASC"
+
+	// IscsiConnectionOrderByInputTrTypeDESC captures enum value "tr_type_DESC"
+	IscsiConnectionOrderByInputTrTypeDESC IscsiConnectionOrderByInput = "tr_type_DESC"
+
 	// IscsiConnectionOrderByInputTypeASC captures enum value "type_ASC"
 	IscsiConnectionOrderByInputTypeASC IscsiConnectionOrderByInput = "type_ASC"
 
@@ -72,7 +78,7 @@ var iscsiConnectionOrderByInputEnum []interface{}
 
 func init() {
 	var res []IscsiConnectionOrderByInput
-	if err := json.Unmarshal([]byte(`["client_port_ASC","client_port_DESC","createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","initiator_ip_ASC","initiator_ip_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["client_port_ASC","client_port_DESC","createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","initiator_ip_ASC","initiator_ip_DESC","tr_type_ASC","tr_type_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

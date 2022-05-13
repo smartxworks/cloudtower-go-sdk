@@ -35,6 +35,18 @@ func (o *DeleteNvmfNamespaceSnapshotReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteNvmfNamespaceSnapshotNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteNvmfNamespaceSnapshotInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteNvmfNamespaceSnapshotBadRequest() *DeleteNvmfNamespaceSnapshotBadR
 
 /* DeleteNvmfNamespaceSnapshotBadRequest describes a response with status code 400, with default header values.
 
-DeleteNvmfNamespaceSnapshotBadRequest delete nvmf namespace snapshot bad request
+Bad request
 */
 type DeleteNvmfNamespaceSnapshotBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteNvmfNamespaceSnapshotBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-nvmf-namespace-snapshot][%d] deleteNvmfNamespaceSnapshotBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteNvmfNamespaceSnapshotBadRequest) GetPayload() string {
+func (o *DeleteNvmfNamespaceSnapshotBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteNvmfNamespaceSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteNvmfNamespaceSnapshotNotFound creates a DeleteNvmfNamespaceSnapshotNotFound with default headers values
+func NewDeleteNvmfNamespaceSnapshotNotFound() *DeleteNvmfNamespaceSnapshotNotFound {
+	return &DeleteNvmfNamespaceSnapshotNotFound{}
+}
+
+/* DeleteNvmfNamespaceSnapshotNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteNvmfNamespaceSnapshotNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteNvmfNamespaceSnapshotNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-nvmf-namespace-snapshot][%d] deleteNvmfNamespaceSnapshotNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteNvmfNamespaceSnapshotNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteNvmfNamespaceSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteNvmfNamespaceSnapshotInternalServerError creates a DeleteNvmfNamespaceSnapshotInternalServerError with default headers values
+func NewDeleteNvmfNamespaceSnapshotInternalServerError() *DeleteNvmfNamespaceSnapshotInternalServerError {
+	return &DeleteNvmfNamespaceSnapshotInternalServerError{}
+}
+
+/* DeleteNvmfNamespaceSnapshotInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteNvmfNamespaceSnapshotInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteNvmfNamespaceSnapshotInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-nvmf-namespace-snapshot][%d] deleteNvmfNamespaceSnapshotInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteNvmfNamespaceSnapshotInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteNvmfNamespaceSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

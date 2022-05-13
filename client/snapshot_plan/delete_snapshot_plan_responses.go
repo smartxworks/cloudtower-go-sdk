@@ -35,6 +35,18 @@ func (o *DeleteSnapshotPlanReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteSnapshotPlanNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteSnapshotPlanInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteSnapshotPlanBadRequest() *DeleteSnapshotPlanBadRequest {
 
 /* DeleteSnapshotPlanBadRequest describes a response with status code 400, with default header values.
 
-DeleteSnapshotPlanBadRequest delete snapshot plan bad request
+Bad request
 */
 type DeleteSnapshotPlanBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteSnapshotPlanBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-snapshot-plan][%d] deleteSnapshotPlanBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteSnapshotPlanBadRequest) GetPayload() string {
+func (o *DeleteSnapshotPlanBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteSnapshotPlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteSnapshotPlanNotFound creates a DeleteSnapshotPlanNotFound with default headers values
+func NewDeleteSnapshotPlanNotFound() *DeleteSnapshotPlanNotFound {
+	return &DeleteSnapshotPlanNotFound{}
+}
+
+/* DeleteSnapshotPlanNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteSnapshotPlanNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteSnapshotPlanNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-snapshot-plan][%d] deleteSnapshotPlanNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteSnapshotPlanNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteSnapshotPlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteSnapshotPlanInternalServerError creates a DeleteSnapshotPlanInternalServerError with default headers values
+func NewDeleteSnapshotPlanInternalServerError() *DeleteSnapshotPlanInternalServerError {
+	return &DeleteSnapshotPlanInternalServerError{}
+}
+
+/* DeleteSnapshotPlanInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteSnapshotPlanInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteSnapshotPlanInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-snapshot-plan][%d] deleteSnapshotPlanInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteSnapshotPlanInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteSnapshotPlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

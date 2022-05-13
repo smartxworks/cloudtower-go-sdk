@@ -19,16 +19,48 @@ import (
 // swagger:model NestedExecutePlan
 type NestedExecutePlan struct {
 
+	// enabled
+	// Required: true
+	Enabled *bool `json:"enabled"`
+
 	// id
 	// Required: true
 	ID *string `json:"id"`
+
+	// period
+	// Required: true
+	Period *string `json:"period"`
+
+	// retain
+	// Required: true
+	Retain *int32 `json:"retain"`
+
+	// start at
+	// Required: true
+	StartAt *string `json:"start_at"`
 }
 
 // Validate validates this nested execute plan
 func (m *NestedExecutePlan) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEnabled(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePeriod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRetain(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -38,9 +70,45 @@ func (m *NestedExecutePlan) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NestedExecutePlan) validateEnabled(formats strfmt.Registry) error {
+
+	if err := validate.Required("enabled", "body", m.Enabled); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *NestedExecutePlan) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NestedExecutePlan) validatePeriod(formats strfmt.Registry) error {
+
+	if err := validate.Required("period", "body", m.Period); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NestedExecutePlan) validateRetain(formats strfmt.Registry) error {
+
+	if err := validate.Required("retain", "body", m.Retain); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NestedExecutePlan) validateStartAt(formats strfmt.Registry) error {
+
+	if err := validate.Required("start_at", "body", m.StartAt); err != nil {
 		return err
 	}
 

@@ -51,6 +51,9 @@ type UserAuditLog struct {
 	// resource type
 	ResourceType *string `json:"resource_type,omitempty"`
 
+	// started at
+	StartedAt *string `json:"started_at,omitempty"`
+
 	// status
 	Status *UserAuditLogStatus `json:"status,omitempty"`
 

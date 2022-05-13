@@ -35,6 +35,18 @@ func (o *GetLogCollectionsReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetLogCollectionsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetLogCollectionsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetLogCollectionsBadRequest() *GetLogCollectionsBadRequest {
 
 /* GetLogCollectionsBadRequest describes a response with status code 400, with default header values.
 
-GetLogCollectionsBadRequest get log collections bad request
+Bad request
 */
 type GetLogCollectionsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetLogCollectionsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-log-collections][%d] getLogCollectionsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetLogCollectionsBadRequest) GetPayload() string {
+func (o *GetLogCollectionsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetLogCollectionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetLogCollectionsNotFound creates a GetLogCollectionsNotFound with default headers values
+func NewGetLogCollectionsNotFound() *GetLogCollectionsNotFound {
+	return &GetLogCollectionsNotFound{}
+}
+
+/* GetLogCollectionsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetLogCollectionsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetLogCollectionsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-log-collections][%d] getLogCollectionsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetLogCollectionsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetLogCollectionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetLogCollectionsInternalServerError creates a GetLogCollectionsInternalServerError with default headers values
+func NewGetLogCollectionsInternalServerError() *GetLogCollectionsInternalServerError {
+	return &GetLogCollectionsInternalServerError{}
+}
+
+/* GetLogCollectionsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetLogCollectionsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetLogCollectionsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-log-collections][%d] getLogCollectionsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetLogCollectionsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetLogCollectionsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

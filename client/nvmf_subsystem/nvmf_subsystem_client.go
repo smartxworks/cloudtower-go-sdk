@@ -30,11 +30,93 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, opts ...ClientOption) (*CreateNvmfSubsystemOK, error)
+
+	DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, opts ...ClientOption) (*DeleteNvmfSubsystemOK, error)
+
 	GetNvmfSubsystems(params *GetNvmfSubsystemsParams, opts ...ClientOption) (*GetNvmfSubsystemsOK, error)
 
 	GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnectionParams, opts ...ClientOption) (*GetNvmfSubsystemsConnectionOK, error)
 
+	UpdateNvmfSubsystem(params *UpdateNvmfSubsystemParams, opts ...ClientOption) (*UpdateNvmfSubsystemOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateNvmfSubsystem create nvmf subsystem API
+*/
+func (a *Client) CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, opts ...ClientOption) (*CreateNvmfSubsystemOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateNvmfSubsystemParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateNvmfSubsystem",
+		Method:             "POST",
+		PathPattern:        "/create-nvmf-subsystem",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateNvmfSubsystemReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateNvmfSubsystemOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateNvmfSubsystem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteNvmfSubsystem delete nvmf subsystem API
+*/
+func (a *Client) DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, opts ...ClientOption) (*DeleteNvmfSubsystemOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteNvmfSubsystemParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "DeleteNvmfSubsystem",
+		Method:             "POST",
+		PathPattern:        "/delete-nvmf-subsystem",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteNvmfSubsystemReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteNvmfSubsystemOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for DeleteNvmfSubsystem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,6 +192,44 @@ func (a *Client) GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnection
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetNvmfSubsystemsConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateNvmfSubsystem update nvmf subsystem API
+*/
+func (a *Client) UpdateNvmfSubsystem(params *UpdateNvmfSubsystemParams, opts ...ClientOption) (*UpdateNvmfSubsystemOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateNvmfSubsystemParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateNvmfSubsystem",
+		Method:             "POST",
+		PathPattern:        "/update-nvmf-subsystem",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateNvmfSubsystemReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateNvmfSubsystemOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateNvmfSubsystem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

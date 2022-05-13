@@ -20,6 +20,9 @@ import (
 // swagger:model Cluster
 type Cluster struct {
 
+	// application highest version
+	ApplicationHighestVersion *string `json:"application_highest_version,omitempty"`
+
 	// applications
 	Applications []*NestedApplication `json:"applications,omitempty"`
 
@@ -29,9 +32,6 @@ type Cluster struct {
 
 	// auto converge
 	AutoConverge *bool `json:"auto_converge,omitempty"`
-
-	// backup by service
-	BackupByService *NestedBackupService `json:"backup_by_service,omitempty"`
 
 	// connect state
 	// Required: true
@@ -67,9 +67,6 @@ type Cluster struct {
 
 	// has metrox
 	HasMetrox *bool `json:"has_metrox,omitempty"`
-
-	// has remote backup
-	HasRemoteBackup *bool `json:"has_remote_backup,omitempty"`
 
 	// host num
 	HostNum *int32 `json:"host_num,omitempty"`
@@ -155,6 +152,12 @@ type Cluster struct {
 	// ntp servers
 	// Required: true
 	NtpServers []string `json:"ntp_servers"`
+
+	// nvme over rdma enabled
+	NvmeOverRdmaEnabled *bool `json:"nvme_over_rdma_enabled,omitempty"`
+
+	// nvme over tcp enabled
+	NvmeOverTCPEnabled *bool `json:"nvme_over_tcp_enabled,omitempty"`
 
 	// nvmf enabled
 	NvmfEnabled *bool `json:"nvmf_enabled,omitempty"`
@@ -293,10 +296,6 @@ func (m *Cluster) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateArchitecture(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBackupByService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -468,25 +467,6 @@ func (m *Cluster) validateArchitecture(formats strfmt.Registry) error {
 				return ve.ValidateName("architecture")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("architecture")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *Cluster) validateBackupByService(formats strfmt.Registry) error {
-	if swag.IsZero(m.BackupByService) { // not required
-		return nil
-	}
-
-	if m.BackupByService != nil {
-		if err := m.BackupByService.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("backup_by_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("backup_by_service")
 			}
 			return err
 		}
@@ -1070,10 +1050,6 @@ func (m *Cluster) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateBackupByService(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateConnectState(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1196,22 +1172,6 @@ func (m *Cluster) contextValidateArchitecture(ctx context.Context, formats strfm
 				return ve.ValidateName("architecture")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("architecture")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *Cluster) contextValidateBackupByService(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BackupByService != nil {
-		if err := m.BackupByService.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("backup_by_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("backup_by_service")
 			}
 			return err
 		}

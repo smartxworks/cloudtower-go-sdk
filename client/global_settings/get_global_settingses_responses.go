@@ -35,6 +35,18 @@ func (o *GetGlobalSettingsesReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetGlobalSettingsesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetGlobalSettingsesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetGlobalSettingsesBadRequest() *GetGlobalSettingsesBadRequest {
 
 /* GetGlobalSettingsesBadRequest describes a response with status code 400, with default header values.
 
-GetGlobalSettingsesBadRequest get global settingses bad request
+Bad request
 */
 type GetGlobalSettingsesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetGlobalSettingsesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-global-settingses][%d] getGlobalSettingsesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetGlobalSettingsesBadRequest) GetPayload() string {
+func (o *GetGlobalSettingsesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetGlobalSettingsesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetGlobalSettingsesNotFound creates a GetGlobalSettingsesNotFound with default headers values
+func NewGetGlobalSettingsesNotFound() *GetGlobalSettingsesNotFound {
+	return &GetGlobalSettingsesNotFound{}
+}
+
+/* GetGlobalSettingsesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetGlobalSettingsesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetGlobalSettingsesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-global-settingses][%d] getGlobalSettingsesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetGlobalSettingsesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetGlobalSettingsesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetGlobalSettingsesInternalServerError creates a GetGlobalSettingsesInternalServerError with default headers values
+func NewGetGlobalSettingsesInternalServerError() *GetGlobalSettingsesInternalServerError {
+	return &GetGlobalSettingsesInternalServerError{}
+}
+
+/* GetGlobalSettingsesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetGlobalSettingsesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetGlobalSettingsesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-global-settingses][%d] getGlobalSettingsesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetGlobalSettingsesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetGlobalSettingsesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

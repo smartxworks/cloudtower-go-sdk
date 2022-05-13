@@ -15,7 +15,6 @@ import (
 )
 
 // GetLogServiceConfigsRequestBody get log service configs request body
-// Example: {"input":{"cluster":"ClusterWhereUniqueInput"}}
 //
 // swagger:model GetLogServiceConfigsRequestBody
 type GetLogServiceConfigsRequestBody struct {

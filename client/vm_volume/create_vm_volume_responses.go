@@ -35,6 +35,18 @@ func (o *CreateVMVolumeReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateVMVolumeNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateVMVolumeInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateVMVolumeBadRequest() *CreateVMVolumeBadRequest {
 
 /* CreateVMVolumeBadRequest describes a response with status code 400, with default header values.
 
-CreateVMVolumeBadRequest create Vm volume bad request
+Bad request
 */
 type CreateVMVolumeBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateVMVolumeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-vm-volume][%d] createVmVolumeBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateVMVolumeBadRequest) GetPayload() string {
+func (o *CreateVMVolumeBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateVMVolumeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateVMVolumeNotFound creates a CreateVMVolumeNotFound with default headers values
+func NewCreateVMVolumeNotFound() *CreateVMVolumeNotFound {
+	return &CreateVMVolumeNotFound{}
+}
+
+/* CreateVMVolumeNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateVMVolumeNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateVMVolumeNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-vm-volume][%d] createVmVolumeNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateVMVolumeNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateVMVolumeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateVMVolumeInternalServerError creates a CreateVMVolumeInternalServerError with default headers values
+func NewCreateVMVolumeInternalServerError() *CreateVMVolumeInternalServerError {
+	return &CreateVMVolumeInternalServerError{}
+}
+
+/* CreateVMVolumeInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateVMVolumeInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateVMVolumeInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-vm-volume][%d] createVmVolumeInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateVMVolumeInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateVMVolumeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

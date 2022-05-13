@@ -28,8 +28,7 @@ type MountDisksParams struct {
 	Bus *Bus `json:"bus"`
 
 	// index
-	// Required: true
-	Index *int32 `json:"index"`
+	Index *int32 `json:"index,omitempty"`
 
 	// key
 	Key *int32 `json:"key,omitempty"`
@@ -41,7 +40,7 @@ type MountDisksParams struct {
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
 
 	// max iops
-	MaxIops *int32 `json:"max_iops,omitempty"`
+	MaxIops *int64 `json:"max_iops,omitempty"`
 
 	// max iops policy
 	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
@@ -60,10 +59,6 @@ func (m *MountDisksParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateBus(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIndex(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -113,15 +108,6 @@ func (m *MountDisksParams) validateBus(formats strfmt.Registry) error {
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *MountDisksParams) validateIndex(formats strfmt.Registry) error {
-
-	if err := validate.Required("index", "body", m.Index); err != nil {
-		return err
 	}
 
 	return nil

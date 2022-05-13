@@ -35,6 +35,18 @@ func (o *UpdateClusterReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateClusterNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateClusterInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateClusterBadRequest() *UpdateClusterBadRequest {
 
 /* UpdateClusterBadRequest describes a response with status code 400, with default header values.
 
-UpdateClusterBadRequest update cluster bad request
+Bad request
 */
 type UpdateClusterBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateClusterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-cluster][%d] updateClusterBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateClusterBadRequest) GetPayload() string {
+func (o *UpdateClusterBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateClusterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateClusterNotFound creates a UpdateClusterNotFound with default headers values
+func NewUpdateClusterNotFound() *UpdateClusterNotFound {
+	return &UpdateClusterNotFound{}
+}
+
+/* UpdateClusterNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateClusterNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateClusterNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-cluster][%d] updateClusterNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateClusterNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateClusterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateClusterInternalServerError creates a UpdateClusterInternalServerError with default headers values
+func NewUpdateClusterInternalServerError() *UpdateClusterInternalServerError {
+	return &UpdateClusterInternalServerError{}
+}
+
+/* UpdateClusterInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateClusterInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateClusterInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-cluster][%d] updateClusterInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateClusterInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

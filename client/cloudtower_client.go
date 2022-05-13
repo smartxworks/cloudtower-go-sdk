@@ -14,15 +14,6 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/client/alert_notifier"
 	"github.com/smartxworks/cloudtower-go-sdk/client/alert_rule"
 	"github.com/smartxworks/cloudtower-go-sdk/client/application"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_license"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_package"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_plan"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_plan_execution"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_restore_execution"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_restore_point"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_service"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_store_repository"
-	"github.com/smartxworks/cloudtower-go-sdk/client/backup_target_execution"
 	"github.com/smartxworks/cloudtower-go-sdk/client/brick_topo"
 	"github.com/smartxworks/cloudtower-go-sdk/client/cluster"
 	"github.com/smartxworks/cloudtower-go-sdk/client/cluster_image"
@@ -31,8 +22,6 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/client/cluster_upgrade_history"
 	"github.com/smartxworks/cloudtower-go-sdk/client/consistency_group"
 	"github.com/smartxworks/cloudtower-go-sdk/client/consistency_group_snapshot"
-	"github.com/smartxworks/cloudtower-go-sdk/client/content_library_image"
-	"github.com/smartxworks/cloudtower-go-sdk/client/content_library_vm_template"
 	"github.com/smartxworks/cloudtower-go-sdk/client/datacenter"
 	"github.com/smartxworks/cloudtower-go-sdk/client/deploy"
 	"github.com/smartxworks/cloudtower-go-sdk/client/discovered_host"
@@ -49,7 +38,6 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/client/graph"
 	"github.com/smartxworks/cloudtower-go-sdk/client/host"
 	"github.com/smartxworks/cloudtower-go-sdk/client/ipmi"
-	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi"
 	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_connection"
 	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_lun"
 	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_lun_snapshot"
@@ -59,7 +47,6 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/client/license"
 	"github.com/smartxworks/cloudtower-go-sdk/client/log_collection"
 	"github.com/smartxworks/cloudtower-go-sdk/client/log_service_config"
-	"github.com/smartxworks/cloudtower-go-sdk/client/migrate_transmitter"
 	"github.com/smartxworks/cloudtower-go-sdk/client/namespace_group"
 	"github.com/smartxworks/cloudtower-go-sdk/client/nfs_export"
 	"github.com/smartxworks/cloudtower-go-sdk/client/nfs_inode"
@@ -105,10 +92,9 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/client/witness_service"
 	"github.com/smartxworks/cloudtower-go-sdk/client/zone"
 	"github.com/smartxworks/cloudtower-go-sdk/client/zone_topo"
-	"github.com/smartxworks/cloudtower-go-sdk/client/operations"
 )
 
-// Default cloudtower HTTP client.
+// Default cloud tower a p is HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -123,12 +109,12 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"http"}
 
-// NewHTTPClient creates a new cloudtower HTTP client.
+// NewHTTPClient creates a new cloud tower a p is HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *Cloudtower {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new cloudtower HTTP client,
+// NewHTTPClientWithConfig creates a new cloud tower a p is HTTP client,
 // using a customizable transport config.
 func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Cloudtower {
 	// ensure nullable parameters have default
@@ -141,7 +127,7 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Clo
 	return New(transport, formats)
 }
 
-// New creates a new cloudtower client
+// New creates a new cloud tower a p is client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower {
 	// ensure nullable parameters have default
 	if formats == nil {
@@ -154,15 +140,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.AlertNotifier = alert_notifier.New(transport, formats)
 	cli.AlertRule = alert_rule.New(transport, formats)
 	cli.Application = application.New(transport, formats)
-	cli.BackupLicense = backup_license.New(transport, formats)
-	cli.BackupPackage = backup_package.New(transport, formats)
-	cli.BackupPlan = backup_plan.New(transport, formats)
-	cli.BackupPlanExecution = backup_plan_execution.New(transport, formats)
-	cli.BackupRestoreExecution = backup_restore_execution.New(transport, formats)
-	cli.BackupRestorePoint = backup_restore_point.New(transport, formats)
-	cli.BackupService = backup_service.New(transport, formats)
-	cli.BackupStoreRepository = backup_store_repository.New(transport, formats)
-	cli.BackupTargetExecution = backup_target_execution.New(transport, formats)
 	cli.BrickTopo = brick_topo.New(transport, formats)
 	cli.Cluster = cluster.New(transport, formats)
 	cli.ClusterImage = cluster_image.New(transport, formats)
@@ -171,8 +148,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.ClusterUpgradeHistory = cluster_upgrade_history.New(transport, formats)
 	cli.ConsistencyGroup = consistency_group.New(transport, formats)
 	cli.ConsistencyGroupSnapshot = consistency_group_snapshot.New(transport, formats)
-	cli.ContentLibraryImage = content_library_image.New(transport, formats)
-	cli.ContentLibraryVMTemplate = content_library_vm_template.New(transport, formats)
 	cli.Datacenter = datacenter.New(transport, formats)
 	cli.Deploy = deploy.New(transport, formats)
 	cli.DiscoveredHost = discovered_host.New(transport, formats)
@@ -189,7 +164,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.Graph = graph.New(transport, formats)
 	cli.Host = host.New(transport, formats)
 	cli.Ipmi = ipmi.New(transport, formats)
-	cli.Iscsi = iscsi.New(transport, formats)
 	cli.IscsiConnection = iscsi_connection.New(transport, formats)
 	cli.IscsiLun = iscsi_lun.New(transport, formats)
 	cli.IscsiLunSnapshot = iscsi_lun_snapshot.New(transport, formats)
@@ -199,7 +173,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.License = license.New(transport, formats)
 	cli.LogCollection = log_collection.New(transport, formats)
 	cli.LogServiceConfig = log_service_config.New(transport, formats)
-	cli.MigrateTransmitter = migrate_transmitter.New(transport, formats)
 	cli.NamespaceGroup = namespace_group.New(transport, formats)
 	cli.NfsExport = nfs_export.New(transport, formats)
 	cli.NfsInode = nfs_inode.New(transport, formats)
@@ -208,7 +181,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.NvmfNamespace = nvmf_namespace.New(transport, formats)
 	cli.NvmfNamespaceSnapshot = nvmf_namespace_snapshot.New(transport, formats)
 	cli.NvmfSubsystem = nvmf_subsystem.New(transport, formats)
-	cli.Operations = operations.New(transport, formats)
 	cli.Organization = organization.New(transport, formats)
 	cli.PmemDimm = pmem_dimm.New(transport, formats)
 	cli.RackTopo = rack_topo.New(transport, formats)
@@ -298,24 +270,6 @@ type Cloudtower struct {
 
 	Application application.ClientService
 
-	BackupLicense backup_license.ClientService
-
-	BackupPackage backup_package.ClientService
-
-	BackupPlan backup_plan.ClientService
-
-	BackupPlanExecution backup_plan_execution.ClientService
-
-	BackupRestoreExecution backup_restore_execution.ClientService
-
-	BackupRestorePoint backup_restore_point.ClientService
-
-	BackupService backup_service.ClientService
-
-	BackupStoreRepository backup_store_repository.ClientService
-
-	BackupTargetExecution backup_target_execution.ClientService
-
 	BrickTopo brick_topo.ClientService
 
 	Cluster cluster.ClientService
@@ -331,10 +285,6 @@ type Cloudtower struct {
 	ConsistencyGroup consistency_group.ClientService
 
 	ConsistencyGroupSnapshot consistency_group_snapshot.ClientService
-
-	ContentLibraryImage content_library_image.ClientService
-
-	ContentLibraryVMTemplate content_library_vm_template.ClientService
 
 	Datacenter datacenter.ClientService
 
@@ -368,8 +318,6 @@ type Cloudtower struct {
 
 	Ipmi ipmi.ClientService
 
-	Iscsi iscsi.ClientService
-
 	IscsiConnection iscsi_connection.ClientService
 
 	IscsiLun iscsi_lun.ClientService
@@ -388,8 +336,6 @@ type Cloudtower struct {
 
 	LogServiceConfig log_service_config.ClientService
 
-	MigrateTransmitter migrate_transmitter.ClientService
-
 	NamespaceGroup namespace_group.ClientService
 
 	NfsExport nfs_export.ClientService
@@ -405,8 +351,6 @@ type Cloudtower struct {
 	NvmfNamespaceSnapshot nvmf_namespace_snapshot.ClientService
 
 	NvmfSubsystem nvmf_subsystem.ClientService
-
-	Operations operations.ClientService
 
 	Organization organization.ClientService
 
@@ -492,15 +436,6 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.AlertNotifier.SetTransport(transport)
 	c.AlertRule.SetTransport(transport)
 	c.Application.SetTransport(transport)
-	c.BackupLicense.SetTransport(transport)
-	c.BackupPackage.SetTransport(transport)
-	c.BackupPlan.SetTransport(transport)
-	c.BackupPlanExecution.SetTransport(transport)
-	c.BackupRestoreExecution.SetTransport(transport)
-	c.BackupRestorePoint.SetTransport(transport)
-	c.BackupService.SetTransport(transport)
-	c.BackupStoreRepository.SetTransport(transport)
-	c.BackupTargetExecution.SetTransport(transport)
 	c.BrickTopo.SetTransport(transport)
 	c.Cluster.SetTransport(transport)
 	c.ClusterImage.SetTransport(transport)
@@ -509,8 +444,6 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.ClusterUpgradeHistory.SetTransport(transport)
 	c.ConsistencyGroup.SetTransport(transport)
 	c.ConsistencyGroupSnapshot.SetTransport(transport)
-	c.ContentLibraryImage.SetTransport(transport)
-	c.ContentLibraryVMTemplate.SetTransport(transport)
 	c.Datacenter.SetTransport(transport)
 	c.Deploy.SetTransport(transport)
 	c.DiscoveredHost.SetTransport(transport)
@@ -527,7 +460,6 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.Graph.SetTransport(transport)
 	c.Host.SetTransport(transport)
 	c.Ipmi.SetTransport(transport)
-	c.Iscsi.SetTransport(transport)
 	c.IscsiConnection.SetTransport(transport)
 	c.IscsiLun.SetTransport(transport)
 	c.IscsiLunSnapshot.SetTransport(transport)
@@ -537,7 +469,6 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.License.SetTransport(transport)
 	c.LogCollection.SetTransport(transport)
 	c.LogServiceConfig.SetTransport(transport)
-	c.MigrateTransmitter.SetTransport(transport)
 	c.NamespaceGroup.SetTransport(transport)
 	c.NfsExport.SetTransport(transport)
 	c.NfsInode.SetTransport(transport)
@@ -546,7 +477,6 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.NvmfNamespace.SetTransport(transport)
 	c.NvmfNamespaceSnapshot.SetTransport(transport)
 	c.NvmfSubsystem.SetTransport(transport)
-	c.Operations.SetTransport(transport)
 	c.Organization.SetTransport(transport)
 	c.PmemDimm.SetTransport(transport)
 	c.RackTopo.SetTransport(transport)

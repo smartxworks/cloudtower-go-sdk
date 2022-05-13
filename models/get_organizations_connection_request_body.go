@@ -14,7 +14,6 @@ import (
 )
 
 // GetOrganizationsConnectionRequestBody get organizations connection request body
-// Example: {"after":"organizationsConnection-id-string","before":"organizationsConnection-id-string","first":0,"last":0,"orderBy":"createdAt_ASC","skip":0,"where":{"AND":"OrganizationWhereInput[]","NOT":"OrganizationWhereInput[]","OR":"OrganizationWhereInput[]","datacenters_every":"DatacenterWhereInput","datacenters_none":"DatacenterWhereInput","datacenters_some":"DatacenterWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","name":"string","name_contains":"string","name_ends_with":"string","name_gt":"string","name_gte":"string","name_in":["string"],"name_lt":"string","name_lte":"string","name_not":"string","name_not_contains":"string","name_not_ends_with":"string","name_not_in":["string"],"name_not_starts_with":"string","name_starts_with":"string"}}
 //
 // swagger:model GetOrganizationsConnectionRequestBody
 type GetOrganizationsConnectionRequestBody struct {

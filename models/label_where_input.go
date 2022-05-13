@@ -15,7 +15,6 @@ import (
 )
 
 // LabelWhereInput label where input
-// Example: {"AND":"LabelWhereInput[]","NOT":"LabelWhereInput[]","OR":"LabelWhereInput[]","cluster_num":0,"cluster_num_gt":0,"cluster_num_gte":0,"cluster_num_in":[0],"cluster_num_lt":0,"cluster_num_lte":0,"cluster_num_not":0,"cluster_num_not_in":[0],"clusters_every":"ClusterWhereInput","clusters_none":"ClusterWhereInput","clusters_some":"ClusterWhereInput","consistency_group_num":0,"consistency_group_num_gt":0,"consistency_group_num_gte":0,"consistency_group_num_in":[0],"consistency_group_num_lt":0,"consistency_group_num_lte":0,"consistency_group_num_not":0,"consistency_group_num_not_in":[0],"consistency_group_snapshot_num":0,"consistency_group_snapshot_num_gt":0,"consistency_group_snapshot_num_gte":0,"consistency_group_snapshot_num_in":[0],"consistency_group_snapshot_num_lt":0,"consistency_group_snapshot_num_lte":0,"consistency_group_snapshot_num_not":0,"consistency_group_snapshot_num_not_in":[0],"consistency_group_snapshots_every":"ConsistencyGroupSnapshotWhereInput","consistency_group_snapshots_none":"ConsistencyGroupSnapshotWhereInput","consistency_group_snapshots_some":"ConsistencyGroupSnapshotWhereInput","consistency_groups_every":"ConsistencyGroupWhereInput","consistency_groups_none":"ConsistencyGroupWhereInput","consistency_groups_some":"ConsistencyGroupWhereInput","content_library_image_num":0,"content_library_image_num_gt":0,"content_library_image_num_gte":0,"content_library_image_num_in":[0],"content_library_image_num_lt":0,"content_library_image_num_lte":0,"content_library_image_num_not":0,"content_library_image_num_not_in":[0],"content_library_images_every":"ContentLibraryImageWhereInput","content_library_images_none":"ContentLibraryImageWhereInput","content_library_images_some":"ContentLibraryImageWhereInput","content_library_vm_template_num":0,"content_library_vm_template_num_gt":0,"content_library_vm_template_num_gte":0,"content_library_vm_template_num_in":[0],"content_library_vm_template_num_lt":0,"content_library_vm_template_num_lte":0,"content_library_vm_template_num_not":0,"content_library_vm_template_num_not_in":[0],"content_library_vm_templates_every":"ContentLibraryVmTemplateWhereInput","content_library_vm_templates_none":"ContentLibraryVmTemplateWhereInput","content_library_vm_templates_some":"ContentLibraryVmTemplateWhereInput","createdAt":"string","createdAt_gt":"string","createdAt_gte":"string","createdAt_in":["string"],"createdAt_lt":"string","createdAt_lte":"string","createdAt_not":"string","createdAt_not_in":["string"],"datacenter_num":0,"datacenter_num_gt":0,"datacenter_num_gte":0,"datacenter_num_in":[0],"datacenter_num_lt":0,"datacenter_num_lte":0,"datacenter_num_not":0,"datacenter_num_not_in":[0],"datacenters_every":"DatacenterWhereInput","datacenters_none":"DatacenterWhereInput","datacenters_some":"DatacenterWhereInput","disk_num":0,"disk_num_gt":0,"disk_num_gte":0,"disk_num_in":[0],"disk_num_lt":0,"disk_num_lte":0,"disk_num_not":0,"disk_num_not_in":[0],"disks_every":"DiskWhereInput","disks_none":"DiskWhereInput","disks_some":"DiskWhereInput","elf_image_num":0,"elf_image_num_gt":0,"elf_image_num_gte":0,"elf_image_num_in":[0],"elf_image_num_lt":0,"elf_image_num_lte":0,"elf_image_num_not":0,"elf_image_num_not_in":[0],"elf_images_every":"ElfImageWhereInput","elf_images_none":"ElfImageWhereInput","elf_images_some":"ElfImageWhereInput","host_num":0,"host_num_gt":0,"host_num_gte":0,"host_num_in":[0],"host_num_lt":0,"host_num_lte":0,"host_num_not":0,"host_num_not_in":[0],"hosts_every":"HostWhereInput","hosts_none":"HostWhereInput","hosts_some":"HostWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","iscsi_lun_num":0,"iscsi_lun_num_gt":0,"iscsi_lun_num_gte":0,"iscsi_lun_num_in":[0],"iscsi_lun_num_lt":0,"iscsi_lun_num_lte":0,"iscsi_lun_num_not":0,"iscsi_lun_num_not_in":[0],"iscsi_lun_snapshot_num":0,"iscsi_lun_snapshot_num_gt":0,"iscsi_lun_snapshot_num_gte":0,"iscsi_lun_snapshot_num_in":[0],"iscsi_lun_snapshot_num_lt":0,"iscsi_lun_snapshot_num_lte":0,"iscsi_lun_snapshot_num_not":0,"iscsi_lun_snapshot_num_not_in":[0],"iscsi_lun_snapshots_every":"IscsiLunSnapshotWhereInput","iscsi_lun_snapshots_none":"IscsiLunSnapshotWhereInput","iscsi_lun_snapshots_some":"IscsiLunSnapshotWhereInput","iscsi_luns_every":"IscsiLunWhereInput","iscsi_luns_none":"IscsiLunWhereInput","iscsi_luns_some":"IscsiLunWhereInput","iscsi_target_num":0,"iscsi_target_num_gt":0,"iscsi_target_num_gte":0,"iscsi_target_num_in":[0],"iscsi_target_num_lt":0,"iscsi_target_num_lte":0,"iscsi_target_num_not":0,"iscsi_target_num_not_in":[0],"iscsi_targets_every":"IscsiTargetWhereInput","iscsi_targets_none":"IscsiTargetWhereInput","iscsi_targets_some":"IscsiTargetWhereInput","isolation_policies_every":"IsolationPolicyWhereInput","isolation_policies_none":"IsolationPolicyWhereInput","isolation_policies_some":"IsolationPolicyWhereInput","isolation_policy_num":0,"isolation_policy_num_gt":0,"isolation_policy_num_gte":0,"isolation_policy_num_in":[0],"isolation_policy_num_lt":0,"isolation_policy_num_lte":0,"isolation_policy_num_not":0,"isolation_policy_num_not_in":[0],"key":"string","key_contains":"string","key_ends_with":"string","key_gt":"string","key_gte":"string","key_in":["string"],"key_lt":"string","key_lte":"string","key_not":"string","key_not_contains":"string","key_not_ends_with":"string","key_not_in":["string"],"key_not_starts_with":"string","key_starts_with":"string","namespace_group_num":0,"namespace_group_num_gt":0,"namespace_group_num_gte":0,"namespace_group_num_in":[0],"namespace_group_num_lt":0,"namespace_group_num_lte":0,"namespace_group_num_not":0,"namespace_group_num_not_in":[0],"namespace_groups_every":"NamespaceGroupWhereInput","namespace_groups_none":"NamespaceGroupWhereInput","namespace_groups_some":"NamespaceGroupWhereInput","nfs_export_num":0,"nfs_export_num_gt":0,"nfs_export_num_gte":0,"nfs_export_num_in":[0],"nfs_export_num_lt":0,"nfs_export_num_lte":0,"nfs_export_num_not":0,"nfs_export_num_not_in":[0],"nfs_exports_every":"NfsExportWhereInput","nfs_exports_none":"NfsExportWhereInput","nfs_exports_some":"NfsExportWhereInput","nfs_inode_num":0,"nfs_inode_num_gt":0,"nfs_inode_num_gte":0,"nfs_inode_num_in":[0],"nfs_inode_num_lt":0,"nfs_inode_num_lte":0,"nfs_inode_num_not":0,"nfs_inode_num_not_in":[0],"nfs_inodes_every":"NfsInodeWhereInput","nfs_inodes_none":"NfsInodeWhereInput","nfs_inodes_some":"NfsInodeWhereInput","nic_num":0,"nic_num_gt":0,"nic_num_gte":0,"nic_num_in":[0],"nic_num_lt":0,"nic_num_lte":0,"nic_num_not":0,"nic_num_not_in":[0],"nics_every":"NicWhereInput","nics_none":"NicWhereInput","nics_some":"NicWhereInput","nvmf_namespace_num":0,"nvmf_namespace_num_gt":0,"nvmf_namespace_num_gte":0,"nvmf_namespace_num_in":[0],"nvmf_namespace_num_lt":0,"nvmf_namespace_num_lte":0,"nvmf_namespace_num_not":0,"nvmf_namespace_num_not_in":[0],"nvmf_namespace_snapshot_num":0,"nvmf_namespace_snapshot_num_gt":0,"nvmf_namespace_snapshot_num_gte":0,"nvmf_namespace_snapshot_num_in":[0],"nvmf_namespace_snapshot_num_lt":0,"nvmf_namespace_snapshot_num_lte":0,"nvmf_namespace_snapshot_num_not":0,"nvmf_namespace_snapshot_num_not_in":[0],"nvmf_namespace_snapshots_every":"NvmfNamespaceSnapshotWhereInput","nvmf_namespace_snapshots_none":"NvmfNamespaceSnapshotWhereInput","nvmf_namespace_snapshots_some":"NvmfNamespaceSnapshotWhereInput","nvmf_namespaces_every":"NvmfNamespaceWhereInput","nvmf_namespaces_none":"NvmfNamespaceWhereInput","nvmf_namespaces_some":"NvmfNamespaceWhereInput","nvmf_subsystem_num":0,"nvmf_subsystem_num_gt":0,"nvmf_subsystem_num_gte":0,"nvmf_subsystem_num_in":[0],"nvmf_subsystem_num_lt":0,"nvmf_subsystem_num_lte":0,"nvmf_subsystem_num_not":0,"nvmf_subsystem_num_not_in":[0],"nvmf_subsystems_every":"NvmfSubsystemWhereInput","nvmf_subsystems_none":"NvmfSubsystemWhereInput","nvmf_subsystems_some":"NvmfSubsystemWhereInput","security_policies_every":"SecurityPolicyWhereInput","security_policies_none":"SecurityPolicyWhereInput","security_policies_some":"SecurityPolicyWhereInput","security_policy_num":0,"security_policy_num_gt":0,"security_policy_num_gte":0,"security_policy_num_in":[0],"security_policy_num_lt":0,"security_policy_num_lte":0,"security_policy_num_not":0,"security_policy_num_not_in":[0],"system_vlan_num":0,"system_vlan_num_gt":0,"system_vlan_num_gte":0,"system_vlan_num_in":[0],"system_vlan_num_lt":0,"system_vlan_num_lte":0,"system_vlan_num_not":0,"system_vlan_num_not_in":[0],"total_num":0,"total_num_gt":0,"total_num_gte":0,"total_num_in":[0],"total_num_lt":0,"total_num_lte":0,"total_num_not":0,"total_num_not_in":[0],"value":"string","value_contains":"string","value_ends_with":"string","value_gt":"string","value_gte":"string","value_in":["string"],"value_lt":"string","value_lte":"string","value_not":"string","value_not_contains":"string","value_not_ends_with":"string","value_not_in":["string"],"value_not_starts_with":"string","value_starts_with":"string","vds_num":0,"vds_num_gt":0,"vds_num_gte":0,"vds_num_in":[0],"vds_num_lt":0,"vds_num_lte":0,"vds_num_not":0,"vds_num_not_in":[0],"vdses_every":"VdsWhereInput","vdses_none":"VdsWhereInput","vdses_some":"VdsWhereInput","vlans_every":"VlanWhereInput","vlans_none":"VlanWhereInput","vlans_some":"VlanWhereInput","vm_num":0,"vm_num_gt":0,"vm_num_gte":0,"vm_num_in":[0],"vm_num_lt":0,"vm_num_lte":0,"vm_num_not":0,"vm_num_not_in":[0],"vm_snapshot_num":0,"vm_snapshot_num_gt":0,"vm_snapshot_num_gte":0,"vm_snapshot_num_in":[0],"vm_snapshot_num_lt":0,"vm_snapshot_num_lte":0,"vm_snapshot_num_not":0,"vm_snapshot_num_not_in":[0],"vm_snapshots_every":"VmSnapshotWhereInput","vm_snapshots_none":"VmSnapshotWhereInput","vm_snapshots_some":"VmSnapshotWhereInput","vm_template_num":0,"vm_template_num_gt":0,"vm_template_num_gte":0,"vm_template_num_in":[0],"vm_template_num_lt":0,"vm_template_num_lte":0,"vm_template_num_not":0,"vm_template_num_not_in":[0],"vm_templates_every":"VmTemplateWhereInput","vm_templates_none":"VmTemplateWhereInput","vm_templates_some":"VmTemplateWhereInput","vm_vlan_num":0,"vm_vlan_num_gt":0,"vm_vlan_num_gte":0,"vm_vlan_num_in":[0],"vm_vlan_num_lt":0,"vm_vlan_num_lte":0,"vm_vlan_num_not":0,"vm_vlan_num_not_in":[0],"vm_volume_num":0,"vm_volume_num_gt":0,"vm_volume_num_gte":0,"vm_volume_num_in":[0],"vm_volume_num_lt":0,"vm_volume_num_lte":0,"vm_volume_num_not":0,"vm_volume_num_not_in":[0],"vm_volumes_every":"VmVolumeWhereInput","vm_volumes_none":"VmVolumeWhereInput","vm_volumes_some":"VmVolumeWhereInput","vms_every":"VmWhereInput","vms_none":"VmWhereInput","vms_some":"VmWhereInput"}
 //
 // swagger:model LabelWhereInput
 type LabelWhereInput struct {
@@ -127,72 +126,6 @@ type LabelWhereInput struct {
 
 	// consistency groups some
 	ConsistencyGroupsSome *ConsistencyGroupWhereInput `json:"consistency_groups_some,omitempty"`
-
-	// content library image num
-	ContentLibraryImageNum *int32 `json:"content_library_image_num,omitempty"`
-
-	// content library image num gt
-	ContentLibraryImageNumGt *int32 `json:"content_library_image_num_gt,omitempty"`
-
-	// content library image num gte
-	ContentLibraryImageNumGte *int32 `json:"content_library_image_num_gte,omitempty"`
-
-	// content library image num in
-	ContentLibraryImageNumIn []int32 `json:"content_library_image_num_in,omitempty"`
-
-	// content library image num lt
-	ContentLibraryImageNumLt *int32 `json:"content_library_image_num_lt,omitempty"`
-
-	// content library image num lte
-	ContentLibraryImageNumLte *int32 `json:"content_library_image_num_lte,omitempty"`
-
-	// content library image num not
-	ContentLibraryImageNumNot *int32 `json:"content_library_image_num_not,omitempty"`
-
-	// content library image num not in
-	ContentLibraryImageNumNotIn []int32 `json:"content_library_image_num_not_in,omitempty"`
-
-	// content library images every
-	ContentLibraryImagesEvery *ContentLibraryImageWhereInput `json:"content_library_images_every,omitempty"`
-
-	// content library images none
-	ContentLibraryImagesNone *ContentLibraryImageWhereInput `json:"content_library_images_none,omitempty"`
-
-	// content library images some
-	ContentLibraryImagesSome *ContentLibraryImageWhereInput `json:"content_library_images_some,omitempty"`
-
-	// content library vm template num
-	ContentLibraryVMTemplateNum *int32 `json:"content_library_vm_template_num,omitempty"`
-
-	// content library vm template num gt
-	ContentLibraryVMTemplateNumGt *int32 `json:"content_library_vm_template_num_gt,omitempty"`
-
-	// content library vm template num gte
-	ContentLibraryVMTemplateNumGte *int32 `json:"content_library_vm_template_num_gte,omitempty"`
-
-	// content library vm template num in
-	ContentLibraryVMTemplateNumIn []int32 `json:"content_library_vm_template_num_in,omitempty"`
-
-	// content library vm template num lt
-	ContentLibraryVMTemplateNumLt *int32 `json:"content_library_vm_template_num_lt,omitempty"`
-
-	// content library vm template num lte
-	ContentLibraryVMTemplateNumLte *int32 `json:"content_library_vm_template_num_lte,omitempty"`
-
-	// content library vm template num not
-	ContentLibraryVMTemplateNumNot *int32 `json:"content_library_vm_template_num_not,omitempty"`
-
-	// content library vm template num not in
-	ContentLibraryVMTemplateNumNotIn []int32 `json:"content_library_vm_template_num_not_in,omitempty"`
-
-	// content library vm templates every
-	ContentLibraryVMTemplatesEvery *ContentLibraryVMTemplateWhereInput `json:"content_library_vm_templates_every,omitempty"`
-
-	// content library vm templates none
-	ContentLibraryVMTemplatesNone *ContentLibraryVMTemplateWhereInput `json:"content_library_vm_templates_none,omitempty"`
-
-	// content library vm templates some
-	ContentLibraryVMTemplatesSome *ContentLibraryVMTemplateWhereInput `json:"content_library_vm_templates_some,omitempty"`
 
 	// created at
 	CreatedAt *string `json:"createdAt,omitempty"`
@@ -1171,30 +1104,6 @@ func (m *LabelWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateContentLibraryImagesEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateContentLibraryImagesNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateContentLibraryImagesSome(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateContentLibraryVMTemplatesEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateContentLibraryVMTemplatesNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateContentLibraryVMTemplatesSome(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateDatacentersEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1706,120 +1615,6 @@ func (m *LabelWhereInput) validateConsistencyGroupsSome(formats strfmt.Registry)
 				return ve.ValidateName("consistency_groups_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("consistency_groups_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) validateContentLibraryImagesEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContentLibraryImagesEvery) { // not required
-		return nil
-	}
-
-	if m.ContentLibraryImagesEvery != nil {
-		if err := m.ContentLibraryImagesEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_images_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_images_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) validateContentLibraryImagesNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContentLibraryImagesNone) { // not required
-		return nil
-	}
-
-	if m.ContentLibraryImagesNone != nil {
-		if err := m.ContentLibraryImagesNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_images_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_images_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) validateContentLibraryImagesSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContentLibraryImagesSome) { // not required
-		return nil
-	}
-
-	if m.ContentLibraryImagesSome != nil {
-		if err := m.ContentLibraryImagesSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_images_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_images_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) validateContentLibraryVMTemplatesEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContentLibraryVMTemplatesEvery) { // not required
-		return nil
-	}
-
-	if m.ContentLibraryVMTemplatesEvery != nil {
-		if err := m.ContentLibraryVMTemplatesEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_vm_templates_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_vm_templates_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) validateContentLibraryVMTemplatesNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContentLibraryVMTemplatesNone) { // not required
-		return nil
-	}
-
-	if m.ContentLibraryVMTemplatesNone != nil {
-		if err := m.ContentLibraryVMTemplatesNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_vm_templates_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_vm_templates_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) validateContentLibraryVMTemplatesSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContentLibraryVMTemplatesSome) { // not required
-		return nil
-	}
-
-	if m.ContentLibraryVMTemplatesSome != nil {
-		if err := m.ContentLibraryVMTemplatesSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_vm_templates_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_vm_templates_some")
 			}
 			return err
 		}
@@ -3134,30 +2929,6 @@ func (m *LabelWhereInput) ContextValidate(ctx context.Context, formats strfmt.Re
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateContentLibraryImagesEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateContentLibraryImagesNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateContentLibraryImagesSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateContentLibraryVMTemplatesEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateContentLibraryVMTemplatesNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateContentLibraryVMTemplatesSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateDatacentersEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3624,102 +3395,6 @@ func (m *LabelWhereInput) contextValidateConsistencyGroupsSome(ctx context.Conte
 				return ve.ValidateName("consistency_groups_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("consistency_groups_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) contextValidateContentLibraryImagesEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContentLibraryImagesEvery != nil {
-		if err := m.ContentLibraryImagesEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_images_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_images_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) contextValidateContentLibraryImagesNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContentLibraryImagesNone != nil {
-		if err := m.ContentLibraryImagesNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_images_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_images_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) contextValidateContentLibraryImagesSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContentLibraryImagesSome != nil {
-		if err := m.ContentLibraryImagesSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_images_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_images_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) contextValidateContentLibraryVMTemplatesEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContentLibraryVMTemplatesEvery != nil {
-		if err := m.ContentLibraryVMTemplatesEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_vm_templates_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_vm_templates_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) contextValidateContentLibraryVMTemplatesNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContentLibraryVMTemplatesNone != nil {
-		if err := m.ContentLibraryVMTemplatesNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_vm_templates_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_vm_templates_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LabelWhereInput) contextValidateContentLibraryVMTemplatesSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContentLibraryVMTemplatesSome != nil {
-		if err := m.ContentLibraryVMTemplatesSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("content_library_vm_templates_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("content_library_vm_templates_some")
 			}
 			return err
 		}

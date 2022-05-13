@@ -35,6 +35,18 @@ func (o *GetAlertNotifiersReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetAlertNotifiersNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetAlertNotifiersInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetAlertNotifiersBadRequest() *GetAlertNotifiersBadRequest {
 
 /* GetAlertNotifiersBadRequest describes a response with status code 400, with default header values.
 
-GetAlertNotifiersBadRequest get alert notifiers bad request
+Bad request
 */
 type GetAlertNotifiersBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetAlertNotifiersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-alert-notifiers][%d] getAlertNotifiersBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetAlertNotifiersBadRequest) GetPayload() string {
+func (o *GetAlertNotifiersBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetAlertNotifiersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetAlertNotifiersNotFound creates a GetAlertNotifiersNotFound with default headers values
+func NewGetAlertNotifiersNotFound() *GetAlertNotifiersNotFound {
+	return &GetAlertNotifiersNotFound{}
+}
+
+/* GetAlertNotifiersNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetAlertNotifiersNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetAlertNotifiersNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-alert-notifiers][%d] getAlertNotifiersNotFound  %+v", 404, o.Payload)
+}
+func (o *GetAlertNotifiersNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetAlertNotifiersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetAlertNotifiersInternalServerError creates a GetAlertNotifiersInternalServerError with default headers values
+func NewGetAlertNotifiersInternalServerError() *GetAlertNotifiersInternalServerError {
+	return &GetAlertNotifiersInternalServerError{}
+}
+
+/* GetAlertNotifiersInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetAlertNotifiersInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetAlertNotifiersInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-alert-notifiers][%d] getAlertNotifiersInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetAlertNotifiersInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetAlertNotifiersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

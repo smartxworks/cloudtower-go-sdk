@@ -35,6 +35,18 @@ func (o *GetZonesReader) ReadResponse(response runtime.ClientResponse, consumer 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetZonesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetZonesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetZonesBadRequest() *GetZonesBadRequest {
 
 /* GetZonesBadRequest describes a response with status code 400, with default header values.
 
-GetZonesBadRequest get zones bad request
+Bad request
 */
 type GetZonesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetZonesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-zones][%d] getZonesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetZonesBadRequest) GetPayload() string {
+func (o *GetZonesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetZonesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetZonesNotFound creates a GetZonesNotFound with default headers values
+func NewGetZonesNotFound() *GetZonesNotFound {
+	return &GetZonesNotFound{}
+}
+
+/* GetZonesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetZonesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetZonesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-zones][%d] getZonesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetZonesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetZonesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetZonesInternalServerError creates a GetZonesInternalServerError with default headers values
+func NewGetZonesInternalServerError() *GetZonesInternalServerError {
+	return &GetZonesInternalServerError{}
+}
+
+/* GetZonesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetZonesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetZonesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-zones][%d] getZonesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetZonesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetZonesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

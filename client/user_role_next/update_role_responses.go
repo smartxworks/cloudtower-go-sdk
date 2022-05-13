@@ -35,6 +35,18 @@ func (o *UpdateRoleReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateRoleNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateRoleInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateRoleBadRequest() *UpdateRoleBadRequest {
 
 /* UpdateRoleBadRequest describes a response with status code 400, with default header values.
 
-UpdateRoleBadRequest update role bad request
+Bad request
 */
 type UpdateRoleBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateRoleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-role][%d] updateRoleBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateRoleBadRequest) GetPayload() string {
+func (o *UpdateRoleBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateRoleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateRoleNotFound creates a UpdateRoleNotFound with default headers values
+func NewUpdateRoleNotFound() *UpdateRoleNotFound {
+	return &UpdateRoleNotFound{}
+}
+
+/* UpdateRoleNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateRoleNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateRoleNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-role][%d] updateRoleNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateRoleNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateRoleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateRoleInternalServerError creates a UpdateRoleInternalServerError with default headers values
+func NewUpdateRoleInternalServerError() *UpdateRoleInternalServerError {
+	return &UpdateRoleInternalServerError{}
+}
+
+/* UpdateRoleInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateRoleInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateRoleInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-role][%d] updateRoleInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateRoleInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateRoleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *CreateReportTemplateReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateReportTemplateNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateReportTemplateInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateReportTemplateBadRequest() *CreateReportTemplateBadRequest {
 
 /* CreateReportTemplateBadRequest describes a response with status code 400, with default header values.
 
-CreateReportTemplateBadRequest create report template bad request
+Bad request
 */
 type CreateReportTemplateBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateReportTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-report-template][%d] createReportTemplateBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateReportTemplateBadRequest) GetPayload() string {
+func (o *CreateReportTemplateBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateReportTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateReportTemplateNotFound creates a CreateReportTemplateNotFound with default headers values
+func NewCreateReportTemplateNotFound() *CreateReportTemplateNotFound {
+	return &CreateReportTemplateNotFound{}
+}
+
+/* CreateReportTemplateNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateReportTemplateNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateReportTemplateNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-report-template][%d] createReportTemplateNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateReportTemplateNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateReportTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateReportTemplateInternalServerError creates a CreateReportTemplateInternalServerError with default headers values
+func NewCreateReportTemplateInternalServerError() *CreateReportTemplateInternalServerError {
+	return &CreateReportTemplateInternalServerError{}
+}
+
+/* CreateReportTemplateInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateReportTemplateInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateReportTemplateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-report-template][%d] createReportTemplateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateReportTemplateInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateReportTemplateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

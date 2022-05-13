@@ -35,6 +35,18 @@ func (o *GetReportTasksReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetReportTasksNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetReportTasksInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetReportTasksBadRequest() *GetReportTasksBadRequest {
 
 /* GetReportTasksBadRequest describes a response with status code 400, with default header values.
 
-GetReportTasksBadRequest get report tasks bad request
+Bad request
 */
 type GetReportTasksBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetReportTasksBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-report-tasks][%d] getReportTasksBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetReportTasksBadRequest) GetPayload() string {
+func (o *GetReportTasksBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetReportTasksBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetReportTasksNotFound creates a GetReportTasksNotFound with default headers values
+func NewGetReportTasksNotFound() *GetReportTasksNotFound {
+	return &GetReportTasksNotFound{}
+}
+
+/* GetReportTasksNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetReportTasksNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetReportTasksNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-report-tasks][%d] getReportTasksNotFound  %+v", 404, o.Payload)
+}
+func (o *GetReportTasksNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetReportTasksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetReportTasksInternalServerError creates a GetReportTasksInternalServerError with default headers values
+func NewGetReportTasksInternalServerError() *GetReportTasksInternalServerError {
+	return &GetReportTasksInternalServerError{}
+}
+
+/* GetReportTasksInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetReportTasksInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetReportTasksInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-report-tasks][%d] getReportTasksInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetReportTasksInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetReportTasksInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

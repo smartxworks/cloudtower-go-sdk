@@ -35,6 +35,18 @@ func (o *GetEverouteLicensesConnectionReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetEverouteLicensesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetEverouteLicensesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetEverouteLicensesConnectionBadRequest() *GetEverouteLicensesConnection
 
 /* GetEverouteLicensesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetEverouteLicensesConnectionBadRequest get everoute licenses connection bad request
+Bad request
 */
 type GetEverouteLicensesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetEverouteLicensesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-everoute-licenses-connection][%d] getEverouteLicensesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetEverouteLicensesConnectionBadRequest) GetPayload() string {
+func (o *GetEverouteLicensesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetEverouteLicensesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetEverouteLicensesConnectionNotFound creates a GetEverouteLicensesConnectionNotFound with default headers values
+func NewGetEverouteLicensesConnectionNotFound() *GetEverouteLicensesConnectionNotFound {
+	return &GetEverouteLicensesConnectionNotFound{}
+}
+
+/* GetEverouteLicensesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetEverouteLicensesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetEverouteLicensesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-everoute-licenses-connection][%d] getEverouteLicensesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetEverouteLicensesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetEverouteLicensesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetEverouteLicensesConnectionInternalServerError creates a GetEverouteLicensesConnectionInternalServerError with default headers values
+func NewGetEverouteLicensesConnectionInternalServerError() *GetEverouteLicensesConnectionInternalServerError {
+	return &GetEverouteLicensesConnectionInternalServerError{}
+}
+
+/* GetEverouteLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetEverouteLicensesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetEverouteLicensesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-everoute-licenses-connection][%d] getEverouteLicensesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetEverouteLicensesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetEverouteLicensesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

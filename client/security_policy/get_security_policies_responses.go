@@ -35,6 +35,18 @@ func (o *GetSecurityPoliciesReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSecurityPoliciesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSecurityPoliciesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetSecurityPoliciesBadRequest() *GetSecurityPoliciesBadRequest {
 
 /* GetSecurityPoliciesBadRequest describes a response with status code 400, with default header values.
 
-GetSecurityPoliciesBadRequest get security policies bad request
+Bad request
 */
 type GetSecurityPoliciesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSecurityPoliciesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-security-policies][%d] getSecurityPoliciesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSecurityPoliciesBadRequest) GetPayload() string {
+func (o *GetSecurityPoliciesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSecurityPoliciesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSecurityPoliciesNotFound creates a GetSecurityPoliciesNotFound with default headers values
+func NewGetSecurityPoliciesNotFound() *GetSecurityPoliciesNotFound {
+	return &GetSecurityPoliciesNotFound{}
+}
+
+/* GetSecurityPoliciesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSecurityPoliciesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSecurityPoliciesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-security-policies][%d] getSecurityPoliciesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSecurityPoliciesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSecurityPoliciesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSecurityPoliciesInternalServerError creates a GetSecurityPoliciesInternalServerError with default headers values
+func NewGetSecurityPoliciesInternalServerError() *GetSecurityPoliciesInternalServerError {
+	return &GetSecurityPoliciesInternalServerError{}
+}
+
+/* GetSecurityPoliciesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSecurityPoliciesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSecurityPoliciesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-security-policies][%d] getSecurityPoliciesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSecurityPoliciesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSecurityPoliciesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

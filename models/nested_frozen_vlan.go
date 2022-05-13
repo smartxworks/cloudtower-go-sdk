@@ -29,7 +29,7 @@ type NestedFrozenVlan struct {
 
 	// vlan id
 	// Required: true
-	VlanID *int32 `json:"vlan_id"`
+	VlanID *int64 `json:"vlan_id"`
 
 	// vlan local id
 	// Required: true

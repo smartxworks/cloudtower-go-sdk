@@ -35,6 +35,18 @@ func (o *RollbackVMReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewRollbackVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewRollbackVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewRollbackVMBadRequest() *RollbackVMBadRequest {
 
 /* RollbackVMBadRequest describes a response with status code 400, with default header values.
 
-RollbackVMBadRequest rollback Vm bad request
+Bad request
 */
 type RollbackVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *RollbackVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /rollback-vm][%d] rollbackVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *RollbackVMBadRequest) GetPayload() string {
+func (o *RollbackVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *RollbackVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRollbackVMNotFound creates a RollbackVMNotFound with default headers values
+func NewRollbackVMNotFound() *RollbackVMNotFound {
+	return &RollbackVMNotFound{}
+}
+
+/* RollbackVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type RollbackVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RollbackVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /rollback-vm][%d] rollbackVmNotFound  %+v", 404, o.Payload)
+}
+func (o *RollbackVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RollbackVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRollbackVMInternalServerError creates a RollbackVMInternalServerError with default headers values
+func NewRollbackVMInternalServerError() *RollbackVMInternalServerError {
+	return &RollbackVMInternalServerError{}
+}
+
+/* RollbackVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type RollbackVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RollbackVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /rollback-vm][%d] rollbackVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RollbackVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RollbackVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

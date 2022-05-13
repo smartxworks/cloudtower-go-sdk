@@ -35,6 +35,18 @@ func (o *CreateNfsExportReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateNfsExportNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateNfsExportInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateNfsExportBadRequest() *CreateNfsExportBadRequest {
 
 /* CreateNfsExportBadRequest describes a response with status code 400, with default header values.
 
-CreateNfsExportBadRequest create nfs export bad request
+Bad request
 */
 type CreateNfsExportBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateNfsExportBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-nfs-export][%d] createNfsExportBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateNfsExportBadRequest) GetPayload() string {
+func (o *CreateNfsExportBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateNfsExportBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateNfsExportNotFound creates a CreateNfsExportNotFound with default headers values
+func NewCreateNfsExportNotFound() *CreateNfsExportNotFound {
+	return &CreateNfsExportNotFound{}
+}
+
+/* CreateNfsExportNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateNfsExportNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateNfsExportNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-nfs-export][%d] createNfsExportNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateNfsExportNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateNfsExportNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateNfsExportInternalServerError creates a CreateNfsExportInternalServerError with default headers values
+func NewCreateNfsExportInternalServerError() *CreateNfsExportInternalServerError {
+	return &CreateNfsExportInternalServerError{}
+}
+
+/* CreateNfsExportInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateNfsExportInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateNfsExportInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-nfs-export][%d] createNfsExportInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateNfsExportInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateNfsExportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

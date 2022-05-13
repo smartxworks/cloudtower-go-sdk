@@ -35,6 +35,18 @@ func (o *UpdateOrganizationReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateOrganizationNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateOrganizationInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateOrganizationBadRequest() *UpdateOrganizationBadRequest {
 
 /* UpdateOrganizationBadRequest describes a response with status code 400, with default header values.
 
-UpdateOrganizationBadRequest update organization bad request
+Bad request
 */
 type UpdateOrganizationBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateOrganizationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-organization][%d] updateOrganizationBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateOrganizationBadRequest) GetPayload() string {
+func (o *UpdateOrganizationBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateOrganizationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateOrganizationNotFound creates a UpdateOrganizationNotFound with default headers values
+func NewUpdateOrganizationNotFound() *UpdateOrganizationNotFound {
+	return &UpdateOrganizationNotFound{}
+}
+
+/* UpdateOrganizationNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateOrganizationNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateOrganizationNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-organization][%d] updateOrganizationNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateOrganizationNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateOrganizationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateOrganizationInternalServerError creates a UpdateOrganizationInternalServerError with default headers values
+func NewUpdateOrganizationInternalServerError() *UpdateOrganizationInternalServerError {
+	return &UpdateOrganizationInternalServerError{}
+}
+
+/* UpdateOrganizationInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateOrganizationInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateOrganizationInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-organization][%d] updateOrganizationInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateOrganizationInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateOrganizationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

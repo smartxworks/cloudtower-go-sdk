@@ -35,6 +35,18 @@ func (o *GetUserAuditLogsReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetUserAuditLogsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetUserAuditLogsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetUserAuditLogsBadRequest() *GetUserAuditLogsBadRequest {
 
 /* GetUserAuditLogsBadRequest describes a response with status code 400, with default header values.
 
-GetUserAuditLogsBadRequest get user audit logs bad request
+Bad request
 */
 type GetUserAuditLogsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetUserAuditLogsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-user-audit-logs][%d] getUserAuditLogsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetUserAuditLogsBadRequest) GetPayload() string {
+func (o *GetUserAuditLogsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetUserAuditLogsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUserAuditLogsNotFound creates a GetUserAuditLogsNotFound with default headers values
+func NewGetUserAuditLogsNotFound() *GetUserAuditLogsNotFound {
+	return &GetUserAuditLogsNotFound{}
+}
+
+/* GetUserAuditLogsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetUserAuditLogsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUserAuditLogsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-user-audit-logs][%d] getUserAuditLogsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetUserAuditLogsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUserAuditLogsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUserAuditLogsInternalServerError creates a GetUserAuditLogsInternalServerError with default headers values
+func NewGetUserAuditLogsInternalServerError() *GetUserAuditLogsInternalServerError {
+	return &GetUserAuditLogsInternalServerError{}
+}
+
+/* GetUserAuditLogsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetUserAuditLogsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUserAuditLogsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-user-audit-logs][%d] getUserAuditLogsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetUserAuditLogsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUserAuditLogsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

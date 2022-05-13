@@ -35,6 +35,18 @@ func (o *GetRackTopoesReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetRackTopoesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetRackTopoesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetRackTopoesBadRequest() *GetRackTopoesBadRequest {
 
 /* GetRackTopoesBadRequest describes a response with status code 400, with default header values.
 
-GetRackTopoesBadRequest get rack topoes bad request
+Bad request
 */
 type GetRackTopoesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetRackTopoesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-rack-topoes][%d] getRackTopoesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetRackTopoesBadRequest) GetPayload() string {
+func (o *GetRackTopoesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetRackTopoesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetRackTopoesNotFound creates a GetRackTopoesNotFound with default headers values
+func NewGetRackTopoesNotFound() *GetRackTopoesNotFound {
+	return &GetRackTopoesNotFound{}
+}
+
+/* GetRackTopoesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetRackTopoesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetRackTopoesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-rack-topoes][%d] getRackTopoesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetRackTopoesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetRackTopoesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetRackTopoesInternalServerError creates a GetRackTopoesInternalServerError with default headers values
+func NewGetRackTopoesInternalServerError() *GetRackTopoesInternalServerError {
+	return &GetRackTopoesInternalServerError{}
+}
+
+/* GetRackTopoesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetRackTopoesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetRackTopoesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-rack-topoes][%d] getRackTopoesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetRackTopoesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetRackTopoesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

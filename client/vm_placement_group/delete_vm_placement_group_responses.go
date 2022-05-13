@@ -35,6 +35,18 @@ func (o *DeleteVMPlacementGroupReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteVMPlacementGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteVMPlacementGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteVMPlacementGroupBadRequest() *DeleteVMPlacementGroupBadRequest {
 
 /* DeleteVMPlacementGroupBadRequest describes a response with status code 400, with default header values.
 
-DeleteVMPlacementGroupBadRequest delete Vm placement group bad request
+Bad request
 */
 type DeleteVMPlacementGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteVMPlacementGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-vm-placement-group][%d] deleteVmPlacementGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteVMPlacementGroupBadRequest) GetPayload() string {
+func (o *DeleteVMPlacementGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteVMPlacementGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVMPlacementGroupNotFound creates a DeleteVMPlacementGroupNotFound with default headers values
+func NewDeleteVMPlacementGroupNotFound() *DeleteVMPlacementGroupNotFound {
+	return &DeleteVMPlacementGroupNotFound{}
+}
+
+/* DeleteVMPlacementGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteVMPlacementGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVMPlacementGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-vm-placement-group][%d] deleteVmPlacementGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteVMPlacementGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVMPlacementGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVMPlacementGroupInternalServerError creates a DeleteVMPlacementGroupInternalServerError with default headers values
+func NewDeleteVMPlacementGroupInternalServerError() *DeleteVMPlacementGroupInternalServerError {
+	return &DeleteVMPlacementGroupInternalServerError{}
+}
+
+/* DeleteVMPlacementGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteVMPlacementGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVMPlacementGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-vm-placement-group][%d] deleteVmPlacementGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteVMPlacementGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVMPlacementGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

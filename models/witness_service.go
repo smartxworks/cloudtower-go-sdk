@@ -37,7 +37,7 @@ type WitnessService struct {
 
 	// state duration
 	// Required: true
-	StateDuration *int64 `json:"state_duration"`
+	StateDuration *float64 `json:"state_duration"`
 }
 
 // Validate validates this witness service

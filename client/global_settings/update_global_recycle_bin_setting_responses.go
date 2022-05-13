@@ -35,6 +35,18 @@ func (o *UpdateGlobalRecycleBinSettingReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateGlobalRecycleBinSettingNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateGlobalRecycleBinSettingInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewUpdateGlobalRecycleBinSettingBadRequest() *UpdateGlobalRecycleBinSetting
 
 /* UpdateGlobalRecycleBinSettingBadRequest describes a response with status code 400, with default header values.
 
-UpdateGlobalRecycleBinSettingBadRequest update global recycle bin setting bad request
+Bad request
 */
 type UpdateGlobalRecycleBinSettingBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateGlobalRecycleBinSettingBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-global-recycle-bin-setting][%d] updateGlobalRecycleBinSettingBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateGlobalRecycleBinSettingBadRequest) GetPayload() string {
+func (o *UpdateGlobalRecycleBinSettingBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateGlobalRecycleBinSettingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateGlobalRecycleBinSettingNotFound creates a UpdateGlobalRecycleBinSettingNotFound with default headers values
+func NewUpdateGlobalRecycleBinSettingNotFound() *UpdateGlobalRecycleBinSettingNotFound {
+	return &UpdateGlobalRecycleBinSettingNotFound{}
+}
+
+/* UpdateGlobalRecycleBinSettingNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateGlobalRecycleBinSettingNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateGlobalRecycleBinSettingNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-global-recycle-bin-setting][%d] updateGlobalRecycleBinSettingNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateGlobalRecycleBinSettingNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateGlobalRecycleBinSettingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateGlobalRecycleBinSettingInternalServerError creates a UpdateGlobalRecycleBinSettingInternalServerError with default headers values
+func NewUpdateGlobalRecycleBinSettingInternalServerError() *UpdateGlobalRecycleBinSettingInternalServerError {
+	return &UpdateGlobalRecycleBinSettingInternalServerError{}
+}
+
+/* UpdateGlobalRecycleBinSettingInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateGlobalRecycleBinSettingInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateGlobalRecycleBinSettingInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-global-recycle-bin-setting][%d] updateGlobalRecycleBinSettingInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateGlobalRecycleBinSettingInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateGlobalRecycleBinSettingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
