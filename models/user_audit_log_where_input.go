@@ -15,7 +15,6 @@ import (
 )
 
 // UserAuditLogWhereInput user audit log where input
-// Example: {"AND":"UserAuditLogWhereInput[]","NOT":"UserAuditLogWhereInput[]","OR":"UserAuditLogWhereInput[]","action":"string","action_contains":"string","action_ends_with":"string","action_gt":"string","action_gte":"string","action_in":["string"],"action_lt":"string","action_lte":"string","action_not":"string","action_not_contains":"string","action_not_ends_with":"string","action_not_in":["string"],"action_not_starts_with":"string","action_starts_with":"string","cluster":"ClusterWhereInput","createdAt":"string","createdAt_gt":"string","createdAt_gte":"string","createdAt_in":["string"],"createdAt_lt":"string","createdAt_lte":"string","createdAt_not":"string","createdAt_not_in":["string"],"finished_at":"string","finished_at_gt":"string","finished_at_gte":"string","finished_at_in":["string"],"finished_at_lt":"string","finished_at_lte":"string","finished_at_not":"string","finished_at_not_in":["string"],"id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","ip_address":"string","ip_address_contains":"string","ip_address_ends_with":"string","ip_address_gt":"string","ip_address_gte":"string","ip_address_in":["string"],"ip_address_lt":"string","ip_address_lte":"string","ip_address_not":"string","ip_address_not_contains":"string","ip_address_not_ends_with":"string","ip_address_not_in":["string"],"ip_address_not_starts_with":"string","ip_address_starts_with":"string","message":"string","message_contains":"string","message_ends_with":"string","message_gt":"string","message_gte":"string","message_in":["string"],"message_lt":"string","message_lte":"string","message_not":"string","message_not_contains":"string","message_not_ends_with":"string","message_not_in":["string"],"message_not_starts_with":"string","message_starts_with":"string","resource_id":"string","resource_id_contains":"string","resource_id_ends_with":"string","resource_id_gt":"string","resource_id_gte":"string","resource_id_in":["string"],"resource_id_lt":"string","resource_id_lte":"string","resource_id_not":"string","resource_id_not_contains":"string","resource_id_not_ends_with":"string","resource_id_not_in":["string"],"resource_id_not_starts_with":"string","resource_id_starts_with":"string","resource_type":"string","resource_type_contains":"string","resource_type_ends_with":"string","resource_type_gt":"string","resource_type_gte":"string","resource_type_in":["string"],"resource_type_lt":"string","resource_type_lte":"string","resource_type_not":"string","resource_type_not_contains":"string","resource_type_not_ends_with":"string","resource_type_not_in":["string"],"resource_type_not_starts_with":"string","resource_type_starts_with":"string","status":"FAILED","status_in":["FAILED"],"status_not":"FAILED","status_not_in":["FAILED"],"user":"UserWhereInput"}
 //
 // swagger:model UserAuditLogWhereInput
 type UserAuditLogWhereInput struct {
@@ -331,6 +330,30 @@ type UserAuditLogWhereInput struct {
 
 	// resource type starts with
 	ResourceTypeStartsWith *string `json:"resource_type_starts_with,omitempty"`
+
+	// started at
+	StartedAt *string `json:"started_at,omitempty"`
+
+	// started at gt
+	StartedAtGt *string `json:"started_at_gt,omitempty"`
+
+	// started at gte
+	StartedAtGte *string `json:"started_at_gte,omitempty"`
+
+	// started at in
+	StartedAtIn []string `json:"started_at_in,omitempty"`
+
+	// started at lt
+	StartedAtLt *string `json:"started_at_lt,omitempty"`
+
+	// started at lte
+	StartedAtLte *string `json:"started_at_lte,omitempty"`
+
+	// started at not
+	StartedAtNot *string `json:"started_at_not,omitempty"`
+
+	// started at not in
+	StartedAtNotIn []string `json:"started_at_not_in,omitempty"`
 
 	// status
 	Status *UserAuditLogStatus `json:"status,omitempty"`

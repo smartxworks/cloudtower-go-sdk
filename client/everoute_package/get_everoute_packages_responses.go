@@ -35,6 +35,18 @@ func (o *GetEveroutePackagesReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetEveroutePackagesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetEveroutePackagesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetEveroutePackagesBadRequest() *GetEveroutePackagesBadRequest {
 
 /* GetEveroutePackagesBadRequest describes a response with status code 400, with default header values.
 
-GetEveroutePackagesBadRequest get everoute packages bad request
+Bad request
 */
 type GetEveroutePackagesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetEveroutePackagesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-everoute-packages][%d] getEveroutePackagesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetEveroutePackagesBadRequest) GetPayload() string {
+func (o *GetEveroutePackagesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetEveroutePackagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetEveroutePackagesNotFound creates a GetEveroutePackagesNotFound with default headers values
+func NewGetEveroutePackagesNotFound() *GetEveroutePackagesNotFound {
+	return &GetEveroutePackagesNotFound{}
+}
+
+/* GetEveroutePackagesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetEveroutePackagesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetEveroutePackagesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-everoute-packages][%d] getEveroutePackagesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetEveroutePackagesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetEveroutePackagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetEveroutePackagesInternalServerError creates a GetEveroutePackagesInternalServerError with default headers values
+func NewGetEveroutePackagesInternalServerError() *GetEveroutePackagesInternalServerError {
+	return &GetEveroutePackagesInternalServerError{}
+}
+
+/* GetEveroutePackagesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetEveroutePackagesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetEveroutePackagesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-everoute-packages][%d] getEveroutePackagesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetEveroutePackagesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetEveroutePackagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

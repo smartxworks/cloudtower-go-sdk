@@ -35,6 +35,18 @@ func (o *KeepSnapshotGroupReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewKeepSnapshotGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewKeepSnapshotGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewKeepSnapshotGroupBadRequest() *KeepSnapshotGroupBadRequest {
 
 /* KeepSnapshotGroupBadRequest describes a response with status code 400, with default header values.
 
-KeepSnapshotGroupBadRequest keep snapshot group bad request
+Bad request
 */
 type KeepSnapshotGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *KeepSnapshotGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /keep-snapshot-group][%d] keepSnapshotGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *KeepSnapshotGroupBadRequest) GetPayload() string {
+func (o *KeepSnapshotGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *KeepSnapshotGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKeepSnapshotGroupNotFound creates a KeepSnapshotGroupNotFound with default headers values
+func NewKeepSnapshotGroupNotFound() *KeepSnapshotGroupNotFound {
+	return &KeepSnapshotGroupNotFound{}
+}
+
+/* KeepSnapshotGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type KeepSnapshotGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *KeepSnapshotGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /keep-snapshot-group][%d] keepSnapshotGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *KeepSnapshotGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *KeepSnapshotGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKeepSnapshotGroupInternalServerError creates a KeepSnapshotGroupInternalServerError with default headers values
+func NewKeepSnapshotGroupInternalServerError() *KeepSnapshotGroupInternalServerError {
+	return &KeepSnapshotGroupInternalServerError{}
+}
+
+/* KeepSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type KeepSnapshotGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *KeepSnapshotGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /keep-snapshot-group][%d] keepSnapshotGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *KeepSnapshotGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *KeepSnapshotGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

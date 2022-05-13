@@ -35,6 +35,18 @@ func (o *GetUserRoleNextsConnectionReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetUserRoleNextsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetUserRoleNextsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetUserRoleNextsConnectionBadRequest() *GetUserRoleNextsConnectionBadReq
 
 /* GetUserRoleNextsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetUserRoleNextsConnectionBadRequest get user role nexts connection bad request
+Bad request
 */
 type GetUserRoleNextsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetUserRoleNextsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-user-role-nexts-connection][%d] getUserRoleNextsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetUserRoleNextsConnectionBadRequest) GetPayload() string {
+func (o *GetUserRoleNextsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetUserRoleNextsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUserRoleNextsConnectionNotFound creates a GetUserRoleNextsConnectionNotFound with default headers values
+func NewGetUserRoleNextsConnectionNotFound() *GetUserRoleNextsConnectionNotFound {
+	return &GetUserRoleNextsConnectionNotFound{}
+}
+
+/* GetUserRoleNextsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetUserRoleNextsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUserRoleNextsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-user-role-nexts-connection][%d] getUserRoleNextsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetUserRoleNextsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUserRoleNextsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUserRoleNextsConnectionInternalServerError creates a GetUserRoleNextsConnectionInternalServerError with default headers values
+func NewGetUserRoleNextsConnectionInternalServerError() *GetUserRoleNextsConnectionInternalServerError {
+	return &GetUserRoleNextsConnectionInternalServerError{}
+}
+
+/* GetUserRoleNextsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetUserRoleNextsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUserRoleNextsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-user-role-nexts-connection][%d] getUserRoleNextsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetUserRoleNextsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUserRoleNextsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

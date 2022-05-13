@@ -35,6 +35,18 @@ func (o *UpdateDatacenterReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateDatacenterNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateDatacenterInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateDatacenterBadRequest() *UpdateDatacenterBadRequest {
 
 /* UpdateDatacenterBadRequest describes a response with status code 400, with default header values.
 
-UpdateDatacenterBadRequest update datacenter bad request
+Bad request
 */
 type UpdateDatacenterBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateDatacenterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-datacenter][%d] updateDatacenterBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateDatacenterBadRequest) GetPayload() string {
+func (o *UpdateDatacenterBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateDatacenterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateDatacenterNotFound creates a UpdateDatacenterNotFound with default headers values
+func NewUpdateDatacenterNotFound() *UpdateDatacenterNotFound {
+	return &UpdateDatacenterNotFound{}
+}
+
+/* UpdateDatacenterNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateDatacenterNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateDatacenterNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-datacenter][%d] updateDatacenterNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateDatacenterNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateDatacenterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateDatacenterInternalServerError creates a UpdateDatacenterInternalServerError with default headers values
+func NewUpdateDatacenterInternalServerError() *UpdateDatacenterInternalServerError {
+	return &UpdateDatacenterInternalServerError{}
+}
+
+/* UpdateDatacenterInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateDatacenterInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateDatacenterInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-datacenter][%d] updateDatacenterInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateDatacenterInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateDatacenterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

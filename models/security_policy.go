@@ -45,6 +45,9 @@ type SecurityPolicy struct {
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	// policy mode
+	PolicyMode *PolicyMode `json:"policy_mode,omitempty"`
 }
 
 // Validate validates this security policy
@@ -76,6 +79,10 @@ func (m *SecurityPolicy) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePolicyMode(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -211,6 +218,25 @@ func (m *SecurityPolicy) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SecurityPolicy) validatePolicyMode(formats strfmt.Registry) error {
+	if swag.IsZero(m.PolicyMode) { // not required
+		return nil
+	}
+
+	if m.PolicyMode != nil {
+		if err := m.PolicyMode.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("policy_mode")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("policy_mode")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this security policy based on the context it is used
 func (m *SecurityPolicy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -228,6 +254,10 @@ func (m *SecurityPolicy) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateIngress(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePolicyMode(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -308,6 +338,22 @@ func (m *SecurityPolicy) contextValidateIngress(ctx context.Context, formats str
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *SecurityPolicy) contextValidatePolicyMode(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PolicyMode != nil {
+		if err := m.PolicyMode.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("policy_mode")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("policy_mode")
+			}
+			return err
+		}
 	}
 
 	return nil

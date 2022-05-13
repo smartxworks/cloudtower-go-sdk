@@ -35,6 +35,18 @@ func (o *GetElfDataStoresConnectionReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetElfDataStoresConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetElfDataStoresConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetElfDataStoresConnectionBadRequest() *GetElfDataStoresConnectionBadReq
 
 /* GetElfDataStoresConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetElfDataStoresConnectionBadRequest get elf data stores connection bad request
+Bad request
 */
 type GetElfDataStoresConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetElfDataStoresConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-elf-data-stores-connection][%d] getElfDataStoresConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetElfDataStoresConnectionBadRequest) GetPayload() string {
+func (o *GetElfDataStoresConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetElfDataStoresConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfDataStoresConnectionNotFound creates a GetElfDataStoresConnectionNotFound with default headers values
+func NewGetElfDataStoresConnectionNotFound() *GetElfDataStoresConnectionNotFound {
+	return &GetElfDataStoresConnectionNotFound{}
+}
+
+/* GetElfDataStoresConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetElfDataStoresConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfDataStoresConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-elf-data-stores-connection][%d] getElfDataStoresConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetElfDataStoresConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfDataStoresConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfDataStoresConnectionInternalServerError creates a GetElfDataStoresConnectionInternalServerError with default headers values
+func NewGetElfDataStoresConnectionInternalServerError() *GetElfDataStoresConnectionInternalServerError {
+	return &GetElfDataStoresConnectionInternalServerError{}
+}
+
+/* GetElfDataStoresConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetElfDataStoresConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfDataStoresConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-elf-data-stores-connection][%d] getElfDataStoresConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetElfDataStoresConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfDataStoresConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

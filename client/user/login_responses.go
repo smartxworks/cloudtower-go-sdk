@@ -35,6 +35,18 @@ func (o *LoginReader) ReadResponse(response runtime.ClientResponse, consumer run
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewLoginNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewLoginInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewLoginBadRequest() *LoginBadRequest {
 
 /* LoginBadRequest describes a response with status code 400, with default header values.
 
-LoginBadRequest login bad request
+Bad request
 */
 type LoginBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *LoginBadRequest) Error() string {
 	return fmt.Sprintf("[POST /login][%d] loginBadRequest  %+v", 400, o.Payload)
 }
-func (o *LoginBadRequest) GetPayload() string {
+func (o *LoginBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *LoginBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewLoginNotFound creates a LoginNotFound with default headers values
+func NewLoginNotFound() *LoginNotFound {
+	return &LoginNotFound{}
+}
+
+/* LoginNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type LoginNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *LoginNotFound) Error() string {
+	return fmt.Sprintf("[POST /login][%d] loginNotFound  %+v", 404, o.Payload)
+}
+func (o *LoginNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *LoginNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewLoginInternalServerError creates a LoginInternalServerError with default headers values
+func NewLoginInternalServerError() *LoginInternalServerError {
+	return &LoginInternalServerError{}
+}
+
+/* LoginInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type LoginInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *LoginInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /login][%d] loginInternalServerError  %+v", 500, o.Payload)
+}
+func (o *LoginInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *LoginInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

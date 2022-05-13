@@ -35,6 +35,18 @@ func (o *GetElfStoragePoliciesReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetElfStoragePoliciesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetElfStoragePoliciesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetElfStoragePoliciesBadRequest() *GetElfStoragePoliciesBadRequest {
 
 /* GetElfStoragePoliciesBadRequest describes a response with status code 400, with default header values.
 
-GetElfStoragePoliciesBadRequest get elf storage policies bad request
+Bad request
 */
 type GetElfStoragePoliciesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetElfStoragePoliciesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-elf-storage-policies][%d] getElfStoragePoliciesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetElfStoragePoliciesBadRequest) GetPayload() string {
+func (o *GetElfStoragePoliciesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetElfStoragePoliciesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfStoragePoliciesNotFound creates a GetElfStoragePoliciesNotFound with default headers values
+func NewGetElfStoragePoliciesNotFound() *GetElfStoragePoliciesNotFound {
+	return &GetElfStoragePoliciesNotFound{}
+}
+
+/* GetElfStoragePoliciesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetElfStoragePoliciesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfStoragePoliciesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-elf-storage-policies][%d] getElfStoragePoliciesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetElfStoragePoliciesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfStoragePoliciesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfStoragePoliciesInternalServerError creates a GetElfStoragePoliciesInternalServerError with default headers values
+func NewGetElfStoragePoliciesInternalServerError() *GetElfStoragePoliciesInternalServerError {
+	return &GetElfStoragePoliciesInternalServerError{}
+}
+
+/* GetElfStoragePoliciesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetElfStoragePoliciesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfStoragePoliciesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-elf-storage-policies][%d] getElfStoragePoliciesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetElfStoragePoliciesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfStoragePoliciesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

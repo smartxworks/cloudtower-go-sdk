@@ -35,6 +35,18 @@ func (o *AddVMNicReader) ReadResponse(response runtime.ClientResponse, consumer 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewAddVMNicNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewAddVMNicInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewAddVMNicBadRequest() *AddVMNicBadRequest {
 
 /* AddVMNicBadRequest describes a response with status code 400, with default header values.
 
-AddVMNicBadRequest add Vm nic bad request
+Bad request
 */
 type AddVMNicBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *AddVMNicBadRequest) Error() string {
 	return fmt.Sprintf("[POST /add-vm-nic][%d] addVmNicBadRequest  %+v", 400, o.Payload)
 }
-func (o *AddVMNicBadRequest) GetPayload() string {
+func (o *AddVMNicBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *AddVMNicBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddVMNicNotFound creates a AddVMNicNotFound with default headers values
+func NewAddVMNicNotFound() *AddVMNicNotFound {
+	return &AddVMNicNotFound{}
+}
+
+/* AddVMNicNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type AddVMNicNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddVMNicNotFound) Error() string {
+	return fmt.Sprintf("[POST /add-vm-nic][%d] addVmNicNotFound  %+v", 404, o.Payload)
+}
+func (o *AddVMNicNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddVMNicNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddVMNicInternalServerError creates a AddVMNicInternalServerError with default headers values
+func NewAddVMNicInternalServerError() *AddVMNicInternalServerError {
+	return &AddVMNicInternalServerError{}
+}
+
+/* AddVMNicInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type AddVMNicInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddVMNicInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /add-vm-nic][%d] addVmNicInternalServerError  %+v", 500, o.Payload)
+}
+func (o *AddVMNicInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddVMNicInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

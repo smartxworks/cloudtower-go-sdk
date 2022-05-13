@@ -35,6 +35,18 @@ func (o *DeleteLabelReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteLabelNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteLabelInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteLabelBadRequest() *DeleteLabelBadRequest {
 
 /* DeleteLabelBadRequest describes a response with status code 400, with default header values.
 
-DeleteLabelBadRequest delete label bad request
+Bad request
 */
 type DeleteLabelBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteLabelBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-label][%d] deleteLabelBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteLabelBadRequest) GetPayload() string {
+func (o *DeleteLabelBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteLabelBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteLabelNotFound creates a DeleteLabelNotFound with default headers values
+func NewDeleteLabelNotFound() *DeleteLabelNotFound {
+	return &DeleteLabelNotFound{}
+}
+
+/* DeleteLabelNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteLabelNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteLabelNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-label][%d] deleteLabelNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteLabelNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteLabelNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteLabelInternalServerError creates a DeleteLabelInternalServerError with default headers values
+func NewDeleteLabelInternalServerError() *DeleteLabelInternalServerError {
+	return &DeleteLabelInternalServerError{}
+}
+
+/* DeleteLabelInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteLabelInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteLabelInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-label][%d] deleteLabelInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteLabelInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteLabelInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

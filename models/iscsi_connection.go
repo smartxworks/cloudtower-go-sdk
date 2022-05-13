@@ -45,6 +45,9 @@ type IscsiConnection struct {
 	// nvmf subsystem
 	NvmfSubsystem *NestedNvmfSubsystem `json:"nvmf_subsystem,omitempty"`
 
+	// tr type
+	TrType *StoreTransportType `json:"tr_type,omitempty"`
+
 	// type
 	// Required: true
 	Type *StoreConnectionType `json:"type"`
@@ -79,6 +82,10 @@ func (m *IscsiConnection) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNvmfSubsystem(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTrType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -197,6 +204,25 @@ func (m *IscsiConnection) validateNvmfSubsystem(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IscsiConnection) validateTrType(formats strfmt.Registry) error {
+	if swag.IsZero(m.TrType) { // not required
+		return nil
+	}
+
+	if m.TrType != nil {
+		if err := m.TrType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IscsiConnection) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
@@ -238,6 +264,10 @@ func (m *IscsiConnection) ContextValidate(ctx context.Context, formats strfmt.Re
 	}
 
 	if err := m.contextValidateNvmfSubsystem(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTrType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -307,6 +337,22 @@ func (m *IscsiConnection) contextValidateNvmfSubsystem(ctx context.Context, form
 				return ve.ValidateName("nvmf_subsystem")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("nvmf_subsystem")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiConnection) contextValidateTrType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TrType != nil {
+		if err := m.TrType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tr_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tr_type")
 			}
 			return err
 		}

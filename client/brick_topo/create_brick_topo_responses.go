@@ -35,6 +35,18 @@ func (o *CreateBrickTopoReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateBrickTopoNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateBrickTopoInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateBrickTopoBadRequest() *CreateBrickTopoBadRequest {
 
 /* CreateBrickTopoBadRequest describes a response with status code 400, with default header values.
 
-CreateBrickTopoBadRequest create brick topo bad request
+Bad request
 */
 type CreateBrickTopoBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateBrickTopoBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-brick-topo][%d] createBrickTopoBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateBrickTopoBadRequest) GetPayload() string {
+func (o *CreateBrickTopoBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateBrickTopoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateBrickTopoNotFound creates a CreateBrickTopoNotFound with default headers values
+func NewCreateBrickTopoNotFound() *CreateBrickTopoNotFound {
+	return &CreateBrickTopoNotFound{}
+}
+
+/* CreateBrickTopoNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateBrickTopoNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateBrickTopoNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-brick-topo][%d] createBrickTopoNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateBrickTopoNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateBrickTopoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateBrickTopoInternalServerError creates a CreateBrickTopoInternalServerError with default headers values
+func NewCreateBrickTopoInternalServerError() *CreateBrickTopoInternalServerError {
+	return &CreateBrickTopoInternalServerError{}
+}
+
+/* CreateBrickTopoInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateBrickTopoInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateBrickTopoInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-brick-topo][%d] createBrickTopoInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateBrickTopoInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateBrickTopoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *GetLabelsConnectionReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetLabelsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetLabelsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetLabelsConnectionBadRequest() *GetLabelsConnectionBadRequest {
 
 /* GetLabelsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetLabelsConnectionBadRequest get labels connection bad request
+Bad request
 */
 type GetLabelsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetLabelsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-labels-connection][%d] getLabelsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetLabelsConnectionBadRequest) GetPayload() string {
+func (o *GetLabelsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetLabelsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetLabelsConnectionNotFound creates a GetLabelsConnectionNotFound with default headers values
+func NewGetLabelsConnectionNotFound() *GetLabelsConnectionNotFound {
+	return &GetLabelsConnectionNotFound{}
+}
+
+/* GetLabelsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetLabelsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetLabelsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-labels-connection][%d] getLabelsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetLabelsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetLabelsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetLabelsConnectionInternalServerError creates a GetLabelsConnectionInternalServerError with default headers values
+func NewGetLabelsConnectionInternalServerError() *GetLabelsConnectionInternalServerError {
+	return &GetLabelsConnectionInternalServerError{}
+}
+
+/* GetLabelsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetLabelsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetLabelsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-labels-connection][%d] getLabelsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetLabelsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetLabelsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

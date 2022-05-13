@@ -35,6 +35,18 @@ func (o *GetIscsiLunSnapshotsConnectionReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetIscsiLunSnapshotsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetIscsiLunSnapshotsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetIscsiLunSnapshotsConnectionBadRequest() *GetIscsiLunSnapshotsConnecti
 
 /* GetIscsiLunSnapshotsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetIscsiLunSnapshotsConnectionBadRequest get iscsi lun snapshots connection bad request
+Bad request
 */
 type GetIscsiLunSnapshotsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetIscsiLunSnapshotsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-iscsi-lun-snapshots-connection][%d] getIscsiLunSnapshotsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetIscsiLunSnapshotsConnectionBadRequest) GetPayload() string {
+func (o *GetIscsiLunSnapshotsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetIscsiLunSnapshotsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIscsiLunSnapshotsConnectionNotFound creates a GetIscsiLunSnapshotsConnectionNotFound with default headers values
+func NewGetIscsiLunSnapshotsConnectionNotFound() *GetIscsiLunSnapshotsConnectionNotFound {
+	return &GetIscsiLunSnapshotsConnectionNotFound{}
+}
+
+/* GetIscsiLunSnapshotsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetIscsiLunSnapshotsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIscsiLunSnapshotsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-iscsi-lun-snapshots-connection][%d] getIscsiLunSnapshotsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetIscsiLunSnapshotsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIscsiLunSnapshotsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIscsiLunSnapshotsConnectionInternalServerError creates a GetIscsiLunSnapshotsConnectionInternalServerError with default headers values
+func NewGetIscsiLunSnapshotsConnectionInternalServerError() *GetIscsiLunSnapshotsConnectionInternalServerError {
+	return &GetIscsiLunSnapshotsConnectionInternalServerError{}
+}
+
+/* GetIscsiLunSnapshotsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetIscsiLunSnapshotsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIscsiLunSnapshotsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-iscsi-lun-snapshots-connection][%d] getIscsiLunSnapshotsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetIscsiLunSnapshotsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIscsiLunSnapshotsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

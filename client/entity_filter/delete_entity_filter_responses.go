@@ -35,6 +35,18 @@ func (o *DeleteEntityFilterReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteEntityFilterNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteEntityFilterInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteEntityFilterBadRequest() *DeleteEntityFilterBadRequest {
 
 /* DeleteEntityFilterBadRequest describes a response with status code 400, with default header values.
 
-DeleteEntityFilterBadRequest delete entity filter bad request
+Bad request
 */
 type DeleteEntityFilterBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteEntityFilterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-entity-filter][%d] deleteEntityFilterBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteEntityFilterBadRequest) GetPayload() string {
+func (o *DeleteEntityFilterBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteEntityFilterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteEntityFilterNotFound creates a DeleteEntityFilterNotFound with default headers values
+func NewDeleteEntityFilterNotFound() *DeleteEntityFilterNotFound {
+	return &DeleteEntityFilterNotFound{}
+}
+
+/* DeleteEntityFilterNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteEntityFilterNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteEntityFilterNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-entity-filter][%d] deleteEntityFilterNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteEntityFilterNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteEntityFilterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteEntityFilterInternalServerError creates a DeleteEntityFilterInternalServerError with default headers values
+func NewDeleteEntityFilterInternalServerError() *DeleteEntityFilterInternalServerError {
+	return &DeleteEntityFilterInternalServerError{}
+}
+
+/* DeleteEntityFilterInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteEntityFilterInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteEntityFilterInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-entity-filter][%d] deleteEntityFilterInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteEntityFilterInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteEntityFilterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

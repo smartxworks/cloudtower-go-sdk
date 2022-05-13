@@ -35,6 +35,18 @@ func (o *CreateRoleReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateRoleNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateRoleInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateRoleBadRequest() *CreateRoleBadRequest {
 
 /* CreateRoleBadRequest describes a response with status code 400, with default header values.
 
-CreateRoleBadRequest create role bad request
+Bad request
 */
 type CreateRoleBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateRoleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-role][%d] createRoleBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateRoleBadRequest) GetPayload() string {
+func (o *CreateRoleBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateRoleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateRoleNotFound creates a CreateRoleNotFound with default headers values
+func NewCreateRoleNotFound() *CreateRoleNotFound {
+	return &CreateRoleNotFound{}
+}
+
+/* CreateRoleNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateRoleNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateRoleNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-role][%d] createRoleNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateRoleNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateRoleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateRoleInternalServerError creates a CreateRoleInternalServerError with default headers values
+func NewCreateRoleInternalServerError() *CreateRoleInternalServerError {
+	return &CreateRoleInternalServerError{}
+}
+
+/* CreateRoleInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateRoleInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateRoleInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-role][%d] createRoleInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateRoleInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateRoleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *DeleteOrganizationReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteOrganizationNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteOrganizationInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteOrganizationBadRequest() *DeleteOrganizationBadRequest {
 
 /* DeleteOrganizationBadRequest describes a response with status code 400, with default header values.
 
-DeleteOrganizationBadRequest delete organization bad request
+Bad request
 */
 type DeleteOrganizationBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteOrganizationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-organization][%d] deleteOrganizationBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteOrganizationBadRequest) GetPayload() string {
+func (o *DeleteOrganizationBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteOrganizationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteOrganizationNotFound creates a DeleteOrganizationNotFound with default headers values
+func NewDeleteOrganizationNotFound() *DeleteOrganizationNotFound {
+	return &DeleteOrganizationNotFound{}
+}
+
+/* DeleteOrganizationNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteOrganizationNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteOrganizationNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-organization][%d] deleteOrganizationNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteOrganizationNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteOrganizationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteOrganizationInternalServerError creates a DeleteOrganizationInternalServerError with default headers values
+func NewDeleteOrganizationInternalServerError() *DeleteOrganizationInternalServerError {
+	return &DeleteOrganizationInternalServerError{}
+}
+
+/* DeleteOrganizationInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteOrganizationInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteOrganizationInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-organization][%d] deleteOrganizationInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteOrganizationInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteOrganizationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

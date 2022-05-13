@@ -35,6 +35,18 @@ func (o *DeleteVlanReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteVlanNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteVlanInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteVlanBadRequest() *DeleteVlanBadRequest {
 
 /* DeleteVlanBadRequest describes a response with status code 400, with default header values.
 
-DeleteVlanBadRequest delete vlan bad request
+Bad request
 */
 type DeleteVlanBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteVlanBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-vm-vlan][%d] deleteVlanBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteVlanBadRequest) GetPayload() string {
+func (o *DeleteVlanBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteVlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVlanNotFound creates a DeleteVlanNotFound with default headers values
+func NewDeleteVlanNotFound() *DeleteVlanNotFound {
+	return &DeleteVlanNotFound{}
+}
+
+/* DeleteVlanNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteVlanNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVlanNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-vm-vlan][%d] deleteVlanNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteVlanNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVlanInternalServerError creates a DeleteVlanInternalServerError with default headers values
+func NewDeleteVlanInternalServerError() *DeleteVlanInternalServerError {
+	return &DeleteVlanInternalServerError{}
+}
+
+/* DeleteVlanInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteVlanInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVlanInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-vm-vlan][%d] deleteVlanInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteVlanInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

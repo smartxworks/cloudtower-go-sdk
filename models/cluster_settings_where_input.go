@@ -15,7 +15,6 @@ import (
 )
 
 // ClusterSettingsWhereInput cluster settings where input
-// Example: {"AND":"ClusterSettingsWhereInput[]","NOT":"ClusterSettingsWhereInput[]","OR":"ClusterSettingsWhereInput[]","cluster":"ClusterWhereInput","default_ha":false,"default_ha_not":false,"id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string"}
 //
 // swagger:model ClusterSettingsWhereInput
 type ClusterSettingsWhereInput struct {
@@ -37,6 +36,12 @@ type ClusterSettingsWhereInput struct {
 
 	// default ha not
 	DefaultHaNot *bool `json:"default_ha_not,omitempty"`
+
+	// enabled iscsi
+	EnabledIscsi *bool `json:"enabled_iscsi,omitempty"`
+
+	// enabled iscsi not
+	EnabledIscsiNot *bool `json:"enabled_iscsi_not,omitempty"`
 
 	// id
 	ID *string `json:"id,omitempty"`

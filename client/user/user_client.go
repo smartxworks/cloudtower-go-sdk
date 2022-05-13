@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateRootUser(params *CreateRootUserParams, opts ...ClientOption) (*CreateRootUserOK, error)
+
 	CreateUser(params *CreateUserParams, opts ...ClientOption) (*CreateUserOK, error)
 
 	DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserOK, error)
@@ -43,6 +45,44 @@ type ClientService interface {
 	UpdateUser(params *UpdateUserParams, opts ...ClientOption) (*UpdateUserOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateRootUser create root user API
+*/
+func (a *Client) CreateRootUser(params *CreateRootUserParams, opts ...ClientOption) (*CreateRootUserOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateRootUserParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateRootUser",
+		Method:             "POST",
+		PathPattern:        "/create-root-user",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateRootUserReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateRootUserOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateRootUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*

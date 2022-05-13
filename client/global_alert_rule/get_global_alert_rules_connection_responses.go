@@ -35,6 +35,18 @@ func (o *GetGlobalAlertRulesConnectionReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetGlobalAlertRulesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetGlobalAlertRulesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetGlobalAlertRulesConnectionBadRequest() *GetGlobalAlertRulesConnection
 
 /* GetGlobalAlertRulesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetGlobalAlertRulesConnectionBadRequest get global alert rules connection bad request
+Bad request
 */
 type GetGlobalAlertRulesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetGlobalAlertRulesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-global-alert-rules-connection][%d] getGlobalAlertRulesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetGlobalAlertRulesConnectionBadRequest) GetPayload() string {
+func (o *GetGlobalAlertRulesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetGlobalAlertRulesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetGlobalAlertRulesConnectionNotFound creates a GetGlobalAlertRulesConnectionNotFound with default headers values
+func NewGetGlobalAlertRulesConnectionNotFound() *GetGlobalAlertRulesConnectionNotFound {
+	return &GetGlobalAlertRulesConnectionNotFound{}
+}
+
+/* GetGlobalAlertRulesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetGlobalAlertRulesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetGlobalAlertRulesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-global-alert-rules-connection][%d] getGlobalAlertRulesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetGlobalAlertRulesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetGlobalAlertRulesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetGlobalAlertRulesConnectionInternalServerError creates a GetGlobalAlertRulesConnectionInternalServerError with default headers values
+func NewGetGlobalAlertRulesConnectionInternalServerError() *GetGlobalAlertRulesConnectionInternalServerError {
+	return &GetGlobalAlertRulesConnectionInternalServerError{}
+}
+
+/* GetGlobalAlertRulesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetGlobalAlertRulesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetGlobalAlertRulesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-global-alert-rules-connection][%d] getGlobalAlertRulesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetGlobalAlertRulesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetGlobalAlertRulesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

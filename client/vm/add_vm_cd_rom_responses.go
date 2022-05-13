@@ -35,6 +35,18 @@ func (o *AddVMCdRomReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewAddVMCdRomNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewAddVMCdRomInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewAddVMCdRomBadRequest() *AddVMCdRomBadRequest {
 
 /* AddVMCdRomBadRequest describes a response with status code 400, with default header values.
 
-AddVMCdRomBadRequest add Vm cd rom bad request
+Bad request
 */
 type AddVMCdRomBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *AddVMCdRomBadRequest) Error() string {
 	return fmt.Sprintf("[POST /add-vm-cd-rom][%d] addVmCdRomBadRequest  %+v", 400, o.Payload)
 }
-func (o *AddVMCdRomBadRequest) GetPayload() string {
+func (o *AddVMCdRomBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *AddVMCdRomBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddVMCdRomNotFound creates a AddVMCdRomNotFound with default headers values
+func NewAddVMCdRomNotFound() *AddVMCdRomNotFound {
+	return &AddVMCdRomNotFound{}
+}
+
+/* AddVMCdRomNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type AddVMCdRomNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddVMCdRomNotFound) Error() string {
+	return fmt.Sprintf("[POST /add-vm-cd-rom][%d] addVmCdRomNotFound  %+v", 404, o.Payload)
+}
+func (o *AddVMCdRomNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddVMCdRomNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddVMCdRomInternalServerError creates a AddVMCdRomInternalServerError with default headers values
+func NewAddVMCdRomInternalServerError() *AddVMCdRomInternalServerError {
+	return &AddVMCdRomInternalServerError{}
+}
+
+/* AddVMCdRomInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type AddVMCdRomInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddVMCdRomInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /add-vm-cd-rom][%d] addVmCdRomInternalServerError  %+v", 500, o.Payload)
+}
+func (o *AddVMCdRomInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddVMCdRomInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

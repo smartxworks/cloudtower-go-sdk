@@ -35,6 +35,18 @@ func (o *UpdateElfImageReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateElfImageNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateElfImageInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateElfImageBadRequest() *UpdateElfImageBadRequest {
 
 /* UpdateElfImageBadRequest describes a response with status code 400, with default header values.
 
-UpdateElfImageBadRequest update elf image bad request
+Bad request
 */
 type UpdateElfImageBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateElfImageBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-elf-image][%d] updateElfImageBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateElfImageBadRequest) GetPayload() string {
+func (o *UpdateElfImageBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateElfImageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateElfImageNotFound creates a UpdateElfImageNotFound with default headers values
+func NewUpdateElfImageNotFound() *UpdateElfImageNotFound {
+	return &UpdateElfImageNotFound{}
+}
+
+/* UpdateElfImageNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateElfImageNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateElfImageNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-elf-image][%d] updateElfImageNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateElfImageNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateElfImageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateElfImageInternalServerError creates a UpdateElfImageInternalServerError with default headers values
+func NewUpdateElfImageInternalServerError() *UpdateElfImageInternalServerError {
+	return &UpdateElfImageInternalServerError{}
+}
+
+/* UpdateElfImageInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateElfImageInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateElfImageInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-elf-image][%d] updateElfImageInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateElfImageInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateElfImageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

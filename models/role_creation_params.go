@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -21,7 +22,7 @@ type RoleCreationParams struct {
 
 	// actions
 	// Required: true
-	Actions []string `json:"actions"`
+	Actions []ROLEACTION `json:"actions"`
 
 	// name
 	// Required: true
@@ -52,6 +53,19 @@ func (m *RoleCreationParams) validateActions(formats strfmt.Registry) error {
 		return err
 	}
 
+	for i := 0; i < len(m.Actions); i++ {
+
+		if err := m.Actions[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("actions" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("actions" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
 	return nil
 }
 
@@ -64,8 +78,35 @@ func (m *RoleCreationParams) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this role creation params based on context it is used
+// ContextValidate validate this role creation params based on the context it is used
 func (m *RoleCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateActions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *RoleCreationParams) contextValidateActions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Actions); i++ {
+
+		if err := m.Actions[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("actions" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("actions" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
 	return nil
 }
 

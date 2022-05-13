@@ -35,6 +35,18 @@ func (o *GetVMVolumesConnectionReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVMVolumesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVMVolumesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetVMVolumesConnectionBadRequest() *GetVMVolumesConnectionBadRequest {
 
 /* GetVMVolumesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetVMVolumesConnectionBadRequest get Vm volumes connection bad request
+Bad request
 */
 type GetVMVolumesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVMVolumesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vm-volumes-connection][%d] getVmVolumesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVMVolumesConnectionBadRequest) GetPayload() string {
+func (o *GetVMVolumesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVMVolumesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMVolumesConnectionNotFound creates a GetVMVolumesConnectionNotFound with default headers values
+func NewGetVMVolumesConnectionNotFound() *GetVMVolumesConnectionNotFound {
+	return &GetVMVolumesConnectionNotFound{}
+}
+
+/* GetVMVolumesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVMVolumesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMVolumesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vm-volumes-connection][%d] getVmVolumesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVMVolumesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMVolumesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMVolumesConnectionInternalServerError creates a GetVMVolumesConnectionInternalServerError with default headers values
+func NewGetVMVolumesConnectionInternalServerError() *GetVMVolumesConnectionInternalServerError {
+	return &GetVMVolumesConnectionInternalServerError{}
+}
+
+/* GetVMVolumesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVMVolumesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMVolumesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vm-volumes-connection][%d] getVmVolumesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVMVolumesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMVolumesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

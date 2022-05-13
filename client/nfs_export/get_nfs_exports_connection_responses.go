@@ -35,6 +35,18 @@ func (o *GetNfsExportsConnectionReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNfsExportsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNfsExportsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetNfsExportsConnectionBadRequest() *GetNfsExportsConnectionBadRequest {
 
 /* GetNfsExportsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetNfsExportsConnectionBadRequest get nfs exports connection bad request
+Bad request
 */
 type GetNfsExportsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNfsExportsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nfs-exports-connection][%d] getNfsExportsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNfsExportsConnectionBadRequest) GetPayload() string {
+func (o *GetNfsExportsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNfsExportsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNfsExportsConnectionNotFound creates a GetNfsExportsConnectionNotFound with default headers values
+func NewGetNfsExportsConnectionNotFound() *GetNfsExportsConnectionNotFound {
+	return &GetNfsExportsConnectionNotFound{}
+}
+
+/* GetNfsExportsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNfsExportsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNfsExportsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nfs-exports-connection][%d] getNfsExportsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNfsExportsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNfsExportsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNfsExportsConnectionInternalServerError creates a GetNfsExportsConnectionInternalServerError with default headers values
+func NewGetNfsExportsConnectionInternalServerError() *GetNfsExportsConnectionInternalServerError {
+	return &GetNfsExportsConnectionInternalServerError{}
+}
+
+/* GetNfsExportsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNfsExportsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNfsExportsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nfs-exports-connection][%d] getNfsExportsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNfsExportsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNfsExportsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

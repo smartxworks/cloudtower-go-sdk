@@ -35,6 +35,18 @@ func (o *DeleteSnmpTransportReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteSnmpTransportNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteSnmpTransportInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteSnmpTransportBadRequest() *DeleteSnmpTransportBadRequest {
 
 /* DeleteSnmpTransportBadRequest describes a response with status code 400, with default header values.
 
-DeleteSnmpTransportBadRequest delete snmp transport bad request
+Bad request
 */
 type DeleteSnmpTransportBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteSnmpTransportBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-snmp-transport][%d] deleteSnmpTransportBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteSnmpTransportBadRequest) GetPayload() string {
+func (o *DeleteSnmpTransportBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteSnmpTransportBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteSnmpTransportNotFound creates a DeleteSnmpTransportNotFound with default headers values
+func NewDeleteSnmpTransportNotFound() *DeleteSnmpTransportNotFound {
+	return &DeleteSnmpTransportNotFound{}
+}
+
+/* DeleteSnmpTransportNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteSnmpTransportNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteSnmpTransportNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-snmp-transport][%d] deleteSnmpTransportNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteSnmpTransportNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteSnmpTransportNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteSnmpTransportInternalServerError creates a DeleteSnmpTransportInternalServerError with default headers values
+func NewDeleteSnmpTransportInternalServerError() *DeleteSnmpTransportInternalServerError {
+	return &DeleteSnmpTransportInternalServerError{}
+}
+
+/* DeleteSnmpTransportInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteSnmpTransportInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteSnmpTransportInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-snmp-transport][%d] deleteSnmpTransportInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteSnmpTransportInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteSnmpTransportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

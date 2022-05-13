@@ -35,6 +35,18 @@ func (o *TriggerDiskBlinkReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewTriggerDiskBlinkNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewTriggerDiskBlinkInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewTriggerDiskBlinkBadRequest() *TriggerDiskBlinkBadRequest {
 
 /* TriggerDiskBlinkBadRequest describes a response with status code 400, with default header values.
 
-TriggerDiskBlinkBadRequest trigger disk blink bad request
+Bad request
 */
 type TriggerDiskBlinkBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *TriggerDiskBlinkBadRequest) Error() string {
 	return fmt.Sprintf("[POST /trigger-disk-blink][%d] triggerDiskBlinkBadRequest  %+v", 400, o.Payload)
 }
-func (o *TriggerDiskBlinkBadRequest) GetPayload() string {
+func (o *TriggerDiskBlinkBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *TriggerDiskBlinkBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewTriggerDiskBlinkNotFound creates a TriggerDiskBlinkNotFound with default headers values
+func NewTriggerDiskBlinkNotFound() *TriggerDiskBlinkNotFound {
+	return &TriggerDiskBlinkNotFound{}
+}
+
+/* TriggerDiskBlinkNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type TriggerDiskBlinkNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *TriggerDiskBlinkNotFound) Error() string {
+	return fmt.Sprintf("[POST /trigger-disk-blink][%d] triggerDiskBlinkNotFound  %+v", 404, o.Payload)
+}
+func (o *TriggerDiskBlinkNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *TriggerDiskBlinkNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewTriggerDiskBlinkInternalServerError creates a TriggerDiskBlinkInternalServerError with default headers values
+func NewTriggerDiskBlinkInternalServerError() *TriggerDiskBlinkInternalServerError {
+	return &TriggerDiskBlinkInternalServerError{}
+}
+
+/* TriggerDiskBlinkInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type TriggerDiskBlinkInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *TriggerDiskBlinkInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /trigger-disk-blink][%d] triggerDiskBlinkInternalServerError  %+v", 500, o.Payload)
+}
+func (o *TriggerDiskBlinkInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *TriggerDiskBlinkInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

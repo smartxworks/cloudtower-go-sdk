@@ -35,6 +35,18 @@ func (o *GetDatacentersReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetDatacentersNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetDatacentersInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetDatacentersBadRequest() *GetDatacentersBadRequest {
 
 /* GetDatacentersBadRequest describes a response with status code 400, with default header values.
 
-GetDatacentersBadRequest get datacenters bad request
+Bad request
 */
 type GetDatacentersBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetDatacentersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-datacenters][%d] getDatacentersBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetDatacentersBadRequest) GetPayload() string {
+func (o *GetDatacentersBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetDatacentersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatacentersNotFound creates a GetDatacentersNotFound with default headers values
+func NewGetDatacentersNotFound() *GetDatacentersNotFound {
+	return &GetDatacentersNotFound{}
+}
+
+/* GetDatacentersNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetDatacentersNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDatacentersNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-datacenters][%d] getDatacentersNotFound  %+v", 404, o.Payload)
+}
+func (o *GetDatacentersNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDatacentersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatacentersInternalServerError creates a GetDatacentersInternalServerError with default headers values
+func NewGetDatacentersInternalServerError() *GetDatacentersInternalServerError {
+	return &GetDatacentersInternalServerError{}
+}
+
+/* GetDatacentersInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetDatacentersInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDatacentersInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-datacenters][%d] getDatacentersInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetDatacentersInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDatacentersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

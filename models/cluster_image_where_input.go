@@ -15,7 +15,6 @@ import (
 )
 
 // ClusterImageWhereInput cluster image where input
-// Example: {"AND":"ClusterImageWhereInput[]","NOT":"ClusterImageWhereInput[]","OR":"ClusterImageWhereInput[]","cluster":"ClusterWhereInput","entityAsyncStatus":"CREATING","entityAsyncStatus_in":["CREATING"],"entityAsyncStatus_not":"CREATING","entityAsyncStatus_not_in":["CREATING"],"id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","meta_name":"string","meta_name_contains":"string","meta_name_ends_with":"string","meta_name_gt":"string","meta_name_gte":"string","meta_name_in":["string"],"meta_name_lt":"string","meta_name_lte":"string","meta_name_not":"string","meta_name_not_contains":"string","meta_name_not_ends_with":"string","meta_name_not_in":["string"],"meta_name_not_starts_with":"string","meta_name_starts_with":"string","meta_size":0,"meta_size_gt":0,"meta_size_gte":0,"meta_size_in":[0],"meta_size_lt":0,"meta_size_lte":0,"meta_size_not":0,"meta_size_not_in":[0],"name":"string","name_contains":"string","name_ends_with":"string","name_gt":"string","name_gte":"string","name_in":["string"],"name_lt":"string","name_lte":"string","name_not":"string","name_not_contains":"string","name_not_ends_with":"string","name_not_in":["string"],"name_not_starts_with":"string","name_starts_with":"string","size":0,"size_gt":0,"size_gte":0,"size_in":[0],"size_lt":0,"size_lte":0,"size_not":0,"size_not_in":[0],"upgrade_tool_version":"string","upgrade_tool_version_contains":"string","upgrade_tool_version_ends_with":"string","upgrade_tool_version_gt":"string","upgrade_tool_version_gte":"string","upgrade_tool_version_in":["string"],"upgrade_tool_version_lt":"string","upgrade_tool_version_lte":"string","upgrade_tool_version_not":"string","upgrade_tool_version_not_contains":"string","upgrade_tool_version_not_ends_with":"string","upgrade_tool_version_not_in":["string"],"upgrade_tool_version_not_starts_with":"string","upgrade_tool_version_starts_with":"string","version":"string","version_contains":"string","version_ends_with":"string","version_gt":"string","version_gte":"string","version_in":["string"],"version_lt":"string","version_lte":"string","version_not":"string","version_not_contains":"string","version_not_ends_with":"string","version_not_in":["string"],"version_not_starts_with":"string","version_semantic_gt":"string","version_semantic_gte":"string","version_semantic_lt":"string","version_semantic_lte":"string","version_starts_with":"string"}
 //
 // swagger:model ClusterImageWhereInput
 type ClusterImageWhereInput struct {
@@ -85,6 +84,48 @@ type ClusterImageWhereInput struct {
 
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
+
+	// local id
+	LocalID *string `json:"local_id,omitempty"`
+
+	// local id contains
+	LocalIDContains *string `json:"local_id_contains,omitempty"`
+
+	// local id ends with
+	LocalIDEndsWith *string `json:"local_id_ends_with,omitempty"`
+
+	// local id gt
+	LocalIDGt *string `json:"local_id_gt,omitempty"`
+
+	// local id gte
+	LocalIDGte *string `json:"local_id_gte,omitempty"`
+
+	// local id in
+	LocalIDIn []string `json:"local_id_in,omitempty"`
+
+	// local id lt
+	LocalIDLt *string `json:"local_id_lt,omitempty"`
+
+	// local id lte
+	LocalIDLte *string `json:"local_id_lte,omitempty"`
+
+	// local id not
+	LocalIDNot *string `json:"local_id_not,omitempty"`
+
+	// local id not contains
+	LocalIDNotContains *string `json:"local_id_not_contains,omitempty"`
+
+	// local id not ends with
+	LocalIDNotEndsWith *string `json:"local_id_not_ends_with,omitempty"`
+
+	// local id not in
+	LocalIDNotIn []string `json:"local_id_not_in,omitempty"`
+
+	// local id not starts with
+	LocalIDNotStartsWith *string `json:"local_id_not_starts_with,omitempty"`
+
+	// local id starts with
+	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
 	// meta name
 	MetaName *string `json:"meta_name,omitempty"`
@@ -313,6 +354,48 @@ type ClusterImageWhereInput struct {
 
 	// version starts with
 	VersionStartsWith *string `json:"version_starts_with,omitempty"`
+
+	// zbs version
+	ZbsVersion *string `json:"zbs_version,omitempty"`
+
+	// zbs version contains
+	ZbsVersionContains *string `json:"zbs_version_contains,omitempty"`
+
+	// zbs version ends with
+	ZbsVersionEndsWith *string `json:"zbs_version_ends_with,omitempty"`
+
+	// zbs version gt
+	ZbsVersionGt *string `json:"zbs_version_gt,omitempty"`
+
+	// zbs version gte
+	ZbsVersionGte *string `json:"zbs_version_gte,omitempty"`
+
+	// zbs version in
+	ZbsVersionIn []string `json:"zbs_version_in,omitempty"`
+
+	// zbs version lt
+	ZbsVersionLt *string `json:"zbs_version_lt,omitempty"`
+
+	// zbs version lte
+	ZbsVersionLte *string `json:"zbs_version_lte,omitempty"`
+
+	// zbs version not
+	ZbsVersionNot *string `json:"zbs_version_not,omitempty"`
+
+	// zbs version not contains
+	ZbsVersionNotContains *string `json:"zbs_version_not_contains,omitempty"`
+
+	// zbs version not ends with
+	ZbsVersionNotEndsWith *string `json:"zbs_version_not_ends_with,omitempty"`
+
+	// zbs version not in
+	ZbsVersionNotIn []string `json:"zbs_version_not_in,omitempty"`
+
+	// zbs version not starts with
+	ZbsVersionNotStartsWith *string `json:"zbs_version_not_starts_with,omitempty"`
+
+	// zbs version starts with
+	ZbsVersionStartsWith *string `json:"zbs_version_starts_with,omitempty"`
 }
 
 // Validate validates this cluster image where input

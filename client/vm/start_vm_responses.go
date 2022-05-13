@@ -35,6 +35,18 @@ func (o *StartVMReader) ReadResponse(response runtime.ClientResponse, consumer r
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewStartVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewStartVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewStartVMBadRequest() *StartVMBadRequest {
 
 /* StartVMBadRequest describes a response with status code 400, with default header values.
 
-StartVMBadRequest start Vm bad request
+Bad request
 */
 type StartVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *StartVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /start-vm][%d] startVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *StartVMBadRequest) GetPayload() string {
+func (o *StartVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *StartVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewStartVMNotFound creates a StartVMNotFound with default headers values
+func NewStartVMNotFound() *StartVMNotFound {
+	return &StartVMNotFound{}
+}
+
+/* StartVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type StartVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *StartVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /start-vm][%d] startVmNotFound  %+v", 404, o.Payload)
+}
+func (o *StartVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *StartVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewStartVMInternalServerError creates a StartVMInternalServerError with default headers values
+func NewStartVMInternalServerError() *StartVMInternalServerError {
+	return &StartVMInternalServerError{}
+}
+
+/* StartVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type StartVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *StartVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /start-vm][%d] startVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *StartVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *StartVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

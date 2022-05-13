@@ -35,6 +35,18 @@ func (o *GetZonesConnectionReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetZonesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetZonesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetZonesConnectionBadRequest() *GetZonesConnectionBadRequest {
 
 /* GetZonesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetZonesConnectionBadRequest get zones connection bad request
+Bad request
 */
 type GetZonesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetZonesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-zones-connection][%d] getZonesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetZonesConnectionBadRequest) GetPayload() string {
+func (o *GetZonesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetZonesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetZonesConnectionNotFound creates a GetZonesConnectionNotFound with default headers values
+func NewGetZonesConnectionNotFound() *GetZonesConnectionNotFound {
+	return &GetZonesConnectionNotFound{}
+}
+
+/* GetZonesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetZonesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetZonesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-zones-connection][%d] getZonesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetZonesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetZonesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetZonesConnectionInternalServerError creates a GetZonesConnectionInternalServerError with default headers values
+func NewGetZonesConnectionInternalServerError() *GetZonesConnectionInternalServerError {
+	return &GetZonesConnectionInternalServerError{}
+}
+
+/* GetZonesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetZonesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetZonesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-zones-connection][%d] getZonesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetZonesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetZonesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

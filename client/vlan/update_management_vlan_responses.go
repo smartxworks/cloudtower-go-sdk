@@ -35,6 +35,18 @@ func (o *UpdateManagementVlanReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateManagementVlanNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateManagementVlanInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateManagementVlanBadRequest() *UpdateManagementVlanBadRequest {
 
 /* UpdateManagementVlanBadRequest describes a response with status code 400, with default header values.
 
-UpdateManagementVlanBadRequest update management vlan bad request
+Bad request
 */
 type UpdateManagementVlanBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateManagementVlanBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-management-vlan][%d] updateManagementVlanBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateManagementVlanBadRequest) GetPayload() string {
+func (o *UpdateManagementVlanBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateManagementVlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateManagementVlanNotFound creates a UpdateManagementVlanNotFound with default headers values
+func NewUpdateManagementVlanNotFound() *UpdateManagementVlanNotFound {
+	return &UpdateManagementVlanNotFound{}
+}
+
+/* UpdateManagementVlanNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateManagementVlanNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateManagementVlanNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-management-vlan][%d] updateManagementVlanNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateManagementVlanNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateManagementVlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateManagementVlanInternalServerError creates a UpdateManagementVlanInternalServerError with default headers values
+func NewUpdateManagementVlanInternalServerError() *UpdateManagementVlanInternalServerError {
+	return &UpdateManagementVlanInternalServerError{}
+}
+
+/* UpdateManagementVlanInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateManagementVlanInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateManagementVlanInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-management-vlan][%d] updateManagementVlanInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateManagementVlanInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateManagementVlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

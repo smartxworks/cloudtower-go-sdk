@@ -35,6 +35,18 @@ func (o *GetSnmpTrapReceiversConnectionReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSnmpTrapReceiversConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSnmpTrapReceiversConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetSnmpTrapReceiversConnectionBadRequest() *GetSnmpTrapReceiversConnecti
 
 /* GetSnmpTrapReceiversConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetSnmpTrapReceiversConnectionBadRequest get snmp trap receivers connection bad request
+Bad request
 */
 type GetSnmpTrapReceiversConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSnmpTrapReceiversConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-snmp-trap-receivers-connection][%d] getSnmpTrapReceiversConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSnmpTrapReceiversConnectionBadRequest) GetPayload() string {
+func (o *GetSnmpTrapReceiversConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSnmpTrapReceiversConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnmpTrapReceiversConnectionNotFound creates a GetSnmpTrapReceiversConnectionNotFound with default headers values
+func NewGetSnmpTrapReceiversConnectionNotFound() *GetSnmpTrapReceiversConnectionNotFound {
+	return &GetSnmpTrapReceiversConnectionNotFound{}
+}
+
+/* GetSnmpTrapReceiversConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSnmpTrapReceiversConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnmpTrapReceiversConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-snmp-trap-receivers-connection][%d] getSnmpTrapReceiversConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSnmpTrapReceiversConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnmpTrapReceiversConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnmpTrapReceiversConnectionInternalServerError creates a GetSnmpTrapReceiversConnectionInternalServerError with default headers values
+func NewGetSnmpTrapReceiversConnectionInternalServerError() *GetSnmpTrapReceiversConnectionInternalServerError {
+	return &GetSnmpTrapReceiversConnectionInternalServerError{}
+}
+
+/* GetSnmpTrapReceiversConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSnmpTrapReceiversConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnmpTrapReceiversConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-snmp-trap-receivers-connection][%d] getSnmpTrapReceiversConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSnmpTrapReceiversConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnmpTrapReceiversConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

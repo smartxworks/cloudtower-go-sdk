@@ -35,6 +35,18 @@ func (o *UpdateNvmfNamespaceReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateNvmfNamespaceNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateNvmfNamespaceInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateNvmfNamespaceBadRequest() *UpdateNvmfNamespaceBadRequest {
 
 /* UpdateNvmfNamespaceBadRequest describes a response with status code 400, with default header values.
 
-UpdateNvmfNamespaceBadRequest update nvmf namespace bad request
+Bad request
 */
 type UpdateNvmfNamespaceBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateNvmfNamespaceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-nvmf-namespace][%d] updateNvmfNamespaceBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateNvmfNamespaceBadRequest) GetPayload() string {
+func (o *UpdateNvmfNamespaceBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateNvmfNamespaceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateNvmfNamespaceNotFound creates a UpdateNvmfNamespaceNotFound with default headers values
+func NewUpdateNvmfNamespaceNotFound() *UpdateNvmfNamespaceNotFound {
+	return &UpdateNvmfNamespaceNotFound{}
+}
+
+/* UpdateNvmfNamespaceNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateNvmfNamespaceNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateNvmfNamespaceNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-nvmf-namespace][%d] updateNvmfNamespaceNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateNvmfNamespaceNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateNvmfNamespaceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateNvmfNamespaceInternalServerError creates a UpdateNvmfNamespaceInternalServerError with default headers values
+func NewUpdateNvmfNamespaceInternalServerError() *UpdateNvmfNamespaceInternalServerError {
+	return &UpdateNvmfNamespaceInternalServerError{}
+}
+
+/* UpdateNvmfNamespaceInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateNvmfNamespaceInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateNvmfNamespaceInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-nvmf-namespace][%d] updateNvmfNamespaceInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateNvmfNamespaceInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateNvmfNamespaceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

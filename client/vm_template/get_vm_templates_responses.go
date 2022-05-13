@@ -35,6 +35,18 @@ func (o *GetVMTemplatesReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVMTemplatesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVMTemplatesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetVMTemplatesBadRequest() *GetVMTemplatesBadRequest {
 
 /* GetVMTemplatesBadRequest describes a response with status code 400, with default header values.
 
-GetVMTemplatesBadRequest get Vm templates bad request
+Bad request
 */
 type GetVMTemplatesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVMTemplatesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vm-templates][%d] getVmTemplatesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVMTemplatesBadRequest) GetPayload() string {
+func (o *GetVMTemplatesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVMTemplatesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMTemplatesNotFound creates a GetVMTemplatesNotFound with default headers values
+func NewGetVMTemplatesNotFound() *GetVMTemplatesNotFound {
+	return &GetVMTemplatesNotFound{}
+}
+
+/* GetVMTemplatesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVMTemplatesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMTemplatesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vm-templates][%d] getVmTemplatesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVMTemplatesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMTemplatesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMTemplatesInternalServerError creates a GetVMTemplatesInternalServerError with default headers values
+func NewGetVMTemplatesInternalServerError() *GetVMTemplatesInternalServerError {
+	return &GetVMTemplatesInternalServerError{}
+}
+
+/* GetVMTemplatesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVMTemplatesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMTemplatesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vm-templates][%d] getVmTemplatesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVMTemplatesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMTemplatesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

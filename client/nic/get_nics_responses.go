@@ -35,6 +35,18 @@ func (o *GetNicsReader) ReadResponse(response runtime.ClientResponse, consumer r
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNicsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNicsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetNicsBadRequest() *GetNicsBadRequest {
 
 /* GetNicsBadRequest describes a response with status code 400, with default header values.
 
-GetNicsBadRequest get nics bad request
+Bad request
 */
 type GetNicsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNicsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nics][%d] getNicsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNicsBadRequest) GetPayload() string {
+func (o *GetNicsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNicsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNicsNotFound creates a GetNicsNotFound with default headers values
+func NewGetNicsNotFound() *GetNicsNotFound {
+	return &GetNicsNotFound{}
+}
+
+/* GetNicsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNicsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNicsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nics][%d] getNicsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNicsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNicsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNicsInternalServerError creates a GetNicsInternalServerError with default headers values
+func NewGetNicsInternalServerError() *GetNicsInternalServerError {
+	return &GetNicsInternalServerError{}
+}
+
+/* GetNicsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNicsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNicsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nics][%d] getNicsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNicsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNicsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

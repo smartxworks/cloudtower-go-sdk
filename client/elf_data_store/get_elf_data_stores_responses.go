@@ -35,6 +35,18 @@ func (o *GetElfDataStoresReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetElfDataStoresNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetElfDataStoresInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetElfDataStoresBadRequest() *GetElfDataStoresBadRequest {
 
 /* GetElfDataStoresBadRequest describes a response with status code 400, with default header values.
 
-GetElfDataStoresBadRequest get elf data stores bad request
+Bad request
 */
 type GetElfDataStoresBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetElfDataStoresBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-elf-data-stores][%d] getElfDataStoresBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetElfDataStoresBadRequest) GetPayload() string {
+func (o *GetElfDataStoresBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetElfDataStoresBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfDataStoresNotFound creates a GetElfDataStoresNotFound with default headers values
+func NewGetElfDataStoresNotFound() *GetElfDataStoresNotFound {
+	return &GetElfDataStoresNotFound{}
+}
+
+/* GetElfDataStoresNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetElfDataStoresNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfDataStoresNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-elf-data-stores][%d] getElfDataStoresNotFound  %+v", 404, o.Payload)
+}
+func (o *GetElfDataStoresNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfDataStoresNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfDataStoresInternalServerError creates a GetElfDataStoresInternalServerError with default headers values
+func NewGetElfDataStoresInternalServerError() *GetElfDataStoresInternalServerError {
+	return &GetElfDataStoresInternalServerError{}
+}
+
+/* GetElfDataStoresInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetElfDataStoresInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfDataStoresInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-elf-data-stores][%d] getElfDataStoresInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetElfDataStoresInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfDataStoresInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

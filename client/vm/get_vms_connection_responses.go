@@ -35,6 +35,18 @@ func (o *GetVmsConnectionReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVmsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVmsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetVmsConnectionBadRequest() *GetVmsConnectionBadRequest {
 
 /* GetVmsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetVmsConnectionBadRequest get vms connection bad request
+Bad request
 */
 type GetVmsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVmsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vms-connection][%d] getVmsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVmsConnectionBadRequest) GetPayload() string {
+func (o *GetVmsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVmsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVmsConnectionNotFound creates a GetVmsConnectionNotFound with default headers values
+func NewGetVmsConnectionNotFound() *GetVmsConnectionNotFound {
+	return &GetVmsConnectionNotFound{}
+}
+
+/* GetVmsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVmsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVmsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vms-connection][%d] getVmsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVmsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVmsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVmsConnectionInternalServerError creates a GetVmsConnectionInternalServerError with default headers values
+func NewGetVmsConnectionInternalServerError() *GetVmsConnectionInternalServerError {
+	return &GetVmsConnectionInternalServerError{}
+}
+
+/* GetVmsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVmsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVmsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vms-connection][%d] getVmsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVmsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVmsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

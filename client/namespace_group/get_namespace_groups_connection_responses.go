@@ -35,6 +35,18 @@ func (o *GetNamespaceGroupsConnectionReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNamespaceGroupsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNamespaceGroupsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetNamespaceGroupsConnectionBadRequest() *GetNamespaceGroupsConnectionBa
 
 /* GetNamespaceGroupsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetNamespaceGroupsConnectionBadRequest get namespace groups connection bad request
+Bad request
 */
 type GetNamespaceGroupsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNamespaceGroupsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-namespace-groups-connection][%d] getNamespaceGroupsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNamespaceGroupsConnectionBadRequest) GetPayload() string {
+func (o *GetNamespaceGroupsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNamespaceGroupsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNamespaceGroupsConnectionNotFound creates a GetNamespaceGroupsConnectionNotFound with default headers values
+func NewGetNamespaceGroupsConnectionNotFound() *GetNamespaceGroupsConnectionNotFound {
+	return &GetNamespaceGroupsConnectionNotFound{}
+}
+
+/* GetNamespaceGroupsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNamespaceGroupsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNamespaceGroupsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-namespace-groups-connection][%d] getNamespaceGroupsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNamespaceGroupsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNamespaceGroupsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNamespaceGroupsConnectionInternalServerError creates a GetNamespaceGroupsConnectionInternalServerError with default headers values
+func NewGetNamespaceGroupsConnectionInternalServerError() *GetNamespaceGroupsConnectionInternalServerError {
+	return &GetNamespaceGroupsConnectionInternalServerError{}
+}
+
+/* GetNamespaceGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNamespaceGroupsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNamespaceGroupsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-namespace-groups-connection][%d] getNamespaceGroupsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNamespaceGroupsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNamespaceGroupsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

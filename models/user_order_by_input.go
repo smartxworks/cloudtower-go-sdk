@@ -78,6 +78,24 @@ const (
 	// UserOrderByInputPasswordDESC captures enum value "password_DESC"
 	UserOrderByInputPasswordDESC UserOrderByInput = "password_DESC"
 
+	// UserOrderByInputPasswordExpiredASC captures enum value "password_expired_ASC"
+	UserOrderByInputPasswordExpiredASC UserOrderByInput = "password_expired_ASC"
+
+	// UserOrderByInputPasswordExpiredDESC captures enum value "password_expired_DESC"
+	UserOrderByInputPasswordExpiredDESC UserOrderByInput = "password_expired_DESC"
+
+	// UserOrderByInputPasswordRecoverQaASC captures enum value "password_recover_qa_ASC"
+	UserOrderByInputPasswordRecoverQaASC UserOrderByInput = "password_recover_qa_ASC"
+
+	// UserOrderByInputPasswordRecoverQaDESC captures enum value "password_recover_qa_DESC"
+	UserOrderByInputPasswordRecoverQaDESC UserOrderByInput = "password_recover_qa_DESC"
+
+	// UserOrderByInputPasswordUpdatedAtASC captures enum value "password_updated_at_ASC"
+	UserOrderByInputPasswordUpdatedAtASC UserOrderByInput = "password_updated_at_ASC"
+
+	// UserOrderByInputPasswordUpdatedAtDESC captures enum value "password_updated_at_DESC"
+	UserOrderByInputPasswordUpdatedAtDESC UserOrderByInput = "password_updated_at_DESC"
+
 	// UserOrderByInputRoleASC captures enum value "role_ASC"
 	UserOrderByInputRoleASC UserOrderByInput = "role_ASC"
 
@@ -108,7 +126,7 @@ var userOrderByInputEnum []interface{}
 
 func init() {
 	var res []UserOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","email_address_ASC","email_address_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ldap_dn_ASC","ldap_dn_DESC","mobile_phone_ASC","mobile_phone_DESC","name_ASC","name_DESC","password_ASC","password_DESC","role_ASC","role_DESC","source_ASC","source_DESC","updatedAt_ASC","updatedAt_DESC","username_ASC","username_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","email_address_ASC","email_address_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ldap_dn_ASC","ldap_dn_DESC","mobile_phone_ASC","mobile_phone_DESC","name_ASC","name_DESC","password_ASC","password_DESC","password_expired_ASC","password_expired_DESC","password_recover_qa_ASC","password_recover_qa_DESC","password_updated_at_ASC","password_updated_at_DESC","role_ASC","role_DESC","source_ASC","source_DESC","updatedAt_ASC","updatedAt_DESC","username_ASC","username_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

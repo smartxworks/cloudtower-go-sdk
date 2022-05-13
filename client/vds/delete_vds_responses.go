@@ -35,6 +35,18 @@ func (o *DeleteVdsReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteVdsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteVdsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteVdsBadRequest() *DeleteVdsBadRequest {
 
 /* DeleteVdsBadRequest describes a response with status code 400, with default header values.
 
-DeleteVdsBadRequest delete vds bad request
+Bad request
 */
 type DeleteVdsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteVdsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-vds][%d] deleteVdsBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteVdsBadRequest) GetPayload() string {
+func (o *DeleteVdsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteVdsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVdsNotFound creates a DeleteVdsNotFound with default headers values
+func NewDeleteVdsNotFound() *DeleteVdsNotFound {
+	return &DeleteVdsNotFound{}
+}
+
+/* DeleteVdsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteVdsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVdsNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-vds][%d] deleteVdsNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteVdsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVdsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVdsInternalServerError creates a DeleteVdsInternalServerError with default headers values
+func NewDeleteVdsInternalServerError() *DeleteVdsInternalServerError {
+	return &DeleteVdsInternalServerError{}
+}
+
+/* DeleteVdsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteVdsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVdsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-vds][%d] deleteVdsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteVdsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVdsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

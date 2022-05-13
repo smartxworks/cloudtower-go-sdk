@@ -35,6 +35,18 @@ func (o *CloneVMReader) ReadResponse(response runtime.ClientResponse, consumer r
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCloneVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCloneVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCloneVMBadRequest() *CloneVMBadRequest {
 
 /* CloneVMBadRequest describes a response with status code 400, with default header values.
 
-CloneVMBadRequest clone Vm bad request
+Bad request
 */
 type CloneVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CloneVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /clone-vm][%d] cloneVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *CloneVMBadRequest) GetPayload() string {
+func (o *CloneVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CloneVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloneVMNotFound creates a CloneVMNotFound with default headers values
+func NewCloneVMNotFound() *CloneVMNotFound {
+	return &CloneVMNotFound{}
+}
+
+/* CloneVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CloneVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CloneVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /clone-vm][%d] cloneVmNotFound  %+v", 404, o.Payload)
+}
+func (o *CloneVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CloneVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloneVMInternalServerError creates a CloneVMInternalServerError with default headers values
+func NewCloneVMInternalServerError() *CloneVMInternalServerError {
+	return &CloneVMInternalServerError{}
+}
+
+/* CloneVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CloneVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CloneVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /clone-vm][%d] cloneVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CloneVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CloneVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

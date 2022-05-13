@@ -72,6 +72,12 @@ const (
 	// SecurityPolicyOrderByInputNameDESC captures enum value "name_DESC"
 	SecurityPolicyOrderByInputNameDESC SecurityPolicyOrderByInput = "name_DESC"
 
+	// SecurityPolicyOrderByInputPolicyModeASC captures enum value "policy_mode_ASC"
+	SecurityPolicyOrderByInputPolicyModeASC SecurityPolicyOrderByInput = "policy_mode_ASC"
+
+	// SecurityPolicyOrderByInputPolicyModeDESC captures enum value "policy_mode_DESC"
+	SecurityPolicyOrderByInputPolicyModeDESC SecurityPolicyOrderByInput = "policy_mode_DESC"
+
 	// SecurityPolicyOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
 	SecurityPolicyOrderByInputUpdatedAtASC SecurityPolicyOrderByInput = "updatedAt_ASC"
 
@@ -84,7 +90,7 @@ var securityPolicyOrderByInputEnum []interface{}
 
 func init() {
 	var res []SecurityPolicyOrderByInput
-	if err := json.Unmarshal([]byte(`["apply_to_ASC","apply_to_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","egress_ASC","egress_DESC","id_ASC","id_DESC","ingress_ASC","ingress_DESC","name_ASC","name_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["apply_to_ASC","apply_to_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","egress_ASC","egress_DESC","id_ASC","id_DESC","ingress_ASC","ingress_DESC","name_ASC","name_DESC","policy_mode_ASC","policy_mode_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

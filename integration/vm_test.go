@@ -257,13 +257,13 @@ var _ = Describe("Vm Api", Ordered, func() {
 	It("should force shutdown vm", func() {
 		vmId, dispose := fixture.CreateVm(Client, cluster.ID, vlan.ID, true)
 		defer dispose()
-		shutdownParams := vm.NewForceShutDownVMParams()
+		shutdownParams := vm.NewPoweroffVMParams()
 		shutdownParams.RequestBody = &models.VMOperateParams{
 			Where: &models.VMWhereInput{
 				ID: vmId,
 			},
 		}
-		res, err := Client.VM.ForceShutDownVM(shutdownParams)
+		res, err := Client.VM.PoweroffVM(shutdownParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
 		err = taskutil.WaitTask(Client, res.Payload[0].TaskID)

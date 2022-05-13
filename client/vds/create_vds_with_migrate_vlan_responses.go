@@ -35,6 +35,18 @@ func (o *CreateVdsWithMigrateVlanReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateVdsWithMigrateVlanNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateVdsWithMigrateVlanInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateVdsWithMigrateVlanBadRequest() *CreateVdsWithMigrateVlanBadRequest
 
 /* CreateVdsWithMigrateVlanBadRequest describes a response with status code 400, with default header values.
 
-CreateVdsWithMigrateVlanBadRequest create vds with migrate vlan bad request
+Bad request
 */
 type CreateVdsWithMigrateVlanBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateVdsWithMigrateVlanBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-vds-with-migrate-vlan][%d] createVdsWithMigrateVlanBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateVdsWithMigrateVlanBadRequest) GetPayload() string {
+func (o *CreateVdsWithMigrateVlanBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateVdsWithMigrateVlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateVdsWithMigrateVlanNotFound creates a CreateVdsWithMigrateVlanNotFound with default headers values
+func NewCreateVdsWithMigrateVlanNotFound() *CreateVdsWithMigrateVlanNotFound {
+	return &CreateVdsWithMigrateVlanNotFound{}
+}
+
+/* CreateVdsWithMigrateVlanNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateVdsWithMigrateVlanNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateVdsWithMigrateVlanNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-vds-with-migrate-vlan][%d] createVdsWithMigrateVlanNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateVdsWithMigrateVlanNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateVdsWithMigrateVlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateVdsWithMigrateVlanInternalServerError creates a CreateVdsWithMigrateVlanInternalServerError with default headers values
+func NewCreateVdsWithMigrateVlanInternalServerError() *CreateVdsWithMigrateVlanInternalServerError {
+	return &CreateVdsWithMigrateVlanInternalServerError{}
+}
+
+/* CreateVdsWithMigrateVlanInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateVdsWithMigrateVlanInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateVdsWithMigrateVlanInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-vds-with-migrate-vlan][%d] createVdsWithMigrateVlanInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateVdsWithMigrateVlanInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateVdsWithMigrateVlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

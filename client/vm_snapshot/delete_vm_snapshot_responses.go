@@ -35,6 +35,18 @@ func (o *DeleteVMSnapshotReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteVMSnapshotNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteVMSnapshotInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteVMSnapshotBadRequest() *DeleteVMSnapshotBadRequest {
 
 /* DeleteVMSnapshotBadRequest describes a response with status code 400, with default header values.
 
-DeleteVMSnapshotBadRequest delete Vm snapshot bad request
+Bad request
 */
 type DeleteVMSnapshotBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteVMSnapshotBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-vm-snapshot][%d] deleteVmSnapshotBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteVMSnapshotBadRequest) GetPayload() string {
+func (o *DeleteVMSnapshotBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteVMSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVMSnapshotNotFound creates a DeleteVMSnapshotNotFound with default headers values
+func NewDeleteVMSnapshotNotFound() *DeleteVMSnapshotNotFound {
+	return &DeleteVMSnapshotNotFound{}
+}
+
+/* DeleteVMSnapshotNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteVMSnapshotNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVMSnapshotNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-vm-snapshot][%d] deleteVmSnapshotNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteVMSnapshotNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVMSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteVMSnapshotInternalServerError creates a DeleteVMSnapshotInternalServerError with default headers values
+func NewDeleteVMSnapshotInternalServerError() *DeleteVMSnapshotInternalServerError {
+	return &DeleteVMSnapshotInternalServerError{}
+}
+
+/* DeleteVMSnapshotInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteVMSnapshotInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteVMSnapshotInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-vm-snapshot][%d] deleteVmSnapshotInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteVMSnapshotInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteVMSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

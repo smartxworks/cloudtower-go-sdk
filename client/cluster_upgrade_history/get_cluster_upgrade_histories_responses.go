@@ -35,6 +35,18 @@ func (o *GetClusterUpgradeHistoriesReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClusterUpgradeHistoriesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetClusterUpgradeHistoriesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetClusterUpgradeHistoriesBadRequest() *GetClusterUpgradeHistoriesBadReq
 
 /* GetClusterUpgradeHistoriesBadRequest describes a response with status code 400, with default header values.
 
-GetClusterUpgradeHistoriesBadRequest get cluster upgrade histories bad request
+Bad request
 */
 type GetClusterUpgradeHistoriesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetClusterUpgradeHistoriesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-cluster-upgrade-histories][%d] getClusterUpgradeHistoriesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetClusterUpgradeHistoriesBadRequest) GetPayload() string {
+func (o *GetClusterUpgradeHistoriesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetClusterUpgradeHistoriesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterUpgradeHistoriesNotFound creates a GetClusterUpgradeHistoriesNotFound with default headers values
+func NewGetClusterUpgradeHistoriesNotFound() *GetClusterUpgradeHistoriesNotFound {
+	return &GetClusterUpgradeHistoriesNotFound{}
+}
+
+/* GetClusterUpgradeHistoriesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetClusterUpgradeHistoriesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterUpgradeHistoriesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-upgrade-histories][%d] getClusterUpgradeHistoriesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetClusterUpgradeHistoriesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterUpgradeHistoriesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterUpgradeHistoriesInternalServerError creates a GetClusterUpgradeHistoriesInternalServerError with default headers values
+func NewGetClusterUpgradeHistoriesInternalServerError() *GetClusterUpgradeHistoriesInternalServerError {
+	return &GetClusterUpgradeHistoriesInternalServerError{}
+}
+
+/* GetClusterUpgradeHistoriesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetClusterUpgradeHistoriesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterUpgradeHistoriesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-upgrade-histories][%d] getClusterUpgradeHistoriesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClusterUpgradeHistoriesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterUpgradeHistoriesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

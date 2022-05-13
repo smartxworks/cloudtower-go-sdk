@@ -35,6 +35,18 @@ func (o *UpdateGlobalAlertRuleReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateGlobalAlertRuleNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateGlobalAlertRuleInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateGlobalAlertRuleBadRequest() *UpdateGlobalAlertRuleBadRequest {
 
 /* UpdateGlobalAlertRuleBadRequest describes a response with status code 400, with default header values.
 
-UpdateGlobalAlertRuleBadRequest update global alert rule bad request
+Bad request
 */
 type UpdateGlobalAlertRuleBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateGlobalAlertRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-global-alert-rule][%d] updateGlobalAlertRuleBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateGlobalAlertRuleBadRequest) GetPayload() string {
+func (o *UpdateGlobalAlertRuleBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateGlobalAlertRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateGlobalAlertRuleNotFound creates a UpdateGlobalAlertRuleNotFound with default headers values
+func NewUpdateGlobalAlertRuleNotFound() *UpdateGlobalAlertRuleNotFound {
+	return &UpdateGlobalAlertRuleNotFound{}
+}
+
+/* UpdateGlobalAlertRuleNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateGlobalAlertRuleNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateGlobalAlertRuleNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-global-alert-rule][%d] updateGlobalAlertRuleNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateGlobalAlertRuleNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateGlobalAlertRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateGlobalAlertRuleInternalServerError creates a UpdateGlobalAlertRuleInternalServerError with default headers values
+func NewUpdateGlobalAlertRuleInternalServerError() *UpdateGlobalAlertRuleInternalServerError {
+	return &UpdateGlobalAlertRuleInternalServerError{}
+}
+
+/* UpdateGlobalAlertRuleInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateGlobalAlertRuleInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateGlobalAlertRuleInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-global-alert-rule][%d] updateGlobalAlertRuleInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateGlobalAlertRuleInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateGlobalAlertRuleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

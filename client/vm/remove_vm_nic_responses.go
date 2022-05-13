@@ -35,6 +35,18 @@ func (o *RemoveVMNicReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewRemoveVMNicNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewRemoveVMNicInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewRemoveVMNicBadRequest() *RemoveVMNicBadRequest {
 
 /* RemoveVMNicBadRequest describes a response with status code 400, with default header values.
 
-RemoveVMNicBadRequest remove Vm nic bad request
+Bad request
 */
 type RemoveVMNicBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *RemoveVMNicBadRequest) Error() string {
 	return fmt.Sprintf("[POST /remove-vm-nic][%d] removeVmNicBadRequest  %+v", 400, o.Payload)
 }
-func (o *RemoveVMNicBadRequest) GetPayload() string {
+func (o *RemoveVMNicBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *RemoveVMNicBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRemoveVMNicNotFound creates a RemoveVMNicNotFound with default headers values
+func NewRemoveVMNicNotFound() *RemoveVMNicNotFound {
+	return &RemoveVMNicNotFound{}
+}
+
+/* RemoveVMNicNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type RemoveVMNicNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RemoveVMNicNotFound) Error() string {
+	return fmt.Sprintf("[POST /remove-vm-nic][%d] removeVmNicNotFound  %+v", 404, o.Payload)
+}
+func (o *RemoveVMNicNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RemoveVMNicNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRemoveVMNicInternalServerError creates a RemoveVMNicInternalServerError with default headers values
+func NewRemoveVMNicInternalServerError() *RemoveVMNicInternalServerError {
+	return &RemoveVMNicInternalServerError{}
+}
+
+/* RemoveVMNicInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type RemoveVMNicInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RemoveVMNicInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /remove-vm-nic][%d] removeVmNicInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RemoveVMNicInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RemoveVMNicInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -14,7 +14,6 @@ import (
 )
 
 // GetAlertRulesConnectionRequestBody get alert rules connection request body
-// Example: {"after":"alertRulesConnection-id-string","before":"alertRulesConnection-id-string","first":0,"last":0,"orderBy":"createdAt_ASC","skip":0,"where":{"AND":"AlertRuleWhereInput[]","NOT":"AlertRuleWhereInput[]","OR":"AlertRuleWhereInput[]","cluster":"ClusterWhereInput","customized":false,"customized_not":false,"disabled":false,"disabled_not":false,"global_alert_rule":"GlobalAlertRuleWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","local_id":"string","local_id_contains":"string","local_id_ends_with":"string","local_id_gt":"string","local_id_gte":"string","local_id_in":["string"],"local_id_lt":"string","local_id_lte":"string","local_id_not":"string","local_id_not_contains":"string","local_id_not_ends_with":"string","local_id_not_in":["string"],"local_id_not_starts_with":"string","local_id_starts_with":"string"}}
 //
 // swagger:model GetAlertRulesConnectionRequestBody
 type GetAlertRulesConnectionRequestBody struct {

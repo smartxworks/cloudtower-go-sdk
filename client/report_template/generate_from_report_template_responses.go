@@ -35,6 +35,18 @@ func (o *GenerateFromReportTemplateReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGenerateFromReportTemplateNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGenerateFromReportTemplateInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGenerateFromReportTemplateBadRequest() *GenerateFromReportTemplateBadReq
 
 /* GenerateFromReportTemplateBadRequest describes a response with status code 400, with default header values.
 
-GenerateFromReportTemplateBadRequest generate from report template bad request
+Bad request
 */
 type GenerateFromReportTemplateBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GenerateFromReportTemplateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /generate-from-report-template][%d] generateFromReportTemplateBadRequest  %+v", 400, o.Payload)
 }
-func (o *GenerateFromReportTemplateBadRequest) GetPayload() string {
+func (o *GenerateFromReportTemplateBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GenerateFromReportTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGenerateFromReportTemplateNotFound creates a GenerateFromReportTemplateNotFound with default headers values
+func NewGenerateFromReportTemplateNotFound() *GenerateFromReportTemplateNotFound {
+	return &GenerateFromReportTemplateNotFound{}
+}
+
+/* GenerateFromReportTemplateNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GenerateFromReportTemplateNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GenerateFromReportTemplateNotFound) Error() string {
+	return fmt.Sprintf("[POST /generate-from-report-template][%d] generateFromReportTemplateNotFound  %+v", 404, o.Payload)
+}
+func (o *GenerateFromReportTemplateNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GenerateFromReportTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGenerateFromReportTemplateInternalServerError creates a GenerateFromReportTemplateInternalServerError with default headers values
+func NewGenerateFromReportTemplateInternalServerError() *GenerateFromReportTemplateInternalServerError {
+	return &GenerateFromReportTemplateInternalServerError{}
+}
+
+/* GenerateFromReportTemplateInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GenerateFromReportTemplateInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GenerateFromReportTemplateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /generate-from-report-template][%d] generateFromReportTemplateInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GenerateFromReportTemplateInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GenerateFromReportTemplateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

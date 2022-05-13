@@ -15,7 +15,6 @@ import (
 )
 
 // VMVolumeWhereInput Vm volume where input
-// Example: {"AND":"VmVolumeWhereInput[]","NOT":"VmVolumeWhereInput[]","OR":"VmVolumeWhereInput[]","cluster":"ClusterWhereInput","description":"string","description_contains":"string","description_ends_with":"string","description_gt":"string","description_gte":"string","description_in":["string"],"description_lt":"string","description_lte":"string","description_not":"string","description_not_contains":"string","description_not_ends_with":"string","description_not_in":["string"],"description_not_starts_with":"string","description_starts_with":"string","elf_storage_policy":"REPLICA_1_THICK_PROVISION","elf_storage_policy_in":["REPLICA_1_THICK_PROVISION"],"elf_storage_policy_not":"REPLICA_1_THICK_PROVISION","elf_storage_policy_not_in":["REPLICA_1_THICK_PROVISION"],"guest_size_usage":0,"guest_size_usage_gt":0,"guest_size_usage_gte":0,"guest_size_usage_in":[0],"guest_size_usage_lt":0,"guest_size_usage_lte":0,"guest_size_usage_not":0,"guest_size_usage_not_in":[0],"guest_used_size":0,"guest_used_size_gt":0,"guest_used_size_gte":0,"guest_used_size_in":[0],"guest_used_size_lt":0,"guest_used_size_lte":0,"guest_used_size_not":0,"guest_used_size_not_in":[0],"id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","labels_every":"LabelWhereInput","labels_none":"LabelWhereInput","labels_some":"LabelWhereInput","local_created_at":"string","local_created_at_gt":"string","local_created_at_gte":"string","local_created_at_in":["string"],"local_created_at_lt":"string","local_created_at_lte":"string","local_created_at_not":"string","local_created_at_not_in":["string"],"local_id":"string","local_id_contains":"string","local_id_ends_with":"string","local_id_gt":"string","local_id_gte":"string","local_id_in":["string"],"local_id_lt":"string","local_id_lte":"string","local_id_not":"string","local_id_not_contains":"string","local_id_not_ends_with":"string","local_id_not_in":["string"],"local_id_not_starts_with":"string","local_id_starts_with":"string","lun":"IscsiLunWhereInput","mounting":false,"mounting_not":false,"name":"string","name_contains":"string","name_ends_with":"string","name_gt":"string","name_gte":"string","name_in":["string"],"name_lt":"string","name_lte":"string","name_not":"string","name_not_contains":"string","name_not_ends_with":"string","name_not_in":["string"],"name_not_starts_with":"string","name_starts_with":"string","path":"string","path_contains":"string","path_ends_with":"string","path_gt":"string","path_gte":"string","path_in":["string"],"path_lt":"string","path_lte":"string","path_not":"string","path_not_contains":"string","path_not_ends_with":"string","path_not_in":["string"],"path_not_starts_with":"string","path_starts_with":"string","sharing":false,"sharing_not":false,"size":0,"size_gt":0,"size_gte":0,"size_in":[0],"size_lt":0,"size_lte":0,"size_not":0,"size_not_in":[0],"unique_size":0,"unique_size_gt":0,"unique_size_gte":0,"unique_size_in":[0],"unique_size_lt":0,"unique_size_lte":0,"unique_size_not":0,"unique_size_not_in":[0],"vm_disks_every":"VmDiskWhereInput","vm_disks_none":"VmDiskWhereInput","vm_disks_some":"VmDiskWhereInput"}
 //
 // swagger:model VmVolumeWhereInput
 type VMVolumeWhereInput struct {
@@ -87,28 +86,28 @@ type VMVolumeWhereInput struct {
 	ElfStoragePolicyNotIn []VMVolumeElfStoragePolicyType `json:"elf_storage_policy_not_in,omitempty"`
 
 	// guest size usage
-	GuestSizeUsage *int64 `json:"guest_size_usage,omitempty"`
+	GuestSizeUsage *float64 `json:"guest_size_usage,omitempty"`
 
 	// guest size usage gt
-	GuestSizeUsageGt *int64 `json:"guest_size_usage_gt,omitempty"`
+	GuestSizeUsageGt *float64 `json:"guest_size_usage_gt,omitempty"`
 
 	// guest size usage gte
-	GuestSizeUsageGte *int64 `json:"guest_size_usage_gte,omitempty"`
+	GuestSizeUsageGte *float64 `json:"guest_size_usage_gte,omitempty"`
 
 	// guest size usage in
-	GuestSizeUsageIn []int64 `json:"guest_size_usage_in,omitempty"`
+	GuestSizeUsageIn []float64 `json:"guest_size_usage_in,omitempty"`
 
 	// guest size usage lt
-	GuestSizeUsageLt *int64 `json:"guest_size_usage_lt,omitempty"`
+	GuestSizeUsageLt *float64 `json:"guest_size_usage_lt,omitempty"`
 
 	// guest size usage lte
-	GuestSizeUsageLte *int64 `json:"guest_size_usage_lte,omitempty"`
+	GuestSizeUsageLte *float64 `json:"guest_size_usage_lte,omitempty"`
 
 	// guest size usage not
-	GuestSizeUsageNot *int64 `json:"guest_size_usage_not,omitempty"`
+	GuestSizeUsageNot *float64 `json:"guest_size_usage_not,omitempty"`
 
 	// guest size usage not in
-	GuestSizeUsageNotIn []int64 `json:"guest_size_usage_not_in,omitempty"`
+	GuestSizeUsageNotIn []float64 `json:"guest_size_usage_not_in,omitempty"`
 
 	// guest used size
 	GuestUsedSize *int64 `json:"guest_used_size,omitempty"`

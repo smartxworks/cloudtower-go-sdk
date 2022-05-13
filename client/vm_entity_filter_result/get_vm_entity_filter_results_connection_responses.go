@@ -35,6 +35,18 @@ func (o *GetVMEntityFilterResultsConnectionReader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVMEntityFilterResultsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVMEntityFilterResultsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetVMEntityFilterResultsConnectionBadRequest() *GetVMEntityFilterResults
 
 /* GetVMEntityFilterResultsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetVMEntityFilterResultsConnectionBadRequest get Vm entity filter results connection bad request
+Bad request
 */
 type GetVMEntityFilterResultsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVMEntityFilterResultsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vm-entity-filter-results-connection][%d] getVmEntityFilterResultsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVMEntityFilterResultsConnectionBadRequest) GetPayload() string {
+func (o *GetVMEntityFilterResultsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVMEntityFilterResultsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMEntityFilterResultsConnectionNotFound creates a GetVMEntityFilterResultsConnectionNotFound with default headers values
+func NewGetVMEntityFilterResultsConnectionNotFound() *GetVMEntityFilterResultsConnectionNotFound {
+	return &GetVMEntityFilterResultsConnectionNotFound{}
+}
+
+/* GetVMEntityFilterResultsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVMEntityFilterResultsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMEntityFilterResultsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vm-entity-filter-results-connection][%d] getVmEntityFilterResultsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVMEntityFilterResultsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMEntityFilterResultsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVMEntityFilterResultsConnectionInternalServerError creates a GetVMEntityFilterResultsConnectionInternalServerError with default headers values
+func NewGetVMEntityFilterResultsConnectionInternalServerError() *GetVMEntityFilterResultsConnectionInternalServerError {
+	return &GetVMEntityFilterResultsConnectionInternalServerError{}
+}
+
+/* GetVMEntityFilterResultsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVMEntityFilterResultsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVMEntityFilterResultsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vm-entity-filter-results-connection][%d] getVmEntityFilterResultsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVMEntityFilterResultsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVMEntityFilterResultsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *GetElfImagesConnectionReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetElfImagesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetElfImagesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetElfImagesConnectionBadRequest() *GetElfImagesConnectionBadRequest {
 
 /* GetElfImagesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetElfImagesConnectionBadRequest get elf images connection bad request
+Bad request
 */
 type GetElfImagesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetElfImagesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-elf-images-connection][%d] getElfImagesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetElfImagesConnectionBadRequest) GetPayload() string {
+func (o *GetElfImagesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetElfImagesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfImagesConnectionNotFound creates a GetElfImagesConnectionNotFound with default headers values
+func NewGetElfImagesConnectionNotFound() *GetElfImagesConnectionNotFound {
+	return &GetElfImagesConnectionNotFound{}
+}
+
+/* GetElfImagesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetElfImagesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfImagesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-elf-images-connection][%d] getElfImagesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetElfImagesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfImagesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfImagesConnectionInternalServerError creates a GetElfImagesConnectionInternalServerError with default headers values
+func NewGetElfImagesConnectionInternalServerError() *GetElfImagesConnectionInternalServerError {
+	return &GetElfImagesConnectionInternalServerError{}
+}
+
+/* GetElfImagesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetElfImagesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfImagesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-elf-images-connection][%d] getElfImagesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetElfImagesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfImagesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

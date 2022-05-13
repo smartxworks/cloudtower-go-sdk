@@ -35,6 +35,18 @@ func (o *UnmountUsbDeviceReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUnmountUsbDeviceNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUnmountUsbDeviceInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUnmountUsbDeviceBadRequest() *UnmountUsbDeviceBadRequest {
 
 /* UnmountUsbDeviceBadRequest describes a response with status code 400, with default header values.
 
-UnmountUsbDeviceBadRequest unmount usb device bad request
+Bad request
 */
 type UnmountUsbDeviceBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UnmountUsbDeviceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /unmount-usb-device][%d] unmountUsbDeviceBadRequest  %+v", 400, o.Payload)
 }
-func (o *UnmountUsbDeviceBadRequest) GetPayload() string {
+func (o *UnmountUsbDeviceBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UnmountUsbDeviceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUnmountUsbDeviceNotFound creates a UnmountUsbDeviceNotFound with default headers values
+func NewUnmountUsbDeviceNotFound() *UnmountUsbDeviceNotFound {
+	return &UnmountUsbDeviceNotFound{}
+}
+
+/* UnmountUsbDeviceNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UnmountUsbDeviceNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UnmountUsbDeviceNotFound) Error() string {
+	return fmt.Sprintf("[POST /unmount-usb-device][%d] unmountUsbDeviceNotFound  %+v", 404, o.Payload)
+}
+func (o *UnmountUsbDeviceNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UnmountUsbDeviceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUnmountUsbDeviceInternalServerError creates a UnmountUsbDeviceInternalServerError with default headers values
+func NewUnmountUsbDeviceInternalServerError() *UnmountUsbDeviceInternalServerError {
+	return &UnmountUsbDeviceInternalServerError{}
+}
+
+/* UnmountUsbDeviceInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UnmountUsbDeviceInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UnmountUsbDeviceInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /unmount-usb-device][%d] unmountUsbDeviceInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UnmountUsbDeviceInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UnmountUsbDeviceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -14,7 +14,6 @@ import (
 )
 
 // GetZoneTopoesConnectionRequestBody get zone topoes connection request body
-// Example: {"after":"zoneTopoesConnection-id-string","before":"zoneTopoesConnection-id-string","first":0,"last":0,"orderBy":"createdAt_ASC","skip":0,"where":{"AND":"ZoneTopoWhereInput[]","NOT":"ZoneTopoWhereInput[]","OR":"ZoneTopoWhereInput[]","cluster":"ClusterWhereInput","cluster_topo":"ClusterTopoWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","local_id":"string","local_id_contains":"string","local_id_ends_with":"string","local_id_gt":"string","local_id_gte":"string","local_id_in":["string"],"local_id_lt":"string","local_id_lte":"string","local_id_not":"string","local_id_not_contains":"string","local_id_not_ends_with":"string","local_id_not_in":["string"],"local_id_not_starts_with":"string","local_id_starts_with":"string","rack_topoes_every":"RackTopoWhereInput","rack_topoes_none":"RackTopoWhereInput","rack_topoes_some":"RackTopoWhereInput"}}
 //
 // swagger:model GetZoneTopoesConnectionRequestBody
 type GetZoneTopoesConnectionRequestBody struct {

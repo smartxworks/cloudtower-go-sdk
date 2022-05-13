@@ -35,6 +35,18 @@ func (o *GetSnmpTrapReceiversReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSnmpTrapReceiversNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSnmpTrapReceiversInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetSnmpTrapReceiversBadRequest() *GetSnmpTrapReceiversBadRequest {
 
 /* GetSnmpTrapReceiversBadRequest describes a response with status code 400, with default header values.
 
-GetSnmpTrapReceiversBadRequest get snmp trap receivers bad request
+Bad request
 */
 type GetSnmpTrapReceiversBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSnmpTrapReceiversBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-snmp-trap-receivers][%d] getSnmpTrapReceiversBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSnmpTrapReceiversBadRequest) GetPayload() string {
+func (o *GetSnmpTrapReceiversBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSnmpTrapReceiversBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnmpTrapReceiversNotFound creates a GetSnmpTrapReceiversNotFound with default headers values
+func NewGetSnmpTrapReceiversNotFound() *GetSnmpTrapReceiversNotFound {
+	return &GetSnmpTrapReceiversNotFound{}
+}
+
+/* GetSnmpTrapReceiversNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSnmpTrapReceiversNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnmpTrapReceiversNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-snmp-trap-receivers][%d] getSnmpTrapReceiversNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSnmpTrapReceiversNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnmpTrapReceiversNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnmpTrapReceiversInternalServerError creates a GetSnmpTrapReceiversInternalServerError with default headers values
+func NewGetSnmpTrapReceiversInternalServerError() *GetSnmpTrapReceiversInternalServerError {
+	return &GetSnmpTrapReceiversInternalServerError{}
+}
+
+/* GetSnmpTrapReceiversInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSnmpTrapReceiversInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnmpTrapReceiversInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-snmp-trap-receivers][%d] getSnmpTrapReceiversInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSnmpTrapReceiversInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnmpTrapReceiversInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *GetVsphereEsxiAccountsReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVsphereEsxiAccountsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVsphereEsxiAccountsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetVsphereEsxiAccountsBadRequest() *GetVsphereEsxiAccountsBadRequest {
 
 /* GetVsphereEsxiAccountsBadRequest describes a response with status code 400, with default header values.
 
-GetVsphereEsxiAccountsBadRequest get vsphere esxi accounts bad request
+Bad request
 */
 type GetVsphereEsxiAccountsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVsphereEsxiAccountsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vsphere-esxi-accounts][%d] getVsphereEsxiAccountsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVsphereEsxiAccountsBadRequest) GetPayload() string {
+func (o *GetVsphereEsxiAccountsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVsphereEsxiAccountsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVsphereEsxiAccountsNotFound creates a GetVsphereEsxiAccountsNotFound with default headers values
+func NewGetVsphereEsxiAccountsNotFound() *GetVsphereEsxiAccountsNotFound {
+	return &GetVsphereEsxiAccountsNotFound{}
+}
+
+/* GetVsphereEsxiAccountsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVsphereEsxiAccountsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVsphereEsxiAccountsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vsphere-esxi-accounts][%d] getVsphereEsxiAccountsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVsphereEsxiAccountsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVsphereEsxiAccountsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVsphereEsxiAccountsInternalServerError creates a GetVsphereEsxiAccountsInternalServerError with default headers values
+func NewGetVsphereEsxiAccountsInternalServerError() *GetVsphereEsxiAccountsInternalServerError {
+	return &GetVsphereEsxiAccountsInternalServerError{}
+}
+
+/* GetVsphereEsxiAccountsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVsphereEsxiAccountsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVsphereEsxiAccountsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vsphere-esxi-accounts][%d] getVsphereEsxiAccountsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVsphereEsxiAccountsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVsphereEsxiAccountsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

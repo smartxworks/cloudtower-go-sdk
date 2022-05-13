@@ -48,9 +48,11 @@ type ClientService interface {
 
 	DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*DeleteVMOK, error)
 
-	ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOption) (*ForceRestartVMOK, error)
+	EjectIsoFromVMCdRom(params *EjectIsoFromVMCdRomParams, opts ...ClientOption) (*EjectIsoFromVMCdRomOK, error)
 
-	ForceShutDownVM(params *ForceShutDownVMParams, opts ...ClientOption) (*ForceShutDownVMOK, error)
+	ExpandVMDisk(params *ExpandVMDiskParams, opts ...ClientOption) (*ExpandVMDiskOK, error)
+
+	ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOption) (*ForceRestartVMOK, error)
 
 	GetVms(params *GetVmsParams, opts ...ClientOption) (*GetVmsOK, error)
 
@@ -61,6 +63,8 @@ type ClientService interface {
 	MigRateVM(params *MigRateVMParams, opts ...ClientOption) (*MigRateVMOK, error)
 
 	MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, opts ...ClientOption) (*MoveVMToRecycleBinOK, error)
+
+	PoweroffVM(params *PoweroffVMParams, opts ...ClientOption) (*PoweroffVMOK, error)
 
 	RebuildVM(params *RebuildVMParams, opts ...ClientOption) (*RebuildVMOK, error)
 
@@ -86,11 +90,19 @@ type ClientService interface {
 
 	SuspendVM(params *SuspendVMParams, opts ...ClientOption) (*SuspendVMOK, error)
 
+	ToggleVMCdRomDisable(params *ToggleVMCdRomDisableParams, opts ...ClientOption) (*ToggleVMCdRomDisableOK, error)
+
 	UpdateVM(params *UpdateVMParams, opts ...ClientOption) (*UpdateVMOK, error)
+
+	UpdateVMAdvancedOptions(params *UpdateVMAdvancedOptionsParams, opts ...ClientOption) (*UpdateVMAdvancedOptionsOK, error)
 
 	UpdateVMDisk(params *UpdateVMDiskParams, opts ...ClientOption) (*UpdateVMDiskOK, error)
 
 	UpdateVMNic(params *UpdateVMNicParams, opts ...ClientOption) (*UpdateVMNicOK, error)
+
+	UpdateVMNicAdvanceInfo(params *UpdateVMNicAdvanceInfoParams, opts ...ClientOption) (*UpdateVMNicAdvanceInfoOK, error)
+
+	UpdateVMNicBasicInfo(params *UpdateVMNicBasicInfoParams, opts ...ClientOption) (*UpdateVMNicBasicInfoOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -438,6 +450,82 @@ func (a *Client) DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*Delete
 }
 
 /*
+  EjectIsoFromVMCdRom eject iso from Vm cd rom API
+*/
+func (a *Client) EjectIsoFromVMCdRom(params *EjectIsoFromVMCdRomParams, opts ...ClientOption) (*EjectIsoFromVMCdRomOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEjectIsoFromVMCdRomParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "EjectIsoFromVmCdRom",
+		Method:             "POST",
+		PathPattern:        "/eject-iso-from-vm-cd-rom",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &EjectIsoFromVMCdRomReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*EjectIsoFromVMCdRomOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for EjectIsoFromVmCdRom: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ExpandVMDisk expand Vm disk API
+*/
+func (a *Client) ExpandVMDisk(params *ExpandVMDiskParams, opts ...ClientOption) (*ExpandVMDiskOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewExpandVMDiskParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ExpandVmDisk",
+		Method:             "POST",
+		PathPattern:        "/expand-vm-disk",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ExpandVMDiskReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ExpandVMDiskOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ExpandVmDisk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   ForceRestartVM force restart Vm API
 */
 func (a *Client) ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOption) (*ForceRestartVMOK, error) {
@@ -472,44 +560,6 @@ func (a *Client) ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOpti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for ForceRestartVm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  ForceShutDownVM force shut down Vm API
-*/
-func (a *Client) ForceShutDownVM(params *ForceShutDownVMParams, opts ...ClientOption) (*ForceShutDownVMOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewForceShutDownVMParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "ForceShutDownVm",
-		Method:             "POST",
-		PathPattern:        "/poweroff-vm",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ForceShutDownVMReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*ForceShutDownVMOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for ForceShutDownVm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -700,6 +750,44 @@ func (a *Client) MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, opts ...Cl
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for MoveVmToRecycleBin: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PoweroffVM poweroff Vm API
+*/
+func (a *Client) PoweroffVM(params *PoweroffVMParams, opts ...ClientOption) (*PoweroffVMOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPoweroffVMParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PoweroffVm",
+		Method:             "POST",
+		PathPattern:        "/poweroff-vm",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PoweroffVMReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PoweroffVMOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for PoweroffVm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1160,6 +1248,44 @@ func (a *Client) SuspendVM(params *SuspendVMParams, opts ...ClientOption) (*Susp
 }
 
 /*
+  ToggleVMCdRomDisable toggle Vm cd rom disable API
+*/
+func (a *Client) ToggleVMCdRomDisable(params *ToggleVMCdRomDisableParams, opts ...ClientOption) (*ToggleVMCdRomDisableOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewToggleVMCdRomDisableParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ToggleVmCdRomDisable",
+		Method:             "POST",
+		PathPattern:        "/toggle-vm-cd-rom-disable",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ToggleVMCdRomDisableReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ToggleVMCdRomDisableOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ToggleVmCdRomDisable: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   UpdateVM update Vm API
 */
 func (a *Client) UpdateVM(params *UpdateVMParams, opts ...ClientOption) (*UpdateVMOK, error) {
@@ -1194,6 +1320,44 @@ func (a *Client) UpdateVM(params *UpdateVMParams, opts ...ClientOption) (*Update
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateVm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVMAdvancedOptions update Vm advanced options API
+*/
+func (a *Client) UpdateVMAdvancedOptions(params *UpdateVMAdvancedOptionsParams, opts ...ClientOption) (*UpdateVMAdvancedOptionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVMAdvancedOptionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateVmAdvancedOptions",
+		Method:             "POST",
+		PathPattern:        "/update-vm-advanced-options",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateVMAdvancedOptionsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVMAdvancedOptionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateVmAdvancedOptions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1270,6 +1434,82 @@ func (a *Client) UpdateVMNic(params *UpdateVMNicParams, opts ...ClientOption) (*
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateVmNic: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVMNicAdvanceInfo update Vm nic advance info API
+*/
+func (a *Client) UpdateVMNicAdvanceInfo(params *UpdateVMNicAdvanceInfoParams, opts ...ClientOption) (*UpdateVMNicAdvanceInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVMNicAdvanceInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateVmNicAdvanceInfo",
+		Method:             "POST",
+		PathPattern:        "/update-vm-nic-advance-info",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateVMNicAdvanceInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVMNicAdvanceInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateVmNicAdvanceInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVMNicBasicInfo update Vm nic basic info API
+*/
+func (a *Client) UpdateVMNicBasicInfo(params *UpdateVMNicBasicInfoParams, opts ...ClientOption) (*UpdateVMNicBasicInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVMNicBasicInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateVmNicBasicInfo",
+		Method:             "POST",
+		PathPattern:        "/update-vm-nic-basic-info",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateVMNicBasicInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVMNicBasicInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateVmNicBasicInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

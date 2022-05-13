@@ -35,6 +35,18 @@ func (o *GetVcenterAccountsConnectionReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVcenterAccountsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVcenterAccountsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetVcenterAccountsConnectionBadRequest() *GetVcenterAccountsConnectionBa
 
 /* GetVcenterAccountsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetVcenterAccountsConnectionBadRequest get vcenter accounts connection bad request
+Bad request
 */
 type GetVcenterAccountsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVcenterAccountsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vcenter-accounts-connection][%d] getVcenterAccountsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVcenterAccountsConnectionBadRequest) GetPayload() string {
+func (o *GetVcenterAccountsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVcenterAccountsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVcenterAccountsConnectionNotFound creates a GetVcenterAccountsConnectionNotFound with default headers values
+func NewGetVcenterAccountsConnectionNotFound() *GetVcenterAccountsConnectionNotFound {
+	return &GetVcenterAccountsConnectionNotFound{}
+}
+
+/* GetVcenterAccountsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVcenterAccountsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVcenterAccountsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vcenter-accounts-connection][%d] getVcenterAccountsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVcenterAccountsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVcenterAccountsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVcenterAccountsConnectionInternalServerError creates a GetVcenterAccountsConnectionInternalServerError with default headers values
+func NewGetVcenterAccountsConnectionInternalServerError() *GetVcenterAccountsConnectionInternalServerError {
+	return &GetVcenterAccountsConnectionInternalServerError{}
+}
+
+/* GetVcenterAccountsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVcenterAccountsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVcenterAccountsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vcenter-accounts-connection][%d] getVcenterAccountsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVcenterAccountsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVcenterAccountsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

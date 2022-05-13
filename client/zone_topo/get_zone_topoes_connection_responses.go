@@ -35,6 +35,18 @@ func (o *GetZoneTopoesConnectionReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetZoneTopoesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetZoneTopoesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetZoneTopoesConnectionBadRequest() *GetZoneTopoesConnectionBadRequest {
 
 /* GetZoneTopoesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetZoneTopoesConnectionBadRequest get zone topoes connection bad request
+Bad request
 */
 type GetZoneTopoesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetZoneTopoesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-zone-topoes-connection][%d] getZoneTopoesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetZoneTopoesConnectionBadRequest) GetPayload() string {
+func (o *GetZoneTopoesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetZoneTopoesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetZoneTopoesConnectionNotFound creates a GetZoneTopoesConnectionNotFound with default headers values
+func NewGetZoneTopoesConnectionNotFound() *GetZoneTopoesConnectionNotFound {
+	return &GetZoneTopoesConnectionNotFound{}
+}
+
+/* GetZoneTopoesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetZoneTopoesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetZoneTopoesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-zone-topoes-connection][%d] getZoneTopoesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetZoneTopoesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetZoneTopoesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetZoneTopoesConnectionInternalServerError creates a GetZoneTopoesConnectionInternalServerError with default headers values
+func NewGetZoneTopoesConnectionInternalServerError() *GetZoneTopoesConnectionInternalServerError {
+	return &GetZoneTopoesConnectionInternalServerError{}
+}
+
+/* GetZoneTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetZoneTopoesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetZoneTopoesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-zone-topoes-connection][%d] getZoneTopoesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetZoneTopoesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetZoneTopoesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

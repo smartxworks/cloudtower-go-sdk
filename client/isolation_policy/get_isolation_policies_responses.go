@@ -35,6 +35,18 @@ func (o *GetIsolationPoliciesReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetIsolationPoliciesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetIsolationPoliciesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetIsolationPoliciesBadRequest() *GetIsolationPoliciesBadRequest {
 
 /* GetIsolationPoliciesBadRequest describes a response with status code 400, with default header values.
 
-GetIsolationPoliciesBadRequest get isolation policies bad request
+Bad request
 */
 type GetIsolationPoliciesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetIsolationPoliciesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-isolation-policies][%d] getIsolationPoliciesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetIsolationPoliciesBadRequest) GetPayload() string {
+func (o *GetIsolationPoliciesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetIsolationPoliciesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIsolationPoliciesNotFound creates a GetIsolationPoliciesNotFound with default headers values
+func NewGetIsolationPoliciesNotFound() *GetIsolationPoliciesNotFound {
+	return &GetIsolationPoliciesNotFound{}
+}
+
+/* GetIsolationPoliciesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetIsolationPoliciesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIsolationPoliciesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-isolation-policies][%d] getIsolationPoliciesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetIsolationPoliciesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIsolationPoliciesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIsolationPoliciesInternalServerError creates a GetIsolationPoliciesInternalServerError with default headers values
+func NewGetIsolationPoliciesInternalServerError() *GetIsolationPoliciesInternalServerError {
+	return &GetIsolationPoliciesInternalServerError{}
+}
+
+/* GetIsolationPoliciesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetIsolationPoliciesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIsolationPoliciesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-isolation-policies][%d] getIsolationPoliciesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetIsolationPoliciesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIsolationPoliciesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

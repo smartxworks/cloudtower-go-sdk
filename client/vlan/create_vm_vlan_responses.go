@@ -35,6 +35,18 @@ func (o *CreateVMVlanReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateVMVlanNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateVMVlanInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateVMVlanBadRequest() *CreateVMVlanBadRequest {
 
 /* CreateVMVlanBadRequest describes a response with status code 400, with default header values.
 
-CreateVMVlanBadRequest create Vm vlan bad request
+Bad request
 */
 type CreateVMVlanBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateVMVlanBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-vm-vlan][%d] createVmVlanBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateVMVlanBadRequest) GetPayload() string {
+func (o *CreateVMVlanBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateVMVlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateVMVlanNotFound creates a CreateVMVlanNotFound with default headers values
+func NewCreateVMVlanNotFound() *CreateVMVlanNotFound {
+	return &CreateVMVlanNotFound{}
+}
+
+/* CreateVMVlanNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateVMVlanNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateVMVlanNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-vm-vlan][%d] createVmVlanNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateVMVlanNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateVMVlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateVMVlanInternalServerError creates a CreateVMVlanInternalServerError with default headers values
+func NewCreateVMVlanInternalServerError() *CreateVMVlanInternalServerError {
+	return &CreateVMVlanInternalServerError{}
+}
+
+/* CreateVMVlanInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateVMVlanInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateVMVlanInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-vm-vlan][%d] createVmVlanInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateVMVlanInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateVMVlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

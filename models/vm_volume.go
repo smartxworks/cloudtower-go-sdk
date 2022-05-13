@@ -32,7 +32,7 @@ type VMVolume struct {
 	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy"`
 
 	// guest size usage
-	GuestSizeUsage *int64 `json:"guest_size_usage,omitempty"`
+	GuestSizeUsage *float64 `json:"guest_size_usage,omitempty"`
 
 	// guest used size
 	GuestUsedSize *int64 `json:"guest_used_size,omitempty"`

@@ -35,6 +35,18 @@ func (o *GetIscsiConnectionsReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetIscsiConnectionsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetIscsiConnectionsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetIscsiConnectionsBadRequest() *GetIscsiConnectionsBadRequest {
 
 /* GetIscsiConnectionsBadRequest describes a response with status code 400, with default header values.
 
-GetIscsiConnectionsBadRequest get iscsi connections bad request
+Bad request
 */
 type GetIscsiConnectionsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetIscsiConnectionsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-iscsi-connections][%d] getIscsiConnectionsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetIscsiConnectionsBadRequest) GetPayload() string {
+func (o *GetIscsiConnectionsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetIscsiConnectionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIscsiConnectionsNotFound creates a GetIscsiConnectionsNotFound with default headers values
+func NewGetIscsiConnectionsNotFound() *GetIscsiConnectionsNotFound {
+	return &GetIscsiConnectionsNotFound{}
+}
+
+/* GetIscsiConnectionsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetIscsiConnectionsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIscsiConnectionsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-iscsi-connections][%d] getIscsiConnectionsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetIscsiConnectionsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIscsiConnectionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetIscsiConnectionsInternalServerError creates a GetIscsiConnectionsInternalServerError with default headers values
+func NewGetIscsiConnectionsInternalServerError() *GetIscsiConnectionsInternalServerError {
+	return &GetIscsiConnectionsInternalServerError{}
+}
+
+/* GetIscsiConnectionsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetIscsiConnectionsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetIscsiConnectionsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-iscsi-connections][%d] getIscsiConnectionsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetIscsiConnectionsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetIscsiConnectionsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

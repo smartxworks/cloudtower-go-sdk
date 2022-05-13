@@ -35,6 +35,18 @@ func (o *GetVmsReader) ReadResponse(response runtime.ClientResponse, consumer ru
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetVmsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetVmsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetVmsBadRequest() *GetVmsBadRequest {
 
 /* GetVmsBadRequest describes a response with status code 400, with default header values.
 
-GetVmsBadRequest get vms bad request
+Bad request
 */
 type GetVmsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetVmsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-vms][%d] getVmsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetVmsBadRequest) GetPayload() string {
+func (o *GetVmsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetVmsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVmsNotFound creates a GetVmsNotFound with default headers values
+func NewGetVmsNotFound() *GetVmsNotFound {
+	return &GetVmsNotFound{}
+}
+
+/* GetVmsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetVmsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVmsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-vms][%d] getVmsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetVmsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVmsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetVmsInternalServerError creates a GetVmsInternalServerError with default headers values
+func NewGetVmsInternalServerError() *GetVmsInternalServerError {
+	return &GetVmsInternalServerError{}
+}
+
+/* GetVmsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetVmsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetVmsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-vms][%d] getVmsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetVmsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetVmsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

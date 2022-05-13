@@ -35,6 +35,18 @@ func (o *UpdateDeployReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateDeployNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateDeployInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewUpdateDeployBadRequest() *UpdateDeployBadRequest {
 
 /* UpdateDeployBadRequest describes a response with status code 400, with default header values.
 
-UpdateDeployBadRequest update deploy bad request
+Bad request
 */
 type UpdateDeployBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateDeployBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-license][%d] updateDeployBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateDeployBadRequest) GetPayload() string {
+func (o *UpdateDeployBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateDeployBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateDeployNotFound creates a UpdateDeployNotFound with default headers values
+func NewUpdateDeployNotFound() *UpdateDeployNotFound {
+	return &UpdateDeployNotFound{}
+}
+
+/* UpdateDeployNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateDeployNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateDeployNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-license][%d] updateDeployNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateDeployNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateDeployNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateDeployInternalServerError creates a UpdateDeployInternalServerError with default headers values
+func NewUpdateDeployInternalServerError() *UpdateDeployInternalServerError {
+	return &UpdateDeployInternalServerError{}
+}
+
+/* UpdateDeployInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateDeployInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateDeployInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-license][%d] updateDeployInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateDeployInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateDeployInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *GetClusterImagesReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClusterImagesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetClusterImagesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetClusterImagesBadRequest() *GetClusterImagesBadRequest {
 
 /* GetClusterImagesBadRequest describes a response with status code 400, with default header values.
 
-GetClusterImagesBadRequest get cluster images bad request
+Bad request
 */
 type GetClusterImagesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetClusterImagesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-cluster-images][%d] getClusterImagesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetClusterImagesBadRequest) GetPayload() string {
+func (o *GetClusterImagesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetClusterImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterImagesNotFound creates a GetClusterImagesNotFound with default headers values
+func NewGetClusterImagesNotFound() *GetClusterImagesNotFound {
+	return &GetClusterImagesNotFound{}
+}
+
+/* GetClusterImagesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetClusterImagesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterImagesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-images][%d] getClusterImagesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetClusterImagesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterImagesInternalServerError creates a GetClusterImagesInternalServerError with default headers values
+func NewGetClusterImagesInternalServerError() *GetClusterImagesInternalServerError {
+	return &GetClusterImagesInternalServerError{}
+}
+
+/* GetClusterImagesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetClusterImagesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterImagesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-images][%d] getClusterImagesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClusterImagesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

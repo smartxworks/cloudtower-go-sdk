@@ -35,6 +35,18 @@ func (o *DeleteBrickTopoReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteBrickTopoNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteBrickTopoInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteBrickTopoBadRequest() *DeleteBrickTopoBadRequest {
 
 /* DeleteBrickTopoBadRequest describes a response with status code 400, with default header values.
 
-DeleteBrickTopoBadRequest delete brick topo bad request
+Bad request
 */
 type DeleteBrickTopoBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteBrickTopoBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-brick-topo][%d] deleteBrickTopoBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteBrickTopoBadRequest) GetPayload() string {
+func (o *DeleteBrickTopoBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteBrickTopoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteBrickTopoNotFound creates a DeleteBrickTopoNotFound with default headers values
+func NewDeleteBrickTopoNotFound() *DeleteBrickTopoNotFound {
+	return &DeleteBrickTopoNotFound{}
+}
+
+/* DeleteBrickTopoNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteBrickTopoNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteBrickTopoNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-brick-topo][%d] deleteBrickTopoNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteBrickTopoNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteBrickTopoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteBrickTopoInternalServerError creates a DeleteBrickTopoInternalServerError with default headers values
+func NewDeleteBrickTopoInternalServerError() *DeleteBrickTopoInternalServerError {
+	return &DeleteBrickTopoInternalServerError{}
+}
+
+/* DeleteBrickTopoInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteBrickTopoInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteBrickTopoInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-brick-topo][%d] deleteBrickTopoInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteBrickTopoInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteBrickTopoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

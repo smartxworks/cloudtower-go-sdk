@@ -35,6 +35,18 @@ func (o *GetClusterSettingsesReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClusterSettingsesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetClusterSettingsesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetClusterSettingsesBadRequest() *GetClusterSettingsesBadRequest {
 
 /* GetClusterSettingsesBadRequest describes a response with status code 400, with default header values.
 
-GetClusterSettingsesBadRequest get cluster settingses bad request
+Bad request
 */
 type GetClusterSettingsesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetClusterSettingsesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-cluster-settingses][%d] getClusterSettingsesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetClusterSettingsesBadRequest) GetPayload() string {
+func (o *GetClusterSettingsesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetClusterSettingsesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterSettingsesNotFound creates a GetClusterSettingsesNotFound with default headers values
+func NewGetClusterSettingsesNotFound() *GetClusterSettingsesNotFound {
+	return &GetClusterSettingsesNotFound{}
+}
+
+/* GetClusterSettingsesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetClusterSettingsesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterSettingsesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-settingses][%d] getClusterSettingsesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetClusterSettingsesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterSettingsesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterSettingsesInternalServerError creates a GetClusterSettingsesInternalServerError with default headers values
+func NewGetClusterSettingsesInternalServerError() *GetClusterSettingsesInternalServerError {
+	return &GetClusterSettingsesInternalServerError{}
+}
+
+/* GetClusterSettingsesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetClusterSettingsesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterSettingsesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-settingses][%d] getClusterSettingsesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClusterSettingsesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterSettingsesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

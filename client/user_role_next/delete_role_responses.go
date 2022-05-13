@@ -35,6 +35,18 @@ func (o *DeleteRoleReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteRoleNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteRoleInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteRoleBadRequest() *DeleteRoleBadRequest {
 
 /* DeleteRoleBadRequest describes a response with status code 400, with default header values.
 
-DeleteRoleBadRequest delete role bad request
+Bad request
 */
 type DeleteRoleBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteRoleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-role][%d] deleteRoleBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteRoleBadRequest) GetPayload() string {
+func (o *DeleteRoleBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteRoleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteRoleNotFound creates a DeleteRoleNotFound with default headers values
+func NewDeleteRoleNotFound() *DeleteRoleNotFound {
+	return &DeleteRoleNotFound{}
+}
+
+/* DeleteRoleNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteRoleNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteRoleNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-role][%d] deleteRoleNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteRoleNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteRoleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteRoleInternalServerError creates a DeleteRoleInternalServerError with default headers values
+func NewDeleteRoleInternalServerError() *DeleteRoleInternalServerError {
+	return &DeleteRoleInternalServerError{}
+}
+
+/* DeleteRoleInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteRoleInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteRoleInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-role][%d] deleteRoleInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteRoleInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteRoleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *DeleteViewReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteViewNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteViewInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteViewBadRequest() *DeleteViewBadRequest {
 
 /* DeleteViewBadRequest describes a response with status code 400, with default header values.
 
-DeleteViewBadRequest delete view bad request
+Bad request
 */
 type DeleteViewBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteViewBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-view][%d] deleteViewBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteViewBadRequest) GetPayload() string {
+func (o *DeleteViewBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteViewBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteViewNotFound creates a DeleteViewNotFound with default headers values
+func NewDeleteViewNotFound() *DeleteViewNotFound {
+	return &DeleteViewNotFound{}
+}
+
+/* DeleteViewNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteViewNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteViewNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-view][%d] deleteViewNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteViewNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteViewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteViewInternalServerError creates a DeleteViewInternalServerError with default headers values
+func NewDeleteViewInternalServerError() *DeleteViewInternalServerError {
+	return &DeleteViewInternalServerError{}
+}
+
+/* DeleteViewInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteViewInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteViewInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-view][%d] deleteViewInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteViewInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteViewInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

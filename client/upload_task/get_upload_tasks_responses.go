@@ -35,6 +35,18 @@ func (o *GetUploadTasksReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetUploadTasksNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetUploadTasksInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetUploadTasksBadRequest() *GetUploadTasksBadRequest {
 
 /* GetUploadTasksBadRequest describes a response with status code 400, with default header values.
 
-GetUploadTasksBadRequest get upload tasks bad request
+Bad request
 */
 type GetUploadTasksBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetUploadTasksBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-upload-tasks][%d] getUploadTasksBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetUploadTasksBadRequest) GetPayload() string {
+func (o *GetUploadTasksBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetUploadTasksBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUploadTasksNotFound creates a GetUploadTasksNotFound with default headers values
+func NewGetUploadTasksNotFound() *GetUploadTasksNotFound {
+	return &GetUploadTasksNotFound{}
+}
+
+/* GetUploadTasksNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetUploadTasksNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUploadTasksNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-upload-tasks][%d] getUploadTasksNotFound  %+v", 404, o.Payload)
+}
+func (o *GetUploadTasksNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUploadTasksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUploadTasksInternalServerError creates a GetUploadTasksInternalServerError with default headers values
+func NewGetUploadTasksInternalServerError() *GetUploadTasksInternalServerError {
+	return &GetUploadTasksInternalServerError{}
+}
+
+/* GetUploadTasksInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetUploadTasksInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUploadTasksInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-upload-tasks][%d] getUploadTasksInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetUploadTasksInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUploadTasksInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -35,6 +35,18 @@ func (o *RollbackNvmfNamespaceFromSnapshotReader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewRollbackNvmfNamespaceFromSnapshotNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewRollbackNvmfNamespaceFromSnapshotInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewRollbackNvmfNamespaceFromSnapshotBadRequest() *RollbackNvmfNamespaceFrom
 
 /* RollbackNvmfNamespaceFromSnapshotBadRequest describes a response with status code 400, with default header values.
 
-RollbackNvmfNamespaceFromSnapshotBadRequest rollback nvmf namespace from snapshot bad request
+Bad request
 */
 type RollbackNvmfNamespaceFromSnapshotBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *RollbackNvmfNamespaceFromSnapshotBadRequest) Error() string {
 	return fmt.Sprintf("[POST /rollback-nvmf-namespace-from-snapshot][%d] rollbackNvmfNamespaceFromSnapshotBadRequest  %+v", 400, o.Payload)
 }
-func (o *RollbackNvmfNamespaceFromSnapshotBadRequest) GetPayload() string {
+func (o *RollbackNvmfNamespaceFromSnapshotBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *RollbackNvmfNamespaceFromSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRollbackNvmfNamespaceFromSnapshotNotFound creates a RollbackNvmfNamespaceFromSnapshotNotFound with default headers values
+func NewRollbackNvmfNamespaceFromSnapshotNotFound() *RollbackNvmfNamespaceFromSnapshotNotFound {
+	return &RollbackNvmfNamespaceFromSnapshotNotFound{}
+}
+
+/* RollbackNvmfNamespaceFromSnapshotNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type RollbackNvmfNamespaceFromSnapshotNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RollbackNvmfNamespaceFromSnapshotNotFound) Error() string {
+	return fmt.Sprintf("[POST /rollback-nvmf-namespace-from-snapshot][%d] rollbackNvmfNamespaceFromSnapshotNotFound  %+v", 404, o.Payload)
+}
+func (o *RollbackNvmfNamespaceFromSnapshotNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RollbackNvmfNamespaceFromSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRollbackNvmfNamespaceFromSnapshotInternalServerError creates a RollbackNvmfNamespaceFromSnapshotInternalServerError with default headers values
+func NewRollbackNvmfNamespaceFromSnapshotInternalServerError() *RollbackNvmfNamespaceFromSnapshotInternalServerError {
+	return &RollbackNvmfNamespaceFromSnapshotInternalServerError{}
+}
+
+/* RollbackNvmfNamespaceFromSnapshotInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type RollbackNvmfNamespaceFromSnapshotInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RollbackNvmfNamespaceFromSnapshotInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /rollback-nvmf-namespace-from-snapshot][%d] rollbackNvmfNamespaceFromSnapshotInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RollbackNvmfNamespaceFromSnapshotInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RollbackNvmfNamespaceFromSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

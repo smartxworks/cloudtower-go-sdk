@@ -35,6 +35,18 @@ func (o *ExecuteSnapshotPlanReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewExecuteSnapshotPlanNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewExecuteSnapshotPlanInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewExecuteSnapshotPlanBadRequest() *ExecuteSnapshotPlanBadRequest {
 
 /* ExecuteSnapshotPlanBadRequest describes a response with status code 400, with default header values.
 
-ExecuteSnapshotPlanBadRequest execute snapshot plan bad request
+Bad request
 */
 type ExecuteSnapshotPlanBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *ExecuteSnapshotPlanBadRequest) Error() string {
 	return fmt.Sprintf("[POST /execute-snapshot-plan][%d] executeSnapshotPlanBadRequest  %+v", 400, o.Payload)
 }
-func (o *ExecuteSnapshotPlanBadRequest) GetPayload() string {
+func (o *ExecuteSnapshotPlanBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *ExecuteSnapshotPlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewExecuteSnapshotPlanNotFound creates a ExecuteSnapshotPlanNotFound with default headers values
+func NewExecuteSnapshotPlanNotFound() *ExecuteSnapshotPlanNotFound {
+	return &ExecuteSnapshotPlanNotFound{}
+}
+
+/* ExecuteSnapshotPlanNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type ExecuteSnapshotPlanNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ExecuteSnapshotPlanNotFound) Error() string {
+	return fmt.Sprintf("[POST /execute-snapshot-plan][%d] executeSnapshotPlanNotFound  %+v", 404, o.Payload)
+}
+func (o *ExecuteSnapshotPlanNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ExecuteSnapshotPlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewExecuteSnapshotPlanInternalServerError creates a ExecuteSnapshotPlanInternalServerError with default headers values
+func NewExecuteSnapshotPlanInternalServerError() *ExecuteSnapshotPlanInternalServerError {
+	return &ExecuteSnapshotPlanInternalServerError{}
+}
+
+/* ExecuteSnapshotPlanInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type ExecuteSnapshotPlanInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ExecuteSnapshotPlanInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /execute-snapshot-plan][%d] executeSnapshotPlanInternalServerError  %+v", 500, o.Payload)
+}
+func (o *ExecuteSnapshotPlanInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ExecuteSnapshotPlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

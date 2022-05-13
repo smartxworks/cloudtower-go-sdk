@@ -35,6 +35,18 @@ func (o *DeleteClusterReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteClusterNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteClusterInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteClusterBadRequest() *DeleteClusterBadRequest {
 
 /* DeleteClusterBadRequest describes a response with status code 400, with default header values.
 
-DeleteClusterBadRequest delete cluster bad request
+Bad request
 */
 type DeleteClusterBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteClusterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-cluster][%d] deleteClusterBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteClusterBadRequest) GetPayload() string {
+func (o *DeleteClusterBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteClusterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteClusterNotFound creates a DeleteClusterNotFound with default headers values
+func NewDeleteClusterNotFound() *DeleteClusterNotFound {
+	return &DeleteClusterNotFound{}
+}
+
+/* DeleteClusterNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteClusterNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteClusterNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-cluster][%d] deleteClusterNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteClusterNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteClusterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteClusterInternalServerError creates a DeleteClusterInternalServerError with default headers values
+func NewDeleteClusterInternalServerError() *DeleteClusterInternalServerError {
+	return &DeleteClusterInternalServerError{}
+}
+
+/* DeleteClusterInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteClusterInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteClusterInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-cluster][%d] deleteClusterInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteClusterInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

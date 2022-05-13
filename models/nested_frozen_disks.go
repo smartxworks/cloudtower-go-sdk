@@ -85,6 +85,12 @@ type NestedFrozenDisks struct {
 	// vm volume local id
 	// Required: true
 	VMVolumeLocalID *string `json:"vm_volume_local_id"`
+
+	// vm volume snapshot uuid
+	VMVolumeSnapshotUUID *string `json:"vm_volume_snapshot_uuid,omitempty"`
+
+	// vm volume template uuid
+	VMVolumeTemplateUUID *string `json:"vm_volume_template_uuid,omitempty"`
 }
 
 // Validate validates this nested frozen disks

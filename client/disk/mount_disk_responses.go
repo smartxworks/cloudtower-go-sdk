@@ -35,6 +35,18 @@ func (o *MountDiskReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewMountDiskNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewMountDiskInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewMountDiskBadRequest() *MountDiskBadRequest {
 
 /* MountDiskBadRequest describes a response with status code 400, with default header values.
 
-MountDiskBadRequest mount disk bad request
+Bad request
 */
 type MountDiskBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *MountDiskBadRequest) Error() string {
 	return fmt.Sprintf("[POST /mount-disk][%d] mountDiskBadRequest  %+v", 400, o.Payload)
 }
-func (o *MountDiskBadRequest) GetPayload() string {
+func (o *MountDiskBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *MountDiskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewMountDiskNotFound creates a MountDiskNotFound with default headers values
+func NewMountDiskNotFound() *MountDiskNotFound {
+	return &MountDiskNotFound{}
+}
+
+/* MountDiskNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type MountDiskNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *MountDiskNotFound) Error() string {
+	return fmt.Sprintf("[POST /mount-disk][%d] mountDiskNotFound  %+v", 404, o.Payload)
+}
+func (o *MountDiskNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *MountDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewMountDiskInternalServerError creates a MountDiskInternalServerError with default headers values
+func NewMountDiskInternalServerError() *MountDiskInternalServerError {
+	return &MountDiskInternalServerError{}
+}
+
+/* MountDiskInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type MountDiskInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *MountDiskInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /mount-disk][%d] mountDiskInternalServerError  %+v", 500, o.Payload)
+}
+func (o *MountDiskInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *MountDiskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -78,6 +78,12 @@ const (
 	// UserAuditLogOrderByInputResourceTypeDESC captures enum value "resource_type_DESC"
 	UserAuditLogOrderByInputResourceTypeDESC UserAuditLogOrderByInput = "resource_type_DESC"
 
+	// UserAuditLogOrderByInputStartedAtASC captures enum value "started_at_ASC"
+	UserAuditLogOrderByInputStartedAtASC UserAuditLogOrderByInput = "started_at_ASC"
+
+	// UserAuditLogOrderByInputStartedAtDESC captures enum value "started_at_DESC"
+	UserAuditLogOrderByInputStartedAtDESC UserAuditLogOrderByInput = "started_at_DESC"
+
 	// UserAuditLogOrderByInputStatusASC captures enum value "status_ASC"
 	UserAuditLogOrderByInputStatusASC UserAuditLogOrderByInput = "status_ASC"
 
@@ -96,7 +102,7 @@ var userAuditLogOrderByInputEnum []interface{}
 
 func init() {
 	var res []UserAuditLogOrderByInput
-	if err := json.Unmarshal([]byte(`["action_ASC","action_DESC","createdAt_ASC","createdAt_DESC","finished_at_ASC","finished_at_DESC","id_ASC","id_DESC","ip_address_ASC","ip_address_DESC","message_ASC","message_DESC","resource_id_ASC","resource_id_DESC","resource_type_ASC","resource_type_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["action_ASC","action_DESC","createdAt_ASC","createdAt_DESC","finished_at_ASC","finished_at_DESC","id_ASC","id_DESC","ip_address_ASC","ip_address_DESC","message_ASC","message_DESC","resource_id_ASC","resource_id_DESC","resource_type_ASC","resource_type_DESC","started_at_ASC","started_at_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

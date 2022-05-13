@@ -62,6 +62,9 @@ type Host struct {
 	// Required: true
 	CPUTemperatureCelsius []int32 `json:"cpu_temperature_celsius"`
 
+	// cpu vendor
+	CPUVendor *string `json:"cpu_vendor,omitempty"`
+
 	// data ip
 	DataIP *string `json:"data_ip,omitempty"`
 
@@ -79,6 +82,9 @@ type Host struct {
 	// hdd disk count
 	// Required: true
 	HddDiskCount *int32 `json:"hdd_disk_count"`
+
+	// hypervisor ip
+	HypervisorIP *string `json:"hypervisor_ip,omitempty"`
 
 	// id
 	// Required: true

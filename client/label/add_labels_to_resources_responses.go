@@ -35,6 +35,18 @@ func (o *AddLabelsToResourcesReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewAddLabelsToResourcesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewAddLabelsToResourcesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewAddLabelsToResourcesBadRequest() *AddLabelsToResourcesBadRequest {
 
 /* AddLabelsToResourcesBadRequest describes a response with status code 400, with default header values.
 
-AddLabelsToResourcesBadRequest add labels to resources bad request
+Bad request
 */
 type AddLabelsToResourcesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *AddLabelsToResourcesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /add-labels-to-resources][%d] addLabelsToResourcesBadRequest  %+v", 400, o.Payload)
 }
-func (o *AddLabelsToResourcesBadRequest) GetPayload() string {
+func (o *AddLabelsToResourcesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *AddLabelsToResourcesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddLabelsToResourcesNotFound creates a AddLabelsToResourcesNotFound with default headers values
+func NewAddLabelsToResourcesNotFound() *AddLabelsToResourcesNotFound {
+	return &AddLabelsToResourcesNotFound{}
+}
+
+/* AddLabelsToResourcesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type AddLabelsToResourcesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddLabelsToResourcesNotFound) Error() string {
+	return fmt.Sprintf("[POST /add-labels-to-resources][%d] addLabelsToResourcesNotFound  %+v", 404, o.Payload)
+}
+func (o *AddLabelsToResourcesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddLabelsToResourcesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddLabelsToResourcesInternalServerError creates a AddLabelsToResourcesInternalServerError with default headers values
+func NewAddLabelsToResourcesInternalServerError() *AddLabelsToResourcesInternalServerError {
+	return &AddLabelsToResourcesInternalServerError{}
+}
+
+/* AddLabelsToResourcesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type AddLabelsToResourcesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddLabelsToResourcesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /add-labels-to-resources][%d] addLabelsToResourcesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *AddLabelsToResourcesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddLabelsToResourcesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

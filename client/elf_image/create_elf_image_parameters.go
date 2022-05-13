@@ -80,7 +80,7 @@ type CreateElfImageParams struct {
 	Size string
 
 	// UploadTaskID.
-	UploadTaskID string
+	UploadTaskID *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -213,13 +213,13 @@ func (o *CreateElfImageParams) SetSize(size string) {
 }
 
 // WithUploadTaskID adds the uploadTaskID to the create elf image params
-func (o *CreateElfImageParams) WithUploadTaskID(uploadTaskID string) *CreateElfImageParams {
+func (o *CreateElfImageParams) WithUploadTaskID(uploadTaskID *string) *CreateElfImageParams {
 	o.SetUploadTaskID(uploadTaskID)
 	return o
 }
 
 // SetUploadTaskID adds the uploadTaskId to the create elf image params
-func (o *CreateElfImageParams) SetUploadTaskID(uploadTaskID string) {
+func (o *CreateElfImageParams) SetUploadTaskID(uploadTaskID *string) {
 	o.UploadTaskID = uploadTaskID
 }
 
@@ -279,12 +279,18 @@ func (o *CreateElfImageParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		}
 	}
 
-	// form param upload_task_id
-	frUploadTaskID := o.UploadTaskID
-	fUploadTaskID := frUploadTaskID
-	if fUploadTaskID != "" {
-		if err := r.SetFormParam("upload_task_id", fUploadTaskID); err != nil {
-			return err
+	if o.UploadTaskID != nil {
+
+		// form param upload_task_id
+		var frUploadTaskID string
+		if o.UploadTaskID != nil {
+			frUploadTaskID = *o.UploadTaskID
+		}
+		fUploadTaskID := frUploadTaskID
+		if fUploadTaskID != "" {
+			if err := r.SetFormParam("upload_task_id", fUploadTaskID); err != nil {
+				return err
+			}
 		}
 	}
 

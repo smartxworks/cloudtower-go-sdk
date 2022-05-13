@@ -35,6 +35,18 @@ func (o *GetUserAuditLogsConnectionReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetUserAuditLogsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetUserAuditLogsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetUserAuditLogsConnectionBadRequest() *GetUserAuditLogsConnectionBadReq
 
 /* GetUserAuditLogsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetUserAuditLogsConnectionBadRequest get user audit logs connection bad request
+Bad request
 */
 type GetUserAuditLogsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetUserAuditLogsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-user-audit-logs-connection][%d] getUserAuditLogsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetUserAuditLogsConnectionBadRequest) GetPayload() string {
+func (o *GetUserAuditLogsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetUserAuditLogsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUserAuditLogsConnectionNotFound creates a GetUserAuditLogsConnectionNotFound with default headers values
+func NewGetUserAuditLogsConnectionNotFound() *GetUserAuditLogsConnectionNotFound {
+	return &GetUserAuditLogsConnectionNotFound{}
+}
+
+/* GetUserAuditLogsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetUserAuditLogsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUserAuditLogsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-user-audit-logs-connection][%d] getUserAuditLogsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetUserAuditLogsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUserAuditLogsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUserAuditLogsConnectionInternalServerError creates a GetUserAuditLogsConnectionInternalServerError with default headers values
+func NewGetUserAuditLogsConnectionInternalServerError() *GetUserAuditLogsConnectionInternalServerError {
+	return &GetUserAuditLogsConnectionInternalServerError{}
+}
+
+/* GetUserAuditLogsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetUserAuditLogsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUserAuditLogsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-user-audit-logs-connection][%d] getUserAuditLogsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetUserAuditLogsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUserAuditLogsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

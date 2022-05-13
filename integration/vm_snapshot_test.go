@@ -41,7 +41,7 @@ var _ = Describe("Vm snapshot api", Ordered, func() {
 		defer disposeVm()
 		createParams := vm_snapshot.NewCreateVMSnapshotParams()
 		createParams.RequestBody = &models.VMSnapshotCreationParams{
-			Data: []*models.VMSnapshotCreationParamsDataItems0{
+			Data: []*models.VMSnapshotCreationParamsData{
 				{
 					VMID: vmId,
 					Name: String(fmt.Sprintf("tower-go-sdk-vm-snapshot-%d", time.Now().Unix())),

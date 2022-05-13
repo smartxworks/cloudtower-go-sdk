@@ -35,6 +35,18 @@ func (o *UpdateGraphReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateGraphNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateGraphInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateGraphBadRequest() *UpdateGraphBadRequest {
 
 /* UpdateGraphBadRequest describes a response with status code 400, with default header values.
 
-UpdateGraphBadRequest update graph bad request
+Bad request
 */
 type UpdateGraphBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateGraphBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-graph][%d] updateGraphBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateGraphBadRequest) GetPayload() string {
+func (o *UpdateGraphBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateGraphBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateGraphNotFound creates a UpdateGraphNotFound with default headers values
+func NewUpdateGraphNotFound() *UpdateGraphNotFound {
+	return &UpdateGraphNotFound{}
+}
+
+/* UpdateGraphNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateGraphNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateGraphNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-graph][%d] updateGraphNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateGraphNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateGraphNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateGraphInternalServerError creates a UpdateGraphInternalServerError with default headers values
+func NewUpdateGraphInternalServerError() *UpdateGraphInternalServerError {
+	return &UpdateGraphInternalServerError{}
+}
+
+/* UpdateGraphInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateGraphInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateGraphInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-graph][%d] updateGraphInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateGraphInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateGraphInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -14,7 +14,6 @@ import (
 )
 
 // GetVMEntityFilterResultsConnectionRequestBody get Vm entity filter results connection request body
-// Example: {"after":"vmEntityFilterResultsConnection-id-string","before":"vmEntityFilterResultsConnection-id-string","first":0,"last":0,"orderBy":"createdAt_ASC","skip":0,"where":{"AND":"VmEntityFilterResultWhereInput[]","NOT":"VmEntityFilterResultWhereInput[]","OR":"VmEntityFilterResultWhereInput[]","entityFilter":"EntityFilterWhereInput","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","vm":"VmWhereInput"}}
 //
 // swagger:model GetVmEntityFilterResultsConnectionRequestBody
 type GetVMEntityFilterResultsConnectionRequestBody struct {

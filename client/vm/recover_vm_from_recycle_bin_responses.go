@@ -35,6 +35,18 @@ func (o *RecoverVMFromRecycleBinReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewRecoverVMFromRecycleBinNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewRecoverVMFromRecycleBinInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewRecoverVMFromRecycleBinBadRequest() *RecoverVMFromRecycleBinBadRequest {
 
 /* RecoverVMFromRecycleBinBadRequest describes a response with status code 400, with default header values.
 
-RecoverVMFromRecycleBinBadRequest recover Vm from recycle bin bad request
+Bad request
 */
 type RecoverVMFromRecycleBinBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *RecoverVMFromRecycleBinBadRequest) Error() string {
 	return fmt.Sprintf("[POST /recover-vm-from-recycle][%d] recoverVmFromRecycleBinBadRequest  %+v", 400, o.Payload)
 }
-func (o *RecoverVMFromRecycleBinBadRequest) GetPayload() string {
+func (o *RecoverVMFromRecycleBinBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *RecoverVMFromRecycleBinBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRecoverVMFromRecycleBinNotFound creates a RecoverVMFromRecycleBinNotFound with default headers values
+func NewRecoverVMFromRecycleBinNotFound() *RecoverVMFromRecycleBinNotFound {
+	return &RecoverVMFromRecycleBinNotFound{}
+}
+
+/* RecoverVMFromRecycleBinNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type RecoverVMFromRecycleBinNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RecoverVMFromRecycleBinNotFound) Error() string {
+	return fmt.Sprintf("[POST /recover-vm-from-recycle][%d] recoverVmFromRecycleBinNotFound  %+v", 404, o.Payload)
+}
+func (o *RecoverVMFromRecycleBinNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RecoverVMFromRecycleBinNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRecoverVMFromRecycleBinInternalServerError creates a RecoverVMFromRecycleBinInternalServerError with default headers values
+func NewRecoverVMFromRecycleBinInternalServerError() *RecoverVMFromRecycleBinInternalServerError {
+	return &RecoverVMFromRecycleBinInternalServerError{}
+}
+
+/* RecoverVMFromRecycleBinInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type RecoverVMFromRecycleBinInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *RecoverVMFromRecycleBinInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /recover-vm-from-recycle][%d] recoverVmFromRecycleBinInternalServerError  %+v", 500, o.Payload)
+}
+func (o *RecoverVMFromRecycleBinInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *RecoverVMFromRecycleBinInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

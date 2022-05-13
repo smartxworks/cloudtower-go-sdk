@@ -35,6 +35,18 @@ func (o *CreateNvmfNamespaceSnapshotReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateNvmfNamespaceSnapshotNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateNvmfNamespaceSnapshotInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateNvmfNamespaceSnapshotBadRequest() *CreateNvmfNamespaceSnapshotBadR
 
 /* CreateNvmfNamespaceSnapshotBadRequest describes a response with status code 400, with default header values.
 
-CreateNvmfNamespaceSnapshotBadRequest create nvmf namespace snapshot bad request
+Bad request
 */
 type CreateNvmfNamespaceSnapshotBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateNvmfNamespaceSnapshotBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-nvmf-namespace-snapshot][%d] createNvmfNamespaceSnapshotBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateNvmfNamespaceSnapshotBadRequest) GetPayload() string {
+func (o *CreateNvmfNamespaceSnapshotBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateNvmfNamespaceSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateNvmfNamespaceSnapshotNotFound creates a CreateNvmfNamespaceSnapshotNotFound with default headers values
+func NewCreateNvmfNamespaceSnapshotNotFound() *CreateNvmfNamespaceSnapshotNotFound {
+	return &CreateNvmfNamespaceSnapshotNotFound{}
+}
+
+/* CreateNvmfNamespaceSnapshotNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateNvmfNamespaceSnapshotNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateNvmfNamespaceSnapshotNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-nvmf-namespace-snapshot][%d] createNvmfNamespaceSnapshotNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateNvmfNamespaceSnapshotNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateNvmfNamespaceSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateNvmfNamespaceSnapshotInternalServerError creates a CreateNvmfNamespaceSnapshotInternalServerError with default headers values
+func NewCreateNvmfNamespaceSnapshotInternalServerError() *CreateNvmfNamespaceSnapshotInternalServerError {
+	return &CreateNvmfNamespaceSnapshotInternalServerError{}
+}
+
+/* CreateNvmfNamespaceSnapshotInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateNvmfNamespaceSnapshotInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateNvmfNamespaceSnapshotInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-nvmf-namespace-snapshot][%d] createNvmfNamespaceSnapshotInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateNvmfNamespaceSnapshotInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateNvmfNamespaceSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

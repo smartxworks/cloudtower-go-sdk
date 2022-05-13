@@ -35,6 +35,18 @@ func (o *UpdateRackTopoReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateRackTopoNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateRackTopoInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateRackTopoBadRequest() *UpdateRackTopoBadRequest {
 
 /* UpdateRackTopoBadRequest describes a response with status code 400, with default header values.
 
-UpdateRackTopoBadRequest update rack topo bad request
+Bad request
 */
 type UpdateRackTopoBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateRackTopoBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-rack-topo][%d] updateRackTopoBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateRackTopoBadRequest) GetPayload() string {
+func (o *UpdateRackTopoBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateRackTopoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateRackTopoNotFound creates a UpdateRackTopoNotFound with default headers values
+func NewUpdateRackTopoNotFound() *UpdateRackTopoNotFound {
+	return &UpdateRackTopoNotFound{}
+}
+
+/* UpdateRackTopoNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateRackTopoNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateRackTopoNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-rack-topo][%d] updateRackTopoNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateRackTopoNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateRackTopoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateRackTopoInternalServerError creates a UpdateRackTopoInternalServerError with default headers values
+func NewUpdateRackTopoInternalServerError() *UpdateRackTopoInternalServerError {
+	return &UpdateRackTopoInternalServerError{}
+}
+
+/* UpdateRackTopoInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateRackTopoInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateRackTopoInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-rack-topo][%d] updateRackTopoInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateRackTopoInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateRackTopoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

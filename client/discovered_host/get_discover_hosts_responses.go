@@ -35,6 +35,18 @@ func (o *GetDiscoverHostsReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetDiscoverHostsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetDiscoverHostsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetDiscoverHostsBadRequest() *GetDiscoverHostsBadRequest {
 
 /* GetDiscoverHostsBadRequest describes a response with status code 400, with default header values.
 
-GetDiscoverHostsBadRequest get discover hosts bad request
+Bad request
 */
 type GetDiscoverHostsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetDiscoverHostsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-discover-hosts][%d] getDiscoverHostsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetDiscoverHostsBadRequest) GetPayload() string {
+func (o *GetDiscoverHostsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetDiscoverHostsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDiscoverHostsNotFound creates a GetDiscoverHostsNotFound with default headers values
+func NewGetDiscoverHostsNotFound() *GetDiscoverHostsNotFound {
+	return &GetDiscoverHostsNotFound{}
+}
+
+/* GetDiscoverHostsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetDiscoverHostsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDiscoverHostsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-discover-hosts][%d] getDiscoverHostsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetDiscoverHostsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDiscoverHostsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDiscoverHostsInternalServerError creates a GetDiscoverHostsInternalServerError with default headers values
+func NewGetDiscoverHostsInternalServerError() *GetDiscoverHostsInternalServerError {
+	return &GetDiscoverHostsInternalServerError{}
+}
+
+/* GetDiscoverHostsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetDiscoverHostsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetDiscoverHostsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-discover-hosts][%d] getDiscoverHostsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetDiscoverHostsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetDiscoverHostsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

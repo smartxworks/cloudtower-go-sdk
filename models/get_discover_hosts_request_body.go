@@ -15,7 +15,6 @@ import (
 )
 
 // GetDiscoverHostsRequestBody get discover hosts request body
-// Example: {"cluster":{"id":"string","local_id":"string"},"host_address":""}
 //
 // swagger:model GetDiscoverHostsRequestBody
 type GetDiscoverHostsRequestBody struct {

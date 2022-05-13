@@ -35,6 +35,18 @@ func (o *GetNvmfNamespaceSnapshotsConnectionReader) ReadResponse(response runtim
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNvmfNamespaceSnapshotsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNvmfNamespaceSnapshotsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetNvmfNamespaceSnapshotsConnectionBadRequest() *GetNvmfNamespaceSnapsho
 
 /* GetNvmfNamespaceSnapshotsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetNvmfNamespaceSnapshotsConnectionBadRequest get nvmf namespace snapshots connection bad request
+Bad request
 */
 type GetNvmfNamespaceSnapshotsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNvmfNamespaceSnapshotsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nvmf-namespace-snapshots-connection][%d] getNvmfNamespaceSnapshotsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNvmfNamespaceSnapshotsConnectionBadRequest) GetPayload() string {
+func (o *GetNvmfNamespaceSnapshotsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNvmfNamespaceSnapshotsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfNamespaceSnapshotsConnectionNotFound creates a GetNvmfNamespaceSnapshotsConnectionNotFound with default headers values
+func NewGetNvmfNamespaceSnapshotsConnectionNotFound() *GetNvmfNamespaceSnapshotsConnectionNotFound {
+	return &GetNvmfNamespaceSnapshotsConnectionNotFound{}
+}
+
+/* GetNvmfNamespaceSnapshotsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNvmfNamespaceSnapshotsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfNamespaceSnapshotsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-namespace-snapshots-connection][%d] getNvmfNamespaceSnapshotsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNvmfNamespaceSnapshotsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfNamespaceSnapshotsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfNamespaceSnapshotsConnectionInternalServerError creates a GetNvmfNamespaceSnapshotsConnectionInternalServerError with default headers values
+func NewGetNvmfNamespaceSnapshotsConnectionInternalServerError() *GetNvmfNamespaceSnapshotsConnectionInternalServerError {
+	return &GetNvmfNamespaceSnapshotsConnectionInternalServerError{}
+}
+
+/* GetNvmfNamespaceSnapshotsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNvmfNamespaceSnapshotsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfNamespaceSnapshotsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-namespace-snapshots-connection][%d] getNvmfNamespaceSnapshotsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNvmfNamespaceSnapshotsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfNamespaceSnapshotsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

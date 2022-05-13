@@ -35,6 +35,18 @@ func (o *GetClustersConnectionReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClustersConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetClustersConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetClustersConnectionBadRequest() *GetClustersConnectionBadRequest {
 
 /* GetClustersConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetClustersConnectionBadRequest get clusters connection bad request
+Bad request
 */
 type GetClustersConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetClustersConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-clusters-connection][%d] getClustersConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetClustersConnectionBadRequest) GetPayload() string {
+func (o *GetClustersConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetClustersConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClustersConnectionNotFound creates a GetClustersConnectionNotFound with default headers values
+func NewGetClustersConnectionNotFound() *GetClustersConnectionNotFound {
+	return &GetClustersConnectionNotFound{}
+}
+
+/* GetClustersConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetClustersConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClustersConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-clusters-connection][%d] getClustersConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetClustersConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClustersConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClustersConnectionInternalServerError creates a GetClustersConnectionInternalServerError with default headers values
+func NewGetClustersConnectionInternalServerError() *GetClustersConnectionInternalServerError {
+	return &GetClustersConnectionInternalServerError{}
+}
+
+/* GetClustersConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetClustersConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClustersConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-clusters-connection][%d] getClustersConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClustersConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClustersConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

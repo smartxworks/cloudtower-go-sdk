@@ -35,6 +35,18 @@ func (o *GetNodeTopoesReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNodeTopoesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNodeTopoesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetNodeTopoesBadRequest() *GetNodeTopoesBadRequest {
 
 /* GetNodeTopoesBadRequest describes a response with status code 400, with default header values.
 
-GetNodeTopoesBadRequest get node topoes bad request
+Bad request
 */
 type GetNodeTopoesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNodeTopoesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-node-topoes][%d] getNodeTopoesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNodeTopoesBadRequest) GetPayload() string {
+func (o *GetNodeTopoesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNodeTopoesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNodeTopoesNotFound creates a GetNodeTopoesNotFound with default headers values
+func NewGetNodeTopoesNotFound() *GetNodeTopoesNotFound {
+	return &GetNodeTopoesNotFound{}
+}
+
+/* GetNodeTopoesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNodeTopoesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNodeTopoesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-node-topoes][%d] getNodeTopoesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNodeTopoesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNodeTopoesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNodeTopoesInternalServerError creates a GetNodeTopoesInternalServerError with default headers values
+func NewGetNodeTopoesInternalServerError() *GetNodeTopoesInternalServerError {
+	return &GetNodeTopoesInternalServerError{}
+}
+
+/* GetNodeTopoesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNodeTopoesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNodeTopoesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-node-topoes][%d] getNodeTopoesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNodeTopoesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNodeTopoesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

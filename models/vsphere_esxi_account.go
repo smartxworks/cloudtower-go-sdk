@@ -39,10 +39,6 @@ type VsphereEsxiAccount struct {
 	// Required: true
 	LocalID *string `json:"local_id"`
 
-	// password
-	// Required: true
-	Password *string `json:"password"`
-
 	// port
 	// Required: true
 	Port *int32 `json:"port"`
@@ -73,10 +69,6 @@ func (m *VsphereEsxiAccount) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLocalID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePassword(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -144,15 +136,6 @@ func (m *VsphereEsxiAccount) validateIsValid(formats strfmt.Registry) error {
 func (m *VsphereEsxiAccount) validateLocalID(formats strfmt.Registry) error {
 
 	if err := validate.Required("local_id", "body", m.LocalID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VsphereEsxiAccount) validatePassword(formats strfmt.Registry) error {
-
-	if err := validate.Required("password", "body", m.Password); err != nil {
 		return err
 	}
 

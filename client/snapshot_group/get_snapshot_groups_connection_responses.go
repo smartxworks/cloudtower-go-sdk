@@ -35,6 +35,18 @@ func (o *GetSnapshotGroupsConnectionReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSnapshotGroupsConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSnapshotGroupsConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetSnapshotGroupsConnectionBadRequest() *GetSnapshotGroupsConnectionBadR
 
 /* GetSnapshotGroupsConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetSnapshotGroupsConnectionBadRequest get snapshot groups connection bad request
+Bad request
 */
 type GetSnapshotGroupsConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSnapshotGroupsConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-snapshot-groups-connection][%d] getSnapshotGroupsConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSnapshotGroupsConnectionBadRequest) GetPayload() string {
+func (o *GetSnapshotGroupsConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSnapshotGroupsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnapshotGroupsConnectionNotFound creates a GetSnapshotGroupsConnectionNotFound with default headers values
+func NewGetSnapshotGroupsConnectionNotFound() *GetSnapshotGroupsConnectionNotFound {
+	return &GetSnapshotGroupsConnectionNotFound{}
+}
+
+/* GetSnapshotGroupsConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSnapshotGroupsConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnapshotGroupsConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-snapshot-groups-connection][%d] getSnapshotGroupsConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSnapshotGroupsConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnapshotGroupsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSnapshotGroupsConnectionInternalServerError creates a GetSnapshotGroupsConnectionInternalServerError with default headers values
+func NewGetSnapshotGroupsConnectionInternalServerError() *GetSnapshotGroupsConnectionInternalServerError {
+	return &GetSnapshotGroupsConnectionInternalServerError{}
+}
+
+/* GetSnapshotGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSnapshotGroupsConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSnapshotGroupsConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-snapshot-groups-connection][%d] getSnapshotGroupsConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSnapshotGroupsConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSnapshotGroupsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

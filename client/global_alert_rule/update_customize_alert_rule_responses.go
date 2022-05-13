@@ -35,6 +35,18 @@ func (o *UpdateCustomizeAlertRuleReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewUpdateCustomizeAlertRuleNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewUpdateCustomizeAlertRuleInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewUpdateCustomizeAlertRuleBadRequest() *UpdateCustomizeAlertRuleBadRequest
 
 /* UpdateCustomizeAlertRuleBadRequest describes a response with status code 400, with default header values.
 
-UpdateCustomizeAlertRuleBadRequest update customize alert rule bad request
+Bad request
 */
 type UpdateCustomizeAlertRuleBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateCustomizeAlertRuleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /update-customize-alert-rule][%d] updateCustomizeAlertRuleBadRequest  %+v", 400, o.Payload)
 }
-func (o *UpdateCustomizeAlertRuleBadRequest) GetPayload() string {
+func (o *UpdateCustomizeAlertRuleBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *UpdateCustomizeAlertRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateCustomizeAlertRuleNotFound creates a UpdateCustomizeAlertRuleNotFound with default headers values
+func NewUpdateCustomizeAlertRuleNotFound() *UpdateCustomizeAlertRuleNotFound {
+	return &UpdateCustomizeAlertRuleNotFound{}
+}
+
+/* UpdateCustomizeAlertRuleNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type UpdateCustomizeAlertRuleNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateCustomizeAlertRuleNotFound) Error() string {
+	return fmt.Sprintf("[POST /update-customize-alert-rule][%d] updateCustomizeAlertRuleNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateCustomizeAlertRuleNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateCustomizeAlertRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateCustomizeAlertRuleInternalServerError creates a UpdateCustomizeAlertRuleInternalServerError with default headers values
+func NewUpdateCustomizeAlertRuleInternalServerError() *UpdateCustomizeAlertRuleInternalServerError {
+	return &UpdateCustomizeAlertRuleInternalServerError{}
+}
+
+/* UpdateCustomizeAlertRuleInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type UpdateCustomizeAlertRuleInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *UpdateCustomizeAlertRuleInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /update-customize-alert-rule][%d] updateCustomizeAlertRuleInternalServerError  %+v", 500, o.Payload)
+}
+func (o *UpdateCustomizeAlertRuleInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *UpdateCustomizeAlertRuleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

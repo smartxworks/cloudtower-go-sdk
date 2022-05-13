@@ -35,6 +35,18 @@ func (o *AddVMDiskReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewAddVMDiskNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewAddVMDiskInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewAddVMDiskBadRequest() *AddVMDiskBadRequest {
 
 /* AddVMDiskBadRequest describes a response with status code 400, with default header values.
 
-AddVMDiskBadRequest add Vm disk bad request
+Bad request
 */
 type AddVMDiskBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *AddVMDiskBadRequest) Error() string {
 	return fmt.Sprintf("[POST /add-vm-disk][%d] addVmDiskBadRequest  %+v", 400, o.Payload)
 }
-func (o *AddVMDiskBadRequest) GetPayload() string {
+func (o *AddVMDiskBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *AddVMDiskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddVMDiskNotFound creates a AddVMDiskNotFound with default headers values
+func NewAddVMDiskNotFound() *AddVMDiskNotFound {
+	return &AddVMDiskNotFound{}
+}
+
+/* AddVMDiskNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type AddVMDiskNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddVMDiskNotFound) Error() string {
+	return fmt.Sprintf("[POST /add-vm-disk][%d] addVmDiskNotFound  %+v", 404, o.Payload)
+}
+func (o *AddVMDiskNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddVMDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAddVMDiskInternalServerError creates a AddVMDiskInternalServerError with default headers values
+func NewAddVMDiskInternalServerError() *AddVMDiskInternalServerError {
+	return &AddVMDiskInternalServerError{}
+}
+
+/* AddVMDiskInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type AddVMDiskInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *AddVMDiskInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /add-vm-disk][%d] addVmDiskInternalServerError  %+v", 500, o.Payload)
+}
+func (o *AddVMDiskInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *AddVMDiskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

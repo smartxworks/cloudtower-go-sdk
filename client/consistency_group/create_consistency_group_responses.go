@@ -35,6 +35,18 @@ func (o *CreateConsistencyGroupReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateConsistencyGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateConsistencyGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateConsistencyGroupBadRequest() *CreateConsistencyGroupBadRequest {
 
 /* CreateConsistencyGroupBadRequest describes a response with status code 400, with default header values.
 
-CreateConsistencyGroupBadRequest create consistency group bad request
+Bad request
 */
 type CreateConsistencyGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateConsistencyGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-consistency-group][%d] createConsistencyGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateConsistencyGroupBadRequest) GetPayload() string {
+func (o *CreateConsistencyGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateConsistencyGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateConsistencyGroupNotFound creates a CreateConsistencyGroupNotFound with default headers values
+func NewCreateConsistencyGroupNotFound() *CreateConsistencyGroupNotFound {
+	return &CreateConsistencyGroupNotFound{}
+}
+
+/* CreateConsistencyGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateConsistencyGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateConsistencyGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-consistency-group][%d] createConsistencyGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateConsistencyGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateConsistencyGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateConsistencyGroupInternalServerError creates a CreateConsistencyGroupInternalServerError with default headers values
+func NewCreateConsistencyGroupInternalServerError() *CreateConsistencyGroupInternalServerError {
+	return &CreateConsistencyGroupInternalServerError{}
+}
+
+/* CreateConsistencyGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateConsistencyGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateConsistencyGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-consistency-group][%d] createConsistencyGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateConsistencyGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateConsistencyGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -15,7 +15,6 @@ import (
 )
 
 // UserWhereInput user where input
-// Example: {"AND":"UserWhereInput[]","NOT":"UserWhereInput[]","OR":"UserWhereInput[]","email_address":"string","email_address_contains":"string","email_address_ends_with":"string","email_address_gt":"string","email_address_gte":"string","email_address_in":["string"],"email_address_lt":"string","email_address_lte":"string","email_address_not":"string","email_address_not_contains":"string","email_address_not_ends_with":"string","email_address_not_in":["string"],"email_address_not_starts_with":"string","email_address_starts_with":"string","id":"string","id_contains":"string","id_ends_with":"string","id_gt":"string","id_gte":"string","id_in":["string"],"id_lt":"string","id_lte":"string","id_not":"string","id_not_contains":"string","id_not_ends_with":"string","id_not_in":["string"],"id_not_starts_with":"string","id_starts_with":"string","internal":false,"internal_not":false,"ldap_dn":"string","ldap_dn_contains":"string","ldap_dn_ends_with":"string","ldap_dn_gt":"string","ldap_dn_gte":"string","ldap_dn_in":["string"],"ldap_dn_lt":"string","ldap_dn_lte":"string","ldap_dn_not":"string","ldap_dn_not_contains":"string","ldap_dn_not_ends_with":"string","ldap_dn_not_in":["string"],"ldap_dn_not_starts_with":"string","ldap_dn_starts_with":"string","mobile_phone":"string","mobile_phone_contains":"string","mobile_phone_ends_with":"string","mobile_phone_gt":"string","mobile_phone_gte":"string","mobile_phone_in":["string"],"mobile_phone_lt":"string","mobile_phone_lte":"string","mobile_phone_not":"string","mobile_phone_not_contains":"string","mobile_phone_not_ends_with":"string","mobile_phone_not_in":["string"],"mobile_phone_not_starts_with":"string","mobile_phone_starts_with":"string","name":"string","name_contains":"string","name_ends_with":"string","name_gt":"string","name_gte":"string","name_in":["string"],"name_lt":"string","name_lte":"string","name_not":"string","name_not_contains":"string","name_not_ends_with":"string","name_not_in":["string"],"name_not_starts_with":"string","name_starts_with":"string","password":"string","password_contains":"string","password_ends_with":"string","password_gt":"string","password_gte":"string","password_in":["string"],"password_lt":"string","password_lte":"string","password_not":"string","password_not_contains":"string","password_not_ends_with":"string","password_not_in":["string"],"password_not_starts_with":"string","password_starts_with":"string","role":"ADMIN","role_in":["ADMIN"],"role_not":"ADMIN","role_not_in":["ADMIN"],"roles_every":"UserRoleNextWhereInput","roles_none":"UserRoleNextWhereInput","roles_some":"UserRoleNextWhereInput","source":"LDAP","source_in":["LDAP"],"source_not":"LDAP","source_not_in":["LDAP"],"username":"string","username_contains":"string","username_ends_with":"string","username_gt":"string","username_gte":"string","username_in":["string"],"username_lt":"string","username_lte":"string","username_not":"string","username_not_contains":"string","username_not_ends_with":"string","username_not_in":["string"],"username_not_starts_with":"string","username_starts_with":"string"}
 //
 // swagger:model UserWhereInput
 type UserWhereInput struct {
@@ -245,47 +244,35 @@ type UserWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
-	// password
-	Password *string `json:"password,omitempty"`
+	// password expired
+	PasswordExpired *bool `json:"password_expired,omitempty"`
 
-	// password contains
-	PasswordContains *string `json:"password_contains,omitempty"`
+	// password expired not
+	PasswordExpiredNot *bool `json:"password_expired_not,omitempty"`
 
-	// password ends with
-	PasswordEndsWith *string `json:"password_ends_with,omitempty"`
+	// password updated at
+	PasswordUpdatedAt *string `json:"password_updated_at,omitempty"`
 
-	// password gt
-	PasswordGt *string `json:"password_gt,omitempty"`
+	// password updated at gt
+	PasswordUpdatedAtGt *string `json:"password_updated_at_gt,omitempty"`
 
-	// password gte
-	PasswordGte *string `json:"password_gte,omitempty"`
+	// password updated at gte
+	PasswordUpdatedAtGte *string `json:"password_updated_at_gte,omitempty"`
 
-	// password in
-	PasswordIn []string `json:"password_in,omitempty"`
+	// password updated at in
+	PasswordUpdatedAtIn []string `json:"password_updated_at_in,omitempty"`
 
-	// password lt
-	PasswordLt *string `json:"password_lt,omitempty"`
+	// password updated at lt
+	PasswordUpdatedAtLt *string `json:"password_updated_at_lt,omitempty"`
 
-	// password lte
-	PasswordLte *string `json:"password_lte,omitempty"`
+	// password updated at lte
+	PasswordUpdatedAtLte *string `json:"password_updated_at_lte,omitempty"`
 
-	// password not
-	PasswordNot *string `json:"password_not,omitempty"`
+	// password updated at not
+	PasswordUpdatedAtNot *string `json:"password_updated_at_not,omitempty"`
 
-	// password not contains
-	PasswordNotContains *string `json:"password_not_contains,omitempty"`
-
-	// password not ends with
-	PasswordNotEndsWith *string `json:"password_not_ends_with,omitempty"`
-
-	// password not in
-	PasswordNotIn []string `json:"password_not_in,omitempty"`
-
-	// password not starts with
-	PasswordNotStartsWith *string `json:"password_not_starts_with,omitempty"`
-
-	// password starts with
-	PasswordStartsWith *string `json:"password_starts_with,omitempty"`
+	// password updated at not in
+	PasswordUpdatedAtNotIn []string `json:"password_updated_at_not_in,omitempty"`
 
 	// role
 	Role *UserRole `json:"role,omitempty"`

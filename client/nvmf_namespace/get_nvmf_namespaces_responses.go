@@ -35,6 +35,18 @@ func (o *GetNvmfNamespacesReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNvmfNamespacesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNvmfNamespacesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetNvmfNamespacesBadRequest() *GetNvmfNamespacesBadRequest {
 
 /* GetNvmfNamespacesBadRequest describes a response with status code 400, with default header values.
 
-GetNvmfNamespacesBadRequest get nvmf namespaces bad request
+Bad request
 */
 type GetNvmfNamespacesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNvmfNamespacesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nvmf-namespaces][%d] getNvmfNamespacesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNvmfNamespacesBadRequest) GetPayload() string {
+func (o *GetNvmfNamespacesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNvmfNamespacesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfNamespacesNotFound creates a GetNvmfNamespacesNotFound with default headers values
+func NewGetNvmfNamespacesNotFound() *GetNvmfNamespacesNotFound {
+	return &GetNvmfNamespacesNotFound{}
+}
+
+/* GetNvmfNamespacesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNvmfNamespacesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfNamespacesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-namespaces][%d] getNvmfNamespacesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNvmfNamespacesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfNamespacesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNvmfNamespacesInternalServerError creates a GetNvmfNamespacesInternalServerError with default headers values
+func NewGetNvmfNamespacesInternalServerError() *GetNvmfNamespacesInternalServerError {
+	return &GetNvmfNamespacesInternalServerError{}
+}
+
+/* GetNvmfNamespacesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNvmfNamespacesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNvmfNamespacesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nvmf-namespaces][%d] getNvmfNamespacesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNvmfNamespacesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNvmfNamespacesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

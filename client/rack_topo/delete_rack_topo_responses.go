@@ -35,6 +35,18 @@ func (o *DeleteRackTopoReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteRackTopoNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteRackTopoInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteRackTopoBadRequest() *DeleteRackTopoBadRequest {
 
 /* DeleteRackTopoBadRequest describes a response with status code 400, with default header values.
 
-DeleteRackTopoBadRequest delete rack topo bad request
+Bad request
 */
 type DeleteRackTopoBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteRackTopoBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-rack-topo][%d] deleteRackTopoBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteRackTopoBadRequest) GetPayload() string {
+func (o *DeleteRackTopoBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteRackTopoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteRackTopoNotFound creates a DeleteRackTopoNotFound with default headers values
+func NewDeleteRackTopoNotFound() *DeleteRackTopoNotFound {
+	return &DeleteRackTopoNotFound{}
+}
+
+/* DeleteRackTopoNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteRackTopoNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteRackTopoNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-rack-topo][%d] deleteRackTopoNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteRackTopoNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteRackTopoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteRackTopoInternalServerError creates a DeleteRackTopoInternalServerError with default headers values
+func NewDeleteRackTopoInternalServerError() *DeleteRackTopoInternalServerError {
+	return &DeleteRackTopoInternalServerError{}
+}
+
+/* DeleteRackTopoInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteRackTopoInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteRackTopoInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-rack-topo][%d] deleteRackTopoInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteRackTopoInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteRackTopoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

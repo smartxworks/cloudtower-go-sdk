@@ -35,6 +35,18 @@ func (o *GetNfsInodesReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetNfsInodesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetNfsInodesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetNfsInodesBadRequest() *GetNfsInodesBadRequest {
 
 /* GetNfsInodesBadRequest describes a response with status code 400, with default header values.
 
-GetNfsInodesBadRequest get nfs inodes bad request
+Bad request
 */
 type GetNfsInodesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetNfsInodesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-nfs-inodes][%d] getNfsInodesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetNfsInodesBadRequest) GetPayload() string {
+func (o *GetNfsInodesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetNfsInodesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNfsInodesNotFound creates a GetNfsInodesNotFound with default headers values
+func NewGetNfsInodesNotFound() *GetNfsInodesNotFound {
+	return &GetNfsInodesNotFound{}
+}
+
+/* GetNfsInodesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetNfsInodesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNfsInodesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-nfs-inodes][%d] getNfsInodesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetNfsInodesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNfsInodesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetNfsInodesInternalServerError creates a GetNfsInodesInternalServerError with default headers values
+func NewGetNfsInodesInternalServerError() *GetNfsInodesInternalServerError {
+	return &GetNfsInodesInternalServerError{}
+}
+
+/* GetNfsInodesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetNfsInodesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetNfsInodesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-nfs-inodes][%d] getNfsInodesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetNfsInodesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetNfsInodesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

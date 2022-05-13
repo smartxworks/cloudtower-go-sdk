@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -23,9 +24,6 @@ type LogCollectionCreationParams struct {
 	// Required: true
 	ClusterID *string `json:"cluster_id"`
 
-	// groups
-	Groups []string `json:"groups,omitempty"`
-
 	// hosts
 	// Required: true
 	Hosts *HostWhereInput `json:"hosts"`
@@ -40,8 +38,8 @@ type LogCollectionCreationParams struct {
 	// Format: date-time
 	LogStartedAt *strfmt.DateTime `json:"log_started_at"`
 
-	// services
-	Services []string `json:"services,omitempty"`
+	// service groups
+	ServiceGroups []*LogCollectionServiceGroupParams `json:"service_groups,omitempty"`
 
 	// witness id
 	WitnessID *string `json:"witness_id,omitempty"`
@@ -64,6 +62,10 @@ func (m *LogCollectionCreationParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLogStartedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServiceGroups(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -128,11 +130,41 @@ func (m *LogCollectionCreationParams) validateLogStartedAt(formats strfmt.Regist
 	return nil
 }
 
+func (m *LogCollectionCreationParams) validateServiceGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServiceGroups) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ServiceGroups); i++ {
+		if swag.IsZero(m.ServiceGroups[i]) { // not required
+			continue
+		}
+
+		if m.ServiceGroups[i] != nil {
+			if err := m.ServiceGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("service_groups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("service_groups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this log collection creation params based on the context it is used
 func (m *LogCollectionCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateServiceGroups(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -153,6 +185,26 @@ func (m *LogCollectionCreationParams) contextValidateHosts(ctx context.Context, 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *LogCollectionCreationParams) contextValidateServiceGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ServiceGroups); i++ {
+
+		if m.ServiceGroups[i] != nil {
+			if err := m.ServiceGroups[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("service_groups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("service_groups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

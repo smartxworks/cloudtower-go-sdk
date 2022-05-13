@@ -35,6 +35,18 @@ func (o *GetReportTemplatesConnectionReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetReportTemplatesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetReportTemplatesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetReportTemplatesConnectionBadRequest() *GetReportTemplatesConnectionBa
 
 /* GetReportTemplatesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetReportTemplatesConnectionBadRequest get report templates connection bad request
+Bad request
 */
 type GetReportTemplatesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetReportTemplatesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-report-templates-connection][%d] getReportTemplatesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetReportTemplatesConnectionBadRequest) GetPayload() string {
+func (o *GetReportTemplatesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetReportTemplatesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetReportTemplatesConnectionNotFound creates a GetReportTemplatesConnectionNotFound with default headers values
+func NewGetReportTemplatesConnectionNotFound() *GetReportTemplatesConnectionNotFound {
+	return &GetReportTemplatesConnectionNotFound{}
+}
+
+/* GetReportTemplatesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetReportTemplatesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetReportTemplatesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-report-templates-connection][%d] getReportTemplatesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetReportTemplatesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetReportTemplatesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetReportTemplatesConnectionInternalServerError creates a GetReportTemplatesConnectionInternalServerError with default headers values
+func NewGetReportTemplatesConnectionInternalServerError() *GetReportTemplatesConnectionInternalServerError {
+	return &GetReportTemplatesConnectionInternalServerError{}
+}
+
+/* GetReportTemplatesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetReportTemplatesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetReportTemplatesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-report-templates-connection][%d] getReportTemplatesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetReportTemplatesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetReportTemplatesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

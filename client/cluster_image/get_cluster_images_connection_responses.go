@@ -35,6 +35,18 @@ func (o *GetClusterImagesConnectionReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClusterImagesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetClusterImagesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetClusterImagesConnectionBadRequest() *GetClusterImagesConnectionBadReq
 
 /* GetClusterImagesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetClusterImagesConnectionBadRequest get cluster images connection bad request
+Bad request
 */
 type GetClusterImagesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetClusterImagesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-cluster-images-connection][%d] getClusterImagesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetClusterImagesConnectionBadRequest) GetPayload() string {
+func (o *GetClusterImagesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetClusterImagesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterImagesConnectionNotFound creates a GetClusterImagesConnectionNotFound with default headers values
+func NewGetClusterImagesConnectionNotFound() *GetClusterImagesConnectionNotFound {
+	return &GetClusterImagesConnectionNotFound{}
+}
+
+/* GetClusterImagesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetClusterImagesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterImagesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-images-connection][%d] getClusterImagesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetClusterImagesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterImagesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterImagesConnectionInternalServerError creates a GetClusterImagesConnectionInternalServerError with default headers values
+func NewGetClusterImagesConnectionInternalServerError() *GetClusterImagesConnectionInternalServerError {
+	return &GetClusterImagesConnectionInternalServerError{}
+}
+
+/* GetClusterImagesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetClusterImagesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetClusterImagesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-cluster-images-connection][%d] getClusterImagesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetClusterImagesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetClusterImagesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

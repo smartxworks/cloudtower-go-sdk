@@ -35,6 +35,18 @@ func (o *GetEverouteClustersReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetEverouteClustersNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetEverouteClustersInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetEverouteClustersBadRequest() *GetEverouteClustersBadRequest {
 
 /* GetEverouteClustersBadRequest describes a response with status code 400, with default header values.
 
-GetEverouteClustersBadRequest get everoute clusters bad request
+Bad request
 */
 type GetEverouteClustersBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetEverouteClustersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-everoute-clusters][%d] getEverouteClustersBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetEverouteClustersBadRequest) GetPayload() string {
+func (o *GetEverouteClustersBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetEverouteClustersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetEverouteClustersNotFound creates a GetEverouteClustersNotFound with default headers values
+func NewGetEverouteClustersNotFound() *GetEverouteClustersNotFound {
+	return &GetEverouteClustersNotFound{}
+}
+
+/* GetEverouteClustersNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetEverouteClustersNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetEverouteClustersNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-everoute-clusters][%d] getEverouteClustersNotFound  %+v", 404, o.Payload)
+}
+func (o *GetEverouteClustersNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetEverouteClustersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetEverouteClustersInternalServerError creates a GetEverouteClustersInternalServerError with default headers values
+func NewGetEverouteClustersInternalServerError() *GetEverouteClustersInternalServerError {
+	return &GetEverouteClustersInternalServerError{}
+}
+
+/* GetEverouteClustersInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetEverouteClustersInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetEverouteClustersInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-everoute-clusters][%d] getEverouteClustersInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetEverouteClustersInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetEverouteClustersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

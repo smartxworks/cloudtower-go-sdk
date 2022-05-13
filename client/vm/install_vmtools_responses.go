@@ -35,6 +35,18 @@ func (o *InstallVmtoolsReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewInstallVmtoolsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewInstallVmtoolsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewInstallVmtoolsBadRequest() *InstallVmtoolsBadRequest {
 
 /* InstallVmtoolsBadRequest describes a response with status code 400, with default header values.
 
-InstallVmtoolsBadRequest install vmtools bad request
+Bad request
 */
 type InstallVmtoolsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *InstallVmtoolsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /install-vmtools][%d] installVmtoolsBadRequest  %+v", 400, o.Payload)
 }
-func (o *InstallVmtoolsBadRequest) GetPayload() string {
+func (o *InstallVmtoolsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *InstallVmtoolsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewInstallVmtoolsNotFound creates a InstallVmtoolsNotFound with default headers values
+func NewInstallVmtoolsNotFound() *InstallVmtoolsNotFound {
+	return &InstallVmtoolsNotFound{}
+}
+
+/* InstallVmtoolsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type InstallVmtoolsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *InstallVmtoolsNotFound) Error() string {
+	return fmt.Sprintf("[POST /install-vmtools][%d] installVmtoolsNotFound  %+v", 404, o.Payload)
+}
+func (o *InstallVmtoolsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *InstallVmtoolsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewInstallVmtoolsInternalServerError creates a InstallVmtoolsInternalServerError with default headers values
+func NewInstallVmtoolsInternalServerError() *InstallVmtoolsInternalServerError {
+	return &InstallVmtoolsInternalServerError{}
+}
+
+/* InstallVmtoolsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type InstallVmtoolsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *InstallVmtoolsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /install-vmtools][%d] installVmtoolsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *InstallVmtoolsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *InstallVmtoolsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

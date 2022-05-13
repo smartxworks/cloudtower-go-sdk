@@ -35,6 +35,18 @@ func (o *GetWitnessesReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetWitnessesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetWitnessesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetWitnessesBadRequest() *GetWitnessesBadRequest {
 
 /* GetWitnessesBadRequest describes a response with status code 400, with default header values.
 
-GetWitnessesBadRequest get witnesses bad request
+Bad request
 */
 type GetWitnessesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetWitnessesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-witnesses][%d] getWitnessesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetWitnessesBadRequest) GetPayload() string {
+func (o *GetWitnessesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetWitnessesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetWitnessesNotFound creates a GetWitnessesNotFound with default headers values
+func NewGetWitnessesNotFound() *GetWitnessesNotFound {
+	return &GetWitnessesNotFound{}
+}
+
+/* GetWitnessesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetWitnessesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetWitnessesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-witnesses][%d] getWitnessesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetWitnessesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetWitnessesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetWitnessesInternalServerError creates a GetWitnessesInternalServerError with default headers values
+func NewGetWitnessesInternalServerError() *GetWitnessesInternalServerError {
+	return &GetWitnessesInternalServerError{}
+}
+
+/* GetWitnessesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetWitnessesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetWitnessesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-witnesses][%d] getWitnessesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetWitnessesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetWitnessesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

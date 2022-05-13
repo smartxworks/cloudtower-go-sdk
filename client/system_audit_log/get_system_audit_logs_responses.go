@@ -35,6 +35,18 @@ func (o *GetSystemAuditLogsReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSystemAuditLogsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSystemAuditLogsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetSystemAuditLogsBadRequest() *GetSystemAuditLogsBadRequest {
 
 /* GetSystemAuditLogsBadRequest describes a response with status code 400, with default header values.
 
-GetSystemAuditLogsBadRequest get system audit logs bad request
+Bad request
 */
 type GetSystemAuditLogsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSystemAuditLogsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-system-audit-logs][%d] getSystemAuditLogsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSystemAuditLogsBadRequest) GetPayload() string {
+func (o *GetSystemAuditLogsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSystemAuditLogsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSystemAuditLogsNotFound creates a GetSystemAuditLogsNotFound with default headers values
+func NewGetSystemAuditLogsNotFound() *GetSystemAuditLogsNotFound {
+	return &GetSystemAuditLogsNotFound{}
+}
+
+/* GetSystemAuditLogsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSystemAuditLogsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSystemAuditLogsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-system-audit-logs][%d] getSystemAuditLogsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSystemAuditLogsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSystemAuditLogsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSystemAuditLogsInternalServerError creates a GetSystemAuditLogsInternalServerError with default headers values
+func NewGetSystemAuditLogsInternalServerError() *GetSystemAuditLogsInternalServerError {
+	return &GetSystemAuditLogsInternalServerError{}
+}
+
+/* GetSystemAuditLogsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSystemAuditLogsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSystemAuditLogsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-system-audit-logs][%d] getSystemAuditLogsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSystemAuditLogsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSystemAuditLogsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

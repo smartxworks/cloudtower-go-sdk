@@ -30,6 +30,12 @@ func (m GlobalSettingsOrderByInput) Pointer() *GlobalSettingsOrderByInput {
 
 const (
 
+	// GlobalSettingsOrderByInputAuthASC captures enum value "auth_ASC"
+	GlobalSettingsOrderByInputAuthASC GlobalSettingsOrderByInput = "auth_ASC"
+
+	// GlobalSettingsOrderByInputAuthDESC captures enum value "auth_DESC"
+	GlobalSettingsOrderByInputAuthDESC GlobalSettingsOrderByInput = "auth_DESC"
+
 	// GlobalSettingsOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
 	GlobalSettingsOrderByInputCreatedAtASC GlobalSettingsOrderByInput = "createdAt_ASC"
 
@@ -60,7 +66,7 @@ var globalSettingsOrderByInputEnum []interface{}
 
 func init() {
 	var res []GlobalSettingsOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","updatedAt_ASC","updatedAt_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["auth_ASC","auth_DESC","createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","updatedAt_ASC","updatedAt_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

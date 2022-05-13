@@ -35,6 +35,18 @@ func (o *DeleteNvmfNamespaceReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteNvmfNamespaceNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteNvmfNamespaceInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteNvmfNamespaceBadRequest() *DeleteNvmfNamespaceBadRequest {
 
 /* DeleteNvmfNamespaceBadRequest describes a response with status code 400, with default header values.
 
-DeleteNvmfNamespaceBadRequest delete nvmf namespace bad request
+Bad request
 */
 type DeleteNvmfNamespaceBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteNvmfNamespaceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-nvmf-namespace][%d] deleteNvmfNamespaceBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteNvmfNamespaceBadRequest) GetPayload() string {
+func (o *DeleteNvmfNamespaceBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteNvmfNamespaceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteNvmfNamespaceNotFound creates a DeleteNvmfNamespaceNotFound with default headers values
+func NewDeleteNvmfNamespaceNotFound() *DeleteNvmfNamespaceNotFound {
+	return &DeleteNvmfNamespaceNotFound{}
+}
+
+/* DeleteNvmfNamespaceNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteNvmfNamespaceNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteNvmfNamespaceNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-nvmf-namespace][%d] deleteNvmfNamespaceNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteNvmfNamespaceNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteNvmfNamespaceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteNvmfNamespaceInternalServerError creates a DeleteNvmfNamespaceInternalServerError with default headers values
+func NewDeleteNvmfNamespaceInternalServerError() *DeleteNvmfNamespaceInternalServerError {
+	return &DeleteNvmfNamespaceInternalServerError{}
+}
+
+/* DeleteNvmfNamespaceInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteNvmfNamespaceInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteNvmfNamespaceInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-nvmf-namespace][%d] deleteNvmfNamespaceInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteNvmfNamespaceInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteNvmfNamespaceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

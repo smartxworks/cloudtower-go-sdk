@@ -35,6 +35,18 @@ func (o *GetUserRoleNextsReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetUserRoleNextsNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetUserRoleNextsInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetUserRoleNextsBadRequest() *GetUserRoleNextsBadRequest {
 
 /* GetUserRoleNextsBadRequest describes a response with status code 400, with default header values.
 
-GetUserRoleNextsBadRequest get user role nexts bad request
+Bad request
 */
 type GetUserRoleNextsBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetUserRoleNextsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-user-role-nexts][%d] getUserRoleNextsBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetUserRoleNextsBadRequest) GetPayload() string {
+func (o *GetUserRoleNextsBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetUserRoleNextsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUserRoleNextsNotFound creates a GetUserRoleNextsNotFound with default headers values
+func NewGetUserRoleNextsNotFound() *GetUserRoleNextsNotFound {
+	return &GetUserRoleNextsNotFound{}
+}
+
+/* GetUserRoleNextsNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetUserRoleNextsNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUserRoleNextsNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-user-role-nexts][%d] getUserRoleNextsNotFound  %+v", 404, o.Payload)
+}
+func (o *GetUserRoleNextsNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUserRoleNextsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetUserRoleNextsInternalServerError creates a GetUserRoleNextsInternalServerError with default headers values
+func NewGetUserRoleNextsInternalServerError() *GetUserRoleNextsInternalServerError {
+	return &GetUserRoleNextsInternalServerError{}
+}
+
+/* GetUserRoleNextsInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetUserRoleNextsInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetUserRoleNextsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-user-role-nexts][%d] getUserRoleNextsInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetUserRoleNextsInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetUserRoleNextsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetIscsiConnections(params *GetIscsiConnectionsParams, opts ...ClientOption) (*GetIscsiConnectionsOK, error)
 
+	GetIscsiConnectionsConnection(params *GetIscsiConnectionsConnectionParams, opts ...ClientOption) (*GetIscsiConnectionsConnectionOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -70,6 +72,44 @@ func (a *Client) GetIscsiConnections(params *GetIscsiConnectionsParams, opts ...
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetIscsiConnections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetIscsiConnectionsConnection get iscsi connections connection API
+*/
+func (a *Client) GetIscsiConnectionsConnection(params *GetIscsiConnectionsConnectionParams, opts ...ClientOption) (*GetIscsiConnectionsConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetIscsiConnectionsConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetIscsiConnectionsConnection",
+		Method:             "POST",
+		PathPattern:        "/get-iscsi-connections-connection",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetIscsiConnectionsConnectionReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetIscsiConnectionsConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for GetIscsiConnectionsConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

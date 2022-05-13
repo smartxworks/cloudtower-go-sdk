@@ -35,6 +35,18 @@ func (o *CloneIscsiLunFromSnapshotReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCloneIscsiLunFromSnapshotNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCloneIscsiLunFromSnapshotInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCloneIscsiLunFromSnapshotBadRequest() *CloneIscsiLunFromSnapshotBadReque
 
 /* CloneIscsiLunFromSnapshotBadRequest describes a response with status code 400, with default header values.
 
-CloneIscsiLunFromSnapshotBadRequest clone iscsi lun from snapshot bad request
+Bad request
 */
 type CloneIscsiLunFromSnapshotBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CloneIscsiLunFromSnapshotBadRequest) Error() string {
 	return fmt.Sprintf("[POST /clone-iscsi-lun-from-snapshot][%d] cloneIscsiLunFromSnapshotBadRequest  %+v", 400, o.Payload)
 }
-func (o *CloneIscsiLunFromSnapshotBadRequest) GetPayload() string {
+func (o *CloneIscsiLunFromSnapshotBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CloneIscsiLunFromSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloneIscsiLunFromSnapshotNotFound creates a CloneIscsiLunFromSnapshotNotFound with default headers values
+func NewCloneIscsiLunFromSnapshotNotFound() *CloneIscsiLunFromSnapshotNotFound {
+	return &CloneIscsiLunFromSnapshotNotFound{}
+}
+
+/* CloneIscsiLunFromSnapshotNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CloneIscsiLunFromSnapshotNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CloneIscsiLunFromSnapshotNotFound) Error() string {
+	return fmt.Sprintf("[POST /clone-iscsi-lun-from-snapshot][%d] cloneIscsiLunFromSnapshotNotFound  %+v", 404, o.Payload)
+}
+func (o *CloneIscsiLunFromSnapshotNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CloneIscsiLunFromSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloneIscsiLunFromSnapshotInternalServerError creates a CloneIscsiLunFromSnapshotInternalServerError with default headers values
+func NewCloneIscsiLunFromSnapshotInternalServerError() *CloneIscsiLunFromSnapshotInternalServerError {
+	return &CloneIscsiLunFromSnapshotInternalServerError{}
+}
+
+/* CloneIscsiLunFromSnapshotInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CloneIscsiLunFromSnapshotInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CloneIscsiLunFromSnapshotInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /clone-iscsi-lun-from-snapshot][%d] cloneIscsiLunFromSnapshotInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CloneIscsiLunFromSnapshotInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CloneIscsiLunFromSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

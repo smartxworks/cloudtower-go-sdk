@@ -35,6 +35,18 @@ func (o *DeleteSnapshotGroupReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteSnapshotGroupNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteSnapshotGroupInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteSnapshotGroupBadRequest() *DeleteSnapshotGroupBadRequest {
 
 /* DeleteSnapshotGroupBadRequest describes a response with status code 400, with default header values.
 
-DeleteSnapshotGroupBadRequest delete snapshot group bad request
+Bad request
 */
 type DeleteSnapshotGroupBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteSnapshotGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-snapshot-group][%d] deleteSnapshotGroupBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteSnapshotGroupBadRequest) GetPayload() string {
+func (o *DeleteSnapshotGroupBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteSnapshotGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteSnapshotGroupNotFound creates a DeleteSnapshotGroupNotFound with default headers values
+func NewDeleteSnapshotGroupNotFound() *DeleteSnapshotGroupNotFound {
+	return &DeleteSnapshotGroupNotFound{}
+}
+
+/* DeleteSnapshotGroupNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteSnapshotGroupNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteSnapshotGroupNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-snapshot-group][%d] deleteSnapshotGroupNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteSnapshotGroupNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteSnapshotGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteSnapshotGroupInternalServerError creates a DeleteSnapshotGroupInternalServerError with default headers values
+func NewDeleteSnapshotGroupInternalServerError() *DeleteSnapshotGroupInternalServerError {
+	return &DeleteSnapshotGroupInternalServerError{}
+}
+
+/* DeleteSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteSnapshotGroupInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteSnapshotGroupInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-snapshot-group][%d] deleteSnapshotGroupInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteSnapshotGroupInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteSnapshotGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

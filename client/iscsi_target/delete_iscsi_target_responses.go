@@ -35,6 +35,18 @@ func (o *DeleteIscsiTargetReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewDeleteIscsiTargetNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewDeleteIscsiTargetInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewDeleteIscsiTargetBadRequest() *DeleteIscsiTargetBadRequest {
 
 /* DeleteIscsiTargetBadRequest describes a response with status code 400, with default header values.
 
-DeleteIscsiTargetBadRequest delete iscsi target bad request
+Bad request
 */
 type DeleteIscsiTargetBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *DeleteIscsiTargetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /delete-iscsi-target][%d] deleteIscsiTargetBadRequest  %+v", 400, o.Payload)
 }
-func (o *DeleteIscsiTargetBadRequest) GetPayload() string {
+func (o *DeleteIscsiTargetBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *DeleteIscsiTargetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteIscsiTargetNotFound creates a DeleteIscsiTargetNotFound with default headers values
+func NewDeleteIscsiTargetNotFound() *DeleteIscsiTargetNotFound {
+	return &DeleteIscsiTargetNotFound{}
+}
+
+/* DeleteIscsiTargetNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type DeleteIscsiTargetNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteIscsiTargetNotFound) Error() string {
+	return fmt.Sprintf("[POST /delete-iscsi-target][%d] deleteIscsiTargetNotFound  %+v", 404, o.Payload)
+}
+func (o *DeleteIscsiTargetNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteIscsiTargetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDeleteIscsiTargetInternalServerError creates a DeleteIscsiTargetInternalServerError with default headers values
+func NewDeleteIscsiTargetInternalServerError() *DeleteIscsiTargetInternalServerError {
+	return &DeleteIscsiTargetInternalServerError{}
+}
+
+/* DeleteIscsiTargetInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type DeleteIscsiTargetInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *DeleteIscsiTargetInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /delete-iscsi-target][%d] deleteIscsiTargetInternalServerError  %+v", 500, o.Payload)
+}
+func (o *DeleteIscsiTargetInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *DeleteIscsiTargetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

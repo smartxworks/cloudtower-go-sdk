@@ -35,6 +35,18 @@ func (o *ForceRestartVMReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewForceRestartVMNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewForceRestartVMInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewForceRestartVMBadRequest() *ForceRestartVMBadRequest {
 
 /* ForceRestartVMBadRequest describes a response with status code 400, with default header values.
 
-ForceRestartVMBadRequest force restart Vm bad request
+Bad request
 */
 type ForceRestartVMBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *ForceRestartVMBadRequest) Error() string {
 	return fmt.Sprintf("[POST /force-restart-vm][%d] forceRestartVmBadRequest  %+v", 400, o.Payload)
 }
-func (o *ForceRestartVMBadRequest) GetPayload() string {
+func (o *ForceRestartVMBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *ForceRestartVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewForceRestartVMNotFound creates a ForceRestartVMNotFound with default headers values
+func NewForceRestartVMNotFound() *ForceRestartVMNotFound {
+	return &ForceRestartVMNotFound{}
+}
+
+/* ForceRestartVMNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type ForceRestartVMNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ForceRestartVMNotFound) Error() string {
+	return fmt.Sprintf("[POST /force-restart-vm][%d] forceRestartVmNotFound  %+v", 404, o.Payload)
+}
+func (o *ForceRestartVMNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ForceRestartVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewForceRestartVMInternalServerError creates a ForceRestartVMInternalServerError with default headers values
+func NewForceRestartVMInternalServerError() *ForceRestartVMInternalServerError {
+	return &ForceRestartVMInternalServerError{}
+}
+
+/* ForceRestartVMInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type ForceRestartVMInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *ForceRestartVMInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /force-restart-vm][%d] forceRestartVmInternalServerError  %+v", 500, o.Payload)
+}
+func (o *ForceRestartVMInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *ForceRestartVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

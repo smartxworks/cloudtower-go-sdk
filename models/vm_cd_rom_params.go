@@ -27,8 +27,7 @@ type VMCdRomParams struct {
 	ElfImageID *string `json:"elf_image_id,omitempty"`
 
 	// index
-	// Required: true
-	Index *int32 `json:"index"`
+	Index *int32 `json:"index,omitempty"`
 
 	// key
 	Key *int32 `json:"key,omitempty"`
@@ -42,10 +41,6 @@ func (m *VMCdRomParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateIndex(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -55,15 +50,6 @@ func (m *VMCdRomParams) Validate(formats strfmt.Registry) error {
 func (m *VMCdRomParams) validateBoot(formats strfmt.Registry) error {
 
 	if err := validate.Required("boot", "body", m.Boot); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VMCdRomParams) validateIndex(formats strfmt.Registry) error {
-
-	if err := validate.Required("index", "body", m.Index); err != nil {
 		return err
 	}
 

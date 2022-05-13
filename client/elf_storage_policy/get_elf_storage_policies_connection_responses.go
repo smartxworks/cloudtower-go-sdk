@@ -35,6 +35,18 @@ func (o *GetElfStoragePoliciesConnectionReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetElfStoragePoliciesConnectionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetElfStoragePoliciesConnectionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -79,23 +91,89 @@ func NewGetElfStoragePoliciesConnectionBadRequest() *GetElfStoragePoliciesConnec
 
 /* GetElfStoragePoliciesConnectionBadRequest describes a response with status code 400, with default header values.
 
-GetElfStoragePoliciesConnectionBadRequest get elf storage policies connection bad request
+Bad request
 */
 type GetElfStoragePoliciesConnectionBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetElfStoragePoliciesConnectionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-elf-storage-policies-connection][%d] getElfStoragePoliciesConnectionBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetElfStoragePoliciesConnectionBadRequest) GetPayload() string {
+func (o *GetElfStoragePoliciesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetElfStoragePoliciesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfStoragePoliciesConnectionNotFound creates a GetElfStoragePoliciesConnectionNotFound with default headers values
+func NewGetElfStoragePoliciesConnectionNotFound() *GetElfStoragePoliciesConnectionNotFound {
+	return &GetElfStoragePoliciesConnectionNotFound{}
+}
+
+/* GetElfStoragePoliciesConnectionNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetElfStoragePoliciesConnectionNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfStoragePoliciesConnectionNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-elf-storage-policies-connection][%d] getElfStoragePoliciesConnectionNotFound  %+v", 404, o.Payload)
+}
+func (o *GetElfStoragePoliciesConnectionNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfStoragePoliciesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetElfStoragePoliciesConnectionInternalServerError creates a GetElfStoragePoliciesConnectionInternalServerError with default headers values
+func NewGetElfStoragePoliciesConnectionInternalServerError() *GetElfStoragePoliciesConnectionInternalServerError {
+	return &GetElfStoragePoliciesConnectionInternalServerError{}
+}
+
+/* GetElfStoragePoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetElfStoragePoliciesConnectionInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetElfStoragePoliciesConnectionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-elf-storage-policies-connection][%d] getElfStoragePoliciesConnectionInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetElfStoragePoliciesConnectionInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetElfStoragePoliciesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

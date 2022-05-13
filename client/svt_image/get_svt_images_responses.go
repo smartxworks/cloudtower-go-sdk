@@ -35,6 +35,18 @@ func (o *GetSvtImagesReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetSvtImagesNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetSvtImagesInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewGetSvtImagesBadRequest() *GetSvtImagesBadRequest {
 
 /* GetSvtImagesBadRequest describes a response with status code 400, with default header values.
 
-GetSvtImagesBadRequest get svt images bad request
+Bad request
 */
 type GetSvtImagesBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *GetSvtImagesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /get-svt-images][%d] getSvtImagesBadRequest  %+v", 400, o.Payload)
 }
-func (o *GetSvtImagesBadRequest) GetPayload() string {
+func (o *GetSvtImagesBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *GetSvtImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSvtImagesNotFound creates a GetSvtImagesNotFound with default headers values
+func NewGetSvtImagesNotFound() *GetSvtImagesNotFound {
+	return &GetSvtImagesNotFound{}
+}
+
+/* GetSvtImagesNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type GetSvtImagesNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSvtImagesNotFound) Error() string {
+	return fmt.Sprintf("[POST /get-svt-images][%d] getSvtImagesNotFound  %+v", 404, o.Payload)
+}
+func (o *GetSvtImagesNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSvtImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetSvtImagesInternalServerError creates a GetSvtImagesInternalServerError with default headers values
+func NewGetSvtImagesInternalServerError() *GetSvtImagesInternalServerError {
+	return &GetSvtImagesInternalServerError{}
+}
+
+/* GetSvtImagesInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type GetSvtImagesInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *GetSvtImagesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /get-svt-images][%d] getSvtImagesInternalServerError  %+v", 500, o.Payload)
+}
+func (o *GetSvtImagesInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *GetSvtImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

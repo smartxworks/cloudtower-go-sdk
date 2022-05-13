@@ -35,6 +35,18 @@ func (o *CreateIscsiLunSnapshotReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateIscsiLunSnapshotNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewCreateIscsiLunSnapshotInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -77,23 +89,89 @@ func NewCreateIscsiLunSnapshotBadRequest() *CreateIscsiLunSnapshotBadRequest {
 
 /* CreateIscsiLunSnapshotBadRequest describes a response with status code 400, with default header values.
 
-CreateIscsiLunSnapshotBadRequest create iscsi lun snapshot bad request
+Bad request
 */
 type CreateIscsiLunSnapshotBadRequest struct {
-	Payload string
+	Payload *models.ErrorBody
 }
 
 func (o *CreateIscsiLunSnapshotBadRequest) Error() string {
 	return fmt.Sprintf("[POST /create-iscsi-lun-snapshot][%d] createIscsiLunSnapshotBadRequest  %+v", 400, o.Payload)
 }
-func (o *CreateIscsiLunSnapshotBadRequest) GetPayload() string {
+func (o *CreateIscsiLunSnapshotBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
 }
 
 func (o *CreateIscsiLunSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ErrorBody)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateIscsiLunSnapshotNotFound creates a CreateIscsiLunSnapshotNotFound with default headers values
+func NewCreateIscsiLunSnapshotNotFound() *CreateIscsiLunSnapshotNotFound {
+	return &CreateIscsiLunSnapshotNotFound{}
+}
+
+/* CreateIscsiLunSnapshotNotFound describes a response with status code 404, with default header values.
+
+Not found
+*/
+type CreateIscsiLunSnapshotNotFound struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateIscsiLunSnapshotNotFound) Error() string {
+	return fmt.Sprintf("[POST /create-iscsi-lun-snapshot][%d] createIscsiLunSnapshotNotFound  %+v", 404, o.Payload)
+}
+func (o *CreateIscsiLunSnapshotNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateIscsiLunSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateIscsiLunSnapshotInternalServerError creates a CreateIscsiLunSnapshotInternalServerError with default headers values
+func NewCreateIscsiLunSnapshotInternalServerError() *CreateIscsiLunSnapshotInternalServerError {
+	return &CreateIscsiLunSnapshotInternalServerError{}
+}
+
+/* CreateIscsiLunSnapshotInternalServerError describes a response with status code 500, with default header values.
+
+Server error
+*/
+type CreateIscsiLunSnapshotInternalServerError struct {
+	Payload *models.ErrorBody
+}
+
+func (o *CreateIscsiLunSnapshotInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /create-iscsi-lun-snapshot][%d] createIscsiLunSnapshotInternalServerError  %+v", 500, o.Payload)
+}
+func (o *CreateIscsiLunSnapshotInternalServerError) GetPayload() *models.ErrorBody {
+	return o.Payload
+}
+
+func (o *CreateIscsiLunSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
