@@ -181,48 +181,6 @@ type WitnessWhereInput struct {
 	// local id starts with
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
-	// management ip
-	ManagementIP *string `json:"management_ip,omitempty"`
-
-	// management ip contains
-	ManagementIPContains *string `json:"management_ip_contains,omitempty"`
-
-	// management ip ends with
-	ManagementIPEndsWith *string `json:"management_ip_ends_with,omitempty"`
-
-	// management ip gt
-	ManagementIPGt *string `json:"management_ip_gt,omitempty"`
-
-	// management ip gte
-	ManagementIPGte *string `json:"management_ip_gte,omitempty"`
-
-	// management ip in
-	ManagementIPIn []string `json:"management_ip_in,omitempty"`
-
-	// management ip lt
-	ManagementIPLt *string `json:"management_ip_lt,omitempty"`
-
-	// management ip lte
-	ManagementIPLte *string `json:"management_ip_lte,omitempty"`
-
-	// management ip not
-	ManagementIPNot *string `json:"management_ip_not,omitempty"`
-
-	// management ip not contains
-	ManagementIPNotContains *string `json:"management_ip_not_contains,omitempty"`
-
-	// management ip not ends with
-	ManagementIPNotEndsWith *string `json:"management_ip_not_ends_with,omitempty"`
-
-	// management ip not in
-	ManagementIPNotIn []string `json:"management_ip_not_in,omitempty"`
-
-	// management ip not starts with
-	ManagementIPNotStartsWith *string `json:"management_ip_not_starts_with,omitempty"`
-
-	// management ip starts with
-	ManagementIPStartsWith *string `json:"management_ip_starts_with,omitempty"`
-
 	// name
 	Name *string `json:"name,omitempty"`
 
