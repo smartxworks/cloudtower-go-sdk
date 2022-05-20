@@ -27,7 +27,7 @@ go get github.com/smartxworks/cloudtower-go-sdk
 
 ```go
 import (
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
@@ -43,7 +43,7 @@ client := apiclient.New(transport, strfmt.Default)
 
 ```go
 import (
-  	vm "github.com/smartxworks/cloudtower-go-sdk/client/vm"
+  	vm "github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 )
 ```
 
@@ -51,7 +51,7 @@ import (
 
 ```go
 import (
-  User "github.com/smartxworks/cloudtower-go-sdk/client/user"
+  User "github.com/smartxworks/cloudtower-go-sdk/v2/client/user"
 )
 loginParams := User.NewLoginParams()
 loginParams.RequestBody = &models.LoginInput{
@@ -171,9 +171,9 @@ package main
 import (
 	"fmt"
 
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 
 	httptransport "github.com/go-openapi/runtime/client"
 )
@@ -208,9 +208,9 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -252,9 +252,9 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -295,9 +295,9 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -339,9 +339,9 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -385,10 +385,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -450,10 +450,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -554,10 +554,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -627,10 +627,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -710,10 +710,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -791,10 +791,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -873,10 +873,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -958,10 +958,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1045,10 +1045,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1116,10 +1116,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1185,10 +1185,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1250,10 +1250,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1325,10 +1325,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1397,10 +1397,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1462,10 +1462,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1531,10 +1531,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1596,10 +1596,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1662,10 +1662,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1727,10 +1727,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1792,10 +1792,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1855,10 +1855,10 @@ import (
 	"fmt"
 
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"
@@ -1928,10 +1928,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -1995,10 +1995,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -2058,10 +2058,10 @@ import (
 	"fmt"
 
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"
@@ -2131,10 +2131,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -2193,10 +2193,10 @@ package main
 import (
 	"fmt"
 
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"
@@ -2270,10 +2270,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -2332,10 +2332,10 @@ package main
 import (
 	"fmt"
 
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"
@@ -2405,10 +2405,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -2467,10 +2467,10 @@ package main
 import (
 	"fmt"
 
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"
@@ -2542,10 +2542,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -2604,10 +2604,10 @@ package main
 import (
 	"fmt"
 
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"
@@ -2681,10 +2681,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -2743,10 +2743,10 @@ package main
 import (
 	"fmt"
 
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"
@@ -2821,10 +2821,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -2884,10 +2884,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -2947,10 +2947,10 @@ package main
 
 import (
 	"github.com/openlyinc/pointy"
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 
 	httptransport "github.com/go-openapi/runtime/client"
 
@@ -3001,13 +3001,13 @@ package main
 import (
 	"fmt"
 
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/iscsi_lun_snapshot"
-	"github.com/smartxworks/cloudtower-go-sdk/client/user"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm"
-	"github.com/smartxworks/cloudtower-go-sdk/client/vm_snapshot"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
-	"github.com/smartxworks/cloudtower-go-sdk/utils"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/iscsi_lun_snapshot"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_snapshot"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
 	"github.com/openlyinc/pointy"
 	"github.com/thoas/go-funk"
 
@@ -3102,13 +3102,13 @@ func create_vm_snapshot(
 import (
 	"fmt"
 
-	apiclient "github.com/smartxworks/cloudtower-go-sdk/client"
-	"github.com/smartxworks/cloudtower-go-sdk/client/alert"
-	"github.com/smartxworks/cloudtower-go-sdk/client/cluster"
-	"github.com/smartxworks/cloudtower-go-sdk/client/disk"
-	"github.com/smartxworks/cloudtower-go-sdk/client/host"
-	"github.com/smartxworks/cloudtower-go-sdk/client/user"
-	"github.com/smartxworks/cloudtower-go-sdk/models"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/alert"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/disk"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/host"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 	"github.com/openlyinc/pointy"
 	"github.com/thoas/go-funk"
 

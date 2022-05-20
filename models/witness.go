@@ -38,10 +38,6 @@ type Witness struct {
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
 
-	// management ip
-	// Required: true
-	ManagementIP *string `json:"management_ip"`
-
 	// name
 	// Required: true
 	Name *string `json:"name"`
@@ -84,10 +80,6 @@ func (m *Witness) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateManagementIP(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -162,15 +154,6 @@ func (m *Witness) validateDataIP(formats strfmt.Registry) error {
 func (m *Witness) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Witness) validateManagementIP(formats strfmt.Registry) error {
-
-	if err := validate.Required("management_ip", "body", m.ManagementIP); err != nil {
 		return err
 	}
 
