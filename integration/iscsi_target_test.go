@@ -17,7 +17,7 @@ import (
 var _ = Describe("Iscsi target api", Ordered, func() {
 	var cluster *models.Cluster = nil
 	BeforeAll(func() {
-		cluster = fixture.GetDefaultCluster(Client, "xiaojun-nested-X20211110124941")
+		cluster = fixture.GetDefaultCluster(Client, "xiaojun-502-ELF-nestedX20220426111859")
 	})
 	It("should get iscsi target", func() {
 		params := iscsi_target.NewGetIscsiTargetsParams()
