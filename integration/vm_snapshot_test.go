@@ -19,7 +19,7 @@ var _ = Describe("Vm snapshot api", Ordered, func() {
 	var cluster *models.Cluster = nil
 	var vlan *models.Vlan = nil
 	BeforeAll(func() {
-		cluster = fixture.GetDefaultCluster(Client, "xiaojun-nested-X20211110124941")
+		cluster = fixture.GetDefaultCluster(Client, "xiaojun-502-ELF-nestedX20220426111859")
 		vlan = fixture.GetDefaultVlan(Client, cluster.ID)
 	})
 

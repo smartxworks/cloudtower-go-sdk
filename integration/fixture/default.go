@@ -3,12 +3,9 @@ package fixture
 import (
 	"os"
 
-	httptransport "github.com/go-openapi/runtime/client"
-	"github.com/go-openapi/strfmt"
 	. "github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vlan"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 )
@@ -19,26 +16,15 @@ func GetClient() *apiclient.Cloudtower {
 	if client != nil {
 		return client
 	}
-	transport := httptransport.New(os.Getenv("CLOUDTOWER_SDK_ENDPOINT"), "v2/api", []string{"http"})
-
-	client := apiclient.New(transport, strfmt.Default)
-	token := os.Getenv("CLOUDTOWER_SDK_TOKEN")
-	if len(token) == 0 {
-		loginParams := user.NewLoginParams()
-		loginParams.RequestBody = &models.LoginInput{
-			Username: String(os.Getenv("CLOUDTOWER_SDK_USERNAME")),
-			Password: String(os.Getenv("CLOUDTOWER_SDK_PASSWORD")),
-			Source:   models.NewUserSource(models.UserSource(os.Getenv("CLOUDTOWER_SDK_USERSOURCE"))),
-		}
-		loginRes, err := client.User.Login(loginParams)
-		if err != nil {
-			panic(err.Error())
-		}
-		token = *loginRes.Payload.Data.Token
-	}
-
-	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", token)
-	return client
+	return apiclient.NewWithUserConfig(apiclient.ClientConfig{
+		Host:     os.Getenv("CLOUDTOWER_SDK_ENDPOINT"),
+		BasePath: "v2/api",
+		Schemes:  []string{"http"},
+	}, apiclient.UserConfig{
+		Name:     os.Getenv("CLOUDTOWER_SDK_USERNAME"),
+		Password: os.Getenv("CLOUDTOWER_SDK_PASSWORD"),
+		Source:   models.UserSource(os.Getenv("CLOUDTOWER_SDK_USERSOURCE")),
+	})
 }
 
 func GetDefaultCluster(client *apiclient.Cloudtower, name string) *models.Cluster {
@@ -54,7 +40,7 @@ func GetDefaultCluster(client *apiclient.Cloudtower, name string) *models.Cluste
 		panic(err.Error())
 	}
 	if len(res.Payload) == 0 {
-		panic("Deafult clusteer not found")
+		panic("Deafult cluster not found")
 	}
 	return res.Payload[0]
 }
