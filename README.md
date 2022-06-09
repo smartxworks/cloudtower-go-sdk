@@ -14,7 +14,7 @@ Golang 环境下的 Cloudtower SDK，适用于 golang 1.16 及以上版本
 ## 安装
 
 ```shell
-go get github.com/smartxworks/cloudtower-go-sdk
+go get github.com/smartxworks/cloudtower-go-sdk/v2
 ```
 
 ## 使用
@@ -48,6 +48,27 @@ import (
 ```
 
 #### 鉴权
+
+可以使用 `NewWithUserConfig` 来创建一个具有鉴权信息的 `Client`
+
+```go
+import (
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+)
+
+client := apiclient.NewWithUserConfig(apiclient.ClientConfig{
+	Host:     "localhost:8090",
+	BasePath: "v2/api",
+	Schemes:  []string{"http"},
+}, apiclient.UserConfig{
+	Name:     "Name",
+	Password: "Password",
+	Source:   models.UserSourceLOCAL,
+})
+```
+
+也可以创建 `Client` 后手动添加鉴权信息
 
 ```go
 import (

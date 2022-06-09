@@ -1,5 +1,11 @@
 # RELEASE NOTE
 
+## release 日期：2022-06-09
+
+v2.0.0+rev1 release
+
+- feature：添加 `NewWithUserConfig` 来创建一个拥有登陆信息的 `Client` 实例。
+
 ## release 日期：2022-05-20
 
 v2.0.0 release
