@@ -244,13 +244,13 @@ type Cluster struct {
 	UpgradeToolVersion *string `json:"upgrade_tool_version,omitempty"`
 
 	// used cpu hz
-	UsedCPUHz *int64 `json:"used_cpu_hz,omitempty"`
+	UsedCPUHz *float64 `json:"used_cpu_hz,omitempty"`
 
 	// used data space
 	UsedDataSpace *int64 `json:"used_data_space,omitempty"`
 
 	// used memory bytes
-	UsedMemoryBytes *int64 `json:"used_memory_bytes,omitempty"`
+	UsedMemoryBytes *float64 `json:"used_memory_bytes,omitempty"`
 
 	// valid data space
 	ValidDataSpace *int64 `json:"valid_data_space,omitempty"`
