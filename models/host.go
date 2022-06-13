@@ -230,14 +230,14 @@ type Host struct {
 	UsbDevices []*NestedUsbDevice `json:"usb_devices,omitempty"`
 
 	// used cpu hz
-	UsedCPUHz *int64 `json:"used_cpu_hz,omitempty"`
+	UsedCPUHz *float64 `json:"used_cpu_hz,omitempty"`
 
 	// used data space
 	// Required: true
 	UsedDataSpace *int64 `json:"used_data_space"`
 
 	// used memory bytes
-	UsedMemoryBytes *int64 `json:"used_memory_bytes,omitempty"`
+	UsedMemoryBytes *float64 `json:"used_memory_bytes,omitempty"`
 
 	// vm num
 	VMNum *int32 `json:"vm_num,omitempty"`
