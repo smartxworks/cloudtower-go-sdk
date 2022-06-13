@@ -1,5 +1,13 @@
 # RELEASE NOTE
 
+## release 日期：2022-06-13
+
+v2.0.0+rev2 release
+
+- bugfix: [Cluster],[ClusterWhereInput]: 修复 usedMemoryBytes, usedCpuUsage 的数据类型 Long -> Double
+- bugfix: [Host],[HostWhereInput]: 修复 usedMemoryBytes, usedCpuUsage 的数据类型 Long -> Double
+- bugfix: [Datacenter],[DatacenterWhereInput]: 修复 usedMemoryBytes, usedCpuUsage 的数据类型 Long -> Double
+
 ## release 日期：2022-06-09
 
 v2.0.0+rev1 release
