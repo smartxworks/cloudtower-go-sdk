@@ -20,7 +20,7 @@ type UserConfig struct {
 	Source   models.UserSource
 }
 
-func NewWithUserConfig(clientConfig ClientConfig, userConfig UserConfig) *Cloudtower {
+func NewWithUserConfig(clientConfig ClientConfig, userConfig UserConfig) (*Cloudtower, error) {
 	transport := httptransport.New(clientConfig.Host, clientConfig.BasePath, clientConfig.Schemes)
 	var client *Cloudtower
 	if clientConfig.formats == nil {
@@ -36,8 +36,8 @@ func NewWithUserConfig(clientConfig ClientConfig, userConfig UserConfig) *Cloudt
 	}
 	resp, err := client.User.Login(params)
 	if err != nil {
-		panic(err.Error())
+		return nil, err
 	}
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", *resp.Payload.Data.Token)
-	return client
+	return client, nil
 }

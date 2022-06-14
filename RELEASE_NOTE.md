@@ -1,5 +1,11 @@
 # RELEASE NOTE
 
+## release 日期：2022-06-14
+
+v2.0.0+rev3 release
+
+- bugfix: `NewWithUserConfig` 不再直接 panic 而会将 error 作为返回值返回。
+
 ## release 日期：2022-06-13
 
 v2.0.0+rev2 release
