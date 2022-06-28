@@ -16,7 +16,7 @@ func GetClient() *apiclient.Cloudtower {
 	if client != nil {
 		return client
 	}
-	return apiclient.NewWithUserConfig(apiclient.ClientConfig{
+	client, err := apiclient.NewWithUserConfig(apiclient.ClientConfig{
 		Host:     os.Getenv("CLOUDTOWER_SDK_ENDPOINT"),
 		BasePath: "v2/api",
 		Schemes:  []string{"http"},
@@ -25,6 +25,10 @@ func GetClient() *apiclient.Cloudtower {
 		Password: os.Getenv("CLOUDTOWER_SDK_PASSWORD"),
 		Source:   models.UserSource(os.Getenv("CLOUDTOWER_SDK_USERSOURCE")),
 	})
+	if err != nil {
+		panic(err.Error())
+	}
+	return client
 }
 
 func GetDefaultCluster(client *apiclient.Cloudtower, name string) *models.Cluster {
