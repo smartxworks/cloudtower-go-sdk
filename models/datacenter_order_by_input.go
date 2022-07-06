@@ -36,12 +36,6 @@ const (
 	// DatacenterOrderByInputClusterNumDESC captures enum value "cluster_num_DESC"
 	DatacenterOrderByInputClusterNumDESC DatacenterOrderByInput = "cluster_num_DESC"
 
-	// DatacenterOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	DatacenterOrderByInputCreatedAtASC DatacenterOrderByInput = "createdAt_ASC"
-
-	// DatacenterOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	DatacenterOrderByInputCreatedAtDESC DatacenterOrderByInput = "createdAt_DESC"
-
 	// DatacenterOrderByInputFailureDataSpaceASC captures enum value "failure_data_space_ASC"
 	DatacenterOrderByInputFailureDataSpaceASC DatacenterOrderByInput = "failure_data_space_ASC"
 
@@ -84,12 +78,6 @@ const (
 	// DatacenterOrderByInputTotalMemoryBytesDESC captures enum value "total_memory_bytes_DESC"
 	DatacenterOrderByInputTotalMemoryBytesDESC DatacenterOrderByInput = "total_memory_bytes_DESC"
 
-	// DatacenterOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	DatacenterOrderByInputUpdatedAtASC DatacenterOrderByInput = "updatedAt_ASC"
-
-	// DatacenterOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	DatacenterOrderByInputUpdatedAtDESC DatacenterOrderByInput = "updatedAt_DESC"
-
 	// DatacenterOrderByInputUsedCPUHzASC captures enum value "used_cpu_hz_ASC"
 	DatacenterOrderByInputUsedCPUHzASC DatacenterOrderByInput = "used_cpu_hz_ASC"
 
@@ -120,7 +108,7 @@ var datacenterOrderByInputEnum []interface{}
 
 func init() {
 	var res []DatacenterOrderByInput
-	if err := json.Unmarshal([]byte(`["cluster_num_ASC","cluster_num_DESC","createdAt_ASC","createdAt_DESC","failure_data_space_ASC","failure_data_space_DESC","host_num_ASC","host_num_DESC","id_ASC","id_DESC","name_ASC","name_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","updatedAt_ASC","updatedAt_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["cluster_num_ASC","cluster_num_DESC","failure_data_space_ASC","failure_data_space_DESC","host_num_ASC","host_num_DESC","id_ASC","id_DESC","name_ASC","name_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

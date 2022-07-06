@@ -30,12 +30,6 @@ func (m ZoneTopoOrderByInput) Pointer() *ZoneTopoOrderByInput {
 
 const (
 
-	// ZoneTopoOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ZoneTopoOrderByInputCreatedAtASC ZoneTopoOrderByInput = "createdAt_ASC"
-
-	// ZoneTopoOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ZoneTopoOrderByInputCreatedAtDESC ZoneTopoOrderByInput = "createdAt_DESC"
-
 	// ZoneTopoOrderByInputIDASC captures enum value "id_ASC"
 	ZoneTopoOrderByInputIDASC ZoneTopoOrderByInput = "id_ASC"
 
@@ -47,12 +41,6 @@ const (
 
 	// ZoneTopoOrderByInputLocalIDDESC captures enum value "local_id_DESC"
 	ZoneTopoOrderByInputLocalIDDESC ZoneTopoOrderByInput = "local_id_DESC"
-
-	// ZoneTopoOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ZoneTopoOrderByInputUpdatedAtASC ZoneTopoOrderByInput = "updatedAt_ASC"
-
-	// ZoneTopoOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ZoneTopoOrderByInputUpdatedAtDESC ZoneTopoOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -60,7 +48,7 @@ var zoneTopoOrderByInputEnum []interface{}
 
 func init() {
 	var res []ZoneTopoOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","local_id_ASC","local_id_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

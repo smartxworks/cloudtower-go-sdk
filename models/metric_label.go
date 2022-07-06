@@ -72,6 +72,9 @@ type MetricLabel struct {
 	// metric name
 	MetricName *string `json:"metric_name,omitempty"`
 
+	// name
+	Name *string `json:"name,omitempty"`
+
 	// pool
 	Pool *string `json:"pool,omitempty"`
 

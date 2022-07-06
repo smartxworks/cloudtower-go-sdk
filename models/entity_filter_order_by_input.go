@@ -36,12 +36,6 @@ const (
 	// EntityFilterOrderByInputApplyToAllClustersDESC captures enum value "apply_to_all_clusters_DESC"
 	EntityFilterOrderByInputApplyToAllClustersDESC EntityFilterOrderByInput = "apply_to_all_clusters_DESC"
 
-	// EntityFilterOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	EntityFilterOrderByInputCreatedAtASC EntityFilterOrderByInput = "createdAt_ASC"
-
-	// EntityFilterOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	EntityFilterOrderByInputCreatedAtDESC EntityFilterOrderByInput = "createdAt_DESC"
-
 	// EntityFilterOrderByInputEntityTypeASC captures enum value "entity_type_ASC"
 	EntityFilterOrderByInputEntityTypeASC EntityFilterOrderByInput = "entity_type_ASC"
 
@@ -83,12 +77,6 @@ const (
 
 	// EntityFilterOrderByInputRulesDESC captures enum value "rules_DESC"
 	EntityFilterOrderByInputRulesDESC EntityFilterOrderByInput = "rules_DESC"
-
-	// EntityFilterOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	EntityFilterOrderByInputUpdatedAtASC EntityFilterOrderByInput = "updatedAt_ASC"
-
-	// EntityFilterOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	EntityFilterOrderByInputUpdatedAtDESC EntityFilterOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -96,7 +84,7 @@ var entityFilterOrderByInputEnum []interface{}
 
 func init() {
 	var res []EntityFilterOrderByInput
-	if err := json.Unmarshal([]byte(`["apply_to_all_clusters_ASC","apply_to_all_clusters_DESC","createdAt_ASC","createdAt_DESC","entity_type_ASC","entity_type_DESC","filter_status_ASC","filter_status_DESC","id_ASC","id_DESC","last_executed_at_ASC","last_executed_at_DESC","name_ASC","name_DESC","preset_ASC","preset_DESC","rules_ASC","rules_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["apply_to_all_clusters_ASC","apply_to_all_clusters_DESC","entity_type_ASC","entity_type_DESC","filter_status_ASC","filter_status_DESC","id_ASC","id_DESC","last_executed_at_ASC","last_executed_at_DESC","name_ASC","name_DESC","preset_ASC","preset_DESC","rules_ASC","rules_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

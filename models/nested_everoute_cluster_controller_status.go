@@ -24,10 +24,6 @@ type NestedEverouteClusterControllerStatus struct {
 	// Required: true
 	CurrentNumber *int32 `json:"currentNumber"`
 
-	// elf cluster number
-	// Required: true
-	ElfClusterNumber *int32 `json:"elfClusterNumber"`
-
 	// expect number
 	// Required: true
 	ExpectNumber *int32 `json:"expectNumber"`
@@ -45,10 +41,6 @@ func (m *NestedEverouteClusterControllerStatus) Validate(formats strfmt.Registry
 	var res []error
 
 	if err := m.validateCurrentNumber(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateElfClusterNumber(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -73,15 +65,6 @@ func (m *NestedEverouteClusterControllerStatus) Validate(formats strfmt.Registry
 func (m *NestedEverouteClusterControllerStatus) validateCurrentNumber(formats strfmt.Registry) error {
 
 	if err := validate.Required("currentNumber", "body", m.CurrentNumber); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteClusterControllerStatus) validateElfClusterNumber(formats strfmt.Registry) error {
-
-	if err := validate.Required("elfClusterNumber", "body", m.ElfClusterNumber); err != nil {
 		return err
 	}
 

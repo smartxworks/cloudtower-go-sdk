@@ -36,12 +36,6 @@ const (
 	// EveroutePackageOrderByInputArchDESC captures enum value "arch_DESC"
 	EveroutePackageOrderByInputArchDESC EveroutePackageOrderByInput = "arch_DESC"
 
-	// EveroutePackageOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	EveroutePackageOrderByInputCreatedAtASC EveroutePackageOrderByInput = "createdAt_ASC"
-
-	// EveroutePackageOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	EveroutePackageOrderByInputCreatedAtDESC EveroutePackageOrderByInput = "createdAt_DESC"
-
 	// EveroutePackageOrderByInputDescriptionASC captures enum value "description_ASC"
 	EveroutePackageOrderByInputDescriptionASC EveroutePackageOrderByInput = "description_ASC"
 
@@ -84,12 +78,6 @@ const (
 	// EveroutePackageOrderByInputSizeDESC captures enum value "size_DESC"
 	EveroutePackageOrderByInputSizeDESC EveroutePackageOrderByInput = "size_DESC"
 
-	// EveroutePackageOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	EveroutePackageOrderByInputUpdatedAtASC EveroutePackageOrderByInput = "updatedAt_ASC"
-
-	// EveroutePackageOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	EveroutePackageOrderByInputUpdatedAtDESC EveroutePackageOrderByInput = "updatedAt_DESC"
-
 	// EveroutePackageOrderByInputVersionASC captures enum value "version_ASC"
 	EveroutePackageOrderByInputVersionASC EveroutePackageOrderByInput = "version_ASC"
 
@@ -102,7 +90,7 @@ var everoutePackageOrderByInputEnum []interface{}
 
 func init() {
 	var res []EveroutePackageOrderByInput
-	if err := json.Unmarshal([]byte(`["arch_ASC","arch_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","name_ASC","name_DESC","package_info_ASC","package_info_DESC","size_ASC","size_DESC","updatedAt_ASC","updatedAt_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["arch_ASC","arch_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","name_ASC","name_DESC","package_info_ASC","package_info_DESC","size_ASC","size_DESC","version_ASC","version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -30,12 +30,6 @@ func (m IscsiLunSnapshotOrderByInput) Pointer() *IscsiLunSnapshotOrderByInput {
 
 const (
 
-	// IscsiLunSnapshotOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	IscsiLunSnapshotOrderByInputCreatedAtASC IscsiLunSnapshotOrderByInput = "createdAt_ASC"
-
-	// IscsiLunSnapshotOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	IscsiLunSnapshotOrderByInputCreatedAtDESC IscsiLunSnapshotOrderByInput = "createdAt_DESC"
-
 	// IscsiLunSnapshotOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	IscsiLunSnapshotOrderByInputEntityAsyncStatusASC IscsiLunSnapshotOrderByInput = "entityAsyncStatus_ASC"
 
@@ -71,12 +65,6 @@ const (
 
 	// IscsiLunSnapshotOrderByInputUniqueSizeDESC captures enum value "unique_size_DESC"
 	IscsiLunSnapshotOrderByInputUniqueSizeDESC IscsiLunSnapshotOrderByInput = "unique_size_DESC"
-
-	// IscsiLunSnapshotOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	IscsiLunSnapshotOrderByInputUpdatedAtASC IscsiLunSnapshotOrderByInput = "updatedAt_ASC"
-
-	// IscsiLunSnapshotOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	IscsiLunSnapshotOrderByInputUpdatedAtDESC IscsiLunSnapshotOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -84,7 +72,7 @@ var iscsiLunSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []IscsiLunSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

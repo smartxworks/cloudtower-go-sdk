@@ -50,9 +50,6 @@ type EveroutePackage struct {
 	// Required: true
 	Size *int64 `json:"size"`
 
-	// upload task
-	UploadTask *NestedUploadTask `json:"upload_task,omitempty"`
-
 	// version
 	// Required: true
 	Version *string `json:"version"`
@@ -91,10 +88,6 @@ func (m *EveroutePackage) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSize(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateUploadTask(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -205,25 +198,6 @@ func (m *EveroutePackage) validateSize(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *EveroutePackage) validateUploadTask(formats strfmt.Registry) error {
-	if swag.IsZero(m.UploadTask) { // not required
-		return nil
-	}
-
-	if m.UploadTask != nil {
-		if err := m.UploadTask.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("upload_task")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("upload_task")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *EveroutePackage) validateVersion(formats strfmt.Registry) error {
 
 	if err := validate.Required("version", "body", m.Version); err != nil {
@@ -242,10 +216,6 @@ func (m *EveroutePackage) ContextValidate(ctx context.Context, formats strfmt.Re
 	}
 
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateUploadTask(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -279,22 +249,6 @@ func (m *EveroutePackage) contextValidateEntityAsyncStatus(ctx context.Context, 
 				return ve.ValidateName("entityAsyncStatus")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *EveroutePackage) contextValidateUploadTask(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.UploadTask != nil {
-		if err := m.UploadTask.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("upload_task")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("upload_task")
 			}
 			return err
 		}

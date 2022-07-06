@@ -36,12 +36,6 @@ const (
 	// SecurityPolicyOrderByInputApplyToDESC captures enum value "apply_to_DESC"
 	SecurityPolicyOrderByInputApplyToDESC SecurityPolicyOrderByInput = "apply_to_DESC"
 
-	// SecurityPolicyOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	SecurityPolicyOrderByInputCreatedAtASC SecurityPolicyOrderByInput = "createdAt_ASC"
-
-	// SecurityPolicyOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	SecurityPolicyOrderByInputCreatedAtDESC SecurityPolicyOrderByInput = "createdAt_DESC"
-
 	// SecurityPolicyOrderByInputDescriptionASC captures enum value "description_ASC"
 	SecurityPolicyOrderByInputDescriptionASC SecurityPolicyOrderByInput = "description_ASC"
 
@@ -77,12 +71,6 @@ const (
 
 	// SecurityPolicyOrderByInputPolicyModeDESC captures enum value "policy_mode_DESC"
 	SecurityPolicyOrderByInputPolicyModeDESC SecurityPolicyOrderByInput = "policy_mode_DESC"
-
-	// SecurityPolicyOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	SecurityPolicyOrderByInputUpdatedAtASC SecurityPolicyOrderByInput = "updatedAt_ASC"
-
-	// SecurityPolicyOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	SecurityPolicyOrderByInputUpdatedAtDESC SecurityPolicyOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -90,7 +78,7 @@ var securityPolicyOrderByInputEnum []interface{}
 
 func init() {
 	var res []SecurityPolicyOrderByInput
-	if err := json.Unmarshal([]byte(`["apply_to_ASC","apply_to_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","egress_ASC","egress_DESC","id_ASC","id_DESC","ingress_ASC","ingress_DESC","name_ASC","name_DESC","policy_mode_ASC","policy_mode_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["apply_to_ASC","apply_to_DESC","description_ASC","description_DESC","egress_ASC","egress_DESC","id_ASC","id_DESC","ingress_ASC","ingress_DESC","name_ASC","name_DESC","policy_mode_ASC","policy_mode_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

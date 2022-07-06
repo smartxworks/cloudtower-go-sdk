@@ -30,12 +30,6 @@ func (m ElfImageOrderByInput) Pointer() *ElfImageOrderByInput {
 
 const (
 
-	// ElfImageOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ElfImageOrderByInputCreatedAtASC ElfImageOrderByInput = "createdAt_ASC"
-
-	// ElfImageOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ElfImageOrderByInputCreatedAtDESC ElfImageOrderByInput = "createdAt_DESC"
-
 	// ElfImageOrderByInputDescriptionASC captures enum value "description_ASC"
 	ElfImageOrderByInputDescriptionASC ElfImageOrderByInput = "description_ASC"
 
@@ -83,12 +77,6 @@ const (
 
 	// ElfImageOrderByInputSizeDESC captures enum value "size_DESC"
 	ElfImageOrderByInputSizeDESC ElfImageOrderByInput = "size_DESC"
-
-	// ElfImageOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ElfImageOrderByInputUpdatedAtASC ElfImageOrderByInput = "updatedAt_ASC"
-
-	// ElfImageOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ElfImageOrderByInputUpdatedAtDESC ElfImageOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -96,7 +84,7 @@ var elfImageOrderByInputEnum []interface{}
 
 func init() {
 	var res []ElfImageOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","path_ASC","path_DESC","size_ASC","size_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","path_ASC","path_DESC","size_ASC","size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

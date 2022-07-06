@@ -65,12 +65,6 @@ const (
 
 	// ReportTaskOrderByInputStatusDESC captures enum value "status_DESC"
 	ReportTaskOrderByInputStatusDESC ReportTaskOrderByInput = "status_DESC"
-
-	// ReportTaskOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ReportTaskOrderByInputUpdatedAtASC ReportTaskOrderByInput = "updatedAt_ASC"
-
-	// ReportTaskOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ReportTaskOrderByInputUpdatedAtDESC ReportTaskOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -78,7 +72,7 @@ var reportTaskOrderByInputEnum []interface{}
 
 func init() {
 	var res []ReportTaskOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","name_ASC","name_DESC","plan_id_ASC","plan_id_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","name_ASC","name_DESC","plan_id_ASC","plan_id_DESC","status_ASC","status_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

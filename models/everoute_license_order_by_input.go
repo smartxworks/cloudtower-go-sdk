@@ -36,12 +36,6 @@ const (
 	// EverouteLicenseOrderByInputCodeDESC captures enum value "code_DESC"
 	EverouteLicenseOrderByInputCodeDESC EverouteLicenseOrderByInput = "code_DESC"
 
-	// EverouteLicenseOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	EverouteLicenseOrderByInputCreatedAtASC EverouteLicenseOrderByInput = "createdAt_ASC"
-
-	// EverouteLicenseOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	EverouteLicenseOrderByInputCreatedAtDESC EverouteLicenseOrderByInput = "createdAt_DESC"
-
 	// EverouteLicenseOrderByInputExpireDateASC captures enum value "expire_date_ASC"
 	EverouteLicenseOrderByInputExpireDateASC EverouteLicenseOrderByInput = "expire_date_ASC"
 
@@ -89,12 +83,6 @@ const (
 
 	// EverouteLicenseOrderByInputUIDDESC captures enum value "uid_DESC"
 	EverouteLicenseOrderByInputUIDDESC EverouteLicenseOrderByInput = "uid_DESC"
-
-	// EverouteLicenseOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	EverouteLicenseOrderByInputUpdatedAtASC EverouteLicenseOrderByInput = "updatedAt_ASC"
-
-	// EverouteLicenseOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	EverouteLicenseOrderByInputUpdatedAtDESC EverouteLicenseOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -102,7 +90,7 @@ var everouteLicenseOrderByInputEnum []interface{}
 
 func init() {
 	var res []EverouteLicenseOrderByInput
-	if err := json.Unmarshal([]byte(`["code_ASC","code_DESC","createdAt_ASC","createdAt_DESC","expire_date_ASC","expire_date_DESC","id_ASC","id_DESC","max_socket_num_ASC","max_socket_num_DESC","serial_ASC","serial_DESC","sign_date_ASC","sign_date_DESC","software_edition_ASC","software_edition_DESC","type_ASC","type_DESC","uid_ASC","uid_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["code_ASC","code_DESC","expire_date_ASC","expire_date_DESC","id_ASC","id_DESC","max_socket_num_ASC","max_socket_num_DESC","serial_ASC","serial_DESC","sign_date_ASC","sign_date_DESC","software_edition_ASC","software_edition_DESC","type_ASC","type_DESC","uid_ASC","uid_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

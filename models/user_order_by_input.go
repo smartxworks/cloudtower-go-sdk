@@ -30,12 +30,6 @@ func (m UserOrderByInput) Pointer() *UserOrderByInput {
 
 const (
 
-	// UserOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	UserOrderByInputCreatedAtASC UserOrderByInput = "createdAt_ASC"
-
-	// UserOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	UserOrderByInputCreatedAtDESC UserOrderByInput = "createdAt_DESC"
-
 	// UserOrderByInputEmailAddressASC captures enum value "email_address_ASC"
 	UserOrderByInputEmailAddressASC UserOrderByInput = "email_address_ASC"
 
@@ -72,12 +66,6 @@ const (
 	// UserOrderByInputNameDESC captures enum value "name_DESC"
 	UserOrderByInputNameDESC UserOrderByInput = "name_DESC"
 
-	// UserOrderByInputPasswordASC captures enum value "password_ASC"
-	UserOrderByInputPasswordASC UserOrderByInput = "password_ASC"
-
-	// UserOrderByInputPasswordDESC captures enum value "password_DESC"
-	UserOrderByInputPasswordDESC UserOrderByInput = "password_DESC"
-
 	// UserOrderByInputPasswordExpiredASC captures enum value "password_expired_ASC"
 	UserOrderByInputPasswordExpiredASC UserOrderByInput = "password_expired_ASC"
 
@@ -108,12 +96,6 @@ const (
 	// UserOrderByInputSourceDESC captures enum value "source_DESC"
 	UserOrderByInputSourceDESC UserOrderByInput = "source_DESC"
 
-	// UserOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	UserOrderByInputUpdatedAtASC UserOrderByInput = "updatedAt_ASC"
-
-	// UserOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	UserOrderByInputUpdatedAtDESC UserOrderByInput = "updatedAt_DESC"
-
 	// UserOrderByInputUsernameASC captures enum value "username_ASC"
 	UserOrderByInputUsernameASC UserOrderByInput = "username_ASC"
 
@@ -126,7 +108,7 @@ var userOrderByInputEnum []interface{}
 
 func init() {
 	var res []UserOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","email_address_ASC","email_address_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ldap_dn_ASC","ldap_dn_DESC","mobile_phone_ASC","mobile_phone_DESC","name_ASC","name_DESC","password_ASC","password_DESC","password_expired_ASC","password_expired_DESC","password_recover_qa_ASC","password_recover_qa_DESC","password_updated_at_ASC","password_updated_at_DESC","role_ASC","role_DESC","source_ASC","source_DESC","updatedAt_ASC","updatedAt_DESC","username_ASC","username_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["email_address_ASC","email_address_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ldap_dn_ASC","ldap_dn_DESC","mobile_phone_ASC","mobile_phone_DESC","name_ASC","name_DESC","password_expired_ASC","password_expired_DESC","password_recover_qa_ASC","password_recover_qa_DESC","password_updated_at_ASC","password_updated_at_DESC","role_ASC","role_DESC","source_ASC","source_DESC","username_ASC","username_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

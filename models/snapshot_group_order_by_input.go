@@ -30,12 +30,6 @@ func (m SnapshotGroupOrderByInput) Pointer() *SnapshotGroupOrderByInput {
 
 const (
 
-	// SnapshotGroupOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	SnapshotGroupOrderByInputCreatedAtASC SnapshotGroupOrderByInput = "createdAt_ASC"
-
-	// SnapshotGroupOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	SnapshotGroupOrderByInputCreatedAtDESC SnapshotGroupOrderByInput = "createdAt_DESC"
-
 	// SnapshotGroupOrderByInputDeletedASC captures enum value "deleted_ASC"
 	SnapshotGroupOrderByInputDeletedASC SnapshotGroupOrderByInput = "deleted_ASC"
 
@@ -102,12 +96,6 @@ const (
 	// SnapshotGroupOrderByInputObjectNumDESC captures enum value "object_num_DESC"
 	SnapshotGroupOrderByInputObjectNumDESC SnapshotGroupOrderByInput = "object_num_DESC"
 
-	// SnapshotGroupOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	SnapshotGroupOrderByInputUpdatedAtASC SnapshotGroupOrderByInput = "updatedAt_ASC"
-
-	// SnapshotGroupOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	SnapshotGroupOrderByInputUpdatedAtDESC SnapshotGroupOrderByInput = "updatedAt_DESC"
-
 	// SnapshotGroupOrderByInputVMInfoASC captures enum value "vm_info_ASC"
 	SnapshotGroupOrderByInputVMInfoASC SnapshotGroupOrderByInput = "vm_info_ASC"
 
@@ -120,7 +108,7 @@ var snapshotGroupOrderByInputEnum []interface{}
 
 func init() {
 	var res []SnapshotGroupOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","deleted_ASC","deleted_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","estimated_recycling_time_ASC","estimated_recycling_time_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","keep_ASC","keep_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","logical_size_bytes_ASC","logical_size_bytes_DESC","name_ASC","name_DESC","object_num_ASC","object_num_DESC","updatedAt_ASC","updatedAt_DESC","vm_info_ASC","vm_info_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["deleted_ASC","deleted_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","estimated_recycling_time_ASC","estimated_recycling_time_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","keep_ASC","keep_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","logical_size_bytes_ASC","logical_size_bytes_DESC","name_ASC","name_DESC","object_num_ASC","object_num_DESC","vm_info_ASC","vm_info_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

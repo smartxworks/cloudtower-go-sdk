@@ -30,12 +30,6 @@ func (m ClusterImageOrderByInput) Pointer() *ClusterImageOrderByInput {
 
 const (
 
-	// ClusterImageOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ClusterImageOrderByInputCreatedAtASC ClusterImageOrderByInput = "createdAt_ASC"
-
-	// ClusterImageOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ClusterImageOrderByInputCreatedAtDESC ClusterImageOrderByInput = "createdAt_DESC"
-
 	// ClusterImageOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	ClusterImageOrderByInputEntityAsyncStatusASC ClusterImageOrderByInput = "entityAsyncStatus_ASC"
 
@@ -78,12 +72,6 @@ const (
 	// ClusterImageOrderByInputSizeDESC captures enum value "size_DESC"
 	ClusterImageOrderByInputSizeDESC ClusterImageOrderByInput = "size_DESC"
 
-	// ClusterImageOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ClusterImageOrderByInputUpdatedAtASC ClusterImageOrderByInput = "updatedAt_ASC"
-
-	// ClusterImageOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ClusterImageOrderByInputUpdatedAtDESC ClusterImageOrderByInput = "updatedAt_DESC"
-
 	// ClusterImageOrderByInputUpgradeToolVersionASC captures enum value "upgrade_tool_version_ASC"
 	ClusterImageOrderByInputUpgradeToolVersionASC ClusterImageOrderByInput = "upgrade_tool_version_ASC"
 
@@ -108,7 +96,7 @@ var clusterImageOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterImageOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","meta_name_ASC","meta_name_DESC","meta_size_ASC","meta_size_DESC","name_ASC","name_DESC","size_ASC","size_DESC","updatedAt_ASC","updatedAt_DESC","upgrade_tool_version_ASC","upgrade_tool_version_DESC","version_ASC","version_DESC","zbs_version_ASC","zbs_version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","meta_name_ASC","meta_name_DESC","meta_size_ASC","meta_size_DESC","name_ASC","name_DESC","size_ASC","size_DESC","upgrade_tool_version_ASC","upgrade_tool_version_DESC","version_ASC","version_DESC","zbs_version_ASC","zbs_version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

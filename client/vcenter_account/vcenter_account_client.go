@@ -30,11 +30,53 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateVcenterAccount(params *CreateVcenterAccountParams, opts ...ClientOption) (*CreateVcenterAccountOK, error)
+
 	GetVcenterAccounts(params *GetVcenterAccountsParams, opts ...ClientOption) (*GetVcenterAccountsOK, error)
 
 	GetVcenterAccountsConnection(params *GetVcenterAccountsConnectionParams, opts ...ClientOption) (*GetVcenterAccountsConnectionOK, error)
 
+	UpdateVcenterAccount(params *UpdateVcenterAccountParams, opts ...ClientOption) (*UpdateVcenterAccountOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateVcenterAccount create vcenter account API
+*/
+func (a *Client) CreateVcenterAccount(params *CreateVcenterAccountParams, opts ...ClientOption) (*CreateVcenterAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateVcenterAccountParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateVcenterAccount",
+		Method:             "POST",
+		PathPattern:        "/create-vcenter-account",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateVcenterAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateVcenterAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateVcenterAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,6 +152,44 @@ func (a *Client) GetVcenterAccountsConnection(params *GetVcenterAccountsConnecti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetVcenterAccountsConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVcenterAccount update vcenter account API
+*/
+func (a *Client) UpdateVcenterAccount(params *UpdateVcenterAccountParams, opts ...ClientOption) (*UpdateVcenterAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVcenterAccountParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateVcenterAccount",
+		Method:             "POST",
+		PathPattern:        "/update-vcenter-account",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateVcenterAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVcenterAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateVcenterAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

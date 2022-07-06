@@ -36,12 +36,6 @@ const (
 	// TaskOrderByInputArgsDESC captures enum value "args_DESC"
 	TaskOrderByInputArgsDESC TaskOrderByInput = "args_DESC"
 
-	// TaskOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	TaskOrderByInputCreatedAtASC TaskOrderByInput = "createdAt_ASC"
-
-	// TaskOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	TaskOrderByInputCreatedAtDESC TaskOrderByInput = "createdAt_DESC"
-
 	// TaskOrderByInputDescriptionASC captures enum value "description_ASC"
 	TaskOrderByInputDescriptionASC TaskOrderByInput = "description_ASC"
 
@@ -161,12 +155,6 @@ const (
 
 	// TaskOrderByInputTypeDESC captures enum value "type_DESC"
 	TaskOrderByInputTypeDESC TaskOrderByInput = "type_DESC"
-
-	// TaskOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	TaskOrderByInputUpdatedAtASC TaskOrderByInput = "updatedAt_ASC"
-
-	// TaskOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	TaskOrderByInputUpdatedAtDESC TaskOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -174,7 +162,7 @@ var taskOrderByInputEnum []interface{}
 
 func init() {
 	var res []TaskOrderByInput
-	if err := json.Unmarshal([]byte(`["args_ASC","args_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","error_code_ASC","error_code_DESC","error_message_ASC","error_message_DESC","finished_at_ASC","finished_at_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","key_ASC","key_DESC","local_created_at_ASC","local_created_at_DESC","progress_ASC","progress_DESC","resource_id_ASC","resource_id_DESC","resource_mutation_ASC","resource_mutation_DESC","resource_rollback_error_ASC","resource_rollback_error_DESC","resource_rollback_retry_count_ASC","resource_rollback_retry_count_DESC","resource_rollbacked_ASC","resource_rollbacked_DESC","resource_type_ASC","resource_type_DESC","snapshot_ASC","snapshot_DESC","started_at_ASC","started_at_DESC","status_ASC","status_DESC","steps_ASC","steps_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["args_ASC","args_DESC","description_ASC","description_DESC","error_code_ASC","error_code_DESC","error_message_ASC","error_message_DESC","finished_at_ASC","finished_at_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","key_ASC","key_DESC","local_created_at_ASC","local_created_at_DESC","progress_ASC","progress_DESC","resource_id_ASC","resource_id_DESC","resource_mutation_ASC","resource_mutation_DESC","resource_rollback_error_ASC","resource_rollback_error_DESC","resource_rollback_retry_count_ASC","resource_rollback_retry_count_DESC","resource_rollbacked_ASC","resource_rollbacked_DESC","resource_type_ASC","resource_type_DESC","snapshot_ASC","snapshot_DESC","started_at_ASC","started_at_DESC","status_ASC","status_DESC","steps_ASC","steps_DESC","type_ASC","type_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

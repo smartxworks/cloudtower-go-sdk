@@ -30,12 +30,6 @@ func (m NfsExportOrderByInput) Pointer() *NfsExportOrderByInput {
 
 const (
 
-	// NfsExportOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	NfsExportOrderByInputCreatedAtASC NfsExportOrderByInput = "createdAt_ASC"
-
-	// NfsExportOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	NfsExportOrderByInputCreatedAtDESC NfsExportOrderByInput = "createdAt_DESC"
-
 	// NfsExportOrderByInputDescriptionASC captures enum value "description_ASC"
 	NfsExportOrderByInputDescriptionASC NfsExportOrderByInput = "description_ASC"
 
@@ -95,12 +89,6 @@ const (
 
 	// NfsExportOrderByInputThinProvisionDESC captures enum value "thin_provision_DESC"
 	NfsExportOrderByInputThinProvisionDESC NfsExportOrderByInput = "thin_provision_DESC"
-
-	// NfsExportOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	NfsExportOrderByInputUpdatedAtASC NfsExportOrderByInput = "updatedAt_ASC"
-
-	// NfsExportOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	NfsExportOrderByInputUpdatedAtDESC NfsExportOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -108,7 +96,7 @@ var nfsExportOrderByInputEnum []interface{}
 
 func init() {
 	var res []NfsExportOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","export_inode_id_ASC","export_inode_id_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ip_whitelist_ASC","ip_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","thin_provision_ASC","thin_provision_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","export_inode_id_ASC","export_inode_id_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ip_whitelist_ASC","ip_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","thin_provision_ASC","thin_provision_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

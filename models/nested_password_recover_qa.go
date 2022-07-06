@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -16,30 +15,22 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PasswordRecoverQa password recover qa
+// NestedPasswordRecoverQa nested password recover qa
 //
-// swagger:model PasswordRecoverQa
-type PasswordRecoverQa struct {
-
-	// typename
-	// Enum: [PasswordRecoverQa]
-	Typename *string `json:"__typename,omitempty"`
+// swagger:model NestedPasswordRecoverQa
+type NestedPasswordRecoverQa struct {
 
 	// enabled
 	// Required: true
 	Enabled *bool `json:"enabled"`
 
 	// items
-	Items []*PasswordReoverQaItem `json:"items,omitempty"`
+	Items []*NestedPasswordReoverQaItem `json:"items,omitempty"`
 }
 
-// Validate validates this password recover qa
-func (m *PasswordRecoverQa) Validate(formats strfmt.Registry) error {
+// Validate validates this nested password recover qa
+func (m *NestedPasswordRecoverQa) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateTypename(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateEnabled(formats); err != nil {
 		res = append(res, err)
@@ -55,46 +46,7 @@ func (m *PasswordRecoverQa) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var passwordRecoverQaTypeTypenamePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["PasswordRecoverQa"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		passwordRecoverQaTypeTypenamePropEnum = append(passwordRecoverQaTypeTypenamePropEnum, v)
-	}
-}
-
-const (
-
-	// PasswordRecoverQaTypenamePasswordRecoverQa captures enum value "PasswordRecoverQa"
-	PasswordRecoverQaTypenamePasswordRecoverQa string = "PasswordRecoverQa"
-)
-
-// prop value enum
-func (m *PasswordRecoverQa) validateTypenameEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, passwordRecoverQaTypeTypenamePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *PasswordRecoverQa) validateTypename(formats strfmt.Registry) error {
-	if swag.IsZero(m.Typename) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateTypenameEnum("__typename", "body", *m.Typename); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *PasswordRecoverQa) validateEnabled(formats strfmt.Registry) error {
+func (m *NestedPasswordRecoverQa) validateEnabled(formats strfmt.Registry) error {
 
 	if err := validate.Required("enabled", "body", m.Enabled); err != nil {
 		return err
@@ -103,7 +55,7 @@ func (m *PasswordRecoverQa) validateEnabled(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PasswordRecoverQa) validateItems(formats strfmt.Registry) error {
+func (m *NestedPasswordRecoverQa) validateItems(formats strfmt.Registry) error {
 	if swag.IsZero(m.Items) { // not required
 		return nil
 	}
@@ -129,8 +81,8 @@ func (m *PasswordRecoverQa) validateItems(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this password recover qa based on the context it is used
-func (m *PasswordRecoverQa) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this nested password recover qa based on the context it is used
+func (m *NestedPasswordRecoverQa) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateItems(ctx, formats); err != nil {
@@ -143,7 +95,7 @@ func (m *PasswordRecoverQa) ContextValidate(ctx context.Context, formats strfmt.
 	return nil
 }
 
-func (m *PasswordRecoverQa) contextValidateItems(ctx context.Context, formats strfmt.Registry) error {
+func (m *NestedPasswordRecoverQa) contextValidateItems(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Items); i++ {
 
@@ -164,7 +116,7 @@ func (m *PasswordRecoverQa) contextValidateItems(ctx context.Context, formats st
 }
 
 // MarshalBinary interface implementation
-func (m *PasswordRecoverQa) MarshalBinary() ([]byte, error) {
+func (m *NestedPasswordRecoverQa) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -172,8 +124,8 @@ func (m *PasswordRecoverQa) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *PasswordRecoverQa) UnmarshalBinary(b []byte) error {
-	var res PasswordRecoverQa
+func (m *NestedPasswordRecoverQa) UnmarshalBinary(b []byte) error {
+	var res NestedPasswordRecoverQa
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

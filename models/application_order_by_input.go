@@ -30,12 +30,6 @@ func (m ApplicationOrderByInput) Pointer() *ApplicationOrderByInput {
 
 const (
 
-	// ApplicationOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ApplicationOrderByInputCreatedAtASC ApplicationOrderByInput = "createdAt_ASC"
-
-	// ApplicationOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ApplicationOrderByInputCreatedAtDESC ApplicationOrderByInput = "createdAt_DESC"
-
 	// ApplicationOrderByInputErrorMessageASC captures enum value "error_message_ASC"
 	ApplicationOrderByInputErrorMessageASC ApplicationOrderByInput = "error_message_ASC"
 
@@ -90,12 +84,6 @@ const (
 	// ApplicationOrderByInputUpdateTimeDESC captures enum value "update_time_DESC"
 	ApplicationOrderByInputUpdateTimeDESC ApplicationOrderByInput = "update_time_DESC"
 
-	// ApplicationOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ApplicationOrderByInputUpdatedAtASC ApplicationOrderByInput = "updatedAt_ASC"
-
-	// ApplicationOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ApplicationOrderByInputUpdatedAtDESC ApplicationOrderByInput = "updatedAt_DESC"
-
 	// ApplicationOrderByInputVcpuASC captures enum value "vcpu_ASC"
 	ApplicationOrderByInputVcpuASC ApplicationOrderByInput = "vcpu_ASC"
 
@@ -120,7 +108,7 @@ var applicationOrderByInputEnum []interface{}
 
 func init() {
 	var res []ApplicationOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","error_message_ASC","error_message_DESC","id_ASC","id_DESC","image_name_ASC","image_name_DESC","local_id_ASC","local_id_DESC","memory_ASC","memory_DESC","state_ASC","state_DESC","storage_ip_ASC","storage_ip_DESC","type_ASC","type_DESC","update_time_ASC","update_time_DESC","updatedAt_ASC","updatedAt_DESC","vcpu_ASC","vcpu_DESC","version_ASC","version_DESC","volume_size_ASC","volume_size_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["error_message_ASC","error_message_DESC","id_ASC","id_DESC","image_name_ASC","image_name_DESC","local_id_ASC","local_id_DESC","memory_ASC","memory_DESC","state_ASC","state_DESC","storage_ip_ASC","storage_ip_DESC","type_ASC","type_DESC","update_time_ASC","update_time_DESC","vcpu_ASC","vcpu_DESC","version_ASC","version_DESC","volume_size_ASC","volume_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

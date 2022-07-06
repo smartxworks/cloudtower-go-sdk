@@ -30,12 +30,6 @@ func (m IpmiOrderByInput) Pointer() *IpmiOrderByInput {
 
 const (
 
-	// IpmiOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	IpmiOrderByInputCreatedAtASC IpmiOrderByInput = "createdAt_ASC"
-
-	// IpmiOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	IpmiOrderByInputCreatedAtDESC IpmiOrderByInput = "createdAt_DESC"
-
 	// IpmiOrderByInputIDASC captures enum value "id_ASC"
 	IpmiOrderByInputIDASC IpmiOrderByInput = "id_ASC"
 
@@ -53,12 +47,6 @@ const (
 
 	// IpmiOrderByInputLocalIDDESC captures enum value "local_id_DESC"
 	IpmiOrderByInputLocalIDDESC IpmiOrderByInput = "local_id_DESC"
-
-	// IpmiOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	IpmiOrderByInputUpdatedAtASC IpmiOrderByInput = "updatedAt_ASC"
-
-	// IpmiOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	IpmiOrderByInputUpdatedAtDESC IpmiOrderByInput = "updatedAt_DESC"
 
 	// IpmiOrderByInputUsernameASC captures enum value "username_ASC"
 	IpmiOrderByInputUsernameASC IpmiOrderByInput = "username_ASC"
@@ -78,7 +66,7 @@ var ipmiOrderByInputEnum []interface{}
 
 func init() {
 	var res []IpmiOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","ip_ASC","ip_DESC","local_id_ASC","local_id_DESC","updatedAt_ASC","updatedAt_DESC","username_ASC","username_DESC","valid_ASC","valid_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","ip_ASC","ip_DESC","local_id_ASC","local_id_DESC","username_ASC","username_DESC","valid_ASC","valid_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -71,12 +71,6 @@ const (
 
 	// ContentLibraryImageOrderByInputSizeDESC captures enum value "size_DESC"
 	ContentLibraryImageOrderByInputSizeDESC ContentLibraryImageOrderByInput = "size_DESC"
-
-	// ContentLibraryImageOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ContentLibraryImageOrderByInputUpdatedAtASC ContentLibraryImageOrderByInput = "updatedAt_ASC"
-
-	// ContentLibraryImageOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ContentLibraryImageOrderByInputUpdatedAtDESC ContentLibraryImageOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -84,7 +78,7 @@ var contentLibraryImageOrderByInputEnum []interface{}
 
 func init() {
 	var res []ContentLibraryImageOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","name_ASC","name_DESC","path_ASC","path_DESC","size_ASC","size_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","name_ASC","name_DESC","path_ASC","path_DESC","size_ASC","size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

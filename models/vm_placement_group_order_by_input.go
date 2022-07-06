@@ -30,12 +30,6 @@ func (m VMPlacementGroupOrderByInput) Pointer() *VMPlacementGroupOrderByInput {
 
 const (
 
-	// VMPlacementGroupOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VMPlacementGroupOrderByInputCreatedAtASC VMPlacementGroupOrderByInput = "createdAt_ASC"
-
-	// VMPlacementGroupOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VMPlacementGroupOrderByInputCreatedAtDESC VMPlacementGroupOrderByInput = "createdAt_DESC"
-
 	// VMPlacementGroupOrderByInputDescriptionASC captures enum value "description_ASC"
 	VMPlacementGroupOrderByInputDescriptionASC VMPlacementGroupOrderByInput = "description_ASC"
 
@@ -84,12 +78,6 @@ const (
 	// VMPlacementGroupOrderByInputNameDESC captures enum value "name_DESC"
 	VMPlacementGroupOrderByInputNameDESC VMPlacementGroupOrderByInput = "name_DESC"
 
-	// VMPlacementGroupOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VMPlacementGroupOrderByInputUpdatedAtASC VMPlacementGroupOrderByInput = "updatedAt_ASC"
-
-	// VMPlacementGroupOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VMPlacementGroupOrderByInputUpdatedAtDESC VMPlacementGroupOrderByInput = "updatedAt_DESC"
-
 	// VMPlacementGroupOrderByInputVMHostMustEnabledASC captures enum value "vm_host_must_enabled_ASC"
 	VMPlacementGroupOrderByInputVMHostMustEnabledASC VMPlacementGroupOrderByInput = "vm_host_must_enabled_ASC"
 
@@ -132,7 +120,7 @@ var vmPlacementGroupOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMPlacementGroupOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","enabled_ASC","enabled_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","local_updated_at_ASC","local_updated_at_DESC","name_ASC","name_DESC","updatedAt_ASC","updatedAt_DESC","vm_host_must_enabled_ASC","vm_host_must_enabled_DESC","vm_host_must_policy_ASC","vm_host_must_policy_DESC","vm_host_prefer_enabled_ASC","vm_host_prefer_enabled_DESC","vm_host_prefer_policy_ASC","vm_host_prefer_policy_DESC","vm_vm_policy_ASC","vm_vm_policy_DESC","vm_vm_policy_enabled_ASC","vm_vm_policy_enabled_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","enabled_ASC","enabled_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","local_updated_at_ASC","local_updated_at_DESC","name_ASC","name_DESC","vm_host_must_enabled_ASC","vm_host_must_enabled_DESC","vm_host_must_policy_ASC","vm_host_must_policy_DESC","vm_host_prefer_enabled_ASC","vm_host_prefer_enabled_DESC","vm_host_prefer_policy_ASC","vm_host_prefer_policy_DESC","vm_vm_policy_ASC","vm_vm_policy_DESC","vm_vm_policy_enabled_ASC","vm_vm_policy_enabled_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -54,12 +54,6 @@ const (
 	// VMDiskOrderByInputCloudInitImagePathDESC captures enum value "cloud_init_image_path_DESC"
 	VMDiskOrderByInputCloudInitImagePathDESC VMDiskOrderByInput = "cloud_init_image_path_DESC"
 
-	// VMDiskOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VMDiskOrderByInputCreatedAtASC VMDiskOrderByInput = "createdAt_ASC"
-
-	// VMDiskOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VMDiskOrderByInputCreatedAtDESC VMDiskOrderByInput = "createdAt_DESC"
-
 	// VMDiskOrderByInputDeviceASC captures enum value "device_ASC"
 	VMDiskOrderByInputDeviceASC VMDiskOrderByInput = "device_ASC"
 
@@ -137,12 +131,6 @@ const (
 
 	// VMDiskOrderByInputUnsafeProvisionDESC captures enum value "unsafe_provision_DESC"
 	VMDiskOrderByInputUnsafeProvisionDESC VMDiskOrderByInput = "unsafe_provision_DESC"
-
-	// VMDiskOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VMDiskOrderByInputUpdatedAtASC VMDiskOrderByInput = "updatedAt_ASC"
-
-	// VMDiskOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VMDiskOrderByInputUpdatedAtDESC VMDiskOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -150,7 +138,7 @@ var vmDiskOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMDiskOrderByInput
-	if err := json.Unmarshal([]byte(`["boot_ASC","boot_DESC","bus_ASC","bus_DESC","cloud_init_image_name_ASC","cloud_init_image_name_DESC","cloud_init_image_path_ASC","cloud_init_image_path_DESC","createdAt_ASC","createdAt_DESC","device_ASC","device_DESC","disabled_ASC","disabled_DESC","id_ASC","id_DESC","key_ASC","key_DESC","max_bandwidth_ASC","max_bandwidth_DESC","max_bandwidth_policy_ASC","max_bandwidth_policy_DESC","max_iops_ASC","max_iops_DESC","max_iops_policy_ASC","max_iops_policy_DESC","serial_ASC","serial_DESC","type_ASC","type_DESC","unsafe_image_path_ASC","unsafe_image_path_DESC","unsafe_image_uuid_ASC","unsafe_image_uuid_DESC","unsafe_provision_ASC","unsafe_provision_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["boot_ASC","boot_DESC","bus_ASC","bus_DESC","cloud_init_image_name_ASC","cloud_init_image_name_DESC","cloud_init_image_path_ASC","cloud_init_image_path_DESC","device_ASC","device_DESC","disabled_ASC","disabled_DESC","id_ASC","id_DESC","key_ASC","key_DESC","max_bandwidth_ASC","max_bandwidth_DESC","max_bandwidth_policy_ASC","max_bandwidth_policy_DESC","max_iops_ASC","max_iops_DESC","max_iops_policy_ASC","max_iops_policy_DESC","serial_ASC","serial_DESC","type_ASC","type_DESC","unsafe_image_path_ASC","unsafe_image_path_DESC","unsafe_image_uuid_ASC","unsafe_image_uuid_DESC","unsafe_provision_ASC","unsafe_provision_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

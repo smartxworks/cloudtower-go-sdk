@@ -36,12 +36,6 @@ const (
 	// BrickTopoOrderByInputCapacityDESC captures enum value "capacity_DESC"
 	BrickTopoOrderByInputCapacityDESC BrickTopoOrderByInput = "capacity_DESC"
 
-	// BrickTopoOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	BrickTopoOrderByInputCreatedAtASC BrickTopoOrderByInput = "createdAt_ASC"
-
-	// BrickTopoOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	BrickTopoOrderByInputCreatedAtDESC BrickTopoOrderByInput = "createdAt_DESC"
-
 	// BrickTopoOrderByInputDiskLayoutASC captures enum value "disk_layout_ASC"
 	BrickTopoOrderByInputDiskLayoutASC BrickTopoOrderByInput = "disk_layout_ASC"
 
@@ -107,12 +101,6 @@ const (
 
 	// BrickTopoOrderByInputTagPositionInBrickDESC captures enum value "tag_position_in_brick_DESC"
 	BrickTopoOrderByInputTagPositionInBrickDESC BrickTopoOrderByInput = "tag_position_in_brick_DESC"
-
-	// BrickTopoOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	BrickTopoOrderByInputUpdatedAtASC BrickTopoOrderByInput = "updatedAt_ASC"
-
-	// BrickTopoOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	BrickTopoOrderByInputUpdatedAtDESC BrickTopoOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -120,7 +108,7 @@ var brickTopoOrderByInputEnum []interface{}
 
 func init() {
 	var res []BrickTopoOrderByInput
-	if err := json.Unmarshal([]byte(`["capacity_ASC","capacity_DESC","createdAt_ASC","createdAt_DESC","disk_layout_ASC","disk_layout_DESC","height_ASC","height_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","model_ASC","model_DESC","name_ASC","name_DESC","position_ASC","position_DESC","power_layout_ASC","power_layout_DESC","power_position_ASC","power_position_DESC","powers_ASC","powers_DESC","tag_position_in_brick_ASC","tag_position_in_brick_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["capacity_ASC","capacity_DESC","disk_layout_ASC","disk_layout_DESC","height_ASC","height_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","model_ASC","model_DESC","name_ASC","name_DESC","position_ASC","position_DESC","power_layout_ASC","power_layout_DESC","power_position_ASC","power_position_DESC","powers_ASC","powers_DESC","tag_position_in_brick_ASC","tag_position_in_brick_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -51,8 +51,17 @@ const (
 	// UploadResourceTypeMONITORIMAGE captures enum value "MONITOR_IMAGE"
 	UploadResourceTypeMONITORIMAGE UploadResourceType = "MONITOR_IMAGE"
 
+	// UploadResourceTypeOVF captures enum value "OVF"
+	UploadResourceTypeOVF UploadResourceType = "OVF"
+
 	// UploadResourceTypeSVTIMAGE captures enum value "SVT_IMAGE"
 	UploadResourceTypeSVTIMAGE UploadResourceType = "SVT_IMAGE"
+
+	// UploadResourceTypeVMVOLUMEQCOW2 captures enum value "VM_VOLUME_QCOW2"
+	UploadResourceTypeVMVOLUMEQCOW2 UploadResourceType = "VM_VOLUME_QCOW2"
+
+	// UploadResourceTypeVMVOLUMERAW captures enum value "VM_VOLUME_RAW"
+	UploadResourceTypeVMVOLUMERAW UploadResourceType = "VM_VOLUME_RAW"
 )
 
 // for schema
@@ -60,7 +69,7 @@ var uploadResourceTypeEnum []interface{}
 
 func init() {
 	var res []UploadResourceType
-	if err := json.Unmarshal([]byte(`["CLOUDTOWER_APPLICATION_PACKAGE","CLUSTER_IMAGE","CLUSTER_IMAGE_META","CONTENT_LIBRARY_IMAGE","ELF_IMAGE","EVEROUTE_PACKAGE","MONITOR_IMAGE","SVT_IMAGE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CLOUDTOWER_APPLICATION_PACKAGE","CLUSTER_IMAGE","CLUSTER_IMAGE_META","CONTENT_LIBRARY_IMAGE","ELF_IMAGE","EVEROUTE_PACKAGE","MONITOR_IMAGE","OVF","SVT_IMAGE","VM_VOLUME_QCOW2","VM_VOLUME_RAW"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
