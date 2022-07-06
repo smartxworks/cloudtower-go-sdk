@@ -30,12 +30,6 @@ func (m VsphereEsxiAccountOrderByInput) Pointer() *VsphereEsxiAccountOrderByInpu
 
 const (
 
-	// VsphereEsxiAccountOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VsphereEsxiAccountOrderByInputCreatedAtASC VsphereEsxiAccountOrderByInput = "createdAt_ASC"
-
-	// VsphereEsxiAccountOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VsphereEsxiAccountOrderByInputCreatedAtDESC VsphereEsxiAccountOrderByInput = "createdAt_DESC"
-
 	// VsphereEsxiAccountOrderByInputIDASC captures enum value "id_ASC"
 	VsphereEsxiAccountOrderByInputIDASC VsphereEsxiAccountOrderByInput = "id_ASC"
 
@@ -60,23 +54,11 @@ const (
 	// VsphereEsxiAccountOrderByInputLocalIDDESC captures enum value "local_id_DESC"
 	VsphereEsxiAccountOrderByInputLocalIDDESC VsphereEsxiAccountOrderByInput = "local_id_DESC"
 
-	// VsphereEsxiAccountOrderByInputPasswordASC captures enum value "password_ASC"
-	VsphereEsxiAccountOrderByInputPasswordASC VsphereEsxiAccountOrderByInput = "password_ASC"
-
-	// VsphereEsxiAccountOrderByInputPasswordDESC captures enum value "password_DESC"
-	VsphereEsxiAccountOrderByInputPasswordDESC VsphereEsxiAccountOrderByInput = "password_DESC"
-
 	// VsphereEsxiAccountOrderByInputPortASC captures enum value "port_ASC"
 	VsphereEsxiAccountOrderByInputPortASC VsphereEsxiAccountOrderByInput = "port_ASC"
 
 	// VsphereEsxiAccountOrderByInputPortDESC captures enum value "port_DESC"
 	VsphereEsxiAccountOrderByInputPortDESC VsphereEsxiAccountOrderByInput = "port_DESC"
-
-	// VsphereEsxiAccountOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VsphereEsxiAccountOrderByInputUpdatedAtASC VsphereEsxiAccountOrderByInput = "updatedAt_ASC"
-
-	// VsphereEsxiAccountOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VsphereEsxiAccountOrderByInputUpdatedAtDESC VsphereEsxiAccountOrderByInput = "updatedAt_DESC"
 
 	// VsphereEsxiAccountOrderByInputUsernameASC captures enum value "username_ASC"
 	VsphereEsxiAccountOrderByInputUsernameASC VsphereEsxiAccountOrderByInput = "username_ASC"
@@ -90,7 +72,7 @@ var vsphereEsxiAccountOrderByInputEnum []interface{}
 
 func init() {
 	var res []VsphereEsxiAccountOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","ip_ASC","ip_DESC","is_valid_ASC","is_valid_DESC","local_id_ASC","local_id_DESC","password_ASC","password_DESC","port_ASC","port_DESC","updatedAt_ASC","updatedAt_DESC","username_ASC","username_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","ip_ASC","ip_DESC","is_valid_ASC","is_valid_DESC","local_id_ASC","local_id_DESC","port_ASC","port_DESC","username_ASC","username_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

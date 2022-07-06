@@ -30,12 +30,6 @@ func (m NamespaceGroupOrderByInput) Pointer() *NamespaceGroupOrderByInput {
 
 const (
 
-	// NamespaceGroupOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	NamespaceGroupOrderByInputCreatedAtASC NamespaceGroupOrderByInput = "createdAt_ASC"
-
-	// NamespaceGroupOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	NamespaceGroupOrderByInputCreatedAtDESC NamespaceGroupOrderByInput = "createdAt_DESC"
-
 	// NamespaceGroupOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	NamespaceGroupOrderByInputEntityAsyncStatusASC NamespaceGroupOrderByInput = "entityAsyncStatus_ASC"
 
@@ -65,12 +59,6 @@ const (
 
 	// NamespaceGroupOrderByInputNameDESC captures enum value "name_DESC"
 	NamespaceGroupOrderByInputNameDESC NamespaceGroupOrderByInput = "name_DESC"
-
-	// NamespaceGroupOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	NamespaceGroupOrderByInputUpdatedAtASC NamespaceGroupOrderByInput = "updatedAt_ASC"
-
-	// NamespaceGroupOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	NamespaceGroupOrderByInputUpdatedAtDESC NamespaceGroupOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -78,7 +66,7 @@ var namespaceGroupOrderByInputEnum []interface{}
 
 func init() {
 	var res []NamespaceGroupOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_create_time_ASC","local_create_time_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_create_time_ASC","local_create_time_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

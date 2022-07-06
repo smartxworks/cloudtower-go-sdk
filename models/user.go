@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,10 +19,6 @@ import (
 //
 // swagger:model User
 type User struct {
-
-	// typename
-	// Enum: [User]
-	Typename *string `json:"__typename,omitempty"`
 
 	// email address
 	EmailAddress *string `json:"email_address,omitempty"`
@@ -39,9 +34,6 @@ type User struct {
 	// ldap dn
 	LdapDn *string `json:"ldap_dn,omitempty"`
 
-	// login info
-	LoginInfo *UserLoginInfo `json:"login_info,omitempty"`
-
 	// mobile phone
 	MobilePhone *string `json:"mobile_phone,omitempty"`
 
@@ -53,16 +45,16 @@ type User struct {
 	PasswordExpired *bool `json:"password_expired,omitempty"`
 
 	// password recover qa
-	PasswordRecoverQa *PasswordRecoverQa `json:"password_recover_qa,omitempty"`
+	PasswordRecoverQa *NestedPasswordRecoverQa `json:"password_recover_qa,omitempty"`
 
 	// password updated at
-	PasswordUpdatedAt interface{} `json:"password_updated_at,omitempty"`
+	PasswordUpdatedAt *string `json:"password_updated_at,omitempty"`
 
 	// role
 	Role *UserRole `json:"role,omitempty"`
 
 	// roles
-	Roles []*UserRoleNext `json:"roles,omitempty"`
+	Roles []*NestedUserRoleNext `json:"roles,omitempty"`
 
 	// source
 	// Required: true
@@ -77,19 +69,11 @@ type User struct {
 func (m *User) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateTypename(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateInternal(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLoginInfo(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -123,45 +107,6 @@ func (m *User) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var userTypeTypenamePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["User"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		userTypeTypenamePropEnum = append(userTypeTypenamePropEnum, v)
-	}
-}
-
-const (
-
-	// UserTypenameUser captures enum value "User"
-	UserTypenameUser string = "User"
-)
-
-// prop value enum
-func (m *User) validateTypenameEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, userTypeTypenamePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *User) validateTypename(formats strfmt.Registry) error {
-	if swag.IsZero(m.Typename) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateTypenameEnum("__typename", "body", *m.Typename); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *User) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
@@ -175,25 +120,6 @@ func (m *User) validateInternal(formats strfmt.Registry) error {
 
 	if err := validate.Required("internal", "body", m.Internal); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-func (m *User) validateLoginInfo(formats strfmt.Registry) error {
-	if swag.IsZero(m.LoginInfo) { // not required
-		return nil
-	}
-
-	if m.LoginInfo != nil {
-		if err := m.LoginInfo.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("login_info")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("login_info")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -309,10 +235,6 @@ func (m *User) validateUsername(formats strfmt.Registry) error {
 func (m *User) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateLoginInfo(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidatePasswordRecoverQa(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -332,22 +254,6 @@ func (m *User) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *User) contextValidateLoginInfo(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LoginInfo != nil {
-		if err := m.LoginInfo.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("login_info")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("login_info")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 

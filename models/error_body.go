@@ -38,7 +38,7 @@ type ErrorBody struct {
 
 	// status
 	// Required: true
-	Status *float64 `json:"status"`
+	Status *int32 `json:"status"`
 }
 
 // Validate validates this error body

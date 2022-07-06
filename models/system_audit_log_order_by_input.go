@@ -36,12 +36,6 @@ const (
 	// SystemAuditLogOrderByInputActionDESC captures enum value "action_DESC"
 	SystemAuditLogOrderByInputActionDESC SystemAuditLogOrderByInput = "action_DESC"
 
-	// SystemAuditLogOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	SystemAuditLogOrderByInputCreatedAtASC SystemAuditLogOrderByInput = "createdAt_ASC"
-
-	// SystemAuditLogOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	SystemAuditLogOrderByInputCreatedAtDESC SystemAuditLogOrderByInput = "createdAt_DESC"
-
 	// SystemAuditLogOrderByInputFinishedAtASC captures enum value "finished_at_ASC"
 	SystemAuditLogOrderByInputFinishedAtASC SystemAuditLogOrderByInput = "finished_at_ASC"
 
@@ -83,12 +77,6 @@ const (
 
 	// SystemAuditLogOrderByInputStatusDESC captures enum value "status_DESC"
 	SystemAuditLogOrderByInputStatusDESC SystemAuditLogOrderByInput = "status_DESC"
-
-	// SystemAuditLogOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	SystemAuditLogOrderByInputUpdatedAtASC SystemAuditLogOrderByInput = "updatedAt_ASC"
-
-	// SystemAuditLogOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	SystemAuditLogOrderByInputUpdatedAtDESC SystemAuditLogOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -96,7 +84,7 @@ var systemAuditLogOrderByInputEnum []interface{}
 
 func init() {
 	var res []SystemAuditLogOrderByInput
-	if err := json.Unmarshal([]byte(`["action_ASC","action_DESC","createdAt_ASC","createdAt_DESC","finished_at_ASC","finished_at_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","message_ASC","message_DESC","resource_id_ASC","resource_id_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["action_ASC","action_DESC","finished_at_ASC","finished_at_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","message_ASC","message_DESC","resource_id_ASC","resource_id_DESC","status_ASC","status_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

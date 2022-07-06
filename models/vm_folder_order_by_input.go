@@ -30,12 +30,6 @@ func (m VMFolderOrderByInput) Pointer() *VMFolderOrderByInput {
 
 const (
 
-	// VMFolderOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VMFolderOrderByInputCreatedAtASC VMFolderOrderByInput = "createdAt_ASC"
-
-	// VMFolderOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VMFolderOrderByInputCreatedAtDESC VMFolderOrderByInput = "createdAt_DESC"
-
 	// VMFolderOrderByInputIDASC captures enum value "id_ASC"
 	VMFolderOrderByInputIDASC VMFolderOrderByInput = "id_ASC"
 
@@ -54,12 +48,6 @@ const (
 	// VMFolderOrderByInputNameDESC captures enum value "name_DESC"
 	VMFolderOrderByInputNameDESC VMFolderOrderByInput = "name_DESC"
 
-	// VMFolderOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VMFolderOrderByInputUpdatedAtASC VMFolderOrderByInput = "updatedAt_ASC"
-
-	// VMFolderOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VMFolderOrderByInputUpdatedAtDESC VMFolderOrderByInput = "updatedAt_DESC"
-
 	// VMFolderOrderByInputVMNumASC captures enum value "vm_num_ASC"
 	VMFolderOrderByInputVMNumASC VMFolderOrderByInput = "vm_num_ASC"
 
@@ -72,7 +60,7 @@ var vmFolderOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMFolderOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","updatedAt_ASC","updatedAt_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

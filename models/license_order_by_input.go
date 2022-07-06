@@ -30,12 +30,6 @@ func (m LicenseOrderByInput) Pointer() *LicenseOrderByInput {
 
 const (
 
-	// LicenseOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	LicenseOrderByInputCreatedAtASC LicenseOrderByInput = "createdAt_ASC"
-
-	// LicenseOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	LicenseOrderByInputCreatedAtDESC LicenseOrderByInput = "createdAt_DESC"
-
 	// LicenseOrderByInputExpireDateASC captures enum value "expire_date_ASC"
 	LicenseOrderByInputExpireDateASC LicenseOrderByInput = "expire_date_ASC"
 
@@ -95,12 +89,6 @@ const (
 
 	// LicenseOrderByInputTypeDESC captures enum value "type_DESC"
 	LicenseOrderByInputTypeDESC LicenseOrderByInput = "type_DESC"
-
-	// LicenseOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	LicenseOrderByInputUpdatedAtASC LicenseOrderByInput = "updatedAt_ASC"
-
-	// LicenseOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	LicenseOrderByInputUpdatedAtDESC LicenseOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -108,7 +96,7 @@ var licenseOrderByInputEnum []interface{}
 
 func init() {
 	var res []LicenseOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","expire_date_ASC","expire_date_DESC","id_ASC","id_DESC","license_serial_ASC","license_serial_DESC","maintenance_end_date_ASC","maintenance_end_date_DESC","maintenance_start_date_ASC","maintenance_start_date_DESC","max_chunk_num_ASC","max_chunk_num_DESC","max_cluster_num_ASC","max_cluster_num_DESC","sign_date_ASC","sign_date_DESC","software_edition_ASC","software_edition_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["expire_date_ASC","expire_date_DESC","id_ASC","id_DESC","license_serial_ASC","license_serial_DESC","maintenance_end_date_ASC","maintenance_end_date_DESC","maintenance_start_date_ASC","maintenance_start_date_DESC","max_chunk_num_ASC","max_chunk_num_DESC","max_cluster_num_ASC","max_cluster_num_DESC","sign_date_ASC","sign_date_DESC","software_edition_ASC","software_edition_DESC","type_ASC","type_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

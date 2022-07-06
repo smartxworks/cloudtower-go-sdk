@@ -77,12 +77,6 @@ const (
 
 	// ReportTemplateOrderByInputTaskNumDESC captures enum value "task_num_DESC"
 	ReportTemplateOrderByInputTaskNumDESC ReportTemplateOrderByInput = "task_num_DESC"
-
-	// ReportTemplateOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ReportTemplateOrderByInputUpdatedAtASC ReportTemplateOrderByInput = "updatedAt_ASC"
-
-	// ReportTemplateOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ReportTemplateOrderByInputUpdatedAtDESC ReportTemplateOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -90,7 +84,7 @@ var reportTemplateOrderByInputEnum []interface{}
 
 func init() {
 	var res []ReportTemplateOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","execute_plan_ASC","execute_plan_DESC","id_ASC","id_DESC","name_ASC","name_DESC","preset_ASC","preset_DESC","resource_meta_ASC","resource_meta_DESC","task_num_ASC","task_num_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","execute_plan_ASC","execute_plan_DESC","id_ASC","id_DESC","name_ASC","name_DESC","preset_ASC","preset_DESC","resource_meta_ASC","resource_meta_DESC","task_num_ASC","task_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

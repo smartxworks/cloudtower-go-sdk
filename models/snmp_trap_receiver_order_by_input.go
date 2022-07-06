@@ -48,12 +48,6 @@ const (
 	// SnmpTrapReceiverOrderByInputCommunityDESC captures enum value "community_DESC"
 	SnmpTrapReceiverOrderByInputCommunityDESC SnmpTrapReceiverOrderByInput = "community_DESC"
 
-	// SnmpTrapReceiverOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	SnmpTrapReceiverOrderByInputCreatedAtASC SnmpTrapReceiverOrderByInput = "createdAt_ASC"
-
-	// SnmpTrapReceiverOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	SnmpTrapReceiverOrderByInputCreatedAtDESC SnmpTrapReceiverOrderByInput = "createdAt_DESC"
-
 	// SnmpTrapReceiverOrderByInputDisabledASC captures enum value "disabled_ASC"
 	SnmpTrapReceiverOrderByInputDisabledASC SnmpTrapReceiverOrderByInput = "disabled_ASC"
 
@@ -132,12 +126,6 @@ const (
 	// SnmpTrapReceiverOrderByInputProtocolDESC captures enum value "protocol_DESC"
 	SnmpTrapReceiverOrderByInputProtocolDESC SnmpTrapReceiverOrderByInput = "protocol_DESC"
 
-	// SnmpTrapReceiverOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	SnmpTrapReceiverOrderByInputUpdatedAtASC SnmpTrapReceiverOrderByInput = "updatedAt_ASC"
-
-	// SnmpTrapReceiverOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	SnmpTrapReceiverOrderByInputUpdatedAtDESC SnmpTrapReceiverOrderByInput = "updatedAt_DESC"
-
 	// SnmpTrapReceiverOrderByInputUsernameASC captures enum value "username_ASC"
 	SnmpTrapReceiverOrderByInputUsernameASC SnmpTrapReceiverOrderByInput = "username_ASC"
 
@@ -156,7 +144,7 @@ var snmpTrapReceiverOrderByInputEnum []interface{}
 
 func init() {
 	var res []SnmpTrapReceiverOrderByInput
-	if err := json.Unmarshal([]byte(`["auth_pass_phrase_ASC","auth_pass_phrase_DESC","auth_protocol_ASC","auth_protocol_DESC","community_ASC","community_DESC","createdAt_ASC","createdAt_DESC","disabled_ASC","disabled_DESC","engine_id_ASC","engine_id_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","host_ASC","host_DESC","id_ASC","id_DESC","inform_ASC","inform_DESC","language_code_ASC","language_code_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","port_ASC","port_DESC","privacy_pass_phrase_ASC","privacy_pass_phrase_DESC","privacy_protocol_ASC","privacy_protocol_DESC","protocol_ASC","protocol_DESC","updatedAt_ASC","updatedAt_DESC","username_ASC","username_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["auth_pass_phrase_ASC","auth_pass_phrase_DESC","auth_protocol_ASC","auth_protocol_DESC","community_ASC","community_DESC","disabled_ASC","disabled_DESC","engine_id_ASC","engine_id_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","host_ASC","host_DESC","id_ASC","id_DESC","inform_ASC","inform_DESC","language_code_ASC","language_code_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","port_ASC","port_DESC","privacy_pass_phrase_ASC","privacy_pass_phrase_DESC","privacy_protocol_ASC","privacy_protocol_DESC","protocol_ASC","protocol_DESC","username_ASC","username_DESC","version_ASC","version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -30,12 +30,6 @@ func (m UserRoleNextOrderByInput) Pointer() *UserRoleNextOrderByInput {
 
 const (
 
-	// UserRoleNextOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	UserRoleNextOrderByInputCreatedAtASC UserRoleNextOrderByInput = "createdAt_ASC"
-
-	// UserRoleNextOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	UserRoleNextOrderByInputCreatedAtDESC UserRoleNextOrderByInput = "createdAt_DESC"
-
 	// UserRoleNextOrderByInputIDASC captures enum value "id_ASC"
 	UserRoleNextOrderByInputIDASC UserRoleNextOrderByInput = "id_ASC"
 
@@ -59,12 +53,6 @@ const (
 
 	// UserRoleNextOrderByInputPresetDESC captures enum value "preset_DESC"
 	UserRoleNextOrderByInputPresetDESC UserRoleNextOrderByInput = "preset_DESC"
-
-	// UserRoleNextOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	UserRoleNextOrderByInputUpdatedAtASC UserRoleNextOrderByInput = "updatedAt_ASC"
-
-	// UserRoleNextOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	UserRoleNextOrderByInputUpdatedAtDESC UserRoleNextOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -72,7 +60,7 @@ var userRoleNextOrderByInputEnum []interface{}
 
 func init() {
 	var res []UserRoleNextOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","name_ASC","name_DESC","platform_ASC","platform_DESC","preset_ASC","preset_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","name_ASC","name_DESC","platform_ASC","platform_DESC","preset_ASC","preset_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

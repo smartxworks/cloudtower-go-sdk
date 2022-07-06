@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -20,22 +19,14 @@ import (
 // swagger:model BatchHosts
 type BatchHosts struct {
 
-	// typename
-	// Enum: [BatchHosts]
-	Typename *string `json:"__typename,omitempty"`
-
 	// task
 	// Required: true
-	Task *Task `json:"task"`
+	Task *NestedTask `json:"task"`
 }
 
 // Validate validates this batch hosts
 func (m *BatchHosts) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateTypename(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateTask(formats); err != nil {
 		res = append(res, err)
@@ -44,45 +35,6 @@ func (m *BatchHosts) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-var batchHostsTypeTypenamePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["BatchHosts"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		batchHostsTypeTypenamePropEnum = append(batchHostsTypeTypenamePropEnum, v)
-	}
-}
-
-const (
-
-	// BatchHostsTypenameBatchHosts captures enum value "BatchHosts"
-	BatchHostsTypenameBatchHosts string = "BatchHosts"
-)
-
-// prop value enum
-func (m *BatchHosts) validateTypenameEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, batchHostsTypeTypenamePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *BatchHosts) validateTypename(formats strfmt.Registry) error {
-	if swag.IsZero(m.Typename) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateTypenameEnum("__typename", "body", *m.Typename); err != nil {
-		return err
-	}
-
 	return nil
 }
 

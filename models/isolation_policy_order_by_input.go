@@ -30,12 +30,6 @@ func (m IsolationPolicyOrderByInput) Pointer() *IsolationPolicyOrderByInput {
 
 const (
 
-	// IsolationPolicyOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	IsolationPolicyOrderByInputCreatedAtASC IsolationPolicyOrderByInput = "createdAt_ASC"
-
-	// IsolationPolicyOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	IsolationPolicyOrderByInputCreatedAtDESC IsolationPolicyOrderByInput = "createdAt_DESC"
-
 	// IsolationPolicyOrderByInputEgressASC captures enum value "egress_ASC"
 	IsolationPolicyOrderByInputEgressASC IsolationPolicyOrderByInput = "egress_ASC"
 
@@ -59,12 +53,6 @@ const (
 
 	// IsolationPolicyOrderByInputModeDESC captures enum value "mode_DESC"
 	IsolationPolicyOrderByInputModeDESC IsolationPolicyOrderByInput = "mode_DESC"
-
-	// IsolationPolicyOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	IsolationPolicyOrderByInputUpdatedAtASC IsolationPolicyOrderByInput = "updatedAt_ASC"
-
-	// IsolationPolicyOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	IsolationPolicyOrderByInputUpdatedAtDESC IsolationPolicyOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -72,7 +60,7 @@ var isolationPolicyOrderByInputEnum []interface{}
 
 func init() {
 	var res []IsolationPolicyOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","egress_ASC","egress_DESC","id_ASC","id_DESC","ingress_ASC","ingress_DESC","mode_ASC","mode_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["egress_ASC","egress_DESC","id_ASC","id_DESC","ingress_ASC","ingress_DESC","mode_ASC","mode_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

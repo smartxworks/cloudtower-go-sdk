@@ -30,12 +30,6 @@ func (m ConsistencyGroupOrderByInput) Pointer() *ConsistencyGroupOrderByInput {
 
 const (
 
-	// ConsistencyGroupOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ConsistencyGroupOrderByInputCreatedAtASC ConsistencyGroupOrderByInput = "createdAt_ASC"
-
-	// ConsistencyGroupOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ConsistencyGroupOrderByInputCreatedAtDESC ConsistencyGroupOrderByInput = "createdAt_DESC"
-
 	// ConsistencyGroupOrderByInputDescriptionASC captures enum value "description_ASC"
 	ConsistencyGroupOrderByInputDescriptionASC ConsistencyGroupOrderByInput = "description_ASC"
 
@@ -77,12 +71,6 @@ const (
 
 	// ConsistencyGroupOrderByInputUniqueSizeDESC captures enum value "unique_size_DESC"
 	ConsistencyGroupOrderByInputUniqueSizeDESC ConsistencyGroupOrderByInput = "unique_size_DESC"
-
-	// ConsistencyGroupOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ConsistencyGroupOrderByInputUpdatedAtASC ConsistencyGroupOrderByInput = "updatedAt_ASC"
-
-	// ConsistencyGroupOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ConsistencyGroupOrderByInputUpdatedAtDESC ConsistencyGroupOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -90,7 +78,7 @@ var consistencyGroupOrderByInputEnum []interface{}
 
 func init() {
 	var res []ConsistencyGroupOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

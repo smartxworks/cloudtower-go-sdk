@@ -54,12 +54,6 @@ const (
 	// ClusterOrderByInputConnectStateDESC captures enum value "connect_state_DESC"
 	ClusterOrderByInputConnectStateDESC ClusterOrderByInput = "connect_state_DESC"
 
-	// ClusterOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ClusterOrderByInputCreatedAtASC ClusterOrderByInput = "createdAt_ASC"
-
-	// ClusterOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ClusterOrderByInputCreatedAtDESC ClusterOrderByInput = "createdAt_DESC"
-
 	// ClusterOrderByInputCurrentCPUModelASC captures enum value "current_cpu_model_ASC"
 	ClusterOrderByInputCurrentCPUModelASC ClusterOrderByInput = "current_cpu_model_ASC"
 
@@ -95,12 +89,6 @@ const (
 
 	// ClusterOrderByInputHasMetroxDESC captures enum value "has_metrox_DESC"
 	ClusterOrderByInputHasMetroxDESC ClusterOrderByInput = "has_metrox_DESC"
-
-	// ClusterOrderByInputHasRemoteBackupASC captures enum value "has_remote_backup_ASC"
-	ClusterOrderByInputHasRemoteBackupASC ClusterOrderByInput = "has_remote_backup_ASC"
-
-	// ClusterOrderByInputHasRemoteBackupDESC captures enum value "has_remote_backup_DESC"
-	ClusterOrderByInputHasRemoteBackupDESC ClusterOrderByInput = "has_remote_backup_DESC"
 
 	// ClusterOrderByInputHostNumASC captures enum value "host_num_ASC"
 	ClusterOrderByInputHostNumASC ClusterOrderByInput = "host_num_ASC"
@@ -264,12 +252,6 @@ const (
 	// ClusterOrderByInputNvmfEnabledDESC captures enum value "nvmf_enabled_DESC"
 	ClusterOrderByInputNvmfEnabledDESC ClusterOrderByInput = "nvmf_enabled_DESC"
 
-	// ClusterOrderByInputPasswordASC captures enum value "password_ASC"
-	ClusterOrderByInputPasswordASC ClusterOrderByInput = "password_ASC"
-
-	// ClusterOrderByInputPasswordDESC captures enum value "password_DESC"
-	ClusterOrderByInputPasswordDESC ClusterOrderByInput = "password_DESC"
-
 	// ClusterOrderByInputPmemEnabledASC captures enum value "pmem_enabled_ASC"
 	ClusterOrderByInputPmemEnabledASC ClusterOrderByInput = "pmem_enabled_ASC"
 
@@ -402,12 +384,6 @@ const (
 	// ClusterOrderByInputTypeDESC captures enum value "type_DESC"
 	ClusterOrderByInputTypeDESC ClusterOrderByInput = "type_DESC"
 
-	// ClusterOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ClusterOrderByInputUpdatedAtASC ClusterOrderByInput = "updatedAt_ASC"
-
-	// ClusterOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ClusterOrderByInputUpdatedAtDESC ClusterOrderByInput = "updatedAt_DESC"
-
 	// ClusterOrderByInputUpgradeToolVersionASC captures enum value "upgrade_tool_version_ASC"
 	ClusterOrderByInputUpgradeToolVersionASC ClusterOrderByInput = "upgrade_tool_version_ASC"
 
@@ -431,12 +407,6 @@ const (
 
 	// ClusterOrderByInputUsedMemoryBytesDESC captures enum value "used_memory_bytes_DESC"
 	ClusterOrderByInputUsedMemoryBytesDESC ClusterOrderByInput = "used_memory_bytes_DESC"
-
-	// ClusterOrderByInputUsernameASC captures enum value "username_ASC"
-	ClusterOrderByInputUsernameASC ClusterOrderByInput = "username_ASC"
-
-	// ClusterOrderByInputUsernameDESC captures enum value "username_DESC"
-	ClusterOrderByInputUsernameDESC ClusterOrderByInput = "username_DESC"
 
 	// ClusterOrderByInputValidDataSpaceASC captures enum value "valid_data_space_ASC"
 	ClusterOrderByInputValidDataSpaceASC ClusterOrderByInput = "valid_data_space_ASC"
@@ -468,7 +438,7 @@ var clusterOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterOrderByInput
-	if err := json.Unmarshal([]byte(`["application_highest_version_ASC","application_highest_version_DESC","architecture_ASC","architecture_DESC","auto_converge_ASC","auto_converge_DESC","connect_state_ASC","connect_state_DESC","createdAt_ASC","createdAt_DESC","current_cpu_model_ASC","current_cpu_model_DESC","disconnected_date_ASC","disconnected_date_DESC","disconnected_reason_ASC","disconnected_reason_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_data_space_ASC","failure_data_space_DESC","has_metrox_ASC","has_metrox_DESC","has_remote_backup_ASC","has_remote_backup_DESC","host_num_ASC","host_num_DESC","hypervisor_ASC","hypervisor_DESC","id_ASC","id_DESC","ip_ASC","ip_DESC","is_all_flash_ASC","is_all_flash_DESC","iscsi_vip_ASC","iscsi_vip_DESC","license_expire_date_ASC","license_expire_date_DESC","license_serial_ASC","license_serial_DESC","license_sign_date_ASC","license_sign_date_DESC","license_type_ASC","license_type_DESC","local_id_ASC","local_id_DESC","maintenance_end_date_ASC","maintenance_end_date_DESC","maintenance_start_date_ASC","maintenance_start_date_DESC","management_vip_ASC","management_vip_DESC","max_chunk_num_ASC","max_chunk_num_DESC","max_physical_data_capacity_ASC","max_physical_data_capacity_DESC","max_physical_data_capacity_per_node_ASC","max_physical_data_capacity_per_node_DESC","metro_availability_checklist_ASC","metro_availability_checklist_DESC","mgt_gateway_ASC","mgt_gateway_DESC","mgt_netmask_ASC","mgt_netmask_DESC","migration_data_size_ASC","migration_data_size_DESC","migration_speed_ASC","migration_speed_DESC","name_ASC","name_DESC","ntp_mode_ASC","ntp_mode_DESC","nvme_over_rdma_enabled_ASC","nvme_over_rdma_enabled_DESC","nvme_over_tcp_enabled_ASC","nvme_over_tcp_enabled_DESC","nvmf_enabled_ASC","nvmf_enabled_DESC","password_ASC","password_DESC","pmem_enabled_ASC","pmem_enabled_DESC","provisioned_cpu_cores_ASC","provisioned_cpu_cores_DESC","provisioned_cpu_cores_for_active_vm_ASC","provisioned_cpu_cores_for_active_vm_DESC","provisioned_for_active_vm_ratio_ASC","provisioned_for_active_vm_ratio_DESC","provisioned_memory_bytes_ASC","provisioned_memory_bytes_DESC","provisioned_ratio_ASC","provisioned_ratio_DESC","rdma_enabled_ASC","rdma_enabled_DESC","recover_data_size_ASC","recover_data_size_DESC","recover_speed_ASC","recover_speed_DESC","reserved_cpu_cores_for_system_service_ASC","reserved_cpu_cores_for_system_service_DESC","running_vm_num_ASC","running_vm_num_DESC","software_edition_ASC","software_edition_DESC","stopped_vm_num_ASC","stopped_vm_num_DESC","stretch_ASC","stretch_DESC","suspended_vm_num_ASC","suspended_vm_num_DESC","total_cache_capacity_ASC","total_cache_capacity_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_cpu_sockets_ASC","total_cpu_sockets_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC","upgrade_tool_version_ASC","upgrade_tool_version_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","username_ASC","username_DESC","valid_data_space_ASC","valid_data_space_DESC","version_ASC","version_DESC","vhost_enabled_ASC","vhost_enabled_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["application_highest_version_ASC","application_highest_version_DESC","architecture_ASC","architecture_DESC","auto_converge_ASC","auto_converge_DESC","connect_state_ASC","connect_state_DESC","current_cpu_model_ASC","current_cpu_model_DESC","disconnected_date_ASC","disconnected_date_DESC","disconnected_reason_ASC","disconnected_reason_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_data_space_ASC","failure_data_space_DESC","has_metrox_ASC","has_metrox_DESC","host_num_ASC","host_num_DESC","hypervisor_ASC","hypervisor_DESC","id_ASC","id_DESC","ip_ASC","ip_DESC","is_all_flash_ASC","is_all_flash_DESC","iscsi_vip_ASC","iscsi_vip_DESC","license_expire_date_ASC","license_expire_date_DESC","license_serial_ASC","license_serial_DESC","license_sign_date_ASC","license_sign_date_DESC","license_type_ASC","license_type_DESC","local_id_ASC","local_id_DESC","maintenance_end_date_ASC","maintenance_end_date_DESC","maintenance_start_date_ASC","maintenance_start_date_DESC","management_vip_ASC","management_vip_DESC","max_chunk_num_ASC","max_chunk_num_DESC","max_physical_data_capacity_ASC","max_physical_data_capacity_DESC","max_physical_data_capacity_per_node_ASC","max_physical_data_capacity_per_node_DESC","metro_availability_checklist_ASC","metro_availability_checklist_DESC","mgt_gateway_ASC","mgt_gateway_DESC","mgt_netmask_ASC","mgt_netmask_DESC","migration_data_size_ASC","migration_data_size_DESC","migration_speed_ASC","migration_speed_DESC","name_ASC","name_DESC","ntp_mode_ASC","ntp_mode_DESC","nvme_over_rdma_enabled_ASC","nvme_over_rdma_enabled_DESC","nvme_over_tcp_enabled_ASC","nvme_over_tcp_enabled_DESC","nvmf_enabled_ASC","nvmf_enabled_DESC","pmem_enabled_ASC","pmem_enabled_DESC","provisioned_cpu_cores_ASC","provisioned_cpu_cores_DESC","provisioned_cpu_cores_for_active_vm_ASC","provisioned_cpu_cores_for_active_vm_DESC","provisioned_for_active_vm_ratio_ASC","provisioned_for_active_vm_ratio_DESC","provisioned_memory_bytes_ASC","provisioned_memory_bytes_DESC","provisioned_ratio_ASC","provisioned_ratio_DESC","rdma_enabled_ASC","rdma_enabled_DESC","recover_data_size_ASC","recover_data_size_DESC","recover_speed_ASC","recover_speed_DESC","reserved_cpu_cores_for_system_service_ASC","reserved_cpu_cores_for_system_service_DESC","running_vm_num_ASC","running_vm_num_DESC","software_edition_ASC","software_edition_DESC","stopped_vm_num_ASC","stopped_vm_num_DESC","stretch_ASC","stretch_DESC","suspended_vm_num_ASC","suspended_vm_num_DESC","total_cache_capacity_ASC","total_cache_capacity_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_cpu_sockets_ASC","total_cpu_sockets_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","type_ASC","type_DESC","upgrade_tool_version_ASC","upgrade_tool_version_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","valid_data_space_ASC","valid_data_space_DESC","version_ASC","version_DESC","vhost_enabled_ASC","vhost_enabled_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

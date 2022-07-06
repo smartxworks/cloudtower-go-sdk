@@ -36,12 +36,6 @@ const (
 	// UsbDeviceOrderByInputBindedDESC captures enum value "binded_DESC"
 	UsbDeviceOrderByInputBindedDESC UsbDeviceOrderByInput = "binded_DESC"
 
-	// UsbDeviceOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	UsbDeviceOrderByInputCreatedAtASC UsbDeviceOrderByInput = "createdAt_ASC"
-
-	// UsbDeviceOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	UsbDeviceOrderByInputCreatedAtDESC UsbDeviceOrderByInput = "createdAt_DESC"
-
 	// UsbDeviceOrderByInputDescriptionASC captures enum value "description_ASC"
 	UsbDeviceOrderByInputDescriptionASC UsbDeviceOrderByInput = "description_ASC"
 
@@ -90,12 +84,6 @@ const (
 	// UsbDeviceOrderByInputStatusDESC captures enum value "status_DESC"
 	UsbDeviceOrderByInputStatusDESC UsbDeviceOrderByInput = "status_DESC"
 
-	// UsbDeviceOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	UsbDeviceOrderByInputUpdatedAtASC UsbDeviceOrderByInput = "updatedAt_ASC"
-
-	// UsbDeviceOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	UsbDeviceOrderByInputUpdatedAtDESC UsbDeviceOrderByInput = "updatedAt_DESC"
-
 	// UsbDeviceOrderByInputUsbTypeASC captures enum value "usb_type_ASC"
 	UsbDeviceOrderByInputUsbTypeASC UsbDeviceOrderByInput = "usb_type_ASC"
 
@@ -108,7 +96,7 @@ var usbDeviceOrderByInputEnum []interface{}
 
 func init() {
 	var res []UsbDeviceOrderByInput
-	if err := json.Unmarshal([]byte(`["binded_ASC","binded_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","manufacturer_ASC","manufacturer_DESC","name_ASC","name_DESC","size_ASC","size_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC","usb_type_ASC","usb_type_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["binded_ASC","binded_DESC","description_ASC","description_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","manufacturer_ASC","manufacturer_DESC","name_ASC","name_DESC","size_ASC","size_DESC","status_ASC","status_DESC","usb_type_ASC","usb_type_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

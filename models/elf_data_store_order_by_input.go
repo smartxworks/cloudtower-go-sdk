@@ -30,12 +30,6 @@ func (m ElfDataStoreOrderByInput) Pointer() *ElfDataStoreOrderByInput {
 
 const (
 
-	// ElfDataStoreOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ElfDataStoreOrderByInputCreatedAtASC ElfDataStoreOrderByInput = "createdAt_ASC"
-
-	// ElfDataStoreOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ElfDataStoreOrderByInputCreatedAtDESC ElfDataStoreOrderByInput = "createdAt_DESC"
-
 	// ElfDataStoreOrderByInputDescriptionASC captures enum value "description_ASC"
 	ElfDataStoreOrderByInputDescriptionASC ElfDataStoreOrderByInput = "description_ASC"
 
@@ -95,12 +89,6 @@ const (
 
 	// ElfDataStoreOrderByInputTypeDESC captures enum value "type_DESC"
 	ElfDataStoreOrderByInputTypeDESC ElfDataStoreOrderByInput = "type_DESC"
-
-	// ElfDataStoreOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ElfDataStoreOrderByInputUpdatedAtASC ElfDataStoreOrderByInput = "updatedAt_ASC"
-
-	// ElfDataStoreOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ElfDataStoreOrderByInputUpdatedAtDESC ElfDataStoreOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -108,7 +96,7 @@ var elfDataStoreOrderByInputEnum []interface{}
 
 func init() {
 	var res []ElfDataStoreOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","external_use_ASC","external_use_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ip_whitelist_ASC","ip_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","thin_provision_ASC","thin_provision_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","external_use_ASC","external_use_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ip_whitelist_ASC","ip_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","thin_provision_ASC","thin_provision_DESC","type_ASC","type_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

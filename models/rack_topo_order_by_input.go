@@ -30,12 +30,6 @@ func (m RackTopoOrderByInput) Pointer() *RackTopoOrderByInput {
 
 const (
 
-	// RackTopoOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	RackTopoOrderByInputCreatedAtASC RackTopoOrderByInput = "createdAt_ASC"
-
-	// RackTopoOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	RackTopoOrderByInputCreatedAtDESC RackTopoOrderByInput = "createdAt_DESC"
-
 	// RackTopoOrderByInputHeightASC captures enum value "height_ASC"
 	RackTopoOrderByInputHeightASC RackTopoOrderByInput = "height_ASC"
 
@@ -59,12 +53,6 @@ const (
 
 	// RackTopoOrderByInputNameDESC captures enum value "name_DESC"
 	RackTopoOrderByInputNameDESC RackTopoOrderByInput = "name_DESC"
-
-	// RackTopoOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	RackTopoOrderByInputUpdatedAtASC RackTopoOrderByInput = "updatedAt_ASC"
-
-	// RackTopoOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	RackTopoOrderByInputUpdatedAtDESC RackTopoOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -72,7 +60,7 @@ var rackTopoOrderByInputEnum []interface{}
 
 func init() {
 	var res []RackTopoOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","height_ASC","height_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["height_ASC","height_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

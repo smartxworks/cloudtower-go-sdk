@@ -168,6 +168,12 @@ type AddLabelsToResourcesParamsData struct {
 	// consistency groups
 	ConsistencyGroups *ConsistencyGroupWhereInput `json:"consistency_groups,omitempty"`
 
+	// content library images
+	ContentLibraryImages *ContentLibraryImageWhereInput `json:"content_library_images,omitempty"`
+
+	// content library vm templates
+	ContentLibraryVMTemplates *ContentLibraryVMTemplateWhereInput `json:"content_library_vm_templates,omitempty"`
+
 	// datacenters
 	Datacenters *DatacenterWhereInput `json:"datacenters,omitempty"`
 
@@ -189,6 +195,9 @@ type AddLabelsToResourcesParamsData struct {
 	// iscsi targets
 	IscsiTargets *IscsiTargetWhereInput `json:"iscsi_targets,omitempty"`
 
+	// isolation policies
+	IsolationPolicies *IsolationPolicyWhereInput `json:"isolation_policies,omitempty"`
+
 	// namespace groups
 	NamespaceGroups *NamespaceGroupWhereInput `json:"namespace_groups,omitempty"`
 
@@ -209,6 +218,9 @@ type AddLabelsToResourcesParamsData struct {
 
 	// nvmf subsystems
 	NvmfSubsystems *NvmfSubsystemWhereInput `json:"nvmf_subsystems,omitempty"`
+
+	// security policies
+	SecurityPolicies *SecurityPolicyWhereInput `json:"security_policies,omitempty"`
 
 	// vdses
 	Vdses *VdsWhereInput `json:"vdses,omitempty"`
@@ -245,6 +257,14 @@ func (m *AddLabelsToResourcesParamsData) Validate(formats strfmt.Registry) error
 		res = append(res, err)
 	}
 
+	if err := m.validateContentLibraryImages(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContentLibraryVMTemplates(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDatacenters(formats); err != nil {
 		res = append(res, err)
 	}
@@ -273,6 +293,10 @@ func (m *AddLabelsToResourcesParamsData) Validate(formats strfmt.Registry) error
 		res = append(res, err)
 	}
 
+	if err := m.validateIsolationPolicies(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateNamespaceGroups(formats); err != nil {
 		res = append(res, err)
 	}
@@ -298,6 +322,10 @@ func (m *AddLabelsToResourcesParamsData) Validate(formats strfmt.Registry) error
 	}
 
 	if err := m.validateNvmfSubsystems(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSecurityPolicies(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -380,6 +408,44 @@ func (m *AddLabelsToResourcesParamsData) validateConsistencyGroups(formats strfm
 				return ve.ValidateName("data" + "." + "consistency_groups")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "consistency_groups")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AddLabelsToResourcesParamsData) validateContentLibraryImages(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryImages) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryImages != nil {
+		if err := m.ContentLibraryImages.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "content_library_images")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "content_library_images")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AddLabelsToResourcesParamsData) validateContentLibraryVMTemplates(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContentLibraryVMTemplates) { // not required
+		return nil
+	}
+
+	if m.ContentLibraryVMTemplates != nil {
+		if err := m.ContentLibraryVMTemplates.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "content_library_vm_templates")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "content_library_vm_templates")
 			}
 			return err
 		}
@@ -521,6 +587,25 @@ func (m *AddLabelsToResourcesParamsData) validateIscsiTargets(formats strfmt.Reg
 	return nil
 }
 
+func (m *AddLabelsToResourcesParamsData) validateIsolationPolicies(formats strfmt.Registry) error {
+	if swag.IsZero(m.IsolationPolicies) { // not required
+		return nil
+	}
+
+	if m.IsolationPolicies != nil {
+		if err := m.IsolationPolicies.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "isolation_policies")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "isolation_policies")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *AddLabelsToResourcesParamsData) validateNamespaceGroups(formats strfmt.Registry) error {
 	if swag.IsZero(m.NamespaceGroups) { // not required
 		return nil
@@ -646,6 +731,25 @@ func (m *AddLabelsToResourcesParamsData) validateNvmfSubsystems(formats strfmt.R
 				return ve.ValidateName("data" + "." + "nvmf_subsystems")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "nvmf_subsystems")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AddLabelsToResourcesParamsData) validateSecurityPolicies(formats strfmt.Registry) error {
+	if swag.IsZero(m.SecurityPolicies) { // not required
+		return nil
+	}
+
+	if m.SecurityPolicies != nil {
+		if err := m.SecurityPolicies.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "security_policies")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "security_policies")
 			}
 			return err
 		}
@@ -784,6 +888,14 @@ func (m *AddLabelsToResourcesParamsData) ContextValidate(ctx context.Context, fo
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateContentLibraryImages(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentLibraryVMTemplates(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDatacenters(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -812,6 +924,10 @@ func (m *AddLabelsToResourcesParamsData) ContextValidate(ctx context.Context, fo
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateIsolationPolicies(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateNamespaceGroups(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -837,6 +953,10 @@ func (m *AddLabelsToResourcesParamsData) ContextValidate(ctx context.Context, fo
 	}
 
 	if err := m.contextValidateNvmfSubsystems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSecurityPolicies(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -910,6 +1030,38 @@ func (m *AddLabelsToResourcesParamsData) contextValidateConsistencyGroups(ctx co
 				return ve.ValidateName("data" + "." + "consistency_groups")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "consistency_groups")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AddLabelsToResourcesParamsData) contextValidateContentLibraryImages(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryImages != nil {
+		if err := m.ContentLibraryImages.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "content_library_images")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "content_library_images")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AddLabelsToResourcesParamsData) contextValidateContentLibraryVMTemplates(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContentLibraryVMTemplates != nil {
+		if err := m.ContentLibraryVMTemplates.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "content_library_vm_templates")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "content_library_vm_templates")
 			}
 			return err
 		}
@@ -1030,6 +1182,22 @@ func (m *AddLabelsToResourcesParamsData) contextValidateIscsiTargets(ctx context
 	return nil
 }
 
+func (m *AddLabelsToResourcesParamsData) contextValidateIsolationPolicies(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IsolationPolicies != nil {
+		if err := m.IsolationPolicies.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "isolation_policies")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "isolation_policies")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *AddLabelsToResourcesParamsData) contextValidateNamespaceGroups(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NamespaceGroups != nil {
@@ -1134,6 +1302,22 @@ func (m *AddLabelsToResourcesParamsData) contextValidateNvmfSubsystems(ctx conte
 				return ve.ValidateName("data" + "." + "nvmf_subsystems")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "nvmf_subsystems")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AddLabelsToResourcesParamsData) contextValidateSecurityPolicies(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SecurityPolicies != nil {
+		if err := m.SecurityPolicies.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "security_policies")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "security_policies")
 			}
 			return err
 		}

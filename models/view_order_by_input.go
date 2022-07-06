@@ -30,12 +30,6 @@ func (m ViewOrderByInput) Pointer() *ViewOrderByInput {
 
 const (
 
-	// ViewOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ViewOrderByInputCreatedAtASC ViewOrderByInput = "createdAt_ASC"
-
-	// ViewOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ViewOrderByInputCreatedAtDESC ViewOrderByInput = "createdAt_DESC"
-
 	// ViewOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	ViewOrderByInputEntityAsyncStatusASC ViewOrderByInput = "entityAsyncStatus_ASC"
 
@@ -71,12 +65,6 @@ const (
 
 	// ViewOrderByInputTimeUnitDESC captures enum value "time_unit_DESC"
 	ViewOrderByInputTimeUnitDESC ViewOrderByInput = "time_unit_DESC"
-
-	// ViewOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ViewOrderByInputUpdatedAtASC ViewOrderByInput = "updatedAt_ASC"
-
-	// ViewOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ViewOrderByInputUpdatedAtDESC ViewOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -84,7 +72,7 @@ var viewOrderByInputEnum []interface{}
 
 func init() {
 	var res []ViewOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","time_span_ASC","time_span_DESC","time_unit_ASC","time_unit_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","time_span_ASC","time_span_DESC","time_unit_ASC","time_unit_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

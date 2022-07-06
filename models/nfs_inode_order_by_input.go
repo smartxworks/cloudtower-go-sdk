@@ -36,12 +36,6 @@ const (
 	// NfsInodeOrderByInputAssignedSizeDESC captures enum value "assigned_size_DESC"
 	NfsInodeOrderByInputAssignedSizeDESC NfsInodeOrderByInput = "assigned_size_DESC"
 
-	// NfsInodeOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	NfsInodeOrderByInputCreatedAtASC NfsInodeOrderByInput = "createdAt_ASC"
-
-	// NfsInodeOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	NfsInodeOrderByInputCreatedAtDESC NfsInodeOrderByInput = "createdAt_DESC"
-
 	// NfsInodeOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	NfsInodeOrderByInputEntityAsyncStatusASC NfsInodeOrderByInput = "entityAsyncStatus_ASC"
 
@@ -101,12 +95,6 @@ const (
 
 	// NfsInodeOrderByInputUniqueSizeDESC captures enum value "unique_size_DESC"
 	NfsInodeOrderByInputUniqueSizeDESC NfsInodeOrderByInput = "unique_size_DESC"
-
-	// NfsInodeOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	NfsInodeOrderByInputUpdatedAtASC NfsInodeOrderByInput = "updatedAt_ASC"
-
-	// NfsInodeOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	NfsInodeOrderByInputUpdatedAtDESC NfsInodeOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -114,7 +102,7 @@ var nfsInodeOrderByInputEnum []interface{}
 
 func init() {
 	var res []NfsInodeOrderByInput
-	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","file_ASC","file_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","local_updated_at_ASC","local_updated_at_DESC","name_ASC","name_DESC","parent_id_ASC","parent_id_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","unique_size_ASC","unique_size_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","file_ASC","file_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","local_updated_at_ASC","local_updated_at_DESC","name_ASC","name_DESC","parent_id_ASC","parent_id_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

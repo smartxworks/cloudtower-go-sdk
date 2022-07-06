@@ -30,23 +30,11 @@ func (m DeployOrderByInput) Pointer() *DeployOrderByInput {
 
 const (
 
-	// DeployOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	DeployOrderByInputCreatedAtASC DeployOrderByInput = "createdAt_ASC"
-
-	// DeployOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	DeployOrderByInputCreatedAtDESC DeployOrderByInput = "createdAt_DESC"
-
 	// DeployOrderByInputIDASC captures enum value "id_ASC"
 	DeployOrderByInputIDASC DeployOrderByInput = "id_ASC"
 
 	// DeployOrderByInputIDDESC captures enum value "id_DESC"
 	DeployOrderByInputIDDESC DeployOrderByInput = "id_DESC"
-
-	// DeployOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	DeployOrderByInputUpdatedAtASC DeployOrderByInput = "updatedAt_ASC"
-
-	// DeployOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	DeployOrderByInputUpdatedAtDESC DeployOrderByInput = "updatedAt_DESC"
 
 	// DeployOrderByInputVersionASC captures enum value "version_ASC"
 	DeployOrderByInputVersionASC DeployOrderByInput = "version_ASC"
@@ -60,7 +48,7 @@ var deployOrderByInputEnum []interface{}
 
 func init() {
 	var res []DeployOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","updatedAt_ASC","updatedAt_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","version_ASC","version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

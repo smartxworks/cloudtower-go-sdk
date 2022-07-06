@@ -30,12 +30,6 @@ func (m SnapshotPlanTaskOrderByInput) Pointer() *SnapshotPlanTaskOrderByInput {
 
 const (
 
-	// SnapshotPlanTaskOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	SnapshotPlanTaskOrderByInputCreatedAtASC SnapshotPlanTaskOrderByInput = "createdAt_ASC"
-
-	// SnapshotPlanTaskOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	SnapshotPlanTaskOrderByInputCreatedAtDESC SnapshotPlanTaskOrderByInput = "createdAt_DESC"
-
 	// SnapshotPlanTaskOrderByInputEndTimeASC captures enum value "end_time_ASC"
 	SnapshotPlanTaskOrderByInputEndTimeASC SnapshotPlanTaskOrderByInput = "end_time_ASC"
 
@@ -83,12 +77,6 @@ const (
 
 	// SnapshotPlanTaskOrderByInputTypeDESC captures enum value "type_DESC"
 	SnapshotPlanTaskOrderByInputTypeDESC SnapshotPlanTaskOrderByInput = "type_DESC"
-
-	// SnapshotPlanTaskOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	SnapshotPlanTaskOrderByInputUpdatedAtASC SnapshotPlanTaskOrderByInput = "updatedAt_ASC"
-
-	// SnapshotPlanTaskOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	SnapshotPlanTaskOrderByInputUpdatedAtDESC SnapshotPlanTaskOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -96,7 +84,7 @@ var snapshotPlanTaskOrderByInputEnum []interface{}
 
 func init() {
 	var res []SnapshotPlanTaskOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","end_time_ASC","end_time_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","local_id_ASC","local_id_DESC","start_time_ASC","start_time_DESC","status_ASC","status_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["end_time_ASC","end_time_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","local_id_ASC","local_id_DESC","start_time_ASC","start_time_DESC","status_ASC","status_DESC","type_ASC","type_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

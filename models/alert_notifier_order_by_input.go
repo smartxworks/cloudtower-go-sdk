@@ -30,12 +30,6 @@ func (m AlertNotifierOrderByInput) Pointer() *AlertNotifierOrderByInput {
 
 const (
 
-	// AlertNotifierOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	AlertNotifierOrderByInputCreatedAtASC AlertNotifierOrderByInput = "createdAt_ASC"
-
-	// AlertNotifierOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	AlertNotifierOrderByInputCreatedAtDESC AlertNotifierOrderByInput = "createdAt_DESC"
-
 	// AlertNotifierOrderByInputDisabledASC captures enum value "disabled_ASC"
 	AlertNotifierOrderByInputDisabledASC AlertNotifierOrderByInput = "disabled_ASC"
 
@@ -60,12 +54,6 @@ const (
 	// AlertNotifierOrderByInputLanguageCodeDESC captures enum value "language_code_DESC"
 	AlertNotifierOrderByInputLanguageCodeDESC AlertNotifierOrderByInput = "language_code_DESC"
 
-	// AlertNotifierOrderByInputPasswordASC captures enum value "password_ASC"
-	AlertNotifierOrderByInputPasswordASC AlertNotifierOrderByInput = "password_ASC"
-
-	// AlertNotifierOrderByInputPasswordDESC captures enum value "password_DESC"
-	AlertNotifierOrderByInputPasswordDESC AlertNotifierOrderByInput = "password_DESC"
-
 	// AlertNotifierOrderByInputSecurityModeASC captures enum value "security_mode_ASC"
 	AlertNotifierOrderByInputSecurityModeASC AlertNotifierOrderByInput = "security_mode_ASC"
 
@@ -84,12 +72,6 @@ const (
 	// AlertNotifierOrderByInputSMTPServerPortDESC captures enum value "smtp_server_port_DESC"
 	AlertNotifierOrderByInputSMTPServerPortDESC AlertNotifierOrderByInput = "smtp_server_port_DESC"
 
-	// AlertNotifierOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	AlertNotifierOrderByInputUpdatedAtASC AlertNotifierOrderByInput = "updatedAt_ASC"
-
-	// AlertNotifierOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	AlertNotifierOrderByInputUpdatedAtDESC AlertNotifierOrderByInput = "updatedAt_DESC"
-
 	// AlertNotifierOrderByInputUsernameASC captures enum value "username_ASC"
 	AlertNotifierOrderByInputUsernameASC AlertNotifierOrderByInput = "username_ASC"
 
@@ -102,7 +84,7 @@ var alertNotifierOrderByInputEnum []interface{}
 
 func init() {
 	var res []AlertNotifierOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","disabled_ASC","disabled_DESC","email_from_ASC","email_from_DESC","id_ASC","id_DESC","language_code_ASC","language_code_DESC","password_ASC","password_DESC","security_mode_ASC","security_mode_DESC","smtp_server_host_ASC","smtp_server_host_DESC","smtp_server_port_ASC","smtp_server_port_DESC","updatedAt_ASC","updatedAt_DESC","username_ASC","username_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["disabled_ASC","disabled_DESC","email_from_ASC","email_from_DESC","id_ASC","id_DESC","language_code_ASC","language_code_DESC","security_mode_ASC","security_mode_DESC","smtp_server_host_ASC","smtp_server_host_DESC","smtp_server_port_ASC","smtp_server_port_DESC","username_ASC","username_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

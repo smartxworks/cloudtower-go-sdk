@@ -30,12 +30,6 @@ func (m NicOrderByInput) Pointer() *NicOrderByInput {
 
 const (
 
-	// NicOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	NicOrderByInputCreatedAtASC NicOrderByInput = "createdAt_ASC"
-
-	// NicOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	NicOrderByInputCreatedAtDESC NicOrderByInput = "createdAt_DESC"
-
 	// NicOrderByInputDriverASC captures enum value "driver_ASC"
 	NicOrderByInputDriverASC NicOrderByInput = "driver_ASC"
 
@@ -168,12 +162,6 @@ const (
 	// NicOrderByInputUpDESC captures enum value "up_DESC"
 	NicOrderByInputUpDESC NicOrderByInput = "up_DESC"
 
-	// NicOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	NicOrderByInputUpdatedAtASC NicOrderByInput = "updatedAt_ASC"
-
-	// NicOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	NicOrderByInputUpdatedAtDESC NicOrderByInput = "updatedAt_DESC"
-
 	// NicOrderByInputUsedVfNumASC captures enum value "used_vf_num_ASC"
 	NicOrderByInputUsedVfNumASC NicOrderByInput = "used_vf_num_ASC"
 
@@ -186,7 +174,7 @@ var nicOrderByInputEnum []interface{}
 
 func init() {
 	var res []NicOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","driver_ASC","driver_DESC","driver_state_ASC","driver_state_DESC","gateway_ip_ASC","gateway_ip_DESC","ibdev_ASC","ibdev_DESC","id_ASC","id_DESC","ip_address_ASC","ip_address_DESC","is_sriov_ASC","is_sriov_DESC","local_id_ASC","local_id_DESC","mac_address_ASC","mac_address_DESC","max_vf_num_ASC","max_vf_num_DESC","model_ASC","model_DESC","mtu_ASC","mtu_DESC","name_ASC","name_DESC","nic_uuid_ASC","nic_uuid_DESC","physical_ASC","physical_DESC","rdma_enabled_ASC","rdma_enabled_DESC","running_ASC","running_DESC","speed_ASC","speed_DESC","subnet_mask_ASC","subnet_mask_DESC","total_vf_num_ASC","total_vf_num_DESC","type_ASC","type_DESC","up_ASC","up_DESC","updatedAt_ASC","updatedAt_DESC","used_vf_num_ASC","used_vf_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["driver_ASC","driver_DESC","driver_state_ASC","driver_state_DESC","gateway_ip_ASC","gateway_ip_DESC","ibdev_ASC","ibdev_DESC","id_ASC","id_DESC","ip_address_ASC","ip_address_DESC","is_sriov_ASC","is_sriov_DESC","local_id_ASC","local_id_DESC","mac_address_ASC","mac_address_DESC","max_vf_num_ASC","max_vf_num_DESC","model_ASC","model_DESC","mtu_ASC","mtu_DESC","name_ASC","name_DESC","nic_uuid_ASC","nic_uuid_DESC","physical_ASC","physical_DESC","rdma_enabled_ASC","rdma_enabled_DESC","running_ASC","running_DESC","speed_ASC","speed_DESC","subnet_mask_ASC","subnet_mask_DESC","total_vf_num_ASC","total_vf_num_DESC","type_ASC","type_DESC","up_ASC","up_DESC","used_vf_num_ASC","used_vf_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

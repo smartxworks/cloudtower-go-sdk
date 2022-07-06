@@ -30,12 +30,6 @@ func (m ClusterUpgradeHistoryOrderByInput) Pointer() *ClusterUpgradeHistoryOrder
 
 const (
 
-	// ClusterUpgradeHistoryOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ClusterUpgradeHistoryOrderByInputCreatedAtASC ClusterUpgradeHistoryOrderByInput = "createdAt_ASC"
-
-	// ClusterUpgradeHistoryOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ClusterUpgradeHistoryOrderByInputCreatedAtDESC ClusterUpgradeHistoryOrderByInput = "createdAt_DESC"
-
 	// ClusterUpgradeHistoryOrderByInputDateASC captures enum value "date_ASC"
 	ClusterUpgradeHistoryOrderByInputDateASC ClusterUpgradeHistoryOrderByInput = "date_ASC"
 
@@ -72,12 +66,6 @@ const (
 	// ClusterUpgradeHistoryOrderByInputTaskUUIDDESC captures enum value "task_uuid_DESC"
 	ClusterUpgradeHistoryOrderByInputTaskUUIDDESC ClusterUpgradeHistoryOrderByInput = "task_uuid_DESC"
 
-	// ClusterUpgradeHistoryOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ClusterUpgradeHistoryOrderByInputUpdatedAtASC ClusterUpgradeHistoryOrderByInput = "updatedAt_ASC"
-
-	// ClusterUpgradeHistoryOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ClusterUpgradeHistoryOrderByInputUpdatedAtDESC ClusterUpgradeHistoryOrderByInput = "updatedAt_DESC"
-
 	// ClusterUpgradeHistoryOrderByInputVersionASC captures enum value "version_ASC"
 	ClusterUpgradeHistoryOrderByInputVersionASC ClusterUpgradeHistoryOrderByInput = "version_ASC"
 
@@ -90,7 +78,7 @@ var clusterUpgradeHistoryOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterUpgradeHistoryOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","date_ASC","date_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","progress_ASC","progress_DESC","result_ASC","result_DESC","task_uuid_ASC","task_uuid_DESC","updatedAt_ASC","updatedAt_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["date_ASC","date_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","progress_ASC","progress_DESC","result_ASC","result_DESC","task_uuid_ASC","task_uuid_DESC","version_ASC","version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

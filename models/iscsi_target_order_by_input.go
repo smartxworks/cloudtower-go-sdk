@@ -102,12 +102,6 @@ const (
 	// IscsiTargetOrderByInputChapSecretDESC captures enum value "chap_secret_DESC"
 	IscsiTargetOrderByInputChapSecretDESC IscsiTargetOrderByInput = "chap_secret_DESC"
 
-	// IscsiTargetOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	IscsiTargetOrderByInputCreatedAtASC IscsiTargetOrderByInput = "createdAt_ASC"
-
-	// IscsiTargetOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	IscsiTargetOrderByInputCreatedAtDESC IscsiTargetOrderByInput = "createdAt_DESC"
-
 	// IscsiTargetOrderByInputDescriptionASC captures enum value "description_ASC"
 	IscsiTargetOrderByInputDescriptionASC IscsiTargetOrderByInput = "description_ASC"
 
@@ -257,12 +251,6 @@ const (
 
 	// IscsiTargetOrderByInputThinProvisionDESC captures enum value "thin_provision_DESC"
 	IscsiTargetOrderByInputThinProvisionDESC IscsiTargetOrderByInput = "thin_provision_DESC"
-
-	// IscsiTargetOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	IscsiTargetOrderByInputUpdatedAtASC IscsiTargetOrderByInput = "updatedAt_ASC"
-
-	// IscsiTargetOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	IscsiTargetOrderByInputUpdatedAtDESC IscsiTargetOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -270,7 +258,7 @@ var iscsiTargetOrderByInputEnum []interface{}
 
 func init() {
 	var res []IscsiTargetOrderByInput
-	if err := json.Unmarshal([]byte(`["bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","chap_enabled_ASC","chap_enabled_DESC","chap_name_ASC","chap_name_DESC","chap_secret_ASC","chap_secret_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_use_ASC","external_use_DESC","id_ASC","id_DESC","initiator_chaps_ASC","initiator_chaps_DESC","internal_ASC","internal_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","ip_whitelist_ASC","ip_whitelist_DESC","iqn_name_ASC","iqn_name_DESC","iqn_whitelist_ASC","iqn_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","chap_enabled_ASC","chap_enabled_DESC","chap_name_ASC","chap_name_DESC","chap_secret_ASC","chap_secret_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_use_ASC","external_use_DESC","id_ASC","id_DESC","initiator_chaps_ASC","initiator_chaps_DESC","internal_ASC","internal_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","ip_whitelist_ASC","ip_whitelist_DESC","iqn_name_ASC","iqn_name_DESC","iqn_whitelist_ASC","iqn_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

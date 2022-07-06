@@ -42,12 +42,6 @@ const (
 	// EverouteClusterOrderByInputControllerTemplateDESC captures enum value "controller_template_DESC"
 	EverouteClusterOrderByInputControllerTemplateDESC EverouteClusterOrderByInput = "controller_template_DESC"
 
-	// EverouteClusterOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	EverouteClusterOrderByInputCreatedAtASC EverouteClusterOrderByInput = "createdAt_ASC"
-
-	// EverouteClusterOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	EverouteClusterOrderByInputCreatedAtDESC EverouteClusterOrderByInput = "createdAt_DESC"
-
 	// EverouteClusterOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	EverouteClusterOrderByInputEntityAsyncStatusASC EverouteClusterOrderByInput = "entityAsyncStatus_ASC"
 
@@ -96,12 +90,6 @@ const (
 	// EverouteClusterOrderByInputStatusDESC captures enum value "status_DESC"
 	EverouteClusterOrderByInputStatusDESC EverouteClusterOrderByInput = "status_DESC"
 
-	// EverouteClusterOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	EverouteClusterOrderByInputUpdatedAtASC EverouteClusterOrderByInput = "updatedAt_ASC"
-
-	// EverouteClusterOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	EverouteClusterOrderByInputUpdatedAtDESC EverouteClusterOrderByInput = "updatedAt_DESC"
-
 	// EverouteClusterOrderByInputVersionASC captures enum value "version_ASC"
 	EverouteClusterOrderByInputVersionASC EverouteClusterOrderByInput = "version_ASC"
 
@@ -114,7 +102,7 @@ var everouteClusterOrderByInputEnum []interface{}
 
 func init() {
 	var res []EverouteClusterOrderByInput
-	if err := json.Unmarshal([]byte(`["controller_instances_ASC","controller_instances_DESC","controller_template_ASC","controller_template_DESC","createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","global_default_action_ASC","global_default_action_DESC","global_whitelist_ASC","global_whitelist_DESC","id_ASC","id_DESC","installed_ASC","installed_DESC","name_ASC","name_DESC","phase_ASC","phase_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["controller_instances_ASC","controller_instances_DESC","controller_template_ASC","controller_template_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","global_default_action_ASC","global_default_action_DESC","global_whitelist_ASC","global_whitelist_DESC","id_ASC","id_DESC","installed_ASC","installed_DESC","name_ASC","name_DESC","phase_ASC","phase_DESC","status_ASC","status_DESC","version_ASC","version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

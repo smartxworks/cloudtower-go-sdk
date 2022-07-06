@@ -30,12 +30,6 @@ func (m ElfStoragePolicyOrderByInput) Pointer() *ElfStoragePolicyOrderByInput {
 
 const (
 
-	// ElfStoragePolicyOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ElfStoragePolicyOrderByInputCreatedAtASC ElfStoragePolicyOrderByInput = "createdAt_ASC"
-
-	// ElfStoragePolicyOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ElfStoragePolicyOrderByInputCreatedAtDESC ElfStoragePolicyOrderByInput = "createdAt_DESC"
-
 	// ElfStoragePolicyOrderByInputDescriptionASC captures enum value "description_ASC"
 	ElfStoragePolicyOrderByInputDescriptionASC ElfStoragePolicyOrderByInput = "description_ASC"
 
@@ -89,12 +83,6 @@ const (
 
 	// ElfStoragePolicyOrderByInputThinProvisionDESC captures enum value "thin_provision_DESC"
 	ElfStoragePolicyOrderByInputThinProvisionDESC ElfStoragePolicyOrderByInput = "thin_provision_DESC"
-
-	// ElfStoragePolicyOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ElfStoragePolicyOrderByInputUpdatedAtASC ElfStoragePolicyOrderByInput = "updatedAt_ASC"
-
-	// ElfStoragePolicyOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ElfStoragePolicyOrderByInputUpdatedAtDESC ElfStoragePolicyOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -102,7 +90,7 @@ var elfStoragePolicyOrderByInputEnum []interface{}
 
 func init() {
 	var res []ElfStoragePolicyOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

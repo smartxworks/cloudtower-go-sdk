@@ -186,12 +186,6 @@ const (
 	// LabelOrderByInputTotalNumDESC captures enum value "total_num_DESC"
 	LabelOrderByInputTotalNumDESC LabelOrderByInput = "total_num_DESC"
 
-	// LabelOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	LabelOrderByInputUpdatedAtASC LabelOrderByInput = "updatedAt_ASC"
-
-	// LabelOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	LabelOrderByInputUpdatedAtDESC LabelOrderByInput = "updatedAt_DESC"
-
 	// LabelOrderByInputValueASC captures enum value "value_ASC"
 	LabelOrderByInputValueASC LabelOrderByInput = "value_ASC"
 
@@ -240,7 +234,7 @@ var labelOrderByInputEnum []interface{}
 
 func init() {
 	var res []LabelOrderByInput
-	if err := json.Unmarshal([]byte(`["cluster_num_ASC","cluster_num_DESC","consistency_group_num_ASC","consistency_group_num_DESC","consistency_group_snapshot_num_ASC","consistency_group_snapshot_num_DESC","content_library_image_num_ASC","content_library_image_num_DESC","content_library_vm_template_num_ASC","content_library_vm_template_num_DESC","createdAt_ASC","createdAt_DESC","datacenter_num_ASC","datacenter_num_DESC","disk_num_ASC","disk_num_DESC","elf_image_num_ASC","elf_image_num_DESC","host_num_ASC","host_num_DESC","id_ASC","id_DESC","iscsi_lun_num_ASC","iscsi_lun_num_DESC","iscsi_lun_snapshot_num_ASC","iscsi_lun_snapshot_num_DESC","iscsi_target_num_ASC","iscsi_target_num_DESC","isolation_policy_num_ASC","isolation_policy_num_DESC","key_ASC","key_DESC","namespace_group_num_ASC","namespace_group_num_DESC","nfs_export_num_ASC","nfs_export_num_DESC","nfs_inode_num_ASC","nfs_inode_num_DESC","nic_num_ASC","nic_num_DESC","nvmf_namespace_num_ASC","nvmf_namespace_num_DESC","nvmf_namespace_snapshot_num_ASC","nvmf_namespace_snapshot_num_DESC","nvmf_subsystem_num_ASC","nvmf_subsystem_num_DESC","security_policy_num_ASC","security_policy_num_DESC","system_vlan_num_ASC","system_vlan_num_DESC","total_num_ASC","total_num_DESC","updatedAt_ASC","updatedAt_DESC","value_ASC","value_DESC","vds_num_ASC","vds_num_DESC","vm_num_ASC","vm_num_DESC","vm_snapshot_num_ASC","vm_snapshot_num_DESC","vm_template_num_ASC","vm_template_num_DESC","vm_vlan_num_ASC","vm_vlan_num_DESC","vm_volume_num_ASC","vm_volume_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["cluster_num_ASC","cluster_num_DESC","consistency_group_num_ASC","consistency_group_num_DESC","consistency_group_snapshot_num_ASC","consistency_group_snapshot_num_DESC","content_library_image_num_ASC","content_library_image_num_DESC","content_library_vm_template_num_ASC","content_library_vm_template_num_DESC","createdAt_ASC","createdAt_DESC","datacenter_num_ASC","datacenter_num_DESC","disk_num_ASC","disk_num_DESC","elf_image_num_ASC","elf_image_num_DESC","host_num_ASC","host_num_DESC","id_ASC","id_DESC","iscsi_lun_num_ASC","iscsi_lun_num_DESC","iscsi_lun_snapshot_num_ASC","iscsi_lun_snapshot_num_DESC","iscsi_target_num_ASC","iscsi_target_num_DESC","isolation_policy_num_ASC","isolation_policy_num_DESC","key_ASC","key_DESC","namespace_group_num_ASC","namespace_group_num_DESC","nfs_export_num_ASC","nfs_export_num_DESC","nfs_inode_num_ASC","nfs_inode_num_DESC","nic_num_ASC","nic_num_DESC","nvmf_namespace_num_ASC","nvmf_namespace_num_DESC","nvmf_namespace_snapshot_num_ASC","nvmf_namespace_snapshot_num_DESC","nvmf_subsystem_num_ASC","nvmf_subsystem_num_DESC","security_policy_num_ASC","security_policy_num_DESC","system_vlan_num_ASC","system_vlan_num_DESC","total_num_ASC","total_num_DESC","value_ASC","value_DESC","vds_num_ASC","vds_num_DESC","vm_num_ASC","vm_num_DESC","vm_snapshot_num_ASC","vm_snapshot_num_DESC","vm_template_num_ASC","vm_template_num_DESC","vm_vlan_num_ASC","vm_vlan_num_DESC","vm_volume_num_ASC","vm_volume_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

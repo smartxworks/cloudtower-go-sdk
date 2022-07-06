@@ -30,12 +30,6 @@ func (m VMVolumeOrderByInput) Pointer() *VMVolumeOrderByInput {
 
 const (
 
-	// VMVolumeOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VMVolumeOrderByInputCreatedAtASC VMVolumeOrderByInput = "createdAt_ASC"
-
-	// VMVolumeOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VMVolumeOrderByInputCreatedAtDESC VMVolumeOrderByInput = "createdAt_DESC"
-
 	// VMVolumeOrderByInputDescriptionASC captures enum value "description_ASC"
 	VMVolumeOrderByInputDescriptionASC VMVolumeOrderByInput = "description_ASC"
 
@@ -113,12 +107,6 @@ const (
 
 	// VMVolumeOrderByInputUniqueSizeDESC captures enum value "unique_size_DESC"
 	VMVolumeOrderByInputUniqueSizeDESC VMVolumeOrderByInput = "unique_size_DESC"
-
-	// VMVolumeOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VMVolumeOrderByInputUpdatedAtASC VMVolumeOrderByInput = "updatedAt_ASC"
-
-	// VMVolumeOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VMVolumeOrderByInputUpdatedAtDESC VMVolumeOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -126,7 +114,7 @@ var vmVolumeOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMVolumeOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","guest_size_usage_ASC","guest_size_usage_DESC","guest_used_size_ASC","guest_used_size_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","mounting_ASC","mounting_DESC","name_ASC","name_DESC","path_ASC","path_DESC","sharing_ASC","sharing_DESC","size_ASC","size_DESC","unique_size_ASC","unique_size_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","guest_size_usage_ASC","guest_size_usage_DESC","guest_used_size_ASC","guest_used_size_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","mounting_ASC","mounting_DESC","name_ASC","name_DESC","path_ASC","path_DESC","sharing_ASC","sharing_DESC","size_ASC","size_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

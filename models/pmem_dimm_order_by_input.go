@@ -36,12 +36,6 @@ const (
 	// PmemDimmOrderByInputCapacityDESC captures enum value "capacity_DESC"
 	PmemDimmOrderByInputCapacityDESC PmemDimmOrderByInput = "capacity_DESC"
 
-	// PmemDimmOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	PmemDimmOrderByInputCreatedAtASC PmemDimmOrderByInput = "createdAt_ASC"
-
-	// PmemDimmOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	PmemDimmOrderByInputCreatedAtDESC PmemDimmOrderByInput = "createdAt_DESC"
-
 	// PmemDimmOrderByInputDeviceLocatorASC captures enum value "device_locator_ASC"
 	PmemDimmOrderByInputDeviceLocatorASC PmemDimmOrderByInput = "device_locator_ASC"
 
@@ -90,12 +84,6 @@ const (
 	// PmemDimmOrderByInputRemainingLifePercentDESC captures enum value "remaining_life_percent_DESC"
 	PmemDimmOrderByInputRemainingLifePercentDESC PmemDimmOrderByInput = "remaining_life_percent_DESC"
 
-	// PmemDimmOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	PmemDimmOrderByInputUpdatedAtASC PmemDimmOrderByInput = "updatedAt_ASC"
-
-	// PmemDimmOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	PmemDimmOrderByInputUpdatedAtDESC PmemDimmOrderByInput = "updatedAt_DESC"
-
 	// PmemDimmOrderByInputVersionASC captures enum value "version_ASC"
 	PmemDimmOrderByInputVersionASC PmemDimmOrderByInput = "version_ASC"
 
@@ -108,7 +96,7 @@ var pmemDimmOrderByInputEnum []interface{}
 
 func init() {
 	var res []PmemDimmOrderByInput
-	if err := json.Unmarshal([]byte(`["capacity_ASC","capacity_DESC","createdAt_ASC","createdAt_DESC","device_locator_ASC","device_locator_DESC","health_status_ASC","health_status_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","numa_node_ASC","numa_node_DESC","part_number_ASC","part_number_DESC","remaining_life_percent_ASC","remaining_life_percent_DESC","updatedAt_ASC","updatedAt_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["capacity_ASC","capacity_DESC","device_locator_ASC","device_locator_DESC","health_status_ASC","health_status_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","numa_node_ASC","numa_node_DESC","part_number_ASC","part_number_DESC","remaining_life_percent_ASC","remaining_life_percent_DESC","version_ASC","version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

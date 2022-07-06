@@ -40,7 +40,15 @@ type ClientService interface {
 
 	UpdateCluster(params *UpdateClusterParams, opts ...ClientOption) (*UpdateClusterOK, error)
 
+	UpdateClusterEnableISCSISetting(params *UpdateClusterEnableISCSISettingParams, opts ...ClientOption) (*UpdateClusterEnableISCSISettingOK, error)
+
+	UpdateClusterHaSetting(params *UpdateClusterHaSettingParams, opts ...ClientOption) (*UpdateClusterHaSettingOK, error)
+
 	UpdateClusterLicense(params *UpdateClusterLicenseParams, opts ...ClientOption) (*UpdateClusterLicenseOK, error)
+
+	UpdateClusterNetworkSetting(params *UpdateClusterNetworkSettingParams, opts ...ClientOption) (*UpdateClusterNetworkSettingOK, error)
+
+	UpdateClusterVirtualizationSetting(params *UpdateClusterVirtualizationSettingParams, opts ...ClientOption) (*UpdateClusterVirtualizationSettingOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -236,6 +244,82 @@ func (a *Client) UpdateCluster(params *UpdateClusterParams, opts ...ClientOption
 }
 
 /*
+  UpdateClusterEnableISCSISetting update cluster enable i s c s i setting API
+*/
+func (a *Client) UpdateClusterEnableISCSISetting(params *UpdateClusterEnableISCSISettingParams, opts ...ClientOption) (*UpdateClusterEnableISCSISettingOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateClusterEnableISCSISettingParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateClusterEnableISCSISetting",
+		Method:             "POST",
+		PathPattern:        "/update-cluster-enable-iscsi-setting",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateClusterEnableISCSISettingReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateClusterEnableISCSISettingOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateClusterEnableISCSISetting: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateClusterHaSetting update cluster ha setting API
+*/
+func (a *Client) UpdateClusterHaSetting(params *UpdateClusterHaSettingParams, opts ...ClientOption) (*UpdateClusterHaSettingOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateClusterHaSettingParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateClusterHaSetting",
+		Method:             "POST",
+		PathPattern:        "/update-cluster-ha-setting",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateClusterHaSettingReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateClusterHaSettingOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateClusterHaSetting: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   UpdateClusterLicense update cluster license API
 */
 func (a *Client) UpdateClusterLicense(params *UpdateClusterLicenseParams, opts ...ClientOption) (*UpdateClusterLicenseOK, error) {
@@ -270,6 +354,82 @@ func (a *Client) UpdateClusterLicense(params *UpdateClusterLicenseParams, opts .
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateClusterLicense: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateClusterNetworkSetting update cluster network setting API
+*/
+func (a *Client) UpdateClusterNetworkSetting(params *UpdateClusterNetworkSettingParams, opts ...ClientOption) (*UpdateClusterNetworkSettingOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateClusterNetworkSettingParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateClusterNetworkSetting",
+		Method:             "POST",
+		PathPattern:        "/update-cluster-network-setting",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateClusterNetworkSettingReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateClusterNetworkSettingOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateClusterNetworkSetting: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateClusterVirtualizationSetting update cluster virtualization setting API
+*/
+func (a *Client) UpdateClusterVirtualizationSetting(params *UpdateClusterVirtualizationSettingParams, opts ...ClientOption) (*UpdateClusterVirtualizationSettingOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateClusterVirtualizationSettingParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateClusterVirtualizationSetting",
+		Method:             "POST",
+		PathPattern:        "/update-cluster-virtualization-setting",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateClusterVirtualizationSettingReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateClusterVirtualizationSettingOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateClusterVirtualizationSetting: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

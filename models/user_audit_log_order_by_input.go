@@ -89,12 +89,6 @@ const (
 
 	// UserAuditLogOrderByInputStatusDESC captures enum value "status_DESC"
 	UserAuditLogOrderByInputStatusDESC UserAuditLogOrderByInput = "status_DESC"
-
-	// UserAuditLogOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	UserAuditLogOrderByInputUpdatedAtASC UserAuditLogOrderByInput = "updatedAt_ASC"
-
-	// UserAuditLogOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	UserAuditLogOrderByInputUpdatedAtDESC UserAuditLogOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -102,7 +96,7 @@ var userAuditLogOrderByInputEnum []interface{}
 
 func init() {
 	var res []UserAuditLogOrderByInput
-	if err := json.Unmarshal([]byte(`["action_ASC","action_DESC","createdAt_ASC","createdAt_DESC","finished_at_ASC","finished_at_DESC","id_ASC","id_DESC","ip_address_ASC","ip_address_DESC","message_ASC","message_DESC","resource_id_ASC","resource_id_DESC","resource_type_ASC","resource_type_DESC","started_at_ASC","started_at_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["action_ASC","action_DESC","createdAt_ASC","createdAt_DESC","finished_at_ASC","finished_at_DESC","id_ASC","id_DESC","ip_address_ASC","ip_address_DESC","message_ASC","message_DESC","resource_id_ASC","resource_id_DESC","resource_type_ASC","resource_type_DESC","started_at_ASC","started_at_DESC","status_ASC","status_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

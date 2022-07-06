@@ -30,12 +30,6 @@ func (m VMNicOrderByInput) Pointer() *VMNicOrderByInput {
 
 const (
 
-	// VMNicOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VMNicOrderByInputCreatedAtASC VMNicOrderByInput = "createdAt_ASC"
-
-	// VMNicOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VMNicOrderByInputCreatedAtDESC VMNicOrderByInput = "createdAt_DESC"
-
 	// VMNicOrderByInputEnabledASC captures enum value "enabled_ASC"
 	VMNicOrderByInputEnabledASC VMNicOrderByInput = "enabled_ASC"
 
@@ -101,12 +95,6 @@ const (
 
 	// VMNicOrderByInputSubnetMaskDESC captures enum value "subnet_mask_DESC"
 	VMNicOrderByInputSubnetMaskDESC VMNicOrderByInput = "subnet_mask_DESC"
-
-	// VMNicOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VMNicOrderByInputUpdatedAtASC VMNicOrderByInput = "updatedAt_ASC"
-
-	// VMNicOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VMNicOrderByInputUpdatedAtDESC VMNicOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -114,7 +102,7 @@ var vmNicOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMNicOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","enabled_ASC","enabled_DESC","gateway_ASC","gateway_DESC","id_ASC","id_DESC","interface_id_ASC","interface_id_DESC","ip_address_ASC","ip_address_DESC","local_id_ASC","local_id_DESC","mac_address_ASC","mac_address_DESC","mirror_ASC","mirror_DESC","model_ASC","model_DESC","order_ASC","order_DESC","subnet_mask_ASC","subnet_mask_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["enabled_ASC","enabled_DESC","gateway_ASC","gateway_DESC","id_ASC","id_DESC","interface_id_ASC","interface_id_DESC","ip_address_ASC","ip_address_DESC","local_id_ASC","local_id_DESC","mac_address_ASC","mac_address_DESC","mirror_ASC","mirror_DESC","model_ASC","model_DESC","order_ASC","order_DESC","subnet_mask_ASC","subnet_mask_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

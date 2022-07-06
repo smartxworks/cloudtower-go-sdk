@@ -30,12 +30,6 @@ func (m OrganizationOrderByInput) Pointer() *OrganizationOrderByInput {
 
 const (
 
-	// OrganizationOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	OrganizationOrderByInputCreatedAtASC OrganizationOrderByInput = "createdAt_ASC"
-
-	// OrganizationOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	OrganizationOrderByInputCreatedAtDESC OrganizationOrderByInput = "createdAt_DESC"
-
 	// OrganizationOrderByInputIDASC captures enum value "id_ASC"
 	OrganizationOrderByInputIDASC OrganizationOrderByInput = "id_ASC"
 
@@ -47,12 +41,6 @@ const (
 
 	// OrganizationOrderByInputNameDESC captures enum value "name_DESC"
 	OrganizationOrderByInputNameDESC OrganizationOrderByInput = "name_DESC"
-
-	// OrganizationOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	OrganizationOrderByInputUpdatedAtASC OrganizationOrderByInput = "updatedAt_ASC"
-
-	// OrganizationOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	OrganizationOrderByInputUpdatedAtDESC OrganizationOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -60,7 +48,7 @@ var organizationOrderByInputEnum []interface{}
 
 func init() {
 	var res []OrganizationOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","name_ASC","name_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","name_ASC","name_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

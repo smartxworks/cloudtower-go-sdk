@@ -60,7 +60,7 @@ func NewCreateElfImageParamsWithHTTPClient(client *http.Client) *CreateElfImageP
 type CreateElfImageParams struct {
 
 	// ClusterID.
-	ClusterID string
+	ClusterID *string
 
 	// ContentLanguage.
 	//
@@ -68,16 +68,16 @@ type CreateElfImageParams struct {
 	ContentLanguage *string
 
 	// Description.
-	Description string
+	Description *string
 
 	// File.
 	File runtime.NamedReadCloser
 
 	// Name.
-	Name string
+	Name *string
 
 	// Size.
-	Size string
+	Size *string
 
 	// UploadTaskID.
 	UploadTaskID *string
@@ -147,13 +147,13 @@ func (o *CreateElfImageParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithClusterID adds the clusterID to the create elf image params
-func (o *CreateElfImageParams) WithClusterID(clusterID string) *CreateElfImageParams {
+func (o *CreateElfImageParams) WithClusterID(clusterID *string) *CreateElfImageParams {
 	o.SetClusterID(clusterID)
 	return o
 }
 
 // SetClusterID adds the clusterId to the create elf image params
-func (o *CreateElfImageParams) SetClusterID(clusterID string) {
+func (o *CreateElfImageParams) SetClusterID(clusterID *string) {
 	o.ClusterID = clusterID
 }
 
@@ -169,13 +169,13 @@ func (o *CreateElfImageParams) SetContentLanguage(contentLanguage *string) {
 }
 
 // WithDescription adds the description to the create elf image params
-func (o *CreateElfImageParams) WithDescription(description string) *CreateElfImageParams {
+func (o *CreateElfImageParams) WithDescription(description *string) *CreateElfImageParams {
 	o.SetDescription(description)
 	return o
 }
 
 // SetDescription adds the description to the create elf image params
-func (o *CreateElfImageParams) SetDescription(description string) {
+func (o *CreateElfImageParams) SetDescription(description *string) {
 	o.Description = description
 }
 
@@ -191,24 +191,24 @@ func (o *CreateElfImageParams) SetFile(file runtime.NamedReadCloser) {
 }
 
 // WithName adds the name to the create elf image params
-func (o *CreateElfImageParams) WithName(name string) *CreateElfImageParams {
+func (o *CreateElfImageParams) WithName(name *string) *CreateElfImageParams {
 	o.SetName(name)
 	return o
 }
 
 // SetName adds the name to the create elf image params
-func (o *CreateElfImageParams) SetName(name string) {
+func (o *CreateElfImageParams) SetName(name *string) {
 	o.Name = name
 }
 
 // WithSize adds the size to the create elf image params
-func (o *CreateElfImageParams) WithSize(size string) *CreateElfImageParams {
+func (o *CreateElfImageParams) WithSize(size *string) *CreateElfImageParams {
 	o.SetSize(size)
 	return o
 }
 
 // SetSize adds the size to the create elf image params
-func (o *CreateElfImageParams) SetSize(size string) {
+func (o *CreateElfImageParams) SetSize(size *string) {
 	o.Size = size
 }
 
@@ -231,12 +231,18 @@ func (o *CreateElfImageParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	}
 	var res []error
 
-	// form param cluster_id
-	frClusterID := o.ClusterID
-	fClusterID := frClusterID
-	if fClusterID != "" {
-		if err := r.SetFormParam("cluster_id", fClusterID); err != nil {
-			return err
+	if o.ClusterID != nil {
+
+		// form param cluster_id
+		var frClusterID string
+		if o.ClusterID != nil {
+			frClusterID = *o.ClusterID
+		}
+		fClusterID := frClusterID
+		if fClusterID != "" {
+			if err := r.SetFormParam("cluster_id", fClusterID); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -248,12 +254,18 @@ func (o *CreateElfImageParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		}
 	}
 
-	// form param description
-	frDescription := o.Description
-	fDescription := frDescription
-	if fDescription != "" {
-		if err := r.SetFormParam("description", fDescription); err != nil {
-			return err
+	if o.Description != nil {
+
+		// form param description
+		var frDescription string
+		if o.Description != nil {
+			frDescription = *o.Description
+		}
+		fDescription := frDescription
+		if fDescription != "" {
+			if err := r.SetFormParam("description", fDescription); err != nil {
+				return err
+			}
 		}
 	}
 	// form file param file
@@ -261,21 +273,33 @@ func (o *CreateElfImageParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 
-	// form param name
-	frName := o.Name
-	fName := frName
-	if fName != "" {
-		if err := r.SetFormParam("name", fName); err != nil {
-			return err
+	if o.Name != nil {
+
+		// form param name
+		var frName string
+		if o.Name != nil {
+			frName = *o.Name
+		}
+		fName := frName
+		if fName != "" {
+			if err := r.SetFormParam("name", fName); err != nil {
+				return err
+			}
 		}
 	}
 
-	// form param size
-	frSize := o.Size
-	fSize := frSize
-	if fSize != "" {
-		if err := r.SetFormParam("size", fSize); err != nil {
-			return err
+	if o.Size != nil {
+
+		// form param size
+		var frSize string
+		if o.Size != nil {
+			frSize = *o.Size
+		}
+		fSize := frSize
+		if fSize != "" {
+			if err := r.SetFormParam("size", fSize); err != nil {
+				return err
+			}
 		}
 	}
 

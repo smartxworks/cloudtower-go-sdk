@@ -36,12 +36,6 @@ const (
 	// WitnessOrderByInputCPUHzPerCoreDESC captures enum value "cpu_hz_per_core_DESC"
 	WitnessOrderByInputCPUHzPerCoreDESC WitnessOrderByInput = "cpu_hz_per_core_DESC"
 
-	// WitnessOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	WitnessOrderByInputCreatedAtASC WitnessOrderByInput = "createdAt_ASC"
-
-	// WitnessOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	WitnessOrderByInputCreatedAtDESC WitnessOrderByInput = "createdAt_DESC"
-
 	// WitnessOrderByInputDataIPASC captures enum value "data_ip_ASC"
 	WitnessOrderByInputDataIPASC WitnessOrderByInput = "data_ip_ASC"
 
@@ -59,6 +53,12 @@ const (
 
 	// WitnessOrderByInputLocalIDDESC captures enum value "local_id_DESC"
 	WitnessOrderByInputLocalIDDESC WitnessOrderByInput = "local_id_DESC"
+
+	// WitnessOrderByInputManagementIPASC captures enum value "management_ip_ASC"
+	WitnessOrderByInputManagementIPASC WitnessOrderByInput = "management_ip_ASC"
+
+	// WitnessOrderByInputManagementIPDESC captures enum value "management_ip_DESC"
+	WitnessOrderByInputManagementIPDESC WitnessOrderByInput = "management_ip_DESC"
 
 	// WitnessOrderByInputNameASC captures enum value "name_ASC"
 	WitnessOrderByInputNameASC WitnessOrderByInput = "name_ASC"
@@ -95,12 +95,6 @@ const (
 
 	// WitnessOrderByInputTotalMemoryBytesDESC captures enum value "total_memory_bytes_DESC"
 	WitnessOrderByInputTotalMemoryBytesDESC WitnessOrderByInput = "total_memory_bytes_DESC"
-
-	// WitnessOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	WitnessOrderByInputUpdatedAtASC WitnessOrderByInput = "updatedAt_ASC"
-
-	// WitnessOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	WitnessOrderByInputUpdatedAtDESC WitnessOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -108,7 +102,7 @@ var witnessOrderByInputEnum []interface{}
 
 func init() {
 	var res []WitnessOrderByInput
-	if err := json.Unmarshal([]byte(`["cpu_hz_per_core_ASC","cpu_hz_per_core_DESC","createdAt_ASC","createdAt_DESC","data_ip_ASC","data_ip_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","system_data_capacity_ASC","system_data_capacity_DESC","system_used_data_space_ASC","system_used_data_space_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["cpu_hz_per_core_ASC","cpu_hz_per_core_DESC","data_ip_ASC","data_ip_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","management_ip_ASC","management_ip_DESC","name_ASC","name_DESC","system_data_capacity_ASC","system_data_capacity_DESC","system_used_data_space_ASC","system_used_data_space_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

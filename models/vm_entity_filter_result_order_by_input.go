@@ -30,23 +30,11 @@ func (m VMEntityFilterResultOrderByInput) Pointer() *VMEntityFilterResultOrderBy
 
 const (
 
-	// VMEntityFilterResultOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VMEntityFilterResultOrderByInputCreatedAtASC VMEntityFilterResultOrderByInput = "createdAt_ASC"
-
-	// VMEntityFilterResultOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VMEntityFilterResultOrderByInputCreatedAtDESC VMEntityFilterResultOrderByInput = "createdAt_DESC"
-
 	// VMEntityFilterResultOrderByInputIDASC captures enum value "id_ASC"
 	VMEntityFilterResultOrderByInputIDASC VMEntityFilterResultOrderByInput = "id_ASC"
 
 	// VMEntityFilterResultOrderByInputIDDESC captures enum value "id_DESC"
 	VMEntityFilterResultOrderByInputIDDESC VMEntityFilterResultOrderByInput = "id_DESC"
-
-	// VMEntityFilterResultOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VMEntityFilterResultOrderByInputUpdatedAtASC VMEntityFilterResultOrderByInput = "updatedAt_ASC"
-
-	// VMEntityFilterResultOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VMEntityFilterResultOrderByInputUpdatedAtDESC VMEntityFilterResultOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -54,7 +42,7 @@ var vmEntityFilterResultOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMEntityFilterResultOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

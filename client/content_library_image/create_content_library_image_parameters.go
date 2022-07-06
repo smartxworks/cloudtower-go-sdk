@@ -68,16 +68,16 @@ type CreateContentLibraryImageParams struct {
 	ContentLanguage *string
 
 	// Description.
-	Description string
+	Description *string
 
 	// File.
 	File runtime.NamedReadCloser
 
 	// Name.
-	Name string
+	Name *string
 
 	// Size.
-	Size string
+	Size *string
 
 	// UploadTaskID.
 	UploadTaskID *string
@@ -169,13 +169,13 @@ func (o *CreateContentLibraryImageParams) SetContentLanguage(contentLanguage *st
 }
 
 // WithDescription adds the description to the create content library image params
-func (o *CreateContentLibraryImageParams) WithDescription(description string) *CreateContentLibraryImageParams {
+func (o *CreateContentLibraryImageParams) WithDescription(description *string) *CreateContentLibraryImageParams {
 	o.SetDescription(description)
 	return o
 }
 
 // SetDescription adds the description to the create content library image params
-func (o *CreateContentLibraryImageParams) SetDescription(description string) {
+func (o *CreateContentLibraryImageParams) SetDescription(description *string) {
 	o.Description = description
 }
 
@@ -191,24 +191,24 @@ func (o *CreateContentLibraryImageParams) SetFile(file runtime.NamedReadCloser) 
 }
 
 // WithName adds the name to the create content library image params
-func (o *CreateContentLibraryImageParams) WithName(name string) *CreateContentLibraryImageParams {
+func (o *CreateContentLibraryImageParams) WithName(name *string) *CreateContentLibraryImageParams {
 	o.SetName(name)
 	return o
 }
 
 // SetName adds the name to the create content library image params
-func (o *CreateContentLibraryImageParams) SetName(name string) {
+func (o *CreateContentLibraryImageParams) SetName(name *string) {
 	o.Name = name
 }
 
 // WithSize adds the size to the create content library image params
-func (o *CreateContentLibraryImageParams) WithSize(size string) *CreateContentLibraryImageParams {
+func (o *CreateContentLibraryImageParams) WithSize(size *string) *CreateContentLibraryImageParams {
 	o.SetSize(size)
 	return o
 }
 
 // SetSize adds the size to the create content library image params
-func (o *CreateContentLibraryImageParams) SetSize(size string) {
+func (o *CreateContentLibraryImageParams) SetSize(size *string) {
 	o.Size = size
 }
 
@@ -248,12 +248,18 @@ func (o *CreateContentLibraryImageParams) WriteToRequest(r runtime.ClientRequest
 		}
 	}
 
-	// form param description
-	frDescription := o.Description
-	fDescription := frDescription
-	if fDescription != "" {
-		if err := r.SetFormParam("description", fDescription); err != nil {
-			return err
+	if o.Description != nil {
+
+		// form param description
+		var frDescription string
+		if o.Description != nil {
+			frDescription = *o.Description
+		}
+		fDescription := frDescription
+		if fDescription != "" {
+			if err := r.SetFormParam("description", fDescription); err != nil {
+				return err
+			}
 		}
 	}
 	// form file param file
@@ -261,21 +267,33 @@ func (o *CreateContentLibraryImageParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 
-	// form param name
-	frName := o.Name
-	fName := frName
-	if fName != "" {
-		if err := r.SetFormParam("name", fName); err != nil {
-			return err
+	if o.Name != nil {
+
+		// form param name
+		var frName string
+		if o.Name != nil {
+			frName = *o.Name
+		}
+		fName := frName
+		if fName != "" {
+			if err := r.SetFormParam("name", fName); err != nil {
+				return err
+			}
 		}
 	}
 
-	// form param size
-	frSize := o.Size
-	fSize := frSize
-	if fSize != "" {
-		if err := r.SetFormParam("size", fSize); err != nil {
-			return err
+	if o.Size != nil {
+
+		// form param size
+		var frSize string
+		if o.Size != nil {
+			frSize = *o.Size
+		}
+		fSize := frSize
+		if fSize != "" {
+			if err := r.SetFormParam("size", fSize); err != nil {
+				return err
+			}
 		}
 	}
 

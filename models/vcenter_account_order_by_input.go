@@ -30,12 +30,6 @@ func (m VcenterAccountOrderByInput) Pointer() *VcenterAccountOrderByInput {
 
 const (
 
-	// VcenterAccountOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VcenterAccountOrderByInputCreatedAtASC VcenterAccountOrderByInput = "createdAt_ASC"
-
-	// VcenterAccountOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VcenterAccountOrderByInputCreatedAtDESC VcenterAccountOrderByInput = "createdAt_DESC"
-
 	// VcenterAccountOrderByInputIDASC captures enum value "id_ASC"
 	VcenterAccountOrderByInputIDASC VcenterAccountOrderByInput = "id_ASC"
 
@@ -60,23 +54,11 @@ const (
 	// VcenterAccountOrderByInputLocalIDDESC captures enum value "local_id_DESC"
 	VcenterAccountOrderByInputLocalIDDESC VcenterAccountOrderByInput = "local_id_DESC"
 
-	// VcenterAccountOrderByInputPasswordASC captures enum value "password_ASC"
-	VcenterAccountOrderByInputPasswordASC VcenterAccountOrderByInput = "password_ASC"
-
-	// VcenterAccountOrderByInputPasswordDESC captures enum value "password_DESC"
-	VcenterAccountOrderByInputPasswordDESC VcenterAccountOrderByInput = "password_DESC"
-
 	// VcenterAccountOrderByInputPortASC captures enum value "port_ASC"
 	VcenterAccountOrderByInputPortASC VcenterAccountOrderByInput = "port_ASC"
 
 	// VcenterAccountOrderByInputPortDESC captures enum value "port_DESC"
 	VcenterAccountOrderByInputPortDESC VcenterAccountOrderByInput = "port_DESC"
-
-	// VcenterAccountOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VcenterAccountOrderByInputUpdatedAtASC VcenterAccountOrderByInput = "updatedAt_ASC"
-
-	// VcenterAccountOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VcenterAccountOrderByInputUpdatedAtDESC VcenterAccountOrderByInput = "updatedAt_DESC"
 
 	// VcenterAccountOrderByInputUsernameASC captures enum value "username_ASC"
 	VcenterAccountOrderByInputUsernameASC VcenterAccountOrderByInput = "username_ASC"
@@ -90,7 +72,7 @@ var vcenterAccountOrderByInputEnum []interface{}
 
 func init() {
 	var res []VcenterAccountOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","ip_ASC","ip_DESC","is_valid_ASC","is_valid_DESC","local_id_ASC","local_id_DESC","password_ASC","password_DESC","port_ASC","port_DESC","updatedAt_ASC","updatedAt_DESC","username_ASC","username_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","ip_ASC","ip_DESC","is_valid_ASC","is_valid_DESC","local_id_ASC","local_id_DESC","port_ASC","port_DESC","username_ASC","username_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
