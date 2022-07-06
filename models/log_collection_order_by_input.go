@@ -30,12 +30,6 @@ func (m LogCollectionOrderByInput) Pointer() *LogCollectionOrderByInput {
 
 const (
 
-	// LogCollectionOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	LogCollectionOrderByInputCreatedAtASC LogCollectionOrderByInput = "createdAt_ASC"
-
-	// LogCollectionOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	LogCollectionOrderByInputCreatedAtDESC LogCollectionOrderByInput = "createdAt_DESC"
-
 	// LogCollectionOrderByInputIDASC captures enum value "id_ASC"
 	LogCollectionOrderByInputIDASC LogCollectionOrderByInput = "id_ASC"
 
@@ -101,12 +95,6 @@ const (
 
 	// LogCollectionOrderByInputStatusDESC captures enum value "status_DESC"
 	LogCollectionOrderByInputStatusDESC LogCollectionOrderByInput = "status_DESC"
-
-	// LogCollectionOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	LogCollectionOrderByInputUpdatedAtASC LogCollectionOrderByInput = "updatedAt_ASC"
-
-	// LogCollectionOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	LogCollectionOrderByInputUpdatedAtDESC LogCollectionOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -114,7 +102,7 @@ var logCollectionOrderByInputEnum []interface{}
 
 func init() {
 	var res []LogCollectionOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","log_ended_at_ASC","log_ended_at_DESC","log_started_at_ASC","log_started_at_DESC","owner_ASC","owner_DESC","path_ASC","path_DESC","progress_ASC","progress_DESC","service_groups_ASC","service_groups_DESC","size_ASC","size_DESC","started_at_ASC","started_at_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","local_id_ASC","local_id_DESC","log_ended_at_ASC","log_ended_at_DESC","log_started_at_ASC","log_started_at_DESC","owner_ASC","owner_DESC","path_ASC","path_DESC","progress_ASC","progress_DESC","service_groups_ASC","service_groups_DESC","size_ASC","size_DESC","started_at_ASC","started_at_DESC","status_ASC","status_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

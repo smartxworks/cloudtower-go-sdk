@@ -30,12 +30,6 @@ func (m SvtImageOrderByInput) Pointer() *SvtImageOrderByInput {
 
 const (
 
-	// SvtImageOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	SvtImageOrderByInputCreatedAtASC SvtImageOrderByInput = "createdAt_ASC"
-
-	// SvtImageOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	SvtImageOrderByInputCreatedAtDESC SvtImageOrderByInput = "createdAt_DESC"
-
 	// SvtImageOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	SvtImageOrderByInputEntityAsyncStatusASC SvtImageOrderByInput = "entityAsyncStatus_ASC"
 
@@ -78,12 +72,6 @@ const (
 	// SvtImageOrderByInputSizeDESC captures enum value "size_DESC"
 	SvtImageOrderByInputSizeDESC SvtImageOrderByInput = "size_DESC"
 
-	// SvtImageOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	SvtImageOrderByInputUpdatedAtASC SvtImageOrderByInput = "updatedAt_ASC"
-
-	// SvtImageOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	SvtImageOrderByInputUpdatedAtDESC SvtImageOrderByInput = "updatedAt_DESC"
-
 	// SvtImageOrderByInputVersionASC captures enum value "version_ASC"
 	SvtImageOrderByInputVersionASC SvtImageOrderByInput = "version_ASC"
 
@@ -96,7 +84,7 @@ var svtImageOrderByInputEnum []interface{}
 
 func init() {
 	var res []SvtImageOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","path_ASC","path_DESC","size_ASC","size_DESC","updatedAt_ASC","updatedAt_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","path_ASC","path_DESC","size_ASC","size_DESC","version_ASC","version_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -90,12 +90,6 @@ const (
 	// ContentLibraryVMTemplateOrderByInputSizeDESC captures enum value "size_DESC"
 	ContentLibraryVMTemplateOrderByInputSizeDESC ContentLibraryVMTemplateOrderByInput = "size_DESC"
 
-	// ContentLibraryVMTemplateOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ContentLibraryVMTemplateOrderByInputUpdatedAtASC ContentLibraryVMTemplateOrderByInput = "updatedAt_ASC"
-
-	// ContentLibraryVMTemplateOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ContentLibraryVMTemplateOrderByInputUpdatedAtDESC ContentLibraryVMTemplateOrderByInput = "updatedAt_DESC"
-
 	// ContentLibraryVMTemplateOrderByInputVcpuASC captures enum value "vcpu_ASC"
 	ContentLibraryVMTemplateOrderByInputVcpuASC ContentLibraryVMTemplateOrderByInput = "vcpu_ASC"
 
@@ -108,7 +102,7 @@ var contentLibraryVmTemplateOrderByInputEnum []interface{}
 
 func init() {
 	var res []ContentLibraryVMTemplateOrderByInput
-	if err := json.Unmarshal([]byte(`["architecture_ASC","architecture_DESC","cloud_init_supported_ASC","cloud_init_supported_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","memory_ASC","memory_DESC","name_ASC","name_DESC","os_ASC","os_DESC","size_ASC","size_DESC","updatedAt_ASC","updatedAt_DESC","vcpu_ASC","vcpu_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["architecture_ASC","architecture_DESC","cloud_init_supported_ASC","cloud_init_supported_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","memory_ASC","memory_DESC","name_ASC","name_DESC","os_ASC","os_DESC","size_ASC","size_DESC","vcpu_ASC","vcpu_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

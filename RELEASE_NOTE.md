@@ -1,5 +1,36 @@
 # RELEASE NOTE
 
+## release 日期 2022-07-08
+
+v2.1.0 release
+
+- feature:ClusterApi: [update_cluster_network_setting] 新增更新集群网络配置 api
+- feature:ClusterApi: [update_cluster_virtualization_setting] 新增更新集群虚拟化设置 api
+- feature:ClusterApi: [update_cluster_ha_setting] 新增更新集群高可用设置 api
+- feature:ClusterApi: [update_cluster_enable_iscsi_setting] 新增更新集群块功能启用设置 api
+- feature:VmApi: [migratevm_across_cluster] 新增跨集群迁移虚拟机 api
+- feature:VmApi: [abort_migrate_vm_across_cluster] 新增取消跨集群迁移 api
+- feature:VmApi: [stop_vm_in_cutover_migration] 新增关闭源虚拟机 api
+- feature:VmApi: [update_vmHostOptions] 新增更新虚拟机 guest os 设置 api，更新 dns, hostname 与 ntp server，需要虚拟机工具的支持。
+- feature:VmApi: [reset_vmG_guest_ss_password] 新增更新虚拟机 guest os 用户密码 api，需要虚拟机工具的支持。
+- feature:VmApi: [update_vm_owner] 新增更新虚拟机拥有者 api
+- feature:SecurityApi: [update_password_security] 新增更新密码安全设置 api
+- feature:SecurityApi: [update_access_restriction] 新增更新访问限制 api
+- feature:SecurityApi: [update_session_timeout] 新增更新会话超时 api
+- feature:VcenterAccountApi: [update_vcenter_account] 新增更新 vcenter 账号 api
+- feature:VcenterAccountApi: [create_vcenter_account] 新增添加 vcenter 账号 api
+- feature:VsphereEsxiAccountApi: [update_vsphere_esxi_account] 新增更新 vsphere esxi 账号 api
+- feature:SvtImageApi: [upload_svt_image] 新增上传虚拟机镜像 api 工具
+- feature:TableReporterApi: [export_csv] 新增导出 CSV 报表 api
+- feature:UploadTaskApi: [cancel_upload_task] 新增取消上传 api
+- feature:LabelApi: [add_labels_to_resources],[remove_labels_from_resources] 新增想内容库模板，内容库镜像，隔离策略，安全策略添加，删除标签
+
+- bugfix:ContentLibraryImageApi,ElfImageApi: 修复了上传类 Api 无法正确执行的问题，并优化了上传类 Api 的执行逻辑，第一次上传时会上传第一个分片而非只是创建一个上传任务，详见[示例](/examples/upload/readme.md)
+
+- optimize:VmTemplateApi: 优化了模板创建时根据传入的 cpu 参数和模板参数计算缺省值的逻辑
+- optimize:ContentLibraryImageApi: 优化了分发的逻辑，不再同时上传一个镜像至多个集群，等待上传置单个集群后再分发。
+- optimize: 添加 `utils.CheckSvtImageVersion` 工具方法检查 svt 镜像版本。
+
 ## release 日期：2022-06-14
 
 v2.0.0+rev3 release

@@ -42,12 +42,6 @@ const (
 	// SnapshotPlanOrderByInputAutoExecuteNumDESC captures enum value "auto_execute_num_DESC"
 	SnapshotPlanOrderByInputAutoExecuteNumDESC SnapshotPlanOrderByInput = "auto_execute_num_DESC"
 
-	// SnapshotPlanOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	SnapshotPlanOrderByInputCreatedAtASC SnapshotPlanOrderByInput = "createdAt_ASC"
-
-	// SnapshotPlanOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	SnapshotPlanOrderByInputCreatedAtDESC SnapshotPlanOrderByInput = "createdAt_DESC"
-
 	// SnapshotPlanOrderByInputDescriptionASC captures enum value "description_ASC"
 	SnapshotPlanOrderByInputDescriptionASC SnapshotPlanOrderByInput = "description_ASC"
 
@@ -185,12 +179,6 @@ const (
 
 	// SnapshotPlanOrderByInputStatusDESC captures enum value "status_DESC"
 	SnapshotPlanOrderByInputStatusDESC SnapshotPlanOrderByInput = "status_DESC"
-
-	// SnapshotPlanOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	SnapshotPlanOrderByInputUpdatedAtASC SnapshotPlanOrderByInput = "updatedAt_ASC"
-
-	// SnapshotPlanOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	SnapshotPlanOrderByInputUpdatedAtDESC SnapshotPlanOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -198,7 +186,7 @@ var snapshotPlanOrderByInputEnum []interface{}
 
 func init() {
 	var res []SnapshotPlanOrderByInput
-	if err := json.Unmarshal([]byte(`["auto_delete_num_ASC","auto_delete_num_DESC","auto_execute_num_ASC","auto_execute_num_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","end_time_ASC","end_time_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","exec_h_m_ASC","exec_h_m_DESC","execute_plan_type_ASC","execute_plan_type_DESC","healthy_ASC","healthy_DESC","id_ASC","id_DESC","last_execute_end_time_ASC","last_execute_end_time_DESC","last_execute_status_ASC","last_execute_status_DESC","last_execute_time_ASC","last_execute_time_DESC","local_id_ASC","local_id_DESC","logical_size_bytes_ASC","logical_size_bytes_DESC","manual_delete_num_ASC","manual_delete_num_DESC","manual_execute_num_ASC","manual_execute_num_DESC","mirror_ASC","mirror_DESC","name_ASC","name_DESC","next_execute_time_ASC","next_execute_time_DESC","object_num_ASC","object_num_DESC","physical_size_bytes_ASC","physical_size_bytes_DESC","remain_snapshot_num_ASC","remain_snapshot_num_DESC","snapshot_group_num_ASC","snapshot_group_num_DESC","start_time_ASC","start_time_DESC","status_ASC","status_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["auto_delete_num_ASC","auto_delete_num_DESC","auto_execute_num_ASC","auto_execute_num_DESC","description_ASC","description_DESC","end_time_ASC","end_time_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","exec_h_m_ASC","exec_h_m_DESC","execute_plan_type_ASC","execute_plan_type_DESC","healthy_ASC","healthy_DESC","id_ASC","id_DESC","last_execute_end_time_ASC","last_execute_end_time_DESC","last_execute_status_ASC","last_execute_status_DESC","last_execute_time_ASC","last_execute_time_DESC","local_id_ASC","local_id_DESC","logical_size_bytes_ASC","logical_size_bytes_DESC","manual_delete_num_ASC","manual_delete_num_DESC","manual_execute_num_ASC","manual_execute_num_DESC","mirror_ASC","mirror_DESC","name_ASC","name_DESC","next_execute_time_ASC","next_execute_time_DESC","object_num_ASC","object_num_DESC","physical_size_bytes_ASC","physical_size_bytes_DESC","remain_snapshot_num_ASC","remain_snapshot_num_DESC","snapshot_group_num_ASC","snapshot_group_num_DESC","start_time_ASC","start_time_DESC","status_ASC","status_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

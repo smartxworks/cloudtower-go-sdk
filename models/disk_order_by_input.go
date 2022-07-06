@@ -30,12 +30,6 @@ func (m DiskOrderByInput) Pointer() *DiskOrderByInput {
 
 const (
 
-	// DiskOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	DiskOrderByInputCreatedAtASC DiskOrderByInput = "createdAt_ASC"
-
-	// DiskOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	DiskOrderByInputCreatedAtDESC DiskOrderByInput = "createdAt_DESC"
-
 	// DiskOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	DiskOrderByInputEntityAsyncStatusASC DiskOrderByInput = "entityAsyncStatus_ASC"
 
@@ -168,12 +162,6 @@ const (
 	// DiskOrderByInputTypeDESC captures enum value "type_DESC"
 	DiskOrderByInputTypeDESC DiskOrderByInput = "type_DESC"
 
-	// DiskOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	DiskOrderByInputUpdatedAtASC DiskOrderByInput = "updatedAt_ASC"
-
-	// DiskOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	DiskOrderByInputUpdatedAtDESC DiskOrderByInput = "updatedAt_DESC"
-
 	// DiskOrderByInputUsageASC captures enum value "usage_ASC"
 	DiskOrderByInputUsageASC DiskOrderByInput = "usage_ASC"
 
@@ -192,7 +180,7 @@ var diskOrderByInputEnum []interface{}
 
 func init() {
 	var res []DiskOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_information_ASC","failure_information_DESC","firmware_ASC","firmware_DESC","function_ASC","function_DESC","health_status_ASC","health_status_DESC","healthy_ASC","healthy_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","model_ASC","model_DESC","mounted_ASC","mounted_DESC","name_ASC","name_DESC","numa_node_ASC","numa_node_DESC","offline_ASC","offline_DESC","partitions_ASC","partitions_DESC","path_ASC","path_DESC","persistent_memory_type_ASC","persistent_memory_type_DESC","physical_slot_on_brick_ASC","physical_slot_on_brick_DESC","recommended_usage_ASC","recommended_usage_DESC","remaining_life_percent_ASC","remaining_life_percent_DESC","serial_ASC","serial_DESC","size_ASC","size_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC","usage_ASC","usage_DESC","usage_status_ASC","usage_status_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_information_ASC","failure_information_DESC","firmware_ASC","firmware_DESC","function_ASC","function_DESC","health_status_ASC","health_status_DESC","healthy_ASC","healthy_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","model_ASC","model_DESC","mounted_ASC","mounted_DESC","name_ASC","name_DESC","numa_node_ASC","numa_node_DESC","offline_ASC","offline_DESC","partitions_ASC","partitions_DESC","path_ASC","path_DESC","persistent_memory_type_ASC","persistent_memory_type_DESC","physical_slot_on_brick_ASC","physical_slot_on_brick_DESC","recommended_usage_ASC","recommended_usage_DESC","remaining_life_percent_ASC","remaining_life_percent_DESC","serial_ASC","serial_DESC","size_ASC","size_DESC","type_ASC","type_DESC","usage_ASC","usage_DESC","usage_status_ASC","usage_status_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

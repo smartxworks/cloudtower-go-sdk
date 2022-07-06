@@ -36,12 +36,6 @@ const (
 	// IscsiConnectionOrderByInputClientPortDESC captures enum value "client_port_DESC"
 	IscsiConnectionOrderByInputClientPortDESC IscsiConnectionOrderByInput = "client_port_DESC"
 
-	// IscsiConnectionOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	IscsiConnectionOrderByInputCreatedAtASC IscsiConnectionOrderByInput = "createdAt_ASC"
-
-	// IscsiConnectionOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	IscsiConnectionOrderByInputCreatedAtDESC IscsiConnectionOrderByInput = "createdAt_DESC"
-
 	// IscsiConnectionOrderByInputIDASC captures enum value "id_ASC"
 	IscsiConnectionOrderByInputIDASC IscsiConnectionOrderByInput = "id_ASC"
 
@@ -65,12 +59,6 @@ const (
 
 	// IscsiConnectionOrderByInputTypeDESC captures enum value "type_DESC"
 	IscsiConnectionOrderByInputTypeDESC IscsiConnectionOrderByInput = "type_DESC"
-
-	// IscsiConnectionOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	IscsiConnectionOrderByInputUpdatedAtASC IscsiConnectionOrderByInput = "updatedAt_ASC"
-
-	// IscsiConnectionOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	IscsiConnectionOrderByInputUpdatedAtDESC IscsiConnectionOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -78,7 +66,7 @@ var iscsiConnectionOrderByInputEnum []interface{}
 
 func init() {
 	var res []IscsiConnectionOrderByInput
-	if err := json.Unmarshal([]byte(`["client_port_ASC","client_port_DESC","createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","initiator_ip_ASC","initiator_ip_DESC","tr_type_ASC","tr_type_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["client_port_ASC","client_port_DESC","id_ASC","id_DESC","initiator_ip_ASC","initiator_ip_DESC","tr_type_ASC","tr_type_DESC","type_ASC","type_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

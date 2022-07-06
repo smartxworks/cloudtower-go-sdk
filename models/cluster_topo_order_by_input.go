@@ -30,12 +30,6 @@ func (m ClusterTopoOrderByInput) Pointer() *ClusterTopoOrderByInput {
 
 const (
 
-	// ClusterTopoOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ClusterTopoOrderByInputCreatedAtASC ClusterTopoOrderByInput = "createdAt_ASC"
-
-	// ClusterTopoOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ClusterTopoOrderByInputCreatedAtDESC ClusterTopoOrderByInput = "createdAt_DESC"
-
 	// ClusterTopoOrderByInputIDASC captures enum value "id_ASC"
 	ClusterTopoOrderByInputIDASC ClusterTopoOrderByInput = "id_ASC"
 
@@ -53,12 +47,6 @@ const (
 
 	// ClusterTopoOrderByInputNameDESC captures enum value "name_DESC"
 	ClusterTopoOrderByInputNameDESC ClusterTopoOrderByInput = "name_DESC"
-
-	// ClusterTopoOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ClusterTopoOrderByInputUpdatedAtASC ClusterTopoOrderByInput = "updatedAt_ASC"
-
-	// ClusterTopoOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ClusterTopoOrderByInputUpdatedAtDESC ClusterTopoOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -66,7 +54,7 @@ var clusterTopoOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterTopoOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -30,12 +30,6 @@ func (m AlertRuleOrderByInput) Pointer() *AlertRuleOrderByInput {
 
 const (
 
-	// AlertRuleOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	AlertRuleOrderByInputCreatedAtASC AlertRuleOrderByInput = "createdAt_ASC"
-
-	// AlertRuleOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	AlertRuleOrderByInputCreatedAtDESC AlertRuleOrderByInput = "createdAt_DESC"
-
 	// AlertRuleOrderByInputCustomizedASC captures enum value "customized_ASC"
 	AlertRuleOrderByInputCustomizedASC AlertRuleOrderByInput = "customized_ASC"
 
@@ -65,12 +59,6 @@ const (
 
 	// AlertRuleOrderByInputThresholdsDESC captures enum value "thresholds_DESC"
 	AlertRuleOrderByInputThresholdsDESC AlertRuleOrderByInput = "thresholds_DESC"
-
-	// AlertRuleOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	AlertRuleOrderByInputUpdatedAtASC AlertRuleOrderByInput = "updatedAt_ASC"
-
-	// AlertRuleOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	AlertRuleOrderByInputUpdatedAtDESC AlertRuleOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -78,7 +66,7 @@ var alertRuleOrderByInputEnum []interface{}
 
 func init() {
 	var res []AlertRuleOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","customized_ASC","customized_DESC","disabled_ASC","disabled_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","thresholds_ASC","thresholds_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["customized_ASC","customized_DESC","disabled_ASC","disabled_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","thresholds_ASC","thresholds_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

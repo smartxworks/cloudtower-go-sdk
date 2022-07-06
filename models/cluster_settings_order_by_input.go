@@ -30,12 +30,6 @@ func (m ClusterSettingsOrderByInput) Pointer() *ClusterSettingsOrderByInput {
 
 const (
 
-	// ClusterSettingsOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ClusterSettingsOrderByInputCreatedAtASC ClusterSettingsOrderByInput = "createdAt_ASC"
-
-	// ClusterSettingsOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ClusterSettingsOrderByInputCreatedAtDESC ClusterSettingsOrderByInput = "createdAt_DESC"
-
 	// ClusterSettingsOrderByInputDefaultHaASC captures enum value "default_ha_ASC"
 	ClusterSettingsOrderByInputDefaultHaASC ClusterSettingsOrderByInput = "default_ha_ASC"
 
@@ -54,12 +48,6 @@ const (
 	// ClusterSettingsOrderByInputIDDESC captures enum value "id_DESC"
 	ClusterSettingsOrderByInputIDDESC ClusterSettingsOrderByInput = "id_DESC"
 
-	// ClusterSettingsOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ClusterSettingsOrderByInputUpdatedAtASC ClusterSettingsOrderByInput = "updatedAt_ASC"
-
-	// ClusterSettingsOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ClusterSettingsOrderByInputUpdatedAtDESC ClusterSettingsOrderByInput = "updatedAt_DESC"
-
 	// ClusterSettingsOrderByInputVMRecycleBinASC captures enum value "vm_recycle_bin_ASC"
 	ClusterSettingsOrderByInputVMRecycleBinASC ClusterSettingsOrderByInput = "vm_recycle_bin_ASC"
 
@@ -72,7 +60,7 @@ var clusterSettingsOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterSettingsOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","default_ha_ASC","default_ha_DESC","enabled_iscsi_ASC","enabled_iscsi_DESC","id_ASC","id_DESC","updatedAt_ASC","updatedAt_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["default_ha_ASC","default_ha_DESC","enabled_iscsi_ASC","enabled_iscsi_DESC","id_ASC","id_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

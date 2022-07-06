@@ -30,12 +30,6 @@ func (m VlanOrderByInput) Pointer() *VlanOrderByInput {
 
 const (
 
-	// VlanOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VlanOrderByInputCreatedAtASC VlanOrderByInput = "createdAt_ASC"
-
-	// VlanOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VlanOrderByInputCreatedAtDESC VlanOrderByInput = "createdAt_DESC"
-
 	// VlanOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	VlanOrderByInputEntityAsyncStatusASC VlanOrderByInput = "entityAsyncStatus_ASC"
 
@@ -84,12 +78,6 @@ const (
 	// VlanOrderByInputTypeDESC captures enum value "type_DESC"
 	VlanOrderByInputTypeDESC VlanOrderByInput = "type_DESC"
 
-	// VlanOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VlanOrderByInputUpdatedAtASC VlanOrderByInput = "updatedAt_ASC"
-
-	// VlanOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VlanOrderByInputUpdatedAtDESC VlanOrderByInput = "updatedAt_DESC"
-
 	// VlanOrderByInputVlanIDASC captures enum value "vlan_id_ASC"
 	VlanOrderByInputVlanIDASC VlanOrderByInput = "vlan_id_ASC"
 
@@ -102,7 +90,7 @@ var vlanOrderByInputEnum []interface{}
 
 func init() {
 	var res []VlanOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","gateway_ip_ASC","gateway_ip_DESC","gateway_subnetmask_ASC","gateway_subnetmask_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","subnetmask_ASC","subnetmask_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC","vlan_id_ASC","vlan_id_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","gateway_ip_ASC","gateway_ip_DESC","gateway_subnetmask_ASC","gateway_subnetmask_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","subnetmask_ASC","subnetmask_DESC","type_ASC","type_DESC","vlan_id_ASC","vlan_id_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

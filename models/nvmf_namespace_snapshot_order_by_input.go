@@ -30,12 +30,6 @@ func (m NvmfNamespaceSnapshotOrderByInput) Pointer() *NvmfNamespaceSnapshotOrder
 
 const (
 
-	// NvmfNamespaceSnapshotOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	NvmfNamespaceSnapshotOrderByInputCreatedAtASC NvmfNamespaceSnapshotOrderByInput = "createdAt_ASC"
-
-	// NvmfNamespaceSnapshotOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	NvmfNamespaceSnapshotOrderByInputCreatedAtDESC NvmfNamespaceSnapshotOrderByInput = "createdAt_DESC"
-
 	// NvmfNamespaceSnapshotOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	NvmfNamespaceSnapshotOrderByInputEntityAsyncStatusASC NvmfNamespaceSnapshotOrderByInput = "entityAsyncStatus_ASC"
 
@@ -71,12 +65,6 @@ const (
 
 	// NvmfNamespaceSnapshotOrderByInputUniqueSizeDESC captures enum value "unique_size_DESC"
 	NvmfNamespaceSnapshotOrderByInputUniqueSizeDESC NvmfNamespaceSnapshotOrderByInput = "unique_size_DESC"
-
-	// NvmfNamespaceSnapshotOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	NvmfNamespaceSnapshotOrderByInputUpdatedAtASC NvmfNamespaceSnapshotOrderByInput = "updatedAt_ASC"
-
-	// NvmfNamespaceSnapshotOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	NvmfNamespaceSnapshotOrderByInputUpdatedAtDESC NvmfNamespaceSnapshotOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -84,7 +72,7 @@ var nvmfNamespaceSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []NvmfNamespaceSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

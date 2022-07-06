@@ -36,12 +36,6 @@ const (
 	// VdsOrderByInputBondModeDESC captures enum value "bond_mode_DESC"
 	VdsOrderByInputBondModeDESC VdsOrderByInput = "bond_mode_DESC"
 
-	// VdsOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	VdsOrderByInputCreatedAtASC VdsOrderByInput = "createdAt_ASC"
-
-	// VdsOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	VdsOrderByInputCreatedAtDESC VdsOrderByInput = "createdAt_DESC"
-
 	// VdsOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	VdsOrderByInputEntityAsyncStatusASC VdsOrderByInput = "entityAsyncStatus_ASC"
 
@@ -84,12 +78,6 @@ const (
 	// VdsOrderByInputTypeDESC captures enum value "type_DESC"
 	VdsOrderByInputTypeDESC VdsOrderByInput = "type_DESC"
 
-	// VdsOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	VdsOrderByInputUpdatedAtASC VdsOrderByInput = "updatedAt_ASC"
-
-	// VdsOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	VdsOrderByInputUpdatedAtDESC VdsOrderByInput = "updatedAt_DESC"
-
 	// VdsOrderByInputVlansNumASC captures enum value "vlans_num_ASC"
 	VdsOrderByInputVlansNumASC VdsOrderByInput = "vlans_num_ASC"
 
@@ -108,7 +96,7 @@ var vdsOrderByInputEnum []interface{}
 
 func init() {
 	var res []VdsOrderByInput
-	if err := json.Unmarshal([]byte(`["bond_mode_ASC","bond_mode_DESC","createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","ovsbr_name_ASC","ovsbr_name_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC","vlans_num_ASC","vlans_num_DESC","work_mode_ASC","work_mode_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["bond_mode_ASC","bond_mode_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","ovsbr_name_ASC","ovsbr_name_DESC","type_ASC","type_DESC","vlans_num_ASC","vlans_num_DESC","work_mode_ASC","work_mode_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

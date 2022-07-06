@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -21,16 +20,12 @@ import (
 // swagger:model Task
 type Task struct {
 
-	// typename
-	// Enum: [Task]
-	Typename *string `json:"__typename,omitempty"`
-
 	// args
 	// Required: true
 	Args interface{} `json:"args"`
 
 	// cluster
-	Cluster *Cluster `json:"cluster,omitempty"`
+	Cluster *NestedCluster `json:"cluster,omitempty"`
 
 	// description
 	// Required: true
@@ -43,7 +38,7 @@ type Task struct {
 	ErrorMessage *string `json:"error_message,omitempty"`
 
 	// finished at
-	FinishedAt interface{} `json:"finished_at,omitempty"`
+	FinishedAt *string `json:"finished_at,omitempty"`
 
 	// id
 	// Required: true
@@ -58,7 +53,7 @@ type Task struct {
 
 	// local created at
 	// Required: true
-	LocalCreatedAt interface{} `json:"local_created_at"`
+	LocalCreatedAt *string `json:"local_created_at"`
 
 	// progress
 	// Required: true
@@ -87,7 +82,7 @@ type Task struct {
 	Snapshot *string `json:"snapshot"`
 
 	// started at
-	StartedAt interface{} `json:"started_at,omitempty"`
+	StartedAt *string `json:"started_at,omitempty"`
 
 	// status
 	// Required: true
@@ -95,22 +90,18 @@ type Task struct {
 
 	// steps
 	// Required: true
-	Steps []*Step `json:"steps"`
+	Steps []*NestedStep `json:"steps"`
 
 	// type
 	Type *TaskType `json:"type,omitempty"`
 
 	// user
-	User *User `json:"user,omitempty"`
+	User *NestedUser `json:"user,omitempty"`
 }
 
 // Validate validates this task
 func (m *Task) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateTypename(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateArgs(formats); err != nil {
 		res = append(res, err)
@@ -163,45 +154,6 @@ func (m *Task) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-var taskTypeTypenamePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["Task"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		taskTypeTypenamePropEnum = append(taskTypeTypenamePropEnum, v)
-	}
-}
-
-const (
-
-	// TaskTypenameTask captures enum value "Task"
-	TaskTypenameTask string = "Task"
-)
-
-// prop value enum
-func (m *Task) validateTypenameEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, taskTypeTypenamePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *Task) validateTypename(formats strfmt.Registry) error {
-	if swag.IsZero(m.Typename) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateTypenameEnum("__typename", "body", *m.Typename); err != nil {
-		return err
-	}
-
 	return nil
 }
 
@@ -262,8 +214,8 @@ func (m *Task) validateInternal(formats strfmt.Registry) error {
 
 func (m *Task) validateLocalCreatedAt(formats strfmt.Registry) error {
 
-	if m.LocalCreatedAt == nil {
-		return errors.Required("local_created_at", "body", nil)
+	if err := validate.Required("local_created_at", "body", m.LocalCreatedAt); err != nil {
+		return err
 	}
 
 	return nil

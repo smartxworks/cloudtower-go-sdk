@@ -30,12 +30,6 @@ func (m GraphOrderByInput) Pointer() *GraphOrderByInput {
 
 const (
 
-	// GraphOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	GraphOrderByInputCreatedAtASC GraphOrderByInput = "createdAt_ASC"
-
-	// GraphOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	GraphOrderByInputCreatedAtDESC GraphOrderByInput = "createdAt_DESC"
-
 	// GraphOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	GraphOrderByInputEntityAsyncStatusASC GraphOrderByInput = "entityAsyncStatus_ASC"
 
@@ -107,12 +101,6 @@ const (
 
 	// GraphOrderByInputTypeDESC captures enum value "type_DESC"
 	GraphOrderByInputTypeDESC GraphOrderByInput = "type_DESC"
-
-	// GraphOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	GraphOrderByInputUpdatedAtASC GraphOrderByInput = "updatedAt_ASC"
-
-	// GraphOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	GraphOrderByInputUpdatedAtDESC GraphOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -120,7 +108,7 @@ var graphOrderByInputEnum []interface{}
 
 func init() {
 	var res []GraphOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","metric_count_ASC","metric_count_DESC","metric_name_ASC","metric_name_DESC","metric_type_ASC","metric_type_DESC","network_ASC","network_DESC","resource_type_ASC","resource_type_DESC","service_ASC","service_DESC","targets_ASC","targets_DESC","title_ASC","title_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","metric_count_ASC","metric_count_DESC","metric_name_ASC","metric_name_DESC","metric_type_ASC","metric_type_DESC","network_ASC","network_DESC","resource_type_ASC","resource_type_DESC","service_ASC","service_DESC","targets_ASC","targets_DESC","title_ASC","title_DESC","type_ASC","type_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

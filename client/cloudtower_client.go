@@ -71,6 +71,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snmp_trap_receiver"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/svt_image"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/system_audit_log"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/table_reporter"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/upload_task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/usb_device"
@@ -97,7 +98,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/zone_topo"
 )
 
-// Default cloud tower a p is HTTP client.
+// Default cloudtower HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -112,12 +113,12 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"http"}
 
-// NewHTTPClient creates a new cloud tower a p is HTTP client.
+// NewHTTPClient creates a new cloudtower HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *Cloudtower {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new cloud tower a p is HTTP client,
+// NewHTTPClientWithConfig creates a new cloudtower HTTP client,
 // using a customizable transport config.
 func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Cloudtower {
 	// ensure nullable parameters have default
@@ -130,7 +131,7 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Clo
 	return New(transport, formats)
 }
 
-// New creates a new cloud tower a p is client
+// New creates a new cloudtower client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower {
 	// ensure nullable parameters have default
 	if formats == nil {
@@ -200,6 +201,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.SnmpTrapReceiver = snmp_trap_receiver.New(transport, formats)
 	cli.SvtImage = svt_image.New(transport, formats)
 	cli.SystemAuditLog = system_audit_log.New(transport, formats)
+	cli.TableReporter = table_reporter.New(transport, formats)
 	cli.Task = task.New(transport, formats)
 	cli.UploadTask = upload_task.New(transport, formats)
 	cli.UsbDevice = usb_device.New(transport, formats)
@@ -390,6 +392,8 @@ type Cloudtower struct {
 
 	SystemAuditLog system_audit_log.ClientService
 
+	TableReporter table_reporter.ClientService
+
 	Task task.ClientService
 
 	UploadTask upload_task.ClientService
@@ -505,6 +509,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.SnmpTrapReceiver.SetTransport(transport)
 	c.SvtImage.SetTransport(transport)
 	c.SystemAuditLog.SetTransport(transport)
+	c.TableReporter.SetTransport(transport)
 	c.Task.SetTransport(transport)
 	c.UploadTask.SetTransport(transport)
 	c.UsbDevice.SetTransport(transport)

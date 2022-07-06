@@ -7,22 +7,16 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
-// Step step
+// NestedStep nested step
 //
-// swagger:model Step
-type Step struct {
-
-	// typename
-	// Enum: [Step]
-	Typename *string `json:"__typename,omitempty"`
+// swagger:model NestedStep
+type NestedStep struct {
 
 	// current
 	Current *float64 `json:"current,omitempty"`
@@ -43,13 +37,9 @@ type Step struct {
 	Unit *StepUnit `json:"unit,omitempty"`
 }
 
-// Validate validates this step
-func (m *Step) Validate(formats strfmt.Registry) error {
+// Validate validates this nested step
+func (m *NestedStep) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateTypename(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateUnit(formats); err != nil {
 		res = append(res, err)
@@ -61,46 +51,7 @@ func (m *Step) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var stepTypeTypenamePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["Step"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		stepTypeTypenamePropEnum = append(stepTypeTypenamePropEnum, v)
-	}
-}
-
-const (
-
-	// StepTypenameStep captures enum value "Step"
-	StepTypenameStep string = "Step"
-)
-
-// prop value enum
-func (m *Step) validateTypenameEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, stepTypeTypenamePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *Step) validateTypename(formats strfmt.Registry) error {
-	if swag.IsZero(m.Typename) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateTypenameEnum("__typename", "body", *m.Typename); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Step) validateUnit(formats strfmt.Registry) error {
+func (m *NestedStep) validateUnit(formats strfmt.Registry) error {
 	if swag.IsZero(m.Unit) { // not required
 		return nil
 	}
@@ -119,8 +70,8 @@ func (m *Step) validateUnit(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this step based on the context it is used
-func (m *Step) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this nested step based on the context it is used
+func (m *NestedStep) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateUnit(ctx, formats); err != nil {
@@ -133,7 +84,7 @@ func (m *Step) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 	return nil
 }
 
-func (m *Step) contextValidateUnit(ctx context.Context, formats strfmt.Registry) error {
+func (m *NestedStep) contextValidateUnit(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Unit != nil {
 		if err := m.Unit.ContextValidate(ctx, formats); err != nil {
@@ -150,7 +101,7 @@ func (m *Step) contextValidateUnit(ctx context.Context, formats strfmt.Registry)
 }
 
 // MarshalBinary interface implementation
-func (m *Step) MarshalBinary() ([]byte, error) {
+func (m *NestedStep) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -158,8 +109,8 @@ func (m *Step) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *Step) UnmarshalBinary(b []byte) error {
-	var res Step
+func (m *NestedStep) UnmarshalBinary(b []byte) error {
+	var res NestedStep
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -158,13 +158,13 @@ var _ = Describe("Vm Api", Ordered, func() {
 
 	It("should migrate vm", func() {
 		vmId, _ := fixture.CreateVm(Client, cluster.ID, vlan.ID, false)
-		migrateParams := vm.NewMigRateVMParams()
+		migrateParams := vm.NewMigrateVMParams()
 		migrateParams.RequestBody = &models.VMMigrateParams{
 			Where: &models.VMWhereInput{
 				ID: vmId,
 			},
 		}
-		res, err := Client.VM.MigRateVM(migrateParams)
+		res, err := Client.VM.MigrateVM(migrateParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
 		err = taskutil.WaitTask(Client, res.Payload[0].TaskID)

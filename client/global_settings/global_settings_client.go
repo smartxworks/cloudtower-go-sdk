@@ -38,9 +38,15 @@ type ClientService interface {
 
 	GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnectionParams, opts ...ClientOption) (*GetGlobalSettingsesConnectionOK, error)
 
+	UpdateAccessRestriction(params *UpdateAccessRestrictionParams, opts ...ClientOption) (*UpdateAccessRestrictionOK, error)
+
 	UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinSettingParams, opts ...ClientOption) (*UpdateClusterRecycleBinSettingOK, error)
 
 	UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSettingParams, opts ...ClientOption) (*UpdateGlobalRecycleBinSettingOK, error)
+
+	UpdatePasswordSecurity(params *UpdatePasswordSecurityParams, opts ...ClientOption) (*UpdatePasswordSecurityOK, error)
+
+	UpdateSessionTimeout(params *UpdateSessionTimeoutParams, opts ...ClientOption) (*UpdateSessionTimeoutOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -198,6 +204,44 @@ func (a *Client) GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnec
 }
 
 /*
+  UpdateAccessRestriction update access restriction API
+*/
+func (a *Client) UpdateAccessRestriction(params *UpdateAccessRestrictionParams, opts ...ClientOption) (*UpdateAccessRestrictionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateAccessRestrictionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateAccessRestriction",
+		Method:             "POST",
+		PathPattern:        "/update-access-restriction",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateAccessRestrictionReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateAccessRestrictionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateAccessRestriction: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   UpdateClusterRecycleBinSetting update cluster recycle bin setting API
 */
 func (a *Client) UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinSettingParams, opts ...ClientOption) (*UpdateClusterRecycleBinSettingOK, error) {
@@ -270,6 +314,82 @@ func (a *Client) UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSet
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateGlobalRecycleBinSetting: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdatePasswordSecurity update password security API
+*/
+func (a *Client) UpdatePasswordSecurity(params *UpdatePasswordSecurityParams, opts ...ClientOption) (*UpdatePasswordSecurityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdatePasswordSecurityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdatePasswordSecurity",
+		Method:             "POST",
+		PathPattern:        "/update-password-security",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdatePasswordSecurityReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdatePasswordSecurityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdatePasswordSecurity: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateSessionTimeout update session timeout API
+*/
+func (a *Client) UpdateSessionTimeout(params *UpdateSessionTimeoutParams, opts ...ClientOption) (*UpdateSessionTimeoutOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSessionTimeoutParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateSessionTimeout",
+		Method:             "POST",
+		PathPattern:        "/update-session-timeout",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateSessionTimeoutReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSessionTimeoutOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateSessionTimeout: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

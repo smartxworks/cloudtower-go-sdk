@@ -30,12 +30,6 @@ func (m ConsistencyGroupSnapshotOrderByInput) Pointer() *ConsistencyGroupSnapsho
 
 const (
 
-	// ConsistencyGroupSnapshotOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	ConsistencyGroupSnapshotOrderByInputCreatedAtASC ConsistencyGroupSnapshotOrderByInput = "createdAt_ASC"
-
-	// ConsistencyGroupSnapshotOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	ConsistencyGroupSnapshotOrderByInputCreatedAtDESC ConsistencyGroupSnapshotOrderByInput = "createdAt_DESC"
-
 	// ConsistencyGroupSnapshotOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	ConsistencyGroupSnapshotOrderByInputEntityAsyncStatusASC ConsistencyGroupSnapshotOrderByInput = "entityAsyncStatus_ASC"
 
@@ -71,12 +65,6 @@ const (
 
 	// ConsistencyGroupSnapshotOrderByInputUniqueSizeDESC captures enum value "unique_size_DESC"
 	ConsistencyGroupSnapshotOrderByInputUniqueSizeDESC ConsistencyGroupSnapshotOrderByInput = "unique_size_DESC"
-
-	// ConsistencyGroupSnapshotOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	ConsistencyGroupSnapshotOrderByInputUpdatedAtASC ConsistencyGroupSnapshotOrderByInput = "updatedAt_ASC"
-
-	// ConsistencyGroupSnapshotOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	ConsistencyGroupSnapshotOrderByInputUpdatedAtDESC ConsistencyGroupSnapshotOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -84,7 +72,7 @@ var consistencyGroupSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []ConsistencyGroupSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

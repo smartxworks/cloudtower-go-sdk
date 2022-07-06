@@ -42,12 +42,6 @@ const (
 	// GlobalAlertRuleOrderByInputCauseDESC captures enum value "cause_DESC"
 	GlobalAlertRuleOrderByInputCauseDESC GlobalAlertRuleOrderByInput = "cause_DESC"
 
-	// GlobalAlertRuleOrderByInputCreatedAtASC captures enum value "createdAt_ASC"
-	GlobalAlertRuleOrderByInputCreatedAtASC GlobalAlertRuleOrderByInput = "createdAt_ASC"
-
-	// GlobalAlertRuleOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
-	GlobalAlertRuleOrderByInputCreatedAtDESC GlobalAlertRuleOrderByInput = "createdAt_DESC"
-
 	// GlobalAlertRuleOrderByInputDefaultThresholdsASC captures enum value "default_thresholds_ASC"
 	GlobalAlertRuleOrderByInputDefaultThresholdsASC GlobalAlertRuleOrderByInput = "default_thresholds_ASC"
 
@@ -113,12 +107,6 @@ const (
 
 	// GlobalAlertRuleOrderByInputUnitDESC captures enum value "unit_DESC"
 	GlobalAlertRuleOrderByInputUnitDESC GlobalAlertRuleOrderByInput = "unit_DESC"
-
-	// GlobalAlertRuleOrderByInputUpdatedAtASC captures enum value "updatedAt_ASC"
-	GlobalAlertRuleOrderByInputUpdatedAtASC GlobalAlertRuleOrderByInput = "updatedAt_ASC"
-
-	// GlobalAlertRuleOrderByInputUpdatedAtDESC captures enum value "updatedAt_DESC"
-	GlobalAlertRuleOrderByInputUpdatedAtDESC GlobalAlertRuleOrderByInput = "updatedAt_DESC"
 )
 
 // for schema
@@ -126,7 +114,7 @@ var globalAlertRuleOrderByInputEnum []interface{}
 
 func init() {
 	var res []GlobalAlertRuleOrderByInput
-	if err := json.Unmarshal([]byte(`["boolean_ASC","boolean_DESC","cause_ASC","cause_DESC","createdAt_ASC","createdAt_DESC","default_thresholds_ASC","default_thresholds_DESC","disabled_ASC","disabled_DESC","id_ASC","id_DESC","impact_ASC","impact_DESC","message_ASC","message_DESC","name_ASC","name_DESC","object_ASC","object_DESC","operator_ASC","operator_DESC","solution_ASC","solution_DESC","thresholds_ASC","thresholds_DESC","unit_ASC","unit_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["boolean_ASC","boolean_DESC","cause_ASC","cause_DESC","default_thresholds_ASC","default_thresholds_DESC","disabled_ASC","disabled_DESC","id_ASC","id_DESC","impact_ASC","impact_DESC","message_ASC","message_DESC","name_ASC","name_DESC","object_ASC","object_DESC","operator_ASC","operator_DESC","solution_ASC","solution_DESC","thresholds_ASC","thresholds_DESC","unit_ASC","unit_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
