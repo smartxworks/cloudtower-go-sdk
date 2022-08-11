@@ -35,7 +35,7 @@ type NestedPartition struct {
 
 	// used size
 	// Required: true
-	UsedSize *float64 `json:"used_size"`
+	UsedSize *int64 `json:"used_size"`
 }
 
 // Validate validates this nested partition
