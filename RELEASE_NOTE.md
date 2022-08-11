@@ -1,5 +1,12 @@
 # RELEASE NOTE
 
+## release 日期 2022-08-12
+
+v2.2.0 release
+
+- feature:VmApi: [create_vm_from_content_library_template] 新增通过内容库模板创建虚拟机 api
+- bugfix: 正确生成嵌套类型的数字类型
+
 ## release 日期 2022-07-08
 
 v2.1.0 release
@@ -23,7 +30,7 @@ v2.1.0 release
 - feature:SvtImageApi: [upload_svt_image] 新增上传虚拟机镜像 api 工具
 - feature:TableReporterApi: [export_csv] 新增导出 CSV 报表 api
 - feature:UploadTaskApi: [cancel_upload_task] 新增取消上传 api
-- feature:LabelApi: [add_labels_to_resources],[remove_labels_from_resources] 新增想内容库模板，内容库镜像，隔离策略，安全策略添加，删除标签
+- feature:LabelApi: [add_labels_to_resources],[remove_labels_from_resources] 新增内容库模板，内容库镜像，隔离策略，安全策略添加，删除标签
 
 - bugfix:ContentLibraryImageApi,ElfImageApi: 修复了上传类 Api 无法正确执行的问题，并优化了上传类 Api 的执行逻辑，第一次上传时会上传第一个分片而非只是创建一个上传任务，详见[示例](/examples/upload/readme.md)
 

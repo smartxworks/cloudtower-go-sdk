@@ -28,19 +28,19 @@ type NestedAuthSettings struct {
 	EnableSingleSessionLogin *bool `json:"enable_single_session_login,omitempty"`
 
 	// login miss num threshold
-	LoginMissNumThreshold *int64 `json:"login_miss_num_threshold,omitempty"`
+	LoginMissNumThreshold *int32 `json:"login_miss_num_threshold,omitempty"`
 
 	// login miss time threshold
-	LoginMissTimeThreshold *int64 `json:"login_miss_time_threshold,omitempty"`
+	LoginMissTimeThreshold *int32 `json:"login_miss_time_threshold,omitempty"`
 
 	// password complexity
 	PasswordComplexity *PasswordComplexity `json:"password_complexity,omitempty"`
 
 	// password expire days
-	PasswordExpireDays *int64 `json:"password_expire_days,omitempty"`
+	PasswordExpireDays *int32 `json:"password_expire_days,omitempty"`
 
 	// session max age
-	SessionMaxAge *int64 `json:"session_max_age,omitempty"`
+	SessionMaxAge *int32 `json:"session_max_age,omitempty"`
 }
 
 // Validate validates this nested auth settings
