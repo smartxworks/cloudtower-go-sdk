@@ -91,6 +91,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_template"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_volume"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_volume_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vsphere_esxi_account"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/witness"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/witness_service"
@@ -221,6 +222,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.VMSnapshot = vm_snapshot.New(transport, formats)
 	cli.VMTemplate = vm_template.New(transport, formats)
 	cli.VMVolume = vm_volume.New(transport, formats)
+	cli.VMVolumeSnapshot = vm_volume_snapshot.New(transport, formats)
 	cli.VsphereEsxiAccount = vsphere_esxi_account.New(transport, formats)
 	cli.Witness = witness.New(transport, formats)
 	cli.WitnessService = witness_service.New(transport, formats)
@@ -432,6 +434,8 @@ type Cloudtower struct {
 
 	VMVolume vm_volume.ClientService
 
+	VMVolumeSnapshot vm_volume_snapshot.ClientService
+
 	VsphereEsxiAccount vsphere_esxi_account.ClientService
 
 	Witness witness.ClientService
@@ -529,6 +533,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.VMSnapshot.SetTransport(transport)
 	c.VMTemplate.SetTransport(transport)
 	c.VMVolume.SetTransport(transport)
+	c.VMVolumeSnapshot.SetTransport(transport)
 	c.VsphereEsxiAccount.SetTransport(transport)
 	c.Witness.SetTransport(transport)
 	c.WitnessService.SetTransport(transport)

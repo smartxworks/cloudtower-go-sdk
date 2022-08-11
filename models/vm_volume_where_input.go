@@ -373,6 +373,18 @@ type VMVolumeWhereInput struct {
 	// size not in
 	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
+	// type
+	Type *VMVolumeType `json:"type,omitempty"`
+
+	// type in
+	TypeIn []VMVolumeType `json:"type_in,omitempty"`
+
+	// type not
+	TypeNot *VMVolumeType `json:"type_not,omitempty"`
+
+	// type not in
+	TypeNotIn []VMVolumeType `json:"type_not_in,omitempty"`
+
 	// unique size
 	UniqueSize *int64 `json:"unique_size,omitempty"`
 
@@ -456,6 +468,22 @@ func (m *VMVolumeWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLun(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTypeIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTypeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTypeNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -730,6 +758,86 @@ func (m *VMVolumeWhereInput) validateLun(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMVolumeWhereInput) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) validateTypeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.TypeIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.TypeIn); i++ {
+
+		if err := m.TypeIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) validateTypeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.TypeNot) { // not required
+		return nil
+	}
+
+	if m.TypeNot != nil {
+		if err := m.TypeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) validateTypeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.TypeNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.TypeNotIn); i++ {
+
+		if err := m.TypeNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *VMVolumeWhereInput) validateVMDisksEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMDisksEvery) { // not required
 		return nil
@@ -836,6 +944,22 @@ func (m *VMVolumeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateLun(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTypeIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTypeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTypeNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1060,6 +1184,74 @@ func (m *VMVolumeWhereInput) contextValidateLun(ctx context.Context, formats str
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) contextValidateTypeIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TypeIn); i++ {
+
+		if err := m.TypeIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) contextValidateTypeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TypeNot != nil {
+		if err := m.TypeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) contextValidateTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TypeNotIn); i++ {
+
+		if err := m.TypeNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil

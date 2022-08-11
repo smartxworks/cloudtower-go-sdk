@@ -75,6 +75,9 @@ type VMVolume struct {
 	// Required: true
 	Size *int64 `json:"size"`
 
+	// type
+	Type *VMVolumeType `json:"type,omitempty"`
+
 	// unique size
 	UniqueSize *int64 `json:"unique_size,omitempty"`
 
@@ -131,6 +134,10 @@ func (m *VMVolume) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -305,6 +312,25 @@ func (m *VMVolume) validateSize(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMVolume) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMVolume) validateVMDisks(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMDisks) { // not required
 		return nil
@@ -348,6 +374,10 @@ func (m *VMVolume) ContextValidate(ctx context.Context, formats strfmt.Registry)
 	}
 
 	if err := m.contextValidateLun(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -421,6 +451,22 @@ func (m *VMVolume) contextValidateLun(ctx context.Context, formats strfmt.Regist
 				return ve.ValidateName("lun")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("lun")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolume) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
 			}
 			return err
 		}

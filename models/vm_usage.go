@@ -30,6 +30,9 @@ func (m VMUsage) Pointer() *VMUsage {
 
 const (
 
+	// VMUsageADVANCEDMONITORING captures enum value "ADVANCED_MONITORING"
+	VMUsageADVANCEDMONITORING VMUsage = "ADVANCED_MONITORING"
+
 	// VMUsageBACKUPCONTROLLER captures enum value "BACKUP_CONTROLLER"
 	VMUsageBACKUPCONTROLLER VMUsage = "BACKUP_CONTROLLER"
 
@@ -42,7 +45,7 @@ var vmUsageEnum []interface{}
 
 func init() {
 	var res []VMUsage
-	if err := json.Unmarshal([]byte(`["BACKUP_CONTROLLER","EVEROUTE_CONTROLLER"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ADVANCED_MONITORING","BACKUP_CONTROLLER","EVEROUTE_CONTROLLER"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

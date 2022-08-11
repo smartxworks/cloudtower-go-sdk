@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CloneVMVolume(params *CloneVMVolumeParams, opts ...ClientOption) (*CloneVMVolumeOK, error)
+
 	CreateVMVolume(params *CreateVMVolumeParams, opts ...ClientOption) (*CreateVMVolumeOK, error)
 
 	DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, opts ...ClientOption) (*DeleteVMVolumeFromVMOK, error)
@@ -38,7 +40,51 @@ type ClientService interface {
 
 	GetVMVolumesConnection(params *GetVMVolumesConnectionParams, opts ...ClientOption) (*GetVMVolumesConnectionOK, error)
 
+	RebuildVMVolume(params *RebuildVMVolumeParams, opts ...ClientOption) (*RebuildVMVolumeOK, error)
+
+	RollbackVMVolume(params *RollbackVMVolumeParams, opts ...ClientOption) (*RollbackVMVolumeOK, error)
+
+	UpdateVMVolume(params *UpdateVMVolumeParams, opts ...ClientOption) (*UpdateVMVolumeOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CloneVMVolume clone Vm volume API
+*/
+func (a *Client) CloneVMVolume(params *CloneVMVolumeParams, opts ...ClientOption) (*CloneVMVolumeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCloneVMVolumeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CloneVmVolume",
+		Method:             "POST",
+		PathPattern:        "/clone-vm-volume",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CloneVMVolumeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CloneVMVolumeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CloneVmVolume: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -190,6 +236,120 @@ func (a *Client) GetVMVolumesConnection(params *GetVMVolumesConnectionParams, op
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetVmVolumesConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  RebuildVMVolume rebuild Vm volume API
+*/
+func (a *Client) RebuildVMVolume(params *RebuildVMVolumeParams, opts ...ClientOption) (*RebuildVMVolumeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRebuildVMVolumeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "RebuildVmVolume",
+		Method:             "POST",
+		PathPattern:        "/rebuild-vm-volume",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &RebuildVMVolumeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RebuildVMVolumeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for RebuildVmVolume: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  RollbackVMVolume rollback Vm volume API
+*/
+func (a *Client) RollbackVMVolume(params *RollbackVMVolumeParams, opts ...ClientOption) (*RollbackVMVolumeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRollbackVMVolumeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "RollbackVmVolume",
+		Method:             "POST",
+		PathPattern:        "/rollback-vm-volume",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &RollbackVMVolumeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RollbackVMVolumeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for RollbackVmVolume: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVMVolume update Vm volume API
+*/
+func (a *Client) UpdateVMVolume(params *UpdateVMVolumeParams, opts ...ClientOption) (*UpdateVMVolumeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVMVolumeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateVmVolume",
+		Method:             "POST",
+		PathPattern:        "/update-vm-volume",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateVMVolumeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVMVolumeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateVmVolume: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
