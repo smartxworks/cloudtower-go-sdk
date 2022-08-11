@@ -21,7 +21,7 @@ type NestedFrozenDisks struct {
 
 	// boot
 	// Required: true
-	Boot *int64 `json:"boot"`
+	Boot *int32 `json:"boot"`
 
 	// bus
 	// Required: true

@@ -497,11 +497,11 @@ func createVmFromTemplate(
 			TemplateID: pointy.String(templateId),
 			ClusterID:  pointy.String(clusterId),
 			Name:       pointy.String(name),
-			DiskOperate: &models.VMCreateVMFromTemplateParamsDiskOperate{
-				RemoveDisks: &models.VMCreateVMFromTemplateParamsDiskOperateRemoveDisks{
+			DiskOperate: &models.VMDiskOperate{
+				RemoveDisks: &models.VMDiskOperateRemoveDisks{
 					DiskIndex: []int32{2, 3},
 				},
-				ModifyDisks: []*models.VMCreateVMFromTemplateParamsDiskOperateModifyDisksItems0{
+				ModifyDisks: []*models.DiskOperateModifyDisk{
 					{
 						DiskIndex:  pointy.Int32(0),
 						VMVolumeID: pointy.String("vmVolumeId1"),
