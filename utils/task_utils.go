@@ -1,14 +1,14 @@
 package utils
 
 import (
+	"context"
 	"fmt"
 	"time"
-
-	"github.com/thoas/go-funk"
 
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+	"github.com/thoas/go-funk"
 )
 
 // < 0 mean not finished, 0 mean succeed, 1 mean failed
@@ -23,11 +23,13 @@ func checkTaskFinished(task *models.Task) int8 {
 	}
 }
 
-func WaitTask(client *apiclient.Cloudtower, id *string) error {
+func WaitTask(ctx context.Context, client *apiclient.Cloudtower, id *string, interval time.Duration) error {
+	if interval < 1*time.Second {
+		interval = 1 * time.Second
+	}
 	if id == nil {
 		return nil
 	}
-	start := time.Now()
 	taskParams := task.NewGetTasksParams()
 	taskParams.RequestBody = &models.GetTasksRequestBody{
 		Where: &models.TaskWhereInput{
@@ -35,74 +37,77 @@ func WaitTask(client *apiclient.Cloudtower, id *string) error {
 		},
 	}
 	for {
-		tasks, err := client.Task.GetTasks(taskParams)
-		if err != nil {
-			return err
-		}
-		if len(tasks.GetPayload()) <= 0 {
-			return fmt.Errorf("task %s not found", *id)
-		} else if checkTaskFinished(tasks.Payload[0]) >= 0 {
-			if *tasks.Payload[0].Status == models.TaskStatusFAILED {
-				return fmt.Errorf("task %s failed", *id)
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		default:
+			tasks, err := client.Task.GetTasks(taskParams)
+			if err != nil {
+				return err
 			}
-			return nil
-		} else {
-			time.Sleep(5 * time.Second)
-			if time.Since(start) > 5*time.Minute {
-				return fmt.Errorf("task %s timeout", *id)
+			if len(tasks.GetPayload()) != 0 && checkTaskFinished(tasks.GetPayload()[0]) >= 0 {
+				if *tasks.Payload[0].Status == models.TaskStatusFAILED {
+					return fmt.Errorf("task %s failed", *id)
+				}
+				return nil
 			}
+			time.Sleep(interval)
 		}
 	}
-
 }
 
-func WaitTasks(client *apiclient.Cloudtower, ids []string) error {
-	start := time.Now()
+func WaitTasks(ctx context.Context, client *apiclient.Cloudtower, ids []string, interval time.Duration) error {
+	if interval < 1*time.Second {
+		interval = 1 * time.Second
+	}
 	errorIds := ""
 	queryIds := ids
+	doneMap := make(map[string]bool)
+	for _, id := range ids {
+		doneMap[id] = false
+	}
 	for {
-		taskParams := task.NewGetTasksParams()
-		taskParams.RequestBody = &models.GetTasksRequestBody{
-			Where: &models.TaskWhereInput{
-				IDIn: queryIds,
-			},
-		}
-		tasks, err := client.Task.GetTasks(taskParams)
-		if err != nil {
-			return err
-		}
-
-		queryIds = funk.Map(funk.Filter(tasks.GetPayload(), func(t *models.Task) bool {
-			switch checkTaskFinished(t) {
-			case 1:
-				if len(errorIds) > 0 {
-					errorIds += ", "
-					errorIds += *t.ID
-				} else {
-					errorIds = *t.ID
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		default:
+			taskParams := task.NewGetTasksParams()
+			taskParams.RequestBody = &models.GetTasksRequestBody{
+				Where: &models.TaskWhereInput{
+					IDIn: queryIds,
+				},
+			}
+			tasksRes, err := client.Task.GetTasks(taskParams)
+			if err != nil {
+				return err
+			}
+			tasks := tasksRes.GetPayload()
+			for _, t := range tasks {
+				switch checkTaskFinished(t) {
+				case 1:
+					if len(errorIds) > 0 {
+						errorIds += ", "
+						errorIds += *t.ID
+					} else {
+						errorIds += *t.ID
+					}
+					fallthrough
+				case 0:
+					doneMap[*t.ID] = true
 				}
-				fallthrough
-			case 0:
-				return false
-			case -1:
-				fallthrough
-			default:
-				return true
 			}
-		}), func(t *models.Task) string {
-			return *t.ID
-		}).([]string)
 
-		if len(queryIds) == 0 {
-			if len(errorIds) > 0 {
-				return fmt.Errorf("tasks [%s] failed", errorIds)
+			queryIds = funk.Filter(ids, func(id string) bool {
+				return !doneMap[id]
+			}).([]string)
+
+			if len(queryIds) == 0 {
+				if len(errorIds) > 0 {
+					return fmt.Errorf("tasks [%s] failed", errorIds)
+				}
+				return nil
 			}
-			return nil
-		} else {
-			time.Sleep(5 * time.Second)
-			if time.Since(start) > 5*time.Minute {
-				return fmt.Errorf("query task timeout")
-			}
+			time.Sleep(interval)
 		}
 	}
 }
