@@ -1,6 +1,7 @@
 package fixture
 
 import (
+	"context"
 	"fmt"
 	"sync"
 	"time"
@@ -31,7 +32,7 @@ func CreateIscsiTarget(client *apiclient.Cloudtower, clusterId *string) (*string
 		if err != nil {
 			panic(err.Error())
 		}
-		taskutil.WaitTask(client, res.Payload[0].TaskID)
+		taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	}
 	defer func() {
 		if err := recover(); err != nil {
@@ -52,7 +53,7 @@ func CreateIscsiTarget(client *apiclient.Cloudtower, clusterId *string) (*string
 	if err != nil {
 		panic(err.Error())
 	}
-	taskutil.WaitTask(client, res.Payload[0].TaskID)
+	taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	return res.Payload[0].Data.ID, dispose
 }
 
@@ -81,7 +82,7 @@ func CreateIscsiLun(client *apiclient.Cloudtower, clusterId *string) (*string, *
 				if err != nil {
 					panic(err.Error())
 				}
-				taskutil.WaitTask(client, res.Payload[0].TaskID)
+				taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 			}()
 		}
 		wg.Wait()
@@ -103,7 +104,7 @@ func CreateIscsiLun(client *apiclient.Cloudtower, clusterId *string) (*string, *
 	if err != nil {
 		panic(err.Error())
 	}
-	taskutil.WaitTask(client, res.Payload[0].TaskID)
+	taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	return res.Payload[0].Data.ID, targetId, dispose
 }
 
@@ -131,7 +132,7 @@ func CreateIscsiLunSnapshot(client *apiclient.Cloudtower, clusterId *string) (*s
 				if err != nil {
 					panic(err.Error())
 				}
-				taskutil.WaitTask(client, res.Payload[0].TaskID)
+				taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 			}()
 		}
 		wg.Wait()

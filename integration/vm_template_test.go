@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"fmt"
 	"sync"
 	"time"
@@ -52,7 +53,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 		cloneRes, err := Client.VMTemplate.CloneVMTemplateFromVM(cloneParams)
 		Expect(err).To(BeNil())
 		Expect(cloneRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, cloneRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, cloneRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		deleteParams := vm_template.NewDeleteVMTemplateParams()
@@ -64,7 +65,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 		deleteRes, err := Client.VMTemplate.DeleteVMTemplate(deleteParams)
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -88,7 +89,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 		cloneRes, err := Client.VMTemplate.ConvertVMTemplateFromVM(convertParams)
 		Expect(err).To(BeNil())
 		Expect(cloneRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, cloneRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, cloneRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		deleteParams := vm_template.NewDeleteVMTemplateParams()
@@ -100,7 +101,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 		deleteRes, err := Client.VMTemplate.DeleteVMTemplate(deleteParams)
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -119,7 +120,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 		updateRes, err := Client.VMTemplate.UpdateVMTemplate(updateParams)
 		Expect(err).To(BeNil())
 		Expect(updateRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, updateRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, updateRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -137,7 +138,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 					},
 				}
 				deleteRes, _ := Client.VM.DeleteVM(deleteParams)
-				taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+				taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 			}
 		}()
 		convertParams := vm.NewConvertVMTemplateToVMParams()
@@ -150,7 +151,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 		convertRes, err := Client.VM.ConvertVMTemplateToVM(convertParams)
 		Expect(err).To(BeNil())
 		Expect(convertRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, convertRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, convertRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -175,7 +176,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 						},
 					}
 					deleteRes, _ := Client.VM.DeleteVM(deleteParams)
-					taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+					taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 				}()
 			}
 			wg.Wait()
@@ -192,7 +193,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 		createRes, err := Client.VM.CreateVMFromTemplate(createParams)
 		Expect(err).To(BeNil())
 		Expect(createRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, createRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, createRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 })

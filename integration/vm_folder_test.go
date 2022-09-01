@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"fmt"
 	"sync"
 	"time"
@@ -99,7 +100,7 @@ var _ = Describe("Vm folder api", Ordered, func() {
 		addRes, err := Client.VM.AddVMToFolder(addParams)
 		Expect(err).To(BeNil())
 		Expect(addRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, addRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, addRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		removeParams := vm.NewRemoveVMToFolderParams()
 		removeParams.RequestBody = &models.VMOperateParams{
@@ -110,7 +111,7 @@ var _ = Describe("Vm folder api", Ordered, func() {
 		removeRes, err := Client.VM.RemoveVMToFolder(removeParams)
 		Expect(err).To(BeNil())
 		Expect(removeRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, removeRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, removeRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 })

@@ -1,6 +1,7 @@
 package fixture
 
 import (
+	"context"
 	"fmt"
 	"sync"
 	"time"
@@ -32,7 +33,7 @@ func CreateVm(client *apiclient.Cloudtower, clusterId *string, vlanId *string, i
 		if err != nil {
 			panic(err.Error())
 		}
-		taskutil.WaitTask(client, res.Payload[0].TaskID)
+		taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	}
 	defer func() {
 		if err := recover(); err != nil {
@@ -75,7 +76,7 @@ func CreateVm(client *apiclient.Cloudtower, clusterId *string, vlanId *string, i
 	if err != nil {
 		panic(err.Error())
 	}
-	taskutil.WaitTask(client, res.Payload[0].TaskID)
+	taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	return res.Payload[0].Data.ID, dispose
 }
 
@@ -93,7 +94,7 @@ func CreateVmFolder(client *apiclient.Cloudtower, clusterId *string) (*string, f
 		if err != nil {
 			panic(err.Error())
 		}
-		taskutil.WaitTask(client, res.Payload[0].TaskID)
+		taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	}
 	defer func() {
 		if err := recover(); err != nil {
@@ -110,7 +111,7 @@ func CreateVmFolder(client *apiclient.Cloudtower, clusterId *string) (*string, f
 	if err != nil {
 		panic(err.Error())
 	}
-	taskutil.WaitTask(client, res.Payload[0].TaskID)
+	taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	return res.Payload[0].Data.ID, dispose
 }
 
@@ -134,7 +135,7 @@ func CreateSnapshot(client *apiclient.Cloudtower, clusterId *string, vlanId *str
 				if err != nil {
 					panic(err.Error())
 				}
-				taskutil.WaitTask(client, res.Payload[0].TaskID)
+				taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 			}()
 		}
 		wg.Add(1)
@@ -161,7 +162,7 @@ func CreateSnapshot(client *apiclient.Cloudtower, clusterId *string, vlanId *str
 	if err != nil {
 		panic(err.Error())
 	}
-	taskutil.WaitTask(client, res.Payload[0].TaskID)
+	taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	return res.Payload[0].Data.ID, vmId, dispose
 }
 
@@ -181,7 +182,7 @@ func CreateTemplate(client *apiclient.Cloudtower, clusterId *string, vlanId *str
 			if err != nil {
 				panic(err.Error())
 			}
-			taskutil.WaitTask(client, res.Payload[0].TaskID)
+			taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 		} else {
 			disposeVm()
 		}
@@ -203,6 +204,6 @@ func CreateTemplate(client *apiclient.Cloudtower, clusterId *string, vlanId *str
 	if err != nil {
 		panic(err.Error())
 	}
-	taskutil.WaitTask(client, res.Payload[0].TaskID)
+	taskutil.WaitTask(context.TODO(), client, res.Payload[0].TaskID, 5*time.Minute)
 	return res.Payload[0].Data.ID, dispose
 }

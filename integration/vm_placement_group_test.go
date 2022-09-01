@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -51,7 +52,7 @@ var _ = Describe("Vm placment group api", Ordered, func() {
 		createRes, err := Client.VMPlacementGroup.CreateVMPlacementGroup(createParams)
 		Expect(err).To(BeNil())
 		Expect(createRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, createRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, createRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		updateParams := vm_placement_group.NewUpdateVMPlacementGroupParams()
@@ -66,7 +67,7 @@ var _ = Describe("Vm placment group api", Ordered, func() {
 		updateRes, err := Client.VMPlacementGroup.UpdateVMPlacementGroup(updateParams)
 		Expect(err).To(BeNil())
 		Expect(updateRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, updateRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, updateRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		deleteParams := vm_placement_group.NewDeleteVMPlacementGroupParams()
@@ -78,7 +79,7 @@ var _ = Describe("Vm placment group api", Ordered, func() {
 		deleteRes, err := Client.VMPlacementGroup.DeleteVMPlacementGroup(deleteParams)
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 

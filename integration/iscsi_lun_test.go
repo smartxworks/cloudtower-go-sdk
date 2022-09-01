@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -47,7 +48,7 @@ var _ = Describe("Iscsi lun api", Ordered, func() {
 		createRes, err := Client.IscsiLun.CreateIscsiLun(createParams)
 		Expect(err).To(BeNil())
 		Expect(createRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, createRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, createRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		updateParams := iscsi_lun.NewUpdateIscsiLunParams()
@@ -64,7 +65,7 @@ var _ = Describe("Iscsi lun api", Ordered, func() {
 		updateRes, err := Client.IscsiLun.UpdateIscsiLun(updateParams)
 		Expect(err).To(BeNil())
 		Expect(updateRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, updateRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, updateRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		deleteParams := iscsi_lun.NewDeleteIscsiLunParams()
@@ -76,7 +77,7 @@ var _ = Describe("Iscsi lun api", Ordered, func() {
 		deleteRes, err := Client.IscsiLun.DeleteIscsiLun(deleteParams)
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 })

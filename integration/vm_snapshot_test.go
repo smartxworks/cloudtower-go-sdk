@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -51,7 +52,7 @@ var _ = Describe("Vm snapshot api", Ordered, func() {
 		createRes, err := Client.VMSnapshot.CreateVMSnapshot(createParams)
 		Expect(err).To(BeNil())
 		Expect(createRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, createRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, createRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		deleteParams := vm_snapshot.NewDeleteVMSnapshotParams()
@@ -63,7 +64,7 @@ var _ = Describe("Vm snapshot api", Ordered, func() {
 		deleteRes, err := Client.VMSnapshot.DeleteVMSnapshot(deleteParams)
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -82,7 +83,7 @@ var _ = Describe("Vm snapshot api", Ordered, func() {
 		rollbackRes, err := Client.VM.RollbackVM(rollbackParams)
 		Expect(err).To(BeNil())
 		Expect(rollbackRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, rollbackRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, rollbackRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -100,7 +101,7 @@ var _ = Describe("Vm snapshot api", Ordered, func() {
 		rebuildRes, err := Client.VM.RebuildVM(rebuildParams)
 		Expect(err).To(BeNil())
 		Expect(rebuildRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, rebuildRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, rebuildRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		deleteParams := vm.NewDeleteVMParams()
 		deleteParams.RequestBody = &models.VMOperateParams{
