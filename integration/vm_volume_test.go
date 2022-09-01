@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -47,7 +48,7 @@ var _ = Describe("Vm volume api", Ordered, func() {
 		createRes, err := Client.VMVolume.CreateVMVolume(createParams)
 		Expect(err).To(BeNil())
 		Expect(createRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, createRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, createRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		deleteParams := vm_volume.NewDeleteVMVolumeFromVMParams()
@@ -59,7 +60,7 @@ var _ = Describe("Vm volume api", Ordered, func() {
 		deleteRes, err := Client.VMVolume.DeleteVMVolumeFromVM(deleteParams)
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 

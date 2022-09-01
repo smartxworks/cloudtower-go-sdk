@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"fmt"
 	"sync"
 	"time"
@@ -75,7 +76,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		Expect(createRes).ToNot(BeNil())
 		Expect(createRes.Payload).To(HaveLen(1))
 		_vm := createRes.Payload[0]
-		err = taskutil.WaitTask(Client, _vm.TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, _vm.TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		updateParams := vm.NewUpdateVMParams()
 		updateParams.RequestBody = &models.VMUpdateParams{
@@ -90,7 +91,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		Expect(err).To(BeNil())
 		Expect(updatedRes).ToNot(BeNil())
 		Expect(updatedRes.Payload).To(HaveLen(1))
-		err = taskutil.WaitTask(Client, updatedRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, updatedRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		deleteParams := vm.NewDeleteVMParams()
 		deleteParams.RequestBody = &models.VMOperateParams{
@@ -102,7 +103,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
 		Expect(deleteRes.Payload).To(HaveLen(1))
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 	It("should clone vm", func() {
@@ -118,7 +119,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		res, err := Client.VM.CloneVM(cloneParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
-		taskutil.WaitTask(Client, res.Payload[0].TaskID)
+		taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 		var wg sync.WaitGroup
 		wg.Add(1)
 		go func() {
@@ -135,7 +136,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 				},
 			}
 			res, _ := Client.VM.DeleteVM(deleteParams)
-			err = taskutil.WaitTask(Client, res.Payload[0].TaskID)
+			err = taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 			Expect(err).To(BeNil())
 		}()
 		wg.Wait()
@@ -151,7 +152,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		res, err := Client.VM.StartVM(startParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, res.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		dispose()
 	})
@@ -167,7 +168,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		res, err := Client.VM.MigrateVM(migrateParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, res.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		deleteParams := vm.NewDeleteVMParams()
 		deleteParams.RequestBody = &models.VMOperateParams{
@@ -177,7 +178,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		}
 		deleteRes, err := Client.VM.DeleteVM(deleteParams)
 		Expect(err).To(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 	XIt("should restart vm", func() {
@@ -193,7 +194,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		res, err := Client.VM.RestartVM(restartParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, res.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 	It("should force restart vm", func() {
@@ -208,7 +209,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		res, err := Client.VM.ForceRestartVM(restartParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, res.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 	It("should suspend and resume vm", func() {
@@ -223,7 +224,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		suspendRes, err := Client.VM.SuspendVM(suspendParams)
 		Expect(err).To(BeNil())
 		Expect(suspendRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, suspendRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, suspendRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		resumeParams := vm.NewResumeVMParams()
 		resumeParams.RequestBody = &models.VMOperateParams{
@@ -234,7 +235,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		resumeRes, err := Client.VM.ResumeVM(resumeParams)
 		Expect(err).To(BeNil())
 		Expect(resumeRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, resumeRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, resumeRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -251,7 +252,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		res, err := Client.VM.ShutDownVM(shutdownParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, res.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 	It("should force shutdown vm", func() {
@@ -266,7 +267,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		res, err := Client.VM.PoweroffVM(shutdownParams)
 		Expect(err).To(BeNil())
 		Expect(res).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, res.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 	})
@@ -291,7 +292,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		addRes, err := Client.VM.AddVMCdRom(addParams)
 		Expect(err).To(BeNil())
 		Expect(addRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, addRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, addRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		getParams := vm_disk.NewGetVMDisksParams()
 		getParams.RequestBody = &models.GetVMDisksRequestBody{
@@ -316,7 +317,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		deleteRes, err := Client.VM.RemoveVMCdRom(deleteParams)
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -347,7 +348,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		addRes, err := Client.VM.AddVMDisk(addParams)
 		Expect(err).To(BeNil())
 		Expect(addRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, addRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, addRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		updateParams := vm.NewUpdateVMDiskParams()
 		updateParams.RequestBody = &models.VMUpdateDiskParams{
@@ -362,7 +363,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		updateRes, err := Client.VM.UpdateVMDisk(updateParams)
 		Expect(err).To(BeNil())
 		Expect(updateRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, updateRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, updateRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		removeParams := vm.NewRemoveVMDiskParams()
 		removeParams.RequestBody = &models.VMRemoveDiskParams{
@@ -378,7 +379,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		removeRes, err := Client.VM.RemoveVMDisk(removeParams)
 		Expect(err).To(BeNil())
 		Expect(removeRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, removeRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, removeRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -401,7 +402,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		addRes, err := Client.VM.AddVMNic(addParams)
 		Expect(err).To(BeNil())
 		Expect(addRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, addRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, addRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		updateParams := vm.NewUpdateVMNicParams()
 		updateParams.RequestBody = &models.VMUpdateNicParams{
@@ -416,7 +417,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		updateRes, err := Client.VM.UpdateVMNic(updateParams)
 		Expect(err).To(BeNil())
 		Expect(updateRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, updateRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, updateRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		removeParams := vm.NewRemoveVMNicParams()
 		removeParams.RequestBody = &models.VMRemoveNicParams{
@@ -430,7 +431,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		removeRes, err := Client.VM.RemoveVMNic(removeParams)
 		Expect(err).To(BeNil())
 		Expect(removeRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, removeRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, removeRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 	It("should move to and recover from recycle bin", func() {
@@ -459,7 +460,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		moveRes, err := Client.VM.MoveVMToRecycleBin(moveParam)
 		Expect(err).To(BeNil())
 		Expect(moveRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, moveRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, moveRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		recoverParams := vm.NewRecoverVMFromRecycleBinParams()
 		recoverParams.RequestBody = &models.VMOperateParams{
@@ -470,7 +471,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		recoverRes, err := Client.VM.RecoverVMFromRecycleBin(recoverParams)
 		Expect(err).To(BeNil())
 		Expect(recoverRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, recoverRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, recoverRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 })

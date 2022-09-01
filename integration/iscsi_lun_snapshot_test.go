@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"fmt"
 	"sync"
 	"time"
@@ -47,7 +48,7 @@ var _ = Describe("Iscsi lun snapshot api", Ordered, func() {
 		createRes, err := Client.IscsiLunSnapshot.CreateIscsiLunSnapshot(createParams)
 		Expect(err).To(BeNil())
 		Expect(createRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, createRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, createRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 
 		deleteParams := iscsi_lun_snapshot.NewDeleteIscsiLunSnapshotParams()
@@ -59,7 +60,7 @@ var _ = Describe("Iscsi lun snapshot api", Ordered, func() {
 		deleteRes, err := Client.IscsiLunSnapshot.DeleteIscsiLunSnapshot(deleteParams)
 		Expect(err).To(BeNil())
 		Expect(deleteRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -87,7 +88,7 @@ var _ = Describe("Iscsi lun snapshot api", Ordered, func() {
 					if err != nil {
 						panic(err.Error())
 					}
-					taskutil.WaitTask(Client, deleteRes.Payload[0].TaskID)
+					taskutil.WaitTask(context.TODO(), Client, deleteRes.Payload[0].TaskID, 5*time.Minute)
 				}()
 			}
 		}()
@@ -101,7 +102,7 @@ var _ = Describe("Iscsi lun snapshot api", Ordered, func() {
 		cloneRes, err := Client.IscsiLun.CloneIscsiLunFromSnapshot(cloneParams)
 		Expect(err).To(BeNil())
 		Expect(cloneRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, cloneRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, cloneRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 
@@ -118,7 +119,7 @@ var _ = Describe("Iscsi lun snapshot api", Ordered, func() {
 		rollackRes, err := Client.IscsiLun.RollbackIscsiLunFromSnapshot(rollbackParams)
 		Expect(err).To(BeNil())
 		Expect(rollackRes).ToNot(BeNil())
-		err = taskutil.WaitTask(Client, rollackRes.Payload[0].TaskID)
+		err = taskutil.WaitTask(context.TODO(), Client, rollackRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 	})
 })

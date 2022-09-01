@@ -119,14 +119,16 @@ if err != nil {
 >
 > - 方法参数说明
 >
-> | 参数名 | 类型                | 是否必须 | 说明                     |
-> | ------ | ------------------- | -------- | ------------------------ |
-> | client | \*client.Cloudtower | 是       | 查询所使用的 client 实例 |
-> | id     | string              | 是       | 需查询的 task 的 id      |
+> | 参数名   | 类型                | 是否必须 | 说明                                |
+> | -------- | ------------------- | -------- | ----------------------------------- |
+> | context  | Context             | 是       | 用于控制中断                        |
+> | client   | \*client.Cloudtower | 是       | 查询所使用的 client 实例            |
+> | id       | string              | 是       | 需查询的 task 的 id                 |
+> | interval | time.duration       | 是       | 每次查询后的等待时间，最小时间为 1s |
 
 ```go
 task := *startRes.Payload[0].TaskID
-err = utils.WaitTask(client, task)
+err = utils.WaitTask(context.TODO(), client, task, 1*time.Second)
 if err != nil {
 	return err
 }
@@ -136,16 +138,18 @@ if err != nil {
 >
 > - 方法参数说明
 >
-> | 参数名 | 类型                | 是否必须 | 说明                     |
-> | ------ | ------------------- | -------- | ------------------------ |
-> | client | \*client.Cloudtower | 是       | 查询所使用的 client 实例 |
-> | ids    | []string            | 是       | 需查询的 task 的 id 列表 |
+> | 参数名   | 类型                | 是否必须 | 说明                                |
+> | -------- | ------------------- | -------- | ----------------------------------- |
+> | context  | Context             | 是       | 用于控制中断                        |
+> | client   | \*client.Cloudtower | 是       | 查询所使用的 client 实例            |
+> | ids      | []string            | 是       | 需查询的 task 的 id 列表            |
+> | interval | time.duration       | 是       | 每次查询后的等待时间，最小时间为 1s |
 
 ```go
 tasks := funk.Map(startRes.Payload, func(tvm *models.WithTaskVM) string {
 	return *tvm.TaskID
 }).([]string)
-err = utils.WaitTasks(client, tasks)
+err = utils.WaitTask(context.TODO(), client, tasks, 1*time.Second)
 if err != nil {
 	return err
 }
@@ -399,6 +403,8 @@ func getVmshasNMoreCpuCore(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -440,7 +446,7 @@ func createVmFromTemplate(
 		return nil, err
 	}
 	withTaskVm := createRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -464,6 +470,8 @@ func createVmFromTemplate(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -527,7 +535,7 @@ func createVmFromTemplate(
 						{
 							VMVolume: &models.MountNewCreateDisksParamsVMVolume{
 								ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
-								Size:             pointy.Float64(4 * 1024 * 1024 * 1024),
+								Size:             pointy.Int64(4 * 1024 * 1024 * 1024),
 								Name:             pointy.String("disk_name"),
 							},
 							Boot: pointy.Int32(2),
@@ -544,7 +552,7 @@ func createVmFromTemplate(
 		return nil, err
 	}
 	withTaskVm := createRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -568,6 +576,8 @@ func createVmFromTemplate(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -615,7 +625,7 @@ func createVmFromTemplate(
 		return nil, err
 	}
 	withTaskVm := createRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -641,6 +651,8 @@ func createVmFromTemplate(
 package main
 
 import (
+  	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -664,7 +676,7 @@ func main() {
 			Ha:         pointy.Bool(true),
 			CPUCores:   pointy.Int32(4),
 			CPUSockets: pointy.Int32(2),
-			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Memory:     pointy.Int64(8 * 1024 * 1024 * 1024),
 			Vcpu:       pointy.Int32(4 * 2),
 			Status:     models.VMStatusSTOPPED.Pointer(),
 			Firmware:   models.VMFirmwareBIOS.Pointer(),
@@ -697,7 +709,7 @@ func createVm(
 		return nil, err
 	}
 	withTaskVm := createRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -724,6 +736,8 @@ func createVm(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -747,7 +761,7 @@ func main() {
 			Ha:         pointy.Bool(true),
 			CPUCores:   pointy.Int32(4),
 			CPUSockets: pointy.Int32(2),
-			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Memory:     pointy.Int64(8 * 1024 * 1024 * 1024),
 			Vcpu:       pointy.Int32(4 * 2),
 			Status:     models.VMStatusSTOPPED.Pointer(),
 			Firmware:   models.VMFirmwareBIOS.Pointer(),
@@ -781,7 +795,7 @@ func createVm(
 		return nil, err
 	}
 	withTaskVm := createRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -805,6 +819,8 @@ func createVm(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -828,7 +844,7 @@ func main() {
 			Ha:         pointy.Bool(true),
 			CPUCores:   pointy.Int32(4),
 			CPUSockets: pointy.Int32(2),
-			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Memory:     pointy.Int64(8 * 1024 * 1024 * 1024),
 			Vcpu:       pointy.Int32(4 * 2),
 			Status:     models.VMStatusSTOPPED.Pointer(),
 			Firmware:   models.VMFirmwareBIOS.Pointer(),
@@ -863,7 +879,7 @@ func createVm(
 		return nil, err
 	}
 	withTaskVm := createRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -887,6 +903,8 @@ func createVm(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -910,7 +928,7 @@ func main() {
 			Ha:         pointy.Bool(true),
 			CPUCores:   pointy.Int32(4),
 			CPUSockets: pointy.Int32(2),
-			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Memory:     pointy.Int64(8 * 1024 * 1024 * 1024),
 			Vcpu:       pointy.Int32(4 * 2),
 			Status:     models.VMStatusSTOPPED.Pointer(),
 			Firmware:   models.VMFirmwareBIOS.Pointer(),
@@ -923,7 +941,7 @@ func main() {
 						Boot: pointy.Int32(0),
 						Bus:  models.BusVIRTIO.Pointer(),
 						VMVolume: &models.MountNewCreateDisksParamsVMVolume{
-							Size:             pointy.Float64(10 * 1024 * 1024 * 1024),
+							Size:             pointy.Int64(10 * 1024 * 1024 * 1024),
 							ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
 							Name:             pointy.String("new_vm_disk_name"),
 						},
@@ -948,7 +966,7 @@ func createVm(
 		return nil, err
 	}
 	withTaskVm := createRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -972,6 +990,8 @@ func createVm(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -995,7 +1015,7 @@ func main() {
 			Ha:         pointy.Bool(true),
 			CPUCores:   pointy.Int32(4),
 			CPUSockets: pointy.Int32(2),
-			Memory:     pointy.Float64(8 * 1024 * 1024 * 1024),
+			Memory:     pointy.Int64(8 * 1024 * 1024 * 1024),
 			Vcpu:       pointy.Int32(4 * 2),
 			Status:     models.VMStatusSTOPPED.Pointer(),
 			Firmware:   models.VMFirmwareBIOS.Pointer(),
@@ -1033,7 +1053,7 @@ func createVm(
 		return nil, err
 	}
 	withTaskVm := createRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1059,6 +1079,8 @@ func createVm(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1086,7 +1108,7 @@ func main() {
 			CPUCores:    pointy.Int32(2),
 			CPUSockets:  pointy.Int32(8),
 			Vcpu:        pointy.Int32(2 * 8),
-			Memory:      pointy.Float64(16 * 1024 * 1024 * 1024),
+			Memory:      pointy.Int64(16 * 1024 * 1024 * 1024),
 		},
 	}
 	updatedVm, err := updateVm(client, updateParams)
@@ -1104,7 +1126,7 @@ func updateVm(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1130,6 +1152,8 @@ func updateVm(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1175,7 +1199,7 @@ func addVmCdRom(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1199,6 +1223,8 @@ func addVmCdRom(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1238,7 +1264,7 @@ func removeVmCdRom(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1264,6 +1290,8 @@ func removeVmCdRom(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1290,7 +1318,7 @@ func main() {
 					{
 						VMVolume: &models.MountNewCreateDisksParamsVMVolume{
 							ElfStoragePolicy: models.VMVolumeElfStoragePolicyTypeREPLICA2THINPROVISION.Pointer(),
-							Size:             pointy.Float64(10 * 1024 * 1024 * 1024),
+							Size:             pointy.Int64(10 * 1024 * 1024 * 1024),
 							Name:             pointy.String("new_disk_name"),
 						},
 						Boot: pointy.Int32(1),
@@ -1315,7 +1343,7 @@ func addVmDisk(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1339,6 +1367,8 @@ func addVmDisk(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1387,7 +1417,7 @@ func addVmDisk(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1411,6 +1441,8 @@ func addVmDisk(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1450,7 +1482,7 @@ func removeVmDisk(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1476,6 +1508,8 @@ func removeVmDisk(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1521,7 +1555,7 @@ func addVmNic(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1545,6 +1579,8 @@ func addVmNic(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1586,7 +1622,7 @@ func updateVmNic(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1610,6 +1646,8 @@ func updateVmNic(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1649,7 +1687,7 @@ func removeVmNic(
 		return nil, err
 	}
 	withTaskVm := updateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1676,6 +1714,8 @@ func removeVmNic(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1717,7 +1757,7 @@ func migrateVmToHost(
 		return nil, err
 	}
 	withTaskVm := migrateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1741,6 +1781,8 @@ func migrateVmToHost(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1778,7 +1820,7 @@ func migrateVmAutoSchedule(
 		return nil, err
 	}
 	withTaskVm := migrateRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1806,6 +1848,8 @@ func migrateVmAutoSchedule(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1843,7 +1887,7 @@ func startVm(
 		return nil, err
 	}
 	withTaskVm := startRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1868,6 +1912,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"context"
 
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
@@ -1918,7 +1964,7 @@ func startVmsByQuery(client *apiclient.Cloudtower,
 	if !valid {
 		return nil, fmt.Errorf("failed to parse vm ids")
 	}
-	err = utils.WaitTasks(client, taskIds)
+	err = utils.WaitTasks(context.TODO(), client, taskIds, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -1942,6 +1988,8 @@ func startVmsByQuery(client *apiclient.Cloudtower,
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -1983,7 +2031,7 @@ func startVmOnHost(
 		return nil, err
 	}
 	withTaskVm := startRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2009,6 +2057,8 @@ func startVmOnHost(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2046,7 +2096,7 @@ func shutdownVm(
 		return nil, err
 	}
 	withTaskVm := shutdownRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2071,6 +2121,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"context"
 
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
@@ -2121,7 +2173,7 @@ func shutdownVmsByQuery(client *apiclient.Cloudtower,
 	if !valid {
 		return nil, fmt.Errorf("failed to parse vm ids")
 	}
-	err = utils.WaitTasks(client, taskIds)
+	err = utils.WaitTasks(context.TODO(), client, taskIds, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2145,6 +2197,8 @@ func shutdownVmsByQuery(client *apiclient.Cloudtower,
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2182,7 +2236,7 @@ func forceShutdownVm(
 		return nil, err
 	}
 	withTaskVm := shutdownRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2207,6 +2261,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"context"
 
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2257,7 +2313,7 @@ func forceshutdownVmsByQuery(client *apiclient.Cloudtower,
 	if !valid {
 		return nil, fmt.Errorf("failed to parse vm ids")
 	}
-	err = utils.WaitTasks(client, taskIds)
+	err = utils.WaitTasks(context.TODO(), client, taskIds, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2284,6 +2340,8 @@ func forceshutdownVmsByQuery(client *apiclient.Cloudtower,
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2321,7 +2379,7 @@ func restartVm(
 		return nil, err
 	}
 	withTaskVm := restartRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2346,6 +2404,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"context"
 
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2395,7 +2455,7 @@ func restartVmsByQuery(client *apiclient.Cloudtower,
 	if !valid {
 		return nil, fmt.Errorf("failed to parse vm ids")
 	}
-	err = utils.WaitTasks(client, taskIds)
+	err = utils.WaitTasks(context.TODO(), client, taskIds, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2419,6 +2479,8 @@ func restartVmsByQuery(client *apiclient.Cloudtower,
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2456,7 +2518,7 @@ func forceRestartVm(
 		return nil, err
 	}
 	withTaskVm := shutdownRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2481,6 +2543,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"context"
 
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2530,7 +2594,7 @@ func forceRestartVmsByQuery(client *apiclient.Cloudtower,
 	if !valid {
 		return nil, fmt.Errorf("failed to parse vm ids")
 	}
-	err = utils.WaitTasks(client, taskIds)
+	err = utils.WaitTasks(context.TODO(), client, taskIds, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2556,6 +2620,9 @@ func forceRestartVmsByQuery(client *apiclient.Cloudtower,
 package main
 
 import (
+	"time"
+	"context"
+
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2593,7 +2660,7 @@ func suspendVm(
 		return nil, err
 	}
 	withTaskVm := shutdownRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2618,6 +2685,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"context"
 
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2668,7 +2737,7 @@ func suspendVmsByQuery(client *apiclient.Cloudtower,
 	if !valid {
 		return nil, fmt.Errorf("failed to parse vm ids")
 	}
-	err = utils.WaitTasks(client, taskIds)
+	err = utils.WaitTasks(context.TODO(), client, taskIds, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2695,6 +2764,8 @@ func suspendVmsByQuery(client *apiclient.Cloudtower,
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2732,7 +2803,7 @@ func resumeVm(
 		return nil, err
 	}
 	withTaskVm := resumeRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2757,6 +2828,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"context"
 
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2806,7 +2879,7 @@ func resumeVmsByQuery(client *apiclient.Cloudtower,
 	if !valid {
 		return nil, fmt.Errorf("failed to parse vm ids")
 	}
-	err = utils.WaitTasks(client, taskIds)
+	err = utils.WaitTasks(context.TODO(), client, taskIds, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2835,6 +2908,8 @@ func resumeVmsByQuery(client *apiclient.Cloudtower,
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2874,7 +2949,7 @@ func moveVmToRecycleBin(
 		return nil, err
 	}
 	withTaskVm := moveRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2898,6 +2973,9 @@ func moveVmToRecycleBin(
 package main
 
 import (
+	"time"
+	"context"
+
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2937,7 +3015,7 @@ func recoverVmFromRecycleBin(
 		return nil, err
 	}
 	withTaskVm := recoverRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, err
 	}
@@ -2961,6 +3039,8 @@ func recoverVmFromRecycleBin(
 package main
 
 import (
+	"time"
+	"context"
 	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
@@ -2998,7 +3078,7 @@ func deleteVm(
 		return err
 	}
 	withTaskVm := deleteRes.Payload[0]
-	err = utils.WaitTask(client, withTaskVm.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskVm.TaskID, 1*time.Second)
 	if err != nil {
 		return err
 	}
@@ -3015,6 +3095,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"context"
 
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/iscsi_lun_snapshot"
@@ -3071,7 +3153,7 @@ func create_vm_snapshot(
 	}
 	withTaskSnapshot := createRes.Payload[0]
 	// 3. 等待Task完成
-	err = utils.WaitTask(client, withTaskSnapshot.TaskID)
+	err = utils.WaitTask(context.TODO(), client, withTaskSnapshot.TaskID, 1*time.Second)
 	if err != nil {
 		return nil, nil, err
 	}
