@@ -29,6 +29,12 @@ func (o *AddVMCdRomReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return result, nil
+	case 304:
+		result := NewAddVMCdRomNotModified()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 400:
 		result := NewAddVMCdRomBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -78,6 +84,27 @@ func (o *AddVMCdRomOK) readResponse(response runtime.ClientResponse, consumer ru
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewAddVMCdRomNotModified creates a AddVMCdRomNotModified with default headers values
+func NewAddVMCdRomNotModified() *AddVMCdRomNotModified {
+	return &AddVMCdRomNotModified{}
+}
+
+/* AddVMCdRomNotModified describes a response with status code 304, with default header values.
+
+Not modified
+*/
+type AddVMCdRomNotModified struct {
+}
+
+func (o *AddVMCdRomNotModified) Error() string {
+	return fmt.Sprintf("[POST /add-vm-cd-rom][%d] addVmCdRomNotModified ", 304)
+}
+
+func (o *AddVMCdRomNotModified) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

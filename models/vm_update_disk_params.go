@@ -162,6 +162,9 @@ type VMUpdateDiskParamsData struct {
 	// bus
 	Bus *Bus `json:"bus,omitempty"`
 
+	// content library image id
+	ContentLibraryImageID *string `json:"content_library_image_id,omitempty"`
+
 	// elf image id
 	ElfImageID *string `json:"elf_image_id,omitempty"`
 

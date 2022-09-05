@@ -36,6 +36,9 @@ const (
 	// SnapshotPlanExecuteTypeHOUR captures enum value "HOUR"
 	SnapshotPlanExecuteTypeHOUR SnapshotPlanExecuteType = "HOUR"
 
+	// SnapshotPlanExecuteTypeMINUTE captures enum value "MINUTE"
+	SnapshotPlanExecuteTypeMINUTE SnapshotPlanExecuteType = "MINUTE"
+
 	// SnapshotPlanExecuteTypeMONTH captures enum value "MONTH"
 	SnapshotPlanExecuteTypeMONTH SnapshotPlanExecuteType = "MONTH"
 
@@ -48,7 +51,7 @@ var snapshotPlanExecuteTypeEnum []interface{}
 
 func init() {
 	var res []SnapshotPlanExecuteType
-	if err := json.Unmarshal([]byte(`["DAY","HOUR","MONTH","WEEK"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["DAY","HOUR","MINUTE","MONTH","WEEK"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

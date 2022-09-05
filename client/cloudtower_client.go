@@ -13,6 +13,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/alert"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/alert_notifier"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/alert_rule"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/api_info"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/application"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/brick_topo"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster"
@@ -91,6 +92,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_template"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_volume"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_volume_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vsphere_esxi_account"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/witness"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/witness_service"
@@ -143,6 +145,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.Alert = alert.New(transport, formats)
 	cli.AlertNotifier = alert_notifier.New(transport, formats)
 	cli.AlertRule = alert_rule.New(transport, formats)
+	cli.APIInfo = api_info.New(transport, formats)
 	cli.Application = application.New(transport, formats)
 	cli.BrickTopo = brick_topo.New(transport, formats)
 	cli.Cluster = cluster.New(transport, formats)
@@ -221,6 +224,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.VMSnapshot = vm_snapshot.New(transport, formats)
 	cli.VMTemplate = vm_template.New(transport, formats)
 	cli.VMVolume = vm_volume.New(transport, formats)
+	cli.VMVolumeSnapshot = vm_volume_snapshot.New(transport, formats)
 	cli.VsphereEsxiAccount = vsphere_esxi_account.New(transport, formats)
 	cli.Witness = witness.New(transport, formats)
 	cli.WitnessService = witness_service.New(transport, formats)
@@ -275,6 +279,8 @@ type Cloudtower struct {
 	AlertNotifier alert_notifier.ClientService
 
 	AlertRule alert_rule.ClientService
+
+	APIInfo api_info.ClientService
 
 	Application application.ClientService
 
@@ -432,6 +438,8 @@ type Cloudtower struct {
 
 	VMVolume vm_volume.ClientService
 
+	VMVolumeSnapshot vm_volume_snapshot.ClientService
+
 	VsphereEsxiAccount vsphere_esxi_account.ClientService
 
 	Witness witness.ClientService
@@ -451,6 +459,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.Alert.SetTransport(transport)
 	c.AlertNotifier.SetTransport(transport)
 	c.AlertRule.SetTransport(transport)
+	c.APIInfo.SetTransport(transport)
 	c.Application.SetTransport(transport)
 	c.BrickTopo.SetTransport(transport)
 	c.Cluster.SetTransport(transport)
@@ -529,6 +538,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.VMSnapshot.SetTransport(transport)
 	c.VMTemplate.SetTransport(transport)
 	c.VMVolume.SetTransport(transport)
+	c.VMVolumeSnapshot.SetTransport(transport)
 	c.VsphereEsxiAccount.SetTransport(transport)
 	c.Witness.SetTransport(transport)
 	c.WitnessService.SetTransport(transport)
