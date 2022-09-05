@@ -23,6 +23,9 @@ type VMCdRomParams struct {
 	// Required: true
 	Boot *int32 `json:"boot"`
 
+	// content library image id
+	ContentLibraryImageID *string `json:"content_library_image_id,omitempty"`
+
 	// elf image id
 	ElfImageID *string `json:"elf_image_id,omitempty"`
 
