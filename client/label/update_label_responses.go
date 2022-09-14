@@ -29,6 +29,12 @@ func (o *UpdateLabelReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return result, nil
+	case 304:
+		result := NewUpdateLabelNotModified()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 400:
 		result := NewUpdateLabelBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -78,6 +84,27 @@ func (o *UpdateLabelOK) readResponse(response runtime.ClientResponse, consumer r
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewUpdateLabelNotModified creates a UpdateLabelNotModified with default headers values
+func NewUpdateLabelNotModified() *UpdateLabelNotModified {
+	return &UpdateLabelNotModified{}
+}
+
+/* UpdateLabelNotModified describes a response with status code 304, with default header values.
+
+Not modified
+*/
+type UpdateLabelNotModified struct {
+}
+
+func (o *UpdateLabelNotModified) Error() string {
+	return fmt.Sprintf("[POST /update-label][%d] updateLabelNotModified ", 304)
+}
+
+func (o *UpdateLabelNotModified) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

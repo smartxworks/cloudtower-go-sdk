@@ -29,6 +29,12 @@ func (o *AddLabelsToResourcesReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return result, nil
+	case 304:
+		result := NewAddLabelsToResourcesNotModified()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 400:
 		result := NewAddLabelsToResourcesBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -78,6 +84,27 @@ func (o *AddLabelsToResourcesOK) readResponse(response runtime.ClientResponse, c
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewAddLabelsToResourcesNotModified creates a AddLabelsToResourcesNotModified with default headers values
+func NewAddLabelsToResourcesNotModified() *AddLabelsToResourcesNotModified {
+	return &AddLabelsToResourcesNotModified{}
+}
+
+/* AddLabelsToResourcesNotModified describes a response with status code 304, with default header values.
+
+Not modified
+*/
+type AddLabelsToResourcesNotModified struct {
+}
+
+func (o *AddLabelsToResourcesNotModified) Error() string {
+	return fmt.Sprintf("[POST /add-labels-to-resources][%d] addLabelsToResourcesNotModified ", 304)
+}
+
+func (o *AddLabelsToResourcesNotModified) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

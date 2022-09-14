@@ -15,6 +15,6 @@ require (
 	github.com/onsi/gomega v1.20.2
 	github.com/openlyinc/pointy v1.1.2
 	github.com/thoas/go-funk v0.9.2
-	go.mongodb.org/mongo-driver v1.10.1 // indirect
-	golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b // indirect
+	go.mongodb.org/mongo-driver v1.10.2 // indirect
+	golang.org/x/net v0.0.0-20220909164309-bea034e7d591 // indirect
 )
