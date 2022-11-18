@@ -66,6 +66,9 @@ type VMCreateVMFromTemplateParams struct {
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
 
+	// max bandwidth unit
+	MaxBandwidthUnit *BPSUnit `json:"max_bandwidth_unit,omitempty"`
+
 	// max iops
 	MaxIops *int64 `json:"max_iops,omitempty"`
 
@@ -74,6 +77,9 @@ type VMCreateVMFromTemplateParams struct {
 
 	// memory
 	Memory *int64 `json:"memory,omitempty"`
+
+	// memory unit
+	MemoryUnit *ByteUnit `json:"memory_unit,omitempty"`
 
 	// name
 	// Required: true
@@ -125,7 +131,15 @@ func (m *VMCreateVMFromTemplateParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateMaxBandwidthUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateMaxIopsPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMemoryUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -274,6 +288,25 @@ func (m *VMCreateVMFromTemplateParams) validateMaxBandwidthPolicy(formats strfmt
 	return nil
 }
 
+func (m *VMCreateVMFromTemplateParams) validateMaxBandwidthUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthUnit) { // not required
+		return nil
+	}
+
+	if m.MaxBandwidthUnit != nil {
+		if err := m.MaxBandwidthUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMCreateVMFromTemplateParams) validateMaxIopsPolicy(formats strfmt.Registry) error {
 	if swag.IsZero(m.MaxIopsPolicy) { // not required
 		return nil
@@ -285,6 +318,25 @@ func (m *VMCreateVMFromTemplateParams) validateMaxIopsPolicy(formats strfmt.Regi
 				return ve.ValidateName("max_iops_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMCreateVMFromTemplateParams) validateMemoryUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.MemoryUnit) { // not required
+		return nil
+	}
+
+	if m.MemoryUnit != nil {
+		if err := m.MemoryUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("memory_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("memory_unit")
 			}
 			return err
 		}
@@ -384,7 +436,15 @@ func (m *VMCreateVMFromTemplateParams) ContextValidate(ctx context.Context, form
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMaxBandwidthUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMemoryUnit(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -498,6 +558,22 @@ func (m *VMCreateVMFromTemplateParams) contextValidateMaxBandwidthPolicy(ctx con
 	return nil
 }
 
+func (m *VMCreateVMFromTemplateParams) contextValidateMaxBandwidthUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxBandwidthUnit != nil {
+		if err := m.MaxBandwidthUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMCreateVMFromTemplateParams) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MaxIopsPolicy != nil {
@@ -506,6 +582,22 @@ func (m *VMCreateVMFromTemplateParams) contextValidateMaxIopsPolicy(ctx context.
 				return ve.ValidateName("max_iops_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMCreateVMFromTemplateParams) contextValidateMemoryUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MemoryUnit != nil {
+		if err := m.MemoryUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("memory_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("memory_unit")
 			}
 			return err
 		}

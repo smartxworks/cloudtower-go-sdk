@@ -39,6 +39,9 @@ type MountDisksParams struct {
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
 
+	// max bandwidth unit
+	MaxBandwidthUnit *BPSUnit `json:"max_bandwidth_unit,omitempty"`
+
 	// max iops
 	MaxIops *int64 `json:"max_iops,omitempty"`
 
@@ -63,6 +66,10 @@ func (m *MountDisksParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMaxBandwidthPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxBandwidthUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -132,6 +139,25 @@ func (m *MountDisksParams) validateMaxBandwidthPolicy(formats strfmt.Registry) e
 	return nil
 }
 
+func (m *MountDisksParams) validateMaxBandwidthUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthUnit) { // not required
+		return nil
+	}
+
+	if m.MaxBandwidthUnit != nil {
+		if err := m.MaxBandwidthUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MountDisksParams) validateMaxIopsPolicy(formats strfmt.Registry) error {
 	if swag.IsZero(m.MaxIopsPolicy) { // not required
 		return nil
@@ -172,6 +198,10 @@ func (m *MountDisksParams) ContextValidate(ctx context.Context, formats strfmt.R
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMaxBandwidthUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -206,6 +236,22 @@ func (m *MountDisksParams) contextValidateMaxBandwidthPolicy(ctx context.Context
 				return ve.ValidateName("max_bandwidth_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MountDisksParams) contextValidateMaxBandwidthUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxBandwidthUnit != nil {
+		if err := m.MaxBandwidthUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_unit")
 			}
 			return err
 		}

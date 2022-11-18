@@ -1,5 +1,21 @@
 # RELEASE NOTE
 
+## release 日期 2022-11-18
+
+v2.4.0 release
+
+- feature:CloudTowerApplicationApi: [cloud_tower_application_api] 新增 CloudTowerApplicationApi;
+  - [get_cloud_tower_applications] 获取应用;
+  - [upload_cloud_tower_application_package] 上传应用包;
+  - [delete_cloud_tower_application_package] 删除应用包;
+  - [deploy_cloud_tower_application] 部署应用;
+  - [upgrade_cloud_tower_application] 升级应用;
+  - [uninstall_cloud_tower_application] 删除应用;
+- feature:CloudTowerApplicationPackageApi: [cloud_tower_application_package_api] 新增 CloudTowerApplicationPackageApi;
+  - [get_cloud_tower_application_packages] 获取应用包.
+- optimize: 存储容量, 内存容量相关的 api 参数都允许传入 `${field}_unit` 形式的参数来为输入参数设置单位，类型为 `ByteUnit`，默认为 `ByteUnit.B`;
+- optimize: 带宽相关的 api 参数都允许传入 `${field}_unit` 形式的参数来为输入参数设置单位，类型为 `BpsUnit`，默认为 `BpsUnit.Bps`.
+
 ## release 日期 2022-09-05
 
 v2.3.0 release

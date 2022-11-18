@@ -23,6 +23,9 @@ type VMExpandVMDiskParams struct {
 	// Required: true
 	Size *int64 `json:"size"`
 
+	// size unit
+	SizeUnit *ByteUnit `json:"size_unit,omitempty"`
+
 	// where
 	// Required: true
 	Where *VMDiskWhereInput `json:"where"`
@@ -33,6 +36,10 @@ func (m *VMExpandVMDiskParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSizeUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -50,6 +57,25 @@ func (m *VMExpandVMDiskParams) validateSize(formats strfmt.Registry) error {
 
 	if err := validate.Required("size", "body", m.Size); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *VMExpandVMDiskParams) validateSizeUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.SizeUnit) { // not required
+		return nil
+	}
+
+	if m.SizeUnit != nil {
+		if err := m.SizeUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("size_unit")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -79,6 +105,10 @@ func (m *VMExpandVMDiskParams) validateWhere(formats strfmt.Registry) error {
 func (m *VMExpandVMDiskParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateSizeUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateWhere(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -86,6 +116,22 @@ func (m *VMExpandVMDiskParams) ContextValidate(ctx context.Context, formats strf
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMExpandVMDiskParams) contextValidateSizeUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SizeUnit != nil {
+		if err := m.SizeUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("size_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

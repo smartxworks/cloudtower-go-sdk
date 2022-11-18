@@ -36,6 +36,9 @@ const (
 	// NetworkPolicyRuleTypeIPBLOCK captures enum value "IP_BLOCK"
 	NetworkPolicyRuleTypeIPBLOCK NetworkPolicyRuleType = "IP_BLOCK"
 
+	// NetworkPolicyRuleTypeSECURITYGROUP captures enum value "SECURITY_GROUP"
+	NetworkPolicyRuleTypeSECURITYGROUP NetworkPolicyRuleType = "SECURITY_GROUP"
+
 	// NetworkPolicyRuleTypeSELECTOR captures enum value "SELECTOR"
 	NetworkPolicyRuleTypeSELECTOR NetworkPolicyRuleType = "SELECTOR"
 )
@@ -45,7 +48,7 @@ var networkPolicyRuleTypeEnum []interface{}
 
 func init() {
 	var res []NetworkPolicyRuleType
-	if err := json.Unmarshal([]byte(`["ALL","IP_BLOCK","SELECTOR"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ALL","IP_BLOCK","SECURITY_GROUP","SELECTOR"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

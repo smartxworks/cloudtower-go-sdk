@@ -68,13 +68,13 @@ func NewUpdateVMOwnerOK() *UpdateVMOwnerOK {
 Ok
 */
 type UpdateVMOwnerOK struct {
-	Payload []interface{}
+	Payload []*models.WithTaskVM
 }
 
 func (o *UpdateVMOwnerOK) Error() string {
 	return fmt.Sprintf("[POST /update-vm-owner][%d] updateVmOwnerOK  %+v", 200, o.Payload)
 }
-func (o *UpdateVMOwnerOK) GetPayload() []interface{} {
+func (o *UpdateVMOwnerOK) GetPayload() []*models.WithTaskVM {
 	return o.Payload
 }
 
@@ -151,13 +151,24 @@ func NewUpdateVMOwnerNotFound() *UpdateVMOwnerNotFound {
 Not found
 */
 type UpdateVMOwnerNotFound struct {
+	Payload *models.ErrorBody
 }
 
 func (o *UpdateVMOwnerNotFound) Error() string {
-	return fmt.Sprintf("[POST /update-vm-owner][%d] updateVmOwnerNotFound ", 404)
+	return fmt.Sprintf("[POST /update-vm-owner][%d] updateVmOwnerNotFound  %+v", 404, o.Payload)
+}
+func (o *UpdateVMOwnerNotFound) GetPayload() *models.ErrorBody {
+	return o.Payload
 }
 
 func (o *UpdateVMOwnerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ErrorBody)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

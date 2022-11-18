@@ -29,6 +29,12 @@ func (o *RemoveLabelsFromResourcesReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return result, nil
+	case 304:
+		result := NewRemoveLabelsFromResourcesNotModified()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 400:
 		result := NewRemoveLabelsFromResourcesBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -78,6 +84,27 @@ func (o *RemoveLabelsFromResourcesOK) readResponse(response runtime.ClientRespon
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewRemoveLabelsFromResourcesNotModified creates a RemoveLabelsFromResourcesNotModified with default headers values
+func NewRemoveLabelsFromResourcesNotModified() *RemoveLabelsFromResourcesNotModified {
+	return &RemoveLabelsFromResourcesNotModified{}
+}
+
+/* RemoveLabelsFromResourcesNotModified describes a response with status code 304, with default header values.
+
+Not modified
+*/
+type RemoveLabelsFromResourcesNotModified struct {
+}
+
+func (o *RemoveLabelsFromResourcesNotModified) Error() string {
+	return fmt.Sprintf("[POST /remove-labels-from-resources][%d] removeLabelsFromResourcesNotModified ", 304)
+}
+
+func (o *RemoveLabelsFromResourcesNotModified) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

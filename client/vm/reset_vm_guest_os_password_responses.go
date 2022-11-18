@@ -68,13 +68,13 @@ func NewResetVMGuestOsPasswordOK() *ResetVMGuestOsPasswordOK {
 Ok
 */
 type ResetVMGuestOsPasswordOK struct {
-	Payload []interface{}
+	Payload []*models.WithTaskVM
 }
 
 func (o *ResetVMGuestOsPasswordOK) Error() string {
 	return fmt.Sprintf("[POST /reset-vm-guest-os-password][%d] resetVmGuestOsPasswordOK  %+v", 200, o.Payload)
 }
-func (o *ResetVMGuestOsPasswordOK) GetPayload() []interface{} {
+func (o *ResetVMGuestOsPasswordOK) GetPayload() []*models.WithTaskVM {
 	return o.Payload
 }
 

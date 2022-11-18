@@ -79,6 +79,9 @@ type CreateContentLibraryImageParams struct {
 	// Size.
 	Size *string
 
+	// SizeUnit.
+	SizeUnit *string
+
 	// UploadTaskID.
 	UploadTaskID *string
 
@@ -212,6 +215,17 @@ func (o *CreateContentLibraryImageParams) SetSize(size *string) {
 	o.Size = size
 }
 
+// WithSizeUnit adds the sizeUnit to the create content library image params
+func (o *CreateContentLibraryImageParams) WithSizeUnit(sizeUnit *string) *CreateContentLibraryImageParams {
+	o.SetSizeUnit(sizeUnit)
+	return o
+}
+
+// SetSizeUnit adds the sizeUnit to the create content library image params
+func (o *CreateContentLibraryImageParams) SetSizeUnit(sizeUnit *string) {
+	o.SizeUnit = sizeUnit
+}
+
 // WithUploadTaskID adds the uploadTaskID to the create content library image params
 func (o *CreateContentLibraryImageParams) WithUploadTaskID(uploadTaskID *string) *CreateContentLibraryImageParams {
 	o.SetUploadTaskID(uploadTaskID)
@@ -292,6 +306,21 @@ func (o *CreateContentLibraryImageParams) WriteToRequest(r runtime.ClientRequest
 		fSize := frSize
 		if fSize != "" {
 			if err := r.SetFormParam("size", fSize); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SizeUnit != nil {
+
+		// form param size_unit
+		var frSizeUnit string
+		if o.SizeUnit != nil {
+			frSizeUnit = *o.SizeUnit
+		}
+		fSizeUnit := frSizeUnit
+		if fSizeUnit != "" {
+			if err := r.SetFormParam("size_unit", fSizeUnit); err != nil {
 				return err
 			}
 		}
