@@ -50,11 +50,17 @@ type VMRebuildParams struct {
 	// io policy
 	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
 
+	// is full copy
+	IsFullCopy *bool `json:"is_full_copy,omitempty"`
+
 	// max bandwidth
 	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
 
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
+
+	// max bandwidth unit
+	MaxBandwidthUnit *BPSUnit `json:"max_bandwidth_unit,omitempty"`
 
 	// max iops
 	MaxIops *int64 `json:"max_iops,omitempty"`
@@ -64,6 +70,9 @@ type VMRebuildParams struct {
 
 	// memory
 	Memory *int64 `json:"memory,omitempty"`
+
+	// memory unit
+	MemoryUnit *ByteUnit `json:"memory_unit,omitempty"`
 
 	// name
 	// Required: true
@@ -106,7 +115,15 @@ func (m *VMRebuildParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateMaxBandwidthUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateMaxIopsPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMemoryUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -212,6 +229,25 @@ func (m *VMRebuildParams) validateMaxBandwidthPolicy(formats strfmt.Registry) er
 	return nil
 }
 
+func (m *VMRebuildParams) validateMaxBandwidthUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthUnit) { // not required
+		return nil
+	}
+
+	if m.MaxBandwidthUnit != nil {
+		if err := m.MaxBandwidthUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMRebuildParams) validateMaxIopsPolicy(formats strfmt.Registry) error {
 	if swag.IsZero(m.MaxIopsPolicy) { // not required
 		return nil
@@ -223,6 +259,25 @@ func (m *VMRebuildParams) validateMaxIopsPolicy(formats strfmt.Registry) error {
 				return ve.ValidateName("max_iops_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMRebuildParams) validateMemoryUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.MemoryUnit) { // not required
+		return nil
+	}
+
+	if m.MemoryUnit != nil {
+		if err := m.MemoryUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("memory_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("memory_unit")
 			}
 			return err
 		}
@@ -333,7 +388,15 @@ func (m *VMRebuildParams) ContextValidate(ctx context.Context, formats strfmt.Re
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMaxBandwidthUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMemoryUnit(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -419,6 +482,22 @@ func (m *VMRebuildParams) contextValidateMaxBandwidthPolicy(ctx context.Context,
 	return nil
 }
 
+func (m *VMRebuildParams) contextValidateMaxBandwidthUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxBandwidthUnit != nil {
+		if err := m.MaxBandwidthUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMRebuildParams) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MaxIopsPolicy != nil {
@@ -427,6 +506,22 @@ func (m *VMRebuildParams) contextValidateMaxIopsPolicy(ctx context.Context, form
 				return ve.ValidateName("max_iops_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMRebuildParams) contextValidateMemoryUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MemoryUnit != nil {
+		if err := m.MemoryUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("memory_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("memory_unit")
 			}
 			return err
 		}

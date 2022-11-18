@@ -39,6 +39,9 @@ type IscsiTargetCreationParams struct {
 	// Required: true
 	StripeSize *int64 `json:"stripe_size"`
 
+	// stripe size unit
+	StripeSizeUnit *ByteUnit `json:"stripe_size_unit,omitempty"`
+
 	// thin provision
 	// Required: true
 	ThinProvision *bool `json:"thin_provision"`
@@ -60,6 +63,8 @@ func (m *IscsiTargetCreationParams) UnmarshalJSON(raw []byte) error {
 
 		StripeSize *int64 `json:"stripe_size"`
 
+		StripeSizeUnit *ByteUnit `json:"stripe_size_unit,omitempty"`
+
 		ThinProvision *bool `json:"thin_provision"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO0); err != nil {
@@ -75,6 +80,8 @@ func (m *IscsiTargetCreationParams) UnmarshalJSON(raw []byte) error {
 	m.StripeNum = dataAO0.StripeNum
 
 	m.StripeSize = dataAO0.StripeSize
+
+	m.StripeSizeUnit = dataAO0.StripeSizeUnit
 
 	m.ThinProvision = dataAO0.ThinProvision
 
@@ -103,6 +110,8 @@ func (m IscsiTargetCreationParams) MarshalJSON() ([]byte, error) {
 
 		StripeSize *int64 `json:"stripe_size"`
 
+		StripeSizeUnit *ByteUnit `json:"stripe_size_unit,omitempty"`
+
 		ThinProvision *bool `json:"thin_provision"`
 	}
 
@@ -115,6 +124,8 @@ func (m IscsiTargetCreationParams) MarshalJSON() ([]byte, error) {
 	dataAO0.StripeNum = m.StripeNum
 
 	dataAO0.StripeSize = m.StripeSize
+
+	dataAO0.StripeSizeUnit = m.StripeSizeUnit
 
 	dataAO0.ThinProvision = m.ThinProvision
 
@@ -153,6 +164,10 @@ func (m *IscsiTargetCreationParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStripeSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStripeSizeUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -216,6 +231,26 @@ func (m *IscsiTargetCreationParams) validateStripeSize(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *IscsiTargetCreationParams) validateStripeSizeUnit(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.StripeSizeUnit) { // not required
+		return nil
+	}
+
+	if m.StripeSizeUnit != nil {
+		if err := m.StripeSizeUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("stripe_size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stripe_size_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IscsiTargetCreationParams) validateThinProvision(formats strfmt.Registry) error {
 
 	if err := validate.Required("thin_provision", "body", m.ThinProvision); err != nil {
@@ -229,6 +264,10 @@ func (m *IscsiTargetCreationParams) validateThinProvision(formats strfmt.Registr
 func (m *IscsiTargetCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateStripeSizeUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	// validation for a type composition with IscsiTargetCommonParams
 	if err := m.IscsiTargetCommonParams.ContextValidate(ctx, formats); err != nil {
 		res = append(res, err)
@@ -237,6 +276,22 @@ func (m *IscsiTargetCreationParams) ContextValidate(ctx context.Context, formats
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *IscsiTargetCreationParams) contextValidateStripeSizeUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StripeSizeUnit != nil {
+		if err := m.StripeSizeUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("stripe_size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stripe_size_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

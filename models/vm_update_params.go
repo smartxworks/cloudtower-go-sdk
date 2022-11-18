@@ -174,6 +174,9 @@ type VMUpdateParamsData struct {
 	// memory
 	Memory *int64 `json:"memory,omitempty"`
 
+	// memory unit
+	MemoryUnit *ByteUnit `json:"memory_unit,omitempty"`
+
 	// name
 	Name *string `json:"name,omitempty"`
 
@@ -183,11 +186,64 @@ type VMUpdateParamsData struct {
 
 // Validate validates this VM update params data
 func (m *VMUpdateParamsData) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateMemoryUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this VM update params data based on context it is used
+func (m *VMUpdateParamsData) validateMemoryUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.MemoryUnit) { // not required
+		return nil
+	}
+
+	if m.MemoryUnit != nil {
+		if err := m.MemoryUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "memory_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "memory_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this VM update params data based on the context it is used
 func (m *VMUpdateParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateMemoryUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VMUpdateParamsData) contextValidateMemoryUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MemoryUnit != nil {
+		if err := m.MemoryUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "memory_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "memory_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

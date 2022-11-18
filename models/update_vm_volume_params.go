@@ -167,15 +167,71 @@ type UpdateVMVolumeParamsData struct {
 
 	// size
 	Size *int64 `json:"size,omitempty"`
+
+	// size unit
+	SizeUnit *ByteUnit `json:"size_unit,omitempty"`
 }
 
 // Validate validates this update VM volume params data
 func (m *UpdateVMVolumeParamsData) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateSizeUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this update VM volume params data based on context it is used
+func (m *UpdateVMVolumeParamsData) validateSizeUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.SizeUnit) { // not required
+		return nil
+	}
+
+	if m.SizeUnit != nil {
+		if err := m.SizeUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "size_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this update VM volume params data based on the context it is used
 func (m *UpdateVMVolumeParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSizeUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateVMVolumeParamsData) contextValidateSizeUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SizeUnit != nil {
+		if err := m.SizeUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "size_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

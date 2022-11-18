@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -26,6 +27,9 @@ type NvmfSubsystemCommonParams struct {
 	// bps max length
 	BpsMaxLength *int64 `json:"bps_max_length,omitempty"`
 
+	// bps max unit
+	BpsMaxUnit *BPSUnit `json:"bps_max_unit,omitempty"`
+
 	// bps rd
 	BpsRd *int64 `json:"bps_rd,omitempty"`
 
@@ -35,6 +39,15 @@ type NvmfSubsystemCommonParams struct {
 	// bps rd max length
 	BpsRdMaxLength *int64 `json:"bps_rd_max_length,omitempty"`
 
+	// bps rd max unit
+	BpsRdMaxUnit *BPSUnit `json:"bps_rd_max_unit,omitempty"`
+
+	// bps rd unit
+	BpsRdUnit *BPSUnit `json:"bps_rd_unit,omitempty"`
+
+	// bps unit
+	BpsUnit *BPSUnit `json:"bps_unit,omitempty"`
+
 	// bps wr
 	BpsWr *int64 `json:"bps_wr,omitempty"`
 
@@ -43,6 +56,12 @@ type NvmfSubsystemCommonParams struct {
 
 	// bps wr max length
 	BpsWrMaxLength *int64 `json:"bps_wr_max_length,omitempty"`
+
+	// bps wr max unit
+	BpsWrMaxUnit *BPSUnit `json:"bps_wr_max_unit,omitempty"`
+
+	// bps wr unit
+	BpsWrUnit *BPSUnit `json:"bps_wr_unit,omitempty"`
 
 	// description
 	Description *string `json:"description,omitempty"`
@@ -83,11 +102,279 @@ type NvmfSubsystemCommonParams struct {
 
 // Validate validates this nvmf subsystem common params
 func (m *NvmfSubsystemCommonParams) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBpsMaxUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsRdMaxUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsRdUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsWrMaxUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsWrUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this nvmf subsystem common params based on context it is used
+func (m *NvmfSubsystemCommonParams) validateBpsMaxUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsMaxUnit) { // not required
+		return nil
+	}
+
+	if m.BpsMaxUnit != nil {
+		if err := m.BpsMaxUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) validateBpsRdMaxUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsRdMaxUnit) { // not required
+		return nil
+	}
+
+	if m.BpsRdMaxUnit != nil {
+		if err := m.BpsRdMaxUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_rd_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_rd_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) validateBpsRdUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsRdUnit) { // not required
+		return nil
+	}
+
+	if m.BpsRdUnit != nil {
+		if err := m.BpsRdUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_rd_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_rd_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) validateBpsUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsUnit) { // not required
+		return nil
+	}
+
+	if m.BpsUnit != nil {
+		if err := m.BpsUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) validateBpsWrMaxUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsWrMaxUnit) { // not required
+		return nil
+	}
+
+	if m.BpsWrMaxUnit != nil {
+		if err := m.BpsWrMaxUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) validateBpsWrUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsWrUnit) { // not required
+		return nil
+	}
+
+	if m.BpsWrUnit != nil {
+		if err := m.BpsWrUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this nvmf subsystem common params based on the context it is used
 func (m *NvmfSubsystemCommonParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateBpsMaxUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsRdMaxUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsRdUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsWrMaxUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsWrUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) contextValidateBpsMaxUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsMaxUnit != nil {
+		if err := m.BpsMaxUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) contextValidateBpsRdMaxUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsRdMaxUnit != nil {
+		if err := m.BpsRdMaxUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_rd_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_rd_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) contextValidateBpsRdUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsRdUnit != nil {
+		if err := m.BpsRdUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_rd_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_rd_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) contextValidateBpsUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsUnit != nil {
+		if err := m.BpsUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) contextValidateBpsWrMaxUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsWrMaxUnit != nil {
+		if err := m.BpsWrMaxUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystemCommonParams) contextValidateBpsWrUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsWrUnit != nil {
+		if err := m.BpsWrUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

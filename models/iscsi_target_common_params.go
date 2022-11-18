@@ -28,6 +28,9 @@ type IscsiTargetCommonParams struct {
 	// bps max length
 	BpsMaxLength *int64 `json:"bps_max_length,omitempty"`
 
+	// bps max unit
+	BpsMaxUnit *BPSUnit `json:"bps_max_unit,omitempty"`
+
 	// bps rd
 	BpsRd *int64 `json:"bps_rd,omitempty"`
 
@@ -37,6 +40,15 @@ type IscsiTargetCommonParams struct {
 	// bps rd max length
 	BpsRdMaxLength *int64 `json:"bps_rd_max_length,omitempty"`
 
+	// bps rd max unit
+	BpsRdMaxUnit *BPSUnit `json:"bps_rd_max_unit,omitempty"`
+
+	// bps rd unit
+	BpsRdUnit *BPSUnit `json:"bps_rd_unit,omitempty"`
+
+	// bps unit
+	BpsUnit *BPSUnit `json:"bps_unit,omitempty"`
+
 	// bps wr
 	BpsWr *int64 `json:"bps_wr,omitempty"`
 
@@ -45,6 +57,12 @@ type IscsiTargetCommonParams struct {
 
 	// bps wr max length
 	BpsWrMaxLength *int64 `json:"bps_wr_max_length,omitempty"`
+
+	// bps wr max size
+	BpsWrMaxSize *BPSUnit `json:"bps_wr_max_size,omitempty"`
+
+	// bps wr unit
+	BpsWrUnit *BPSUnit `json:"bps_wr_unit,omitempty"`
 
 	// chap enabled
 	ChapEnabled *bool `json:"chap_enabled,omitempty"`
@@ -99,6 +117,30 @@ type IscsiTargetCommonParams struct {
 func (m *IscsiTargetCommonParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateBpsMaxUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsRdMaxUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsRdUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsWrMaxSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsWrUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateInitiatorChaps(formats); err != nil {
 		res = append(res, err)
 	}
@@ -106,6 +148,120 @@ func (m *IscsiTargetCommonParams) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateBpsMaxUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsMaxUnit) { // not required
+		return nil
+	}
+
+	if m.BpsMaxUnit != nil {
+		if err := m.BpsMaxUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateBpsRdMaxUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsRdMaxUnit) { // not required
+		return nil
+	}
+
+	if m.BpsRdMaxUnit != nil {
+		if err := m.BpsRdMaxUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_rd_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_rd_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateBpsRdUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsRdUnit) { // not required
+		return nil
+	}
+
+	if m.BpsRdUnit != nil {
+		if err := m.BpsRdUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_rd_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_rd_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateBpsUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsUnit) { // not required
+		return nil
+	}
+
+	if m.BpsUnit != nil {
+		if err := m.BpsUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateBpsWrMaxSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsWrMaxSize) { // not required
+		return nil
+	}
+
+	if m.BpsWrMaxSize != nil {
+		if err := m.BpsWrMaxSize.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_max_size")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_max_size")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateBpsWrUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsWrUnit) { // not required
+		return nil
+	}
+
+	if m.BpsWrUnit != nil {
+		if err := m.BpsWrUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -139,6 +295,30 @@ func (m *IscsiTargetCommonParams) validateInitiatorChaps(formats strfmt.Registry
 func (m *IscsiTargetCommonParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateBpsMaxUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsRdMaxUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsRdUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsWrMaxSize(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsWrUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateInitiatorChaps(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -146,6 +326,102 @@ func (m *IscsiTargetCommonParams) ContextValidate(ctx context.Context, formats s
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateBpsMaxUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsMaxUnit != nil {
+		if err := m.BpsMaxUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateBpsRdMaxUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsRdMaxUnit != nil {
+		if err := m.BpsRdMaxUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_rd_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_rd_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateBpsRdUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsRdUnit != nil {
+		if err := m.BpsRdUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_rd_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_rd_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateBpsUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsUnit != nil {
+		if err := m.BpsUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateBpsWrMaxSize(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsWrMaxSize != nil {
+		if err := m.BpsWrMaxSize.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_max_size")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_max_size")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateBpsWrUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsWrUnit != nil {
+		if err := m.BpsWrUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

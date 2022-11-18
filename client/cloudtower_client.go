@@ -16,6 +16,8 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/api_info"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/application"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/brick_topo"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cloud_tower_application"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cloud_tower_application_package"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster_image"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster_settings"
@@ -148,6 +150,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.APIInfo = api_info.New(transport, formats)
 	cli.Application = application.New(transport, formats)
 	cli.BrickTopo = brick_topo.New(transport, formats)
+	cli.CloudTowerApplication = cloud_tower_application.New(transport, formats)
+	cli.CloudTowerApplicationPackage = cloud_tower_application_package.New(transport, formats)
 	cli.Cluster = cluster.New(transport, formats)
 	cli.ClusterImage = cluster_image.New(transport, formats)
 	cli.ClusterSettings = cluster_settings.New(transport, formats)
@@ -285,6 +289,10 @@ type Cloudtower struct {
 	Application application.ClientService
 
 	BrickTopo brick_topo.ClientService
+
+	CloudTowerApplication cloud_tower_application.ClientService
+
+	CloudTowerApplicationPackage cloud_tower_application_package.ClientService
 
 	Cluster cluster.ClientService
 
@@ -462,6 +470,8 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.APIInfo.SetTransport(transport)
 	c.Application.SetTransport(transport)
 	c.BrickTopo.SetTransport(transport)
+	c.CloudTowerApplication.SetTransport(transport)
+	c.CloudTowerApplicationPackage.SetTransport(transport)
 	c.Cluster.SetTransport(transport)
 	c.ClusterImage.SetTransport(transport)
 	c.ClusterSettings.SetTransport(transport)

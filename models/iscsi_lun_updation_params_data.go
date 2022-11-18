@@ -21,6 +21,9 @@ type IscsiLunUpdationParamsData struct {
 	// assigned size
 	AssignedSize *int64 `json:"assigned_size,omitempty"`
 
+	// assigned size unit
+	AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
+
 	// name
 	Name *string `json:"name,omitempty"`
 
@@ -33,6 +36,8 @@ func (m *IscsiLunUpdationParamsData) UnmarshalJSON(raw []byte) error {
 	var dataAO0 struct {
 		AssignedSize *int64 `json:"assigned_size,omitempty"`
 
+		AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
+
 		Name *string `json:"name,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO0); err != nil {
@@ -40,6 +45,8 @@ func (m *IscsiLunUpdationParamsData) UnmarshalJSON(raw []byte) error {
 	}
 
 	m.AssignedSize = dataAO0.AssignedSize
+
+	m.AssignedSizeUnit = dataAO0.AssignedSizeUnit
 
 	m.Name = dataAO0.Name
 
@@ -60,10 +67,14 @@ func (m IscsiLunUpdationParamsData) MarshalJSON() ([]byte, error) {
 	var dataAO0 struct {
 		AssignedSize *int64 `json:"assigned_size,omitempty"`
 
+		AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
+
 		Name *string `json:"name,omitempty"`
 	}
 
 	dataAO0.AssignedSize = m.AssignedSize
+
+	dataAO0.AssignedSizeUnit = m.AssignedSizeUnit
 
 	dataAO0.Name = m.Name
 
@@ -85,6 +96,10 @@ func (m IscsiLunUpdationParamsData) MarshalJSON() ([]byte, error) {
 func (m *IscsiLunUpdationParamsData) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAssignedSizeUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
 	// validation for a type composition with IscsiLunCommonParams
 	if err := m.IscsiLunCommonParams.Validate(formats); err != nil {
 		res = append(res, err)
@@ -96,9 +111,33 @@ func (m *IscsiLunUpdationParamsData) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IscsiLunUpdationParamsData) validateAssignedSizeUnit(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AssignedSizeUnit) { // not required
+		return nil
+	}
+
+	if m.AssignedSizeUnit != nil {
+		if err := m.AssignedSizeUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("assigned_size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("assigned_size_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this iscsi lun updation params data based on the context it is used
 func (m *IscsiLunUpdationParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.contextValidateAssignedSizeUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
 
 	// validation for a type composition with IscsiLunCommonParams
 	if err := m.IscsiLunCommonParams.ContextValidate(ctx, formats); err != nil {
@@ -108,6 +147,22 @@ func (m *IscsiLunUpdationParamsData) ContextValidate(ctx context.Context, format
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *IscsiLunUpdationParamsData) contextValidateAssignedSizeUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AssignedSizeUnit != nil {
+		if err := m.AssignedSizeUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("assigned_size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("assigned_size_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

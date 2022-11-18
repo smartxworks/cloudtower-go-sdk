@@ -23,6 +23,9 @@ type NvmfNamespaceCreationParams struct {
 	// Required: true
 	AssignedSize *int64 `json:"assigned_size"`
 
+	// assigned size unit
+	AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
+
 	// group id
 	GroupID *string `json:"group_id,omitempty"`
 
@@ -53,6 +56,8 @@ func (m *NvmfNamespaceCreationParams) UnmarshalJSON(raw []byte) error {
 	var dataAO0 struct {
 		AssignedSize *int64 `json:"assigned_size"`
 
+		AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
+
 		GroupID *string `json:"group_id,omitempty"`
 
 		IsShared *bool `json:"is_shared,omitempty"`
@@ -70,6 +75,8 @@ func (m *NvmfNamespaceCreationParams) UnmarshalJSON(raw []byte) error {
 	}
 
 	m.AssignedSize = dataAO0.AssignedSize
+
+	m.AssignedSizeUnit = dataAO0.AssignedSizeUnit
 
 	m.GroupID = dataAO0.GroupID
 
@@ -100,6 +107,8 @@ func (m NvmfNamespaceCreationParams) MarshalJSON() ([]byte, error) {
 	var dataAO0 struct {
 		AssignedSize *int64 `json:"assigned_size"`
 
+		AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
+
 		GroupID *string `json:"group_id,omitempty"`
 
 		IsShared *bool `json:"is_shared,omitempty"`
@@ -114,6 +123,8 @@ func (m NvmfNamespaceCreationParams) MarshalJSON() ([]byte, error) {
 	}
 
 	dataAO0.AssignedSize = m.AssignedSize
+
+	dataAO0.AssignedSizeUnit = m.AssignedSizeUnit
 
 	dataAO0.GroupID = m.GroupID
 
@@ -149,6 +160,10 @@ func (m *NvmfNamespaceCreationParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateAssignedSizeUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -176,6 +191,26 @@ func (m *NvmfNamespaceCreationParams) validateAssignedSize(formats strfmt.Regist
 
 	if err := validate.Required("assigned_size", "body", m.AssignedSize); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCreationParams) validateAssignedSizeUnit(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AssignedSizeUnit) { // not required
+		return nil
+	}
+
+	if m.AssignedSizeUnit != nil {
+		if err := m.AssignedSizeUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("assigned_size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("assigned_size_unit")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -212,6 +247,10 @@ func (m *NvmfNamespaceCreationParams) validateReplicaNum(formats strfmt.Registry
 func (m *NvmfNamespaceCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateAssignedSizeUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	// validation for a type composition with NvmfNamespaceCommonParams
 	if err := m.NvmfNamespaceCommonParams.ContextValidate(ctx, formats); err != nil {
 		res = append(res, err)
@@ -220,6 +259,22 @@ func (m *NvmfNamespaceCreationParams) ContextValidate(ctx context.Context, forma
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NvmfNamespaceCreationParams) contextValidateAssignedSizeUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AssignedSizeUnit != nil {
+		if err := m.AssignedSizeUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("assigned_size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("assigned_size_unit")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

@@ -6,14 +6,11 @@ package vm
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 )
@@ -71,13 +68,13 @@ func NewUpdateVMNicBasicInfoOK() *UpdateVMNicBasicInfoOK {
 Ok
 */
 type UpdateVMNicBasicInfoOK struct {
-	Payload []*UpdateVMNicBasicInfoOKBodyItems0
+	Payload []*models.WithTaskVM
 }
 
 func (o *UpdateVMNicBasicInfoOK) Error() string {
 	return fmt.Sprintf("[POST /update-vm-nic-basic-info][%d] updateVmNicBasicInfoOK  %+v", 200, o.Payload)
 }
-func (o *UpdateVMNicBasicInfoOK) GetPayload() []*UpdateVMNicBasicInfoOKBodyItems0 {
+func (o *UpdateVMNicBasicInfoOK) GetPayload() []*models.WithTaskVM {
 	return o.Payload
 }
 
@@ -205,78 +202,5 @@ func (o *UpdateVMNicBasicInfoInternalServerError) readResponse(response runtime.
 		return err
 	}
 
-	return nil
-}
-
-/*UpdateVMNicBasicInfoOKBodyItems0 update VM nic basic info o k body items0
-swagger:model UpdateVMNicBasicInfoOKBodyItems0
-*/
-type UpdateVMNicBasicInfoOKBodyItems0 struct {
-
-	// data
-	// Required: true
-	Data interface{} `json:"data"`
-
-	// task id
-	// Required: true
-	TaskID interface{} `json:"task_id"`
-}
-
-// Validate validates this update VM nic basic info o k body items0
-func (o *UpdateVMNicBasicInfoOKBodyItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateTaskID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *UpdateVMNicBasicInfoOKBodyItems0) validateData(formats strfmt.Registry) error {
-
-	if o.Data == nil {
-		return errors.Required("data", "body", nil)
-	}
-
-	return nil
-}
-
-func (o *UpdateVMNicBasicInfoOKBodyItems0) validateTaskID(formats strfmt.Registry) error {
-
-	if o.TaskID == nil {
-		return errors.Required("task_id", "body", nil)
-	}
-
-	return nil
-}
-
-// ContextValidate validates this update VM nic basic info o k body items0 based on context it is used
-func (o *UpdateVMNicBasicInfoOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UpdateVMNicBasicInfoOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UpdateVMNicBasicInfoOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UpdateVMNicBasicInfoOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

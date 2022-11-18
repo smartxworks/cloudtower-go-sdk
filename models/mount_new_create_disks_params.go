@@ -39,6 +39,9 @@ type MountNewCreateDisksParams struct {
 	// max bandwidth policy
 	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
 
+	// max bandwidth unit
+	MaxBandwidthUnit *BPSUnit `json:"max_bandwidth_unit,omitempty"`
+
 	// max iops
 	MaxIops *int64 `json:"max_iops,omitempty"`
 
@@ -63,6 +66,10 @@ func (m *MountNewCreateDisksParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMaxBandwidthPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxBandwidthUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -132,6 +139,25 @@ func (m *MountNewCreateDisksParams) validateMaxBandwidthPolicy(formats strfmt.Re
 	return nil
 }
 
+func (m *MountNewCreateDisksParams) validateMaxBandwidthUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthUnit) { // not required
+		return nil
+	}
+
+	if m.MaxBandwidthUnit != nil {
+		if err := m.MaxBandwidthUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MountNewCreateDisksParams) validateMaxIopsPolicy(formats strfmt.Registry) error {
 	if swag.IsZero(m.MaxIopsPolicy) { // not required
 		return nil
@@ -183,6 +209,10 @@ func (m *MountNewCreateDisksParams) ContextValidate(ctx context.Context, formats
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMaxBandwidthUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -221,6 +251,22 @@ func (m *MountNewCreateDisksParams) contextValidateMaxBandwidthPolicy(ctx contex
 				return ve.ValidateName("max_bandwidth_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MountNewCreateDisksParams) contextValidateMaxBandwidthUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxBandwidthUnit != nil {
+		if err := m.MaxBandwidthUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_unit")
 			}
 			return err
 		}
@@ -298,6 +344,9 @@ type MountNewCreateDisksParamsVMVolume struct {
 	// size
 	// Required: true
 	Size *int64 `json:"size"`
+
+	// size unit
+	SizeUnit *ByteUnit `json:"size_unit,omitempty"`
 }
 
 // Validate validates this mount new create disks params VM volume
@@ -313,6 +362,10 @@ func (m *MountNewCreateDisksParamsVMVolume) Validate(formats strfmt.Registry) er
 	}
 
 	if err := m.validateSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSizeUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -364,11 +417,34 @@ func (m *MountNewCreateDisksParamsVMVolume) validateSize(formats strfmt.Registry
 	return nil
 }
 
+func (m *MountNewCreateDisksParamsVMVolume) validateSizeUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.SizeUnit) { // not required
+		return nil
+	}
+
+	if m.SizeUnit != nil {
+		if err := m.SizeUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume" + "." + "size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume" + "." + "size_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this mount new create disks params VM volume based on the context it is used
 func (m *MountNewCreateDisksParamsVMVolume) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateElfStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSizeUnit(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -386,6 +462,22 @@ func (m *MountNewCreateDisksParamsVMVolume) contextValidateElfStoragePolicy(ctx 
 				return ve.ValidateName("vm_volume" + "." + "elf_storage_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vm_volume" + "." + "elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MountNewCreateDisksParamsVMVolume) contextValidateSizeUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SizeUnit != nil {
+		if err := m.SizeUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume" + "." + "size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume" + "." + "size_unit")
 			}
 			return err
 		}

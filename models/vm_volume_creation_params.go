@@ -38,6 +38,9 @@ type VMVolumeCreationParams struct {
 	// size
 	// Required: true
 	Size *int64 `json:"size"`
+
+	// size unit
+	SizeUnit *ByteUnit `json:"size_unit,omitempty"`
 }
 
 // Validate validates this Vm volume creation params
@@ -61,6 +64,10 @@ func (m *VMVolumeCreationParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSizeUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -130,11 +137,34 @@ func (m *VMVolumeCreationParams) validateSize(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMVolumeCreationParams) validateSizeUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.SizeUnit) { // not required
+		return nil
+	}
+
+	if m.SizeUnit != nil {
+		if err := m.SizeUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("size_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this Vm volume creation params based on the context it is used
 func (m *VMVolumeCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateElfStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSizeUnit(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -152,6 +182,22 @@ func (m *VMVolumeCreationParams) contextValidateElfStoragePolicy(ctx context.Con
 				return ve.ValidateName("elf_storage_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeCreationParams) contextValidateSizeUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SizeUnit != nil {
+		if err := m.SizeUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("size_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("size_unit")
 			}
 			return err
 		}
