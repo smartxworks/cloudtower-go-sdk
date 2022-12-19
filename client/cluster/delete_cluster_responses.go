@@ -59,9 +59,11 @@ func NewDeleteClusterOK() *DeleteClusterOK {
 
 /* DeleteClusterOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteClusterOK delete cluster o k
 */
 type DeleteClusterOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteCluster
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteClusterOK) GetPayload() []*models.WithTaskDeleteCluster {
 }
 
 func (o *DeleteClusterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteClusterBadRequest() *DeleteClusterBadRequest {
 Bad request
 */
 type DeleteClusterBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteClusterBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteClusterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteClusterNotFound() *DeleteClusterNotFound {
 Not found
 */
 type DeleteClusterNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteClusterNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteClusterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteClusterInternalServerError() *DeleteClusterInternalServerError {
 Server error
 */
 type DeleteClusterInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteClusterInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewUpdatePasswordSecurityOK() *UpdatePasswordSecurityOK {
 
 /* UpdatePasswordSecurityOK describes a response with status code 200, with default header values.
 
-Ok
+UpdatePasswordSecurityOK update password security o k
 */
 type UpdatePasswordSecurityOK struct {
+	XTowerRequestID string
+
 	Payload *models.WithTaskGlobalSettings
 }
 
@@ -73,6 +75,13 @@ func (o *UpdatePasswordSecurityOK) GetPayload() *models.WithTaskGlobalSettings {
 }
 
 func (o *UpdatePasswordSecurityOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.WithTaskGlobalSettings)
 
@@ -94,6 +103,8 @@ func NewUpdatePasswordSecurityBadRequest() *UpdatePasswordSecurityBadRequest {
 Bad request
 */
 type UpdatePasswordSecurityBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *UpdatePasswordSecurityBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdatePasswordSecurityBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewUpdatePasswordSecurityNotFound() *UpdatePasswordSecurityNotFound {
 Not found
 */
 type UpdatePasswordSecurityNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *UpdatePasswordSecurityNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdatePasswordSecurityNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewUpdatePasswordSecurityInternalServerError() *UpdatePasswordSecurityInter
 Server error
 */
 type UpdatePasswordSecurityInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *UpdatePasswordSecurityInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *UpdatePasswordSecurityInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

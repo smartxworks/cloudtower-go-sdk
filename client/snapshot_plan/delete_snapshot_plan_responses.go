@@ -59,9 +59,11 @@ func NewDeleteSnapshotPlanOK() *DeleteSnapshotPlanOK {
 
 /* DeleteSnapshotPlanOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteSnapshotPlanOK delete snapshot plan o k
 */
 type DeleteSnapshotPlanOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteSnapshotPlan
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteSnapshotPlanOK) GetPayload() []*models.WithTaskDeleteSnapshotPlan
 }
 
 func (o *DeleteSnapshotPlanOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteSnapshotPlanBadRequest() *DeleteSnapshotPlanBadRequest {
 Bad request
 */
 type DeleteSnapshotPlanBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteSnapshotPlanBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteSnapshotPlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteSnapshotPlanNotFound() *DeleteSnapshotPlanNotFound {
 Not found
 */
 type DeleteSnapshotPlanNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteSnapshotPlanNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteSnapshotPlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteSnapshotPlanInternalServerError() *DeleteSnapshotPlanInternalServe
 Server error
 */
 type DeleteSnapshotPlanInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteSnapshotPlanInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteSnapshotPlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

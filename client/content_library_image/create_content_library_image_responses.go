@@ -65,9 +65,11 @@ func NewCreateContentLibraryImageOK() *CreateContentLibraryImageOK {
 
 /* CreateContentLibraryImageOK describes a response with status code 200, with default header values.
 
-Ok
+CreateContentLibraryImageOK create content library image o k
 */
 type CreateContentLibraryImageOK struct {
+	XTowerRequestID string
+
 	Payload []*models.UploadTask
 }
 
@@ -79,6 +81,13 @@ func (o *CreateContentLibraryImageOK) GetPayload() []*models.UploadTask {
 }
 
 func (o *CreateContentLibraryImageOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -119,6 +128,8 @@ func NewCreateContentLibraryImageBadRequest() *CreateContentLibraryImageBadReque
 Bad request
 */
 type CreateContentLibraryImageBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -130,6 +141,13 @@ func (o *CreateContentLibraryImageBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateContentLibraryImageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -151,6 +169,8 @@ func NewCreateContentLibraryImageNotFound() *CreateContentLibraryImageNotFound {
 Not found
 */
 type CreateContentLibraryImageNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -162,6 +182,13 @@ func (o *CreateContentLibraryImageNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateContentLibraryImageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -183,6 +210,8 @@ func NewCreateContentLibraryImageInternalServerError() *CreateContentLibraryImag
 Server error
 */
 type CreateContentLibraryImageInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -194,6 +223,13 @@ func (o *CreateContentLibraryImageInternalServerError) GetPayload() *models.Erro
 }
 
 func (o *CreateContentLibraryImageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

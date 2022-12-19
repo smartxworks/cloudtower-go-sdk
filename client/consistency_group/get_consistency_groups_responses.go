@@ -59,9 +59,11 @@ func NewGetConsistencyGroupsOK() *GetConsistencyGroupsOK {
 
 /* GetConsistencyGroupsOK describes a response with status code 200, with default header values.
 
-Ok
+GetConsistencyGroupsOK get consistency groups o k
 */
 type GetConsistencyGroupsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.ConsistencyGroup
 }
 
@@ -73,6 +75,13 @@ func (o *GetConsistencyGroupsOK) GetPayload() []*models.ConsistencyGroup {
 }
 
 func (o *GetConsistencyGroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetConsistencyGroupsBadRequest() *GetConsistencyGroupsBadRequest {
 Bad request
 */
 type GetConsistencyGroupsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetConsistencyGroupsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetConsistencyGroupsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetConsistencyGroupsNotFound() *GetConsistencyGroupsNotFound {
 Not found
 */
 type GetConsistencyGroupsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetConsistencyGroupsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetConsistencyGroupsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetConsistencyGroupsInternalServerError() *GetConsistencyGroupsInternalS
 Server error
 */
 type GetConsistencyGroupsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetConsistencyGroupsInternalServerError) GetPayload() *models.ErrorBody
 }
 
 func (o *GetConsistencyGroupsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

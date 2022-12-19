@@ -59,9 +59,11 @@ func NewDeleteVMVolumeSnapshotOK() *DeleteVMVolumeSnapshotOK {
 
 /* DeleteVMVolumeSnapshotOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteVMVolumeSnapshotOK delete Vm volume snapshot o k
 */
 type DeleteVMVolumeSnapshotOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteVMVolumeSnapshot
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteVMVolumeSnapshotOK) GetPayload() []*models.WithTaskDeleteVMVolume
 }
 
 func (o *DeleteVMVolumeSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteVMVolumeSnapshotBadRequest() *DeleteVMVolumeSnapshotBadRequest {
 Bad request
 */
 type DeleteVMVolumeSnapshotBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteVMVolumeSnapshotBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteVMVolumeSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteVMVolumeSnapshotNotFound() *DeleteVMVolumeSnapshotNotFound {
 Not found
 */
 type DeleteVMVolumeSnapshotNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteVMVolumeSnapshotNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteVMVolumeSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteVMVolumeSnapshotInternalServerError() *DeleteVMVolumeSnapshotInter
 Server error
 */
 type DeleteVMVolumeSnapshotInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteVMVolumeSnapshotInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *DeleteVMVolumeSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

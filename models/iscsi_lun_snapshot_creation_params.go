@@ -19,6 +19,9 @@ import (
 // swagger:model IscsiLunSnapshotCreationParams
 type IscsiLunSnapshotCreationParams struct {
 
+	// effect
+	Effect *IscsiLunSnapshotCreationEffect `json:"effect,omitempty"`
+
 	// iscsi lun id
 	// Required: true
 	IscsiLunID *string `json:"iscsi_lun_id"`
@@ -36,6 +39,10 @@ type IscsiLunSnapshotCreationParams struct {
 func (m *IscsiLunSnapshotCreationParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEffect(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIscsiLunID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -51,6 +58,25 @@ func (m *IscsiLunSnapshotCreationParams) Validate(formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *IscsiLunSnapshotCreationParams) validateEffect(formats strfmt.Registry) error {
+	if swag.IsZero(m.Effect) { // not required
+		return nil
+	}
+
+	if m.Effect != nil {
+		if err := m.Effect.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("effect")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("effect")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -81,8 +107,33 @@ func (m *IscsiLunSnapshotCreationParams) validateName(formats strfmt.Registry) e
 	return nil
 }
 
-// ContextValidate validates this iscsi lun snapshot creation params based on context it is used
+// ContextValidate validate this iscsi lun snapshot creation params based on the context it is used
 func (m *IscsiLunSnapshotCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateEffect(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *IscsiLunSnapshotCreationParams) contextValidateEffect(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Effect != nil {
+		if err := m.Effect.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("effect")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("effect")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

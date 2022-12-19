@@ -59,9 +59,11 @@ func NewGetSCVMServicekMetricsOK() *GetSCVMServicekMetricsOK {
 
 /* GetSCVMServicekMetricsOK describes a response with status code 200, with default header values.
 
-Ok
+GetSCVMServicekMetricsOK get s c Vm servicek metrics o k
 */
 type GetSCVMServicekMetricsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskMetric
 }
 
@@ -73,6 +75,13 @@ func (o *GetSCVMServicekMetricsOK) GetPayload() []*models.WithTaskMetric {
 }
 
 func (o *GetSCVMServicekMetricsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetSCVMServicekMetricsBadRequest() *GetSCVMServicekMetricsBadRequest {
 Bad request
 */
 type GetSCVMServicekMetricsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetSCVMServicekMetricsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetSCVMServicekMetricsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetSCVMServicekMetricsNotFound() *GetSCVMServicekMetricsNotFound {
 Not found
 */
 type GetSCVMServicekMetricsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetSCVMServicekMetricsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetSCVMServicekMetricsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetSCVMServicekMetricsInternalServerError() *GetSCVMServicekMetricsInter
 Server error
 */
 type GetSCVMServicekMetricsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetSCVMServicekMetricsInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *GetSCVMServicekMetricsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

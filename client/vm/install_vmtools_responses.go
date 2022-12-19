@@ -59,9 +59,11 @@ func NewInstallVmtoolsOK() *InstallVmtoolsOK {
 
 /* InstallVmtoolsOK describes a response with status code 200, with default header values.
 
-Ok
+InstallVmtoolsOK install vmtools o k
 */
 type InstallVmtoolsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -73,6 +75,13 @@ func (o *InstallVmtoolsOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *InstallVmtoolsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewInstallVmtoolsBadRequest() *InstallVmtoolsBadRequest {
 Bad request
 */
 type InstallVmtoolsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *InstallVmtoolsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *InstallVmtoolsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewInstallVmtoolsNotFound() *InstallVmtoolsNotFound {
 Not found
 */
 type InstallVmtoolsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *InstallVmtoolsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *InstallVmtoolsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewInstallVmtoolsInternalServerError() *InstallVmtoolsInternalServerError {
 Server error
 */
 type InstallVmtoolsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *InstallVmtoolsInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *InstallVmtoolsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

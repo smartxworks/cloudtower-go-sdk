@@ -59,9 +59,11 @@ func NewGetUsbDevicesOK() *GetUsbDevicesOK {
 
 /* GetUsbDevicesOK describes a response with status code 200, with default header values.
 
-Ok
+GetUsbDevicesOK get usb devices o k
 */
 type GetUsbDevicesOK struct {
+	XTowerRequestID string
+
 	Payload []*models.UsbDevice
 }
 
@@ -73,6 +75,13 @@ func (o *GetUsbDevicesOK) GetPayload() []*models.UsbDevice {
 }
 
 func (o *GetUsbDevicesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetUsbDevicesBadRequest() *GetUsbDevicesBadRequest {
 Bad request
 */
 type GetUsbDevicesBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetUsbDevicesBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUsbDevicesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetUsbDevicesNotFound() *GetUsbDevicesNotFound {
 Not found
 */
 type GetUsbDevicesNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetUsbDevicesNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUsbDevicesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetUsbDevicesInternalServerError() *GetUsbDevicesInternalServerError {
 Server error
 */
 type GetUsbDevicesInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetUsbDevicesInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUsbDevicesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

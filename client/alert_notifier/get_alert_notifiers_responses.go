@@ -59,9 +59,11 @@ func NewGetAlertNotifiersOK() *GetAlertNotifiersOK {
 
 /* GetAlertNotifiersOK describes a response with status code 200, with default header values.
 
-Ok
+GetAlertNotifiersOK get alert notifiers o k
 */
 type GetAlertNotifiersOK struct {
+	XTowerRequestID string
+
 	Payload []*models.AlertNotifier
 }
 
@@ -73,6 +75,13 @@ func (o *GetAlertNotifiersOK) GetPayload() []*models.AlertNotifier {
 }
 
 func (o *GetAlertNotifiersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetAlertNotifiersBadRequest() *GetAlertNotifiersBadRequest {
 Bad request
 */
 type GetAlertNotifiersBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetAlertNotifiersBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetAlertNotifiersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetAlertNotifiersNotFound() *GetAlertNotifiersNotFound {
 Not found
 */
 type GetAlertNotifiersNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetAlertNotifiersNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetAlertNotifiersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetAlertNotifiersInternalServerError() *GetAlertNotifiersInternalServerE
 Server error
 */
 type GetAlertNotifiersInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetAlertNotifiersInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetAlertNotifiersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

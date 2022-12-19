@@ -59,9 +59,11 @@ func NewUpdateClusterLicenseOK() *UpdateClusterLicenseOK {
 
 /* UpdateClusterLicenseOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateClusterLicenseOK update cluster license o k
 */
 type UpdateClusterLicenseOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskCluster
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateClusterLicenseOK) GetPayload() []*models.WithTaskCluster {
 }
 
 func (o *UpdateClusterLicenseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateClusterLicenseBadRequest() *UpdateClusterLicenseBadRequest {
 Bad request
 */
 type UpdateClusterLicenseBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateClusterLicenseBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateClusterLicenseBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateClusterLicenseNotFound() *UpdateClusterLicenseNotFound {
 Not found
 */
 type UpdateClusterLicenseNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateClusterLicenseNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateClusterLicenseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateClusterLicenseInternalServerError() *UpdateClusterLicenseInternalS
 Server error
 */
 type UpdateClusterLicenseInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateClusterLicenseInternalServerError) GetPayload() *models.ErrorBody
 }
 
 func (o *UpdateClusterLicenseInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

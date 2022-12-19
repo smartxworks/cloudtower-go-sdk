@@ -59,9 +59,11 @@ func NewGetIscsiConnectionsOK() *GetIscsiConnectionsOK {
 
 /* GetIscsiConnectionsOK describes a response with status code 200, with default header values.
 
-Ok
+GetIscsiConnectionsOK get iscsi connections o k
 */
 type GetIscsiConnectionsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.IscsiConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetIscsiConnectionsOK) GetPayload() []*models.IscsiConnection {
 }
 
 func (o *GetIscsiConnectionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetIscsiConnectionsBadRequest() *GetIscsiConnectionsBadRequest {
 Bad request
 */
 type GetIscsiConnectionsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetIscsiConnectionsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetIscsiConnectionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetIscsiConnectionsNotFound() *GetIscsiConnectionsNotFound {
 Not found
 */
 type GetIscsiConnectionsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetIscsiConnectionsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetIscsiConnectionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetIscsiConnectionsInternalServerError() *GetIscsiConnectionsInternalSer
 Server error
 */
 type GetIscsiConnectionsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetIscsiConnectionsInternalServerError) GetPayload() *models.ErrorBody 
 }
 
 func (o *GetIscsiConnectionsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewExportCSVOK() *ExportCSVOK {
 
 /* ExportCSVOK describes a response with status code 200, with default header values.
 
-Ok
+ExportCSVOK export c s v o k
 */
 type ExportCSVOK struct {
+	XTowerRequestID string
+
 	Payload strfmt.Base64
 }
 
@@ -73,6 +75,13 @@ func (o *ExportCSVOK) GetPayload() strfmt.Base64 {
 }
 
 func (o *ExportCSVOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewExportCSVBadRequest() *ExportCSVBadRequest {
 Bad request
 */
 type ExportCSVBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *ExportCSVBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *ExportCSVBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewExportCSVNotFound() *ExportCSVNotFound {
 Not found
 */
 type ExportCSVNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *ExportCSVNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *ExportCSVNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewExportCSVInternalServerError() *ExportCSVInternalServerError {
 Server error
 */
 type ExportCSVInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *ExportCSVInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *ExportCSVInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

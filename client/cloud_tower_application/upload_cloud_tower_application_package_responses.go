@@ -59,9 +59,11 @@ func NewUploadCloudTowerApplicationPackageOK() *UploadCloudTowerApplicationPacka
 
 /* UploadCloudTowerApplicationPackageOK describes a response with status code 200, with default header values.
 
-Ok
+UploadCloudTowerApplicationPackageOK upload cloud tower application package o k
 */
 type UploadCloudTowerApplicationPackageOK struct {
+	XTowerRequestID string
+
 	Payload []*models.UploadTask
 }
 
@@ -73,6 +75,13 @@ func (o *UploadCloudTowerApplicationPackageOK) GetPayload() []*models.UploadTask
 }
 
 func (o *UploadCloudTowerApplicationPackageOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUploadCloudTowerApplicationPackageBadRequest() *UploadCloudTowerApplicat
 Bad request
 */
 type UploadCloudTowerApplicationPackageBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UploadCloudTowerApplicationPackageBadRequest) GetPayload() *models.Erro
 }
 
 func (o *UploadCloudTowerApplicationPackageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUploadCloudTowerApplicationPackageNotFound() *UploadCloudTowerApplicatio
 Not found
 */
 type UploadCloudTowerApplicationPackageNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UploadCloudTowerApplicationPackageNotFound) GetPayload() *models.ErrorB
 }
 
 func (o *UploadCloudTowerApplicationPackageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUploadCloudTowerApplicationPackageInternalServerError() *UploadCloudTowe
 Server error
 */
 type UploadCloudTowerApplicationPackageInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UploadCloudTowerApplicationPackageInternalServerError) GetPayload() *mo
 }
 
 func (o *UploadCloudTowerApplicationPackageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

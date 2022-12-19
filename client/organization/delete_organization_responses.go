@@ -59,9 +59,11 @@ func NewDeleteOrganizationOK() *DeleteOrganizationOK {
 
 /* DeleteOrganizationOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteOrganizationOK delete organization o k
 */
 type DeleteOrganizationOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteOrganization
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteOrganizationOK) GetPayload() []*models.WithTaskDeleteOrganization
 }
 
 func (o *DeleteOrganizationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteOrganizationBadRequest() *DeleteOrganizationBadRequest {
 Bad request
 */
 type DeleteOrganizationBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteOrganizationBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteOrganizationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteOrganizationNotFound() *DeleteOrganizationNotFound {
 Not found
 */
 type DeleteOrganizationNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteOrganizationNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteOrganizationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteOrganizationInternalServerError() *DeleteOrganizationInternalServe
 Server error
 */
 type DeleteOrganizationInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteOrganizationInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteOrganizationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

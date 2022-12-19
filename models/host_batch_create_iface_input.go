@@ -23,6 +23,10 @@ type HostBatchCreateIfaceInput struct {
 	// Required: true
 	Function *HostBatchCreateIfaceFunction `json:"function"`
 
+	// gateway ip
+	// Required: true
+	GatewayIP *string `json:"gateway_ip"`
+
 	// ip
 	// Required: true
 	IP *string `json:"ip"`
@@ -41,6 +45,10 @@ func (m *HostBatchCreateIfaceInput) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateFunction(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGatewayIP(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -81,6 +89,15 @@ func (m *HostBatchCreateIfaceInput) validateFunction(formats strfmt.Registry) er
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *HostBatchCreateIfaceInput) validateGatewayIP(formats strfmt.Registry) error {
+
+	if err := validate.Required("gateway_ip", "body", m.GatewayIP); err != nil {
+		return err
 	}
 
 	return nil

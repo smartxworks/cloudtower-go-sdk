@@ -59,9 +59,11 @@ func NewUpdateAccessRestrictionOK() *UpdateAccessRestrictionOK {
 
 /* UpdateAccessRestrictionOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateAccessRestrictionOK update access restriction o k
 */
 type UpdateAccessRestrictionOK struct {
+	XTowerRequestID string
+
 	Payload *models.WithTaskGlobalSettings
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateAccessRestrictionOK) GetPayload() *models.WithTaskGlobalSettings 
 }
 
 func (o *UpdateAccessRestrictionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.WithTaskGlobalSettings)
 
@@ -94,6 +103,8 @@ func NewUpdateAccessRestrictionBadRequest() *UpdateAccessRestrictionBadRequest {
 Bad request
 */
 type UpdateAccessRestrictionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *UpdateAccessRestrictionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateAccessRestrictionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewUpdateAccessRestrictionNotFound() *UpdateAccessRestrictionNotFound {
 Not found
 */
 type UpdateAccessRestrictionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *UpdateAccessRestrictionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateAccessRestrictionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewUpdateAccessRestrictionInternalServerError() *UpdateAccessRestrictionInt
 Server error
 */
 type UpdateAccessRestrictionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *UpdateAccessRestrictionInternalServerError) GetPayload() *models.ErrorB
 }
 
 func (o *UpdateAccessRestrictionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

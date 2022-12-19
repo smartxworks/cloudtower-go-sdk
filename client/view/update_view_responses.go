@@ -59,9 +59,11 @@ func NewUpdateViewOK() *UpdateViewOK {
 
 /* UpdateViewOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateViewOK update view o k
 */
 type UpdateViewOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskView
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateViewOK) GetPayload() []*models.WithTaskView {
 }
 
 func (o *UpdateViewOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateViewBadRequest() *UpdateViewBadRequest {
 Bad request
 */
 type UpdateViewBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateViewBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateViewBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateViewNotFound() *UpdateViewNotFound {
 Not found
 */
 type UpdateViewNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateViewNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateViewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateViewInternalServerError() *UpdateViewInternalServerError {
 Server error
 */
 type UpdateViewInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateViewInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateViewInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

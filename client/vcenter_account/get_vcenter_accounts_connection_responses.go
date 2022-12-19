@@ -59,9 +59,11 @@ func NewGetVcenterAccountsConnectionOK() *GetVcenterAccountsConnectionOK {
 
 /* GetVcenterAccountsConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetVcenterAccountsConnectionOK get vcenter accounts connection o k
 */
 type GetVcenterAccountsConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.VcenterAccountConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetVcenterAccountsConnectionOK) GetPayload() *models.VcenterAccountConn
 }
 
 func (o *GetVcenterAccountsConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.VcenterAccountConnection)
 
@@ -94,6 +103,8 @@ func NewGetVcenterAccountsConnectionBadRequest() *GetVcenterAccountsConnectionBa
 Bad request
 */
 type GetVcenterAccountsConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetVcenterAccountsConnectionBadRequest) GetPayload() *models.ErrorBody 
 }
 
 func (o *GetVcenterAccountsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetVcenterAccountsConnectionNotFound() *GetVcenterAccountsConnectionNotF
 Not found
 */
 type GetVcenterAccountsConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetVcenterAccountsConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVcenterAccountsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetVcenterAccountsConnectionInternalServerError() *GetVcenterAccountsCon
 Server error
 */
 type GetVcenterAccountsConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetVcenterAccountsConnectionInternalServerError) GetPayload() *models.E
 }
 
 func (o *GetVcenterAccountsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

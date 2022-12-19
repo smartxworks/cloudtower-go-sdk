@@ -59,9 +59,11 @@ func NewDeleteGraphOK() *DeleteGraphOK {
 
 /* DeleteGraphOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteGraphOK delete graph o k
 */
 type DeleteGraphOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteGraph
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteGraphOK) GetPayload() []*models.WithTaskDeleteGraph {
 }
 
 func (o *DeleteGraphOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteGraphBadRequest() *DeleteGraphBadRequest {
 Bad request
 */
 type DeleteGraphBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteGraphBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteGraphBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteGraphNotFound() *DeleteGraphNotFound {
 Not found
 */
 type DeleteGraphNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteGraphNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteGraphNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteGraphInternalServerError() *DeleteGraphInternalServerError {
 Server error
 */
 type DeleteGraphInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteGraphInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteGraphInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

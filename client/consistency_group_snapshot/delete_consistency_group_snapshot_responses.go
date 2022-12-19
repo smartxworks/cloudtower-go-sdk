@@ -59,9 +59,11 @@ func NewDeleteConsistencyGroupSnapshotOK() *DeleteConsistencyGroupSnapshotOK {
 
 /* DeleteConsistencyGroupSnapshotOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteConsistencyGroupSnapshotOK delete consistency group snapshot o k
 */
 type DeleteConsistencyGroupSnapshotOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteConsistencyGroupSnapshot
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteConsistencyGroupSnapshotOK) GetPayload() []*models.WithTaskDelete
 }
 
 func (o *DeleteConsistencyGroupSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteConsistencyGroupSnapshotBadRequest() *DeleteConsistencyGroupSnapsh
 Bad request
 */
 type DeleteConsistencyGroupSnapshotBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteConsistencyGroupSnapshotBadRequest) GetPayload() *models.ErrorBod
 }
 
 func (o *DeleteConsistencyGroupSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteConsistencyGroupSnapshotNotFound() *DeleteConsistencyGroupSnapshot
 Not found
 */
 type DeleteConsistencyGroupSnapshotNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteConsistencyGroupSnapshotNotFound) GetPayload() *models.ErrorBody 
 }
 
 func (o *DeleteConsistencyGroupSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteConsistencyGroupSnapshotInternalServerError() *DeleteConsistencyGr
 Server error
 */
 type DeleteConsistencyGroupSnapshotInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteConsistencyGroupSnapshotInternalServerError) GetPayload() *models
 }
 
 func (o *DeleteConsistencyGroupSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewCreateVMSnapshotOK() *CreateVMSnapshotOK {
 
 /* CreateVMSnapshotOK describes a response with status code 200, with default header values.
 
-Ok
+CreateVMSnapshotOK create Vm snapshot o k
 */
 type CreateVMSnapshotOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVMSnapshot
 }
 
@@ -73,6 +75,13 @@ func (o *CreateVMSnapshotOK) GetPayload() []*models.WithTaskVMSnapshot {
 }
 
 func (o *CreateVMSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCreateVMSnapshotBadRequest() *CreateVMSnapshotBadRequest {
 Bad request
 */
 type CreateVMSnapshotBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CreateVMSnapshotBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateVMSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCreateVMSnapshotNotFound() *CreateVMSnapshotNotFound {
 Not found
 */
 type CreateVMSnapshotNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CreateVMSnapshotNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateVMSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCreateVMSnapshotInternalServerError() *CreateVMSnapshotInternalServerErr
 Server error
 */
 type CreateVMSnapshotInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CreateVMSnapshotInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateVMSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

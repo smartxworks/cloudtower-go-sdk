@@ -59,9 +59,11 @@ func NewDeleteSnmpTrapReceiverOK() *DeleteSnmpTrapReceiverOK {
 
 /* DeleteSnmpTrapReceiverOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteSnmpTrapReceiverOK delete snmp trap receiver o k
 */
 type DeleteSnmpTrapReceiverOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteSnmpTrapReceiver
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteSnmpTrapReceiverOK) GetPayload() []*models.WithTaskDeleteSnmpTrap
 }
 
 func (o *DeleteSnmpTrapReceiverOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteSnmpTrapReceiverBadRequest() *DeleteSnmpTrapReceiverBadRequest {
 Bad request
 */
 type DeleteSnmpTrapReceiverBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteSnmpTrapReceiverBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteSnmpTrapReceiverBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteSnmpTrapReceiverNotFound() *DeleteSnmpTrapReceiverNotFound {
 Not found
 */
 type DeleteSnmpTrapReceiverNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteSnmpTrapReceiverNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteSnmpTrapReceiverNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteSnmpTrapReceiverInternalServerError() *DeleteSnmpTrapReceiverInter
 Server error
 */
 type DeleteSnmpTrapReceiverInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteSnmpTrapReceiverInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *DeleteSnmpTrapReceiverInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

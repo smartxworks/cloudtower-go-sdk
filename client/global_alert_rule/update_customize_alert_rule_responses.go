@@ -59,9 +59,11 @@ func NewUpdateCustomizeAlertRuleOK() *UpdateCustomizeAlertRuleOK {
 
 /* UpdateCustomizeAlertRuleOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateCustomizeAlertRuleOK update customize alert rule o k
 */
 type UpdateCustomizeAlertRuleOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskGlobalAlertRule
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateCustomizeAlertRuleOK) GetPayload() []*models.WithTaskGlobalAlertR
 }
 
 func (o *UpdateCustomizeAlertRuleOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateCustomizeAlertRuleBadRequest() *UpdateCustomizeAlertRuleBadRequest
 Bad request
 */
 type UpdateCustomizeAlertRuleBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateCustomizeAlertRuleBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateCustomizeAlertRuleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateCustomizeAlertRuleNotFound() *UpdateCustomizeAlertRuleNotFound {
 Not found
 */
 type UpdateCustomizeAlertRuleNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateCustomizeAlertRuleNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateCustomizeAlertRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateCustomizeAlertRuleInternalServerError() *UpdateCustomizeAlertRuleI
 Server error
 */
 type UpdateCustomizeAlertRuleInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateCustomizeAlertRuleInternalServerError) GetPayload() *models.Error
 }
 
 func (o *UpdateCustomizeAlertRuleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

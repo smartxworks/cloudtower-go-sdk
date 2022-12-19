@@ -59,22 +59,31 @@ func NewLoginOK() *LoginOK {
 
 /* LoginOK describes a response with status code 200, with default header values.
 
-Ok
+LoginOK login o k
 */
 type LoginOK struct {
-	Payload *models.WithTaskTokenString
+	XTowerRequestID string
+
+	Payload *models.WithTaskLoginResponse
 }
 
 func (o *LoginOK) Error() string {
 	return fmt.Sprintf("[POST /login][%d] loginOK  %+v", 200, o.Payload)
 }
-func (o *LoginOK) GetPayload() *models.WithTaskTokenString {
+func (o *LoginOK) GetPayload() *models.WithTaskLoginResponse {
 	return o.Payload
 }
 
 func (o *LoginOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.WithTaskTokenString)
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
+
+	o.Payload = new(models.WithTaskLoginResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -94,6 +103,8 @@ func NewLoginBadRequest() *LoginBadRequest {
 Bad request
 */
 type LoginBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *LoginBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *LoginBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewLoginNotFound() *LoginNotFound {
 Not found
 */
 type LoginNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *LoginNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *LoginNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewLoginInternalServerError() *LoginInternalServerError {
 Server error
 */
 type LoginInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *LoginInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *LoginInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

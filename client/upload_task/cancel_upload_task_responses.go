@@ -65,9 +65,11 @@ func NewCancelUploadTaskOK() *CancelUploadTaskOK {
 
 /* CancelUploadTaskOK describes a response with status code 200, with default header values.
 
-Ok
+CancelUploadTaskOK cancel upload task o k
 */
 type CancelUploadTaskOK struct {
+	XTowerRequestID string
+
 	Payload []string
 }
 
@@ -79,6 +81,13 @@ func (o *CancelUploadTaskOK) GetPayload() []string {
 }
 
 func (o *CancelUploadTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -119,6 +128,8 @@ func NewCancelUploadTaskBadRequest() *CancelUploadTaskBadRequest {
 Bad request
 */
 type CancelUploadTaskBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -130,6 +141,13 @@ func (o *CancelUploadTaskBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CancelUploadTaskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -151,6 +169,8 @@ func NewCancelUploadTaskNotFound() *CancelUploadTaskNotFound {
 Not found
 */
 type CancelUploadTaskNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -162,6 +182,13 @@ func (o *CancelUploadTaskNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CancelUploadTaskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -183,6 +210,8 @@ func NewCancelUploadTaskInternalServerError() *CancelUploadTaskInternalServerErr
 Server error
 */
 type CancelUploadTaskInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -194,6 +223,13 @@ func (o *CancelUploadTaskInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *CancelUploadTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

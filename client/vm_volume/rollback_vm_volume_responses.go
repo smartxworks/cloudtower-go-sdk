@@ -65,9 +65,11 @@ func NewRollbackVMVolumeOK() *RollbackVMVolumeOK {
 
 /* RollbackVMVolumeOK describes a response with status code 200, with default header values.
 
-Ok
+RollbackVMVolumeOK rollback Vm volume o k
 */
 type RollbackVMVolumeOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVMVolume
 }
 
@@ -79,6 +81,13 @@ func (o *RollbackVMVolumeOK) GetPayload() []*models.WithTaskVMVolume {
 }
 
 func (o *RollbackVMVolumeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -119,6 +128,8 @@ func NewRollbackVMVolumeBadRequest() *RollbackVMVolumeBadRequest {
 Bad request
 */
 type RollbackVMVolumeBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -130,6 +141,13 @@ func (o *RollbackVMVolumeBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *RollbackVMVolumeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -151,6 +169,8 @@ func NewRollbackVMVolumeNotFound() *RollbackVMVolumeNotFound {
 Not found
 */
 type RollbackVMVolumeNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -162,6 +182,13 @@ func (o *RollbackVMVolumeNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *RollbackVMVolumeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -183,6 +210,8 @@ func NewRollbackVMVolumeInternalServerError() *RollbackVMVolumeInternalServerErr
 Server error
 */
 type RollbackVMVolumeInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -194,6 +223,13 @@ func (o *RollbackVMVolumeInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *RollbackVMVolumeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

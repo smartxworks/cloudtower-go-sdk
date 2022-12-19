@@ -59,9 +59,11 @@ func NewDeleteVlanOK() *DeleteVlanOK {
 
 /* DeleteVlanOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteVlanOK delete vlan o k
 */
 type DeleteVlanOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteVlan
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteVlanOK) GetPayload() []*models.WithTaskDeleteVlan {
 }
 
 func (o *DeleteVlanOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteVlanBadRequest() *DeleteVlanBadRequest {
 Bad request
 */
 type DeleteVlanBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteVlanBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteVlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteVlanNotFound() *DeleteVlanNotFound {
 Not found
 */
 type DeleteVlanNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteVlanNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteVlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteVlanInternalServerError() *DeleteVlanInternalServerError {
 Server error
 */
 type DeleteVlanInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteVlanInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteVlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

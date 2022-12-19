@@ -59,9 +59,11 @@ func NewGetViewsConnectionOK() *GetViewsConnectionOK {
 
 /* GetViewsConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetViewsConnectionOK get views connection o k
 */
 type GetViewsConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.ViewConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetViewsConnectionOK) GetPayload() *models.ViewConnection {
 }
 
 func (o *GetViewsConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ViewConnection)
 
@@ -94,6 +103,8 @@ func NewGetViewsConnectionBadRequest() *GetViewsConnectionBadRequest {
 Bad request
 */
 type GetViewsConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetViewsConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetViewsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetViewsConnectionNotFound() *GetViewsConnectionNotFound {
 Not found
 */
 type GetViewsConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetViewsConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetViewsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetViewsConnectionInternalServerError() *GetViewsConnectionInternalServe
 Server error
 */
 type GetViewsConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetViewsConnectionInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetViewsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

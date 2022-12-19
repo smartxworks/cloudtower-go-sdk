@@ -39,9 +39,11 @@ func NewGetAPIVersionOK() *GetAPIVersionOK {
 
 /* GetAPIVersionOK describes a response with status code 200, with default header values.
 
-Ok
+GetAPIVersionOK get Api version o k
 */
 type GetAPIVersionOK struct {
+	XTowerRequestID string
+
 	Payload string
 }
 
@@ -53,6 +55,13 @@ func (o *GetAPIVersionOK) GetPayload() string {
 }
 
 func (o *GetAPIVersionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {

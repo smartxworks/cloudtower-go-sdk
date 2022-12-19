@@ -59,9 +59,11 @@ func NewSuspendSnapshotPlanOK() *SuspendSnapshotPlanOK {
 
 /* SuspendSnapshotPlanOK describes a response with status code 200, with default header values.
 
-Ok
+SuspendSnapshotPlanOK suspend snapshot plan o k
 */
 type SuspendSnapshotPlanOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskSnapshotPlan
 }
 
@@ -73,6 +75,13 @@ func (o *SuspendSnapshotPlanOK) GetPayload() []*models.WithTaskSnapshotPlan {
 }
 
 func (o *SuspendSnapshotPlanOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewSuspendSnapshotPlanBadRequest() *SuspendSnapshotPlanBadRequest {
 Bad request
 */
 type SuspendSnapshotPlanBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *SuspendSnapshotPlanBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *SuspendSnapshotPlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewSuspendSnapshotPlanNotFound() *SuspendSnapshotPlanNotFound {
 Not found
 */
 type SuspendSnapshotPlanNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *SuspendSnapshotPlanNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *SuspendSnapshotPlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewSuspendSnapshotPlanInternalServerError() *SuspendSnapshotPlanInternalSer
 Server error
 */
 type SuspendSnapshotPlanInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *SuspendSnapshotPlanInternalServerError) GetPayload() *models.ErrorBody 
 }
 
 func (o *SuspendSnapshotPlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

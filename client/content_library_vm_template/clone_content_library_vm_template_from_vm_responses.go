@@ -59,9 +59,11 @@ func NewCloneContentLibraryVMTemplateFromVMOK() *CloneContentLibraryVMTemplateFr
 
 /* CloneContentLibraryVMTemplateFromVMOK describes a response with status code 200, with default header values.
 
-Ok
+CloneContentLibraryVMTemplateFromVMOK clone content library Vm template from Vm o k
 */
 type CloneContentLibraryVMTemplateFromVMOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskContentLibraryVMTemplate
 }
 
@@ -73,6 +75,13 @@ func (o *CloneContentLibraryVMTemplateFromVMOK) GetPayload() []*models.WithTaskC
 }
 
 func (o *CloneContentLibraryVMTemplateFromVMOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCloneContentLibraryVMTemplateFromVMBadRequest() *CloneContentLibraryVMTe
 Bad request
 */
 type CloneContentLibraryVMTemplateFromVMBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CloneContentLibraryVMTemplateFromVMBadRequest) GetPayload() *models.Err
 }
 
 func (o *CloneContentLibraryVMTemplateFromVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCloneContentLibraryVMTemplateFromVMNotFound() *CloneContentLibraryVMTemp
 Not found
 */
 type CloneContentLibraryVMTemplateFromVMNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CloneContentLibraryVMTemplateFromVMNotFound) GetPayload() *models.Error
 }
 
 func (o *CloneContentLibraryVMTemplateFromVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCloneContentLibraryVMTemplateFromVMInternalServerError() *CloneContentLi
 Server error
 */
 type CloneContentLibraryVMTemplateFromVMInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CloneContentLibraryVMTemplateFromVMInternalServerError) GetPayload() *m
 }
 
 func (o *CloneContentLibraryVMTemplateFromVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

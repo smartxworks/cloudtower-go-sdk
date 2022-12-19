@@ -59,9 +59,11 @@ func NewCloneVMTemplateFromVMOK() *CloneVMTemplateFromVMOK {
 
 /* CloneVMTemplateFromVMOK describes a response with status code 200, with default header values.
 
-Ok
+CloneVMTemplateFromVMOK clone Vm template from Vm o k
 */
 type CloneVMTemplateFromVMOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVMTemplate
 }
 
@@ -73,6 +75,13 @@ func (o *CloneVMTemplateFromVMOK) GetPayload() []*models.WithTaskVMTemplate {
 }
 
 func (o *CloneVMTemplateFromVMOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCloneVMTemplateFromVMBadRequest() *CloneVMTemplateFromVMBadRequest {
 Bad request
 */
 type CloneVMTemplateFromVMBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CloneVMTemplateFromVMBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CloneVMTemplateFromVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCloneVMTemplateFromVMNotFound() *CloneVMTemplateFromVMNotFound {
 Not found
 */
 type CloneVMTemplateFromVMNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CloneVMTemplateFromVMNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CloneVMTemplateFromVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCloneVMTemplateFromVMInternalServerError() *CloneVMTemplateFromVMInterna
 Server error
 */
 type CloneVMTemplateFromVMInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CloneVMTemplateFromVMInternalServerError) GetPayload() *models.ErrorBod
 }
 
 func (o *CloneVMTemplateFromVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

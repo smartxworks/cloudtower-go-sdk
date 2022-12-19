@@ -59,9 +59,11 @@ func NewUpdateClusterNetworkSettingOK() *UpdateClusterNetworkSettingOK {
 
 /* UpdateClusterNetworkSettingOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateClusterNetworkSettingOK update cluster network setting o k
 */
 type UpdateClusterNetworkSettingOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskCluster
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateClusterNetworkSettingOK) GetPayload() []*models.WithTaskCluster {
 }
 
 func (o *UpdateClusterNetworkSettingOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateClusterNetworkSettingBadRequest() *UpdateClusterNetworkSettingBadR
 Bad request
 */
 type UpdateClusterNetworkSettingBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateClusterNetworkSettingBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateClusterNetworkSettingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateClusterNetworkSettingNotFound() *UpdateClusterNetworkSettingNotFou
 Not found
 */
 type UpdateClusterNetworkSettingNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateClusterNetworkSettingNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateClusterNetworkSettingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateClusterNetworkSettingInternalServerError() *UpdateClusterNetworkSe
 Server error
 */
 type UpdateClusterNetworkSettingInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateClusterNetworkSettingInternalServerError) GetPayload() *models.Er
 }
 
 func (o *UpdateClusterNetworkSettingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

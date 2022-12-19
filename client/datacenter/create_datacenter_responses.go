@@ -59,9 +59,11 @@ func NewCreateDatacenterOK() *CreateDatacenterOK {
 
 /* CreateDatacenterOK describes a response with status code 200, with default header values.
 
-Ok
+CreateDatacenterOK create datacenter o k
 */
 type CreateDatacenterOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDatacenter
 }
 
@@ -73,6 +75,13 @@ func (o *CreateDatacenterOK) GetPayload() []*models.WithTaskDatacenter {
 }
 
 func (o *CreateDatacenterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCreateDatacenterBadRequest() *CreateDatacenterBadRequest {
 Bad request
 */
 type CreateDatacenterBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CreateDatacenterBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateDatacenterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCreateDatacenterNotFound() *CreateDatacenterNotFound {
 Not found
 */
 type CreateDatacenterNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CreateDatacenterNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateDatacenterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCreateDatacenterInternalServerError() *CreateDatacenterInternalServerErr
 Server error
 */
 type CreateDatacenterInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CreateDatacenterInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateDatacenterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

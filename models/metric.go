@@ -25,6 +25,10 @@ type Metric struct {
 	// Enum: [Metric]
 	Typename *string `json:"__typename,omitempty"`
 
+	// dropped
+	// Required: true
+	Dropped *bool `json:"dropped"`
+
 	// sample streams
 	SampleStreams []*MetricStream `json:"sample_streams,omitempty"`
 
@@ -45,6 +49,10 @@ func (m *Metric) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateTypename(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDropped(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -103,6 +111,15 @@ func (m *Metric) validateTypename(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateTypenameEnum("__typename", "body", *m.Typename); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Metric) validateDropped(formats strfmt.Registry) error {
+
+	if err := validate.Required("dropped", "body", m.Dropped); err != nil {
 		return err
 	}
 

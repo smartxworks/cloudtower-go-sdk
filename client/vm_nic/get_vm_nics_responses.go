@@ -59,9 +59,11 @@ func NewGetVMNicsOK() *GetVMNicsOK {
 
 /* GetVMNicsOK describes a response with status code 200, with default header values.
 
-Ok
+GetVMNicsOK get Vm nics o k
 */
 type GetVMNicsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.VMNic
 }
 
@@ -73,6 +75,13 @@ func (o *GetVMNicsOK) GetPayload() []*models.VMNic {
 }
 
 func (o *GetVMNicsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetVMNicsBadRequest() *GetVMNicsBadRequest {
 Bad request
 */
 type GetVMNicsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetVMNicsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVMNicsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetVMNicsNotFound() *GetVMNicsNotFound {
 Not found
 */
 type GetVMNicsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetVMNicsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVMNicsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetVMNicsInternalServerError() *GetVMNicsInternalServerError {
 Server error
 */
 type GetVMNicsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetVMNicsInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVMNicsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

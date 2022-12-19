@@ -59,9 +59,11 @@ func NewDistributeContentLibraryImageClustersOK() *DistributeContentLibraryImage
 
 /* DistributeContentLibraryImageClustersOK describes a response with status code 200, with default header values.
 
-Ok
+DistributeContentLibraryImageClustersOK distribute content library image clusters o k
 */
 type DistributeContentLibraryImageClustersOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskContentLibraryImage
 }
 
@@ -73,6 +75,13 @@ func (o *DistributeContentLibraryImageClustersOK) GetPayload() []*models.WithTas
 }
 
 func (o *DistributeContentLibraryImageClustersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDistributeContentLibraryImageClustersBadRequest() *DistributeContentLibr
 Bad request
 */
 type DistributeContentLibraryImageClustersBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DistributeContentLibraryImageClustersBadRequest) GetPayload() *models.E
 }
 
 func (o *DistributeContentLibraryImageClustersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDistributeContentLibraryImageClustersNotFound() *DistributeContentLibrar
 Not found
 */
 type DistributeContentLibraryImageClustersNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DistributeContentLibraryImageClustersNotFound) GetPayload() *models.Err
 }
 
 func (o *DistributeContentLibraryImageClustersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDistributeContentLibraryImageClustersInternalServerError() *DistributeCo
 Server error
 */
 type DistributeContentLibraryImageClustersInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DistributeContentLibraryImageClustersInternalServerError) GetPayload() 
 }
 
 func (o *DistributeContentLibraryImageClustersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

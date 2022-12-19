@@ -59,9 +59,11 @@ func NewStopVMInCutoverMigrationOK() *StopVMInCutoverMigrationOK {
 
 /* StopVMInCutoverMigrationOK describes a response with status code 200, with default header values.
 
-Ok
+StopVMInCutoverMigrationOK stop Vm in cutover migration o k
 */
 type StopVMInCutoverMigrationOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -73,6 +75,13 @@ func (o *StopVMInCutoverMigrationOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *StopVMInCutoverMigrationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewStopVMInCutoverMigrationBadRequest() *StopVMInCutoverMigrationBadRequest
 Bad request
 */
 type StopVMInCutoverMigrationBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *StopVMInCutoverMigrationBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *StopVMInCutoverMigrationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewStopVMInCutoverMigrationNotFound() *StopVMInCutoverMigrationNotFound {
 Not found
 */
 type StopVMInCutoverMigrationNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *StopVMInCutoverMigrationNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *StopVMInCutoverMigrationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewStopVMInCutoverMigrationInternalServerError() *StopVMInCutoverMigrationI
 Server error
 */
 type StopVMInCutoverMigrationInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *StopVMInCutoverMigrationInternalServerError) GetPayload() *models.Error
 }
 
 func (o *StopVMInCutoverMigrationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

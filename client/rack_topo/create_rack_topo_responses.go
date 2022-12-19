@@ -59,9 +59,11 @@ func NewCreateRackTopoOK() *CreateRackTopoOK {
 
 /* CreateRackTopoOK describes a response with status code 200, with default header values.
 
-Ok
+CreateRackTopoOK create rack topo o k
 */
 type CreateRackTopoOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskRackTopo
 }
 
@@ -73,6 +75,13 @@ func (o *CreateRackTopoOK) GetPayload() []*models.WithTaskRackTopo {
 }
 
 func (o *CreateRackTopoOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCreateRackTopoBadRequest() *CreateRackTopoBadRequest {
 Bad request
 */
 type CreateRackTopoBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CreateRackTopoBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateRackTopoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCreateRackTopoNotFound() *CreateRackTopoNotFound {
 Not found
 */
 type CreateRackTopoNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CreateRackTopoNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateRackTopoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCreateRackTopoInternalServerError() *CreateRackTopoInternalServerError {
 Server error
 */
 type CreateRackTopoInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CreateRackTopoInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateRackTopoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

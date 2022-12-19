@@ -59,9 +59,11 @@ func NewToggleVMCdRomDisableOK() *ToggleVMCdRomDisableOK {
 
 /* ToggleVMCdRomDisableOK describes a response with status code 200, with default header values.
 
-Ok
+ToggleVMCdRomDisableOK toggle Vm cd rom disable o k
 */
 type ToggleVMCdRomDisableOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -73,6 +75,13 @@ func (o *ToggleVMCdRomDisableOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *ToggleVMCdRomDisableOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewToggleVMCdRomDisableBadRequest() *ToggleVMCdRomDisableBadRequest {
 Bad request
 */
 type ToggleVMCdRomDisableBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *ToggleVMCdRomDisableBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *ToggleVMCdRomDisableBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewToggleVMCdRomDisableNotFound() *ToggleVMCdRomDisableNotFound {
 Not found
 */
 type ToggleVMCdRomDisableNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *ToggleVMCdRomDisableNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *ToggleVMCdRomDisableNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewToggleVMCdRomDisableInternalServerError() *ToggleVMCdRomDisableInternalS
 Server error
 */
 type ToggleVMCdRomDisableInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *ToggleVMCdRomDisableInternalServerError) GetPayload() *models.ErrorBody
 }
 
 func (o *ToggleVMCdRomDisableInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

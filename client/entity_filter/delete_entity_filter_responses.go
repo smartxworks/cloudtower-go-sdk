@@ -59,9 +59,11 @@ func NewDeleteEntityFilterOK() *DeleteEntityFilterOK {
 
 /* DeleteEntityFilterOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteEntityFilterOK delete entity filter o k
 */
 type DeleteEntityFilterOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteEntityFilter
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteEntityFilterOK) GetPayload() []*models.WithTaskDeleteEntityFilter
 }
 
 func (o *DeleteEntityFilterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteEntityFilterBadRequest() *DeleteEntityFilterBadRequest {
 Bad request
 */
 type DeleteEntityFilterBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteEntityFilterBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteEntityFilterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteEntityFilterNotFound() *DeleteEntityFilterNotFound {
 Not found
 */
 type DeleteEntityFilterNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteEntityFilterNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteEntityFilterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteEntityFilterInternalServerError() *DeleteEntityFilterInternalServe
 Server error
 */
 type DeleteEntityFilterInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteEntityFilterInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteEntityFilterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

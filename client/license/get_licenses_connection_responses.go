@@ -59,9 +59,11 @@ func NewGetLicensesConnectionOK() *GetLicensesConnectionOK {
 
 /* GetLicensesConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetLicensesConnectionOK get licenses connection o k
 */
 type GetLicensesConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.LicenseConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetLicensesConnectionOK) GetPayload() *models.LicenseConnection {
 }
 
 func (o *GetLicensesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.LicenseConnection)
 
@@ -94,6 +103,8 @@ func NewGetLicensesConnectionBadRequest() *GetLicensesConnectionBadRequest {
 Bad request
 */
 type GetLicensesConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetLicensesConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetLicensesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetLicensesConnectionNotFound() *GetLicensesConnectionNotFound {
 Not found
 */
 type GetLicensesConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetLicensesConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetLicensesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetLicensesConnectionInternalServerError() *GetLicensesConnectionInterna
 Server error
 */
 type GetLicensesConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetLicensesConnectionInternalServerError) GetPayload() *models.ErrorBod
 }
 
 func (o *GetLicensesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

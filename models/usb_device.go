@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -65,6 +66,9 @@ type UsbDevice struct {
 
 	// vm
 	VM *NestedVM `json:"vm,omitempty"`
+
+	// vms
+	Vms []*NestedVM `json:"vms,omitempty"`
 }
 
 // Validate validates this usb device
@@ -116,6 +120,10 @@ func (m *UsbDevice) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVM(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVms(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -269,6 +277,32 @@ func (m *UsbDevice) validateVM(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *UsbDevice) validateVms(formats strfmt.Registry) error {
+	if swag.IsZero(m.Vms) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Vms); i++ {
+		if swag.IsZero(m.Vms[i]) { // not required
+			continue
+		}
+
+		if m.Vms[i] != nil {
+			if err := m.Vms[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this usb device based on the context it is used
 func (m *UsbDevice) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -282,6 +316,10 @@ func (m *UsbDevice) ContextValidate(ctx context.Context, formats strfmt.Registry
 	}
 
 	if err := m.contextValidateVM(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVms(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -334,6 +372,26 @@ func (m *UsbDevice) contextValidateVM(ctx context.Context, formats strfmt.Regist
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *UsbDevice) contextValidateVms(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Vms); i++ {
+
+		if m.Vms[i] != nil {
+			if err := m.Vms[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

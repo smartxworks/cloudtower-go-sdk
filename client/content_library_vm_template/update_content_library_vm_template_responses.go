@@ -59,9 +59,11 @@ func NewUpdateContentLibraryVMTemplateOK() *UpdateContentLibraryVMTemplateOK {
 
 /* UpdateContentLibraryVMTemplateOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateContentLibraryVMTemplateOK update content library Vm template o k
 */
 type UpdateContentLibraryVMTemplateOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskContentLibraryVMTemplate
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateContentLibraryVMTemplateOK) GetPayload() []*models.WithTaskConten
 }
 
 func (o *UpdateContentLibraryVMTemplateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateContentLibraryVMTemplateBadRequest() *UpdateContentLibraryVMTempla
 Bad request
 */
 type UpdateContentLibraryVMTemplateBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateContentLibraryVMTemplateBadRequest) GetPayload() *models.ErrorBod
 }
 
 func (o *UpdateContentLibraryVMTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateContentLibraryVMTemplateNotFound() *UpdateContentLibraryVMTemplate
 Not found
 */
 type UpdateContentLibraryVMTemplateNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateContentLibraryVMTemplateNotFound) GetPayload() *models.ErrorBody 
 }
 
 func (o *UpdateContentLibraryVMTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateContentLibraryVMTemplateInternalServerError() *UpdateContentLibrar
 Server error
 */
 type UpdateContentLibraryVMTemplateInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateContentLibraryVMTemplateInternalServerError) GetPayload() *models
 }
 
 func (o *UpdateContentLibraryVMTemplateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewDeleteLogCollectionOK() *DeleteLogCollectionOK {
 
 /* DeleteLogCollectionOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteLogCollectionOK delete log collection o k
 */
 type DeleteLogCollectionOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteLogCollection
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteLogCollectionOK) GetPayload() []*models.WithTaskDeleteLogCollecti
 }
 
 func (o *DeleteLogCollectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteLogCollectionBadRequest() *DeleteLogCollectionBadRequest {
 Bad request
 */
 type DeleteLogCollectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteLogCollectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteLogCollectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteLogCollectionNotFound() *DeleteLogCollectionNotFound {
 Not found
 */
 type DeleteLogCollectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteLogCollectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteLogCollectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteLogCollectionInternalServerError() *DeleteLogCollectionInternalSer
 Server error
 */
 type DeleteLogCollectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteLogCollectionInternalServerError) GetPayload() *models.ErrorBody 
 }
 
 func (o *DeleteLogCollectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

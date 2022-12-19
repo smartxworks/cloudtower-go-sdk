@@ -59,9 +59,11 @@ func NewGetUserAuditLogsOK() *GetUserAuditLogsOK {
 
 /* GetUserAuditLogsOK describes a response with status code 200, with default header values.
 
-Ok
+GetUserAuditLogsOK get user audit logs o k
 */
 type GetUserAuditLogsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.UserAuditLog
 }
 
@@ -73,6 +75,13 @@ func (o *GetUserAuditLogsOK) GetPayload() []*models.UserAuditLog {
 }
 
 func (o *GetUserAuditLogsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetUserAuditLogsBadRequest() *GetUserAuditLogsBadRequest {
 Bad request
 */
 type GetUserAuditLogsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetUserAuditLogsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUserAuditLogsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetUserAuditLogsNotFound() *GetUserAuditLogsNotFound {
 Not found
 */
 type GetUserAuditLogsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetUserAuditLogsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUserAuditLogsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetUserAuditLogsInternalServerError() *GetUserAuditLogsInternalServerErr
 Server error
 */
 type GetUserAuditLogsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetUserAuditLogsInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUserAuditLogsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

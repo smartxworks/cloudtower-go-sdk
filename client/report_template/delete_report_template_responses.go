@@ -59,9 +59,11 @@ func NewDeleteReportTemplateOK() *DeleteReportTemplateOK {
 
 /* DeleteReportTemplateOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteReportTemplateOK delete report template o k
 */
 type DeleteReportTemplateOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteReportTemplate
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteReportTemplateOK) GetPayload() []*models.WithTaskDeleteReportTemp
 }
 
 func (o *DeleteReportTemplateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteReportTemplateBadRequest() *DeleteReportTemplateBadRequest {
 Bad request
 */
 type DeleteReportTemplateBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteReportTemplateBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteReportTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteReportTemplateNotFound() *DeleteReportTemplateNotFound {
 Not found
 */
 type DeleteReportTemplateNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteReportTemplateNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteReportTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteReportTemplateInternalServerError() *DeleteReportTemplateInternalS
 Server error
 */
 type DeleteReportTemplateInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteReportTemplateInternalServerError) GetPayload() *models.ErrorBody
 }
 
 func (o *DeleteReportTemplateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

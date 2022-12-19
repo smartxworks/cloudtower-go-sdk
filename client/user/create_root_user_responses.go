@@ -59,9 +59,11 @@ func NewCreateRootUserOK() *CreateRootUserOK {
 
 /* CreateRootUserOK describes a response with status code 200, with default header values.
 
-Ok
+CreateRootUserOK create root user o k
 */
 type CreateRootUserOK struct {
+	XTowerRequestID string
+
 	Payload *models.WithTaskUser
 }
 
@@ -73,6 +75,13 @@ func (o *CreateRootUserOK) GetPayload() *models.WithTaskUser {
 }
 
 func (o *CreateRootUserOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.WithTaskUser)
 
@@ -94,6 +103,8 @@ func NewCreateRootUserBadRequest() *CreateRootUserBadRequest {
 Bad request
 */
 type CreateRootUserBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *CreateRootUserBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateRootUserBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewCreateRootUserNotFound() *CreateRootUserNotFound {
 Not found
 */
 type CreateRootUserNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *CreateRootUserNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateRootUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewCreateRootUserInternalServerError() *CreateRootUserInternalServerError {
 Server error
 */
 type CreateRootUserInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *CreateRootUserInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateRootUserInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

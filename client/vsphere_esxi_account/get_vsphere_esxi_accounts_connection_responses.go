@@ -59,9 +59,11 @@ func NewGetVsphereEsxiAccountsConnectionOK() *GetVsphereEsxiAccountsConnectionOK
 
 /* GetVsphereEsxiAccountsConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetVsphereEsxiAccountsConnectionOK get vsphere esxi accounts connection o k
 */
 type GetVsphereEsxiAccountsConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.VsphereEsxiAccountConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetVsphereEsxiAccountsConnectionOK) GetPayload() *models.VsphereEsxiAcc
 }
 
 func (o *GetVsphereEsxiAccountsConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.VsphereEsxiAccountConnection)
 
@@ -94,6 +103,8 @@ func NewGetVsphereEsxiAccountsConnectionBadRequest() *GetVsphereEsxiAccountsConn
 Bad request
 */
 type GetVsphereEsxiAccountsConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetVsphereEsxiAccountsConnectionBadRequest) GetPayload() *models.ErrorB
 }
 
 func (o *GetVsphereEsxiAccountsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetVsphereEsxiAccountsConnectionNotFound() *GetVsphereEsxiAccountsConnec
 Not found
 */
 type GetVsphereEsxiAccountsConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetVsphereEsxiAccountsConnectionNotFound) GetPayload() *models.ErrorBod
 }
 
 func (o *GetVsphereEsxiAccountsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetVsphereEsxiAccountsConnectionInternalServerError() *GetVsphereEsxiAcc
 Server error
 */
 type GetVsphereEsxiAccountsConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetVsphereEsxiAccountsConnectionInternalServerError) GetPayload() *mode
 }
 
 func (o *GetVsphereEsxiAccountsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

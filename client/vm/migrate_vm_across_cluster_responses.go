@@ -65,9 +65,11 @@ func NewMigrateVMAcrossClusterOK() *MigrateVMAcrossClusterOK {
 
 /* MigrateVMAcrossClusterOK describes a response with status code 200, with default header values.
 
-Ok
+MigrateVMAcrossClusterOK migrate Vm across cluster o k
 */
 type MigrateVMAcrossClusterOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -79,6 +81,13 @@ func (o *MigrateVMAcrossClusterOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *MigrateVMAcrossClusterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -119,6 +128,8 @@ func NewMigrateVMAcrossClusterBadRequest() *MigrateVMAcrossClusterBadRequest {
 Bad request
 */
 type MigrateVMAcrossClusterBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -130,6 +141,13 @@ func (o *MigrateVMAcrossClusterBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *MigrateVMAcrossClusterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -151,6 +169,8 @@ func NewMigrateVMAcrossClusterNotFound() *MigrateVMAcrossClusterNotFound {
 Not found
 */
 type MigrateVMAcrossClusterNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -162,6 +182,13 @@ func (o *MigrateVMAcrossClusterNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *MigrateVMAcrossClusterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -183,6 +210,8 @@ func NewMigrateVMAcrossClusterInternalServerError() *MigrateVMAcrossClusterInter
 Server error
 */
 type MigrateVMAcrossClusterInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -194,6 +223,13 @@ func (o *MigrateVMAcrossClusterInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *MigrateVMAcrossClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

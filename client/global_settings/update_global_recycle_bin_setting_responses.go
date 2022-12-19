@@ -59,9 +59,11 @@ func NewUpdateGlobalRecycleBinSettingOK() *UpdateGlobalRecycleBinSettingOK {
 
 /* UpdateGlobalRecycleBinSettingOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateGlobalRecycleBinSettingOK update global recycle bin setting o k
 */
 type UpdateGlobalRecycleBinSettingOK struct {
+	XTowerRequestID string
+
 	Payload *models.WithTaskGlobalSettings
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateGlobalRecycleBinSettingOK) GetPayload() *models.WithTaskGlobalSet
 }
 
 func (o *UpdateGlobalRecycleBinSettingOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.WithTaskGlobalSettings)
 
@@ -94,6 +103,8 @@ func NewUpdateGlobalRecycleBinSettingBadRequest() *UpdateGlobalRecycleBinSetting
 Bad request
 */
 type UpdateGlobalRecycleBinSettingBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *UpdateGlobalRecycleBinSettingBadRequest) GetPayload() *models.ErrorBody
 }
 
 func (o *UpdateGlobalRecycleBinSettingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewUpdateGlobalRecycleBinSettingNotFound() *UpdateGlobalRecycleBinSettingNo
 Not found
 */
 type UpdateGlobalRecycleBinSettingNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *UpdateGlobalRecycleBinSettingNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateGlobalRecycleBinSettingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewUpdateGlobalRecycleBinSettingInternalServerError() *UpdateGlobalRecycleB
 Server error
 */
 type UpdateGlobalRecycleBinSettingInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *UpdateGlobalRecycleBinSettingInternalServerError) GetPayload() *models.
 }
 
 func (o *UpdateGlobalRecycleBinSettingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

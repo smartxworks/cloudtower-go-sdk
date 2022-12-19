@@ -59,9 +59,11 @@ func NewDeleteIscsiTargetOK() *DeleteIscsiTargetOK {
 
 /* DeleteIscsiTargetOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteIscsiTargetOK delete iscsi target o k
 */
 type DeleteIscsiTargetOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteIscsiTarget
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteIscsiTargetOK) GetPayload() []*models.WithTaskDeleteIscsiTarget {
 }
 
 func (o *DeleteIscsiTargetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteIscsiTargetBadRequest() *DeleteIscsiTargetBadRequest {
 Bad request
 */
 type DeleteIscsiTargetBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteIscsiTargetBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteIscsiTargetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteIscsiTargetNotFound() *DeleteIscsiTargetNotFound {
 Not found
 */
 type DeleteIscsiTargetNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteIscsiTargetNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteIscsiTargetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteIscsiTargetInternalServerError() *DeleteIscsiTargetInternalServerE
 Server error
 */
 type DeleteIscsiTargetInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteIscsiTargetInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteIscsiTargetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

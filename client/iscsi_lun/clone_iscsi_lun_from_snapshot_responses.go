@@ -59,9 +59,11 @@ func NewCloneIscsiLunFromSnapshotOK() *CloneIscsiLunFromSnapshotOK {
 
 /* CloneIscsiLunFromSnapshotOK describes a response with status code 200, with default header values.
 
-Ok
+CloneIscsiLunFromSnapshotOK clone iscsi lun from snapshot o k
 */
 type CloneIscsiLunFromSnapshotOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskIscsiLun
 }
 
@@ -73,6 +75,13 @@ func (o *CloneIscsiLunFromSnapshotOK) GetPayload() []*models.WithTaskIscsiLun {
 }
 
 func (o *CloneIscsiLunFromSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCloneIscsiLunFromSnapshotBadRequest() *CloneIscsiLunFromSnapshotBadReque
 Bad request
 */
 type CloneIscsiLunFromSnapshotBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CloneIscsiLunFromSnapshotBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CloneIscsiLunFromSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCloneIscsiLunFromSnapshotNotFound() *CloneIscsiLunFromSnapshotNotFound {
 Not found
 */
 type CloneIscsiLunFromSnapshotNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CloneIscsiLunFromSnapshotNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CloneIscsiLunFromSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCloneIscsiLunFromSnapshotInternalServerError() *CloneIscsiLunFromSnapsho
 Server error
 */
 type CloneIscsiLunFromSnapshotInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CloneIscsiLunFromSnapshotInternalServerError) GetPayload() *models.Erro
 }
 
 func (o *CloneIscsiLunFromSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
