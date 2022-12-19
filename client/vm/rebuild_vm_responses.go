@@ -59,9 +59,11 @@ func NewRebuildVMOK() *RebuildVMOK {
 
 /* RebuildVMOK describes a response with status code 200, with default header values.
 
-Ok
+RebuildVMOK rebuild Vm o k
 */
 type RebuildVMOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -73,6 +75,13 @@ func (o *RebuildVMOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *RebuildVMOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewRebuildVMBadRequest() *RebuildVMBadRequest {
 Bad request
 */
 type RebuildVMBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *RebuildVMBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *RebuildVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewRebuildVMNotFound() *RebuildVMNotFound {
 Not found
 */
 type RebuildVMNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *RebuildVMNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *RebuildVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewRebuildVMInternalServerError() *RebuildVMInternalServerError {
 Server error
 */
 type RebuildVMInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *RebuildVMInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *RebuildVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

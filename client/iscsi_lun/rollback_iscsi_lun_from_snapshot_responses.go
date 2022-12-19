@@ -59,9 +59,11 @@ func NewRollbackIscsiLunFromSnapshotOK() *RollbackIscsiLunFromSnapshotOK {
 
 /* RollbackIscsiLunFromSnapshotOK describes a response with status code 200, with default header values.
 
-Ok
+RollbackIscsiLunFromSnapshotOK rollback iscsi lun from snapshot o k
 */
 type RollbackIscsiLunFromSnapshotOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskIscsiLun
 }
 
@@ -73,6 +75,13 @@ func (o *RollbackIscsiLunFromSnapshotOK) GetPayload() []*models.WithTaskIscsiLun
 }
 
 func (o *RollbackIscsiLunFromSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewRollbackIscsiLunFromSnapshotBadRequest() *RollbackIscsiLunFromSnapshotBa
 Bad request
 */
 type RollbackIscsiLunFromSnapshotBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *RollbackIscsiLunFromSnapshotBadRequest) GetPayload() *models.ErrorBody 
 }
 
 func (o *RollbackIscsiLunFromSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewRollbackIscsiLunFromSnapshotNotFound() *RollbackIscsiLunFromSnapshotNotF
 Not found
 */
 type RollbackIscsiLunFromSnapshotNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *RollbackIscsiLunFromSnapshotNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *RollbackIscsiLunFromSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewRollbackIscsiLunFromSnapshotInternalServerError() *RollbackIscsiLunFromS
 Server error
 */
 type RollbackIscsiLunFromSnapshotInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *RollbackIscsiLunFromSnapshotInternalServerError) GetPayload() *models.E
 }
 
 func (o *RollbackIscsiLunFromSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

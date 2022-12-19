@@ -59,9 +59,11 @@ func NewGetZonesOK() *GetZonesOK {
 
 /* GetZonesOK describes a response with status code 200, with default header values.
 
-Ok
+GetZonesOK get zones o k
 */
 type GetZonesOK struct {
+	XTowerRequestID string
+
 	Payload []*models.Zone
 }
 
@@ -73,6 +75,13 @@ func (o *GetZonesOK) GetPayload() []*models.Zone {
 }
 
 func (o *GetZonesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetZonesBadRequest() *GetZonesBadRequest {
 Bad request
 */
 type GetZonesBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetZonesBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetZonesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetZonesNotFound() *GetZonesNotFound {
 Not found
 */
 type GetZonesNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetZonesNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetZonesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetZonesInternalServerError() *GetZonesInternalServerError {
 Server error
 */
 type GetZonesInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetZonesInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetZonesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewCreateHostOK() *CreateHostOK {
 
 /* CreateHostOK describes a response with status code 200, with default header values.
 
-Ok
+CreateHostOK create host o k
 */
 type CreateHostOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskBatchHosts
 }
 
@@ -73,6 +75,13 @@ func (o *CreateHostOK) GetPayload() []*models.WithTaskBatchHosts {
 }
 
 func (o *CreateHostOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCreateHostBadRequest() *CreateHostBadRequest {
 Bad request
 */
 type CreateHostBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CreateHostBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateHostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCreateHostNotFound() *CreateHostNotFound {
 Not found
 */
 type CreateHostNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CreateHostNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateHostNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCreateHostInternalServerError() *CreateHostInternalServerError {
 Server error
 */
 type CreateHostInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CreateHostInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateHostInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewGetVlansConnectionOK() *GetVlansConnectionOK {
 
 /* GetVlansConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetVlansConnectionOK get vlans connection o k
 */
 type GetVlansConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.VlanConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetVlansConnectionOK) GetPayload() *models.VlanConnection {
 }
 
 func (o *GetVlansConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.VlanConnection)
 
@@ -94,6 +103,8 @@ func NewGetVlansConnectionBadRequest() *GetVlansConnectionBadRequest {
 Bad request
 */
 type GetVlansConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetVlansConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVlansConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetVlansConnectionNotFound() *GetVlansConnectionNotFound {
 Not found
 */
 type GetVlansConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetVlansConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVlansConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetVlansConnectionInternalServerError() *GetVlansConnectionInternalServe
 Server error
 */
 type GetVlansConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetVlansConnectionInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVlansConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

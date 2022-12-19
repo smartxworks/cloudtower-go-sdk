@@ -59,9 +59,11 @@ func NewUpdateSessionTimeoutOK() *UpdateSessionTimeoutOK {
 
 /* UpdateSessionTimeoutOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateSessionTimeoutOK update session timeout o k
 */
 type UpdateSessionTimeoutOK struct {
+	XTowerRequestID string
+
 	Payload *models.WithTaskGlobalSettings
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateSessionTimeoutOK) GetPayload() *models.WithTaskGlobalSettings {
 }
 
 func (o *UpdateSessionTimeoutOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.WithTaskGlobalSettings)
 
@@ -94,6 +103,8 @@ func NewUpdateSessionTimeoutBadRequest() *UpdateSessionTimeoutBadRequest {
 Bad request
 */
 type UpdateSessionTimeoutBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *UpdateSessionTimeoutBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateSessionTimeoutBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewUpdateSessionTimeoutNotFound() *UpdateSessionTimeoutNotFound {
 Not found
 */
 type UpdateSessionTimeoutNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *UpdateSessionTimeoutNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateSessionTimeoutNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewUpdateSessionTimeoutInternalServerError() *UpdateSessionTimeoutInternalS
 Server error
 */
 type UpdateSessionTimeoutInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *UpdateSessionTimeoutInternalServerError) GetPayload() *models.ErrorBody
 }
 
 func (o *UpdateSessionTimeoutInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

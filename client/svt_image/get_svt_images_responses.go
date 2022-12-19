@@ -59,9 +59,11 @@ func NewGetSvtImagesOK() *GetSvtImagesOK {
 
 /* GetSvtImagesOK describes a response with status code 200, with default header values.
 
-Ok
+GetSvtImagesOK get svt images o k
 */
 type GetSvtImagesOK struct {
+	XTowerRequestID string
+
 	Payload []*models.SvtImage
 }
 
@@ -73,6 +75,13 @@ func (o *GetSvtImagesOK) GetPayload() []*models.SvtImage {
 }
 
 func (o *GetSvtImagesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetSvtImagesBadRequest() *GetSvtImagesBadRequest {
 Bad request
 */
 type GetSvtImagesBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetSvtImagesBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetSvtImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetSvtImagesNotFound() *GetSvtImagesNotFound {
 Not found
 */
 type GetSvtImagesNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetSvtImagesNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetSvtImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetSvtImagesInternalServerError() *GetSvtImagesInternalServerError {
 Server error
 */
 type GetSvtImagesInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetSvtImagesInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetSvtImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

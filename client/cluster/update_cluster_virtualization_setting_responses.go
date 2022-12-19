@@ -59,9 +59,11 @@ func NewUpdateClusterVirtualizationSettingOK() *UpdateClusterVirtualizationSetti
 
 /* UpdateClusterVirtualizationSettingOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateClusterVirtualizationSettingOK update cluster virtualization setting o k
 */
 type UpdateClusterVirtualizationSettingOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskCluster
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateClusterVirtualizationSettingOK) GetPayload() []*models.WithTaskCl
 }
 
 func (o *UpdateClusterVirtualizationSettingOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateClusterVirtualizationSettingBadRequest() *UpdateClusterVirtualizat
 Bad request
 */
 type UpdateClusterVirtualizationSettingBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateClusterVirtualizationSettingBadRequest) GetPayload() *models.Erro
 }
 
 func (o *UpdateClusterVirtualizationSettingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateClusterVirtualizationSettingNotFound() *UpdateClusterVirtualizatio
 Not found
 */
 type UpdateClusterVirtualizationSettingNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateClusterVirtualizationSettingNotFound) GetPayload() *models.ErrorB
 }
 
 func (o *UpdateClusterVirtualizationSettingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateClusterVirtualizationSettingInternalServerError() *UpdateClusterVi
 Server error
 */
 type UpdateClusterVirtualizationSettingInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateClusterVirtualizationSettingInternalServerError) GetPayload() *mo
 }
 
 func (o *UpdateClusterVirtualizationSettingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

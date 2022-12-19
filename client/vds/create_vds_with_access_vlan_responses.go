@@ -59,9 +59,11 @@ func NewCreateVdsWithAccessVlanOK() *CreateVdsWithAccessVlanOK {
 
 /* CreateVdsWithAccessVlanOK describes a response with status code 200, with default header values.
 
-Ok
+CreateVdsWithAccessVlanOK create vds with access vlan o k
 */
 type CreateVdsWithAccessVlanOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVds
 }
 
@@ -73,6 +75,13 @@ func (o *CreateVdsWithAccessVlanOK) GetPayload() []*models.WithTaskVds {
 }
 
 func (o *CreateVdsWithAccessVlanOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCreateVdsWithAccessVlanBadRequest() *CreateVdsWithAccessVlanBadRequest {
 Bad request
 */
 type CreateVdsWithAccessVlanBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CreateVdsWithAccessVlanBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateVdsWithAccessVlanBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCreateVdsWithAccessVlanNotFound() *CreateVdsWithAccessVlanNotFound {
 Not found
 */
 type CreateVdsWithAccessVlanNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CreateVdsWithAccessVlanNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *CreateVdsWithAccessVlanNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCreateVdsWithAccessVlanInternalServerError() *CreateVdsWithAccessVlanInt
 Server error
 */
 type CreateVdsWithAccessVlanInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CreateVdsWithAccessVlanInternalServerError) GetPayload() *models.ErrorB
 }
 
 func (o *CreateVdsWithAccessVlanInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

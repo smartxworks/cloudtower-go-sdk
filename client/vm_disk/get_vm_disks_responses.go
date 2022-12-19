@@ -59,9 +59,11 @@ func NewGetVMDisksOK() *GetVMDisksOK {
 
 /* GetVMDisksOK describes a response with status code 200, with default header values.
 
-Ok
+GetVMDisksOK get Vm disks o k
 */
 type GetVMDisksOK struct {
+	XTowerRequestID string
+
 	Payload []*models.VMDisk
 }
 
@@ -73,6 +75,13 @@ func (o *GetVMDisksOK) GetPayload() []*models.VMDisk {
 }
 
 func (o *GetVMDisksOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetVMDisksBadRequest() *GetVMDisksBadRequest {
 Bad request
 */
 type GetVMDisksBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetVMDisksBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVMDisksBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetVMDisksNotFound() *GetVMDisksNotFound {
 Not found
 */
 type GetVMDisksNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetVMDisksNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVMDisksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetVMDisksInternalServerError() *GetVMDisksInternalServerError {
 Server error
 */
 type GetVMDisksInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetVMDisksInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetVMDisksInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

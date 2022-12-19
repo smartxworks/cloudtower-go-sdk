@@ -59,9 +59,11 @@ func NewGetElfImagesConnectionOK() *GetElfImagesConnectionOK {
 
 /* GetElfImagesConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetElfImagesConnectionOK get elf images connection o k
 */
 type GetElfImagesConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.ElfImageConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetElfImagesConnectionOK) GetPayload() *models.ElfImageConnection {
 }
 
 func (o *GetElfImagesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ElfImageConnection)
 
@@ -94,6 +103,8 @@ func NewGetElfImagesConnectionBadRequest() *GetElfImagesConnectionBadRequest {
 Bad request
 */
 type GetElfImagesConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetElfImagesConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetElfImagesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetElfImagesConnectionNotFound() *GetElfImagesConnectionNotFound {
 Not found
 */
 type GetElfImagesConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetElfImagesConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetElfImagesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetElfImagesConnectionInternalServerError() *GetElfImagesConnectionInter
 Server error
 */
 type GetElfImagesConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetElfImagesConnectionInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *GetElfImagesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

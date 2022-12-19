@@ -59,9 +59,11 @@ func NewGetNamespaceGroupsOK() *GetNamespaceGroupsOK {
 
 /* GetNamespaceGroupsOK describes a response with status code 200, with default header values.
 
-Ok
+GetNamespaceGroupsOK get namespace groups o k
 */
 type GetNamespaceGroupsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.NamespaceGroup
 }
 
@@ -73,6 +75,13 @@ func (o *GetNamespaceGroupsOK) GetPayload() []*models.NamespaceGroup {
 }
 
 func (o *GetNamespaceGroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetNamespaceGroupsBadRequest() *GetNamespaceGroupsBadRequest {
 Bad request
 */
 type GetNamespaceGroupsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetNamespaceGroupsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetNamespaceGroupsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetNamespaceGroupsNotFound() *GetNamespaceGroupsNotFound {
 Not found
 */
 type GetNamespaceGroupsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetNamespaceGroupsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetNamespaceGroupsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetNamespaceGroupsInternalServerError() *GetNamespaceGroupsInternalServe
 Server error
 */
 type GetNamespaceGroupsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetNamespaceGroupsInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetNamespaceGroupsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

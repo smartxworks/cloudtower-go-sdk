@@ -59,9 +59,11 @@ func NewGetPmemDimmsOK() *GetPmemDimmsOK {
 
 /* GetPmemDimmsOK describes a response with status code 200, with default header values.
 
-Ok
+GetPmemDimmsOK get pmem dimms o k
 */
 type GetPmemDimmsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.PmemDimm
 }
 
@@ -73,6 +75,13 @@ func (o *GetPmemDimmsOK) GetPayload() []*models.PmemDimm {
 }
 
 func (o *GetPmemDimmsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetPmemDimmsBadRequest() *GetPmemDimmsBadRequest {
 Bad request
 */
 type GetPmemDimmsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetPmemDimmsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetPmemDimmsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetPmemDimmsNotFound() *GetPmemDimmsNotFound {
 Not found
 */
 type GetPmemDimmsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetPmemDimmsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetPmemDimmsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetPmemDimmsInternalServerError() *GetPmemDimmsInternalServerError {
 Server error
 */
 type GetPmemDimmsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetPmemDimmsInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetPmemDimmsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

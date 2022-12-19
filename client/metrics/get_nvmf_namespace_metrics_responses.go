@@ -59,9 +59,11 @@ func NewGetNvmfNamespaceMetricsOK() *GetNvmfNamespaceMetricsOK {
 
 /* GetNvmfNamespaceMetricsOK describes a response with status code 200, with default header values.
 
-Ok
+GetNvmfNamespaceMetricsOK get nvmf namespace metrics o k
 */
 type GetNvmfNamespaceMetricsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskMetric
 }
 
@@ -73,6 +75,13 @@ func (o *GetNvmfNamespaceMetricsOK) GetPayload() []*models.WithTaskMetric {
 }
 
 func (o *GetNvmfNamespaceMetricsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetNvmfNamespaceMetricsBadRequest() *GetNvmfNamespaceMetricsBadRequest {
 Bad request
 */
 type GetNvmfNamespaceMetricsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetNvmfNamespaceMetricsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetNvmfNamespaceMetricsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetNvmfNamespaceMetricsNotFound() *GetNvmfNamespaceMetricsNotFound {
 Not found
 */
 type GetNvmfNamespaceMetricsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetNvmfNamespaceMetricsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetNvmfNamespaceMetricsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetNvmfNamespaceMetricsInternalServerError() *GetNvmfNamespaceMetricsInt
 Server error
 */
 type GetNvmfNamespaceMetricsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetNvmfNamespaceMetricsInternalServerError) GetPayload() *models.ErrorB
 }
 
 func (o *GetNvmfNamespaceMetricsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewRecoverVMFromRecycleBinOK() *RecoverVMFromRecycleBinOK {
 
 /* RecoverVMFromRecycleBinOK describes a response with status code 200, with default header values.
 
-Ok
+RecoverVMFromRecycleBinOK recover Vm from recycle bin o k
 */
 type RecoverVMFromRecycleBinOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteVM
 }
 
@@ -73,6 +75,13 @@ func (o *RecoverVMFromRecycleBinOK) GetPayload() []*models.WithTaskDeleteVM {
 }
 
 func (o *RecoverVMFromRecycleBinOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewRecoverVMFromRecycleBinBadRequest() *RecoverVMFromRecycleBinBadRequest {
 Bad request
 */
 type RecoverVMFromRecycleBinBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *RecoverVMFromRecycleBinBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *RecoverVMFromRecycleBinBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewRecoverVMFromRecycleBinNotFound() *RecoverVMFromRecycleBinNotFound {
 Not found
 */
 type RecoverVMFromRecycleBinNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *RecoverVMFromRecycleBinNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *RecoverVMFromRecycleBinNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewRecoverVMFromRecycleBinInternalServerError() *RecoverVMFromRecycleBinInt
 Server error
 */
 type RecoverVMFromRecycleBinInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *RecoverVMFromRecycleBinInternalServerError) GetPayload() *models.ErrorB
 }
 
 func (o *RecoverVMFromRecycleBinInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

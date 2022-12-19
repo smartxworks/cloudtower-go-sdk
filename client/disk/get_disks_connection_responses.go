@@ -59,9 +59,11 @@ func NewGetDisksConnectionOK() *GetDisksConnectionOK {
 
 /* GetDisksConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetDisksConnectionOK get disks connection o k
 */
 type GetDisksConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.DiskConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetDisksConnectionOK) GetPayload() *models.DiskConnection {
 }
 
 func (o *GetDisksConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.DiskConnection)
 
@@ -94,6 +103,8 @@ func NewGetDisksConnectionBadRequest() *GetDisksConnectionBadRequest {
 Bad request
 */
 type GetDisksConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetDisksConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetDisksConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetDisksConnectionNotFound() *GetDisksConnectionNotFound {
 Not found
 */
 type GetDisksConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetDisksConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetDisksConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetDisksConnectionInternalServerError() *GetDisksConnectionInternalServe
 Server error
 */
 type GetDisksConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetDisksConnectionInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetDisksConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

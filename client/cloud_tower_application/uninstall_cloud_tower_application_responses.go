@@ -59,9 +59,11 @@ func NewUninstallCloudTowerApplicationOK() *UninstallCloudTowerApplicationOK {
 
 /* UninstallCloudTowerApplicationOK describes a response with status code 200, with default header values.
 
-Ok
+UninstallCloudTowerApplicationOK uninstall cloud tower application o k
 */
 type UninstallCloudTowerApplicationOK struct {
+	XTowerRequestID string
+
 	Payload []*models.CloudTowerApplication
 }
 
@@ -73,6 +75,13 @@ func (o *UninstallCloudTowerApplicationOK) GetPayload() []*models.CloudTowerAppl
 }
 
 func (o *UninstallCloudTowerApplicationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUninstallCloudTowerApplicationBadRequest() *UninstallCloudTowerApplicati
 Bad request
 */
 type UninstallCloudTowerApplicationBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UninstallCloudTowerApplicationBadRequest) GetPayload() *models.ErrorBod
 }
 
 func (o *UninstallCloudTowerApplicationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUninstallCloudTowerApplicationNotFound() *UninstallCloudTowerApplication
 Not found
 */
 type UninstallCloudTowerApplicationNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UninstallCloudTowerApplicationNotFound) GetPayload() *models.ErrorBody 
 }
 
 func (o *UninstallCloudTowerApplicationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUninstallCloudTowerApplicationInternalServerError() *UninstallCloudTower
 Server error
 */
 type UninstallCloudTowerApplicationInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UninstallCloudTowerApplicationInternalServerError) GetPayload() *models
 }
 
 func (o *UninstallCloudTowerApplicationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewCreateConsistencyGroupSnapshotOK() *CreateConsistencyGroupSnapshotOK {
 
 /* CreateConsistencyGroupSnapshotOK describes a response with status code 200, with default header values.
 
-Ok
+CreateConsistencyGroupSnapshotOK create consistency group snapshot o k
 */
 type CreateConsistencyGroupSnapshotOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskConsistencyGroupSnapshot
 }
 
@@ -73,6 +75,13 @@ func (o *CreateConsistencyGroupSnapshotOK) GetPayload() []*models.WithTaskConsis
 }
 
 func (o *CreateConsistencyGroupSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCreateConsistencyGroupSnapshotBadRequest() *CreateConsistencyGroupSnapsh
 Bad request
 */
 type CreateConsistencyGroupSnapshotBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CreateConsistencyGroupSnapshotBadRequest) GetPayload() *models.ErrorBod
 }
 
 func (o *CreateConsistencyGroupSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCreateConsistencyGroupSnapshotNotFound() *CreateConsistencyGroupSnapshot
 Not found
 */
 type CreateConsistencyGroupSnapshotNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CreateConsistencyGroupSnapshotNotFound) GetPayload() *models.ErrorBody 
 }
 
 func (o *CreateConsistencyGroupSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCreateConsistencyGroupSnapshotInternalServerError() *CreateConsistencyGr
 Server error
 */
 type CreateConsistencyGroupSnapshotInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CreateConsistencyGroupSnapshotInternalServerError) GetPayload() *models
 }
 
 func (o *CreateConsistencyGroupSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

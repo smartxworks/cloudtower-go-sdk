@@ -59,9 +59,11 @@ func NewDeleteNfsExportOK() *DeleteNfsExportOK {
 
 /* DeleteNfsExportOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteNfsExportOK delete nfs export o k
 */
 type DeleteNfsExportOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteNfsExport
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteNfsExportOK) GetPayload() []*models.WithTaskDeleteNfsExport {
 }
 
 func (o *DeleteNfsExportOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteNfsExportBadRequest() *DeleteNfsExportBadRequest {
 Bad request
 */
 type DeleteNfsExportBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteNfsExportBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteNfsExportBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteNfsExportNotFound() *DeleteNfsExportNotFound {
 Not found
 */
 type DeleteNfsExportNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteNfsExportNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteNfsExportNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteNfsExportInternalServerError() *DeleteNfsExportInternalServerError
 Server error
 */
 type DeleteNfsExportInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteNfsExportInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteNfsExportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

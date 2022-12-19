@@ -59,9 +59,11 @@ func NewGetIpmisOK() *GetIpmisOK {
 
 /* GetIpmisOK describes a response with status code 200, with default header values.
 
-Ok
+GetIpmisOK get ipmis o k
 */
 type GetIpmisOK struct {
+	XTowerRequestID string
+
 	Payload []*models.Ipmi
 }
 
@@ -73,6 +75,13 @@ func (o *GetIpmisOK) GetPayload() []*models.Ipmi {
 }
 
 func (o *GetIpmisOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetIpmisBadRequest() *GetIpmisBadRequest {
 Bad request
 */
 type GetIpmisBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetIpmisBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetIpmisBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetIpmisNotFound() *GetIpmisNotFound {
 Not found
 */
 type GetIpmisNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetIpmisNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetIpmisNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetIpmisInternalServerError() *GetIpmisInternalServerError {
 Server error
 */
 type GetIpmisInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetIpmisInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetIpmisInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

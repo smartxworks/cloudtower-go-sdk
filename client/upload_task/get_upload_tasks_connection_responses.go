@@ -59,9 +59,11 @@ func NewGetUploadTasksConnectionOK() *GetUploadTasksConnectionOK {
 
 /* GetUploadTasksConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetUploadTasksConnectionOK get upload tasks connection o k
 */
 type GetUploadTasksConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.UploadTaskConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetUploadTasksConnectionOK) GetPayload() *models.UploadTaskConnection {
 }
 
 func (o *GetUploadTasksConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.UploadTaskConnection)
 
@@ -94,6 +103,8 @@ func NewGetUploadTasksConnectionBadRequest() *GetUploadTasksConnectionBadRequest
 Bad request
 */
 type GetUploadTasksConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetUploadTasksConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUploadTasksConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetUploadTasksConnectionNotFound() *GetUploadTasksConnectionNotFound {
 Not found
 */
 type GetUploadTasksConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetUploadTasksConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUploadTasksConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetUploadTasksConnectionInternalServerError() *GetUploadTasksConnectionI
 Server error
 */
 type GetUploadTasksConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetUploadTasksConnectionInternalServerError) GetPayload() *models.Error
 }
 
 func (o *GetUploadTasksConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

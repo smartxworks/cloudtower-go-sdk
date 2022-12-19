@@ -65,9 +65,11 @@ func NewUpdateVsphereEsxiAccountOK() *UpdateVsphereEsxiAccountOK {
 
 /* UpdateVsphereEsxiAccountOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateVsphereEsxiAccountOK update vsphere esxi account o k
 */
 type UpdateVsphereEsxiAccountOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVsphereEsxiAccountArray
 }
 
@@ -79,6 +81,13 @@ func (o *UpdateVsphereEsxiAccountOK) GetPayload() []*models.WithTaskVsphereEsxiA
 }
 
 func (o *UpdateVsphereEsxiAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -119,6 +128,8 @@ func NewUpdateVsphereEsxiAccountBadRequest() *UpdateVsphereEsxiAccountBadRequest
 Bad request
 */
 type UpdateVsphereEsxiAccountBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -130,6 +141,13 @@ func (o *UpdateVsphereEsxiAccountBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateVsphereEsxiAccountBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -151,6 +169,8 @@ func NewUpdateVsphereEsxiAccountNotFound() *UpdateVsphereEsxiAccountNotFound {
 Not found
 */
 type UpdateVsphereEsxiAccountNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -162,6 +182,13 @@ func (o *UpdateVsphereEsxiAccountNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateVsphereEsxiAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -183,6 +210,8 @@ func NewUpdateVsphereEsxiAccountInternalServerError() *UpdateVsphereEsxiAccountI
 Server error
 */
 type UpdateVsphereEsxiAccountInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -194,6 +223,13 @@ func (o *UpdateVsphereEsxiAccountInternalServerError) GetPayload() *models.Error
 }
 
 func (o *UpdateVsphereEsxiAccountInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

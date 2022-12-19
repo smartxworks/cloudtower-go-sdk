@@ -59,9 +59,11 @@ func NewGetClusterUpgradeHistoriesConnectionOK() *GetClusterUpgradeHistoriesConn
 
 /* GetClusterUpgradeHistoriesConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetClusterUpgradeHistoriesConnectionOK get cluster upgrade histories connection o k
 */
 type GetClusterUpgradeHistoriesConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.ClusterUpgradeHistoryConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetClusterUpgradeHistoriesConnectionOK) GetPayload() *models.ClusterUpg
 }
 
 func (o *GetClusterUpgradeHistoriesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ClusterUpgradeHistoryConnection)
 
@@ -94,6 +103,8 @@ func NewGetClusterUpgradeHistoriesConnectionBadRequest() *GetClusterUpgradeHisto
 Bad request
 */
 type GetClusterUpgradeHistoriesConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetClusterUpgradeHistoriesConnectionBadRequest) GetPayload() *models.Er
 }
 
 func (o *GetClusterUpgradeHistoriesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetClusterUpgradeHistoriesConnectionNotFound() *GetClusterUpgradeHistori
 Not found
 */
 type GetClusterUpgradeHistoriesConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetClusterUpgradeHistoriesConnectionNotFound) GetPayload() *models.Erro
 }
 
 func (o *GetClusterUpgradeHistoriesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetClusterUpgradeHistoriesConnectionInternalServerError() *GetClusterUpg
 Server error
 */
 type GetClusterUpgradeHistoriesConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetClusterUpgradeHistoriesConnectionInternalServerError) GetPayload() *
 }
 
 func (o *GetClusterUpgradeHistoriesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

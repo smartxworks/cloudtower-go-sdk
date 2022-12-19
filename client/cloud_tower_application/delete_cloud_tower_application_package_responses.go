@@ -59,9 +59,11 @@ func NewDeleteCloudTowerApplicationPackageOK() *DeleteCloudTowerApplicationPacka
 
 /* DeleteCloudTowerApplicationPackageOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteCloudTowerApplicationPackageOK delete cloud tower application package o k
 */
 type DeleteCloudTowerApplicationPackageOK struct {
+	XTowerRequestID string
+
 	Payload []*models.DeleteCloudTowerApplicationPackage
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteCloudTowerApplicationPackageOK) GetPayload() []*models.DeleteClou
 }
 
 func (o *DeleteCloudTowerApplicationPackageOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteCloudTowerApplicationPackageBadRequest() *DeleteCloudTowerApplicat
 Bad request
 */
 type DeleteCloudTowerApplicationPackageBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteCloudTowerApplicationPackageBadRequest) GetPayload() *models.Erro
 }
 
 func (o *DeleteCloudTowerApplicationPackageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteCloudTowerApplicationPackageNotFound() *DeleteCloudTowerApplicatio
 Not found
 */
 type DeleteCloudTowerApplicationPackageNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteCloudTowerApplicationPackageNotFound) GetPayload() *models.ErrorB
 }
 
 func (o *DeleteCloudTowerApplicationPackageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteCloudTowerApplicationPackageInternalServerError() *DeleteCloudTowe
 Server error
 */
 type DeleteCloudTowerApplicationPackageInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteCloudTowerApplicationPackageInternalServerError) GetPayload() *mo
 }
 
 func (o *DeleteCloudTowerApplicationPackageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

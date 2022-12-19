@@ -59,9 +59,11 @@ func NewUpdateNicOK() *UpdateNicOK {
 
 /* UpdateNicOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateNicOK update nic o k
 */
 type UpdateNicOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskNic
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateNicOK) GetPayload() []*models.WithTaskNic {
 }
 
 func (o *UpdateNicOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateNicBadRequest() *UpdateNicBadRequest {
 Bad request
 */
 type UpdateNicBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateNicBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateNicBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateNicNotFound() *UpdateNicNotFound {
 Not found
 */
 type UpdateNicNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateNicNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateNicNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateNicInternalServerError() *UpdateNicInternalServerError {
 Server error
 */
 type UpdateNicInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateNicInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateNicInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

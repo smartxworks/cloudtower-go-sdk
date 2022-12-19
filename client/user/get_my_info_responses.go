@@ -59,9 +59,11 @@ func NewGetMyInfoOK() *GetMyInfoOK {
 
 /* GetMyInfoOK describes a response with status code 200, with default header values.
 
-Ok
+GetMyInfoOK get my info o k
 */
 type GetMyInfoOK struct {
+	XTowerRequestID string
+
 	Payload *models.User
 }
 
@@ -73,6 +75,13 @@ func (o *GetMyInfoOK) GetPayload() *models.User {
 }
 
 func (o *GetMyInfoOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.User)
 
@@ -94,6 +103,8 @@ func NewGetMyInfoBadRequest() *GetMyInfoBadRequest {
 Bad request
 */
 type GetMyInfoBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetMyInfoBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetMyInfoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetMyInfoNotFound() *GetMyInfoNotFound {
 Not found
 */
 type GetMyInfoNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetMyInfoNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetMyInfoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetMyInfoInternalServerError() *GetMyInfoInternalServerError {
 Server error
 */
 type GetMyInfoInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetMyInfoInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetMyInfoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

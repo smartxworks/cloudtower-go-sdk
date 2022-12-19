@@ -59,9 +59,11 @@ func NewGetScvmNetworkMetricsOK() *GetScvmNetworkMetricsOK {
 
 /* GetScvmNetworkMetricsOK describes a response with status code 200, with default header values.
 
-Ok
+GetScvmNetworkMetricsOK get scvm network metrics o k
 */
 type GetScvmNetworkMetricsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskMetric
 }
 
@@ -73,6 +75,13 @@ func (o *GetScvmNetworkMetricsOK) GetPayload() []*models.WithTaskMetric {
 }
 
 func (o *GetScvmNetworkMetricsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetScvmNetworkMetricsBadRequest() *GetScvmNetworkMetricsBadRequest {
 Bad request
 */
 type GetScvmNetworkMetricsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetScvmNetworkMetricsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetScvmNetworkMetricsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetScvmNetworkMetricsNotFound() *GetScvmNetworkMetricsNotFound {
 Not found
 */
 type GetScvmNetworkMetricsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetScvmNetworkMetricsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetScvmNetworkMetricsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetScvmNetworkMetricsInternalServerError() *GetScvmNetworkMetricsInterna
 Server error
 */
 type GetScvmNetworkMetricsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetScvmNetworkMetricsInternalServerError) GetPayload() *models.ErrorBod
 }
 
 func (o *GetScvmNetworkMetricsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

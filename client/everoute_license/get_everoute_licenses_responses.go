@@ -59,9 +59,11 @@ func NewGetEverouteLicensesOK() *GetEverouteLicensesOK {
 
 /* GetEverouteLicensesOK describes a response with status code 200, with default header values.
 
-Ok
+GetEverouteLicensesOK get everoute licenses o k
 */
 type GetEverouteLicensesOK struct {
+	XTowerRequestID string
+
 	Payload []*models.EverouteLicense
 }
 
@@ -73,6 +75,13 @@ func (o *GetEverouteLicensesOK) GetPayload() []*models.EverouteLicense {
 }
 
 func (o *GetEverouteLicensesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetEverouteLicensesBadRequest() *GetEverouteLicensesBadRequest {
 Bad request
 */
 type GetEverouteLicensesBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetEverouteLicensesBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetEverouteLicensesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetEverouteLicensesNotFound() *GetEverouteLicensesNotFound {
 Not found
 */
 type GetEverouteLicensesNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetEverouteLicensesNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetEverouteLicensesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetEverouteLicensesInternalServerError() *GetEverouteLicensesInternalSer
 Server error
 */
 type GetEverouteLicensesInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetEverouteLicensesInternalServerError) GetPayload() *models.ErrorBody 
 }
 
 func (o *GetEverouteLicensesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

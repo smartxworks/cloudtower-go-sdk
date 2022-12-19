@@ -59,9 +59,11 @@ func NewGetNfsInodesConnectionOK() *GetNfsInodesConnectionOK {
 
 /* GetNfsInodesConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetNfsInodesConnectionOK get nfs inodes connection o k
 */
 type GetNfsInodesConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.NfsInodeConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetNfsInodesConnectionOK) GetPayload() *models.NfsInodeConnection {
 }
 
 func (o *GetNfsInodesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.NfsInodeConnection)
 
@@ -94,6 +103,8 @@ func NewGetNfsInodesConnectionBadRequest() *GetNfsInodesConnectionBadRequest {
 Bad request
 */
 type GetNfsInodesConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetNfsInodesConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetNfsInodesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetNfsInodesConnectionNotFound() *GetNfsInodesConnectionNotFound {
 Not found
 */
 type GetNfsInodesConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetNfsInodesConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetNfsInodesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetNfsInodesConnectionInternalServerError() *GetNfsInodesConnectionInter
 Server error
 */
 type GetNfsInodesConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetNfsInodesConnectionInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *GetNfsInodesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

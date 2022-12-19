@@ -59,9 +59,11 @@ func NewGetUserRoleNextsConnectionOK() *GetUserRoleNextsConnectionOK {
 
 /* GetUserRoleNextsConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetUserRoleNextsConnectionOK get user role nexts connection o k
 */
 type GetUserRoleNextsConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.UserRoleNextConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetUserRoleNextsConnectionOK) GetPayload() *models.UserRoleNextConnecti
 }
 
 func (o *GetUserRoleNextsConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.UserRoleNextConnection)
 
@@ -94,6 +103,8 @@ func NewGetUserRoleNextsConnectionBadRequest() *GetUserRoleNextsConnectionBadReq
 Bad request
 */
 type GetUserRoleNextsConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetUserRoleNextsConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUserRoleNextsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetUserRoleNextsConnectionNotFound() *GetUserRoleNextsConnectionNotFound
 Not found
 */
 type GetUserRoleNextsConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetUserRoleNextsConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetUserRoleNextsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetUserRoleNextsConnectionInternalServerError() *GetUserRoleNextsConnect
 Server error
 */
 type GetUserRoleNextsConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetUserRoleNextsConnectionInternalServerError) GetPayload() *models.Err
 }
 
 func (o *GetUserRoleNextsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

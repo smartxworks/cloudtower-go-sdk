@@ -59,9 +59,11 @@ func NewMountDiskOK() *MountDiskOK {
 
 /* MountDiskOK describes a response with status code 200, with default header values.
 
-Ok
+MountDiskOK mount disk o k
 */
 type MountDiskOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDisk
 }
 
@@ -73,6 +75,13 @@ func (o *MountDiskOK) GetPayload() []*models.WithTaskDisk {
 }
 
 func (o *MountDiskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewMountDiskBadRequest() *MountDiskBadRequest {
 Bad request
 */
 type MountDiskBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *MountDiskBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *MountDiskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewMountDiskNotFound() *MountDiskNotFound {
 Not found
 */
 type MountDiskNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *MountDiskNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *MountDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewMountDiskInternalServerError() *MountDiskInternalServerError {
 Server error
 */
 type MountDiskInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *MountDiskInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *MountDiskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

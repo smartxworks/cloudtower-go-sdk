@@ -160,15 +160,17 @@ func (m *UsbDeviceMountParams) UnmarshalBinary(b []byte) error {
 type UsbDeviceMountParamsData struct {
 
 	// vm id
-	// Required: true
-	VMID *string `json:"vm_id"`
+	VMID *string `json:"vm_id,omitempty"`
+
+	// vms
+	Vms *VMWhereInput `json:"vms,omitempty"`
 }
 
 // Validate validates this usb device mount params data
 func (m *UsbDeviceMountParamsData) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateVMID(formats); err != nil {
+	if err := m.validateVms(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -178,17 +180,52 @@ func (m *UsbDeviceMountParamsData) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *UsbDeviceMountParamsData) validateVMID(formats strfmt.Registry) error {
+func (m *UsbDeviceMountParamsData) validateVms(formats strfmt.Registry) error {
+	if swag.IsZero(m.Vms) { // not required
+		return nil
+	}
 
-	if err := validate.Required("data"+"."+"vm_id", "body", m.VMID); err != nil {
-		return err
+	if m.Vms != nil {
+		if err := m.Vms.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "vms")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "vms")
+			}
+			return err
+		}
 	}
 
 	return nil
 }
 
-// ContextValidate validates this usb device mount params data based on context it is used
+// ContextValidate validate this usb device mount params data based on the context it is used
 func (m *UsbDeviceMountParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateVms(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UsbDeviceMountParamsData) contextValidateVms(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Vms != nil {
+		if err := m.Vms.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "vms")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "vms")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

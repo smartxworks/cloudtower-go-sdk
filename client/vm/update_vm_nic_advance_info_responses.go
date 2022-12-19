@@ -65,9 +65,11 @@ func NewUpdateVMNicAdvanceInfoOK() *UpdateVMNicAdvanceInfoOK {
 
 /* UpdateVMNicAdvanceInfoOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateVMNicAdvanceInfoOK update Vm nic advance info o k
 */
 type UpdateVMNicAdvanceInfoOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -79,6 +81,13 @@ func (o *UpdateVMNicAdvanceInfoOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *UpdateVMNicAdvanceInfoOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -119,6 +128,8 @@ func NewUpdateVMNicAdvanceInfoBadRequest() *UpdateVMNicAdvanceInfoBadRequest {
 Bad request
 */
 type UpdateVMNicAdvanceInfoBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -130,6 +141,13 @@ func (o *UpdateVMNicAdvanceInfoBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateVMNicAdvanceInfoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -151,6 +169,8 @@ func NewUpdateVMNicAdvanceInfoNotFound() *UpdateVMNicAdvanceInfoNotFound {
 Not found
 */
 type UpdateVMNicAdvanceInfoNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -162,6 +182,13 @@ func (o *UpdateVMNicAdvanceInfoNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateVMNicAdvanceInfoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -183,6 +210,8 @@ func NewUpdateVMNicAdvanceInfoInternalServerError() *UpdateVMNicAdvanceInfoInter
 Server error
 */
 type UpdateVMNicAdvanceInfoInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -194,6 +223,13 @@ func (o *UpdateVMNicAdvanceInfoInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *UpdateVMNicAdvanceInfoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

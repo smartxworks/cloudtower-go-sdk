@@ -65,9 +65,11 @@ func NewUpdateVMOwnerOK() *UpdateVMOwnerOK {
 
 /* UpdateVMOwnerOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateVMOwnerOK update Vm owner o k
 */
 type UpdateVMOwnerOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -79,6 +81,13 @@ func (o *UpdateVMOwnerOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *UpdateVMOwnerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -119,6 +128,8 @@ func NewUpdateVMOwnerBadRequest() *UpdateVMOwnerBadRequest {
 Bad request
 */
 type UpdateVMOwnerBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -130,6 +141,13 @@ func (o *UpdateVMOwnerBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateVMOwnerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -151,6 +169,8 @@ func NewUpdateVMOwnerNotFound() *UpdateVMOwnerNotFound {
 Not found
 */
 type UpdateVMOwnerNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -162,6 +182,13 @@ func (o *UpdateVMOwnerNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateVMOwnerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -183,6 +210,8 @@ func NewUpdateVMOwnerInternalServerError() *UpdateVMOwnerInternalServerError {
 Server error
 */
 type UpdateVMOwnerInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -194,6 +223,13 @@ func (o *UpdateVMOwnerInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateVMOwnerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

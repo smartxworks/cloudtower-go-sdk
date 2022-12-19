@@ -59,9 +59,11 @@ func NewUpdateClusterRecycleBinSettingOK() *UpdateClusterRecycleBinSettingOK {
 
 /* UpdateClusterRecycleBinSettingOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateClusterRecycleBinSettingOK update cluster recycle bin setting o k
 */
 type UpdateClusterRecycleBinSettingOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskClusterSettings
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateClusterRecycleBinSettingOK) GetPayload() []*models.WithTaskCluste
 }
 
 func (o *UpdateClusterRecycleBinSettingOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateClusterRecycleBinSettingBadRequest() *UpdateClusterRecycleBinSetti
 Bad request
 */
 type UpdateClusterRecycleBinSettingBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateClusterRecycleBinSettingBadRequest) GetPayload() *models.ErrorBod
 }
 
 func (o *UpdateClusterRecycleBinSettingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateClusterRecycleBinSettingNotFound() *UpdateClusterRecycleBinSetting
 Not found
 */
 type UpdateClusterRecycleBinSettingNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateClusterRecycleBinSettingNotFound) GetPayload() *models.ErrorBody 
 }
 
 func (o *UpdateClusterRecycleBinSettingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateClusterRecycleBinSettingInternalServerError() *UpdateClusterRecycl
 Server error
 */
 type UpdateClusterRecycleBinSettingInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateClusterRecycleBinSettingInternalServerError) GetPayload() *models
 }
 
 func (o *UpdateClusterRecycleBinSettingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

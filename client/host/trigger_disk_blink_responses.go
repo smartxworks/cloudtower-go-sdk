@@ -59,9 +59,11 @@ func NewTriggerDiskBlinkOK() *TriggerDiskBlinkOK {
 
 /* TriggerDiskBlinkOK describes a response with status code 200, with default header values.
 
-Ok
+TriggerDiskBlinkOK trigger disk blink o k
 */
 type TriggerDiskBlinkOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskHost
 }
 
@@ -73,6 +75,13 @@ func (o *TriggerDiskBlinkOK) GetPayload() []*models.WithTaskHost {
 }
 
 func (o *TriggerDiskBlinkOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewTriggerDiskBlinkBadRequest() *TriggerDiskBlinkBadRequest {
 Bad request
 */
 type TriggerDiskBlinkBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *TriggerDiskBlinkBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *TriggerDiskBlinkBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewTriggerDiskBlinkNotFound() *TriggerDiskBlinkNotFound {
 Not found
 */
 type TriggerDiskBlinkNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *TriggerDiskBlinkNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *TriggerDiskBlinkNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewTriggerDiskBlinkInternalServerError() *TriggerDiskBlinkInternalServerErr
 Server error
 */
 type TriggerDiskBlinkInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *TriggerDiskBlinkInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *TriggerDiskBlinkInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

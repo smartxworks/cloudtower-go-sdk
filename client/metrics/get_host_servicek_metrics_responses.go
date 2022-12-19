@@ -59,9 +59,11 @@ func NewGetHostServicekMetricsOK() *GetHostServicekMetricsOK {
 
 /* GetHostServicekMetricsOK describes a response with status code 200, with default header values.
 
-Ok
+GetHostServicekMetricsOK get host servicek metrics o k
 */
 type GetHostServicekMetricsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskMetric
 }
 
@@ -73,6 +75,13 @@ func (o *GetHostServicekMetricsOK) GetPayload() []*models.WithTaskMetric {
 }
 
 func (o *GetHostServicekMetricsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetHostServicekMetricsBadRequest() *GetHostServicekMetricsBadRequest {
 Bad request
 */
 type GetHostServicekMetricsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetHostServicekMetricsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetHostServicekMetricsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetHostServicekMetricsNotFound() *GetHostServicekMetricsNotFound {
 Not found
 */
 type GetHostServicekMetricsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetHostServicekMetricsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetHostServicekMetricsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetHostServicekMetricsInternalServerError() *GetHostServicekMetricsInter
 Server error
 */
 type GetHostServicekMetricsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetHostServicekMetricsInternalServerError) GetPayload() *models.ErrorBo
 }
 
 func (o *GetHostServicekMetricsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

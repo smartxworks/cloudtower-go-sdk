@@ -59,9 +59,11 @@ func NewGetCloudTowerApplicationPackagesConnectionOK() *GetCloudTowerApplication
 
 /* GetCloudTowerApplicationPackagesConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetCloudTowerApplicationPackagesConnectionOK get cloud tower application packages connection o k
 */
 type GetCloudTowerApplicationPackagesConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.CloudTowerApplicationPackageConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetCloudTowerApplicationPackagesConnectionOK) GetPayload() *models.Clou
 }
 
 func (o *GetCloudTowerApplicationPackagesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.CloudTowerApplicationPackageConnection)
 
@@ -94,6 +103,8 @@ func NewGetCloudTowerApplicationPackagesConnectionBadRequest() *GetCloudTowerApp
 Bad request
 */
 type GetCloudTowerApplicationPackagesConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetCloudTowerApplicationPackagesConnectionBadRequest) GetPayload() *mod
 }
 
 func (o *GetCloudTowerApplicationPackagesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetCloudTowerApplicationPackagesConnectionNotFound() *GetCloudTowerAppli
 Not found
 */
 type GetCloudTowerApplicationPackagesConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetCloudTowerApplicationPackagesConnectionNotFound) GetPayload() *model
 }
 
 func (o *GetCloudTowerApplicationPackagesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetCloudTowerApplicationPackagesConnectionInternalServerError() *GetClou
 Server error
 */
 type GetCloudTowerApplicationPackagesConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetCloudTowerApplicationPackagesConnectionInternalServerError) GetPaylo
 }
 
 func (o *GetCloudTowerApplicationPackagesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

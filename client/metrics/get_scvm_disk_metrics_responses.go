@@ -59,9 +59,11 @@ func NewGetScvmDiskMetricsOK() *GetScvmDiskMetricsOK {
 
 /* GetScvmDiskMetricsOK describes a response with status code 200, with default header values.
 
-Ok
+GetScvmDiskMetricsOK get scvm disk metrics o k
 */
 type GetScvmDiskMetricsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskMetric
 }
 
@@ -73,6 +75,13 @@ func (o *GetScvmDiskMetricsOK) GetPayload() []*models.WithTaskMetric {
 }
 
 func (o *GetScvmDiskMetricsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetScvmDiskMetricsBadRequest() *GetScvmDiskMetricsBadRequest {
 Bad request
 */
 type GetScvmDiskMetricsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetScvmDiskMetricsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetScvmDiskMetricsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetScvmDiskMetricsNotFound() *GetScvmDiskMetricsNotFound {
 Not found
 */
 type GetScvmDiskMetricsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetScvmDiskMetricsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetScvmDiskMetricsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetScvmDiskMetricsInternalServerError() *GetScvmDiskMetricsInternalServe
 Server error
 */
 type GetScvmDiskMetricsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetScvmDiskMetricsInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetScvmDiskMetricsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

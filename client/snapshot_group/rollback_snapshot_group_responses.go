@@ -59,9 +59,11 @@ func NewRollbackSnapshotGroupOK() *RollbackSnapshotGroupOK {
 
 /* RollbackSnapshotGroupOK describes a response with status code 200, with default header values.
 
-Ok
+RollbackSnapshotGroupOK rollback snapshot group o k
 */
 type RollbackSnapshotGroupOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskSnapshotGroup
 }
 
@@ -73,6 +75,13 @@ func (o *RollbackSnapshotGroupOK) GetPayload() []*models.WithTaskSnapshotGroup {
 }
 
 func (o *RollbackSnapshotGroupOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewRollbackSnapshotGroupBadRequest() *RollbackSnapshotGroupBadRequest {
 Bad request
 */
 type RollbackSnapshotGroupBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *RollbackSnapshotGroupBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *RollbackSnapshotGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewRollbackSnapshotGroupNotFound() *RollbackSnapshotGroupNotFound {
 Not found
 */
 type RollbackSnapshotGroupNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *RollbackSnapshotGroupNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *RollbackSnapshotGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewRollbackSnapshotGroupInternalServerError() *RollbackSnapshotGroupInterna
 Server error
 */
 type RollbackSnapshotGroupInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *RollbackSnapshotGroupInternalServerError) GetPayload() *models.ErrorBod
 }
 
 func (o *RollbackSnapshotGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

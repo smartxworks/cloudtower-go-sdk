@@ -59,9 +59,11 @@ func NewExpandVMDiskOK() *ExpandVMDiskOK {
 
 /* ExpandVMDiskOK describes a response with status code 200, with default header values.
 
-Ok
+ExpandVMDiskOK expand Vm disk o k
 */
 type ExpandVMDiskOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -73,6 +75,13 @@ func (o *ExpandVMDiskOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *ExpandVMDiskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewExpandVMDiskBadRequest() *ExpandVMDiskBadRequest {
 Bad request
 */
 type ExpandVMDiskBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *ExpandVMDiskBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *ExpandVMDiskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewExpandVMDiskNotFound() *ExpandVMDiskNotFound {
 Not found
 */
 type ExpandVMDiskNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *ExpandVMDiskNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *ExpandVMDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewExpandVMDiskInternalServerError() *ExpandVMDiskInternalServerError {
 Server error
 */
 type ExpandVMDiskInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *ExpandVMDiskInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *ExpandVMDiskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

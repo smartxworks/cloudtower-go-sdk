@@ -59,9 +59,11 @@ func NewGetDatacentersOK() *GetDatacentersOK {
 
 /* GetDatacentersOK describes a response with status code 200, with default header values.
 
-Ok
+GetDatacentersOK get datacenters o k
 */
 type GetDatacentersOK struct {
+	XTowerRequestID string
+
 	Payload []*models.Datacenter
 }
 
@@ -73,6 +75,13 @@ func (o *GetDatacentersOK) GetPayload() []*models.Datacenter {
 }
 
 func (o *GetDatacentersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetDatacentersBadRequest() *GetDatacentersBadRequest {
 Bad request
 */
 type GetDatacentersBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetDatacentersBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetDatacentersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetDatacentersNotFound() *GetDatacentersNotFound {
 Not found
 */
 type GetDatacentersNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetDatacentersNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetDatacentersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetDatacentersInternalServerError() *GetDatacentersInternalServerError {
 Server error
 */
 type GetDatacentersInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetDatacentersInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetDatacentersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

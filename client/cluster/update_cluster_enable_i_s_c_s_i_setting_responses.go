@@ -59,9 +59,11 @@ func NewUpdateClusterEnableISCSISettingOK() *UpdateClusterEnableISCSISettingOK {
 
 /* UpdateClusterEnableISCSISettingOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateClusterEnableISCSISettingOK update cluster enable i s c s i setting o k
 */
 type UpdateClusterEnableISCSISettingOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskClusterSettings
 }
 
@@ -73,6 +75,13 @@ func (o *UpdateClusterEnableISCSISettingOK) GetPayload() []*models.WithTaskClust
 }
 
 func (o *UpdateClusterEnableISCSISettingOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUpdateClusterEnableISCSISettingBadRequest() *UpdateClusterEnableISCSISet
 Bad request
 */
 type UpdateClusterEnableISCSISettingBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UpdateClusterEnableISCSISettingBadRequest) GetPayload() *models.ErrorBo
 }
 
 func (o *UpdateClusterEnableISCSISettingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUpdateClusterEnableISCSISettingNotFound() *UpdateClusterEnableISCSISetti
 Not found
 */
 type UpdateClusterEnableISCSISettingNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UpdateClusterEnableISCSISettingNotFound) GetPayload() *models.ErrorBody
 }
 
 func (o *UpdateClusterEnableISCSISettingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUpdateClusterEnableISCSISettingInternalServerError() *UpdateClusterEnabl
 Server error
 */
 type UpdateClusterEnableISCSISettingInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UpdateClusterEnableISCSISettingInternalServerError) GetPayload() *model
 }
 
 func (o *UpdateClusterEnableISCSISettingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

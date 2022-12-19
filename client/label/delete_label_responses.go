@@ -59,9 +59,11 @@ func NewDeleteLabelOK() *DeleteLabelOK {
 
 /* DeleteLabelOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteLabelOK delete label o k
 */
 type DeleteLabelOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteLabel
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteLabelOK) GetPayload() []*models.WithTaskDeleteLabel {
 }
 
 func (o *DeleteLabelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteLabelBadRequest() *DeleteLabelBadRequest {
 Bad request
 */
 type DeleteLabelBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteLabelBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteLabelBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteLabelNotFound() *DeleteLabelNotFound {
 Not found
 */
 type DeleteLabelNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteLabelNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteLabelNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteLabelInternalServerError() *DeleteLabelInternalServerError {
 Server error
 */
 type DeleteLabelInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteLabelInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteLabelInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

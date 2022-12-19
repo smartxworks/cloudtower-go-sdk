@@ -59,9 +59,11 @@ func NewGetSnmpTrapReceiversOK() *GetSnmpTrapReceiversOK {
 
 /* GetSnmpTrapReceiversOK describes a response with status code 200, with default header values.
 
-Ok
+GetSnmpTrapReceiversOK get snmp trap receivers o k
 */
 type GetSnmpTrapReceiversOK struct {
+	XTowerRequestID string
+
 	Payload []*models.SnmpTrapReceiver
 }
 
@@ -73,6 +75,13 @@ func (o *GetSnmpTrapReceiversOK) GetPayload() []*models.SnmpTrapReceiver {
 }
 
 func (o *GetSnmpTrapReceiversOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetSnmpTrapReceiversBadRequest() *GetSnmpTrapReceiversBadRequest {
 Bad request
 */
 type GetSnmpTrapReceiversBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetSnmpTrapReceiversBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetSnmpTrapReceiversBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetSnmpTrapReceiversNotFound() *GetSnmpTrapReceiversNotFound {
 Not found
 */
 type GetSnmpTrapReceiversNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetSnmpTrapReceiversNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetSnmpTrapReceiversNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetSnmpTrapReceiversInternalServerError() *GetSnmpTrapReceiversInternalS
 Server error
 */
 type GetSnmpTrapReceiversInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetSnmpTrapReceiversInternalServerError) GetPayload() *models.ErrorBody
 }
 
 func (o *GetSnmpTrapReceiversInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

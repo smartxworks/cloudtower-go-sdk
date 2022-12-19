@@ -59,9 +59,11 @@ func NewGetZonesConnectionOK() *GetZonesConnectionOK {
 
 /* GetZonesConnectionOK describes a response with status code 200, with default header values.
 
-Ok
+GetZonesConnectionOK get zones connection o k
 */
 type GetZonesConnectionOK struct {
+	XTowerRequestID string
+
 	Payload *models.ZoneConnection
 }
 
@@ -73,6 +75,13 @@ func (o *GetZonesConnectionOK) GetPayload() *models.ZoneConnection {
 }
 
 func (o *GetZonesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ZoneConnection)
 
@@ -94,6 +103,8 @@ func NewGetZonesConnectionBadRequest() *GetZonesConnectionBadRequest {
 Bad request
 */
 type GetZonesConnectionBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -105,6 +116,13 @@ func (o *GetZonesConnectionBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetZonesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -126,6 +144,8 @@ func NewGetZonesConnectionNotFound() *GetZonesConnectionNotFound {
 Not found
 */
 type GetZonesConnectionNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -137,6 +157,13 @@ func (o *GetZonesConnectionNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetZonesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -158,6 +185,8 @@ func NewGetZonesConnectionInternalServerError() *GetZonesConnectionInternalServe
 Server error
 */
 type GetZonesConnectionInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -169,6 +198,13 @@ func (o *GetZonesConnectionInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetZonesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

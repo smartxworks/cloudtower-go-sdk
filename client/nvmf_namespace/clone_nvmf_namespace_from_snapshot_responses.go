@@ -59,9 +59,11 @@ func NewCloneNvmfNamespaceFromSnapshotOK() *CloneNvmfNamespaceFromSnapshotOK {
 
 /* CloneNvmfNamespaceFromSnapshotOK describes a response with status code 200, with default header values.
 
-Ok
+CloneNvmfNamespaceFromSnapshotOK clone nvmf namespace from snapshot o k
 */
 type CloneNvmfNamespaceFromSnapshotOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskNvmfNamespace
 }
 
@@ -73,6 +75,13 @@ func (o *CloneNvmfNamespaceFromSnapshotOK) GetPayload() []*models.WithTaskNvmfNa
 }
 
 func (o *CloneNvmfNamespaceFromSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewCloneNvmfNamespaceFromSnapshotBadRequest() *CloneNvmfNamespaceFromSnapsh
 Bad request
 */
 type CloneNvmfNamespaceFromSnapshotBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *CloneNvmfNamespaceFromSnapshotBadRequest) GetPayload() *models.ErrorBod
 }
 
 func (o *CloneNvmfNamespaceFromSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewCloneNvmfNamespaceFromSnapshotNotFound() *CloneNvmfNamespaceFromSnapshot
 Not found
 */
 type CloneNvmfNamespaceFromSnapshotNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *CloneNvmfNamespaceFromSnapshotNotFound) GetPayload() *models.ErrorBody 
 }
 
 func (o *CloneNvmfNamespaceFromSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewCloneNvmfNamespaceFromSnapshotInternalServerError() *CloneNvmfNamespaceF
 Server error
 */
 type CloneNvmfNamespaceFromSnapshotInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *CloneNvmfNamespaceFromSnapshotInternalServerError) GetPayload() *models
 }
 
 func (o *CloneNvmfNamespaceFromSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

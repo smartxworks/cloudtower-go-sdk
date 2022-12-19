@@ -65,9 +65,11 @@ func NewUpdateLabelOK() *UpdateLabelOK {
 
 /* UpdateLabelOK describes a response with status code 200, with default header values.
 
-Ok
+UpdateLabelOK update label o k
 */
 type UpdateLabelOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskLabel
 }
 
@@ -79,6 +81,13 @@ func (o *UpdateLabelOK) GetPayload() []*models.WithTaskLabel {
 }
 
 func (o *UpdateLabelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -119,6 +128,8 @@ func NewUpdateLabelBadRequest() *UpdateLabelBadRequest {
 Bad request
 */
 type UpdateLabelBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -130,6 +141,13 @@ func (o *UpdateLabelBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateLabelBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -151,6 +169,8 @@ func NewUpdateLabelNotFound() *UpdateLabelNotFound {
 Not found
 */
 type UpdateLabelNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -162,6 +182,13 @@ func (o *UpdateLabelNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateLabelNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -183,6 +210,8 @@ func NewUpdateLabelInternalServerError() *UpdateLabelInternalServerError {
 Server error
 */
 type UpdateLabelInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -194,6 +223,13 @@ func (o *UpdateLabelInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *UpdateLabelInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

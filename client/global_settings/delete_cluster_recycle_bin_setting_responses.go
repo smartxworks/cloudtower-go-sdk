@@ -59,9 +59,11 @@ func NewDeleteClusterRecycleBinSettingOK() *DeleteClusterRecycleBinSettingOK {
 
 /* DeleteClusterRecycleBinSettingOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteClusterRecycleBinSettingOK delete cluster recycle bin setting o k
 */
 type DeleteClusterRecycleBinSettingOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteClusterRecycleBin
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteClusterRecycleBinSettingOK) GetPayload() []*models.WithTaskDelete
 }
 
 func (o *DeleteClusterRecycleBinSettingOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteClusterRecycleBinSettingBadRequest() *DeleteClusterRecycleBinSetti
 Bad request
 */
 type DeleteClusterRecycleBinSettingBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteClusterRecycleBinSettingBadRequest) GetPayload() *models.ErrorBod
 }
 
 func (o *DeleteClusterRecycleBinSettingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteClusterRecycleBinSettingNotFound() *DeleteClusterRecycleBinSetting
 Not found
 */
 type DeleteClusterRecycleBinSettingNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteClusterRecycleBinSettingNotFound) GetPayload() *models.ErrorBody 
 }
 
 func (o *DeleteClusterRecycleBinSettingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteClusterRecycleBinSettingInternalServerError() *DeleteClusterRecycl
 Server error
 */
 type DeleteClusterRecycleBinSettingInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteClusterRecycleBinSettingInternalServerError) GetPayload() *models
 }
 
 func (o *DeleteClusterRecycleBinSettingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

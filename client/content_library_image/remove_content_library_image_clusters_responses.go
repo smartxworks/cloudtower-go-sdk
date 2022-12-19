@@ -59,9 +59,11 @@ func NewRemoveContentLibraryImageClustersOK() *RemoveContentLibraryImageClusters
 
 /* RemoveContentLibraryImageClustersOK describes a response with status code 200, with default header values.
 
-Ok
+RemoveContentLibraryImageClustersOK remove content library image clusters o k
 */
 type RemoveContentLibraryImageClustersOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskContentLibraryImage
 }
 
@@ -73,6 +75,13 @@ func (o *RemoveContentLibraryImageClustersOK) GetPayload() []*models.WithTaskCon
 }
 
 func (o *RemoveContentLibraryImageClustersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewRemoveContentLibraryImageClustersBadRequest() *RemoveContentLibraryImage
 Bad request
 */
 type RemoveContentLibraryImageClustersBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *RemoveContentLibraryImageClustersBadRequest) GetPayload() *models.Error
 }
 
 func (o *RemoveContentLibraryImageClustersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewRemoveContentLibraryImageClustersNotFound() *RemoveContentLibraryImageCl
 Not found
 */
 type RemoveContentLibraryImageClustersNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *RemoveContentLibraryImageClustersNotFound) GetPayload() *models.ErrorBo
 }
 
 func (o *RemoveContentLibraryImageClustersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewRemoveContentLibraryImageClustersInternalServerError() *RemoveContentLib
 Server error
 */
 type RemoveContentLibraryImageClustersInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *RemoveContentLibraryImageClustersInternalServerError) GetPayload() *mod
 }
 
 func (o *RemoveContentLibraryImageClustersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

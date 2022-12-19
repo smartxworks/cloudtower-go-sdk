@@ -59,9 +59,11 @@ func NewEjectIsoFromVMCdRomOK() *EjectIsoFromVMCdRomOK {
 
 /* EjectIsoFromVMCdRomOK describes a response with status code 200, with default header values.
 
-Ok
+EjectIsoFromVMCdRomOK eject iso from Vm cd rom o k
 */
 type EjectIsoFromVMCdRomOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -73,6 +75,13 @@ func (o *EjectIsoFromVMCdRomOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *EjectIsoFromVMCdRomOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewEjectIsoFromVMCdRomBadRequest() *EjectIsoFromVMCdRomBadRequest {
 Bad request
 */
 type EjectIsoFromVMCdRomBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *EjectIsoFromVMCdRomBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *EjectIsoFromVMCdRomBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewEjectIsoFromVMCdRomNotFound() *EjectIsoFromVMCdRomNotFound {
 Not found
 */
 type EjectIsoFromVMCdRomNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *EjectIsoFromVMCdRomNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *EjectIsoFromVMCdRomNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewEjectIsoFromVMCdRomInternalServerError() *EjectIsoFromVMCdRomInternalSer
 Server error
 */
 type EjectIsoFromVMCdRomInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *EjectIsoFromVMCdRomInternalServerError) GetPayload() *models.ErrorBody 
 }
 
 func (o *EjectIsoFromVMCdRomInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

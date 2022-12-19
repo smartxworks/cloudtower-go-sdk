@@ -59,9 +59,11 @@ func NewDeleteVdsOK() *DeleteVdsOK {
 
 /* DeleteVdsOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteVdsOK delete vds o k
 */
 type DeleteVdsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteVds
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteVdsOK) GetPayload() []*models.WithTaskDeleteVds {
 }
 
 func (o *DeleteVdsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteVdsBadRequest() *DeleteVdsBadRequest {
 Bad request
 */
 type DeleteVdsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteVdsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteVdsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteVdsNotFound() *DeleteVdsNotFound {
 Not found
 */
 type DeleteVdsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteVdsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteVdsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteVdsInternalServerError() *DeleteVdsInternalServerError {
 Server error
 */
 type DeleteVdsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteVdsInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *DeleteVdsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

@@ -59,9 +59,11 @@ func NewUnmountDiskOK() *UnmountDiskOK {
 
 /* UnmountDiskOK describes a response with status code 200, with default header values.
 
-Ok
+UnmountDiskOK unmount disk o k
 */
 type UnmountDiskOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDisk
 }
 
@@ -73,6 +75,13 @@ func (o *UnmountDiskOK) GetPayload() []*models.WithTaskDisk {
 }
 
 func (o *UnmountDiskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewUnmountDiskBadRequest() *UnmountDiskBadRequest {
 Bad request
 */
 type UnmountDiskBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *UnmountDiskBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *UnmountDiskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewUnmountDiskNotFound() *UnmountDiskNotFound {
 Not found
 */
 type UnmountDiskNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *UnmountDiskNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *UnmountDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewUnmountDiskInternalServerError() *UnmountDiskInternalServerError {
 Server error
 */
 type UnmountDiskInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *UnmountDiskInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *UnmountDiskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

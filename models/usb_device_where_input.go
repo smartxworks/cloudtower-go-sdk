@@ -349,8 +349,14 @@ type UsbDeviceWhereInput struct {
 	// usb type starts with
 	UsbTypeStartsWith *string `json:"usb_type_starts_with,omitempty"`
 
-	// vm
-	VM *VMWhereInput `json:"vm,omitempty"`
+	// vms every
+	VmsEvery *VMWhereInput `json:"vms_every,omitempty"`
+
+	// vms none
+	VmsNone *VMWhereInput `json:"vms_none,omitempty"`
+
+	// vms some
+	VmsSome *VMWhereInput `json:"vms_some,omitempty"`
 }
 
 // Validate validates this usb device where input
@@ -389,7 +395,15 @@ func (m *UsbDeviceWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateVM(formats); err != nil {
+	if err := m.validateVmsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVmsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVmsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -576,17 +590,55 @@ func (m *UsbDeviceWhereInput) validateStatusNotIn(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *UsbDeviceWhereInput) validateVM(formats strfmt.Registry) error {
-	if swag.IsZero(m.VM) { // not required
+func (m *UsbDeviceWhereInput) validateVmsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.VmsEvery) { // not required
 		return nil
 	}
 
-	if m.VM != nil {
-		if err := m.VM.Validate(formats); err != nil {
+	if m.VmsEvery != nil {
+		if err := m.VmsEvery.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vm")
+				return ve.ValidateName("vms_every")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vm")
+				return ce.ValidateName("vms_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *UsbDeviceWhereInput) validateVmsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.VmsNone) { // not required
+		return nil
+	}
+
+	if m.VmsNone != nil {
+		if err := m.VmsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *UsbDeviceWhereInput) validateVmsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.VmsSome) { // not required
+		return nil
+	}
+
+	if m.VmsSome != nil {
+		if err := m.VmsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_some")
 			}
 			return err
 		}
@@ -631,7 +683,15 @@ func (m *UsbDeviceWhereInput) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVM(ctx, formats); err != nil {
+	if err := m.contextValidateVmsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVmsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVmsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -785,14 +845,46 @@ func (m *UsbDeviceWhereInput) contextValidateStatusNotIn(ctx context.Context, fo
 	return nil
 }
 
-func (m *UsbDeviceWhereInput) contextValidateVM(ctx context.Context, formats strfmt.Registry) error {
+func (m *UsbDeviceWhereInput) contextValidateVmsEvery(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.VM != nil {
-		if err := m.VM.ContextValidate(ctx, formats); err != nil {
+	if m.VmsEvery != nil {
+		if err := m.VmsEvery.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vm")
+				return ve.ValidateName("vms_every")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vm")
+				return ce.ValidateName("vms_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *UsbDeviceWhereInput) contextValidateVmsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VmsNone != nil {
+		if err := m.VmsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *UsbDeviceWhereInput) contextValidateVmsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VmsSome != nil {
+		if err := m.VmsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_some")
 			}
 			return err
 		}

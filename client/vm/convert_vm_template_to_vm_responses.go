@@ -59,9 +59,11 @@ func NewConvertVMTemplateToVMOK() *ConvertVMTemplateToVMOK {
 
 /* ConvertVMTemplateToVMOK describes a response with status code 200, with default header values.
 
-Ok
+ConvertVMTemplateToVMOK convert Vm template to Vm o k
 */
 type ConvertVMTemplateToVMOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskVM
 }
 
@@ -73,6 +75,13 @@ func (o *ConvertVMTemplateToVMOK) GetPayload() []*models.WithTaskVM {
 }
 
 func (o *ConvertVMTemplateToVMOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewConvertVMTemplateToVMBadRequest() *ConvertVMTemplateToVMBadRequest {
 Bad request
 */
 type ConvertVMTemplateToVMBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *ConvertVMTemplateToVMBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *ConvertVMTemplateToVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewConvertVMTemplateToVMNotFound() *ConvertVMTemplateToVMNotFound {
 Not found
 */
 type ConvertVMTemplateToVMNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *ConvertVMTemplateToVMNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *ConvertVMTemplateToVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewConvertVMTemplateToVMInternalServerError() *ConvertVMTemplateToVMInterna
 Server error
 */
 type ConvertVMTemplateToVMInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *ConvertVMTemplateToVMInternalServerError) GetPayload() *models.ErrorBod
 }
 
 func (o *ConvertVMTemplateToVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

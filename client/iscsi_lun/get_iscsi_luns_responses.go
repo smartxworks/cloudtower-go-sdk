@@ -59,9 +59,11 @@ func NewGetIscsiLunsOK() *GetIscsiLunsOK {
 
 /* GetIscsiLunsOK describes a response with status code 200, with default header values.
 
-Ok
+GetIscsiLunsOK get iscsi luns o k
 */
 type GetIscsiLunsOK struct {
+	XTowerRequestID string
+
 	Payload []*models.IscsiLun
 }
 
@@ -73,6 +75,13 @@ func (o *GetIscsiLunsOK) GetPayload() []*models.IscsiLun {
 }
 
 func (o *GetIscsiLunsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewGetIscsiLunsBadRequest() *GetIscsiLunsBadRequest {
 Bad request
 */
 type GetIscsiLunsBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *GetIscsiLunsBadRequest) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetIscsiLunsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewGetIscsiLunsNotFound() *GetIscsiLunsNotFound {
 Not found
 */
 type GetIscsiLunsNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *GetIscsiLunsNotFound) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetIscsiLunsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewGetIscsiLunsInternalServerError() *GetIscsiLunsInternalServerError {
 Server error
 */
 type GetIscsiLunsInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *GetIscsiLunsInternalServerError) GetPayload() *models.ErrorBody {
 }
 
 func (o *GetIscsiLunsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 

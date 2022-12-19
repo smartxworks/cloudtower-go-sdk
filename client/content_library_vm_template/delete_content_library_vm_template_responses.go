@@ -59,9 +59,11 @@ func NewDeleteContentLibraryVMTemplateOK() *DeleteContentLibraryVMTemplateOK {
 
 /* DeleteContentLibraryVMTemplateOK describes a response with status code 200, with default header values.
 
-Ok
+DeleteContentLibraryVMTemplateOK delete content library Vm template o k
 */
 type DeleteContentLibraryVMTemplateOK struct {
+	XTowerRequestID string
+
 	Payload []*models.WithTaskDeleteContentLibraryVMTemplate
 }
 
@@ -73,6 +75,13 @@ func (o *DeleteContentLibraryVMTemplateOK) GetPayload() []*models.WithTaskDelete
 }
 
 func (o *DeleteContentLibraryVMTemplateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -92,6 +101,8 @@ func NewDeleteContentLibraryVMTemplateBadRequest() *DeleteContentLibraryVMTempla
 Bad request
 */
 type DeleteContentLibraryVMTemplateBadRequest struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -103,6 +114,13 @@ func (o *DeleteContentLibraryVMTemplateBadRequest) GetPayload() *models.ErrorBod
 }
 
 func (o *DeleteContentLibraryVMTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -124,6 +142,8 @@ func NewDeleteContentLibraryVMTemplateNotFound() *DeleteContentLibraryVMTemplate
 Not found
 */
 type DeleteContentLibraryVMTemplateNotFound struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -135,6 +155,13 @@ func (o *DeleteContentLibraryVMTemplateNotFound) GetPayload() *models.ErrorBody 
 }
 
 func (o *DeleteContentLibraryVMTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
@@ -156,6 +183,8 @@ func NewDeleteContentLibraryVMTemplateInternalServerError() *DeleteContentLibrar
 Server error
 */
 type DeleteContentLibraryVMTemplateInternalServerError struct {
+	XTowerRequestID string
+
 	Payload *models.ErrorBody
 }
 
@@ -167,6 +196,13 @@ func (o *DeleteContentLibraryVMTemplateInternalServerError) GetPayload() *models
 }
 
 func (o *DeleteContentLibraryVMTemplateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// hydrates response header x-tower-request-id
+	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+
+	if hdrXTowerRequestID != "" {
+		o.XTowerRequestID = hdrXTowerRequestID
+	}
 
 	o.Payload = new(models.ErrorBody)
 
