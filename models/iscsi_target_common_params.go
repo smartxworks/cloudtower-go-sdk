@@ -61,6 +61,9 @@ type IscsiTargetCommonParams struct {
 	// bps wr max size
 	BpsWrMaxSize *BPSUnit `json:"bps_wr_max_size,omitempty"`
 
+	// bps wr max unit
+	BpsWrMaxUnit *BPSUnit `json:"bps_wr_max_unit,omitempty"`
+
 	// bps wr unit
 	BpsWrUnit *BPSUnit `json:"bps_wr_unit,omitempty"`
 
@@ -134,6 +137,10 @@ func (m *IscsiTargetCommonParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateBpsWrMaxSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBpsWrMaxUnit(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -246,6 +253,25 @@ func (m *IscsiTargetCommonParams) validateBpsWrMaxSize(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *IscsiTargetCommonParams) validateBpsWrMaxUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.BpsWrMaxUnit) { // not required
+		return nil
+	}
+
+	if m.BpsWrMaxUnit != nil {
+		if err := m.BpsWrMaxUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_max_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IscsiTargetCommonParams) validateBpsWrUnit(formats strfmt.Registry) error {
 	if swag.IsZero(m.BpsWrUnit) { // not required
 		return nil
@@ -312,6 +338,10 @@ func (m *IscsiTargetCommonParams) ContextValidate(ctx context.Context, formats s
 	}
 
 	if err := m.contextValidateBpsWrMaxSize(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBpsWrMaxUnit(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -401,6 +431,22 @@ func (m *IscsiTargetCommonParams) contextValidateBpsWrMaxSize(ctx context.Contex
 				return ve.ValidateName("bps_wr_max_size")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("bps_wr_max_size")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateBpsWrMaxUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BpsWrMaxUnit != nil {
+		if err := m.BpsWrMaxUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bps_wr_max_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bps_wr_max_unit")
 			}
 			return err
 		}
