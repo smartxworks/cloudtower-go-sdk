@@ -1,5 +1,15 @@
 # RELEASE NOTE
 
+## release 日期 2023-01-03
+
+v2.5.0 release
+
+- bugfix: [IscsiTargetCommonParams]: 修复错误的 `BpsWrMaxSize` 为 `BpsWrMaxUnit`
+- feature: IscsiLunSnapshotApi: [create_iscsi_lun_snapshot] 增加了同步创建 lun 快照的选项。
+- feature: ClusterApi: [get_meta_leader]: 增加了获取集群 meta leader 的 api
+- optimize: 增加 header 定义，可以从返回值中获取对应的 XTowerRequestID
+- optimize: [NestedHost]: 嵌套的主机类型额外返回 management_ip
+
 ## release 日期 2022-11-18
 
 v2.4.0 release

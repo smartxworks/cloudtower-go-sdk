@@ -23,6 +23,10 @@ type NestedHost struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// management ip
+	// Required: true
+	ManagementIP *string `json:"management_ip"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`
@@ -33,6 +37,10 @@ func (m *NestedHost) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateManagementIP(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -49,6 +57,15 @@ func (m *NestedHost) Validate(formats strfmt.Registry) error {
 func (m *NestedHost) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NestedHost) validateManagementIP(formats strfmt.Registry) error {
+
+	if err := validate.Required("management_ip", "body", m.ManagementIP); err != nil {
 		return err
 	}
 

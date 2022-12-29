@@ -70,7 +70,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 )
 
-client := apiclient.NewWithUserConfig(apiclient.ClientConfig{
+client, err := apiclient.NewWithUserConfig(apiclient.ClientConfig{
 	Host:     "localhost:8090",
 	BasePath: "v2/api",
 	Schemes:  []string{"http"},

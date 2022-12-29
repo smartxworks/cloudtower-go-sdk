@@ -14,7 +14,7 @@ require (
 	github.com/onsi/ginkgo/v2 v2.6.1
 	github.com/onsi/gomega v1.24.2
 	github.com/openlyinc/pointy v1.2.0
-	github.com/thoas/go-funk v0.9.2
+	github.com/thoas/go-funk v0.9.3
 	go.mongodb.org/mongo-driver v1.11.1 // indirect
 	go.opentelemetry.io/otel v1.11.2 // indirect
 )
