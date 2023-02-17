@@ -41,6 +41,12 @@ const (
 
 	// VMUsageEVEROUTECONTROLLER captures enum value "EVEROUTE_CONTROLLER"
 	VMUsageEVEROUTECONTROLLER VMUsage = "EVEROUTE_CONTROLLER"
+
+	// VMUsageREGISTRY captures enum value "REGISTRY"
+	VMUsageREGISTRY VMUsage = "REGISTRY"
+
+	// VMUsageSKSMANAGEMENT captures enum value "SKS_MANAGEMENT"
+	VMUsageSKSMANAGEMENT VMUsage = "SKS_MANAGEMENT"
 )
 
 // for schema
@@ -48,7 +54,7 @@ var vmUsageEnum []interface{}
 
 func init() {
 	var res []VMUsage
-	if err := json.Unmarshal([]byte(`["ADVANCED_MONITORING","BACKUP_CONTROLLER","CLOUDTOWER","EVEROUTE_CONTROLLER"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ADVANCED_MONITORING","BACKUP_CONTROLLER","CLOUDTOWER","EVEROUTE_CONTROLLER","REGISTRY","SKS_MANAGEMENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
