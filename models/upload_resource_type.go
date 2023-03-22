@@ -48,6 +48,9 @@ const (
 	// UploadResourceTypeEVEROUTEPACKAGE captures enum value "EVEROUTE_PACKAGE"
 	UploadResourceTypeEVEROUTEPACKAGE UploadResourceType = "EVEROUTE_PACKAGE"
 
+	// UploadResourceTypeHOSTPLUGINPACKAGE captures enum value "HOST_PLUGIN_PACKAGE"
+	UploadResourceTypeHOSTPLUGINPACKAGE UploadResourceType = "HOST_PLUGIN_PACKAGE"
+
 	// UploadResourceTypeMONITORIMAGE captures enum value "MONITOR_IMAGE"
 	UploadResourceTypeMONITORIMAGE UploadResourceType = "MONITOR_IMAGE"
 
@@ -69,7 +72,7 @@ var uploadResourceTypeEnum []interface{}
 
 func init() {
 	var res []UploadResourceType
-	if err := json.Unmarshal([]byte(`["CLOUDTOWER_APPLICATION_PACKAGE","CLUSTER_IMAGE","CLUSTER_IMAGE_META","CONTENT_LIBRARY_IMAGE","ELF_IMAGE","EVEROUTE_PACKAGE","MONITOR_IMAGE","OVF","SVT_IMAGE","VM_VOLUME_QCOW2","VM_VOLUME_RAW"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CLOUDTOWER_APPLICATION_PACKAGE","CLUSTER_IMAGE","CLUSTER_IMAGE_META","CONTENT_LIBRARY_IMAGE","ELF_IMAGE","EVEROUTE_PACKAGE","HOST_PLUGIN_PACKAGE","MONITOR_IMAGE","OVF","SVT_IMAGE","VM_VOLUME_QCOW2","VM_VOLUME_RAW"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
