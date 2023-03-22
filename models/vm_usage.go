@@ -36,6 +36,9 @@ const (
 	// VMUsageBACKUPCONTROLLER captures enum value "BACKUP_CONTROLLER"
 	VMUsageBACKUPCONTROLLER VMUsage = "BACKUP_CONTROLLER"
 
+	// VMUsageBUNDLEAPPLICATION captures enum value "BUNDLE_APPLICATION"
+	VMUsageBUNDLEAPPLICATION VMUsage = "BUNDLE_APPLICATION"
+
 	// VMUsageCLOUDTOWER captures enum value "CLOUDTOWER"
 	VMUsageCLOUDTOWER VMUsage = "CLOUDTOWER"
 
@@ -54,7 +57,7 @@ var vmUsageEnum []interface{}
 
 func init() {
 	var res []VMUsage
-	if err := json.Unmarshal([]byte(`["ADVANCED_MONITORING","BACKUP_CONTROLLER","CLOUDTOWER","EVEROUTE_CONTROLLER","REGISTRY","SKS_MANAGEMENT"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ADVANCED_MONITORING","BACKUP_CONTROLLER","BUNDLE_APPLICATION","CLOUDTOWER","EVEROUTE_CONTROLLER","REGISTRY","SKS_MANAGEMENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

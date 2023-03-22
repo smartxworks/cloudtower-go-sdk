@@ -36,6 +36,9 @@ const (
 	// SoftwareEditionENTERPRISE captures enum value "ENTERPRISE"
 	SoftwareEditionENTERPRISE SoftwareEdition = "ENTERPRISE"
 
+	// SoftwareEditionENTERPRISEPLUS captures enum value "ENTERPRISE_PLUS"
+	SoftwareEditionENTERPRISEPLUS SoftwareEdition = "ENTERPRISE_PLUS"
+
 	// SoftwareEditionESSENTIAL captures enum value "ESSENTIAL"
 	SoftwareEditionESSENTIAL SoftwareEdition = "ESSENTIAL"
 
@@ -54,7 +57,7 @@ var softwareEditionEnum []interface{}
 
 func init() {
 	var res []SoftwareEdition
-	if err := json.Unmarshal([]byte(`["COMMUNITY","ENTERPRISE","ESSENTIAL","EXPRESS","STANDARD","TRIAL"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["COMMUNITY","ENTERPRISE","ENTERPRISE_PLUS","ESSENTIAL","EXPRESS","STANDARD","TRIAL"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

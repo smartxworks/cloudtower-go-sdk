@@ -67,7 +67,7 @@ type DeleteVMParams struct {
 	ContentLanguage *string
 
 	// RequestBody.
-	RequestBody *models.VMOperateParams
+	RequestBody *models.VMDeleteParams
 
 	timeout    time.Duration
 	Context    context.Context
@@ -145,13 +145,13 @@ func (o *DeleteVMParams) SetContentLanguage(contentLanguage *string) {
 }
 
 // WithRequestBody adds the requestBody to the delete Vm params
-func (o *DeleteVMParams) WithRequestBody(requestBody *models.VMOperateParams) *DeleteVMParams {
+func (o *DeleteVMParams) WithRequestBody(requestBody *models.VMDeleteParams) *DeleteVMParams {
 	o.SetRequestBody(requestBody)
 	return o
 }
 
 // SetRequestBody adds the requestBody to the delete Vm params
-func (o *DeleteVMParams) SetRequestBody(requestBody *models.VMOperateParams) {
+func (o *DeleteVMParams) SetRequestBody(requestBody *models.VMDeleteParams) {
 	o.RequestBody = requestBody
 }
 
