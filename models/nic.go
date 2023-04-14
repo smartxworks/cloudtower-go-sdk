@@ -26,6 +26,9 @@ type Nic struct {
 	// driver state
 	DriverState *NicDriverState `json:"driver_state,omitempty"`
 
+	// entity async status
+	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
 	// gateway ip
 	GatewayIP *string `json:"gateway_ip,omitempty"`
 
@@ -116,6 +119,10 @@ func (m *Nic) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEntityAsyncStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateHost(formats); err != nil {
 		res = append(res, err)
 	}
@@ -181,6 +188,25 @@ func (m *Nic) validateDriverState(formats strfmt.Registry) error {
 				return ve.ValidateName("driver_state")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("driver_state")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Nic) validateEntityAsyncStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatus) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
 			}
 			return err
 		}
@@ -353,6 +379,10 @@ func (m *Nic) ContextValidate(ctx context.Context, formats strfmt.Registry) erro
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateHost(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -383,6 +413,22 @@ func (m *Nic) contextValidateDriverState(ctx context.Context, formats strfmt.Reg
 				return ve.ValidateName("driver_state")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("driver_state")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Nic) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
 			}
 			return err
 		}

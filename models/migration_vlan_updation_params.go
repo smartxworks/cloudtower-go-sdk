@@ -168,7 +168,7 @@ type MigrationVlanUpdationParamsData struct {
 	Subnetmask *string `json:"subnetmask,omitempty"`
 
 	// vlan id
-	VlanID *int32 `json:"vlan_id,omitempty"`
+	VlanID *VlanID `json:"vlan_id,omitempty"`
 }
 
 // Validate validates this migration vlan updation params data
@@ -176,6 +176,10 @@ func (m *MigrationVlanUpdationParamsData) Validate(formats strfmt.Registry) erro
 	var res []error
 
 	if err := m.validateExtraIP(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVlanID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -211,11 +215,34 @@ func (m *MigrationVlanUpdationParamsData) validateExtraIP(formats strfmt.Registr
 	return nil
 }
 
+func (m *MigrationVlanUpdationParamsData) validateVlanID(formats strfmt.Registry) error {
+	if swag.IsZero(m.VlanID) { // not required
+		return nil
+	}
+
+	if m.VlanID != nil {
+		if err := m.VlanID.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "vlan_id")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "vlan_id")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this migration vlan updation params data based on the context it is used
 func (m *MigrationVlanUpdationParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateExtraIP(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVlanID(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -240,6 +267,22 @@ func (m *MigrationVlanUpdationParamsData) contextValidateExtraIP(ctx context.Con
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *MigrationVlanUpdationParamsData) contextValidateVlanID(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VlanID != nil {
+		if err := m.VlanID.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "vlan_id")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "vlan_id")
+			}
+			return err
+		}
 	}
 
 	return nil

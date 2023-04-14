@@ -42,6 +42,12 @@ const (
 	// VMVolumeOrderByInputElfStoragePolicyDESC captures enum value "elf_storage_policy_DESC"
 	VMVolumeOrderByInputElfStoragePolicyDESC VMVolumeOrderByInput = "elf_storage_policy_DESC"
 
+	// VMVolumeOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
+	VMVolumeOrderByInputEntityAsyncStatusASC VMVolumeOrderByInput = "entityAsyncStatus_ASC"
+
+	// VMVolumeOrderByInputEntityAsyncStatusDESC captures enum value "entityAsyncStatus_DESC"
+	VMVolumeOrderByInputEntityAsyncStatusDESC VMVolumeOrderByInput = "entityAsyncStatus_DESC"
+
 	// VMVolumeOrderByInputGuestSizeUsageASC captures enum value "guest_size_usage_ASC"
 	VMVolumeOrderByInputGuestSizeUsageASC VMVolumeOrderByInput = "guest_size_usage_ASC"
 
@@ -120,7 +126,7 @@ var vmVolumeOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMVolumeOrderByInput
-	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","guest_size_usage_ASC","guest_size_usage_DESC","guest_used_size_ASC","guest_used_size_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","mounting_ASC","mounting_DESC","name_ASC","name_DESC","path_ASC","path_DESC","sharing_ASC","sharing_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","guest_size_usage_ASC","guest_size_usage_DESC","guest_used_size_ASC","guest_used_size_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","mounting_ASC","mounting_DESC","name_ASC","name_DESC","path_ASC","path_DESC","sharing_ASC","sharing_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
