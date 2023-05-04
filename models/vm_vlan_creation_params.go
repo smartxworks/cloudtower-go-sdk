@@ -29,7 +29,7 @@ type VMVlanCreationParams struct {
 
 	// vlan id
 	// Required: true
-	VlanID *int32 `json:"vlan_id"`
+	VlanID *VlanID `json:"vlan_id"`
 }
 
 // Validate validates this Vm vlan creation params
@@ -78,11 +78,51 @@ func (m *VMVlanCreationParams) validateVlanID(formats strfmt.Registry) error {
 		return err
 	}
 
+	if err := validate.Required("vlan_id", "body", m.VlanID); err != nil {
+		return err
+	}
+
+	if m.VlanID != nil {
+		if err := m.VlanID.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vlan_id")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vlan_id")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
-// ContextValidate validates this Vm vlan creation params based on context it is used
+// ContextValidate validate this Vm vlan creation params based on the context it is used
 func (m *VMVlanCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateVlanID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VMVlanCreationParams) contextValidateVlanID(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VlanID != nil {
+		if err := m.VlanID.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vlan_id")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vlan_id")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
