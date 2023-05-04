@@ -1,5 +1,11 @@
 # RELEASE NOTE
 
+## release 日期 2022-05-04
+
+v2.8.0 release
+
+- optimize: VlanApi: [VmVlanCreationParams], [VmVlanUpdationParamsData], [ManagementVlanUpdationParamsData] 限制 `VlanId` 范围为 0~4095
+
 ## release 日期 2022-03-22
 
 v2.7.0 release
