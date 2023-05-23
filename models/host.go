@@ -23,6 +23,9 @@ type Host struct {
 	// access ip
 	AccessIP *string `json:"access_ip,omitempty"`
 
+	// allocable cpu cores for vm exclusive
+	AllocableCPUCoresForVMExclusive *int32 `json:"allocable_cpu_cores_for_vm_exclusive,omitempty"`
+
 	// allocatable memory bytes
 	// Required: true
 	AllocatableMemoryBytes *int64 `json:"allocatable_memory_bytes"`
@@ -71,6 +74,9 @@ type Host struct {
 	// disks
 	Disks []*NestedDisk `json:"disks,omitempty"`
 
+	// entity async status
+	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
 	// failure data space
 	// Required: true
 	FailureDataSpace *int64 `json:"failure_data_space"`
@@ -82,6 +88,9 @@ type Host struct {
 	// hdd disk count
 	// Required: true
 	HddDiskCount *int32 `json:"hdd_disk_count"`
+
+	// host state
+	HostState *NestedMaintenanceHostState `json:"host_state,omitempty"`
 
 	// hypervisor ip
 	HypervisorIP *string `json:"hypervisor_ip,omitempty"`
@@ -306,6 +315,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEntityAsyncStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateFailureDataSpace(formats); err != nil {
 		res = append(res, err)
 	}
@@ -315,6 +328,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateHddDiskCount(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHostState(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -589,6 +606,25 @@ func (m *Host) validateDisks(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Host) validateEntityAsyncStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatus) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Host) validateFailureDataSpace(formats strfmt.Registry) error {
 
 	if err := validate.Required("failure_data_space", "body", m.FailureDataSpace); err != nil {
@@ -611,6 +647,25 @@ func (m *Host) validateHddDiskCount(formats strfmt.Registry) error {
 
 	if err := validate.Required("hdd_disk_count", "body", m.HddDiskCount); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Host) validateHostState(formats strfmt.Registry) error {
+	if swag.IsZero(m.HostState) { // not required
+		return nil
+	}
+
+	if m.HostState != nil {
+		if err := m.HostState.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("host_state")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("host_state")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1065,6 +1120,14 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHostState(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIpmi(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1158,6 +1221,38 @@ func (m *Host) contextValidateDisks(ctx context.Context, formats strfmt.Registry
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateHostState(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HostState != nil {
+		if err := m.HostState.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("host_state")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("host_state")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -33,6 +33,9 @@ type MetricLabel struct {
 	// device
 	Device *string `json:"_device,omitempty"`
 
+	// esxi uuid
+	EsxiUUID *string `json:"_esxi_uuid,omitempty"`
+
 	// host
 	Host *string `json:"_host,omitempty"`
 

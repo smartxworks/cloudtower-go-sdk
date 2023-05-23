@@ -159,8 +159,35 @@ func (m *VMVlanUpdationParams) UnmarshalBinary(b []byte) error {
 // swagger:model VMVlanUpdationParamsData
 type VMVlanUpdationParamsData struct {
 
+	// mode type
+	ModeType *VlanModeType `json:"mode_type,omitempty"`
+
 	// name
 	Name *string `json:"name,omitempty"`
+
+	// network ids
+	NetworkIds []string `json:"network_ids,omitempty"`
+
+	// qos burst
+	QosBurst *int64 `json:"qos_burst,omitempty"`
+
+	// qos burst unit
+	QosBurstUnit *ByteUnit `json:"qos_burst_unit,omitempty"`
+
+	// qos max bandwidth
+	QosMaxBandwidth *int64 `json:"qos_max_bandwidth,omitempty"`
+
+	// qos max bandwidth unit
+	QosMaxBandwidthUnit *BPSUnit `json:"qos_max_bandwidth_unit,omitempty"`
+
+	// qos min bandwidth
+	QosMinBandwidth *int64 `json:"qos_min_bandwidth,omitempty"`
+
+	// qos min bandwidth unit
+	QosMinBandwidthUnit *BPSUnit `json:"qos_min_bandwidth_unit,omitempty"`
+
+	// qos priority
+	QosPriority *Priority `json:"qos_priority,omitempty"`
 
 	// vlan id
 	VlanID *VlanID `json:"vlan_id,omitempty"`
@@ -170,6 +197,26 @@ type VMVlanUpdationParamsData struct {
 func (m *VMVlanUpdationParamsData) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateModeType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateQosBurstUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateQosMaxBandwidthUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateQosMinBandwidthUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateQosPriority(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVlanID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -177,6 +224,101 @@ func (m *VMVlanUpdationParamsData) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) validateModeType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ModeType) { // not required
+		return nil
+	}
+
+	if m.ModeType != nil {
+		if err := m.ModeType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "mode_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "mode_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) validateQosBurstUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.QosBurstUnit) { // not required
+		return nil
+	}
+
+	if m.QosBurstUnit != nil {
+		if err := m.QosBurstUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "qos_burst_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "qos_burst_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) validateQosMaxBandwidthUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.QosMaxBandwidthUnit) { // not required
+		return nil
+	}
+
+	if m.QosMaxBandwidthUnit != nil {
+		if err := m.QosMaxBandwidthUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "qos_max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "qos_max_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) validateQosMinBandwidthUnit(formats strfmt.Registry) error {
+	if swag.IsZero(m.QosMinBandwidthUnit) { // not required
+		return nil
+	}
+
+	if m.QosMinBandwidthUnit != nil {
+		if err := m.QosMinBandwidthUnit.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "qos_min_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "qos_min_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) validateQosPriority(formats strfmt.Registry) error {
+	if swag.IsZero(m.QosPriority) { // not required
+		return nil
+	}
+
+	if m.QosPriority != nil {
+		if err := m.QosPriority.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "qos_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "qos_priority")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -203,6 +345,26 @@ func (m *VMVlanUpdationParamsData) validateVlanID(formats strfmt.Registry) error
 func (m *VMVlanUpdationParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateModeType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateQosBurstUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateQosMaxBandwidthUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateQosMinBandwidthUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateQosPriority(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVlanID(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -210,6 +372,86 @@ func (m *VMVlanUpdationParamsData) ContextValidate(ctx context.Context, formats 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) contextValidateModeType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ModeType != nil {
+		if err := m.ModeType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "mode_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "mode_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) contextValidateQosBurstUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.QosBurstUnit != nil {
+		if err := m.QosBurstUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "qos_burst_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "qos_burst_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) contextValidateQosMaxBandwidthUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.QosMaxBandwidthUnit != nil {
+		if err := m.QosMaxBandwidthUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "qos_max_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "qos_max_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) contextValidateQosMinBandwidthUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.QosMinBandwidthUnit != nil {
+		if err := m.QosMinBandwidthUnit.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "qos_min_bandwidth_unit")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "qos_min_bandwidth_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVlanUpdationParamsData) contextValidateQosPriority(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.QosPriority != nil {
+		if err := m.QosPriority.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "qos_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "qos_priority")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

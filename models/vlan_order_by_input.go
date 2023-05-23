@@ -60,11 +60,35 @@ const (
 	// VlanOrderByInputLocalIDDESC captures enum value "local_id_DESC"
 	VlanOrderByInputLocalIDDESC VlanOrderByInput = "local_id_DESC"
 
+	// VlanOrderByInputModeTypeASC captures enum value "mode_type_ASC"
+	VlanOrderByInputModeTypeASC VlanOrderByInput = "mode_type_ASC"
+
+	// VlanOrderByInputModeTypeDESC captures enum value "mode_type_DESC"
+	VlanOrderByInputModeTypeDESC VlanOrderByInput = "mode_type_DESC"
+
 	// VlanOrderByInputNameASC captures enum value "name_ASC"
 	VlanOrderByInputNameASC VlanOrderByInput = "name_ASC"
 
 	// VlanOrderByInputNameDESC captures enum value "name_DESC"
 	VlanOrderByInputNameDESC VlanOrderByInput = "name_DESC"
+
+	// VlanOrderByInputQosMaxBandwidthASC captures enum value "qos_max_bandwidth_ASC"
+	VlanOrderByInputQosMaxBandwidthASC VlanOrderByInput = "qos_max_bandwidth_ASC"
+
+	// VlanOrderByInputQosMaxBandwidthDESC captures enum value "qos_max_bandwidth_DESC"
+	VlanOrderByInputQosMaxBandwidthDESC VlanOrderByInput = "qos_max_bandwidth_DESC"
+
+	// VlanOrderByInputQosMinBandwidthASC captures enum value "qos_min_bandwidth_ASC"
+	VlanOrderByInputQosMinBandwidthASC VlanOrderByInput = "qos_min_bandwidth_ASC"
+
+	// VlanOrderByInputQosMinBandwidthDESC captures enum value "qos_min_bandwidth_DESC"
+	VlanOrderByInputQosMinBandwidthDESC VlanOrderByInput = "qos_min_bandwidth_DESC"
+
+	// VlanOrderByInputQosPriorityASC captures enum value "qos_priority_ASC"
+	VlanOrderByInputQosPriorityASC VlanOrderByInput = "qos_priority_ASC"
+
+	// VlanOrderByInputQosPriorityDESC captures enum value "qos_priority_DESC"
+	VlanOrderByInputQosPriorityDESC VlanOrderByInput = "qos_priority_DESC"
 
 	// VlanOrderByInputSubnetmaskASC captures enum value "subnetmask_ASC"
 	VlanOrderByInputSubnetmaskASC VlanOrderByInput = "subnetmask_ASC"
@@ -90,7 +114,7 @@ var vlanOrderByInputEnum []interface{}
 
 func init() {
 	var res []VlanOrderByInput
-	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","gateway_ip_ASC","gateway_ip_DESC","gateway_subnetmask_ASC","gateway_subnetmask_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","subnetmask_ASC","subnetmask_DESC","type_ASC","type_DESC","vlan_id_ASC","vlan_id_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","gateway_ip_ASC","gateway_ip_DESC","gateway_subnetmask_ASC","gateway_subnetmask_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","mode_type_ASC","mode_type_DESC","name_ASC","name_DESC","qos_max_bandwidth_ASC","qos_max_bandwidth_DESC","qos_min_bandwidth_ASC","qos_min_bandwidth_DESC","qos_priority_ASC","qos_priority_DESC","subnetmask_ASC","subnetmask_DESC","type_ASC","type_DESC","vlan_id_ASC","vlan_id_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

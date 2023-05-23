@@ -59,11 +59,9 @@ func NewDeleteUserOK() *DeleteUserOK {
 
 /* DeleteUserOK describes a response with status code 200, with default header values.
 
-DeleteUserOK delete user o k
+Ok
 */
 type DeleteUserOK struct {
-	XTowerRequestID string
-
 	Payload []*models.WithTaskDeleteUser
 }
 
@@ -75,13 +73,6 @@ func (o *DeleteUserOK) GetPayload() []*models.WithTaskDeleteUser {
 }
 
 func (o *DeleteUserOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
-
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
-	}
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
