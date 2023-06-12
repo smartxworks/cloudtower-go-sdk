@@ -62,10 +62,12 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_subsystem"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/organization"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ovf"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pmem_dimm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/rack_topo"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_template"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_policy"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_plan"
@@ -88,6 +90,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_disk"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_entity_filter_result"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_export_file"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_folder"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_nic"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_placement_group"
@@ -196,10 +199,12 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.NvmfNamespaceSnapshot = nvmf_namespace_snapshot.New(transport, formats)
 	cli.NvmfSubsystem = nvmf_subsystem.New(transport, formats)
 	cli.Organization = organization.New(transport, formats)
+	cli.Ovf = ovf.New(transport, formats)
 	cli.PmemDimm = pmem_dimm.New(transport, formats)
 	cli.RackTopo = rack_topo.New(transport, formats)
 	cli.ReportTask = report_task.New(transport, formats)
 	cli.ReportTemplate = report_template.New(transport, formats)
+	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.SecurityPolicy = security_policy.New(transport, formats)
 	cli.SnapshotGroup = snapshot_group.New(transport, formats)
 	cli.SnapshotPlan = snapshot_plan.New(transport, formats)
@@ -222,6 +227,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.VM = vm.New(transport, formats)
 	cli.VMDisk = vm_disk.New(transport, formats)
 	cli.VMEntityFilterResult = vm_entity_filter_result.New(transport, formats)
+	cli.VMExportFile = vm_export_file.New(transport, formats)
 	cli.VMFolder = vm_folder.New(transport, formats)
 	cli.VMNic = vm_nic.New(transport, formats)
 	cli.VMPlacementGroup = vm_placement_group.New(transport, formats)
@@ -382,6 +388,8 @@ type Cloudtower struct {
 
 	Organization organization.ClientService
 
+	Ovf ovf.ClientService
+
 	PmemDimm pmem_dimm.ClientService
 
 	RackTopo rack_topo.ClientService
@@ -389,6 +397,8 @@ type Cloudtower struct {
 	ReportTask report_task.ClientService
 
 	ReportTemplate report_template.ClientService
+
+	SecurityGroup security_group.ClientService
 
 	SecurityPolicy security_policy.ClientService
 
@@ -433,6 +443,8 @@ type Cloudtower struct {
 	VMDisk vm_disk.ClientService
 
 	VMEntityFilterResult vm_entity_filter_result.ClientService
+
+	VMExportFile vm_export_file.ClientService
 
 	VMFolder vm_folder.ClientService
 
@@ -516,10 +528,12 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.NvmfNamespaceSnapshot.SetTransport(transport)
 	c.NvmfSubsystem.SetTransport(transport)
 	c.Organization.SetTransport(transport)
+	c.Ovf.SetTransport(transport)
 	c.PmemDimm.SetTransport(transport)
 	c.RackTopo.SetTransport(transport)
 	c.ReportTask.SetTransport(transport)
 	c.ReportTemplate.SetTransport(transport)
+	c.SecurityGroup.SetTransport(transport)
 	c.SecurityPolicy.SetTransport(transport)
 	c.SnapshotGroup.SetTransport(transport)
 	c.SnapshotPlan.SetTransport(transport)
@@ -542,6 +556,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.VM.SetTransport(transport)
 	c.VMDisk.SetTransport(transport)
 	c.VMEntityFilterResult.SetTransport(transport)
+	c.VMExportFile.SetTransport(transport)
 	c.VMFolder.SetTransport(transport)
 	c.VMNic.SetTransport(transport)
 	c.VMPlacementGroup.SetTransport(transport)

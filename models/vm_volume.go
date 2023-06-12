@@ -31,6 +31,9 @@ type VMVolume struct {
 	// Required: true
 	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy"`
 
+	// entity async status
+	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
 	// guest size usage
 	GuestSizeUsage *float64 `json:"guest_size_usage,omitempty"`
 
@@ -94,6 +97,10 @@ func (m *VMVolume) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateElfStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -187,6 +194,25 @@ func (m *VMVolume) validateElfStoragePolicy(formats strfmt.Registry) error {
 				return ve.ValidateName("elf_storage_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolume) validateEntityAsyncStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatus) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
 			}
 			return err
 		}
@@ -369,6 +395,10 @@ func (m *VMVolume) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -415,6 +445,22 @@ func (m *VMVolume) contextValidateElfStoragePolicy(ctx context.Context, formats 
 				return ve.ValidateName("elf_storage_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolume) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
 			}
 			return err
 		}

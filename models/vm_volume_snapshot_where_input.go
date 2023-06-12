@@ -97,6 +97,30 @@ type VMVolumeSnapshotWhereInput struct {
 	// description starts with
 	DescriptionStartsWith *string `json:"description_starts_with,omitempty"`
 
+	// elf storage policy
+	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy,omitempty"`
+
+	// elf storage policy in
+	ElfStoragePolicyIn []VMVolumeElfStoragePolicyType `json:"elf_storage_policy_in,omitempty"`
+
+	// elf storage policy not
+	ElfStoragePolicyNot *VMVolumeElfStoragePolicyType `json:"elf_storage_policy_not,omitempty"`
+
+	// elf storage policy not in
+	ElfStoragePolicyNotIn []VMVolumeElfStoragePolicyType `json:"elf_storage_policy_not_in,omitempty"`
+
+	// entity async status
+	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
+	// entity async status in
+	EntityAsyncStatusIn []EntityAsyncStatus `json:"entityAsyncStatus_in,omitempty"`
+
+	// entity async status not
+	EntityAsyncStatusNot *EntityAsyncStatus `json:"entityAsyncStatus_not,omitempty"`
+
+	// entity async status not in
+	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
+
 	// id
 	ID *string `json:"id,omitempty"`
 
@@ -138,6 +162,15 @@ type VMVolumeSnapshotWhereInput struct {
 
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
+
+	// labels every
+	LabelsEvery *LabelWhereInput `json:"labels_every,omitempty"`
+
+	// labels none
+	LabelsNone *LabelWhereInput `json:"labels_none,omitempty"`
+
+	// labels some
+	LabelsSome *LabelWhereInput `json:"labels_some,omitempty"`
 
 	// local created at
 	LocalCreatedAt *string `json:"local_created_at,omitempty"`
@@ -334,6 +367,36 @@ type VMVolumeSnapshotWhereInput struct {
 	// vm volume
 	VMVolume *VMVolumeWhereInput `json:"vm_volume,omitempty"`
 
+	// volume sharing
+	VolumeSharing *bool `json:"volume_sharing,omitempty"`
+
+	// volume sharing not
+	VolumeSharingNot *bool `json:"volume_sharing_not,omitempty"`
+
+	// volume size
+	VolumeSize *float64 `json:"volume_size,omitempty"`
+
+	// volume size gt
+	VolumeSizeGt *float64 `json:"volume_size_gt,omitempty"`
+
+	// volume size gte
+	VolumeSizeGte *float64 `json:"volume_size_gte,omitempty"`
+
+	// volume size in
+	VolumeSizeIn []float64 `json:"volume_size_in,omitempty"`
+
+	// volume size lt
+	VolumeSizeLt *float64 `json:"volume_size_lt,omitempty"`
+
+	// volume size lte
+	VolumeSizeLte *float64 `json:"volume_size_lte,omitempty"`
+
+	// volume size not
+	VolumeSizeNot *float64 `json:"volume_size_not,omitempty"`
+
+	// volume size not in
+	VolumeSizeNotIn []float64 `json:"volume_size_not_in,omitempty"`
+
 	// zbs snapshot uuid
 	ZbsSnapshotUUID *string `json:"zbs_snapshot_uuid,omitempty"`
 
@@ -394,6 +457,50 @@ func (m *VMVolumeSnapshotWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCluster(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateElfStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateElfStoragePolicyIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateElfStoragePolicyNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateElfStoragePolicyNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatusIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatusNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatusNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLabelsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLabelsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLabelsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -512,6 +619,223 @@ func (m *VMVolumeSnapshotWhereInput) validateCluster(formats strfmt.Registry) er
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateElfStoragePolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfStoragePolicy) { // not required
+		return nil
+	}
+
+	if m.ElfStoragePolicy != nil {
+		if err := m.ElfStoragePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateElfStoragePolicyIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfStoragePolicyIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ElfStoragePolicyIn); i++ {
+
+		if err := m.ElfStoragePolicyIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateElfStoragePolicyNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfStoragePolicyNot) { // not required
+		return nil
+	}
+
+	if m.ElfStoragePolicyNot != nil {
+		if err := m.ElfStoragePolicyNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateElfStoragePolicyNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfStoragePolicyNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ElfStoragePolicyNotIn); i++ {
+
+		if err := m.ElfStoragePolicyNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatus) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatusIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EntityAsyncStatusIn); i++ {
+
+		if err := m.EntityAsyncStatusIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatusNot) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatusNot != nil {
+		if err := m.EntityAsyncStatusNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatusNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EntityAsyncStatusNotIn); i++ {
+
+		if err := m.EntityAsyncStatusNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.LabelsEvery) { // not required
+		return nil
+	}
+
+	if m.LabelsEvery != nil {
+		if err := m.LabelsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("labels_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("labels_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateLabelsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.LabelsNone) { // not required
+		return nil
+	}
+
+	if m.LabelsNone != nil {
+		if err := m.LabelsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("labels_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("labels_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) validateLabelsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.LabelsSome) { // not required
+		return nil
+	}
+
+	if m.LabelsSome != nil {
+		if err := m.LabelsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("labels_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("labels_some")
 			}
 			return err
 		}
@@ -639,6 +963,50 @@ func (m *VMVolumeSnapshotWhereInput) ContextValidate(ctx context.Context, format
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateElfStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateElfStoragePolicyIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateElfStoragePolicyNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateElfStoragePolicyNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatusIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatusNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatusNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLabelsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLabelsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLabelsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -733,6 +1101,190 @@ func (m *VMVolumeSnapshotWhereInput) contextValidateCluster(ctx context.Context,
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateElfStoragePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ElfStoragePolicy != nil {
+		if err := m.ElfStoragePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateElfStoragePolicyIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ElfStoragePolicyIn); i++ {
+
+		if err := m.ElfStoragePolicyIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateElfStoragePolicyNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ElfStoragePolicyNot != nil {
+		if err := m.ElfStoragePolicyNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateElfStoragePolicyNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ElfStoragePolicyNotIn); i++ {
+
+		if err := m.ElfStoragePolicyNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EntityAsyncStatusIn); i++ {
+
+		if err := m.EntityAsyncStatusIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatusNot != nil {
+		if err := m.EntityAsyncStatusNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EntityAsyncStatusNotIn); i++ {
+
+		if err := m.EntityAsyncStatusNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateLabelsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LabelsEvery != nil {
+		if err := m.LabelsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("labels_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("labels_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateLabelsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LabelsNone != nil {
+		if err := m.LabelsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("labels_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("labels_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshotWhereInput) contextValidateLabelsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LabelsSome != nil {
+		if err := m.LabelsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("labels_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("labels_some")
 			}
 			return err
 		}

@@ -36,6 +36,12 @@ const (
 	// HostOrderByInputAccessIPDESC captures enum value "access_ip_DESC"
 	HostOrderByInputAccessIPDESC HostOrderByInput = "access_ip_DESC"
 
+	// HostOrderByInputAllocableCPUCoresForVMExclusiveASC captures enum value "allocable_cpu_cores_for_vm_exclusive_ASC"
+	HostOrderByInputAllocableCPUCoresForVMExclusiveASC HostOrderByInput = "allocable_cpu_cores_for_vm_exclusive_ASC"
+
+	// HostOrderByInputAllocableCPUCoresForVMExclusiveDESC captures enum value "allocable_cpu_cores_for_vm_exclusive_DESC"
+	HostOrderByInputAllocableCPUCoresForVMExclusiveDESC HostOrderByInput = "allocable_cpu_cores_for_vm_exclusive_DESC"
+
 	// HostOrderByInputAllocatableMemoryBytesASC captures enum value "allocatable_memory_bytes_ASC"
 	HostOrderByInputAllocatableMemoryBytesASC HostOrderByInput = "allocatable_memory_bytes_ASC"
 
@@ -84,6 +90,12 @@ const (
 	// HostOrderByInputDataIPDESC captures enum value "data_ip_DESC"
 	HostOrderByInputDataIPDESC HostOrderByInput = "data_ip_DESC"
 
+	// HostOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
+	HostOrderByInputEntityAsyncStatusASC HostOrderByInput = "entityAsyncStatus_ASC"
+
+	// HostOrderByInputEntityAsyncStatusDESC captures enum value "entityAsyncStatus_DESC"
+	HostOrderByInputEntityAsyncStatusDESC HostOrderByInput = "entityAsyncStatus_DESC"
+
 	// HostOrderByInputFailureDataSpaceASC captures enum value "failure_data_space_ASC"
 	HostOrderByInputFailureDataSpaceASC HostOrderByInput = "failure_data_space_ASC"
 
@@ -101,6 +113,12 @@ const (
 
 	// HostOrderByInputHddDiskCountDESC captures enum value "hdd_disk_count_DESC"
 	HostOrderByInputHddDiskCountDESC HostOrderByInput = "hdd_disk_count_DESC"
+
+	// HostOrderByInputHostStateASC captures enum value "host_state_ASC"
+	HostOrderByInputHostStateASC HostOrderByInput = "host_state_ASC"
+
+	// HostOrderByInputHostStateDESC captures enum value "host_state_DESC"
+	HostOrderByInputHostStateDESC HostOrderByInput = "host_state_DESC"
 
 	// HostOrderByInputHypervisorIPASC captures enum value "hypervisor_ip_ASC"
 	HostOrderByInputHypervisorIPASC HostOrderByInput = "hypervisor_ip_ASC"
@@ -360,7 +378,7 @@ var hostOrderByInputEnum []interface{}
 
 func init() {
 	var res []HostOrderByInput
-	if err := json.Unmarshal([]byte(`["access_ip_ASC","access_ip_DESC","allocatable_memory_bytes_ASC","allocatable_memory_bytes_DESC","chunk_id_ASC","chunk_id_DESC","cpu_brand_ASC","cpu_brand_DESC","cpu_fan_speed_unit_ASC","cpu_fan_speed_unit_DESC","cpu_hz_per_core_ASC","cpu_hz_per_core_DESC","cpu_model_ASC","cpu_model_DESC","cpu_vendor_ASC","cpu_vendor_DESC","data_ip_ASC","data_ip_DESC","failure_data_space_ASC","failure_data_space_DESC","hdd_data_capacity_ASC","hdd_data_capacity_DESC","hdd_disk_count_ASC","hdd_disk_count_DESC","hypervisor_ip_ASC","hypervisor_ip_DESC","id_ASC","id_DESC","is_os_in_raid1_ASC","is_os_in_raid1_DESC","local_id_ASC","local_id_DESC","lsm_cap_disk_safe_umount_ASC","lsm_cap_disk_safe_umount_DESC","management_ip_ASC","management_ip_DESC","model_ASC","model_DESC","name_ASC","name_DESC","nested_virtualization_ASC","nested_virtualization_DESC","nic_count_ASC","nic_count_DESC","node_topo_local_id_ASC","node_topo_local_id_DESC","os_memory_bytes_ASC","os_memory_bytes_DESC","os_version_ASC","os_version_DESC","pmem_dimm_capacity_ASC","pmem_dimm_capacity_DESC","pmem_dimm_count_ASC","pmem_dimm_count_DESC","pmem_disk_count_ASC","pmem_disk_count_DESC","provisioned_cpu_cores_ASC","provisioned_cpu_cores_DESC","provisioned_memory_bytes_ASC","provisioned_memory_bytes_DESC","running_pause_vm_memory_bytes_ASC","running_pause_vm_memory_bytes_DESC","running_vm_num_ASC","running_vm_num_DESC","scvm_cpu_ASC","scvm_cpu_DESC","scvm_memory_ASC","scvm_memory_DESC","scvm_name_ASC","scvm_name_DESC","serial_ASC","serial_DESC","ssd_data_capacity_ASC","ssd_data_capacity_DESC","ssd_disk_count_ASC","ssd_disk_count_DESC","state_ASC","state_DESC","status_ASC","status_DESC","stopped_vm_num_ASC","stopped_vm_num_DESC","suspended_vm_num_ASC","suspended_vm_num_DESC","total_cache_capacity_ASC","total_cache_capacity_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_cpu_sockets_ASC","total_cpu_sockets_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","vm_num_ASC","vm_num_DESC","vmotion_ip_ASC","vmotion_ip_DESC","with_faster_ssd_as_cache_ASC","with_faster_ssd_as_cache_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["access_ip_ASC","access_ip_DESC","allocable_cpu_cores_for_vm_exclusive_ASC","allocable_cpu_cores_for_vm_exclusive_DESC","allocatable_memory_bytes_ASC","allocatable_memory_bytes_DESC","chunk_id_ASC","chunk_id_DESC","cpu_brand_ASC","cpu_brand_DESC","cpu_fan_speed_unit_ASC","cpu_fan_speed_unit_DESC","cpu_hz_per_core_ASC","cpu_hz_per_core_DESC","cpu_model_ASC","cpu_model_DESC","cpu_vendor_ASC","cpu_vendor_DESC","data_ip_ASC","data_ip_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_data_space_ASC","failure_data_space_DESC","hdd_data_capacity_ASC","hdd_data_capacity_DESC","hdd_disk_count_ASC","hdd_disk_count_DESC","host_state_ASC","host_state_DESC","hypervisor_ip_ASC","hypervisor_ip_DESC","id_ASC","id_DESC","is_os_in_raid1_ASC","is_os_in_raid1_DESC","local_id_ASC","local_id_DESC","lsm_cap_disk_safe_umount_ASC","lsm_cap_disk_safe_umount_DESC","management_ip_ASC","management_ip_DESC","model_ASC","model_DESC","name_ASC","name_DESC","nested_virtualization_ASC","nested_virtualization_DESC","nic_count_ASC","nic_count_DESC","node_topo_local_id_ASC","node_topo_local_id_DESC","os_memory_bytes_ASC","os_memory_bytes_DESC","os_version_ASC","os_version_DESC","pmem_dimm_capacity_ASC","pmem_dimm_capacity_DESC","pmem_dimm_count_ASC","pmem_dimm_count_DESC","pmem_disk_count_ASC","pmem_disk_count_DESC","provisioned_cpu_cores_ASC","provisioned_cpu_cores_DESC","provisioned_memory_bytes_ASC","provisioned_memory_bytes_DESC","running_pause_vm_memory_bytes_ASC","running_pause_vm_memory_bytes_DESC","running_vm_num_ASC","running_vm_num_DESC","scvm_cpu_ASC","scvm_cpu_DESC","scvm_memory_ASC","scvm_memory_DESC","scvm_name_ASC","scvm_name_DESC","serial_ASC","serial_DESC","ssd_data_capacity_ASC","ssd_data_capacity_DESC","ssd_disk_count_ASC","ssd_disk_count_DESC","state_ASC","state_DESC","status_ASC","status_DESC","stopped_vm_num_ASC","stopped_vm_num_DESC","suspended_vm_num_ASC","suspended_vm_num_DESC","total_cache_capacity_ASC","total_cache_capacity_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_cpu_sockets_ASC","total_cpu_sockets_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","vm_num_ASC","vm_num_DESC","vmotion_ip_ASC","vmotion_ip_DESC","with_faster_ssd_as_cache_ASC","with_faster_ssd_as_cache_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

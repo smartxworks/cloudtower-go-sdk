@@ -19,11 +19,17 @@ import (
 // swagger:model UserCreationParams
 type UserCreationParams struct {
 
+	// auth config id
+	AuthConfigID *string `json:"auth_config_id,omitempty"`
+
 	// email address
 	EmailAddress *string `json:"email_address,omitempty"`
 
 	// internal
 	Internal *bool `json:"internal,omitempty"`
+
+	// ldap dn
+	LdapDn *string `json:"ldap_dn,omitempty"`
 
 	// mobile phone
 	MobilePhone *string `json:"mobile_phone,omitempty"`
@@ -33,12 +39,14 @@ type UserCreationParams struct {
 	Name *string `json:"name"`
 
 	// password
-	// Required: true
-	Password *string `json:"password"`
+	Password *string `json:"password,omitempty"`
 
 	// role id
 	// Required: true
 	RoleID *string `json:"role_id"`
+
+	// source
+	Source *UserSource `json:"source,omitempty"`
 
 	// username
 	// Required: true
@@ -53,11 +61,11 @@ func (m *UserCreationParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validatePassword(formats); err != nil {
+	if err := m.validateRoleID(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateRoleID(formats); err != nil {
+	if err := m.validateSource(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -80,19 +88,29 @@ func (m *UserCreationParams) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *UserCreationParams) validatePassword(formats strfmt.Registry) error {
+func (m *UserCreationParams) validateRoleID(formats strfmt.Registry) error {
 
-	if err := validate.Required("password", "body", m.Password); err != nil {
+	if err := validate.Required("role_id", "body", m.RoleID); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *UserCreationParams) validateRoleID(formats strfmt.Registry) error {
+func (m *UserCreationParams) validateSource(formats strfmt.Registry) error {
+	if swag.IsZero(m.Source) { // not required
+		return nil
+	}
 
-	if err := validate.Required("role_id", "body", m.RoleID); err != nil {
-		return err
+	if m.Source != nil {
+		if err := m.Source.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("source")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("source")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -107,8 +125,33 @@ func (m *UserCreationParams) validateUsername(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this user creation params based on context it is used
+// ContextValidate validate this user creation params based on the context it is used
 func (m *UserCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSource(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UserCreationParams) contextValidateSource(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Source != nil {
+		if err := m.Source.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("source")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("source")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

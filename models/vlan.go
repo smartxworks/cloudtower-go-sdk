@@ -40,9 +40,25 @@ type Vlan struct {
 	// Required: true
 	LocalID *string `json:"local_id"`
 
+	// mode type
+	ModeType *VlanModeType `json:"mode_type,omitempty"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	// network ids
+	// Required: true
+	NetworkIds []string `json:"network_ids"`
+
+	// qos max bandwidth
+	QosMaxBandwidth *float64 `json:"qos_max_bandwidth,omitempty"`
+
+	// qos min bandwidth
+	QosMinBandwidth *float64 `json:"qos_min_bandwidth,omitempty"`
+
+	// qos priority
+	QosPriority *int32 `json:"qos_priority,omitempty"`
 
 	// subnetmask
 	Subnetmask *string `json:"subnetmask,omitempty"`
@@ -83,7 +99,15 @@ func (m *Vlan) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateModeType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNetworkIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -172,9 +196,37 @@ func (m *Vlan) validateLocalID(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Vlan) validateModeType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ModeType) { // not required
+		return nil
+	}
+
+	if m.ModeType != nil {
+		if err := m.ModeType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Vlan) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Vlan) validateNetworkIds(formats strfmt.Registry) error {
+
+	if err := validate.Required("network_ids", "body", m.NetworkIds); err != nil {
 		return err
 	}
 
@@ -272,6 +324,10 @@ func (m *Vlan) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateModeType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -321,6 +377,22 @@ func (m *Vlan) contextValidateLabels(ctx context.Context, formats strfmt.Registr
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Vlan) contextValidateModeType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ModeType != nil {
+		if err := m.ModeType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type")
+			}
+			return err
+		}
 	}
 
 	return nil

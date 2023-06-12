@@ -1099,6 +1099,39 @@ type LabelWhereInput struct {
 	// vm volume num not in
 	VMVolumeNumNotIn []int32 `json:"vm_volume_num_not_in,omitempty"`
 
+	// vm volume snapshot num
+	VMVolumeSnapshotNum *int32 `json:"vm_volume_snapshot_num,omitempty"`
+
+	// vm volume snapshot num gt
+	VMVolumeSnapshotNumGt *int32 `json:"vm_volume_snapshot_num_gt,omitempty"`
+
+	// vm volume snapshot num gte
+	VMVolumeSnapshotNumGte *int32 `json:"vm_volume_snapshot_num_gte,omitempty"`
+
+	// vm volume snapshot num in
+	VMVolumeSnapshotNumIn []int32 `json:"vm_volume_snapshot_num_in,omitempty"`
+
+	// vm volume snapshot num lt
+	VMVolumeSnapshotNumLt *int32 `json:"vm_volume_snapshot_num_lt,omitempty"`
+
+	// vm volume snapshot num lte
+	VMVolumeSnapshotNumLte *int32 `json:"vm_volume_snapshot_num_lte,omitempty"`
+
+	// vm volume snapshot num not
+	VMVolumeSnapshotNumNot *int32 `json:"vm_volume_snapshot_num_not,omitempty"`
+
+	// vm volume snapshot num not in
+	VMVolumeSnapshotNumNotIn []int32 `json:"vm_volume_snapshot_num_not_in,omitempty"`
+
+	// vm volume snapshots every
+	VMVolumeSnapshotsEvery *VMVolumeSnapshotWhereInput `json:"vm_volume_snapshots_every,omitempty"`
+
+	// vm volume snapshots none
+	VMVolumeSnapshotsNone *VMVolumeSnapshotWhereInput `json:"vm_volume_snapshots_none,omitempty"`
+
+	// vm volume snapshots some
+	VMVolumeSnapshotsSome *VMVolumeSnapshotWhereInput `json:"vm_volume_snapshots_some,omitempty"`
+
 	// vm volumes every
 	VMVolumesEvery *VMVolumeWhereInput `json:"vm_volumes_every,omitempty"`
 
@@ -1431,6 +1464,18 @@ func (m *LabelWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVMTemplatesSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMVolumeSnapshotsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMVolumeSnapshotsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMVolumeSnapshotsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2967,6 +3012,63 @@ func (m *LabelWhereInput) validateVMTemplatesSome(formats strfmt.Registry) error
 	return nil
 }
 
+func (m *LabelWhereInput) validateVMVolumeSnapshotsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMVolumeSnapshotsEvery) { // not required
+		return nil
+	}
+
+	if m.VMVolumeSnapshotsEvery != nil {
+		if err := m.VMVolumeSnapshotsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume_snapshots_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume_snapshots_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) validateVMVolumeSnapshotsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMVolumeSnapshotsNone) { // not required
+		return nil
+	}
+
+	if m.VMVolumeSnapshotsNone != nil {
+		if err := m.VMVolumeSnapshotsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume_snapshots_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume_snapshots_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) validateVMVolumeSnapshotsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMVolumeSnapshotsSome) { // not required
+		return nil
+	}
+
+	if m.VMVolumeSnapshotsSome != nil {
+		if err := m.VMVolumeSnapshotsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume_snapshots_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume_snapshots_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *LabelWhereInput) validateVMVolumesEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMVolumesEvery) { // not required
 		return nil
@@ -3394,6 +3496,18 @@ func (m *LabelWhereInput) ContextValidate(ctx context.Context, formats strfmt.Re
 	}
 
 	if err := m.contextValidateVMTemplatesSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMVolumeSnapshotsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMVolumeSnapshotsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMVolumeSnapshotsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -4679,6 +4793,54 @@ func (m *LabelWhereInput) contextValidateVMTemplatesSome(ctx context.Context, fo
 				return ve.ValidateName("vm_templates_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vm_templates_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateVMVolumeSnapshotsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMVolumeSnapshotsEvery != nil {
+		if err := m.VMVolumeSnapshotsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume_snapshots_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume_snapshots_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateVMVolumeSnapshotsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMVolumeSnapshotsNone != nil {
+		if err := m.VMVolumeSnapshotsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume_snapshots_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume_snapshots_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *LabelWhereInput) contextValidateVMVolumeSnapshotsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMVolumeSnapshotsSome != nil {
+		if err := m.VMVolumeSnapshotsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume_snapshots_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume_snapshots_some")
 			}
 			return err
 		}

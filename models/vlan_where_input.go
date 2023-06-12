@@ -217,6 +217,18 @@ type VlanWhereInput struct {
 	// local id starts with
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
+	// mode type
+	ModeType *VlanModeType `json:"mode_type,omitempty"`
+
+	// mode type in
+	ModeTypeIn []VlanModeType `json:"mode_type_in,omitempty"`
+
+	// mode type not
+	ModeTypeNot *VlanModeType `json:"mode_type_not,omitempty"`
+
+	// mode type not in
+	ModeTypeNotIn []VlanModeType `json:"mode_type_not_in,omitempty"`
+
 	// name
 	Name *string `json:"name,omitempty"`
 
@@ -258,6 +270,78 @@ type VlanWhereInput struct {
 
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
+
+	// qos max bandwidth
+	QosMaxBandwidth *float64 `json:"qos_max_bandwidth,omitempty"`
+
+	// qos max bandwidth gt
+	QosMaxBandwidthGt *float64 `json:"qos_max_bandwidth_gt,omitempty"`
+
+	// qos max bandwidth gte
+	QosMaxBandwidthGte *float64 `json:"qos_max_bandwidth_gte,omitempty"`
+
+	// qos max bandwidth in
+	QosMaxBandwidthIn []float64 `json:"qos_max_bandwidth_in,omitempty"`
+
+	// qos max bandwidth lt
+	QosMaxBandwidthLt *float64 `json:"qos_max_bandwidth_lt,omitempty"`
+
+	// qos max bandwidth lte
+	QosMaxBandwidthLte *float64 `json:"qos_max_bandwidth_lte,omitempty"`
+
+	// qos max bandwidth not
+	QosMaxBandwidthNot *float64 `json:"qos_max_bandwidth_not,omitempty"`
+
+	// qos max bandwidth not in
+	QosMaxBandwidthNotIn []float64 `json:"qos_max_bandwidth_not_in,omitempty"`
+
+	// qos min bandwidth
+	QosMinBandwidth *float64 `json:"qos_min_bandwidth,omitempty"`
+
+	// qos min bandwidth gt
+	QosMinBandwidthGt *float64 `json:"qos_min_bandwidth_gt,omitempty"`
+
+	// qos min bandwidth gte
+	QosMinBandwidthGte *float64 `json:"qos_min_bandwidth_gte,omitempty"`
+
+	// qos min bandwidth in
+	QosMinBandwidthIn []float64 `json:"qos_min_bandwidth_in,omitempty"`
+
+	// qos min bandwidth lt
+	QosMinBandwidthLt *float64 `json:"qos_min_bandwidth_lt,omitempty"`
+
+	// qos min bandwidth lte
+	QosMinBandwidthLte *float64 `json:"qos_min_bandwidth_lte,omitempty"`
+
+	// qos min bandwidth not
+	QosMinBandwidthNot *float64 `json:"qos_min_bandwidth_not,omitempty"`
+
+	// qos min bandwidth not in
+	QosMinBandwidthNotIn []float64 `json:"qos_min_bandwidth_not_in,omitempty"`
+
+	// qos priority
+	QosPriority *int32 `json:"qos_priority,omitempty"`
+
+	// qos priority gt
+	QosPriorityGt *int32 `json:"qos_priority_gt,omitempty"`
+
+	// qos priority gte
+	QosPriorityGte *int32 `json:"qos_priority_gte,omitempty"`
+
+	// qos priority in
+	QosPriorityIn []int32 `json:"qos_priority_in,omitempty"`
+
+	// qos priority lt
+	QosPriorityLt *int32 `json:"qos_priority_lt,omitempty"`
+
+	// qos priority lte
+	QosPriorityLte *int32 `json:"qos_priority_lte,omitempty"`
+
+	// qos priority not
+	QosPriorityNot *int32 `json:"qos_priority_not,omitempty"`
+
+	// qos priority not in
+	QosPriorityNotIn []int32 `json:"qos_priority_not_in,omitempty"`
 
 	// subnetmask
 	Subnetmask *string `json:"subnetmask,omitempty"`
@@ -391,6 +475,22 @@ func (m *VlanWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLabelsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateModeType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateModeTypeIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateModeTypeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateModeTypeNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -647,6 +747,86 @@ func (m *VlanWhereInput) validateLabelsSome(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VlanWhereInput) validateModeType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ModeType) { // not required
+		return nil
+	}
+
+	if m.ModeType != nil {
+		if err := m.ModeType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VlanWhereInput) validateModeTypeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ModeTypeIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ModeTypeIn); i++ {
+
+		if err := m.ModeTypeIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VlanWhereInput) validateModeTypeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.ModeTypeNot) { // not required
+		return nil
+	}
+
+	if m.ModeTypeNot != nil {
+		if err := m.ModeTypeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VlanWhereInput) validateModeTypeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ModeTypeNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ModeTypeNotIn); i++ {
+
+		if err := m.ModeTypeNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *VlanWhereInput) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
@@ -844,6 +1024,22 @@ func (m *VlanWhereInput) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateLabelsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateModeType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateModeTypeIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateModeTypeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateModeTypeNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1056,6 +1252,74 @@ func (m *VlanWhereInput) contextValidateLabelsSome(ctx context.Context, formats 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VlanWhereInput) contextValidateModeType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ModeType != nil {
+		if err := m.ModeType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VlanWhereInput) contextValidateModeTypeIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ModeTypeIn); i++ {
+
+		if err := m.ModeTypeIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VlanWhereInput) contextValidateModeTypeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ModeTypeNot != nil {
+		if err := m.ModeTypeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VlanWhereInput) contextValidateModeTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ModeTypeNotIn); i++ {
+
+		if err := m.ModeTypeNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mode_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mode_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil
