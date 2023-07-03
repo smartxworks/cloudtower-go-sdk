@@ -28,6 +28,15 @@ type AlertNotifierWhereInput struct {
 	// o r
 	OR []*AlertNotifierWhereInput `json:"OR,omitempty"`
 
+	// clusters every
+	ClustersEvery *ClusterWhereInput `json:"clusters_every,omitempty"`
+
+	// clusters none
+	ClustersNone *ClusterWhereInput `json:"clusters_none,omitempty"`
+
+	// clusters some
+	ClustersSome *ClusterWhereInput `json:"clusters_some,omitempty"`
+
 	// disabled
 	Disabled *bool `json:"disabled,omitempty"`
 
@@ -75,6 +84,18 @@ type AlertNotifierWhereInput struct {
 
 	// email from starts with
 	EmailFromStartsWith *string `json:"email_from_starts_with,omitempty"`
+
+	// entity async status
+	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
+	// entity async status in
+	EntityAsyncStatusIn []EntityAsyncStatus `json:"entityAsyncStatus_in,omitempty"`
+
+	// entity async status not
+	EntityAsyncStatusNot *EntityAsyncStatus `json:"entityAsyncStatus_not,omitempty"`
+
+	// entity async status not in
+	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
 
 	// id
 	ID *string `json:"id,omitempty"`
@@ -129,6 +150,48 @@ type AlertNotifierWhereInput struct {
 
 	// language code not in
 	LanguageCodeNotIn []NotifierLanguageCode `json:"language_code_not_in,omitempty"`
+
+	// name
+	Name *string `json:"name,omitempty"`
+
+	// name contains
+	NameContains *string `json:"name_contains,omitempty"`
+
+	// name ends with
+	NameEndsWith *string `json:"name_ends_with,omitempty"`
+
+	// name gt
+	NameGt *string `json:"name_gt,omitempty"`
+
+	// name gte
+	NameGte *string `json:"name_gte,omitempty"`
+
+	// name in
+	NameIn []string `json:"name_in,omitempty"`
+
+	// name lt
+	NameLt *string `json:"name_lt,omitempty"`
+
+	// name lte
+	NameLte *string `json:"name_lte,omitempty"`
+
+	// name not
+	NameNot *string `json:"name_not,omitempty"`
+
+	// name not contains
+	NameNotContains *string `json:"name_not_contains,omitempty"`
+
+	// name not ends with
+	NameNotEndsWith *string `json:"name_not_ends_with,omitempty"`
+
+	// name not in
+	NameNotIn []string `json:"name_not_in,omitempty"`
+
+	// name not starts with
+	NameNotStartsWith *string `json:"name_not_starts_with,omitempty"`
+
+	// name starts with
+	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
 	// security mode
 	SecurityMode *NotifierSecurityMode `json:"security_mode,omitempty"`
@@ -267,6 +330,34 @@ func (m *AlertNotifierWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateClustersEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClustersNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClustersSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatusIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatusNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatusNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLanguageCode(formats); err != nil {
 		res = append(res, err)
 	}
@@ -376,6 +467,143 @@ func (m *AlertNotifierWhereInput) validateOR(formats strfmt.Registry) error {
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) validateClustersEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClustersEvery) { // not required
+		return nil
+	}
+
+	if m.ClustersEvery != nil {
+		if err := m.ClustersEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusters_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusters_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) validateClustersNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClustersNone) { // not required
+		return nil
+	}
+
+	if m.ClustersNone != nil {
+		if err := m.ClustersNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusters_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusters_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) validateClustersSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClustersSome) { // not required
+		return nil
+	}
+
+	if m.ClustersSome != nil {
+		if err := m.ClustersSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusters_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusters_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatus) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatusIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EntityAsyncStatusIn); i++ {
+
+		if err := m.EntityAsyncStatusIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatusNot) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatusNot != nil {
+		if err := m.EntityAsyncStatusNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatusNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EntityAsyncStatusNotIn); i++ {
+
+		if err := m.EntityAsyncStatusNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
 		}
 
 	}
@@ -559,6 +787,34 @@ func (m *AlertNotifierWhereInput) ContextValidate(ctx context.Context, formats s
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateClustersEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateClustersNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateClustersSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatusIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatusNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatusNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLanguageCode(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -650,6 +906,122 @@ func (m *AlertNotifierWhereInput) contextValidateOR(ctx context.Context, formats
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) contextValidateClustersEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ClustersEvery != nil {
+		if err := m.ClustersEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusters_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusters_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) contextValidateClustersNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ClustersNone != nil {
+		if err := m.ClustersNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusters_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusters_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) contextValidateClustersSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ClustersSome != nil {
+		if err := m.ClustersSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusters_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusters_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EntityAsyncStatusIn); i++ {
+
+		if err := m.EntityAsyncStatusIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatusNot != nil {
+		if err := m.EntityAsyncStatusNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifierWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EntityAsyncStatusNotIn); i++ {
+
+		if err := m.EntityAsyncStatusNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
 		}
 
 	}

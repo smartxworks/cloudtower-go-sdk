@@ -20,6 +20,13 @@ import (
 // swagger:model User
 type User struct {
 
+	// auth config id
+	AuthConfigID *string `json:"auth_config_id,omitempty"`
+
+	// display username
+	// Required: true
+	DisplayUsername *string `json:"display_username"`
+
 	// email address
 	EmailAddress *string `json:"email_address,omitempty"`
 
@@ -69,6 +76,10 @@ type User struct {
 func (m *User) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDisplayUsername(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -104,6 +115,15 @@ func (m *User) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *User) validateDisplayUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("display_username", "body", m.DisplayUsername); err != nil {
+		return err
+	}
+
 	return nil
 }
 

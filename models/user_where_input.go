@@ -28,6 +28,90 @@ type UserWhereInput struct {
 	// o r
 	OR []*UserWhereInput `json:"OR,omitempty"`
 
+	// auth config id
+	AuthConfigID *string `json:"auth_config_id,omitempty"`
+
+	// auth config id contains
+	AuthConfigIDContains *string `json:"auth_config_id_contains,omitempty"`
+
+	// auth config id ends with
+	AuthConfigIDEndsWith *string `json:"auth_config_id_ends_with,omitempty"`
+
+	// auth config id gt
+	AuthConfigIDGt *string `json:"auth_config_id_gt,omitempty"`
+
+	// auth config id gte
+	AuthConfigIDGte *string `json:"auth_config_id_gte,omitempty"`
+
+	// auth config id in
+	AuthConfigIDIn []string `json:"auth_config_id_in,omitempty"`
+
+	// auth config id lt
+	AuthConfigIDLt *string `json:"auth_config_id_lt,omitempty"`
+
+	// auth config id lte
+	AuthConfigIDLte *string `json:"auth_config_id_lte,omitempty"`
+
+	// auth config id not
+	AuthConfigIDNot *string `json:"auth_config_id_not,omitempty"`
+
+	// auth config id not contains
+	AuthConfigIDNotContains *string `json:"auth_config_id_not_contains,omitempty"`
+
+	// auth config id not ends with
+	AuthConfigIDNotEndsWith *string `json:"auth_config_id_not_ends_with,omitempty"`
+
+	// auth config id not in
+	AuthConfigIDNotIn []string `json:"auth_config_id_not_in,omitempty"`
+
+	// auth config id not starts with
+	AuthConfigIDNotStartsWith *string `json:"auth_config_id_not_starts_with,omitempty"`
+
+	// auth config id starts with
+	AuthConfigIDStartsWith *string `json:"auth_config_id_starts_with,omitempty"`
+
+	// display username
+	DisplayUsername *string `json:"display_username,omitempty"`
+
+	// display username contains
+	DisplayUsernameContains *string `json:"display_username_contains,omitempty"`
+
+	// display username ends with
+	DisplayUsernameEndsWith *string `json:"display_username_ends_with,omitempty"`
+
+	// display username gt
+	DisplayUsernameGt *string `json:"display_username_gt,omitempty"`
+
+	// display username gte
+	DisplayUsernameGte *string `json:"display_username_gte,omitempty"`
+
+	// display username in
+	DisplayUsernameIn []string `json:"display_username_in,omitempty"`
+
+	// display username lt
+	DisplayUsernameLt *string `json:"display_username_lt,omitempty"`
+
+	// display username lte
+	DisplayUsernameLte *string `json:"display_username_lte,omitempty"`
+
+	// display username not
+	DisplayUsernameNot *string `json:"display_username_not,omitempty"`
+
+	// display username not contains
+	DisplayUsernameNotContains *string `json:"display_username_not_contains,omitempty"`
+
+	// display username not ends with
+	DisplayUsernameNotEndsWith *string `json:"display_username_not_ends_with,omitempty"`
+
+	// display username not in
+	DisplayUsernameNotIn []string `json:"display_username_not_in,omitempty"`
+
+	// display username not starts with
+	DisplayUsernameNotStartsWith *string `json:"display_username_not_starts_with,omitempty"`
+
+	// display username starts with
+	DisplayUsernameStartsWith *string `json:"display_username_starts_with,omitempty"`
+
 	// email address
 	EmailAddress *string `json:"email_address,omitempty"`
 

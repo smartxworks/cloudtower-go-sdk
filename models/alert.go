@@ -28,8 +28,7 @@ type Alert struct {
 	Cause *string `json:"cause"`
 
 	// cluster
-	// Required: true
-	Cluster *NestedCluster `json:"cluster"`
+	Cluster *NestedCluster `json:"cluster,omitempty"`
 
 	// create time
 	CreateTime *string `json:"create_time,omitempty"`
@@ -219,9 +218,8 @@ func (m *Alert) validateCause(formats strfmt.Registry) error {
 }
 
 func (m *Alert) validateCluster(formats strfmt.Registry) error {
-
-	if err := validate.Required("cluster", "body", m.Cluster); err != nil {
-		return err
+	if swag.IsZero(m.Cluster) { // not required
+		return nil
 	}
 
 	if m.Cluster != nil {

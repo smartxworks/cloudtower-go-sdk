@@ -30,11 +30,93 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateSecurityPolicy(params *CreateSecurityPolicyParams, opts ...ClientOption) (*CreateSecurityPolicyOK, error)
+
+	DeleteSecurityPolicy(params *DeleteSecurityPolicyParams, opts ...ClientOption) (*DeleteSecurityPolicyOK, error)
+
 	GetSecurityPolicies(params *GetSecurityPoliciesParams, opts ...ClientOption) (*GetSecurityPoliciesOK, error)
 
 	GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnectionParams, opts ...ClientOption) (*GetSecurityPoliciesConnectionOK, error)
 
+	UpdateSecurityPolicy(params *UpdateSecurityPolicyParams, opts ...ClientOption) (*UpdateSecurityPolicyOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateSecurityPolicy create security policy API
+*/
+func (a *Client) CreateSecurityPolicy(params *CreateSecurityPolicyParams, opts ...ClientOption) (*CreateSecurityPolicyOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateSecurityPolicyParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateSecurityPolicy",
+		Method:             "POST",
+		PathPattern:        "/create-security-policy",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateSecurityPolicyReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateSecurityPolicyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateSecurityPolicy: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteSecurityPolicy delete security policy API
+*/
+func (a *Client) DeleteSecurityPolicy(params *DeleteSecurityPolicyParams, opts ...ClientOption) (*DeleteSecurityPolicyOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteSecurityPolicyParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "DeleteSecurityPolicy",
+		Method:             "POST",
+		PathPattern:        "/delete-security-policy",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteSecurityPolicyReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteSecurityPolicyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for DeleteSecurityPolicy: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,6 +192,44 @@ func (a *Client) GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnec
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetSecurityPoliciesConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateSecurityPolicy update security policy API
+*/
+func (a *Client) UpdateSecurityPolicy(params *UpdateSecurityPolicyParams, opts ...ClientOption) (*UpdateSecurityPolicyOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSecurityPolicyParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateSecurityPolicy",
+		Method:             "POST",
+		PathPattern:        "/update-security-policy",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateSecurityPolicyReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSecurityPolicyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateSecurityPolicy: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

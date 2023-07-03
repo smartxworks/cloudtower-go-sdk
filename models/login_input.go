@@ -19,13 +19,18 @@ import (
 // swagger:model LoginInput
 type LoginInput struct {
 
+	// auth config id
+	AuthConfigID *string `json:"auth_config_id,omitempty"`
+
+	// mfa type
+	MfaType *MfaType `json:"mfa_type,omitempty"`
+
 	// password
 	// Required: true
 	Password *string `json:"password"`
 
 	// source
-	// Required: true
-	Source *UserSource `json:"source"`
+	Source *UserSource `json:"source,omitempty"`
 
 	// username
 	// Required: true
@@ -35,6 +40,10 @@ type LoginInput struct {
 // Validate validates this login input
 func (m *LoginInput) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateMfaType(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validatePassword(formats); err != nil {
 		res = append(res, err)
@@ -54,6 +63,25 @@ func (m *LoginInput) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *LoginInput) validateMfaType(formats strfmt.Registry) error {
+	if swag.IsZero(m.MfaType) { // not required
+		return nil
+	}
+
+	if m.MfaType != nil {
+		if err := m.MfaType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mfa_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mfa_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *LoginInput) validatePassword(formats strfmt.Registry) error {
 
 	if err := validate.Required("password", "body", m.Password); err != nil {
@@ -64,13 +92,8 @@ func (m *LoginInput) validatePassword(formats strfmt.Registry) error {
 }
 
 func (m *LoginInput) validateSource(formats strfmt.Registry) error {
-
-	if err := validate.Required("source", "body", m.Source); err != nil {
-		return err
-	}
-
-	if err := validate.Required("source", "body", m.Source); err != nil {
-		return err
+	if swag.IsZero(m.Source) { // not required
+		return nil
 	}
 
 	if m.Source != nil {
@@ -100,6 +123,10 @@ func (m *LoginInput) validateUsername(formats strfmt.Registry) error {
 func (m *LoginInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateMfaType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSource(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -107,6 +134,22 @@ func (m *LoginInput) ContextValidate(ctx context.Context, formats strfmt.Registr
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *LoginInput) contextValidateMfaType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MfaType != nil {
+		if err := m.MfaType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("mfa_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("mfa_type")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

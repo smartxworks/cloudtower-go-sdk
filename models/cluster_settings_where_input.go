@@ -37,6 +37,18 @@ type ClusterSettingsWhereInput struct {
 	// default ha not
 	DefaultHaNot *bool `json:"default_ha_not,omitempty"`
 
+	// default storage policy
+	DefaultStoragePolicy *VMVolumeElfStoragePolicyType `json:"default_storage_policy,omitempty"`
+
+	// default storage policy in
+	DefaultStoragePolicyIn []VMVolumeElfStoragePolicyType `json:"default_storage_policy_in,omitempty"`
+
+	// default storage policy not
+	DefaultStoragePolicyNot *VMVolumeElfStoragePolicyType `json:"default_storage_policy_not,omitempty"`
+
+	// default storage policy not in
+	DefaultStoragePolicyNotIn []VMVolumeElfStoragePolicyType `json:"default_storage_policy_not_in,omitempty"`
+
 	// enabled iscsi
 	EnabledIscsi *bool `json:"enabled_iscsi,omitempty"`
 
@@ -103,6 +115,22 @@ func (m *ClusterSettingsWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCluster(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDefaultStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDefaultStoragePolicyIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDefaultStoragePolicyNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDefaultStoragePolicyNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -209,6 +237,86 @@ func (m *ClusterSettingsWhereInput) validateCluster(formats strfmt.Registry) err
 	return nil
 }
 
+func (m *ClusterSettingsWhereInput) validateDefaultStoragePolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultStoragePolicy) { // not required
+		return nil
+	}
+
+	if m.DefaultStoragePolicy != nil {
+		if err := m.DefaultStoragePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ClusterSettingsWhereInput) validateDefaultStoragePolicyIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultStoragePolicyIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DefaultStoragePolicyIn); i++ {
+
+		if err := m.DefaultStoragePolicyIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ClusterSettingsWhereInput) validateDefaultStoragePolicyNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultStoragePolicyNot) { // not required
+		return nil
+	}
+
+	if m.DefaultStoragePolicyNot != nil {
+		if err := m.DefaultStoragePolicyNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ClusterSettingsWhereInput) validateDefaultStoragePolicyNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultStoragePolicyNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DefaultStoragePolicyNotIn); i++ {
+
+		if err := m.DefaultStoragePolicyNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this cluster settings where input based on the context it is used
 func (m *ClusterSettingsWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -226,6 +334,22 @@ func (m *ClusterSettingsWhereInput) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidateCluster(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDefaultStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDefaultStoragePolicyIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDefaultStoragePolicyNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDefaultStoragePolicyNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -306,6 +430,74 @@ func (m *ClusterSettingsWhereInput) contextValidateCluster(ctx context.Context, 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ClusterSettingsWhereInput) contextValidateDefaultStoragePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultStoragePolicy != nil {
+		if err := m.DefaultStoragePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ClusterSettingsWhereInput) contextValidateDefaultStoragePolicyIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DefaultStoragePolicyIn); i++ {
+
+		if err := m.DefaultStoragePolicyIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ClusterSettingsWhereInput) contextValidateDefaultStoragePolicyNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultStoragePolicyNot != nil {
+		if err := m.DefaultStoragePolicyNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ClusterSettingsWhereInput) contextValidateDefaultStoragePolicyNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DefaultStoragePolicyNotIn); i++ {
+
+		if err := m.DefaultStoragePolicyNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil

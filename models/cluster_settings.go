@@ -26,6 +26,9 @@ type ClusterSettings struct {
 	// default ha
 	DefaultHa *bool `json:"default_ha,omitempty"`
 
+	// default storage policy
+	DefaultStoragePolicy *VMVolumeElfStoragePolicyType `json:"default_storage_policy,omitempty"`
+
 	// enabled iscsi
 	EnabledIscsi *bool `json:"enabled_iscsi,omitempty"`
 
@@ -42,6 +45,10 @@ func (m *ClusterSettings) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCluster(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDefaultStoragePolicy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -71,6 +78,25 @@ func (m *ClusterSettings) validateCluster(formats strfmt.Registry) error {
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ClusterSettings) validateDefaultStoragePolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultStoragePolicy) { // not required
+		return nil
+	}
+
+	if m.DefaultStoragePolicy != nil {
+		if err := m.DefaultStoragePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy")
 			}
 			return err
 		}
@@ -115,6 +141,10 @@ func (m *ClusterSettings) ContextValidate(ctx context.Context, formats strfmt.Re
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDefaultStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVMRecycleBin(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -133,6 +163,22 @@ func (m *ClusterSettings) contextValidateCluster(ctx context.Context, formats st
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ClusterSettings) contextValidateDefaultStoragePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultStoragePolicy != nil {
+		if err := m.DefaultStoragePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("default_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("default_storage_policy")
 			}
 			return err
 		}

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -19,6 +20,9 @@ import (
 // swagger:model AlertNotifier
 type AlertNotifier struct {
 
+	// clusters
+	Clusters []*NestedCluster `json:"clusters,omitempty"`
+
 	// disabled
 	// Required: true
 	Disabled *bool `json:"disabled"`
@@ -30,12 +34,18 @@ type AlertNotifier struct {
 	// Required: true
 	EmailTos []string `json:"email_tos"`
 
+	// entity async status
+	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
 	// id
 	// Required: true
 	ID *string `json:"id"`
 
 	// language code
 	LanguageCode *NotifierLanguageCode `json:"language_code,omitempty"`
+
+	// name
+	Name *string `json:"name,omitempty"`
 
 	// notice severities
 	// Required: true
@@ -58,11 +68,19 @@ type AlertNotifier struct {
 func (m *AlertNotifier) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateClusters(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDisabled(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateEmailTos(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -88,6 +106,32 @@ func (m *AlertNotifier) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *AlertNotifier) validateClusters(formats strfmt.Registry) error {
+	if swag.IsZero(m.Clusters) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Clusters); i++ {
+		if swag.IsZero(m.Clusters[i]) { // not required
+			continue
+		}
+
+		if m.Clusters[i] != nil {
+			if err := m.Clusters[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("clusters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("clusters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *AlertNotifier) validateDisabled(formats strfmt.Registry) error {
 
 	if err := validate.Required("disabled", "body", m.Disabled); err != nil {
@@ -101,6 +145,25 @@ func (m *AlertNotifier) validateEmailTos(formats strfmt.Registry) error {
 
 	if err := validate.Required("email_tos", "body", m.EmailTos); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *AlertNotifier) validateEntityAsyncStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatus) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -166,6 +229,14 @@ func (m *AlertNotifier) validateSecurityMode(formats strfmt.Registry) error {
 func (m *AlertNotifier) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateClusters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLanguageCode(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -177,6 +248,42 @@ func (m *AlertNotifier) ContextValidate(ctx context.Context, formats strfmt.Regi
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AlertNotifier) contextValidateClusters(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Clusters); i++ {
+
+		if m.Clusters[i] != nil {
+			if err := m.Clusters[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("clusters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("clusters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertNotifier) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

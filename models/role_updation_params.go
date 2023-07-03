@@ -164,6 +164,7 @@ type RoleUpdationParamsData struct {
 	Actions []ROLEACTION `json:"actions,omitempty"`
 
 	// name
+	// Min Length: 1
 	Name *string `json:"name,omitempty"`
 }
 
@@ -172,6 +173,10 @@ func (m *RoleUpdationParamsData) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateActions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -197,6 +202,18 @@ func (m *RoleUpdationParamsData) validateActions(formats strfmt.Registry) error 
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *RoleUpdationParamsData) validateName(formats strfmt.Registry) error {
+	if swag.IsZero(m.Name) { // not required
+		return nil
+	}
+
+	if err := validate.MinLength("data"+"."+"name", "body", *m.Name, 1); err != nil {
+		return err
 	}
 
 	return nil
