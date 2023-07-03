@@ -1,5 +1,15 @@
 # RELEASE NOTE
 
+v2.9.0 release (tower version 3.0.0)
+## release 日期 2023-07-03
+
+- feature: [SecurityGroupApi] 支持创建，更新与删除安全组
+- feature: [SecurityPolicy] 支持创建，更新与删除自定义安全策略
+- feature: [OvfApi], [VmExportFileApi], [VmApi] 支持虚拟机的导入与导出
+- feature: [VlanApi] 支持 trunk vlan 的创建与编辑
+- feature: [UserApi] [Login] 支持使用 authn_id 登陆，旧 LDAP 登陆方式被废弃
+- optimize: 为 [Host], [Nic], [UsbDevice], [VmVolume], [VmVolumeSnapshot] 添加了 `EntityAsyncStatus` 已判断资源目前的状态
+
 ## release 日期 2022-05-04
 
 v2.8.0 release

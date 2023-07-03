@@ -79,6 +79,9 @@ type CreateElfImageParams struct {
 	// Size.
 	Size *string
 
+	// SizeUnit.
+	SizeUnit *string
+
 	// UploadTaskID.
 	UploadTaskID *string
 
@@ -212,6 +215,17 @@ func (o *CreateElfImageParams) SetSize(size *string) {
 	o.Size = size
 }
 
+// WithSizeUnit adds the sizeUnit to the create elf image params
+func (o *CreateElfImageParams) WithSizeUnit(sizeUnit *string) *CreateElfImageParams {
+	o.SetSizeUnit(sizeUnit)
+	return o
+}
+
+// SetSizeUnit adds the sizeUnit to the create elf image params
+func (o *CreateElfImageParams) SetSizeUnit(sizeUnit *string) {
+	o.SizeUnit = sizeUnit
+}
+
 // WithUploadTaskID adds the uploadTaskID to the create elf image params
 func (o *CreateElfImageParams) WithUploadTaskID(uploadTaskID *string) *CreateElfImageParams {
 	o.SetUploadTaskID(uploadTaskID)
@@ -298,6 +312,21 @@ func (o *CreateElfImageParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		fSize := frSize
 		if fSize != "" {
 			if err := r.SetFormParam("size", fSize); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SizeUnit != nil {
+
+		// form param size_unit
+		var frSizeUnit string
+		if o.SizeUnit != nil {
+			frSizeUnit = *o.SizeUnit
+		}
+		fSizeUnit := frSizeUnit
+		if fSizeUnit != "" {
+			if err := r.SetFormParam("size_unit", fSizeUnit); err != nil {
 				return err
 			}
 		}

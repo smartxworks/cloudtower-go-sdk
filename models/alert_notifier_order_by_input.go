@@ -42,6 +42,12 @@ const (
 	// AlertNotifierOrderByInputEmailFromDESC captures enum value "email_from_DESC"
 	AlertNotifierOrderByInputEmailFromDESC AlertNotifierOrderByInput = "email_from_DESC"
 
+	// AlertNotifierOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
+	AlertNotifierOrderByInputEntityAsyncStatusASC AlertNotifierOrderByInput = "entityAsyncStatus_ASC"
+
+	// AlertNotifierOrderByInputEntityAsyncStatusDESC captures enum value "entityAsyncStatus_DESC"
+	AlertNotifierOrderByInputEntityAsyncStatusDESC AlertNotifierOrderByInput = "entityAsyncStatus_DESC"
+
 	// AlertNotifierOrderByInputIDASC captures enum value "id_ASC"
 	AlertNotifierOrderByInputIDASC AlertNotifierOrderByInput = "id_ASC"
 
@@ -53,6 +59,12 @@ const (
 
 	// AlertNotifierOrderByInputLanguageCodeDESC captures enum value "language_code_DESC"
 	AlertNotifierOrderByInputLanguageCodeDESC AlertNotifierOrderByInput = "language_code_DESC"
+
+	// AlertNotifierOrderByInputNameASC captures enum value "name_ASC"
+	AlertNotifierOrderByInputNameASC AlertNotifierOrderByInput = "name_ASC"
+
+	// AlertNotifierOrderByInputNameDESC captures enum value "name_DESC"
+	AlertNotifierOrderByInputNameDESC AlertNotifierOrderByInput = "name_DESC"
 
 	// AlertNotifierOrderByInputSecurityModeASC captures enum value "security_mode_ASC"
 	AlertNotifierOrderByInputSecurityModeASC AlertNotifierOrderByInput = "security_mode_ASC"
@@ -84,7 +96,7 @@ var alertNotifierOrderByInputEnum []interface{}
 
 func init() {
 	var res []AlertNotifierOrderByInput
-	if err := json.Unmarshal([]byte(`["disabled_ASC","disabled_DESC","email_from_ASC","email_from_DESC","id_ASC","id_DESC","language_code_ASC","language_code_DESC","security_mode_ASC","security_mode_DESC","smtp_server_host_ASC","smtp_server_host_DESC","smtp_server_port_ASC","smtp_server_port_DESC","username_ASC","username_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["disabled_ASC","disabled_DESC","email_from_ASC","email_from_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","language_code_ASC","language_code_DESC","name_ASC","name_DESC","security_mode_ASC","security_mode_DESC","smtp_server_host_ASC","smtp_server_host_DESC","smtp_server_port_ASC","smtp_server_port_DESC","username_ASC","username_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

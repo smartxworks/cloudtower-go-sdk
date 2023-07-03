@@ -36,6 +36,12 @@ const (
 	// ClusterSettingsOrderByInputDefaultHaDESC captures enum value "default_ha_DESC"
 	ClusterSettingsOrderByInputDefaultHaDESC ClusterSettingsOrderByInput = "default_ha_DESC"
 
+	// ClusterSettingsOrderByInputDefaultStoragePolicyASC captures enum value "default_storage_policy_ASC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyASC ClusterSettingsOrderByInput = "default_storage_policy_ASC"
+
+	// ClusterSettingsOrderByInputDefaultStoragePolicyDESC captures enum value "default_storage_policy_DESC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyDESC ClusterSettingsOrderByInput = "default_storage_policy_DESC"
+
 	// ClusterSettingsOrderByInputEnabledIscsiASC captures enum value "enabled_iscsi_ASC"
 	ClusterSettingsOrderByInputEnabledIscsiASC ClusterSettingsOrderByInput = "enabled_iscsi_ASC"
 
@@ -60,7 +66,7 @@ var clusterSettingsOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterSettingsOrderByInput
-	if err := json.Unmarshal([]byte(`["default_ha_ASC","default_ha_DESC","enabled_iscsi_ASC","enabled_iscsi_DESC","id_ASC","id_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["default_ha_ASC","default_ha_DESC","default_storage_policy_ASC","default_storage_policy_DESC","enabled_iscsi_ASC","enabled_iscsi_DESC","id_ASC","id_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

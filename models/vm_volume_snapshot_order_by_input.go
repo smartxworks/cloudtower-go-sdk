@@ -42,6 +42,12 @@ const (
 	// VMVolumeSnapshotOrderByInputDescriptionDESC captures enum value "description_DESC"
 	VMVolumeSnapshotOrderByInputDescriptionDESC VMVolumeSnapshotOrderByInput = "description_DESC"
 
+	// VMVolumeSnapshotOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
+	VMVolumeSnapshotOrderByInputEntityAsyncStatusASC VMVolumeSnapshotOrderByInput = "entityAsyncStatus_ASC"
+
+	// VMVolumeSnapshotOrderByInputEntityAsyncStatusDESC captures enum value "entityAsyncStatus_DESC"
+	VMVolumeSnapshotOrderByInputEntityAsyncStatusDESC VMVolumeSnapshotOrderByInput = "entityAsyncStatus_DESC"
+
 	// VMVolumeSnapshotOrderByInputIDASC captures enum value "id_ASC"
 	VMVolumeSnapshotOrderByInputIDASC VMVolumeSnapshotOrderByInput = "id_ASC"
 
@@ -102,7 +108,7 @@ var vmVolumeSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMVolumeSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["createAt_ASC","createAt_DESC","description_ASC","description_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","shared_size_ASC","shared_size_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC","zbs_snapshot_uuid_ASC","zbs_snapshot_uuid_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createAt_ASC","createAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","shared_size_ASC","shared_size_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC","zbs_snapshot_uuid_ASC","zbs_snapshot_uuid_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

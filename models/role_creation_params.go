@@ -26,6 +26,7 @@ type RoleCreationParams struct {
 
 	// name
 	// Required: true
+	// Min Length: 1
 	Name *string `json:"name"`
 }
 
@@ -72,6 +73,10 @@ func (m *RoleCreationParams) validateActions(formats strfmt.Registry) error {
 func (m *RoleCreationParams) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
 		return err
 	}
 

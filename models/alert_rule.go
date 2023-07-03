@@ -21,8 +21,7 @@ import (
 type AlertRule struct {
 
 	// cluster
-	// Required: true
-	Cluster *NestedCluster `json:"cluster"`
+	Cluster *NestedCluster `json:"cluster,omitempty"`
 
 	// customized
 	// Required: true
@@ -88,9 +87,8 @@ func (m *AlertRule) Validate(formats strfmt.Registry) error {
 }
 
 func (m *AlertRule) validateCluster(formats strfmt.Registry) error {
-
-	if err := validate.Required("cluster", "body", m.Cluster); err != nil {
-		return err
+	if swag.IsZero(m.Cluster) { // not required
+		return nil
 	}
 
 	if m.Cluster != nil {

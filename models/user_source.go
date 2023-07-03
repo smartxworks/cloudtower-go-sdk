@@ -30,6 +30,9 @@ func (m UserSource) Pointer() *UserSource {
 
 const (
 
+	// UserSourceAUTHN captures enum value "AUTHN"
+	UserSourceAUTHN UserSource = "AUTHN"
+
 	// UserSourceLDAP captures enum value "LDAP"
 	UserSourceLDAP UserSource = "LDAP"
 
@@ -42,7 +45,7 @@ var userSourceEnum []interface{}
 
 func init() {
 	var res []UserSource
-	if err := json.Unmarshal([]byte(`["LDAP","LOCAL"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["AUTHN","LDAP","LOCAL"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

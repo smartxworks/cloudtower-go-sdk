@@ -33,6 +33,9 @@ const (
 	// VMUsageADVANCEDMONITORING captures enum value "ADVANCED_MONITORING"
 	VMUsageADVANCEDMONITORING VMUsage = "ADVANCED_MONITORING"
 
+	// VMUsageAGENTMESHNODE captures enum value "AGENT_MESH_NODE"
+	VMUsageAGENTMESHNODE VMUsage = "AGENT_MESH_NODE"
+
 	// VMUsageBACKUPCONTROLLER captures enum value "BACKUP_CONTROLLER"
 	VMUsageBACKUPCONTROLLER VMUsage = "BACKUP_CONTROLLER"
 
@@ -57,7 +60,7 @@ var vmUsageEnum []interface{}
 
 func init() {
 	var res []VMUsage
-	if err := json.Unmarshal([]byte(`["ADVANCED_MONITORING","BACKUP_CONTROLLER","BUNDLE_APPLICATION","CLOUDTOWER","EVEROUTE_CONTROLLER","REGISTRY","SKS_MANAGEMENT"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ADVANCED_MONITORING","AGENT_MESH_NODE","BACKUP_CONTROLLER","BUNDLE_APPLICATION","CLOUDTOWER","EVEROUTE_CONTROLLER","REGISTRY","SKS_MANAGEMENT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
