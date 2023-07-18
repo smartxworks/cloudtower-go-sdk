@@ -451,16 +451,16 @@ func createVmFromTemplate(
 	templateId string,
 	clusterId string,
 	name string) (*models.VM, error) {
-	createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
-	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
+	createVmFromTemplateParams := vm.NewCreateVMFromContentLibraryTemplateParams()
+	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromContentLibraryTemplateParams{
 		{
-			TemplateID: pointy.String(templateId),
-			ClusterID:  pointy.String(clusterId),
-			Name:       pointy.String(name),
+			TemplateID: &templateId,
+			ClusterID:  &clusterId,
+			Name:       &name,
 			IsFullCopy: pointy.Bool(false),
 		},
 	}
-	createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
+	createRes, err := client.VM.CreateVMFromContentLibraryTemplate(createVmFromTemplateParams)
 	if err != nil {
 		return nil, err
 	}
@@ -518,12 +518,12 @@ func createVmFromTemplate(
 	templateId string,
 	clusterId string,
 	name string) (*models.VM, error) {
-	createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
-	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
+	createVmFromTemplateParams := vm.NewCreateVMFromContentLibraryTemplateParams()
+	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromContentLibraryTemplateParams{
 		{
-			TemplateID: pointy.String(templateId),
-			ClusterID:  pointy.String(clusterId),
-			Name:       pointy.String(name),
+			TemplateID: &templateId,
+			ClusterID:  &clusterId,
+			Name:       &name,
 			DiskOperate: &models.VMDiskOperate{
 				RemoveDisks: &models.VMDiskOperateRemoveDisks{
 					DiskIndex: []int32{2, 3},
@@ -537,9 +537,9 @@ func createVmFromTemplate(
 				NewDisks: &models.VMDiskParams{
 					MountCdRoms: []*models.VMCdRomParams{
 						{
-							Index:      pointy.Int32(2),
-							Boot:       pointy.Int32(0),
-							ElfImageID: pointy.String("elfImageId"),
+							Index:                 pointy.Int32(2),
+							Boot:                  pointy.Int32(0),
+							ContentLibraryImageID: pointy.String("contentLibraryImageId"),
 						},
 					},
 					MountDisks: []*models.MountDisksParams{
@@ -566,7 +566,7 @@ func createVmFromTemplate(
 			IsFullCopy: pointy.Bool(false),
 		},
 	}
-	createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
+	createRes, err := client.VM.CreateVMFromContentLibraryTemplate(createVmFromTemplateParams)
 	if err != nil {
 		return nil, err
 	}
@@ -612,12 +612,24 @@ func main() {
 	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
-	createVmFromTemplateParams := vm.NewCreateVMFromTemplateParams()
-	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromTemplateParams{
+	createdVm, err := createVmFromTemplate(client, "templateId", "clusterId", "vm_name")
+	if err != nil {
+		panic(err.Error())
+	}
+  // handle created vm
+}
+
+func createVmFromTemplate(
+	client *apiclient.Cloudtower,
+	templateId string,
+	clusterId string,
+	name string) (*models.VM, error) {
+	createVmFromTemplateParams := vm.NewCreateVMFromContentLibraryTemplateParams()
+	createVmFromTemplateParams.RequestBody = []*models.VMCreateVMFromContentLibraryTemplateParams{
 		{
-			TemplateID: pointy.String("templateId"),
-			ClusterID:  pointy.String("clusterId"),
-			Name:       pointy.String("vm_name"),
+			TemplateID: &templateId,
+			ClusterID:  &clusterId,
+			Name:       &name,
 			VMNics: []*models.VMNicParams{
 				{
 					ConnectVlanID: pointy.String("vlanId2"),
@@ -628,18 +640,7 @@ func main() {
 			IsFullCopy: pointy.Bool(false),
 		},
 	}
-	createdVm, err := createVmFromTemplate(client, createVmFromTemplateParams)
-	if err != nil {
-		panic(err.Error())
-	}
-  // handle created vm
-}
-
-func createVmFromTemplate(
-	client *apiclient.Cloudtower,
-	createVmFromTemplateParams *vm.CreateVMFromTemplateParams) (*models.VM, error) {
-
-	createRes, err := client.VM.CreateVMFromTemplate(createVmFromTemplateParams)
+	createRes, err := client.VM.CreateVMFromContentLibraryTemplate(createVmFromTemplateParams)
 	if err != nil {
 		return nil, err
 	}
