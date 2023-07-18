@@ -132,7 +132,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 				dispose()
 			} else if convertRes != nil {
 				deleteParams := vm.NewDeleteVMParams()
-				deleteParams.RequestBody = &models.VMOperateParams{
+				deleteParams.RequestBody = &models.VMDeleteParams{
 					Where: &models.VMWhereInput{
 						ID: convertRes.Payload[0].Data.ID,
 					},
@@ -170,7 +170,7 @@ var _ = Describe("Vm template api", Ordered, func() {
 				go func() {
 					defer wg.Done()
 					deleteParams := vm.NewDeleteVMParams()
-					deleteParams.RequestBody = &models.VMOperateParams{
+					deleteParams.RequestBody = &models.VMDeleteParams{
 						Where: &models.VMWhereInput{
 							ID: createRes.Payload[0].Data.ID,
 						},

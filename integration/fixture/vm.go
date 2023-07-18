@@ -24,7 +24,7 @@ func CreateVm(client *apiclient.Cloudtower, clusterId *string, vlanId *string, i
 			return
 		}
 		deleteParams := vm.NewDeleteVMParams()
-		deleteParams.RequestBody = &models.VMOperateParams{
+		deleteParams.RequestBody = &models.VMDeleteParams{
 			Where: &models.VMWhereInput{
 				ID: res.Payload[0].Data.ID,
 			},
