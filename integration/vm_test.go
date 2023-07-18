@@ -94,7 +94,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		err = taskutil.WaitTask(context.TODO(), Client, updatedRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		deleteParams := vm.NewDeleteVMParams()
-		deleteParams.RequestBody = &models.VMOperateParams{
+		deleteParams.RequestBody = &models.VMDeleteParams{
 			Where: &models.VMWhereInput{
 				ID: _vm.Data.ID,
 			},
@@ -130,7 +130,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		go func() {
 			defer wg.Done()
 			deleteParams := vm.NewDeleteVMParams()
-			deleteParams.RequestBody = &models.VMOperateParams{
+			deleteParams.RequestBody = &models.VMDeleteParams{
 				Where: &models.VMWhereInput{
 					ID: res.Payload[0].Data.ID,
 				},
@@ -171,7 +171,7 @@ var _ = Describe("Vm Api", Ordered, func() {
 		err = taskutil.WaitTask(context.TODO(), Client, res.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		deleteParams := vm.NewDeleteVMParams()
-		deleteParams.RequestBody = &models.VMOperateParams{
+		deleteParams.RequestBody = &models.VMDeleteParams{
 			Where: &models.VMWhereInput{
 				ID: res.Payload[0].Data.ID,
 			},

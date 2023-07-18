@@ -104,7 +104,7 @@ var _ = Describe("Vm snapshot api", Ordered, func() {
 		err = taskutil.WaitTask(context.TODO(), Client, rebuildRes.Payload[0].TaskID, 5*time.Minute)
 		Expect(err).To(BeNil())
 		deleteParams := vm.NewDeleteVMParams()
-		deleteParams.RequestBody = &models.VMOperateParams{
+		deleteParams.RequestBody = &models.VMDeleteParams{
 			Where: &models.VMWhereInput{
 				ID: rebuildRes.Payload[0].Data.ID,
 			},
