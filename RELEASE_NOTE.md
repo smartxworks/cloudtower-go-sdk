@@ -1,7 +1,14 @@
 # RELEASE NOTE
 
-v2.9.0 release (tower version 3.0.0)
+## release 日期 2023-07-18
+
+v2.9.1 release (tower version 3.0.0)
+
+- optimize: optimize: 优化 NewWithUserConfig 登陆，当 UserConfig.Source 为 UserSourceLDAP 时，自动切换成当前的 LDAP 登录源进行登陆，减少迁移成本。
+
 ## release 日期 2023-07-03
+
+v2.9.0 release (tower version 3.0.0)
 
 - feature: [SecurityGroupApi] 支持创建，更新与删除安全组
 - feature: [SecurityPolicy] 支持创建，更新与删除自定义安全策略
