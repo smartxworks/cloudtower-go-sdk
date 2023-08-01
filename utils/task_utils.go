@@ -47,7 +47,7 @@ func WaitTask(ctx context.Context, client *apiclient.Cloudtower, id *string, int
 			}
 			if len(tasks.GetPayload()) != 0 && checkTaskFinished(tasks.GetPayload()[0]) >= 0 {
 				if *tasks.Payload[0].Status == models.TaskStatusFAILED {
-					return fmt.Errorf("task %s failed", *id)
+					return fmt.Errorf("task %s failed: %s", *id, *tasks.Payload[0].ErrorMessage)
 				}
 				return nil
 			}
@@ -60,7 +60,7 @@ func WaitTasks(ctx context.Context, client *apiclient.Cloudtower, ids []string, 
 	if interval < 1*time.Second {
 		interval = 1 * time.Second
 	}
-	errorIds := ""
+	errorMsgs := ""
 	queryIds := ids
 	doneMap := make(map[string]bool)
 	for _, id := range ids {
@@ -85,12 +85,7 @@ func WaitTasks(ctx context.Context, client *apiclient.Cloudtower, ids []string, 
 			for _, t := range tasks {
 				switch checkTaskFinished(t) {
 				case 1:
-					if len(errorIds) > 0 {
-						errorIds += ", "
-						errorIds += *t.ID
-					} else {
-						errorIds += *t.ID
-					}
+					errorMsgs += fmt.Sprintf("\n\t%s: %s", *t.ID, *t.ErrorMessage)
 					fallthrough
 				case 0:
 					doneMap[*t.ID] = true
@@ -102,8 +97,8 @@ func WaitTasks(ctx context.Context, client *apiclient.Cloudtower, ids []string, 
 			}).([]string)
 
 			if len(queryIds) == 0 {
-				if len(errorIds) > 0 {
-					return fmt.Errorf("tasks [%s] failed", errorIds)
+				if len(errorMsgs) > 0 {
+					return fmt.Errorf("tasks failed:%s", errorMsgs)
 				}
 				return nil
 			}
