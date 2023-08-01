@@ -30,13 +30,95 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateAlertNotifier(params *CreateAlertNotifierParams, opts ...ClientOption) (*CreateAlertNotifierOK, error)
+
+	DeleteAlertNotifier(params *DeleteAlertNotifierParams, opts ...ClientOption) (*DeleteAlertNotifierOK, error)
+
 	GetAlertNotifiers(params *GetAlertNotifiersParams, opts ...ClientOption) (*GetAlertNotifiersOK, error)
 
 	GetAlertNotifiersConnection(params *GetAlertNotifiersConnectionParams, opts ...ClientOption) (*GetAlertNotifiersConnectionOK, error)
 
 	UpdateAlertNotifier(params *UpdateAlertNotifierParams, opts ...ClientOption) (*UpdateAlertNotifierOK, error)
 
+	UpdateManyAlertNotifiers(params *UpdateManyAlertNotifiersParams, opts ...ClientOption) (*UpdateManyAlertNotifiersOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateAlertNotifier create alert notifier API
+*/
+func (a *Client) CreateAlertNotifier(params *CreateAlertNotifierParams, opts ...ClientOption) (*CreateAlertNotifierOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateAlertNotifierParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateAlertNotifier",
+		Method:             "POST",
+		PathPattern:        "/create-alert-notifier",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateAlertNotifierReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateAlertNotifierOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateAlertNotifier: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteAlertNotifier delete alert notifier API
+*/
+func (a *Client) DeleteAlertNotifier(params *DeleteAlertNotifierParams, opts ...ClientOption) (*DeleteAlertNotifierOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteAlertNotifierParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "DeleteAlertNotifier",
+		Method:             "POST",
+		PathPattern:        "/delete-alert-notifier",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteAlertNotifierReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteAlertNotifierOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for DeleteAlertNotifier: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -150,6 +232,44 @@ func (a *Client) UpdateAlertNotifier(params *UpdateAlertNotifierParams, opts ...
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateAlertNotifier: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateManyAlertNotifiers update many alert notifiers API
+*/
+func (a *Client) UpdateManyAlertNotifiers(params *UpdateManyAlertNotifiersParams, opts ...ClientOption) (*UpdateManyAlertNotifiersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateManyAlertNotifiersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateManyAlertNotifiers",
+		Method:             "POST",
+		PathPattern:        "/update-many-alert-notifiers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateManyAlertNotifiersReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateManyAlertNotifiersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateManyAlertNotifiers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

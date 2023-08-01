@@ -30,8 +30,14 @@ func (m NetworkPolicyRulePortProtocol) Pointer() *NetworkPolicyRulePortProtocol 
 
 const (
 
+	// NetworkPolicyRulePortProtocolALG captures enum value "ALG"
+	NetworkPolicyRulePortProtocolALG NetworkPolicyRulePortProtocol = "ALG"
+
 	// NetworkPolicyRulePortProtocolICMP captures enum value "ICMP"
 	NetworkPolicyRulePortProtocolICMP NetworkPolicyRulePortProtocol = "ICMP"
+
+	// NetworkPolicyRulePortProtocolIPIP captures enum value "IPIP"
+	NetworkPolicyRulePortProtocolIPIP NetworkPolicyRulePortProtocol = "IPIP"
 
 	// NetworkPolicyRulePortProtocolTCP captures enum value "TCP"
 	NetworkPolicyRulePortProtocolTCP NetworkPolicyRulePortProtocol = "TCP"
@@ -45,7 +51,7 @@ var networkPolicyRulePortProtocolEnum []interface{}
 
 func init() {
 	var res []NetworkPolicyRulePortProtocol
-	if err := json.Unmarshal([]byte(`["ICMP","TCP","UDP"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ALG","ICMP","IPIP","TCP","UDP"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

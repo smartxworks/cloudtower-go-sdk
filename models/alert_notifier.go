@@ -54,6 +54,9 @@ type AlertNotifier struct {
 	// security mode
 	SecurityMode *NotifierSecurityMode `json:"security_mode,omitempty"`
 
+	// smtp server config
+	SMTPServerConfig *NestedSMTPServer `json:"smtp_server_config,omitempty"`
+
 	// smtp server host
 	SMTPServerHost *string `json:"smtp_server_host,omitempty"`
 
@@ -97,6 +100,10 @@ func (m *AlertNotifier) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSecurityMode(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSMTPServerConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -225,6 +232,25 @@ func (m *AlertNotifier) validateSecurityMode(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *AlertNotifier) validateSMTPServerConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.SMTPServerConfig) { // not required
+		return nil
+	}
+
+	if m.SMTPServerConfig != nil {
+		if err := m.SMTPServerConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("smtp_server_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("smtp_server_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this alert notifier based on the context it is used
 func (m *AlertNotifier) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -242,6 +268,10 @@ func (m *AlertNotifier) ContextValidate(ctx context.Context, formats strfmt.Regi
 	}
 
 	if err := m.contextValidateSecurityMode(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSMTPServerConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -311,6 +341,22 @@ func (m *AlertNotifier) contextValidateSecurityMode(ctx context.Context, formats
 				return ve.ValidateName("security_mode")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("security_mode")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertNotifier) contextValidateSMTPServerConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SMTPServerConfig != nil {
+		if err := m.SMTPServerConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("smtp_server_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("smtp_server_config")
 			}
 			return err
 		}

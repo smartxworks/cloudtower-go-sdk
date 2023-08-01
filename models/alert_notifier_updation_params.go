@@ -21,6 +21,9 @@ import (
 // swagger:model AlertNotifierUpdationParams
 type AlertNotifierUpdationParams struct {
 
+	// clusters
+	Clusters *ClusterWhereInput `json:"clusters,omitempty"`
+
 	// disabled
 	Disabled *bool `json:"disabled,omitempty"`
 
@@ -30,16 +33,29 @@ type AlertNotifierUpdationParams struct {
 	// email tos
 	EmailTos []string `json:"email_tos,omitempty"`
 
+	// id
+	ID *string `json:"id,omitempty"`
+
 	// language code
 	LanguageCode *NotifierLanguageCode `json:"language_code,omitempty"`
 
+	// name
+	Name *string `json:"name,omitempty"`
+
 	// notice severities
 	NoticeSeverities []string `json:"notice_severities,omitempty"`
+
+	// smtp server id
+	SMTPServerID *string `json:"smtp_server_id,omitempty"`
 }
 
 // Validate validates this alert notifier updation params
 func (m *AlertNotifierUpdationParams) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateClusters(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateLanguageCode(formats); err != nil {
 		res = append(res, err)
@@ -52,6 +68,25 @@ func (m *AlertNotifierUpdationParams) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AlertNotifierUpdationParams) validateClusters(formats strfmt.Registry) error {
+	if swag.IsZero(m.Clusters) { // not required
+		return nil
+	}
+
+	if m.Clusters != nil {
+		if err := m.Clusters.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusters")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusters")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -114,6 +149,10 @@ func (m *AlertNotifierUpdationParams) validateNoticeSeverities(formats strfmt.Re
 func (m *AlertNotifierUpdationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateClusters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLanguageCode(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -121,6 +160,22 @@ func (m *AlertNotifierUpdationParams) ContextValidate(ctx context.Context, forma
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AlertNotifierUpdationParams) contextValidateClusters(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Clusters != nil {
+		if err := m.Clusters.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusters")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusters")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

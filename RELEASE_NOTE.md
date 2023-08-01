@@ -1,5 +1,12 @@
 # RELEASE NOTE
 
+## release 日期 2023-08-01
+
+v2.10.0 release (tower version 3.1.0)
+
+- feature: [AlertNotifierApi] 支持更新，删除以及创建新的报警通知配置
+- optimize: [utils] 优化了 WaitTask 以及 WaitTasks，在任务失败的时候会返回失败任务的原因
+
 ## release 日期 2023-07-18
 
 v2.9.1 release (tower version 3.0.0)
