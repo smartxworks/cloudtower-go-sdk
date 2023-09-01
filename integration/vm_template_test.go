@@ -14,7 +14,7 @@ import (
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	. "github.com/openlyinc/pointy"
+	. "go.openly.dev/pointy"
 )
 
 var _ = Describe("Vm template api", Ordered, func() {

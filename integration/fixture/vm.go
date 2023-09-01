@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	. "github.com/openlyinc/pointy"
+	. "go.openly.dev/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_folder"
