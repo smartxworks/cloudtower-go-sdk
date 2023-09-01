@@ -59,8 +59,7 @@ type EverouteCluster struct {
 	Phase *EverouteClusterPhase `json:"phase,omitempty"`
 
 	// status
-	// Required: true
-	Status *NestedEverouteClusterStatus `json:"status"`
+	Status *NestedEverouteClusterStatus `json:"status,omitempty"`
 
 	// version
 	// Required: true
@@ -324,9 +323,8 @@ func (m *EverouteCluster) validatePhase(formats strfmt.Registry) error {
 }
 
 func (m *EverouteCluster) validateStatus(formats strfmt.Registry) error {
-
-	if err := validate.Required("status", "body", m.Status); err != nil {
-		return err
+	if swag.IsZero(m.Status) { // not required
+		return nil
 	}
 
 	if m.Status != nil {

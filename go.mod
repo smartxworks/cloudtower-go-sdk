@@ -11,10 +11,10 @@ require (
 	github.com/go-openapi/strfmt v0.21.7
 	github.com/go-openapi/swag v0.22.4
 	github.com/go-openapi/validate v0.22.1
-	github.com/onsi/ginkgo/v2 v2.11.0
+	github.com/onsi/ginkgo/v2 v2.12.0
 	github.com/onsi/gomega v1.27.10
+	github.com/openlyinc/pointy v1.2.0
 	github.com/thoas/go-funk v0.9.3
-	go.mongodb.org/mongo-driver v1.12.0 // indirect
-	go.openly.dev/pointy v1.3.0
-	go.opentelemetry.io/otel v1.16.0 // indirect
+	go.mongodb.org/mongo-driver v1.12.1 // indirect
+	go.opentelemetry.io/otel v1.17.0 // indirect
 )

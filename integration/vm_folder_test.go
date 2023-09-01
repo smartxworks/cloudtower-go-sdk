@@ -8,7 +8,7 @@ import (
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	. "go.openly.dev/pointy"
+	. "github.com/openlyinc/pointy"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_folder"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/integration/fixture"

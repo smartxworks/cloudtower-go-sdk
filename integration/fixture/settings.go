@@ -3,7 +3,7 @@ package fixture
 import (
 	"sync"
 
-	. "go.openly.dev/pointy"
+	. "github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster_settings"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/global_settings"

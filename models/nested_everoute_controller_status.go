@@ -20,16 +20,14 @@ import (
 type NestedEverouteControllerStatus struct {
 
 	// ip addr
-	// Required: true
-	IPAddr *string `json:"ipAddr"`
+	IPAddr *string `json:"ipAddr,omitempty"`
 
 	// is health
 	// Required: true
 	IsHealth *bool `json:"isHealth"`
 
 	// message
-	// Required: true
-	Message *string `json:"message"`
+	Message *string `json:"message,omitempty"`
 
 	// metrics
 	Metrics *NestedEverouteClusterVMMetrics `json:"metrics,omitempty"`
@@ -38,30 +36,20 @@ type NestedEverouteControllerStatus struct {
 	Phase *EverouteClusterPhase `json:"phase,omitempty"`
 
 	// reason
-	// Required: true
-	Reason *string `json:"reason"`
+	Reason *string `json:"reason,omitempty"`
 
 	// vm
 	VM *NestedVM `json:"vm,omitempty"`
 
 	// vm ID
-	// Required: true
-	VMID *string `json:"vmID"`
+	VMID *string `json:"vmID,omitempty"`
 }
 
 // Validate validates this nested everoute controller status
 func (m *NestedEverouteControllerStatus) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateIPAddr(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateIsHealth(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateMessage(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -73,15 +61,7 @@ func (m *NestedEverouteControllerStatus) Validate(formats strfmt.Registry) error
 		res = append(res, err)
 	}
 
-	if err := m.validateReason(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateVM(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVMID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -91,27 +71,9 @@ func (m *NestedEverouteControllerStatus) Validate(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *NestedEverouteControllerStatus) validateIPAddr(formats strfmt.Registry) error {
-
-	if err := validate.Required("ipAddr", "body", m.IPAddr); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *NestedEverouteControllerStatus) validateIsHealth(formats strfmt.Registry) error {
 
 	if err := validate.Required("isHealth", "body", m.IsHealth); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteControllerStatus) validateMessage(formats strfmt.Registry) error {
-
-	if err := validate.Required("message", "body", m.Message); err != nil {
 		return err
 	}
 
@@ -156,15 +118,6 @@ func (m *NestedEverouteControllerStatus) validatePhase(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *NestedEverouteControllerStatus) validateReason(formats strfmt.Registry) error {
-
-	if err := validate.Required("reason", "body", m.Reason); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *NestedEverouteControllerStatus) validateVM(formats strfmt.Registry) error {
 	if swag.IsZero(m.VM) { // not required
 		return nil
@@ -179,15 +132,6 @@ func (m *NestedEverouteControllerStatus) validateVM(formats strfmt.Registry) err
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteControllerStatus) validateVMID(formats strfmt.Registry) error {
-
-	if err := validate.Required("vmID", "body", m.VMID); err != nil {
-		return err
 	}
 
 	return nil

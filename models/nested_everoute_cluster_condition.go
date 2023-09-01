@@ -20,8 +20,7 @@ import (
 type NestedEverouteClusterCondition struct {
 
 	// last probe time
-	// Required: true
-	LastProbeTime *string `json:"lastProbeTime"`
+	LastProbeTime *string `json:"lastProbeTime,omitempty"`
 
 	// type
 	// Required: true
@@ -32,10 +31,6 @@ type NestedEverouteClusterCondition struct {
 func (m *NestedEverouteClusterCondition) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateLastProbeTime(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -43,15 +38,6 @@ func (m *NestedEverouteClusterCondition) Validate(formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *NestedEverouteClusterCondition) validateLastProbeTime(formats strfmt.Registry) error {
-
-	if err := validate.Required("lastProbeTime", "body", m.LastProbeTime); err != nil {
-		return err
-	}
-
 	return nil
 }
 

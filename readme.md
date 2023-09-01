@@ -13,7 +13,7 @@ go get github.com/smartxworks/cloudtower-go-sdk/v2
 
 ## 使用
 
-> 样例中使用了两个工具库 [pointy](https://go.openly.dev/pointy) 与 [go-funk](https://github.com/thoas/go-funk)，pointy 用于快速创建一个原始类型的指针，go-funk 则提供了一些工具方法，例如 `Map`、`Filter`、`Reduce` 等。
+> 样例中使用了两个工具库 [pointy](https://github.com/openlyinc/pointy) 与 [go-funk](https://github.com/thoas/go-funk)，pointy 用于快速创建一个原始类型的指针，go-funk 则提供了一些工具方法，例如 `Map`、`Filter`、`Reduce` 等。
 
 ### 创建实例
 
@@ -245,7 +245,7 @@ func getAllVms(
 package main
 
 import (
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -289,7 +289,7 @@ func getVmsWithPagination(
 package main
 
 import (
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -332,7 +332,7 @@ func getAllRunningVms(
 package main
 
 import (
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -376,7 +376,7 @@ func getVmsMatchStr(
 package main
 
 import (
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -424,7 +424,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -491,7 +491,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -597,7 +597,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -673,7 +673,7 @@ package main
 import (
   	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -758,7 +758,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -841,7 +841,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -925,7 +925,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1012,7 +1012,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1101,7 +1101,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1174,7 +1174,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1245,7 +1245,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1312,7 +1312,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1389,7 +1389,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1463,7 +1463,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1530,7 +1530,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1601,7 +1601,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1668,7 +1668,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1736,7 +1736,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1803,7 +1803,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1870,7 +1870,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -1935,7 +1935,7 @@ import (
 	"time"
 	"context"
 
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2010,7 +2010,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2079,7 +2079,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2144,7 +2144,7 @@ import (
 	"time"
 	"context"
 
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2219,7 +2219,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2362,7 +2362,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2501,7 +2501,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2643,7 +2643,7 @@ import (
 	"time"
 	"context"
 
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2786,7 +2786,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2930,7 +2930,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -2996,7 +2996,7 @@ import (
 	"time"
 	"context"
 
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -3061,7 +3061,7 @@ package main
 import (
 	"time"
 	"context"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
@@ -3125,7 +3125,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/utils"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"
@@ -3226,7 +3226,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/host"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
-	"go.openly.dev/pointy"
+	"github.com/openlyinc/pointy"
 	"github.com/thoas/go-funk"
 
 	httptransport "github.com/go-openapi/runtime/client"

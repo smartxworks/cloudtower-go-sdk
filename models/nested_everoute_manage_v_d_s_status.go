@@ -20,19 +20,16 @@ import (
 type NestedEverouteManageVDSStatus struct {
 
 	// message
-	// Required: true
-	Message *string `json:"message"`
+	Message *string `json:"message,omitempty"`
 
 	// phase
 	Phase *EverouteClusterPhase `json:"phase,omitempty"`
 
 	// reason
-	// Required: true
-	Reason *string `json:"reason"`
+	Reason *string `json:"reason,omitempty"`
 
 	// retry count
-	// Required: true
-	RetryCount *int32 `json:"retryCount"`
+	RetryCount *int32 `json:"retryCount,omitempty"`
 
 	// vds
 	Vds *NestedVds `json:"vds,omitempty"`
@@ -46,19 +43,7 @@ type NestedEverouteManageVDSStatus struct {
 func (m *NestedEverouteManageVDSStatus) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateMessage(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validatePhase(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateReason(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRetryCount(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -76,15 +61,6 @@ func (m *NestedEverouteManageVDSStatus) Validate(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *NestedEverouteManageVDSStatus) validateMessage(formats strfmt.Registry) error {
-
-	if err := validate.Required("message", "body", m.Message); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *NestedEverouteManageVDSStatus) validatePhase(formats strfmt.Registry) error {
 	if swag.IsZero(m.Phase) { // not required
 		return nil
@@ -99,24 +75,6 @@ func (m *NestedEverouteManageVDSStatus) validatePhase(formats strfmt.Registry) e
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteManageVDSStatus) validateReason(formats strfmt.Registry) error {
-
-	if err := validate.Required("reason", "body", m.Reason); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteManageVDSStatus) validateRetryCount(formats strfmt.Registry) error {
-
-	if err := validate.Required("retryCount", "body", m.RetryCount); err != nil {
-		return err
 	}
 
 	return nil

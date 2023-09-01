@@ -23,27 +23,23 @@ type NestedEverouteAgentStatus struct {
 	Host *NestedHost `json:"host,omitempty"`
 
 	// host ID
-	// Required: true
-	HostID *string `json:"hostID"`
+	HostID *string `json:"hostID,omitempty"`
 
 	// ip addr
-	// Required: true
-	IPAddr *string `json:"ipAddr"`
+	IPAddr *string `json:"ipAddr,omitempty"`
 
 	// is health
 	// Required: true
 	IsHealth *bool `json:"isHealth"`
 
 	// message
-	// Required: true
-	Message *string `json:"message"`
+	Message *string `json:"message,omitempty"`
 
 	// phase
 	Phase *EverouteClusterPhase `json:"phase,omitempty"`
 
 	// reason
-	// Required: true
-	Reason *string `json:"reason"`
+	Reason *string `json:"reason,omitempty"`
 }
 
 // Validate validates this nested everoute agent status
@@ -54,27 +50,11 @@ func (m *NestedEverouteAgentStatus) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateHostID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIPAddr(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateIsHealth(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateMessage(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validatePhase(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateReason(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -103,36 +83,9 @@ func (m *NestedEverouteAgentStatus) validateHost(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *NestedEverouteAgentStatus) validateHostID(formats strfmt.Registry) error {
-
-	if err := validate.Required("hostID", "body", m.HostID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteAgentStatus) validateIPAddr(formats strfmt.Registry) error {
-
-	if err := validate.Required("ipAddr", "body", m.IPAddr); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *NestedEverouteAgentStatus) validateIsHealth(formats strfmt.Registry) error {
 
 	if err := validate.Required("isHealth", "body", m.IsHealth); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteAgentStatus) validateMessage(formats strfmt.Registry) error {
-
-	if err := validate.Required("message", "body", m.Message); err != nil {
 		return err
 	}
 
@@ -153,15 +106,6 @@ func (m *NestedEverouteAgentStatus) validatePhase(formats strfmt.Registry) error
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteAgentStatus) validateReason(formats strfmt.Registry) error {
-
-	if err := validate.Required("reason", "body", m.Reason); err != nil {
-		return err
 	}
 
 	return nil

@@ -8,12 +8,12 @@ import (
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	. "github.com/openlyinc/pointy"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/iscsi_lun"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/iscsi_lun_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/integration/fixture"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 	taskutil "github.com/smartxworks/cloudtower-go-sdk/v2/utils"
-	. "go.openly.dev/pointy"
 )
 
 var _ = Describe("Iscsi lun snapshot api", Ordered, func() {

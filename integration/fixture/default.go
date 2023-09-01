@@ -3,11 +3,11 @@ package fixture
 import (
 	"os"
 
+	. "github.com/openlyinc/pointy"
 	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vlan"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
-	. "go.openly.dev/pointy"
 )
 
 var client *apiclient.Cloudtower = nil
