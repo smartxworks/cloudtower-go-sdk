@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // NestedEverouteClusterAgentStatus nested everoute cluster agent status
@@ -21,12 +20,10 @@ import (
 type NestedEverouteClusterAgentStatus struct {
 
 	// current number
-	// Required: true
-	CurrentNumber *int32 `json:"currentNumber"`
+	CurrentNumber *int32 `json:"currentNumber,omitempty"`
 
 	// expect number
-	// Required: true
-	ExpectNumber *int32 `json:"expectNumber"`
+	ExpectNumber *int32 `json:"expectNumber,omitempty"`
 
 	// instances
 	Instances []*NestedEverouteAgentStatus `json:"instances,omitempty"`
@@ -35,21 +32,12 @@ type NestedEverouteClusterAgentStatus struct {
 	ManageVDSes []*NestedEverouteManageVDSStatus `json:"manageVDSes,omitempty"`
 
 	// number health
-	// Required: true
-	NumberHealth *int32 `json:"numberHealth"`
+	NumberHealth *int32 `json:"numberHealth,omitempty"`
 }
 
 // Validate validates this nested everoute cluster agent status
 func (m *NestedEverouteClusterAgentStatus) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateCurrentNumber(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateExpectNumber(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateInstances(formats); err != nil {
 		res = append(res, err)
@@ -59,31 +47,9 @@ func (m *NestedEverouteClusterAgentStatus) Validate(formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
-	if err := m.validateNumberHealth(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *NestedEverouteClusterAgentStatus) validateCurrentNumber(formats strfmt.Registry) error {
-
-	if err := validate.Required("currentNumber", "body", m.CurrentNumber); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteClusterAgentStatus) validateExpectNumber(formats strfmt.Registry) error {
-
-	if err := validate.Required("expectNumber", "body", m.ExpectNumber); err != nil {
-		return err
-	}
-
 	return nil
 }
 
@@ -134,15 +100,6 @@ func (m *NestedEverouteClusterAgentStatus) validateManageVDSes(formats strfmt.Re
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteClusterAgentStatus) validateNumberHealth(formats strfmt.Registry) error {
-
-	if err := validate.Required("numberHealth", "body", m.NumberHealth); err != nil {
-		return err
 	}
 
 	return nil

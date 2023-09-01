@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // NestedEverouteClusterStatus nested everoute cluster status
@@ -30,23 +29,19 @@ type NestedEverouteClusterStatus struct {
 	Controllers *NestedEverouteClusterControllerStatus `json:"controllers,omitempty"`
 
 	// message
-	// Required: true
-	Message *string `json:"message"`
+	Message *string `json:"message,omitempty"`
 
 	// phase
 	Phase *EverouteClusterPhase `json:"phase,omitempty"`
 
 	// reason
-	// Required: true
-	Reason *string `json:"reason"`
+	Reason *string `json:"reason,omitempty"`
 
 	// retry count
-	// Required: true
-	RetryCount *int32 `json:"retryCount"`
+	RetryCount *int32 `json:"retryCount,omitempty"`
 
 	// version
-	// Required: true
-	Version *string `json:"version"`
+	Version *string `json:"version,omitempty"`
 }
 
 // Validate validates this nested everoute cluster status
@@ -65,23 +60,7 @@ func (m *NestedEverouteClusterStatus) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateMessage(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validatePhase(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateReason(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRetryCount(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVersion(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -155,15 +134,6 @@ func (m *NestedEverouteClusterStatus) validateControllers(formats strfmt.Registr
 	return nil
 }
 
-func (m *NestedEverouteClusterStatus) validateMessage(formats strfmt.Registry) error {
-
-	if err := validate.Required("message", "body", m.Message); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *NestedEverouteClusterStatus) validatePhase(formats strfmt.Registry) error {
 	if swag.IsZero(m.Phase) { // not required
 		return nil
@@ -178,33 +148,6 @@ func (m *NestedEverouteClusterStatus) validatePhase(formats strfmt.Registry) err
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteClusterStatus) validateReason(formats strfmt.Registry) error {
-
-	if err := validate.Required("reason", "body", m.Reason); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteClusterStatus) validateRetryCount(formats strfmt.Registry) error {
-
-	if err := validate.Required("retryCount", "body", m.RetryCount); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedEverouteClusterStatus) validateVersion(formats strfmt.Registry) error {
-
-	if err := validate.Required("version", "body", m.Version); err != nil {
-		return err
 	}
 
 	return nil

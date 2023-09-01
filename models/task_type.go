@@ -39,6 +39,9 @@ const (
 	// TaskTypeHOSTPLUGIN captures enum value "HOST_PLUGIN"
 	TaskTypeHOSTPLUGIN TaskType = "HOST_PLUGIN"
 
+	// TaskTypeREPLICATION captures enum value "REPLICATION"
+	TaskTypeREPLICATION TaskType = "REPLICATION"
+
 	// TaskTypeRESOLVER captures enum value "RESOLVER"
 	TaskTypeRESOLVER TaskType = "RESOLVER"
 )
@@ -48,7 +51,7 @@ var taskTypeEnum []interface{}
 
 func init() {
 	var res []TaskType
-	if err := json.Unmarshal([]byte(`["APPLICATION","BACKUP","HOST_PLUGIN","RESOLVER"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["APPLICATION","BACKUP","HOST_PLUGIN","REPLICATION","RESOLVER"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -36,9 +36,13 @@ type ClientService interface {
 
 	DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, opts ...ClientOption) (*DeleteVMVolumeFromVMOK, error)
 
+	ExportVMVolume(params *ExportVMVolumeParams, opts ...ClientOption) (*ExportVMVolumeOK, error)
+
 	GetVMVolumes(params *GetVMVolumesParams, opts ...ClientOption) (*GetVMVolumesOK, error)
 
 	GetVMVolumesConnection(params *GetVMVolumesConnectionParams, opts ...ClientOption) (*GetVMVolumesConnectionOK, error)
+
+	ImportVMVolume(params *ImportVMVolumeParams, opts ...ClientOption) (*ImportVMVolumeOK, error)
 
 	RebuildVMVolume(params *RebuildVMVolumeParams, opts ...ClientOption) (*RebuildVMVolumeOK, error)
 
@@ -164,6 +168,44 @@ func (a *Client) DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, opts .
 }
 
 /*
+  ExportVMVolume export Vm volume API
+*/
+func (a *Client) ExportVMVolume(params *ExportVMVolumeParams, opts ...ClientOption) (*ExportVMVolumeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewExportVMVolumeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ExportVmVolume",
+		Method:             "POST",
+		PathPattern:        "/export-vm-volume",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ExportVMVolumeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ExportVMVolumeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ExportVmVolume: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   GetVMVolumes get Vm volumes API
 */
 func (a *Client) GetVMVolumes(params *GetVMVolumesParams, opts ...ClientOption) (*GetVMVolumesOK, error) {
@@ -236,6 +278,44 @@ func (a *Client) GetVMVolumesConnection(params *GetVMVolumesConnectionParams, op
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetVmVolumesConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ImportVMVolume import Vm volume API
+*/
+func (a *Client) ImportVMVolume(params *ImportVMVolumeParams, opts ...ClientOption) (*ImportVMVolumeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImportVMVolumeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ImportVmVolume",
+		Method:             "POST",
+		PathPattern:        "/import-vm-volume",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ImportVMVolumeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImportVMVolumeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ImportVmVolume: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

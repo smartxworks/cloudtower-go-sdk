@@ -38,9 +38,13 @@ type ClientService interface {
 
 	DistributeContentLibraryVmtemplateClusters(params *DistributeContentLibraryVmtemplateClustersParams, opts ...ClientOption) (*DistributeContentLibraryVmtemplateClustersOK, error)
 
+	ExportContentLibraryVMTemplate(params *ExportContentLibraryVMTemplateParams, opts ...ClientOption) (*ExportContentLibraryVMTemplateOK, error)
+
 	GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplatesParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesOK, error)
 
 	GetContentLibraryVMTemplatesConnection(params *GetContentLibraryVMTemplatesConnectionParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesConnectionOK, error)
+
+	ImportContentLibraryVMTemplate(params *ImportContentLibraryVMTemplateParams, opts ...ClientOption) (*ImportContentLibraryVMTemplateOK, error)
 
 	RemoveContentLibraryVMTemplateClusters(params *RemoveContentLibraryVMTemplateClustersParams, opts ...ClientOption) (*RemoveContentLibraryVMTemplateClustersOK, error)
 
@@ -202,6 +206,44 @@ func (a *Client) DistributeContentLibraryVmtemplateClusters(params *DistributeCo
 }
 
 /*
+  ExportContentLibraryVMTemplate export content library Vm template API
+*/
+func (a *Client) ExportContentLibraryVMTemplate(params *ExportContentLibraryVMTemplateParams, opts ...ClientOption) (*ExportContentLibraryVMTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewExportContentLibraryVMTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ExportContentLibraryVmTemplate",
+		Method:             "POST",
+		PathPattern:        "/export-content-library-vm-template",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ExportContentLibraryVMTemplateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ExportContentLibraryVMTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ExportContentLibraryVmTemplate: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   GetContentLibraryVMTemplates get content library Vm templates API
 */
 func (a *Client) GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplatesParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesOK, error) {
@@ -274,6 +316,44 @@ func (a *Client) GetContentLibraryVMTemplatesConnection(params *GetContentLibrar
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetContentLibraryVmTemplatesConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ImportContentLibraryVMTemplate import content library Vm template API
+*/
+func (a *Client) ImportContentLibraryVMTemplate(params *ImportContentLibraryVMTemplateParams, opts ...ClientOption) (*ImportContentLibraryVMTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImportContentLibraryVMTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ImportContentLibraryVmTemplate",
+		Method:             "POST",
+		PathPattern:        "/import-content-library-vm-template",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ImportContentLibraryVMTemplateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImportContentLibraryVMTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ImportContentLibraryVmTemplate: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

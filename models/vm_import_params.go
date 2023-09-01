@@ -94,7 +94,7 @@ type VMImportParams struct {
 	Vcpu *int32 `json:"vcpu,omitempty"`
 
 	// vm nics
-	VMNics []*VMNicParams `json:"vm_nics,omitempty"`
+	VMNics []*VMImportNicParams `json:"vm_nics,omitempty"`
 }
 
 // Validate validates this Vm import params

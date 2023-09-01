@@ -122,6 +122,8 @@ type ClientService interface {
 
 	UpdateVMNicBasicInfo(params *UpdateVMNicBasicInfoParams, opts ...ClientOption) (*UpdateVMNicBasicInfoOK, error)
 
+	UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts ...ClientOption) (*UpdateVMNicQosOptionOK, error)
+
 	UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption) (*UpdateVMOwnerOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -1872,6 +1874,44 @@ func (a *Client) UpdateVMNicBasicInfo(params *UpdateVMNicBasicInfoParams, opts .
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateVmNicBasicInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVMNicQosOption update Vm nic qos option API
+*/
+func (a *Client) UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts ...ClientOption) (*UpdateVMNicQosOptionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVMNicQosOptionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateVmNicQosOption",
+		Method:             "POST",
+		PathPattern:        "/update-vm-nic-qos-option",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateVMNicQosOptionReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVMNicQosOptionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateVmNicQosOption: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

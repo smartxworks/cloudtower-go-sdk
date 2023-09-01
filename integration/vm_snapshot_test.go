@@ -13,7 +13,7 @@ import (
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	. "go.openly.dev/pointy"
+	. "github.com/openlyinc/pointy"
 )
 
 var _ = Describe("Vm snapshot api", Ordered, func() {

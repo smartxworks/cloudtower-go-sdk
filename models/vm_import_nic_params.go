@@ -14,10 +14,10 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// VMNicParams Vm nic params
+// VMImportNicParams Vm import nic params
 //
-// swagger:model VmNicParams
-type VMNicParams struct {
+// swagger:model VmImportNicParams
+type VMImportNicParams struct {
 
 	// connect vlan id
 	// Required: true
@@ -47,15 +47,12 @@ type VMNicParams struct {
 	// nic id
 	NicID *string `json:"nic_id,omitempty"`
 
-	// qos
-	Qos *VMNicQosOption `json:"qos,omitempty"`
-
 	// subnet mask
 	SubnetMask *string `json:"subnet_mask,omitempty"`
 }
 
-// Validate validates this Vm nic params
-func (m *VMNicParams) Validate(formats strfmt.Registry) error {
+// Validate validates this Vm import nic params
+func (m *VMImportNicParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateConnectVlanID(formats); err != nil {
@@ -66,17 +63,13 @@ func (m *VMNicParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateQos(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
 }
 
-func (m *VMNicParams) validateConnectVlanID(formats strfmt.Registry) error {
+func (m *VMImportNicParams) validateConnectVlanID(formats strfmt.Registry) error {
 
 	if err := validate.Required("connect_vlan_id", "body", m.ConnectVlanID); err != nil {
 		return err
@@ -85,7 +78,7 @@ func (m *VMNicParams) validateConnectVlanID(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VMNicParams) validateModel(formats strfmt.Registry) error {
+func (m *VMImportNicParams) validateModel(formats strfmt.Registry) error {
 	if swag.IsZero(m.Model) { // not required
 		return nil
 	}
@@ -104,34 +97,11 @@ func (m *VMNicParams) validateModel(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VMNicParams) validateQos(formats strfmt.Registry) error {
-	if swag.IsZero(m.Qos) { // not required
-		return nil
-	}
-
-	if m.Qos != nil {
-		if err := m.Qos.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("qos")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("qos")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this Vm nic params based on the context it is used
-func (m *VMNicParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this Vm import nic params based on the context it is used
+func (m *VMImportNicParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateModel(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateQos(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -141,7 +111,7 @@ func (m *VMNicParams) ContextValidate(ctx context.Context, formats strfmt.Regist
 	return nil
 }
 
-func (m *VMNicParams) contextValidateModel(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMImportNicParams) contextValidateModel(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Model != nil {
 		if err := m.Model.ContextValidate(ctx, formats); err != nil {
@@ -157,24 +127,8 @@ func (m *VMNicParams) contextValidateModel(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *VMNicParams) contextValidateQos(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Qos != nil {
-		if err := m.Qos.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("qos")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("qos")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // MarshalBinary interface implementation
-func (m *VMNicParams) MarshalBinary() ([]byte, error) {
+func (m *VMImportNicParams) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -182,8 +136,8 @@ func (m *VMNicParams) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *VMNicParams) UnmarshalBinary(b []byte) error {
-	var res VMNicParams
+func (m *VMImportNicParams) UnmarshalBinary(b []byte) error {
+	var res VMImportNicParams
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
