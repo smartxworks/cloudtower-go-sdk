@@ -173,6 +173,12 @@ const (
 
 	// NicOrderByInputUsedVfNumDESC captures enum value "used_vf_num_DESC"
 	NicOrderByInputUsedVfNumDESC NicOrderByInput = "used_vf_num_DESC"
+
+	// NicOrderByInputUserUsageASC captures enum value "user_usage_ASC"
+	NicOrderByInputUserUsageASC NicOrderByInput = "user_usage_ASC"
+
+	// NicOrderByInputUserUsageDESC captures enum value "user_usage_DESC"
+	NicOrderByInputUserUsageDESC NicOrderByInput = "user_usage_DESC"
 )
 
 // for schema
@@ -180,7 +186,7 @@ var nicOrderByInputEnum []interface{}
 
 func init() {
 	var res []NicOrderByInput
-	if err := json.Unmarshal([]byte(`["driver_ASC","driver_DESC","driver_state_ASC","driver_state_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","gateway_ip_ASC","gateway_ip_DESC","ibdev_ASC","ibdev_DESC","id_ASC","id_DESC","ip_address_ASC","ip_address_DESC","is_sriov_ASC","is_sriov_DESC","local_id_ASC","local_id_DESC","mac_address_ASC","mac_address_DESC","max_vf_num_ASC","max_vf_num_DESC","model_ASC","model_DESC","mtu_ASC","mtu_DESC","name_ASC","name_DESC","nic_uuid_ASC","nic_uuid_DESC","physical_ASC","physical_DESC","rdma_enabled_ASC","rdma_enabled_DESC","running_ASC","running_DESC","speed_ASC","speed_DESC","subnet_mask_ASC","subnet_mask_DESC","total_vf_num_ASC","total_vf_num_DESC","type_ASC","type_DESC","up_ASC","up_DESC","used_vf_num_ASC","used_vf_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["driver_ASC","driver_DESC","driver_state_ASC","driver_state_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","gateway_ip_ASC","gateway_ip_DESC","ibdev_ASC","ibdev_DESC","id_ASC","id_DESC","ip_address_ASC","ip_address_DESC","is_sriov_ASC","is_sriov_DESC","local_id_ASC","local_id_DESC","mac_address_ASC","mac_address_DESC","max_vf_num_ASC","max_vf_num_DESC","model_ASC","model_DESC","mtu_ASC","mtu_DESC","name_ASC","name_DESC","nic_uuid_ASC","nic_uuid_DESC","physical_ASC","physical_DESC","rdma_enabled_ASC","rdma_enabled_DESC","running_ASC","running_DESC","speed_ASC","speed_DESC","subnet_mask_ASC","subnet_mask_DESC","total_vf_num_ASC","total_vf_num_DESC","type_ASC","type_DESC","up_ASC","up_DESC","used_vf_num_ASC","used_vf_num_DESC","user_usage_ASC","user_usage_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

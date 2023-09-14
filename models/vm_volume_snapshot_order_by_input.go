@@ -42,6 +42,12 @@ const (
 	// VMVolumeSnapshotOrderByInputDescriptionDESC captures enum value "description_DESC"
 	VMVolumeSnapshotOrderByInputDescriptionDESC VMVolumeSnapshotOrderByInput = "description_DESC"
 
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyASC captures enum value "elf_storage_policy_ASC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyASC VMVolumeSnapshotOrderByInput = "elf_storage_policy_ASC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyDESC captures enum value "elf_storage_policy_DESC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyDESC VMVolumeSnapshotOrderByInput = "elf_storage_policy_DESC"
+
 	// VMVolumeSnapshotOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	VMVolumeSnapshotOrderByInputEntityAsyncStatusASC VMVolumeSnapshotOrderByInput = "entityAsyncStatus_ASC"
 
@@ -96,6 +102,18 @@ const (
 	// VMVolumeSnapshotOrderByInputUniqueSizeDESC captures enum value "unique_size_DESC"
 	VMVolumeSnapshotOrderByInputUniqueSizeDESC VMVolumeSnapshotOrderByInput = "unique_size_DESC"
 
+	// VMVolumeSnapshotOrderByInputVolumeSharingASC captures enum value "volume_sharing_ASC"
+	VMVolumeSnapshotOrderByInputVolumeSharingASC VMVolumeSnapshotOrderByInput = "volume_sharing_ASC"
+
+	// VMVolumeSnapshotOrderByInputVolumeSharingDESC captures enum value "volume_sharing_DESC"
+	VMVolumeSnapshotOrderByInputVolumeSharingDESC VMVolumeSnapshotOrderByInput = "volume_sharing_DESC"
+
+	// VMVolumeSnapshotOrderByInputVolumeSizeASC captures enum value "volume_size_ASC"
+	VMVolumeSnapshotOrderByInputVolumeSizeASC VMVolumeSnapshotOrderByInput = "volume_size_ASC"
+
+	// VMVolumeSnapshotOrderByInputVolumeSizeDESC captures enum value "volume_size_DESC"
+	VMVolumeSnapshotOrderByInputVolumeSizeDESC VMVolumeSnapshotOrderByInput = "volume_size_DESC"
+
 	// VMVolumeSnapshotOrderByInputZbsSnapshotUUIDASC captures enum value "zbs_snapshot_uuid_ASC"
 	VMVolumeSnapshotOrderByInputZbsSnapshotUUIDASC VMVolumeSnapshotOrderByInput = "zbs_snapshot_uuid_ASC"
 
@@ -108,7 +126,7 @@ var vmVolumeSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMVolumeSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["createAt_ASC","createAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","shared_size_ASC","shared_size_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC","zbs_snapshot_uuid_ASC","zbs_snapshot_uuid_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createAt_ASC","createAt_DESC","description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","shared_size_ASC","shared_size_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC","volume_sharing_ASC","volume_sharing_DESC","volume_size_ASC","volume_size_DESC","zbs_snapshot_uuid_ASC","zbs_snapshot_uuid_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

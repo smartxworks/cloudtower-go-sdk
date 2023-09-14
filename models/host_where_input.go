@@ -70,6 +70,30 @@ type HostWhereInput struct {
 	// access ip starts with
 	AccessIPStartsWith *string `json:"access_ip_starts_with,omitempty"`
 
+	// allocable cpu cores for vm exclusive
+	AllocableCPUCoresForVMExclusive *int32 `json:"allocable_cpu_cores_for_vm_exclusive,omitempty"`
+
+	// allocable cpu cores for vm exclusive gt
+	AllocableCPUCoresForVMExclusiveGt *int32 `json:"allocable_cpu_cores_for_vm_exclusive_gt,omitempty"`
+
+	// allocable cpu cores for vm exclusive gte
+	AllocableCPUCoresForVMExclusiveGte *int32 `json:"allocable_cpu_cores_for_vm_exclusive_gte,omitempty"`
+
+	// allocable cpu cores for vm exclusive in
+	AllocableCPUCoresForVMExclusiveIn []int32 `json:"allocable_cpu_cores_for_vm_exclusive_in,omitempty"`
+
+	// allocable cpu cores for vm exclusive lt
+	AllocableCPUCoresForVMExclusiveLt *int32 `json:"allocable_cpu_cores_for_vm_exclusive_lt,omitempty"`
+
+	// allocable cpu cores for vm exclusive lte
+	AllocableCPUCoresForVMExclusiveLte *int32 `json:"allocable_cpu_cores_for_vm_exclusive_lte,omitempty"`
+
+	// allocable cpu cores for vm exclusive not
+	AllocableCPUCoresForVMExclusiveNot *int32 `json:"allocable_cpu_cores_for_vm_exclusive_not,omitempty"`
+
+	// allocable cpu cores for vm exclusive not in
+	AllocableCPUCoresForVMExclusiveNotIn []int32 `json:"allocable_cpu_cores_for_vm_exclusive_not_in,omitempty"`
+
 	// allocatable memory bytes
 	AllocatableMemoryBytes *int64 `json:"allocatable_memory_bytes,omitempty"`
 
@@ -387,6 +411,15 @@ type HostWhereInput struct {
 
 	// failure data space not in
 	FailureDataSpaceNotIn []int64 `json:"failure_data_space_not_in,omitempty"`
+
+	// gpu devices every
+	GpuDevicesEvery *GpuDeviceWhereInput `json:"gpu_devices_every,omitempty"`
+
+	// gpu devices none
+	GpuDevicesNone *GpuDeviceWhereInput `json:"gpu_devices_none,omitempty"`
+
+	// gpu devices some
+	GpuDevicesSome *GpuDeviceWhereInput `json:"gpu_devices_some,omitempty"`
 
 	// hdd data capacity
 	HddDataCapacity *int64 `json:"hdd_data_capacity,omitempty"`
@@ -1665,6 +1698,18 @@ func (m *HostWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateGpuDevicesEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevicesNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevicesSome(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIpmi(formats); err != nil {
 		res = append(res, err)
 	}
@@ -2084,6 +2129,63 @@ func (m *HostWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry)
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateGpuDevicesEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesEvery) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesEvery != nil {
+		if err := m.GpuDevicesEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateGpuDevicesNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesNone) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesNone != nil {
+		if err := m.GpuDevicesNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateGpuDevicesSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesSome) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesSome != nil {
+		if err := m.GpuDevicesSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_some")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -2655,6 +2757,18 @@ func (m *HostWhereInput) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateGpuDevicesEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGpuDevicesNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGpuDevicesSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIpmi(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3020,6 +3134,54 @@ func (m *HostWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Conte
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateGpuDevicesEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesEvery != nil {
+		if err := m.GpuDevicesEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateGpuDevicesNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesNone != nil {
+		if err := m.GpuDevicesNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateGpuDevicesSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesSome != nil {
+		if err := m.GpuDevicesSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_some")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -64,6 +64,9 @@ type VM struct {
 	// folder
 	Folder *NestedVMFolder `json:"folder,omitempty"`
 
+	// gpu devices
+	GpuDevices []*NestedGpuDevice `json:"gpu_devices,omitempty"`
+
 	// guest cpu model
 	GuestCPUModel *string `json:"guest_cpu_model,omitempty"`
 
@@ -168,6 +171,9 @@ type VM struct {
 	// Required: true
 	OutUninstallUsb []string `json:"out_uninstall_usb"`
 
+	// pci nics
+	PciNics []*NestedNic `json:"pci_nics,omitempty"`
+
 	// protected
 	// Required: true
 	Protected *bool `json:"protected"`
@@ -265,6 +271,10 @@ func (m *VM) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateGpuDevices(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateGuestOsType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -334,6 +344,10 @@ func (m *VM) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOutUninstallUsb(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePciNics(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -559,6 +573,32 @@ func (m *VM) validateFolder(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VM) validateGpuDevices(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+		if swag.IsZero(m.GpuDevices[i]) { // not required
+			continue
+		}
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -798,6 +838,32 @@ func (m *VM) validateOutUninstallUsb(formats strfmt.Registry) error {
 
 	if err := validate.Required("out_uninstall_usb", "body", m.OutUninstallUsb); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *VM) validatePciNics(formats strfmt.Registry) error {
+	if swag.IsZero(m.PciNics) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.PciNics); i++ {
+		if swag.IsZero(m.PciNics[i]) { // not required
+			continue
+		}
+
+		if m.PciNics[i] != nil {
+			if err := m.PciNics[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("pci_nics" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("pci_nics" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -1097,6 +1163,10 @@ func (m *VM) ContextValidate(ctx context.Context, formats strfmt.Registry) error
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateGpuDevices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateGuestOsType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1122,6 +1192,10 @@ func (m *VM) ContextValidate(ctx context.Context, formats strfmt.Registry) error
 	}
 
 	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePciNics(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1287,6 +1361,26 @@ func (m *VM) contextValidateFolder(ctx context.Context, formats strfmt.Registry)
 	return nil
 }
 
+func (m *VM) contextValidateGpuDevices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *VM) contextValidateGuestOsType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.GuestOsType != nil {
@@ -1398,6 +1492,26 @@ func (m *VM) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Re
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VM) contextValidatePciNics(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.PciNics); i++ {
+
+		if m.PciNics[i] != nil {
+			if err := m.PciNics[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("pci_nics" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("pci_nics" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

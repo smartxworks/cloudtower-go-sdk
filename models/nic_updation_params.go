@@ -162,17 +162,73 @@ type NicUpdationParamsData struct {
 	// mtu
 	Mtu *int32 `json:"mtu,omitempty"`
 
+	// nic user usage
+	NicUserUsage *NicUserUsage `json:"nic_user_usage,omitempty"`
+
 	// total vf num
 	TotalVfNum *int32 `json:"total_vf_num,omitempty"`
 }
 
 // Validate validates this nic updation params data
 func (m *NicUpdationParamsData) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateNicUserUsage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this nic updation params data based on context it is used
+func (m *NicUpdationParamsData) validateNicUserUsage(formats strfmt.Registry) error {
+	if swag.IsZero(m.NicUserUsage) { // not required
+		return nil
+	}
+
+	if m.NicUserUsage != nil {
+		if err := m.NicUserUsage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "nic_user_usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "nic_user_usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this nic updation params data based on the context it is used
 func (m *NicUpdationParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateNicUserUsage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NicUpdationParamsData) contextValidateNicUserUsage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NicUserUsage != nil {
+		if err := m.NicUserUsage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "nic_user_usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "nic_user_usage")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

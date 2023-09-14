@@ -38,6 +38,9 @@ type VMCloneParams struct {
 	// folder id
 	FolderID *string `json:"folder_id,omitempty"`
 
+	// gpu devices
+	GpuDevices []*VMGpuOperationParams `json:"gpu_devices,omitempty"`
+
 	// guest os type
 	GuestOsType *VMGuestsOperationSystem `json:"guest_os_type,omitempty"`
 
@@ -78,6 +81,9 @@ type VMCloneParams struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// pci nics
+	PciNics *NicWhereInput `json:"pci_nics,omitempty"`
+
 	// src vm id
 	// Required: true
 	SrcVMID *string `json:"src_vm_id"`
@@ -93,6 +99,9 @@ type VMCloneParams struct {
 
 	// vm nics
 	VMNics []*VMNicParams `json:"vm_nics,omitempty"`
+
+	// vm placement group
+	VMPlacementGroup *VMPlacementGroupWhereInput `json:"vm_placement_group,omitempty"`
 }
 
 // Validate validates this Vm clone params
@@ -100,6 +109,10 @@ func (m *VMCloneParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateFirmware(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevices(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -131,6 +144,10 @@ func (m *VMCloneParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validatePciNics(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSrcVMID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -144,6 +161,10 @@ func (m *VMCloneParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVMNics(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMPlacementGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -167,6 +188,32 @@ func (m *VMCloneParams) validateFirmware(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VMCloneParams) validateGpuDevices(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+		if swag.IsZero(m.GpuDevices[i]) { // not required
+			continue
+		}
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -295,6 +342,25 @@ func (m *VMCloneParams) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMCloneParams) validatePciNics(formats strfmt.Registry) error {
+	if swag.IsZero(m.PciNics) { // not required
+		return nil
+	}
+
+	if m.PciNics != nil {
+		if err := m.PciNics.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMCloneParams) validateSrcVMID(formats strfmt.Registry) error {
 
 	if err := validate.Required("src_vm_id", "body", m.SrcVMID); err != nil {
@@ -368,11 +434,34 @@ func (m *VMCloneParams) validateVMNics(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMCloneParams) validateVMPlacementGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMPlacementGroup) { // not required
+		return nil
+	}
+
+	if m.VMPlacementGroup != nil {
+		if err := m.VMPlacementGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_placement_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_placement_group")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this Vm clone params based on the context it is used
 func (m *VMCloneParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateFirmware(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGpuDevices(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -400,6 +489,10 @@ func (m *VMCloneParams) ContextValidate(ctx context.Context, formats strfmt.Regi
 		res = append(res, err)
 	}
 
+	if err := m.contextValidatePciNics(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -409,6 +502,10 @@ func (m *VMCloneParams) ContextValidate(ctx context.Context, formats strfmt.Regi
 	}
 
 	if err := m.contextValidateVMNics(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMPlacementGroup(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -429,6 +526,26 @@ func (m *VMCloneParams) contextValidateFirmware(ctx context.Context, formats str
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VMCloneParams) contextValidateGpuDevices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -530,6 +647,22 @@ func (m *VMCloneParams) contextValidateMemoryUnit(ctx context.Context, formats s
 	return nil
 }
 
+func (m *VMCloneParams) contextValidatePciNics(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PciNics != nil {
+		if err := m.PciNics.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMCloneParams) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Status != nil {
@@ -577,6 +710,22 @@ func (m *VMCloneParams) contextValidateVMNics(ctx context.Context, formats strfm
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMCloneParams) contextValidateVMPlacementGroup(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMPlacementGroup != nil {
+		if err := m.VMPlacementGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_placement_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_placement_group")
+			}
+			return err
+		}
 	}
 
 	return nil

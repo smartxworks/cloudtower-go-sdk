@@ -19,6 +19,9 @@ import (
 // swagger:model ErrorBody
 type ErrorBody struct {
 
+	// code
+	Code *ErrorCode `json:"code,omitempty"`
+
 	// message
 	// Required: true
 	Message *string `json:"message"`
@@ -45,6 +48,10 @@ type ErrorBody struct {
 func (m *ErrorBody) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCode(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateMessage(formats); err != nil {
 		res = append(res, err)
 	}
@@ -60,6 +67,25 @@ func (m *ErrorBody) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ErrorBody) validateCode(formats strfmt.Registry) error {
+	if swag.IsZero(m.Code) { // not required
+		return nil
+	}
+
+	if m.Code != nil {
+		if err := m.Code.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("code")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("code")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -90,8 +116,33 @@ func (m *ErrorBody) validateStatus(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this error body based on context it is used
+// ContextValidate validate this error body based on the context it is used
 func (m *ErrorBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCode(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ErrorBody) contextValidateCode(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Code != nil {
+		if err := m.Code.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("code")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("code")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

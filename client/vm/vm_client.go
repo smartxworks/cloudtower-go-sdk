@@ -36,7 +36,11 @@ type ClientService interface {
 
 	AddVMDisk(params *AddVMDiskParams, opts ...ClientOption) (*AddVMDiskOK, error)
 
+	AddVMGpuDevice(params *AddVMGpuDeviceParams, opts ...ClientOption) (*AddVMGpuDeviceOK, error)
+
 	AddVMNic(params *AddVMNicParams, opts ...ClientOption) (*AddVMNicOK, error)
+
+	AddVMPciNic(params *AddVMPciNicParams, opts ...ClientOption) (*AddVMPciNicOK, error)
 
 	AddVMToFolder(params *AddVMToFolderParams, opts ...ClientOption) (*AddVMToFolderOK, error)
 
@@ -84,7 +88,13 @@ type ClientService interface {
 
 	RemoveVMDisk(params *RemoveVMDiskParams, opts ...ClientOption) (*RemoveVMDiskOK, error)
 
+	RemoveVMGpuDevice(params *RemoveVMGpuDeviceParams, opts ...ClientOption) (*RemoveVMGpuDeviceOK, error)
+
 	RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*RemoveVMNicOK, error)
+
+	RemoveVMNicByWhere(params *RemoveVMNicByWhereParams, opts ...ClientOption) (*RemoveVMNicByWhereOK, error)
+
+	RemoveVMPciNic(params *RemoveVMPciNicParams, opts ...ClientOption) (*RemoveVMPciNicOK, error)
 
 	RemoveVMToFolder(params *RemoveVMToFolderParams, opts ...ClientOption) (*RemoveVMToFolderOK, error)
 
@@ -244,6 +254,44 @@ func (a *Client) AddVMDisk(params *AddVMDiskParams, opts ...ClientOption) (*AddV
 }
 
 /*
+  AddVMGpuDevice add Vm gpu device API
+*/
+func (a *Client) AddVMGpuDevice(params *AddVMGpuDeviceParams, opts ...ClientOption) (*AddVMGpuDeviceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAddVMGpuDeviceParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "AddVmGpuDevice",
+		Method:             "POST",
+		PathPattern:        "/add-vm-gpu-device",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &AddVMGpuDeviceReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AddVMGpuDeviceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for AddVmGpuDevice: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   AddVMNic add Vm nic API
 */
 func (a *Client) AddVMNic(params *AddVMNicParams, opts ...ClientOption) (*AddVMNicOK, error) {
@@ -278,6 +326,44 @@ func (a *Client) AddVMNic(params *AddVMNicParams, opts ...ClientOption) (*AddVMN
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for AddVmNic: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  AddVMPciNic add Vm pci nic API
+*/
+func (a *Client) AddVMPciNic(params *AddVMPciNicParams, opts ...ClientOption) (*AddVMPciNicOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAddVMPciNicParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "AddVmPciNic",
+		Method:             "POST",
+		PathPattern:        "/add-vm-pci-nic",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &AddVMPciNicReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AddVMPciNicOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for AddVmPciNic: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1156,6 +1242,44 @@ func (a *Client) RemoveVMDisk(params *RemoveVMDiskParams, opts ...ClientOption) 
 }
 
 /*
+  RemoveVMGpuDevice remove Vm gpu device API
+*/
+func (a *Client) RemoveVMGpuDevice(params *RemoveVMGpuDeviceParams, opts ...ClientOption) (*RemoveVMGpuDeviceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRemoveVMGpuDeviceParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "RemoveVmGpuDevice",
+		Method:             "POST",
+		PathPattern:        "/remove-vm-gpu-device",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &RemoveVMGpuDeviceReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RemoveVMGpuDeviceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for RemoveVmGpuDevice: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   RemoveVMNic remove Vm nic API
 */
 func (a *Client) RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*RemoveVMNicOK, error) {
@@ -1190,6 +1314,82 @@ func (a *Client) RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for RemoveVmNic: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  RemoveVMNicByWhere remove Vm nic by where API
+*/
+func (a *Client) RemoveVMNicByWhere(params *RemoveVMNicByWhereParams, opts ...ClientOption) (*RemoveVMNicByWhereOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRemoveVMNicByWhereParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "RemoveVmNicByWhere",
+		Method:             "POST",
+		PathPattern:        "/remove-vm-nic-by-where",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &RemoveVMNicByWhereReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RemoveVMNicByWhereOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for RemoveVmNicByWhere: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  RemoveVMPciNic remove Vm pci nic API
+*/
+func (a *Client) RemoveVMPciNic(params *RemoveVMPciNicParams, opts ...ClientOption) (*RemoveVMPciNicOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRemoveVMPciNicParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "RemoveVmPciNic",
+		Method:             "POST",
+		PathPattern:        "/remove-vm-pci-nic",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &RemoveVMPciNicReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RemoveVMPciNicOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for RemoveVmPciNic: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
