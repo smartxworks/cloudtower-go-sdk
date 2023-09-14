@@ -234,6 +234,9 @@ type AddLabelsToResourcesParamsData struct {
 	// vm templates
 	VMTemplates *VMTemplateWhereInput `json:"vm_templates,omitempty"`
 
+	// vm volume snapshots
+	VMVolumeSnapshots *VMVolumeSnapshotWhereInput `json:"vm_volume_snapshots,omitempty"`
+
 	// vm volumes
 	VMVolumes *VMVolumeWhereInput `json:"vm_volumes,omitempty"`
 
@@ -342,6 +345,10 @@ func (m *AddLabelsToResourcesParamsData) Validate(formats strfmt.Registry) error
 	}
 
 	if err := m.validateVMTemplates(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMVolumeSnapshots(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -834,6 +841,25 @@ func (m *AddLabelsToResourcesParamsData) validateVMTemplates(formats strfmt.Regi
 	return nil
 }
 
+func (m *AddLabelsToResourcesParamsData) validateVMVolumeSnapshots(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMVolumeSnapshots) { // not required
+		return nil
+	}
+
+	if m.VMVolumeSnapshots != nil {
+		if err := m.VMVolumeSnapshots.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "vm_volume_snapshots")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "vm_volume_snapshots")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *AddLabelsToResourcesParamsData) validateVMVolumes(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMVolumes) { // not required
 		return nil
@@ -973,6 +999,10 @@ func (m *AddLabelsToResourcesParamsData) ContextValidate(ctx context.Context, fo
 	}
 
 	if err := m.contextValidateVMTemplates(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMVolumeSnapshots(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1382,6 +1412,22 @@ func (m *AddLabelsToResourcesParamsData) contextValidateVMTemplates(ctx context.
 				return ve.ValidateName("data" + "." + "vm_templates")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "vm_templates")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AddLabelsToResourcesParamsData) contextValidateVMVolumeSnapshots(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMVolumeSnapshots != nil {
+		if err := m.VMVolumeSnapshots.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "vm_volume_snapshots")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "vm_volume_snapshots")
 			}
 			return err
 		}

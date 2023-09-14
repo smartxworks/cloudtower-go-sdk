@@ -197,6 +197,12 @@ type Label struct {
 	// vm volume num
 	VMVolumeNum *int32 `json:"vm_volume_num,omitempty"`
 
+	// vm volume snapshot num
+	VMVolumeSnapshotNum *int32 `json:"vm_volume_snapshot_num,omitempty"`
+
+	// vm volume snapshots
+	VMVolumeSnapshots []*NestedVMVolumeSnapshot `json:"vm_volume_snapshots,omitempty"`
+
 	// vm volumes
 	VMVolumes []*NestedVMVolume `json:"vm_volumes,omitempty"`
 
@@ -317,6 +323,10 @@ func (m *Label) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVMTemplates(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMVolumeSnapshots(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1011,6 +1021,32 @@ func (m *Label) validateVMTemplates(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Label) validateVMVolumeSnapshots(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMVolumeSnapshots) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VMVolumeSnapshots); i++ {
+		if swag.IsZero(m.VMVolumeSnapshots[i]) { // not required
+			continue
+		}
+
+		if m.VMVolumeSnapshots[i] != nil {
+			if err := m.VMVolumeSnapshots[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_volume_snapshots" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_volume_snapshots" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *Label) validateVMVolumes(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMVolumes) { // not required
 		return nil
@@ -1164,6 +1200,10 @@ func (m *Label) ContextValidate(ctx context.Context, formats strfmt.Registry) er
 	}
 
 	if err := m.contextValidateVMTemplates(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMVolumeSnapshots(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1671,6 +1711,26 @@ func (m *Label) contextValidateVMTemplates(ctx context.Context, formats strfmt.R
 					return ve.ValidateName("vm_templates" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("vm_templates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Label) contextValidateVMVolumeSnapshots(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VMVolumeSnapshots); i++ {
+
+		if m.VMVolumeSnapshots[i] != nil {
+			if err := m.VMVolumeSnapshots[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_volume_snapshots" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_volume_snapshots" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -70,6 +70,30 @@ type HostWhereInput struct {
 	// access ip starts with
 	AccessIPStartsWith *string `json:"access_ip_starts_with,omitempty"`
 
+	// allocable cpu cores for vm exclusive
+	AllocableCPUCoresForVMExclusive *int32 `json:"allocable_cpu_cores_for_vm_exclusive,omitempty"`
+
+	// allocable cpu cores for vm exclusive gt
+	AllocableCPUCoresForVMExclusiveGt *int32 `json:"allocable_cpu_cores_for_vm_exclusive_gt,omitempty"`
+
+	// allocable cpu cores for vm exclusive gte
+	AllocableCPUCoresForVMExclusiveGte *int32 `json:"allocable_cpu_cores_for_vm_exclusive_gte,omitempty"`
+
+	// allocable cpu cores for vm exclusive in
+	AllocableCPUCoresForVMExclusiveIn []int32 `json:"allocable_cpu_cores_for_vm_exclusive_in,omitempty"`
+
+	// allocable cpu cores for vm exclusive lt
+	AllocableCPUCoresForVMExclusiveLt *int32 `json:"allocable_cpu_cores_for_vm_exclusive_lt,omitempty"`
+
+	// allocable cpu cores for vm exclusive lte
+	AllocableCPUCoresForVMExclusiveLte *int32 `json:"allocable_cpu_cores_for_vm_exclusive_lte,omitempty"`
+
+	// allocable cpu cores for vm exclusive not
+	AllocableCPUCoresForVMExclusiveNot *int32 `json:"allocable_cpu_cores_for_vm_exclusive_not,omitempty"`
+
+	// allocable cpu cores for vm exclusive not in
+	AllocableCPUCoresForVMExclusiveNotIn []int32 `json:"allocable_cpu_cores_for_vm_exclusive_not_in,omitempty"`
+
 	// allocatable memory bytes
 	AllocatableMemoryBytes *int64 `json:"allocatable_memory_bytes,omitempty"`
 

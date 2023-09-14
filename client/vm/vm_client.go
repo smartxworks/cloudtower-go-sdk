@@ -86,6 +86,8 @@ type ClientService interface {
 
 	RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*RemoveVMNicOK, error)
 
+	RemoveVMNicByWhere(params *RemoveVMNicByWhereParams, opts ...ClientOption) (*RemoveVMNicByWhereOK, error)
+
 	RemoveVMToFolder(params *RemoveVMToFolderParams, opts ...ClientOption) (*RemoveVMToFolderOK, error)
 
 	ResetVMGuestOsPassword(params *ResetVMGuestOsPasswordParams, opts ...ClientOption) (*ResetVMGuestOsPasswordOK, error)
@@ -1190,6 +1192,44 @@ func (a *Client) RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for RemoveVmNic: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  RemoveVMNicByWhere remove Vm nic by where API
+*/
+func (a *Client) RemoveVMNicByWhere(params *RemoveVMNicByWhereParams, opts ...ClientOption) (*RemoveVMNicByWhereOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRemoveVMNicByWhereParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "RemoveVmNicByWhere",
+		Method:             "POST",
+		PathPattern:        "/remove-vm-nic-by-where",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &RemoveVMNicByWhereReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RemoveVMNicByWhereOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for RemoveVmNicByWhere: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

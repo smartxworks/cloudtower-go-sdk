@@ -19,6 +19,9 @@ import (
 // swagger:model VmVolumeDeletionParams
 type VMVolumeDeletionParams struct {
 
+	// effect
+	Effect *VMVolumeDeletionParamsEffect `json:"effect,omitempty"`
+
 	// where
 	// Required: true
 	Where *VMVolumeWhereInput `json:"where"`
@@ -28,6 +31,10 @@ type VMVolumeDeletionParams struct {
 func (m *VMVolumeDeletionParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEffect(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateWhere(formats); err != nil {
 		res = append(res, err)
 	}
@@ -35,6 +42,25 @@ func (m *VMVolumeDeletionParams) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMVolumeDeletionParams) validateEffect(formats strfmt.Registry) error {
+	if swag.IsZero(m.Effect) { // not required
+		return nil
+	}
+
+	if m.Effect != nil {
+		if err := m.Effect.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("effect")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("effect")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -62,6 +88,10 @@ func (m *VMVolumeDeletionParams) validateWhere(formats strfmt.Registry) error {
 func (m *VMVolumeDeletionParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateEffect(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateWhere(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -69,6 +99,22 @@ func (m *VMVolumeDeletionParams) ContextValidate(ctx context.Context, formats st
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMVolumeDeletionParams) contextValidateEffect(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Effect != nil {
+		if err := m.Effect.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("effect")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("effect")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
