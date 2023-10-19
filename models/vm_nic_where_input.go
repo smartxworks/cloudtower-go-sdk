@@ -28,6 +28,60 @@ type VMNicWhereInput struct {
 	// o r
 	OR []*VMNicWhereInput `json:"OR,omitempty"`
 
+	// egress rate limit burst in bit
+	EgressRateLimitBurstInBit *float64 `json:"egress_rate_limit_burst_in_bit,omitempty"`
+
+	// egress rate limit burst in bit gt
+	EgressRateLimitBurstInBitGt *float64 `json:"egress_rate_limit_burst_in_bit_gt,omitempty"`
+
+	// egress rate limit burst in bit gte
+	EgressRateLimitBurstInBitGte *float64 `json:"egress_rate_limit_burst_in_bit_gte,omitempty"`
+
+	// egress rate limit burst in bit in
+	EgressRateLimitBurstInBitIn []float64 `json:"egress_rate_limit_burst_in_bit_in,omitempty"`
+
+	// egress rate limit burst in bit lt
+	EgressRateLimitBurstInBitLt *float64 `json:"egress_rate_limit_burst_in_bit_lt,omitempty"`
+
+	// egress rate limit burst in bit lte
+	EgressRateLimitBurstInBitLte *float64 `json:"egress_rate_limit_burst_in_bit_lte,omitempty"`
+
+	// egress rate limit burst in bit not
+	EgressRateLimitBurstInBitNot *float64 `json:"egress_rate_limit_burst_in_bit_not,omitempty"`
+
+	// egress rate limit burst in bit not in
+	EgressRateLimitBurstInBitNotIn []float64 `json:"egress_rate_limit_burst_in_bit_not_in,omitempty"`
+
+	// egress rate limit enabled
+	EgressRateLimitEnabled *bool `json:"egress_rate_limit_enabled,omitempty"`
+
+	// egress rate limit enabled not
+	EgressRateLimitEnabledNot *bool `json:"egress_rate_limit_enabled_not,omitempty"`
+
+	// egress rate limit max rate in bitps
+	EgressRateLimitMaxRateInBitps *float64 `json:"egress_rate_limit_max_rate_in_bitps,omitempty"`
+
+	// egress rate limit max rate in bitps gt
+	EgressRateLimitMaxRateInBitpsGt *float64 `json:"egress_rate_limit_max_rate_in_bitps_gt,omitempty"`
+
+	// egress rate limit max rate in bitps gte
+	EgressRateLimitMaxRateInBitpsGte *float64 `json:"egress_rate_limit_max_rate_in_bitps_gte,omitempty"`
+
+	// egress rate limit max rate in bitps in
+	EgressRateLimitMaxRateInBitpsIn []float64 `json:"egress_rate_limit_max_rate_in_bitps_in,omitempty"`
+
+	// egress rate limit max rate in bitps lt
+	EgressRateLimitMaxRateInBitpsLt *float64 `json:"egress_rate_limit_max_rate_in_bitps_lt,omitempty"`
+
+	// egress rate limit max rate in bitps lte
+	EgressRateLimitMaxRateInBitpsLte *float64 `json:"egress_rate_limit_max_rate_in_bitps_lte,omitempty"`
+
+	// egress rate limit max rate in bitps not
+	EgressRateLimitMaxRateInBitpsNot *float64 `json:"egress_rate_limit_max_rate_in_bitps_not,omitempty"`
+
+	// egress rate limit max rate in bitps not in
+	EgressRateLimitMaxRateInBitpsNotIn []float64 `json:"egress_rate_limit_max_rate_in_bitps_not_in,omitempty"`
+
 	// enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
@@ -117,6 +171,60 @@ type VMNicWhereInput struct {
 
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
+
+	// ingress rate limit burst in bit
+	IngressRateLimitBurstInBit *float64 `json:"ingress_rate_limit_burst_in_bit,omitempty"`
+
+	// ingress rate limit burst in bit gt
+	IngressRateLimitBurstInBitGt *float64 `json:"ingress_rate_limit_burst_in_bit_gt,omitempty"`
+
+	// ingress rate limit burst in bit gte
+	IngressRateLimitBurstInBitGte *float64 `json:"ingress_rate_limit_burst_in_bit_gte,omitempty"`
+
+	// ingress rate limit burst in bit in
+	IngressRateLimitBurstInBitIn []float64 `json:"ingress_rate_limit_burst_in_bit_in,omitempty"`
+
+	// ingress rate limit burst in bit lt
+	IngressRateLimitBurstInBitLt *float64 `json:"ingress_rate_limit_burst_in_bit_lt,omitempty"`
+
+	// ingress rate limit burst in bit lte
+	IngressRateLimitBurstInBitLte *float64 `json:"ingress_rate_limit_burst_in_bit_lte,omitempty"`
+
+	// ingress rate limit burst in bit not
+	IngressRateLimitBurstInBitNot *float64 `json:"ingress_rate_limit_burst_in_bit_not,omitempty"`
+
+	// ingress rate limit burst in bit not in
+	IngressRateLimitBurstInBitNotIn []float64 `json:"ingress_rate_limit_burst_in_bit_not_in,omitempty"`
+
+	// ingress rate limit enabled
+	IngressRateLimitEnabled *bool `json:"ingress_rate_limit_enabled,omitempty"`
+
+	// ingress rate limit enabled not
+	IngressRateLimitEnabledNot *bool `json:"ingress_rate_limit_enabled_not,omitempty"`
+
+	// ingress rate limit max rate in bitps
+	IngressRateLimitMaxRateInBitps *float64 `json:"ingress_rate_limit_max_rate_in_bitps,omitempty"`
+
+	// ingress rate limit max rate in bitps gt
+	IngressRateLimitMaxRateInBitpsGt *float64 `json:"ingress_rate_limit_max_rate_in_bitps_gt,omitempty"`
+
+	// ingress rate limit max rate in bitps gte
+	IngressRateLimitMaxRateInBitpsGte *float64 `json:"ingress_rate_limit_max_rate_in_bitps_gte,omitempty"`
+
+	// ingress rate limit max rate in bitps in
+	IngressRateLimitMaxRateInBitpsIn []float64 `json:"ingress_rate_limit_max_rate_in_bitps_in,omitempty"`
+
+	// ingress rate limit max rate in bitps lt
+	IngressRateLimitMaxRateInBitpsLt *float64 `json:"ingress_rate_limit_max_rate_in_bitps_lt,omitempty"`
+
+	// ingress rate limit max rate in bitps lte
+	IngressRateLimitMaxRateInBitpsLte *float64 `json:"ingress_rate_limit_max_rate_in_bitps_lte,omitempty"`
+
+	// ingress rate limit max rate in bitps not
+	IngressRateLimitMaxRateInBitpsNot *float64 `json:"ingress_rate_limit_max_rate_in_bitps_not,omitempty"`
+
+	// ingress rate limit max rate in bitps not in
+	IngressRateLimitMaxRateInBitpsNotIn []float64 `json:"ingress_rate_limit_max_rate_in_bitps_not_in,omitempty"`
 
 	// interface id
 	InterfaceID *string `json:"interface_id,omitempty"`

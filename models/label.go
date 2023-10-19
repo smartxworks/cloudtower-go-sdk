@@ -72,6 +72,12 @@ type Label struct {
 	// elf images
 	ElfImages []*NestedElfImage `json:"elf_images,omitempty"`
 
+	// gpu device num
+	GpuDeviceNum *int32 `json:"gpu_device_num,omitempty"`
+
+	// gpu devices
+	GpuDevices []*NestedGpuDevice `json:"gpu_devices,omitempty"`
+
 	// host num
 	HostNum *int32 `json:"host_num,omitempty"`
 
@@ -197,6 +203,12 @@ type Label struct {
 	// vm volume num
 	VMVolumeNum *int32 `json:"vm_volume_num,omitempty"`
 
+	// vm volume snapshot num
+	VMVolumeSnapshotNum *int32 `json:"vm_volume_snapshot_num,omitempty"`
+
+	// vm volume snapshots
+	VMVolumeSnapshots []*NestedVMVolumeSnapshot `json:"vm_volume_snapshots,omitempty"`
+
 	// vm volumes
 	VMVolumes []*NestedVMVolume `json:"vm_volumes,omitempty"`
 
@@ -241,6 +253,10 @@ func (m *Label) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateElfImages(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevices(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -317,6 +333,10 @@ func (m *Label) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVMTemplates(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMVolumeSnapshots(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -541,6 +561,32 @@ func (m *Label) validateElfImages(formats strfmt.Registry) error {
 					return ve.ValidateName("elf_images" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("elf_images" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Label) validateGpuDevices(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+		if swag.IsZero(m.GpuDevices[i]) { // not required
+			continue
+		}
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -1011,6 +1057,32 @@ func (m *Label) validateVMTemplates(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Label) validateVMVolumeSnapshots(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMVolumeSnapshots) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VMVolumeSnapshots); i++ {
+		if swag.IsZero(m.VMVolumeSnapshots[i]) { // not required
+			continue
+		}
+
+		if m.VMVolumeSnapshots[i] != nil {
+			if err := m.VMVolumeSnapshots[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_volume_snapshots" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_volume_snapshots" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *Label) validateVMVolumes(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMVolumes) { // not required
 		return nil
@@ -1099,6 +1171,10 @@ func (m *Label) ContextValidate(ctx context.Context, formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateGpuDevices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateHosts(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1164,6 +1240,10 @@ func (m *Label) ContextValidate(ctx context.Context, formats strfmt.Registry) er
 	}
 
 	if err := m.contextValidateVMTemplates(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMVolumeSnapshots(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1331,6 +1411,26 @@ func (m *Label) contextValidateElfImages(ctx context.Context, formats strfmt.Reg
 					return ve.ValidateName("elf_images" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("elf_images" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Label) contextValidateGpuDevices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -1671,6 +1771,26 @@ func (m *Label) contextValidateVMTemplates(ctx context.Context, formats strfmt.R
 					return ve.ValidateName("vm_templates" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("vm_templates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Label) contextValidateVMVolumeSnapshots(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VMVolumeSnapshots); i++ {
+
+		if m.VMVolumeSnapshots[i] != nil {
+			if err := m.VMVolumeSnapshots[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_volume_snapshots" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_volume_snapshots" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

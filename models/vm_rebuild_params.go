@@ -38,6 +38,9 @@ type VMRebuildParams struct {
 	// folder id
 	FolderID *string `json:"folder_id,omitempty"`
 
+	// gpu devices
+	GpuDevices []*VMGpuOperationParams `json:"gpu_devices,omitempty"`
+
 	// guest os type
 	GuestOsType *VMGuestsOperationSystem `json:"guest_os_type,omitempty"`
 
@@ -93,6 +96,9 @@ type VMRebuildParams struct {
 
 	// vm nics
 	VMNics []*VMNicParams `json:"vm_nics,omitempty"`
+
+	// vm placement group
+	VMPlacementGroup *VMPlacementGroupWhereInput `json:"vm_placement_group,omitempty"`
 }
 
 // Validate validates this Vm rebuild params
@@ -100,6 +106,10 @@ func (m *VMRebuildParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateFirmware(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevices(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -147,6 +157,10 @@ func (m *VMRebuildParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateVMPlacementGroup(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -167,6 +181,32 @@ func (m *VMRebuildParams) validateFirmware(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VMRebuildParams) validateGpuDevices(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+		if swag.IsZero(m.GpuDevices[i]) { // not required
+			continue
+		}
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -368,11 +408,34 @@ func (m *VMRebuildParams) validateVMNics(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMRebuildParams) validateVMPlacementGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMPlacementGroup) { // not required
+		return nil
+	}
+
+	if m.VMPlacementGroup != nil {
+		if err := m.VMPlacementGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_placement_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_placement_group")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this Vm rebuild params based on the context it is used
 func (m *VMRebuildParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateFirmware(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGpuDevices(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -412,6 +475,10 @@ func (m *VMRebuildParams) ContextValidate(ctx context.Context, formats strfmt.Re
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateVMPlacementGroup(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -429,6 +496,26 @@ func (m *VMRebuildParams) contextValidateFirmware(ctx context.Context, formats s
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VMRebuildParams) contextValidateGpuDevices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -577,6 +664,22 @@ func (m *VMRebuildParams) contextValidateVMNics(ctx context.Context, formats str
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMRebuildParams) contextValidateVMPlacementGroup(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMPlacementGroup != nil {
+		if err := m.VMPlacementGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_placement_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_placement_group")
+			}
+			return err
+		}
 	}
 
 	return nil

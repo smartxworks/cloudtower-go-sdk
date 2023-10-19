@@ -40,6 +40,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/everoute_package"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/global_alert_rule"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/global_settings"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/gpu_device"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/graph"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/host"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ipmi"
@@ -177,6 +178,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.EveroutePackage = everoute_package.New(transport, formats)
 	cli.GlobalAlertRule = global_alert_rule.New(transport, formats)
 	cli.GlobalSettings = global_settings.New(transport, formats)
+	cli.GpuDevice = gpu_device.New(transport, formats)
 	cli.Graph = graph.New(transport, formats)
 	cli.Host = host.New(transport, formats)
 	cli.Ipmi = ipmi.New(transport, formats)
@@ -344,6 +346,8 @@ type Cloudtower struct {
 
 	GlobalSettings global_settings.ClientService
 
+	GpuDevice gpu_device.ClientService
+
 	Graph graph.ClientService
 
 	Host host.ClientService
@@ -506,6 +510,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.EveroutePackage.SetTransport(transport)
 	c.GlobalAlertRule.SetTransport(transport)
 	c.GlobalSettings.SetTransport(transport)
+	c.GpuDevice.SetTransport(transport)
 	c.Graph.SetTransport(transport)
 	c.Host.SetTransport(transport)
 	c.Ipmi.SetTransport(transport)

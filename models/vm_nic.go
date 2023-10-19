@@ -19,6 +19,15 @@ import (
 // swagger:model VmNic
 type VMNic struct {
 
+	// egress rate limit burst in bit
+	EgressRateLimitBurstInBit *float64 `json:"egress_rate_limit_burst_in_bit,omitempty"`
+
+	// egress rate limit enabled
+	EgressRateLimitEnabled *bool `json:"egress_rate_limit_enabled,omitempty"`
+
+	// egress rate limit max rate in bitps
+	EgressRateLimitMaxRateInBitps *float64 `json:"egress_rate_limit_max_rate_in_bitps,omitempty"`
+
 	// enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
@@ -28,6 +37,15 @@ type VMNic struct {
 	// id
 	// Required: true
 	ID *string `json:"id"`
+
+	// ingress rate limit burst in bit
+	IngressRateLimitBurstInBit *float64 `json:"ingress_rate_limit_burst_in_bit,omitempty"`
+
+	// ingress rate limit enabled
+	IngressRateLimitEnabled *bool `json:"ingress_rate_limit_enabled,omitempty"`
+
+	// ingress rate limit max rate in bitps
+	IngressRateLimitMaxRateInBitps *float64 `json:"ingress_rate_limit_max_rate_in_bitps,omitempty"`
 
 	// interface id
 	InterfaceID *string `json:"interface_id,omitempty"`

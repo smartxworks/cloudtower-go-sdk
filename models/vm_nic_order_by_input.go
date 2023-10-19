@@ -30,6 +30,24 @@ func (m VMNicOrderByInput) Pointer() *VMNicOrderByInput {
 
 const (
 
+	// VMNicOrderByInputEgressRateLimitBurstInBitASC captures enum value "egress_rate_limit_burst_in_bit_ASC"
+	VMNicOrderByInputEgressRateLimitBurstInBitASC VMNicOrderByInput = "egress_rate_limit_burst_in_bit_ASC"
+
+	// VMNicOrderByInputEgressRateLimitBurstInBitDESC captures enum value "egress_rate_limit_burst_in_bit_DESC"
+	VMNicOrderByInputEgressRateLimitBurstInBitDESC VMNicOrderByInput = "egress_rate_limit_burst_in_bit_DESC"
+
+	// VMNicOrderByInputEgressRateLimitEnabledASC captures enum value "egress_rate_limit_enabled_ASC"
+	VMNicOrderByInputEgressRateLimitEnabledASC VMNicOrderByInput = "egress_rate_limit_enabled_ASC"
+
+	// VMNicOrderByInputEgressRateLimitEnabledDESC captures enum value "egress_rate_limit_enabled_DESC"
+	VMNicOrderByInputEgressRateLimitEnabledDESC VMNicOrderByInput = "egress_rate_limit_enabled_DESC"
+
+	// VMNicOrderByInputEgressRateLimitMaxRateInBitpsASC captures enum value "egress_rate_limit_max_rate_in_bitps_ASC"
+	VMNicOrderByInputEgressRateLimitMaxRateInBitpsASC VMNicOrderByInput = "egress_rate_limit_max_rate_in_bitps_ASC"
+
+	// VMNicOrderByInputEgressRateLimitMaxRateInBitpsDESC captures enum value "egress_rate_limit_max_rate_in_bitps_DESC"
+	VMNicOrderByInputEgressRateLimitMaxRateInBitpsDESC VMNicOrderByInput = "egress_rate_limit_max_rate_in_bitps_DESC"
+
 	// VMNicOrderByInputEnabledASC captures enum value "enabled_ASC"
 	VMNicOrderByInputEnabledASC VMNicOrderByInput = "enabled_ASC"
 
@@ -47,6 +65,24 @@ const (
 
 	// VMNicOrderByInputIDDESC captures enum value "id_DESC"
 	VMNicOrderByInputIDDESC VMNicOrderByInput = "id_DESC"
+
+	// VMNicOrderByInputIngressRateLimitBurstInBitASC captures enum value "ingress_rate_limit_burst_in_bit_ASC"
+	VMNicOrderByInputIngressRateLimitBurstInBitASC VMNicOrderByInput = "ingress_rate_limit_burst_in_bit_ASC"
+
+	// VMNicOrderByInputIngressRateLimitBurstInBitDESC captures enum value "ingress_rate_limit_burst_in_bit_DESC"
+	VMNicOrderByInputIngressRateLimitBurstInBitDESC VMNicOrderByInput = "ingress_rate_limit_burst_in_bit_DESC"
+
+	// VMNicOrderByInputIngressRateLimitEnabledASC captures enum value "ingress_rate_limit_enabled_ASC"
+	VMNicOrderByInputIngressRateLimitEnabledASC VMNicOrderByInput = "ingress_rate_limit_enabled_ASC"
+
+	// VMNicOrderByInputIngressRateLimitEnabledDESC captures enum value "ingress_rate_limit_enabled_DESC"
+	VMNicOrderByInputIngressRateLimitEnabledDESC VMNicOrderByInput = "ingress_rate_limit_enabled_DESC"
+
+	// VMNicOrderByInputIngressRateLimitMaxRateInBitpsASC captures enum value "ingress_rate_limit_max_rate_in_bitps_ASC"
+	VMNicOrderByInputIngressRateLimitMaxRateInBitpsASC VMNicOrderByInput = "ingress_rate_limit_max_rate_in_bitps_ASC"
+
+	// VMNicOrderByInputIngressRateLimitMaxRateInBitpsDESC captures enum value "ingress_rate_limit_max_rate_in_bitps_DESC"
+	VMNicOrderByInputIngressRateLimitMaxRateInBitpsDESC VMNicOrderByInput = "ingress_rate_limit_max_rate_in_bitps_DESC"
 
 	// VMNicOrderByInputInterfaceIDASC captures enum value "interface_id_ASC"
 	VMNicOrderByInputInterfaceIDASC VMNicOrderByInput = "interface_id_ASC"
@@ -102,7 +138,7 @@ var vmNicOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMNicOrderByInput
-	if err := json.Unmarshal([]byte(`["enabled_ASC","enabled_DESC","gateway_ASC","gateway_DESC","id_ASC","id_DESC","interface_id_ASC","interface_id_DESC","ip_address_ASC","ip_address_DESC","local_id_ASC","local_id_DESC","mac_address_ASC","mac_address_DESC","mirror_ASC","mirror_DESC","model_ASC","model_DESC","order_ASC","order_DESC","subnet_mask_ASC","subnet_mask_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["egress_rate_limit_burst_in_bit_ASC","egress_rate_limit_burst_in_bit_DESC","egress_rate_limit_enabled_ASC","egress_rate_limit_enabled_DESC","egress_rate_limit_max_rate_in_bitps_ASC","egress_rate_limit_max_rate_in_bitps_DESC","enabled_ASC","enabled_DESC","gateway_ASC","gateway_DESC","id_ASC","id_DESC","ingress_rate_limit_burst_in_bit_ASC","ingress_rate_limit_burst_in_bit_DESC","ingress_rate_limit_enabled_ASC","ingress_rate_limit_enabled_DESC","ingress_rate_limit_max_rate_in_bitps_ASC","ingress_rate_limit_max_rate_in_bitps_DESC","interface_id_ASC","interface_id_DESC","ip_address_ASC","ip_address_DESC","local_id_ASC","local_id_DESC","mac_address_ASC","mac_address_DESC","mirror_ASC","mirror_DESC","model_ASC","model_DESC","order_ASC","order_DESC","subnet_mask_ASC","subnet_mask_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -30,12 +31,19 @@ type VMVolumeSnapshot struct {
 	// Required: true
 	Description *string `json:"description"`
 
+	// elf storage policy
+	// Required: true
+	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
 	// id
 	// Required: true
 	ID *string `json:"id"`
+
+	// labels
+	Labels []*NestedLabel `json:"labels,omitempty"`
 
 	// local created at
 	// Required: true
@@ -65,6 +73,12 @@ type VMVolumeSnapshot struct {
 	// vm volume
 	VMVolume *NestedVMVolume `json:"vm_volume,omitempty"`
 
+	// volume sharing
+	VolumeSharing *bool `json:"volume_sharing,omitempty"`
+
+	// volume size
+	VolumeSize *float64 `json:"volume_size,omitempty"`
+
 	// zbs snapshot uuid
 	ZbsSnapshotUUID *string `json:"zbs_snapshot_uuid,omitempty"`
 }
@@ -81,11 +95,19 @@ func (m *VMVolumeSnapshot) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateElfStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLabels(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -144,6 +166,30 @@ func (m *VMVolumeSnapshot) validateDescription(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMVolumeSnapshot) validateElfStoragePolicy(formats strfmt.Registry) error {
+
+	if err := validate.Required("elf_storage_policy", "body", m.ElfStoragePolicy); err != nil {
+		return err
+	}
+
+	if err := validate.Required("elf_storage_policy", "body", m.ElfStoragePolicy); err != nil {
+		return err
+	}
+
+	if m.ElfStoragePolicy != nil {
+		if err := m.ElfStoragePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMVolumeSnapshot) validateEntityAsyncStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatus) { // not required
 		return nil
@@ -167,6 +213,32 @@ func (m *VMVolumeSnapshot) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshot) validateLabels(formats strfmt.Registry) error {
+	if swag.IsZero(m.Labels) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Labels); i++ {
+		if swag.IsZero(m.Labels[i]) { // not required
+			continue
+		}
+
+		if m.Labels[i] != nil {
+			if err := m.Labels[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labels" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -250,7 +322,15 @@ func (m *VMVolumeSnapshot) ContextValidate(ctx context.Context, formats strfmt.R
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateElfStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLabels(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -284,6 +364,22 @@ func (m *VMVolumeSnapshot) contextValidateCluster(ctx context.Context, formats s
 	return nil
 }
 
+func (m *VMVolumeSnapshot) contextValidateElfStoragePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ElfStoragePolicy != nil {
+		if err := m.ElfStoragePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMVolumeSnapshot) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatus != nil {
@@ -295,6 +391,26 @@ func (m *VMVolumeSnapshot) contextValidateEntityAsyncStatus(ctx context.Context,
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshot) contextValidateLabels(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Labels); i++ {
+
+		if m.Labels[i] != nil {
+			if err := m.Labels[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labels" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

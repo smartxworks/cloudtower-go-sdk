@@ -70,6 +70,30 @@ type HostWhereInput struct {
 	// access ip starts with
 	AccessIPStartsWith *string `json:"access_ip_starts_with,omitempty"`
 
+	// allocable cpu cores for vm exclusive
+	AllocableCPUCoresForVMExclusive *int32 `json:"allocable_cpu_cores_for_vm_exclusive,omitempty"`
+
+	// allocable cpu cores for vm exclusive gt
+	AllocableCPUCoresForVMExclusiveGt *int32 `json:"allocable_cpu_cores_for_vm_exclusive_gt,omitempty"`
+
+	// allocable cpu cores for vm exclusive gte
+	AllocableCPUCoresForVMExclusiveGte *int32 `json:"allocable_cpu_cores_for_vm_exclusive_gte,omitempty"`
+
+	// allocable cpu cores for vm exclusive in
+	AllocableCPUCoresForVMExclusiveIn []int32 `json:"allocable_cpu_cores_for_vm_exclusive_in,omitempty"`
+
+	// allocable cpu cores for vm exclusive lt
+	AllocableCPUCoresForVMExclusiveLt *int32 `json:"allocable_cpu_cores_for_vm_exclusive_lt,omitempty"`
+
+	// allocable cpu cores for vm exclusive lte
+	AllocableCPUCoresForVMExclusiveLte *int32 `json:"allocable_cpu_cores_for_vm_exclusive_lte,omitempty"`
+
+	// allocable cpu cores for vm exclusive not
+	AllocableCPUCoresForVMExclusiveNot *int32 `json:"allocable_cpu_cores_for_vm_exclusive_not,omitempty"`
+
+	// allocable cpu cores for vm exclusive not in
+	AllocableCPUCoresForVMExclusiveNotIn []int32 `json:"allocable_cpu_cores_for_vm_exclusive_not_in,omitempty"`
+
 	// allocatable memory bytes
 	AllocatableMemoryBytes *int64 `json:"allocatable_memory_bytes,omitempty"`
 
@@ -388,6 +412,15 @@ type HostWhereInput struct {
 	// failure data space not in
 	FailureDataSpaceNotIn []int64 `json:"failure_data_space_not_in,omitempty"`
 
+	// gpu devices every
+	GpuDevicesEvery *GpuDeviceWhereInput `json:"gpu_devices_every,omitempty"`
+
+	// gpu devices none
+	GpuDevicesNone *GpuDeviceWhereInput `json:"gpu_devices_none,omitempty"`
+
+	// gpu devices some
+	GpuDevicesSome *GpuDeviceWhereInput `json:"gpu_devices_some,omitempty"`
+
 	// hdd data capacity
 	HddDataCapacity *int64 `json:"hdd_data_capacity,omitempty"`
 
@@ -519,6 +552,18 @@ type HostWhereInput struct {
 
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
+
+	// iommu
+	Iommu *IommuStatus `json:"iommu,omitempty"`
+
+	// iommu in
+	IommuIn []IommuStatus `json:"iommu_in,omitempty"`
+
+	// iommu not
+	IommuNot *IommuStatus `json:"iommu_not,omitempty"`
+
+	// iommu not in
+	IommuNotIn []IommuStatus `json:"iommu_not_in,omitempty"`
 
 	// ipmi
 	Ipmi *IpmiWhereInput `json:"ipmi,omitempty"`
@@ -1665,6 +1710,34 @@ func (m *HostWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateGpuDevicesEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevicesNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevicesSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIommu(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIommuIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIommuNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIommuNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIpmi(formats); err != nil {
 		res = append(res, err)
 	}
@@ -2080,6 +2153,143 @@ func (m *HostWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry)
 				return ve.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateGpuDevicesEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesEvery) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesEvery != nil {
+		if err := m.GpuDevicesEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateGpuDevicesNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesNone) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesNone != nil {
+		if err := m.GpuDevicesNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateGpuDevicesSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesSome) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesSome != nil {
+		if err := m.GpuDevicesSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateIommu(formats strfmt.Registry) error {
+	if swag.IsZero(m.Iommu) { // not required
+		return nil
+	}
+
+	if m.Iommu != nil {
+		if err := m.Iommu.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateIommuIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.IommuIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IommuIn); i++ {
+
+		if err := m.IommuIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateIommuNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.IommuNot) { // not required
+		return nil
+	}
+
+	if m.IommuNot != nil {
+		if err := m.IommuNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateIommuNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.IommuNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IommuNotIn); i++ {
+
+		if err := m.IommuNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -2655,6 +2865,34 @@ func (m *HostWhereInput) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateGpuDevicesEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGpuDevicesNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGpuDevicesSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIommu(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIommuIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIommuNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIommuNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIpmi(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3016,6 +3254,122 @@ func (m *HostWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Conte
 				return ve.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateGpuDevicesEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesEvery != nil {
+		if err := m.GpuDevicesEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateGpuDevicesNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesNone != nil {
+		if err := m.GpuDevicesNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateGpuDevicesSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesSome != nil {
+		if err := m.GpuDevicesSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateIommu(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Iommu != nil {
+		if err := m.Iommu.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateIommuIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IommuIn); i++ {
+
+		if err := m.IommuIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateIommuNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IommuNot != nil {
+		if err := m.IommuNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateIommuNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IommuNotIn); i++ {
+
+		if err := m.IommuNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
