@@ -107,6 +107,9 @@ type Nic struct {
 	// used vf num
 	UsedVfNum *int32 `json:"used_vf_num,omitempty"`
 
+	// user usage
+	UserUsage *NicUserUsage `json:"user_usage,omitempty"`
+
 	// vds
 	Vds *NestedVds `json:"vds,omitempty"`
 }
@@ -164,6 +167,10 @@ func (m *Nic) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateUp(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserUsage(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -352,6 +359,25 @@ func (m *Nic) validateUp(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Nic) validateUserUsage(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserUsage) { // not required
+		return nil
+	}
+
+	if m.UserUsage != nil {
+		if err := m.UserUsage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Nic) validateVds(formats strfmt.Registry) error {
 	if swag.IsZero(m.Vds) { // not required
 		return nil
@@ -392,6 +418,10 @@ func (m *Nic) ContextValidate(ctx context.Context, formats strfmt.Registry) erro
 	}
 
 	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserUsage(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -481,6 +511,22 @@ func (m *Nic) contextValidateType(ctx context.Context, formats strfmt.Registry) 
 				return ve.ValidateName("type")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Nic) contextValidateUserUsage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UserUsage != nil {
+		if err := m.UserUsage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage")
 			}
 			return err
 		}

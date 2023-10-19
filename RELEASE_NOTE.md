@@ -1,5 +1,31 @@
 # RELEASE NOTE
 
+## release 日期 2023-10-19
+
+v2.12.0 release (tower version 3.3.0)
+
+### update
+
+- [GpuDeviceApi] 新增 GPU 设备的支持，新增以下 API：
+  - [GetGpuDevices] 获取 GPU 设备列表
+  - [GetGpuDeviceConnections] 获取 GPU 设备数量
+  - [SwitchGpuDeviceSriov] 切换 GPU 设备 sr-iov 开启
+  - [UpdateGpuDeviceDescription] 更新 GPU 设备描述
+  - [UpdateGpuDeviceUsage] 更新 GPU 设备用途
+- [VMApi] 新增 GPU 设备支持：
+  - 支持创建虚拟机，克隆虚拟机，从内容库模板创建虚拟机时额外配置 GPU 设备，需要指定主机
+  - 新增 [AddVMGpuDevice] 为已有虚拟机挂载 GPU 设备
+  - 新增 [RemoveVMGpuDevice] 为已有虚拟机卸载 GPU 设备
+- [VMApi] 新增 PCI 网卡支持：
+  - 支持创建虚拟机，克隆虚拟机，从内容库模板创建虚拟机时额外配置 PCI 网卡，需要指定主机
+  - 新增 [AddVMPciNic] 支持为已有虚拟机挂载 PCI 网卡
+  - 新增 [RemoveVMPciNic] 支持为已有的虚拟机卸载 PCI 网卡
+- [VMApi] 优化卸载网卡:
+  - [RemoveVMNic] `nic_index` 作为删除标记不够稳定，弃用
+  - [RemoveVMNicByWhere] 新方法，支持使用 where 条件来筛选需要的网卡，对于 VmNic 而言，可以配合使用 vm + mac_address 的筛选， `{vm:<vm_where>, mac_address:<mac_address>}` 的形式来较为稳定的筛选出需要的 VmNic
+- [NicApi] [UpdateNic] 支持通过 `nic_user_usage` 更新网口用途
+- [LabelApi] 支持为 GPU 设备打标签
+
 ## release 日期 2023-09-01
 
 v2.11.0 release (tower version 3.2.0)

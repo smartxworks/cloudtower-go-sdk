@@ -23,6 +23,9 @@ type Host struct {
 	// access ip
 	AccessIP *string `json:"access_ip,omitempty"`
 
+	// allocable cpu cores for vm exclusive
+	AllocableCPUCoresForVMExclusive *int32 `json:"allocable_cpu_cores_for_vm_exclusive,omitempty"`
+
 	// allocatable memory bytes
 	// Required: true
 	AllocatableMemoryBytes *int64 `json:"allocatable_memory_bytes"`
@@ -78,6 +81,9 @@ type Host struct {
 	// Required: true
 	FailureDataSpace *int64 `json:"failure_data_space"`
 
+	// gpu devices
+	GpuDevices []*NestedGpuDevice `json:"gpu_devices,omitempty"`
+
 	// hdd data capacity
 	// Required: true
 	HddDataCapacity *int64 `json:"hdd_data_capacity"`
@@ -86,12 +92,18 @@ type Host struct {
 	// Required: true
 	HddDiskCount *int32 `json:"hdd_disk_count"`
 
+	// host state
+	HostState *NestedMaintenanceHostState `json:"host_state,omitempty"`
+
 	// hypervisor ip
 	HypervisorIP *string `json:"hypervisor_ip,omitempty"`
 
 	// id
 	// Required: true
 	ID *string `json:"id"`
+
+	// iommu
+	Iommu *IommuStatus `json:"iommu,omitempty"`
 
 	// ipmi
 	Ipmi *NestedIpmi `json:"ipmi,omitempty"`
@@ -317,6 +329,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateGpuDevices(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateHddDataCapacity(formats); err != nil {
 		res = append(res, err)
 	}
@@ -325,7 +341,15 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateHostState(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIommu(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -624,6 +648,32 @@ func (m *Host) validateFailureDataSpace(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Host) validateGpuDevices(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+		if swag.IsZero(m.GpuDevices[i]) { // not required
+			continue
+		}
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *Host) validateHddDataCapacity(formats strfmt.Registry) error {
 
 	if err := validate.Required("hdd_data_capacity", "body", m.HddDataCapacity); err != nil {
@@ -642,10 +692,48 @@ func (m *Host) validateHddDiskCount(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Host) validateHostState(formats strfmt.Registry) error {
+	if swag.IsZero(m.HostState) { // not required
+		return nil
+	}
+
+	if m.HostState != nil {
+		if err := m.HostState.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("host_state")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("host_state")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Host) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Host) validateIommu(formats strfmt.Registry) error {
+	if swag.IsZero(m.Iommu) { // not required
+		return nil
+	}
+
+	if m.Iommu != nil {
+		if err := m.Iommu.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1095,6 +1183,18 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateGpuDevices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHostState(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIommu(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIpmi(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1201,6 +1301,58 @@ func (m *Host) contextValidateEntityAsyncStatus(ctx context.Context, formats str
 				return ve.ValidateName("entityAsyncStatus")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateGpuDevices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.GpuDevices); i++ {
+
+		if m.GpuDevices[i] != nil {
+			if err := m.GpuDevices[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("gpu_devices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateHostState(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HostState != nil {
+		if err := m.HostState.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("host_state")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("host_state")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateIommu(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Iommu != nil {
+		if err := m.Iommu.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu")
 			}
 			return err
 		}

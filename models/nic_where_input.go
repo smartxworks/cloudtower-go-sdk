@@ -688,6 +688,18 @@ type NicWhereInput struct {
 	// used vf num not in
 	UsedVfNumNotIn []int32 `json:"used_vf_num_not_in,omitempty"`
 
+	// user usage
+	UserUsage *NicUserUsage `json:"user_usage,omitempty"`
+
+	// user usage in
+	UserUsageIn []NicUserUsage `json:"user_usage_in,omitempty"`
+
+	// user usage not
+	UserUsageNot *NicUserUsage `json:"user_usage_not,omitempty"`
+
+	// user usage not in
+	UserUsageNotIn []NicUserUsage `json:"user_usage_not_in,omitempty"`
+
 	// vds
 	Vds *VdsWhereInput `json:"vds,omitempty"`
 }
@@ -769,6 +781,22 @@ func (m *NicWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateTypeNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserUsage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserUsageIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserUsageNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserUsageNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1176,6 +1204,86 @@ func (m *NicWhereInput) validateTypeNotIn(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NicWhereInput) validateUserUsage(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserUsage) { // not required
+		return nil
+	}
+
+	if m.UserUsage != nil {
+		if err := m.UserUsage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) validateUserUsageIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserUsageIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UserUsageIn); i++ {
+
+		if err := m.UserUsageIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) validateUserUsageNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserUsageNot) { // not required
+		return nil
+	}
+
+	if m.UserUsageNot != nil {
+		if err := m.UserUsageNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) validateUserUsageNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserUsageNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UserUsageNotIn); i++ {
+
+		if err := m.UserUsageNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *NicWhereInput) validateVds(formats strfmt.Registry) error {
 	if swag.IsZero(m.Vds) { // not required
 		return nil
@@ -1272,6 +1380,22 @@ func (m *NicWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regi
 	}
 
 	if err := m.contextValidateTypeNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserUsage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserUsageIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserUsageNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserUsageNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1604,6 +1728,74 @@ func (m *NicWhereInput) contextValidateTypeNotIn(ctx context.Context, formats st
 				return ve.ValidateName("type_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateUserUsage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UserUsage != nil {
+		if err := m.UserUsage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateUserUsageIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UserUsageIn); i++ {
+
+		if err := m.UserUsageIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateUserUsageNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UserUsageNot != nil {
+		if err := m.UserUsageNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateUserUsageNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UserUsageNotIn); i++ {
+
+		if err := m.UserUsageNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user_usage_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("user_usage_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

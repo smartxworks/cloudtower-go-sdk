@@ -259,6 +259,15 @@ type VMWhereInput struct {
 	// folder
 	Folder *VMFolderWhereInput `json:"folder,omitempty"`
 
+	// gpu devices every
+	GpuDevicesEvery *GpuDeviceWhereInput `json:"gpu_devices_every,omitempty"`
+
+	// gpu devices none
+	GpuDevicesNone *GpuDeviceWhereInput `json:"gpu_devices_none,omitempty"`
+
+	// gpu devices some
+	GpuDevicesSome *GpuDeviceWhereInput `json:"gpu_devices_some,omitempty"`
+
 	// guest cpu model
 	GuestCPUModel *string `json:"guest_cpu_model,omitempty"`
 
@@ -982,6 +991,15 @@ type VMWhereInput struct {
 	// os starts with
 	OsStartsWith *string `json:"os_starts_with,omitempty"`
 
+	// pci nics every
+	PciNicsEvery *NicWhereInput `json:"pci_nics_every,omitempty"`
+
+	// pci nics none
+	PciNicsNone *NicWhereInput `json:"pci_nics_none,omitempty"`
+
+	// pci nics some
+	PciNicsSome *NicWhereInput `json:"pci_nics_some,omitempty"`
+
 	// protected
 	Protected *bool `json:"protected,omitempty"`
 
@@ -1313,6 +1331,18 @@ func (m *VMWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateGpuDevicesEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevicesNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGpuDevicesSome(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateGuestOsType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1394,6 +1424,18 @@ func (m *VMWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMaxIopsPolicyNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePciNicsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePciNicsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePciNicsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1944,6 +1986,63 @@ func (m *VMWhereInput) validateFolder(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMWhereInput) validateGpuDevicesEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesEvery) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesEvery != nil {
+		if err := m.GpuDevicesEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validateGpuDevicesNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesNone) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesNone != nil {
+		if err := m.GpuDevicesNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validateGpuDevicesSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.GpuDevicesSome) { // not required
+		return nil
+	}
+
+	if m.GpuDevicesSome != nil {
+		if err := m.GpuDevicesSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMWhereInput) validateGuestOsType(formats strfmt.Registry) error {
 	if swag.IsZero(m.GuestOsType) { // not required
 		return nil
@@ -2354,6 +2453,63 @@ func (m *VMWhereInput) validateMaxIopsPolicyNotIn(formats strfmt.Registry) error
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validatePciNicsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.PciNicsEvery) { // not required
+		return nil
+	}
+
+	if m.PciNicsEvery != nil {
+		if err := m.PciNicsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validatePciNicsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.PciNicsNone) { // not required
+		return nil
+	}
+
+	if m.PciNicsNone != nil {
+		if err := m.PciNicsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validatePciNicsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.PciNicsSome) { // not required
+		return nil
+	}
+
+	if m.PciNicsSome != nil {
+		if err := m.PciNicsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics_some")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -3067,6 +3223,18 @@ func (m *VMWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regis
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateGpuDevicesEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGpuDevicesNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGpuDevicesSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateGuestOsType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3148,6 +3316,18 @@ func (m *VMWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regis
 	}
 
 	if err := m.contextValidateMaxIopsPolicyNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePciNicsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePciNicsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePciNicsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -3629,6 +3809,54 @@ func (m *VMWhereInput) contextValidateFolder(ctx context.Context, formats strfmt
 	return nil
 }
 
+func (m *VMWhereInput) contextValidateGpuDevicesEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesEvery != nil {
+		if err := m.GpuDevicesEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidateGpuDevicesNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesNone != nil {
+		if err := m.GpuDevicesNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidateGpuDevicesSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.GpuDevicesSome != nil {
+		if err := m.GpuDevicesSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("gpu_devices_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("gpu_devices_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMWhereInput) contextValidateGuestOsType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.GuestOsType != nil {
@@ -3976,6 +4204,54 @@ func (m *VMWhereInput) contextValidateMaxIopsPolicyNotIn(ctx context.Context, fo
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidatePciNicsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PciNicsEvery != nil {
+		if err := m.PciNicsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidatePciNicsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PciNicsNone != nil {
+		if err := m.PciNicsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidatePciNicsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PciNicsSome != nil {
+		if err := m.PciNicsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics_some")
+			}
+			return err
+		}
 	}
 
 	return nil
