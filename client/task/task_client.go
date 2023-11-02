@@ -30,11 +30,53 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateTask(params *CreateTaskParams, opts ...ClientOption) (*CreateTaskOK, error)
+
 	GetTasks(params *GetTasksParams, opts ...ClientOption) (*GetTasksOK, error)
 
 	GetTasksConnection(params *GetTasksConnectionParams, opts ...ClientOption) (*GetTasksConnectionOK, error)
 
+	UpdateTask(params *UpdateTaskParams, opts ...ClientOption) (*UpdateTaskOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateTask create task API
+*/
+func (a *Client) CreateTask(params *CreateTaskParams, opts ...ClientOption) (*CreateTaskOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateTaskParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateTask",
+		Method:             "POST",
+		PathPattern:        "/create-task",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateTaskReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateTaskOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateTask: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,6 +152,44 @@ func (a *Client) GetTasksConnection(params *GetTasksConnectionParams, opts ...Cl
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetTasksConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateTask update task API
+*/
+func (a *Client) UpdateTask(params *UpdateTaskParams, opts ...ClientOption) (*UpdateTaskOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateTaskParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateTask",
+		Method:             "POST",
+		PathPattern:        "/update-task",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateTaskReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateTaskOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateTask: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

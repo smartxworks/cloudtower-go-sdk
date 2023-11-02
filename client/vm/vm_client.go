@@ -64,6 +64,8 @@ type ClientService interface {
 
 	ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOption) (*ForceRestartVMOK, error)
 
+	GetVMGpuDeviceInfo(params *GetVMGpuDeviceInfoParams, opts ...ClientOption) (*GetVMGpuDeviceInfoOK, error)
+
 	GetVms(params *GetVmsParams, opts ...ClientOption) (*GetVmsOK, error)
 
 	GetVmsConnection(params *GetVmsConnectionParams, opts ...ClientOption) (*GetVmsConnectionOK, error)
@@ -782,6 +784,44 @@ func (a *Client) ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOpti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for ForceRestartVm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetVMGpuDeviceInfo get Vm gpu device info API
+*/
+func (a *Client) GetVMGpuDeviceInfo(params *GetVMGpuDeviceInfoParams, opts ...ClientOption) (*GetVMGpuDeviceInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVMGpuDeviceInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetVmGpuDeviceInfo",
+		Method:             "POST",
+		PathPattern:        "/get-vm-gpu-device-info",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetVMGpuDeviceInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVMGpuDeviceInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for GetVmGpuDeviceInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

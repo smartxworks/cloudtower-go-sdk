@@ -81,6 +81,9 @@ type VMRebuildParams struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// pci nics
+	PciNics *NicWhereInput `json:"pci_nics,omitempty"`
+
 	// rebuild from snapshot id
 	// Required: true
 	RebuildFromSnapshotID *string `json:"rebuild_from_snapshot_id"`
@@ -138,6 +141,10 @@ func (m *VMRebuildParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePciNics(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -335,6 +342,25 @@ func (m *VMRebuildParams) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMRebuildParams) validatePciNics(formats strfmt.Registry) error {
+	if swag.IsZero(m.PciNics) { // not required
+		return nil
+	}
+
+	if m.PciNics != nil {
+		if err := m.PciNics.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMRebuildParams) validateRebuildFromSnapshotID(formats strfmt.Registry) error {
 
 	if err := validate.Required("rebuild_from_snapshot_id", "body", m.RebuildFromSnapshotID); err != nil {
@@ -460,6 +486,10 @@ func (m *VMRebuildParams) ContextValidate(ctx context.Context, formats strfmt.Re
 	}
 
 	if err := m.contextValidateMemoryUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePciNics(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -609,6 +639,22 @@ func (m *VMRebuildParams) contextValidateMemoryUnit(ctx context.Context, formats
 				return ve.ValidateName("memory_unit")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("memory_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMRebuildParams) contextValidatePciNics(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PciNics != nil {
+		if err := m.PciNics.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pci_nics")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pci_nics")
 			}
 			return err
 		}

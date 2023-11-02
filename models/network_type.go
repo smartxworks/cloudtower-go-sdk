@@ -42,6 +42,9 @@ const (
 	// NetworkTypeSTORAGE captures enum value "STORAGE"
 	NetworkTypeSTORAGE NetworkType = "STORAGE"
 
+	// NetworkTypeSTORAGEACCESS captures enum value "STORAGE_ACCESS"
+	NetworkTypeSTORAGEACCESS NetworkType = "STORAGE_ACCESS"
+
 	// NetworkTypeVM captures enum value "VM"
 	NetworkTypeVM NetworkType = "VM"
 )
@@ -51,7 +54,7 @@ var networkTypeEnum []interface{}
 
 func init() {
 	var res []NetworkType
-	if err := json.Unmarshal([]byte(`["ACCESS","MANAGEMENT","MIGRATION","STORAGE","VM"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ACCESS","MANAGEMENT","MIGRATION","STORAGE","STORAGE_ACCESS","VM"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

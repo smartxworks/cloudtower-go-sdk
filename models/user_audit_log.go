@@ -23,6 +23,9 @@ type UserAuditLog struct {
 	// Required: true
 	Action *string `json:"action"`
 
+	// auth type
+	AuthType *string `json:"auth_type,omitempty"`
+
 	// cluster
 	Cluster *NestedCluster `json:"cluster,omitempty"`
 
@@ -59,6 +62,9 @@ type UserAuditLog struct {
 
 	// user
 	User *NestedUser `json:"user,omitempty"`
+
+	// username
+	Username *string `json:"username,omitempty"`
 }
 
 // Validate validates this user audit log

@@ -223,6 +223,18 @@ type NicWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
+	// iommu status
+	IommuStatus *IommuStatus `json:"iommu_status,omitempty"`
+
+	// iommu status in
+	IommuStatusIn []IommuStatus `json:"iommu_status_in,omitempty"`
+
+	// iommu status not
+	IommuStatusNot *IommuStatus `json:"iommu_status_not,omitempty"`
+
+	// iommu status not in
+	IommuStatusNotIn []IommuStatus `json:"iommu_status_not_in,omitempty"`
+
 	// ip address
 	IPAddress *string `json:"ip_address,omitempty"`
 
@@ -702,6 +714,15 @@ type NicWhereInput struct {
 
 	// vds
 	Vds *VdsWhereInput `json:"vds,omitempty"`
+
+	// vms every
+	VmsEvery *VMWhereInput `json:"vms_every,omitempty"`
+
+	// vms none
+	VmsNone *VMWhereInput `json:"vms_none,omitempty"`
+
+	// vms some
+	VmsSome *VMWhereInput `json:"vms_some,omitempty"`
 }
 
 // Validate validates this nic where input
@@ -756,6 +777,22 @@ func (m *NicWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateIommuStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIommuStatusIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIommuStatusNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIommuStatusNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLabelsEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -801,6 +838,18 @@ func (m *NicWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVds(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVmsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVmsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVmsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1067,6 +1116,86 @@ func (m *NicWhereInput) validateHost(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NicWhereInput) validateIommuStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.IommuStatus) { // not required
+		return nil
+	}
+
+	if m.IommuStatus != nil {
+		if err := m.IommuStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) validateIommuStatusIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.IommuStatusIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IommuStatusIn); i++ {
+
+		if err := m.IommuStatusIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_status_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_status_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) validateIommuStatusNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.IommuStatusNot) { // not required
+		return nil
+	}
+
+	if m.IommuStatusNot != nil {
+		if err := m.IommuStatusNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_status_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_status_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) validateIommuStatusNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.IommuStatusNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IommuStatusNotIn); i++ {
+
+		if err := m.IommuStatusNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_status_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_status_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *NicWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.LabelsEvery) { // not required
 		return nil
@@ -1303,6 +1432,63 @@ func (m *NicWhereInput) validateVds(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NicWhereInput) validateVmsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.VmsEvery) { // not required
+		return nil
+	}
+
+	if m.VmsEvery != nil {
+		if err := m.VmsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) validateVmsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.VmsNone) { // not required
+		return nil
+	}
+
+	if m.VmsNone != nil {
+		if err := m.VmsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) validateVmsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.VmsSome) { // not required
+		return nil
+	}
+
+	if m.VmsSome != nil {
+		if err := m.VmsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this nic where input based on the context it is used
 func (m *NicWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -1355,6 +1541,22 @@ func (m *NicWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regi
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateIommuStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIommuStatusIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIommuStatusNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIommuStatusNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLabelsEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1400,6 +1602,18 @@ func (m *NicWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regi
 	}
 
 	if err := m.contextValidateVds(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVmsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVmsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVmsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1621,6 +1835,74 @@ func (m *NicWhereInput) contextValidateHost(ctx context.Context, formats strfmt.
 	return nil
 }
 
+func (m *NicWhereInput) contextValidateIommuStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IommuStatus != nil {
+		if err := m.IommuStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateIommuStatusIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IommuStatusIn); i++ {
+
+		if err := m.IommuStatusIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_status_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_status_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateIommuStatusNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IommuStatusNot != nil {
+		if err := m.IommuStatusNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_status_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_status_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateIommuStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IommuStatusNotIn); i++ {
+
+		if err := m.IommuStatusNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iommu_status_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iommu_status_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *NicWhereInput) contextValidateLabelsEvery(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LabelsEvery != nil {
@@ -1813,6 +2095,54 @@ func (m *NicWhereInput) contextValidateVds(ctx context.Context, formats strfmt.R
 				return ve.ValidateName("vds")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vds")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateVmsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VmsEvery != nil {
+		if err := m.VmsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateVmsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VmsNone != nil {
+		if err := m.VmsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NicWhereInput) contextValidateVmsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VmsSome != nil {
+		if err := m.VmsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vms_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vms_some")
 			}
 			return err
 		}
