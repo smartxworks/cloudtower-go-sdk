@@ -1,5 +1,13 @@
 # RELEASE NOTE
 
+## release 日期 2023-11-07
+
+v2.13.0 release (tower version 3.4.0)
+
+### update
+
+- [ROLEACTION] 新增 `SMTX_INSPECTOR`
+
 ## release 日期 2023-10-19
 
 v2.12.0 release (tower version 3.3.0)
