@@ -36,6 +36,9 @@ const (
 	// DiskHealthStatusSMARTFAILED captures enum value "SMART_FAILED"
 	DiskHealthStatusSMARTFAILED DiskHealthStatus = "SMART_FAILED"
 
+	// DiskHealthStatusSOFTWARERAIDFAILURE captures enum value "SOFTWARE_RAID_FAILURE"
+	DiskHealthStatusSOFTWARERAIDFAILURE DiskHealthStatus = "SOFTWARE_RAID_FAILURE"
+
 	// DiskHealthStatusSUBHEALTHY captures enum value "SUBHEALTHY"
 	DiskHealthStatusSUBHEALTHY DiskHealthStatus = "SUBHEALTHY"
 
@@ -48,7 +51,7 @@ var diskHealthStatusEnum []interface{}
 
 func init() {
 	var res []DiskHealthStatus
-	if err := json.Unmarshal([]byte(`["HEALTHY","SMART_FAILED","SUBHEALTHY","UNHEALTHY"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["HEALTHY","SMART_FAILED","SOFTWARE_RAID_FAILURE","SUBHEALTHY","UNHEALTHY"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
