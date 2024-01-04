@@ -70,6 +70,48 @@ type UserAuditLogWhereInput struct {
 	// action starts with
 	ActionStartsWith *string `json:"action_starts_with,omitempty"`
 
+	// auth type
+	AuthType *string `json:"auth_type,omitempty"`
+
+	// auth type contains
+	AuthTypeContains *string `json:"auth_type_contains,omitempty"`
+
+	// auth type ends with
+	AuthTypeEndsWith *string `json:"auth_type_ends_with,omitempty"`
+
+	// auth type gt
+	AuthTypeGt *string `json:"auth_type_gt,omitempty"`
+
+	// auth type gte
+	AuthTypeGte *string `json:"auth_type_gte,omitempty"`
+
+	// auth type in
+	AuthTypeIn []string `json:"auth_type_in,omitempty"`
+
+	// auth type lt
+	AuthTypeLt *string `json:"auth_type_lt,omitempty"`
+
+	// auth type lte
+	AuthTypeLte *string `json:"auth_type_lte,omitempty"`
+
+	// auth type not
+	AuthTypeNot *string `json:"auth_type_not,omitempty"`
+
+	// auth type not contains
+	AuthTypeNotContains *string `json:"auth_type_not_contains,omitempty"`
+
+	// auth type not ends with
+	AuthTypeNotEndsWith *string `json:"auth_type_not_ends_with,omitempty"`
+
+	// auth type not in
+	AuthTypeNotIn []string `json:"auth_type_not_in,omitempty"`
+
+	// auth type not starts with
+	AuthTypeNotStartsWith *string `json:"auth_type_not_starts_with,omitempty"`
+
+	// auth type starts with
+	AuthTypeStartsWith *string `json:"auth_type_starts_with,omitempty"`
+
 	// cluster
 	Cluster *ClusterWhereInput `json:"cluster,omitempty"`
 
@@ -369,6 +411,48 @@ type UserAuditLogWhereInput struct {
 
 	// user
 	User *UserWhereInput `json:"user,omitempty"`
+
+	// username
+	Username *string `json:"username,omitempty"`
+
+	// username contains
+	UsernameContains *string `json:"username_contains,omitempty"`
+
+	// username ends with
+	UsernameEndsWith *string `json:"username_ends_with,omitempty"`
+
+	// username gt
+	UsernameGt *string `json:"username_gt,omitempty"`
+
+	// username gte
+	UsernameGte *string `json:"username_gte,omitempty"`
+
+	// username in
+	UsernameIn []string `json:"username_in,omitempty"`
+
+	// username lt
+	UsernameLt *string `json:"username_lt,omitempty"`
+
+	// username lte
+	UsernameLte *string `json:"username_lte,omitempty"`
+
+	// username not
+	UsernameNot *string `json:"username_not,omitempty"`
+
+	// username not contains
+	UsernameNotContains *string `json:"username_not_contains,omitempty"`
+
+	// username not ends with
+	UsernameNotEndsWith *string `json:"username_not_ends_with,omitempty"`
+
+	// username not in
+	UsernameNotIn []string `json:"username_not_in,omitempty"`
+
+	// username not starts with
+	UsernameNotStartsWith *string `json:"username_not_starts_with,omitempty"`
+
+	// username starts with
+	UsernameStartsWith *string `json:"username_starts_with,omitempty"`
 }
 
 // Validate validates this user audit log where input

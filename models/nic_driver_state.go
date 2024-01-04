@@ -33,11 +33,11 @@ const (
 	// NicDriverStateNEEDREBOOT captures enum value "NEED_REBOOT"
 	NicDriverStateNEEDREBOOT NicDriverState = "NEED_REBOOT"
 
-	// NicDriverStateNODRIVER captures enum value "NO_DRIVER"
-	NicDriverStateNODRIVER NicDriverState = "NO_DRIVER"
-
 	// NicDriverStateNOTREADY captures enum value "NOT_READY"
 	NicDriverStateNOTREADY NicDriverState = "NOT_READY"
+
+	// NicDriverStateNODRIVER captures enum value "NO_DRIVER"
+	NicDriverStateNODRIVER NicDriverState = "NO_DRIVER"
 
 	// NicDriverStateREADY captures enum value "READY"
 	NicDriverStateREADY NicDriverState = "READY"
@@ -48,7 +48,7 @@ var nicDriverStateEnum []interface{}
 
 func init() {
 	var res []NicDriverState
-	if err := json.Unmarshal([]byte(`["NEED_REBOOT","NO_DRIVER","NOT_READY","READY"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["NEED_REBOOT","NOT_READY","NO_DRIVER","READY"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
