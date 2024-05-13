@@ -481,11 +481,26 @@ type VMNicWhereInput struct {
 	// subnet mask starts with
 	SubnetMaskStartsWith *string `json:"subnet_mask_starts_with,omitempty"`
 
+	// type
+	Type *VMNicType `json:"type,omitempty"`
+
+	// type in
+	TypeIn []VMNicType `json:"type_in,omitempty"`
+
+	// type not
+	TypeNot *VMNicType `json:"type_not,omitempty"`
+
+	// type not in
+	TypeNotIn []VMNicType `json:"type_not_in,omitempty"`
+
 	// vlan
 	Vlan *VlanWhereInput `json:"vlan,omitempty"`
 
 	// vm
 	VM *VMWhereInput `json:"vm,omitempty"`
+
+	// vpc nic
+	VpcNic *VirtualPrivateCloudNicWhereInput `json:"vpc_nic,omitempty"`
 }
 
 // Validate validates this Vm nic where input
@@ -524,11 +539,31 @@ func (m *VMNicWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTypeIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTypeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTypeNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVlan(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateVM(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcNic(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -715,6 +750,86 @@ func (m *VMNicWhereInput) validateNic(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMNicWhereInput) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicWhereInput) validateTypeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.TypeIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.TypeIn); i++ {
+
+		if err := m.TypeIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMNicWhereInput) validateTypeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.TypeNot) { // not required
+		return nil
+	}
+
+	if m.TypeNot != nil {
+		if err := m.TypeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicWhereInput) validateTypeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.TypeNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.TypeNotIn); i++ {
+
+		if err := m.TypeNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *VMNicWhereInput) validateVlan(formats strfmt.Registry) error {
 	if swag.IsZero(m.Vlan) { // not required
 		return nil
@@ -745,6 +860,25 @@ func (m *VMNicWhereInput) validateVM(formats strfmt.Registry) error {
 				return ve.ValidateName("vm")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vm")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicWhereInput) validateVpcNic(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpcNic) { // not required
+		return nil
+	}
+
+	if m.VpcNic != nil {
+		if err := m.VpcNic.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_nic")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_nic")
 			}
 			return err
 		}
@@ -789,11 +923,31 @@ func (m *VMNicWhereInput) ContextValidate(ctx context.Context, formats strfmt.Re
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTypeIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTypeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTypeNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVlan(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateVM(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcNic(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -947,6 +1101,74 @@ func (m *VMNicWhereInput) contextValidateNic(ctx context.Context, formats strfmt
 	return nil
 }
 
+func (m *VMNicWhereInput) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicWhereInput) contextValidateTypeIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TypeIn); i++ {
+
+		if err := m.TypeIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMNicWhereInput) contextValidateTypeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TypeNot != nil {
+		if err := m.TypeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicWhereInput) contextValidateTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TypeNotIn); i++ {
+
+		if err := m.TypeNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *VMNicWhereInput) contextValidateVlan(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Vlan != nil {
@@ -971,6 +1193,22 @@ func (m *VMNicWhereInput) contextValidateVM(ctx context.Context, formats strfmt.
 				return ve.ValidateName("vm")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vm")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicWhereInput) contextValidateVpcNic(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcNic != nil {
+		if err := m.VpcNic.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_nic")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_nic")
 			}
 			return err
 		}

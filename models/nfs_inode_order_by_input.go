@@ -90,6 +90,12 @@ const (
 	// NfsInodeOrderByInputSnapshotNumDESC captures enum value "snapshot_num_DESC"
 	NfsInodeOrderByInputSnapshotNumDESC NfsInodeOrderByInput = "snapshot_num_DESC"
 
+	// NfsInodeOrderByInputUniqueLogicalSizeASC captures enum value "unique_logical_size_ASC"
+	NfsInodeOrderByInputUniqueLogicalSizeASC NfsInodeOrderByInput = "unique_logical_size_ASC"
+
+	// NfsInodeOrderByInputUniqueLogicalSizeDESC captures enum value "unique_logical_size_DESC"
+	NfsInodeOrderByInputUniqueLogicalSizeDESC NfsInodeOrderByInput = "unique_logical_size_DESC"
+
 	// NfsInodeOrderByInputUniqueSizeASC captures enum value "unique_size_ASC"
 	NfsInodeOrderByInputUniqueSizeASC NfsInodeOrderByInput = "unique_size_ASC"
 
@@ -102,7 +108,7 @@ var nfsInodeOrderByInputEnum []interface{}
 
 func init() {
 	var res []NfsInodeOrderByInput
-	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","file_ASC","file_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","local_updated_at_ASC","local_updated_at_DESC","name_ASC","name_DESC","parent_id_ASC","parent_id_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","file_ASC","file_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","local_updated_at_ASC","local_updated_at_DESC","name_ASC","name_DESC","parent_id_ASC","parent_id_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

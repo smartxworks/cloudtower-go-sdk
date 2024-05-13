@@ -1,5 +1,22 @@
 # RELEASE NOTE
 
+## release 日期 2024-05-11
+
+v2.15.0 release (tower version 4.1.0)
+
+### update
+
+- [CommonHeader]: 新增默认返回 Header 类
+- [NestedLabel], [LabelApi]: `LabelApi` 将会返回一致的 `Label` 相关的属性，NestedLabel 额外返回 `key` 和 `value`。
+- [VM], [VMVolume], [IscsiLun], [NvmfNameSpace], [NfsInode]: 新增返回 `UniqueLogicalSize` 用于表示资源的独占逻辑容量
+
+### bugfix
+
+- [VMApi]
+  - [AddVMNic], [RemoveVMNic], [RemoveVMNicByWhere], [UpdateVMNic], [UpdateVMNicBasicInfo], [UpdateVMNicAdvanceInfo], [UpdateVMNicQosOption]: 修复更新虚拟机网卡类 API 编辑后丢失部分网卡信息的问题
+- [VMPlacementGroupApi]
+  - [CreateVMPlacementGroup], [UpdateVMPlacementGroup]: 修复了创建与更新放置组时，`VMVMPolicyEnabled` 为 false 时无法更新组内虚拟机成员
+
 ## release 日期 2024-01-04
 
 v2.14.0 release (tower version 4.0.0)
@@ -72,7 +89,7 @@ v2.12.0 release (tower version 3.3.0)
   - 新增 [RemoveVMPciNic] 支持为已有的虚拟机卸载 PCI 网卡
 - [VMApi] 优化卸载网卡:
   - [RemoveVMNic] `nic_index` 作为删除标记不够稳定，弃用
-  - [RemoveVMNicByWhere] 新方法，支持使用 where 条件来筛选需要的网卡，对于 VmNic 而言，可以配合使用 vm + mac_address 的筛选， `{vm:<vm_where>, mac_address:<mac_address>}` 的形式来较为稳定的筛选出需要的 VmNic
+  - [RemoveVMNicByWhere] 新方法，支持使用 where 条件来筛选需要的网卡，对于 VMNic 而言，可以配合使用 vm + mac_address 的筛选， `{vm:<vm_where>, mac_address:<mac_address>}` 的形式来较为稳定的筛选出需要的 VMNic
 - [NicApi] [UpdateNic] 支持通过 `nic_user_usage` 更新网口用途
 - [LabelApi] 支持为 GPU 设备打标签
 
