@@ -234,6 +234,12 @@ const (
 	// NvmfNamespaceOrderByInputThinProvisionDESC captures enum value "thin_provision_DESC"
 	NvmfNamespaceOrderByInputThinProvisionDESC NvmfNamespaceOrderByInput = "thin_provision_DESC"
 
+	// NvmfNamespaceOrderByInputUniqueLogicalSizeASC captures enum value "unique_logical_size_ASC"
+	NvmfNamespaceOrderByInputUniqueLogicalSizeASC NvmfNamespaceOrderByInput = "unique_logical_size_ASC"
+
+	// NvmfNamespaceOrderByInputUniqueLogicalSizeDESC captures enum value "unique_logical_size_DESC"
+	NvmfNamespaceOrderByInputUniqueLogicalSizeDESC NvmfNamespaceOrderByInput = "unique_logical_size_DESC"
+
 	// NvmfNamespaceOrderByInputUniqueSizeASC captures enum value "unique_size_ASC"
 	NvmfNamespaceOrderByInputUniqueSizeASC NvmfNamespaceOrderByInput = "unique_size_ASC"
 
@@ -252,7 +258,7 @@ var nvmfNamespaceOrderByInputEnum []interface{}
 
 func init() {
 	var res []NvmfNamespaceOrderByInput
-	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","is_shared_ASC","is_shared_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","namespace_id_ASC","namespace_id_DESC","nqn_whitelist_ASC","nqn_whitelist_DESC","replica_num_ASC","replica_num_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","unique_size_ASC","unique_size_DESC","zbs_volume_id_ASC","zbs_volume_id_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","is_shared_ASC","is_shared_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","namespace_id_ASC","namespace_id_DESC","nqn_whitelist_ASC","nqn_whitelist_DESC","replica_num_ASC","replica_num_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC","zbs_volume_id_ASC","zbs_volume_id_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

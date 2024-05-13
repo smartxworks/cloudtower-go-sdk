@@ -168,6 +168,9 @@ type NvmfNamespace struct {
 	// Required: true
 	ThinProvision *bool `json:"thin_provision"`
 
+	// unique logical size
+	UniqueLogicalSize *int64 `json:"unique_logical_size,omitempty"`
+
 	// unique size
 	// Required: true
 	UniqueSize *int64 `json:"unique_size"`

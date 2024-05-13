@@ -47,6 +47,12 @@ const (
 
 	// NetworkTypeVM captures enum value "VM"
 	NetworkTypeVM NetworkType = "VM"
+
+	// NetworkTypeVPCSYS captures enum value "VPC_SYS"
+	NetworkTypeVPCSYS NetworkType = "VPC_SYS"
+
+	// NetworkTypeVPCVM captures enum value "VPC_VM"
+	NetworkTypeVPCVM NetworkType = "VPC_VM"
 )
 
 // for schema
@@ -54,7 +60,7 @@ var networkTypeEnum []interface{}
 
 func init() {
 	var res []NetworkType
-	if err := json.Unmarshal([]byte(`["ACCESS","MANAGEMENT","MIGRATION","STORAGE","STORAGE_ACCESS","VM"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ACCESS","MANAGEMENT","MIGRATION","STORAGE","STORAGE_ACCESS","VM","VPC_SYS","VPC_VM"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

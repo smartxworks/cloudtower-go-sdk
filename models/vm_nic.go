@@ -75,12 +75,18 @@ type VMNic struct {
 	// subnet mask
 	SubnetMask *string `json:"subnet_mask,omitempty"`
 
+	// type
+	Type *VMNicType `json:"type,omitempty"`
+
 	// vlan
 	Vlan *NestedVlan `json:"vlan,omitempty"`
 
 	// vm
 	// Required: true
 	VM *NestedVM `json:"vm"`
+
+	// vpc nic
+	VpcNic *NestedVirtualPrivateCloudNic `json:"vpc_nic,omitempty"`
 }
 
 // Validate validates this Vm nic
@@ -103,11 +109,19 @@ func (m *VMNic) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVlan(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateVM(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcNic(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -173,6 +187,25 @@ func (m *VMNic) validateNic(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMNic) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMNic) validateVlan(formats strfmt.Registry) error {
 	if swag.IsZero(m.Vlan) { // not required
 		return nil
@@ -212,6 +245,25 @@ func (m *VMNic) validateVM(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMNic) validateVpcNic(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpcNic) { // not required
+		return nil
+	}
+
+	if m.VpcNic != nil {
+		if err := m.VpcNic.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_nic")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_nic")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this Vm nic based on the context it is used
 func (m *VMNic) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -224,11 +276,19 @@ func (m *VMNic) ContextValidate(ctx context.Context, formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVlan(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateVM(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcNic(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -270,6 +330,22 @@ func (m *VMNic) contextValidateNic(ctx context.Context, formats strfmt.Registry)
 	return nil
 }
 
+func (m *VMNic) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMNic) contextValidateVlan(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Vlan != nil {
@@ -294,6 +370,22 @@ func (m *VMNic) contextValidateVM(ctx context.Context, formats strfmt.Registry) 
 				return ve.ValidateName("vm")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vm")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNic) contextValidateVpcNic(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcNic != nil {
+		if err := m.VpcNic.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_nic")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_nic")
 			}
 			return err
 		}

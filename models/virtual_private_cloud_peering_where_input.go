@@ -14,43 +14,22 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NfsInodeWhereInput nfs inode where input
+// VirtualPrivateCloudPeeringWhereInput virtual private cloud peering where input
 //
-// swagger:model NfsInodeWhereInput
-type NfsInodeWhereInput struct {
+// swagger:model VirtualPrivateCloudPeeringWhereInput
+type VirtualPrivateCloudPeeringWhereInput struct {
 
 	// a n d
-	AND []*NfsInodeWhereInput `json:"AND,omitempty"`
+	AND []*VirtualPrivateCloudPeeringWhereInput `json:"AND,omitempty"`
 
 	// n o t
-	NOT []*NfsInodeWhereInput `json:"NOT,omitempty"`
+	NOT []*VirtualPrivateCloudPeeringWhereInput `json:"NOT,omitempty"`
 
 	// o r
-	OR []*NfsInodeWhereInput `json:"OR,omitempty"`
+	OR []*VirtualPrivateCloudPeeringWhereInput `json:"OR,omitempty"`
 
-	// assigned size
-	AssignedSize *int64 `json:"assigned_size,omitempty"`
-
-	// assigned size gt
-	AssignedSizeGt *int64 `json:"assigned_size_gt,omitempty"`
-
-	// assigned size gte
-	AssignedSizeGte *int64 `json:"assigned_size_gte,omitempty"`
-
-	// assigned size in
-	AssignedSizeIn []int64 `json:"assigned_size_in,omitempty"`
-
-	// assigned size lt
-	AssignedSizeLt *int64 `json:"assigned_size_lt,omitempty"`
-
-	// assigned size lte
-	AssignedSizeLte *int64 `json:"assigned_size_lte,omitempty"`
-
-	// assigned size not
-	AssignedSizeNot *int64 `json:"assigned_size_not,omitempty"`
-
-	// assigned size not in
-	AssignedSizeNotIn []int64 `json:"assigned_size_not_in,omitempty"`
+	// dst vpc
+	DstVpc *VirtualPrivateCloudWhereInput `json:"dst_vpc,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -63,12 +42,6 @@ type NfsInodeWhereInput struct {
 
 	// entity async status not in
 	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
-
-	// file
-	File *bool `json:"file,omitempty"`
-
-	// file not
-	FileNot *bool `json:"file_not,omitempty"`
 
 	// id
 	ID *string `json:"id,omitempty"`
@@ -112,15 +85,6 @@ type NfsInodeWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// labels every
-	LabelsEvery *LabelWhereInput `json:"labels_every,omitempty"`
-
-	// labels none
-	LabelsNone *LabelWhereInput `json:"labels_none,omitempty"`
-
-	// labels some
-	LabelsSome *LabelWhereInput `json:"labels_some,omitempty"`
-
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
 
@@ -162,30 +126,6 @@ type NfsInodeWhereInput struct {
 
 	// local id starts with
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
-
-	// local updated at
-	LocalUpdatedAt *string `json:"local_updated_at,omitempty"`
-
-	// local updated at gt
-	LocalUpdatedAtGt *string `json:"local_updated_at_gt,omitempty"`
-
-	// local updated at gte
-	LocalUpdatedAtGte *string `json:"local_updated_at_gte,omitempty"`
-
-	// local updated at in
-	LocalUpdatedAtIn []string `json:"local_updated_at_in,omitempty"`
-
-	// local updated at lt
-	LocalUpdatedAtLt *string `json:"local_updated_at_lt,omitempty"`
-
-	// local updated at lte
-	LocalUpdatedAtLte *string `json:"local_updated_at_lte,omitempty"`
-
-	// local updated at not
-	LocalUpdatedAtNot *string `json:"local_updated_at_not,omitempty"`
-
-	// local updated at not in
-	LocalUpdatedAtNotIn []string `json:"local_updated_at_not_in,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`
@@ -229,150 +169,12 @@ type NfsInodeWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
-	// nfs export
-	NfsExport *NfsExportWhereInput `json:"nfs_export,omitempty"`
-
-	// parent id
-	ParentID *string `json:"parent_id,omitempty"`
-
-	// parent id contains
-	ParentIDContains *string `json:"parent_id_contains,omitempty"`
-
-	// parent id ends with
-	ParentIDEndsWith *string `json:"parent_id_ends_with,omitempty"`
-
-	// parent id gt
-	ParentIDGt *string `json:"parent_id_gt,omitempty"`
-
-	// parent id gte
-	ParentIDGte *string `json:"parent_id_gte,omitempty"`
-
-	// parent id in
-	ParentIDIn []string `json:"parent_id_in,omitempty"`
-
-	// parent id lt
-	ParentIDLt *string `json:"parent_id_lt,omitempty"`
-
-	// parent id lte
-	ParentIDLte *string `json:"parent_id_lte,omitempty"`
-
-	// parent id not
-	ParentIDNot *string `json:"parent_id_not,omitempty"`
-
-	// parent id not contains
-	ParentIDNotContains *string `json:"parent_id_not_contains,omitempty"`
-
-	// parent id not ends with
-	ParentIDNotEndsWith *string `json:"parent_id_not_ends_with,omitempty"`
-
-	// parent id not in
-	ParentIDNotIn []string `json:"parent_id_not_in,omitempty"`
-
-	// parent id not starts with
-	ParentIDNotStartsWith *string `json:"parent_id_not_starts_with,omitempty"`
-
-	// parent id starts with
-	ParentIDStartsWith *string `json:"parent_id_starts_with,omitempty"`
-
-	// shared size
-	SharedSize *int64 `json:"shared_size,omitempty"`
-
-	// shared size gt
-	SharedSizeGt *int64 `json:"shared_size_gt,omitempty"`
-
-	// shared size gte
-	SharedSizeGte *int64 `json:"shared_size_gte,omitempty"`
-
-	// shared size in
-	SharedSizeIn []int64 `json:"shared_size_in,omitempty"`
-
-	// shared size lt
-	SharedSizeLt *int64 `json:"shared_size_lt,omitempty"`
-
-	// shared size lte
-	SharedSizeLte *int64 `json:"shared_size_lte,omitempty"`
-
-	// shared size not
-	SharedSizeNot *int64 `json:"shared_size_not,omitempty"`
-
-	// shared size not in
-	SharedSizeNotIn []int64 `json:"shared_size_not_in,omitempty"`
-
-	// snapshot num
-	SnapshotNum *int32 `json:"snapshot_num,omitempty"`
-
-	// snapshot num gt
-	SnapshotNumGt *int32 `json:"snapshot_num_gt,omitempty"`
-
-	// snapshot num gte
-	SnapshotNumGte *int32 `json:"snapshot_num_gte,omitempty"`
-
-	// snapshot num in
-	SnapshotNumIn []int32 `json:"snapshot_num_in,omitempty"`
-
-	// snapshot num lt
-	SnapshotNumLt *int32 `json:"snapshot_num_lt,omitempty"`
-
-	// snapshot num lte
-	SnapshotNumLte *int32 `json:"snapshot_num_lte,omitempty"`
-
-	// snapshot num not
-	SnapshotNumNot *int32 `json:"snapshot_num_not,omitempty"`
-
-	// snapshot num not in
-	SnapshotNumNotIn []int32 `json:"snapshot_num_not_in,omitempty"`
-
-	// unique logical size
-	UniqueLogicalSize *int64 `json:"unique_logical_size,omitempty"`
-
-	// unique logical size gt
-	UniqueLogicalSizeGt *int64 `json:"unique_logical_size_gt,omitempty"`
-
-	// unique logical size gte
-	UniqueLogicalSizeGte *int64 `json:"unique_logical_size_gte,omitempty"`
-
-	// unique logical size in
-	UniqueLogicalSizeIn []int64 `json:"unique_logical_size_in,omitempty"`
-
-	// unique logical size lt
-	UniqueLogicalSizeLt *int64 `json:"unique_logical_size_lt,omitempty"`
-
-	// unique logical size lte
-	UniqueLogicalSizeLte *int64 `json:"unique_logical_size_lte,omitempty"`
-
-	// unique logical size not
-	UniqueLogicalSizeNot *int64 `json:"unique_logical_size_not,omitempty"`
-
-	// unique logical size not in
-	UniqueLogicalSizeNotIn []int64 `json:"unique_logical_size_not_in,omitempty"`
-
-	// unique size
-	UniqueSize *int64 `json:"unique_size,omitempty"`
-
-	// unique size gt
-	UniqueSizeGt *int64 `json:"unique_size_gt,omitempty"`
-
-	// unique size gte
-	UniqueSizeGte *int64 `json:"unique_size_gte,omitempty"`
-
-	// unique size in
-	UniqueSizeIn []int64 `json:"unique_size_in,omitempty"`
-
-	// unique size lt
-	UniqueSizeLt *int64 `json:"unique_size_lt,omitempty"`
-
-	// unique size lte
-	UniqueSizeLte *int64 `json:"unique_size_lte,omitempty"`
-
-	// unique size not
-	UniqueSizeNot *int64 `json:"unique_size_not,omitempty"`
-
-	// unique size not in
-	UniqueSizeNotIn []int64 `json:"unique_size_not_in,omitempty"`
+	// src vpc
+	SrcVpc *VirtualPrivateCloudWhereInput `json:"src_vpc,omitempty"`
 }
 
-// Validate validates this nfs inode where input
-func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
+// Validate validates this virtual private cloud peering where input
+func (m *VirtualPrivateCloudPeeringWhereInput) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAND(formats); err != nil {
@@ -384,6 +186,10 @@ func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOR(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDstVpc(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -403,19 +209,7 @@ func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateLabelsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLabelsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLabelsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNfsExport(formats); err != nil {
+	if err := m.validateSrcVpc(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -425,7 +219,7 @@ func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateAND(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) validateAND(formats strfmt.Registry) error {
 	if swag.IsZero(m.AND) { // not required
 		return nil
 	}
@@ -451,7 +245,7 @@ func (m *NfsInodeWhereInput) validateAND(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateNOT(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) validateNOT(formats strfmt.Registry) error {
 	if swag.IsZero(m.NOT) { // not required
 		return nil
 	}
@@ -477,7 +271,7 @@ func (m *NfsInodeWhereInput) validateNOT(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateOR(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) validateOR(formats strfmt.Registry) error {
 	if swag.IsZero(m.OR) { // not required
 		return nil
 	}
@@ -503,7 +297,26 @@ func (m *NfsInodeWhereInput) validateOR(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) validateDstVpc(formats strfmt.Registry) error {
+	if swag.IsZero(m.DstVpc) { // not required
+		return nil
+	}
+
+	if m.DstVpc != nil {
+		if err := m.DstVpc.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("dst_vpc")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("dst_vpc")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudPeeringWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatus) { // not required
 		return nil
 	}
@@ -522,7 +335,7 @@ func (m *NfsInodeWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusIn) { // not required
 		return nil
 	}
@@ -543,7 +356,7 @@ func (m *NfsInodeWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusNot) { // not required
 		return nil
 	}
@@ -562,7 +375,7 @@ func (m *NfsInodeWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registr
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusNotIn) { // not required
 		return nil
 	}
@@ -583,17 +396,17 @@ func (m *NfsInodeWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Regis
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsEvery) { // not required
+func (m *VirtualPrivateCloudPeeringWhereInput) validateSrcVpc(formats strfmt.Registry) error {
+	if swag.IsZero(m.SrcVpc) { // not required
 		return nil
 	}
 
-	if m.LabelsEvery != nil {
-		if err := m.LabelsEvery.Validate(formats); err != nil {
+	if m.SrcVpc != nil {
+		if err := m.SrcVpc.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_every")
+				return ve.ValidateName("src_vpc")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_every")
+				return ce.ValidateName("src_vpc")
 			}
 			return err
 		}
@@ -602,65 +415,8 @@ func (m *NfsInodeWhereInput) validateLabelsEvery(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateLabelsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsNone) { // not required
-		return nil
-	}
-
-	if m.LabelsNone != nil {
-		if err := m.LabelsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NfsInodeWhereInput) validateLabelsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsSome) { // not required
-		return nil
-	}
-
-	if m.LabelsSome != nil {
-		if err := m.LabelsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NfsInodeWhereInput) validateNfsExport(formats strfmt.Registry) error {
-	if swag.IsZero(m.NfsExport) { // not required
-		return nil
-	}
-
-	if m.NfsExport != nil {
-		if err := m.NfsExport.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("nfs_export")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("nfs_export")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this nfs inode where input based on the context it is used
-func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this virtual private cloud peering where input based on the context it is used
+func (m *VirtualPrivateCloudPeeringWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateAND(ctx, formats); err != nil {
@@ -672,6 +428,10 @@ func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateOR(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDstVpc(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -691,19 +451,7 @@ func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLabelsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLabelsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLabelsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateNfsExport(ctx, formats); err != nil {
+	if err := m.contextValidateSrcVpc(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -713,7 +461,7 @@ func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateAND(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateAND(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.AND); i++ {
 
@@ -733,7 +481,7 @@ func (m *NfsInodeWhereInput) contextValidateAND(ctx context.Context, formats str
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateNOT(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateNOT(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.NOT); i++ {
 
@@ -753,7 +501,7 @@ func (m *NfsInodeWhereInput) contextValidateNOT(ctx context.Context, formats str
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.OR); i++ {
 
@@ -773,7 +521,23 @@ func (m *NfsInodeWhereInput) contextValidateOR(ctx context.Context, formats strf
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateDstVpc(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DstVpc != nil {
+		if err := m.DstVpc.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("dst_vpc")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("dst_vpc")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatus != nil {
 		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
@@ -789,7 +553,7 @@ func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatus(ctx context.Contex
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.EntityAsyncStatusIn); i++ {
 
@@ -807,7 +571,7 @@ func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Cont
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatusNot != nil {
 		if err := m.EntityAsyncStatusNot.ContextValidate(ctx, formats); err != nil {
@@ -823,7 +587,7 @@ func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Con
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.EntityAsyncStatusNotIn); i++ {
 
@@ -841,62 +605,14 @@ func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.C
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateLabelsEvery(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudPeeringWhereInput) contextValidateSrcVpc(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.LabelsEvery != nil {
-		if err := m.LabelsEvery.ContextValidate(ctx, formats); err != nil {
+	if m.SrcVpc != nil {
+		if err := m.SrcVpc.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_every")
+				return ve.ValidateName("src_vpc")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NfsInodeWhereInput) contextValidateLabelsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LabelsNone != nil {
-		if err := m.LabelsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NfsInodeWhereInput) contextValidateLabelsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LabelsSome != nil {
-		if err := m.LabelsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NfsInodeWhereInput) contextValidateNfsExport(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.NfsExport != nil {
-		if err := m.NfsExport.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("nfs_export")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("nfs_export")
+				return ce.ValidateName("src_vpc")
 			}
 			return err
 		}
@@ -906,7 +622,7 @@ func (m *NfsInodeWhereInput) contextValidateNfsExport(ctx context.Context, forma
 }
 
 // MarshalBinary interface implementation
-func (m *NfsInodeWhereInput) MarshalBinary() ([]byte, error) {
+func (m *VirtualPrivateCloudPeeringWhereInput) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -914,8 +630,8 @@ func (m *NfsInodeWhereInput) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *NfsInodeWhereInput) UnmarshalBinary(b []byte) error {
-	var res NfsInodeWhereInput
+func (m *VirtualPrivateCloudPeeringWhereInput) UnmarshalBinary(b []byte) error {
+	var res VirtualPrivateCloudPeeringWhereInput
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

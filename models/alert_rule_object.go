@@ -48,6 +48,12 @@ const (
 	// AlertRuleObjectNTPSERVER captures enum value "NTP_SERVER"
 	AlertRuleObjectNTPSERVER AlertRuleObject = "NTP_SERVER"
 
+	// AlertRuleObjectOBSERVABILITYCONNECTEDSYSTEMSERVICE captures enum value "OBSERVABILITY_CONNECTED_SYSTEM_SERVICE"
+	AlertRuleObjectOBSERVABILITYCONNECTEDSYSTEMSERVICE AlertRuleObject = "OBSERVABILITY_CONNECTED_SYSTEM_SERVICE"
+
+	// AlertRuleObjectOBSERVABILITYSERVICE captures enum value "OBSERVABILITY_SERVICE"
+	AlertRuleObjectOBSERVABILITYSERVICE AlertRuleObject = "OBSERVABILITY_SERVICE"
+
 	// AlertRuleObjectPHYSICALHOST captures enum value "PHYSICAL_HOST"
 	AlertRuleObjectPHYSICALHOST AlertRuleObject = "PHYSICAL_HOST"
 
@@ -87,7 +93,7 @@ var alertRuleObjectEnum []interface{}
 
 func init() {
 	var res []AlertRuleObject
-	if err := json.Unmarshal([]byte(`["BRICK","CLUSTER","DISK","HYPERVISOR","NETWORK","NTP_SERVER","PHYSICAL_HOST","SCVM","SNAPSHOT_PLAN","STORAGE_CHUNK","STORAGE_POOL","SYSTEM_SERVICE","TIME_MACHINE_PLAN","VM","WITNESS","WITNESS_NETWORK","ZBS_ZONE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BRICK","CLUSTER","DISK","HYPERVISOR","NETWORK","NTP_SERVER","OBSERVABILITY_CONNECTED_SYSTEM_SERVICE","OBSERVABILITY_SERVICE","PHYSICAL_HOST","SCVM","SNAPSHOT_PLAN","STORAGE_CHUNK","STORAGE_POOL","SYSTEM_SERVICE","TIME_MACHINE_PLAN","VM","WITNESS","WITNESS_NETWORK","ZBS_ZONE"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

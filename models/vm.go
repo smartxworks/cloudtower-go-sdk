@@ -194,6 +194,9 @@ type VM struct {
 	// Required: true
 	Status *VMStatus `json:"status"`
 
+	// unique logical size
+	UniqueLogicalSize *int64 `json:"unique_logical_size,omitempty"`
+
 	// unique size
 	UniqueSize *int64 `json:"unique_size,omitempty"`
 

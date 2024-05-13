@@ -14,43 +14,31 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NfsInodeWhereInput nfs inode where input
+// VirtualPrivateCloudNatGatewayWhereInput virtual private cloud nat gateway where input
 //
-// swagger:model NfsInodeWhereInput
-type NfsInodeWhereInput struct {
+// swagger:model VirtualPrivateCloudNatGatewayWhereInput
+type VirtualPrivateCloudNatGatewayWhereInput struct {
 
 	// a n d
-	AND []*NfsInodeWhereInput `json:"AND,omitempty"`
+	AND []*VirtualPrivateCloudNatGatewayWhereInput `json:"AND,omitempty"`
 
 	// n o t
-	NOT []*NfsInodeWhereInput `json:"NOT,omitempty"`
+	NOT []*VirtualPrivateCloudNatGatewayWhereInput `json:"NOT,omitempty"`
 
 	// o r
-	OR []*NfsInodeWhereInput `json:"OR,omitempty"`
+	OR []*VirtualPrivateCloudNatGatewayWhereInput `json:"OR,omitempty"`
 
-	// assigned size
-	AssignedSize *int64 `json:"assigned_size,omitempty"`
+	// enable dnat
+	EnableDnat *bool `json:"enable_dnat,omitempty"`
 
-	// assigned size gt
-	AssignedSizeGt *int64 `json:"assigned_size_gt,omitempty"`
+	// enable dnat not
+	EnableDnatNot *bool `json:"enable_dnat_not,omitempty"`
 
-	// assigned size gte
-	AssignedSizeGte *int64 `json:"assigned_size_gte,omitempty"`
+	// enable snat
+	EnableSnat *bool `json:"enable_snat,omitempty"`
 
-	// assigned size in
-	AssignedSizeIn []int64 `json:"assigned_size_in,omitempty"`
-
-	// assigned size lt
-	AssignedSizeLt *int64 `json:"assigned_size_lt,omitempty"`
-
-	// assigned size lte
-	AssignedSizeLte *int64 `json:"assigned_size_lte,omitempty"`
-
-	// assigned size not
-	AssignedSizeNot *int64 `json:"assigned_size_not,omitempty"`
-
-	// assigned size not in
-	AssignedSizeNotIn []int64 `json:"assigned_size_not_in,omitempty"`
+	// enable snat not
+	EnableSnatNot *bool `json:"enable_snat_not,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -64,11 +52,50 @@ type NfsInodeWhereInput struct {
 	// entity async status not in
 	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
 
-	// file
-	File *bool `json:"file,omitempty"`
+	// external ip
+	ExternalIP *string `json:"external_ip,omitempty"`
 
-	// file not
-	FileNot *bool `json:"file_not,omitempty"`
+	// external ip contains
+	ExternalIPContains *string `json:"external_ip_contains,omitempty"`
+
+	// external ip ends with
+	ExternalIPEndsWith *string `json:"external_ip_ends_with,omitempty"`
+
+	// external ip gt
+	ExternalIPGt *string `json:"external_ip_gt,omitempty"`
+
+	// external ip gte
+	ExternalIPGte *string `json:"external_ip_gte,omitempty"`
+
+	// external ip in
+	ExternalIPIn []string `json:"external_ip_in,omitempty"`
+
+	// external ip lt
+	ExternalIPLt *string `json:"external_ip_lt,omitempty"`
+
+	// external ip lte
+	ExternalIPLte *string `json:"external_ip_lte,omitempty"`
+
+	// external ip not
+	ExternalIPNot *string `json:"external_ip_not,omitempty"`
+
+	// external ip not contains
+	ExternalIPNotContains *string `json:"external_ip_not_contains,omitempty"`
+
+	// external ip not ends with
+	ExternalIPNotEndsWith *string `json:"external_ip_not_ends_with,omitempty"`
+
+	// external ip not in
+	ExternalIPNotIn []string `json:"external_ip_not_in,omitempty"`
+
+	// external ip not starts with
+	ExternalIPNotStartsWith *string `json:"external_ip_not_starts_with,omitempty"`
+
+	// external ip starts with
+	ExternalIPStartsWith *string `json:"external_ip_starts_with,omitempty"`
+
+	// external subnet
+	ExternalSubnet *VirtualPrivateCloudExternalSubnetWhereInput `json:"external_subnet,omitempty"`
 
 	// id
 	ID *string `json:"id,omitempty"`
@@ -112,15 +139,6 @@ type NfsInodeWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// labels every
-	LabelsEvery *LabelWhereInput `json:"labels_every,omitempty"`
-
-	// labels none
-	LabelsNone *LabelWhereInput `json:"labels_none,omitempty"`
-
-	// labels some
-	LabelsSome *LabelWhereInput `json:"labels_some,omitempty"`
-
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
 
@@ -162,30 +180,6 @@ type NfsInodeWhereInput struct {
 
 	// local id starts with
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
-
-	// local updated at
-	LocalUpdatedAt *string `json:"local_updated_at,omitempty"`
-
-	// local updated at gt
-	LocalUpdatedAtGt *string `json:"local_updated_at_gt,omitempty"`
-
-	// local updated at gte
-	LocalUpdatedAtGte *string `json:"local_updated_at_gte,omitempty"`
-
-	// local updated at in
-	LocalUpdatedAtIn []string `json:"local_updated_at_in,omitempty"`
-
-	// local updated at lt
-	LocalUpdatedAtLt *string `json:"local_updated_at_lt,omitempty"`
-
-	// local updated at lte
-	LocalUpdatedAtLte *string `json:"local_updated_at_lte,omitempty"`
-
-	// local updated at not
-	LocalUpdatedAtNot *string `json:"local_updated_at_not,omitempty"`
-
-	// local updated at not in
-	LocalUpdatedAtNotIn []string `json:"local_updated_at_not_in,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`
@@ -229,150 +223,54 @@ type NfsInodeWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
-	// nfs export
-	NfsExport *NfsExportWhereInput `json:"nfs_export,omitempty"`
+	// nexthop ip
+	NexthopIP *string `json:"nexthop_ip,omitempty"`
 
-	// parent id
-	ParentID *string `json:"parent_id,omitempty"`
+	// nexthop ip contains
+	NexthopIPContains *string `json:"nexthop_ip_contains,omitempty"`
 
-	// parent id contains
-	ParentIDContains *string `json:"parent_id_contains,omitempty"`
+	// nexthop ip ends with
+	NexthopIPEndsWith *string `json:"nexthop_ip_ends_with,omitempty"`
 
-	// parent id ends with
-	ParentIDEndsWith *string `json:"parent_id_ends_with,omitempty"`
+	// nexthop ip gt
+	NexthopIPGt *string `json:"nexthop_ip_gt,omitempty"`
 
-	// parent id gt
-	ParentIDGt *string `json:"parent_id_gt,omitempty"`
+	// nexthop ip gte
+	NexthopIPGte *string `json:"nexthop_ip_gte,omitempty"`
 
-	// parent id gte
-	ParentIDGte *string `json:"parent_id_gte,omitempty"`
+	// nexthop ip in
+	NexthopIPIn []string `json:"nexthop_ip_in,omitempty"`
 
-	// parent id in
-	ParentIDIn []string `json:"parent_id_in,omitempty"`
+	// nexthop ip lt
+	NexthopIPLt *string `json:"nexthop_ip_lt,omitempty"`
 
-	// parent id lt
-	ParentIDLt *string `json:"parent_id_lt,omitempty"`
+	// nexthop ip lte
+	NexthopIPLte *string `json:"nexthop_ip_lte,omitempty"`
 
-	// parent id lte
-	ParentIDLte *string `json:"parent_id_lte,omitempty"`
+	// nexthop ip not
+	NexthopIPNot *string `json:"nexthop_ip_not,omitempty"`
 
-	// parent id not
-	ParentIDNot *string `json:"parent_id_not,omitempty"`
+	// nexthop ip not contains
+	NexthopIPNotContains *string `json:"nexthop_ip_not_contains,omitempty"`
 
-	// parent id not contains
-	ParentIDNotContains *string `json:"parent_id_not_contains,omitempty"`
+	// nexthop ip not ends with
+	NexthopIPNotEndsWith *string `json:"nexthop_ip_not_ends_with,omitempty"`
 
-	// parent id not ends with
-	ParentIDNotEndsWith *string `json:"parent_id_not_ends_with,omitempty"`
+	// nexthop ip not in
+	NexthopIPNotIn []string `json:"nexthop_ip_not_in,omitempty"`
 
-	// parent id not in
-	ParentIDNotIn []string `json:"parent_id_not_in,omitempty"`
+	// nexthop ip not starts with
+	NexthopIPNotStartsWith *string `json:"nexthop_ip_not_starts_with,omitempty"`
 
-	// parent id not starts with
-	ParentIDNotStartsWith *string `json:"parent_id_not_starts_with,omitempty"`
+	// nexthop ip starts with
+	NexthopIPStartsWith *string `json:"nexthop_ip_starts_with,omitempty"`
 
-	// parent id starts with
-	ParentIDStartsWith *string `json:"parent_id_starts_with,omitempty"`
-
-	// shared size
-	SharedSize *int64 `json:"shared_size,omitempty"`
-
-	// shared size gt
-	SharedSizeGt *int64 `json:"shared_size_gt,omitempty"`
-
-	// shared size gte
-	SharedSizeGte *int64 `json:"shared_size_gte,omitempty"`
-
-	// shared size in
-	SharedSizeIn []int64 `json:"shared_size_in,omitempty"`
-
-	// shared size lt
-	SharedSizeLt *int64 `json:"shared_size_lt,omitempty"`
-
-	// shared size lte
-	SharedSizeLte *int64 `json:"shared_size_lte,omitempty"`
-
-	// shared size not
-	SharedSizeNot *int64 `json:"shared_size_not,omitempty"`
-
-	// shared size not in
-	SharedSizeNotIn []int64 `json:"shared_size_not_in,omitempty"`
-
-	// snapshot num
-	SnapshotNum *int32 `json:"snapshot_num,omitempty"`
-
-	// snapshot num gt
-	SnapshotNumGt *int32 `json:"snapshot_num_gt,omitempty"`
-
-	// snapshot num gte
-	SnapshotNumGte *int32 `json:"snapshot_num_gte,omitempty"`
-
-	// snapshot num in
-	SnapshotNumIn []int32 `json:"snapshot_num_in,omitempty"`
-
-	// snapshot num lt
-	SnapshotNumLt *int32 `json:"snapshot_num_lt,omitempty"`
-
-	// snapshot num lte
-	SnapshotNumLte *int32 `json:"snapshot_num_lte,omitempty"`
-
-	// snapshot num not
-	SnapshotNumNot *int32 `json:"snapshot_num_not,omitempty"`
-
-	// snapshot num not in
-	SnapshotNumNotIn []int32 `json:"snapshot_num_not_in,omitempty"`
-
-	// unique logical size
-	UniqueLogicalSize *int64 `json:"unique_logical_size,omitempty"`
-
-	// unique logical size gt
-	UniqueLogicalSizeGt *int64 `json:"unique_logical_size_gt,omitempty"`
-
-	// unique logical size gte
-	UniqueLogicalSizeGte *int64 `json:"unique_logical_size_gte,omitempty"`
-
-	// unique logical size in
-	UniqueLogicalSizeIn []int64 `json:"unique_logical_size_in,omitempty"`
-
-	// unique logical size lt
-	UniqueLogicalSizeLt *int64 `json:"unique_logical_size_lt,omitempty"`
-
-	// unique logical size lte
-	UniqueLogicalSizeLte *int64 `json:"unique_logical_size_lte,omitempty"`
-
-	// unique logical size not
-	UniqueLogicalSizeNot *int64 `json:"unique_logical_size_not,omitempty"`
-
-	// unique logical size not in
-	UniqueLogicalSizeNotIn []int64 `json:"unique_logical_size_not_in,omitempty"`
-
-	// unique size
-	UniqueSize *int64 `json:"unique_size,omitempty"`
-
-	// unique size gt
-	UniqueSizeGt *int64 `json:"unique_size_gt,omitempty"`
-
-	// unique size gte
-	UniqueSizeGte *int64 `json:"unique_size_gte,omitempty"`
-
-	// unique size in
-	UniqueSizeIn []int64 `json:"unique_size_in,omitempty"`
-
-	// unique size lt
-	UniqueSizeLt *int64 `json:"unique_size_lt,omitempty"`
-
-	// unique size lte
-	UniqueSizeLte *int64 `json:"unique_size_lte,omitempty"`
-
-	// unique size not
-	UniqueSizeNot *int64 `json:"unique_size_not,omitempty"`
-
-	// unique size not in
-	UniqueSizeNotIn []int64 `json:"unique_size_not_in,omitempty"`
+	// vpc
+	Vpc *VirtualPrivateCloudWhereInput `json:"vpc,omitempty"`
 }
 
-// Validate validates this nfs inode where input
-func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
+// Validate validates this virtual private cloud nat gateway where input
+func (m *VirtualPrivateCloudNatGatewayWhereInput) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAND(formats); err != nil {
@@ -403,19 +301,11 @@ func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateLabelsEvery(formats); err != nil {
+	if err := m.validateExternalSubnet(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateLabelsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLabelsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNfsExport(formats); err != nil {
+	if err := m.validateVpc(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -425,7 +315,7 @@ func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateAND(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateAND(formats strfmt.Registry) error {
 	if swag.IsZero(m.AND) { // not required
 		return nil
 	}
@@ -451,7 +341,7 @@ func (m *NfsInodeWhereInput) validateAND(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateNOT(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateNOT(formats strfmt.Registry) error {
 	if swag.IsZero(m.NOT) { // not required
 		return nil
 	}
@@ -477,7 +367,7 @@ func (m *NfsInodeWhereInput) validateNOT(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateOR(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateOR(formats strfmt.Registry) error {
 	if swag.IsZero(m.OR) { // not required
 		return nil
 	}
@@ -503,7 +393,7 @@ func (m *NfsInodeWhereInput) validateOR(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatus) { // not required
 		return nil
 	}
@@ -522,7 +412,7 @@ func (m *NfsInodeWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusIn) { // not required
 		return nil
 	}
@@ -543,7 +433,7 @@ func (m *NfsInodeWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusNot) { // not required
 		return nil
 	}
@@ -562,7 +452,7 @@ func (m *NfsInodeWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registr
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusNotIn) { // not required
 		return nil
 	}
@@ -583,17 +473,17 @@ func (m *NfsInodeWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Regis
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsEvery) { // not required
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateExternalSubnet(formats strfmt.Registry) error {
+	if swag.IsZero(m.ExternalSubnet) { // not required
 		return nil
 	}
 
-	if m.LabelsEvery != nil {
-		if err := m.LabelsEvery.Validate(formats); err != nil {
+	if m.ExternalSubnet != nil {
+		if err := m.ExternalSubnet.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_every")
+				return ve.ValidateName("external_subnet")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_every")
+				return ce.ValidateName("external_subnet")
 			}
 			return err
 		}
@@ -602,17 +492,17 @@ func (m *NfsInodeWhereInput) validateLabelsEvery(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateLabelsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsNone) { // not required
+func (m *VirtualPrivateCloudNatGatewayWhereInput) validateVpc(formats strfmt.Registry) error {
+	if swag.IsZero(m.Vpc) { // not required
 		return nil
 	}
 
-	if m.LabelsNone != nil {
-		if err := m.LabelsNone.Validate(formats); err != nil {
+	if m.Vpc != nil {
+		if err := m.Vpc.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_none")
+				return ve.ValidateName("vpc")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_none")
+				return ce.ValidateName("vpc")
 			}
 			return err
 		}
@@ -621,46 +511,8 @@ func (m *NfsInodeWhereInput) validateLabelsNone(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NfsInodeWhereInput) validateLabelsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsSome) { // not required
-		return nil
-	}
-
-	if m.LabelsSome != nil {
-		if err := m.LabelsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NfsInodeWhereInput) validateNfsExport(formats strfmt.Registry) error {
-	if swag.IsZero(m.NfsExport) { // not required
-		return nil
-	}
-
-	if m.NfsExport != nil {
-		if err := m.NfsExport.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("nfs_export")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("nfs_export")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this nfs inode where input based on the context it is used
-func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this virtual private cloud nat gateway where input based on the context it is used
+func (m *VirtualPrivateCloudNatGatewayWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateAND(ctx, formats); err != nil {
@@ -691,19 +543,11 @@ func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLabelsEvery(ctx, formats); err != nil {
+	if err := m.contextValidateExternalSubnet(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLabelsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLabelsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateNfsExport(ctx, formats); err != nil {
+	if err := m.contextValidateVpc(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -713,7 +557,7 @@ func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateAND(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateAND(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.AND); i++ {
 
@@ -733,7 +577,7 @@ func (m *NfsInodeWhereInput) contextValidateAND(ctx context.Context, formats str
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateNOT(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateNOT(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.NOT); i++ {
 
@@ -753,7 +597,7 @@ func (m *NfsInodeWhereInput) contextValidateNOT(ctx context.Context, formats str
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.OR); i++ {
 
@@ -773,7 +617,7 @@ func (m *NfsInodeWhereInput) contextValidateOR(ctx context.Context, formats strf
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatus != nil {
 		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
@@ -789,7 +633,7 @@ func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatus(ctx context.Contex
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.EntityAsyncStatusIn); i++ {
 
@@ -807,7 +651,7 @@ func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Cont
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatusNot != nil {
 		if err := m.EntityAsyncStatusNot.ContextValidate(ctx, formats); err != nil {
@@ -823,7 +667,7 @@ func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Con
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.EntityAsyncStatusNotIn); i++ {
 
@@ -841,14 +685,14 @@ func (m *NfsInodeWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.C
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateLabelsEvery(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateExternalSubnet(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.LabelsEvery != nil {
-		if err := m.LabelsEvery.ContextValidate(ctx, formats); err != nil {
+	if m.ExternalSubnet != nil {
+		if err := m.ExternalSubnet.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_every")
+				return ve.ValidateName("external_subnet")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_every")
+				return ce.ValidateName("external_subnet")
 			}
 			return err
 		}
@@ -857,46 +701,14 @@ func (m *NfsInodeWhereInput) contextValidateLabelsEvery(ctx context.Context, for
 	return nil
 }
 
-func (m *NfsInodeWhereInput) contextValidateLabelsNone(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) contextValidateVpc(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.LabelsNone != nil {
-		if err := m.LabelsNone.ContextValidate(ctx, formats); err != nil {
+	if m.Vpc != nil {
+		if err := m.Vpc.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_none")
+				return ve.ValidateName("vpc")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NfsInodeWhereInput) contextValidateLabelsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LabelsSome != nil {
-		if err := m.LabelsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *NfsInodeWhereInput) contextValidateNfsExport(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.NfsExport != nil {
-		if err := m.NfsExport.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("nfs_export")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("nfs_export")
+				return ce.ValidateName("vpc")
 			}
 			return err
 		}
@@ -906,7 +718,7 @@ func (m *NfsInodeWhereInput) contextValidateNfsExport(ctx context.Context, forma
 }
 
 // MarshalBinary interface implementation
-func (m *NfsInodeWhereInput) MarshalBinary() ([]byte, error) {
+func (m *VirtualPrivateCloudNatGatewayWhereInput) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -914,8 +726,8 @@ func (m *NfsInodeWhereInput) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *NfsInodeWhereInput) UnmarshalBinary(b []byte) error {
-	var res NfsInodeWhereInput
+func (m *VirtualPrivateCloudNatGatewayWhereInput) UnmarshalBinary(b []byte) error {
+	var res VirtualPrivateCloudNatGatewayWhereInput
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

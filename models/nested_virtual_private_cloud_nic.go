@@ -14,32 +14,21 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// NestedLabel nested label
+// NestedVirtualPrivateCloudNic nested virtual private cloud nic
 //
-// swagger:model NestedLabel
-type NestedLabel struct {
+// swagger:model NestedVirtualPrivateCloudNic
+type NestedVirtualPrivateCloudNic struct {
 
 	// id
 	// Required: true
 	ID *string `json:"id"`
-
-	// key
-	// Required: true
-	Key *string `json:"key"`
-
-	// value
-	Value *string `json:"value,omitempty"`
 }
 
-// Validate validates this nested label
-func (m *NestedLabel) Validate(formats strfmt.Registry) error {
+// Validate validates this nested virtual private cloud nic
+func (m *NestedVirtualPrivateCloudNic) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateKey(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -49,7 +38,7 @@ func (m *NestedLabel) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NestedLabel) validateID(formats strfmt.Registry) error {
+func (m *NestedVirtualPrivateCloudNic) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
@@ -58,22 +47,13 @@ func (m *NestedLabel) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NestedLabel) validateKey(formats strfmt.Registry) error {
-
-	if err := validate.Required("key", "body", m.Key); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this nested label based on context it is used
-func (m *NestedLabel) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this nested virtual private cloud nic based on context it is used
+func (m *NestedVirtualPrivateCloudNic) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *NestedLabel) MarshalBinary() ([]byte, error) {
+func (m *NestedVirtualPrivateCloudNic) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -81,8 +61,8 @@ func (m *NestedLabel) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *NestedLabel) UnmarshalBinary(b []byte) error {
-	var res NestedLabel
+func (m *NestedVirtualPrivateCloudNic) UnmarshalBinary(b []byte) error {
+	var res NestedVirtualPrivateCloudNic
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
