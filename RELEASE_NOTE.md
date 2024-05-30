@@ -1,5 +1,13 @@
 # RELEASE NOTE
 
+## release 日期 2024-05-30
+
+v2.15.1 release (tower version 4.1.0)
+
+### bugfix
+
+- [VM], [VMVolume], [IscsiLun], [NvmfNameSpace], [NfsInode]: 更新 `UniqueLogicalSize` 类型为 `float64`
+
 ## release 日期 2024-05-11
 
 v2.15.0 release (tower version 4.1.0)

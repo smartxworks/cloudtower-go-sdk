@@ -887,28 +887,28 @@ type NvmfNamespaceWhereInput struct {
 	ThinProvisionNot *bool `json:"thin_provision_not,omitempty"`
 
 	// unique logical size
-	UniqueLogicalSize *int64 `json:"unique_logical_size,omitempty"`
+	UniqueLogicalSize *float64 `json:"unique_logical_size,omitempty"`
 
 	// unique logical size gt
-	UniqueLogicalSizeGt *int64 `json:"unique_logical_size_gt,omitempty"`
+	UniqueLogicalSizeGt *float64 `json:"unique_logical_size_gt,omitempty"`
 
 	// unique logical size gte
-	UniqueLogicalSizeGte *int64 `json:"unique_logical_size_gte,omitempty"`
+	UniqueLogicalSizeGte *float64 `json:"unique_logical_size_gte,omitempty"`
 
 	// unique logical size in
-	UniqueLogicalSizeIn []int64 `json:"unique_logical_size_in,omitempty"`
+	UniqueLogicalSizeIn []float64 `json:"unique_logical_size_in,omitempty"`
 
 	// unique logical size lt
-	UniqueLogicalSizeLt *int64 `json:"unique_logical_size_lt,omitempty"`
+	UniqueLogicalSizeLt *float64 `json:"unique_logical_size_lt,omitempty"`
 
 	// unique logical size lte
-	UniqueLogicalSizeLte *int64 `json:"unique_logical_size_lte,omitempty"`
+	UniqueLogicalSizeLte *float64 `json:"unique_logical_size_lte,omitempty"`
 
 	// unique logical size not
-	UniqueLogicalSizeNot *int64 `json:"unique_logical_size_not,omitempty"`
+	UniqueLogicalSizeNot *float64 `json:"unique_logical_size_not,omitempty"`
 
 	// unique logical size not in
-	UniqueLogicalSizeNotIn []int64 `json:"unique_logical_size_not_in,omitempty"`
+	UniqueLogicalSizeNotIn []float64 `json:"unique_logical_size_not_in,omitempty"`
 
 	// unique size
 	UniqueSize *int64 `json:"unique_size,omitempty"`

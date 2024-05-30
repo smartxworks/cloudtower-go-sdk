@@ -162,7 +162,7 @@ type IscsiLun struct {
 	ThinProvision *bool `json:"thin_provision"`
 
 	// unique logical size
-	UniqueLogicalSize *int64 `json:"unique_logical_size,omitempty"`
+	UniqueLogicalSize *float64 `json:"unique_logical_size,omitempty"`
 
 	// unique size
 	// Required: true
