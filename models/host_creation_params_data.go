@@ -51,6 +51,12 @@ type HostCreationParamsData struct {
 
 	// platform username
 	PlatformUsername *string `json:"platform_username,omitempty"`
+
+	// vdses
+	Vdses []*HostVdsConfig `json:"vdses,omitempty"`
+
+	// zbs spec
+	ZbsSpec *ZbsSpec `json:"zbs_spec,omitempty"`
 }
 
 // Validate validates this host creation params data
@@ -78,6 +84,14 @@ func (m *HostCreationParamsData) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIpmi(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVdses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateZbsSpec(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -187,6 +201,51 @@ func (m *HostCreationParamsData) validateIpmi(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *HostCreationParamsData) validateVdses(formats strfmt.Registry) error {
+	if swag.IsZero(m.Vdses) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Vdses); i++ {
+		if swag.IsZero(m.Vdses[i]) { // not required
+			continue
+		}
+
+		if m.Vdses[i] != nil {
+			if err := m.Vdses[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vdses" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vdses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *HostCreationParamsData) validateZbsSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.ZbsSpec) { // not required
+		return nil
+	}
+
+	if m.ZbsSpec != nil {
+		if err := m.ZbsSpec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("zbs_spec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("zbs_spec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this host creation params data based on the context it is used
 func (m *HostCreationParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -200,6 +259,14 @@ func (m *HostCreationParamsData) ContextValidate(ctx context.Context, formats st
 	}
 
 	if err := m.contextValidateIpmi(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVdses(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateZbsSpec(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -257,6 +324,42 @@ func (m *HostCreationParamsData) contextValidateIpmi(ctx context.Context, format
 				return ve.ValidateName("ipmi")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("ipmi")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostCreationParamsData) contextValidateVdses(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Vdses); i++ {
+
+		if m.Vdses[i] != nil {
+			if err := m.Vdses[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vdses" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vdses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *HostCreationParamsData) contextValidateZbsSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ZbsSpec != nil {
+		if err := m.ZbsSpec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("zbs_spec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("zbs_spec")
 			}
 			return err
 		}

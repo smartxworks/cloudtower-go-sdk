@@ -20,6 +20,9 @@ import (
 // swagger:model Vm
 type VM struct {
 
+	// bios uuid
+	BiosUUID *string `json:"bios_uuid,omitempty"`
+
 	// clock offset
 	// Required: true
 	ClockOffset *VMClockOffset `json:"clock_offset"`

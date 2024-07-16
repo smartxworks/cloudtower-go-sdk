@@ -171,9 +171,6 @@ type VirtualPrivateCloudFloatingIPWhereInput struct {
 
 	// vpc
 	Vpc *VirtualPrivateCloudWhereInput `json:"vpc,omitempty"`
-
-	// vpc nic
-	VpcNic *VirtualPrivateCloudNicWhereInput `json:"vpc_nic,omitempty"`
 }
 
 // Validate validates this virtual private cloud floating Ip where input
@@ -213,10 +210,6 @@ func (m *VirtualPrivateCloudFloatingIPWhereInput) Validate(formats strfmt.Regist
 	}
 
 	if err := m.validateVpc(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcNic(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -422,25 +415,6 @@ func (m *VirtualPrivateCloudFloatingIPWhereInput) validateVpc(formats strfmt.Reg
 	return nil
 }
 
-func (m *VirtualPrivateCloudFloatingIPWhereInput) validateVpcNic(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcNic) { // not required
-		return nil
-	}
-
-	if m.VpcNic != nil {
-		if err := m.VpcNic.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nic")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nic")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this virtual private cloud floating Ip where input based on the context it is used
 func (m *VirtualPrivateCloudFloatingIPWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -478,10 +452,6 @@ func (m *VirtualPrivateCloudFloatingIPWhereInput) ContextValidate(ctx context.Co
 	}
 
 	if err := m.contextValidateVpc(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcNic(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -643,22 +613,6 @@ func (m *VirtualPrivateCloudFloatingIPWhereInput) contextValidateVpc(ctx context
 				return ve.ValidateName("vpc")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vpc")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudFloatingIPWhereInput) contextValidateVpcNic(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcNic != nil {
-		if err := m.VpcNic.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nic")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nic")
 			}
 			return err
 		}

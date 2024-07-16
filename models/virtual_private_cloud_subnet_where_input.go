@@ -112,12 +112,6 @@ type VirtualPrivateCloudSubnetWhereInput struct {
 	// description starts with
 	DescriptionStartsWith *string `json:"description_starts_with,omitempty"`
 
-	// enable broadcast
-	EnableBroadcast *bool `json:"enable_broadcast,omitempty"`
-
-	// enable broadcast not
-	EnableBroadcastNot *bool `json:"enable_broadcast_not,omitempty"`
-
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -153,48 +147,6 @@ type VirtualPrivateCloudSubnetWhereInput struct {
 
 	// gateway lte
 	GatewayLte *string `json:"gateway_lte,omitempty"`
-
-	// gateway mac
-	GatewayMac *string `json:"gateway_mac,omitempty"`
-
-	// gateway mac contains
-	GatewayMacContains *string `json:"gateway_mac_contains,omitempty"`
-
-	// gateway mac ends with
-	GatewayMacEndsWith *string `json:"gateway_mac_ends_with,omitempty"`
-
-	// gateway mac gt
-	GatewayMacGt *string `json:"gateway_mac_gt,omitempty"`
-
-	// gateway mac gte
-	GatewayMacGte *string `json:"gateway_mac_gte,omitempty"`
-
-	// gateway mac in
-	GatewayMacIn []string `json:"gateway_mac_in,omitempty"`
-
-	// gateway mac lt
-	GatewayMacLt *string `json:"gateway_mac_lt,omitempty"`
-
-	// gateway mac lte
-	GatewayMacLte *string `json:"gateway_mac_lte,omitempty"`
-
-	// gateway mac not
-	GatewayMacNot *string `json:"gateway_mac_not,omitempty"`
-
-	// gateway mac not contains
-	GatewayMacNotContains *string `json:"gateway_mac_not_contains,omitempty"`
-
-	// gateway mac not ends with
-	GatewayMacNotEndsWith *string `json:"gateway_mac_not_ends_with,omitempty"`
-
-	// gateway mac not in
-	GatewayMacNotIn []string `json:"gateway_mac_not_in,omitempty"`
-
-	// gateway mac not starts with
-	GatewayMacNotStartsWith *string `json:"gateway_mac_not_starts_with,omitempty"`
-
-	// gateway mac starts with
-	GatewayMacStartsWith *string `json:"gateway_mac_starts_with,omitempty"`
 
 	// gateway not
 	GatewayNot *string `json:"gateway_not,omitempty"`
@@ -255,9 +207,6 @@ type VirtualPrivateCloudSubnetWhereInput struct {
 
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
-
-	// layer2 gateway
-	Layer2Gateway *VirtualPrivateCloudLayer2GatewayWhereInput `json:"layer2_gateway,omitempty"`
 
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
@@ -396,15 +345,6 @@ type VirtualPrivateCloudSubnetWhereInput struct {
 
 	// vpc
 	Vpc *VirtualPrivateCloudWhereInput `json:"vpc,omitempty"`
-
-	// vpc nics every
-	VpcNicsEvery *VirtualPrivateCloudNicWhereInput `json:"vpc_nics_every,omitempty"`
-
-	// vpc nics none
-	VpcNicsNone *VirtualPrivateCloudNicWhereInput `json:"vpc_nics_none,omitempty"`
-
-	// vpc nics some
-	VpcNicsSome *VirtualPrivateCloudNicWhereInput `json:"vpc_nics_some,omitempty"`
 }
 
 // Validate validates this virtual private cloud subnet where input
@@ -439,27 +379,11 @@ func (m *VirtualPrivateCloudSubnetWhereInput) Validate(formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
-	if err := m.validateLayer2Gateway(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateRouteTable(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateVpc(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcNicsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcNicsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcNicsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -627,25 +551,6 @@ func (m *VirtualPrivateCloudSubnetWhereInput) validateEntityAsyncStatusNotIn(for
 	return nil
 }
 
-func (m *VirtualPrivateCloudSubnetWhereInput) validateLayer2Gateway(formats strfmt.Registry) error {
-	if swag.IsZero(m.Layer2Gateway) { // not required
-		return nil
-	}
-
-	if m.Layer2Gateway != nil {
-		if err := m.Layer2Gateway.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("layer2_gateway")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("layer2_gateway")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VirtualPrivateCloudSubnetWhereInput) validateRouteTable(formats strfmt.Registry) error {
 	if swag.IsZero(m.RouteTable) { // not required
 		return nil
@@ -676,63 +581,6 @@ func (m *VirtualPrivateCloudSubnetWhereInput) validateVpc(formats strfmt.Registr
 				return ve.ValidateName("vpc")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vpc")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSubnetWhereInput) validateVpcNicsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcNicsEvery) { // not required
-		return nil
-	}
-
-	if m.VpcNicsEvery != nil {
-		if err := m.VpcNicsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nics_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nics_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSubnetWhereInput) validateVpcNicsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcNicsNone) { // not required
-		return nil
-	}
-
-	if m.VpcNicsNone != nil {
-		if err := m.VpcNicsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nics_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nics_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSubnetWhereInput) validateVpcNicsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcNicsSome) { // not required
-		return nil
-	}
-
-	if m.VpcNicsSome != nil {
-		if err := m.VpcNicsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nics_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nics_some")
 			}
 			return err
 		}
@@ -773,27 +621,11 @@ func (m *VirtualPrivateCloudSubnetWhereInput) ContextValidate(ctx context.Contex
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLayer2Gateway(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateRouteTable(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateVpc(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcNicsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcNicsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcNicsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -931,22 +763,6 @@ func (m *VirtualPrivateCloudSubnetWhereInput) contextValidateEntityAsyncStatusNo
 	return nil
 }
 
-func (m *VirtualPrivateCloudSubnetWhereInput) contextValidateLayer2Gateway(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Layer2Gateway != nil {
-		if err := m.Layer2Gateway.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("layer2_gateway")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("layer2_gateway")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VirtualPrivateCloudSubnetWhereInput) contextValidateRouteTable(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RouteTable != nil {
@@ -971,54 +787,6 @@ func (m *VirtualPrivateCloudSubnetWhereInput) contextValidateVpc(ctx context.Con
 				return ve.ValidateName("vpc")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vpc")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSubnetWhereInput) contextValidateVpcNicsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcNicsEvery != nil {
-		if err := m.VpcNicsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nics_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nics_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSubnetWhereInput) contextValidateVpcNicsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcNicsNone != nil {
-		if err := m.VpcNicsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nics_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nics_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSubnetWhereInput) contextValidateVpcNicsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcNicsSome != nil {
-		if err := m.VpcNicsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nics_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nics_some")
 			}
 			return err
 		}

@@ -115,8 +115,14 @@ type VirtualPrivateCloudNicWhereInput struct {
 	// local id starts with
 	LocalIDStartsWith *string `json:"local_id_starts_with,omitempty"`
 
-	// snapshot
-	Snapshot *VirtualPrivateCloudNicSnapshotWhereInput `json:"snapshot,omitempty"`
+	// snapshots every
+	SnapshotsEvery *VirtualPrivateCloudNicSnapshotWhereInput `json:"snapshots_every,omitempty"`
+
+	// snapshots none
+	SnapshotsNone *VirtualPrivateCloudNicSnapshotWhereInput `json:"snapshots_none,omitempty"`
+
+	// snapshots some
+	SnapshotsSome *VirtualPrivateCloudNicSnapshotWhereInput `json:"snapshots_some,omitempty"`
 
 	// vm nic
 	VMNic *VMNicWhereInput `json:"vm_nic,omitempty"`
@@ -148,7 +154,15 @@ func (m *VirtualPrivateCloudNicWhereInput) Validate(formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
-	if err := m.validateSnapshot(formats); err != nil {
+	if err := m.validateSnapshotsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSnapshotsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSnapshotsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -267,17 +281,55 @@ func (m *VirtualPrivateCloudNicWhereInput) validateFloatingIP(formats strfmt.Reg
 	return nil
 }
 
-func (m *VirtualPrivateCloudNicWhereInput) validateSnapshot(formats strfmt.Registry) error {
-	if swag.IsZero(m.Snapshot) { // not required
+func (m *VirtualPrivateCloudNicWhereInput) validateSnapshotsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.SnapshotsEvery) { // not required
 		return nil
 	}
 
-	if m.Snapshot != nil {
-		if err := m.Snapshot.Validate(formats); err != nil {
+	if m.SnapshotsEvery != nil {
+		if err := m.SnapshotsEvery.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot")
+				return ve.ValidateName("snapshots_every")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot")
+				return ce.ValidateName("snapshots_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudNicWhereInput) validateSnapshotsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.SnapshotsNone) { // not required
+		return nil
+	}
+
+	if m.SnapshotsNone != nil {
+		if err := m.SnapshotsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("snapshots_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("snapshots_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudNicWhereInput) validateSnapshotsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.SnapshotsSome) { // not required
+		return nil
+	}
+
+	if m.SnapshotsSome != nil {
+		if err := m.SnapshotsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("snapshots_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("snapshots_some")
 			}
 			return err
 		}
@@ -363,7 +415,15 @@ func (m *VirtualPrivateCloudNicWhereInput) ContextValidate(ctx context.Context, 
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateSnapshot(ctx, formats); err != nil {
+	if err := m.contextValidateSnapshotsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSnapshotsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSnapshotsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -461,14 +521,46 @@ func (m *VirtualPrivateCloudNicWhereInput) contextValidateFloatingIP(ctx context
 	return nil
 }
 
-func (m *VirtualPrivateCloudNicWhereInput) contextValidateSnapshot(ctx context.Context, formats strfmt.Registry) error {
+func (m *VirtualPrivateCloudNicWhereInput) contextValidateSnapshotsEvery(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Snapshot != nil {
-		if err := m.Snapshot.ContextValidate(ctx, formats); err != nil {
+	if m.SnapshotsEvery != nil {
+		if err := m.SnapshotsEvery.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot")
+				return ve.ValidateName("snapshots_every")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot")
+				return ce.ValidateName("snapshots_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudNicWhereInput) contextValidateSnapshotsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SnapshotsNone != nil {
+		if err := m.SnapshotsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("snapshots_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("snapshots_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudNicWhereInput) contextValidateSnapshotsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SnapshotsSome != nil {
+		if err := m.SnapshotsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("snapshots_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("snapshots_some")
 			}
 			return err
 		}

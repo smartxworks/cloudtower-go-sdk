@@ -28,6 +28,48 @@ type VMWhereInput struct {
 	// o r
 	OR []*VMWhereInput `json:"OR,omitempty"`
 
+	// bios uuid
+	BiosUUID *string `json:"bios_uuid,omitempty"`
+
+	// bios uuid contains
+	BiosUUIDContains *string `json:"bios_uuid_contains,omitempty"`
+
+	// bios uuid ends with
+	BiosUUIDEndsWith *string `json:"bios_uuid_ends_with,omitempty"`
+
+	// bios uuid gt
+	BiosUUIDGt *string `json:"bios_uuid_gt,omitempty"`
+
+	// bios uuid gte
+	BiosUUIDGte *string `json:"bios_uuid_gte,omitempty"`
+
+	// bios uuid in
+	BiosUUIDIn []string `json:"bios_uuid_in,omitempty"`
+
+	// bios uuid lt
+	BiosUUIDLt *string `json:"bios_uuid_lt,omitempty"`
+
+	// bios uuid lte
+	BiosUUIDLte *string `json:"bios_uuid_lte,omitempty"`
+
+	// bios uuid not
+	BiosUUIDNot *string `json:"bios_uuid_not,omitempty"`
+
+	// bios uuid not contains
+	BiosUUIDNotContains *string `json:"bios_uuid_not_contains,omitempty"`
+
+	// bios uuid not ends with
+	BiosUUIDNotEndsWith *string `json:"bios_uuid_not_ends_with,omitempty"`
+
+	// bios uuid not in
+	BiosUUIDNotIn []string `json:"bios_uuid_not_in,omitempty"`
+
+	// bios uuid not starts with
+	BiosUUIDNotStartsWith *string `json:"bios_uuid_not_starts_with,omitempty"`
+
+	// bios uuid starts with
+	BiosUUIDStartsWith *string `json:"bios_uuid_starts_with,omitempty"`
+
 	// clock offset
 	ClockOffset *VMClockOffset `json:"clock_offset,omitempty"`
 

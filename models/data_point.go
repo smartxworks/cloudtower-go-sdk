@@ -26,7 +26,7 @@ type DataPoint struct {
 
 	// t
 	// Required: true
-	T *float64 `json:"t"`
+	T *int64 `json:"t"`
 
 	// v
 	V *float64 `json:"v,omitempty"`
