@@ -130,15 +130,6 @@ type VirtualPrivateCloudSecurityGroupWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// isolation policies every
-	IsolationPoliciesEvery *VirtualPrivateCloudIsolationPolicyWhereInput `json:"isolation_policies_every,omitempty"`
-
-	// isolation policies none
-	IsolationPoliciesNone *VirtualPrivateCloudIsolationPolicyWhereInput `json:"isolation_policies_none,omitempty"`
-
-	// isolation policies some
-	IsolationPoliciesSome *VirtualPrivateCloudIsolationPolicyWhereInput `json:"isolation_policies_some,omitempty"`
-
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
 
@@ -223,15 +214,6 @@ type VirtualPrivateCloudSecurityGroupWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
-	// security policies every
-	SecurityPoliciesEvery *VirtualPrivateCloudSecurityPolicyWhereInput `json:"security_policies_every,omitempty"`
-
-	// security policies none
-	SecurityPoliciesNone *VirtualPrivateCloudSecurityPolicyWhereInput `json:"security_policies_none,omitempty"`
-
-	// security policies some
-	SecurityPoliciesSome *VirtualPrivateCloudSecurityPolicyWhereInput `json:"security_policies_some,omitempty"`
-
 	// vms every
 	VmsEvery *VMWhereInput `json:"vms_every,omitempty"`
 
@@ -274,30 +256,6 @@ func (m *VirtualPrivateCloudSecurityGroupWhereInput) Validate(formats strfmt.Reg
 	}
 
 	if err := m.validateEntityAsyncStatusNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIsolationPoliciesEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIsolationPoliciesNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIsolationPoliciesSome(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSecurityPoliciesEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSecurityPoliciesNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSecurityPoliciesSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -481,120 +439,6 @@ func (m *VirtualPrivateCloudSecurityGroupWhereInput) validateEntityAsyncStatusNo
 	return nil
 }
 
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) validateIsolationPoliciesEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.IsolationPoliciesEvery) { // not required
-		return nil
-	}
-
-	if m.IsolationPoliciesEvery != nil {
-		if err := m.IsolationPoliciesEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) validateIsolationPoliciesNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.IsolationPoliciesNone) { // not required
-		return nil
-	}
-
-	if m.IsolationPoliciesNone != nil {
-		if err := m.IsolationPoliciesNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) validateIsolationPoliciesSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.IsolationPoliciesSome) { // not required
-		return nil
-	}
-
-	if m.IsolationPoliciesSome != nil {
-		if err := m.IsolationPoliciesSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) validateSecurityPoliciesEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.SecurityPoliciesEvery) { // not required
-		return nil
-	}
-
-	if m.SecurityPoliciesEvery != nil {
-		if err := m.SecurityPoliciesEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_policies_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_policies_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) validateSecurityPoliciesNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.SecurityPoliciesNone) { // not required
-		return nil
-	}
-
-	if m.SecurityPoliciesNone != nil {
-		if err := m.SecurityPoliciesNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_policies_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_policies_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) validateSecurityPoliciesSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.SecurityPoliciesSome) { // not required
-		return nil
-	}
-
-	if m.SecurityPoliciesSome != nil {
-		if err := m.SecurityPoliciesSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_policies_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_policies_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VirtualPrivateCloudSecurityGroupWhereInput) validateVmsEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.VmsEvery) { // not required
 		return nil
@@ -700,30 +544,6 @@ func (m *VirtualPrivateCloudSecurityGroupWhereInput) ContextValidate(ctx context
 	}
 
 	if err := m.contextValidateEntityAsyncStatusNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIsolationPoliciesEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIsolationPoliciesNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIsolationPoliciesSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSecurityPoliciesEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSecurityPoliciesNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSecurityPoliciesSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -872,102 +692,6 @@ func (m *VirtualPrivateCloudSecurityGroupWhereInput) contextValidateEntityAsyncS
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) contextValidateIsolationPoliciesEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IsolationPoliciesEvery != nil {
-		if err := m.IsolationPoliciesEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) contextValidateIsolationPoliciesNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IsolationPoliciesNone != nil {
-		if err := m.IsolationPoliciesNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) contextValidateIsolationPoliciesSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IsolationPoliciesSome != nil {
-		if err := m.IsolationPoliciesSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) contextValidateSecurityPoliciesEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SecurityPoliciesEvery != nil {
-		if err := m.SecurityPoliciesEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_policies_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_policies_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) contextValidateSecurityPoliciesNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SecurityPoliciesNone != nil {
-		if err := m.SecurityPoliciesNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_policies_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_policies_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityGroupWhereInput) contextValidateSecurityPoliciesSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SecurityPoliciesSome != nil {
-		if err := m.SecurityPoliciesSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_policies_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_policies_some")
-			}
-			return err
-		}
 	}
 
 	return nil

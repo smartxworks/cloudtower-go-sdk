@@ -85,59 +85,29 @@ type VirtualPrivateCloudClusterBindingWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// phase
-	Phase *EverouteClusterPhase `json:"phase,omitempty"`
+	// mtu
+	Mtu *int32 `json:"mtu,omitempty"`
 
-	// phase in
-	PhaseIn []EverouteClusterPhase `json:"phase_in,omitempty"`
+	// mtu gt
+	MtuGt *int32 `json:"mtu_gt,omitempty"`
 
-	// phase not
-	PhaseNot *EverouteClusterPhase `json:"phase_not,omitempty"`
+	// mtu gte
+	MtuGte *int32 `json:"mtu_gte,omitempty"`
 
-	// phase not in
-	PhaseNotIn []EverouteClusterPhase `json:"phase_not_in,omitempty"`
+	// mtu in
+	MtuIn []int32 `json:"mtu_in,omitempty"`
 
-	// tep ip pool id
-	TepIPPoolID *string `json:"tep_ip_pool_id,omitempty"`
+	// mtu lt
+	MtuLt *int32 `json:"mtu_lt,omitempty"`
 
-	// tep ip pool id contains
-	TepIPPoolIDContains *string `json:"tep_ip_pool_id_contains,omitempty"`
+	// mtu lte
+	MtuLte *int32 `json:"mtu_lte,omitempty"`
 
-	// tep ip pool id ends with
-	TepIPPoolIDEndsWith *string `json:"tep_ip_pool_id_ends_with,omitempty"`
+	// mtu not
+	MtuNot *int32 `json:"mtu_not,omitempty"`
 
-	// tep ip pool id gt
-	TepIPPoolIDGt *string `json:"tep_ip_pool_id_gt,omitempty"`
-
-	// tep ip pool id gte
-	TepIPPoolIDGte *string `json:"tep_ip_pool_id_gte,omitempty"`
-
-	// tep ip pool id in
-	TepIPPoolIDIn []string `json:"tep_ip_pool_id_in,omitempty"`
-
-	// tep ip pool id lt
-	TepIPPoolIDLt *string `json:"tep_ip_pool_id_lt,omitempty"`
-
-	// tep ip pool id lte
-	TepIPPoolIDLte *string `json:"tep_ip_pool_id_lte,omitempty"`
-
-	// tep ip pool id not
-	TepIPPoolIDNot *string `json:"tep_ip_pool_id_not,omitempty"`
-
-	// tep ip pool id not contains
-	TepIPPoolIDNotContains *string `json:"tep_ip_pool_id_not_contains,omitempty"`
-
-	// tep ip pool id not ends with
-	TepIPPoolIDNotEndsWith *string `json:"tep_ip_pool_id_not_ends_with,omitempty"`
-
-	// tep ip pool id not in
-	TepIPPoolIDNotIn []string `json:"tep_ip_pool_id_not_in,omitempty"`
-
-	// tep ip pool id not starts with
-	TepIPPoolIDNotStartsWith *string `json:"tep_ip_pool_id_not_starts_with,omitempty"`
-
-	// tep ip pool id starts with
-	TepIPPoolIDStartsWith *string `json:"tep_ip_pool_id_starts_with,omitempty"`
+	// mtu not in
+	MtuNotIn []int32 `json:"mtu_not_in,omitempty"`
 
 	// vds
 	Vds *VdsWhereInput `json:"vds,omitempty"`
@@ -165,9 +135,6 @@ type VirtualPrivateCloudClusterBindingWhereInput struct {
 
 	// vlan id not in
 	VlanIDNotIn []int32 `json:"vlan_id_not_in,omitempty"`
-
-	// vpc service
-	VpcService *VirtualPrivateCloudServiceWhereInput `json:"vpc_service,omitempty"`
 }
 
 // Validate validates this virtual private cloud cluster binding where input
@@ -206,27 +173,7 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) Validate(formats strfmt.Re
 		res = append(res, err)
 	}
 
-	if err := m.validatePhase(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePhaseIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePhaseNot(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePhaseNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateVds(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -413,86 +360,6 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) validateEntityAsyncStatusN
 	return nil
 }
 
-func (m *VirtualPrivateCloudClusterBindingWhereInput) validatePhase(formats strfmt.Registry) error {
-	if swag.IsZero(m.Phase) { // not required
-		return nil
-	}
-
-	if m.Phase != nil {
-		if err := m.Phase.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("phase")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("phase")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudClusterBindingWhereInput) validatePhaseIn(formats strfmt.Registry) error {
-	if swag.IsZero(m.PhaseIn) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.PhaseIn); i++ {
-
-		if err := m.PhaseIn[i].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("phase_in" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("phase_in" + "." + strconv.Itoa(i))
-			}
-			return err
-		}
-
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudClusterBindingWhereInput) validatePhaseNot(formats strfmt.Registry) error {
-	if swag.IsZero(m.PhaseNot) { // not required
-		return nil
-	}
-
-	if m.PhaseNot != nil {
-		if err := m.PhaseNot.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("phase_not")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("phase_not")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudClusterBindingWhereInput) validatePhaseNotIn(formats strfmt.Registry) error {
-	if swag.IsZero(m.PhaseNotIn) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.PhaseNotIn); i++ {
-
-		if err := m.PhaseNotIn[i].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("phase_not_in" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("phase_not_in" + "." + strconv.Itoa(i))
-			}
-			return err
-		}
-
-	}
-
-	return nil
-}
-
 func (m *VirtualPrivateCloudClusterBindingWhereInput) validateVds(formats strfmt.Registry) error {
 	if swag.IsZero(m.Vds) { // not required
 		return nil
@@ -504,25 +371,6 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) validateVds(formats strfmt
 				return ve.ValidateName("vds")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vds")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudClusterBindingWhereInput) validateVpcService(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcService) { // not required
-		return nil
-	}
-
-	if m.VpcService != nil {
-		if err := m.VpcService.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_service")
 			}
 			return err
 		}
@@ -567,27 +415,7 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) ContextValidate(ctx contex
 		res = append(res, err)
 	}
 
-	if err := m.contextValidatePhase(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidatePhaseIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidatePhaseNot(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidatePhaseNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateVds(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -741,74 +569,6 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidateEntityAsync
 	return nil
 }
 
-func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidatePhase(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Phase != nil {
-		if err := m.Phase.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("phase")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("phase")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidatePhaseIn(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.PhaseIn); i++ {
-
-		if err := m.PhaseIn[i].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("phase_in" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("phase_in" + "." + strconv.Itoa(i))
-			}
-			return err
-		}
-
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidatePhaseNot(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.PhaseNot != nil {
-		if err := m.PhaseNot.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("phase_not")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("phase_not")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidatePhaseNotIn(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.PhaseNotIn); i++ {
-
-		if err := m.PhaseNotIn[i].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("phase_not_in" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("phase_not_in" + "." + strconv.Itoa(i))
-			}
-			return err
-		}
-
-	}
-
-	return nil
-}
-
 func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidateVds(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Vds != nil {
@@ -817,22 +577,6 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidateVds(ctx con
 				return ve.ValidateName("vds")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vds")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcService != nil {
-		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_service")
 			}
 			return err
 		}

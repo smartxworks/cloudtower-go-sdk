@@ -124,12 +124,6 @@ type VirtualPrivateCloudExternalSubnetWhereInput struct {
 	// entity async status not in
 	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
 
-	// exclusive
-	Exclusive *bool `json:"exclusive,omitempty"`
-
-	// exclusive not
-	ExclusiveNot *bool `json:"exclusive_not,omitempty"`
-
 	// floating ip cidr
 	FloatingIPCidr *string `json:"floating_ip_cidr,omitempty"`
 
@@ -264,48 +258,6 @@ type VirtualPrivateCloudExternalSubnetWhereInput struct {
 
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
-
-	// load balancer gateway cidr
-	LoadBalancerGatewayCidr *string `json:"load_balancer_gateway_cidr,omitempty"`
-
-	// load balancer gateway cidr contains
-	LoadBalancerGatewayCidrContains *string `json:"load_balancer_gateway_cidr_contains,omitempty"`
-
-	// load balancer gateway cidr ends with
-	LoadBalancerGatewayCidrEndsWith *string `json:"load_balancer_gateway_cidr_ends_with,omitempty"`
-
-	// load balancer gateway cidr gt
-	LoadBalancerGatewayCidrGt *string `json:"load_balancer_gateway_cidr_gt,omitempty"`
-
-	// load balancer gateway cidr gte
-	LoadBalancerGatewayCidrGte *string `json:"load_balancer_gateway_cidr_gte,omitempty"`
-
-	// load balancer gateway cidr in
-	LoadBalancerGatewayCidrIn []string `json:"load_balancer_gateway_cidr_in,omitempty"`
-
-	// load balancer gateway cidr lt
-	LoadBalancerGatewayCidrLt *string `json:"load_balancer_gateway_cidr_lt,omitempty"`
-
-	// load balancer gateway cidr lte
-	LoadBalancerGatewayCidrLte *string `json:"load_balancer_gateway_cidr_lte,omitempty"`
-
-	// load balancer gateway cidr not
-	LoadBalancerGatewayCidrNot *string `json:"load_balancer_gateway_cidr_not,omitempty"`
-
-	// load balancer gateway cidr not contains
-	LoadBalancerGatewayCidrNotContains *string `json:"load_balancer_gateway_cidr_not_contains,omitempty"`
-
-	// load balancer gateway cidr not ends with
-	LoadBalancerGatewayCidrNotEndsWith *string `json:"load_balancer_gateway_cidr_not_ends_with,omitempty"`
-
-	// load balancer gateway cidr not in
-	LoadBalancerGatewayCidrNotIn []string `json:"load_balancer_gateway_cidr_not_in,omitempty"`
-
-	// load balancer gateway cidr not starts with
-	LoadBalancerGatewayCidrNotStartsWith *string `json:"load_balancer_gateway_cidr_not_starts_with,omitempty"`
-
-	// load balancer gateway cidr starts with
-	LoadBalancerGatewayCidrStartsWith *string `json:"load_balancer_gateway_cidr_starts_with,omitempty"`
 
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
@@ -498,9 +450,6 @@ type VirtualPrivateCloudExternalSubnetWhereInput struct {
 
 	// vpc
 	Vpc *VirtualPrivateCloudWhereInput `json:"vpc,omitempty"`
-
-	// vpc service
-	VpcService *VirtualPrivateCloudServiceWhereInput `json:"vpc_service,omitempty"`
 }
 
 // Validate validates this virtual private cloud external subnet where input
@@ -576,10 +525,6 @@ func (m *VirtualPrivateCloudExternalSubnetWhereInput) Validate(formats strfmt.Re
 	}
 
 	if err := m.validateVpc(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -956,25 +901,6 @@ func (m *VirtualPrivateCloudExternalSubnetWhereInput) validateVpc(formats strfmt
 	return nil
 }
 
-func (m *VirtualPrivateCloudExternalSubnetWhereInput) validateVpcService(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcService) { // not required
-		return nil
-	}
-
-	if m.VpcService != nil {
-		if err := m.VpcService.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_service")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this virtual private cloud external subnet where input based on the context it is used
 func (m *VirtualPrivateCloudExternalSubnetWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -1048,10 +974,6 @@ func (m *VirtualPrivateCloudExternalSubnetWhereInput) ContextValidate(ctx contex
 	}
 
 	if err := m.contextValidateVpc(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1357,22 +1279,6 @@ func (m *VirtualPrivateCloudExternalSubnetWhereInput) contextValidateVpc(ctx con
 				return ve.ValidateName("vpc")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vpc")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudExternalSubnetWhereInput) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcService != nil {
-		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_service")
 			}
 			return err
 		}

@@ -1,5 +1,16 @@
 # RELEASE NOTE
 
+## release 日期 2024-07-16
+
+v2.16.0 release (tower version 4.2.0)
+
+### update
+
+- [HostApi]:
+  - [CreateHost]: 新增 `Vdses` 字段适配网络融合，新增 `ZbsSpec` 字段适配 zbs 560 以上版本集群的添加
+- [VMApi]:
+  - [GetVms]: 新增 `BiosUUID` 字段
+
 ## release 日期 2024-05-30
 
 v2.15.1 release (tower version 4.1.0)

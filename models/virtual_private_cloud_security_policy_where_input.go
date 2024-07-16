@@ -124,15 +124,6 @@ type VirtualPrivateCloudSecurityPolicyWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// labels every
-	LabelsEvery *LabelWhereInput `json:"labels_every,omitempty"`
-
-	// labels none
-	LabelsNone *LabelWhereInput `json:"labels_none,omitempty"`
-
-	// labels some
-	LabelsSome *LabelWhereInput `json:"labels_some,omitempty"`
-
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
 
@@ -229,15 +220,6 @@ type VirtualPrivateCloudSecurityPolicyWhereInput struct {
 	// policy mode not in
 	PolicyModeNotIn []VirtualPrivateCloudSecurityPolicyMode `json:"policy_mode_not_in,omitempty"`
 
-	// security groups every
-	SecurityGroupsEvery *VirtualPrivateCloudSecurityGroupWhereInput `json:"security_groups_every,omitempty"`
-
-	// security groups none
-	SecurityGroupsNone *VirtualPrivateCloudSecurityGroupWhereInput `json:"security_groups_none,omitempty"`
-
-	// security groups some
-	SecurityGroupsSome *VirtualPrivateCloudSecurityGroupWhereInput `json:"security_groups_some,omitempty"`
-
 	// vpc
 	Vpc *VirtualPrivateCloudWhereInput `json:"vpc,omitempty"`
 }
@@ -274,18 +256,6 @@ func (m *VirtualPrivateCloudSecurityPolicyWhereInput) Validate(formats strfmt.Re
 		res = append(res, err)
 	}
 
-	if err := m.validateLabelsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLabelsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLabelsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validatePolicyMode(formats); err != nil {
 		res = append(res, err)
 	}
@@ -299,18 +269,6 @@ func (m *VirtualPrivateCloudSecurityPolicyWhereInput) Validate(formats strfmt.Re
 	}
 
 	if err := m.validatePolicyModeNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSecurityGroupsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSecurityGroupsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSecurityGroupsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -482,63 +440,6 @@ func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validateEntityAsyncStatusN
 	return nil
 }
 
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsEvery) { // not required
-		return nil
-	}
-
-	if m.LabelsEvery != nil {
-		if err := m.LabelsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validateLabelsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsNone) { // not required
-		return nil
-	}
-
-	if m.LabelsNone != nil {
-		if err := m.LabelsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validateLabelsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelsSome) { // not required
-		return nil
-	}
-
-	if m.LabelsSome != nil {
-		if err := m.LabelsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validatePolicyMode(formats strfmt.Registry) error {
 	if swag.IsZero(m.PolicyMode) { // not required
 		return nil
@@ -619,63 +520,6 @@ func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validatePolicyModeNotIn(fo
 	return nil
 }
 
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validateSecurityGroupsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.SecurityGroupsEvery) { // not required
-		return nil
-	}
-
-	if m.SecurityGroupsEvery != nil {
-		if err := m.SecurityGroupsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_groups_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_groups_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validateSecurityGroupsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.SecurityGroupsNone) { // not required
-		return nil
-	}
-
-	if m.SecurityGroupsNone != nil {
-		if err := m.SecurityGroupsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_groups_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_groups_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validateSecurityGroupsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.SecurityGroupsSome) { // not required
-		return nil
-	}
-
-	if m.SecurityGroupsSome != nil {
-		if err := m.SecurityGroupsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_groups_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_groups_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VirtualPrivateCloudSecurityPolicyWhereInput) validateVpc(formats strfmt.Registry) error {
 	if swag.IsZero(m.Vpc) { // not required
 		return nil
@@ -727,18 +571,6 @@ func (m *VirtualPrivateCloudSecurityPolicyWhereInput) ContextValidate(ctx contex
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLabelsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLabelsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLabelsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidatePolicyMode(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -752,18 +584,6 @@ func (m *VirtualPrivateCloudSecurityPolicyWhereInput) ContextValidate(ctx contex
 	}
 
 	if err := m.contextValidatePolicyModeNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSecurityGroupsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSecurityGroupsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSecurityGroupsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -905,54 +725,6 @@ func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidateEntityAsync
 	return nil
 }
 
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidateLabelsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LabelsEvery != nil {
-		if err := m.LabelsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidateLabelsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LabelsNone != nil {
-		if err := m.LabelsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidateLabelsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LabelsSome != nil {
-		if err := m.LabelsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("labels_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("labels_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidatePolicyMode(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PolicyMode != nil {
@@ -1016,54 +788,6 @@ func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidatePolicyModeN
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidateSecurityGroupsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SecurityGroupsEvery != nil {
-		if err := m.SecurityGroupsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_groups_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_groups_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidateSecurityGroupsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SecurityGroupsNone != nil {
-		if err := m.SecurityGroupsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_groups_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_groups_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudSecurityPolicyWhereInput) contextValidateSecurityGroupsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SecurityGroupsSome != nil {
-		if err := m.SecurityGroupsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("security_groups_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("security_groups_some")
-			}
-			return err
-		}
 	}
 
 	return nil

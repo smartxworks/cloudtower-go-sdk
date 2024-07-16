@@ -223,48 +223,6 @@ type VirtualPrivateCloudNatGatewayWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
-	// nexthop ip
-	NexthopIP *string `json:"nexthop_ip,omitempty"`
-
-	// nexthop ip contains
-	NexthopIPContains *string `json:"nexthop_ip_contains,omitempty"`
-
-	// nexthop ip ends with
-	NexthopIPEndsWith *string `json:"nexthop_ip_ends_with,omitempty"`
-
-	// nexthop ip gt
-	NexthopIPGt *string `json:"nexthop_ip_gt,omitempty"`
-
-	// nexthop ip gte
-	NexthopIPGte *string `json:"nexthop_ip_gte,omitempty"`
-
-	// nexthop ip in
-	NexthopIPIn []string `json:"nexthop_ip_in,omitempty"`
-
-	// nexthop ip lt
-	NexthopIPLt *string `json:"nexthop_ip_lt,omitempty"`
-
-	// nexthop ip lte
-	NexthopIPLte *string `json:"nexthop_ip_lte,omitempty"`
-
-	// nexthop ip not
-	NexthopIPNot *string `json:"nexthop_ip_not,omitempty"`
-
-	// nexthop ip not contains
-	NexthopIPNotContains *string `json:"nexthop_ip_not_contains,omitempty"`
-
-	// nexthop ip not ends with
-	NexthopIPNotEndsWith *string `json:"nexthop_ip_not_ends_with,omitempty"`
-
-	// nexthop ip not in
-	NexthopIPNotIn []string `json:"nexthop_ip_not_in,omitempty"`
-
-	// nexthop ip not starts with
-	NexthopIPNotStartsWith *string `json:"nexthop_ip_not_starts_with,omitempty"`
-
-	// nexthop ip starts with
-	NexthopIPStartsWith *string `json:"nexthop_ip_starts_with,omitempty"`
-
 	// vpc
 	Vpc *VirtualPrivateCloudWhereInput `json:"vpc,omitempty"`
 }
