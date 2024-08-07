@@ -30,6 +30,12 @@ func (m CloudTowerApplicationState) Pointer() *CloudTowerApplicationState {
 
 const (
 
+	// CloudTowerApplicationStateCONFIGUREFAILED captures enum value "CONFIGURE_FAILED"
+	CloudTowerApplicationStateCONFIGUREFAILED CloudTowerApplicationState = "CONFIGURE_FAILED"
+
+	// CloudTowerApplicationStateCONFIGURING captures enum value "CONFIGURING"
+	CloudTowerApplicationStateCONFIGURING CloudTowerApplicationState = "CONFIGURING"
+
 	// CloudTowerApplicationStateERROR captures enum value "ERROR"
 	CloudTowerApplicationStateERROR CloudTowerApplicationState = "ERROR"
 
@@ -66,7 +72,7 @@ var cloudTowerApplicationStateEnum []interface{}
 
 func init() {
 	var res []CloudTowerApplicationState
-	if err := json.Unmarshal([]byte(`["ERROR","INSTALLING","INSTALL_FAILED","RUNNING","SCALE_FAILED","SCALING","TERMINATE_FAILED","TERMINATING","UPGRADE_FAILED","UPGRADING"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONFIGURE_FAILED","CONFIGURING","ERROR","INSTALLING","INSTALL_FAILED","RUNNING","SCALE_FAILED","SCALING","TERMINATE_FAILED","TERMINATING","UPGRADE_FAILED","UPGRADING"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
