@@ -38,9 +38,15 @@ type NestedTemplateNic struct {
 	// model
 	Model *VMNicModel `json:"model,omitempty"`
 
+	// type
+	Type *VMNicType `json:"type,omitempty"`
+
 	// vlan
 	// Required: true
 	Vlan *NestedFrozenVlan `json:"vlan"`
+
+	// vpc nic
+	VpcNic *NestedTemplateVpcNic `json:"vpc_nic,omitempty"`
 }
 
 // Validate validates this nested template nic
@@ -55,7 +61,15 @@ func (m *NestedTemplateNic) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVlan(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcNic(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -93,6 +107,25 @@ func (m *NestedTemplateNic) validateModel(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NestedTemplateNic) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NestedTemplateNic) validateVlan(formats strfmt.Registry) error {
 
 	if err := validate.Required("vlan", "body", m.Vlan); err != nil {
@@ -113,6 +146,25 @@ func (m *NestedTemplateNic) validateVlan(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NestedTemplateNic) validateVpcNic(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpcNic) { // not required
+		return nil
+	}
+
+	if m.VpcNic != nil {
+		if err := m.VpcNic.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_nic")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_nic")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this nested template nic based on the context it is used
 func (m *NestedTemplateNic) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -121,7 +173,15 @@ func (m *NestedTemplateNic) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVlan(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcNic(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -147,6 +207,22 @@ func (m *NestedTemplateNic) contextValidateModel(ctx context.Context, formats st
 	return nil
 }
 
+func (m *NestedTemplateNic) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NestedTemplateNic) contextValidateVlan(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Vlan != nil {
@@ -155,6 +231,22 @@ func (m *NestedTemplateNic) contextValidateVlan(ctx context.Context, formats str
 				return ve.ValidateName("vlan")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vlan")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NestedTemplateNic) contextValidateVpcNic(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcNic != nil {
+		if err := m.VpcNic.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_nic")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_nic")
 			}
 			return err
 		}
