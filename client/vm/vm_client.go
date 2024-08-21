@@ -138,6 +138,8 @@ type ClientService interface {
 
 	UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts ...ClientOption) (*UpdateVMNicQosOptionOK, error)
 
+	UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...ClientOption) (*UpdateVMNicVpcInfoOK, error)
+
 	UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption) (*UpdateVMOwnerOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -2192,6 +2194,44 @@ func (a *Client) UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts .
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateVmNicQosOption: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVMNicVpcInfo update Vm nic vpc info API
+*/
+func (a *Client) UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...ClientOption) (*UpdateVMNicVpcInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVMNicVpcInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateVmNicVpcInfo",
+		Method:             "POST",
+		PathPattern:        "/update-vm-vpc-nic",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateVMNicVpcInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVMNicVpcInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateVmNicVpcInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
