@@ -36,6 +36,9 @@ const (
 	// PartitionUsageCACHE captures enum value "CACHE"
 	PartitionUsageCACHE PartitionUsage = "CACHE"
 
+	// PartitionUsageEFISYSTEM captures enum value "EFI_SYSTEM"
+	PartitionUsageEFISYSTEM PartitionUsage = "EFI_SYSTEM"
+
 	// PartitionUsageJOURNAL captures enum value "JOURNAL"
 	PartitionUsageJOURNAL PartitionUsage = "JOURNAL"
 
@@ -66,7 +69,7 @@ var partitionUsageEnum []interface{}
 
 func init() {
 	var res []PartitionUsage
-	if err := json.Unmarshal([]byte(`["BOOT","CACHE","JOURNAL","METAD","PARTITION","SWAP","SYSTEM","UNMOUNTED","UNPARTED","ZOOKEEPER"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BOOT","CACHE","EFI_SYSTEM","JOURNAL","METAD","PARTITION","SWAP","SYSTEM","UNMOUNTED","UNPARTED","ZOOKEEPER"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -11,7 +11,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // VMNicParams Vm nic params
@@ -20,8 +19,7 @@ import (
 type VMNicParams struct {
 
 	// connect vlan id
-	// Required: true
-	ConnectVlanID *string `json:"connect_vlan_id"`
+	ConnectVlanID *string `json:"connect_vlan_id,omitempty"`
 
 	// enabled
 	Enabled *bool `json:"enabled,omitempty"`
@@ -52,15 +50,17 @@ type VMNicParams struct {
 
 	// subnet mask
 	SubnetMask *string `json:"subnet_mask,omitempty"`
+
+	// type
+	Type *VMNicType `json:"type,omitempty"`
+
+	// vpc nic
+	VpcNic *VpcNicParams `json:"vpc_nic,omitempty"`
 }
 
 // Validate validates this Vm nic params
 func (m *VMNicParams) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateConnectVlanID(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateModel(formats); err != nil {
 		res = append(res, err)
@@ -70,18 +70,17 @@ func (m *VMNicParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcNic(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *VMNicParams) validateConnectVlanID(formats strfmt.Registry) error {
-
-	if err := validate.Required("connect_vlan_id", "body", m.ConnectVlanID); err != nil {
-		return err
-	}
-
 	return nil
 }
 
@@ -123,6 +122,44 @@ func (m *VMNicParams) validateQos(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMNicParams) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicParams) validateVpcNic(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpcNic) { // not required
+		return nil
+	}
+
+	if m.VpcNic != nil {
+		if err := m.VpcNic.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_nic")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_nic")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this Vm nic params based on the context it is used
 func (m *VMNicParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -132,6 +169,14 @@ func (m *VMNicParams) ContextValidate(ctx context.Context, formats strfmt.Regist
 	}
 
 	if err := m.contextValidateQos(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcNic(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -165,6 +210,38 @@ func (m *VMNicParams) contextValidateQos(ctx context.Context, formats strfmt.Reg
 				return ve.ValidateName("qos")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("qos")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicParams) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMNicParams) contextValidateVpcNic(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcNic != nil {
+		if err := m.VpcNic.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_nic")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_nic")
 			}
 			return err
 		}

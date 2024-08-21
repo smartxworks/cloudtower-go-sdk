@@ -29,6 +29,12 @@ type NestedVirtualPrivateCloudExternalSubnet struct {
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	// nat gateway cidr
+	NatGatewayCidr *string `json:"nat_gateway_cidr,omitempty"`
+
+	// router gateway cidr
+	RouterGatewayCidr *string `json:"router_gateway_cidr,omitempty"`
 }
 
 // Validate validates this nested virtual private cloud external subnet
