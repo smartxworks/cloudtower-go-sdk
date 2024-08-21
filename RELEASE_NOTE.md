@@ -1,5 +1,37 @@
 # RELEASE NOTE
 
+## release 日期 2024-08-21
+
+v2.17.0 release (tower version 4.3.0)
+
+### feature
+
+- 新增 VPC 相关 API
+  - [VirtualPrivateCloudApi]: VPC 服务管理
+  - [VirtualPrivateCloudClusterBindingApi]: VPC 服务与集群关联关系
+  - [VirtualPrivateCloudExternalSubnetApi]: VPC 网络外部子网
+  - [VirtualPrivateCloudFloatingIpApi]: VPC 网络浮动 IP 管理
+  - [VirtualPrivateCloudNatGatewayApi]: VPC 网络 NAT 网关管理
+  - [VirtualPrivateCloudRouterGatewayApi]: VPC 网络路由网关管理
+  - [VirtualPrivateCloudRouteTableApi]: VPC 网络路由表管理
+  - [VirtualPrivateCloudSecurityGroupApi]: VPC 网络安全组管理
+  - [VirtualPrivateCloudSecurityPolicyApi]: VPC 网络安全策略管理
+  - [VirtualPrivateCloudSubnetApi]: VPC 子网管理
+- [VMApi]: [UpdateVMNicVpc]: 更新虚拟机的 VPC 网卡
+
+### update
+
+- [ContentLibraryImage]: 新增 `IscsiLuns` 字段，用于记录分发至存算分离节点中的镜像的 LUN。
+- [ContentLibraryImageApi]: 支持使用 `IscsiLuns` 进行搜索
+- [VMApi]:
+  - [CreateVM], [CreateVMFromContentLibraryTemplate], [CreateVMFromTemplate], [CloneVM], [RebuildVMFromSnapshot]: 支持配置虚拟机的 VPC 网卡
+  - [AddVMNic], [UpdateVMNic]: 支持配置 VPC 网卡
+
+### bugfix
+
+- [VMApi]: [UpdateVMDisk], [AddVMDisk], [ExpandVMDisk], [RemoveVMDisk], [AddVMCdRom], [RemoveVMCdRom], [EjectIsoFromVMCdRom], [ToggleVMCdRomDisable]: 修复被修改虚拟机的虚拟盘会丢失限速设置以及 CD-ROM 的禁用的问题
+- [VMApi]: [CreateVMFromContentLibraryTemplate]: 修复当内容库模板仅分发在存算分离的集群时，无法创建虚拟机的问题。
+
 ## release 日期 2024-07-16
 
 v2.16.0 release (tower version 4.2.0)
