@@ -84,20 +84,9 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user_audit_log"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user_role_next"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/v2_everoute_license"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vcenter_account"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vds"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/view"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_cluster_binding"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_external_subnet"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_floating_ip"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_nat_gateway"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_route_table"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_router_gateway"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_security_group"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_security_policy"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_subnet"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vlan"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_disk"
@@ -233,20 +222,9 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.User = user.New(transport, formats)
 	cli.UserAuditLog = user_audit_log.New(transport, formats)
 	cli.UserRoleNext = user_role_next.New(transport, formats)
-	cli.V2EverouteLicense = v2_everoute_license.New(transport, formats)
 	cli.VcenterAccount = vcenter_account.New(transport, formats)
 	cli.Vds = vds.New(transport, formats)
 	cli.View = view.New(transport, formats)
-	cli.VirtualPrivateCloud = virtual_private_cloud.New(transport, formats)
-	cli.VirtualPrivateCloudClusterBinding = virtual_private_cloud_cluster_binding.New(transport, formats)
-	cli.VirtualPrivateCloudExternalSubnet = virtual_private_cloud_external_subnet.New(transport, formats)
-	cli.VirtualPrivateCloudFloatingIP = virtual_private_cloud_floating_ip.New(transport, formats)
-	cli.VirtualPrivateCloudNatGateway = virtual_private_cloud_nat_gateway.New(transport, formats)
-	cli.VirtualPrivateCloudRouteTable = virtual_private_cloud_route_table.New(transport, formats)
-	cli.VirtualPrivateCloudRouterGateway = virtual_private_cloud_router_gateway.New(transport, formats)
-	cli.VirtualPrivateCloudSecurityGroup = virtual_private_cloud_security_group.New(transport, formats)
-	cli.VirtualPrivateCloudSecurityPolicy = virtual_private_cloud_security_policy.New(transport, formats)
-	cli.VirtualPrivateCloudSubnet = virtual_private_cloud_subnet.New(transport, formats)
 	cli.Vlan = vlan.New(transport, formats)
 	cli.VM = vm.New(transport, formats)
 	cli.VMDisk = vm_disk.New(transport, formats)
@@ -456,33 +434,11 @@ type Cloudtower struct {
 
 	UserRoleNext user_role_next.ClientService
 
-	V2EverouteLicense v2_everoute_license.ClientService
-
 	VcenterAccount vcenter_account.ClientService
 
 	Vds vds.ClientService
 
 	View view.ClientService
-
-	VirtualPrivateCloud virtual_private_cloud.ClientService
-
-	VirtualPrivateCloudClusterBinding virtual_private_cloud_cluster_binding.ClientService
-
-	VirtualPrivateCloudExternalSubnet virtual_private_cloud_external_subnet.ClientService
-
-	VirtualPrivateCloudFloatingIP virtual_private_cloud_floating_ip.ClientService
-
-	VirtualPrivateCloudNatGateway virtual_private_cloud_nat_gateway.ClientService
-
-	VirtualPrivateCloudRouteTable virtual_private_cloud_route_table.ClientService
-
-	VirtualPrivateCloudRouterGateway virtual_private_cloud_router_gateway.ClientService
-
-	VirtualPrivateCloudSecurityGroup virtual_private_cloud_security_group.ClientService
-
-	VirtualPrivateCloudSecurityPolicy virtual_private_cloud_security_policy.ClientService
-
-	VirtualPrivateCloudSubnet virtual_private_cloud_subnet.ClientService
 
 	Vlan vlan.ClientService
 
@@ -598,20 +554,9 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.User.SetTransport(transport)
 	c.UserAuditLog.SetTransport(transport)
 	c.UserRoleNext.SetTransport(transport)
-	c.V2EverouteLicense.SetTransport(transport)
 	c.VcenterAccount.SetTransport(transport)
 	c.Vds.SetTransport(transport)
 	c.View.SetTransport(transport)
-	c.VirtualPrivateCloud.SetTransport(transport)
-	c.VirtualPrivateCloudClusterBinding.SetTransport(transport)
-	c.VirtualPrivateCloudExternalSubnet.SetTransport(transport)
-	c.VirtualPrivateCloudFloatingIP.SetTransport(transport)
-	c.VirtualPrivateCloudNatGateway.SetTransport(transport)
-	c.VirtualPrivateCloudRouteTable.SetTransport(transport)
-	c.VirtualPrivateCloudRouterGateway.SetTransport(transport)
-	c.VirtualPrivateCloudSecurityGroup.SetTransport(transport)
-	c.VirtualPrivateCloudSecurityPolicy.SetTransport(transport)
-	c.VirtualPrivateCloudSubnet.SetTransport(transport)
 	c.Vlan.SetTransport(transport)
 	c.VM.SetTransport(transport)
 	c.VMDisk.SetTransport(transport)

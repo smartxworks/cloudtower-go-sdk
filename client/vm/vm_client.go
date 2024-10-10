@@ -52,6 +52,8 @@ type ClientService interface {
 
 	CreateVMFromContentLibraryTemplate(params *CreateVMFromContentLibraryTemplateParams, opts ...ClientOption) (*CreateVMFromContentLibraryTemplateOK, error)
 
+	CreateVMFromContentLibraryTemplateBatch(params *CreateVMFromContentLibraryTemplateBatchParams, opts ...ClientOption) (*CreateVMFromContentLibraryTemplateBatchOK, error)
+
 	CreateVMFromTemplate(params *CreateVMFromTemplateParams, opts ...ClientOption) (*CreateVMFromTemplateOK, error)
 
 	DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*DeleteVMOK, error)
@@ -63,10 +65,6 @@ type ClientService interface {
 	ExportVM(params *ExportVMParams, opts ...ClientOption) (*ExportVMOK, error)
 
 	ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOption) (*ForceRestartVMOK, error)
-
-	GetVMGpuDeviceInfo(params *GetVMGpuDeviceInfoParams, opts ...ClientOption) (*GetVMGpuDeviceInfoOK, error)
-
-	GetVMVncInfo(params *GetVMVncInfoParams, opts ...ClientOption) (*GetVMVncInfoOK, error)
 
 	GetVms(params *GetVmsParams, opts ...ClientOption) (*GetVmsOK, error)
 
@@ -137,8 +135,6 @@ type ClientService interface {
 	UpdateVMNicBasicInfo(params *UpdateVMNicBasicInfoParams, opts ...ClientOption) (*UpdateVMNicBasicInfoOK, error)
 
 	UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts ...ClientOption) (*UpdateVMNicQosOptionOK, error)
-
-	UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...ClientOption) (*UpdateVMNicVpcInfoOK, error)
 
 	UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption) (*UpdateVMOwnerOK, error)
 
@@ -564,6 +560,44 @@ func (a *Client) CreateVMFromContentLibraryTemplate(params *CreateVMFromContentL
 }
 
 /*
+  CreateVMFromContentLibraryTemplateBatch create Vm from content library template batch API
+*/
+func (a *Client) CreateVMFromContentLibraryTemplateBatch(params *CreateVMFromContentLibraryTemplateBatchParams, opts ...ClientOption) (*CreateVMFromContentLibraryTemplateBatchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateVMFromContentLibraryTemplateBatchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateVmFromContentLibraryTemplateBatch",
+		Method:             "POST",
+		PathPattern:        "/create-vm-from-content-library-template-batch",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateVMFromContentLibraryTemplateBatchReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateVMFromContentLibraryTemplateBatchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateVmFromContentLibraryTemplateBatch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   CreateVMFromTemplate create Vm from template API
 */
 func (a *Client) CreateVMFromTemplate(params *CreateVMFromTemplateParams, opts ...ClientOption) (*CreateVMFromTemplateOK, error) {
@@ -788,82 +822,6 @@ func (a *Client) ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOpti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for ForceRestartVm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetVMGpuDeviceInfo get Vm gpu device info API
-*/
-func (a *Client) GetVMGpuDeviceInfo(params *GetVMGpuDeviceInfoParams, opts ...ClientOption) (*GetVMGpuDeviceInfoOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetVMGpuDeviceInfoParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "GetVmGpuDeviceInfo",
-		Method:             "POST",
-		PathPattern:        "/get-vm-gpu-device-info",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetVMGpuDeviceInfoReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetVMGpuDeviceInfoOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for GetVmGpuDeviceInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetVMVncInfo get Vm vnc info API
-*/
-func (a *Client) GetVMVncInfo(params *GetVMVncInfoParams, opts ...ClientOption) (*GetVMVncInfoOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetVMVncInfoParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "GetVmVncInfo",
-		Method:             "POST",
-		PathPattern:        "/get-vm-vnc-info",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetVMVncInfoReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetVMVncInfoOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for GetVmVncInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -2194,44 +2152,6 @@ func (a *Client) UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts .
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateVmNicQosOption: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateVMNicVpcInfo update Vm nic vpc info API
-*/
-func (a *Client) UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...ClientOption) (*UpdateVMNicVpcInfoOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateVMNicVpcInfoParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UpdateVmNicVpcInfo",
-		Method:             "POST",
-		PathPattern:        "/update-vm-vpc-nic",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &UpdateVMNicVpcInfoReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateVMNicVpcInfoOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UpdateVmNicVpcInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -40,8 +40,6 @@ type ClientService interface {
 
 	GetContentLibraryImagesConnection(params *GetContentLibraryImagesConnectionParams, opts ...ClientOption) (*GetContentLibraryImagesConnectionOK, error)
 
-	ImportContentLibraryImage(params *ImportContentLibraryImageParams, opts ...ClientOption) (*ImportContentLibraryImageOK, error)
-
 	RemoveContentLibraryImageClusters(params *RemoveContentLibraryImageClustersParams, opts ...ClientOption) (*RemoveContentLibraryImageClustersOK, error)
 
 	UpdateContentLibraryImage(params *UpdateContentLibraryImageParams, opts ...ClientOption) (*UpdateContentLibraryImageOK, error)
@@ -236,44 +234,6 @@ func (a *Client) GetContentLibraryImagesConnection(params *GetContentLibraryImag
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetContentLibraryImagesConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  ImportContentLibraryImage import content library image API
-*/
-func (a *Client) ImportContentLibraryImage(params *ImportContentLibraryImageParams, opts ...ClientOption) (*ImportContentLibraryImageOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewImportContentLibraryImageParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "ImportContentLibraryImage",
-		Method:             "POST",
-		PathPattern:        "/import-content-library-image",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ImportContentLibraryImageReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*ImportContentLibraryImageOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for ImportContentLibraryImage: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

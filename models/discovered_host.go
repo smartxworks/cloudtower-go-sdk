@@ -70,9 +70,6 @@ type DiscoveredHost struct {
 	// version
 	// Required: true
 	Version *string `json:"version"`
-
-	// zbs spec
-	ZbsSpec *string `json:"zbs_spec,omitempty"`
 }
 
 // Validate validates this discovered host

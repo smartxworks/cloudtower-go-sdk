@@ -22,13 +22,6 @@ type NestedLabel struct {
 	// id
 	// Required: true
 	ID *string `json:"id"`
-
-	// key
-	// Required: true
-	Key *string `json:"key"`
-
-	// value
-	Value *string `json:"value,omitempty"`
 }
 
 // Validate validates this nested label
@@ -36,10 +29,6 @@ func (m *NestedLabel) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateKey(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -52,15 +41,6 @@ func (m *NestedLabel) Validate(formats strfmt.Registry) error {
 func (m *NestedLabel) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NestedLabel) validateKey(formats strfmt.Registry) error {
-
-	if err := validate.Required("key", "body", m.Key); err != nil {
 		return err
 	}
 

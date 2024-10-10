@@ -114,12 +114,6 @@ const (
 	// VMVolumeOrderByInputTypeDESC captures enum value "type_DESC"
 	VMVolumeOrderByInputTypeDESC VMVolumeOrderByInput = "type_DESC"
 
-	// VMVolumeOrderByInputUniqueLogicalSizeASC captures enum value "unique_logical_size_ASC"
-	VMVolumeOrderByInputUniqueLogicalSizeASC VMVolumeOrderByInput = "unique_logical_size_ASC"
-
-	// VMVolumeOrderByInputUniqueLogicalSizeDESC captures enum value "unique_logical_size_DESC"
-	VMVolumeOrderByInputUniqueLogicalSizeDESC VMVolumeOrderByInput = "unique_logical_size_DESC"
-
 	// VMVolumeOrderByInputUniqueSizeASC captures enum value "unique_size_ASC"
 	VMVolumeOrderByInputUniqueSizeASC VMVolumeOrderByInput = "unique_size_ASC"
 
@@ -132,7 +126,7 @@ var vmVolumeOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMVolumeOrderByInput
-	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","guest_size_usage_ASC","guest_size_usage_DESC","guest_used_size_ASC","guest_used_size_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","mounting_ASC","mounting_DESC","name_ASC","name_DESC","path_ASC","path_DESC","sharing_ASC","sharing_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","guest_size_usage_ASC","guest_size_usage_DESC","guest_used_size_ASC","guest_used_size_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","mounting_ASC","mounting_DESC","name_ASC","name_DESC","path_ASC","path_DESC","sharing_ASC","sharing_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

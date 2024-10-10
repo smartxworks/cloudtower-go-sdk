@@ -20,9 +20,6 @@ import (
 // swagger:model Vm
 type VM struct {
 
-	// bios uuid
-	BiosUUID *string `json:"bios_uuid,omitempty"`
-
 	// clock offset
 	// Required: true
 	ClockOffset *VMClockOffset `json:"clock_offset"`
@@ -196,9 +193,6 @@ type VM struct {
 	// status
 	// Required: true
 	Status *VMStatus `json:"status"`
-
-	// unique logical size
-	UniqueLogicalSize *float64 `json:"unique_logical_size,omitempty"`
 
 	// unique size
 	UniqueSize *int64 `json:"unique_size,omitempty"`
