@@ -1,5 +1,17 @@
 # RELEASE NOTE
 
+## release 日期 2024-10-10
+
+v2.13.1 release (tower version 3.4.4)
+
+### update
+
+- [VMApi]: [CreateVMFromContentLibraryTemplateBatch]: 支持批量通过内容库模板创建虚拟机
+
+### bugfix
+
+- pick 2.14.0 ~ 2.17.0 上修复的已有 api 的 bugfix，详见 master 分支的 [release_note](https://github.com/smartxworks/cloudtower-go-sdk/blob/master/RELEASE_NOTE.md)
+
 ## release 日期 2023-11-07
 
 v2.13.0 release (tower version 3.4.0)
@@ -30,7 +42,7 @@ v2.12.0 release (tower version 3.3.0)
   - 新增 [RemoveVMPciNic] 支持为已有的虚拟机卸载 PCI 网卡
 - [VMApi] 优化卸载网卡:
   - [RemoveVMNic] `nic_index` 作为删除标记不够稳定，弃用
-  - [RemoveVMNicByWhere] 新方法，支持使用 where 条件来筛选需要的网卡，对于 VmNic 而言，可以配合使用 vm + mac_address 的筛选， `{vm:<vm_where>, mac_address:<mac_address>}` 的形式来较为稳定的筛选出需要的 VmNic
+  - [RemoveVMNicByWhere] 新方法，支持使用 where 条件来筛选需要的网卡，对于 VMNic 而言，可以配合使用 vm + mac_address 的筛选， `{vm:<vm_where>, mac_address:<mac_address>}` 的形式来较为稳定的筛选出需要的 VMNic
 - [NicApi] [UpdateNic] 支持通过 `nic_user_usage` 更新网口用途
 - [LabelApi] 支持为 GPU 设备打标签
 

@@ -30,14 +30,14 @@ func (m ApplicationState) Pointer() *ApplicationState {
 
 const (
 
-	// ApplicationStateDEPLOYERROR captures enum value "DEPLOY_ERROR"
-	ApplicationStateDEPLOYERROR ApplicationState = "DEPLOY_ERROR"
-
 	// ApplicationStateDEPLOYED captures enum value "DEPLOYED"
 	ApplicationStateDEPLOYED ApplicationState = "DEPLOYED"
 
 	// ApplicationStateDEPLOYING captures enum value "DEPLOYING"
 	ApplicationStateDEPLOYING ApplicationState = "DEPLOYING"
+
+	// ApplicationStateDEPLOYERROR captures enum value "DEPLOY_ERROR"
+	ApplicationStateDEPLOYERROR ApplicationState = "DEPLOY_ERROR"
 
 	// ApplicationStateEDITING captures enum value "EDITING"
 	ApplicationStateEDITING ApplicationState = "EDITING"
@@ -45,14 +45,14 @@ const (
 	// ApplicationStateNOTDEPLOYED captures enum value "NOT_DEPLOYED"
 	ApplicationStateNOTDEPLOYED ApplicationState = "NOT_DEPLOYED"
 
-	// ApplicationStateSTOPERROR captures enum value "STOP_ERROR"
-	ApplicationStateSTOPERROR ApplicationState = "STOP_ERROR"
-
 	// ApplicationStateSTOPPED captures enum value "STOPPED"
 	ApplicationStateSTOPPED ApplicationState = "STOPPED"
 
 	// ApplicationStateSTOPPING captures enum value "STOPPING"
 	ApplicationStateSTOPPING ApplicationState = "STOPPING"
+
+	// ApplicationStateSTOPERROR captures enum value "STOP_ERROR"
+	ApplicationStateSTOPERROR ApplicationState = "STOP_ERROR"
 
 	// ApplicationStateUPGRADING captures enum value "UPGRADING"
 	ApplicationStateUPGRADING ApplicationState = "UPGRADING"
@@ -63,7 +63,7 @@ var applicationStateEnum []interface{}
 
 func init() {
 	var res []ApplicationState
-	if err := json.Unmarshal([]byte(`["DEPLOY_ERROR","DEPLOYED","DEPLOYING","EDITING","NOT_DEPLOYED","STOP_ERROR","STOPPED","STOPPING","UPGRADING"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["DEPLOYED","DEPLOYING","DEPLOY_ERROR","EDITING","NOT_DEPLOYED","STOPPED","STOPPING","STOP_ERROR","UPGRADING"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
