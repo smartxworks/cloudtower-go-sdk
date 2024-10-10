@@ -189,9 +189,6 @@ type VMUpdateNicParamsData struct {
 
 	// subnet mask
 	SubnetMask *string `json:"subnet_mask,omitempty"`
-
-	// vpc nic
-	VpcNic *UpdateVpcNicPayloads `json:"vpc_nic,omitempty"`
 }
 
 // Validate validates this VM update nic params data
@@ -203,10 +200,6 @@ func (m *VMUpdateNicParamsData) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNicIndex(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcNic(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -244,34 +237,11 @@ func (m *VMUpdateNicParamsData) validateNicIndex(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *VMUpdateNicParamsData) validateVpcNic(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcNic) { // not required
-		return nil
-	}
-
-	if m.VpcNic != nil {
-		if err := m.VpcNic.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "vpc_nic")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "vpc_nic")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this VM update nic params data based on the context it is used
 func (m *VMUpdateNicParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateModel(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcNic(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -289,22 +259,6 @@ func (m *VMUpdateNicParamsData) contextValidateModel(ctx context.Context, format
 				return ve.ValidateName("data" + "." + "model")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "model")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMUpdateNicParamsData) contextValidateVpcNic(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcNic != nil {
-		if err := m.VpcNic.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "vpc_nic")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "vpc_nic")
 			}
 			return err
 		}

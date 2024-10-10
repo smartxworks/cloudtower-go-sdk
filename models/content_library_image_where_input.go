@@ -166,15 +166,6 @@ type ContentLibraryImageWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// iscsi luns every
-	IscsiLunsEvery *IscsiLunWhereInput `json:"iscsi_luns_every,omitempty"`
-
-	// iscsi luns none
-	IscsiLunsNone *IscsiLunWhereInput `json:"iscsi_luns_none,omitempty"`
-
-	// iscsi luns some
-	IscsiLunsSome *IscsiLunWhereInput `json:"iscsi_luns_some,omitempty"`
-
 	// labels every
 	LabelsEvery *LabelWhereInput `json:"labels_every,omitempty"`
 
@@ -373,18 +364,6 @@ func (m *ContentLibraryImageWhereInput) Validate(formats strfmt.Registry) error 
 	}
 
 	if err := m.validateEntityAsyncStatusNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIscsiLunsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIscsiLunsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIscsiLunsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -714,63 +693,6 @@ func (m *ContentLibraryImageWhereInput) validateEntityAsyncStatusNotIn(formats s
 	return nil
 }
 
-func (m *ContentLibraryImageWhereInput) validateIscsiLunsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiLunsEvery) { // not required
-		return nil
-	}
-
-	if m.IscsiLunsEvery != nil {
-		if err := m.IscsiLunsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_luns_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_luns_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ContentLibraryImageWhereInput) validateIscsiLunsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiLunsNone) { // not required
-		return nil
-	}
-
-	if m.IscsiLunsNone != nil {
-		if err := m.IscsiLunsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_luns_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_luns_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ContentLibraryImageWhereInput) validateIscsiLunsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiLunsSome) { // not required
-		return nil
-	}
-
-	if m.IscsiLunsSome != nil {
-		if err := m.IscsiLunsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_luns_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_luns_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ContentLibraryImageWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.LabelsEvery) { // not required
 		return nil
@@ -1055,18 +977,6 @@ func (m *ContentLibraryImageWhereInput) ContextValidate(ctx context.Context, for
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIscsiLunsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIscsiLunsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIscsiLunsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateLabelsEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1340,54 +1250,6 @@ func (m *ContentLibraryImageWhereInput) contextValidateEntityAsyncStatusNotIn(ct
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ContentLibraryImageWhereInput) contextValidateIscsiLunsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IscsiLunsEvery != nil {
-		if err := m.IscsiLunsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_luns_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_luns_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ContentLibraryImageWhereInput) contextValidateIscsiLunsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IscsiLunsNone != nil {
-		if err := m.IscsiLunsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_luns_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_luns_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ContentLibraryImageWhereInput) contextValidateIscsiLunsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IscsiLunsSome != nil {
-		if err := m.IscsiLunsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_luns_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_luns_some")
-			}
-			return err
-		}
 	}
 
 	return nil

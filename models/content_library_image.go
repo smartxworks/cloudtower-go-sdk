@@ -45,9 +45,6 @@ type ContentLibraryImage struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// iscsi luns
-	IscsiLuns []*NestedIscsiLun `json:"iscsi_luns,omitempty"`
-
 	// labels
 	Labels []*NestedLabel `json:"labels,omitempty"`
 
@@ -102,10 +99,6 @@ func (m *ContentLibraryImage) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIscsiLuns(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -245,32 +238,6 @@ func (m *ContentLibraryImage) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-func (m *ContentLibraryImage) validateIscsiLuns(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiLuns) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.IscsiLuns); i++ {
-		if swag.IsZero(m.IscsiLuns[i]) { // not required
-			continue
-		}
-
-		if m.IscsiLuns[i] != nil {
-			if err := m.IscsiLuns[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("iscsi_luns" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("iscsi_luns" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
@@ -423,10 +390,6 @@ func (m *ContentLibraryImage) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIscsiLuns(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -500,26 +463,6 @@ func (m *ContentLibraryImage) contextValidateEntityAsyncStatus(ctx context.Conte
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *ContentLibraryImage) contextValidateIscsiLuns(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.IscsiLuns); i++ {
-
-		if m.IscsiLuns[i] != nil {
-			if err := m.IscsiLuns[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("iscsi_luns" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("iscsi_luns" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil

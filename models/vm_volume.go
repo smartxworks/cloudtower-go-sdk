@@ -81,9 +81,6 @@ type VMVolume struct {
 	// type
 	Type *VMVolumeType `json:"type,omitempty"`
 
-	// unique logical size
-	UniqueLogicalSize *float64 `json:"unique_logical_size,omitempty"`
-
 	// unique size
 	UniqueSize *int64 `json:"unique_size,omitempty"`
 

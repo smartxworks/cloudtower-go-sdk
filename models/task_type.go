@@ -44,9 +44,6 @@ const (
 
 	// TaskTypeRESOLVER captures enum value "RESOLVER"
 	TaskTypeRESOLVER TaskType = "RESOLVER"
-
-	// TaskTypeSFS captures enum value "SFS"
-	TaskTypeSFS TaskType = "SFS"
 )
 
 // for schema
@@ -54,7 +51,7 @@ var taskTypeEnum []interface{}
 
 func init() {
 	var res []TaskType
-	if err := json.Unmarshal([]byte(`["APPLICATION","BACKUP","HOST_PLUGIN","REPLICATION","RESOLVER","SFS"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["APPLICATION","BACKUP","HOST_PLUGIN","REPLICATION","RESOLVER"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

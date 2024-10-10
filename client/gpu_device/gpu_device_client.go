@@ -30,8 +30,6 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetDetailVMInfoByGpuDevices(params *GetDetailVMInfoByGpuDevicesParams, opts ...ClientOption) (*GetDetailVMInfoByGpuDevicesOK, error)
-
 	GetGpuDevices(params *GetGpuDevicesParams, opts ...ClientOption) (*GetGpuDevicesOK, error)
 
 	GetGpuDevicesConnection(params *GetGpuDevicesConnectionParams, opts ...ClientOption) (*GetGpuDevicesConnectionOK, error)
@@ -43,44 +41,6 @@ type ClientService interface {
 	UpdateGpuDeviceUsage(params *UpdateGpuDeviceUsageParams, opts ...ClientOption) (*UpdateGpuDeviceUsageOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-  GetDetailVMInfoByGpuDevices get detail Vm info by gpu devices API
-*/
-func (a *Client) GetDetailVMInfoByGpuDevices(params *GetDetailVMInfoByGpuDevicesParams, opts ...ClientOption) (*GetDetailVMInfoByGpuDevicesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetDetailVMInfoByGpuDevicesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "GetDetailVmInfoByGpuDevices",
-		Method:             "POST",
-		PathPattern:        "/get-detail-vm-info-by-gpu-devices",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetDetailVMInfoByGpuDevicesReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetDetailVMInfoByGpuDevicesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for GetDetailVmInfoByGpuDevices: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*

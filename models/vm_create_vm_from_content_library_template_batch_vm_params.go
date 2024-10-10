@@ -15,10 +15,10 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// VMCreateVMFromContentLibraryTemplateParams Vm create Vm from content library template params
+// VMCreateVMFromContentLibraryTemplateBatchVMParams Vm create Vm from content library template batch Vm params
 //
-// swagger:model VmCreateVmFromContentLibraryTemplateParams
-type VMCreateVMFromContentLibraryTemplateParams struct {
+// swagger:model VmCreateVmFromContentLibraryTemplateBatchVmParams
+type VMCreateVMFromContentLibraryTemplateBatchVMParams struct {
 
 	// cloud init
 	CloudInit *TemplateCloudInit `json:"cloud_init,omitempty"`
@@ -57,9 +57,6 @@ type VMCreateVMFromContentLibraryTemplateParams struct {
 	// host id
 	HostID *string `json:"host_id,omitempty"`
 
-	// io policy
-	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
-
 	// is full copy
 	// Required: true
 	IsFullCopy *bool `json:"is_full_copy"`
@@ -95,10 +92,6 @@ type VMCreateVMFromContentLibraryTemplateParams struct {
 	// status
 	Status *VMStatus `json:"status,omitempty"`
 
-	// template id
-	// Required: true
-	TemplateID *string `json:"template_id"`
-
 	// vcpu
 	Vcpu *int32 `json:"vcpu,omitempty"`
 
@@ -109,8 +102,8 @@ type VMCreateVMFromContentLibraryTemplateParams struct {
 	VMPlacementGroup *VMPlacementGroupWhereInput `json:"vm_placement_group,omitempty"`
 }
 
-// Validate validates this Vm create Vm from content library template params
-func (m *VMCreateVMFromContentLibraryTemplateParams) Validate(formats strfmt.Registry) error {
+// Validate validates this Vm create Vm from content library template batch Vm params
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCloudInit(formats); err != nil {
@@ -134,10 +127,6 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) Validate(formats strfmt.Reg
 	}
 
 	if err := m.validateGuestOsType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIoPolicy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -173,10 +162,6 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) Validate(formats strfmt.Reg
 		res = append(res, err)
 	}
 
-	if err := m.validateTemplateID(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateVMNics(formats); err != nil {
 		res = append(res, err)
 	}
@@ -191,7 +176,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) Validate(formats strfmt.Reg
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateCloudInit(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateCloudInit(formats strfmt.Registry) error {
 	if swag.IsZero(m.CloudInit) { // not required
 		return nil
 	}
@@ -210,7 +195,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateCloudInit(formats s
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateClusterID(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateClusterID(formats strfmt.Registry) error {
 
 	if err := validate.Required("cluster_id", "body", m.ClusterID); err != nil {
 		return err
@@ -219,7 +204,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateClusterID(formats s
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateDiskOperate(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateDiskOperate(formats strfmt.Registry) error {
 	if swag.IsZero(m.DiskOperate) { // not required
 		return nil
 	}
@@ -238,7 +223,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateDiskOperate(formats
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateFirmware(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateFirmware(formats strfmt.Registry) error {
 	if swag.IsZero(m.Firmware) { // not required
 		return nil
 	}
@@ -257,7 +242,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateFirmware(formats st
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateGpuDevices(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateGpuDevices(formats strfmt.Registry) error {
 	if swag.IsZero(m.GpuDevices) { // not required
 		return nil
 	}
@@ -283,7 +268,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateGpuDevices(formats 
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateGuestOsType(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateGuestOsType(formats strfmt.Registry) error {
 	if swag.IsZero(m.GuestOsType) { // not required
 		return nil
 	}
@@ -302,26 +287,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateGuestOsType(formats
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateIoPolicy(formats strfmt.Registry) error {
-	if swag.IsZero(m.IoPolicy) { // not required
-		return nil
-	}
-
-	if m.IoPolicy != nil {
-		if err := m.IoPolicy.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("io_policy")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("io_policy")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateIsFullCopy(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateIsFullCopy(formats strfmt.Registry) error {
 
 	if err := validate.Required("is_full_copy", "body", m.IsFullCopy); err != nil {
 		return err
@@ -330,7 +296,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateIsFullCopy(formats 
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateMaxBandwidthPolicy(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateMaxBandwidthPolicy(formats strfmt.Registry) error {
 	if swag.IsZero(m.MaxBandwidthPolicy) { // not required
 		return nil
 	}
@@ -349,7 +315,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateMaxBandwidthPolicy(
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateMaxBandwidthUnit(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateMaxBandwidthUnit(formats strfmt.Registry) error {
 	if swag.IsZero(m.MaxBandwidthUnit) { // not required
 		return nil
 	}
@@ -368,7 +334,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateMaxBandwidthUnit(fo
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateMaxIopsPolicy(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateMaxIopsPolicy(formats strfmt.Registry) error {
 	if swag.IsZero(m.MaxIopsPolicy) { // not required
 		return nil
 	}
@@ -387,7 +353,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateMaxIopsPolicy(forma
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateMemoryUnit(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateMemoryUnit(formats strfmt.Registry) error {
 	if swag.IsZero(m.MemoryUnit) { // not required
 		return nil
 	}
@@ -406,7 +372,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateMemoryUnit(formats 
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateName(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
@@ -415,7 +381,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateName(formats strfmt
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validatePciNics(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validatePciNics(formats strfmt.Registry) error {
 	if swag.IsZero(m.PciNics) { // not required
 		return nil
 	}
@@ -434,7 +400,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validatePciNics(formats str
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateStatus(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -453,16 +419,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateStatus(formats strf
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateTemplateID(formats strfmt.Registry) error {
-
-	if err := validate.Required("template_id", "body", m.TemplateID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateVMNics(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateVMNics(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMNics) { // not required
 		return nil
 	}
@@ -488,7 +445,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateVMNics(formats strf
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) validateVMPlacementGroup(formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) validateVMPlacementGroup(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMPlacementGroup) { // not required
 		return nil
 	}
@@ -507,8 +464,8 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateVMPlacementGroup(fo
 	return nil
 }
 
-// ContextValidate validate this Vm create Vm from content library template params based on the context it is used
-func (m *VMCreateVMFromContentLibraryTemplateParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this Vm create Vm from content library template batch Vm params based on the context it is used
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateCloudInit(ctx, formats); err != nil {
@@ -528,10 +485,6 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) ContextValidate(ctx context
 	}
 
 	if err := m.contextValidateGuestOsType(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIoPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -573,7 +526,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) ContextValidate(ctx context
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateCloudInit(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateCloudInit(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CloudInit != nil {
 		if err := m.CloudInit.ContextValidate(ctx, formats); err != nil {
@@ -589,7 +542,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateCloudInit(ct
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateDiskOperate(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateDiskOperate(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DiskOperate != nil {
 		if err := m.DiskOperate.ContextValidate(ctx, formats); err != nil {
@@ -605,7 +558,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateDiskOperate(
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateFirmware(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateFirmware(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Firmware != nil {
 		if err := m.Firmware.ContextValidate(ctx, formats); err != nil {
@@ -621,7 +574,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateFirmware(ctx
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateGpuDevices(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateGpuDevices(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.GpuDevices); i++ {
 
@@ -641,7 +594,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateGpuDevices(c
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateGuestOsType(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateGuestOsType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.GuestOsType != nil {
 		if err := m.GuestOsType.ContextValidate(ctx, formats); err != nil {
@@ -657,23 +610,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateGuestOsType(
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateIoPolicy(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IoPolicy != nil {
-		if err := m.IoPolicy.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("io_policy")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("io_policy")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateMaxBandwidthPolicy(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateMaxBandwidthPolicy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MaxBandwidthPolicy != nil {
 		if err := m.MaxBandwidthPolicy.ContextValidate(ctx, formats); err != nil {
@@ -689,7 +626,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateMaxBandwidth
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateMaxBandwidthUnit(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateMaxBandwidthUnit(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MaxBandwidthUnit != nil {
 		if err := m.MaxBandwidthUnit.ContextValidate(ctx, formats); err != nil {
@@ -705,7 +642,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateMaxBandwidth
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MaxIopsPolicy != nil {
 		if err := m.MaxIopsPolicy.ContextValidate(ctx, formats); err != nil {
@@ -721,7 +658,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateMaxIopsPolic
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateMemoryUnit(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateMemoryUnit(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MemoryUnit != nil {
 		if err := m.MemoryUnit.ContextValidate(ctx, formats); err != nil {
@@ -737,7 +674,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateMemoryUnit(c
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidatePciNics(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidatePciNics(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PciNics != nil {
 		if err := m.PciNics.ContextValidate(ctx, formats); err != nil {
@@ -753,7 +690,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidatePciNics(ctx 
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Status != nil {
 		if err := m.Status.ContextValidate(ctx, formats); err != nil {
@@ -769,7 +706,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateStatus(ctx c
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateVMNics(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateVMNics(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.VMNics); i++ {
 
@@ -789,7 +726,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateVMNics(ctx c
 	return nil
 }
 
-func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateVMPlacementGroup(ctx context.Context, formats strfmt.Registry) error {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) contextValidateVMPlacementGroup(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VMPlacementGroup != nil {
 		if err := m.VMPlacementGroup.ContextValidate(ctx, formats); err != nil {
@@ -806,7 +743,7 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateVMPlacementG
 }
 
 // MarshalBinary interface implementation
-func (m *VMCreateVMFromContentLibraryTemplateParams) MarshalBinary() ([]byte, error) {
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -814,8 +751,8 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) MarshalBinary() ([]byte, er
 }
 
 // UnmarshalBinary interface implementation
-func (m *VMCreateVMFromContentLibraryTemplateParams) UnmarshalBinary(b []byte) error {
-	var res VMCreateVMFromContentLibraryTemplateParams
+func (m *VMCreateVMFromContentLibraryTemplateBatchVMParams) UnmarshalBinary(b []byte) error {
+	var res VMCreateVMFromContentLibraryTemplateBatchVMParams
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

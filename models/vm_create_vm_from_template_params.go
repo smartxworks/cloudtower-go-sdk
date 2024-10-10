@@ -88,9 +88,6 @@ type VMCreateVMFromTemplateParams struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// owner
-	Owner *VMOwnerParams `json:"owner,omitempty"`
-
 	// pci nics
 	PciNics *NicWhereInput `json:"pci_nics,omitempty"`
 
@@ -160,10 +157,6 @@ func (m *VMCreateVMFromTemplateParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateOwner(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -408,25 +401,6 @@ func (m *VMCreateVMFromTemplateParams) validateName(formats strfmt.Registry) err
 	return nil
 }
 
-func (m *VMCreateVMFromTemplateParams) validateOwner(formats strfmt.Registry) error {
-	if swag.IsZero(m.Owner) { // not required
-		return nil
-	}
-
-	if m.Owner != nil {
-		if err := m.Owner.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("owner")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("owner")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VMCreateVMFromTemplateParams) validatePciNics(formats strfmt.Registry) error {
 	if swag.IsZero(m.PciNics) { // not required
 		return nil
@@ -560,10 +534,6 @@ func (m *VMCreateVMFromTemplateParams) ContextValidate(ctx context.Context, form
 	}
 
 	if err := m.contextValidateMemoryUnit(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateOwner(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -745,22 +715,6 @@ func (m *VMCreateVMFromTemplateParams) contextValidateMemoryUnit(ctx context.Con
 				return ve.ValidateName("memory_unit")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("memory_unit")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMCreateVMFromTemplateParams) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Owner != nil {
-		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("owner")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("owner")
 			}
 			return err
 		}
