@@ -1,5 +1,37 @@
 # RELEASE NOTE
 
+## release 日期 2024-10-14
+
+v2.18.0 release (tower version 4.4.0)
+
+### feature
+
+- [VMApi]: [CreateVMFromContentLibraryTemplateBatch]: 支持批量通过内容库模板创建虚拟机
+
+### optimize
+
+- [VMApi]: [InstallVMTools]: 优化虚拟机镜像挂载，现在无需输入虚拟机工具镜像 ID 即可挂载
+- [LogCollectionApi]: [ForceStopLogCollection]: 优化执行，不再会将日志收集任务置为失败
+- [ContentLanguage]: 支持配置为 `*` 以同时返回所有支持的语言，返回值依旧是 string 类型，可以被 JSON 序列化为语言和实际值的键值对
+- 新增备份相关 API
+  - [BackupPlanExecutionApi]: 备份计划执行记录查询
+  - [BackupPlanApi]: 备份计划管理 API
+  - [BackupRestoreExecutionApi]: 备份计划恢复点执行记录查询
+  - [BackupRestorePointApi]: 备份计划恢复点管理 API
+  - [BackupServiceApi]: 备份服务 API
+  - [BackupStoreRepositoryApi]: 备份存储库 API
+  - [BackupTargetExecutionApi]: 备份虚拟机执行记录查询
+- [SecurityPolicyApi]: 支持配置 alg_protocol
+- [HostApi]: [CreateHost]: 支持添加主机时配置主机账户密码
+
+### bugfix
+
+- [SecurityGroupApi]: [UpdateSecurityGroup]: 修复无法正确更新安全组名称与描述
+
+### breaking change
+
+- [SecurityPolicyIngressEgressInput]: 修改 type 字段类型为 `SecurityPolicyFlowControlType` 以支持配置全部流量
+
 ## release 日期 2024-08-21
 
 v2.17.0 release (tower version 4.3.0)

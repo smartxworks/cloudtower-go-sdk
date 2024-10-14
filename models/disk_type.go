@@ -33,8 +33,14 @@ const (
 	// DiskTypeHDD captures enum value "HDD"
 	DiskTypeHDD DiskType = "HDD"
 
+	// DiskTypeNVMeSSD captures enum value "NVMe_SSD"
+	DiskTypeNVMeSSD DiskType = "NVMe_SSD"
+
 	// DiskTypePMem captures enum value "PMem"
 	DiskTypePMem DiskType = "PMem"
+
+	// DiskTypeSATAORSASSSD captures enum value "SATA_OR_SAS_SSD"
+	DiskTypeSATAORSASSSD DiskType = "SATA_OR_SAS_SSD"
 
 	// DiskTypeSSD captures enum value "SSD"
 	DiskTypeSSD DiskType = "SSD"
@@ -45,7 +51,7 @@ var diskTypeEnum []interface{}
 
 func init() {
 	var res []DiskType
-	if err := json.Unmarshal([]byte(`["HDD","PMem","SSD"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["HDD","NVMe_SSD","PMem","SATA_OR_SAS_SSD","SSD"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

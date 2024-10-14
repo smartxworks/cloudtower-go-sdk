@@ -26,6 +26,12 @@ type NestedNetworkPolicyRule struct {
 	// ports
 	Ports []*NestedNetworkPolicyRulePort `json:"ports,omitempty"`
 
+	// security group
+	SecurityGroup *NestedSecurityGroup `json:"security_group,omitempty"`
+
+	// security group id
+	SecurityGroupID *string `json:"security_group_id,omitempty"`
+
 	// selector
 	Selector []*NestedLabel `json:"selector,omitempty"`
 
@@ -42,6 +48,10 @@ func (m *NestedNetworkPolicyRule) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validatePorts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSecurityGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -80,6 +90,25 @@ func (m *NestedNetworkPolicyRule) validatePorts(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *NestedNetworkPolicyRule) validateSecurityGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.SecurityGroup) { // not required
+		return nil
+	}
+
+	if m.SecurityGroup != nil {
+		if err := m.SecurityGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("security_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("security_group")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -143,6 +172,10 @@ func (m *NestedNetworkPolicyRule) ContextValidate(ctx context.Context, formats s
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateSecurityGroup(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSelector(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -172,6 +205,22 @@ func (m *NestedNetworkPolicyRule) contextValidatePorts(ctx context.Context, form
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *NestedNetworkPolicyRule) contextValidateSecurityGroup(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SecurityGroup != nil {
+		if err := m.SecurityGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("security_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("security_group")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -30,6 +30,9 @@ func (m DiskFunction) Pointer() *DiskFunction {
 
 const (
 
+	// DiskFunctionBOOT captures enum value "BOOT"
+	DiskFunctionBOOT DiskFunction = "BOOT"
+
 	// DiskFunctionCACHE captures enum value "CACHE"
 	DiskFunctionCACHE DiskFunction = "CACHE"
 
@@ -38,6 +41,9 @@ const (
 
 	// DiskFunctionSMTXSYSTEM captures enum value "SMTX_SYSTEM"
 	DiskFunctionSMTXSYSTEM DiskFunction = "SMTX_SYSTEM"
+
+	// DiskFunctionUNMOUNT captures enum value "UNMOUNT"
+	DiskFunctionUNMOUNT DiskFunction = "UNMOUNT"
 )
 
 // for schema
@@ -45,7 +51,7 @@ var diskFunctionEnum []interface{}
 
 func init() {
 	var res []DiskFunction
-	if err := json.Unmarshal([]byte(`["CACHE","DATA","SMTX_SYSTEM"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BOOT","CACHE","DATA","SMTX_SYSTEM","UNMOUNT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -19,6 +19,9 @@ import (
 // swagger:model NetworkPolicyRulePortInput
 type NetworkPolicyRulePortInput struct {
 
+	// alg protocol
+	AlgProtocol *NetworkPolicyRuleAlgProtocol `json:"alg_protocol,omitempty"`
+
 	// port
 	Port *string `json:"port,omitempty"`
 
@@ -31,6 +34,10 @@ type NetworkPolicyRulePortInput struct {
 func (m *NetworkPolicyRulePortInput) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAlgProtocol(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateProtocol(formats); err != nil {
 		res = append(res, err)
 	}
@@ -38,6 +45,25 @@ func (m *NetworkPolicyRulePortInput) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NetworkPolicyRulePortInput) validateAlgProtocol(formats strfmt.Registry) error {
+	if swag.IsZero(m.AlgProtocol) { // not required
+		return nil
+	}
+
+	if m.AlgProtocol != nil {
+		if err := m.AlgProtocol.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("alg_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alg_protocol")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -69,6 +95,10 @@ func (m *NetworkPolicyRulePortInput) validateProtocol(formats strfmt.Registry) e
 func (m *NetworkPolicyRulePortInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateAlgProtocol(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateProtocol(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -76,6 +106,22 @@ func (m *NetworkPolicyRulePortInput) ContextValidate(ctx context.Context, format
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NetworkPolicyRulePortInput) contextValidateAlgProtocol(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AlgProtocol != nil {
+		if err := m.AlgProtocol.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("alg_protocol")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alg_protocol")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

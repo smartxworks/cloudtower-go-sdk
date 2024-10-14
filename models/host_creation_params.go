@@ -20,6 +20,9 @@ import (
 // swagger:model HostCreationParams
 type HostCreationParams struct {
 
+	// auth info
+	AuthInfo *HostAuthInfo `json:"auth_info,omitempty"`
+
 	// cluster id
 	// Required: true
 	ClusterID *string `json:"cluster_id"`
@@ -33,6 +36,10 @@ type HostCreationParams struct {
 func (m *HostCreationParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAuthInfo(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateClusterID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -44,6 +51,25 @@ func (m *HostCreationParams) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *HostCreationParams) validateAuthInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.AuthInfo) { // not required
+		return nil
+	}
+
+	if m.AuthInfo != nil {
+		if err := m.AuthInfo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("auth_info")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("auth_info")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -87,6 +113,10 @@ func (m *HostCreationParams) validateData(formats strfmt.Registry) error {
 func (m *HostCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateAuthInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateData(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -94,6 +124,22 @@ func (m *HostCreationParams) ContextValidate(ctx context.Context, formats strfmt
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *HostCreationParams) contextValidateAuthInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AuthInfo != nil {
+		if err := m.AuthInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("auth_info")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("auth_info")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

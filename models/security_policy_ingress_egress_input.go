@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // SecurityPolicyIngressEgressInput security policy ingress egress input
@@ -24,8 +23,10 @@ type SecurityPolicyIngressEgressInput struct {
 	Ports []*NetworkPolicyRulePortInput `json:"ports,omitempty"`
 
 	// target
-	// Required: true
-	Target *SecurityPolicyIngressEgressInputTarget `json:"target"`
+	Target *SecurityPolicyIngressEgressInputTarget `json:"target,omitempty"`
+
+	// type
+	Type *SecurityPolicyFlowControlType `json:"type,omitempty"`
 }
 
 // Validate validates this security policy ingress egress input
@@ -37,6 +38,10 @@ func (m *SecurityPolicyIngressEgressInput) Validate(formats strfmt.Registry) err
 	}
 
 	if err := m.validateTarget(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -73,9 +78,8 @@ func (m *SecurityPolicyIngressEgressInput) validatePorts(formats strfmt.Registry
 }
 
 func (m *SecurityPolicyIngressEgressInput) validateTarget(formats strfmt.Registry) error {
-
-	if err := validate.Required("target", "body", m.Target); err != nil {
-		return err
+	if swag.IsZero(m.Target) { // not required
+		return nil
 	}
 
 	if m.Target != nil {
@@ -84,6 +88,25 @@ func (m *SecurityPolicyIngressEgressInput) validateTarget(formats strfmt.Registr
 				return ve.ValidateName("target")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("target")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SecurityPolicyIngressEgressInput) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
 			}
 			return err
 		}
@@ -101,6 +124,10 @@ func (m *SecurityPolicyIngressEgressInput) ContextValidate(ctx context.Context, 
 	}
 
 	if err := m.contextValidateTarget(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -138,6 +165,22 @@ func (m *SecurityPolicyIngressEgressInput) contextValidateTarget(ctx context.Con
 				return ve.ValidateName("target")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("target")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SecurityPolicyIngressEgressInput) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
 			}
 			return err
 		}

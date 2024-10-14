@@ -20,8 +20,7 @@ import (
 type InstallVmtoolsParams struct {
 
 	// data
-	// Required: true
-	Data *InstallVmtoolsParamsData `json:"data"`
+	Data *InstallVmtoolsParamsData `json:"data,omitempty"`
 
 	// where
 	// Required: true
@@ -47,9 +46,8 @@ func (m *InstallVmtoolsParams) Validate(formats strfmt.Registry) error {
 }
 
 func (m *InstallVmtoolsParams) validateData(formats strfmt.Registry) error {
-
-	if err := validate.Required("data", "body", m.Data); err != nil {
-		return err
+	if swag.IsZero(m.Data) { // not required
+		return nil
 	}
 
 	if m.Data != nil {
