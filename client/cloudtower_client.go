@@ -15,6 +15,13 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/alert_rule"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/api_info"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/application"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_plan"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_plan_execution"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_restore_execution"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_restore_point"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_service"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_store_repository"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_target_execution"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/brick_topo"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cloud_tower_application"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cloud_tower_application_package"
@@ -62,6 +69,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_subsystem"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/observability"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/organization"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ovf"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pmem_dimm"
@@ -164,6 +172,13 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.AlertRule = alert_rule.New(transport, formats)
 	cli.APIInfo = api_info.New(transport, formats)
 	cli.Application = application.New(transport, formats)
+	cli.BackupPlan = backup_plan.New(transport, formats)
+	cli.BackupPlanExecution = backup_plan_execution.New(transport, formats)
+	cli.BackupRestoreExecution = backup_restore_execution.New(transport, formats)
+	cli.BackupRestorePoint = backup_restore_point.New(transport, formats)
+	cli.BackupService = backup_service.New(transport, formats)
+	cli.BackupStoreRepository = backup_store_repository.New(transport, formats)
+	cli.BackupTargetExecution = backup_target_execution.New(transport, formats)
 	cli.BrickTopo = brick_topo.New(transport, formats)
 	cli.CloudTowerApplication = cloud_tower_application.New(transport, formats)
 	cli.CloudTowerApplicationPackage = cloud_tower_application_package.New(transport, formats)
@@ -211,6 +226,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.NvmfNamespace = nvmf_namespace.New(transport, formats)
 	cli.NvmfNamespaceSnapshot = nvmf_namespace_snapshot.New(transport, formats)
 	cli.NvmfSubsystem = nvmf_subsystem.New(transport, formats)
+	cli.Observability = observability.New(transport, formats)
 	cli.Organization = organization.New(transport, formats)
 	cli.Ovf = ovf.New(transport, formats)
 	cli.PmemDimm = pmem_dimm.New(transport, formats)
@@ -318,6 +334,20 @@ type Cloudtower struct {
 
 	Application application.ClientService
 
+	BackupPlan backup_plan.ClientService
+
+	BackupPlanExecution backup_plan_execution.ClientService
+
+	BackupRestoreExecution backup_restore_execution.ClientService
+
+	BackupRestorePoint backup_restore_point.ClientService
+
+	BackupService backup_service.ClientService
+
+	BackupStoreRepository backup_store_repository.ClientService
+
+	BackupTargetExecution backup_target_execution.ClientService
+
 	BrickTopo brick_topo.ClientService
 
 	CloudTowerApplication cloud_tower_application.ClientService
@@ -411,6 +441,8 @@ type Cloudtower struct {
 	NvmfNamespaceSnapshot nvmf_namespace_snapshot.ClientService
 
 	NvmfSubsystem nvmf_subsystem.ClientService
+
+	Observability observability.ClientService
 
 	Organization organization.ClientService
 
@@ -529,6 +561,13 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.AlertRule.SetTransport(transport)
 	c.APIInfo.SetTransport(transport)
 	c.Application.SetTransport(transport)
+	c.BackupPlan.SetTransport(transport)
+	c.BackupPlanExecution.SetTransport(transport)
+	c.BackupRestoreExecution.SetTransport(transport)
+	c.BackupRestorePoint.SetTransport(transport)
+	c.BackupService.SetTransport(transport)
+	c.BackupStoreRepository.SetTransport(transport)
+	c.BackupTargetExecution.SetTransport(transport)
 	c.BrickTopo.SetTransport(transport)
 	c.CloudTowerApplication.SetTransport(transport)
 	c.CloudTowerApplicationPackage.SetTransport(transport)
@@ -576,6 +615,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.NvmfNamespace.SetTransport(transport)
 	c.NvmfNamespaceSnapshot.SetTransport(transport)
 	c.NvmfSubsystem.SetTransport(transport)
+	c.Observability.SetTransport(transport)
 	c.Organization.SetTransport(transport)
 	c.Ovf.SetTransport(transport)
 	c.PmemDimm.SetTransport(transport)

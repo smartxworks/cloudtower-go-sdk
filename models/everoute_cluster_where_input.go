@@ -118,6 +118,9 @@ type EverouteClusterWhereInput struct {
 	// installed not
 	InstalledNot *bool `json:"installed_not,omitempty"`
 
+	// load balancer service
+	LoadBalancerService *LoadBalancerServiceWhereInput `json:"load_balancer_service,omitempty"`
+
 	// name
 	Name *string `json:"name,omitempty"`
 
@@ -213,6 +216,9 @@ type EverouteClusterWhereInput struct {
 
 	// version starts with
 	VersionStartsWith *string `json:"version_starts_with,omitempty"`
+
+	// vpc service
+	VpcService *VirtualPrivateCloudServiceWhereInput `json:"vpc_service,omitempty"`
 }
 
 // Validate validates this everoute cluster where input
@@ -287,6 +293,10 @@ func (m *EverouteClusterWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateLoadBalancerService(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validatePhase(formats); err != nil {
 		res = append(res, err)
 	}
@@ -300,6 +310,10 @@ func (m *EverouteClusterWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePhaseNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -661,6 +675,25 @@ func (m *EverouteClusterWhereInput) validateGlobalDefaultActionNotIn(formats str
 	return nil
 }
 
+func (m *EverouteClusterWhereInput) validateLoadBalancerService(formats strfmt.Registry) error {
+	if swag.IsZero(m.LoadBalancerService) { // not required
+		return nil
+	}
+
+	if m.LoadBalancerService != nil {
+		if err := m.LoadBalancerService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("load_balancer_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("load_balancer_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *EverouteClusterWhereInput) validatePhase(formats strfmt.Registry) error {
 	if swag.IsZero(m.Phase) { // not required
 		return nil
@@ -741,6 +774,25 @@ func (m *EverouteClusterWhereInput) validatePhaseNotIn(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *EverouteClusterWhereInput) validateVpcService(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpcService) { // not required
+		return nil
+	}
+
+	if m.VpcService != nil {
+		if err := m.VpcService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this everoute cluster where input based on the context it is used
 func (m *EverouteClusterWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -813,6 +865,10 @@ func (m *EverouteClusterWhereInput) ContextValidate(ctx context.Context, formats
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateLoadBalancerService(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidatePhase(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -826,6 +882,10 @@ func (m *EverouteClusterWhereInput) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidatePhaseNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1127,6 +1187,22 @@ func (m *EverouteClusterWhereInput) contextValidateGlobalDefaultActionNotIn(ctx 
 	return nil
 }
 
+func (m *EverouteClusterWhereInput) contextValidateLoadBalancerService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LoadBalancerService != nil {
+		if err := m.LoadBalancerService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("load_balancer_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("load_balancer_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *EverouteClusterWhereInput) contextValidatePhase(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Phase != nil {
@@ -1190,6 +1266,22 @@ func (m *EverouteClusterWhereInput) contextValidatePhaseNotIn(ctx context.Contex
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *EverouteClusterWhereInput) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcService != nil {
+		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
 	}
 
 	return nil

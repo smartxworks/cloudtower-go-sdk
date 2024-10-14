@@ -24,6 +24,12 @@ type NestedSecurityPolicyApply struct {
 	// Required: true
 	Communicable *bool `json:"communicable"`
 
+	// security group
+	SecurityGroup *NestedSecurityGroup `json:"security_group,omitempty"`
+
+	// security group id
+	SecurityGroupID *string `json:"security_group_id,omitempty"`
+
 	// selector
 	// Required: true
 	Selector []*NestedLabel `json:"selector"`
@@ -38,6 +44,10 @@ func (m *NestedSecurityPolicyApply) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCommunicable(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSecurityGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -59,6 +69,25 @@ func (m *NestedSecurityPolicyApply) validateCommunicable(formats strfmt.Registry
 
 	if err := validate.Required("communicable", "body", m.Communicable); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *NestedSecurityPolicyApply) validateSecurityGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.SecurityGroup) { // not required
+		return nil
+	}
+
+	if m.SecurityGroup != nil {
+		if err := m.SecurityGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("security_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("security_group")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -104,6 +133,10 @@ func (m *NestedSecurityPolicyApply) validateSelectorIds(formats strfmt.Registry)
 func (m *NestedSecurityPolicyApply) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateSecurityGroup(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSelector(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -111,6 +144,22 @@ func (m *NestedSecurityPolicyApply) ContextValidate(ctx context.Context, formats
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NestedSecurityPolicyApply) contextValidateSecurityGroup(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SecurityGroup != nil {
+		if err := m.SecurityGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("security_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("security_group")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

@@ -26,6 +26,9 @@ type HostBatchCreateDiskInput struct {
 	// function
 	Function *DiskFunction `json:"function,omitempty"`
 
+	// size
+	Size *float64 `json:"size,omitempty"`
+
 	// type
 	Type *DiskType `json:"type,omitempty"`
 }

@@ -271,6 +271,30 @@ type VlanWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
+	// qos burst
+	QosBurst *float64 `json:"qos_burst,omitempty"`
+
+	// qos burst gt
+	QosBurstGt *float64 `json:"qos_burst_gt,omitempty"`
+
+	// qos burst gte
+	QosBurstGte *float64 `json:"qos_burst_gte,omitempty"`
+
+	// qos burst in
+	QosBurstIn []float64 `json:"qos_burst_in,omitempty"`
+
+	// qos burst lt
+	QosBurstLt *float64 `json:"qos_burst_lt,omitempty"`
+
+	// qos burst lte
+	QosBurstLte *float64 `json:"qos_burst_lte,omitempty"`
+
+	// qos burst not
+	QosBurstNot *float64 `json:"qos_burst_not,omitempty"`
+
+	// qos burst not in
+	QosBurstNotIn []float64 `json:"qos_burst_not_in,omitempty"`
+
 	// qos max bandwidth
 	QosMaxBandwidth *float64 `json:"qos_max_bandwidth,omitempty"`
 

@@ -51,6 +51,9 @@ type Vlan struct {
 	// Required: true
 	NetworkIds []string `json:"network_ids"`
 
+	// qos burst
+	QosBurst *float64 `json:"qos_burst,omitempty"`
+
 	// qos max bandwidth
 	QosMaxBandwidth *float64 `json:"qos_max_bandwidth,omitempty"`
 

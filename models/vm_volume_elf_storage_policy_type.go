@@ -30,6 +30,9 @@ func (m VMVolumeElfStoragePolicyType) Pointer() *VMVolumeElfStoragePolicyType {
 
 const (
 
+	// VMVolumeElfStoragePolicyTypeEC captures enum value "EC"
+	VMVolumeElfStoragePolicyTypeEC VMVolumeElfStoragePolicyType = "EC"
+
 	// VMVolumeElfStoragePolicyTypeELFCPREPLICA2THICKPROVISION captures enum value "ELF_CP_REPLICA_2_THICK_PROVISION"
 	VMVolumeElfStoragePolicyTypeELFCPREPLICA2THICKPROVISION VMVolumeElfStoragePolicyType = "ELF_CP_REPLICA_2_THICK_PROVISION"
 
@@ -66,7 +69,7 @@ var vmVolumeElfStoragePolicyTypeEnum []interface{}
 
 func init() {
 	var res []VMVolumeElfStoragePolicyType
-	if err := json.Unmarshal([]byte(`["ELF_CP_REPLICA_2_THICK_PROVISION","ELF_CP_REPLICA_2_THIN_PROVISION","ELF_CP_REPLICA_3_THICK_PROVISION","ELF_CP_REPLICA_3_THIN_PROVISION","REPLICA_1_THICK_PROVISION","REPLICA_1_THIN_PROVISION","REPLICA_2_THICK_PROVISION","REPLICA_2_THIN_PROVISION","REPLICA_3_THICK_PROVISION","REPLICA_3_THIN_PROVISION"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["EC","ELF_CP_REPLICA_2_THICK_PROVISION","ELF_CP_REPLICA_2_THIN_PROVISION","ELF_CP_REPLICA_3_THICK_PROVISION","ELF_CP_REPLICA_3_THIN_PROVISION","REPLICA_1_THICK_PROVISION","REPLICA_1_THIN_PROVISION","REPLICA_2_THICK_PROVISION","REPLICA_2_THIN_PROVISION","REPLICA_3_THICK_PROVISION","REPLICA_3_THIN_PROVISION"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
