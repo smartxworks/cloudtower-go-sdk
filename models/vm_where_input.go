@@ -28,6 +28,15 @@ type VMWhereInput struct {
 	// o r
 	OR []*VMWhereInput `json:"OR,omitempty"`
 
+	// backup plans every
+	BackupPlansEvery *BackupPlanWhereInput `json:"backup_plans_every,omitempty"`
+
+	// backup plans none
+	BackupPlansNone *BackupPlanWhereInput `json:"backup_plans_none,omitempty"`
+
+	// backup plans some
+	BackupPlansSome *BackupPlanWhereInput `json:"backup_plans_some,omitempty"`
+
 	// bios uuid
 	BiosUUID *string `json:"bios_uuid,omitempty"`
 
@@ -1329,6 +1338,18 @@ func (m *VMWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateBackupPlansEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBackupPlansNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBackupPlansSome(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateClockOffset(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1712,6 +1733,63 @@ func (m *VMWhereInput) validateOR(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validateBackupPlansEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupPlansEvery) { // not required
+		return nil
+	}
+
+	if m.BackupPlansEvery != nil {
+		if err := m.BackupPlansEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validateBackupPlansNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupPlansNone) { // not required
+		return nil
+	}
+
+	if m.BackupPlansNone != nil {
+		if err := m.BackupPlansNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validateBackupPlansSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupPlansSome) { // not required
+		return nil
+	}
+
+	if m.BackupPlansSome != nil {
+		if err := m.BackupPlansSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_some")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -3221,6 +3299,18 @@ func (m *VMWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regis
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateBackupPlansEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBackupPlansNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBackupPlansSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateClockOffset(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3586,6 +3676,54 @@ func (m *VMWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Reg
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidateBackupPlansEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BackupPlansEvery != nil {
+		if err := m.BackupPlansEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidateBackupPlansNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BackupPlansNone != nil {
+		if err := m.BackupPlansNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidateBackupPlansSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BackupPlansSome != nil {
+		if err := m.BackupPlansSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_some")
+			}
+			return err
+		}
 	}
 
 	return nil

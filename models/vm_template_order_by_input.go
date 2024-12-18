@@ -167,12 +167,6 @@ const (
 
 	// VMTemplateOrderByInputVMNicsDESC captures enum value "vm_nics_DESC"
 	VMTemplateOrderByInputVMNicsDESC VMTemplateOrderByInput = "vm_nics_DESC"
-
-	// VMTemplateOrderByInputWinOptASC captures enum value "win_opt_ASC"
-	VMTemplateOrderByInputWinOptASC VMTemplateOrderByInput = "win_opt_ASC"
-
-	// VMTemplateOrderByInputWinOptDESC captures enum value "win_opt_DESC"
-	VMTemplateOrderByInputWinOptDESC VMTemplateOrderByInput = "win_opt_DESC"
 )
 
 // for schema
@@ -180,7 +174,7 @@ var vmTemplateOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMTemplateOrderByInput
-	if err := json.Unmarshal([]byte(`["clock_offset_ASC","clock_offset_DESC","cloud_init_supported_ASC","cloud_init_supported_DESC","cpu_ASC","cpu_DESC","cpu_model_ASC","cpu_model_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","firmware_ASC","firmware_DESC","ha_ASC","ha_DESC","id_ASC","id_DESC","io_policy_ASC","io_policy_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","max_bandwidth_ASC","max_bandwidth_DESC","max_bandwidth_policy_ASC","max_bandwidth_policy_DESC","max_iops_ASC","max_iops_DESC","max_iops_policy_ASC","max_iops_policy_DESC","memory_ASC","memory_DESC","name_ASC","name_DESC","size_ASC","size_DESC","vcpu_ASC","vcpu_DESC","video_type_ASC","video_type_DESC","vm_disks_ASC","vm_disks_DESC","vm_nics_ASC","vm_nics_DESC","win_opt_ASC","win_opt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["clock_offset_ASC","clock_offset_DESC","cloud_init_supported_ASC","cloud_init_supported_DESC","cpu_ASC","cpu_DESC","cpu_model_ASC","cpu_model_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","firmware_ASC","firmware_DESC","ha_ASC","ha_DESC","id_ASC","id_DESC","io_policy_ASC","io_policy_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","max_bandwidth_ASC","max_bandwidth_DESC","max_bandwidth_policy_ASC","max_bandwidth_policy_DESC","max_iops_ASC","max_iops_DESC","max_iops_policy_ASC","max_iops_policy_DESC","memory_ASC","memory_DESC","name_ASC","name_DESC","size_ASC","size_DESC","vcpu_ASC","vcpu_DESC","video_type_ASC","video_type_DESC","vm_disks_ASC","vm_disks_DESC","vm_nics_ASC","vm_nics_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

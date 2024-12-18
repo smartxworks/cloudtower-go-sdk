@@ -23,6 +23,9 @@ type NestedFrozenVlan struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// network ids
+	NetworkIds []string `json:"network_ids,omitempty"`
+
 	// vds ovs
 	// Required: true
 	VdsOvs *string `json:"vds_ovs"`

@@ -60,6 +60,12 @@ const (
 	// SecurityPolicyOrderByInputIngressDESC captures enum value "ingress_DESC"
 	SecurityPolicyOrderByInputIngressDESC SecurityPolicyOrderByInput = "ingress_DESC"
 
+	// SecurityPolicyOrderByInputIsBlocklistASC captures enum value "is_blocklist_ASC"
+	SecurityPolicyOrderByInputIsBlocklistASC SecurityPolicyOrderByInput = "is_blocklist_ASC"
+
+	// SecurityPolicyOrderByInputIsBlocklistDESC captures enum value "is_blocklist_DESC"
+	SecurityPolicyOrderByInputIsBlocklistDESC SecurityPolicyOrderByInput = "is_blocklist_DESC"
+
 	// SecurityPolicyOrderByInputNameASC captures enum value "name_ASC"
 	SecurityPolicyOrderByInputNameASC SecurityPolicyOrderByInput = "name_ASC"
 
@@ -78,7 +84,7 @@ var securityPolicyOrderByInputEnum []interface{}
 
 func init() {
 	var res []SecurityPolicyOrderByInput
-	if err := json.Unmarshal([]byte(`["apply_to_ASC","apply_to_DESC","description_ASC","description_DESC","egress_ASC","egress_DESC","id_ASC","id_DESC","ingress_ASC","ingress_DESC","name_ASC","name_DESC","policy_mode_ASC","policy_mode_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["apply_to_ASC","apply_to_DESC","description_ASC","description_DESC","egress_ASC","egress_DESC","id_ASC","id_DESC","ingress_ASC","ingress_DESC","is_blocklist_ASC","is_blocklist_DESC","name_ASC","name_DESC","policy_mode_ASC","policy_mode_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
