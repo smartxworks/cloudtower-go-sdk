@@ -111,10 +111,6 @@ type VMTemplate struct {
 
 	// vm nics
 	VMNics []*NestedTemplateNic `json:"vm_nics,omitempty"`
-
-	// win opt
-	// Required: true
-	WinOpt *bool `json:"win_opt"`
 }
 
 // Validate validates this Vm template
@@ -206,10 +202,6 @@ func (m *VMTemplate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVMNics(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateWinOpt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -565,15 +557,6 @@ func (m *VMTemplate) validateVMNics(formats strfmt.Registry) error {
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *VMTemplate) validateWinOpt(formats strfmt.Registry) error {
-
-	if err := validate.Required("win_opt", "body", m.WinOpt); err != nil {
-		return err
 	}
 
 	return nil

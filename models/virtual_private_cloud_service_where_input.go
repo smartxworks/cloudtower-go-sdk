@@ -37,6 +37,15 @@ type VirtualPrivateCloudServiceWhereInput struct {
 	// cluster bindings some
 	ClusterBindingsSome *VirtualPrivateCloudClusterBindingWhereInput `json:"cluster_bindings_some,omitempty"`
 
+	// edge gateway groups every
+	EdgeGatewayGroupsEvery *VirtualPrivateCloudEdgeGatewayGroupWhereInput `json:"edge_gateway_groups_every,omitempty"`
+
+	// edge gateway groups none
+	EdgeGatewayGroupsNone *VirtualPrivateCloudEdgeGatewayGroupWhereInput `json:"edge_gateway_groups_none,omitempty"`
+
+	// edge gateway groups some
+	EdgeGatewayGroupsSome *VirtualPrivateCloudEdgeGatewayGroupWhereInput `json:"edge_gateway_groups_some,omitempty"`
+
 	// edge gateways every
 	EdgeGatewaysEvery *VirtualPrivateCloudEdgeGatewayWhereInput `json:"edge_gateways_every,omitempty"`
 
@@ -201,6 +210,18 @@ func (m *VirtualPrivateCloudServiceWhereInput) Validate(formats strfmt.Registry)
 	}
 
 	if err := m.validateClusterBindingsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEdgeGatewayGroupsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEdgeGatewayGroupsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEdgeGatewayGroupsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -409,6 +430,63 @@ func (m *VirtualPrivateCloudServiceWhereInput) validateClusterBindingsSome(forma
 				return ve.ValidateName("cluster_bindings_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster_bindings_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudServiceWhereInput) validateEdgeGatewayGroupsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGatewayGroupsEvery) { // not required
+		return nil
+	}
+
+	if m.EdgeGatewayGroupsEvery != nil {
+		if err := m.EdgeGatewayGroupsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_groups_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_groups_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudServiceWhereInput) validateEdgeGatewayGroupsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGatewayGroupsNone) { // not required
+		return nil
+	}
+
+	if m.EdgeGatewayGroupsNone != nil {
+		if err := m.EdgeGatewayGroupsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_groups_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_groups_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudServiceWhereInput) validateEdgeGatewayGroupsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGatewayGroupsSome) { // not required
+		return nil
+	}
+
+	if m.EdgeGatewayGroupsSome != nil {
+		if err := m.EdgeGatewayGroupsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_groups_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_groups_some")
 			}
 			return err
 		}
@@ -795,6 +873,18 @@ func (m *VirtualPrivateCloudServiceWhereInput) ContextValidate(ctx context.Conte
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEdgeGatewayGroupsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEdgeGatewayGroupsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEdgeGatewayGroupsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEdgeGatewaysEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -973,6 +1063,54 @@ func (m *VirtualPrivateCloudServiceWhereInput) contextValidateClusterBindingsSom
 				return ve.ValidateName("cluster_bindings_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster_bindings_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudServiceWhereInput) contextValidateEdgeGatewayGroupsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGatewayGroupsEvery != nil {
+		if err := m.EdgeGatewayGroupsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_groups_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_groups_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudServiceWhereInput) contextValidateEdgeGatewayGroupsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGatewayGroupsNone != nil {
+		if err := m.EdgeGatewayGroupsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_groups_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_groups_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudServiceWhereInput) contextValidateEdgeGatewayGroupsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGatewayGroupsSome != nil {
+		if err := m.EdgeGatewayGroupsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_groups_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_groups_some")
 			}
 			return err
 		}

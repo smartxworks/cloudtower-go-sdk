@@ -20,6 +20,9 @@ import (
 // swagger:model Vm
 type VM struct {
 
+	// backup plans
+	BackupPlans []*NestedBackupPlan `json:"backup_plans,omitempty"`
+
 	// bios uuid
 	BiosUUID *string `json:"bios_uuid,omitempty"`
 
@@ -241,6 +244,10 @@ type VM struct {
 func (m *VM) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateBackupPlans(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateClockOffset(formats); err != nil {
 		res = append(res, err)
 	}
@@ -412,6 +419,32 @@ func (m *VM) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VM) validateBackupPlans(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupPlans) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BackupPlans); i++ {
+		if swag.IsZero(m.BackupPlans[i]) { // not required
+			continue
+		}
+
+		if m.BackupPlans[i] != nil {
+			if err := m.BackupPlans[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("backup_plans" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("backup_plans" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -1141,6 +1174,10 @@ func (m *VM) validateWinOpt(formats strfmt.Registry) error {
 func (m *VM) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateBackupPlans(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateClockOffset(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1248,6 +1285,26 @@ func (m *VM) ContextValidate(ctx context.Context, formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VM) contextValidateBackupPlans(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BackupPlans); i++ {
+
+		if m.BackupPlans[i] != nil {
+			if err := m.BackupPlans[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("backup_plans" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("backup_plans" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

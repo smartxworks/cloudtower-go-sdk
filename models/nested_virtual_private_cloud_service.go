@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -22,6 +23,14 @@ type NestedVirtualPrivateCloudService struct {
 	// id
 	// Required: true
 	ID *string `json:"id"`
+
+	// internal cidr
+	// Required: true
+	InternalCidr *string `json:"internal_cidr"`
+
+	// tep ip pools
+	// Required: true
+	TepIPPools []*NestedVirtualPrivateCloudServiceTepIPPool `json:"tep_ip_pools"`
 }
 
 // Validate validates this nested virtual private cloud service
@@ -29,6 +38,14 @@ func (m *NestedVirtualPrivateCloudService) Validate(formats strfmt.Registry) err
 	var res []error
 
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateInternalCidr(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTepIPPools(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -47,8 +64,73 @@ func (m *NestedVirtualPrivateCloudService) validateID(formats strfmt.Registry) e
 	return nil
 }
 
-// ContextValidate validates this nested virtual private cloud service based on context it is used
+func (m *NestedVirtualPrivateCloudService) validateInternalCidr(formats strfmt.Registry) error {
+
+	if err := validate.Required("internal_cidr", "body", m.InternalCidr); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NestedVirtualPrivateCloudService) validateTepIPPools(formats strfmt.Registry) error {
+
+	if err := validate.Required("tep_ip_pools", "body", m.TepIPPools); err != nil {
+		return err
+	}
+
+	for i := 0; i < len(m.TepIPPools); i++ {
+		if swag.IsZero(m.TepIPPools[i]) { // not required
+			continue
+		}
+
+		if m.TepIPPools[i] != nil {
+			if err := m.TepIPPools[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tep_ip_pools" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tep_ip_pools" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this nested virtual private cloud service based on the context it is used
 func (m *NestedVirtualPrivateCloudService) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTepIPPools(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NestedVirtualPrivateCloudService) contextValidateTepIPPools(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TepIPPools); i++ {
+
+		if m.TepIPPools[i] != nil {
+			if err := m.TepIPPools[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tep_ip_pools" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tep_ip_pools" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

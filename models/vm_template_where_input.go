@@ -522,12 +522,6 @@ type VMTemplateWhereInput struct {
 
 	// video type starts with
 	VideoTypeStartsWith *string `json:"video_type_starts_with,omitempty"`
-
-	// win opt
-	WinOpt *bool `json:"win_opt,omitempty"`
-
-	// win opt not
-	WinOptNot *bool `json:"win_opt_not,omitempty"`
 }
 
 // Validate validates this Vm template where input

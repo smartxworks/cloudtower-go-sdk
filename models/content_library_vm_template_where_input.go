@@ -40,6 +40,18 @@ type ContentLibraryVMTemplateWhereInput struct {
 	// architecture not in
 	ArchitectureNotIn []Architecture `json:"architecture_not_in,omitempty"`
 
+	// clock offset
+	ClockOffset *VMClockOffset `json:"clock_offset,omitempty"`
+
+	// clock offset in
+	ClockOffsetIn []VMClockOffset `json:"clock_offset_in,omitempty"`
+
+	// clock offset not
+	ClockOffsetNot *VMClockOffset `json:"clock_offset_not,omitempty"`
+
+	// clock offset not in
+	ClockOffsetNotIn []VMClockOffset `json:"clock_offset_not_in,omitempty"`
+
 	// cloud init supported
 	CloudInitSupported *bool `json:"cloud_init_supported,omitempty"`
 
@@ -54,6 +66,48 @@ type ContentLibraryVMTemplateWhereInput struct {
 
 	// clusters some
 	ClustersSome *ClusterWhereInput `json:"clusters_some,omitempty"`
+
+	// cpu model
+	CPUModel *string `json:"cpu_model,omitempty"`
+
+	// cpu model contains
+	CPUModelContains *string `json:"cpu_model_contains,omitempty"`
+
+	// cpu model ends with
+	CPUModelEndsWith *string `json:"cpu_model_ends_with,omitempty"`
+
+	// cpu model gt
+	CPUModelGt *string `json:"cpu_model_gt,omitempty"`
+
+	// cpu model gte
+	CPUModelGte *string `json:"cpu_model_gte,omitempty"`
+
+	// cpu model in
+	CPUModelIn []string `json:"cpu_model_in,omitempty"`
+
+	// cpu model lt
+	CPUModelLt *string `json:"cpu_model_lt,omitempty"`
+
+	// cpu model lte
+	CPUModelLte *string `json:"cpu_model_lte,omitempty"`
+
+	// cpu model not
+	CPUModelNot *string `json:"cpu_model_not,omitempty"`
+
+	// cpu model not contains
+	CPUModelNotContains *string `json:"cpu_model_not_contains,omitempty"`
+
+	// cpu model not ends with
+	CPUModelNotEndsWith *string `json:"cpu_model_not_ends_with,omitempty"`
+
+	// cpu model not in
+	CPUModelNotIn []string `json:"cpu_model_not_in,omitempty"`
+
+	// cpu model not starts with
+	CPUModelNotStartsWith *string `json:"cpu_model_not_starts_with,omitempty"`
+
+	// cpu model starts with
+	CPUModelStartsWith *string `json:"cpu_model_starts_with,omitempty"`
 
 	// created at
 	CreatedAt *string `json:"createdAt,omitempty"`
@@ -133,6 +187,24 @@ type ContentLibraryVMTemplateWhereInput struct {
 	// entity async status not in
 	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
 
+	// firmware
+	Firmware *VMFirmware `json:"firmware,omitempty"`
+
+	// firmware in
+	FirmwareIn []VMFirmware `json:"firmware_in,omitempty"`
+
+	// firmware not
+	FirmwareNot *VMFirmware `json:"firmware_not,omitempty"`
+
+	// firmware not in
+	FirmwareNotIn []VMFirmware `json:"firmware_not_in,omitempty"`
+
+	// ha
+	Ha *bool `json:"ha,omitempty"`
+
+	// ha not
+	HaNot *bool `json:"ha_not,omitempty"`
+
 	// id
 	ID *string `json:"id,omitempty"`
 
@@ -175,6 +247,18 @@ type ContentLibraryVMTemplateWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
+	// io policy
+	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
+
+	// io policy in
+	IoPolicyIn []VMDiskIoPolicy `json:"io_policy_in,omitempty"`
+
+	// io policy not
+	IoPolicyNot *VMDiskIoPolicy `json:"io_policy_not,omitempty"`
+
+	// io policy not in
+	IoPolicyNotIn []VMDiskIoPolicy `json:"io_policy_not_in,omitempty"`
+
 	// labels every
 	LabelsEvery *LabelWhereInput `json:"labels_every,omitempty"`
 
@@ -183,6 +267,78 @@ type ContentLibraryVMTemplateWhereInput struct {
 
 	// labels some
 	LabelsSome *LabelWhereInput `json:"labels_some,omitempty"`
+
+	// max bandwidth
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
+
+	// max bandwidth gt
+	MaxBandwidthGt *int64 `json:"max_bandwidth_gt,omitempty"`
+
+	// max bandwidth gte
+	MaxBandwidthGte *int64 `json:"max_bandwidth_gte,omitempty"`
+
+	// max bandwidth in
+	MaxBandwidthIn []int64 `json:"max_bandwidth_in,omitempty"`
+
+	// max bandwidth lt
+	MaxBandwidthLt *int64 `json:"max_bandwidth_lt,omitempty"`
+
+	// max bandwidth lte
+	MaxBandwidthLte *int64 `json:"max_bandwidth_lte,omitempty"`
+
+	// max bandwidth not
+	MaxBandwidthNot *int64 `json:"max_bandwidth_not,omitempty"`
+
+	// max bandwidth not in
+	MaxBandwidthNotIn []int64 `json:"max_bandwidth_not_in,omitempty"`
+
+	// max bandwidth policy
+	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
+
+	// max bandwidth policy in
+	MaxBandwidthPolicyIn []VMDiskIoRestrictType `json:"max_bandwidth_policy_in,omitempty"`
+
+	// max bandwidth policy not
+	MaxBandwidthPolicyNot *VMDiskIoRestrictType `json:"max_bandwidth_policy_not,omitempty"`
+
+	// max bandwidth policy not in
+	MaxBandwidthPolicyNotIn []VMDiskIoRestrictType `json:"max_bandwidth_policy_not_in,omitempty"`
+
+	// max iops
+	MaxIops *int32 `json:"max_iops,omitempty"`
+
+	// max iops gt
+	MaxIopsGt *int32 `json:"max_iops_gt,omitempty"`
+
+	// max iops gte
+	MaxIopsGte *int32 `json:"max_iops_gte,omitempty"`
+
+	// max iops in
+	MaxIopsIn []int32 `json:"max_iops_in,omitempty"`
+
+	// max iops lt
+	MaxIopsLt *int32 `json:"max_iops_lt,omitempty"`
+
+	// max iops lte
+	MaxIopsLte *int32 `json:"max_iops_lte,omitempty"`
+
+	// max iops not
+	MaxIopsNot *int32 `json:"max_iops_not,omitempty"`
+
+	// max iops not in
+	MaxIopsNotIn []int32 `json:"max_iops_not_in,omitempty"`
+
+	// max iops policy
+	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
+
+	// max iops policy in
+	MaxIopsPolicyIn []VMDiskIoRestrictType `json:"max_iops_policy_in,omitempty"`
+
+	// max iops policy not
+	MaxIopsPolicyNot *VMDiskIoRestrictType `json:"max_iops_policy_not,omitempty"`
+
+	// max iops policy not in
+	MaxIopsPolicyNotIn []VMDiskIoRestrictType `json:"max_iops_policy_not_in,omitempty"`
 
 	// memory
 	Memory *int64 `json:"memory,omitempty"`
@@ -340,6 +496,48 @@ type ContentLibraryVMTemplateWhereInput struct {
 	// vcpu not in
 	VcpuNotIn []int32 `json:"vcpu_not_in,omitempty"`
 
+	// video type
+	VideoType *string `json:"video_type,omitempty"`
+
+	// video type contains
+	VideoTypeContains *string `json:"video_type_contains,omitempty"`
+
+	// video type ends with
+	VideoTypeEndsWith *string `json:"video_type_ends_with,omitempty"`
+
+	// video type gt
+	VideoTypeGt *string `json:"video_type_gt,omitempty"`
+
+	// video type gte
+	VideoTypeGte *string `json:"video_type_gte,omitempty"`
+
+	// video type in
+	VideoTypeIn []string `json:"video_type_in,omitempty"`
+
+	// video type lt
+	VideoTypeLt *string `json:"video_type_lt,omitempty"`
+
+	// video type lte
+	VideoTypeLte *string `json:"video_type_lte,omitempty"`
+
+	// video type not
+	VideoTypeNot *string `json:"video_type_not,omitempty"`
+
+	// video type not contains
+	VideoTypeNotContains *string `json:"video_type_not_contains,omitempty"`
+
+	// video type not ends with
+	VideoTypeNotEndsWith *string `json:"video_type_not_ends_with,omitempty"`
+
+	// video type not in
+	VideoTypeNotIn []string `json:"video_type_not_in,omitempty"`
+
+	// video type not starts with
+	VideoTypeNotStartsWith *string `json:"video_type_not_starts_with,omitempty"`
+
+	// video type starts with
+	VideoTypeStartsWith *string `json:"video_type_starts_with,omitempty"`
+
 	// vm templates every
 	VMTemplatesEvery *VMTemplateWhereInput `json:"vm_templates_every,omitempty"`
 
@@ -348,6 +546,12 @@ type ContentLibraryVMTemplateWhereInput struct {
 
 	// vm templates some
 	VMTemplatesSome *VMTemplateWhereInput `json:"vm_templates_some,omitempty"`
+
+	// win opt
+	WinOpt *bool `json:"win_opt,omitempty"`
+
+	// win opt not
+	WinOptNot *bool `json:"win_opt_not,omitempty"`
 }
 
 // Validate validates this content library Vm template where input
@@ -382,6 +586,22 @@ func (m *ContentLibraryVMTemplateWhereInput) Validate(formats strfmt.Registry) e
 		res = append(res, err)
 	}
 
+	if err := m.validateClockOffset(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClockOffsetIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClockOffsetNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClockOffsetNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateClustersEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -410,6 +630,38 @@ func (m *ContentLibraryVMTemplateWhereInput) Validate(formats strfmt.Registry) e
 		res = append(res, err)
 	}
 
+	if err := m.validateFirmware(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFirmwareIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFirmwareNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFirmwareNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIoPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIoPolicyIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIoPolicyNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIoPolicyNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLabelsEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -419,6 +671,38 @@ func (m *ContentLibraryVMTemplateWhereInput) Validate(formats strfmt.Registry) e
 	}
 
 	if err := m.validateLabelsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxBandwidthPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxBandwidthPolicyIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxBandwidthPolicyNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxBandwidthPolicyNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxIopsPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxIopsPolicyIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxIopsPolicyNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxIopsPolicyNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -598,6 +882,86 @@ func (m *ContentLibraryVMTemplateWhereInput) validateArchitectureNotIn(formats s
 	return nil
 }
 
+func (m *ContentLibraryVMTemplateWhereInput) validateClockOffset(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClockOffset) { // not required
+		return nil
+	}
+
+	if m.ClockOffset != nil {
+		if err := m.ClockOffset.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateClockOffsetIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClockOffsetIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ClockOffsetIn); i++ {
+
+		if err := m.ClockOffsetIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateClockOffsetNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClockOffsetNot) { // not required
+		return nil
+	}
+
+	if m.ClockOffsetNot != nil {
+		if err := m.ClockOffsetNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateClockOffsetNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClockOffsetNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ClockOffsetNotIn); i++ {
+
+		if err := m.ClockOffsetNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplateWhereInput) validateClustersEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.ClustersEvery) { // not required
 		return nil
@@ -735,6 +1099,166 @@ func (m *ContentLibraryVMTemplateWhereInput) validateEntityAsyncStatusNotIn(form
 	return nil
 }
 
+func (m *ContentLibraryVMTemplateWhereInput) validateFirmware(formats strfmt.Registry) error {
+	if swag.IsZero(m.Firmware) { // not required
+		return nil
+	}
+
+	if m.Firmware != nil {
+		if err := m.Firmware.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateFirmwareIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.FirmwareIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.FirmwareIn); i++ {
+
+		if err := m.FirmwareIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateFirmwareNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.FirmwareNot) { // not required
+		return nil
+	}
+
+	if m.FirmwareNot != nil {
+		if err := m.FirmwareNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateFirmwareNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.FirmwareNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.FirmwareNotIn); i++ {
+
+		if err := m.FirmwareNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateIoPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.IoPolicy) { // not required
+		return nil
+	}
+
+	if m.IoPolicy != nil {
+		if err := m.IoPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateIoPolicyIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.IoPolicyIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IoPolicyIn); i++ {
+
+		if err := m.IoPolicyIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateIoPolicyNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.IoPolicyNot) { // not required
+		return nil
+	}
+
+	if m.IoPolicyNot != nil {
+		if err := m.IoPolicyNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateIoPolicyNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.IoPolicyNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IoPolicyNotIn); i++ {
+
+		if err := m.IoPolicyNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplateWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.LabelsEvery) { // not required
 		return nil
@@ -787,6 +1311,166 @@ func (m *ContentLibraryVMTemplateWhereInput) validateLabelsSome(formats strfmt.R
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateMaxBandwidthPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthPolicy) { // not required
+		return nil
+	}
+
+	if m.MaxBandwidthPolicy != nil {
+		if err := m.MaxBandwidthPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateMaxBandwidthPolicyIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthPolicyIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MaxBandwidthPolicyIn); i++ {
+
+		if err := m.MaxBandwidthPolicyIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateMaxBandwidthPolicyNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthPolicyNot) { // not required
+		return nil
+	}
+
+	if m.MaxBandwidthPolicyNot != nil {
+		if err := m.MaxBandwidthPolicyNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateMaxBandwidthPolicyNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthPolicyNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MaxBandwidthPolicyNotIn); i++ {
+
+		if err := m.MaxBandwidthPolicyNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateMaxIopsPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxIopsPolicy) { // not required
+		return nil
+	}
+
+	if m.MaxIopsPolicy != nil {
+		if err := m.MaxIopsPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateMaxIopsPolicyIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxIopsPolicyIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MaxIopsPolicyIn); i++ {
+
+		if err := m.MaxIopsPolicyIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateMaxIopsPolicyNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxIopsPolicyNot) { // not required
+		return nil
+	}
+
+	if m.MaxIopsPolicyNot != nil {
+		if err := m.MaxIopsPolicyNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateMaxIopsPolicyNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxIopsPolicyNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MaxIopsPolicyNotIn); i++ {
+
+		if err := m.MaxIopsPolicyNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil
@@ -881,6 +1565,22 @@ func (m *ContentLibraryVMTemplateWhereInput) ContextValidate(ctx context.Context
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateClockOffset(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateClockOffsetIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateClockOffsetNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateClockOffsetNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateClustersEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -909,6 +1609,38 @@ func (m *ContentLibraryVMTemplateWhereInput) ContextValidate(ctx context.Context
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateFirmware(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFirmwareIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFirmwareNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFirmwareNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIoPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIoPolicyIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIoPolicyNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIoPolicyNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLabelsEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -918,6 +1650,38 @@ func (m *ContentLibraryVMTemplateWhereInput) ContextValidate(ctx context.Context
 	}
 
 	if err := m.contextValidateLabelsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxBandwidthPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxBandwidthPolicyIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxBandwidthPolicyNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxBandwidthPolicyNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxIopsPolicyIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxIopsPolicyNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxIopsPolicyNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1067,6 +1831,74 @@ func (m *ContentLibraryVMTemplateWhereInput) contextValidateArchitectureNotIn(ct
 	return nil
 }
 
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateClockOffset(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ClockOffset != nil {
+		if err := m.ClockOffset.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateClockOffsetIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ClockOffsetIn); i++ {
+
+		if err := m.ClockOffsetIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateClockOffsetNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ClockOffsetNot != nil {
+		if err := m.ClockOffsetNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateClockOffsetNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ClockOffsetNotIn); i++ {
+
+		if err := m.ClockOffsetNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplateWhereInput) contextValidateClustersEvery(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClustersEvery != nil {
@@ -1183,6 +2015,142 @@ func (m *ContentLibraryVMTemplateWhereInput) contextValidateEntityAsyncStatusNot
 	return nil
 }
 
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateFirmware(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Firmware != nil {
+		if err := m.Firmware.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateFirmwareIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.FirmwareIn); i++ {
+
+		if err := m.FirmwareIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateFirmwareNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FirmwareNot != nil {
+		if err := m.FirmwareNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateFirmwareNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.FirmwareNotIn); i++ {
+
+		if err := m.FirmwareNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateIoPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IoPolicy != nil {
+		if err := m.IoPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateIoPolicyIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IoPolicyIn); i++ {
+
+		if err := m.IoPolicyIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateIoPolicyNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IoPolicyNot != nil {
+		if err := m.IoPolicyNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateIoPolicyNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IoPolicyNotIn); i++ {
+
+		if err := m.IoPolicyNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplateWhereInput) contextValidateLabelsEvery(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LabelsEvery != nil {
@@ -1226,6 +2194,142 @@ func (m *ContentLibraryVMTemplateWhereInput) contextValidateLabelsSome(ctx conte
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxBandwidthPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxBandwidthPolicy != nil {
+		if err := m.MaxBandwidthPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxBandwidthPolicyIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MaxBandwidthPolicyIn); i++ {
+
+		if err := m.MaxBandwidthPolicyIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxBandwidthPolicyNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxBandwidthPolicyNot != nil {
+		if err := m.MaxBandwidthPolicyNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxBandwidthPolicyNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MaxBandwidthPolicyNotIn); i++ {
+
+		if err := m.MaxBandwidthPolicyNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxIopsPolicy != nil {
+		if err := m.MaxIopsPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxIopsPolicyIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MaxIopsPolicyIn); i++ {
+
+		if err := m.MaxIopsPolicyIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxIopsPolicyNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxIopsPolicyNot != nil {
+		if err := m.MaxIopsPolicyNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxIopsPolicyNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MaxIopsPolicyNotIn); i++ {
+
+		if err := m.MaxIopsPolicyNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil

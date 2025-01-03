@@ -66,6 +66,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nfs_inode"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nic"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/node_topo"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ntp"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_subsystem"
@@ -223,6 +224,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.NfsInode = nfs_inode.New(transport, formats)
 	cli.Nic = nic.New(transport, formats)
 	cli.NodeTopo = node_topo.New(transport, formats)
+	cli.Ntp = ntp.New(transport, formats)
 	cli.NvmfNamespace = nvmf_namespace.New(transport, formats)
 	cli.NvmfNamespaceSnapshot = nvmf_namespace_snapshot.New(transport, formats)
 	cli.NvmfSubsystem = nvmf_subsystem.New(transport, formats)
@@ -436,6 +438,8 @@ type Cloudtower struct {
 
 	NodeTopo node_topo.ClientService
 
+	Ntp ntp.ClientService
+
 	NvmfNamespace nvmf_namespace.ClientService
 
 	NvmfNamespaceSnapshot nvmf_namespace_snapshot.ClientService
@@ -612,6 +616,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.NfsInode.SetTransport(transport)
 	c.Nic.SetTransport(transport)
 	c.NodeTopo.SetTransport(transport)
+	c.Ntp.SetTransport(transport)
 	c.NvmfNamespace.SetTransport(transport)
 	c.NvmfNamespaceSnapshot.SetTransport(transport)
 	c.NvmfSubsystem.SetTransport(transport)
