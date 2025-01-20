@@ -135,6 +135,9 @@ type VirtualPrivateCloudClusterBindingWhereInput struct {
 
 	// vlan id not in
 	VlanIDNotIn []int32 `json:"vlan_id_not_in,omitempty"`
+
+	// vpc service
+	VpcService *VirtualPrivateCloudServiceWhereInput `json:"vpc_service,omitempty"`
 }
 
 // Validate validates this virtual private cloud cluster binding where input
@@ -174,6 +177,10 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) Validate(formats strfmt.Re
 	}
 
 	if err := m.validateVds(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -379,6 +386,25 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) validateVds(formats strfmt
 	return nil
 }
 
+func (m *VirtualPrivateCloudClusterBindingWhereInput) validateVpcService(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpcService) { // not required
+		return nil
+	}
+
+	if m.VpcService != nil {
+		if err := m.VpcService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this virtual private cloud cluster binding where input based on the context it is used
 func (m *VirtualPrivateCloudClusterBindingWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -416,6 +442,10 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) ContextValidate(ctx contex
 	}
 
 	if err := m.contextValidateVds(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -577,6 +607,22 @@ func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidateVds(ctx con
 				return ve.ValidateName("vds")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vds")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudClusterBindingWhereInput) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcService != nil {
+		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
 			}
 			return err
 		}

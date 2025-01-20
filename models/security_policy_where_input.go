@@ -115,6 +115,12 @@ type SecurityPolicyWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
+	// is blocklist
+	IsBlocklist *bool `json:"is_blocklist,omitempty"`
+
+	// is blocklist not
+	IsBlocklistNot *bool `json:"is_blocklist_not,omitempty"`
+
 	// name
 	Name *string `json:"name,omitempty"`
 

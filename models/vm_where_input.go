@@ -28,6 +28,15 @@ type VMWhereInput struct {
 	// o r
 	OR []*VMWhereInput `json:"OR,omitempty"`
 
+	// backup plans every
+	BackupPlansEvery *BackupPlanWhereInput `json:"backup_plans_every,omitempty"`
+
+	// backup plans none
+	BackupPlansNone *BackupPlanWhereInput `json:"backup_plans_none,omitempty"`
+
+	// backup plans some
+	BackupPlansSome *BackupPlanWhereInput `json:"backup_plans_some,omitempty"`
+
 	// bios uuid
 	BiosUUID *string `json:"bios_uuid,omitempty"`
 
@@ -1177,6 +1186,54 @@ type VMWhereInput struct {
 	// usb devices some
 	UsbDevicesSome *UsbDeviceWhereInput `json:"usb_devices_some,omitempty"`
 
+	// used size
+	UsedSize *int64 `json:"used_size,omitempty"`
+
+	// used size gt
+	UsedSizeGt *int64 `json:"used_size_gt,omitempty"`
+
+	// used size gte
+	UsedSizeGte *int64 `json:"used_size_gte,omitempty"`
+
+	// used size in
+	UsedSizeIn []int64 `json:"used_size_in,omitempty"`
+
+	// used size lt
+	UsedSizeLt *int64 `json:"used_size_lt,omitempty"`
+
+	// used size lte
+	UsedSizeLte *int64 `json:"used_size_lte,omitempty"`
+
+	// used size not
+	UsedSizeNot *int64 `json:"used_size_not,omitempty"`
+
+	// used size not in
+	UsedSizeNotIn []int64 `json:"used_size_not_in,omitempty"`
+
+	// used size usage
+	UsedSizeUsage *float64 `json:"used_size_usage,omitempty"`
+
+	// used size usage gt
+	UsedSizeUsageGt *float64 `json:"used_size_usage_gt,omitempty"`
+
+	// used size usage gte
+	UsedSizeUsageGte *float64 `json:"used_size_usage_gte,omitempty"`
+
+	// used size usage in
+	UsedSizeUsageIn []float64 `json:"used_size_usage_in,omitempty"`
+
+	// used size usage lt
+	UsedSizeUsageLt *float64 `json:"used_size_usage_lt,omitempty"`
+
+	// used size usage lte
+	UsedSizeUsageLte *float64 `json:"used_size_usage_lte,omitempty"`
+
+	// used size usage not
+	UsedSizeUsageNot *float64 `json:"used_size_usage_not,omitempty"`
+
+	// used size usage not in
+	UsedSizeUsageNotIn []float64 `json:"used_size_usage_not_in,omitempty"`
+
 	// vcpu
 	Vcpu *int32 `json:"vcpu,omitempty"`
 
@@ -1326,6 +1383,18 @@ func (m *VMWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOR(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBackupPlansEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBackupPlansNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBackupPlansSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1712,6 +1781,63 @@ func (m *VMWhereInput) validateOR(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validateBackupPlansEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupPlansEvery) { // not required
+		return nil
+	}
+
+	if m.BackupPlansEvery != nil {
+		if err := m.BackupPlansEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validateBackupPlansNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupPlansNone) { // not required
+		return nil
+	}
+
+	if m.BackupPlansNone != nil {
+		if err := m.BackupPlansNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) validateBackupPlansSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupPlansSome) { // not required
+		return nil
+	}
+
+	if m.BackupPlansSome != nil {
+		if err := m.BackupPlansSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_some")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -3221,6 +3347,18 @@ func (m *VMWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regis
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateBackupPlansEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBackupPlansNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBackupPlansSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateClockOffset(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3586,6 +3724,54 @@ func (m *VMWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Reg
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidateBackupPlansEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BackupPlansEvery != nil {
+		if err := m.BackupPlansEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidateBackupPlansNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BackupPlansNone != nil {
+		if err := m.BackupPlansNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMWhereInput) contextValidateBackupPlansSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BackupPlansSome != nil {
+		if err := m.BackupPlansSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_plans_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_plans_some")
+			}
+			return err
+		}
 	}
 
 	return nil

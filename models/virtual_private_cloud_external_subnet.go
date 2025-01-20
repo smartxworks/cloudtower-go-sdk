@@ -27,8 +27,15 @@ type VirtualPrivateCloudExternalSubnet struct {
 	// description
 	Description *string `json:"description,omitempty"`
 
+	// edge gateway
+	EdgeGateway *NestedVirtualPrivateCloudEdgeGateway `json:"edge_gateway,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
+	// exclusive
+	// Required: true
+	Exclusive *bool `json:"exclusive"`
 
 	// floating ip cidr
 	FloatingIPCidr *string `json:"floating_ip_cidr,omitempty"`
@@ -80,7 +87,15 @@ func (m *VirtualPrivateCloudExternalSubnet) Validate(formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
+	if err := m.validateEdgeGateway(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateExclusive(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -135,6 +150,25 @@ func (m *VirtualPrivateCloudExternalSubnet) validateCidr(formats strfmt.Registry
 	return nil
 }
 
+func (m *VirtualPrivateCloudExternalSubnet) validateEdgeGateway(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGateway) { // not required
+		return nil
+	}
+
+	if m.EdgeGateway != nil {
+		if err := m.EdgeGateway.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VirtualPrivateCloudExternalSubnet) validateEntityAsyncStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatus) { // not required
 		return nil
@@ -149,6 +183,15 @@ func (m *VirtualPrivateCloudExternalSubnet) validateEntityAsyncStatus(formats st
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudExternalSubnet) validateExclusive(formats strfmt.Registry) error {
+
+	if err := validate.Required("exclusive", "body", m.Exclusive); err != nil {
+		return err
 	}
 
 	return nil
@@ -311,6 +354,10 @@ func (m *VirtualPrivateCloudExternalSubnet) validateVpc(formats strfmt.Registry)
 func (m *VirtualPrivateCloudExternalSubnet) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateEdgeGateway(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -338,6 +385,22 @@ func (m *VirtualPrivateCloudExternalSubnet) ContextValidate(ctx context.Context,
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VirtualPrivateCloudExternalSubnet) contextValidateEdgeGateway(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGateway != nil {
+		if err := m.EdgeGateway.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

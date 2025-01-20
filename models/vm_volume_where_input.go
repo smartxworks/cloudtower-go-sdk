@@ -445,6 +445,54 @@ type VMVolumeWhereInput struct {
 	// unique size not in
 	UniqueSizeNotIn []int64 `json:"unique_size_not_in,omitempty"`
 
+	// used size
+	UsedSize *int64 `json:"used_size,omitempty"`
+
+	// used size gt
+	UsedSizeGt *int64 `json:"used_size_gt,omitempty"`
+
+	// used size gte
+	UsedSizeGte *int64 `json:"used_size_gte,omitempty"`
+
+	// used size in
+	UsedSizeIn []int64 `json:"used_size_in,omitempty"`
+
+	// used size lt
+	UsedSizeLt *int64 `json:"used_size_lt,omitempty"`
+
+	// used size lte
+	UsedSizeLte *int64 `json:"used_size_lte,omitempty"`
+
+	// used size not
+	UsedSizeNot *int64 `json:"used_size_not,omitempty"`
+
+	// used size not in
+	UsedSizeNotIn []int64 `json:"used_size_not_in,omitempty"`
+
+	// used size usage
+	UsedSizeUsage *float64 `json:"used_size_usage,omitempty"`
+
+	// used size usage gt
+	UsedSizeUsageGt *float64 `json:"used_size_usage_gt,omitempty"`
+
+	// used size usage gte
+	UsedSizeUsageGte *float64 `json:"used_size_usage_gte,omitempty"`
+
+	// used size usage in
+	UsedSizeUsageIn []float64 `json:"used_size_usage_in,omitempty"`
+
+	// used size usage lt
+	UsedSizeUsageLt *float64 `json:"used_size_usage_lt,omitempty"`
+
+	// used size usage lte
+	UsedSizeUsageLte *float64 `json:"used_size_usage_lte,omitempty"`
+
+	// used size usage not
+	UsedSizeUsageNot *float64 `json:"used_size_usage_not,omitempty"`
+
+	// used size usage not in
+	UsedSizeUsageNotIn []float64 `json:"used_size_usage_not_in,omitempty"`
+
 	// vm disks every
 	VMDisksEvery *VMDiskWhereInput `json:"vm_disks_every,omitempty"`
 

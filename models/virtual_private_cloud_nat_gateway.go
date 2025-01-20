@@ -36,8 +36,7 @@ type VirtualPrivateCloudNatGateway struct {
 	ExternalIP *string `json:"external_ip,omitempty"`
 
 	// external subnet
-	// Required: true
-	ExternalSubnet *NestedVirtualPrivateCloudExternalSubnet `json:"external_subnet"`
+	ExternalSubnet *NestedVirtualPrivateCloudExternalSubnet `json:"external_subnet,omitempty"`
 
 	// id
 	// Required: true
@@ -140,9 +139,8 @@ func (m *VirtualPrivateCloudNatGateway) validateEntityAsyncStatus(formats strfmt
 }
 
 func (m *VirtualPrivateCloudNatGateway) validateExternalSubnet(formats strfmt.Registry) error {
-
-	if err := validate.Required("external_subnet", "body", m.ExternalSubnet); err != nil {
-		return err
+	if swag.IsZero(m.ExternalSubnet) { // not required
+		return nil
 	}
 
 	if m.ExternalSubnet != nil {

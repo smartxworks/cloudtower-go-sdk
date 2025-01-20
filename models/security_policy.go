@@ -42,6 +42,10 @@ type SecurityPolicy struct {
 	// ingress
 	Ingress []*NestedNetworkPolicyRule `json:"ingress,omitempty"`
 
+	// is blocklist
+	// Required: true
+	IsBlocklist *bool `json:"is_blocklist"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`
@@ -75,6 +79,10 @@ func (m *SecurityPolicy) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIngress(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIsBlocklist(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -204,6 +212,15 @@ func (m *SecurityPolicy) validateIngress(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *SecurityPolicy) validateIsBlocklist(formats strfmt.Registry) error {
+
+	if err := validate.Required("is_blocklist", "body", m.IsBlocklist); err != nil {
+		return err
 	}
 
 	return nil

@@ -112,6 +112,9 @@ type VirtualPrivateCloudExternalSubnetWhereInput struct {
 	// description starts with
 	DescriptionStartsWith *string `json:"description_starts_with,omitempty"`
 
+	// edge gateway
+	EdgeGateway *VirtualPrivateCloudEdgeGatewayWhereInput `json:"edge_gateway,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -123,6 +126,12 @@ type VirtualPrivateCloudExternalSubnetWhereInput struct {
 
 	// entity async status not in
 	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
+
+	// exclusive
+	Exclusive *bool `json:"exclusive,omitempty"`
+
+	// exclusive not
+	ExclusiveNot *bool `json:"exclusive_not,omitempty"`
 
 	// floating ip cidr
 	FloatingIPCidr *string `json:"floating_ip_cidr,omitempty"`
@@ -468,6 +477,10 @@ func (m *VirtualPrivateCloudExternalSubnetWhereInput) Validate(formats strfmt.Re
 		res = append(res, err)
 	}
 
+	if err := m.validateEdgeGateway(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -607,6 +620,25 @@ func (m *VirtualPrivateCloudExternalSubnetWhereInput) validateOR(formats strfmt.
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudExternalSubnetWhereInput) validateEdgeGateway(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGateway) { // not required
+		return nil
+	}
+
+	if m.EdgeGateway != nil {
+		if err := m.EdgeGateway.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -917,6 +949,10 @@ func (m *VirtualPrivateCloudExternalSubnetWhereInput) ContextValidate(ctx contex
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEdgeGateway(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1038,6 +1074,22 @@ func (m *VirtualPrivateCloudExternalSubnetWhereInput) contextValidateOR(ctx cont
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudExternalSubnetWhereInput) contextValidateEdgeGateway(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGateway != nil {
+		if err := m.EdgeGateway.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway")
+			}
+			return err
+		}
 	}
 
 	return nil

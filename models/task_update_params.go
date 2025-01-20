@@ -167,13 +167,16 @@ type TaskUpdateParamsData struct {
 	ClusterID *string `json:"cluster_id,omitempty"`
 
 	// description
-	Description *string `json:"description,omitempty"`
+	Description *TaskDescription `json:"description,omitempty"`
 
 	// error code
 	ErrorCode *string `json:"error_code,omitempty"`
 
 	// error message
 	ErrorMessage *string `json:"error_message,omitempty"`
+
+	// finished at
+	FinishedAt *string `json:"finished_at,omitempty"`
 
 	// key
 	Key *string `json:"key,omitempty"`
@@ -202,6 +205,9 @@ type TaskUpdateParamsData struct {
 	// snapshot
 	Snapshot *string `json:"snapshot,omitempty"`
 
+	// started at
+	StartedAt *string `json:"started_at,omitempty"`
+
 	// status
 	Status *TaskStatus `json:"status,omitempty"`
 
@@ -219,6 +225,10 @@ type TaskUpdateParamsData struct {
 func (m *TaskUpdateParamsData) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDescription(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -234,6 +244,25 @@ func (m *TaskUpdateParamsData) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *TaskUpdateParamsData) validateDescription(formats strfmt.Registry) error {
+	if swag.IsZero(m.Description) { // not required
+		return nil
+	}
+
+	if m.Description != nil {
+		if err := m.Description.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "description")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "description")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -305,6 +334,10 @@ func (m *TaskUpdateParamsData) validateType(formats strfmt.Registry) error {
 func (m *TaskUpdateParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateDescription(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -320,6 +353,22 @@ func (m *TaskUpdateParamsData) ContextValidate(ctx context.Context, formats strf
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *TaskUpdateParamsData) contextValidateDescription(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Description != nil {
+		if err := m.Description.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "description")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "description")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

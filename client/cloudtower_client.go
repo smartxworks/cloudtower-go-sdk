@@ -66,6 +66,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nfs_inode"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nic"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/node_topo"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ntp"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_subsystem"
@@ -76,6 +77,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/rack_topo"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_template"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/resource_change"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_policy"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_group"
@@ -223,6 +225,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.NfsInode = nfs_inode.New(transport, formats)
 	cli.Nic = nic.New(transport, formats)
 	cli.NodeTopo = node_topo.New(transport, formats)
+	cli.Ntp = ntp.New(transport, formats)
 	cli.NvmfNamespace = nvmf_namespace.New(transport, formats)
 	cli.NvmfNamespaceSnapshot = nvmf_namespace_snapshot.New(transport, formats)
 	cli.NvmfSubsystem = nvmf_subsystem.New(transport, formats)
@@ -233,6 +236,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.RackTopo = rack_topo.New(transport, formats)
 	cli.ReportTask = report_task.New(transport, formats)
 	cli.ReportTemplate = report_template.New(transport, formats)
+	cli.ResourceChange = resource_change.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.SecurityPolicy = security_policy.New(transport, formats)
 	cli.SnapshotGroup = snapshot_group.New(transport, formats)
@@ -436,6 +440,8 @@ type Cloudtower struct {
 
 	NodeTopo node_topo.ClientService
 
+	Ntp ntp.ClientService
+
 	NvmfNamespace nvmf_namespace.ClientService
 
 	NvmfNamespaceSnapshot nvmf_namespace_snapshot.ClientService
@@ -455,6 +461,8 @@ type Cloudtower struct {
 	ReportTask report_task.ClientService
 
 	ReportTemplate report_template.ClientService
+
+	ResourceChange resource_change.ClientService
 
 	SecurityGroup security_group.ClientService
 
@@ -612,6 +620,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.NfsInode.SetTransport(transport)
 	c.Nic.SetTransport(transport)
 	c.NodeTopo.SetTransport(transport)
+	c.Ntp.SetTransport(transport)
 	c.NvmfNamespace.SetTransport(transport)
 	c.NvmfNamespaceSnapshot.SetTransport(transport)
 	c.NvmfSubsystem.SetTransport(transport)
@@ -622,6 +631,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.RackTopo.SetTransport(transport)
 	c.ReportTask.SetTransport(transport)
 	c.ReportTemplate.SetTransport(transport)
+	c.ResourceChange.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)
 	c.SecurityPolicy.SetTransport(transport)
 	c.SnapshotGroup.SetTransport(transport)
