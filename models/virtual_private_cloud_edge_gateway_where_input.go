@@ -55,6 +55,30 @@ type VirtualPrivateCloudEdgeGatewayWhereInput struct {
 	// cpu number not in
 	CPUNumberNotIn []int32 `json:"cpu_number_not_in,omitempty"`
 
+	// created at
+	CreatedAt *string `json:"createdAt,omitempty"`
+
+	// created at gt
+	CreatedAtGt *string `json:"createdAt_gt,omitempty"`
+
+	// created at gte
+	CreatedAtGte *string `json:"createdAt_gte,omitempty"`
+
+	// created at in
+	CreatedAtIn []string `json:"createdAt_in,omitempty"`
+
+	// created at lt
+	CreatedAtLt *string `json:"createdAt_lt,omitempty"`
+
+	// created at lte
+	CreatedAtLte *string `json:"createdAt_lte,omitempty"`
+
+	// created at not
+	CreatedAtNot *string `json:"createdAt_not,omitempty"`
+
+	// created at not in
+	CreatedAtNotIn []string `json:"createdAt_not_in,omitempty"`
+
 	// data volume size
 	DataVolumeSize *int32 `json:"data_volume_size,omitempty"`
 
@@ -120,6 +144,9 @@ type VirtualPrivateCloudEdgeGatewayWhereInput struct {
 
 	// description starts with
 	DescriptionStartsWith *string `json:"description_starts_with,omitempty"`
+
+	// edge gateway group
+	EdgeGatewayGroup *VirtualPrivateCloudEdgeGatewayGroupWhereInput `json:"edge_gateway_group,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -379,6 +406,10 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) Validate(formats strfmt.Regis
 		res = append(res, err)
 	}
 
+	if err := m.validateEdgeGatewayGroup(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -534,6 +565,25 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateCluster(formats strfm
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEdgeGatewayGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGatewayGroup) { // not required
+		return nil
+	}
+
+	if m.EdgeGatewayGroup != nil {
+		if err := m.EdgeGatewayGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_group")
 			}
 			return err
 		}
@@ -855,6 +905,10 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) ContextValidate(ctx context.C
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEdgeGatewayGroup(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -989,6 +1043,22 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateCluster(ctx co
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEdgeGatewayGroup(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGatewayGroup != nil {
+		if err := m.EdgeGatewayGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_group")
 			}
 			return err
 		}

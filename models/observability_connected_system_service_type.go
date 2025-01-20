@@ -47,6 +47,9 @@ const (
 
 	// ObservabilityConnectedSystemServiceTypeSFSSERVICE captures enum value "SFS_SERVICE"
 	ObservabilityConnectedSystemServiceTypeSFSSERVICE ObservabilityConnectedSystemServiceType = "SFS_SERVICE"
+
+	// ObservabilityConnectedSystemServiceTypeSKSSERVICE captures enum value "SKS_SERVICE"
+	ObservabilityConnectedSystemServiceTypeSKSSERVICE ObservabilityConnectedSystemServiceType = "SKS_SERVICE"
 )
 
 // for schema
@@ -54,7 +57,7 @@ var observabilityConnectedSystemServiceTypeEnum []interface{}
 
 func init() {
 	var res []ObservabilityConnectedSystemServiceType
-	if err := json.Unmarshal([]byte(`["BACKUP_SERVICE","CLOUDTOWER","EVEROUTE_SERVICE","OBSERVABILITY_SERVICE","REPLICATION_SERVICE","SFS_SERVICE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BACKUP_SERVICE","CLOUDTOWER","EVEROUTE_SERVICE","OBSERVABILITY_SERVICE","REPLICATION_SERVICE","SFS_SERVICE","SKS_SERVICE"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

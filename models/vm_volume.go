@@ -87,6 +87,12 @@ type VMVolume struct {
 	// unique size
 	UniqueSize *int64 `json:"unique_size,omitempty"`
 
+	// used size
+	UsedSize *int64 `json:"used_size,omitempty"`
+
+	// used size usage
+	UsedSizeUsage *float64 `json:"used_size_usage,omitempty"`
+
 	// vm disks
 	VMDisks []*NestedVMDisk `json:"vm_disks,omitempty"`
 }
