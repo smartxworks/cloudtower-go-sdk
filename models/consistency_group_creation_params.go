@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -37,6 +38,118 @@ type ConsistencyGroupCreationParams struct {
 	// namespaces ids
 	// Required: true
 	NamespacesIds []string `json:"namespaces_ids"`
+
+	MarshalOpts *ConsistencyGroupCreationParamsMarshalOpts `json:"-"`
+}
+
+type ConsistencyGroupCreationParamsMarshalOpts struct {
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	IscsiLunsIds_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NamespacesIds_Explicit_Null_When_Empty bool
+}
+
+func (m ConsistencyGroupCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle non nullable field iscsi_luns_ids without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"iscsi_luns_ids\":")
+	{
+		bytes, err := swag.WriteJSON(m.IscsiLunsIds)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field namespaces_ids without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"namespaces_ids\":")
+	{
+		bytes, err := swag.WriteJSON(m.NamespacesIds)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this consistency group creation params

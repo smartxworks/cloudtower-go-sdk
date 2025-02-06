@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -37,6 +38,118 @@ type NestedSecurityPolicyApply struct {
 	// selector ids
 	// Required: true
 	SelectorIds []string `json:"selector_ids"`
+
+	MarshalOpts *NestedSecurityPolicyApplyMarshalOpts `json:"-"`
+}
+
+type NestedSecurityPolicyApplyMarshalOpts struct {
+	Communicable_Explicit_Null_When_Empty bool
+
+	SecurityGroup_Explicit_Null_When_Empty bool
+
+	SecurityGroupID_Explicit_Null_When_Empty bool
+
+	Selector_Explicit_Null_When_Empty bool
+
+	SelectorIds_Explicit_Null_When_Empty bool
+}
+
+func (m NestedSecurityPolicyApply) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field communicable
+	if m.Communicable != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"communicable\":")
+		bytes, err := swag.WriteJSON(m.Communicable)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Communicable_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"communicable\":null")
+		first = false
+	}
+
+	// handle nullable field security_group
+	if m.SecurityGroup != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroup)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityGroup_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group\":null")
+		first = false
+	}
+
+	// handle nullable field security_group_id
+	if m.SecurityGroupID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group_id\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroupID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityGroupID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group_id\":null")
+		first = false
+	}
+
+	// handle non nullable field selector without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"selector\":")
+	{
+		bytes, err := swag.WriteJSON(m.Selector)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle non nullable field selector_ids without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"selector_ids\":")
+	{
+		bytes, err := swag.WriteJSON(m.SelectorIds)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested security policy apply

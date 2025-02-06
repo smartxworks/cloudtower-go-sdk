@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,64 @@ type ClusterNetworkSettingUpdationParams struct {
 	// where
 	// Required: true
 	Where *ClusterWhereInput `json:"where"`
+
+	MarshalOpts *ClusterNetworkSettingUpdationParamsMarshalOpts `json:"-"`
+}
+
+type ClusterNetworkSettingUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m ClusterNetworkSettingUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cluster network setting updation params
@@ -183,6 +242,178 @@ type ClusterNetworkSettingUpdationParamsData struct {
 
 	// ntp servers
 	NtpServers []string `json:"ntp_servers,omitempty"`
+
+	MarshalOpts *ClusterNetworkSettingUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type ClusterNetworkSettingUpdationParamsDataMarshalOpts struct {
+	DNS_Explicit_Null_When_Empty bool
+
+	IscsiVip_Explicit_Null_When_Empty bool
+
+	ManagementVip_Explicit_Null_When_Empty bool
+
+	MgtGateway_Explicit_Null_When_Empty bool
+
+	MgtIPMapper_Explicit_Null_When_Empty bool
+
+	MgtNetmask_Explicit_Null_When_Empty bool
+
+	NtpMode_Explicit_Null_When_Empty bool
+
+	NtpServers_Explicit_Null_When_Empty bool
+}
+
+func (m ClusterNetworkSettingUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field dns with omitempty
+	if swag.IsZero(m.DNS) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dns\":")
+		bytes, err := swag.WriteJSON(m.DNS)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field iscsi_vip
+	if m.IscsiVip != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_vip\":")
+		bytes, err := swag.WriteJSON(m.IscsiVip)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiVip_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_vip\":null")
+		first = false
+	}
+
+	// handle nullable field management_vip
+	if m.ManagementVip != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_vip\":")
+		bytes, err := swag.WriteJSON(m.ManagementVip)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ManagementVip_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_vip\":null")
+		first = false
+	}
+
+	// handle nullable field mgt_gateway
+	if m.MgtGateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mgt_gateway\":")
+		bytes, err := swag.WriteJSON(m.MgtGateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MgtGateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mgt_gateway\":null")
+		first = false
+	}
+
+	// handle non nullable field mgt_ip_mapper with omitempty
+	if swag.IsZero(m.MgtIPMapper) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mgt_ip_mapper\":")
+		bytes, err := swag.WriteJSON(m.MgtIPMapper)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field mgt_netmask
+	if m.MgtNetmask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mgt_netmask\":")
+		bytes, err := swag.WriteJSON(m.MgtNetmask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MgtNetmask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mgt_netmask\":null")
+		first = false
+	}
+
+	// handle nullable field ntp_mode
+	if m.NtpMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ntp_mode\":")
+		bytes, err := swag.WriteJSON(m.NtpMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NtpMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ntp_mode\":null")
+		first = false
+	}
+
+	// handle non nullable field ntp_servers with omitempty
+	if swag.IsZero(m.NtpServers) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ntp_servers\":")
+		bytes, err := swag.WriteJSON(m.NtpServers)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cluster network setting updation params data

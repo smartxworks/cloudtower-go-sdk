@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,58 @@ type VMCreateVMFromContentLibraryTemplateBatchParams struct {
 	// vms
 	// Required: true
 	Vms []*VMCreateVMFromContentLibraryTemplateBatchVMParams `json:"vms"`
+
+	MarshalOpts *VMCreateVMFromContentLibraryTemplateBatchParamsMarshalOpts `json:"-"`
+}
+
+type VMCreateVMFromContentLibraryTemplateBatchParamsMarshalOpts struct {
+	TemplateID_Explicit_Null_When_Empty bool
+
+	Vms_Explicit_Null_When_Empty bool
+}
+
+func (m VMCreateVMFromContentLibraryTemplateBatchParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field template_id
+	if m.TemplateID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"template_id\":")
+		bytes, err := swag.WriteJSON(m.TemplateID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TemplateID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"template_id\":null")
+		first = false
+	}
+
+	// handle non nullable field vms without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"vms\":")
+	{
+		bytes, err := swag.WriteJSON(m.Vms)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm create Vm from content library template batch params

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -56,6 +57,278 @@ type VMVlanCreationParams struct {
 
 	// vlan id
 	VlanID *VlanID `json:"vlan_id,omitempty"`
+
+	MarshalOpts *VMVlanCreationParamsMarshalOpts `json:"-"`
+}
+
+type VMVlanCreationParamsMarshalOpts struct {
+	ModeType_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NetworkIds_Explicit_Null_When_Empty bool
+
+	QosBurst_Explicit_Null_When_Empty bool
+
+	QosBurstUnit_Explicit_Null_When_Empty bool
+
+	QosMaxBandwidth_Explicit_Null_When_Empty bool
+
+	QosMaxBandwidthUnit_Explicit_Null_When_Empty bool
+
+	QosMinBandwidth_Explicit_Null_When_Empty bool
+
+	QosMinBandwidthUnit_Explicit_Null_When_Empty bool
+
+	QosPriority_Explicit_Null_When_Empty bool
+
+	VdsID_Explicit_Null_When_Empty bool
+
+	VlanID_Explicit_Null_When_Empty bool
+}
+
+func (m VMVlanCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field mode_type
+	if m.ModeType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mode_type\":")
+		bytes, err := swag.WriteJSON(m.ModeType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ModeType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mode_type\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field network_ids with omitempty
+	if swag.IsZero(m.NetworkIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network_ids\":")
+		bytes, err := swag.WriteJSON(m.NetworkIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field qos_burst
+	if m.QosBurst != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_burst\":")
+		bytes, err := swag.WriteJSON(m.QosBurst)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.QosBurst_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_burst\":null")
+		first = false
+	}
+
+	// handle nullable field qos_burst_unit
+	if m.QosBurstUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_burst_unit\":")
+		bytes, err := swag.WriteJSON(m.QosBurstUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.QosBurstUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_burst_unit\":null")
+		first = false
+	}
+
+	// handle nullable field qos_max_bandwidth
+	if m.QosMaxBandwidth != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_max_bandwidth\":")
+		bytes, err := swag.WriteJSON(m.QosMaxBandwidth)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.QosMaxBandwidth_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_max_bandwidth\":null")
+		first = false
+	}
+
+	// handle nullable field qos_max_bandwidth_unit
+	if m.QosMaxBandwidthUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_max_bandwidth_unit\":")
+		bytes, err := swag.WriteJSON(m.QosMaxBandwidthUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.QosMaxBandwidthUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_max_bandwidth_unit\":null")
+		first = false
+	}
+
+	// handle nullable field qos_min_bandwidth
+	if m.QosMinBandwidth != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_min_bandwidth\":")
+		bytes, err := swag.WriteJSON(m.QosMinBandwidth)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.QosMinBandwidth_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_min_bandwidth\":null")
+		first = false
+	}
+
+	// handle nullable field qos_min_bandwidth_unit
+	if m.QosMinBandwidthUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_min_bandwidth_unit\":")
+		bytes, err := swag.WriteJSON(m.QosMinBandwidthUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.QosMinBandwidthUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_min_bandwidth_unit\":null")
+		first = false
+	}
+
+	// handle nullable field qos_priority
+	if m.QosPriority != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_priority\":")
+		bytes, err := swag.WriteJSON(m.QosPriority)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.QosPriority_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos_priority\":null")
+		first = false
+	}
+
+	// handle nullable field vds_id
+	if m.VdsID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vds_id\":")
+		bytes, err := swag.WriteJSON(m.VdsID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VdsID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vds_id\":null")
+		first = false
+	}
+
+	// handle nullable field vlan_id
+	if m.VlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_id\":")
+		bytes, err := swag.WriteJSON(m.VlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm vlan creation params

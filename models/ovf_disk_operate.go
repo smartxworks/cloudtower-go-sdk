@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,74 @@ type OvfDiskOperate struct {
 
 	// new disks
 	NewDisks *VMDiskParams `json:"new_disks,omitempty"`
+
+	MarshalOpts *OvfDiskOperateMarshalOpts `json:"-"`
+}
+
+type OvfDiskOperateMarshalOpts struct {
+	ModifyCdRoms_Explicit_Null_When_Empty bool
+
+	ModifyVmdkDisks_Explicit_Null_When_Empty bool
+
+	NewDisks_Explicit_Null_When_Empty bool
+}
+
+func (m OvfDiskOperate) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field modify_cd_roms with omitempty
+	if swag.IsZero(m.ModifyCdRoms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"modify_cd_roms\":")
+		bytes, err := swag.WriteJSON(m.ModifyCdRoms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field modify_vmdk_disks with omitempty
+	if swag.IsZero(m.ModifyVmdkDisks) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"modify_vmdk_disks\":")
+		bytes, err := swag.WriteJSON(m.ModifyVmdkDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field new_disks
+	if m.NewDisks != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"new_disks\":")
+		bytes, err := swag.WriteJSON(m.NewDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NewDisks_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"new_disks\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this ovf disk operate

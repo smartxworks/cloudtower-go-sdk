@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -23,6 +24,36 @@ type NestedVirtualPrivateCloudLabelGroup struct {
 	// labels
 	// Required: true
 	Labels []*NestedLabel `json:"labels"`
+
+	MarshalOpts *NestedVirtualPrivateCloudLabelGroupMarshalOpts `json:"-"`
+}
+
+type NestedVirtualPrivateCloudLabelGroupMarshalOpts struct {
+	Labels_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVirtualPrivateCloudLabelGroup) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field labels without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"labels\":")
+	{
+		bytes, err := swag.WriteJSON(m.Labels)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested virtual private cloud label group

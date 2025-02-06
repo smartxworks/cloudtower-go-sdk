@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -39,6 +40,124 @@ type NestedMetroCheckResult struct {
 	// status
 	// Required: true
 	Status *MetroCheckStatusEnum `json:"status"`
+
+	MarshalOpts *NestedMetroCheckResultMarshalOpts `json:"-"`
+}
+
+type NestedMetroCheckResultMarshalOpts struct {
+	Critical_Explicit_Null_When_Empty bool
+
+	Info_Explicit_Null_When_Empty bool
+
+	Items_Explicit_Null_When_Empty bool
+
+	Notice_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+}
+
+func (m NestedMetroCheckResult) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field critical
+	if m.Critical != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"critical\":")
+		bytes, err := swag.WriteJSON(m.Critical)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Critical_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"critical\":null")
+		first = false
+	}
+
+	// handle nullable field info
+	if m.Info != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"info\":")
+		bytes, err := swag.WriteJSON(m.Info)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Info_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"info\":null")
+		first = false
+	}
+
+	// handle non nullable field items without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"items\":")
+	{
+		bytes, err := swag.WriteJSON(m.Items)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field notice
+	if m.Notice != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"notice\":")
+		bytes, err := swag.WriteJSON(m.Notice)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Notice_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"notice\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested metro check result

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -70,6 +71,344 @@ type BackupRestoreExecution struct {
 
 	// total bytes
 	TotalBytes *int64 `json:"total_bytes,omitempty"`
+
+	MarshalOpts *BackupRestoreExecutionMarshalOpts `json:"-"`
+}
+
+type BackupRestoreExecutionMarshalOpts struct {
+	BackupRestorePoint_Explicit_Null_When_Empty bool
+
+	Duration_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ExecutedAt_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Mode_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	ReadBytes_Explicit_Null_When_Empty bool
+
+	RebuildName_Explicit_Null_When_Empty bool
+
+	RebuildNetworkMapping_Explicit_Null_When_Empty bool
+
+	RebuildTargetCluster_Explicit_Null_When_Empty bool
+
+	RetryTimes_Explicit_Null_When_Empty bool
+
+	StartupAfterRestore_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	TotalBytes_Explicit_Null_When_Empty bool
+}
+
+func (m BackupRestoreExecution) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field backup_restore_point
+	if m.BackupRestorePoint != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_restore_point\":")
+		bytes, err := swag.WriteJSON(m.BackupRestorePoint)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupRestorePoint_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_restore_point\":null")
+		first = false
+	}
+
+	// handle nullable field duration
+	if m.Duration != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"duration\":")
+		bytes, err := swag.WriteJSON(m.Duration)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Duration_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"duration\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field executed_at
+	if m.ExecutedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"executed_at\":")
+		bytes, err := swag.WriteJSON(m.ExecutedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExecutedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"executed_at\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field mode
+	if m.Mode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mode\":")
+		bytes, err := swag.WriteJSON(m.Mode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Mode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mode\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field read_bytes
+	if m.ReadBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"read_bytes\":")
+		bytes, err := swag.WriteJSON(m.ReadBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ReadBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"read_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field rebuild_name
+	if m.RebuildName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rebuild_name\":")
+		bytes, err := swag.WriteJSON(m.RebuildName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RebuildName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rebuild_name\":null")
+		first = false
+	}
+
+	// handle non nullable field rebuild_network_mapping with omitempty
+	if swag.IsZero(m.RebuildNetworkMapping) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rebuild_network_mapping\":")
+		bytes, err := swag.WriteJSON(m.RebuildNetworkMapping)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field rebuild_target_cluster
+	if m.RebuildTargetCluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rebuild_target_cluster\":")
+		bytes, err := swag.WriteJSON(m.RebuildTargetCluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RebuildTargetCluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rebuild_target_cluster\":null")
+		first = false
+	}
+
+	// handle nullable field retry_times
+	if m.RetryTimes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retry_times\":")
+		bytes, err := swag.WriteJSON(m.RetryTimes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RetryTimes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retry_times\":null")
+		first = false
+	}
+
+	// handle nullable field startup_after_restore
+	if m.StartupAfterRestore != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"startup_after_restore\":")
+		bytes, err := swag.WriteJSON(m.StartupAfterRestore)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StartupAfterRestore_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"startup_after_restore\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle nullable field total_bytes
+	if m.TotalBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_bytes\":")
+		bytes, err := swag.WriteJSON(m.TotalBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_bytes\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup restore execution

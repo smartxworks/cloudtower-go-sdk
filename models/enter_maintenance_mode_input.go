@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -19,6 +20,36 @@ type EnterMaintenanceModeInput struct {
 
 	// shutdown vms
 	ShutdownVms []string `json:"shutdown_vms,omitempty"`
+
+	MarshalOpts *EnterMaintenanceModeInputMarshalOpts `json:"-"`
+}
+
+type EnterMaintenanceModeInputMarshalOpts struct {
+	ShutdownVms_Explicit_Null_When_Empty bool
+}
+
+func (m EnterMaintenanceModeInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field shutdown_vms with omitempty
+	if swag.IsZero(m.ShutdownVms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"shutdown_vms\":")
+		bytes, err := swag.WriteJSON(m.ShutdownVms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this enter maintenance mode input

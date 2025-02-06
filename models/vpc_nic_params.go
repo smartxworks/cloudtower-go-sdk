@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -32,6 +33,102 @@ type VpcNicParams struct {
 	// vpc subnet id
 	// Required: true
 	VpcSubnetID *string `json:"vpc_subnet_id"`
+
+	MarshalOpts *VpcNicParamsMarshalOpts `json:"-"`
+}
+
+type VpcNicParamsMarshalOpts struct {
+	FloatingIPID_Explicit_Null_When_Empty bool
+
+	IPAddresses_Explicit_Null_When_Empty bool
+
+	VpcID_Explicit_Null_When_Empty bool
+
+	VpcSubnetID_Explicit_Null_When_Empty bool
+}
+
+func (m VpcNicParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field floating_ip_id
+	if m.FloatingIPID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip_id\":")
+		bytes, err := swag.WriteJSON(m.FloatingIPID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FloatingIPID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip_id\":null")
+		first = false
+	}
+
+	// handle non nullable field ip_addresses with omitempty
+	if swag.IsZero(m.IPAddresses) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_addresses\":")
+		bytes, err := swag.WriteJSON(m.IPAddresses)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vpc_id
+	if m.VpcID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":")
+		bytes, err := swag.WriteJSON(m.VpcID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":null")
+		first = false
+	}
+
+	// handle nullable field vpc_subnet_id
+	if m.VpcSubnetID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_subnet_id\":")
+		bytes, err := swag.WriteJSON(m.VpcSubnetID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcSubnetID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_subnet_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this vpc nic params

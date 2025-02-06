@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -36,6 +37,124 @@ type EntityFilterCreationParams struct {
 	// rules
 	// Required: true
 	Rules []*FilterRuleInput `json:"rules"`
+
+	MarshalOpts *EntityFilterCreationParamsMarshalOpts `json:"-"`
+}
+
+type EntityFilterCreationParamsMarshalOpts struct {
+	ApplyToAllClusters_Explicit_Null_When_Empty bool
+
+	Clusters_Explicit_Null_When_Empty bool
+
+	ExcludeVms_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Rules_Explicit_Null_When_Empty bool
+}
+
+func (m EntityFilterCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field apply_to_all_clusters
+	if m.ApplyToAllClusters != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"apply_to_all_clusters\":")
+		bytes, err := swag.WriteJSON(m.ApplyToAllClusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ApplyToAllClusters_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"apply_to_all_clusters\":null")
+		first = false
+	}
+
+	// handle nullable field clusters
+	if m.Clusters != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":")
+		bytes, err := swag.WriteJSON(m.Clusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Clusters_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_vms
+	if m.ExcludeVms != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_vms\":")
+		bytes, err := swag.WriteJSON(m.ExcludeVms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeVms_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_vms\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field rules without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"rules\":")
+	{
+		bytes, err := swag.WriteJSON(m.Rules)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this entity filter creation params

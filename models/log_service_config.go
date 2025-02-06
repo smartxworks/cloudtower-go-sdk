@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,58 @@ type LogServiceConfig struct {
 	// service list
 	// Required: true
 	ServiceList []string `json:"service_list"`
+
+	MarshalOpts *LogServiceConfigMarshalOpts `json:"-"`
+}
+
+type LogServiceConfigMarshalOpts struct {
+	GroupName_Explicit_Null_When_Empty bool
+
+	ServiceList_Explicit_Null_When_Empty bool
+}
+
+func (m LogServiceConfig) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field group_name
+	if m.GroupName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"group_name\":")
+		bytes, err := swag.WriteJSON(m.GroupName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.GroupName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"group_name\":null")
+		first = false
+	}
+
+	// handle non nullable field service_list without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"service_list\":")
+	{
+		bytes, err := swag.WriteJSON(m.ServiceList)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this log service config

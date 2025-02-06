@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -31,6 +32,68 @@ type ExitMaintenanceModeResult struct {
 	// shut down vms
 	// Required: true
 	ShutDownVms []*MaintenanceModeVMInfo `json:"shutDownVms"`
+
+	MarshalOpts *ExitMaintenanceModeResultMarshalOpts `json:"-"`
+}
+
+type ExitMaintenanceModeResultMarshalOpts struct {
+	LiveMigrateVms_Explicit_Null_When_Empty bool
+
+	OfflineMigrateVms_Explicit_Null_When_Empty bool
+
+	ShutDownVms_Explicit_Null_When_Empty bool
+}
+
+func (m ExitMaintenanceModeResult) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field liveMigrateVms without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"liveMigrateVms\":")
+	{
+		bytes, err := swag.WriteJSON(m.LiveMigrateVms)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle non nullable field offlineMigrateVms without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"offlineMigrateVms\":")
+	{
+		bytes, err := swag.WriteJSON(m.OfflineMigrateVms)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle non nullable field shutDownVms without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"shutDownVms\":")
+	{
+		bytes, err := swag.WriteJSON(m.ShutDownVms)
+		if err != nil {
+			return nil, err
+		}
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this exit maintenance mode result

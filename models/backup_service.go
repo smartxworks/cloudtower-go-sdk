@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -124,6 +125,744 @@ type BackupService struct {
 
 	// storage network vlan
 	StorageNetworkVlan *string `json:"storage_network_vlan,omitempty"`
+
+	MarshalOpts *BackupServiceMarshalOpts `json:"-"`
+}
+
+type BackupServiceMarshalOpts struct {
+	Application_Explicit_Null_When_Empty bool
+
+	BackupClusters_Explicit_Null_When_Empty bool
+
+	BackupNetworkGateway_Explicit_Null_When_Empty bool
+
+	BackupNetworkIP_Explicit_Null_When_Empty bool
+
+	BackupNetworkSubnetMask_Explicit_Null_When_Empty bool
+
+	BackupNetworkType_Explicit_Null_When_Empty bool
+
+	BackupNetworkVlan_Explicit_Null_When_Empty bool
+
+	BackupPlans_Explicit_Null_When_Empty bool
+
+	BackupRdIopsMax_Explicit_Null_When_Empty bool
+
+	BackupStoreRepositories_Explicit_Null_When_Empty bool
+
+	BackupWrIopsMax_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	KubeConfig_Explicit_Null_When_Empty bool
+
+	ManagementNetworkGateway_Explicit_Null_When_Empty bool
+
+	ManagementNetworkIP_Explicit_Null_When_Empty bool
+
+	ManagementNetworkSubnetMask_Explicit_Null_When_Empty bool
+
+	ManagementNetworkVlan_Explicit_Null_When_Empty bool
+
+	MaxJobRetryTimes_Explicit_Null_When_Empty bool
+
+	MaxParallelBackupJobs_Explicit_Null_When_Empty bool
+
+	MaxParallelRestoreJobs_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NetworkStatus_Explicit_Null_When_Empty bool
+
+	RestoreRdIopsMax_Explicit_Null_When_Empty bool
+
+	RestoreWrIopsMax_Explicit_Null_When_Empty bool
+
+	RetryInterval_Explicit_Null_When_Empty bool
+
+	RunningVM_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	StorageNetworkGateway_Explicit_Null_When_Empty bool
+
+	StorageNetworkIP_Explicit_Null_When_Empty bool
+
+	StorageNetworkSubnetMask_Explicit_Null_When_Empty bool
+
+	StorageNetworkType_Explicit_Null_When_Empty bool
+
+	StorageNetworkVlan_Explicit_Null_When_Empty bool
+}
+
+func (m BackupService) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field application
+	if m.Application != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"application\":")
+		bytes, err := swag.WriteJSON(m.Application)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Application_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"application\":null")
+		first = false
+	}
+
+	// handle non nullable field backup_clusters with omitempty
+	if swag.IsZero(m.BackupClusters) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_clusters\":")
+		bytes, err := swag.WriteJSON(m.BackupClusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field backup_network_gateway
+	if m.BackupNetworkGateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_gateway\":")
+		bytes, err := swag.WriteJSON(m.BackupNetworkGateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupNetworkGateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_gateway\":null")
+		first = false
+	}
+
+	// handle nullable field backup_network_ip
+	if m.BackupNetworkIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_ip\":")
+		bytes, err := swag.WriteJSON(m.BackupNetworkIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupNetworkIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_ip\":null")
+		first = false
+	}
+
+	// handle nullable field backup_network_subnet_mask
+	if m.BackupNetworkSubnetMask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_subnet_mask\":")
+		bytes, err := swag.WriteJSON(m.BackupNetworkSubnetMask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupNetworkSubnetMask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_subnet_mask\":null")
+		first = false
+	}
+
+	// handle nullable field backup_network_type
+	if m.BackupNetworkType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_type\":")
+		bytes, err := swag.WriteJSON(m.BackupNetworkType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupNetworkType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_type\":null")
+		first = false
+	}
+
+	// handle nullable field backup_network_vlan
+	if m.BackupNetworkVlan != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_vlan\":")
+		bytes, err := swag.WriteJSON(m.BackupNetworkVlan)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupNetworkVlan_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_network_vlan\":null")
+		first = false
+	}
+
+	// handle non nullable field backup_plans with omitempty
+	if swag.IsZero(m.BackupPlans) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_plans\":")
+		bytes, err := swag.WriteJSON(m.BackupPlans)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field backup_rd_iops_max
+	if m.BackupRdIopsMax != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_rd_iops_max\":")
+		bytes, err := swag.WriteJSON(m.BackupRdIopsMax)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupRdIopsMax_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_rd_iops_max\":null")
+		first = false
+	}
+
+	// handle non nullable field backup_store_repositories with omitempty
+	if swag.IsZero(m.BackupStoreRepositories) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_store_repositories\":")
+		bytes, err := swag.WriteJSON(m.BackupStoreRepositories)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field backup_wr_iops_max
+	if m.BackupWrIopsMax != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_wr_iops_max\":")
+		bytes, err := swag.WriteJSON(m.BackupWrIopsMax)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupWrIopsMax_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_wr_iops_max\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field kube_config
+	if m.KubeConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"kube_config\":")
+		bytes, err := swag.WriteJSON(m.KubeConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.KubeConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"kube_config\":null")
+		first = false
+	}
+
+	// handle nullable field management_network_gateway
+	if m.ManagementNetworkGateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_network_gateway\":")
+		bytes, err := swag.WriteJSON(m.ManagementNetworkGateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ManagementNetworkGateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_network_gateway\":null")
+		first = false
+	}
+
+	// handle nullable field management_network_ip
+	if m.ManagementNetworkIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_network_ip\":")
+		bytes, err := swag.WriteJSON(m.ManagementNetworkIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ManagementNetworkIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_network_ip\":null")
+		first = false
+	}
+
+	// handle nullable field management_network_subnet_mask
+	if m.ManagementNetworkSubnetMask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_network_subnet_mask\":")
+		bytes, err := swag.WriteJSON(m.ManagementNetworkSubnetMask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ManagementNetworkSubnetMask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_network_subnet_mask\":null")
+		first = false
+	}
+
+	// handle nullable field management_network_vlan
+	if m.ManagementNetworkVlan != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_network_vlan\":")
+		bytes, err := swag.WriteJSON(m.ManagementNetworkVlan)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ManagementNetworkVlan_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_network_vlan\":null")
+		first = false
+	}
+
+	// handle nullable field max_job_retry_times
+	if m.MaxJobRetryTimes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_job_retry_times\":")
+		bytes, err := swag.WriteJSON(m.MaxJobRetryTimes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MaxJobRetryTimes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_job_retry_times\":null")
+		first = false
+	}
+
+	// handle nullable field max_parallel_backup_jobs
+	if m.MaxParallelBackupJobs != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_parallel_backup_jobs\":")
+		bytes, err := swag.WriteJSON(m.MaxParallelBackupJobs)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MaxParallelBackupJobs_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_parallel_backup_jobs\":null")
+		first = false
+	}
+
+	// handle nullable field max_parallel_restore_jobs
+	if m.MaxParallelRestoreJobs != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_parallel_restore_jobs\":")
+		bytes, err := swag.WriteJSON(m.MaxParallelRestoreJobs)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MaxParallelRestoreJobs_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_parallel_restore_jobs\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field network_status with omitempty
+	if swag.IsZero(m.NetworkStatus) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network_status\":")
+		bytes, err := swag.WriteJSON(m.NetworkStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field restore_rd_iops_max
+	if m.RestoreRdIopsMax != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"restore_rd_iops_max\":")
+		bytes, err := swag.WriteJSON(m.RestoreRdIopsMax)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RestoreRdIopsMax_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"restore_rd_iops_max\":null")
+		first = false
+	}
+
+	// handle nullable field restore_wr_iops_max
+	if m.RestoreWrIopsMax != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"restore_wr_iops_max\":")
+		bytes, err := swag.WriteJSON(m.RestoreWrIopsMax)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RestoreWrIopsMax_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"restore_wr_iops_max\":null")
+		first = false
+	}
+
+	// handle nullable field retry_interval
+	if m.RetryInterval != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retry_interval\":")
+		bytes, err := swag.WriteJSON(m.RetryInterval)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RetryInterval_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retry_interval\":null")
+		first = false
+	}
+
+	// handle nullable field running_vm
+	if m.RunningVM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"running_vm\":")
+		bytes, err := swag.WriteJSON(m.RunningVM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RunningVM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"running_vm\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle nullable field storage_network_gateway
+	if m.StorageNetworkGateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_gateway\":")
+		bytes, err := swag.WriteJSON(m.StorageNetworkGateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageNetworkGateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_gateway\":null")
+		first = false
+	}
+
+	// handle nullable field storage_network_ip
+	if m.StorageNetworkIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_ip\":")
+		bytes, err := swag.WriteJSON(m.StorageNetworkIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageNetworkIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_ip\":null")
+		first = false
+	}
+
+	// handle nullable field storage_network_subnet_mask
+	if m.StorageNetworkSubnetMask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_subnet_mask\":")
+		bytes, err := swag.WriteJSON(m.StorageNetworkSubnetMask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageNetworkSubnetMask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_subnet_mask\":null")
+		first = false
+	}
+
+	// handle nullable field storage_network_type
+	if m.StorageNetworkType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_type\":")
+		bytes, err := swag.WriteJSON(m.StorageNetworkType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageNetworkType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_type\":null")
+		first = false
+	}
+
+	// handle nullable field storage_network_vlan
+	if m.StorageNetworkVlan != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_vlan\":")
+		bytes, err := swag.WriteJSON(m.StorageNetworkVlan)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageNetworkVlan_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_network_vlan\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup service

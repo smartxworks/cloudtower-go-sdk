@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -33,6 +34,118 @@ type NestedEverouteClusterAgentStatus struct {
 
 	// number health
 	NumberHealth *int32 `json:"numberHealth,omitempty"`
+
+	MarshalOpts *NestedEverouteClusterAgentStatusMarshalOpts `json:"-"`
+}
+
+type NestedEverouteClusterAgentStatusMarshalOpts struct {
+	CurrentNumber_Explicit_Null_When_Empty bool
+
+	ExpectNumber_Explicit_Null_When_Empty bool
+
+	Instances_Explicit_Null_When_Empty bool
+
+	ManageVDSes_Explicit_Null_When_Empty bool
+
+	NumberHealth_Explicit_Null_When_Empty bool
+}
+
+func (m NestedEverouteClusterAgentStatus) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field currentNumber
+	if m.CurrentNumber != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"currentNumber\":")
+		bytes, err := swag.WriteJSON(m.CurrentNumber)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CurrentNumber_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"currentNumber\":null")
+		first = false
+	}
+
+	// handle nullable field expectNumber
+	if m.ExpectNumber != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"expectNumber\":")
+		bytes, err := swag.WriteJSON(m.ExpectNumber)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExpectNumber_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"expectNumber\":null")
+		first = false
+	}
+
+	// handle non nullable field instances with omitempty
+	if swag.IsZero(m.Instances) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"instances\":")
+		bytes, err := swag.WriteJSON(m.Instances)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field manageVDSes with omitempty
+	if swag.IsZero(m.ManageVDSes) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"manageVDSes\":")
+		bytes, err := swag.WriteJSON(m.ManageVDSes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field numberHealth
+	if m.NumberHealth != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"numberHealth\":")
+		bytes, err := swag.WriteJSON(m.NumberHealth)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NumberHealth_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"numberHealth\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested everoute cluster agent status
