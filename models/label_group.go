@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,33 @@ type LabelGroup struct {
 	// label ids
 	// Required: true
 	LabelIds []string `json:"label_ids"`
+
+	MarshalOpts *LabelGroupMarshalOpts `json:"-"`
+}
+
+type LabelGroupMarshalOpts struct {
+}
+
+func (m LabelGroup) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field label_ids without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"label_ids\":")
+	bytes, err := swag.WriteJSON(m.LabelIds)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this label group

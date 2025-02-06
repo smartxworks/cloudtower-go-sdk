@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -65,6 +66,328 @@ type UserAuditLog struct {
 
 	// username
 	Username *string `json:"username,omitempty"`
+
+	MarshalOpts *UserAuditLogMarshalOpts `json:"-"`
+}
+
+type UserAuditLogMarshalOpts struct {
+	Action_Explicit_Null_When_Empty bool
+
+	AuthType_Explicit_Null_When_Empty bool
+
+	Cluster_Explicit_Null_When_Empty bool
+
+	CreatedAt_Explicit_Null_When_Empty bool
+
+	FinishedAt_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	IPAddress_Explicit_Null_When_Empty bool
+
+	Message_Explicit_Null_When_Empty bool
+
+	ResourceID_Explicit_Null_When_Empty bool
+
+	ResourceType_Explicit_Null_When_Empty bool
+
+	StartedAt_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	User_Explicit_Null_When_Empty bool
+
+	Username_Explicit_Null_When_Empty bool
+}
+
+func (m UserAuditLog) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field action
+	if m.Action != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"action\":")
+		bytes, err := swag.WriteJSON(m.Action)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Action_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"action\":null")
+		first = false
+	}
+
+	// handle nullable field auth_type
+	if m.AuthType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_type\":")
+		bytes, err := swag.WriteJSON(m.AuthType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AuthType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_type\":null")
+		first = false
+	}
+
+	// handle nullable field cluster
+	if m.Cluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":")
+		bytes, err := swag.WriteJSON(m.Cluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle nullable field createdAt
+	if m.CreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"createdAt\":")
+		bytes, err := swag.WriteJSON(m.CreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"createdAt\":null")
+		first = false
+	}
+
+	// handle nullable field finished_at
+	if m.FinishedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"finished_at\":")
+		bytes, err := swag.WriteJSON(m.FinishedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FinishedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"finished_at\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field ip_address
+	if m.IPAddress != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_address\":")
+		bytes, err := swag.WriteJSON(m.IPAddress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPAddress_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_address\":null")
+		first = false
+	}
+
+	// handle nullable field message
+	if m.Message != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":")
+		bytes, err := swag.WriteJSON(m.Message)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Message_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":null")
+		first = false
+	}
+
+	// handle nullable field resource_id
+	if m.ResourceID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_id\":")
+		bytes, err := swag.WriteJSON(m.ResourceID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_id\":null")
+		first = false
+	}
+
+	// handle nullable field resource_type
+	if m.ResourceType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":")
+		bytes, err := swag.WriteJSON(m.ResourceType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":null")
+		first = false
+	}
+
+	// handle nullable field started_at
+	if m.StartedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"started_at\":")
+		bytes, err := swag.WriteJSON(m.StartedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StartedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"started_at\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle nullable field user
+	if m.User != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user\":")
+		bytes, err := swag.WriteJSON(m.User)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.User_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user\":null")
+		first = false
+	}
+
+	// handle nullable field username
+	if m.Username != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":")
+		bytes, err := swag.WriteJSON(m.Username)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Username_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this user audit log

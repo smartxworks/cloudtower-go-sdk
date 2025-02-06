@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,63 @@ type VMDiskParams struct {
 
 	// mount new create disks
 	MountNewCreateDisks []*MountNewCreateDisksParams `json:"mount_new_create_disks,omitempty"`
+
+	MarshalOpts *VMDiskParamsMarshalOpts `json:"-"`
+}
+
+type VMDiskParamsMarshalOpts struct {
+}
+
+func (m VMDiskParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field mount_cd_roms with omitempty
+	if swag.IsZero(m.MountCdRoms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mount_cd_roms\":")
+		bytes, err := swag.WriteJSON(m.MountCdRoms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field mount_disks with omitempty
+	if swag.IsZero(m.MountDisks) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mount_disks\":")
+		bytes, err := swag.WriteJSON(m.MountDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field mount_new_create_disks with omitempty
+	if swag.IsZero(m.MountNewCreateDisks) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mount_new_create_disks\":")
+		bytes, err := swag.WriteJSON(m.MountNewCreateDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm disk params

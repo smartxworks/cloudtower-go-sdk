@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -87,6 +88,392 @@ type VMPlacementGroup struct {
 
 	// vms
 	Vms []*NestedVM `json:"vms,omitempty"`
+
+	MarshalOpts *VMPlacementGroupMarshalOpts `json:"-"`
+}
+
+type VMPlacementGroupMarshalOpts struct {
+	Cluster_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	Enabled_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LocalCreatedAt_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	LocalUpdatedAt_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	VMHostMustEnabled_Explicit_Null_When_Empty bool
+
+	VMHostMustPolicy_Explicit_Null_When_Empty bool
+
+	VMHostPreferEnabled_Explicit_Null_When_Empty bool
+
+	VMHostPreferPolicy_Explicit_Null_When_Empty bool
+
+	VMVMPolicy_Explicit_Null_When_Empty bool
+
+	VMVMPolicyEnabled_Explicit_Null_When_Empty bool
+}
+
+func (m VMPlacementGroup) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster
+	if m.Cluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":")
+		bytes, err := swag.WriteJSON(m.Cluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field enabled
+	if m.Enabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":")
+		bytes, err := swag.WriteJSON(m.Enabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field local_created_at
+	if m.LocalCreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":")
+		bytes, err := swag.WriteJSON(m.LocalCreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalCreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field local_updated_at
+	if m.LocalUpdatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_updated_at\":")
+		bytes, err := swag.WriteJSON(m.LocalUpdatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalUpdatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_updated_at\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field vm_host_must_enabled
+	if m.VMHostMustEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_must_enabled\":")
+		bytes, err := swag.WriteJSON(m.VMHostMustEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMHostMustEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_must_enabled\":null")
+		first = false
+	}
+
+	// handle non nullable field vm_host_must_host_uuids with omitempty
+	if swag.IsZero(m.VMHostMustHostUuids) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_must_host_uuids\":")
+		bytes, err := swag.WriteJSON(m.VMHostMustHostUuids)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vm_host_must_policy
+	if m.VMHostMustPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_must_policy\":")
+		bytes, err := swag.WriteJSON(m.VMHostMustPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMHostMustPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_must_policy\":null")
+		first = false
+	}
+
+	// handle nullable field vm_host_prefer_enabled
+	if m.VMHostPreferEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_prefer_enabled\":")
+		bytes, err := swag.WriteJSON(m.VMHostPreferEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMHostPreferEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_prefer_enabled\":null")
+		first = false
+	}
+
+	// handle non nullable field vm_host_prefer_host_uuids with omitempty
+	if swag.IsZero(m.VMHostPreferHostUuids) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_prefer_host_uuids\":")
+		bytes, err := swag.WriteJSON(m.VMHostPreferHostUuids)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vm_host_prefer_policy
+	if m.VMHostPreferPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_prefer_policy\":")
+		bytes, err := swag.WriteJSON(m.VMHostPreferPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMHostPreferPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_host_prefer_policy\":null")
+		first = false
+	}
+
+	// handle nullable field vm_vm_policy
+	if m.VMVMPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_vm_policy\":")
+		bytes, err := swag.WriteJSON(m.VMVMPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMVMPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_vm_policy\":null")
+		first = false
+	}
+
+	// handle nullable field vm_vm_policy_enabled
+	if m.VMVMPolicyEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_vm_policy_enabled\":")
+		bytes, err := swag.WriteJSON(m.VMVMPolicyEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMVMPolicyEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_vm_policy_enabled\":null")
+		first = false
+	}
+
+	// handle non nullable field vms with omitempty
+	if swag.IsZero(m.Vms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vms\":")
+		bytes, err := swag.WriteJSON(m.Vms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm placement group

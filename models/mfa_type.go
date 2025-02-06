@@ -32,6 +32,9 @@ const (
 
 	// MfaTypeMail captures enum value "Mail"
 	MfaTypeMail MfaType = "Mail"
+
+	// MfaTypeSms captures enum value "Sms"
+	MfaTypeSms MfaType = "Sms"
 )
 
 // for schema
@@ -39,7 +42,7 @@ var mfaTypeEnum []interface{}
 
 func init() {
 	var res []MfaType
-	if err := json.Unmarshal([]byte(`["Mail"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["Mail","Sms"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

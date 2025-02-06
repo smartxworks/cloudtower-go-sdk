@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,70 @@ type SecurityPolicyIngressEgressInputTarget struct {
 
 	// security groups
 	SecurityGroups *SecurityGroupWhereInput `json:"security_groups,omitempty"`
+
+	MarshalOpts *SecurityPolicyIngressEgressInputTargetMarshalOpts `json:"-"`
+}
+
+type SecurityPolicyIngressEgressInputTargetMarshalOpts struct {
+	SecurityGroups_Explicit_Null_When_Empty bool
+}
+
+func (m SecurityPolicyIngressEgressInputTarget) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field ips with omitempty
+	if swag.IsZero(m.Ips) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips\":")
+		bytes, err := swag.WriteJSON(m.Ips)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field label_groups with omitempty
+	if swag.IsZero(m.LabelGroups) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"label_groups\":")
+		bytes, err := swag.WriteJSON(m.LabelGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field security_groups
+	if m.SecurityGroups != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_groups\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityGroups_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_groups\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this security policy ingress egress input target

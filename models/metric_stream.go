@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"strconv"
@@ -31,6 +32,78 @@ type MetricStream struct {
 
 	// points
 	Points []*DataPoint `json:"points,omitempty"`
+
+	MarshalOpts *MetricStreamMarshalOpts `json:"-"`
+}
+
+type MetricStreamMarshalOpts struct {
+	Typename_Explicit_Null_When_Empty bool
+
+	Labels_Explicit_Null_When_Empty bool
+}
+
+func (m MetricStream) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field __typename
+	if m.Typename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":")
+		bytes, err := swag.WriteJSON(m.Typename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Typename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle nullable field labels
+	if m.Labels != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels\":")
+		bytes, err := swag.WriteJSON(m.Labels)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Labels_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels\":null")
+		first = false
+	}
+
+	// handle non nullable field points with omitempty
+	if swag.IsZero(m.Points) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"points\":")
+		bytes, err := swag.WriteJSON(m.Points)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this metric stream

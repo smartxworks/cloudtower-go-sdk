@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -25,6 +26,63 @@ type ExitMaintenanceModeInput struct {
 
 	// poweron vms
 	PoweronVms []string `json:"poweron_vms,omitempty"`
+
+	MarshalOpts *ExitMaintenanceModeInputMarshalOpts `json:"-"`
+}
+
+type ExitMaintenanceModeInputMarshalOpts struct {
+}
+
+func (m ExitMaintenanceModeInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field live_migrate_back_vms with omitempty
+	if swag.IsZero(m.LiveMigrateBackVms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"live_migrate_back_vms\":")
+		bytes, err := swag.WriteJSON(m.LiveMigrateBackVms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field offline_migrate_back_vms with omitempty
+	if swag.IsZero(m.OfflineMigrateBackVms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"offline_migrate_back_vms\":")
+		bytes, err := swag.WriteJSON(m.OfflineMigrateBackVms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field poweron_vms with omitempty
+	if swag.IsZero(m.PoweronVms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"poweron_vms\":")
+		bytes, err := swag.WriteJSON(m.PoweronVms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this exit maintenance mode input

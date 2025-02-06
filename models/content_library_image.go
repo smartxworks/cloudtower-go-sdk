@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -71,6 +72,284 @@ type ContentLibraryImage struct {
 
 	// vm templates
 	VMTemplates []*NestedVMTemplate `json:"vm_templates,omitempty"`
+
+	MarshalOpts *ContentLibraryImageMarshalOpts `json:"-"`
+}
+
+type ContentLibraryImageMarshalOpts struct {
+	CreatedAt_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Path_Explicit_Null_When_Empty bool
+
+	Size_Explicit_Null_When_Empty bool
+}
+
+func (m ContentLibraryImage) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field clusters with omitempty
+	if swag.IsZero(m.Clusters) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":")
+		bytes, err := swag.WriteJSON(m.Clusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field createdAt
+	if m.CreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"createdAt\":")
+		bytes, err := swag.WriteJSON(m.CreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"createdAt\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle non nullable field elf_image_uuids without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"elf_image_uuids\":")
+	bytes, err := swag.WriteJSON(m.ElfImageUuids)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle non nullable field elf_images with omitempty
+	if swag.IsZero(m.ElfImages) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_images\":")
+		bytes, err := swag.WriteJSON(m.ElfImages)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle non nullable field iscsi_luns with omitempty
+	if swag.IsZero(m.IscsiLuns) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns\":")
+		bytes, err := swag.WriteJSON(m.IscsiLuns)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field labels with omitempty
+	if swag.IsZero(m.Labels) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels\":")
+		bytes, err := swag.WriteJSON(m.Labels)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field path
+	if m.Path != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":")
+		bytes, err := swag.WriteJSON(m.Path)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Path_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":null")
+		first = false
+	}
+
+	// handle nullable field size
+	if m.Size != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":")
+		bytes, err := swag.WriteJSON(m.Size)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Size_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":null")
+		first = false
+	}
+
+	// handle non nullable field vm_disks with omitempty
+	if swag.IsZero(m.VMDisks) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_disks\":")
+		bytes, err := swag.WriteJSON(m.VMDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field vm_snapshots with omitempty
+	if swag.IsZero(m.VMSnapshots) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_snapshots\":")
+		bytes, err := swag.WriteJSON(m.VMSnapshots)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field vm_templates with omitempty
+	if swag.IsZero(m.VMTemplates) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_templates\":")
+		bytes, err := swag.WriteJSON(m.VMTemplates)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this content library image

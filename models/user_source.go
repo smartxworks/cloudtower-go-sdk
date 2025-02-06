@@ -38,6 +38,9 @@ const (
 
 	// UserSourceLOCAL captures enum value "LOCAL"
 	UserSourceLOCAL UserSource = "LOCAL"
+
+	// UserSourceSSO captures enum value "SSO"
+	UserSourceSSO UserSource = "SSO"
 )
 
 // for schema
@@ -45,7 +48,7 @@ var userSourceEnum []interface{}
 
 func init() {
 	var res []UserSource
-	if err := json.Unmarshal([]byte(`["AUTHN","LDAP","LOCAL"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["AUTHN","LDAP","LOCAL","SSO"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

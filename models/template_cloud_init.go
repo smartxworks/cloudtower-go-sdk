@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -36,6 +37,128 @@ type TemplateCloudInit struct {
 
 	// user data
 	UserData *string `json:"user_data,omitempty"`
+
+	MarshalOpts *TemplateCloudInitMarshalOpts `json:"-"`
+}
+
+type TemplateCloudInitMarshalOpts struct {
+	DefaultUserPassword_Explicit_Null_When_Empty bool
+
+	Hostname_Explicit_Null_When_Empty bool
+
+	UserData_Explicit_Null_When_Empty bool
+}
+
+func (m TemplateCloudInit) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field default_user_password
+	if m.DefaultUserPassword != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_user_password\":")
+		bytes, err := swag.WriteJSON(m.DefaultUserPassword)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultUserPassword_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_user_password\":null")
+		first = false
+	}
+
+	// handle nullable field hostname
+	if m.Hostname != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname\":")
+		bytes, err := swag.WriteJSON(m.Hostname)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Hostname_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname\":null")
+		first = false
+	}
+
+	// handle non nullable field nameservers with omitempty
+	if swag.IsZero(m.Nameservers) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nameservers\":")
+		bytes, err := swag.WriteJSON(m.Nameservers)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field networks with omitempty
+	if swag.IsZero(m.Networks) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"networks\":")
+		bytes, err := swag.WriteJSON(m.Networks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field public_keys with omitempty
+	if swag.IsZero(m.PublicKeys) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"public_keys\":")
+		bytes, err := swag.WriteJSON(m.PublicKeys)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field user_data
+	if m.UserData != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_data\":")
+		bytes, err := swag.WriteJSON(m.UserData)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UserData_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_data\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this template cloud init

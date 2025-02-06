@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -41,6 +42,134 @@ type UserRoleNext struct {
 
 	// users
 	Users []*NestedUser `json:"users,omitempty"`
+
+	MarshalOpts *UserRoleNextMarshalOpts `json:"-"`
+}
+
+type UserRoleNextMarshalOpts struct {
+	ID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Platform_Explicit_Null_When_Empty bool
+
+	Preset_Explicit_Null_When_Empty bool
+}
+
+func (m UserRoleNext) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field actions without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"actions\":")
+	bytes, err := swag.WriteJSON(m.Actions)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field platform
+	if m.Platform != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"platform\":")
+		bytes, err := swag.WriteJSON(m.Platform)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Platform_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"platform\":null")
+		first = false
+	}
+
+	// handle nullable field preset
+	if m.Preset != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"preset\":")
+		bytes, err := swag.WriteJSON(m.Preset)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Preset_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"preset\":null")
+		first = false
+	}
+
+	// handle non nullable field users with omitempty
+	if swag.IsZero(m.Users) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"users\":")
+		bytes, err := swag.WriteJSON(m.Users)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this user role next

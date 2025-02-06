@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,54 @@ type UpdateAccessRestrictionParams struct {
 	// access mode
 	// Required: true
 	AccessMode *AccessMode `json:"access_mode"`
+
+	MarshalOpts *UpdateAccessRestrictionParamsMarshalOpts `json:"-"`
+}
+
+type UpdateAccessRestrictionParamsMarshalOpts struct {
+	AccessMode_Explicit_Null_When_Empty bool
+}
+
+func (m UpdateAccessRestrictionParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field access_list without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"access_list\":")
+	bytes, err := swag.WriteJSON(m.AccessList)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field access_mode
+	if m.AccessMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"access_mode\":")
+		bytes, err := swag.WriteJSON(m.AccessMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AccessMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"access_mode\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this update access restriction params

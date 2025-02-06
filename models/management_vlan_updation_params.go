@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,64 @@ type ManagementVlanUpdationParams struct {
 	// where
 	// Required: true
 	Where *VlanWhereInput `json:"where"`
+
+	MarshalOpts *ManagementVlanUpdationParamsMarshalOpts `json:"-"`
+}
+
+type ManagementVlanUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m ManagementVlanUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this management vlan updation params
@@ -171,6 +230,100 @@ type ManagementVlanUpdationParamsData struct {
 
 	// vlan id
 	VlanID *VlanID `json:"vlan_id,omitempty"`
+
+	MarshalOpts *ManagementVlanUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type ManagementVlanUpdationParamsDataMarshalOpts struct {
+	GatewayIP_Explicit_Null_When_Empty bool
+
+	Subnetmask_Explicit_Null_When_Empty bool
+
+	VlanID_Explicit_Null_When_Empty bool
+}
+
+func (m ManagementVlanUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field extra_ip with omitempty
+	if swag.IsZero(m.ExtraIP) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"extra_ip\":")
+		bytes, err := swag.WriteJSON(m.ExtraIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field gateway_ip
+	if m.GatewayIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway_ip\":")
+		bytes, err := swag.WriteJSON(m.GatewayIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.GatewayIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway_ip\":null")
+		first = false
+	}
+
+	// handle nullable field subnetmask
+	if m.Subnetmask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"subnetmask\":")
+		bytes, err := swag.WriteJSON(m.Subnetmask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Subnetmask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"subnetmask\":null")
+		first = false
+	}
+
+	// handle nullable field vlan_id
+	if m.VlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_id\":")
+		bytes, err := swag.WriteJSON(m.VlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this management vlan updation params data

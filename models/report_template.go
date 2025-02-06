@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -53,6 +54,190 @@ type ReportTemplate struct {
 
 	// tasks
 	Tasks []*NestedReportTask `json:"tasks,omitempty"`
+
+	MarshalOpts *ReportTemplateMarshalOpts `json:"-"`
+}
+
+type ReportTemplateMarshalOpts struct {
+	CreatedAt_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Preset_Explicit_Null_When_Empty bool
+
+	TaskNum_Explicit_Null_When_Empty bool
+}
+
+func (m ReportTemplate) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field createdAt
+	if m.CreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"createdAt\":")
+		bytes, err := swag.WriteJSON(m.CreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"createdAt\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle non nullable field execute_plan without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"execute_plan\":")
+	bytes, err := swag.WriteJSON(m.ExecutePlan)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field preset
+	if m.Preset != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"preset\":")
+		bytes, err := swag.WriteJSON(m.Preset)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Preset_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"preset\":null")
+		first = false
+	}
+
+	// handle non nullable field resource_meta without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"resource_meta\":")
+	bytes, err := swag.WriteJSON(m.ResourceMeta)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field task_num
+	if m.TaskNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"task_num\":")
+		bytes, err := swag.WriteJSON(m.TaskNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TaskNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"task_num\":null")
+		first = false
+	}
+
+	// handle non nullable field tasks with omitempty
+	if swag.IsZero(m.Tasks) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"tasks\":")
+		bytes, err := swag.WriteJSON(m.Tasks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this report template

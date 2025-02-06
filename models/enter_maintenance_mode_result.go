@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,54 @@ type EnterMaintenanceModeResult struct {
 	// shutdown vms
 	// Required: true
 	ShutdownVms []*ShutdownVMID `json:"shutdownVms"`
+
+	MarshalOpts *EnterMaintenanceModeResultMarshalOpts `json:"-"`
+}
+
+type EnterMaintenanceModeResultMarshalOpts struct {
+	Done_Explicit_Null_When_Empty bool
+}
+
+func (m EnterMaintenanceModeResult) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field done
+	if m.Done != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"done\":")
+		bytes, err := swag.WriteJSON(m.Done)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Done_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"done\":null")
+		first = false
+	}
+
+	// handle non nullable field shutdownVms without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"shutdownVms\":")
+	bytes, err := swag.WriteJSON(m.ShutdownVms)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this enter maintenance mode result

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -93,6 +94,518 @@ type BackupRestorePoint struct {
 
 	// vm name
 	VMName *string `json:"vm_name,omitempty"`
+
+	MarshalOpts *BackupRestorePointMarshalOpts `json:"-"`
+}
+
+type BackupRestorePointMarshalOpts struct {
+	BackupPlan_Explicit_Null_When_Empty bool
+
+	BackupTargetExecution_Explicit_Null_When_Empty bool
+
+	ClusterLocalID_Explicit_Null_When_Empty bool
+
+	Compressed_Explicit_Null_When_Empty bool
+
+	CompressionRatio_Explicit_Null_When_Empty bool
+
+	Creation_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LocalCreatedAt_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	LogicalSize_Explicit_Null_When_Empty bool
+
+	ParentRestorePoint_Explicit_Null_When_Empty bool
+
+	PhysicalSize_Explicit_Null_When_Empty bool
+
+	Size_Explicit_Null_When_Empty bool
+
+	Slice_Explicit_Null_When_Empty bool
+
+	SnapshotConsistentType_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+
+	ValidCapacity_Explicit_Null_When_Empty bool
+
+	ValidSize_Explicit_Null_When_Empty bool
+
+	VM_Explicit_Null_When_Empty bool
+
+	VMLocalID_Explicit_Null_When_Empty bool
+
+	VMName_Explicit_Null_When_Empty bool
+}
+
+func (m BackupRestorePoint) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field backup_plan
+	if m.BackupPlan != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_plan\":")
+		bytes, err := swag.WriteJSON(m.BackupPlan)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupPlan_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_plan\":null")
+		first = false
+	}
+
+	// handle non nullable field backup_restore_executions with omitempty
+	if swag.IsZero(m.BackupRestoreExecutions) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_restore_executions\":")
+		bytes, err := swag.WriteJSON(m.BackupRestoreExecutions)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field backup_target_execution
+	if m.BackupTargetExecution != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_target_execution\":")
+		bytes, err := swag.WriteJSON(m.BackupTargetExecution)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupTargetExecution_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_target_execution\":null")
+		first = false
+	}
+
+	// handle nullable field cluster_local_id
+	if m.ClusterLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_local_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_local_id\":null")
+		first = false
+	}
+
+	// handle nullable field compressed
+	if m.Compressed != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"compressed\":")
+		bytes, err := swag.WriteJSON(m.Compressed)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Compressed_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"compressed\":null")
+		first = false
+	}
+
+	// handle nullable field compression_ratio
+	if m.CompressionRatio != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"compression_ratio\":")
+		bytes, err := swag.WriteJSON(m.CompressionRatio)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CompressionRatio_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"compression_ratio\":null")
+		first = false
+	}
+
+	// handle nullable field creation
+	if m.Creation != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"creation\":")
+		bytes, err := swag.WriteJSON(m.Creation)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Creation_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"creation\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field local_created_at
+	if m.LocalCreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":")
+		bytes, err := swag.WriteJSON(m.LocalCreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalCreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field logical_size
+	if m.LogicalSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"logical_size\":")
+		bytes, err := swag.WriteJSON(m.LogicalSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LogicalSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"logical_size\":null")
+		first = false
+	}
+
+	// handle nullable field parent_restore_point
+	if m.ParentRestorePoint != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent_restore_point\":")
+		bytes, err := swag.WriteJSON(m.ParentRestorePoint)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ParentRestorePoint_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent_restore_point\":null")
+		first = false
+	}
+
+	// handle nullable field physical_size
+	if m.PhysicalSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"physical_size\":")
+		bytes, err := swag.WriteJSON(m.PhysicalSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PhysicalSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"physical_size\":null")
+		first = false
+	}
+
+	// handle nullable field size
+	if m.Size != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":")
+		bytes, err := swag.WriteJSON(m.Size)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Size_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":null")
+		first = false
+	}
+
+	// handle nullable field slice
+	if m.Slice != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"slice\":")
+		bytes, err := swag.WriteJSON(m.Slice)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Slice_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"slice\":null")
+		first = false
+	}
+
+	// handle nullable field snapshot_consistent_type
+	if m.SnapshotConsistentType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_consistent_type\":")
+		bytes, err := swag.WriteJSON(m.SnapshotConsistentType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotConsistentType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_consistent_type\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	// handle nullable field valid_capacity
+	if m.ValidCapacity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_capacity\":")
+		bytes, err := swag.WriteJSON(m.ValidCapacity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ValidCapacity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_capacity\":null")
+		first = false
+	}
+
+	// handle nullable field valid_size
+	if m.ValidSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_size\":")
+		bytes, err := swag.WriteJSON(m.ValidSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ValidSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_size\":null")
+		first = false
+	}
+
+	// handle nullable field vm
+	if m.VM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":")
+		bytes, err := swag.WriteJSON(m.VM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":null")
+		first = false
+	}
+
+	// handle nullable field vm_local_id
+	if m.VMLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_local_id\":")
+		bytes, err := swag.WriteJSON(m.VMLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_local_id\":null")
+		first = false
+	}
+
+	// handle nullable field vm_name
+	if m.VMName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_name\":")
+		bytes, err := swag.WriteJSON(m.VMName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_name\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup restore point

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -73,6 +74,322 @@ type DiscoveredHost struct {
 
 	// zbs spec
 	ZbsSpec *string `json:"zbs_spec,omitempty"`
+
+	MarshalOpts *DiscoveredHostMarshalOpts `json:"-"`
+}
+
+type DiscoveredHostMarshalOpts struct {
+	AllFlash_Explicit_Null_When_Empty bool
+
+	Deployed_Explicit_Null_When_Empty bool
+
+	HostIP_Explicit_Null_When_Empty bool
+
+	HostUUID_Explicit_Null_When_Empty bool
+
+	Hostname_Explicit_Null_When_Empty bool
+
+	IpmiIP_Explicit_Null_When_Empty bool
+
+	IsOsInRaid1_Explicit_Null_When_Empty bool
+
+	Product_Explicit_Null_When_Empty bool
+
+	Serial_Explicit_Null_When_Empty bool
+
+	Sockets_Explicit_Null_When_Empty bool
+
+	Version_Explicit_Null_When_Empty bool
+
+	ZbsSpec_Explicit_Null_When_Empty bool
+}
+
+func (m DiscoveredHost) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field all_flash
+	if m.AllFlash != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"all_flash\":")
+		bytes, err := swag.WriteJSON(m.AllFlash)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AllFlash_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"all_flash\":null")
+		first = false
+	}
+
+	// handle nullable field deployed
+	if m.Deployed != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"deployed\":")
+		bytes, err := swag.WriteJSON(m.Deployed)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Deployed_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"deployed\":null")
+		first = false
+	}
+
+	// handle non nullable field dimms with omitempty
+	if swag.IsZero(m.Dimms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dimms\":")
+		bytes, err := swag.WriteJSON(m.Dimms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field disks without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"disks\":")
+	bytes, err := swag.WriteJSON(m.Disks)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field host_ip
+	if m.HostIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_ip\":")
+		bytes, err := swag.WriteJSON(m.HostIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_ip\":null")
+		first = false
+	}
+
+	// handle nullable field host_uuid
+	if m.HostUUID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_uuid\":")
+		bytes, err := swag.WriteJSON(m.HostUUID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostUUID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_uuid\":null")
+		first = false
+	}
+
+	// handle nullable field hostname
+	if m.Hostname != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname\":")
+		bytes, err := swag.WriteJSON(m.Hostname)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Hostname_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname\":null")
+		first = false
+	}
+
+	// handle non nullable field ifaces without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"ifaces\":")
+	bytes, err := swag.WriteJSON(m.Ifaces)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field ipmi_ip
+	if m.IpmiIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipmi_ip\":")
+		bytes, err := swag.WriteJSON(m.IpmiIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpmiIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipmi_ip\":null")
+		first = false
+	}
+
+	// handle nullable field is_os_in_raid1
+	if m.IsOsInRaid1 != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_os_in_raid1\":")
+		bytes, err := swag.WriteJSON(m.IsOsInRaid1)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsOsInRaid1_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_os_in_raid1\":null")
+		first = false
+	}
+
+	// handle nullable field product
+	if m.Product != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"product\":")
+		bytes, err := swag.WriteJSON(m.Product)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Product_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"product\":null")
+		first = false
+	}
+
+	// handle nullable field serial
+	if m.Serial != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"serial\":")
+		bytes, err := swag.WriteJSON(m.Serial)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Serial_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"serial\":null")
+		first = false
+	}
+
+	// handle nullable field sockets
+	if m.Sockets != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sockets\":")
+		bytes, err := swag.WriteJSON(m.Sockets)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Sockets_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sockets\":null")
+		first = false
+	}
+
+	// handle nullable field version
+	if m.Version != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":")
+		bytes, err := swag.WriteJSON(m.Version)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Version_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":null")
+		first = false
+	}
+
+	// handle nullable field zbs_spec
+	if m.ZbsSpec != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zbs_spec\":")
+		bytes, err := swag.WriteJSON(m.ZbsSpec)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ZbsSpec_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zbs_spec\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this discovered host

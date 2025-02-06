@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -35,6 +36,98 @@ type NestedSnapshotGroupVMInfo struct {
 	// vm snapshot status
 	// Required: true
 	VMSnapshotStatus *ProtectSnapshotStatus `json:"vm_snapshot_status"`
+
+	MarshalOpts *NestedSnapshotGroupVMInfoMarshalOpts `json:"-"`
+}
+
+type NestedSnapshotGroupVMInfoMarshalOpts struct {
+	VMID_Explicit_Null_When_Empty bool
+
+	VMName_Explicit_Null_When_Empty bool
+
+	VMSnapshotStatus_Explicit_Null_When_Empty bool
+}
+
+func (m NestedSnapshotGroupVMInfo) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field disks without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"disks\":")
+	bytes, err := swag.WriteJSON(m.Disks)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field vm_id
+	if m.VMID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_id\":")
+		bytes, err := swag.WriteJSON(m.VMID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_id\":null")
+		first = false
+	}
+
+	// handle nullable field vm_name
+	if m.VMName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_name\":")
+		bytes, err := swag.WriteJSON(m.VMName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_name\":null")
+		first = false
+	}
+
+	// handle nullable field vm_snapshot_status
+	if m.VMSnapshotStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_snapshot_status\":")
+		bytes, err := swag.WriteJSON(m.VMSnapshotStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMSnapshotStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_snapshot_status\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested snapshot group Vm info

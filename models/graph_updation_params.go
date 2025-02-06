@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type GraphUpdationParams struct {
 	// where
 	// Required: true
 	Where *GraphWhereInput `json:"where"`
+
+	MarshalOpts *GraphUpdationParamsMarshalOpts `json:"-"`
+}
+
+type GraphUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m GraphUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this graph updation params
@@ -210,6 +269,400 @@ type GraphUpdationParamsData struct {
 
 	// vms
 	Vms *VMWhereInput `json:"vms,omitempty"`
+
+	MarshalOpts *GraphUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type GraphUpdationParamsDataMarshalOpts struct {
+	Cluster_Explicit_Null_When_Empty bool
+
+	Disks_Explicit_Null_When_Empty bool
+
+	Hosts_Explicit_Null_When_Empty bool
+
+	Luns_Explicit_Null_When_Empty bool
+
+	MetricCount_Explicit_Null_When_Empty bool
+
+	MetricName_Explicit_Null_When_Empty bool
+
+	MetricType_Explicit_Null_When_Empty bool
+
+	Network_Explicit_Null_When_Empty bool
+
+	Nics_Explicit_Null_When_Empty bool
+
+	ResourceType_Explicit_Null_When_Empty bool
+
+	Service_Explicit_Null_When_Empty bool
+
+	Title_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+
+	VMNics_Explicit_Null_When_Empty bool
+
+	VMVolumes_Explicit_Null_When_Empty bool
+
+	Vms_Explicit_Null_When_Empty bool
+}
+
+func (m GraphUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster
+	if m.Cluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":")
+		bytes, err := swag.WriteJSON(m.Cluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle non nullable field connect_id with omitempty
+	if swag.IsZero(m.ConnectID) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"connect_id\":")
+		bytes, err := swag.WriteJSON(m.ConnectID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field disks
+	if m.Disks != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disks\":")
+		bytes, err := swag.WriteJSON(m.Disks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Disks_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disks\":null")
+		first = false
+	}
+
+	// handle nullable field hosts
+	if m.Hosts != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hosts\":")
+		bytes, err := swag.WriteJSON(m.Hosts)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Hosts_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hosts\":null")
+		first = false
+	}
+
+	// handle non nullable field instance_ids with omitempty
+	if swag.IsZero(m.InstanceIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"instance_ids\":")
+		bytes, err := swag.WriteJSON(m.InstanceIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field luns
+	if m.Luns != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"luns\":")
+		bytes, err := swag.WriteJSON(m.Luns)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Luns_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"luns\":null")
+		first = false
+	}
+
+	// handle nullable field metric_count
+	if m.MetricCount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_count\":")
+		bytes, err := swag.WriteJSON(m.MetricCount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MetricCount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_count\":null")
+		first = false
+	}
+
+	// handle nullable field metric_name
+	if m.MetricName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_name\":")
+		bytes, err := swag.WriteJSON(m.MetricName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MetricName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_name\":null")
+		first = false
+	}
+
+	// handle nullable field metric_type
+	if m.MetricType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_type\":")
+		bytes, err := swag.WriteJSON(m.MetricType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MetricType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_type\":null")
+		first = false
+	}
+
+	// handle nullable field network
+	if m.Network != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network\":")
+		bytes, err := swag.WriteJSON(m.Network)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Network_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network\":null")
+		first = false
+	}
+
+	// handle nullable field nics
+	if m.Nics != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics\":")
+		bytes, err := swag.WriteJSON(m.Nics)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Nics_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics\":null")
+		first = false
+	}
+
+	// handle nullable field resource_type
+	if m.ResourceType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":")
+		bytes, err := swag.WriteJSON(m.ResourceType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":null")
+		first = false
+	}
+
+	// handle nullable field service
+	if m.Service != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"service\":")
+		bytes, err := swag.WriteJSON(m.Service)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Service_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"service\":null")
+		first = false
+	}
+
+	// handle nullable field title
+	if m.Title != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"title\":")
+		bytes, err := swag.WriteJSON(m.Title)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Title_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"title\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	// handle nullable field vmNics
+	if m.VMNics != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmNics\":")
+		bytes, err := swag.WriteJSON(m.VMNics)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMNics_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmNics\":null")
+		first = false
+	}
+
+	// handle nullable field vmVolumes
+	if m.VMVolumes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmVolumes\":")
+		bytes, err := swag.WriteJSON(m.VMVolumes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMVolumes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmVolumes\":null")
+		first = false
+	}
+
+	// handle nullable field vms
+	if m.Vms != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vms\":")
+		bytes, err := swag.WriteJSON(m.Vms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vms_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vms\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this graph updation params data

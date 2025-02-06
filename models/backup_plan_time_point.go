@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -35,6 +36,122 @@ type BackupPlanTimePoint struct {
 
 	// weekday
 	Weekday *WeekdayTypeEnum `json:"weekday,omitempty"`
+
+	MarshalOpts *BackupPlanTimePointMarshalOpts `json:"-"`
+}
+
+type BackupPlanTimePointMarshalOpts struct {
+	Date_Explicit_Null_When_Empty bool
+
+	Hour_Explicit_Null_When_Empty bool
+
+	Minute_Explicit_Null_When_Empty bool
+
+	Weekday_Explicit_Null_When_Empty bool
+}
+
+func (m BackupPlanTimePoint) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field date
+	if m.Date != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"date\":")
+		bytes, err := swag.WriteJSON(m.Date)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Date_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"date\":null")
+		first = false
+	}
+
+	// handle non nullable field date_position with omitempty
+	if swag.IsZero(m.DatePosition) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"date_position\":")
+		bytes, err := swag.WriteJSON(m.DatePosition)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field hour
+	if m.Hour != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hour\":")
+		bytes, err := swag.WriteJSON(m.Hour)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Hour_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hour\":null")
+		first = false
+	}
+
+	// handle nullable field minute
+	if m.Minute != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"minute\":")
+		bytes, err := swag.WriteJSON(m.Minute)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Minute_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"minute\":null")
+		first = false
+	}
+
+	// handle nullable field weekday
+	if m.Weekday != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"weekday\":")
+		bytes, err := swag.WriteJSON(m.Weekday)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Weekday_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"weekday\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup plan time point

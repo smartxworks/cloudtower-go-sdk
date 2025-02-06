@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -58,6 +59,270 @@ type VirtualPrivateCloud struct {
 
 	// subnets
 	Subnets []*NestedVirtualPrivateCloudSubnet `json:"subnets,omitempty"`
+
+	// vpc service
+	// Required: true
+	VpcService *NestedVirtualPrivateCloudService `json:"vpc_service"`
+
+	MarshalOpts *VirtualPrivateCloudMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudMarshalOpts struct {
+	AssociateExternalSubnetNum_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	Mtu_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	VpcService_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloud) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field associate_external_subnet_num
+	if m.AssociateExternalSubnetNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"associate_external_subnet_num\":")
+		bytes, err := swag.WriteJSON(m.AssociateExternalSubnetNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AssociateExternalSubnetNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"associate_external_subnet_num\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle non nullable field isolation_policies with omitempty
+	if swag.IsZero(m.IsolationPolicies) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"isolation_policies\":")
+		bytes, err := swag.WriteJSON(m.IsolationPolicies)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field mtu
+	if m.Mtu != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mtu\":")
+		bytes, err := swag.WriteJSON(m.Mtu)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Mtu_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mtu\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field route_tables with omitempty
+	if swag.IsZero(m.RouteTables) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"route_tables\":")
+		bytes, err := swag.WriteJSON(m.RouteTables)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field security_groups with omitempty
+	if swag.IsZero(m.SecurityGroups) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_groups\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field security_policies with omitempty
+	if swag.IsZero(m.SecurityPolicies) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_policies\":")
+		bytes, err := swag.WriteJSON(m.SecurityPolicies)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field subnets with omitempty
+	if swag.IsZero(m.Subnets) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"subnets\":")
+		bytes, err := swag.WriteJSON(m.Subnets)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vpc_service
+	if m.VpcService != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_service\":")
+		bytes, err := swag.WriteJSON(m.VpcService)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcService_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_service\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud
@@ -97,6 +362,10 @@ func (m *VirtualPrivateCloud) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSubnets(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -282,6 +551,26 @@ func (m *VirtualPrivateCloud) validateSubnets(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VirtualPrivateCloud) validateVpcService(formats strfmt.Registry) error {
+
+	if err := validate.Required("vpc_service", "body", m.VpcService); err != nil {
+		return err
+	}
+
+	if m.VpcService != nil {
+		if err := m.VpcService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this virtual private cloud based on the context it is used
 func (m *VirtualPrivateCloud) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -307,6 +596,10 @@ func (m *VirtualPrivateCloud) ContextValidate(ctx context.Context, formats strfm
 	}
 
 	if err := m.contextValidateSubnets(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -427,6 +720,22 @@ func (m *VirtualPrivateCloud) contextValidateSubnets(ctx context.Context, format
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloud) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcService != nil {
+		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
 	}
 
 	return nil

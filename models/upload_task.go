@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -56,6 +57,232 @@ type UploadTask struct {
 	// updated at
 	// Required: true
 	UpdatedAt *string `json:"updatedAt"`
+
+	MarshalOpts *UploadTaskMarshalOpts `json:"-"`
+}
+
+type UploadTaskMarshalOpts struct {
+	ChunkSize_Explicit_Null_When_Empty bool
+
+	CurrentChunk_Explicit_Null_When_Empty bool
+
+	FinishedAt_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	ResourceType_Explicit_Null_When_Empty bool
+
+	Size_Explicit_Null_When_Empty bool
+
+	StartedAt_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	UpdatedAt_Explicit_Null_When_Empty bool
+}
+
+func (m UploadTask) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field args with omitempty
+	if swag.IsZero(m.Args) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"args\":")
+		bytes, err := swag.WriteJSON(m.Args)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field chunk_size
+	if m.ChunkSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_size\":")
+		bytes, err := swag.WriteJSON(m.ChunkSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ChunkSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_size\":null")
+		first = false
+	}
+
+	// handle nullable field current_chunk
+	if m.CurrentChunk != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"current_chunk\":")
+		bytes, err := swag.WriteJSON(m.CurrentChunk)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CurrentChunk_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"current_chunk\":null")
+		first = false
+	}
+
+	// handle nullable field finished_at
+	if m.FinishedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"finished_at\":")
+		bytes, err := swag.WriteJSON(m.FinishedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FinishedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"finished_at\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field resource_type
+	if m.ResourceType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":")
+		bytes, err := swag.WriteJSON(m.ResourceType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":null")
+		first = false
+	}
+
+	// handle nullable field size
+	if m.Size != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":")
+		bytes, err := swag.WriteJSON(m.Size)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Size_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":null")
+		first = false
+	}
+
+	// handle nullable field started_at
+	if m.StartedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"started_at\":")
+		bytes, err := swag.WriteJSON(m.StartedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StartedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"started_at\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle nullable field updatedAt
+	if m.UpdatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"updatedAt\":")
+		bytes, err := swag.WriteJSON(m.UpdatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UpdatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"updatedAt\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this upload task

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -24,6 +25,49 @@ type ApplicationVMSpecNetwork struct {
 
 	// nics
 	Nics []*ApplicationVMSpecNic `json:"nics,omitempty"`
+
+	MarshalOpts *ApplicationVMSpecNetworkMarshalOpts `json:"-"`
+}
+
+type ApplicationVMSpecNetworkMarshalOpts struct {
+}
+
+func (m ApplicationVMSpecNetwork) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field dns with omitempty
+	if swag.IsZero(m.DNS) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dns\":")
+		bytes, err := swag.WriteJSON(m.DNS)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field nics with omitempty
+	if swag.IsZero(m.Nics) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics\":")
+		bytes, err := swag.WriteJSON(m.Nics)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this application Vm spec network

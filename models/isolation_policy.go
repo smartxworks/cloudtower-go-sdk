@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -41,9 +42,178 @@ type IsolationPolicy struct {
 	// Required: true
 	Mode *IsolationMode `json:"mode"`
 
+	// statistics
+	Statistics *NestedSecurityPolicyStatistics `json:"statistics,omitempty"`
+
 	// vm
 	// Required: true
 	VM *NestedVM `json:"vm"`
+
+	MarshalOpts *IsolationPolicyMarshalOpts `json:"-"`
+}
+
+type IsolationPolicyMarshalOpts struct {
+	EverouteCluster_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Mode_Explicit_Null_When_Empty bool
+
+	Statistics_Explicit_Null_When_Empty bool
+
+	VM_Explicit_Null_When_Empty bool
+}
+
+func (m IsolationPolicy) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field egress with omitempty
+	if swag.IsZero(m.Egress) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress\":")
+		bytes, err := swag.WriteJSON(m.Egress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field everoute_cluster
+	if m.EverouteCluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"everoute_cluster\":")
+		bytes, err := swag.WriteJSON(m.EverouteCluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EverouteCluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"everoute_cluster\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle non nullable field ingress with omitempty
+	if swag.IsZero(m.Ingress) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress\":")
+		bytes, err := swag.WriteJSON(m.Ingress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field labels with omitempty
+	if swag.IsZero(m.Labels) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels\":")
+		bytes, err := swag.WriteJSON(m.Labels)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field mode
+	if m.Mode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mode\":")
+		bytes, err := swag.WriteJSON(m.Mode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Mode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mode\":null")
+		first = false
+	}
+
+	// handle nullable field statistics
+	if m.Statistics != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"statistics\":")
+		bytes, err := swag.WriteJSON(m.Statistics)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Statistics_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"statistics\":null")
+		first = false
+	}
+
+	// handle nullable field vm
+	if m.VM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":")
+		bytes, err := swag.WriteJSON(m.VM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this isolation policy
@@ -71,6 +241,10 @@ func (m *IsolationPolicy) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMode(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStatistics(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -215,6 +389,25 @@ func (m *IsolationPolicy) validateMode(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IsolationPolicy) validateStatistics(formats strfmt.Registry) error {
+	if swag.IsZero(m.Statistics) { // not required
+		return nil
+	}
+
+	if m.Statistics != nil {
+		if err := m.Statistics.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("statistics")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("statistics")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IsolationPolicy) validateVM(formats strfmt.Registry) error {
 
 	if err := validate.Required("vm", "body", m.VM); err != nil {
@@ -256,6 +449,10 @@ func (m *IsolationPolicy) ContextValidate(ctx context.Context, formats strfmt.Re
 	}
 
 	if err := m.contextValidateMode(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatistics(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -353,6 +550,22 @@ func (m *IsolationPolicy) contextValidateMode(ctx context.Context, formats strfm
 				return ve.ValidateName("mode")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("mode")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IsolationPolicy) contextValidateStatistics(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Statistics != nil {
+		if err := m.Statistics.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("statistics")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("statistics")
 			}
 			return err
 		}

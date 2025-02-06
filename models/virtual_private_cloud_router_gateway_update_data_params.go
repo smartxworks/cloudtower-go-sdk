@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -30,6 +31,92 @@ type VirtualPrivateCloudRouterGatewayUpdateDataParams struct {
 
 	// rules
 	Rules []*VirtualPrivateCloudRouterGatewayRuleInputType `json:"rules,omitempty"`
+
+	MarshalOpts *VirtualPrivateCloudRouterGatewayUpdateDataParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudRouterGatewayUpdateDataParamsMarshalOpts struct {
+	ExternalIP_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudRouterGatewayUpdateDataParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field associated_subnets_ids with omitempty
+	if swag.IsZero(m.AssociatedSubnetsIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"associated_subnets_ids\":")
+		bytes, err := swag.WriteJSON(m.AssociatedSubnetsIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field external_ip
+	if m.ExternalIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":")
+		bytes, err := swag.WriteJSON(m.ExternalIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExternalIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field rules with omitempty
+	if swag.IsZero(m.Rules) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rules\":")
+		bytes, err := swag.WriteJSON(m.Rules)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud router gateway update data params

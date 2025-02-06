@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -33,6 +34,100 @@ type VirtualPrivateCloudRouteTableCreationParams struct {
 	// vpc id
 	// Required: true
 	VpcID *string `json:"vpc_id"`
+
+	MarshalOpts *VirtualPrivateCloudRouteTableCreationParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudRouteTableCreationParamsMarshalOpts struct {
+	Description_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	VpcID_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudRouteTableCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field routes with omitempty
+	if swag.IsZero(m.Routes) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"routes\":")
+		bytes, err := swag.WriteJSON(m.Routes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vpc_id
+	if m.VpcID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":")
+		bytes, err := swag.WriteJSON(m.VpcID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud route table creation params

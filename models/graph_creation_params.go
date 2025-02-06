@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -61,6 +62,266 @@ type GraphCreationParams struct {
 	// view id
 	// Required: true
 	ViewID *string `json:"view_id"`
+
+	MarshalOpts *GraphCreationParamsMarshalOpts `json:"-"`
+}
+
+type GraphCreationParamsMarshalOpts struct {
+	ClusterID_Explicit_Null_When_Empty bool
+
+	MetricCount_Explicit_Null_When_Empty bool
+
+	MetricName_Explicit_Null_When_Empty bool
+
+	MetricType_Explicit_Null_When_Empty bool
+
+	Network_Explicit_Null_When_Empty bool
+
+	ResourceType_Explicit_Null_When_Empty bool
+
+	Service_Explicit_Null_When_Empty bool
+
+	Title_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+
+	ViewID_Explicit_Null_When_Empty bool
+}
+
+func (m GraphCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle non nullable field connect_id without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"connect_id\":")
+	bytes, err := swag.WriteJSON(m.ConnectID)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle non nullable field instance_ids with omitempty
+	if swag.IsZero(m.InstanceIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"instance_ids\":")
+		bytes, err := swag.WriteJSON(m.InstanceIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field metric_count
+	if m.MetricCount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_count\":")
+		bytes, err := swag.WriteJSON(m.MetricCount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MetricCount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_count\":null")
+		first = false
+	}
+
+	// handle nullable field metric_name
+	if m.MetricName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_name\":")
+		bytes, err := swag.WriteJSON(m.MetricName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MetricName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_name\":null")
+		first = false
+	}
+
+	// handle nullable field metric_type
+	if m.MetricType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_type\":")
+		bytes, err := swag.WriteJSON(m.MetricType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MetricType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric_type\":null")
+		first = false
+	}
+
+	// handle nullable field network
+	if m.Network != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network\":")
+		bytes, err := swag.WriteJSON(m.Network)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Network_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network\":null")
+		first = false
+	}
+
+	// handle nullable field resource_type
+	if m.ResourceType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":")
+		bytes, err := swag.WriteJSON(m.ResourceType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":null")
+		first = false
+	}
+
+	// handle nullable field service
+	if m.Service != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"service\":")
+		bytes, err := swag.WriteJSON(m.Service)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Service_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"service\":null")
+		first = false
+	}
+
+	// handle nullable field title
+	if m.Title != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"title\":")
+		bytes, err := swag.WriteJSON(m.Title)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Title_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"title\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	// handle nullable field view_id
+	if m.ViewID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"view_id\":")
+		bytes, err := swag.WriteJSON(m.ViewID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ViewID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"view_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this graph creation params

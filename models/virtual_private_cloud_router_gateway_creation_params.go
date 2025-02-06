@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -42,6 +43,132 @@ type VirtualPrivateCloudRouterGatewayCreationParams struct {
 	// vpc id
 	// Required: true
 	VpcID *string `json:"vpc_id"`
+
+	MarshalOpts *VirtualPrivateCloudRouterGatewayCreationParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudRouterGatewayCreationParamsMarshalOpts struct {
+	ExternalIP_Explicit_Null_When_Empty bool
+
+	ExternalSubnetID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	VpcID_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudRouterGatewayCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field associated_subnets_ids without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"associated_subnets_ids\":")
+	bytes, err := swag.WriteJSON(m.AssociatedSubnetsIds)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field external_ip
+	if m.ExternalIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":")
+		bytes, err := swag.WriteJSON(m.ExternalIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExternalIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":null")
+		first = false
+	}
+
+	// handle nullable field external_subnet_id
+	if m.ExternalSubnetID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_subnet_id\":")
+		bytes, err := swag.WriteJSON(m.ExternalSubnetID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExternalSubnetID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_subnet_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field rules without omitempty
+	if !first {
+		b.WriteString(",")
+	}
+	b.WriteString("\"rules\":")
+	bytes, err := swag.WriteJSON(m.Rules)
+	if err != nil {
+		return nil, err
+	}
+	b.Write(bytes)
+	first = false
+
+	// handle nullable field vpc_id
+	if m.VpcID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":")
+		bytes, err := swag.WriteJSON(m.VpcID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud router gateway creation params

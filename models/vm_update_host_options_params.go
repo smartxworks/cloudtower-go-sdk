@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VMUpdateHostOptionsParams struct {
 	// where
 	// Required: true
 	Where *VMWhereInput `json:"where"`
+
+	MarshalOpts *VMUpdateHostOptionsParamsMarshalOpts `json:"-"`
+}
+
+type VMUpdateHostOptionsParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateHostOptionsParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm update host options params
@@ -167,6 +226,70 @@ type VMUpdateHostOptionsParamsData struct {
 
 	// ntp servers
 	NtpServers []string `json:"ntp_servers,omitempty"`
+
+	MarshalOpts *VMUpdateHostOptionsParamsDataMarshalOpts `json:"-"`
+}
+
+type VMUpdateHostOptionsParamsDataMarshalOpts struct {
+	Hostname_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateHostOptionsParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field dns_servers with omitempty
+	if swag.IsZero(m.DNSServers) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dns_servers\":")
+		bytes, err := swag.WriteJSON(m.DNSServers)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field hostname
+	if m.Hostname != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname\":")
+		bytes, err := swag.WriteJSON(m.Hostname)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Hostname_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname\":null")
+		first = false
+	}
+
+	// handle non nullable field ntp_servers with omitempty
+	if swag.IsZero(m.NtpServers) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ntp_servers\":")
+		bytes, err := swag.WriteJSON(m.NtpServers)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM update host options params data

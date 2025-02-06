@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type UserAuditLogMessage struct {
 	// zh c n
 	// Required: true
 	ZhCN *string `json:"zh-CN"`
+
+	MarshalOpts *UserAuditLogMessageMarshalOpts `json:"-"`
+}
+
+type UserAuditLogMessageMarshalOpts struct {
+	EnUS_Explicit_Null_When_Empty bool
+
+	ZhCN_Explicit_Null_When_Empty bool
+}
+
+func (m UserAuditLogMessage) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field en-US
+	if m.EnUS != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"en-US\":")
+		bytes, err := swag.WriteJSON(m.EnUS)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnUS_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"en-US\":null")
+		first = false
+	}
+
+	// handle nullable field zh-CN
+	if m.ZhCN != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zh-CN\":")
+		bytes, err := swag.WriteJSON(m.ZhCN)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ZhCN_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zh-CN\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this user audit log message
