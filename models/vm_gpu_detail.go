@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -101,6 +102,536 @@ type VMGpuDetail struct {
 
 	// vgpu instance on vm num
 	VgpuInstanceOnVMNum *int32 `json:"vgpu_instance_on_vm_num,omitempty"`
+
+	MarshalOpts *VMGpuDetailMarshalOpts `json:"-"`
+}
+
+type VMGpuDetailMarshalOpts struct {
+	AssignedVgpusNum_Explicit_Null_When_Empty bool
+
+	AvailableVgpusNum_Explicit_Null_When_Empty bool
+
+	Brand_Explicit_Null_When_Empty bool
+
+	BusLocation_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	DriverInfo_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	Host_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	IsNvidiaToolsReady_Explicit_Null_When_Empty bool
+
+	IsNvidiaVfsEnabled_Explicit_Null_When_Empty bool
+
+	IsNvidiaVfsSupported_Explicit_Null_When_Empty bool
+
+	Labels_Explicit_Null_When_Empty bool
+
+	LocalCreatedAt_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	MdevSupportedTypes_Explicit_Null_When_Empty bool
+
+	Model_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	UserUsage_Explicit_Null_When_Empty bool
+
+	UserVgpuTypeID_Explicit_Null_When_Empty bool
+
+	UserVgpuTypeName_Explicit_Null_When_Empty bool
+
+	VgpuInstanceNum_Explicit_Null_When_Empty bool
+
+	VgpuInstanceOnVMNum_Explicit_Null_When_Empty bool
+}
+
+func (m VMGpuDetail) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field assigned_vgpus_num
+	if m.AssignedVgpusNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_vgpus_num\":")
+		bytes, err := swag.WriteJSON(m.AssignedVgpusNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AssignedVgpusNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_vgpus_num\":null")
+		first = false
+	}
+
+	// handle nullable field available_vgpus_num
+	if m.AvailableVgpusNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"available_vgpus_num\":")
+		bytes, err := swag.WriteJSON(m.AvailableVgpusNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AvailableVgpusNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"available_vgpus_num\":null")
+		first = false
+	}
+
+	// handle nullable field brand
+	if m.Brand != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"brand\":")
+		bytes, err := swag.WriteJSON(m.Brand)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Brand_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"brand\":null")
+		first = false
+	}
+
+	// handle nullable field bus_location
+	if m.BusLocation != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bus_location\":")
+		bytes, err := swag.WriteJSON(m.BusLocation)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusLocation_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bus_location\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field driver_info
+	if m.DriverInfo != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"driver_info\":")
+		bytes, err := swag.WriteJSON(m.DriverInfo)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DriverInfo_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"driver_info\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field host
+	if m.Host != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host\":")
+		bytes, err := swag.WriteJSON(m.Host)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Host_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field is_nvidia_tools_ready
+	if m.IsNvidiaToolsReady != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_nvidia_tools_ready\":")
+		bytes, err := swag.WriteJSON(m.IsNvidiaToolsReady)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsNvidiaToolsReady_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_nvidia_tools_ready\":null")
+		first = false
+	}
+
+	// handle nullable field is_nvidia_vfs_enabled
+	if m.IsNvidiaVfsEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_nvidia_vfs_enabled\":")
+		bytes, err := swag.WriteJSON(m.IsNvidiaVfsEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsNvidiaVfsEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_nvidia_vfs_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field is_nvidia_vfs_supported
+	if m.IsNvidiaVfsSupported != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_nvidia_vfs_supported\":")
+		bytes, err := swag.WriteJSON(m.IsNvidiaVfsSupported)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsNvidiaVfsSupported_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_nvidia_vfs_supported\":null")
+		first = false
+	}
+
+	// handle non nullable field labels with omitempty
+	if swag.IsZero(m.Labels) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels\":")
+		bytes, err := swag.WriteJSON(m.Labels)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field local_created_at
+	if m.LocalCreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":")
+		bytes, err := swag.WriteJSON(m.LocalCreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalCreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle non nullable field mdev_supported_types with omitempty
+	if swag.IsZero(m.MdevSupportedTypes) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mdev_supported_types\":")
+		bytes, err := swag.WriteJSON(m.MdevSupportedTypes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field model
+	if m.Model != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"model\":")
+		bytes, err := swag.WriteJSON(m.Model)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Model_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"model\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle nullable field user_usage
+	if m.UserUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_usage\":")
+		bytes, err := swag.WriteJSON(m.UserUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UserUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_usage\":null")
+		first = false
+	}
+
+	// handle nullable field user_vgpu_type_id
+	if m.UserVgpuTypeID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_vgpu_type_id\":")
+		bytes, err := swag.WriteJSON(m.UserVgpuTypeID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UserVgpuTypeID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_vgpu_type_id\":null")
+		first = false
+	}
+
+	// handle nullable field user_vgpu_type_name
+	if m.UserVgpuTypeName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_vgpu_type_name\":")
+		bytes, err := swag.WriteJSON(m.UserVgpuTypeName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UserVgpuTypeName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_vgpu_type_name\":null")
+		first = false
+	}
+
+	// handle nullable field vgpu_instance_num
+	if m.VgpuInstanceNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vgpu_instance_num\":")
+		bytes, err := swag.WriteJSON(m.VgpuInstanceNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VgpuInstanceNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vgpu_instance_num\":null")
+		first = false
+	}
+
+	// handle nullable field vgpu_instance_on_vm_num
+	if m.VgpuInstanceOnVMNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vgpu_instance_on_vm_num\":")
+		bytes, err := swag.WriteJSON(m.VgpuInstanceOnVMNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VgpuInstanceOnVMNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vgpu_instance_on_vm_num\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm gpu detail

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -70,6 +71,332 @@ type EverouteCluster struct {
 
 	// vpc service
 	VpcService *NestedVirtualPrivateCloudService `json:"vpc_service,omitempty"`
+
+	MarshalOpts *EverouteClusterMarshalOpts `json:"-"`
+}
+
+type EverouteClusterMarshalOpts struct {
+	AgentElfClusters_Explicit_Null_When_Empty bool
+
+	AgentElfVdses_Explicit_Null_When_Empty bool
+
+	ControllerInstances_Explicit_Null_When_Empty bool
+
+	ControllerTemplate_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	GlobalDefaultAction_Explicit_Null_When_Empty bool
+
+	GlobalWhitelist_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Installed_Explicit_Null_When_Empty bool
+
+	LoadBalancerService_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Phase_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	Version_Explicit_Null_When_Empty bool
+
+	VpcService_Explicit_Null_When_Empty bool
+}
+
+func (m EverouteCluster) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field agent_elf_clusters with omitempty
+	if swag.IsZero(m.AgentElfClusters) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"agent_elf_clusters\":")
+		bytes, err := swag.WriteJSON(m.AgentElfClusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field agent_elf_vdses with omitempty
+	if swag.IsZero(m.AgentElfVdses) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"agent_elf_vdses\":")
+		bytes, err := swag.WriteJSON(m.AgentElfVdses)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field controller_instances without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"controller_instances\":")
+		bytes, err := swag.WriteJSON(m.ControllerInstances)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field controller_template
+	if m.ControllerTemplate != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"controller_template\":")
+		bytes, err := swag.WriteJSON(m.ControllerTemplate)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ControllerTemplate_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"controller_template\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field global_default_action
+	if m.GlobalDefaultAction != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"global_default_action\":")
+		bytes, err := swag.WriteJSON(m.GlobalDefaultAction)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.GlobalDefaultAction_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"global_default_action\":null")
+		first = false
+	}
+
+	// handle nullable field global_whitelist
+	if m.GlobalWhitelist != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"global_whitelist\":")
+		bytes, err := swag.WriteJSON(m.GlobalWhitelist)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.GlobalWhitelist_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"global_whitelist\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field installed
+	if m.Installed != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"installed\":")
+		bytes, err := swag.WriteJSON(m.Installed)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Installed_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"installed\":null")
+		first = false
+	}
+
+	// handle nullable field load_balancer_service
+	if m.LoadBalancerService != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"load_balancer_service\":")
+		bytes, err := swag.WriteJSON(m.LoadBalancerService)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LoadBalancerService_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"load_balancer_service\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field phase
+	if m.Phase != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":")
+		bytes, err := swag.WriteJSON(m.Phase)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Phase_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle nullable field version
+	if m.Version != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":")
+		bytes, err := swag.WriteJSON(m.Version)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Version_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":null")
+		first = false
+	}
+
+	// handle nullable field vpc_service
+	if m.VpcService != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_service\":")
+		bytes, err := swag.WriteJSON(m.VpcService)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcService_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_service\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this everoute cluster

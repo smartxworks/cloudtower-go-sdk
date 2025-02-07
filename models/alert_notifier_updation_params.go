@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"strconv"
@@ -47,6 +48,206 @@ type AlertNotifierUpdationParams struct {
 
 	// smtp server id
 	SMTPServerID *string `json:"smtp_server_id,omitempty"`
+
+	MarshalOpts *AlertNotifierUpdationParamsMarshalOpts `json:"-"`
+}
+
+type AlertNotifierUpdationParamsMarshalOpts struct {
+	Clusters_Explicit_Null_When_Empty bool
+
+	Disabled_Explicit_Null_When_Empty bool
+
+	EmailFrom_Explicit_Null_When_Empty bool
+
+	EmailTos_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LanguageCode_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NoticeSeverities_Explicit_Null_When_Empty bool
+
+	SMTPServerID_Explicit_Null_When_Empty bool
+}
+
+func (m AlertNotifierUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field clusters
+	if m.Clusters != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":")
+		bytes, err := swag.WriteJSON(m.Clusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Clusters_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":null")
+		first = false
+	}
+
+	// handle nullable field disabled
+	if m.Disabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disabled\":")
+		bytes, err := swag.WriteJSON(m.Disabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Disabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disabled\":null")
+		first = false
+	}
+
+	// handle nullable field email_from
+	if m.EmailFrom != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"email_from\":")
+		bytes, err := swag.WriteJSON(m.EmailFrom)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EmailFrom_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"email_from\":null")
+		first = false
+	}
+
+	// handle non nullable field email_tos with omitempty
+	if swag.IsZero(m.EmailTos) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"email_tos\":")
+		bytes, err := swag.WriteJSON(m.EmailTos)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field language_code
+	if m.LanguageCode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"language_code\":")
+		bytes, err := swag.WriteJSON(m.LanguageCode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LanguageCode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"language_code\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field notice_severities with omitempty
+	if swag.IsZero(m.NoticeSeverities) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"notice_severities\":")
+		bytes, err := swag.WriteJSON(m.NoticeSeverities)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field smtp_server_id
+	if m.SMTPServerID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"smtp_server_id\":")
+		bytes, err := swag.WriteJSON(m.SMTPServerID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SMTPServerID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"smtp_server_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this alert notifier updation params

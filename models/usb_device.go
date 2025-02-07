@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -72,6 +73,322 @@ type UsbDevice struct {
 
 	// vms
 	Vms []*NestedVM `json:"vms,omitempty"`
+
+	MarshalOpts *UsbDeviceMarshalOpts `json:"-"`
+}
+
+type UsbDeviceMarshalOpts struct {
+	Binded_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	Host_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LocalCreatedAt_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	Manufacturer_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Size_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	UsbType_Explicit_Null_When_Empty bool
+
+	VM_Explicit_Null_When_Empty bool
+
+	Vms_Explicit_Null_When_Empty bool
+}
+
+func (m UsbDevice) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field binded
+	if m.Binded != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"binded\":")
+		bytes, err := swag.WriteJSON(m.Binded)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Binded_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"binded\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field host
+	if m.Host != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host\":")
+		bytes, err := swag.WriteJSON(m.Host)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Host_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field local_created_at
+	if m.LocalCreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":")
+		bytes, err := swag.WriteJSON(m.LocalCreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalCreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field manufacturer
+	if m.Manufacturer != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"manufacturer\":")
+		bytes, err := swag.WriteJSON(m.Manufacturer)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Manufacturer_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"manufacturer\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field size
+	if m.Size != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":")
+		bytes, err := swag.WriteJSON(m.Size)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Size_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle nullable field usb_type
+	if m.UsbType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usb_type\":")
+		bytes, err := swag.WriteJSON(m.UsbType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UsbType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usb_type\":null")
+		first = false
+	}
+
+	// handle nullable field vm
+	if m.VM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":")
+		bytes, err := swag.WriteJSON(m.VM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":null")
+		first = false
+	}
+
+	// handle non nullable field vms with omitempty
+	if swag.IsZero(m.Vms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vms\":")
+		bytes, err := swag.WriteJSON(m.Vms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this usb device

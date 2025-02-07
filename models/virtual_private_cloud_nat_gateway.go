@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -36,8 +37,7 @@ type VirtualPrivateCloudNatGateway struct {
 	ExternalIP *string `json:"external_ip,omitempty"`
 
 	// external subnet
-	// Required: true
-	ExternalSubnet *NestedVirtualPrivateCloudExternalSubnet `json:"external_subnet"`
+	ExternalSubnet *NestedVirtualPrivateCloudExternalSubnet `json:"external_subnet,omitempty"`
 
 	// id
 	// Required: true
@@ -54,6 +54,234 @@ type VirtualPrivateCloudNatGateway struct {
 	// vpc
 	// Required: true
 	Vpc *NestedVirtualPrivateCloud `json:"vpc"`
+
+	MarshalOpts *VirtualPrivateCloudNatGatewayMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudNatGatewayMarshalOpts struct {
+	DnatRules_Explicit_Null_When_Empty bool
+
+	EnableDnat_Explicit_Null_When_Empty bool
+
+	EnableSnat_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ExternalIP_Explicit_Null_When_Empty bool
+
+	ExternalSubnet_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Vpc_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudNatGateway) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field dnat_rules with omitempty
+	if swag.IsZero(m.DnatRules) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dnat_rules\":")
+		bytes, err := swag.WriteJSON(m.DnatRules)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field enable_dnat
+	if m.EnableDnat != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_dnat\":")
+		bytes, err := swag.WriteJSON(m.EnableDnat)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableDnat_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_dnat\":null")
+		first = false
+	}
+
+	// handle nullable field enable_snat
+	if m.EnableSnat != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_snat\":")
+		bytes, err := swag.WriteJSON(m.EnableSnat)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableSnat_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_snat\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field external_ip
+	if m.ExternalIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":")
+		bytes, err := swag.WriteJSON(m.ExternalIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExternalIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":null")
+		first = false
+	}
+
+	// handle nullable field external_subnet
+	if m.ExternalSubnet != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_subnet\":")
+		bytes, err := swag.WriteJSON(m.ExternalSubnet)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExternalSubnet_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_subnet\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field vpc
+	if m.Vpc != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc\":")
+		bytes, err := swag.WriteJSON(m.Vpc)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vpc_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud nat gateway
@@ -140,9 +368,8 @@ func (m *VirtualPrivateCloudNatGateway) validateEntityAsyncStatus(formats strfmt
 }
 
 func (m *VirtualPrivateCloudNatGateway) validateExternalSubnet(formats strfmt.Registry) error {
-
-	if err := validate.Required("external_subnet", "body", m.ExternalSubnet); err != nil {
-		return err
+	if swag.IsZero(m.ExternalSubnet) { // not required
+		return nil
 	}
 
 	if m.ExternalSubnet != nil {

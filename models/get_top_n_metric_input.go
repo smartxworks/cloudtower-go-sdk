@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -40,6 +41,116 @@ type GetTopNMetricInput struct {
 	// Required: true
 	// Enum: [top bottom]
 	Type string `json:"type"`
+
+	MarshalOpts *GetTopNMetricInputMarshalOpts `json:"-"`
+}
+
+type GetTopNMetricInputMarshalOpts struct {
+	Clusters_Explicit_Null_When_Empty bool
+
+	Metrics_Explicit_Null_When_Empty bool
+
+	N_Explicit_Null_When_Empty bool
+
+	Range_Explicit_Null_When_Empty bool
+}
+
+func (m GetTopNMetricInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field clusters
+	if m.Clusters != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":")
+		bytes, err := swag.WriteJSON(m.Clusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Clusters_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":null")
+		first = false
+	}
+
+	// handle non nullable field metrics without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metrics\":")
+		bytes, err := swag.WriteJSON(m.Metrics)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field n
+	if m.N != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"n\":")
+		bytes, err := swag.WriteJSON(m.N)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.N_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"n\":null")
+		first = false
+	}
+
+	// handle nullable field range
+	if m.Range != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"range\":")
+		bytes, err := swag.WriteJSON(m.Range)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Range_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"range\":null")
+		first = false
+	}
+
+	// handle non nullable field type with omitempty
+	if swag.IsZero(m.Type) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this get top n metric input

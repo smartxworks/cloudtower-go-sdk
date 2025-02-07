@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -366,6 +367,2446 @@ type VdsWhereInput struct {
 
 	// work mode starts with
 	WorkModeStartsWith *string `json:"work_mode_starts_with,omitempty"`
+
+	MarshalOpts *VdsWhereInputMarshalOpts `json:"-"`
+}
+
+type VdsWhereInputMarshalOpts struct {
+	AND_Explicit_Null_When_Empty bool
+
+	NOT_Explicit_Null_When_Empty bool
+
+	OR_Explicit_Null_When_Empty bool
+
+	BondMode_Explicit_Null_When_Empty bool
+
+	BondModeContains_Explicit_Null_When_Empty bool
+
+	BondModeEndsWith_Explicit_Null_When_Empty bool
+
+	BondModeGt_Explicit_Null_When_Empty bool
+
+	BondModeGte_Explicit_Null_When_Empty bool
+
+	BondModeIn_Explicit_Null_When_Empty bool
+
+	BondModeLt_Explicit_Null_When_Empty bool
+
+	BondModeLte_Explicit_Null_When_Empty bool
+
+	BondModeNot_Explicit_Null_When_Empty bool
+
+	BondModeNotContains_Explicit_Null_When_Empty bool
+
+	BondModeNotEndsWith_Explicit_Null_When_Empty bool
+
+	BondModeNotIn_Explicit_Null_When_Empty bool
+
+	BondModeNotStartsWith_Explicit_Null_When_Empty bool
+
+	BondModeStartsWith_Explicit_Null_When_Empty bool
+
+	Cluster_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatusIn_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatusNot_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatusNotIn_Explicit_Null_When_Empty bool
+
+	EverouteCluster_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	IDContains_Explicit_Null_When_Empty bool
+
+	IDEndsWith_Explicit_Null_When_Empty bool
+
+	IDGt_Explicit_Null_When_Empty bool
+
+	IDGte_Explicit_Null_When_Empty bool
+
+	IDIn_Explicit_Null_When_Empty bool
+
+	IDLt_Explicit_Null_When_Empty bool
+
+	IDLte_Explicit_Null_When_Empty bool
+
+	IDNot_Explicit_Null_When_Empty bool
+
+	IDNotContains_Explicit_Null_When_Empty bool
+
+	IDNotEndsWith_Explicit_Null_When_Empty bool
+
+	IDNotIn_Explicit_Null_When_Empty bool
+
+	IDNotStartsWith_Explicit_Null_When_Empty bool
+
+	IDStartsWith_Explicit_Null_When_Empty bool
+
+	Internal_Explicit_Null_When_Empty bool
+
+	InternalNot_Explicit_Null_When_Empty bool
+
+	LabelsEvery_Explicit_Null_When_Empty bool
+
+	LabelsNone_Explicit_Null_When_Empty bool
+
+	LabelsSome_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	LocalIDContains_Explicit_Null_When_Empty bool
+
+	LocalIDEndsWith_Explicit_Null_When_Empty bool
+
+	LocalIDGt_Explicit_Null_When_Empty bool
+
+	LocalIDGte_Explicit_Null_When_Empty bool
+
+	LocalIDIn_Explicit_Null_When_Empty bool
+
+	LocalIDLt_Explicit_Null_When_Empty bool
+
+	LocalIDLte_Explicit_Null_When_Empty bool
+
+	LocalIDNot_Explicit_Null_When_Empty bool
+
+	LocalIDNotContains_Explicit_Null_When_Empty bool
+
+	LocalIDNotEndsWith_Explicit_Null_When_Empty bool
+
+	LocalIDNotIn_Explicit_Null_When_Empty bool
+
+	LocalIDNotStartsWith_Explicit_Null_When_Empty bool
+
+	LocalIDStartsWith_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NameContains_Explicit_Null_When_Empty bool
+
+	NameEndsWith_Explicit_Null_When_Empty bool
+
+	NameGt_Explicit_Null_When_Empty bool
+
+	NameGte_Explicit_Null_When_Empty bool
+
+	NameIn_Explicit_Null_When_Empty bool
+
+	NameLt_Explicit_Null_When_Empty bool
+
+	NameLte_Explicit_Null_When_Empty bool
+
+	NameNot_Explicit_Null_When_Empty bool
+
+	NameNotContains_Explicit_Null_When_Empty bool
+
+	NameNotEndsWith_Explicit_Null_When_Empty bool
+
+	NameNotIn_Explicit_Null_When_Empty bool
+
+	NameNotStartsWith_Explicit_Null_When_Empty bool
+
+	NameStartsWith_Explicit_Null_When_Empty bool
+
+	NicsEvery_Explicit_Null_When_Empty bool
+
+	NicsNone_Explicit_Null_When_Empty bool
+
+	NicsSome_Explicit_Null_When_Empty bool
+
+	OvsbrName_Explicit_Null_When_Empty bool
+
+	OvsbrNameContains_Explicit_Null_When_Empty bool
+
+	OvsbrNameEndsWith_Explicit_Null_When_Empty bool
+
+	OvsbrNameGt_Explicit_Null_When_Empty bool
+
+	OvsbrNameGte_Explicit_Null_When_Empty bool
+
+	OvsbrNameIn_Explicit_Null_When_Empty bool
+
+	OvsbrNameLt_Explicit_Null_When_Empty bool
+
+	OvsbrNameLte_Explicit_Null_When_Empty bool
+
+	OvsbrNameNot_Explicit_Null_When_Empty bool
+
+	OvsbrNameNotContains_Explicit_Null_When_Empty bool
+
+	OvsbrNameNotEndsWith_Explicit_Null_When_Empty bool
+
+	OvsbrNameNotIn_Explicit_Null_When_Empty bool
+
+	OvsbrNameNotStartsWith_Explicit_Null_When_Empty bool
+
+	OvsbrNameStartsWith_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+
+	TypeIn_Explicit_Null_When_Empty bool
+
+	TypeNot_Explicit_Null_When_Empty bool
+
+	TypeNotIn_Explicit_Null_When_Empty bool
+
+	VlansEvery_Explicit_Null_When_Empty bool
+
+	VlansNone_Explicit_Null_When_Empty bool
+
+	VlansNum_Explicit_Null_When_Empty bool
+
+	VlansNumGt_Explicit_Null_When_Empty bool
+
+	VlansNumGte_Explicit_Null_When_Empty bool
+
+	VlansNumIn_Explicit_Null_When_Empty bool
+
+	VlansNumLt_Explicit_Null_When_Empty bool
+
+	VlansNumLte_Explicit_Null_When_Empty bool
+
+	VlansNumNot_Explicit_Null_When_Empty bool
+
+	VlansNumNotIn_Explicit_Null_When_Empty bool
+
+	VlansSome_Explicit_Null_When_Empty bool
+
+	WorkMode_Explicit_Null_When_Empty bool
+
+	WorkModeContains_Explicit_Null_When_Empty bool
+
+	WorkModeEndsWith_Explicit_Null_When_Empty bool
+
+	WorkModeGt_Explicit_Null_When_Empty bool
+
+	WorkModeGte_Explicit_Null_When_Empty bool
+
+	WorkModeIn_Explicit_Null_When_Empty bool
+
+	WorkModeLt_Explicit_Null_When_Empty bool
+
+	WorkModeLte_Explicit_Null_When_Empty bool
+
+	WorkModeNot_Explicit_Null_When_Empty bool
+
+	WorkModeNotContains_Explicit_Null_When_Empty bool
+
+	WorkModeNotEndsWith_Explicit_Null_When_Empty bool
+
+	WorkModeNotIn_Explicit_Null_When_Empty bool
+
+	WorkModeNotStartsWith_Explicit_Null_When_Empty bool
+
+	WorkModeStartsWith_Explicit_Null_When_Empty bool
+}
+
+func (m VdsWhereInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field AND with omitempty
+	if swag.IsZero(m.AND) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"AND\":")
+		bytes, err := swag.WriteJSON(m.AND)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field NOT with omitempty
+	if swag.IsZero(m.NOT) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"NOT\":")
+		bytes, err := swag.WriteJSON(m.NOT)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field OR with omitempty
+	if swag.IsZero(m.OR) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"OR\":")
+		bytes, err := swag.WriteJSON(m.OR)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field bond_mode
+	if m.BondMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode\":")
+		bytes, err := swag.WriteJSON(m.BondMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_contains
+	if m.BondModeContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_contains\":")
+		bytes, err := swag.WriteJSON(m.BondModeContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_contains\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_ends_with
+	if m.BondModeEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_ends_with\":")
+		bytes, err := swag.WriteJSON(m.BondModeEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_gt
+	if m.BondModeGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_gt\":")
+		bytes, err := swag.WriteJSON(m.BondModeGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_gt\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_gte
+	if m.BondModeGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_gte\":")
+		bytes, err := swag.WriteJSON(m.BondModeGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field bond_mode_in with omitempty
+	if swag.IsZero(m.BondModeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_in\":")
+		bytes, err := swag.WriteJSON(m.BondModeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field bond_mode_lt
+	if m.BondModeLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_lt\":")
+		bytes, err := swag.WriteJSON(m.BondModeLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_lt\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_lte
+	if m.BondModeLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_lte\":")
+		bytes, err := swag.WriteJSON(m.BondModeLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_lte\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_not
+	if m.BondModeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not\":")
+		bytes, err := swag.WriteJSON(m.BondModeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_not_contains
+	if m.BondModeNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not_contains\":")
+		bytes, err := swag.WriteJSON(m.BondModeNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_not_ends_with
+	if m.BondModeNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.BondModeNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field bond_mode_not_in with omitempty
+	if swag.IsZero(m.BondModeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not_in\":")
+		bytes, err := swag.WriteJSON(m.BondModeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field bond_mode_not_starts_with
+	if m.BondModeNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.BondModeNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field bond_mode_starts_with
+	if m.BondModeStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_starts_with\":")
+		bytes, err := swag.WriteJSON(m.BondModeStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondModeStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field cluster
+	if m.Cluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":")
+		bytes, err := swag.WriteJSON(m.Cluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle non nullable field entityAsyncStatus_in with omitempty
+	if swag.IsZero(m.EntityAsyncStatusIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus_in\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatusIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus_not
+	if m.EntityAsyncStatusNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus_not\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatusNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatusNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus_not\":null")
+		first = false
+	}
+
+	// handle non nullable field entityAsyncStatus_not_in with omitempty
+	if swag.IsZero(m.EntityAsyncStatusNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus_not_in\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatusNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field everoute_cluster
+	if m.EverouteCluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"everoute_cluster\":")
+		bytes, err := swag.WriteJSON(m.EverouteCluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EverouteCluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"everoute_cluster\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field id_contains
+	if m.IDContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_contains\":")
+		bytes, err := swag.WriteJSON(m.IDContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_contains\":null")
+		first = false
+	}
+
+	// handle nullable field id_ends_with
+	if m.IDEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_ends_with\":")
+		bytes, err := swag.WriteJSON(m.IDEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field id_gt
+	if m.IDGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_gt\":")
+		bytes, err := swag.WriteJSON(m.IDGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_gt\":null")
+		first = false
+	}
+
+	// handle nullable field id_gte
+	if m.IDGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_gte\":")
+		bytes, err := swag.WriteJSON(m.IDGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field id_in with omitempty
+	if swag.IsZero(m.IDIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_in\":")
+		bytes, err := swag.WriteJSON(m.IDIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field id_lt
+	if m.IDLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_lt\":")
+		bytes, err := swag.WriteJSON(m.IDLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_lt\":null")
+		first = false
+	}
+
+	// handle nullable field id_lte
+	if m.IDLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_lte\":")
+		bytes, err := swag.WriteJSON(m.IDLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_lte\":null")
+		first = false
+	}
+
+	// handle nullable field id_not
+	if m.IDNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not\":")
+		bytes, err := swag.WriteJSON(m.IDNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not\":null")
+		first = false
+	}
+
+	// handle nullable field id_not_contains
+	if m.IDNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not_contains\":")
+		bytes, err := swag.WriteJSON(m.IDNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field id_not_ends_with
+	if m.IDNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.IDNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field id_not_in with omitempty
+	if swag.IsZero(m.IDNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not_in\":")
+		bytes, err := swag.WriteJSON(m.IDNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field id_not_starts_with
+	if m.IDNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.IDNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field id_starts_with
+	if m.IDStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_starts_with\":")
+		bytes, err := swag.WriteJSON(m.IDStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IDStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field internal
+	if m.Internal != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal\":")
+		bytes, err := swag.WriteJSON(m.Internal)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Internal_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal\":null")
+		first = false
+	}
+
+	// handle nullable field internal_not
+	if m.InternalNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_not\":")
+		bytes, err := swag.WriteJSON(m.InternalNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_not\":null")
+		first = false
+	}
+
+	// handle nullable field labels_every
+	if m.LabelsEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels_every\":")
+		bytes, err := swag.WriteJSON(m.LabelsEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LabelsEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels_every\":null")
+		first = false
+	}
+
+	// handle nullable field labels_none
+	if m.LabelsNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels_none\":")
+		bytes, err := swag.WriteJSON(m.LabelsNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LabelsNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels_none\":null")
+		first = false
+	}
+
+	// handle nullable field labels_some
+	if m.LabelsSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels_some\":")
+		bytes, err := swag.WriteJSON(m.LabelsSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LabelsSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels_some\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_contains
+	if m.LocalIDContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_contains\":")
+		bytes, err := swag.WriteJSON(m.LocalIDContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_contains\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_ends_with
+	if m.LocalIDEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_ends_with\":")
+		bytes, err := swag.WriteJSON(m.LocalIDEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_gt
+	if m.LocalIDGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_gt\":")
+		bytes, err := swag.WriteJSON(m.LocalIDGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_gt\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_gte
+	if m.LocalIDGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_gte\":")
+		bytes, err := swag.WriteJSON(m.LocalIDGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field local_id_in with omitempty
+	if swag.IsZero(m.LocalIDIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_in\":")
+		bytes, err := swag.WriteJSON(m.LocalIDIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field local_id_lt
+	if m.LocalIDLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_lt\":")
+		bytes, err := swag.WriteJSON(m.LocalIDLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_lt\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_lte
+	if m.LocalIDLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_lte\":")
+		bytes, err := swag.WriteJSON(m.LocalIDLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_lte\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_not
+	if m.LocalIDNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not\":")
+		bytes, err := swag.WriteJSON(m.LocalIDNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_not_contains
+	if m.LocalIDNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not_contains\":")
+		bytes, err := swag.WriteJSON(m.LocalIDNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_not_ends_with
+	if m.LocalIDNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.LocalIDNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field local_id_not_in with omitempty
+	if swag.IsZero(m.LocalIDNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not_in\":")
+		bytes, err := swag.WriteJSON(m.LocalIDNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field local_id_not_starts_with
+	if m.LocalIDNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.LocalIDNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field local_id_starts_with
+	if m.LocalIDStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_starts_with\":")
+		bytes, err := swag.WriteJSON(m.LocalIDStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalIDStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field name_contains
+	if m.NameContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_contains\":")
+		bytes, err := swag.WriteJSON(m.NameContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_contains\":null")
+		first = false
+	}
+
+	// handle nullable field name_ends_with
+	if m.NameEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_ends_with\":")
+		bytes, err := swag.WriteJSON(m.NameEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field name_gt
+	if m.NameGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_gt\":")
+		bytes, err := swag.WriteJSON(m.NameGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_gt\":null")
+		first = false
+	}
+
+	// handle nullable field name_gte
+	if m.NameGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_gte\":")
+		bytes, err := swag.WriteJSON(m.NameGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field name_in with omitempty
+	if swag.IsZero(m.NameIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_in\":")
+		bytes, err := swag.WriteJSON(m.NameIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name_lt
+	if m.NameLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_lt\":")
+		bytes, err := swag.WriteJSON(m.NameLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_lt\":null")
+		first = false
+	}
+
+	// handle nullable field name_lte
+	if m.NameLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_lte\":")
+		bytes, err := swag.WriteJSON(m.NameLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_lte\":null")
+		first = false
+	}
+
+	// handle nullable field name_not
+	if m.NameNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not\":")
+		bytes, err := swag.WriteJSON(m.NameNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not\":null")
+		first = false
+	}
+
+	// handle nullable field name_not_contains
+	if m.NameNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not_contains\":")
+		bytes, err := swag.WriteJSON(m.NameNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field name_not_ends_with
+	if m.NameNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.NameNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field name_not_in with omitempty
+	if swag.IsZero(m.NameNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not_in\":")
+		bytes, err := swag.WriteJSON(m.NameNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name_not_starts_with
+	if m.NameNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.NameNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field name_starts_with
+	if m.NameStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_starts_with\":")
+		bytes, err := swag.WriteJSON(m.NameStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NameStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field nics_every
+	if m.NicsEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics_every\":")
+		bytes, err := swag.WriteJSON(m.NicsEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NicsEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics_every\":null")
+		first = false
+	}
+
+	// handle nullable field nics_none
+	if m.NicsNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics_none\":")
+		bytes, err := swag.WriteJSON(m.NicsNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NicsNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics_none\":null")
+		first = false
+	}
+
+	// handle nullable field nics_some
+	if m.NicsSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics_some\":")
+		bytes, err := swag.WriteJSON(m.NicsSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NicsSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics_some\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name
+	if m.OvsbrName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name\":")
+		bytes, err := swag.WriteJSON(m.OvsbrName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_contains
+	if m.OvsbrNameContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_contains\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_contains\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_ends_with
+	if m.OvsbrNameEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_ends_with\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_gt
+	if m.OvsbrNameGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_gt\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_gt\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_gte
+	if m.OvsbrNameGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_gte\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field ovsbr_name_in with omitempty
+	if swag.IsZero(m.OvsbrNameIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_in\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_lt
+	if m.OvsbrNameLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_lt\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_lt\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_lte
+	if m.OvsbrNameLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_lte\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_lte\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_not
+	if m.OvsbrNameNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_not_contains
+	if m.OvsbrNameNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not_contains\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_not_ends_with
+	if m.OvsbrNameNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field ovsbr_name_not_in with omitempty
+	if swag.IsZero(m.OvsbrNameNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not_in\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_not_starts_with
+	if m.OvsbrNameNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field ovsbr_name_starts_with
+	if m.OvsbrNameStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_starts_with\":")
+		bytes, err := swag.WriteJSON(m.OvsbrNameStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvsbrNameStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ovsbr_name_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	// handle non nullable field type_in with omitempty
+	if swag.IsZero(m.TypeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type_in\":")
+		bytes, err := swag.WriteJSON(m.TypeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field type_not
+	if m.TypeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type_not\":")
+		bytes, err := swag.WriteJSON(m.TypeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TypeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type_not\":null")
+		first = false
+	}
+
+	// handle non nullable field type_not_in with omitempty
+	if swag.IsZero(m.TypeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type_not_in\":")
+		bytes, err := swag.WriteJSON(m.TypeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vlans_every
+	if m.VlansEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_every\":")
+		bytes, err := swag.WriteJSON(m.VlansEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_every\":null")
+		first = false
+	}
+
+	// handle nullable field vlans_none
+	if m.VlansNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_none\":")
+		bytes, err := swag.WriteJSON(m.VlansNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_none\":null")
+		first = false
+	}
+
+	// handle nullable field vlans_num
+	if m.VlansNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num\":")
+		bytes, err := swag.WriteJSON(m.VlansNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num\":null")
+		first = false
+	}
+
+	// handle nullable field vlans_num_gt
+	if m.VlansNumGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_gt\":")
+		bytes, err := swag.WriteJSON(m.VlansNumGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansNumGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_gt\":null")
+		first = false
+	}
+
+	// handle nullable field vlans_num_gte
+	if m.VlansNumGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_gte\":")
+		bytes, err := swag.WriteJSON(m.VlansNumGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansNumGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field vlans_num_in with omitempty
+	if swag.IsZero(m.VlansNumIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_in\":")
+		bytes, err := swag.WriteJSON(m.VlansNumIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vlans_num_lt
+	if m.VlansNumLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_lt\":")
+		bytes, err := swag.WriteJSON(m.VlansNumLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansNumLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_lt\":null")
+		first = false
+	}
+
+	// handle nullable field vlans_num_lte
+	if m.VlansNumLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_lte\":")
+		bytes, err := swag.WriteJSON(m.VlansNumLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansNumLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_lte\":null")
+		first = false
+	}
+
+	// handle nullable field vlans_num_not
+	if m.VlansNumNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_not\":")
+		bytes, err := swag.WriteJSON(m.VlansNumNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansNumNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_not\":null")
+		first = false
+	}
+
+	// handle non nullable field vlans_num_not_in with omitempty
+	if swag.IsZero(m.VlansNumNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_num_not_in\":")
+		bytes, err := swag.WriteJSON(m.VlansNumNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vlans_some
+	if m.VlansSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_some\":")
+		bytes, err := swag.WriteJSON(m.VlansSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlansSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans_some\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode
+	if m.WorkMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode\":")
+		bytes, err := swag.WriteJSON(m.WorkMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_contains
+	if m.WorkModeContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_contains\":")
+		bytes, err := swag.WriteJSON(m.WorkModeContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_contains\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_ends_with
+	if m.WorkModeEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_ends_with\":")
+		bytes, err := swag.WriteJSON(m.WorkModeEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_gt
+	if m.WorkModeGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_gt\":")
+		bytes, err := swag.WriteJSON(m.WorkModeGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_gt\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_gte
+	if m.WorkModeGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_gte\":")
+		bytes, err := swag.WriteJSON(m.WorkModeGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field work_mode_in with omitempty
+	if swag.IsZero(m.WorkModeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_in\":")
+		bytes, err := swag.WriteJSON(m.WorkModeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field work_mode_lt
+	if m.WorkModeLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_lt\":")
+		bytes, err := swag.WriteJSON(m.WorkModeLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_lt\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_lte
+	if m.WorkModeLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_lte\":")
+		bytes, err := swag.WriteJSON(m.WorkModeLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_lte\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_not
+	if m.WorkModeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not\":")
+		bytes, err := swag.WriteJSON(m.WorkModeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_not_contains
+	if m.WorkModeNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not_contains\":")
+		bytes, err := swag.WriteJSON(m.WorkModeNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_not_ends_with
+	if m.WorkModeNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.WorkModeNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field work_mode_not_in with omitempty
+	if swag.IsZero(m.WorkModeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not_in\":")
+		bytes, err := swag.WriteJSON(m.WorkModeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field work_mode_not_starts_with
+	if m.WorkModeNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.WorkModeNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field work_mode_starts_with
+	if m.WorkModeStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_starts_with\":")
+		bytes, err := swag.WriteJSON(m.WorkModeStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkModeStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode_starts_with\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this vds where input

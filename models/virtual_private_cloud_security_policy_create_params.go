@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -45,6 +46,156 @@ type VirtualPrivateCloudSecurityPolicyCreateParams struct {
 	// vpc id
 	// Required: true
 	VpcID *string `json:"vpc_id"`
+
+	MarshalOpts *VirtualPrivateCloudSecurityPolicyCreateParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudSecurityPolicyCreateParamsMarshalOpts struct {
+	ApplyTo_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	Egress_Explicit_Null_When_Empty bool
+
+	Ingress_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	PolicyMode_Explicit_Null_When_Empty bool
+
+	VpcID_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudSecurityPolicyCreateParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field apply_to without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"apply_to\":")
+		bytes, err := swag.WriteJSON(m.ApplyTo)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle non nullable field egress with omitempty
+	if swag.IsZero(m.Egress) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress\":")
+		bytes, err := swag.WriteJSON(m.Egress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field ingress with omitempty
+	if swag.IsZero(m.Ingress) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress\":")
+		bytes, err := swag.WriteJSON(m.Ingress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field policy_mode
+	if m.PolicyMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"policy_mode\":")
+		bytes, err := swag.WriteJSON(m.PolicyMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PolicyMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"policy_mode\":null")
+		first = false
+	}
+
+	// handle nullable field vpc_id
+	if m.VpcID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":")
+		bytes, err := swag.WriteJSON(m.VpcID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud security policy create params

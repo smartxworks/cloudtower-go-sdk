@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -28,6 +29,86 @@ type DiskOperateModifyDisk struct {
 
 	// vm volume id
 	VMVolumeID *string `json:"vm_volume_id,omitempty"`
+
+	MarshalOpts *DiskOperateModifyDiskMarshalOpts `json:"-"`
+}
+
+type DiskOperateModifyDiskMarshalOpts struct {
+	Bus_Explicit_Null_When_Empty bool
+
+	DiskIndex_Explicit_Null_When_Empty bool
+
+	VMVolumeID_Explicit_Null_When_Empty bool
+}
+
+func (m DiskOperateModifyDisk) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field bus
+	if m.Bus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bus\":")
+		bytes, err := swag.WriteJSON(m.Bus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Bus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bus\":null")
+		first = false
+	}
+
+	// handle nullable field disk_index
+	if m.DiskIndex != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_index\":")
+		bytes, err := swag.WriteJSON(m.DiskIndex)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DiskIndex_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_index\":null")
+		first = false
+	}
+
+	// handle nullable field vm_volume_id
+	if m.VMVolumeID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_volume_id\":")
+		bytes, err := swag.WriteJSON(m.VMVolumeID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMVolumeID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_volume_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this disk operate modify disk

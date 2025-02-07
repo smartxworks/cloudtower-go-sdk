@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,58 @@ type GetDiscoverHostsRequestBody struct {
 
 	// host address
 	HostAddress []string `json:"host_address,omitempty"`
+
+	MarshalOpts *GetDiscoverHostsRequestBodyMarshalOpts `json:"-"`
+}
+
+type GetDiscoverHostsRequestBodyMarshalOpts struct {
+	Cluster_Explicit_Null_When_Empty bool
+
+	HostAddress_Explicit_Null_When_Empty bool
+}
+
+func (m GetDiscoverHostsRequestBody) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster
+	if m.Cluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":")
+		bytes, err := swag.WriteJSON(m.Cluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle non nullable field host_address with omitempty
+	if swag.IsZero(m.HostAddress) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_address\":")
+		bytes, err := swag.WriteJSON(m.HostAddress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this get discover hosts request body

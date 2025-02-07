@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -46,6 +47,168 @@ type RackTopo struct {
 	// zone topo
 	// Required: true
 	ZoneTopo *NestedZoneTopo `json:"zone_topo"`
+
+	MarshalOpts *RackTopoMarshalOpts `json:"-"`
+}
+
+type RackTopoMarshalOpts struct {
+	BrickTopoes_Explicit_Null_When_Empty bool
+
+	Cluster_Explicit_Null_When_Empty bool
+
+	Height_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	ZoneTopo_Explicit_Null_When_Empty bool
+}
+
+func (m RackTopo) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field brick_topoes with omitempty
+	if swag.IsZero(m.BrickTopoes) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"brick_topoes\":")
+		bytes, err := swag.WriteJSON(m.BrickTopoes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field cluster
+	if m.Cluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":")
+		bytes, err := swag.WriteJSON(m.Cluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle nullable field height
+	if m.Height != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"height\":")
+		bytes, err := swag.WriteJSON(m.Height)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Height_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"height\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field zone_topo
+	if m.ZoneTopo != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zone_topo\":")
+		bytes, err := swag.WriteJSON(m.ZoneTopo)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ZoneTopo_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zone_topo\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this rack topo

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -66,6 +67,270 @@ type EntityFilter struct {
 	// rules
 	// Required: true
 	Rules []*NestedFilterRule `json:"rules"`
+
+	MarshalOpts *EntityFilterMarshalOpts `json:"-"`
+}
+
+type EntityFilterMarshalOpts struct {
+	ApplyToAllClusters_Explicit_Null_When_Empty bool
+
+	Clusters_Explicit_Null_When_Empty bool
+
+	EntityType_Explicit_Null_When_Empty bool
+
+	ExcludeIds_Explicit_Null_When_Empty bool
+
+	ExecFailedCluster_Explicit_Null_When_Empty bool
+
+	FilterError_Explicit_Null_When_Empty bool
+
+	FilterStatus_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Ids_Explicit_Null_When_Empty bool
+
+	LastExecutedAt_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Preset_Explicit_Null_When_Empty bool
+
+	Rules_Explicit_Null_When_Empty bool
+}
+
+func (m EntityFilter) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field apply_to_all_clusters
+	if m.ApplyToAllClusters != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"apply_to_all_clusters\":")
+		bytes, err := swag.WriteJSON(m.ApplyToAllClusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ApplyToAllClusters_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"apply_to_all_clusters\":null")
+		first = false
+	}
+
+	// handle non nullable field clusters with omitempty
+	if swag.IsZero(m.Clusters) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":")
+		bytes, err := swag.WriteJSON(m.Clusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field entity_type
+	if m.EntityType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entity_type\":")
+		bytes, err := swag.WriteJSON(m.EntityType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entity_type\":null")
+		first = false
+	}
+
+	// handle non nullable field exclude_ids without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ids\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field exec_failed_cluster with omitempty
+	if swag.IsZero(m.ExecFailedCluster) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exec_failed_cluster\":")
+		bytes, err := swag.WriteJSON(m.ExecFailedCluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field filter_error without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"filter_error\":")
+		bytes, err := swag.WriteJSON(m.FilterError)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field filter_status
+	if m.FilterStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"filter_status\":")
+		bytes, err := swag.WriteJSON(m.FilterStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FilterStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"filter_status\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle non nullable field ids without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ids\":")
+		bytes, err := swag.WriteJSON(m.Ids)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field last_executed_at
+	if m.LastExecutedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_executed_at\":")
+		bytes, err := swag.WriteJSON(m.LastExecutedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastExecutedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_executed_at\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field preset
+	if m.Preset != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"preset\":")
+		bytes, err := swag.WriteJSON(m.Preset)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Preset_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"preset\":null")
+		first = false
+	}
+
+	// handle non nullable field rules without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rules\":")
+		bytes, err := swag.WriteJSON(m.Rules)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this entity filter

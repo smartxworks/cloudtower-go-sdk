@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"strconv"
@@ -42,6 +43,140 @@ type Metric struct {
 	// unit
 	// Required: true
 	Unit *MetricUnit `json:"unit"`
+
+	MarshalOpts *MetricMarshalOpts `json:"-"`
+}
+
+type MetricMarshalOpts struct {
+	Typename_Explicit_Null_When_Empty bool
+
+	Dropped_Explicit_Null_When_Empty bool
+
+	SampleStreams_Explicit_Null_When_Empty bool
+
+	Samples_Explicit_Null_When_Empty bool
+
+	Step_Explicit_Null_When_Empty bool
+
+	Unit_Explicit_Null_When_Empty bool
+}
+
+func (m Metric) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field __typename
+	if m.Typename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":")
+		bytes, err := swag.WriteJSON(m.Typename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Typename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle nullable field dropped
+	if m.Dropped != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dropped\":")
+		bytes, err := swag.WriteJSON(m.Dropped)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Dropped_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dropped\":null")
+		first = false
+	}
+
+	// handle non nullable field sample_streams with omitempty
+	if swag.IsZero(m.SampleStreams) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sample_streams\":")
+		bytes, err := swag.WriteJSON(m.SampleStreams)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field samples with omitempty
+	if swag.IsZero(m.Samples) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"samples\":")
+		bytes, err := swag.WriteJSON(m.Samples)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field step
+	if m.Step != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"step\":")
+		bytes, err := swag.WriteJSON(m.Step)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Step_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"step\":null")
+		first = false
+	}
+
+	// handle nullable field unit
+	if m.Unit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"unit\":")
+		bytes, err := swag.WriteJSON(m.Unit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Unit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"unit\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this metric

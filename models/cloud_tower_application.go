@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -60,6 +61,268 @@ type CloudTowerApplication struct {
 	// vm spec
 	// Required: true
 	VMSpec interface{} `json:"vmSpec"`
+
+	MarshalOpts *CloudTowerApplicationMarshalOpts `json:"-"`
+}
+
+type CloudTowerApplicationMarshalOpts struct {
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Package_Explicit_Null_When_Empty bool
+
+	PlacementSituation_Explicit_Null_When_Empty bool
+
+	PlacementVerb_Explicit_Null_When_Empty bool
+
+	ResourceVersion_Explicit_Null_When_Empty bool
+
+	State_Explicit_Null_When_Empty bool
+
+	TargetPackage_Explicit_Null_When_Empty bool
+
+	User_Explicit_Null_When_Empty bool
+}
+
+func (m CloudTowerApplication) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle non nullable field instanceStatuses with omitempty
+	if swag.IsZero(m.InstanceStatuses) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"instanceStatuses\":")
+		bytes, err := swag.WriteJSON(m.InstanceStatuses)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field package
+	if m.Package != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"package\":")
+		bytes, err := swag.WriteJSON(m.Package)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Package_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"package\":null")
+		first = false
+	}
+
+	// handle nullable field placementSituation
+	if m.PlacementSituation != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"placementSituation\":")
+		bytes, err := swag.WriteJSON(m.PlacementSituation)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PlacementSituation_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"placementSituation\":null")
+		first = false
+	}
+
+	// handle nullable field placementVerb
+	if m.PlacementVerb != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"placementVerb\":")
+		bytes, err := swag.WriteJSON(m.PlacementVerb)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PlacementVerb_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"placementVerb\":null")
+		first = false
+	}
+
+	// handle nullable field resourceVersion
+	if m.ResourceVersion != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resourceVersion\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersion)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersion_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resourceVersion\":null")
+		first = false
+	}
+
+	// handle nullable field state
+	if m.State != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"state\":")
+		bytes, err := swag.WriteJSON(m.State)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.State_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"state\":null")
+		first = false
+	}
+
+	// handle nullable field targetPackage
+	if m.TargetPackage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"targetPackage\":")
+		bytes, err := swag.WriteJSON(m.TargetPackage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TargetPackage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"targetPackage\":null")
+		first = false
+	}
+
+	// handle nullable field user
+	if m.User != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user\":")
+		bytes, err := swag.WriteJSON(m.User)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.User_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user\":null")
+		first = false
+	}
+
+	// handle non nullable field vmSpec with omitempty
+	if swag.IsZero(m.VMSpec) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmSpec\":")
+		bytes, err := swag.WriteJSON(m.VMSpec)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cloud tower application

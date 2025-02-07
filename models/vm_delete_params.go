@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type VMDeleteParams struct {
 	// where
 	// Required: true
 	Where *VMWhereInput `json:"where"`
+
+	MarshalOpts *VMDeleteParamsMarshalOpts `json:"-"`
+}
+
+type VMDeleteParamsMarshalOpts struct {
+	Effect_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMDeleteParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field effect
+	if m.Effect != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"effect\":")
+		bytes, err := swag.WriteJSON(m.Effect)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Effect_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"effect\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm delete params
@@ -159,6 +218,42 @@ type VMDeleteParamsEffect struct {
 
 	// include snapshots
 	IncludeSnapshots *bool `json:"include_snapshots,omitempty"`
+
+	MarshalOpts *VMDeleteParamsEffectMarshalOpts `json:"-"`
+}
+
+type VMDeleteParamsEffectMarshalOpts struct {
+	IncludeSnapshots_Explicit_Null_When_Empty bool
+}
+
+func (m VMDeleteParamsEffect) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field include_snapshots
+	if m.IncludeSnapshots != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"include_snapshots\":")
+		bytes, err := swag.WriteJSON(m.IncludeSnapshots)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IncludeSnapshots_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"include_snapshots\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM delete params effect
