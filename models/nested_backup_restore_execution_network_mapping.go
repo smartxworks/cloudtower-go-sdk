@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type NestedBackupRestoreExecutionNetworkMapping struct {
 	// src vlan id
 	// Required: true
 	SrcVlanID *string `json:"src_vlan_id"`
+
+	MarshalOpts *NestedBackupRestoreExecutionNetworkMappingMarshalOpts `json:"-"`
+}
+
+type NestedBackupRestoreExecutionNetworkMappingMarshalOpts struct {
+	DstVlanID_Explicit_Null_When_Empty bool
+
+	SrcVlanID_Explicit_Null_When_Empty bool
+}
+
+func (m NestedBackupRestoreExecutionNetworkMapping) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field dst_vlan_id
+	if m.DstVlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst_vlan_id\":")
+		bytes, err := swag.WriteJSON(m.DstVlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DstVlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst_vlan_id\":null")
+		first = false
+	}
+
+	// handle nullable field src_vlan_id
+	if m.SrcVlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"src_vlan_id\":")
+		bytes, err := swag.WriteJSON(m.SrcVlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SrcVlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"src_vlan_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested backup restore execution network mapping

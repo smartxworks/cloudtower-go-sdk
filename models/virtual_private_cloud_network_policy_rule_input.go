@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -38,6 +39,134 @@ type VirtualPrivateCloudNetworkPolicyRuleInput struct {
 	// type
 	// Required: true
 	Type *VirtualPrivateCloudNetworkPolicyRuleType `json:"type"`
+
+	MarshalOpts *VirtualPrivateCloudNetworkPolicyRuleInputMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudNetworkPolicyRuleInputMarshalOpts struct {
+	ExceptIPBlock_Explicit_Null_When_Empty bool
+
+	IPBlock_Explicit_Null_When_Empty bool
+
+	Ports_Explicit_Null_When_Empty bool
+
+	SecurityGroupID_Explicit_Null_When_Empty bool
+
+	SelectorIds_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudNetworkPolicyRuleInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field except_ip_block with omitempty
+	if !swag.IsZero(m.ExceptIPBlock) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"except_ip_block\":")
+		bytes, err := swag.WriteJSON(m.ExceptIPBlock)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ip_block
+	if m.IPBlock != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_block\":")
+		bytes, err := swag.WriteJSON(m.IPBlock)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPBlock_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_block\":null")
+		first = false
+	}
+
+	// handle non nullable field ports with omitempty
+	if !swag.IsZero(m.Ports) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ports\":")
+		bytes, err := swag.WriteJSON(m.Ports)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field security_group_id
+	if m.SecurityGroupID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group_id\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroupID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityGroupID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group_id\":null")
+		first = false
+	}
+
+	// handle non nullable field selector_ids with omitempty
+	if !swag.IsZero(m.SelectorIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"selector_ids\":")
+		bytes, err := swag.WriteJSON(m.SelectorIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud network policy rule input

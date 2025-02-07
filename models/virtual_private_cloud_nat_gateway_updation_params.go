@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,64 @@ type VirtualPrivateCloudNatGatewayUpdationParams struct {
 	// where
 	// Required: true
 	Where *VirtualPrivateCloudNatGatewayWhereInput `json:"where"`
+
+	MarshalOpts *VirtualPrivateCloudNatGatewayUpdationParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudNatGatewayUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudNatGatewayUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud nat gateway updation params
@@ -174,6 +233,124 @@ type VirtualPrivateCloudNatGatewayUpdationParamsData struct {
 
 	// name
 	Name *string `json:"name,omitempty"`
+
+	MarshalOpts *VirtualPrivateCloudNatGatewayUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudNatGatewayUpdationParamsDataMarshalOpts struct {
+	DnatRules_Explicit_Null_When_Empty bool
+
+	EnableDnat_Explicit_Null_When_Empty bool
+
+	EnableSnat_Explicit_Null_When_Empty bool
+
+	ExternalIP_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudNatGatewayUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field dnat_rules with omitempty
+	if !swag.IsZero(m.DnatRules) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dnat_rules\":")
+		bytes, err := swag.WriteJSON(m.DnatRules)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field enable_dnat
+	if m.EnableDnat != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_dnat\":")
+		bytes, err := swag.WriteJSON(m.EnableDnat)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableDnat_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_dnat\":null")
+		first = false
+	}
+
+	// handle nullable field enable_snat
+	if m.EnableSnat != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_snat\":")
+		bytes, err := swag.WriteJSON(m.EnableSnat)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableSnat_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_snat\":null")
+		first = false
+	}
+
+	// handle nullable field external_ip
+	if m.ExternalIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":")
+		bytes, err := swag.WriteJSON(m.ExternalIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExternalIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud nat gateway updation params data

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ExportFileDownloadLinks struct {
 	// link
 	// Required: true
 	Link *string `json:"link"`
+
+	MarshalOpts *ExportFileDownloadLinksMarshalOpts `json:"-"`
+}
+
+type ExportFileDownloadLinksMarshalOpts struct {
+	Filename_Explicit_Null_When_Empty bool
+
+	Link_Explicit_Null_When_Empty bool
+}
+
+func (m ExportFileDownloadLinks) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field filename
+	if m.Filename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"filename\":")
+		bytes, err := swag.WriteJSON(m.Filename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Filename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"filename\":null")
+		first = false
+	}
+
+	// handle nullable field link
+	if m.Link != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"link\":")
+		bytes, err := swag.WriteJSON(m.Link)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Link_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"link\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this export file download links

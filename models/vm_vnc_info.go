@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -37,6 +38,130 @@ type VMVncInfo struct {
 	// vm
 	// Required: true
 	VM *VM `json:"vm"`
+
+	MarshalOpts *VMVncInfoMarshalOpts `json:"-"`
+}
+
+type VMVncInfoMarshalOpts struct {
+	ClusterIP_Explicit_Null_When_Empty bool
+
+	Direct_Explicit_Null_When_Empty bool
+
+	Redirect_Explicit_Null_When_Empty bool
+
+	Terminal_Explicit_Null_When_Empty bool
+
+	VM_Explicit_Null_When_Empty bool
+}
+
+func (m VMVncInfo) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster_ip
+	if m.ClusterIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_ip\":")
+		bytes, err := swag.WriteJSON(m.ClusterIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_ip\":null")
+		first = false
+	}
+
+	// handle nullable field direct
+	if m.Direct != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"direct\":")
+		bytes, err := swag.WriteJSON(m.Direct)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Direct_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"direct\":null")
+		first = false
+	}
+
+	// handle nullable field redirect
+	if m.Redirect != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"redirect\":")
+		bytes, err := swag.WriteJSON(m.Redirect)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Redirect_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"redirect\":null")
+		first = false
+	}
+
+	// handle nullable field terminal
+	if m.Terminal != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"terminal\":")
+		bytes, err := swag.WriteJSON(m.Terminal)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Terminal_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"terminal\":null")
+		first = false
+	}
+
+	// handle nullable field vm
+	if m.VM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":")
+		bytes, err := swag.WriteJSON(m.VM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm vnc info
