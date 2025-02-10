@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type WithTaskLogCollection struct {
 
 	// task id
 	TaskID *string `json:"task_id,omitempty"`
+
+	MarshalOpts *WithTaskLogCollectionMarshalOpts `json:"-"`
+}
+
+type WithTaskLogCollectionMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	TaskID_Explicit_Null_When_Empty bool
+}
+
+func (m WithTaskLogCollection) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field task_id
+	if m.TaskID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"task_id\":")
+		bytes, err := swag.WriteJSON(m.TaskID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TaskID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"task_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this with task log collection

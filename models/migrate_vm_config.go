@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -40,6 +41,146 @@ type MigrateVMConfig struct {
 
 	// remove unmovable devices
 	RemoveUnmovableDevices *bool `json:"remove_unmovable_devices,omitempty"`
+
+	MarshalOpts *MigrateVMConfigMarshalOpts `json:"-"`
+}
+
+type MigrateVMConfigMarshalOpts struct {
+	DeleteSrcVM_Explicit_Null_When_Empty bool
+
+	ElfStoragePolicy_Explicit_Null_When_Empty bool
+
+	MigrateType_Explicit_Null_When_Empty bool
+
+	NetworkMapping_Explicit_Null_When_Empty bool
+
+	NewName_Explicit_Null_When_Empty bool
+
+	RemoveUnmovableDevices_Explicit_Null_When_Empty bool
+}
+
+func (m MigrateVMConfig) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field delete_src_vm
+	if m.DeleteSrcVM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"delete_src_vm\":")
+		bytes, err := swag.WriteJSON(m.DeleteSrcVM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DeleteSrcVM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"delete_src_vm\":null")
+		first = false
+	}
+
+	// handle nullable field elf_storage_policy
+	if m.ElfStoragePolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy\":")
+		bytes, err := swag.WriteJSON(m.ElfStoragePolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfStoragePolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy\":null")
+		first = false
+	}
+
+	// handle nullable field migrate_type
+	if m.MigrateType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"migrate_type\":")
+		bytes, err := swag.WriteJSON(m.MigrateType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MigrateType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"migrate_type\":null")
+		first = false
+	}
+
+	// handle non nullable field network_mapping without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network_mapping\":")
+		bytes, err := swag.WriteJSON(m.NetworkMapping)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field new_name
+	if m.NewName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"new_name\":")
+		bytes, err := swag.WriteJSON(m.NewName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NewName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"new_name\":null")
+		first = false
+	}
+
+	// handle nullable field remove_unmovable_devices
+	if m.RemoveUnmovableDevices != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remove_unmovable_devices\":")
+		bytes, err := swag.WriteJSON(m.RemoveUnmovableDevices)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RemoveUnmovableDevices_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remove_unmovable_devices\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this migrate Vm config

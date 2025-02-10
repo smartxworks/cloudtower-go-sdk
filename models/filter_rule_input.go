@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -42,6 +43,152 @@ type FilterRuleInput struct {
 	// threshold
 	// Required: true
 	Threshold *float64 `json:"threshold"`
+
+	MarshalOpts *FilterRuleInputMarshalOpts `json:"-"`
+}
+
+type FilterRuleInputMarshalOpts struct {
+	Aggregation_Explicit_Null_When_Empty bool
+
+	Duration_Explicit_Null_When_Empty bool
+
+	Metric_Explicit_Null_When_Empty bool
+
+	Op_Explicit_Null_When_Empty bool
+
+	Quantile_Explicit_Null_When_Empty bool
+
+	Threshold_Explicit_Null_When_Empty bool
+}
+
+func (m FilterRuleInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field aggregation
+	if m.Aggregation != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"aggregation\":")
+		bytes, err := swag.WriteJSON(m.Aggregation)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Aggregation_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"aggregation\":null")
+		first = false
+	}
+
+	// handle nullable field duration
+	if m.Duration != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"duration\":")
+		bytes, err := swag.WriteJSON(m.Duration)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Duration_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"duration\":null")
+		first = false
+	}
+
+	// handle nullable field metric
+	if m.Metric != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric\":")
+		bytes, err := swag.WriteJSON(m.Metric)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Metric_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metric\":null")
+		first = false
+	}
+
+	// handle nullable field op
+	if m.Op != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"op\":")
+		bytes, err := swag.WriteJSON(m.Op)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Op_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"op\":null")
+		first = false
+	}
+
+	// handle nullable field quantile
+	if m.Quantile != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"quantile\":")
+		bytes, err := swag.WriteJSON(m.Quantile)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Quantile_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"quantile\":null")
+		first = false
+	}
+
+	// handle nullable field threshold
+	if m.Threshold != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"threshold\":")
+		bytes, err := swag.WriteJSON(m.Threshold)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Threshold_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"threshold\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this filter rule input

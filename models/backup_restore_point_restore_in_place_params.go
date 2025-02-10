@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type BackupRestorePointRestoreInPlaceParams struct {
 	// where
 	// Required: true
 	Where *BackupRestorePointWhereInput `json:"where"`
+
+	MarshalOpts *BackupRestorePointRestoreInPlaceParamsMarshalOpts `json:"-"`
+}
+
+type BackupRestorePointRestoreInPlaceParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m BackupRestorePointRestoreInPlaceParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup restore point restore in place params
@@ -162,6 +221,42 @@ type BackupRestorePointRestoreInPlaceParamsData struct {
 	// startup after restore
 	// Required: true
 	StartupAfterRestore *bool `json:"startup_after_restore"`
+
+	MarshalOpts *BackupRestorePointRestoreInPlaceParamsDataMarshalOpts `json:"-"`
+}
+
+type BackupRestorePointRestoreInPlaceParamsDataMarshalOpts struct {
+	StartupAfterRestore_Explicit_Null_When_Empty bool
+}
+
+func (m BackupRestorePointRestoreInPlaceParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field startup_after_restore
+	if m.StartupAfterRestore != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"startup_after_restore\":")
+		bytes, err := swag.WriteJSON(m.StartupAfterRestore)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StartupAfterRestore_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"startup_after_restore\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup restore point restore in place params data

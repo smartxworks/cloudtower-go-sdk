@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VMResetGuestOsPasswordParams struct {
 	// where
 	// Required: true
 	Where *VMWhereInput `json:"where"`
+
+	MarshalOpts *VMResetGuestOsPasswordParamsMarshalOpts `json:"-"`
+}
+
+type VMResetGuestOsPasswordParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMResetGuestOsPasswordParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm reset guest os password params
@@ -166,6 +225,64 @@ type VMResetGuestOsPasswordParamsData struct {
 	// username
 	// Required: true
 	Username *string `json:"username"`
+
+	MarshalOpts *VMResetGuestOsPasswordParamsDataMarshalOpts `json:"-"`
+}
+
+type VMResetGuestOsPasswordParamsDataMarshalOpts struct {
+	Password_Explicit_Null_When_Empty bool
+
+	Username_Explicit_Null_When_Empty bool
+}
+
+func (m VMResetGuestOsPasswordParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field password
+	if m.Password != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":")
+		bytes, err := swag.WriteJSON(m.Password)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Password_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":null")
+		first = false
+	}
+
+	// handle nullable field username
+	if m.Username != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":")
+		bytes, err := swag.WriteJSON(m.Username)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Username_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM reset guest os password params data

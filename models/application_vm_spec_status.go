@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -23,6 +24,58 @@ type ApplicationVMSpecStatus struct {
 
 	// vm ips
 	VMIps []string `json:"vmIps,omitempty"`
+
+	MarshalOpts *ApplicationVMSpecStatusMarshalOpts `json:"-"`
+}
+
+type ApplicationVMSpecStatusMarshalOpts struct {
+	Message_Explicit_Null_When_Empty bool
+
+	VMIps_Explicit_Null_When_Empty bool
+}
+
+func (m ApplicationVMSpecStatus) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field message
+	if m.Message != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":")
+		bytes, err := swag.WriteJSON(m.Message)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Message_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":null")
+		first = false
+	}
+
+	// handle non nullable field vmIps with omitempty
+	if !swag.IsZero(m.VMIps) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmIps\":")
+		bytes, err := swag.WriteJSON(m.VMIps)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this application Vm spec status

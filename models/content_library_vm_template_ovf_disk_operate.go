@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,68 @@ type ContentLibraryVMTemplateOvfDiskOperate struct {
 
 	// mount new cd roms
 	MountNewCdRoms []*ContentLibraryVmdkCdromMount `json:"mount_new_cd_roms,omitempty"`
+
+	MarshalOpts *ContentLibraryVMTemplateOvfDiskOperateMarshalOpts `json:"-"`
+}
+
+type ContentLibraryVMTemplateOvfDiskOperateMarshalOpts struct {
+	ModifyCdRoms_Explicit_Null_When_Empty bool
+
+	ModifyVmdkDisks_Explicit_Null_When_Empty bool
+
+	MountNewCdRoms_Explicit_Null_When_Empty bool
+}
+
+func (m ContentLibraryVMTemplateOvfDiskOperate) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field modify_cd_roms with omitempty
+	if !swag.IsZero(m.ModifyCdRoms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"modify_cd_roms\":")
+		bytes, err := swag.WriteJSON(m.ModifyCdRoms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field modify_vmdk_disks with omitempty
+	if !swag.IsZero(m.ModifyVmdkDisks) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"modify_vmdk_disks\":")
+		bytes, err := swag.WriteJSON(m.ModifyVmdkDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field mount_new_cd_roms with omitempty
+	if !swag.IsZero(m.MountNewCdRoms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mount_new_cd_roms\":")
+		bytes, err := swag.WriteJSON(m.MountNewCdRoms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this content library Vm template ovf disk operate

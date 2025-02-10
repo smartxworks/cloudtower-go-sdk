@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -36,6 +37,130 @@ type VMTemplateCreationParams struct {
 	// vm id
 	// Required: true
 	VMID *string `json:"vm_id"`
+
+	MarshalOpts *VMTemplateCreationParamsMarshalOpts `json:"-"`
+}
+
+type VMTemplateCreationParamsMarshalOpts struct {
+	CloudInitSupported_Explicit_Null_When_Empty bool
+
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	VMID_Explicit_Null_When_Empty bool
+}
+
+func (m VMTemplateCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cloud_init_supported
+	if m.CloudInitSupported != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cloud_init_supported\":")
+		bytes, err := swag.WriteJSON(m.CloudInitSupported)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CloudInitSupported_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cloud_init_supported\":null")
+		first = false
+	}
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field vm_id
+	if m.VMID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_id\":")
+		bytes, err := swag.WriteJSON(m.VMID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm template creation params

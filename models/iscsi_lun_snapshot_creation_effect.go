@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -19,6 +20,42 @@ type IscsiLunSnapshotCreationEffect struct {
 
 	// sync
 	Sync *bool `json:"sync,omitempty"`
+
+	MarshalOpts *IscsiLunSnapshotCreationEffectMarshalOpts `json:"-"`
+}
+
+type IscsiLunSnapshotCreationEffectMarshalOpts struct {
+	Sync_Explicit_Null_When_Empty bool
+}
+
+func (m IscsiLunSnapshotCreationEffect) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field sync
+	if m.Sync != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync\":")
+		bytes, err := swag.WriteJSON(m.Sync)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Sync_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this iscsi lun snapshot creation effect

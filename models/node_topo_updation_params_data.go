@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,86 @@ type NodeTopoUpdationParamsData struct {
 
 	// position
 	Position *Position `json:"position,omitempty"`
+
+	MarshalOpts *NodeTopoUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type NodeTopoUpdationParamsDataMarshalOpts struct {
+	BrickTopoID_Explicit_Null_When_Empty bool
+
+	ClusterTopoID_Explicit_Null_When_Empty bool
+
+	Position_Explicit_Null_When_Empty bool
+}
+
+func (m NodeTopoUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field brick_topo_id
+	if m.BrickTopoID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"brick_topo_id\":")
+		bytes, err := swag.WriteJSON(m.BrickTopoID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BrickTopoID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"brick_topo_id\":null")
+		first = false
+	}
+
+	// handle nullable field cluster_topo_id
+	if m.ClusterTopoID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_topo_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterTopoID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterTopoID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_topo_id\":null")
+		first = false
+	}
+
+	// handle nullable field position
+	if m.Position != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"position\":")
+		bytes, err := swag.WriteJSON(m.Position)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Position_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"position\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this node topo updation params data

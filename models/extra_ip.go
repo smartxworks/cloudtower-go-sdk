@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ExtraIP struct {
 	// management ip
 	// Required: true
 	ManagementIP *string `json:"management_ip"`
+
+	MarshalOpts *ExtraIPMarshalOpts `json:"-"`
+}
+
+type ExtraIPMarshalOpts struct {
+	HostID_Explicit_Null_When_Empty bool
+
+	ManagementIP_Explicit_Null_When_Empty bool
+}
+
+func (m ExtraIP) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field host_id
+	if m.HostID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_id\":")
+		bytes, err := swag.WriteJSON(m.HostID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_id\":null")
+		first = false
+	}
+
+	// handle nullable field management_ip
+	if m.ManagementIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_ip\":")
+		bytes, err := swag.WriteJSON(m.ManagementIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ManagementIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_ip\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this extra Ip

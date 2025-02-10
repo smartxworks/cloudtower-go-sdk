@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VMUpdateNicQosOptionsParams struct {
 	// where
 	// Required: true
 	Where *VMNicWhereInput `json:"where"`
+
+	MarshalOpts *VMUpdateNicQosOptionsParamsMarshalOpts `json:"-"`
+}
+
+type VMUpdateNicQosOptionsParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateNicQosOptionsParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm update nic qos options params
@@ -161,6 +220,42 @@ type VMUpdateNicQosOptionsParamsData struct {
 
 	// qos
 	Qos *VMNicQosOption `json:"qos,omitempty"`
+
+	MarshalOpts *VMUpdateNicQosOptionsParamsDataMarshalOpts `json:"-"`
+}
+
+type VMUpdateNicQosOptionsParamsDataMarshalOpts struct {
+	Qos_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateNicQosOptionsParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field qos
+	if m.Qos != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos\":")
+		bytes, err := swag.WriteJSON(m.Qos)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Qos_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"qos\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM update nic qos options params data

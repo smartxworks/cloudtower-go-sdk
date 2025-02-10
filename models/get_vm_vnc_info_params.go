@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type GetVMVncInfoParams struct {
 	// vm
 	// Required: true
 	VM *VMWhereUniqueInput `json:"vm"`
+
+	MarshalOpts *GetVMVncInfoParamsMarshalOpts `json:"-"`
+}
+
+type GetVMVncInfoParamsMarshalOpts struct {
+	VM_Explicit_Null_When_Empty bool
+}
+
+func (m GetVMVncInfoParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field vm
+	if m.VM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":")
+		bytes, err := swag.WriteJSON(m.VM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this get Vm vnc info params

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -39,6 +40,116 @@ type ResourceMeta struct {
 	// type
 	// Required: true
 	Type *ReportResourceInputEnum `json:"type"`
+
+	MarshalOpts *ResourceMetaMarshalOpts `json:"-"`
+}
+
+type ResourceMetaMarshalOpts struct {
+	Typename_Explicit_Null_When_Empty bool
+
+	Fields_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+}
+
+func (m ResourceMeta) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field __typename
+	if m.Typename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":")
+		bytes, err := swag.WriteJSON(m.Typename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Typename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle non nullable field fields without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fields\":")
+		bytes, err := swag.WriteJSON(m.Fields)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field filter with omitempty
+	if !swag.IsZero(m.Filter) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"filter\":")
+		bytes, err := swag.WriteJSON(m.Filter)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this resource meta

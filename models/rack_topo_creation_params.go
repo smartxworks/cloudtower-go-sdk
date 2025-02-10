@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -37,6 +38,130 @@ type RackTopoCreationParams struct {
 	// zone topo id
 	// Required: true
 	ZoneTopoID *string `json:"zone_topo_id"`
+
+	MarshalOpts *RackTopoCreationParamsMarshalOpts `json:"-"`
+}
+
+type RackTopoCreationParamsMarshalOpts struct {
+	BrickTopoes_Explicit_Null_When_Empty bool
+
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Height_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	ZoneTopoID_Explicit_Null_When_Empty bool
+}
+
+func (m RackTopoCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field brick_topoes
+	if m.BrickTopoes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"brick_topoes\":")
+		bytes, err := swag.WriteJSON(m.BrickTopoes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BrickTopoes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"brick_topoes\":null")
+		first = false
+	}
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field height
+	if m.Height != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"height\":")
+		bytes, err := swag.WriteJSON(m.Height)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Height_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"height\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field zone_topo_id
+	if m.ZoneTopoID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zone_topo_id\":")
+		bytes, err := swag.WriteJSON(m.ZoneTopoID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ZoneTopoID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zone_topo_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this rack topo creation params

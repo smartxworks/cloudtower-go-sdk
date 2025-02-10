@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type NestedVpcSubnetIPPooType struct {
 	// start
 	// Required: true
 	Start *string `json:"start"`
+
+	MarshalOpts *NestedVpcSubnetIPPooTypeMarshalOpts `json:"-"`
+}
+
+type NestedVpcSubnetIPPooTypeMarshalOpts struct {
+	End_Explicit_Null_When_Empty bool
+
+	Start_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVpcSubnetIPPooType) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field end
+	if m.End != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"end\":")
+		bytes, err := swag.WriteJSON(m.End)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.End_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"end\":null")
+		first = false
+	}
+
+	// handle nullable field start
+	if m.Start != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"start\":")
+		bytes, err := swag.WriteJSON(m.Start)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Start_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"start\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested vpc subnet Ip poo type

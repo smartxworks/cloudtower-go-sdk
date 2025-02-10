@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -31,6 +32,86 @@ type BackupRestoreExecutionNetworkMapping struct {
 	// src vlan id
 	// Required: true
 	SrcVlanID *string `json:"src_vlan_id"`
+
+	MarshalOpts *BackupRestoreExecutionNetworkMappingMarshalOpts `json:"-"`
+}
+
+type BackupRestoreExecutionNetworkMappingMarshalOpts struct {
+	Typename_Explicit_Null_When_Empty bool
+
+	DstVlanID_Explicit_Null_When_Empty bool
+
+	SrcVlanID_Explicit_Null_When_Empty bool
+}
+
+func (m BackupRestoreExecutionNetworkMapping) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field __typename
+	if m.Typename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":")
+		bytes, err := swag.WriteJSON(m.Typename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Typename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle nullable field dst_vlan_id
+	if m.DstVlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst_vlan_id\":")
+		bytes, err := swag.WriteJSON(m.DstVlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DstVlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst_vlan_id\":null")
+		first = false
+	}
+
+	// handle nullable field src_vlan_id
+	if m.SrcVlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"src_vlan_id\":")
+		bytes, err := swag.WriteJSON(m.SrcVlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SrcVlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"src_vlan_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup restore execution network mapping

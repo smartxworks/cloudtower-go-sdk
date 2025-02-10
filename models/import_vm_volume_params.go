@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -34,6 +35,108 @@ type ImportVMVolumeParams struct {
 	// upload task id
 	// Required: true
 	UploadTaskID *string `json:"upload_task_id"`
+
+	MarshalOpts *ImportVMVolumeParamsMarshalOpts `json:"-"`
+}
+
+type ImportVMVolumeParamsMarshalOpts struct {
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	StoragePolicy_Explicit_Null_When_Empty bool
+
+	UploadTaskID_Explicit_Null_When_Empty bool
+}
+
+func (m ImportVMVolumeParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field storage_policy
+	if m.StoragePolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_policy\":")
+		bytes, err := swag.WriteJSON(m.StoragePolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StoragePolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_policy\":null")
+		first = false
+	}
+
+	// handle nullable field upload_task_id
+	if m.UploadTaskID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"upload_task_id\":")
+		bytes, err := swag.WriteJSON(m.UploadTaskID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UploadTaskID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"upload_task_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this import Vm volume params

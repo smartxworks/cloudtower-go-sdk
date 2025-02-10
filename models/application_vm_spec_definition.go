@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -36,6 +37,146 @@ type ApplicationVMSpecDefinition struct {
 
 	// vm affinity
 	VMAffinity *ApplicationVMSpecAffinityPolicy `json:"vmAffinity,omitempty"`
+
+	MarshalOpts *ApplicationVMSpecDefinitionMarshalOpts `json:"-"`
+}
+
+type ApplicationVMSpecDefinitionMarshalOpts struct {
+	Group_Explicit_Null_When_Empty bool
+
+	Instances_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Placement_Explicit_Null_When_Empty bool
+
+	Template_Explicit_Null_When_Empty bool
+
+	VMAffinity_Explicit_Null_When_Empty bool
+}
+
+func (m ApplicationVMSpecDefinition) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field group
+	if m.Group != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"group\":")
+		bytes, err := swag.WriteJSON(m.Group)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Group_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"group\":null")
+		first = false
+	}
+
+	// handle non nullable field instances with omitempty
+	if !swag.IsZero(m.Instances) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"instances\":")
+		bytes, err := swag.WriteJSON(m.Instances)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field placement
+	if m.Placement != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"placement\":")
+		bytes, err := swag.WriteJSON(m.Placement)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Placement_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"placement\":null")
+		first = false
+	}
+
+	// handle nullable field template
+	if m.Template != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"template\":")
+		bytes, err := swag.WriteJSON(m.Template)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Template_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"template\":null")
+		first = false
+	}
+
+	// handle nullable field vmAffinity
+	if m.VMAffinity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmAffinity\":")
+		bytes, err := swag.WriteJSON(m.VMAffinity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMAffinity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmAffinity\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this application Vm spec definition

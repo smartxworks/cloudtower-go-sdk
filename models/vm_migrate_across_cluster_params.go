@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VMMigrateAcrossClusterParams struct {
 	// where
 	// Required: true
 	Where *VMWhereInput `json:"where"`
+
+	MarshalOpts *VMMigrateAcrossClusterParamsMarshalOpts `json:"-"`
+}
+
+type VMMigrateAcrossClusterParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMMigrateAcrossClusterParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm migrate across cluster params
@@ -169,6 +228,86 @@ type VMMigrateAcrossClusterParamsData struct {
 	// vm config
 	// Required: true
 	VMConfig *MigrateVMConfig `json:"vm_config"`
+
+	MarshalOpts *VMMigrateAcrossClusterParamsDataMarshalOpts `json:"-"`
+}
+
+type VMMigrateAcrossClusterParamsDataMarshalOpts struct {
+	ClusterID_Explicit_Null_When_Empty bool
+
+	HostID_Explicit_Null_When_Empty bool
+
+	VMConfig_Explicit_Null_When_Empty bool
+}
+
+func (m VMMigrateAcrossClusterParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field host_id
+	if m.HostID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_id\":")
+		bytes, err := swag.WriteJSON(m.HostID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_id\":null")
+		first = false
+	}
+
+	// handle nullable field vm_config
+	if m.VMConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_config\":")
+		bytes, err := swag.WriteJSON(m.VMConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_config\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM migrate across cluster params data

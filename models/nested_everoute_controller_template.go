@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -42,6 +43,152 @@ type NestedEverouteControllerTemplate struct {
 	// vcpu
 	// Required: true
 	Vcpu *int32 `json:"vcpu"`
+
+	MarshalOpts *NestedEverouteControllerTemplateMarshalOpts `json:"-"`
+}
+
+type NestedEverouteControllerTemplateMarshalOpts struct {
+	Cluster_Explicit_Null_When_Empty bool
+
+	Gateway_Explicit_Null_When_Empty bool
+
+	Memory_Explicit_Null_When_Empty bool
+
+	Netmask_Explicit_Null_When_Empty bool
+
+	Size_Explicit_Null_When_Empty bool
+
+	Vcpu_Explicit_Null_When_Empty bool
+}
+
+func (m NestedEverouteControllerTemplate) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster
+	if m.Cluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":")
+		bytes, err := swag.WriteJSON(m.Cluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle nullable field gateway
+	if m.Gateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway\":")
+		bytes, err := swag.WriteJSON(m.Gateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Gateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway\":null")
+		first = false
+	}
+
+	// handle nullable field memory
+	if m.Memory != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memory\":")
+		bytes, err := swag.WriteJSON(m.Memory)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Memory_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memory\":null")
+		first = false
+	}
+
+	// handle nullable field netmask
+	if m.Netmask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"netmask\":")
+		bytes, err := swag.WriteJSON(m.Netmask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Netmask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"netmask\":null")
+		first = false
+	}
+
+	// handle nullable field size
+	if m.Size != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":")
+		bytes, err := swag.WriteJSON(m.Size)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Size_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":null")
+		first = false
+	}
+
+	// handle nullable field vcpu
+	if m.Vcpu != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vcpu\":")
+		bytes, err := swag.WriteJSON(m.Vcpu)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vcpu_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vcpu\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested everoute controller template

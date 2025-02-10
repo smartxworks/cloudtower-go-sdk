@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -22,6 +23,64 @@ type MaintenanceModeVerify struct {
 
 	// reason
 	Reason *string `json:"reason,omitempty"`
+
+	MarshalOpts *MaintenanceModeVerifyMarshalOpts `json:"-"`
+}
+
+type MaintenanceModeVerifyMarshalOpts struct {
+	Changed_Explicit_Null_When_Empty bool
+
+	Reason_Explicit_Null_When_Empty bool
+}
+
+func (m MaintenanceModeVerify) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field changed
+	if m.Changed != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"changed\":")
+		bytes, err := swag.WriteJSON(m.Changed)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Changed_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"changed\":null")
+		first = false
+	}
+
+	// handle nullable field reason
+	if m.Reason != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":")
+		bytes, err := swag.WriteJSON(m.Reason)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Reason_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this maintenance mode verify

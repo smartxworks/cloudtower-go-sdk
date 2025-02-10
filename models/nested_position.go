@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -22,6 +23,64 @@ type NestedPosition struct {
 
 	// row
 	Row *int32 `json:"row,omitempty"`
+
+	MarshalOpts *NestedPositionMarshalOpts `json:"-"`
+}
+
+type NestedPositionMarshalOpts struct {
+	Column_Explicit_Null_When_Empty bool
+
+	Row_Explicit_Null_When_Empty bool
+}
+
+func (m NestedPosition) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field column
+	if m.Column != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"column\":")
+		bytes, err := swag.WriteJSON(m.Column)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Column_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"column\":null")
+		first = false
+	}
+
+	// handle nullable field row
+	if m.Row != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"row\":")
+		bytes, err := swag.WriteJSON(m.Row)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Row_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"row\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested position

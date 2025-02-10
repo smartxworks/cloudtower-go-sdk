@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type DisassociateSystemServiceFromObsServiceParams struct {
 
 	// system service type
 	SystemServiceType *ObservabilityConnectedSystemServiceType `json:"system_service_type,omitempty"`
+
+	MarshalOpts *DisassociateSystemServiceFromObsServiceParamsMarshalOpts `json:"-"`
+}
+
+type DisassociateSystemServiceFromObsServiceParamsMarshalOpts struct {
+	SystemServiceID_Explicit_Null_When_Empty bool
+
+	SystemServiceType_Explicit_Null_When_Empty bool
+}
+
+func (m DisassociateSystemServiceFromObsServiceParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field system_service_id
+	if m.SystemServiceID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"system_service_id\":")
+		bytes, err := swag.WriteJSON(m.SystemServiceID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SystemServiceID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"system_service_id\":null")
+		first = false
+	}
+
+	// handle nullable field system_service_type
+	if m.SystemServiceType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"system_service_type\":")
+		bytes, err := swag.WriteJSON(m.SystemServiceType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SystemServiceType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"system_service_type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this disassociate system service from obs service params

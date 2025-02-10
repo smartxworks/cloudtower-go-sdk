@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -56,6 +57,240 @@ type License struct {
 	// type
 	// Required: true
 	Type *LicenseType `json:"type"`
+
+	MarshalOpts *LicenseMarshalOpts `json:"-"`
+}
+
+type LicenseMarshalOpts struct {
+	ExpireDate_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LicenseSerial_Explicit_Null_When_Empty bool
+
+	MaintenanceEndDate_Explicit_Null_When_Empty bool
+
+	MaintenanceStartDate_Explicit_Null_When_Empty bool
+
+	MaxChunkNum_Explicit_Null_When_Empty bool
+
+	MaxClusterNum_Explicit_Null_When_Empty bool
+
+	SignDate_Explicit_Null_When_Empty bool
+
+	SoftwareEdition_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+}
+
+func (m License) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field expire_date
+	if m.ExpireDate != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"expire_date\":")
+		bytes, err := swag.WriteJSON(m.ExpireDate)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExpireDate_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"expire_date\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field license_serial
+	if m.LicenseSerial != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"license_serial\":")
+		bytes, err := swag.WriteJSON(m.LicenseSerial)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LicenseSerial_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"license_serial\":null")
+		first = false
+	}
+
+	// handle nullable field maintenance_end_date
+	if m.MaintenanceEndDate != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"maintenance_end_date\":")
+		bytes, err := swag.WriteJSON(m.MaintenanceEndDate)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MaintenanceEndDate_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"maintenance_end_date\":null")
+		first = false
+	}
+
+	// handle nullable field maintenance_start_date
+	if m.MaintenanceStartDate != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"maintenance_start_date\":")
+		bytes, err := swag.WriteJSON(m.MaintenanceStartDate)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MaintenanceStartDate_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"maintenance_start_date\":null")
+		first = false
+	}
+
+	// handle nullable field max_chunk_num
+	if m.MaxChunkNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_chunk_num\":")
+		bytes, err := swag.WriteJSON(m.MaxChunkNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MaxChunkNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_chunk_num\":null")
+		first = false
+	}
+
+	// handle nullable field max_cluster_num
+	if m.MaxClusterNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_cluster_num\":")
+		bytes, err := swag.WriteJSON(m.MaxClusterNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MaxClusterNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"max_cluster_num\":null")
+		first = false
+	}
+
+	// handle nullable field sign_date
+	if m.SignDate != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sign_date\":")
+		bytes, err := swag.WriteJSON(m.SignDate)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SignDate_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sign_date\":null")
+		first = false
+	}
+
+	// handle nullable field software_edition
+	if m.SoftwareEdition != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"software_edition\":")
+		bytes, err := swag.WriteJSON(m.SoftwareEdition)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SoftwareEdition_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"software_edition\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this license

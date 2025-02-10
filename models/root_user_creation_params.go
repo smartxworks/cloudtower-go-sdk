@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type RootUserCreationParams struct {
 	// password
 	// Required: true
 	Password *string `json:"password"`
+
+	MarshalOpts *RootUserCreationParamsMarshalOpts `json:"-"`
+}
+
+type RootUserCreationParamsMarshalOpts struct {
+	Password_Explicit_Null_When_Empty bool
+}
+
+func (m RootUserCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field password
+	if m.Password != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":")
+		bytes, err := swag.WriteJSON(m.Password)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Password_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this root user creation params

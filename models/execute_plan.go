@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -43,6 +44,152 @@ type ExecutePlan struct {
 	// start at
 	// Required: true
 	StartAt *string `json:"start_at"`
+
+	MarshalOpts *ExecutePlanMarshalOpts `json:"-"`
+}
+
+type ExecutePlanMarshalOpts struct {
+	Typename_Explicit_Null_When_Empty bool
+
+	Enabled_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Period_Explicit_Null_When_Empty bool
+
+	Retain_Explicit_Null_When_Empty bool
+
+	StartAt_Explicit_Null_When_Empty bool
+}
+
+func (m ExecutePlan) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field __typename
+	if m.Typename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":")
+		bytes, err := swag.WriteJSON(m.Typename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Typename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle nullable field enabled
+	if m.Enabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":")
+		bytes, err := swag.WriteJSON(m.Enabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field period
+	if m.Period != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"period\":")
+		bytes, err := swag.WriteJSON(m.Period)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Period_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"period\":null")
+		first = false
+	}
+
+	// handle nullable field retain
+	if m.Retain != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retain\":")
+		bytes, err := swag.WriteJSON(m.Retain)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Retain_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retain\":null")
+		first = false
+	}
+
+	// handle nullable field start_at
+	if m.StartAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"start_at\":")
+		bytes, err := swag.WriteJSON(m.StartAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StartAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"start_at\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this execute plan

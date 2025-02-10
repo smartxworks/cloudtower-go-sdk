@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -29,6 +30,86 @@ type Position struct {
 
 	// row
 	Row *int32 `json:"row,omitempty"`
+
+	MarshalOpts *PositionMarshalOpts `json:"-"`
+}
+
+type PositionMarshalOpts struct {
+	Typename_Explicit_Null_When_Empty bool
+
+	Column_Explicit_Null_When_Empty bool
+
+	Row_Explicit_Null_When_Empty bool
+}
+
+func (m Position) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field __typename
+	if m.Typename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":")
+		bytes, err := swag.WriteJSON(m.Typename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Typename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle nullable field column
+	if m.Column != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"column\":")
+		bytes, err := swag.WriteJSON(m.Column)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Column_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"column\":null")
+		first = false
+	}
+
+	// handle nullable field row
+	if m.Row != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"row\":")
+		bytes, err := swag.WriteJSON(m.Row)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Row_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"row\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this position

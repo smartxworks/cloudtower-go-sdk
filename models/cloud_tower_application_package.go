@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -50,6 +51,174 @@ type CloudTowerApplicationPackage struct {
 	// version
 	// Required: true
 	Version *string `json:"version"`
+
+	MarshalOpts *CloudTowerApplicationPackageMarshalOpts `json:"-"`
+}
+
+type CloudTowerApplicationPackageMarshalOpts struct {
+	Applications_Explicit_Null_When_Empty bool
+
+	Architecture_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	ScosVersion_Explicit_Null_When_Empty bool
+
+	Version_Explicit_Null_When_Empty bool
+}
+
+func (m CloudTowerApplicationPackage) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field applications with omitempty
+	if !swag.IsZero(m.Applications) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"applications\":")
+		bytes, err := swag.WriteJSON(m.Applications)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field architecture
+	if m.Architecture != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"architecture\":")
+		bytes, err := swag.WriteJSON(m.Architecture)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Architecture_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"architecture\":null")
+		first = false
+	}
+
+	// handle non nullable field containers with omitempty
+	if !swag.IsZero(m.Containers) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"containers\":")
+		bytes, err := swag.WriteJSON(m.Containers)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle non nullable field images with omitempty
+	if !swag.IsZero(m.Images) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"images\":")
+		bytes, err := swag.WriteJSON(m.Images)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field scosVersion
+	if m.ScosVersion != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"scosVersion\":")
+		bytes, err := swag.WriteJSON(m.ScosVersion)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ScosVersion_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"scosVersion\":null")
+		first = false
+	}
+
+	// handle nullable field version
+	if m.Version != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":")
+		bytes, err := swag.WriteJSON(m.Version)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Version_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cloud tower application package

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -42,6 +43,22 @@ type IscsiLunCreationParams struct {
 	ReplicaNum *int32 `json:"replica_num"`
 
 	IscsiLunCommonParams
+
+	MarshalOpts *IscsiLunCreationParamsMarshalOpts `json:"-"`
+}
+
+type IscsiLunCreationParamsMarshalOpts struct {
+	AssignedSize_Explicit_Null_When_Empty bool
+
+	AssignedSizeUnit_Explicit_Null_When_Empty bool
+
+	IscsiTargetID_Explicit_Null_When_Empty bool
+
+	LunID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	ReplicaNum_Explicit_Null_When_Empty bool
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -90,37 +107,131 @@ func (m *IscsiLunCreationParams) UnmarshalJSON(raw []byte) error {
 func (m IscsiLunCreationParams) MarshalJSON() ([]byte, error) {
 	_parts := make([][]byte, 0, 2)
 
-	var dataAO0 struct {
-		AssignedSize *int64 `json:"assigned_size"`
+	var b bytes.Buffer
+	b.WriteString("{")
+	first := true
 
-		AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
-
-		IscsiTargetID *string `json:"iscsi_target_id"`
-
-		LunID *int32 `json:"lun_id,omitempty"`
-
-		Name *string `json:"name"`
-
-		ReplicaNum *int32 `json:"replica_num"`
+	// handle nullable field assigned_size
+	if m.AssignedSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_size\":")
+		bytes, err := swag.WriteJSON(m.AssignedSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AssignedSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_size\":null")
+		first = false
 	}
 
-	dataAO0.AssignedSize = m.AssignedSize
-
-	dataAO0.AssignedSizeUnit = m.AssignedSizeUnit
-
-	dataAO0.IscsiTargetID = m.IscsiTargetID
-
-	dataAO0.LunID = m.LunID
-
-	dataAO0.Name = m.Name
-
-	dataAO0.ReplicaNum = m.ReplicaNum
-
-	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0)
-	if errAO0 != nil {
-		return nil, errAO0
+	// handle nullable field assigned_size_unit
+	if m.AssignedSizeUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_size_unit\":")
+		bytes, err := swag.WriteJSON(m.AssignedSizeUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AssignedSizeUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_size_unit\":null")
+		first = false
 	}
-	_parts = append(_parts, jsonDataAO0)
+
+	// handle nullable field iscsi_target_id
+	if m.IscsiTargetID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_target_id\":")
+		bytes, err := swag.WriteJSON(m.IscsiTargetID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiTargetID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_target_id\":null")
+		first = false
+	}
+
+	// handle nullable field lun_id
+	if m.LunID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"lun_id\":")
+		bytes, err := swag.WriteJSON(m.LunID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LunID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"lun_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field replica_num
+	if m.ReplicaNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica_num\":")
+		bytes, err := swag.WriteJSON(m.ReplicaNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ReplicaNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica_num\":null")
+		first = false
+	}
+	b.WriteString("}")
+	_parts = append(_parts, b.Bytes())
 
 	aO1, err := swag.WriteJSON(m.IscsiLunCommonParams)
 	if err != nil {

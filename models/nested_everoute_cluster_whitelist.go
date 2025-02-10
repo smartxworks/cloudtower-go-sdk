@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -29,6 +30,74 @@ type NestedEverouteClusterWhitelist struct {
 
 	// ingress
 	Ingress []*NestedNetworkPolicyRule `json:"ingress,omitempty"`
+
+	MarshalOpts *NestedEverouteClusterWhitelistMarshalOpts `json:"-"`
+}
+
+type NestedEverouteClusterWhitelistMarshalOpts struct {
+	Egress_Explicit_Null_When_Empty bool
+
+	Enable_Explicit_Null_When_Empty bool
+
+	Ingress_Explicit_Null_When_Empty bool
+}
+
+func (m NestedEverouteClusterWhitelist) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field egress with omitempty
+	if !swag.IsZero(m.Egress) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress\":")
+		bytes, err := swag.WriteJSON(m.Egress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field enable
+	if m.Enable != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable\":")
+		bytes, err := swag.WriteJSON(m.Enable)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enable_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable\":null")
+		first = false
+	}
+
+	// handle non nullable field ingress with omitempty
+	if !swag.IsZero(m.Ingress) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress\":")
+		bytes, err := swag.WriteJSON(m.Ingress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested everoute cluster whitelist

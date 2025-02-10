@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -43,6 +44,196 @@ type NestedEverouteControllerStatus struct {
 
 	// vm ID
 	VMID *string `json:"vmID,omitempty"`
+
+	MarshalOpts *NestedEverouteControllerStatusMarshalOpts `json:"-"`
+}
+
+type NestedEverouteControllerStatusMarshalOpts struct {
+	IPAddr_Explicit_Null_When_Empty bool
+
+	IsHealth_Explicit_Null_When_Empty bool
+
+	Message_Explicit_Null_When_Empty bool
+
+	Metrics_Explicit_Null_When_Empty bool
+
+	Phase_Explicit_Null_When_Empty bool
+
+	Reason_Explicit_Null_When_Empty bool
+
+	VM_Explicit_Null_When_Empty bool
+
+	VMID_Explicit_Null_When_Empty bool
+}
+
+func (m NestedEverouteControllerStatus) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field ipAddr
+	if m.IPAddr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipAddr\":")
+		bytes, err := swag.WriteJSON(m.IPAddr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPAddr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipAddr\":null")
+		first = false
+	}
+
+	// handle nullable field isHealth
+	if m.IsHealth != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"isHealth\":")
+		bytes, err := swag.WriteJSON(m.IsHealth)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsHealth_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"isHealth\":null")
+		first = false
+	}
+
+	// handle nullable field message
+	if m.Message != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":")
+		bytes, err := swag.WriteJSON(m.Message)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Message_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":null")
+		first = false
+	}
+
+	// handle nullable field metrics
+	if m.Metrics != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metrics\":")
+		bytes, err := swag.WriteJSON(m.Metrics)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Metrics_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metrics\":null")
+		first = false
+	}
+
+	// handle nullable field phase
+	if m.Phase != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":")
+		bytes, err := swag.WriteJSON(m.Phase)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Phase_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":null")
+		first = false
+	}
+
+	// handle nullable field reason
+	if m.Reason != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":")
+		bytes, err := swag.WriteJSON(m.Reason)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Reason_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":null")
+		first = false
+	}
+
+	// handle nullable field vm
+	if m.VM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":")
+		bytes, err := swag.WriteJSON(m.VM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm\":null")
+		first = false
+	}
+
+	// handle nullable field vmID
+	if m.VMID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmID\":")
+		bytes, err := swag.WriteJSON(m.VMID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmID\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested everoute controller status

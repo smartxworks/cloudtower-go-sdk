@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -34,6 +35,130 @@ type VMCdRomParams struct {
 
 	// key
 	Key *int32 `json:"key,omitempty"`
+
+	MarshalOpts *VMCdRomParamsMarshalOpts `json:"-"`
+}
+
+type VMCdRomParamsMarshalOpts struct {
+	Boot_Explicit_Null_When_Empty bool
+
+	ContentLibraryImageID_Explicit_Null_When_Empty bool
+
+	ElfImageID_Explicit_Null_When_Empty bool
+
+	Index_Explicit_Null_When_Empty bool
+
+	Key_Explicit_Null_When_Empty bool
+}
+
+func (m VMCdRomParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field boot
+	if m.Boot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"boot\":")
+		bytes, err := swag.WriteJSON(m.Boot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Boot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"boot\":null")
+		first = false
+	}
+
+	// handle nullable field content_library_image_id
+	if m.ContentLibraryImageID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_image_id\":")
+		bytes, err := swag.WriteJSON(m.ContentLibraryImageID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ContentLibraryImageID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_image_id\":null")
+		first = false
+	}
+
+	// handle nullable field elf_image_id
+	if m.ElfImageID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_image_id\":")
+		bytes, err := swag.WriteJSON(m.ElfImageID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfImageID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_image_id\":null")
+		first = false
+	}
+
+	// handle nullable field index
+	if m.Index != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"index\":")
+		bytes, err := swag.WriteJSON(m.Index)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Index_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"index\":null")
+		first = false
+	}
+
+	// handle nullable field key
+	if m.Key != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"key\":")
+		bytes, err := swag.WriteJSON(m.Key)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Key_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"key\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm cd rom params

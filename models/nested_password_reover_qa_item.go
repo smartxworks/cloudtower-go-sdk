@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type NestedPasswordReoverQaItem struct {
 	// question
 	// Required: true
 	Question *string `json:"question"`
+
+	MarshalOpts *NestedPasswordReoverQaItemMarshalOpts `json:"-"`
+}
+
+type NestedPasswordReoverQaItemMarshalOpts struct {
+	Question_Explicit_Null_When_Empty bool
+}
+
+func (m NestedPasswordReoverQaItem) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field question
+	if m.Question != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"question\":")
+		bytes, err := swag.WriteJSON(m.Question)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Question_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"question\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested password reover qa item

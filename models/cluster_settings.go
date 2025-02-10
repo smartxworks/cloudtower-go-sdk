@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -38,6 +39,152 @@ type ClusterSettings struct {
 
 	// vm recycle bin
 	VMRecycleBin *NestedVMRecycleBin `json:"vm_recycle_bin,omitempty"`
+
+	MarshalOpts *ClusterSettingsMarshalOpts `json:"-"`
+}
+
+type ClusterSettingsMarshalOpts struct {
+	Cluster_Explicit_Null_When_Empty bool
+
+	DefaultHa_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicy_Explicit_Null_When_Empty bool
+
+	EnabledIscsi_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	VMRecycleBin_Explicit_Null_When_Empty bool
+}
+
+func (m ClusterSettings) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster
+	if m.Cluster != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":")
+		bytes, err := swag.WriteJSON(m.Cluster)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cluster_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle nullable field default_ha
+	if m.DefaultHa != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_ha\":")
+		bytes, err := swag.WriteJSON(m.DefaultHa)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultHa_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_ha\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy
+	if m.DefaultStoragePolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy\":null")
+		first = false
+	}
+
+	// handle nullable field enabled_iscsi
+	if m.EnabledIscsi != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled_iscsi\":")
+		bytes, err := swag.WriteJSON(m.EnabledIscsi)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnabledIscsi_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled_iscsi\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field vm_recycle_bin
+	if m.VMRecycleBin != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_recycle_bin\":")
+		bytes, err := swag.WriteJSON(m.VMRecycleBin)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMRecycleBin_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_recycle_bin\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cluster settings

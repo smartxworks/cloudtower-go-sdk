@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -28,6 +29,80 @@ type VMDiskOperate struct {
 
 	// remove disks
 	RemoveDisks *VMDiskOperateRemoveDisks `json:"remove_disks,omitempty"`
+
+	MarshalOpts *VMDiskOperateMarshalOpts `json:"-"`
+}
+
+type VMDiskOperateMarshalOpts struct {
+	ModifyDisks_Explicit_Null_When_Empty bool
+
+	NewDisks_Explicit_Null_When_Empty bool
+
+	RemoveDisks_Explicit_Null_When_Empty bool
+}
+
+func (m VMDiskOperate) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field modify_disks with omitempty
+	if !swag.IsZero(m.ModifyDisks) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"modify_disks\":")
+		bytes, err := swag.WriteJSON(m.ModifyDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field new_disks
+	if m.NewDisks != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"new_disks\":")
+		bytes, err := swag.WriteJSON(m.NewDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NewDisks_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"new_disks\":null")
+		first = false
+	}
+
+	// handle nullable field remove_disks
+	if m.RemoveDisks != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remove_disks\":")
+		bytes, err := swag.WriteJSON(m.RemoveDisks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RemoveDisks_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remove_disks\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm disk operate
@@ -216,6 +291,36 @@ type VMDiskOperateRemoveDisks struct {
 	// disk index
 	// Required: true
 	DiskIndex []int32 `json:"disk_index"`
+
+	MarshalOpts *VMDiskOperateRemoveDisksMarshalOpts `json:"-"`
+}
+
+type VMDiskOperateRemoveDisksMarshalOpts struct {
+	DiskIndex_Explicit_Null_When_Empty bool
+}
+
+func (m VMDiskOperateRemoveDisks) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field disk_index without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_index\":")
+		bytes, err := swag.WriteJSON(m.DiskIndex)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM disk operate remove disks

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type NestedSnapshotGroupVMDiskInfo struct {
 	// disk snapshot status
 	// Required: true
 	DiskSnapshotStatus *ProtectSnapshotStatus `json:"disk_snapshot_status"`
+
+	MarshalOpts *NestedSnapshotGroupVMDiskInfoMarshalOpts `json:"-"`
+}
+
+type NestedSnapshotGroupVMDiskInfoMarshalOpts struct {
+	DiskID_Explicit_Null_When_Empty bool
+
+	DiskSnapshotStatus_Explicit_Null_When_Empty bool
+}
+
+func (m NestedSnapshotGroupVMDiskInfo) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field disk_id
+	if m.DiskID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_id\":")
+		bytes, err := swag.WriteJSON(m.DiskID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DiskID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_id\":null")
+		first = false
+	}
+
+	// handle nullable field disk_snapshot_status
+	if m.DiskSnapshotStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_snapshot_status\":")
+		bytes, err := swag.WriteJSON(m.DiskSnapshotStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DiskSnapshotStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_snapshot_status\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested snapshot group Vm disk info

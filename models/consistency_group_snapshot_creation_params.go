@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ConsistencyGroupSnapshotCreationParams struct {
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	MarshalOpts *ConsistencyGroupSnapshotCreationParamsMarshalOpts `json:"-"`
+}
+
+type ConsistencyGroupSnapshotCreationParamsMarshalOpts struct {
+	ConsistencyGroupID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+}
+
+func (m ConsistencyGroupSnapshotCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field consistency_group_id
+	if m.ConsistencyGroupID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistency_group_id\":")
+		bytes, err := swag.WriteJSON(m.ConsistencyGroupID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroupID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistency_group_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this consistency group snapshot creation params

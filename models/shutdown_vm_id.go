@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type ShutdownVMID struct {
 	// vm uuid
 	// Required: true
 	VMUUID *string `json:"vm_uuid"`
+
+	MarshalOpts *ShutdownVMIDMarshalOpts `json:"-"`
+}
+
+type ShutdownVMIDMarshalOpts struct {
+	VMUUID_Explicit_Null_When_Empty bool
+}
+
+func (m ShutdownVMID) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field vm_uuid
+	if m.VMUUID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_uuid\":")
+		bytes, err := swag.WriteJSON(m.VMUUID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMUUID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_uuid\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this shutdown Vm ID

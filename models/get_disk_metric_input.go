@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,80 @@ type GetDiskMetricInput struct {
 	// range
 	// Required: true
 	Range *string `json:"range"`
+
+	MarshalOpts *GetDiskMetricInputMarshalOpts `json:"-"`
+}
+
+type GetDiskMetricInputMarshalOpts struct {
+	Disks_Explicit_Null_When_Empty bool
+
+	Metrics_Explicit_Null_When_Empty bool
+
+	Range_Explicit_Null_When_Empty bool
+}
+
+func (m GetDiskMetricInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field disks
+	if m.Disks != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disks\":")
+		bytes, err := swag.WriteJSON(m.Disks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Disks_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disks\":null")
+		first = false
+	}
+
+	// handle non nullable field metrics without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"metrics\":")
+		bytes, err := swag.WriteJSON(m.Metrics)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field range
+	if m.Range != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"range\":")
+		bytes, err := swag.WriteJSON(m.Range)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Range_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"range\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this get disk metric input

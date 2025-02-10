@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type OvfCPU struct {
 	// sockets
 	// Required: true
 	Sockets *int32 `json:"sockets"`
+
+	MarshalOpts *OvfCPUMarshalOpts `json:"-"`
+}
+
+type OvfCPUMarshalOpts struct {
+	Cores_Explicit_Null_When_Empty bool
+
+	Sockets_Explicit_Null_When_Empty bool
+}
+
+func (m OvfCPU) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cores
+	if m.Cores != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cores\":")
+		bytes, err := swag.WriteJSON(m.Cores)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cores_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cores\":null")
+		first = false
+	}
+
+	// handle nullable field sockets
+	if m.Sockets != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sockets\":")
+		bytes, err := swag.WriteJSON(m.Sockets)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Sockets_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sockets\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this ovf Cpu

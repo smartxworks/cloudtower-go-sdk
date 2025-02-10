@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -27,6 +28,64 @@ type VMOwnerParams struct {
 	// value
 	// Required: true
 	Value *string `json:"value"`
+
+	MarshalOpts *VMOwnerParamsMarshalOpts `json:"-"`
+}
+
+type VMOwnerParamsMarshalOpts struct {
+	SearchFor_Explicit_Null_When_Empty bool
+
+	Value_Explicit_Null_When_Empty bool
+}
+
+func (m VMOwnerParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field search_for
+	if m.SearchFor != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"search_for\":")
+		bytes, err := swag.WriteJSON(m.SearchFor)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SearchFor_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"search_for\":null")
+		first = false
+	}
+
+	// handle nullable field value
+	if m.Value != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"value\":")
+		bytes, err := swag.WriteJSON(m.Value)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Value_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"value\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm owner params

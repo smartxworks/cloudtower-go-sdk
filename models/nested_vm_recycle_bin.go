@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type NestedVMRecycleBin struct {
 	// retain
 	// Required: true
 	Retain *int32 `json:"retain"`
+
+	MarshalOpts *NestedVMRecycleBinMarshalOpts `json:"-"`
+}
+
+type NestedVMRecycleBinMarshalOpts struct {
+	Enabled_Explicit_Null_When_Empty bool
+
+	Retain_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVMRecycleBin) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field enabled
+	if m.Enabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":")
+		bytes, err := swag.WriteJSON(m.Enabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":null")
+		first = false
+	}
+
+	// handle nullable field retain
+	if m.Retain != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retain\":")
+		bytes, err := swag.WriteJSON(m.Retain)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Retain_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retain\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested Vm recycle bin

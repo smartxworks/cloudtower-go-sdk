@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type NvmfNamespaceSnapshotDeletionParams struct {
 	// where
 	// Required: true
 	Where *NvmfNamespaceSnapshotWhereInput `json:"where"`
+
+	MarshalOpts *NvmfNamespaceSnapshotDeletionParamsMarshalOpts `json:"-"`
+}
+
+type NvmfNamespaceSnapshotDeletionParamsMarshalOpts struct {
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m NvmfNamespaceSnapshotDeletionParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nvmf namespace snapshot deletion params

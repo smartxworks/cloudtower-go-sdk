@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -62,6 +63,284 @@ type PmemDimm struct {
 	// version
 	// Required: true
 	Version *string `json:"version"`
+
+	MarshalOpts *PmemDimmMarshalOpts `json:"-"`
+}
+
+type PmemDimmMarshalOpts struct {
+	Capacity_Explicit_Null_When_Empty bool
+
+	DeviceLocator_Explicit_Null_When_Empty bool
+
+	Disk_Explicit_Null_When_Empty bool
+
+	HealthStatus_Explicit_Null_When_Empty bool
+
+	Host_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NumaNode_Explicit_Null_When_Empty bool
+
+	PartNumber_Explicit_Null_When_Empty bool
+
+	RemainingLifePercent_Explicit_Null_When_Empty bool
+
+	Version_Explicit_Null_When_Empty bool
+}
+
+func (m PmemDimm) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field capacity
+	if m.Capacity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"capacity\":")
+		bytes, err := swag.WriteJSON(m.Capacity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Capacity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"capacity\":null")
+		first = false
+	}
+
+	// handle nullable field device_locator
+	if m.DeviceLocator != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"device_locator\":")
+		bytes, err := swag.WriteJSON(m.DeviceLocator)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DeviceLocator_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"device_locator\":null")
+		first = false
+	}
+
+	// handle nullable field disk
+	if m.Disk != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk\":")
+		bytes, err := swag.WriteJSON(m.Disk)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Disk_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk\":null")
+		first = false
+	}
+
+	// handle nullable field health_status
+	if m.HealthStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"health_status\":")
+		bytes, err := swag.WriteJSON(m.HealthStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HealthStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"health_status\":null")
+		first = false
+	}
+
+	// handle nullable field host
+	if m.Host != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host\":")
+		bytes, err := swag.WriteJSON(m.Host)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Host_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field numa_node
+	if m.NumaNode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"numa_node\":")
+		bytes, err := swag.WriteJSON(m.NumaNode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NumaNode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"numa_node\":null")
+		first = false
+	}
+
+	// handle nullable field part_number
+	if m.PartNumber != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"part_number\":")
+		bytes, err := swag.WriteJSON(m.PartNumber)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PartNumber_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"part_number\":null")
+		first = false
+	}
+
+	// handle nullable field remaining_life_percent
+	if m.RemainingLifePercent != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remaining_life_percent\":")
+		bytes, err := swag.WriteJSON(m.RemainingLifePercent)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RemainingLifePercent_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remaining_life_percent\":null")
+		first = false
+	}
+
+	// handle nullable field version
+	if m.Version != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":")
+		bytes, err := swag.WriteJSON(m.Version)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Version_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this pmem dimm

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ConvertVMTemplateToVMParams struct {
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	MarshalOpts *ConvertVMTemplateToVMParamsMarshalOpts `json:"-"`
+}
+
+type ConvertVMTemplateToVMParamsMarshalOpts struct {
+	ConvertedFromTemplateID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+}
+
+func (m ConvertVMTemplateToVMParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field converted_from_template_id
+	if m.ConvertedFromTemplateID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"converted_from_template_id\":")
+		bytes, err := swag.WriteJSON(m.ConvertedFromTemplateID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConvertedFromTemplateID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"converted_from_template_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this convert Vm template to Vm params

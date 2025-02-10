@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type HostBatchCreateIpmiInput struct {
 	// username
 	// Required: true
 	Username *string `json:"username"`
+
+	MarshalOpts *HostBatchCreateIpmiInputMarshalOpts `json:"-"`
+}
+
+type HostBatchCreateIpmiInputMarshalOpts struct {
+	IP_Explicit_Null_When_Empty bool
+
+	Password_Explicit_Null_When_Empty bool
+
+	Username_Explicit_Null_When_Empty bool
+}
+
+func (m HostBatchCreateIpmiInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field ip
+	if m.IP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip\":")
+		bytes, err := swag.WriteJSON(m.IP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip\":null")
+		first = false
+	}
+
+	// handle nullable field password
+	if m.Password != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":")
+		bytes, err := swag.WriteJSON(m.Password)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Password_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":null")
+		first = false
+	}
+
+	// handle nullable field username
+	if m.Username != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":")
+		bytes, err := swag.WriteJSON(m.Username)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Username_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this host batch create ipmi input

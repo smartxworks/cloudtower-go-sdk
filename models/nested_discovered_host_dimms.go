@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -34,6 +35,108 @@ type NestedDiscoveredHostDimms struct {
 	// socket id
 	// Required: true
 	SocketID *string `json:"socket_id"`
+
+	MarshalOpts *NestedDiscoveredHostDimmsMarshalOpts `json:"-"`
+}
+
+type NestedDiscoveredHostDimmsMarshalOpts struct {
+	DimmID_Explicit_Null_When_Empty bool
+
+	FwVersion_Explicit_Null_When_Empty bool
+
+	HealthStatus_Explicit_Null_When_Empty bool
+
+	SocketID_Explicit_Null_When_Empty bool
+}
+
+func (m NestedDiscoveredHostDimms) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field dimm_id
+	if m.DimmID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dimm_id\":")
+		bytes, err := swag.WriteJSON(m.DimmID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DimmID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dimm_id\":null")
+		first = false
+	}
+
+	// handle nullable field fw_version
+	if m.FwVersion != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fw_version\":")
+		bytes, err := swag.WriteJSON(m.FwVersion)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FwVersion_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fw_version\":null")
+		first = false
+	}
+
+	// handle nullable field health_status
+	if m.HealthStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"health_status\":")
+		bytes, err := swag.WriteJSON(m.HealthStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HealthStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"health_status\":null")
+		first = false
+	}
+
+	// handle nullable field socket_id
+	if m.SocketID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"socket_id\":")
+		bytes, err := swag.WriteJSON(m.SocketID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SocketID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"socket_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested discovered host dimms

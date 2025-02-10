@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -50,6 +51,212 @@ type NestedDiscoveredHostDisk struct {
 	// type
 	// Required: true
 	Type *DiskType `json:"type"`
+
+	MarshalOpts *NestedDiscoveredHostDiskMarshalOpts `json:"-"`
+}
+
+type NestedDiscoveredHostDiskMarshalOpts struct {
+	DimmIds_Explicit_Null_When_Empty bool
+
+	Drive_Explicit_Null_When_Empty bool
+
+	Function_Explicit_Null_When_Empty bool
+
+	Model_Explicit_Null_When_Empty bool
+
+	NumaNode_Explicit_Null_When_Empty bool
+
+	PersistentMemoryType_Explicit_Null_When_Empty bool
+
+	Serial_Explicit_Null_When_Empty bool
+
+	Size_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+}
+
+func (m NestedDiscoveredHostDisk) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field dimm_ids with omitempty
+	if !swag.IsZero(m.DimmIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dimm_ids\":")
+		bytes, err := swag.WriteJSON(m.DimmIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field drive
+	if m.Drive != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"drive\":")
+		bytes, err := swag.WriteJSON(m.Drive)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Drive_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"drive\":null")
+		first = false
+	}
+
+	// handle nullable field function
+	if m.Function != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"function\":")
+		bytes, err := swag.WriteJSON(m.Function)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Function_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"function\":null")
+		first = false
+	}
+
+	// handle nullable field model
+	if m.Model != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"model\":")
+		bytes, err := swag.WriteJSON(m.Model)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Model_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"model\":null")
+		first = false
+	}
+
+	// handle nullable field numa_node
+	if m.NumaNode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"numa_node\":")
+		bytes, err := swag.WriteJSON(m.NumaNode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NumaNode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"numa_node\":null")
+		first = false
+	}
+
+	// handle nullable field persistent_memory_type
+	if m.PersistentMemoryType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"persistent_memory_type\":")
+		bytes, err := swag.WriteJSON(m.PersistentMemoryType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PersistentMemoryType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"persistent_memory_type\":null")
+		first = false
+	}
+
+	// handle nullable field serial
+	if m.Serial != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"serial\":")
+		bytes, err := swag.WriteJSON(m.Serial)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Serial_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"serial\":null")
+		first = false
+	}
+
+	// handle nullable field size
+	if m.Size != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":")
+		bytes, err := swag.WriteJSON(m.Size)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Size_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested discovered host disk

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -33,6 +34,108 @@ type NvmfNamespaceCloneParams struct {
 	// snapshot id
 	// Required: true
 	SnapshotID *string `json:"snapshot_id"`
+
+	MarshalOpts *NvmfNamespaceCloneParamsMarshalOpts `json:"-"`
+}
+
+type NvmfNamespaceCloneParamsMarshalOpts struct {
+	Name_Explicit_Null_When_Empty bool
+
+	NamespaceGroupID_Explicit_Null_When_Empty bool
+
+	NvmfSubsystemID_Explicit_Null_When_Empty bool
+
+	SnapshotID_Explicit_Null_When_Empty bool
+}
+
+func (m NvmfNamespaceCloneParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field namespace_group_id
+	if m.NamespaceGroupID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"namespace_group_id\":")
+		bytes, err := swag.WriteJSON(m.NamespaceGroupID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceGroupID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"namespace_group_id\":null")
+		first = false
+	}
+
+	// handle nullable field nvmf_subsystem_id
+	if m.NvmfSubsystemID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_subsystem_id\":")
+		bytes, err := swag.WriteJSON(m.NvmfSubsystemID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfSubsystemID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_subsystem_id\":null")
+		first = false
+	}
+
+	// handle nullable field snapshot_id
+	if m.SnapshotID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_id\":")
+		bytes, err := swag.WriteJSON(m.SnapshotID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nvmf namespace clone params

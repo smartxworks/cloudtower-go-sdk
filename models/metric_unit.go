@@ -54,6 +54,9 @@ const (
 	// MetricUnitRATIO captures enum value "RATIO"
 	MetricUnitRATIO MetricUnit = "RATIO"
 
+	// MetricUnitSTORAGEBANDWIDTH captures enum value "STORAGE_BAND_WIDTH"
+	MetricUnitSTORAGEBANDWIDTH MetricUnit = "STORAGE_BAND_WIDTH"
+
 	// MetricUnitTEMPERATURE captures enum value "TEMPERATURE"
 	MetricUnitTEMPERATURE MetricUnit = "TEMPERATURE"
 
@@ -66,7 +69,7 @@ var metricUnitEnum []interface{}
 
 func init() {
 	var res []MetricUnit
-	if err := json.Unmarshal([]byte(`["COUNT","DATA_RATE_BIT","DATA_RATE_BYTE","DATA_SIZE","FREQUENCY","LOAD","PERCENT","RATIO","TEMPERATURE","TIME"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["COUNT","DATA_RATE_BIT","DATA_RATE_BYTE","DATA_SIZE","FREQUENCY","LOAD","PERCENT","RATIO","STORAGE_BAND_WIDTH","TEMPERATURE","TIME"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

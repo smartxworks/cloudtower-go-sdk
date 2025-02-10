@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,58 @@ type IPSecurityPolicy struct {
 	// ip block
 	// Required: true
 	IPBlock *string `json:"ip_block"`
+
+	MarshalOpts *IPSecurityPolicyMarshalOpts `json:"-"`
+}
+
+type IPSecurityPolicyMarshalOpts struct {
+	ExceptIPBlock_Explicit_Null_When_Empty bool
+
+	IPBlock_Explicit_Null_When_Empty bool
+}
+
+func (m IPSecurityPolicy) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field except_ip_block with omitempty
+	if !swag.IsZero(m.ExceptIPBlock) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"except_ip_block\":")
+		bytes, err := swag.WriteJSON(m.ExceptIPBlock)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ip_block
+	if m.IPBlock != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_block\":")
+		bytes, err := swag.WriteJSON(m.IPBlock)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPBlock_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_block\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this IP security policy

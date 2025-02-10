@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VMUpdateDiskParams struct {
 	// where
 	// Required: true
 	Where *VMWhereInput `json:"where"`
+
+	MarshalOpts *VMUpdateDiskParamsMarshalOpts `json:"-"`
+}
+
+type VMUpdateDiskParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateDiskParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm update disk params
@@ -174,6 +233,130 @@ type VMUpdateDiskParamsData struct {
 
 	// vm volume id
 	VMVolumeID *string `json:"vm_volume_id,omitempty"`
+
+	MarshalOpts *VMUpdateDiskParamsDataMarshalOpts `json:"-"`
+}
+
+type VMUpdateDiskParamsDataMarshalOpts struct {
+	Bus_Explicit_Null_When_Empty bool
+
+	ContentLibraryImageID_Explicit_Null_When_Empty bool
+
+	ElfImageID_Explicit_Null_When_Empty bool
+
+	VMDiskID_Explicit_Null_When_Empty bool
+
+	VMVolumeID_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateDiskParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field bus
+	if m.Bus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bus\":")
+		bytes, err := swag.WriteJSON(m.Bus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Bus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bus\":null")
+		first = false
+	}
+
+	// handle nullable field content_library_image_id
+	if m.ContentLibraryImageID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_image_id\":")
+		bytes, err := swag.WriteJSON(m.ContentLibraryImageID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ContentLibraryImageID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_image_id\":null")
+		first = false
+	}
+
+	// handle nullable field elf_image_id
+	if m.ElfImageID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_image_id\":")
+		bytes, err := swag.WriteJSON(m.ElfImageID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfImageID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_image_id\":null")
+		first = false
+	}
+
+	// handle nullable field vm_disk_id
+	if m.VMDiskID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_disk_id\":")
+		bytes, err := swag.WriteJSON(m.VMDiskID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMDiskID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_disk_id\":null")
+		first = false
+	}
+
+	// handle nullable field vm_volume_id
+	if m.VMVolumeID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_volume_id\":")
+		bytes, err := swag.WriteJSON(m.VMVolumeID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMVolumeID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_volume_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM update disk params data

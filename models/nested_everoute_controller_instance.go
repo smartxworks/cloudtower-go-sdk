@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type NestedEverouteControllerInstance struct {
 	// vlan
 	// Required: true
 	Vlan *string `json:"vlan"`
+
+	MarshalOpts *NestedEverouteControllerInstanceMarshalOpts `json:"-"`
+}
+
+type NestedEverouteControllerInstanceMarshalOpts struct {
+	IPAddr_Explicit_Null_When_Empty bool
+
+	Vlan_Explicit_Null_When_Empty bool
+}
+
+func (m NestedEverouteControllerInstance) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field ipAddr
+	if m.IPAddr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipAddr\":")
+		bytes, err := swag.WriteJSON(m.IPAddr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPAddr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipAddr\":null")
+		first = false
+	}
+
+	// handle nullable field vlan
+	if m.Vlan != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan\":")
+		bytes, err := swag.WriteJSON(m.Vlan)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vlan_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested everoute controller instance

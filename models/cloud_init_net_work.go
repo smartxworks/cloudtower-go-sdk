@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -36,6 +37,124 @@ type CloudInitNetWork struct {
 	// type
 	// Required: true
 	Type *CloudInitNetworkTypeEnum `json:"type"`
+
+	MarshalOpts *CloudInitNetWorkMarshalOpts `json:"-"`
+}
+
+type CloudInitNetWorkMarshalOpts struct {
+	IPAddress_Explicit_Null_When_Empty bool
+
+	Netmask_Explicit_Null_When_Empty bool
+
+	NicIndex_Explicit_Null_When_Empty bool
+
+	Routes_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+}
+
+func (m CloudInitNetWork) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field ip_address
+	if m.IPAddress != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_address\":")
+		bytes, err := swag.WriteJSON(m.IPAddress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPAddress_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_address\":null")
+		first = false
+	}
+
+	// handle nullable field netmask
+	if m.Netmask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"netmask\":")
+		bytes, err := swag.WriteJSON(m.Netmask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Netmask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"netmask\":null")
+		first = false
+	}
+
+	// handle nullable field nic_index
+	if m.NicIndex != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nic_index\":")
+		bytes, err := swag.WriteJSON(m.NicIndex)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NicIndex_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nic_index\":null")
+		first = false
+	}
+
+	// handle non nullable field routes with omitempty
+	if !swag.IsZero(m.Routes) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"routes\":")
+		bytes, err := swag.WriteJSON(m.Routes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cloud init net work

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VMUpdateVpcNicParams struct {
 	// where
 	// Required: true
 	Where *VMNicWhereInput `json:"where"`
+
+	MarshalOpts *VMUpdateVpcNicParamsMarshalOpts `json:"-"`
+}
+
+type VMUpdateVpcNicParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateVpcNicParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm update vpc nic params
@@ -162,6 +221,42 @@ type VMUpdateVpcNicParamsData struct {
 	// vpc nic
 	// Required: true
 	VpcNic *UpdateVpcNicPayloads `json:"vpc_nic"`
+
+	MarshalOpts *VMUpdateVpcNicParamsDataMarshalOpts `json:"-"`
+}
+
+type VMUpdateVpcNicParamsDataMarshalOpts struct {
+	VpcNic_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateVpcNicParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field vpc_nic
+	if m.VpcNic != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_nic\":")
+		bytes, err := swag.WriteJSON(m.VpcNic)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcNic_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_nic\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM update vpc nic params data

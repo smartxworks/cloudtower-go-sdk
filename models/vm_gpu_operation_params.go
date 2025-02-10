@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type VMGpuOperationParams struct {
 	// gpu id
 	// Required: true
 	GpuID *string `json:"gpu_id"`
+
+	MarshalOpts *VMGpuOperationParamsMarshalOpts `json:"-"`
+}
+
+type VMGpuOperationParamsMarshalOpts struct {
+	Amount_Explicit_Null_When_Empty bool
+
+	GpuID_Explicit_Null_When_Empty bool
+}
+
+func (m VMGpuOperationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field amount
+	if m.Amount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"amount\":")
+		bytes, err := swag.WriteJSON(m.Amount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Amount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"amount\":null")
+		first = false
+	}
+
+	// handle nullable field gpu_id
+	if m.GpuID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gpu_id\":")
+		bytes, err := swag.WriteJSON(m.GpuID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.GpuID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gpu_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm gpu operation params

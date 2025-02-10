@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -34,6 +35,130 @@ type VmdkCdromModify struct {
 
 	// removed
 	Removed *bool `json:"removed,omitempty"`
+
+	MarshalOpts *VmdkCdromModifyMarshalOpts `json:"-"`
+}
+
+type VmdkCdromModifyMarshalOpts struct {
+	Boot_Explicit_Null_When_Empty bool
+
+	ContentLibraryImageID_Explicit_Null_When_Empty bool
+
+	ElfImageID_Explicit_Null_When_Empty bool
+
+	Index_Explicit_Null_When_Empty bool
+
+	Removed_Explicit_Null_When_Empty bool
+}
+
+func (m VmdkCdromModify) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field boot
+	if m.Boot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"boot\":")
+		bytes, err := swag.WriteJSON(m.Boot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Boot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"boot\":null")
+		first = false
+	}
+
+	// handle nullable field content_library_image_id
+	if m.ContentLibraryImageID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_image_id\":")
+		bytes, err := swag.WriteJSON(m.ContentLibraryImageID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ContentLibraryImageID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_image_id\":null")
+		first = false
+	}
+
+	// handle nullable field elf_image_id
+	if m.ElfImageID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_image_id\":")
+		bytes, err := swag.WriteJSON(m.ElfImageID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfImageID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_image_id\":null")
+		first = false
+	}
+
+	// handle nullable field index
+	if m.Index != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"index\":")
+		bytes, err := swag.WriteJSON(m.Index)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Index_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"index\":null")
+		first = false
+	}
+
+	// handle nullable field removed
+	if m.Removed != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"removed\":")
+		bytes, err := swag.WriteJSON(m.Removed)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Removed_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"removed\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this vmdk cdrom modify

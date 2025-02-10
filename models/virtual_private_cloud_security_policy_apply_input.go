@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VirtualPrivateCloudSecurityPolicyApplyInput struct {
 	// security group id
 	// Required: true
 	SecurityGroupID *string `json:"security_group_id"`
+
+	MarshalOpts *VirtualPrivateCloudSecurityPolicyApplyInputMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudSecurityPolicyApplyInputMarshalOpts struct {
+	Communicable_Explicit_Null_When_Empty bool
+
+	SecurityGroupID_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudSecurityPolicyApplyInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field communicable
+	if m.Communicable != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"communicable\":")
+		bytes, err := swag.WriteJSON(m.Communicable)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Communicable_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"communicable\":null")
+		first = false
+	}
+
+	// handle nullable field security_group_id
+	if m.SecurityGroupID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group_id\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroupID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityGroupID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud security policy apply input

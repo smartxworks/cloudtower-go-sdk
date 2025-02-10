@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -51,6 +52,240 @@ type UserCreationParams struct {
 	// username
 	// Required: true
 	Username *string `json:"username"`
+
+	MarshalOpts *UserCreationParamsMarshalOpts `json:"-"`
+}
+
+type UserCreationParamsMarshalOpts struct {
+	AuthConfigID_Explicit_Null_When_Empty bool
+
+	EmailAddress_Explicit_Null_When_Empty bool
+
+	Internal_Explicit_Null_When_Empty bool
+
+	LdapDn_Explicit_Null_When_Empty bool
+
+	MobilePhone_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Password_Explicit_Null_When_Empty bool
+
+	RoleID_Explicit_Null_When_Empty bool
+
+	Source_Explicit_Null_When_Empty bool
+
+	Username_Explicit_Null_When_Empty bool
+}
+
+func (m UserCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field auth_config_id
+	if m.AuthConfigID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_config_id\":")
+		bytes, err := swag.WriteJSON(m.AuthConfigID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AuthConfigID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_config_id\":null")
+		first = false
+	}
+
+	// handle nullable field email_address
+	if m.EmailAddress != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"email_address\":")
+		bytes, err := swag.WriteJSON(m.EmailAddress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EmailAddress_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"email_address\":null")
+		first = false
+	}
+
+	// handle nullable field internal
+	if m.Internal != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal\":")
+		bytes, err := swag.WriteJSON(m.Internal)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Internal_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal\":null")
+		first = false
+	}
+
+	// handle nullable field ldap_dn
+	if m.LdapDn != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ldap_dn\":")
+		bytes, err := swag.WriteJSON(m.LdapDn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LdapDn_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ldap_dn\":null")
+		first = false
+	}
+
+	// handle nullable field mobile_phone
+	if m.MobilePhone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mobile_phone\":")
+		bytes, err := swag.WriteJSON(m.MobilePhone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MobilePhone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mobile_phone\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field password
+	if m.Password != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":")
+		bytes, err := swag.WriteJSON(m.Password)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Password_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":null")
+		first = false
+	}
+
+	// handle nullable field role_id
+	if m.RoleID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"role_id\":")
+		bytes, err := swag.WriteJSON(m.RoleID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RoleID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"role_id\":null")
+		first = false
+	}
+
+	// handle nullable field source
+	if m.Source != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"source\":")
+		bytes, err := swag.WriteJSON(m.Source)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Source_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"source\":null")
+		first = false
+	}
+
+	// handle nullable field username
+	if m.Username != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":")
+		bytes, err := swag.WriteJSON(m.Username)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Username_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this user creation params

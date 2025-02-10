@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type AlertRuleThresholds struct {
 	// value
 	// Required: true
 	Value *int32 `json:"value"`
+
+	MarshalOpts *AlertRuleThresholdsMarshalOpts `json:"-"`
+}
+
+type AlertRuleThresholdsMarshalOpts struct {
+	Severity_Explicit_Null_When_Empty bool
+
+	Value_Explicit_Null_When_Empty bool
+}
+
+func (m AlertRuleThresholds) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field severity
+	if m.Severity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"severity\":")
+		bytes, err := swag.WriteJSON(m.Severity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Severity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"severity\":null")
+		first = false
+	}
+
+	// handle nullable field value
+	if m.Value != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"value\":")
+		bytes, err := swag.WriteJSON(m.Value)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Value_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"value\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this alert rule thresholds

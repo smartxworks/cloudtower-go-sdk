@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -34,6 +35,108 @@ type NestedEverouteClusterVMMetrics struct {
 	// memory usage
 	// Required: true
 	MemoryUsage *float64 `json:"memoryUsage"`
+
+	MarshalOpts *NestedEverouteClusterVMMetricsMarshalOpts `json:"-"`
+}
+
+type NestedEverouteClusterVMMetricsMarshalOpts struct {
+	CPUUsage_Explicit_Null_When_Empty bool
+
+	DataVolumeUsage_Explicit_Null_When_Empty bool
+
+	LastAcquisitionTime_Explicit_Null_When_Empty bool
+
+	MemoryUsage_Explicit_Null_When_Empty bool
+}
+
+func (m NestedEverouteClusterVMMetrics) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cpuUsage
+	if m.CPUUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cpuUsage\":")
+		bytes, err := swag.WriteJSON(m.CPUUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CPUUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cpuUsage\":null")
+		first = false
+	}
+
+	// handle nullable field dataVolumeUsage
+	if m.DataVolumeUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dataVolumeUsage\":")
+		bytes, err := swag.WriteJSON(m.DataVolumeUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DataVolumeUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dataVolumeUsage\":null")
+		first = false
+	}
+
+	// handle nullable field lastAcquisitionTime
+	if m.LastAcquisitionTime != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"lastAcquisitionTime\":")
+		bytes, err := swag.WriteJSON(m.LastAcquisitionTime)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastAcquisitionTime_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"lastAcquisitionTime\":null")
+		first = false
+	}
+
+	// handle nullable field memoryUsage
+	if m.MemoryUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memoryUsage\":")
+		bytes, err := swag.WriteJSON(m.MemoryUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MemoryUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memoryUsage\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested everoute cluster VM metrics

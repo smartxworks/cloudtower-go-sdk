@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type GetLogServiceConfigsRequestBody struct {
 	// input
 	// Required: true
 	Input *LogServiceConfigsInput `json:"input"`
+
+	MarshalOpts *GetLogServiceConfigsRequestBodyMarshalOpts `json:"-"`
+}
+
+type GetLogServiceConfigsRequestBodyMarshalOpts struct {
+	Input_Explicit_Null_When_Empty bool
+}
+
+func (m GetLogServiceConfigsRequestBody) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field input
+	if m.Input != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"input\":")
+		bytes, err := swag.WriteJSON(m.Input)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Input_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"input\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this get log service configs request body

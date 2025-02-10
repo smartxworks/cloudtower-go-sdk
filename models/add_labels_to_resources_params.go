@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type AddLabelsToResourcesParams struct {
 	// where
 	// Required: true
 	Where *LabelWhereInput `json:"where"`
+
+	MarshalOpts *AddLabelsToResourcesParamsMarshalOpts `json:"-"`
+}
+
+type AddLabelsToResourcesParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m AddLabelsToResourcesParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this add labels to resources params
@@ -245,6 +304,658 @@ type AddLabelsToResourcesParamsData struct {
 
 	// vms
 	Vms *VMWhereInput `json:"vms,omitempty"`
+
+	MarshalOpts *AddLabelsToResourcesParamsDataMarshalOpts `json:"-"`
+}
+
+type AddLabelsToResourcesParamsDataMarshalOpts struct {
+	Clusters_Explicit_Null_When_Empty bool
+
+	ConsistencyGroupSnapshots_Explicit_Null_When_Empty bool
+
+	ConsistencyGroups_Explicit_Null_When_Empty bool
+
+	ContentLibraryImages_Explicit_Null_When_Empty bool
+
+	ContentLibraryVMTemplates_Explicit_Null_When_Empty bool
+
+	Datacenters_Explicit_Null_When_Empty bool
+
+	Disks_Explicit_Null_When_Empty bool
+
+	ElfImages_Explicit_Null_When_Empty bool
+
+	GpuDevices_Explicit_Null_When_Empty bool
+
+	Hosts_Explicit_Null_When_Empty bool
+
+	IscsiLunSnapshots_Explicit_Null_When_Empty bool
+
+	IscsiLuns_Explicit_Null_When_Empty bool
+
+	IscsiTargets_Explicit_Null_When_Empty bool
+
+	IsolationPolicies_Explicit_Null_When_Empty bool
+
+	NamespaceGroups_Explicit_Null_When_Empty bool
+
+	NfsExports_Explicit_Null_When_Empty bool
+
+	NfsInodes_Explicit_Null_When_Empty bool
+
+	Nics_Explicit_Null_When_Empty bool
+
+	NvmfNamespaceSnapshots_Explicit_Null_When_Empty bool
+
+	NvmfNamespaces_Explicit_Null_When_Empty bool
+
+	NvmfSubsystems_Explicit_Null_When_Empty bool
+
+	SecurityPolicies_Explicit_Null_When_Empty bool
+
+	Vdses_Explicit_Null_When_Empty bool
+
+	Vlans_Explicit_Null_When_Empty bool
+
+	VMSnapshots_Explicit_Null_When_Empty bool
+
+	VMTemplates_Explicit_Null_When_Empty bool
+
+	VMVolumeSnapshots_Explicit_Null_When_Empty bool
+
+	VMVolumes_Explicit_Null_When_Empty bool
+
+	Vms_Explicit_Null_When_Empty bool
+}
+
+func (m AddLabelsToResourcesParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field clusters
+	if m.Clusters != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":")
+		bytes, err := swag.WriteJSON(m.Clusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Clusters_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":null")
+		first = false
+	}
+
+	// handle nullable field consistency_group_snapshots
+	if m.ConsistencyGroupSnapshots != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistency_group_snapshots\":")
+		bytes, err := swag.WriteJSON(m.ConsistencyGroupSnapshots)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroupSnapshots_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistency_group_snapshots\":null")
+		first = false
+	}
+
+	// handle nullable field consistency_groups
+	if m.ConsistencyGroups != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistency_groups\":")
+		bytes, err := swag.WriteJSON(m.ConsistencyGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroups_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistency_groups\":null")
+		first = false
+	}
+
+	// handle nullable field content_library_images
+	if m.ContentLibraryImages != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_images\":")
+		bytes, err := swag.WriteJSON(m.ContentLibraryImages)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ContentLibraryImages_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_images\":null")
+		first = false
+	}
+
+	// handle nullable field content_library_vm_templates
+	if m.ContentLibraryVMTemplates != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_vm_templates\":")
+		bytes, err := swag.WriteJSON(m.ContentLibraryVMTemplates)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ContentLibraryVMTemplates_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"content_library_vm_templates\":null")
+		first = false
+	}
+
+	// handle nullable field datacenters
+	if m.Datacenters != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datacenters\":")
+		bytes, err := swag.WriteJSON(m.Datacenters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Datacenters_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datacenters\":null")
+		first = false
+	}
+
+	// handle nullable field disks
+	if m.Disks != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disks\":")
+		bytes, err := swag.WriteJSON(m.Disks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Disks_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disks\":null")
+		first = false
+	}
+
+	// handle nullable field elf_images
+	if m.ElfImages != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_images\":")
+		bytes, err := swag.WriteJSON(m.ElfImages)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfImages_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_images\":null")
+		first = false
+	}
+
+	// handle nullable field gpu_devices
+	if m.GpuDevices != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gpu_devices\":")
+		bytes, err := swag.WriteJSON(m.GpuDevices)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.GpuDevices_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gpu_devices\":null")
+		first = false
+	}
+
+	// handle nullable field hosts
+	if m.Hosts != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hosts\":")
+		bytes, err := swag.WriteJSON(m.Hosts)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Hosts_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hosts\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_lun_snapshots
+	if m.IscsiLunSnapshots != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_lun_snapshots\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunSnapshots)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunSnapshots_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_lun_snapshots\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_luns
+	if m.IscsiLuns != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns\":")
+		bytes, err := swag.WriteJSON(m.IscsiLuns)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLuns_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_targets
+	if m.IscsiTargets != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_targets\":")
+		bytes, err := swag.WriteJSON(m.IscsiTargets)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiTargets_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_targets\":null")
+		first = false
+	}
+
+	// handle nullable field isolation_policies
+	if m.IsolationPolicies != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"isolation_policies\":")
+		bytes, err := swag.WriteJSON(m.IsolationPolicies)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsolationPolicies_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"isolation_policies\":null")
+		first = false
+	}
+
+	// handle nullable field namespace_groups
+	if m.NamespaceGroups != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"namespace_groups\":")
+		bytes, err := swag.WriteJSON(m.NamespaceGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceGroups_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"namespace_groups\":null")
+		first = false
+	}
+
+	// handle nullable field nfs_exports
+	if m.NfsExports != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nfs_exports\":")
+		bytes, err := swag.WriteJSON(m.NfsExports)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NfsExports_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nfs_exports\":null")
+		first = false
+	}
+
+	// handle nullable field nfs_inodes
+	if m.NfsInodes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nfs_inodes\":")
+		bytes, err := swag.WriteJSON(m.NfsInodes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NfsInodes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nfs_inodes\":null")
+		first = false
+	}
+
+	// handle nullable field nics
+	if m.Nics != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics\":")
+		bytes, err := swag.WriteJSON(m.Nics)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Nics_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nics\":null")
+		first = false
+	}
+
+	// handle nullable field nvmf_namespace_snapshots
+	if m.NvmfNamespaceSnapshots != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_namespace_snapshots\":")
+		bytes, err := swag.WriteJSON(m.NvmfNamespaceSnapshots)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfNamespaceSnapshots_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_namespace_snapshots\":null")
+		first = false
+	}
+
+	// handle nullable field nvmf_namespaces
+	if m.NvmfNamespaces != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_namespaces\":")
+		bytes, err := swag.WriteJSON(m.NvmfNamespaces)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfNamespaces_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_namespaces\":null")
+		first = false
+	}
+
+	// handle nullable field nvmf_subsystems
+	if m.NvmfSubsystems != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_subsystems\":")
+		bytes, err := swag.WriteJSON(m.NvmfSubsystems)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfSubsystems_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_subsystems\":null")
+		first = false
+	}
+
+	// handle nullable field security_policies
+	if m.SecurityPolicies != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_policies\":")
+		bytes, err := swag.WriteJSON(m.SecurityPolicies)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityPolicies_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_policies\":null")
+		first = false
+	}
+
+	// handle nullable field vdses
+	if m.Vdses != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vdses\":")
+		bytes, err := swag.WriteJSON(m.Vdses)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vdses_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vdses\":null")
+		first = false
+	}
+
+	// handle nullable field vlans
+	if m.Vlans != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans\":")
+		bytes, err := swag.WriteJSON(m.Vlans)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vlans_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlans\":null")
+		first = false
+	}
+
+	// handle nullable field vm_snapshots
+	if m.VMSnapshots != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_snapshots\":")
+		bytes, err := swag.WriteJSON(m.VMSnapshots)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMSnapshots_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_snapshots\":null")
+		first = false
+	}
+
+	// handle nullable field vm_templates
+	if m.VMTemplates != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_templates\":")
+		bytes, err := swag.WriteJSON(m.VMTemplates)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMTemplates_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_templates\":null")
+		first = false
+	}
+
+	// handle nullable field vm_volume_snapshots
+	if m.VMVolumeSnapshots != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_volume_snapshots\":")
+		bytes, err := swag.WriteJSON(m.VMVolumeSnapshots)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMVolumeSnapshots_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_volume_snapshots\":null")
+		first = false
+	}
+
+	// handle nullable field vm_volumes
+	if m.VMVolumes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_volumes\":")
+		bytes, err := swag.WriteJSON(m.VMVolumes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMVolumes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_volumes\":null")
+		first = false
+	}
+
+	// handle nullable field vms
+	if m.Vms != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vms\":")
+		bytes, err := swag.WriteJSON(m.Vms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vms_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vms\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this add labels to resources params data

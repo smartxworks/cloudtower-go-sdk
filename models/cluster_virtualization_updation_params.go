@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ClusterVirtualizationUpdationParams struct {
 	// where
 	// Required: true
 	Where *ClusterWhereInput `json:"where"`
+
+	MarshalOpts *ClusterVirtualizationUpdationParamsMarshalOpts `json:"-"`
+}
+
+type ClusterVirtualizationUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m ClusterVirtualizationUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cluster virtualization updation params
@@ -164,6 +223,64 @@ type ClusterVirtualizationUpdationParamsData struct {
 
 	// current cpu model
 	CurrentCPUModel *string `json:"current_cpu_model,omitempty"`
+
+	MarshalOpts *ClusterVirtualizationUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type ClusterVirtualizationUpdationParamsDataMarshalOpts struct {
+	AutoConverge_Explicit_Null_When_Empty bool
+
+	CurrentCPUModel_Explicit_Null_When_Empty bool
+}
+
+func (m ClusterVirtualizationUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field auto_converge
+	if m.AutoConverge != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auto_converge\":")
+		bytes, err := swag.WriteJSON(m.AutoConverge)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AutoConverge_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auto_converge\":null")
+		first = false
+	}
+
+	// handle nullable field current_cpu_model
+	if m.CurrentCPUModel != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"current_cpu_model\":")
+		bytes, err := swag.WriteJSON(m.CurrentCPUModel)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CurrentCPUModel_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"current_cpu_model\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cluster virtualization updation params data

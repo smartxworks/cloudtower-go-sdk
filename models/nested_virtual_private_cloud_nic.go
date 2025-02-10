@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -41,6 +42,146 @@ type NestedVirtualPrivateCloudNic struct {
 	// vpc subnet
 	// Required: true
 	VpcSubnet *NestedVirtualPrivateCloudSubnet `json:"vpc_subnet"`
+
+	MarshalOpts *NestedVirtualPrivateCloudNicMarshalOpts `json:"-"`
+}
+
+type NestedVirtualPrivateCloudNicMarshalOpts struct {
+	FloatingIP_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	IPAddresses_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	Vpc_Explicit_Null_When_Empty bool
+
+	VpcSubnet_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVirtualPrivateCloudNic) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field floating_ip
+	if m.FloatingIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip\":")
+		bytes, err := swag.WriteJSON(m.FloatingIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FloatingIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle non nullable field ip_addresses without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_addresses\":")
+		bytes, err := swag.WriteJSON(m.IPAddresses)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field vpc
+	if m.Vpc != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc\":")
+		bytes, err := swag.WriteJSON(m.Vpc)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vpc_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc\":null")
+		first = false
+	}
+
+	// handle nullable field vpc_subnet
+	if m.VpcSubnet != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_subnet\":")
+		bytes, err := swag.WriteJSON(m.VpcSubnet)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcSubnet_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_subnet\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested virtual private cloud nic

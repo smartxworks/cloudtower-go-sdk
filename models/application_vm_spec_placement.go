@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ApplicationVMSpecPlacement struct {
 	// verb
 	// Required: true
 	Verb *ApplicationVMSpecPlacementVerb `json:"verb"`
+
+	MarshalOpts *ApplicationVMSpecPlacementMarshalOpts `json:"-"`
+}
+
+type ApplicationVMSpecPlacementMarshalOpts struct {
+	Situation_Explicit_Null_When_Empty bool
+
+	Verb_Explicit_Null_When_Empty bool
+}
+
+func (m ApplicationVMSpecPlacement) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field situation
+	if m.Situation != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"situation\":")
+		bytes, err := swag.WriteJSON(m.Situation)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Situation_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"situation\":null")
+		first = false
+	}
+
+	// handle nullable field verb
+	if m.Verb != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"verb\":")
+		bytes, err := swag.WriteJSON(m.Verb)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Verb_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"verb\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this application Vm spec placement

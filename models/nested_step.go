@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -35,6 +36,152 @@ type NestedStep struct {
 
 	// unit
 	Unit *StepUnit `json:"unit,omitempty"`
+
+	MarshalOpts *NestedStepMarshalOpts `json:"-"`
+}
+
+type NestedStepMarshalOpts struct {
+	Current_Explicit_Null_When_Empty bool
+
+	Finished_Explicit_Null_When_Empty bool
+
+	Key_Explicit_Null_When_Empty bool
+
+	PerSecond_Explicit_Null_When_Empty bool
+
+	Total_Explicit_Null_When_Empty bool
+
+	Unit_Explicit_Null_When_Empty bool
+}
+
+func (m NestedStep) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field current
+	if m.Current != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"current\":")
+		bytes, err := swag.WriteJSON(m.Current)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Current_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"current\":null")
+		first = false
+	}
+
+	// handle nullable field finished
+	if m.Finished != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"finished\":")
+		bytes, err := swag.WriteJSON(m.Finished)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Finished_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"finished\":null")
+		first = false
+	}
+
+	// handle nullable field key
+	if m.Key != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"key\":")
+		bytes, err := swag.WriteJSON(m.Key)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Key_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"key\":null")
+		first = false
+	}
+
+	// handle nullable field per_second
+	if m.PerSecond != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"per_second\":")
+		bytes, err := swag.WriteJSON(m.PerSecond)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerSecond_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"per_second\":null")
+		first = false
+	}
+
+	// handle nullable field total
+	if m.Total != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total\":")
+		bytes, err := swag.WriteJSON(m.Total)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Total_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total\":null")
+		first = false
+	}
+
+	// handle nullable field unit
+	if m.Unit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"unit\":")
+		bytes, err := swag.WriteJSON(m.Unit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Unit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"unit\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested step

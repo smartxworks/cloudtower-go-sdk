@@ -36,7 +36,7 @@ type ClientService interface {
 
 	DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserOK, error)
 
-	GetMyInfo(params *GetMyInfoParams, opts ...ClientOption) (*GetMyInfoOK, error)
+	GetMyInfo(params *GetMyInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMyInfoOK, error)
 
 	GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error)
 
@@ -166,7 +166,7 @@ func (a *Client) DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*De
 /*
   GetMyInfo get my info API
 */
-func (a *Client) GetMyInfo(params *GetMyInfoParams, opts ...ClientOption) (*GetMyInfoOK, error) {
+func (a *Client) GetMyInfo(params *GetMyInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMyInfoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMyInfoParams()
@@ -180,6 +180,7 @@ func (a *Client) GetMyInfo(params *GetMyInfoParams, opts ...ClientOption) (*GetM
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetMyInfoReader{formats: a.formats},
+		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

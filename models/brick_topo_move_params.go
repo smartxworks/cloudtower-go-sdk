@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type BrickTopoMoveParams struct {
 	// where
 	// Required: true
 	Where *BrickTopoWhereInput `json:"where"`
+
+	MarshalOpts *BrickTopoMoveParamsMarshalOpts `json:"-"`
+}
+
+type BrickTopoMoveParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m BrickTopoMoveParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this brick topo move params
@@ -165,6 +224,64 @@ type BrickTopoMoveParamsData struct {
 
 	// rack topo id
 	RackTopoID *string `json:"rack_topo_id,omitempty"`
+
+	MarshalOpts *BrickTopoMoveParamsDataMarshalOpts `json:"-"`
+}
+
+type BrickTopoMoveParamsDataMarshalOpts struct {
+	Position_Explicit_Null_When_Empty bool
+
+	RackTopoID_Explicit_Null_When_Empty bool
+}
+
+func (m BrickTopoMoveParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field position
+	if m.Position != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"position\":")
+		bytes, err := swag.WriteJSON(m.Position)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Position_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"position\":null")
+		first = false
+	}
+
+	// handle nullable field rack_topo_id
+	if m.RackTopoID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rack_topo_id\":")
+		bytes, err := swag.WriteJSON(m.RackTopoID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RackTopoID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rack_topo_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this brick topo move params data

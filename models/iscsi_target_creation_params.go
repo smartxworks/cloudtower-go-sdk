@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -47,6 +48,24 @@ type IscsiTargetCreationParams struct {
 	ThinProvision *bool `json:"thin_provision"`
 
 	IscsiTargetCommonParams
+
+	MarshalOpts *IscsiTargetCreationParamsMarshalOpts `json:"-"`
+}
+
+type IscsiTargetCreationParamsMarshalOpts struct {
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	ReplicaNum_Explicit_Null_When_Empty bool
+
+	StripeNum_Explicit_Null_When_Empty bool
+
+	StripeSize_Explicit_Null_When_Empty bool
+
+	StripeSizeUnit_Explicit_Null_When_Empty bool
+
+	ThinProvision_Explicit_Null_When_Empty bool
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -99,41 +118,151 @@ func (m *IscsiTargetCreationParams) UnmarshalJSON(raw []byte) error {
 func (m IscsiTargetCreationParams) MarshalJSON() ([]byte, error) {
 	_parts := make([][]byte, 0, 2)
 
-	var dataAO0 struct {
-		ClusterID *string `json:"cluster_id"`
+	var b bytes.Buffer
+	b.WriteString("{")
+	first := true
 
-		Name *string `json:"name"`
-
-		ReplicaNum *int32 `json:"replica_num"`
-
-		StripeNum *int32 `json:"stripe_num"`
-
-		StripeSize *int64 `json:"stripe_size"`
-
-		StripeSizeUnit *ByteUnit `json:"stripe_size_unit,omitempty"`
-
-		ThinProvision *bool `json:"thin_provision"`
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
 	}
 
-	dataAO0.ClusterID = m.ClusterID
-
-	dataAO0.Name = m.Name
-
-	dataAO0.ReplicaNum = m.ReplicaNum
-
-	dataAO0.StripeNum = m.StripeNum
-
-	dataAO0.StripeSize = m.StripeSize
-
-	dataAO0.StripeSizeUnit = m.StripeSizeUnit
-
-	dataAO0.ThinProvision = m.ThinProvision
-
-	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0)
-	if errAO0 != nil {
-		return nil, errAO0
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
 	}
-	_parts = append(_parts, jsonDataAO0)
+
+	// handle nullable field replica_num
+	if m.ReplicaNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica_num\":")
+		bytes, err := swag.WriteJSON(m.ReplicaNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ReplicaNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica_num\":null")
+		first = false
+	}
+
+	// handle nullable field stripe_num
+	if m.StripeNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"stripe_num\":")
+		bytes, err := swag.WriteJSON(m.StripeNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StripeNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"stripe_num\":null")
+		first = false
+	}
+
+	// handle nullable field stripe_size
+	if m.StripeSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"stripe_size\":")
+		bytes, err := swag.WriteJSON(m.StripeSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StripeSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"stripe_size\":null")
+		first = false
+	}
+
+	// handle nullable field stripe_size_unit
+	if m.StripeSizeUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"stripe_size_unit\":")
+		bytes, err := swag.WriteJSON(m.StripeSizeUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StripeSizeUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"stripe_size_unit\":null")
+		first = false
+	}
+
+	// handle nullable field thin_provision
+	if m.ThinProvision != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":")
+		bytes, err := swag.WriteJSON(m.ThinProvision)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ThinProvision_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":null")
+		first = false
+	}
+	b.WriteString("}")
+	_parts = append(_parts, b.Bytes())
 
 	aO1, err := swag.WriteJSON(m.IscsiTargetCommonParams)
 	if err != nil {

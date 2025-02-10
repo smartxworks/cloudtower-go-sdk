@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type SystemAuditLogConnection struct {
 	// aggregate
 	// Required: true
 	Aggregate *NestedAggregateSystemAuditLog `json:"aggregate"`
+
+	MarshalOpts *SystemAuditLogConnectionMarshalOpts `json:"-"`
+}
+
+type SystemAuditLogConnectionMarshalOpts struct {
+	Aggregate_Explicit_Null_When_Empty bool
+}
+
+func (m SystemAuditLogConnection) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field aggregate
+	if m.Aggregate != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"aggregate\":")
+		bytes, err := swag.WriteJSON(m.Aggregate)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Aggregate_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"aggregate\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this system audit log connection

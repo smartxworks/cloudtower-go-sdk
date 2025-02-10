@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -37,6 +38,174 @@ type NestedDiskFailureInformation struct {
 
 	// smart check
 	SmartCheck *bool `json:"smart_check,omitempty"`
+
+	MarshalOpts *NestedDiskFailureInformationMarshalOpts `json:"-"`
+}
+
+type NestedDiskFailureInformationMarshalOpts struct {
+	ChunkChecksumError_Explicit_Null_When_Empty bool
+
+	ChunkErrflag_Explicit_Null_When_Empty bool
+
+	ChunkIoError_Explicit_Null_When_Empty bool
+
+	ChunkWarnflag_Explicit_Null_When_Empty bool
+
+	IostatLatency_Explicit_Null_When_Empty bool
+
+	IostatLatencyMs_Explicit_Null_When_Empty bool
+
+	SmartCheck_Explicit_Null_When_Empty bool
+}
+
+func (m NestedDiskFailureInformation) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field chunk_checksum_error
+	if m.ChunkChecksumError != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_checksum_error\":")
+		bytes, err := swag.WriteJSON(m.ChunkChecksumError)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ChunkChecksumError_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_checksum_error\":null")
+		first = false
+	}
+
+	// handle nullable field chunk_errflag
+	if m.ChunkErrflag != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_errflag\":")
+		bytes, err := swag.WriteJSON(m.ChunkErrflag)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ChunkErrflag_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_errflag\":null")
+		first = false
+	}
+
+	// handle nullable field chunk_io_error
+	if m.ChunkIoError != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_io_error\":")
+		bytes, err := swag.WriteJSON(m.ChunkIoError)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ChunkIoError_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_io_error\":null")
+		first = false
+	}
+
+	// handle nullable field chunk_warnflag
+	if m.ChunkWarnflag != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_warnflag\":")
+		bytes, err := swag.WriteJSON(m.ChunkWarnflag)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ChunkWarnflag_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_warnflag\":null")
+		first = false
+	}
+
+	// handle nullable field iostat_latency
+	if m.IostatLatency != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iostat_latency\":")
+		bytes, err := swag.WriteJSON(m.IostatLatency)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IostatLatency_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iostat_latency\":null")
+		first = false
+	}
+
+	// handle nullable field iostat_latency_ms
+	if m.IostatLatencyMs != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iostat_latency_ms\":")
+		bytes, err := swag.WriteJSON(m.IostatLatencyMs)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IostatLatencyMs_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iostat_latency_ms\":null")
+		first = false
+	}
+
+	// handle nullable field smart_check
+	if m.SmartCheck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"smart_check\":")
+		bytes, err := swag.WriteJSON(m.SmartCheck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SmartCheck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"smart_check\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested disk failure information

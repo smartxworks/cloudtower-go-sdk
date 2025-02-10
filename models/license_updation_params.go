@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type LicenseUpdationParams struct {
 	// data
 	// Required: true
 	Data *LicenseUpdationParamsData `json:"data"`
+
+	MarshalOpts *LicenseUpdationParamsMarshalOpts `json:"-"`
+}
+
+type LicenseUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+}
+
+func (m LicenseUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this license updation params
@@ -114,6 +151,42 @@ type LicenseUpdationParamsData struct {
 	// license
 	// Required: true
 	License *string `json:"license"`
+
+	MarshalOpts *LicenseUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type LicenseUpdationParamsDataMarshalOpts struct {
+	License_Explicit_Null_When_Empty bool
+}
+
+func (m LicenseUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field license
+	if m.License != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"license\":")
+		bytes, err := swag.WriteJSON(m.License)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.License_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"license\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this license updation params data

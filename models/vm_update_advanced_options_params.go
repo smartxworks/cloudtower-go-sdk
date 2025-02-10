@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VMUpdateAdvancedOptionsParams struct {
 	// where
 	// Required: true
 	Where *VMWhereInput `json:"where"`
+
+	MarshalOpts *VMUpdateAdvancedOptionsParamsMarshalOpts `json:"-"`
+}
+
+type VMUpdateAdvancedOptionsParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateAdvancedOptionsParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm update advanced options params
@@ -170,6 +229,108 @@ type VMUpdateAdvancedOptionsParamsData struct {
 
 	// windows optimize
 	WindowsOptimize *bool `json:"windows_optimize,omitempty"`
+
+	MarshalOpts *VMUpdateAdvancedOptionsParamsDataMarshalOpts `json:"-"`
+}
+
+type VMUpdateAdvancedOptionsParamsDataMarshalOpts struct {
+	ClockOffset_Explicit_Null_When_Empty bool
+
+	CPUModel_Explicit_Null_When_Empty bool
+
+	VideoType_Explicit_Null_When_Empty bool
+
+	WindowsOptimize_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateAdvancedOptionsParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field clock_offset
+	if m.ClockOffset != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clock_offset\":")
+		bytes, err := swag.WriteJSON(m.ClockOffset)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClockOffset_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clock_offset\":null")
+		first = false
+	}
+
+	// handle nullable field cpu_model
+	if m.CPUModel != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cpu_model\":")
+		bytes, err := swag.WriteJSON(m.CPUModel)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CPUModel_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cpu_model\":null")
+		first = false
+	}
+
+	// handle nullable field video_type
+	if m.VideoType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"video_type\":")
+		bytes, err := swag.WriteJSON(m.VideoType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VideoType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"video_type\":null")
+		first = false
+	}
+
+	// handle nullable field windows_optimize
+	if m.WindowsOptimize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"windows_optimize\":")
+		bytes, err := swag.WriteJSON(m.WindowsOptimize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WindowsOptimize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"windows_optimize\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM update advanced options params data

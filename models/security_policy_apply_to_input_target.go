@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -24,6 +25,58 @@ type SecurityPolicyApplyToInputTarget struct {
 
 	// security groups
 	SecurityGroups *SecurityGroupWhereInput `json:"security_groups,omitempty"`
+
+	MarshalOpts *SecurityPolicyApplyToInputTargetMarshalOpts `json:"-"`
+}
+
+type SecurityPolicyApplyToInputTargetMarshalOpts struct {
+	LabelGroups_Explicit_Null_When_Empty bool
+
+	SecurityGroups_Explicit_Null_When_Empty bool
+}
+
+func (m SecurityPolicyApplyToInputTarget) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field label_groups with omitempty
+	if !swag.IsZero(m.LabelGroups) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"label_groups\":")
+		bytes, err := swag.WriteJSON(m.LabelGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field security_groups
+	if m.SecurityGroups != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_groups\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityGroups_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_groups\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this security policy apply to input target

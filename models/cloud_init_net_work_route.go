@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type CloudInitNetWorkRoute struct {
 	// network
 	// Required: true
 	Network *string `json:"network"`
+
+	MarshalOpts *CloudInitNetWorkRouteMarshalOpts `json:"-"`
+}
+
+type CloudInitNetWorkRouteMarshalOpts struct {
+	Gateway_Explicit_Null_When_Empty bool
+
+	Netmask_Explicit_Null_When_Empty bool
+
+	Network_Explicit_Null_When_Empty bool
+}
+
+func (m CloudInitNetWorkRoute) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field gateway
+	if m.Gateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway\":")
+		bytes, err := swag.WriteJSON(m.Gateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Gateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway\":null")
+		first = false
+	}
+
+	// handle nullable field netmask
+	if m.Netmask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"netmask\":")
+		bytes, err := swag.WriteJSON(m.Netmask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Netmask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"netmask\":null")
+		first = false
+	}
+
+	// handle nullable field network
+	if m.Network != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network\":")
+		bytes, err := swag.WriteJSON(m.Network)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Network_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cloud init net work route

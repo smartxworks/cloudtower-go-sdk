@@ -46,6 +46,8 @@ type ClientService interface {
 
 	GetBackupPlansConnection(params *GetBackupPlansConnectionParams, opts ...ClientOption) (*GetBackupPlansConnectionOK, error)
 
+	GetBackupRestorePointMetadata(params *GetBackupRestorePointMetadataParams, opts ...ClientOption) (*GetBackupRestorePointMetadataOK, error)
+
 	ResumeBackupPlan(params *ResumeBackupPlanParams, opts ...ClientOption) (*ResumeBackupPlanOK, error)
 
 	SuspendBackupPlan(params *SuspendBackupPlanParams, opts ...ClientOption) (*SuspendBackupPlanOK, error)
@@ -356,6 +358,44 @@ func (a *Client) GetBackupPlansConnection(params *GetBackupPlansConnectionParams
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetBackupPlansConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetBackupRestorePointMetadata get backup restore point metadata API
+*/
+func (a *Client) GetBackupRestorePointMetadata(params *GetBackupRestorePointMetadataParams, opts ...ClientOption) (*GetBackupRestorePointMetadataOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetBackupRestorePointMetadataParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetBackupRestorePointMetadata",
+		Method:             "POST",
+		PathPattern:        "/get-backup-restore-point-metadata",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetBackupRestorePointMetadataReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetBackupRestorePointMetadataOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for GetBackupRestorePointMetadata: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

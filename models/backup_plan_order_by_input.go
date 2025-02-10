@@ -30,6 +30,24 @@ func (m BackupPlanOrderByInput) Pointer() *BackupPlanOrderByInput {
 
 const (
 
+	// BackupPlanOrderByInputBackupDelayOptionASC captures enum value "backup_delay_option_ASC"
+	BackupPlanOrderByInputBackupDelayOptionASC BackupPlanOrderByInput = "backup_delay_option_ASC"
+
+	// BackupPlanOrderByInputBackupDelayOptionDESC captures enum value "backup_delay_option_DESC"
+	BackupPlanOrderByInputBackupDelayOptionDESC BackupPlanOrderByInput = "backup_delay_option_DESC"
+
+	// BackupPlanOrderByInputBackupRestorePointCountASC captures enum value "backup_restore_point_count_ASC"
+	BackupPlanOrderByInputBackupRestorePointCountASC BackupPlanOrderByInput = "backup_restore_point_count_ASC"
+
+	// BackupPlanOrderByInputBackupRestorePointCountDESC captures enum value "backup_restore_point_count_DESC"
+	BackupPlanOrderByInputBackupRestorePointCountDESC BackupPlanOrderByInput = "backup_restore_point_count_DESC"
+
+	// BackupPlanOrderByInputBackupTotalSizeASC captures enum value "backup_total_size_ASC"
+	BackupPlanOrderByInputBackupTotalSizeASC BackupPlanOrderByInput = "backup_total_size_ASC"
+
+	// BackupPlanOrderByInputBackupTotalSizeDESC captures enum value "backup_total_size_DESC"
+	BackupPlanOrderByInputBackupTotalSizeDESC BackupPlanOrderByInput = "backup_total_size_DESC"
+
 	// BackupPlanOrderByInputCompressionASC captures enum value "compression_ASC"
 	BackupPlanOrderByInputCompressionASC BackupPlanOrderByInput = "compression_ASC"
 
@@ -47,6 +65,12 @@ const (
 
 	// BackupPlanOrderByInputCreatedAtDESC captures enum value "createdAt_DESC"
 	BackupPlanOrderByInputCreatedAtDESC BackupPlanOrderByInput = "createdAt_DESC"
+
+	// BackupPlanOrderByInputDeleteStrategyASC captures enum value "delete_strategy_ASC"
+	BackupPlanOrderByInputDeleteStrategyASC BackupPlanOrderByInput = "delete_strategy_ASC"
+
+	// BackupPlanOrderByInputDeleteStrategyDESC captures enum value "delete_strategy_DESC"
+	BackupPlanOrderByInputDeleteStrategyDESC BackupPlanOrderByInput = "delete_strategy_DESC"
 
 	// BackupPlanOrderByInputDescriptionASC captures enum value "description_ASC"
 	BackupPlanOrderByInputDescriptionASC BackupPlanOrderByInput = "description_ASC"
@@ -126,6 +150,12 @@ const (
 	// BackupPlanOrderByInputLastExecuteStatusDESC captures enum value "last_execute_status_DESC"
 	BackupPlanOrderByInputLastExecuteStatusDESC BackupPlanOrderByInput = "last_execute_status_DESC"
 
+	// BackupPlanOrderByInputLastExecuteStatusMessageASC captures enum value "last_execute_status_message_ASC"
+	BackupPlanOrderByInputLastExecuteStatusMessageASC BackupPlanOrderByInput = "last_execute_status_message_ASC"
+
+	// BackupPlanOrderByInputLastExecuteStatusMessageDESC captures enum value "last_execute_status_message_DESC"
+	BackupPlanOrderByInputLastExecuteStatusMessageDESC BackupPlanOrderByInput = "last_execute_status_message_DESC"
+
 	// BackupPlanOrderByInputLastExecuteSuccessJobCountASC captures enum value "last_execute_success_job_count_ASC"
 	BackupPlanOrderByInputLastExecuteSuccessJobCountASC BackupPlanOrderByInput = "last_execute_success_job_count_ASC"
 
@@ -150,6 +180,12 @@ const (
 	// BackupPlanOrderByInputLastManualExecuteStatusDESC captures enum value "last_manual_execute_status_DESC"
 	BackupPlanOrderByInputLastManualExecuteStatusDESC BackupPlanOrderByInput = "last_manual_execute_status_DESC"
 
+	// BackupPlanOrderByInputLastManualExecuteStatusMessageASC captures enum value "last_manual_execute_status_message_ASC"
+	BackupPlanOrderByInputLastManualExecuteStatusMessageASC BackupPlanOrderByInput = "last_manual_execute_status_message_ASC"
+
+	// BackupPlanOrderByInputLastManualExecuteStatusMessageDESC captures enum value "last_manual_execute_status_message_DESC"
+	BackupPlanOrderByInputLastManualExecuteStatusMessageDESC BackupPlanOrderByInput = "last_manual_execute_status_message_DESC"
+
 	// BackupPlanOrderByInputLastManualExecuteSuccessJobCountASC captures enum value "last_manual_execute_success_job_count_ASC"
 	BackupPlanOrderByInputLastManualExecuteSuccessJobCountASC BackupPlanOrderByInput = "last_manual_execute_success_job_count_ASC"
 
@@ -168,6 +204,12 @@ const (
 	// BackupPlanOrderByInputLastManualExecutedAtDESC captures enum value "last_manual_executed_at_DESC"
 	BackupPlanOrderByInputLastManualExecutedAtDESC BackupPlanOrderByInput = "last_manual_executed_at_DESC"
 
+	// BackupPlanOrderByInputLogicalSizeASC captures enum value "logical_size_ASC"
+	BackupPlanOrderByInputLogicalSizeASC BackupPlanOrderByInput = "logical_size_ASC"
+
+	// BackupPlanOrderByInputLogicalSizeDESC captures enum value "logical_size_DESC"
+	BackupPlanOrderByInputLogicalSizeDESC BackupPlanOrderByInput = "logical_size_DESC"
+
 	// BackupPlanOrderByInputNameASC captures enum value "name_ASC"
 	BackupPlanOrderByInputNameASC BackupPlanOrderByInput = "name_ASC"
 
@@ -179,6 +221,12 @@ const (
 
 	// BackupPlanOrderByInputNextExecuteTimeDESC captures enum value "next_execute_time_DESC"
 	BackupPlanOrderByInputNextExecuteTimeDESC BackupPlanOrderByInput = "next_execute_time_DESC"
+
+	// BackupPlanOrderByInputPhaseASC captures enum value "phase_ASC"
+	BackupPlanOrderByInputPhaseASC BackupPlanOrderByInput = "phase_ASC"
+
+	// BackupPlanOrderByInputPhaseDESC captures enum value "phase_DESC"
+	BackupPlanOrderByInputPhaseDESC BackupPlanOrderByInput = "phase_DESC"
 
 	// BackupPlanOrderByInputPhysicalSizeASC captures enum value "physical_size_ASC"
 	BackupPlanOrderByInputPhysicalSizeASC BackupPlanOrderByInput = "physical_size_ASC"
@@ -204,6 +252,12 @@ const (
 	// BackupPlanOrderByInputValidSizeOfBackupObjectDESC captures enum value "valid_size_of_backup_object_DESC"
 	BackupPlanOrderByInputValidSizeOfBackupObjectDESC BackupPlanOrderByInput = "valid_size_of_backup_object_DESC"
 
+	// BackupPlanOrderByInputValidSizeOfRestorePointASC captures enum value "valid_size_of_restore_point_ASC"
+	BackupPlanOrderByInputValidSizeOfRestorePointASC BackupPlanOrderByInput = "valid_size_of_restore_point_ASC"
+
+	// BackupPlanOrderByInputValidSizeOfRestorePointDESC captures enum value "valid_size_of_restore_point_DESC"
+	BackupPlanOrderByInputValidSizeOfRestorePointDESC BackupPlanOrderByInput = "valid_size_of_restore_point_DESC"
+
 	// BackupPlanOrderByInputWindowEndASC captures enum value "window_end_ASC"
 	BackupPlanOrderByInputWindowEndASC BackupPlanOrderByInput = "window_end_ASC"
 
@@ -222,7 +276,7 @@ var backupPlanOrderByInputEnum []interface{}
 
 func init() {
 	var res []BackupPlanOrderByInput
-	if err := json.Unmarshal([]byte(`["compression_ASC","compression_DESC","compression_ratio_ASC","compression_ratio_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","enable_window_ASC","enable_window_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","full_interval_ASC","full_interval_DESC","full_period_ASC","full_period_DESC","full_time_point_ASC","full_time_point_DESC","id_ASC","id_DESC","incremental_interval_ASC","incremental_interval_DESC","incremental_period_ASC","incremental_period_DESC","incremental_time_points_ASC","incremental_time_points_DESC","keep_policy_ASC","keep_policy_DESC","keep_policy_value_ASC","keep_policy_value_DESC","last_execute_status_ASC","last_execute_status_DESC","last_execute_success_job_count_ASC","last_execute_success_job_count_DESC","last_execute_total_job_count_ASC","last_execute_total_job_count_DESC","last_executed_at_ASC","last_executed_at_DESC","last_manual_execute_status_ASC","last_manual_execute_status_DESC","last_manual_execute_success_job_count_ASC","last_manual_execute_success_job_count_DESC","last_manual_execute_total_job_count_ASC","last_manual_execute_total_job_count_DESC","last_manual_executed_at_ASC","last_manual_executed_at_DESC","name_ASC","name_DESC","next_execute_time_ASC","next_execute_time_DESC","physical_size_ASC","physical_size_DESC","snapshot_consistent_type_ASC","snapshot_consistent_type_DESC","status_ASC","status_DESC","valid_size_of_backup_object_ASC","valid_size_of_backup_object_DESC","window_end_ASC","window_end_DESC","window_start_ASC","window_start_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["backup_delay_option_ASC","backup_delay_option_DESC","backup_restore_point_count_ASC","backup_restore_point_count_DESC","backup_total_size_ASC","backup_total_size_DESC","compression_ASC","compression_DESC","compression_ratio_ASC","compression_ratio_DESC","createdAt_ASC","createdAt_DESC","delete_strategy_ASC","delete_strategy_DESC","description_ASC","description_DESC","enable_window_ASC","enable_window_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","full_interval_ASC","full_interval_DESC","full_period_ASC","full_period_DESC","full_time_point_ASC","full_time_point_DESC","id_ASC","id_DESC","incremental_interval_ASC","incremental_interval_DESC","incremental_period_ASC","incremental_period_DESC","incremental_time_points_ASC","incremental_time_points_DESC","keep_policy_ASC","keep_policy_DESC","keep_policy_value_ASC","keep_policy_value_DESC","last_execute_status_ASC","last_execute_status_DESC","last_execute_status_message_ASC","last_execute_status_message_DESC","last_execute_success_job_count_ASC","last_execute_success_job_count_DESC","last_execute_total_job_count_ASC","last_execute_total_job_count_DESC","last_executed_at_ASC","last_executed_at_DESC","last_manual_execute_status_ASC","last_manual_execute_status_DESC","last_manual_execute_status_message_ASC","last_manual_execute_status_message_DESC","last_manual_execute_success_job_count_ASC","last_manual_execute_success_job_count_DESC","last_manual_execute_total_job_count_ASC","last_manual_execute_total_job_count_DESC","last_manual_executed_at_ASC","last_manual_executed_at_DESC","logical_size_ASC","logical_size_DESC","name_ASC","name_DESC","next_execute_time_ASC","next_execute_time_DESC","phase_ASC","phase_DESC","physical_size_ASC","physical_size_DESC","snapshot_consistent_type_ASC","snapshot_consistent_type_DESC","status_ASC","status_DESC","valid_size_of_backup_object_ASC","valid_size_of_backup_object_DESC","valid_size_of_restore_point_ASC","valid_size_of_restore_point_DESC","window_end_ASC","window_end_DESC","window_start_ASC","window_start_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

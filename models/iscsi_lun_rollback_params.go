@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type IscsiLunRollbackParams struct {
 	// snapshot id
 	// Required: true
 	SnapshotID *string `json:"snapshot_id"`
+
+	MarshalOpts *IscsiLunRollbackParamsMarshalOpts `json:"-"`
+}
+
+type IscsiLunRollbackParamsMarshalOpts struct {
+	LunID_Explicit_Null_When_Empty bool
+
+	SnapshotID_Explicit_Null_When_Empty bool
+}
+
+func (m IscsiLunRollbackParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field lun_id
+	if m.LunID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"lun_id\":")
+		bytes, err := swag.WriteJSON(m.LunID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LunID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"lun_id\":null")
+		first = false
+	}
+
+	// handle nullable field snapshot_id
+	if m.SnapshotID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_id\":")
+		bytes, err := swag.WriteJSON(m.SnapshotID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this iscsi lun rollback params

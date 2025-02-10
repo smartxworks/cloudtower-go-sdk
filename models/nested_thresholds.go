@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,86 @@ type NestedThresholds struct {
 
 	// value
 	Value *float64 `json:"value,omitempty"`
+
+	MarshalOpts *NestedThresholdsMarshalOpts `json:"-"`
+}
+
+type NestedThresholdsMarshalOpts struct {
+	Quantile_Explicit_Null_When_Empty bool
+
+	Severity_Explicit_Null_When_Empty bool
+
+	Value_Explicit_Null_When_Empty bool
+}
+
+func (m NestedThresholds) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field quantile
+	if m.Quantile != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"quantile\":")
+		bytes, err := swag.WriteJSON(m.Quantile)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Quantile_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"quantile\":null")
+		first = false
+	}
+
+	// handle nullable field severity
+	if m.Severity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"severity\":")
+		bytes, err := swag.WriteJSON(m.Severity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Severity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"severity\":null")
+		first = false
+	}
+
+	// handle nullable field value
+	if m.Value != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"value\":")
+		bytes, err := swag.WriteJSON(m.Value)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Value_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"value\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested thresholds

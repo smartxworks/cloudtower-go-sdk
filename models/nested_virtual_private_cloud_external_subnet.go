@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -35,6 +36,130 @@ type NestedVirtualPrivateCloudExternalSubnet struct {
 
 	// router gateway cidr
 	RouterGatewayCidr *string `json:"router_gateway_cidr,omitempty"`
+
+	MarshalOpts *NestedVirtualPrivateCloudExternalSubnetMarshalOpts `json:"-"`
+}
+
+type NestedVirtualPrivateCloudExternalSubnetMarshalOpts struct {
+	FloatingIPCidr_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NatGatewayCidr_Explicit_Null_When_Empty bool
+
+	RouterGatewayCidr_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVirtualPrivateCloudExternalSubnet) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field floating_ip_cidr
+	if m.FloatingIPCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip_cidr\":")
+		bytes, err := swag.WriteJSON(m.FloatingIPCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FloatingIPCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip_cidr\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field nat_gateway_cidr
+	if m.NatGatewayCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nat_gateway_cidr\":")
+		bytes, err := swag.WriteJSON(m.NatGatewayCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NatGatewayCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nat_gateway_cidr\":null")
+		first = false
+	}
+
+	// handle nullable field router_gateway_cidr
+	if m.RouterGatewayCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"router_gateway_cidr\":")
+		bytes, err := swag.WriteJSON(m.RouterGatewayCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RouterGatewayCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"router_gateway_cidr\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested virtual private cloud external subnet

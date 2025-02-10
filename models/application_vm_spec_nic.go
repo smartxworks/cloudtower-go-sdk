@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -31,6 +32,130 @@ type ApplicationVMSpecNic struct {
 
 	// vlan Id
 	VlanID *string `json:"vlanId,omitempty"`
+
+	MarshalOpts *ApplicationVMSpecNicMarshalOpts `json:"-"`
+}
+
+type ApplicationVMSpecNicMarshalOpts struct {
+	Dhcp_Explicit_Null_When_Empty bool
+
+	Gateway_Explicit_Null_When_Empty bool
+
+	IP_Explicit_Null_When_Empty bool
+
+	Mask_Explicit_Null_When_Empty bool
+
+	VlanID_Explicit_Null_When_Empty bool
+}
+
+func (m ApplicationVMSpecNic) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field dhcp
+	if m.Dhcp != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dhcp\":")
+		bytes, err := swag.WriteJSON(m.Dhcp)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Dhcp_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dhcp\":null")
+		first = false
+	}
+
+	// handle nullable field gateway
+	if m.Gateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway\":")
+		bytes, err := swag.WriteJSON(m.Gateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Gateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway\":null")
+		first = false
+	}
+
+	// handle nullable field ip
+	if m.IP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip\":")
+		bytes, err := swag.WriteJSON(m.IP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip\":null")
+		first = false
+	}
+
+	// handle nullable field mask
+	if m.Mask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mask\":")
+		bytes, err := swag.WriteJSON(m.Mask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Mask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mask\":null")
+		first = false
+	}
+
+	// handle nullable field vlanId
+	if m.VlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlanId\":")
+		bytes, err := swag.WriteJSON(m.VlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlanId\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this application Vm spec nic

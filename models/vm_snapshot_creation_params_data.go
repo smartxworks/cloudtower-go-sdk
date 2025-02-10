@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -29,6 +30,86 @@ type VMSnapshotCreationParamsData struct {
 	// vm id
 	// Required: true
 	VMID *string `json:"vm_id"`
+
+	MarshalOpts *VMSnapshotCreationParamsDataMarshalOpts `json:"-"`
+}
+
+type VMSnapshotCreationParamsDataMarshalOpts struct {
+	ConsistentType_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	VMID_Explicit_Null_When_Empty bool
+}
+
+func (m VMSnapshotCreationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field consistent_type
+	if m.ConsistentType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistent_type\":")
+		bytes, err := swag.WriteJSON(m.ConsistentType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistentType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistent_type\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field vm_id
+	if m.VMID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_id\":")
+		bytes, err := swag.WriteJSON(m.VMID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm snapshot creation params data

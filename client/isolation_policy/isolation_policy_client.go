@@ -30,11 +30,93 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CreateIsolationPolicy(params *CreateIsolationPolicyParams, opts ...ClientOption) (*CreateIsolationPolicyOK, error)
+
+	DeleteIsolationPolicy(params *DeleteIsolationPolicyParams, opts ...ClientOption) (*DeleteIsolationPolicyOK, error)
+
 	GetIsolationPolicies(params *GetIsolationPoliciesParams, opts ...ClientOption) (*GetIsolationPoliciesOK, error)
 
 	GetIsolationPoliciesConnection(params *GetIsolationPoliciesConnectionParams, opts ...ClientOption) (*GetIsolationPoliciesConnectionOK, error)
 
+	UpdateIsolationPolicy(params *UpdateIsolationPolicyParams, opts ...ClientOption) (*UpdateIsolationPolicyOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateIsolationPolicy create isolation policy API
+*/
+func (a *Client) CreateIsolationPolicy(params *CreateIsolationPolicyParams, opts ...ClientOption) (*CreateIsolationPolicyOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateIsolationPolicyParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CreateIsolationPolicy",
+		Method:             "POST",
+		PathPattern:        "/create-isolation-policy",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CreateIsolationPolicyReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateIsolationPolicyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CreateIsolationPolicy: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteIsolationPolicy delete isolation policy API
+*/
+func (a *Client) DeleteIsolationPolicy(params *DeleteIsolationPolicyParams, opts ...ClientOption) (*DeleteIsolationPolicyOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteIsolationPolicyParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "DeleteIsolationPolicy",
+		Method:             "POST",
+		PathPattern:        "/delete-isolation-policy",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DeleteIsolationPolicyReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteIsolationPolicyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for DeleteIsolationPolicy: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,6 +192,44 @@ func (a *Client) GetIsolationPoliciesConnection(params *GetIsolationPoliciesConn
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetIsolationPoliciesConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateIsolationPolicy update isolation policy API
+*/
+func (a *Client) UpdateIsolationPolicy(params *UpdateIsolationPolicyParams, opts ...ClientOption) (*UpdateIsolationPolicyOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateIsolationPolicyParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateIsolationPolicy",
+		Method:             "POST",
+		PathPattern:        "/update-isolation-policy",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateIsolationPolicyReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateIsolationPolicyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateIsolationPolicy: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -40,6 +41,174 @@ type NestedEverouteAgentStatus struct {
 
 	// reason
 	Reason *string `json:"reason,omitempty"`
+
+	MarshalOpts *NestedEverouteAgentStatusMarshalOpts `json:"-"`
+}
+
+type NestedEverouteAgentStatusMarshalOpts struct {
+	Host_Explicit_Null_When_Empty bool
+
+	HostID_Explicit_Null_When_Empty bool
+
+	IPAddr_Explicit_Null_When_Empty bool
+
+	IsHealth_Explicit_Null_When_Empty bool
+
+	Message_Explicit_Null_When_Empty bool
+
+	Phase_Explicit_Null_When_Empty bool
+
+	Reason_Explicit_Null_When_Empty bool
+}
+
+func (m NestedEverouteAgentStatus) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field host
+	if m.Host != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host\":")
+		bytes, err := swag.WriteJSON(m.Host)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Host_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host\":null")
+		first = false
+	}
+
+	// handle nullable field hostID
+	if m.HostID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostID\":")
+		bytes, err := swag.WriteJSON(m.HostID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostID\":null")
+		first = false
+	}
+
+	// handle nullable field ipAddr
+	if m.IPAddr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipAddr\":")
+		bytes, err := swag.WriteJSON(m.IPAddr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPAddr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipAddr\":null")
+		first = false
+	}
+
+	// handle nullable field isHealth
+	if m.IsHealth != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"isHealth\":")
+		bytes, err := swag.WriteJSON(m.IsHealth)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsHealth_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"isHealth\":null")
+		first = false
+	}
+
+	// handle nullable field message
+	if m.Message != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":")
+		bytes, err := swag.WriteJSON(m.Message)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Message_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":null")
+		first = false
+	}
+
+	// handle nullable field phase
+	if m.Phase != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":")
+		bytes, err := swag.WriteJSON(m.Phase)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Phase_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":null")
+		first = false
+	}
+
+	// handle nullable field reason
+	if m.Reason != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":")
+		bytes, err := swag.WriteJSON(m.Reason)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Reason_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested everoute agent status

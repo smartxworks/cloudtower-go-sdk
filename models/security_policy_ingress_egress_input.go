@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -22,11 +23,104 @@ type SecurityPolicyIngressEgressInput struct {
 	// ports
 	Ports []*NetworkPolicyRulePortInput `json:"ports,omitempty"`
 
+	// service ids
+	ServiceIds []string `json:"service_ids,omitempty"`
+
 	// target
 	Target *SecurityPolicyIngressEgressInputTarget `json:"target,omitempty"`
 
 	// type
 	Type *SecurityPolicyFlowControlType `json:"type,omitempty"`
+
+	MarshalOpts *SecurityPolicyIngressEgressInputMarshalOpts `json:"-"`
+}
+
+type SecurityPolicyIngressEgressInputMarshalOpts struct {
+	Ports_Explicit_Null_When_Empty bool
+
+	ServiceIds_Explicit_Null_When_Empty bool
+
+	Target_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+}
+
+func (m SecurityPolicyIngressEgressInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field ports with omitempty
+	if !swag.IsZero(m.Ports) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ports\":")
+		bytes, err := swag.WriteJSON(m.Ports)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field service_ids with omitempty
+	if !swag.IsZero(m.ServiceIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"service_ids\":")
+		bytes, err := swag.WriteJSON(m.ServiceIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field target
+	if m.Target != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target\":")
+		bytes, err := swag.WriteJSON(m.Target)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Target_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this security policy ingress egress input

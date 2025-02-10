@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -37,6 +38,174 @@ type NestedGpuDriverInfo struct {
 
 	// version
 	Version *string `json:"version,omitempty"`
+
+	MarshalOpts *NestedGpuDriverInfoMarshalOpts `json:"-"`
+}
+
+type NestedGpuDriverInfoMarshalOpts struct {
+	Filename_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Rhelversion_Explicit_Null_When_Empty bool
+
+	Srcversion_Explicit_Null_When_Empty bool
+
+	Supported_Explicit_Null_When_Empty bool
+
+	Vermagic_Explicit_Null_When_Empty bool
+
+	Version_Explicit_Null_When_Empty bool
+}
+
+func (m NestedGpuDriverInfo) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field filename
+	if m.Filename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"filename\":")
+		bytes, err := swag.WriteJSON(m.Filename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Filename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"filename\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field rhelversion
+	if m.Rhelversion != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rhelversion\":")
+		bytes, err := swag.WriteJSON(m.Rhelversion)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Rhelversion_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rhelversion\":null")
+		first = false
+	}
+
+	// handle nullable field srcversion
+	if m.Srcversion != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"srcversion\":")
+		bytes, err := swag.WriteJSON(m.Srcversion)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Srcversion_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"srcversion\":null")
+		first = false
+	}
+
+	// handle nullable field supported
+	if m.Supported != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"supported\":")
+		bytes, err := swag.WriteJSON(m.Supported)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Supported_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"supported\":null")
+		first = false
+	}
+
+	// handle nullable field vermagic
+	if m.Vermagic != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vermagic\":")
+		bytes, err := swag.WriteJSON(m.Vermagic)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vermagic_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vermagic\":null")
+		first = false
+	}
+
+	// handle nullable field version
+	if m.Version != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":")
+		bytes, err := swag.WriteJSON(m.Version)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Version_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested gpu driver info
