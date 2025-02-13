@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,64 @@ type VMUpdateIoPolicyParams struct {
 	// where
 	// Required: true
 	Where *VMWhereInput `json:"where"`
+
+	MarshalOpts *VMUpdateIoPolicyParamsMarshalOpts `json:"-"`
+}
+
+type VMUpdateIoPolicyParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateIoPolicyParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm update io policy params
@@ -168,6 +227,80 @@ type VMUpdateIoPolicyParamsData struct {
 
 	// whole vm
 	WholeVM *VMRestrictIoParamsData `json:"whole_vm,omitempty"`
+
+	MarshalOpts *VMUpdateIoPolicyParamsDataMarshalOpts `json:"-"`
+}
+
+type VMUpdateIoPolicyParamsDataMarshalOpts struct {
+	EachDisk_Explicit_Null_When_Empty bool
+
+	IoPolicy_Explicit_Null_When_Empty bool
+
+	WholeVM_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateIoPolicyParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field each_disk with omitempty
+	if !swag.IsZero(m.EachDisk) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"each_disk\":")
+		bytes, err := swag.WriteJSON(m.EachDisk)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field io_policy
+	if m.IoPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"io_policy\":")
+		bytes, err := swag.WriteJSON(m.IoPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IoPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"io_policy\":null")
+		first = false
+	}
+
+	// handle nullable field whole_vm
+	if m.WholeVM != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"whole_vm\":")
+		bytes, err := swag.WriteJSON(m.WholeVM)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WholeVM_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"whole_vm\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM update io policy params data

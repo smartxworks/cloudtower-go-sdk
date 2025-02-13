@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VMUpdateNicAdvanceInfoParams struct {
 	// where
 	// Required: true
 	Where *VMNicWhereInput `json:"where"`
+
+	MarshalOpts *VMUpdateNicAdvanceInfoParamsMarshalOpts `json:"-"`
+}
+
+type VMUpdateNicAdvanceInfoParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateNicAdvanceInfoParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm update nic advance info params
@@ -173,6 +232,130 @@ type VMUpdateNicAdvanceInfoParamsData struct {
 
 	// nic id
 	NicID *string `json:"nic_id,omitempty"`
+
+	MarshalOpts *VMUpdateNicAdvanceInfoParamsDataMarshalOpts `json:"-"`
+}
+
+type VMUpdateNicAdvanceInfoParamsDataMarshalOpts struct {
+	ConnectVlanID_Explicit_Null_When_Empty bool
+
+	Enabled_Explicit_Null_When_Empty bool
+
+	MacAddress_Explicit_Null_When_Empty bool
+
+	Mirror_Explicit_Null_When_Empty bool
+
+	NicID_Explicit_Null_When_Empty bool
+}
+
+func (m VMUpdateNicAdvanceInfoParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field connect_vlan_id
+	if m.ConnectVlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"connect_vlan_id\":")
+		bytes, err := swag.WriteJSON(m.ConnectVlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConnectVlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"connect_vlan_id\":null")
+		first = false
+	}
+
+	// handle nullable field enabled
+	if m.Enabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":")
+		bytes, err := swag.WriteJSON(m.Enabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":null")
+		first = false
+	}
+
+	// handle nullable field mac_address
+	if m.MacAddress != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mac_address\":")
+		bytes, err := swag.WriteJSON(m.MacAddress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MacAddress_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mac_address\":null")
+		first = false
+	}
+
+	// handle nullable field mirror
+	if m.Mirror != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mirror\":")
+		bytes, err := swag.WriteJSON(m.Mirror)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Mirror_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mirror\":null")
+		first = false
+	}
+
+	// handle nullable field nic_id
+	if m.NicID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nic_id\":")
+		bytes, err := swag.WriteJSON(m.NicID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NicID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nic_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this VM update nic advance info params data

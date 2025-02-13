@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type VirtualPrivateCloudDnatRuleParams struct {
 	// target port
 	// Required: true
 	TargetPort *int32 `json:"target_port"`
+
+	MarshalOpts *VirtualPrivateCloudDnatRuleParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudDnatRuleParamsMarshalOpts struct {
+	Port_Explicit_Null_When_Empty bool
+
+	TargetIP_Explicit_Null_When_Empty bool
+
+	TargetPort_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudDnatRuleParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field port
+	if m.Port != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"port\":")
+		bytes, err := swag.WriteJSON(m.Port)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Port_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"port\":null")
+		first = false
+	}
+
+	// handle nullable field target_ip
+	if m.TargetIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target_ip\":")
+		bytes, err := swag.WriteJSON(m.TargetIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TargetIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target_ip\":null")
+		first = false
+	}
+
+	// handle nullable field target_port
+	if m.TargetPort != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target_port\":")
+		bytes, err := swag.WriteJSON(m.TargetPort)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TargetPort_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target_port\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud dnat rule params

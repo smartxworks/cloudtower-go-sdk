@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type CommonHeader struct {
 	// x tower request id
 	// Required: true
 	XTowerRequestID *string `json:"x-tower-request-id"`
+
+	MarshalOpts *CommonHeaderMarshalOpts `json:"-"`
+}
+
+type CommonHeaderMarshalOpts struct {
+	XTowerRequestID_Explicit_Null_When_Empty bool
+}
+
+func (m CommonHeader) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field x-tower-request-id
+	if m.XTowerRequestID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"x-tower-request-id\":")
+		bytes, err := swag.WriteJSON(m.XTowerRequestID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.XTowerRequestID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"x-tower-request-id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this common header

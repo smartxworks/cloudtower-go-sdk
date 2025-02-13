@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type BatchHosts struct {
 	// task
 	// Required: true
 	Task *NestedTask `json:"task"`
+
+	MarshalOpts *BatchHostsMarshalOpts `json:"-"`
+}
+
+type BatchHostsMarshalOpts struct {
+	Task_Explicit_Null_When_Empty bool
+}
+
+func (m BatchHosts) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field task
+	if m.Task != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"task\":")
+		bytes, err := swag.WriteJSON(m.Task)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Task_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"task\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this batch hosts

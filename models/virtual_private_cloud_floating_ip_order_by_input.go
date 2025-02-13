@@ -42,6 +42,12 @@ const (
 	// VirtualPrivateCloudFloatingIPOrderByInputExternalIPDESC captures enum value "external_ip_DESC"
 	VirtualPrivateCloudFloatingIPOrderByInputExternalIPDESC VirtualPrivateCloudFloatingIPOrderByInput = "external_ip_DESC"
 
+	// VirtualPrivateCloudFloatingIPOrderByInputExternalIpsASC captures enum value "external_ips_ASC"
+	VirtualPrivateCloudFloatingIPOrderByInputExternalIpsASC VirtualPrivateCloudFloatingIPOrderByInput = "external_ips_ASC"
+
+	// VirtualPrivateCloudFloatingIPOrderByInputExternalIpsDESC captures enum value "external_ips_DESC"
+	VirtualPrivateCloudFloatingIPOrderByInputExternalIpsDESC VirtualPrivateCloudFloatingIPOrderByInput = "external_ips_DESC"
+
 	// VirtualPrivateCloudFloatingIPOrderByInputIDASC captures enum value "id_ASC"
 	VirtualPrivateCloudFloatingIPOrderByInputIDASC VirtualPrivateCloudFloatingIPOrderByInput = "id_ASC"
 
@@ -60,7 +66,7 @@ var virtualPrivateCloudFloatingIpOrderByInputEnum []interface{}
 
 func init() {
 	var res []VirtualPrivateCloudFloatingIPOrderByInput
-	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_ip_ASC","external_ip_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_ip_ASC","external_ip_DESC","external_ips_ASC","external_ips_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

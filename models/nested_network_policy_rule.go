@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -19,6 +20,9 @@ import (
 //
 // swagger:model NestedNetworkPolicyRule
 type NestedNetworkPolicyRule struct {
+
+	// except ip block
+	ExceptIPBlock []string `json:"except_ip_block,omitempty"`
 
 	// ip block
 	IPBlock *string `json:"ip_block,omitempty"`
@@ -38,9 +42,213 @@ type NestedNetworkPolicyRule struct {
 	// selector ids
 	SelectorIds []string `json:"selector_ids,omitempty"`
 
+	// service ids
+	ServiceIds []string `json:"service_ids,omitempty"`
+
+	// services
+	Services []*NestedNetworkPolicyRuleService `json:"services,omitempty"`
+
 	// type
 	// Required: true
 	Type *NetworkPolicyRuleType `json:"type"`
+
+	MarshalOpts *NestedNetworkPolicyRuleMarshalOpts `json:"-"`
+}
+
+type NestedNetworkPolicyRuleMarshalOpts struct {
+	ExceptIPBlock_Explicit_Null_When_Empty bool
+
+	IPBlock_Explicit_Null_When_Empty bool
+
+	Ports_Explicit_Null_When_Empty bool
+
+	SecurityGroup_Explicit_Null_When_Empty bool
+
+	SecurityGroupID_Explicit_Null_When_Empty bool
+
+	Selector_Explicit_Null_When_Empty bool
+
+	SelectorIds_Explicit_Null_When_Empty bool
+
+	ServiceIds_Explicit_Null_When_Empty bool
+
+	Services_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+}
+
+func (m NestedNetworkPolicyRule) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field except_ip_block with omitempty
+	if !swag.IsZero(m.ExceptIPBlock) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"except_ip_block\":")
+		bytes, err := swag.WriteJSON(m.ExceptIPBlock)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ip_block
+	if m.IPBlock != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_block\":")
+		bytes, err := swag.WriteJSON(m.IPBlock)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPBlock_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip_block\":null")
+		first = false
+	}
+
+	// handle non nullable field ports with omitempty
+	if !swag.IsZero(m.Ports) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ports\":")
+		bytes, err := swag.WriteJSON(m.Ports)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field security_group
+	if m.SecurityGroup != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroup)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityGroup_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group\":null")
+		first = false
+	}
+
+	// handle nullable field security_group_id
+	if m.SecurityGroupID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group_id\":")
+		bytes, err := swag.WriteJSON(m.SecurityGroupID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecurityGroupID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"security_group_id\":null")
+		first = false
+	}
+
+	// handle non nullable field selector with omitempty
+	if !swag.IsZero(m.Selector) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"selector\":")
+		bytes, err := swag.WriteJSON(m.Selector)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field selector_ids with omitempty
+	if !swag.IsZero(m.SelectorIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"selector_ids\":")
+		bytes, err := swag.WriteJSON(m.SelectorIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field service_ids with omitempty
+	if !swag.IsZero(m.ServiceIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"service_ids\":")
+		bytes, err := swag.WriteJSON(m.ServiceIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field services with omitempty
+	if !swag.IsZero(m.Services) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"services\":")
+		bytes, err := swag.WriteJSON(m.Services)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested network policy rule
@@ -56,6 +264,10 @@ func (m *NestedNetworkPolicyRule) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSelector(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServices(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -140,6 +352,32 @@ func (m *NestedNetworkPolicyRule) validateSelector(formats strfmt.Registry) erro
 	return nil
 }
 
+func (m *NestedNetworkPolicyRule) validateServices(formats strfmt.Registry) error {
+	if swag.IsZero(m.Services) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Services); i++ {
+		if swag.IsZero(m.Services[i]) { // not required
+			continue
+		}
+
+		if m.Services[i] != nil {
+			if err := m.Services[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *NestedNetworkPolicyRule) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
@@ -177,6 +415,10 @@ func (m *NestedNetworkPolicyRule) ContextValidate(ctx context.Context, formats s
 	}
 
 	if err := m.contextValidateSelector(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateServices(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -236,6 +478,26 @@ func (m *NestedNetworkPolicyRule) contextValidateSelector(ctx context.Context, f
 					return ve.ValidateName("selector" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("selector" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NestedNetworkPolicyRule) contextValidateServices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Services); i++ {
+
+		if m.Services[i] != nil {
+			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

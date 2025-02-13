@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,8 +28,15 @@ type VirtualPrivateCloudExternalSubnet struct {
 	// description
 	Description *string `json:"description,omitempty"`
 
+	// edge gateway
+	EdgeGateway *NestedVirtualPrivateCloudEdgeGateway `json:"edge_gateway,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
+	// exclusive
+	// Required: true
+	Exclusive *bool `json:"exclusive"`
 
 	// floating ip cidr
 	FloatingIPCidr *string `json:"floating_ip_cidr,omitempty"`
@@ -70,6 +78,376 @@ type VirtualPrivateCloudExternalSubnet struct {
 
 	// vpc
 	Vpc *NestedVirtualPrivateCloud `json:"vpc,omitempty"`
+
+	MarshalOpts *VirtualPrivateCloudExternalSubnetMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudExternalSubnetMarshalOpts struct {
+	Cidr_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	EdgeGateway_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	Exclusive_Explicit_Null_When_Empty bool
+
+	FloatingIPCidr_Explicit_Null_When_Empty bool
+
+	FloatingIps_Explicit_Null_When_Empty bool
+
+	Gateway_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NatGatewayCidr_Explicit_Null_When_Empty bool
+
+	NatGateways_Explicit_Null_When_Empty bool
+
+	RouterGatewayCidr_Explicit_Null_When_Empty bool
+
+	RouterGateways_Explicit_Null_When_Empty bool
+
+	Vlan_Explicit_Null_When_Empty bool
+
+	Vpc_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudExternalSubnet) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cidr
+	if m.Cidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cidr\":")
+		bytes, err := swag.WriteJSON(m.Cidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cidr\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field edge_gateway
+	if m.EdgeGateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"edge_gateway\":")
+		bytes, err := swag.WriteJSON(m.EdgeGateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EdgeGateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"edge_gateway\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field exclusive
+	if m.Exclusive != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclusive\":")
+		bytes, err := swag.WriteJSON(m.Exclusive)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Exclusive_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclusive\":null")
+		first = false
+	}
+
+	// handle nullable field floating_ip_cidr
+	if m.FloatingIPCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip_cidr\":")
+		bytes, err := swag.WriteJSON(m.FloatingIPCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FloatingIPCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip_cidr\":null")
+		first = false
+	}
+
+	// handle non nullable field floating_ips with omitempty
+	if !swag.IsZero(m.FloatingIps) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ips\":")
+		bytes, err := swag.WriteJSON(m.FloatingIps)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field gateway
+	if m.Gateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway\":")
+		bytes, err := swag.WriteJSON(m.Gateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Gateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field nat_gateway_cidr
+	if m.NatGatewayCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nat_gateway_cidr\":")
+		bytes, err := swag.WriteJSON(m.NatGatewayCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NatGatewayCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nat_gateway_cidr\":null")
+		first = false
+	}
+
+	// handle non nullable field nat_gateways with omitempty
+	if !swag.IsZero(m.NatGateways) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nat_gateways\":")
+		bytes, err := swag.WriteJSON(m.NatGateways)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field router_gateway_cidr
+	if m.RouterGatewayCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"router_gateway_cidr\":")
+		bytes, err := swag.WriteJSON(m.RouterGatewayCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RouterGatewayCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"router_gateway_cidr\":null")
+		first = false
+	}
+
+	// handle non nullable field router_gateways with omitempty
+	if !swag.IsZero(m.RouterGateways) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"router_gateways\":")
+		bytes, err := swag.WriteJSON(m.RouterGateways)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vlan
+	if m.Vlan != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan\":")
+		bytes, err := swag.WriteJSON(m.Vlan)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vlan_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan\":null")
+		first = false
+	}
+
+	// handle nullable field vpc
+	if m.Vpc != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc\":")
+		bytes, err := swag.WriteJSON(m.Vpc)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vpc_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud external subnet
@@ -80,7 +458,15 @@ func (m *VirtualPrivateCloudExternalSubnet) Validate(formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
+	if err := m.validateEdgeGateway(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateExclusive(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -135,6 +521,25 @@ func (m *VirtualPrivateCloudExternalSubnet) validateCidr(formats strfmt.Registry
 	return nil
 }
 
+func (m *VirtualPrivateCloudExternalSubnet) validateEdgeGateway(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGateway) { // not required
+		return nil
+	}
+
+	if m.EdgeGateway != nil {
+		if err := m.EdgeGateway.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VirtualPrivateCloudExternalSubnet) validateEntityAsyncStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatus) { // not required
 		return nil
@@ -149,6 +554,15 @@ func (m *VirtualPrivateCloudExternalSubnet) validateEntityAsyncStatus(formats st
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudExternalSubnet) validateExclusive(formats strfmt.Registry) error {
+
+	if err := validate.Required("exclusive", "body", m.Exclusive); err != nil {
+		return err
 	}
 
 	return nil
@@ -311,6 +725,10 @@ func (m *VirtualPrivateCloudExternalSubnet) validateVpc(formats strfmt.Registry)
 func (m *VirtualPrivateCloudExternalSubnet) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateEdgeGateway(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -338,6 +756,22 @@ func (m *VirtualPrivateCloudExternalSubnet) ContextValidate(ctx context.Context,
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VirtualPrivateCloudExternalSubnet) contextValidateEdgeGateway(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGateway != nil {
+		if err := m.EdgeGateway.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

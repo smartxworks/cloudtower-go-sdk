@@ -62,20 +62,24 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/log_service_config"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/metrics"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/namespace_group"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/network_policy_rule_service"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nfs_export"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nfs_inode"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nic"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/node_topo"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ntp"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_subsystem"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/observability"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/organization"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ovf"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pci_device"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pmem_dimm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/rack_topo"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_template"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/resource_change"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_policy"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_group"
@@ -98,7 +102,10 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/view"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_cluster_binding"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_edge_gateway"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_edge_gateway_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_external_subnet"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_external_subnet_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_floating_ip"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_nat_gateway"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_route_table"
@@ -219,20 +226,24 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.LogServiceConfig = log_service_config.New(transport, formats)
 	cli.Metrics = metrics.New(transport, formats)
 	cli.NamespaceGroup = namespace_group.New(transport, formats)
+	cli.NetworkPolicyRuleService = network_policy_rule_service.New(transport, formats)
 	cli.NfsExport = nfs_export.New(transport, formats)
 	cli.NfsInode = nfs_inode.New(transport, formats)
 	cli.Nic = nic.New(transport, formats)
 	cli.NodeTopo = node_topo.New(transport, formats)
+	cli.Ntp = ntp.New(transport, formats)
 	cli.NvmfNamespace = nvmf_namespace.New(transport, formats)
 	cli.NvmfNamespaceSnapshot = nvmf_namespace_snapshot.New(transport, formats)
 	cli.NvmfSubsystem = nvmf_subsystem.New(transport, formats)
 	cli.Observability = observability.New(transport, formats)
 	cli.Organization = organization.New(transport, formats)
 	cli.Ovf = ovf.New(transport, formats)
+	cli.PciDevice = pci_device.New(transport, formats)
 	cli.PmemDimm = pmem_dimm.New(transport, formats)
 	cli.RackTopo = rack_topo.New(transport, formats)
 	cli.ReportTask = report_task.New(transport, formats)
 	cli.ReportTemplate = report_template.New(transport, formats)
+	cli.ResourceChange = resource_change.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.SecurityPolicy = security_policy.New(transport, formats)
 	cli.SnapshotGroup = snapshot_group.New(transport, formats)
@@ -255,7 +266,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.View = view.New(transport, formats)
 	cli.VirtualPrivateCloud = virtual_private_cloud.New(transport, formats)
 	cli.VirtualPrivateCloudClusterBinding = virtual_private_cloud_cluster_binding.New(transport, formats)
+	cli.VirtualPrivateCloudEdgeGateway = virtual_private_cloud_edge_gateway.New(transport, formats)
+	cli.VirtualPrivateCloudEdgeGatewayGroup = virtual_private_cloud_edge_gateway_group.New(transport, formats)
 	cli.VirtualPrivateCloudExternalSubnet = virtual_private_cloud_external_subnet.New(transport, formats)
+	cli.VirtualPrivateCloudExternalSubnetGroup = virtual_private_cloud_external_subnet_group.New(transport, formats)
 	cli.VirtualPrivateCloudFloatingIP = virtual_private_cloud_floating_ip.New(transport, formats)
 	cli.VirtualPrivateCloudNatGateway = virtual_private_cloud_nat_gateway.New(transport, formats)
 	cli.VirtualPrivateCloudRouteTable = virtual_private_cloud_route_table.New(transport, formats)
@@ -428,6 +442,8 @@ type Cloudtower struct {
 
 	NamespaceGroup namespace_group.ClientService
 
+	NetworkPolicyRuleService network_policy_rule_service.ClientService
+
 	NfsExport nfs_export.ClientService
 
 	NfsInode nfs_inode.ClientService
@@ -435,6 +451,8 @@ type Cloudtower struct {
 	Nic nic.ClientService
 
 	NodeTopo node_topo.ClientService
+
+	Ntp ntp.ClientService
 
 	NvmfNamespace nvmf_namespace.ClientService
 
@@ -448,6 +466,8 @@ type Cloudtower struct {
 
 	Ovf ovf.ClientService
 
+	PciDevice pci_device.ClientService
+
 	PmemDimm pmem_dimm.ClientService
 
 	RackTopo rack_topo.ClientService
@@ -455,6 +475,8 @@ type Cloudtower struct {
 	ReportTask report_task.ClientService
 
 	ReportTemplate report_template.ClientService
+
+	ResourceChange resource_change.ClientService
 
 	SecurityGroup security_group.ClientService
 
@@ -500,7 +522,13 @@ type Cloudtower struct {
 
 	VirtualPrivateCloudClusterBinding virtual_private_cloud_cluster_binding.ClientService
 
+	VirtualPrivateCloudEdgeGateway virtual_private_cloud_edge_gateway.ClientService
+
+	VirtualPrivateCloudEdgeGatewayGroup virtual_private_cloud_edge_gateway_group.ClientService
+
 	VirtualPrivateCloudExternalSubnet virtual_private_cloud_external_subnet.ClientService
+
+	VirtualPrivateCloudExternalSubnetGroup virtual_private_cloud_external_subnet_group.ClientService
 
 	VirtualPrivateCloudFloatingIP virtual_private_cloud_floating_ip.ClientService
 
@@ -608,20 +636,24 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.LogServiceConfig.SetTransport(transport)
 	c.Metrics.SetTransport(transport)
 	c.NamespaceGroup.SetTransport(transport)
+	c.NetworkPolicyRuleService.SetTransport(transport)
 	c.NfsExport.SetTransport(transport)
 	c.NfsInode.SetTransport(transport)
 	c.Nic.SetTransport(transport)
 	c.NodeTopo.SetTransport(transport)
+	c.Ntp.SetTransport(transport)
 	c.NvmfNamespace.SetTransport(transport)
 	c.NvmfNamespaceSnapshot.SetTransport(transport)
 	c.NvmfSubsystem.SetTransport(transport)
 	c.Observability.SetTransport(transport)
 	c.Organization.SetTransport(transport)
 	c.Ovf.SetTransport(transport)
+	c.PciDevice.SetTransport(transport)
 	c.PmemDimm.SetTransport(transport)
 	c.RackTopo.SetTransport(transport)
 	c.ReportTask.SetTransport(transport)
 	c.ReportTemplate.SetTransport(transport)
+	c.ResourceChange.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)
 	c.SecurityPolicy.SetTransport(transport)
 	c.SnapshotGroup.SetTransport(transport)
@@ -644,7 +676,10 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.View.SetTransport(transport)
 	c.VirtualPrivateCloud.SetTransport(transport)
 	c.VirtualPrivateCloudClusterBinding.SetTransport(transport)
+	c.VirtualPrivateCloudEdgeGateway.SetTransport(transport)
+	c.VirtualPrivateCloudEdgeGatewayGroup.SetTransport(transport)
 	c.VirtualPrivateCloudExternalSubnet.SetTransport(transport)
+	c.VirtualPrivateCloudExternalSubnetGroup.SetTransport(transport)
 	c.VirtualPrivateCloudFloatingIP.SetTransport(transport)
 	c.VirtualPrivateCloudNatGateway.SetTransport(transport)
 	c.VirtualPrivateCloudRouteTable.SetTransport(transport)

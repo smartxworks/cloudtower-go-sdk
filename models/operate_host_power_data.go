@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -29,6 +30,86 @@ type OperateHostPowerData struct {
 
 	// reason
 	Reason *string `json:"reason,omitempty"`
+
+	MarshalOpts *OperateHostPowerDataMarshalOpts `json:"-"`
+}
+
+type OperateHostPowerDataMarshalOpts struct {
+	Action_Explicit_Null_When_Empty bool
+
+	Force_Explicit_Null_When_Empty bool
+
+	Reason_Explicit_Null_When_Empty bool
+}
+
+func (m OperateHostPowerData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field action
+	if m.Action != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"action\":")
+		bytes, err := swag.WriteJSON(m.Action)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Action_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"action\":null")
+		first = false
+	}
+
+	// handle nullable field force
+	if m.Force != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"force\":")
+		bytes, err := swag.WriteJSON(m.Force)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Force_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"force\":null")
+		first = false
+	}
+
+	// handle nullable field reason
+	if m.Reason != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":")
+		bytes, err := swag.WriteJSON(m.Reason)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Reason_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this operate host power data

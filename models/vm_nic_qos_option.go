@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -23,6 +24,64 @@ type VMNicQosOption struct {
 
 	// ingress
 	Ingress *VMNicQosTraffic `json:"ingress,omitempty"`
+
+	MarshalOpts *VMNicQosOptionMarshalOpts `json:"-"`
+}
+
+type VMNicQosOptionMarshalOpts struct {
+	Egress_Explicit_Null_When_Empty bool
+
+	Ingress_Explicit_Null_When_Empty bool
+}
+
+func (m VMNicQosOption) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field egress
+	if m.Egress != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress\":")
+		bytes, err := swag.WriteJSON(m.Egress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Egress_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress\":null")
+		first = false
+	}
+
+	// handle nullable field ingress
+	if m.Ingress != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress\":")
+		bytes, err := swag.WriteJSON(m.Ingress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ingress_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm nic qos option

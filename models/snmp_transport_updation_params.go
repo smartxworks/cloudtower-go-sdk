@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type SnmpTransportUpdationParams struct {
 	// where
 	// Required: true
 	Where *SnmpTransportWhereInput `json:"where"`
+
+	MarshalOpts *SnmpTransportUpdationParamsMarshalOpts `json:"-"`
+}
+
+type SnmpTransportUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m SnmpTransportUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this snmp transport updation params
@@ -191,6 +250,262 @@ type SnmpTransportUpdationParamsData struct {
 
 	// version
 	Version *SnmpVersion `json:"version,omitempty"`
+
+	MarshalOpts *SnmpTransportUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type SnmpTransportUpdationParamsDataMarshalOpts struct {
+	AuthPassPhrase_Explicit_Null_When_Empty bool
+
+	AuthProtocol_Explicit_Null_When_Empty bool
+
+	Community_Explicit_Null_When_Empty bool
+
+	Disabled_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Port_Explicit_Null_When_Empty bool
+
+	PrivacyPassPhrase_Explicit_Null_When_Empty bool
+
+	PrivacyProtocol_Explicit_Null_When_Empty bool
+
+	Protocol_Explicit_Null_When_Empty bool
+
+	Username_Explicit_Null_When_Empty bool
+
+	Version_Explicit_Null_When_Empty bool
+}
+
+func (m SnmpTransportUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field auth_pass_phrase
+	if m.AuthPassPhrase != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_pass_phrase\":")
+		bytes, err := swag.WriteJSON(m.AuthPassPhrase)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AuthPassPhrase_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_pass_phrase\":null")
+		first = false
+	}
+
+	// handle nullable field auth_protocol
+	if m.AuthProtocol != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_protocol\":")
+		bytes, err := swag.WriteJSON(m.AuthProtocol)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AuthProtocol_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_protocol\":null")
+		first = false
+	}
+
+	// handle nullable field community
+	if m.Community != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"community\":")
+		bytes, err := swag.WriteJSON(m.Community)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Community_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"community\":null")
+		first = false
+	}
+
+	// handle nullable field disabled
+	if m.Disabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disabled\":")
+		bytes, err := swag.WriteJSON(m.Disabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Disabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disabled\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field port
+	if m.Port != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"port\":")
+		bytes, err := swag.WriteJSON(m.Port)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Port_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"port\":null")
+		first = false
+	}
+
+	// handle nullable field privacy_pass_phrase
+	if m.PrivacyPassPhrase != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"privacy_pass_phrase\":")
+		bytes, err := swag.WriteJSON(m.PrivacyPassPhrase)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrivacyPassPhrase_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"privacy_pass_phrase\":null")
+		first = false
+	}
+
+	// handle nullable field privacy_protocol
+	if m.PrivacyProtocol != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"privacy_protocol\":")
+		bytes, err := swag.WriteJSON(m.PrivacyProtocol)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrivacyProtocol_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"privacy_protocol\":null")
+		first = false
+	}
+
+	// handle nullable field protocol
+	if m.Protocol != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"protocol\":")
+		bytes, err := swag.WriteJSON(m.Protocol)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Protocol_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"protocol\":null")
+		first = false
+	}
+
+	// handle nullable field username
+	if m.Username != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":")
+		bytes, err := swag.WriteJSON(m.Username)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Username_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":null")
+		first = false
+	}
+
+	// handle nullable field version
+	if m.Version != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":")
+		bytes, err := swag.WriteJSON(m.Version)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Version_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this snmp transport updation params data
