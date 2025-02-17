@@ -20,6 +20,18 @@ import (
 // swagger:model BackupPlan
 type BackupPlan struct {
 
+	// backup delay option
+	BackupDelayOption *BackupPlanDelayOption `json:"backup_delay_option,omitempty"`
+
+	// backup plan executions
+	BackupPlanExecutions []*NestedBackupPlanExecution `json:"backup_plan_executions,omitempty"`
+
+	// backup restore point count
+	BackupRestorePointCount *int32 `json:"backup_restore_point_count,omitempty"`
+
+	// backup restore points
+	BackupRestorePoints []*NestedBackupRestorePoint `json:"backup_restore_points,omitempty"`
+
 	// backup service
 	// Required: true
 	BackupService *NestedBackupService `json:"backup_service"`
@@ -27,6 +39,9 @@ type BackupPlan struct {
 	// backup store repository
 	// Required: true
 	BackupStoreRepository *NestedBackupStoreRepository `json:"backup_store_repository"`
+
+	// backup total size
+	BackupTotalSize *int64 `json:"backup_total_size,omitempty"`
 
 	// compression
 	Compression *bool `json:"compression,omitempty"`
@@ -37,6 +52,9 @@ type BackupPlan struct {
 	// created at
 	// Required: true
 	CreatedAt *string `json:"createdAt"`
+
+	// delete strategy
+	DeleteStrategy *BackupPlanDeleteStrategy `json:"delete_strategy,omitempty"`
 
 	// description
 	Description *string `json:"description,omitempty"`
@@ -88,6 +106,9 @@ type BackupPlan struct {
 	// Required: true
 	LastExecuteStatus *BackupPlanExecutionStatus `json:"last_execute_status"`
 
+	// last execute status message
+	LastExecuteStatusMessage *string `json:"last_execute_status_message,omitempty"`
+
 	// last execute success job count
 	LastExecuteSuccessJobCount *int32 `json:"last_execute_success_job_count,omitempty"`
 
@@ -101,6 +122,9 @@ type BackupPlan struct {
 	// Required: true
 	LastManualExecuteStatus *BackupPlanExecutionStatus `json:"last_manual_execute_status"`
 
+	// last manual execute status message
+	LastManualExecuteStatusMessage *string `json:"last_manual_execute_status_message,omitempty"`
+
 	// last manual execute success job count
 	LastManualExecuteSuccessJobCount *int32 `json:"last_manual_execute_success_job_count,omitempty"`
 
@@ -110,12 +134,18 @@ type BackupPlan struct {
 	// last manual executed at
 	LastManualExecutedAt *string `json:"last_manual_executed_at,omitempty"`
 
+	// logical size
+	LogicalSize *int64 `json:"logical_size,omitempty"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`
 
 	// next execute time
 	NextExecuteTime *string `json:"next_execute_time,omitempty"`
+
+	// phase
+	Phase *BackupPlanPhase `json:"phase,omitempty"`
 
 	// physical size
 	PhysicalSize *int64 `json:"physical_size,omitempty"`
@@ -130,6 +160,12 @@ type BackupPlan struct {
 	// valid size of backup object
 	ValidSizeOfBackupObject *int64 `json:"valid_size_of_backup_object,omitempty"`
 
+	// valid size of restore point
+	ValidSizeOfRestorePoint *int64 `json:"valid_size_of_restore_point,omitempty"`
+
+	// vms
+	Vms []*NestedVM `json:"vms,omitempty"`
+
 	// window end
 	WindowEnd *string `json:"window_end,omitempty"`
 
@@ -141,6 +177,18 @@ type BackupPlan struct {
 func (m *BackupPlan) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateBackupDelayOption(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBackupPlanExecutions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBackupRestorePoints(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateBackupService(formats); err != nil {
 		res = append(res, err)
 	}
@@ -150,6 +198,10 @@ func (m *BackupPlan) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDeleteStrategy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -205,6 +257,10 @@ func (m *BackupPlan) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validatePhase(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSnapshotConsistentType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -213,9 +269,84 @@ func (m *BackupPlan) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateVms(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *BackupPlan) validateBackupDelayOption(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupDelayOption) { // not required
+		return nil
+	}
+
+	if m.BackupDelayOption != nil {
+		if err := m.BackupDelayOption.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_delay_option")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_delay_option")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) validateBackupPlanExecutions(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupPlanExecutions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BackupPlanExecutions); i++ {
+		if swag.IsZero(m.BackupPlanExecutions[i]) { // not required
+			continue
+		}
+
+		if m.BackupPlanExecutions[i] != nil {
+			if err := m.BackupPlanExecutions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("backup_plan_executions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("backup_plan_executions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) validateBackupRestorePoints(formats strfmt.Registry) error {
+	if swag.IsZero(m.BackupRestorePoints) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BackupRestorePoints); i++ {
+		if swag.IsZero(m.BackupRestorePoints[i]) { // not required
+			continue
+		}
+
+		if m.BackupRestorePoints[i] != nil {
+			if err := m.BackupRestorePoints[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("backup_restore_points" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("backup_restore_points" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -263,6 +394,25 @@ func (m *BackupPlan) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.Required("createdAt", "body", m.CreatedAt); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) validateDeleteStrategy(formats strfmt.Registry) error {
+	if swag.IsZero(m.DeleteStrategy) { // not required
+		return nil
+	}
+
+	if m.DeleteStrategy != nil {
+		if err := m.DeleteStrategy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("delete_strategy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("delete_strategy")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -506,6 +656,25 @@ func (m *BackupPlan) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *BackupPlan) validatePhase(formats strfmt.Registry) error {
+	if swag.IsZero(m.Phase) { // not required
+		return nil
+	}
+
+	if m.Phase != nil {
+		if err := m.Phase.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("phase")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("phase")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *BackupPlan) validateSnapshotConsistentType(formats strfmt.Registry) error {
 	if swag.IsZero(m.SnapshotConsistentType) { // not required
 		return nil
@@ -549,15 +718,57 @@ func (m *BackupPlan) validateStatus(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *BackupPlan) validateVms(formats strfmt.Registry) error {
+	if swag.IsZero(m.Vms) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Vms); i++ {
+		if swag.IsZero(m.Vms[i]) { // not required
+			continue
+		}
+
+		if m.Vms[i] != nil {
+			if err := m.Vms[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this backup plan based on the context it is used
 func (m *BackupPlan) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.contextValidateBackupDelayOption(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBackupPlanExecutions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBackupRestorePoints(ctx, formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.contextValidateBackupService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateBackupStoreRepository(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDeleteStrategy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -597,6 +808,10 @@ func (m *BackupPlan) ContextValidate(ctx context.Context, formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.contextValidatePhase(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSnapshotConsistentType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -605,9 +820,69 @@ func (m *BackupPlan) ContextValidate(ctx context.Context, formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateVms(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *BackupPlan) contextValidateBackupDelayOption(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BackupDelayOption != nil {
+		if err := m.BackupDelayOption.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("backup_delay_option")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("backup_delay_option")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) contextValidateBackupPlanExecutions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BackupPlanExecutions); i++ {
+
+		if m.BackupPlanExecutions[i] != nil {
+			if err := m.BackupPlanExecutions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("backup_plan_executions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("backup_plan_executions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) contextValidateBackupRestorePoints(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BackupRestorePoints); i++ {
+
+		if m.BackupRestorePoints[i] != nil {
+			if err := m.BackupRestorePoints[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("backup_restore_points" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("backup_restore_points" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -635,6 +910,22 @@ func (m *BackupPlan) contextValidateBackupStoreRepository(ctx context.Context, f
 				return ve.ValidateName("backup_store_repository")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("backup_store_repository")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) contextValidateDeleteStrategy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DeleteStrategy != nil {
+		if err := m.DeleteStrategy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("delete_strategy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("delete_strategy")
 			}
 			return err
 		}
@@ -793,6 +1084,22 @@ func (m *BackupPlan) contextValidateLastManualExecuteStatus(ctx context.Context,
 	return nil
 }
 
+func (m *BackupPlan) contextValidatePhase(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Phase != nil {
+		if err := m.Phase.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("phase")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("phase")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *BackupPlan) contextValidateSnapshotConsistentType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SnapshotConsistentType != nil {
@@ -820,6 +1127,26 @@ func (m *BackupPlan) contextValidateStatus(ctx context.Context, formats strfmt.R
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) contextValidateVms(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Vms); i++ {
+
+		if m.Vms[i] != nil {
+			if err := m.Vms[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
