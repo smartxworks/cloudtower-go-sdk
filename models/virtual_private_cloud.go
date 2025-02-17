@@ -58,6 +58,10 @@ type VirtualPrivateCloud struct {
 
 	// subnets
 	Subnets []*NestedVirtualPrivateCloudSubnet `json:"subnets,omitempty"`
+
+	// vpc service
+	// Required: true
+	VpcService *NestedVirtualPrivateCloudService `json:"vpc_service"`
 }
 
 // Validate validates this virtual private cloud
@@ -97,6 +101,10 @@ func (m *VirtualPrivateCloud) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSubnets(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -282,6 +290,26 @@ func (m *VirtualPrivateCloud) validateSubnets(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VirtualPrivateCloud) validateVpcService(formats strfmt.Registry) error {
+
+	if err := validate.Required("vpc_service", "body", m.VpcService); err != nil {
+		return err
+	}
+
+	if m.VpcService != nil {
+		if err := m.VpcService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this virtual private cloud based on the context it is used
 func (m *VirtualPrivateCloud) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -307,6 +335,10 @@ func (m *VirtualPrivateCloud) ContextValidate(ctx context.Context, formats strfm
 	}
 
 	if err := m.contextValidateSubnets(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -427,6 +459,22 @@ func (m *VirtualPrivateCloud) contextValidateSubnets(ctx context.Context, format
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloud) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcService != nil {
+		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
 	}
 
 	return nil

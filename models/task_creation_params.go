@@ -30,6 +30,9 @@ type TaskCreationParams struct {
 	// Required: true
 	Description *TaskDescription `json:"description"`
 
+	// finished at
+	FinishedAt *string `json:"finished_at,omitempty"`
+
 	// internal
 	Internal *bool `json:"internal,omitempty"`
 
@@ -48,6 +51,9 @@ type TaskCreationParams struct {
 	// Required: true
 	// Min Length: 1
 	ResourceType *string `json:"resource_type"`
+
+	// started at
+	StartedAt *string `json:"started_at,omitempty"`
 
 	// steps
 	Steps []*TaskStepCreationParams `json:"steps,omitempty"`

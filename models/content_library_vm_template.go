@@ -24,12 +24,21 @@ type ContentLibraryVMTemplate struct {
 	// Required: true
 	Architecture *Architecture `json:"architecture"`
 
+	// clock offset
+	ClockOffset *VMClockOffset `json:"clock_offset,omitempty"`
+
 	// cloud init supported
 	// Required: true
 	CloudInitSupported *bool `json:"cloud_init_supported"`
 
 	// clusters
 	Clusters []*NestedCluster `json:"clusters,omitempty"`
+
+	// cpu
+	CPU *NestedCPU `json:"cpu,omitempty"`
+
+	// cpu model
+	CPUModel *string `json:"cpu_model,omitempty"`
 
 	// created at
 	// Required: true
@@ -42,12 +51,33 @@ type ContentLibraryVMTemplate struct {
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
+	// firmware
+	Firmware *VMFirmware `json:"firmware,omitempty"`
+
+	// ha
+	Ha *bool `json:"ha,omitempty"`
+
 	// id
 	// Required: true
 	ID *string `json:"id"`
 
+	// io policy
+	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
+
 	// labels
 	Labels []*NestedLabel `json:"labels,omitempty"`
+
+	// max bandwidth
+	MaxBandwidth *int64 `json:"max_bandwidth,omitempty"`
+
+	// max bandwidth policy
+	MaxBandwidthPolicy *VMDiskIoRestrictType `json:"max_bandwidth_policy,omitempty"`
+
+	// max iops
+	MaxIops *int32 `json:"max_iops,omitempty"`
+
+	// max iops policy
+	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
 
 	// memory
 	// Required: true
@@ -64,9 +94,21 @@ type ContentLibraryVMTemplate struct {
 	// Required: true
 	Size *int64 `json:"size"`
 
+	// template config
+	TemplateConfig *NestedTemplateConfig `json:"template_config,omitempty"`
+
 	// vcpu
 	// Required: true
 	Vcpu *int32 `json:"vcpu"`
+
+	// video type
+	VideoType *string `json:"video_type,omitempty"`
+
+	// vm disks
+	VMDisks []*NestedContentLibraryVMTemplateDisk `json:"vm_disks,omitempty"`
+
+	// vm nics
+	VMNics []*NestedContentLibraryVMTemplateNic `json:"vm_nics,omitempty"`
 
 	// vm template uuids
 	// Required: true
@@ -74,6 +116,12 @@ type ContentLibraryVMTemplate struct {
 
 	// vm templates
 	VMTemplates []*NestedVMTemplate `json:"vm_templates,omitempty"`
+
+	// win opt
+	WinOpt *bool `json:"win_opt,omitempty"`
+
+	// zbs storage info
+	ZbsStorageInfo []*NestedZbsStorageInfo `json:"zbs_storage_info,omitempty"`
 }
 
 // Validate validates this content library Vm template
@@ -84,11 +132,19 @@ func (m *ContentLibraryVMTemplate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateClockOffset(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCloudInitSupported(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateClusters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCPU(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -104,11 +160,27 @@ func (m *ContentLibraryVMTemplate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateFirmware(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
 
+	if err := m.validateIoPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLabels(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxBandwidthPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxIopsPolicy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -124,7 +196,19 @@ func (m *ContentLibraryVMTemplate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateTemplateConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVcpu(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMDisks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMNics(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -133,6 +217,10 @@ func (m *ContentLibraryVMTemplate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVMTemplates(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateZbsStorageInfo(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -158,6 +246,25 @@ func (m *ContentLibraryVMTemplate) validateArchitecture(formats strfmt.Registry)
 				return ve.ValidateName("architecture")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("architecture")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) validateClockOffset(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClockOffset) { // not required
+		return nil
+	}
+
+	if m.ClockOffset != nil {
+		if err := m.ClockOffset.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset")
 			}
 			return err
 		}
@@ -201,6 +308,25 @@ func (m *ContentLibraryVMTemplate) validateClusters(formats strfmt.Registry) err
 	return nil
 }
 
+func (m *ContentLibraryVMTemplate) validateCPU(formats strfmt.Registry) error {
+	if swag.IsZero(m.CPU) { // not required
+		return nil
+	}
+
+	if m.CPU != nil {
+		if err := m.CPU.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("cpu")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cpu")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplate) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.Required("createdAt", "body", m.CreatedAt); err != nil {
@@ -238,10 +364,48 @@ func (m *ContentLibraryVMTemplate) validateEntityAsyncStatus(formats strfmt.Regi
 	return nil
 }
 
+func (m *ContentLibraryVMTemplate) validateFirmware(formats strfmt.Registry) error {
+	if swag.IsZero(m.Firmware) { // not required
+		return nil
+	}
+
+	if m.Firmware != nil {
+		if err := m.Firmware.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplate) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) validateIoPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.IoPolicy) { // not required
+		return nil
+	}
+
+	if m.IoPolicy != nil {
+		if err := m.IoPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -268,6 +432,44 @@ func (m *ContentLibraryVMTemplate) validateLabels(formats strfmt.Registry) error
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) validateMaxBandwidthPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxBandwidthPolicy) { // not required
+		return nil
+	}
+
+	if m.MaxBandwidthPolicy != nil {
+		if err := m.MaxBandwidthPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) validateMaxIopsPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxIopsPolicy) { // not required
+		return nil
+	}
+
+	if m.MaxIopsPolicy != nil {
+		if err := m.MaxIopsPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -300,10 +502,81 @@ func (m *ContentLibraryVMTemplate) validateSize(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ContentLibraryVMTemplate) validateTemplateConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.TemplateConfig) { // not required
+		return nil
+	}
+
+	if m.TemplateConfig != nil {
+		if err := m.TemplateConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("template_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("template_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplate) validateVcpu(formats strfmt.Registry) error {
 
 	if err := validate.Required("vcpu", "body", m.Vcpu); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) validateVMDisks(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMDisks) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VMDisks); i++ {
+		if swag.IsZero(m.VMDisks[i]) { // not required
+			continue
+		}
+
+		if m.VMDisks[i] != nil {
+			if err := m.VMDisks[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_disks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_disks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) validateVMNics(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMNics) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VMNics); i++ {
+		if swag.IsZero(m.VMNics[i]) { // not required
+			continue
+		}
+
+		if m.VMNics[i] != nil {
+			if err := m.VMNics[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_nics" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_nics" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -344,6 +617,32 @@ func (m *ContentLibraryVMTemplate) validateVMTemplates(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *ContentLibraryVMTemplate) validateZbsStorageInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.ZbsStorageInfo) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ZbsStorageInfo); i++ {
+		if swag.IsZero(m.ZbsStorageInfo[i]) { // not required
+			continue
+		}
+
+		if m.ZbsStorageInfo[i] != nil {
+			if err := m.ZbsStorageInfo[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("zbs_storage_info" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("zbs_storage_info" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this content library Vm template based on the context it is used
 func (m *ContentLibraryVMTemplate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -352,7 +651,15 @@ func (m *ContentLibraryVMTemplate) ContextValidate(ctx context.Context, formats 
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateClockOffset(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateClusters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCPU(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -360,11 +667,43 @@ func (m *ContentLibraryVMTemplate) ContextValidate(ctx context.Context, formats 
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateFirmware(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIoPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMaxBandwidthPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTemplateConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMDisks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMNics(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVMTemplates(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateZbsStorageInfo(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -382,6 +721,22 @@ func (m *ContentLibraryVMTemplate) contextValidateArchitecture(ctx context.Conte
 				return ve.ValidateName("architecture")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("architecture")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateClockOffset(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ClockOffset != nil {
+		if err := m.ClockOffset.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clock_offset")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clock_offset")
 			}
 			return err
 		}
@@ -410,6 +765,22 @@ func (m *ContentLibraryVMTemplate) contextValidateClusters(ctx context.Context, 
 	return nil
 }
 
+func (m *ContentLibraryVMTemplate) contextValidateCPU(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CPU != nil {
+		if err := m.CPU.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("cpu")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cpu")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplate) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatus != nil {
@@ -418,6 +789,38 @@ func (m *ContentLibraryVMTemplate) contextValidateEntityAsyncStatus(ctx context.
 				return ve.ValidateName("entityAsyncStatus")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateFirmware(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Firmware != nil {
+		if err := m.Firmware.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("firmware")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("firmware")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateIoPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IoPolicy != nil {
+		if err := m.IoPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("io_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("io_policy")
 			}
 			return err
 		}
@@ -446,6 +849,94 @@ func (m *ContentLibraryVMTemplate) contextValidateLabels(ctx context.Context, fo
 	return nil
 }
 
+func (m *ContentLibraryVMTemplate) contextValidateMaxBandwidthPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxBandwidthPolicy != nil {
+		if err := m.MaxBandwidthPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_bandwidth_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_bandwidth_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateMaxIopsPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MaxIopsPolicy != nil {
+		if err := m.MaxIopsPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("max_iops_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateTemplateConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TemplateConfig != nil {
+		if err := m.TemplateConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("template_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("template_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateVMDisks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VMDisks); i++ {
+
+		if m.VMDisks[i] != nil {
+			if err := m.VMDisks[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_disks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_disks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateVMNics(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VMNics); i++ {
+
+		if m.VMNics[i] != nil {
+			if err := m.VMNics[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_nics" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_nics" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplate) contextValidateVMTemplates(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.VMTemplates); i++ {
@@ -456,6 +947,26 @@ func (m *ContentLibraryVMTemplate) contextValidateVMTemplates(ctx context.Contex
 					return ve.ValidateName("vm_templates" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("vm_templates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateZbsStorageInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ZbsStorageInfo); i++ {
+
+		if m.ZbsStorageInfo[i] != nil {
+			if err := m.ZbsStorageInfo[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("zbs_storage_info" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("zbs_storage_info" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

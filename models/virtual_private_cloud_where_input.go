@@ -300,6 +300,9 @@ type VirtualPrivateCloudWhereInput struct {
 
 	// subnets some
 	SubnetsSome *VirtualPrivateCloudSubnetWhereInput `json:"subnets_some,omitempty"`
+
+	// vpc service
+	VpcService *VirtualPrivateCloudServiceWhereInput `json:"vpc_service,omitempty"`
 }
 
 // Validate validates this virtual private cloud where input
@@ -391,6 +394,10 @@ func (m *VirtualPrivateCloudWhereInput) Validate(formats strfmt.Registry) error 
 	}
 
 	if err := m.validateSubnetsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -843,6 +850,25 @@ func (m *VirtualPrivateCloudWhereInput) validateSubnetsSome(formats strfmt.Regis
 	return nil
 }
 
+func (m *VirtualPrivateCloudWhereInput) validateVpcService(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpcService) { // not required
+		return nil
+	}
+
+	if m.VpcService != nil {
+		if err := m.VpcService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this virtual private cloud where input based on the context it is used
 func (m *VirtualPrivateCloudWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -932,6 +958,10 @@ func (m *VirtualPrivateCloudWhereInput) ContextValidate(ctx context.Context, for
 	}
 
 	if err := m.contextValidateSubnetsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1301,6 +1331,22 @@ func (m *VirtualPrivateCloudWhereInput) contextValidateSubnetsSome(ctx context.C
 				return ve.ValidateName("subnets_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("subnets_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudWhereInput) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcService != nil {
+		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
 			}
 			return err
 		}
