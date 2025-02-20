@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -55,6 +56,234 @@ type IscsiLunSnapshot struct {
 	// unique size
 	// Required: true
 	UniqueSize *int64 `json:"unique_size"`
+
+	MarshalOpts *IscsiLunSnapshotMarshalOpts `json:"-"`
+}
+
+type IscsiLunSnapshotMarshalOpts struct {
+	ConsistencyGroupSnapshot_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	IscsiLun_Explicit_Null_When_Empty bool
+
+	IscsiTarget_Explicit_Null_When_Empty bool
+
+	Labels_Explicit_Null_When_Empty bool
+
+	LocalCreatedAt_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	UniqueSize_Explicit_Null_When_Empty bool
+}
+
+func (m IscsiLunSnapshot) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field consistency_group_snapshot
+	if m.ConsistencyGroupSnapshot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistency_group_snapshot\":")
+		bytes, err := swag.WriteJSON(m.ConsistencyGroupSnapshot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroupSnapshot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"consistency_group_snapshot\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_lun
+	if m.IscsiLun != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_lun\":")
+		bytes, err := swag.WriteJSON(m.IscsiLun)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLun_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_lun\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_target
+	if m.IscsiTarget != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_target\":")
+		bytes, err := swag.WriteJSON(m.IscsiTarget)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiTarget_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_target\":null")
+		first = false
+	}
+
+	// handle non nullable field labels with omitempty
+	if !swag.IsZero(m.Labels) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"labels\":")
+		bytes, err := swag.WriteJSON(m.Labels)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field local_created_at
+	if m.LocalCreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":")
+		bytes, err := swag.WriteJSON(m.LocalCreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalCreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_created_at\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field unique_size
+	if m.UniqueSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"unique_size\":")
+		bytes, err := swag.WriteJSON(m.UniqueSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UniqueSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"unique_size\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this iscsi lun snapshot

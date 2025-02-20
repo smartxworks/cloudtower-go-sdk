@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -22,6 +23,64 @@ type VMExportFileWhereUniqueInput struct {
 
 	// id
 	ID *string `json:"id,omitempty"`
+
+	MarshalOpts *VMExportFileWhereUniqueInputMarshalOpts `json:"-"`
+}
+
+type VMExportFileWhereUniqueInputMarshalOpts struct {
+	DataPortID_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+}
+
+func (m VMExportFileWhereUniqueInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data_port_id
+	if m.DataPortID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data_port_id\":")
+		bytes, err := swag.WriteJSON(m.DataPortID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DataPortID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data_port_id\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm export file where unique input

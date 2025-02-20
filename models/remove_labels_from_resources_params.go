@@ -18,6 +18,11 @@ import (
 // swagger:model RemoveLabelsFromResourcesParams
 type RemoveLabelsFromResourcesParams struct {
 	AddLabelsToResourcesParams
+
+	MarshalOpts *RemoveLabelsFromResourcesParamsMarshalOpts `json:"-"`
+}
+
+type RemoveLabelsFromResourcesParamsMarshalOpts struct {
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure

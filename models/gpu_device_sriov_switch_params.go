@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type GpuDeviceSriovSwitchParams struct {
 	// where
 	// Required: true
 	Where *GpuDeviceWhereInput `json:"where"`
+
+	MarshalOpts *GpuDeviceSriovSwitchParamsMarshalOpts `json:"-"`
+}
+
+type GpuDeviceSriovSwitchParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m GpuDeviceSriovSwitchParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this gpu device sriov switch params
@@ -162,6 +221,42 @@ type GpuDeviceSriovSwitchParamsData struct {
 	// enable
 	// Required: true
 	Enable *bool `json:"enable"`
+
+	MarshalOpts *GpuDeviceSriovSwitchParamsDataMarshalOpts `json:"-"`
+}
+
+type GpuDeviceSriovSwitchParamsDataMarshalOpts struct {
+	Enable_Explicit_Null_When_Empty bool
+}
+
+func (m GpuDeviceSriovSwitchParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field enable
+	if m.Enable != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable\":")
+		bytes, err := swag.WriteJSON(m.Enable)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enable_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this gpu device sriov switch params data

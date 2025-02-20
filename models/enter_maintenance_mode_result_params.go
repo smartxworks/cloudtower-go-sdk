@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type EnterMaintenanceModeResultParams struct {
 	// where
 	// Required: true
 	Where *EnterMaintenanceModeResultParamsWhere `json:"where"`
+
+	MarshalOpts *EnterMaintenanceModeResultParamsMarshalOpts `json:"-"`
+}
+
+type EnterMaintenanceModeResultParamsMarshalOpts struct {
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m EnterMaintenanceModeResultParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this enter maintenance mode result params
@@ -114,6 +151,42 @@ type EnterMaintenanceModeResultParamsWhere struct {
 	// task id
 	// Required: true
 	TaskID *string `json:"task_id"`
+
+	MarshalOpts *EnterMaintenanceModeResultParamsWhereMarshalOpts `json:"-"`
+}
+
+type EnterMaintenanceModeResultParamsWhereMarshalOpts struct {
+	TaskID_Explicit_Null_When_Empty bool
+}
+
+func (m EnterMaintenanceModeResultParamsWhere) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field task_id
+	if m.TaskID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"task_id\":")
+		bytes, err := swag.WriteJSON(m.TaskID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TaskID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"task_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this enter maintenance mode result params where
