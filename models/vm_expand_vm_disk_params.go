@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -29,6 +30,86 @@ type VMExpandVMDiskParams struct {
 	// where
 	// Required: true
 	Where *VMDiskWhereInput `json:"where"`
+
+	MarshalOpts *VMExpandVMDiskParamsMarshalOpts `json:"-"`
+}
+
+type VMExpandVMDiskParamsMarshalOpts struct {
+	Size_Explicit_Null_When_Empty bool
+
+	SizeUnit_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VMExpandVMDiskParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field size
+	if m.Size != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":")
+		bytes, err := swag.WriteJSON(m.Size)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Size_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size\":null")
+		first = false
+	}
+
+	// handle nullable field size_unit
+	if m.SizeUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size_unit\":")
+		bytes, err := swag.WriteJSON(m.SizeUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SizeUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"size_unit\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm expand Vm disk params

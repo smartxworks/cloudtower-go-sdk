@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -29,6 +30,86 @@ type GlobalSettings struct {
 	// vm recycle bin
 	// Required: true
 	VMRecycleBin *NestedVMRecycleBin `json:"vm_recycle_bin"`
+
+	MarshalOpts *GlobalSettingsMarshalOpts `json:"-"`
+}
+
+type GlobalSettingsMarshalOpts struct {
+	Auth_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	VMRecycleBin_Explicit_Null_When_Empty bool
+}
+
+func (m GlobalSettings) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field auth
+	if m.Auth != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth\":")
+		bytes, err := swag.WriteJSON(m.Auth)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Auth_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field vm_recycle_bin
+	if m.VMRecycleBin != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_recycle_bin\":")
+		bytes, err := swag.WriteJSON(m.VMRecycleBin)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMRecycleBin_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_recycle_bin\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this global settings

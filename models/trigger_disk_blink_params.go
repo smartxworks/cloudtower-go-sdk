@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -31,6 +32,86 @@ type TriggerDiskBlinkParams struct {
 	// led status
 	// Enum: [on off]
 	LedStatus *string `json:"led_status,omitempty"`
+
+	MarshalOpts *TriggerDiskBlinkParamsMarshalOpts `json:"-"`
+}
+
+type TriggerDiskBlinkParamsMarshalOpts struct {
+	DiskName_Explicit_Null_When_Empty bool
+
+	HostID_Explicit_Null_When_Empty bool
+
+	LedStatus_Explicit_Null_When_Empty bool
+}
+
+func (m TriggerDiskBlinkParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field disk_name
+	if m.DiskName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_name\":")
+		bytes, err := swag.WriteJSON(m.DiskName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DiskName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_name\":null")
+		first = false
+	}
+
+	// handle nullable field host_id
+	if m.HostID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_id\":")
+		bytes, err := swag.WriteJSON(m.HostID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_id\":null")
+		first = false
+	}
+
+	// handle nullable field led_status
+	if m.LedStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"led_status\":")
+		bytes, err := swag.WriteJSON(m.LedStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LedStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"led_status\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this trigger disk blink params

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type ContentLibraryVMTemplateUpdationClusterParamsData struct {
 	// clusters
 	// Required: true
 	Clusters *ClusterWhereInput `json:"clusters"`
+
+	MarshalOpts *ContentLibraryVMTemplateUpdationClusterParamsDataMarshalOpts `json:"-"`
+}
+
+type ContentLibraryVMTemplateUpdationClusterParamsDataMarshalOpts struct {
+	Clusters_Explicit_Null_When_Empty bool
+}
+
+func (m ContentLibraryVMTemplateUpdationClusterParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field clusters
+	if m.Clusters != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":")
+		bytes, err := swag.WriteJSON(m.Clusters)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Clusters_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"clusters\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this content library Vm template updation cluster params data

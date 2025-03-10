@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -19,6 +20,42 @@ type VMVolumeDeletionParamsEffect struct {
 
 	// include snapshots
 	IncludeSnapshots *bool `json:"include_snapshots,omitempty"`
+
+	MarshalOpts *VMVolumeDeletionParamsEffectMarshalOpts `json:"-"`
+}
+
+type VMVolumeDeletionParamsEffectMarshalOpts struct {
+	IncludeSnapshots_Explicit_Null_When_Empty bool
+}
+
+func (m VMVolumeDeletionParamsEffect) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field include_snapshots
+	if m.IncludeSnapshots != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"include_snapshots\":")
+		bytes, err := swag.WriteJSON(m.IncludeSnapshots)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IncludeSnapshots_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"include_snapshots\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm volume deletion params effect
