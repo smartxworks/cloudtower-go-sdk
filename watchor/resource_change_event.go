@@ -156,7 +156,7 @@ func (c *ResourceChangeWatchClient) init(params *ResourceChangeWatchStartParams)
 	c.catchedUp.Store(false)
 
 	c.channel = make(chan *models.ResourceChangeEvent, 500)
-	c.warningChannel = make(chan *WarningEvent, 100)
+	c.warningChannel = make(chan *WarningEvent)
 	c.errorChannel = make(chan *ErrorEvent)
 	return nil
 }
@@ -263,10 +263,6 @@ func (c *ResourceChangeWatchClient) pollOnce() error {
 
 	events, err := c.client.ResourceChange.GetResourceChanges(params, clientOptions)
 	if err != nil {
-		errEvent := &ErrorEvent{
-			Err: err,
-		}
-		c.writeToErrorChannel(errEvent)
 		return err
 	}
 
@@ -315,6 +311,10 @@ func (c *ResourceChangeWatchClient) writeToChannel(event *models.ResourceChangeE
 // writeToWarningChannel sends an event to the warning channel
 func (c *ResourceChangeWatchClient) writeToWarningChannel(event *WarningEvent) {
 	if c.warningChannel != nil {
+		select {
+		case <-c.warningChannel:
+		default:
+		}
 		c.warningChannel <- event
 	}
 }
