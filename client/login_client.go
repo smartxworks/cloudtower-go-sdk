@@ -63,6 +63,7 @@ type ClientConfig struct {
 	BasePath string
 	Schemes  []string
 	formats  *strfmt.Registry
+	transport *httptransport.Runtime
 }
 
 type UserConfig struct {
@@ -72,7 +73,12 @@ type UserConfig struct {
 }
 
 func NewWithUserConfig(clientConfig ClientConfig, userConfig UserConfig) (*Cloudtower, error) {
-	transport := httptransport.New(clientConfig.Host, clientConfig.BasePath, clientConfig.Schemes)
+	var transport *httptransport.Runtime
+	if clientConfig.transport == nil {
+		transport = httptransport.New(clientConfig.Host, clientConfig.BasePath, clientConfig.Schemes)
+	} else {
+		transport = clientConfig.transport
+	}
 	var client *Cloudtower
 	if clientConfig.formats == nil {
 		client = New(transport, strfmt.Default)
