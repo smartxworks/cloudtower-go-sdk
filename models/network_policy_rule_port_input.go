@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -28,6 +29,86 @@ type NetworkPolicyRulePortInput struct {
 	// protocol
 	// Required: true
 	Protocol *NetworkPolicyRulePortProtocol `json:"protocol"`
+
+	MarshalOpts *NetworkPolicyRulePortInputMarshalOpts `json:"-"`
+}
+
+type NetworkPolicyRulePortInputMarshalOpts struct {
+	AlgProtocol_Explicit_Null_When_Empty bool
+
+	Port_Explicit_Null_When_Empty bool
+
+	Protocol_Explicit_Null_When_Empty bool
+}
+
+func (m NetworkPolicyRulePortInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field alg_protocol
+	if m.AlgProtocol != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"alg_protocol\":")
+		bytes, err := swag.WriteJSON(m.AlgProtocol)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AlgProtocol_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"alg_protocol\":null")
+		first = false
+	}
+
+	// handle nullable field port
+	if m.Port != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"port\":")
+		bytes, err := swag.WriteJSON(m.Port)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Port_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"port\":null")
+		first = false
+	}
+
+	// handle nullable field protocol
+	if m.Protocol != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"protocol\":")
+		bytes, err := swag.WriteJSON(m.Protocol)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Protocol_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"protocol\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this network policy rule port input

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ClusterUpdationParams struct {
 	// where
 	// Required: true
 	Where *ClusterWhereInput `json:"where"`
+
+	MarshalOpts *ClusterUpdationParamsMarshalOpts `json:"-"`
+}
+
+type ClusterUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m ClusterUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cluster updation params
@@ -182,6 +241,196 @@ type ClusterUpdationParamsData struct {
 
 	// username
 	Username *string `json:"username,omitempty"`
+
+	MarshalOpts *ClusterUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type ClusterUpdationParamsDataMarshalOpts struct {
+	DatacenterID_Explicit_Null_When_Empty bool
+
+	IP_Explicit_Null_When_Empty bool
+
+	Password_Explicit_Null_When_Empty bool
+
+	PrimaryZoneDatacenterID_Explicit_Null_When_Empty bool
+
+	PrimaryZoneID_Explicit_Null_When_Empty bool
+
+	SecondaryZoneDatacenterID_Explicit_Null_When_Empty bool
+
+	SecondaryZoneID_Explicit_Null_When_Empty bool
+
+	Username_Explicit_Null_When_Empty bool
+}
+
+func (m ClusterUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field datacenter_id
+	if m.DatacenterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datacenter_id\":")
+		bytes, err := swag.WriteJSON(m.DatacenterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatacenterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datacenter_id\":null")
+		first = false
+	}
+
+	// handle nullable field ip
+	if m.IP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip\":")
+		bytes, err := swag.WriteJSON(m.IP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ip\":null")
+		first = false
+	}
+
+	// handle nullable field password
+	if m.Password != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":")
+		bytes, err := swag.WriteJSON(m.Password)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Password_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":null")
+		first = false
+	}
+
+	// handle nullable field primary_zone_datacenter_id
+	if m.PrimaryZoneDatacenterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"primary_zone_datacenter_id\":")
+		bytes, err := swag.WriteJSON(m.PrimaryZoneDatacenterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrimaryZoneDatacenterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"primary_zone_datacenter_id\":null")
+		first = false
+	}
+
+	// handle nullable field primary_zone_id
+	if m.PrimaryZoneID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"primary_zone_id\":")
+		bytes, err := swag.WriteJSON(m.PrimaryZoneID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrimaryZoneID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"primary_zone_id\":null")
+		first = false
+	}
+
+	// handle nullable field secondary_zone_datacenter_id
+	if m.SecondaryZoneDatacenterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"secondary_zone_datacenter_id\":")
+		bytes, err := swag.WriteJSON(m.SecondaryZoneDatacenterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecondaryZoneDatacenterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"secondary_zone_datacenter_id\":null")
+		first = false
+	}
+
+	// handle nullable field secondary_zone_id
+	if m.SecondaryZoneID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"secondary_zone_id\":")
+		bytes, err := swag.WriteJSON(m.SecondaryZoneID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecondaryZoneID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"secondary_zone_id\":null")
+		first = false
+	}
+
+	// handle nullable field username
+	if m.Username != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":")
+		bytes, err := swag.WriteJSON(m.Username)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Username_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cluster updation params data

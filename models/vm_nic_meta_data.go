@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -59,6 +60,328 @@ type VMNicMetaData struct {
 
 	// vlan name
 	VlanName *string `json:"vlan_name,omitempty"`
+
+	MarshalOpts *VMNicMetaDataMarshalOpts `json:"-"`
+}
+
+type VMNicMetaDataMarshalOpts struct {
+	EgressRateLimitBurstInBit_Explicit_Null_When_Empty bool
+
+	EgressRateLimitEnabled_Explicit_Null_When_Empty bool
+
+	EgressRateLimitMaxRateInBitps_Explicit_Null_When_Empty bool
+
+	Enabled_Explicit_Null_When_Empty bool
+
+	IngressRateLimitBurstInBit_Explicit_Null_When_Empty bool
+
+	IngressRateLimitEnabled_Explicit_Null_When_Empty bool
+
+	IngressRateLimitMaxRateInBitps_Explicit_Null_When_Empty bool
+
+	LocalID_Explicit_Null_When_Empty bool
+
+	MacAddress_Explicit_Null_When_Empty bool
+
+	Mirror_Explicit_Null_When_Empty bool
+
+	Model_Explicit_Null_When_Empty bool
+
+	VlanLocalID_Explicit_Null_When_Empty bool
+
+	VlanModeType_Explicit_Null_When_Empty bool
+
+	VlanName_Explicit_Null_When_Empty bool
+}
+
+func (m VMNicMetaData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field egress_rate_limit_burst_in_bit
+	if m.EgressRateLimitBurstInBit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress_rate_limit_burst_in_bit\":")
+		bytes, err := swag.WriteJSON(m.EgressRateLimitBurstInBit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EgressRateLimitBurstInBit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress_rate_limit_burst_in_bit\":null")
+		first = false
+	}
+
+	// handle nullable field egress_rate_limit_enabled
+	if m.EgressRateLimitEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress_rate_limit_enabled\":")
+		bytes, err := swag.WriteJSON(m.EgressRateLimitEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EgressRateLimitEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress_rate_limit_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field egress_rate_limit_max_rate_in_bitps
+	if m.EgressRateLimitMaxRateInBitps != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress_rate_limit_max_rate_in_bitps\":")
+		bytes, err := swag.WriteJSON(m.EgressRateLimitMaxRateInBitps)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EgressRateLimitMaxRateInBitps_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"egress_rate_limit_max_rate_in_bitps\":null")
+		first = false
+	}
+
+	// handle nullable field enabled
+	if m.Enabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":")
+		bytes, err := swag.WriteJSON(m.Enabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":null")
+		first = false
+	}
+
+	// handle nullable field ingress_rate_limit_burst_in_bit
+	if m.IngressRateLimitBurstInBit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress_rate_limit_burst_in_bit\":")
+		bytes, err := swag.WriteJSON(m.IngressRateLimitBurstInBit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IngressRateLimitBurstInBit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress_rate_limit_burst_in_bit\":null")
+		first = false
+	}
+
+	// handle nullable field ingress_rate_limit_enabled
+	if m.IngressRateLimitEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress_rate_limit_enabled\":")
+		bytes, err := swag.WriteJSON(m.IngressRateLimitEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IngressRateLimitEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress_rate_limit_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field ingress_rate_limit_max_rate_in_bitps
+	if m.IngressRateLimitMaxRateInBitps != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress_rate_limit_max_rate_in_bitps\":")
+		bytes, err := swag.WriteJSON(m.IngressRateLimitMaxRateInBitps)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IngressRateLimitMaxRateInBitps_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ingress_rate_limit_max_rate_in_bitps\":null")
+		first = false
+	}
+
+	// handle nullable field local_id
+	if m.LocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":")
+		bytes, err := swag.WriteJSON(m.LocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"local_id\":null")
+		first = false
+	}
+
+	// handle nullable field mac_address
+	if m.MacAddress != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mac_address\":")
+		bytes, err := swag.WriteJSON(m.MacAddress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MacAddress_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mac_address\":null")
+		first = false
+	}
+
+	// handle nullable field mirror
+	if m.Mirror != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mirror\":")
+		bytes, err := swag.WriteJSON(m.Mirror)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Mirror_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mirror\":null")
+		first = false
+	}
+
+	// handle nullable field model
+	if m.Model != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"model\":")
+		bytes, err := swag.WriteJSON(m.Model)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Model_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"model\":null")
+		first = false
+	}
+
+	// handle nullable field vlan_local_id
+	if m.VlanLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_local_id\":")
+		bytes, err := swag.WriteJSON(m.VlanLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_local_id\":null")
+		first = false
+	}
+
+	// handle nullable field vlan_mode_type
+	if m.VlanModeType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_mode_type\":")
+		bytes, err := swag.WriteJSON(m.VlanModeType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanModeType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_mode_type\":null")
+		first = false
+	}
+
+	// handle nullable field vlan_name
+	if m.VlanName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_name\":")
+		bytes, err := swag.WriteJSON(m.VlanName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_name\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm nic meta data

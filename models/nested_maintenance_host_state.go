@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type NestedMaintenanceHostState struct {
 	// state
 	// Required: true
 	State *MaintenanceModeEnum `json:"state"`
+
+	MarshalOpts *NestedMaintenanceHostStateMarshalOpts `json:"-"`
+}
+
+type NestedMaintenanceHostStateMarshalOpts struct {
+	EnterMaintenanceTime_Explicit_Null_When_Empty bool
+
+	MaintenanceJobID_Explicit_Null_When_Empty bool
+
+	State_Explicit_Null_When_Empty bool
+}
+
+func (m NestedMaintenanceHostState) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field enter_maintenance_time
+	if m.EnterMaintenanceTime != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enter_maintenance_time\":")
+		bytes, err := swag.WriteJSON(m.EnterMaintenanceTime)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnterMaintenanceTime_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enter_maintenance_time\":null")
+		first = false
+	}
+
+	// handle nullable field maintenance_job_id
+	if m.MaintenanceJobID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"maintenance_job_id\":")
+		bytes, err := swag.WriteJSON(m.MaintenanceJobID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MaintenanceJobID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"maintenance_job_id\":null")
+		first = false
+	}
+
+	// handle nullable field state
+	if m.State != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"state\":")
+		bytes, err := swag.WriteJSON(m.State)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.State_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"state\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested maintenance host state

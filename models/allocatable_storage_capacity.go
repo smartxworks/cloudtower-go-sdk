@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -24,6 +25,52 @@ type AllocatableStorageCapacity struct {
 
 	// replica
 	Replica []*AllocatableReplicaStorageCapacity `json:"replica,omitempty"`
+
+	MarshalOpts *AllocatableStorageCapacityMarshalOpts `json:"-"`
+}
+
+type AllocatableStorageCapacityMarshalOpts struct {
+	Ec_Explicit_Null_When_Empty bool
+
+	Replica_Explicit_Null_When_Empty bool
+}
+
+func (m AllocatableStorageCapacity) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field ec with omitempty
+	if !swag.IsZero(m.Ec) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec\":")
+		bytes, err := swag.WriteJSON(m.Ec)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field replica with omitempty
+	if !swag.IsZero(m.Replica) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica\":")
+		bytes, err := swag.WriteJSON(m.Replica)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this allocatable storage capacity

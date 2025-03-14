@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type InstallVmtoolsParams struct {
 	// where
 	// Required: true
 	Where *VMWhereInput `json:"where"`
+
+	MarshalOpts *InstallVmtoolsParamsMarshalOpts `json:"-"`
+}
+
+type InstallVmtoolsParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m InstallVmtoolsParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this install vmtools params
@@ -164,6 +223,64 @@ type InstallVmtoolsParamsData struct {
 	// svt image id
 	// Required: true
 	SvtImageID *string `json:"svt_image_id"`
+
+	MarshalOpts *InstallVmtoolsParamsDataMarshalOpts `json:"-"`
+}
+
+type InstallVmtoolsParamsDataMarshalOpts struct {
+	CdRomID_Explicit_Null_When_Empty bool
+
+	SvtImageID_Explicit_Null_When_Empty bool
+}
+
+func (m InstallVmtoolsParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cd_rom_id
+	if m.CdRomID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cd_rom_id\":")
+		bytes, err := swag.WriteJSON(m.CdRomID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CdRomID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cd_rom_id\":null")
+		first = false
+	}
+
+	// handle nullable field svt_image_id
+	if m.SvtImageID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"svt_image_id\":")
+		bytes, err := swag.WriteJSON(m.SvtImageID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SvtImageID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"svt_image_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this install vmtools params data
