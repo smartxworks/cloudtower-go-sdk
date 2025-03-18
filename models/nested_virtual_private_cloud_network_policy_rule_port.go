@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type NestedVirtualPrivateCloudNetworkPolicyRulePort struct {
 	// protocol
 	// Required: true
 	Protocol *VirtualPrivateCloudNetworkPolicyRulePortProtocol `json:"protocol"`
+
+	MarshalOpts *NestedVirtualPrivateCloudNetworkPolicyRulePortMarshalOpts `json:"-"`
+}
+
+type NestedVirtualPrivateCloudNetworkPolicyRulePortMarshalOpts struct {
+	Port_Explicit_Null_When_Empty bool
+
+	Protocol_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVirtualPrivateCloudNetworkPolicyRulePort) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field port
+	if m.Port != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"port\":")
+		bytes, err := swag.WriteJSON(m.Port)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Port_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"port\":null")
+		first = false
+	}
+
+	// handle nullable field protocol
+	if m.Protocol != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"protocol\":")
+		bytes, err := swag.WriteJSON(m.Protocol)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Protocol_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"protocol\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested virtual private cloud network policy rule port

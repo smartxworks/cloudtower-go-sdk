@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type NestedVpcRouterGatewayRuleType struct {
 
 	// nexthop
 	Nexthop *string `json:"nexthop,omitempty"`
+
+	MarshalOpts *NestedVpcRouterGatewayRuleTypeMarshalOpts `json:"-"`
+}
+
+type NestedVpcRouterGatewayRuleTypeMarshalOpts struct {
+	Dst_Explicit_Null_When_Empty bool
+
+	Nexthop_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVpcRouterGatewayRuleType) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field dst
+	if m.Dst != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst\":")
+		bytes, err := swag.WriteJSON(m.Dst)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Dst_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst\":null")
+		first = false
+	}
+
+	// handle nullable field nexthop
+	if m.Nexthop != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nexthop\":")
+		bytes, err := swag.WriteJSON(m.Nexthop)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Nexthop_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nexthop\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested vpc router gateway rule type

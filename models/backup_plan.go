@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -171,6 +172,1002 @@ type BackupPlan struct {
 
 	// window start
 	WindowStart *string `json:"window_start,omitempty"`
+
+	MarshalOpts *BackupPlanMarshalOpts `json:"-"`
+}
+
+type BackupPlanMarshalOpts struct {
+	BackupDelayOption_Explicit_Null_When_Empty bool
+
+	BackupPlanExecutions_Explicit_Null_When_Empty bool
+
+	BackupRestorePointCount_Explicit_Null_When_Empty bool
+
+	BackupRestorePoints_Explicit_Null_When_Empty bool
+
+	BackupService_Explicit_Null_When_Empty bool
+
+	BackupStoreRepository_Explicit_Null_When_Empty bool
+
+	BackupTotalSize_Explicit_Null_When_Empty bool
+
+	Compression_Explicit_Null_When_Empty bool
+
+	CompressionRatio_Explicit_Null_When_Empty bool
+
+	CreatedAt_Explicit_Null_When_Empty bool
+
+	DeleteStrategy_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	EnableWindow_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	FullInterval_Explicit_Null_When_Empty bool
+
+	FullPeriod_Explicit_Null_When_Empty bool
+
+	FullTimePoint_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	IncrementalInterval_Explicit_Null_When_Empty bool
+
+	IncrementalPeriod_Explicit_Null_When_Empty bool
+
+	IncrementalTimePoints_Explicit_Null_When_Empty bool
+
+	IncrementalWeekdays_Explicit_Null_When_Empty bool
+
+	KeepPolicy_Explicit_Null_When_Empty bool
+
+	KeepPolicyValue_Explicit_Null_When_Empty bool
+
+	LastExecuteStatus_Explicit_Null_When_Empty bool
+
+	LastExecuteStatusMessage_Explicit_Null_When_Empty bool
+
+	LastExecuteSuccessJobCount_Explicit_Null_When_Empty bool
+
+	LastExecuteTotalJobCount_Explicit_Null_When_Empty bool
+
+	LastExecutedAt_Explicit_Null_When_Empty bool
+
+	LastManualExecuteStatus_Explicit_Null_When_Empty bool
+
+	LastManualExecuteStatusMessage_Explicit_Null_When_Empty bool
+
+	LastManualExecuteSuccessJobCount_Explicit_Null_When_Empty bool
+
+	LastManualExecuteTotalJobCount_Explicit_Null_When_Empty bool
+
+	LastManualExecutedAt_Explicit_Null_When_Empty bool
+
+	LogicalSize_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NextExecuteTime_Explicit_Null_When_Empty bool
+
+	Phase_Explicit_Null_When_Empty bool
+
+	PhysicalSize_Explicit_Null_When_Empty bool
+
+	SnapshotConsistentType_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	ValidSizeOfBackupObject_Explicit_Null_When_Empty bool
+
+	ValidSizeOfRestorePoint_Explicit_Null_When_Empty bool
+
+	Vms_Explicit_Null_When_Empty bool
+
+	WindowEnd_Explicit_Null_When_Empty bool
+
+	WindowStart_Explicit_Null_When_Empty bool
+}
+
+func (m BackupPlan) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field backup_delay_option
+	if m.BackupDelayOption != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_delay_option\":")
+		bytes, err := swag.WriteJSON(m.BackupDelayOption)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupDelayOption_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_delay_option\":null")
+		first = false
+	}
+
+	// handle non nullable field backup_plan_executions with omitempty
+	if !swag.IsZero(m.BackupPlanExecutions) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_plan_executions\":")
+		bytes, err := swag.WriteJSON(m.BackupPlanExecutions)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field backup_restore_point_count
+	if m.BackupRestorePointCount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_restore_point_count\":")
+		bytes, err := swag.WriteJSON(m.BackupRestorePointCount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupRestorePointCount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_restore_point_count\":null")
+		first = false
+	}
+
+	// handle non nullable field backup_restore_points with omitempty
+	if !swag.IsZero(m.BackupRestorePoints) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_restore_points\":")
+		bytes, err := swag.WriteJSON(m.BackupRestorePoints)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field backup_service
+	if m.BackupService != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_service\":")
+		bytes, err := swag.WriteJSON(m.BackupService)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupService_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_service\":null")
+		first = false
+	}
+
+	// handle nullable field backup_store_repository
+	if m.BackupStoreRepository != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_store_repository\":")
+		bytes, err := swag.WriteJSON(m.BackupStoreRepository)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupStoreRepository_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_store_repository\":null")
+		first = false
+	}
+
+	// handle nullable field backup_total_size
+	if m.BackupTotalSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_total_size\":")
+		bytes, err := swag.WriteJSON(m.BackupTotalSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupTotalSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"backup_total_size\":null")
+		first = false
+	}
+
+	// handle nullable field compression
+	if m.Compression != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"compression\":")
+		bytes, err := swag.WriteJSON(m.Compression)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Compression_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"compression\":null")
+		first = false
+	}
+
+	// handle nullable field compression_ratio
+	if m.CompressionRatio != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"compression_ratio\":")
+		bytes, err := swag.WriteJSON(m.CompressionRatio)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CompressionRatio_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"compression_ratio\":null")
+		first = false
+	}
+
+	// handle nullable field createdAt
+	if m.CreatedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"createdAt\":")
+		bytes, err := swag.WriteJSON(m.CreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CreatedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"createdAt\":null")
+		first = false
+	}
+
+	// handle nullable field delete_strategy
+	if m.DeleteStrategy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"delete_strategy\":")
+		bytes, err := swag.WriteJSON(m.DeleteStrategy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DeleteStrategy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"delete_strategy\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field enable_window
+	if m.EnableWindow != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_window\":")
+		bytes, err := swag.WriteJSON(m.EnableWindow)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableWindow_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_window\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field full_interval
+	if m.FullInterval != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"full_interval\":")
+		bytes, err := swag.WriteJSON(m.FullInterval)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FullInterval_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"full_interval\":null")
+		first = false
+	}
+
+	// handle nullable field full_period
+	if m.FullPeriod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"full_period\":")
+		bytes, err := swag.WriteJSON(m.FullPeriod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FullPeriod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"full_period\":null")
+		first = false
+	}
+
+	// handle nullable field full_time_point
+	if m.FullTimePoint != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"full_time_point\":")
+		bytes, err := swag.WriteJSON(m.FullTimePoint)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FullTimePoint_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"full_time_point\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field incremental_interval
+	if m.IncrementalInterval != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"incremental_interval\":")
+		bytes, err := swag.WriteJSON(m.IncrementalInterval)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IncrementalInterval_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"incremental_interval\":null")
+		first = false
+	}
+
+	// handle nullable field incremental_period
+	if m.IncrementalPeriod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"incremental_period\":")
+		bytes, err := swag.WriteJSON(m.IncrementalPeriod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IncrementalPeriod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"incremental_period\":null")
+		first = false
+	}
+
+	// handle non nullable field incremental_time_points without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"incremental_time_points\":")
+		bytes, err := swag.WriteJSON(m.IncrementalTimePoints)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field incremental_weekdays with omitempty
+	if !swag.IsZero(m.IncrementalWeekdays) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"incremental_weekdays\":")
+		bytes, err := swag.WriteJSON(m.IncrementalWeekdays)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field keep_policy
+	if m.KeepPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"keep_policy\":")
+		bytes, err := swag.WriteJSON(m.KeepPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.KeepPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"keep_policy\":null")
+		first = false
+	}
+
+	// handle nullable field keep_policy_value
+	if m.KeepPolicyValue != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"keep_policy_value\":")
+		bytes, err := swag.WriteJSON(m.KeepPolicyValue)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.KeepPolicyValue_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"keep_policy_value\":null")
+		first = false
+	}
+
+	// handle nullable field last_execute_status
+	if m.LastExecuteStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_execute_status\":")
+		bytes, err := swag.WriteJSON(m.LastExecuteStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastExecuteStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_execute_status\":null")
+		first = false
+	}
+
+	// handle nullable field last_execute_status_message
+	if m.LastExecuteStatusMessage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_execute_status_message\":")
+		bytes, err := swag.WriteJSON(m.LastExecuteStatusMessage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastExecuteStatusMessage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_execute_status_message\":null")
+		first = false
+	}
+
+	// handle nullable field last_execute_success_job_count
+	if m.LastExecuteSuccessJobCount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_execute_success_job_count\":")
+		bytes, err := swag.WriteJSON(m.LastExecuteSuccessJobCount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastExecuteSuccessJobCount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_execute_success_job_count\":null")
+		first = false
+	}
+
+	// handle nullable field last_execute_total_job_count
+	if m.LastExecuteTotalJobCount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_execute_total_job_count\":")
+		bytes, err := swag.WriteJSON(m.LastExecuteTotalJobCount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastExecuteTotalJobCount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_execute_total_job_count\":null")
+		first = false
+	}
+
+	// handle nullable field last_executed_at
+	if m.LastExecutedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_executed_at\":")
+		bytes, err := swag.WriteJSON(m.LastExecutedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastExecutedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_executed_at\":null")
+		first = false
+	}
+
+	// handle nullable field last_manual_execute_status
+	if m.LastManualExecuteStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_execute_status\":")
+		bytes, err := swag.WriteJSON(m.LastManualExecuteStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastManualExecuteStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_execute_status\":null")
+		first = false
+	}
+
+	// handle nullable field last_manual_execute_status_message
+	if m.LastManualExecuteStatusMessage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_execute_status_message\":")
+		bytes, err := swag.WriteJSON(m.LastManualExecuteStatusMessage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastManualExecuteStatusMessage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_execute_status_message\":null")
+		first = false
+	}
+
+	// handle nullable field last_manual_execute_success_job_count
+	if m.LastManualExecuteSuccessJobCount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_execute_success_job_count\":")
+		bytes, err := swag.WriteJSON(m.LastManualExecuteSuccessJobCount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastManualExecuteSuccessJobCount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_execute_success_job_count\":null")
+		first = false
+	}
+
+	// handle nullable field last_manual_execute_total_job_count
+	if m.LastManualExecuteTotalJobCount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_execute_total_job_count\":")
+		bytes, err := swag.WriteJSON(m.LastManualExecuteTotalJobCount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastManualExecuteTotalJobCount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_execute_total_job_count\":null")
+		first = false
+	}
+
+	// handle nullable field last_manual_executed_at
+	if m.LastManualExecutedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_executed_at\":")
+		bytes, err := swag.WriteJSON(m.LastManualExecutedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastManualExecutedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_manual_executed_at\":null")
+		first = false
+	}
+
+	// handle nullable field logical_size
+	if m.LogicalSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"logical_size\":")
+		bytes, err := swag.WriteJSON(m.LogicalSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LogicalSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"logical_size\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field next_execute_time
+	if m.NextExecuteTime != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"next_execute_time\":")
+		bytes, err := swag.WriteJSON(m.NextExecuteTime)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NextExecuteTime_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"next_execute_time\":null")
+		first = false
+	}
+
+	// handle nullable field phase
+	if m.Phase != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":")
+		bytes, err := swag.WriteJSON(m.Phase)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Phase_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":null")
+		first = false
+	}
+
+	// handle nullable field physical_size
+	if m.PhysicalSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"physical_size\":")
+		bytes, err := swag.WriteJSON(m.PhysicalSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PhysicalSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"physical_size\":null")
+		first = false
+	}
+
+	// handle nullable field snapshot_consistent_type
+	if m.SnapshotConsistentType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_consistent_type\":")
+		bytes, err := swag.WriteJSON(m.SnapshotConsistentType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotConsistentType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_consistent_type\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle nullable field valid_size_of_backup_object
+	if m.ValidSizeOfBackupObject != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_size_of_backup_object\":")
+		bytes, err := swag.WriteJSON(m.ValidSizeOfBackupObject)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ValidSizeOfBackupObject_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_size_of_backup_object\":null")
+		first = false
+	}
+
+	// handle nullable field valid_size_of_restore_point
+	if m.ValidSizeOfRestorePoint != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_size_of_restore_point\":")
+		bytes, err := swag.WriteJSON(m.ValidSizeOfRestorePoint)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ValidSizeOfRestorePoint_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_size_of_restore_point\":null")
+		first = false
+	}
+
+	// handle non nullable field vms with omitempty
+	if !swag.IsZero(m.Vms) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vms\":")
+		bytes, err := swag.WriteJSON(m.Vms)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field window_end
+	if m.WindowEnd != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"window_end\":")
+		bytes, err := swag.WriteJSON(m.WindowEnd)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WindowEnd_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"window_end\":null")
+		first = false
+	}
+
+	// handle nullable field window_start
+	if m.WindowStart != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"window_start\":")
+		bytes, err := swag.WriteJSON(m.WindowStart)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WindowStart_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"window_start\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup plan

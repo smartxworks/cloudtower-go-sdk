@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type UpdateSessionTimeoutParams struct {
 	// session max age
 	// Required: true
 	SessionMaxAge *int32 `json:"session_max_age"`
+
+	MarshalOpts *UpdateSessionTimeoutParamsMarshalOpts `json:"-"`
+}
+
+type UpdateSessionTimeoutParamsMarshalOpts struct {
+	SessionMaxAge_Explicit_Null_When_Empty bool
+}
+
+func (m UpdateSessionTimeoutParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field session_max_age
+	if m.SessionMaxAge != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"session_max_age\":")
+		bytes, err := swag.WriteJSON(m.SessionMaxAge)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SessionMaxAge_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"session_max_age\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this update session timeout params

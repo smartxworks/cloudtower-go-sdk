@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -43,6 +44,146 @@ type LogCollectionCreationParams struct {
 
 	// witness id
 	WitnessID *string `json:"witness_id,omitempty"`
+
+	MarshalOpts *LogCollectionCreationParamsMarshalOpts `json:"-"`
+}
+
+type LogCollectionCreationParamsMarshalOpts struct {
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Hosts_Explicit_Null_When_Empty bool
+
+	LogEndedAt_Explicit_Null_When_Empty bool
+
+	LogStartedAt_Explicit_Null_When_Empty bool
+
+	ServiceGroups_Explicit_Null_When_Empty bool
+
+	WitnessID_Explicit_Null_When_Empty bool
+}
+
+func (m LogCollectionCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field hosts
+	if m.Hosts != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hosts\":")
+		bytes, err := swag.WriteJSON(m.Hosts)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Hosts_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hosts\":null")
+		first = false
+	}
+
+	// handle nullable field log_ended_at
+	if m.LogEndedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"log_ended_at\":")
+		bytes, err := swag.WriteJSON(m.LogEndedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LogEndedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"log_ended_at\":null")
+		first = false
+	}
+
+	// handle nullable field log_started_at
+	if m.LogStartedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"log_started_at\":")
+		bytes, err := swag.WriteJSON(m.LogStartedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LogStartedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"log_started_at\":null")
+		first = false
+	}
+
+	// handle non nullable field service_groups with omitempty
+	if !swag.IsZero(m.ServiceGroups) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"service_groups\":")
+		bytes, err := swag.WriteJSON(m.ServiceGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field witness_id
+	if m.WitnessID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"witness_id\":")
+		bytes, err := swag.WriteJSON(m.WitnessID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WitnessID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"witness_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this log collection creation params

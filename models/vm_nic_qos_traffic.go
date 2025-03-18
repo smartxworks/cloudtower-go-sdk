@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -34,6 +35,130 @@ type VMNicQosTraffic struct {
 
 	// rate limit unit
 	RateLimitUnit *BitPSUnit `json:"rate_limit_unit,omitempty"`
+
+	MarshalOpts *VMNicQosTrafficMarshalOpts `json:"-"`
+}
+
+type VMNicQosTrafficMarshalOpts struct {
+	Burst_Explicit_Null_When_Empty bool
+
+	BurstUnit_Explicit_Null_When_Empty bool
+
+	Enabled_Explicit_Null_When_Empty bool
+
+	RateLimit_Explicit_Null_When_Empty bool
+
+	RateLimitUnit_Explicit_Null_When_Empty bool
+}
+
+func (m VMNicQosTraffic) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field burst
+	if m.Burst != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"burst\":")
+		bytes, err := swag.WriteJSON(m.Burst)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Burst_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"burst\":null")
+		first = false
+	}
+
+	// handle nullable field burst_unit
+	if m.BurstUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"burst_unit\":")
+		bytes, err := swag.WriteJSON(m.BurstUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BurstUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"burst_unit\":null")
+		first = false
+	}
+
+	// handle nullable field enabled
+	if m.Enabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":")
+		bytes, err := swag.WriteJSON(m.Enabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":null")
+		first = false
+	}
+
+	// handle nullable field rate_limit
+	if m.RateLimit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rate_limit\":")
+		bytes, err := swag.WriteJSON(m.RateLimit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RateLimit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rate_limit\":null")
+		first = false
+	}
+
+	// handle nullable field rate_limit_unit
+	if m.RateLimitUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rate_limit_unit\":")
+		bytes, err := swag.WriteJSON(m.RateLimitUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RateLimitUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rate_limit_unit\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm nic qos traffic
