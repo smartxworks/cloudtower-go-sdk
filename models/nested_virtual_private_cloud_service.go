@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -31,6 +32,80 @@ type NestedVirtualPrivateCloudService struct {
 	// tep ip pools
 	// Required: true
 	TepIPPools []*NestedVirtualPrivateCloudServiceTepIPPool `json:"tep_ip_pools"`
+
+	MarshalOpts *NestedVirtualPrivateCloudServiceMarshalOpts `json:"-"`
+}
+
+type NestedVirtualPrivateCloudServiceMarshalOpts struct {
+	ID_Explicit_Null_When_Empty bool
+
+	InternalCidr_Explicit_Null_When_Empty bool
+
+	TepIPPools_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVirtualPrivateCloudService) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field internal_cidr
+	if m.InternalCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_cidr\":")
+		bytes, err := swag.WriteJSON(m.InternalCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_cidr\":null")
+		first = false
+	}
+
+	// handle non nullable field tep_ip_pools without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"tep_ip_pools\":")
+		bytes, err := swag.WriteJSON(m.TepIPPools)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested virtual private cloud service

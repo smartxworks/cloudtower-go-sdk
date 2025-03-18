@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -36,6 +37,124 @@ type VdsCreationParams struct {
 
 	// work mode
 	WorkMode *string `json:"work_mode,omitempty"`
+
+	MarshalOpts *VdsCreationParamsMarshalOpts `json:"-"`
+}
+
+type VdsCreationParamsMarshalOpts struct {
+	BondMode_Explicit_Null_When_Empty bool
+
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NicIds_Explicit_Null_When_Empty bool
+
+	WorkMode_Explicit_Null_When_Empty bool
+}
+
+func (m VdsCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field bond_mode
+	if m.BondMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode\":")
+		bytes, err := swag.WriteJSON(m.BondMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BondMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bond_mode\":null")
+		first = false
+	}
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field nic_ids without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nic_ids\":")
+		bytes, err := swag.WriteJSON(m.NicIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field work_mode
+	if m.WorkMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode\":")
+		bytes, err := swag.WriteJSON(m.WorkMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.WorkMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"work_mode\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this vds creation params

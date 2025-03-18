@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -28,6 +29,16 @@ type NvmfNamespaceUpdationParamsData struct {
 	Name *string `json:"name,omitempty"`
 
 	NvmfNamespaceCommonParams
+
+	MarshalOpts *NvmfNamespaceUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type NvmfNamespaceUpdationParamsDataMarshalOpts struct {
+	AssignedSize_Explicit_Null_When_Empty bool
+
+	AssignedSizeUnit_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -64,25 +75,71 @@ func (m *NvmfNamespaceUpdationParamsData) UnmarshalJSON(raw []byte) error {
 func (m NvmfNamespaceUpdationParamsData) MarshalJSON() ([]byte, error) {
 	_parts := make([][]byte, 0, 2)
 
-	var dataAO0 struct {
-		AssignedSize *int64 `json:"assigned_size,omitempty"`
+	var b bytes.Buffer
+	b.WriteString("{")
+	first := true
 
-		AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
-
-		Name *string `json:"name,omitempty"`
+	// handle nullable field assigned_size
+	if m.AssignedSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_size\":")
+		bytes, err := swag.WriteJSON(m.AssignedSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AssignedSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_size\":null")
+		first = false
 	}
 
-	dataAO0.AssignedSize = m.AssignedSize
-
-	dataAO0.AssignedSizeUnit = m.AssignedSizeUnit
-
-	dataAO0.Name = m.Name
-
-	jsonDataAO0, errAO0 := swag.WriteJSON(dataAO0)
-	if errAO0 != nil {
-		return nil, errAO0
+	// handle nullable field assigned_size_unit
+	if m.AssignedSizeUnit != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_size_unit\":")
+		bytes, err := swag.WriteJSON(m.AssignedSizeUnit)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AssignedSizeUnit_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"assigned_size_unit\":null")
+		first = false
 	}
-	_parts = append(_parts, jsonDataAO0)
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+	b.WriteString("}")
+	_parts = append(_parts, b.Bytes())
 
 	aO1, err := swag.WriteJSON(m.NvmfNamespaceCommonParams)
 	if err != nil {

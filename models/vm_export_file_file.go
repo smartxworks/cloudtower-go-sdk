@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -42,6 +43,152 @@ type VMExportFileFile struct {
 	// type
 	// Required: true
 	Type *VMExportFileType `json:"type"`
+
+	MarshalOpts *VMExportFileFileMarshalOpts `json:"-"`
+}
+
+type VMExportFileFileMarshalOpts struct {
+	FileName_Explicit_Null_When_Empty bool
+
+	FileSecret_Explicit_Null_When_Empty bool
+
+	FileSize_Explicit_Null_When_Empty bool
+
+	FileUUID_Explicit_Null_When_Empty bool
+
+	Md5_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+}
+
+func (m VMExportFileFile) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field fileName
+	if m.FileName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fileName\":")
+		bytes, err := swag.WriteJSON(m.FileName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FileName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fileName\":null")
+		first = false
+	}
+
+	// handle nullable field fileSecret
+	if m.FileSecret != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fileSecret\":")
+		bytes, err := swag.WriteJSON(m.FileSecret)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FileSecret_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fileSecret\":null")
+		first = false
+	}
+
+	// handle nullable field fileSize
+	if m.FileSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fileSize\":")
+		bytes, err := swag.WriteJSON(m.FileSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FileSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fileSize\":null")
+		first = false
+	}
+
+	// handle nullable field fileUUID
+	if m.FileUUID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fileUUID\":")
+		bytes, err := swag.WriteJSON(m.FileUUID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FileUUID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"fileUUID\":null")
+		first = false
+	}
+
+	// handle nullable field md5
+	if m.Md5 != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"md5\":")
+		bytes, err := swag.WriteJSON(m.Md5)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Md5_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"md5\":null")
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm export file file

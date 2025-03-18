@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -49,6 +50,218 @@ type NestedDiscoveredHostIface struct {
 	// up
 	// Required: true
 	Up *bool `json:"up"`
+
+	MarshalOpts *NestedDiscoveredHostIfaceMarshalOpts `json:"-"`
+}
+
+type NestedDiscoveredHostIfaceMarshalOpts struct {
+	IPV4_Explicit_Null_When_Empty bool
+
+	IPV6_Explicit_Null_When_Empty bool
+
+	MacAddress_Explicit_Null_When_Empty bool
+
+	Mtu_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	PciSlotName_Explicit_Null_When_Empty bool
+
+	RdmaEnabled_Explicit_Null_When_Empty bool
+
+	Speed_Explicit_Null_When_Empty bool
+
+	Up_Explicit_Null_When_Empty bool
+}
+
+func (m NestedDiscoveredHostIface) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field ipv4
+	if m.IPV4 != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipv4\":")
+		bytes, err := swag.WriteJSON(m.IPV4)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPV4_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipv4\":null")
+		first = false
+	}
+
+	// handle nullable field ipv6
+	if m.IPV6 != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipv6\":")
+		bytes, err := swag.WriteJSON(m.IPV6)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IPV6_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ipv6\":null")
+		first = false
+	}
+
+	// handle nullable field mac_address
+	if m.MacAddress != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mac_address\":")
+		bytes, err := swag.WriteJSON(m.MacAddress)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MacAddress_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mac_address\":null")
+		first = false
+	}
+
+	// handle nullable field mtu
+	if m.Mtu != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mtu\":")
+		bytes, err := swag.WriteJSON(m.Mtu)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Mtu_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mtu\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field pci_slot_name
+	if m.PciSlotName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"pci_slot_name\":")
+		bytes, err := swag.WriteJSON(m.PciSlotName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PciSlotName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"pci_slot_name\":null")
+		first = false
+	}
+
+	// handle nullable field rdma_enabled
+	if m.RdmaEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rdma_enabled\":")
+		bytes, err := swag.WriteJSON(m.RdmaEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RdmaEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rdma_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field speed
+	if m.Speed != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"speed\":")
+		bytes, err := swag.WriteJSON(m.Speed)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Speed_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"speed\":null")
+		first = false
+	}
+
+	// handle nullable field up
+	if m.Up != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"up\":")
+		bytes, err := swag.WriteJSON(m.Up)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Up_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"up\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested discovered host iface

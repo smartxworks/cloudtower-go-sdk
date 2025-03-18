@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -41,6 +42,190 @@ type NestedAuthSettings struct {
 
 	// session max age
 	SessionMaxAge *int32 `json:"session_max_age,omitempty"`
+
+	MarshalOpts *NestedAuthSettingsMarshalOpts `json:"-"`
+}
+
+type NestedAuthSettingsMarshalOpts struct {
+	AccessList_Explicit_Null_When_Empty bool
+
+	AccessMode_Explicit_Null_When_Empty bool
+
+	EnableSingleSessionLogin_Explicit_Null_When_Empty bool
+
+	LoginMissNumThreshold_Explicit_Null_When_Empty bool
+
+	LoginMissTimeThreshold_Explicit_Null_When_Empty bool
+
+	PasswordComplexity_Explicit_Null_When_Empty bool
+
+	PasswordExpireDays_Explicit_Null_When_Empty bool
+
+	SessionMaxAge_Explicit_Null_When_Empty bool
+}
+
+func (m NestedAuthSettings) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field access_list with omitempty
+	if !swag.IsZero(m.AccessList) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"access_list\":")
+		bytes, err := swag.WriteJSON(m.AccessList)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field access_mode
+	if m.AccessMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"access_mode\":")
+		bytes, err := swag.WriteJSON(m.AccessMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AccessMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"access_mode\":null")
+		first = false
+	}
+
+	// handle nullable field enable_single_session_login
+	if m.EnableSingleSessionLogin != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_single_session_login\":")
+		bytes, err := swag.WriteJSON(m.EnableSingleSessionLogin)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableSingleSessionLogin_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_single_session_login\":null")
+		first = false
+	}
+
+	// handle nullable field login_miss_num_threshold
+	if m.LoginMissNumThreshold != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"login_miss_num_threshold\":")
+		bytes, err := swag.WriteJSON(m.LoginMissNumThreshold)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LoginMissNumThreshold_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"login_miss_num_threshold\":null")
+		first = false
+	}
+
+	// handle nullable field login_miss_time_threshold
+	if m.LoginMissTimeThreshold != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"login_miss_time_threshold\":")
+		bytes, err := swag.WriteJSON(m.LoginMissTimeThreshold)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LoginMissTimeThreshold_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"login_miss_time_threshold\":null")
+		first = false
+	}
+
+	// handle nullable field password_complexity
+	if m.PasswordComplexity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password_complexity\":")
+		bytes, err := swag.WriteJSON(m.PasswordComplexity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PasswordComplexity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password_complexity\":null")
+		first = false
+	}
+
+	// handle nullable field password_expire_days
+	if m.PasswordExpireDays != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password_expire_days\":")
+		bytes, err := swag.WriteJSON(m.PasswordExpireDays)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PasswordExpireDays_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password_expire_days\":null")
+		first = false
+	}
+
+	// handle nullable field session_max_age
+	if m.SessionMaxAge != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"session_max_age\":")
+		bytes, err := swag.WriteJSON(m.SessionMaxAge)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SessionMaxAge_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"session_max_age\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested auth settings
