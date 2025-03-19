@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type VirtualPrivateCloudRouteParams struct {
 	// next hop type
 	// Required: true
 	NextHopType *VirtualPrivateCloudRouteNextHopType `json:"next_hop_type"`
+
+	MarshalOpts *VirtualPrivateCloudRouteParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudRouteParamsMarshalOpts struct {
+	Destination_Explicit_Null_When_Empty bool
+
+	NextHopLocalID_Explicit_Null_When_Empty bool
+
+	NextHopType_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudRouteParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field destination
+	if m.Destination != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"destination\":")
+		bytes, err := swag.WriteJSON(m.Destination)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Destination_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"destination\":null")
+		first = false
+	}
+
+	// handle nullable field next_hop_local_id
+	if m.NextHopLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"next_hop_local_id\":")
+		bytes, err := swag.WriteJSON(m.NextHopLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NextHopLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"next_hop_local_id\":null")
+		first = false
+	}
+
+	// handle nullable field next_hop_type
+	if m.NextHopType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"next_hop_type\":")
+		bytes, err := swag.WriteJSON(m.NextHopType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NextHopType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"next_hop_type\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud route params

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -42,6 +43,190 @@ type NestedEverouteClusterStatus struct {
 
 	// version
 	Version *string `json:"version,omitempty"`
+
+	MarshalOpts *NestedEverouteClusterStatusMarshalOpts `json:"-"`
+}
+
+type NestedEverouteClusterStatusMarshalOpts struct {
+	Agents_Explicit_Null_When_Empty bool
+
+	Conditions_Explicit_Null_When_Empty bool
+
+	Controllers_Explicit_Null_When_Empty bool
+
+	Message_Explicit_Null_When_Empty bool
+
+	Phase_Explicit_Null_When_Empty bool
+
+	Reason_Explicit_Null_When_Empty bool
+
+	RetryCount_Explicit_Null_When_Empty bool
+
+	Version_Explicit_Null_When_Empty bool
+}
+
+func (m NestedEverouteClusterStatus) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field agents
+	if m.Agents != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"agents\":")
+		bytes, err := swag.WriteJSON(m.Agents)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Agents_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"agents\":null")
+		first = false
+	}
+
+	// handle non nullable field conditions with omitempty
+	if !swag.IsZero(m.Conditions) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"conditions\":")
+		bytes, err := swag.WriteJSON(m.Conditions)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field controllers
+	if m.Controllers != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"controllers\":")
+		bytes, err := swag.WriteJSON(m.Controllers)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Controllers_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"controllers\":null")
+		first = false
+	}
+
+	// handle nullable field message
+	if m.Message != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":")
+		bytes, err := swag.WriteJSON(m.Message)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Message_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":null")
+		first = false
+	}
+
+	// handle nullable field phase
+	if m.Phase != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":")
+		bytes, err := swag.WriteJSON(m.Phase)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Phase_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":null")
+		first = false
+	}
+
+	// handle nullable field reason
+	if m.Reason != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":")
+		bytes, err := swag.WriteJSON(m.Reason)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Reason_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reason\":null")
+		first = false
+	}
+
+	// handle nullable field retryCount
+	if m.RetryCount != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retryCount\":")
+		bytes, err := swag.WriteJSON(m.RetryCount)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RetryCount_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"retryCount\":null")
+		first = false
+	}
+
+	// handle nullable field version
+	if m.Version != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":")
+		bytes, err := swag.WriteJSON(m.Version)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Version_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"version\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested everoute cluster status

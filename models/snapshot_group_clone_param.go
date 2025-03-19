@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type SnapshotGroupCloneParam struct {
 	// to cloned vm name
 	// Required: true
 	ToClonedVMName *string `json:"to_cloned_vm_name"`
+
+	MarshalOpts *SnapshotGroupCloneParamMarshalOpts `json:"-"`
+}
+
+type SnapshotGroupCloneParamMarshalOpts struct {
+	FromSourceVMID_Explicit_Null_When_Empty bool
+
+	ToClonedVMName_Explicit_Null_When_Empty bool
+}
+
+func (m SnapshotGroupCloneParam) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field from_source_vm_id
+	if m.FromSourceVMID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"from_source_vm_id\":")
+		bytes, err := swag.WriteJSON(m.FromSourceVMID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FromSourceVMID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"from_source_vm_id\":null")
+		first = false
+	}
+
+	// handle nullable field to_cloned_vm_name
+	if m.ToClonedVMName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"to_cloned_vm_name\":")
+		bytes, err := swag.WriteJSON(m.ToClonedVMName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ToClonedVMName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"to_cloned_vm_name\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this snapshot group clone param

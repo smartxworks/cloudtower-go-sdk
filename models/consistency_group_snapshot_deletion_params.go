@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ConsistencyGroupSnapshotDeletionParams struct {
 	// where
 	// Required: true
 	Where *ConsistencyGroupSnapshotWhereInput `json:"where"`
+
+	MarshalOpts *ConsistencyGroupSnapshotDeletionParamsMarshalOpts `json:"-"`
+}
+
+type ConsistencyGroupSnapshotDeletionParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m ConsistencyGroupSnapshotDeletionParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this consistency group snapshot deletion params
@@ -162,6 +221,42 @@ type ConsistencyGroupSnapshotDeletionParamsData struct {
 	// remain volume snapshot
 	// Required: true
 	RemainVolumeSnapshot *bool `json:"remain_volume_snapshot"`
+
+	MarshalOpts *ConsistencyGroupSnapshotDeletionParamsDataMarshalOpts `json:"-"`
+}
+
+type ConsistencyGroupSnapshotDeletionParamsDataMarshalOpts struct {
+	RemainVolumeSnapshot_Explicit_Null_When_Empty bool
+}
+
+func (m ConsistencyGroupSnapshotDeletionParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field remain_volume_snapshot
+	if m.RemainVolumeSnapshot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remain_volume_snapshot\":")
+		bytes, err := swag.WriteJSON(m.RemainVolumeSnapshot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RemainVolumeSnapshot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remain_volume_snapshot\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this consistency group snapshot deletion params data

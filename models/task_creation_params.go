@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -20,6 +21,9 @@ import (
 // swagger:model TaskCreationParams
 type TaskCreationParams struct {
 
+	// api key name
+	APIKeyName *string `json:"api_key_name,omitempty"`
+
 	// args
 	Args interface{} `json:"args,omitempty"`
 
@@ -32,6 +36,9 @@ type TaskCreationParams struct {
 
 	// finished at
 	FinishedAt *string `json:"finished_at,omitempty"`
+
+	// id
+	ID *string `json:"id,omitempty"`
 
 	// internal
 	Internal *bool `json:"internal,omitempty"`
@@ -52,8 +59,14 @@ type TaskCreationParams struct {
 	// Min Length: 1
 	ResourceType *string `json:"resource_type"`
 
+	// snapshot
+	Snapshot *string `json:"snapshot,omitempty"`
+
 	// started at
 	StartedAt *string `json:"started_at,omitempty"`
+
+	// status
+	Status *TaskStatus `json:"status,omitempty"`
 
 	// steps
 	Steps []*TaskStepCreationParams `json:"steps,omitempty"`
@@ -64,6 +77,380 @@ type TaskCreationParams struct {
 	// user id
 	// Required: true
 	UserID *string `json:"user_id"`
+
+	MarshalOpts *TaskCreationParamsMarshalOpts `json:"-"`
+}
+
+type TaskCreationParamsMarshalOpts struct {
+	APIKeyName_Explicit_Null_When_Empty bool
+
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Description_Explicit_Null_When_Empty bool
+
+	FinishedAt_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Internal_Explicit_Null_When_Empty bool
+
+	Key_Explicit_Null_When_Empty bool
+
+	ResourceID_Explicit_Null_When_Empty bool
+
+	ResourceMutation_Explicit_Null_When_Empty bool
+
+	ResourceType_Explicit_Null_When_Empty bool
+
+	Snapshot_Explicit_Null_When_Empty bool
+
+	StartedAt_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+
+	Steps_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
+
+	UserID_Explicit_Null_When_Empty bool
+}
+
+func (m TaskCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field api_key_name
+	if m.APIKeyName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"api_key_name\":")
+		bytes, err := swag.WriteJSON(m.APIKeyName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.APIKeyName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"api_key_name\":null")
+		first = false
+	}
+
+	// handle non nullable field args with omitempty
+	if !swag.IsZero(m.Args) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"args\":")
+		bytes, err := swag.WriteJSON(m.Args)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field finished_at
+	if m.FinishedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"finished_at\":")
+		bytes, err := swag.WriteJSON(m.FinishedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FinishedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"finished_at\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field internal
+	if m.Internal != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal\":")
+		bytes, err := swag.WriteJSON(m.Internal)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Internal_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal\":null")
+		first = false
+	}
+
+	// handle nullable field key
+	if m.Key != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"key\":")
+		bytes, err := swag.WriteJSON(m.Key)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Key_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"key\":null")
+		first = false
+	}
+
+	// handle nullable field resource_id
+	if m.ResourceID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_id\":")
+		bytes, err := swag.WriteJSON(m.ResourceID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_id\":null")
+		first = false
+	}
+
+	// handle nullable field resource_mutation
+	if m.ResourceMutation != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_mutation\":")
+		bytes, err := swag.WriteJSON(m.ResourceMutation)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceMutation_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_mutation\":null")
+		first = false
+	}
+
+	// handle nullable field resource_type
+	if m.ResourceType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":")
+		bytes, err := swag.WriteJSON(m.ResourceType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_type\":null")
+		first = false
+	}
+
+	// handle nullable field snapshot
+	if m.Snapshot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot\":")
+		bytes, err := swag.WriteJSON(m.Snapshot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Snapshot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot\":null")
+		first = false
+	}
+
+	// handle nullable field started_at
+	if m.StartedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"started_at\":")
+		bytes, err := swag.WriteJSON(m.StartedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StartedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"started_at\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	// handle non nullable field steps with omitempty
+	if !swag.IsZero(m.Steps) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"steps\":")
+		bytes, err := swag.WriteJSON(m.Steps)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
+	// handle nullable field user_id
+	if m.UserID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_id\":")
+		bytes, err := swag.WriteJSON(m.UserID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UserID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"user_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this task creation params
@@ -79,6 +466,10 @@ func (m *TaskCreationParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateResourceType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -146,6 +537,25 @@ func (m *TaskCreationParams) validateResourceType(formats strfmt.Registry) error
 	return nil
 }
 
+func (m *TaskCreationParams) validateStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.Status) { // not required
+		return nil
+	}
+
+	if m.Status != nil {
+		if err := m.Status.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *TaskCreationParams) validateSteps(formats strfmt.Registry) error {
 	if swag.IsZero(m.Steps) { // not required
 		return nil
@@ -208,6 +618,10 @@ func (m *TaskCreationParams) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSteps(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -230,6 +644,22 @@ func (m *TaskCreationParams) contextValidateDescription(ctx context.Context, for
 				return ve.ValidateName("description")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("description")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *TaskCreationParams) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Status != nil {
+		if err := m.Status.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("status")
 			}
 			return err
 		}

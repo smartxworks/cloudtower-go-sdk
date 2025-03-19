@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -18,6 +19,9 @@ import (
 //
 // swagger:model NestedVirtualPrivateCloudExternalSubnet
 type NestedVirtualPrivateCloudExternalSubnet struct {
+
+	// edge gateway
+	EdgeGateway *NestedVirtualPrivateCloudEdgeGateway `json:"edge_gateway,omitempty"`
 
 	// floating ip cidr
 	FloatingIPCidr *string `json:"floating_ip_cidr,omitempty"`
@@ -35,11 +39,161 @@ type NestedVirtualPrivateCloudExternalSubnet struct {
 
 	// router gateway cidr
 	RouterGatewayCidr *string `json:"router_gateway_cidr,omitempty"`
+
+	MarshalOpts *NestedVirtualPrivateCloudExternalSubnetMarshalOpts `json:"-"`
+}
+
+type NestedVirtualPrivateCloudExternalSubnetMarshalOpts struct {
+	EdgeGateway_Explicit_Null_When_Empty bool
+
+	FloatingIPCidr_Explicit_Null_When_Empty bool
+
+	ID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NatGatewayCidr_Explicit_Null_When_Empty bool
+
+	RouterGatewayCidr_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVirtualPrivateCloudExternalSubnet) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field edge_gateway
+	if m.EdgeGateway != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"edge_gateway\":")
+		bytes, err := swag.WriteJSON(m.EdgeGateway)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EdgeGateway_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"edge_gateway\":null")
+		first = false
+	}
+
+	// handle nullable field floating_ip_cidr
+	if m.FloatingIPCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip_cidr\":")
+		bytes, err := swag.WriteJSON(m.FloatingIPCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FloatingIPCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"floating_ip_cidr\":null")
+		first = false
+	}
+
+	// handle nullable field id
+	if m.ID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":")
+		bytes, err := swag.WriteJSON(m.ID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field nat_gateway_cidr
+	if m.NatGatewayCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nat_gateway_cidr\":")
+		bytes, err := swag.WriteJSON(m.NatGatewayCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NatGatewayCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nat_gateway_cidr\":null")
+		first = false
+	}
+
+	// handle nullable field router_gateway_cidr
+	if m.RouterGatewayCidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"router_gateway_cidr\":")
+		bytes, err := swag.WriteJSON(m.RouterGatewayCidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RouterGatewayCidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"router_gateway_cidr\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested virtual private cloud external subnet
 func (m *NestedVirtualPrivateCloudExternalSubnet) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateEdgeGateway(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
@@ -52,6 +206,25 @@ func (m *NestedVirtualPrivateCloudExternalSubnet) Validate(formats strfmt.Regist
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NestedVirtualPrivateCloudExternalSubnet) validateEdgeGateway(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGateway) { // not required
+		return nil
+	}
+
+	if m.EdgeGateway != nil {
+		if err := m.EdgeGateway.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -73,8 +246,33 @@ func (m *NestedVirtualPrivateCloudExternalSubnet) validateName(formats strfmt.Re
 	return nil
 }
 
-// ContextValidate validates this nested virtual private cloud external subnet based on context it is used
+// ContextValidate validate this nested virtual private cloud external subnet based on the context it is used
 func (m *NestedVirtualPrivateCloudExternalSubnet) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateEdgeGateway(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NestedVirtualPrivateCloudExternalSubnet) contextValidateEdgeGateway(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGateway != nil {
+		if err := m.EdgeGateway.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

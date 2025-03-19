@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type MetaLeader struct {
 	// meta leader
 	// Required: true
 	MetaLeader *string `json:"meta_leader"`
+
+	MarshalOpts *MetaLeaderMarshalOpts `json:"-"`
+}
+
+type MetaLeaderMarshalOpts struct {
+	ClusterID_Explicit_Null_When_Empty bool
+
+	MetaLeader_Explicit_Null_When_Empty bool
+}
+
+func (m MetaLeader) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field meta_leader
+	if m.MetaLeader != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"meta_leader\":")
+		bytes, err := swag.WriteJSON(m.MetaLeader)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MetaLeader_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"meta_leader\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this meta leader

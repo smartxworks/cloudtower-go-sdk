@@ -38,6 +38,9 @@ const (
 
 	// VMExportFileTypeRAW captures enum value "RAW"
 	VMExportFileTypeRAW VMExportFileType = "RAW"
+
+	// VMExportFileTypeVMDK captures enum value "VMDK"
+	VMExportFileTypeVMDK VMExportFileType = "VMDK"
 )
 
 // for schema
@@ -45,7 +48,7 @@ var vmExportFileTypeEnum []interface{}
 
 func init() {
 	var res []VMExportFileType
-	if err := json.Unmarshal([]byte(`["OVF","QCOW2","RAW"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["OVF","QCOW2","RAW","VMDK"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
