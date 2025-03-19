@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -30,6 +31,86 @@ type DataPoint struct {
 
 	// v
 	V *float64 `json:"v,omitempty"`
+
+	MarshalOpts *DataPointMarshalOpts `json:"-"`
+}
+
+type DataPointMarshalOpts struct {
+	Typename_Explicit_Null_When_Empty bool
+
+	T_Explicit_Null_When_Empty bool
+
+	V_Explicit_Null_When_Empty bool
+}
+
+func (m DataPoint) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field __typename
+	if m.Typename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":")
+		bytes, err := swag.WriteJSON(m.Typename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Typename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle nullable field t
+	if m.T != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"t\":")
+		bytes, err := swag.WriteJSON(m.T)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.T_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"t\":null")
+		first = false
+	}
+
+	// handle nullable field v
+	if m.V != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"v\":")
+		bytes, err := swag.WriteJSON(m.V)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.V_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"v\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this data point

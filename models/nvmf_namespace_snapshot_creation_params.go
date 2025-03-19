@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type NvmfNamespaceSnapshotCreationParams struct {
 	// nvmf subsystem id
 	// Required: true
 	NvmfSubsystemID *string `json:"nvmf_subsystem_id"`
+
+	MarshalOpts *NvmfNamespaceSnapshotCreationParamsMarshalOpts `json:"-"`
+}
+
+type NvmfNamespaceSnapshotCreationParamsMarshalOpts struct {
+	Name_Explicit_Null_When_Empty bool
+
+	NvmfNamespaceID_Explicit_Null_When_Empty bool
+
+	NvmfSubsystemID_Explicit_Null_When_Empty bool
+}
+
+func (m NvmfNamespaceSnapshotCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field nvmf_namespace_id
+	if m.NvmfNamespaceID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_namespace_id\":")
+		bytes, err := swag.WriteJSON(m.NvmfNamespaceID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfNamespaceID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_namespace_id\":null")
+		first = false
+	}
+
+	// handle nullable field nvmf_subsystem_id
+	if m.NvmfSubsystemID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_subsystem_id\":")
+		bytes, err := swag.WriteJSON(m.NvmfSubsystemID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfSubsystemID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_subsystem_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nvmf namespace snapshot creation params

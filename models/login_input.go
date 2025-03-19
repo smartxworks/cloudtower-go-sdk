@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -35,6 +36,130 @@ type LoginInput struct {
 	// username
 	// Required: true
 	Username *string `json:"username"`
+
+	MarshalOpts *LoginInputMarshalOpts `json:"-"`
+}
+
+type LoginInputMarshalOpts struct {
+	AuthConfigID_Explicit_Null_When_Empty bool
+
+	MfaType_Explicit_Null_When_Empty bool
+
+	Password_Explicit_Null_When_Empty bool
+
+	Source_Explicit_Null_When_Empty bool
+
+	Username_Explicit_Null_When_Empty bool
+}
+
+func (m LoginInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field auth_config_id
+	if m.AuthConfigID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_config_id\":")
+		bytes, err := swag.WriteJSON(m.AuthConfigID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AuthConfigID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"auth_config_id\":null")
+		first = false
+	}
+
+	// handle nullable field mfa_type
+	if m.MfaType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mfa_type\":")
+		bytes, err := swag.WriteJSON(m.MfaType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MfaType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mfa_type\":null")
+		first = false
+	}
+
+	// handle nullable field password
+	if m.Password != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":")
+		bytes, err := swag.WriteJSON(m.Password)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Password_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password\":null")
+		first = false
+	}
+
+	// handle nullable field source
+	if m.Source != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"source\":")
+		bytes, err := swag.WriteJSON(m.Source)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Source_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"source\":null")
+		first = false
+	}
+
+	// handle nullable field username
+	if m.Username != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":")
+		bytes, err := swag.WriteJSON(m.Username)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Username_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"username\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this login input

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -42,6 +43,166 @@ type ErrorBody struct {
 	// status
 	// Required: true
 	Status *int32 `json:"status"`
+
+	MarshalOpts *ErrorBodyMarshalOpts `json:"-"`
+}
+
+type ErrorBodyMarshalOpts struct {
+	Code_Explicit_Null_When_Empty bool
+
+	Message_Explicit_Null_When_Empty bool
+
+	OperationName_Explicit_Null_When_Empty bool
+
+	Path_Explicit_Null_When_Empty bool
+
+	Stack_Explicit_Null_When_Empty bool
+
+	Status_Explicit_Null_When_Empty bool
+}
+
+func (m ErrorBody) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field code
+	if m.Code != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"code\":")
+		bytes, err := swag.WriteJSON(m.Code)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Code_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"code\":null")
+		first = false
+	}
+
+	// handle nullable field message
+	if m.Message != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":")
+		bytes, err := swag.WriteJSON(m.Message)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Message_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"message\":null")
+		first = false
+	}
+
+	// handle nullable field operationName
+	if m.OperationName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"operationName\":")
+		bytes, err := swag.WriteJSON(m.OperationName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OperationName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"operationName\":null")
+		first = false
+	}
+
+	// handle nullable field path
+	if m.Path != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":")
+		bytes, err := swag.WriteJSON(m.Path)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Path_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":null")
+		first = false
+	}
+
+	// handle non nullable field props with omitempty
+	if !swag.IsZero(m.Props) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"props\":")
+		bytes, err := swag.WriteJSON(m.Props)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field stack
+	if m.Stack != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"stack\":")
+		bytes, err := swag.WriteJSON(m.Stack)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Stack_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"stack\":null")
+		first = false
+	}
+
+	// handle nullable field status
+	if m.Status != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":")
+		bytes, err := swag.WriteJSON(m.Status)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Status_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"status\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this error body
