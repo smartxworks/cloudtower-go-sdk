@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -36,6 +37,118 @@ type VirtualPrivateCloudSecurityGroupCreationParams struct {
 	// vpc id
 	// Required: true
 	VpcID *string `json:"vpc_id"`
+
+	MarshalOpts *VirtualPrivateCloudSecurityGroupCreationParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudSecurityGroupCreationParamsMarshalOpts struct {
+	Description_Explicit_Null_When_Empty bool
+
+	LabelGroups_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	VMIds_Explicit_Null_When_Empty bool
+
+	VpcID_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudSecurityGroupCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field description
+	if m.Description != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":")
+		bytes, err := swag.WriteJSON(m.Description)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Description_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle non nullable field label_groups with omitempty
+	if !swag.IsZero(m.LabelGroups) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"label_groups\":")
+		bytes, err := swag.WriteJSON(m.LabelGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field vm_ids with omitempty
+	if !swag.IsZero(m.VMIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_ids\":")
+		bytes, err := swag.WriteJSON(m.VMIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vpc_id
+	if m.VpcID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":")
+		bytes, err := swag.WriteJSON(m.VpcID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud security group creation params

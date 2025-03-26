@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -33,6 +34,108 @@ type IscsiLunSnapshotCreationParams struct {
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	MarshalOpts *IscsiLunSnapshotCreationParamsMarshalOpts `json:"-"`
+}
+
+type IscsiLunSnapshotCreationParamsMarshalOpts struct {
+	Effect_Explicit_Null_When_Empty bool
+
+	IscsiLunID_Explicit_Null_When_Empty bool
+
+	IscsiTargetID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+}
+
+func (m IscsiLunSnapshotCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field effect
+	if m.Effect != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"effect\":")
+		bytes, err := swag.WriteJSON(m.Effect)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Effect_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"effect\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_lun_id
+	if m.IscsiLunID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_lun_id\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_lun_id\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_target_id
+	if m.IscsiTargetID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_target_id\":")
+		bytes, err := swag.WriteJSON(m.IscsiTargetID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiTargetID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_target_id\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this iscsi lun snapshot creation params

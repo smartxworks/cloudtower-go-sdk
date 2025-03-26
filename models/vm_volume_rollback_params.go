@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type VMVolumeRollbackParams struct {
 	// volume snapshot id
 	// Required: true
 	VolumeSnapshotID *string `json:"volume_snapshot_id"`
+
+	MarshalOpts *VMVolumeRollbackParamsMarshalOpts `json:"-"`
+}
+
+type VMVolumeRollbackParamsMarshalOpts struct {
+	VolumeSnapshotID_Explicit_Null_When_Empty bool
+}
+
+func (m VMVolumeRollbackParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field volume_snapshot_id
+	if m.VolumeSnapshotID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"volume_snapshot_id\":")
+		bytes, err := swag.WriteJSON(m.VolumeSnapshotID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VolumeSnapshotID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"volume_snapshot_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm volume rollback params

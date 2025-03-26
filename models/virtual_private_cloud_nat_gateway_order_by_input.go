@@ -60,6 +60,12 @@ const (
 	// VirtualPrivateCloudNatGatewayOrderByInputExternalIPDESC captures enum value "external_ip_DESC"
 	VirtualPrivateCloudNatGatewayOrderByInputExternalIPDESC VirtualPrivateCloudNatGatewayOrderByInput = "external_ip_DESC"
 
+	// VirtualPrivateCloudNatGatewayOrderByInputExternalIpsASC captures enum value "external_ips_ASC"
+	VirtualPrivateCloudNatGatewayOrderByInputExternalIpsASC VirtualPrivateCloudNatGatewayOrderByInput = "external_ips_ASC"
+
+	// VirtualPrivateCloudNatGatewayOrderByInputExternalIpsDESC captures enum value "external_ips_DESC"
+	VirtualPrivateCloudNatGatewayOrderByInputExternalIpsDESC VirtualPrivateCloudNatGatewayOrderByInput = "external_ips_DESC"
+
 	// VirtualPrivateCloudNatGatewayOrderByInputIDASC captures enum value "id_ASC"
 	VirtualPrivateCloudNatGatewayOrderByInputIDASC VirtualPrivateCloudNatGatewayOrderByInput = "id_ASC"
 
@@ -84,7 +90,7 @@ var virtualPrivateCloudNatGatewayOrderByInputEnum []interface{}
 
 func init() {
 	var res []VirtualPrivateCloudNatGatewayOrderByInput
-	if err := json.Unmarshal([]byte(`["dnat_rules_ASC","dnat_rules_DESC","enable_dnat_ASC","enable_dnat_DESC","enable_snat_ASC","enable_snat_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_ip_ASC","external_ip_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["dnat_rules_ASC","dnat_rules_DESC","enable_dnat_ASC","enable_dnat_DESC","enable_snat_ASC","enable_snat_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_ip_ASC","external_ip_DESC","external_ips_ASC","external_ips_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

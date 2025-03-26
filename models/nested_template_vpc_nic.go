@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type NestedTemplateVpcNic struct {
 	// vpc subnet local id
 	// Required: true
 	VpcSubnetLocalID *string `json:"vpc_subnet_local_id"`
+
+	MarshalOpts *NestedTemplateVpcNicMarshalOpts `json:"-"`
+}
+
+type NestedTemplateVpcNicMarshalOpts struct {
+	UseFloatingIP_Explicit_Null_When_Empty bool
+
+	VpcLocalID_Explicit_Null_When_Empty bool
+
+	VpcSubnetLocalID_Explicit_Null_When_Empty bool
+}
+
+func (m NestedTemplateVpcNic) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field use_floating_ip
+	if m.UseFloatingIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"use_floating_ip\":")
+		bytes, err := swag.WriteJSON(m.UseFloatingIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UseFloatingIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"use_floating_ip\":null")
+		first = false
+	}
+
+	// handle nullable field vpc_local_id
+	if m.VpcLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_local_id\":")
+		bytes, err := swag.WriteJSON(m.VpcLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_local_id\":null")
+		first = false
+	}
+
+	// handle nullable field vpc_subnet_local_id
+	if m.VpcSubnetLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_subnet_local_id\":")
+		bytes, err := swag.WriteJSON(m.VpcSubnetLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcSubnetLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_subnet_local_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested template vpc nic
