@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -29,6 +30,108 @@ type UpdatePassrodSecurityParams struct {
 
 	// password expire days
 	PasswordExpireDays *int32 `json:"password_expire_days,omitempty"`
+
+	MarshalOpts *UpdatePassrodSecurityParamsMarshalOpts `json:"-"`
+}
+
+type UpdatePassrodSecurityParamsMarshalOpts struct {
+	LoginMissNumThreshold_Explicit_Null_When_Empty bool
+
+	LoginMissTimeThreshold_Explicit_Null_When_Empty bool
+
+	PasswordComplexity_Explicit_Null_When_Empty bool
+
+	PasswordExpireDays_Explicit_Null_When_Empty bool
+}
+
+func (m UpdatePassrodSecurityParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field login_miss_num_threshold
+	if m.LoginMissNumThreshold != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"login_miss_num_threshold\":")
+		bytes, err := swag.WriteJSON(m.LoginMissNumThreshold)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LoginMissNumThreshold_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"login_miss_num_threshold\":null")
+		first = false
+	}
+
+	// handle nullable field login_miss_time_threshold
+	if m.LoginMissTimeThreshold != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"login_miss_time_threshold\":")
+		bytes, err := swag.WriteJSON(m.LoginMissTimeThreshold)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LoginMissTimeThreshold_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"login_miss_time_threshold\":null")
+		first = false
+	}
+
+	// handle nullable field password_complexity
+	if m.PasswordComplexity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password_complexity\":")
+		bytes, err := swag.WriteJSON(m.PasswordComplexity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PasswordComplexity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password_complexity\":null")
+		first = false
+	}
+
+	// handle nullable field password_expire_days
+	if m.PasswordExpireDays != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password_expire_days\":")
+		bytes, err := swag.WriteJSON(m.PasswordExpireDays)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PasswordExpireDays_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"password_expire_days\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this update passrod security params

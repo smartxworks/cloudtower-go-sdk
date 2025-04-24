@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type SnapshotPlanUpdationParams struct {
 	// where
 	// Required: true
 	Where *SnapshotPlanWhereInput `json:"where"`
+
+	MarshalOpts *SnapshotPlanUpdationParamsMarshalOpts `json:"-"`
+}
+
+type SnapshotPlanUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m SnapshotPlanUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this snapshot plan updation params
@@ -177,6 +236,162 @@ type SnapshotPlanUpdationParamsData struct {
 
 	// vm ids
 	VMIds []string `json:"vm_ids,omitempty"`
+
+	MarshalOpts *SnapshotPlanUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type SnapshotPlanUpdationParamsDataMarshalOpts struct {
+	EndTime_Explicit_Null_When_Empty bool
+
+	Exechm_Explicit_Null_When_Empty bool
+
+	ExecuteIntervals_Explicit_Null_When_Empty bool
+
+	ExecutePlanType_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	RemainSnapshotNum_Explicit_Null_When_Empty bool
+
+	VMIds_Explicit_Null_When_Empty bool
+}
+
+func (m SnapshotPlanUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field end_time
+	if m.EndTime != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"end_time\":")
+		bytes, err := swag.WriteJSON(m.EndTime)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EndTime_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"end_time\":null")
+		first = false
+	}
+
+	// handle nullable field exec_h_m
+	if m.Exechm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exec_h_m\":")
+		bytes, err := swag.WriteJSON(m.Exechm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Exechm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exec_h_m\":null")
+		first = false
+	}
+
+	// handle non nullable field execute_intervals with omitempty
+	if !swag.IsZero(m.ExecuteIntervals) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"execute_intervals\":")
+		bytes, err := swag.WriteJSON(m.ExecuteIntervals)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field execute_plan_type
+	if m.ExecutePlanType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"execute_plan_type\":")
+		bytes, err := swag.WriteJSON(m.ExecutePlanType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExecutePlanType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"execute_plan_type\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field remain_snapshot_num
+	if m.RemainSnapshotNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remain_snapshot_num\":")
+		bytes, err := swag.WriteJSON(m.RemainSnapshotNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RemainSnapshotNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"remain_snapshot_num\":null")
+		first = false
+	}
+
+	// handle non nullable field vm_ids with omitempty
+	if !swag.IsZero(m.VMIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_ids\":")
+		bytes, err := swag.WriteJSON(m.VMIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this snapshot plan updation params data

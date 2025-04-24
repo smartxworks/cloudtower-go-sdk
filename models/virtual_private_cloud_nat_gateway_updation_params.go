@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -27,6 +28,64 @@ type VirtualPrivateCloudNatGatewayUpdationParams struct {
 	// where
 	// Required: true
 	Where *VirtualPrivateCloudNatGatewayWhereInput `json:"where"`
+
+	MarshalOpts *VirtualPrivateCloudNatGatewayUpdationParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudNatGatewayUpdationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudNatGatewayUpdationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud nat gateway updation params
@@ -172,8 +231,145 @@ type VirtualPrivateCloudNatGatewayUpdationParamsData struct {
 	// external ip
 	ExternalIP *string `json:"external_ip,omitempty"`
 
+	// external ips
+	ExternalIps []*VirtualPrivateCloudExternalIpsParams `json:"external_ips,omitempty"`
+
 	// name
 	Name *string `json:"name,omitempty"`
+
+	MarshalOpts *VirtualPrivateCloudNatGatewayUpdationParamsDataMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudNatGatewayUpdationParamsDataMarshalOpts struct {
+	DnatRules_Explicit_Null_When_Empty bool
+
+	EnableDnat_Explicit_Null_When_Empty bool
+
+	EnableSnat_Explicit_Null_When_Empty bool
+
+	ExternalIP_Explicit_Null_When_Empty bool
+
+	ExternalIps_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudNatGatewayUpdationParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field dnat_rules with omitempty
+	if !swag.IsZero(m.DnatRules) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dnat_rules\":")
+		bytes, err := swag.WriteJSON(m.DnatRules)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field enable_dnat
+	if m.EnableDnat != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_dnat\":")
+		bytes, err := swag.WriteJSON(m.EnableDnat)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableDnat_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_dnat\":null")
+		first = false
+	}
+
+	// handle nullable field enable_snat
+	if m.EnableSnat != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_snat\":")
+		bytes, err := swag.WriteJSON(m.EnableSnat)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableSnat_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_snat\":null")
+		first = false
+	}
+
+	// handle nullable field external_ip
+	if m.ExternalIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":")
+		bytes, err := swag.WriteJSON(m.ExternalIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExternalIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":null")
+		first = false
+	}
+
+	// handle non nullable field external_ips with omitempty
+	if !swag.IsZero(m.ExternalIps) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ips\":")
+		bytes, err := swag.WriteJSON(m.ExternalIps)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud nat gateway updation params data
@@ -181,6 +377,10 @@ func (m *VirtualPrivateCloudNatGatewayUpdationParamsData) Validate(formats strfm
 	var res []error
 
 	if err := m.validateDnatRules(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateExternalIps(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -216,11 +416,41 @@ func (m *VirtualPrivateCloudNatGatewayUpdationParamsData) validateDnatRules(form
 	return nil
 }
 
+func (m *VirtualPrivateCloudNatGatewayUpdationParamsData) validateExternalIps(formats strfmt.Registry) error {
+	if swag.IsZero(m.ExternalIps) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ExternalIps); i++ {
+		if swag.IsZero(m.ExternalIps[i]) { // not required
+			continue
+		}
+
+		if m.ExternalIps[i] != nil {
+			if err := m.ExternalIps[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + "external_ips" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + "external_ips" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this virtual private cloud nat gateway updation params data based on the context it is used
 func (m *VirtualPrivateCloudNatGatewayUpdationParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateDnatRules(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateExternalIps(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -240,6 +470,26 @@ func (m *VirtualPrivateCloudNatGatewayUpdationParamsData) contextValidateDnatRul
 					return ve.ValidateName("data" + "." + "dnat_rules" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("data" + "." + "dnat_rules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudNatGatewayUpdationParamsData) contextValidateExternalIps(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ExternalIps); i++ {
+
+		if m.ExternalIps[i] != nil {
+			if err := m.ExternalIps[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + "external_ips" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + "external_ips" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

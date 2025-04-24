@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type OvfNic struct {
 	// mac
 	// Required: true
 	Mac *string `json:"mac"`
+
+	MarshalOpts *OvfNicMarshalOpts `json:"-"`
+}
+
+type OvfNicMarshalOpts struct {
+	Mac_Explicit_Null_When_Empty bool
+}
+
+func (m OvfNic) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field mac
+	if m.Mac != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mac\":")
+		bytes, err := swag.WriteJSON(m.Mac)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Mac_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"mac\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this ovf nic

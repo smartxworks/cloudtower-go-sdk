@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type DeployCloudTowerApplicationParams struct {
 	// vm spec
 	// Required: true
 	VMSpec *ApplicationVMSpecDefinition `json:"vmSpec"`
+
+	MarshalOpts *DeployCloudTowerApplicationParamsMarshalOpts `json:"-"`
+}
+
+type DeployCloudTowerApplicationParamsMarshalOpts struct {
+	Name_Explicit_Null_When_Empty bool
+
+	TargetPackage_Explicit_Null_When_Empty bool
+
+	VMSpec_Explicit_Null_When_Empty bool
+}
+
+func (m DeployCloudTowerApplicationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field targetPackage
+	if m.TargetPackage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"targetPackage\":")
+		bytes, err := swag.WriteJSON(m.TargetPackage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TargetPackage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"targetPackage\":null")
+		first = false
+	}
+
+	// handle nullable field vmSpec
+	if m.VMSpec != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmSpec\":")
+		bytes, err := swag.WriteJSON(m.VMSpec)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMSpec_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmSpec\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this deploy cloud tower application params
