@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -25,16 +26,129 @@ type VirtualPrivateCloudRouterGatewayUpdateDataParams struct {
 	// external ip
 	ExternalIP *string `json:"external_ip,omitempty"`
 
+	// external ips
+	ExternalIps []*VirtualPrivateCloudExternalIpsParams `json:"external_ips,omitempty"`
+
 	// name
 	Name *string `json:"name,omitempty"`
 
 	// rules
 	Rules []*VirtualPrivateCloudRouterGatewayRuleInputType `json:"rules,omitempty"`
+
+	MarshalOpts *VirtualPrivateCloudRouterGatewayUpdateDataParamsMarshalOpts `json:"-"`
+}
+
+type VirtualPrivateCloudRouterGatewayUpdateDataParamsMarshalOpts struct {
+	AssociatedSubnetsIds_Explicit_Null_When_Empty bool
+
+	ExternalIP_Explicit_Null_When_Empty bool
+
+	ExternalIps_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	Rules_Explicit_Null_When_Empty bool
+}
+
+func (m VirtualPrivateCloudRouterGatewayUpdateDataParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field associated_subnets_ids with omitempty
+	if !swag.IsZero(m.AssociatedSubnetsIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"associated_subnets_ids\":")
+		bytes, err := swag.WriteJSON(m.AssociatedSubnetsIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field external_ip
+	if m.ExternalIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":")
+		bytes, err := swag.WriteJSON(m.ExternalIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExternalIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ip\":null")
+		first = false
+	}
+
+	// handle non nullable field external_ips with omitempty
+	if !swag.IsZero(m.ExternalIps) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"external_ips\":")
+		bytes, err := swag.WriteJSON(m.ExternalIps)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field rules with omitempty
+	if !swag.IsZero(m.Rules) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rules\":")
+		bytes, err := swag.WriteJSON(m.Rules)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this virtual private cloud router gateway update data params
 func (m *VirtualPrivateCloudRouterGatewayUpdateDataParams) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateExternalIps(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateRules(formats); err != nil {
 		res = append(res, err)
@@ -43,6 +157,32 @@ func (m *VirtualPrivateCloudRouterGatewayUpdateDataParams) Validate(formats strf
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VirtualPrivateCloudRouterGatewayUpdateDataParams) validateExternalIps(formats strfmt.Registry) error {
+	if swag.IsZero(m.ExternalIps) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ExternalIps); i++ {
+		if swag.IsZero(m.ExternalIps[i]) { // not required
+			continue
+		}
+
+		if m.ExternalIps[i] != nil {
+			if err := m.ExternalIps[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_ips" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("external_ips" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -76,6 +216,10 @@ func (m *VirtualPrivateCloudRouterGatewayUpdateDataParams) validateRules(formats
 func (m *VirtualPrivateCloudRouterGatewayUpdateDataParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateExternalIps(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateRules(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -83,6 +227,26 @@ func (m *VirtualPrivateCloudRouterGatewayUpdateDataParams) ContextValidate(ctx c
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VirtualPrivateCloudRouterGatewayUpdateDataParams) contextValidateExternalIps(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ExternalIps); i++ {
+
+		if m.ExternalIps[i] != nil {
+			if err := m.ExternalIps[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_ips" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("external_ips" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -34,6 +35,108 @@ type NestedBrickDiskLayout struct {
 	// row
 	// Required: true
 	Row *int32 `json:"row"`
+
+	MarshalOpts *NestedBrickDiskLayoutMarshalOpts `json:"-"`
+}
+
+type NestedBrickDiskLayoutMarshalOpts struct {
+	Column_Explicit_Null_When_Empty bool
+
+	Direction_Explicit_Null_When_Empty bool
+
+	Phase_Explicit_Null_When_Empty bool
+
+	Row_Explicit_Null_When_Empty bool
+}
+
+func (m NestedBrickDiskLayout) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field column
+	if m.Column != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"column\":")
+		bytes, err := swag.WriteJSON(m.Column)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Column_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"column\":null")
+		first = false
+	}
+
+	// handle nullable field direction
+	if m.Direction != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"direction\":")
+		bytes, err := swag.WriteJSON(m.Direction)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Direction_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"direction\":null")
+		first = false
+	}
+
+	// handle nullable field phase
+	if m.Phase != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":")
+		bytes, err := swag.WriteJSON(m.Phase)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Phase_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"phase\":null")
+		first = false
+	}
+
+	// handle nullable field row
+	if m.Row != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"row\":")
+		bytes, err := swag.WriteJSON(m.Row)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Row_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"row\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested brick disk layout

@@ -47,6 +47,9 @@ const (
 
 	// UserRolePresetVMUSER captures enum value "VM_USER"
 	UserRolePresetVMUSER UserRolePreset = "VM_USER"
+
+	// UserRolePresetWORKLOADCLUSTERUSER captures enum value "WORKLOAD_CLUSTER_USER"
+	UserRolePresetWORKLOADCLUSTERUSER UserRolePreset = "WORKLOAD_CLUSTER_USER"
 )
 
 // for schema
@@ -54,7 +57,7 @@ var userRolePresetEnum []interface{}
 
 func init() {
 	var res []UserRolePreset
-	if err := json.Unmarshal([]byte(`["ADMIN","AUDITOR","READ_ONLY","ROOT","USER_ADMIN","VM_USER"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ADMIN","AUDITOR","READ_ONLY","ROOT","USER_ADMIN","VM_USER","WORKLOAD_CLUSTER_USER"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -30,6 +31,86 @@ type AllocatableEcStorageCapacity struct {
 	// m
 	// Required: true
 	M *int32 `json:"m"`
+
+	MarshalOpts *AllocatableEcStorageCapacityMarshalOpts `json:"-"`
+}
+
+type AllocatableEcStorageCapacityMarshalOpts struct {
+	Capacity_Explicit_Null_When_Empty bool
+
+	K_Explicit_Null_When_Empty bool
+
+	M_Explicit_Null_When_Empty bool
+}
+
+func (m AllocatableEcStorageCapacity) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field capacity
+	if m.Capacity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"capacity\":")
+		bytes, err := swag.WriteJSON(m.Capacity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Capacity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"capacity\":null")
+		first = false
+	}
+
+	// handle nullable field k
+	if m.K != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"k\":")
+		bytes, err := swag.WriteJSON(m.K)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.K_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"k\":null")
+		first = false
+	}
+
+	// handle nullable field m
+	if m.M != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"m\":")
+		bytes, err := swag.WriteJSON(m.M)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.M_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"m\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this allocatable ec storage capacity
