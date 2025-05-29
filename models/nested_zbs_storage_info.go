@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -26,6 +27,58 @@ type NestedZbsStorageInfo struct {
 
 	// snapshot info
 	SnapshotInfo []*NestedSnapshotInfo `json:"snapshot_info,omitempty"`
+
+	MarshalOpts *NestedZbsStorageInfoMarshalOpts `json:"-"`
+}
+
+type NestedZbsStorageInfoMarshalOpts struct {
+	ClusterID_Explicit_Null_When_Empty bool
+
+	SnapshotInfo_Explicit_Null_When_Empty bool
+}
+
+func (m NestedZbsStorageInfo) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle non nullable field snapshot_info with omitempty
+	if !swag.IsZero(m.SnapshotInfo) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_info\":")
+		bytes, err := swag.WriteJSON(m.SnapshotInfo)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested zbs storage info

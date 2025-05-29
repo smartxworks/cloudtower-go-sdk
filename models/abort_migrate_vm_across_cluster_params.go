@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type AbortMigrateVMAcrossClusterParams struct {
 	// tasks
 	// Required: true
 	Tasks *TaskWhereInput `json:"tasks"`
+
+	MarshalOpts *AbortMigrateVMAcrossClusterParamsMarshalOpts `json:"-"`
+}
+
+type AbortMigrateVMAcrossClusterParamsMarshalOpts struct {
+	Tasks_Explicit_Null_When_Empty bool
+}
+
+func (m AbortMigrateVMAcrossClusterParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field tasks
+	if m.Tasks != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"tasks\":")
+		bytes, err := swag.WriteJSON(m.Tasks)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Tasks_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"tasks\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this abort migrate Vm across cluster params

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -37,6 +38,124 @@ type NestedFrozenVlan struct {
 	// vlan local id
 	// Required: true
 	VlanLocalID *string `json:"vlan_local_id"`
+
+	MarshalOpts *NestedFrozenVlanMarshalOpts `json:"-"`
+}
+
+type NestedFrozenVlanMarshalOpts struct {
+	Name_Explicit_Null_When_Empty bool
+
+	NetworkIds_Explicit_Null_When_Empty bool
+
+	VdsOvs_Explicit_Null_When_Empty bool
+
+	VlanID_Explicit_Null_When_Empty bool
+
+	VlanLocalID_Explicit_Null_When_Empty bool
+}
+
+func (m NestedFrozenVlan) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle non nullable field network_ids with omitempty
+	if !swag.IsZero(m.NetworkIds) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"network_ids\":")
+		bytes, err := swag.WriteJSON(m.NetworkIds)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field vds_ovs
+	if m.VdsOvs != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vds_ovs\":")
+		bytes, err := swag.WriteJSON(m.VdsOvs)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VdsOvs_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vds_ovs\":null")
+		first = false
+	}
+
+	// handle nullable field vlan_id
+	if m.VlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_id\":")
+		bytes, err := swag.WriteJSON(m.VlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_id\":null")
+		first = false
+	}
+
+	// handle nullable field vlan_local_id
+	if m.VlanLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_local_id\":")
+		bytes, err := swag.WriteJSON(m.VlanLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_local_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested frozen vlan
