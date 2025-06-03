@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -32,6 +33,108 @@ type NestedSnapshotInfo struct {
 
 	// storage policy config
 	StoragePolicyConfig *NestedStoragePolicyConfig `json:"storage_policy_config,omitempty"`
+
+	MarshalOpts *NestedSnapshotInfoMarshalOpts `json:"-"`
+}
+
+type NestedSnapshotInfoMarshalOpts struct {
+	Index_Explicit_Null_When_Empty bool
+
+	IscsiLunSnapshotUUID_Explicit_Null_When_Empty bool
+
+	StorageEncrypted_Explicit_Null_When_Empty bool
+
+	StoragePolicyConfig_Explicit_Null_When_Empty bool
+}
+
+func (m NestedSnapshotInfo) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field index
+	if m.Index != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"index\":")
+		bytes, err := swag.WriteJSON(m.Index)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Index_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"index\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_lun_snapshot_uuid
+	if m.IscsiLunSnapshotUUID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_lun_snapshot_uuid\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunSnapshotUUID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunSnapshotUUID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_lun_snapshot_uuid\":null")
+		first = false
+	}
+
+	// handle nullable field storage_encrypted
+	if m.StorageEncrypted != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_encrypted\":")
+		bytes, err := swag.WriteJSON(m.StorageEncrypted)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageEncrypted_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_encrypted\":null")
+		first = false
+	}
+
+	// handle nullable field storage_policy_config
+	if m.StoragePolicyConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_policy_config\":")
+		bytes, err := swag.WriteJSON(m.StoragePolicyConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StoragePolicyConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_policy_config\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested snapshot info

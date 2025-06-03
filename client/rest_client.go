@@ -38,6 +38,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/deploy"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/discovered_host"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/disk"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ecp_license"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_data_store"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_image"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_storage_policy"
@@ -62,6 +63,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/log_service_config"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/metrics"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/namespace_group"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/network_policy_rule_service"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nfs_export"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nfs_inode"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nic"
@@ -73,12 +75,18 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/observability"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/organization"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ovf"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pci_device"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pmem_dimm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/rack_topo"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replica_vm"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replication_plan"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replication_service"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_template"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/resource_change"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_policy"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/smtp_server"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_plan"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_plan_task"
@@ -99,7 +107,10 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/view"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_cluster_binding"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_edge_gateway"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_edge_gateway_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_external_subnet"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_external_subnet_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_floating_ip"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_nat_gateway"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_route_table"
@@ -196,6 +207,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.Deploy = deploy.New(transport, formats)
 	cli.DiscoveredHost = discovered_host.New(transport, formats)
 	cli.Disk = disk.New(transport, formats)
+	cli.EcpLicense = ecp_license.New(transport, formats)
 	cli.ElfDataStore = elf_data_store.New(transport, formats)
 	cli.ElfImage = elf_image.New(transport, formats)
 	cli.ElfStoragePolicy = elf_storage_policy.New(transport, formats)
@@ -220,6 +232,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.LogServiceConfig = log_service_config.New(transport, formats)
 	cli.Metrics = metrics.New(transport, formats)
 	cli.NamespaceGroup = namespace_group.New(transport, formats)
+	cli.NetworkPolicyRuleService = network_policy_rule_service.New(transport, formats)
 	cli.NfsExport = nfs_export.New(transport, formats)
 	cli.NfsInode = nfs_inode.New(transport, formats)
 	cli.Nic = nic.New(transport, formats)
@@ -231,12 +244,18 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.Observability = observability.New(transport, formats)
 	cli.Organization = organization.New(transport, formats)
 	cli.Ovf = ovf.New(transport, formats)
+	cli.PciDevice = pci_device.New(transport, formats)
 	cli.PmemDimm = pmem_dimm.New(transport, formats)
 	cli.RackTopo = rack_topo.New(transport, formats)
+	cli.ReplicaVM = replica_vm.New(transport, formats)
+	cli.ReplicationPlan = replication_plan.New(transport, formats)
+	cli.ReplicationService = replication_service.New(transport, formats)
 	cli.ReportTask = report_task.New(transport, formats)
 	cli.ReportTemplate = report_template.New(transport, formats)
+	cli.ResourceChange = resource_change.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.SecurityPolicy = security_policy.New(transport, formats)
+	cli.SMTPServer = smtp_server.New(transport, formats)
 	cli.SnapshotGroup = snapshot_group.New(transport, formats)
 	cli.SnapshotPlan = snapshot_plan.New(transport, formats)
 	cli.SnapshotPlanTask = snapshot_plan_task.New(transport, formats)
@@ -257,7 +276,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.View = view.New(transport, formats)
 	cli.VirtualPrivateCloud = virtual_private_cloud.New(transport, formats)
 	cli.VirtualPrivateCloudClusterBinding = virtual_private_cloud_cluster_binding.New(transport, formats)
+	cli.VirtualPrivateCloudEdgeGateway = virtual_private_cloud_edge_gateway.New(transport, formats)
+	cli.VirtualPrivateCloudEdgeGatewayGroup = virtual_private_cloud_edge_gateway_group.New(transport, formats)
 	cli.VirtualPrivateCloudExternalSubnet = virtual_private_cloud_external_subnet.New(transport, formats)
+	cli.VirtualPrivateCloudExternalSubnetGroup = virtual_private_cloud_external_subnet_group.New(transport, formats)
 	cli.VirtualPrivateCloudFloatingIP = virtual_private_cloud_floating_ip.New(transport, formats)
 	cli.VirtualPrivateCloudNatGateway = virtual_private_cloud_nat_gateway.New(transport, formats)
 	cli.VirtualPrivateCloudRouteTable = virtual_private_cloud_route_table.New(transport, formats)
@@ -382,6 +404,8 @@ type Cloudtower struct {
 
 	Disk disk.ClientService
 
+	EcpLicense ecp_license.ClientService
+
 	ElfDataStore elf_data_store.ClientService
 
 	ElfImage elf_image.ClientService
@@ -430,6 +454,8 @@ type Cloudtower struct {
 
 	NamespaceGroup namespace_group.ClientService
 
+	NetworkPolicyRuleService network_policy_rule_service.ClientService
+
 	NfsExport nfs_export.ClientService
 
 	NfsInode nfs_inode.ClientService
@@ -452,17 +478,29 @@ type Cloudtower struct {
 
 	Ovf ovf.ClientService
 
+	PciDevice pci_device.ClientService
+
 	PmemDimm pmem_dimm.ClientService
 
 	RackTopo rack_topo.ClientService
+
+	ReplicaVM replica_vm.ClientService
+
+	ReplicationPlan replication_plan.ClientService
+
+	ReplicationService replication_service.ClientService
 
 	ReportTask report_task.ClientService
 
 	ReportTemplate report_template.ClientService
 
+	ResourceChange resource_change.ClientService
+
 	SecurityGroup security_group.ClientService
 
 	SecurityPolicy security_policy.ClientService
+
+	SMTPServer smtp_server.ClientService
 
 	SnapshotGroup snapshot_group.ClientService
 
@@ -504,7 +542,13 @@ type Cloudtower struct {
 
 	VirtualPrivateCloudClusterBinding virtual_private_cloud_cluster_binding.ClientService
 
+	VirtualPrivateCloudEdgeGateway virtual_private_cloud_edge_gateway.ClientService
+
+	VirtualPrivateCloudEdgeGatewayGroup virtual_private_cloud_edge_gateway_group.ClientService
+
 	VirtualPrivateCloudExternalSubnet virtual_private_cloud_external_subnet.ClientService
+
+	VirtualPrivateCloudExternalSubnetGroup virtual_private_cloud_external_subnet_group.ClientService
 
 	VirtualPrivateCloudFloatingIP virtual_private_cloud_floating_ip.ClientService
 
@@ -588,6 +632,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.Deploy.SetTransport(transport)
 	c.DiscoveredHost.SetTransport(transport)
 	c.Disk.SetTransport(transport)
+	c.EcpLicense.SetTransport(transport)
 	c.ElfDataStore.SetTransport(transport)
 	c.ElfImage.SetTransport(transport)
 	c.ElfStoragePolicy.SetTransport(transport)
@@ -612,6 +657,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.LogServiceConfig.SetTransport(transport)
 	c.Metrics.SetTransport(transport)
 	c.NamespaceGroup.SetTransport(transport)
+	c.NetworkPolicyRuleService.SetTransport(transport)
 	c.NfsExport.SetTransport(transport)
 	c.NfsInode.SetTransport(transport)
 	c.Nic.SetTransport(transport)
@@ -623,12 +669,18 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.Observability.SetTransport(transport)
 	c.Organization.SetTransport(transport)
 	c.Ovf.SetTransport(transport)
+	c.PciDevice.SetTransport(transport)
 	c.PmemDimm.SetTransport(transport)
 	c.RackTopo.SetTransport(transport)
+	c.ReplicaVM.SetTransport(transport)
+	c.ReplicationPlan.SetTransport(transport)
+	c.ReplicationService.SetTransport(transport)
 	c.ReportTask.SetTransport(transport)
 	c.ReportTemplate.SetTransport(transport)
+	c.ResourceChange.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)
 	c.SecurityPolicy.SetTransport(transport)
+	c.SMTPServer.SetTransport(transport)
 	c.SnapshotGroup.SetTransport(transport)
 	c.SnapshotPlan.SetTransport(transport)
 	c.SnapshotPlanTask.SetTransport(transport)
@@ -649,7 +701,10 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.View.SetTransport(transport)
 	c.VirtualPrivateCloud.SetTransport(transport)
 	c.VirtualPrivateCloudClusterBinding.SetTransport(transport)
+	c.VirtualPrivateCloudEdgeGateway.SetTransport(transport)
+	c.VirtualPrivateCloudEdgeGatewayGroup.SetTransport(transport)
 	c.VirtualPrivateCloudExternalSubnet.SetTransport(transport)
+	c.VirtualPrivateCloudExternalSubnetGroup.SetTransport(transport)
 	c.VirtualPrivateCloudFloatingIP.SetTransport(transport)
 	c.VirtualPrivateCloudNatGateway.SetTransport(transport)
 	c.VirtualPrivateCloudRouteTable.SetTransport(transport)

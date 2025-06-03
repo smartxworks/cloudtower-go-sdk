@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -24,6 +25,12 @@ type VdsCreationWithMigrateVlanParams struct {
 	// vlan
 	// Required: true
 	Vlan *VdsCreationWithMigrateVlanParamsAO1Vlan `json:"vlan"`
+
+	MarshalOpts *VdsCreationWithMigrateVlanParamsMarshalOpts `json:"-"`
+}
+
+type VdsCreationWithMigrateVlanParamsMarshalOpts struct {
+	Vlan_Explicit_Null_When_Empty bool
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -57,17 +64,31 @@ func (m VdsCreationWithMigrateVlanParams) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	_parts = append(_parts, aO0)
-	var dataAO1 struct {
-		Vlan *VdsCreationWithMigrateVlanParamsAO1Vlan `json:"vlan"`
-	}
+	var b bytes.Buffer
+	b.WriteString("{")
+	first := true
 
-	dataAO1.Vlan = m.Vlan
-
-	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
-	if errAO1 != nil {
-		return nil, errAO1
+	// handle nullable field vlan
+	if m.Vlan != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan\":")
+		bytes, err := swag.WriteJSON(m.Vlan)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Vlan_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan\":null")
+		first = false
 	}
-	_parts = append(_parts, jsonDataAO1)
+	b.WriteString("}")
+	_parts = append(_parts, b.Bytes())
 	return swag.ConcatJSON(_parts...), nil
 }
 
@@ -185,6 +206,124 @@ type VdsCreationWithMigrateVlanParamsAO1Vlan struct {
 	// vlan id
 	// Required: true
 	VlanID *int32 `json:"vlan_id"`
+
+	MarshalOpts *VdsCreationWithMigrateVlanParamsAO1VlanMarshalOpts `json:"-"`
+}
+
+type VdsCreationWithMigrateVlanParamsAO1VlanMarshalOpts struct {
+	ExtraIP_Explicit_Null_When_Empty bool
+
+	GatewayIP_Explicit_Null_When_Empty bool
+
+	GatewaySubnetmask_Explicit_Null_When_Empty bool
+
+	Subnetmask_Explicit_Null_When_Empty bool
+
+	VlanID_Explicit_Null_When_Empty bool
+}
+
+func (m VdsCreationWithMigrateVlanParamsAO1Vlan) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field extra_ip without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"extra_ip\":")
+		bytes, err := swag.WriteJSON(m.ExtraIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field gateway_ip
+	if m.GatewayIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway_ip\":")
+		bytes, err := swag.WriteJSON(m.GatewayIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.GatewayIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway_ip\":null")
+		first = false
+	}
+
+	// handle nullable field gateway_subnetmask
+	if m.GatewaySubnetmask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway_subnetmask\":")
+		bytes, err := swag.WriteJSON(m.GatewaySubnetmask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.GatewaySubnetmask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"gateway_subnetmask\":null")
+		first = false
+	}
+
+	// handle nullable field subnetmask
+	if m.Subnetmask != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"subnetmask\":")
+		bytes, err := swag.WriteJSON(m.Subnetmask)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Subnetmask_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"subnetmask\":null")
+		first = false
+	}
+
+	// handle nullable field vlan_id
+	if m.VlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_id\":")
+		bytes, err := swag.WriteJSON(m.VlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vlan_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this vds creation with migrate vlan params a o1 vlan
@@ -318,6 +457,64 @@ type VdsCreationWithMigrateVlanParamsAO1VlanExtraIPItems0 struct {
 	// management ip
 	// Required: true
 	ManagementIP *string `json:"management_ip"`
+
+	MarshalOpts *VdsCreationWithMigrateVlanParamsAO1VlanExtraIPItems0MarshalOpts `json:"-"`
+}
+
+type VdsCreationWithMigrateVlanParamsAO1VlanExtraIPItems0MarshalOpts struct {
+	HostID_Explicit_Null_When_Empty bool
+
+	ManagementIP_Explicit_Null_When_Empty bool
+}
+
+func (m VdsCreationWithMigrateVlanParamsAO1VlanExtraIPItems0) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field host_id
+	if m.HostID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_id\":")
+		bytes, err := swag.WriteJSON(m.HostID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"host_id\":null")
+		first = false
+	}
+
+	// handle nullable field management_ip
+	if m.ManagementIP != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_ip\":")
+		bytes, err := swag.WriteJSON(m.ManagementIP)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ManagementIP_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"management_ip\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this vds creation with migrate vlan params a o1 vlan extra IP items0

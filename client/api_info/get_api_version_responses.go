@@ -11,6 +11,8 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
 )
 
 // GetAPIVersionReader is a Reader for the GetAPIVersion structure.
@@ -24,7 +26,7 @@ func (o *GetAPIVersionReader) ReadResponse(response runtime.ClientResponse, cons
 	case 200:
 		result := NewGetAPIVersionOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return result, nil
 	default:

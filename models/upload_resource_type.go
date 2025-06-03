@@ -68,6 +68,9 @@ const (
 
 	// UploadResourceTypeVMVOLUMERAW captures enum value "VM_VOLUME_RAW"
 	UploadResourceTypeVMVOLUMERAW UploadResourceType = "VM_VOLUME_RAW"
+
+	// UploadResourceTypeVMVOLUMEVMDK captures enum value "VM_VOLUME_VMDK"
+	UploadResourceTypeVMVOLUMEVMDK UploadResourceType = "VM_VOLUME_VMDK"
 )
 
 // for schema
@@ -75,7 +78,7 @@ var uploadResourceTypeEnum []interface{}
 
 func init() {
 	var res []UploadResourceType
-	if err := json.Unmarshal([]byte(`["CLOUDTOWER_APPLICATION_PACKAGE","CLOUDTOWER_K8S_APP_PACKAGE","CLUSTER_IMAGE","CLUSTER_IMAGE_META","CONTENT_LIBRARY_IMAGE","ELF_IMAGE","EVEROUTE_PACKAGE","HOST_PLUGIN_PACKAGE","MONITOR_IMAGE","OVF","SVT_IMAGE","VM_VOLUME_QCOW2","VM_VOLUME_RAW"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CLOUDTOWER_APPLICATION_PACKAGE","CLOUDTOWER_K8S_APP_PACKAGE","CLUSTER_IMAGE","CLUSTER_IMAGE_META","CONTENT_LIBRARY_IMAGE","ELF_IMAGE","EVEROUTE_PACKAGE","HOST_PLUGIN_PACKAGE","MONITOR_IMAGE","OVF","SVT_IMAGE","VM_VOLUME_QCOW2","VM_VOLUME_RAW","VM_VOLUME_VMDK"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

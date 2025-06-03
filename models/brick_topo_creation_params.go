@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -47,6 +48,190 @@ type BrickTopoCreationParams struct {
 
 	// tag position in brick
 	TagPositionInBrick []*NestedTagPosition `json:"tag_position_in_brick,omitempty"`
+
+	MarshalOpts *BrickTopoCreationParamsMarshalOpts `json:"-"`
+}
+
+type BrickTopoCreationParamsMarshalOpts struct {
+	Capacity_Explicit_Null_When_Empty bool
+
+	ClusterID_Explicit_Null_When_Empty bool
+
+	Height_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
+
+	NodeTopoes_Explicit_Null_When_Empty bool
+
+	Position_Explicit_Null_When_Empty bool
+
+	RackTopoID_Explicit_Null_When_Empty bool
+
+	TagPositionInBrick_Explicit_Null_When_Empty bool
+}
+
+func (m BrickTopoCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field capacity
+	if m.Capacity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"capacity\":")
+		bytes, err := swag.WriteJSON(m.Capacity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Capacity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"capacity\":null")
+		first = false
+	}
+
+	// handle nullable field cluster_id
+	if m.ClusterID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":")
+		bytes, err := swag.WriteJSON(m.ClusterID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ClusterID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field height
+	if m.Height != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"height\":")
+		bytes, err := swag.WriteJSON(m.Height)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Height_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"height\":null")
+		first = false
+	}
+
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field node_topoes
+	if m.NodeTopoes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"node_topoes\":")
+		bytes, err := swag.WriteJSON(m.NodeTopoes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NodeTopoes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"node_topoes\":null")
+		first = false
+	}
+
+	// handle nullable field position
+	if m.Position != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"position\":")
+		bytes, err := swag.WriteJSON(m.Position)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Position_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"position\":null")
+		first = false
+	}
+
+	// handle nullable field rack_topo_id
+	if m.RackTopoID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rack_topo_id\":")
+		bytes, err := swag.WriteJSON(m.RackTopoID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RackTopoID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"rack_topo_id\":null")
+		first = false
+	}
+
+	// handle non nullable field tag_position_in_brick with omitempty
+	if !swag.IsZero(m.TagPositionInBrick) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"tag_position_in_brick\":")
+		bytes, err := swag.WriteJSON(m.TagPositionInBrick)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this brick topo creation params
