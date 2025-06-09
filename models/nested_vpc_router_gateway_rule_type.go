@@ -6,7 +6,9 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -25,6 +27,83 @@ type NestedVpcRouterGatewayRuleType struct {
 
 	// nexthop
 	Nexthop *string `json:"nexthop,omitempty"`
+
+	// nexthops
+	Nexthops []*NestedVpcRouterGatewayRuleNextHopsItemType `json:"nexthops,omitempty"`
+
+	MarshalOpts *NestedVpcRouterGatewayRuleTypeMarshalOpts `json:"-"`
+}
+
+type NestedVpcRouterGatewayRuleTypeMarshalOpts struct {
+	Dst_Explicit_Null_When_Empty bool
+
+	Nexthop_Explicit_Null_When_Empty bool
+
+	Nexthops_Explicit_Null_When_Empty bool
+}
+
+func (m NestedVpcRouterGatewayRuleType) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field dst
+	if m.Dst != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst\":")
+		bytes, err := swag.WriteJSON(m.Dst)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Dst_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst\":null")
+		first = false
+	}
+
+	// handle nullable field nexthop
+	if m.Nexthop != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nexthop\":")
+		bytes, err := swag.WriteJSON(m.Nexthop)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Nexthop_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nexthop\":null")
+		first = false
+	}
+
+	// handle non nullable field nexthops with omitempty
+	if !swag.IsZero(m.Nexthops) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nexthops\":")
+		bytes, err := swag.WriteJSON(m.Nexthops)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested vpc router gateway rule type
@@ -32,6 +111,10 @@ func (m *NestedVpcRouterGatewayRuleType) Validate(formats strfmt.Registry) error
 	var res []error
 
 	if err := m.validateDst(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNexthops(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -50,8 +133,63 @@ func (m *NestedVpcRouterGatewayRuleType) validateDst(formats strfmt.Registry) er
 	return nil
 }
 
-// ContextValidate validates this nested vpc router gateway rule type based on context it is used
+func (m *NestedVpcRouterGatewayRuleType) validateNexthops(formats strfmt.Registry) error {
+	if swag.IsZero(m.Nexthops) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Nexthops); i++ {
+		if swag.IsZero(m.Nexthops[i]) { // not required
+			continue
+		}
+
+		if m.Nexthops[i] != nil {
+			if err := m.Nexthops[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("nexthops" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("nexthops" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this nested vpc router gateway rule type based on the context it is used
 func (m *NestedVpcRouterGatewayRuleType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateNexthops(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NestedVpcRouterGatewayRuleType) contextValidateNexthops(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Nexthops); i++ {
+
+		if m.Nexthops[i] != nil {
+			if err := m.Nexthops[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("nexthops" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("nexthops" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

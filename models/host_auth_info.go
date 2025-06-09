@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/strfmt"
@@ -22,6 +23,64 @@ type HostAuthInfo struct {
 
 	// root user password
 	RootUserPassword *string `json:"root_user_password,omitempty"`
+
+	MarshalOpts *HostAuthInfoMarshalOpts `json:"-"`
+}
+
+type HostAuthInfoMarshalOpts struct {
+	DefaultUserPassword_Explicit_Null_When_Empty bool
+
+	RootUserPassword_Explicit_Null_When_Empty bool
+}
+
+func (m HostAuthInfo) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field default_user_password
+	if m.DefaultUserPassword != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_user_password\":")
+		bytes, err := swag.WriteJSON(m.DefaultUserPassword)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultUserPassword_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_user_password\":null")
+		first = false
+	}
+
+	// handle nullable field root_user_password
+	if m.RootUserPassword != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"root_user_password\":")
+		bytes, err := swag.WriteJSON(m.RootUserPassword)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RootUserPassword_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"root_user_password\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this host auth info

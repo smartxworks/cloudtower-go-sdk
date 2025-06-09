@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -28,6 +29,86 @@ type DisassociateSystemServiceFromObsServiceResult struct {
 	// result
 	// Required: true
 	Result *DisassociateSystemServiceFromObsServiceResultType `json:"result"`
+
+	MarshalOpts *DisassociateSystemServiceFromObsServiceResultMarshalOpts `json:"-"`
+}
+
+type DisassociateSystemServiceFromObsServiceResultMarshalOpts struct {
+	ErrorCode_Explicit_Null_When_Empty bool
+
+	ErrorMessage_Explicit_Null_When_Empty bool
+
+	Result_Explicit_Null_When_Empty bool
+}
+
+func (m DisassociateSystemServiceFromObsServiceResult) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field errorCode
+	if m.ErrorCode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"errorCode\":")
+		bytes, err := swag.WriteJSON(m.ErrorCode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ErrorCode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"errorCode\":null")
+		first = false
+	}
+
+	// handle nullable field errorMessage
+	if m.ErrorMessage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"errorMessage\":")
+		bytes, err := swag.WriteJSON(m.ErrorMessage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ErrorMessage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"errorMessage\":null")
+		first = false
+	}
+
+	// handle nullable field result
+	if m.Result != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"result\":")
+		bytes, err := swag.WriteJSON(m.Result)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Result_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"result\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this disassociate system service from obs service result

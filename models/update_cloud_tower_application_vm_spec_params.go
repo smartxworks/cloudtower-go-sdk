@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type UpdateCloudTowerApplicationVMSpecParams struct {
 	// where
 	// Required: true
 	Where *CloudTowerApplicationWhereUniqueInput `json:"where"`
+
+	MarshalOpts *UpdateCloudTowerApplicationVMSpecParamsMarshalOpts `json:"-"`
+}
+
+type UpdateCloudTowerApplicationVMSpecParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+
+	Where_Explicit_Null_When_Empty bool
+}
+
+func (m UpdateCloudTowerApplicationVMSpecParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field data
+	if m.Data != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Data_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":null")
+		first = false
+	}
+
+	// handle nullable field where
+	if m.Where != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":")
+		bytes, err := swag.WriteJSON(m.Where)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"where\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this update cloud tower application Vm spec params
@@ -162,6 +221,42 @@ type UpdateCloudTowerApplicationVMSpecParamsData struct {
 	// vm spec
 	// Required: true
 	VMSpec *ApplicationVMSpecDefinition `json:"vmSpec"`
+
+	MarshalOpts *UpdateCloudTowerApplicationVMSpecParamsDataMarshalOpts `json:"-"`
+}
+
+type UpdateCloudTowerApplicationVMSpecParamsDataMarshalOpts struct {
+	VMSpec_Explicit_Null_When_Empty bool
+}
+
+func (m UpdateCloudTowerApplicationVMSpecParamsData) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field vmSpec
+	if m.VMSpec != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmSpec\":")
+		bytes, err := swag.WriteJSON(m.VMSpec)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMSpec_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vmSpec\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this update cloud tower application VM spec params data

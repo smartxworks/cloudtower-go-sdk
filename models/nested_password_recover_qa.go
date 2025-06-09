@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -26,6 +27,58 @@ type NestedPasswordRecoverQa struct {
 
 	// items
 	Items []*NestedPasswordReoverQaItem `json:"items,omitempty"`
+
+	MarshalOpts *NestedPasswordRecoverQaMarshalOpts `json:"-"`
+}
+
+type NestedPasswordRecoverQaMarshalOpts struct {
+	Enabled_Explicit_Null_When_Empty bool
+
+	Items_Explicit_Null_When_Empty bool
+}
+
+func (m NestedPasswordRecoverQa) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field enabled
+	if m.Enabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":")
+		bytes, err := swag.WriteJSON(m.Enabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Enabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enabled\":null")
+		first = false
+	}
+
+	// handle non nullable field items with omitempty
+	if !swag.IsZero(m.Items) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"items\":")
+		bytes, err := swag.WriteJSON(m.Items)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested password recover qa
