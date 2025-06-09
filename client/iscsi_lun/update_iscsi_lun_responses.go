@@ -26,25 +26,25 @@ func (o *UpdateIscsiLunReader) ReadResponse(response runtime.ClientResponse, con
 	case 200:
 		result := NewUpdateIscsiLunOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return result, nil
 	case 400:
 		result := NewUpdateIscsiLunBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 404:
 		result := NewUpdateIscsiLunNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 500:
 		result := NewUpdateIscsiLunInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	default:

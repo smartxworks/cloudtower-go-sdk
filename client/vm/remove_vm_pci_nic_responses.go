@@ -26,31 +26,31 @@ func (o *RemoveVMPciNicReader) ReadResponse(response runtime.ClientResponse, con
 	case 200:
 		result := NewRemoveVMPciNicOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return result, nil
 	case 304:
 		result := NewRemoveVMPciNicNotModified()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 400:
 		result := NewRemoveVMPciNicBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 404:
 		result := NewRemoveVMPciNicNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 500:
 		result := NewRemoveVMPciNicInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	default:

@@ -26,25 +26,25 @@ func (o *CloneVMTemplateFromVMReader) ReadResponse(response runtime.ClientRespon
 	case 200:
 		result := NewCloneVMTemplateFromVMOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return result, nil
 	case 400:
 		result := NewCloneVMTemplateFromVMBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 404:
 		result := NewCloneVMTemplateFromVMNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 500:
 		result := NewCloneVMTemplateFromVMInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	default:

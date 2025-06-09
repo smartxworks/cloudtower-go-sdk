@@ -26,25 +26,25 @@ func (o *GetElfDataStoresConnectionReader) ReadResponse(response runtime.ClientR
 	case 200:
 		result := NewGetElfDataStoresConnectionOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return result, nil
 	case 400:
 		result := NewGetElfDataStoresConnectionBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 404:
 		result := NewGetElfDataStoresConnectionNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 500:
 		result := NewGetElfDataStoresConnectionInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	default:

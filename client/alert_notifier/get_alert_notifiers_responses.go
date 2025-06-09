@@ -26,25 +26,25 @@ func (o *GetAlertNotifiersReader) ReadResponse(response runtime.ClientResponse, 
 	case 200:
 		result := NewGetAlertNotifiersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return result, nil
 	case 400:
 		result := NewGetAlertNotifiersBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 404:
 		result := NewGetAlertNotifiersNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 500:
 		result := NewGetAlertNotifiersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	default:

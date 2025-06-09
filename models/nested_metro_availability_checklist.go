@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -42,6 +43,152 @@ type NestedMetroAvailabilityChecklist struct {
 	// zone and zone
 	// Required: true
 	ZoneAndZone *NestedMetroCheckResult `json:"zoneAndZone"`
+
+	MarshalOpts *NestedMetroAvailabilityChecklistMarshalOpts `json:"-"`
+}
+
+type NestedMetroAvailabilityChecklistMarshalOpts struct {
+	PrimaryZone_Explicit_Null_When_Empty bool
+
+	PrimaryZoneAndWitness_Explicit_Null_When_Empty bool
+
+	SecondaryZone_Explicit_Null_When_Empty bool
+
+	SecondaryZoneAndWitness_Explicit_Null_When_Empty bool
+
+	Witness_Explicit_Null_When_Empty bool
+
+	ZoneAndZone_Explicit_Null_When_Empty bool
+}
+
+func (m NestedMetroAvailabilityChecklist) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field primaryZone
+	if m.PrimaryZone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"primaryZone\":")
+		bytes, err := swag.WriteJSON(m.PrimaryZone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrimaryZone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"primaryZone\":null")
+		first = false
+	}
+
+	// handle nullable field primaryZoneAndWitness
+	if m.PrimaryZoneAndWitness != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"primaryZoneAndWitness\":")
+		bytes, err := swag.WriteJSON(m.PrimaryZoneAndWitness)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrimaryZoneAndWitness_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"primaryZoneAndWitness\":null")
+		first = false
+	}
+
+	// handle nullable field secondaryZone
+	if m.SecondaryZone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"secondaryZone\":")
+		bytes, err := swag.WriteJSON(m.SecondaryZone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecondaryZone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"secondaryZone\":null")
+		first = false
+	}
+
+	// handle nullable field secondaryZoneAndWitness
+	if m.SecondaryZoneAndWitness != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"secondaryZoneAndWitness\":")
+		bytes, err := swag.WriteJSON(m.SecondaryZoneAndWitness)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SecondaryZoneAndWitness_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"secondaryZoneAndWitness\":null")
+		first = false
+	}
+
+	// handle nullable field witness
+	if m.Witness != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"witness\":")
+		bytes, err := swag.WriteJSON(m.Witness)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Witness_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"witness\":null")
+		first = false
+	}
+
+	// handle nullable field zoneAndZone
+	if m.ZoneAndZone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zoneAndZone\":")
+		bytes, err := swag.WriteJSON(m.ZoneAndZone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ZoneAndZone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"zoneAndZone\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this nested metro availability checklist

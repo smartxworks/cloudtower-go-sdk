@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 
@@ -28,9 +29,139 @@ type BackupRestoreExecutionNetworkMapping struct {
 	// Required: true
 	DstVlanID *string `json:"dst_vlan_id"`
 
+	// source
+	Source *BackupRestoreExecutionNetworkInformation `json:"source,omitempty"`
+
 	// src vlan id
 	// Required: true
 	SrcVlanID *string `json:"src_vlan_id"`
+
+	// target
+	Target *BackupRestoreExecutionNetworkInformation `json:"target,omitempty"`
+
+	MarshalOpts *BackupRestoreExecutionNetworkMappingMarshalOpts `json:"-"`
+}
+
+type BackupRestoreExecutionNetworkMappingMarshalOpts struct {
+	Typename_Explicit_Null_When_Empty bool
+
+	DstVlanID_Explicit_Null_When_Empty bool
+
+	Source_Explicit_Null_When_Empty bool
+
+	SrcVlanID_Explicit_Null_When_Empty bool
+
+	Target_Explicit_Null_When_Empty bool
+}
+
+func (m BackupRestoreExecutionNetworkMapping) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field __typename
+	if m.Typename != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":")
+		bytes, err := swag.WriteJSON(m.Typename)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Typename_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle nullable field dst_vlan_id
+	if m.DstVlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst_vlan_id\":")
+		bytes, err := swag.WriteJSON(m.DstVlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DstVlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dst_vlan_id\":null")
+		first = false
+	}
+
+	// handle nullable field source
+	if m.Source != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"source\":")
+		bytes, err := swag.WriteJSON(m.Source)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Source_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"source\":null")
+		first = false
+	}
+
+	// handle nullable field src_vlan_id
+	if m.SrcVlanID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"src_vlan_id\":")
+		bytes, err := swag.WriteJSON(m.SrcVlanID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SrcVlanID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"src_vlan_id\":null")
+		first = false
+	}
+
+	// handle nullable field target
+	if m.Target != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target\":")
+		bytes, err := swag.WriteJSON(m.Target)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Target_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this backup restore execution network mapping
@@ -45,7 +176,15 @@ func (m *BackupRestoreExecutionNetworkMapping) Validate(formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.validateSource(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSrcVlanID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTarget(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -103,6 +242,25 @@ func (m *BackupRestoreExecutionNetworkMapping) validateDstVlanID(formats strfmt.
 	return nil
 }
 
+func (m *BackupRestoreExecutionNetworkMapping) validateSource(formats strfmt.Registry) error {
+	if swag.IsZero(m.Source) { // not required
+		return nil
+	}
+
+	if m.Source != nil {
+		if err := m.Source.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("source")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("source")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *BackupRestoreExecutionNetworkMapping) validateSrcVlanID(formats strfmt.Registry) error {
 
 	if err := validate.Required("src_vlan_id", "body", m.SrcVlanID); err != nil {
@@ -112,8 +270,72 @@ func (m *BackupRestoreExecutionNetworkMapping) validateSrcVlanID(formats strfmt.
 	return nil
 }
 
-// ContextValidate validates this backup restore execution network mapping based on context it is used
+func (m *BackupRestoreExecutionNetworkMapping) validateTarget(formats strfmt.Registry) error {
+	if swag.IsZero(m.Target) { // not required
+		return nil
+	}
+
+	if m.Target != nil {
+		if err := m.Target.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("target")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("target")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this backup restore execution network mapping based on the context it is used
 func (m *BackupRestoreExecutionNetworkMapping) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSource(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTarget(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *BackupRestoreExecutionNetworkMapping) contextValidateSource(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Source != nil {
+		if err := m.Source.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("source")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("source")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *BackupRestoreExecutionNetworkMapping) contextValidateTarget(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Target != nil {
+		if err := m.Target.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("target")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("target")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

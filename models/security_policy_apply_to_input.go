@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -25,6 +26,64 @@ type SecurityPolicyApplyToInput struct {
 	// target
 	// Required: true
 	Target *SecurityPolicyApplyToInputTarget `json:"target"`
+
+	MarshalOpts *SecurityPolicyApplyToInputMarshalOpts `json:"-"`
+}
+
+type SecurityPolicyApplyToInputMarshalOpts struct {
+	Communicable_Explicit_Null_When_Empty bool
+
+	Target_Explicit_Null_When_Empty bool
+}
+
+func (m SecurityPolicyApplyToInput) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field communicable
+	if m.Communicable != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"communicable\":")
+		bytes, err := swag.WriteJSON(m.Communicable)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Communicable_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"communicable\":null")
+		first = false
+	}
+
+	// handle nullable field target
+	if m.Target != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target\":")
+		bytes, err := swag.WriteJSON(m.Target)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Target_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"target\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this security policy apply to input

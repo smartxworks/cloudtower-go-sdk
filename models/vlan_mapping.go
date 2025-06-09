@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type VlanMapping struct {
 	// src vlan local id
 	// Required: true
 	SrcVlanLocalID *string `json:"src_vlan_local_id"`
+
+	MarshalOpts *VlanMappingMarshalOpts `json:"-"`
+}
+
+type VlanMappingMarshalOpts struct {
+	DestVlanLocalID_Explicit_Null_When_Empty bool
+
+	SrcVlanLocalID_Explicit_Null_When_Empty bool
+}
+
+func (m VlanMapping) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field dest_vlan_local_id
+	if m.DestVlanLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dest_vlan_local_id\":")
+		bytes, err := swag.WriteJSON(m.DestVlanLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DestVlanLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dest_vlan_local_id\":null")
+		first = false
+	}
+
+	// handle nullable field src_vlan_local_id
+	if m.SrcVlanLocalID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"src_vlan_local_id\":")
+		bytes, err := swag.WriteJSON(m.SrcVlanLocalID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SrcVlanLocalID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"src_vlan_local_id\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this vlan mapping

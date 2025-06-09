@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 	"strconv"
 
@@ -23,6 +24,36 @@ type VMSnapshotCreationParams struct {
 	// data
 	// Required: true
 	Data []*VMSnapshotCreationParamsData `json:"data"`
+
+	MarshalOpts *VMSnapshotCreationParamsMarshalOpts `json:"-"`
+}
+
+type VMSnapshotCreationParamsMarshalOpts struct {
+	Data_Explicit_Null_When_Empty bool
+}
+
+func (m VMSnapshotCreationParams) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle non nullable field data without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data\":")
+		bytes, err := swag.WriteJSON(m.Data)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this Vm snapshot creation params

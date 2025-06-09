@@ -26,25 +26,25 @@ func (o *DeleteVirtualPrivateCloudSecurityPolicyReader) ReadResponse(response ru
 	case 200:
 		result := NewDeleteVirtualPrivateCloudSecurityPolicyOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return result, nil
 	case 400:
 		result := NewDeleteVirtualPrivateCloudSecurityPolicyBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 404:
 		result := NewDeleteVirtualPrivateCloudSecurityPolicyNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	case 500:
 		result := NewDeleteVirtualPrivateCloudSecurityPolicyInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
+			return nil, models.NewUnexpectedError(response, err)
 		}
 		return nil, result
 	default:

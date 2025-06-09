@@ -39,6 +39,9 @@ const (
 	// BackupRestorePointCreationFAILOVER captures enum value "FAILOVER"
 	BackupRestorePointCreationFAILOVER BackupRestorePointCreation = "FAILOVER"
 
+	// BackupRestorePointCreationFAILOVERTEST captures enum value "FAILOVER_TEST"
+	BackupRestorePointCreationFAILOVERTEST BackupRestorePointCreation = "FAILOVER_TEST"
+
 	// BackupRestorePointCreationMANUAL captures enum value "MANUAL"
 	BackupRestorePointCreationMANUAL BackupRestorePointCreation = "MANUAL"
 )
@@ -48,7 +51,7 @@ var backupRestorePointCreationEnum []interface{}
 
 func init() {
 	var res []BackupRestorePointCreation
-	if err := json.Unmarshal([]byte(`["AUTO","FAILBACK","FAILOVER","MANUAL"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["AUTO","FAILBACK","FAILOVER","FAILOVER_TEST","MANUAL"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

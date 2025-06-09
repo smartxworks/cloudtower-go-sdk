@@ -36,6 +36,9 @@ const (
 	// TimeUnitHOUR captures enum value "HOUR"
 	TimeUnitHOUR TimeUnit = "HOUR"
 
+	// TimeUnitMINUTE captures enum value "MINUTE"
+	TimeUnitMINUTE TimeUnit = "MINUTE"
+
 	// TimeUnitMONTH captures enum value "MONTH"
 	TimeUnitMONTH TimeUnit = "MONTH"
 )
@@ -45,7 +48,7 @@ var timeUnitEnum []interface{}
 
 func init() {
 	var res []TimeUnit
-	if err := json.Unmarshal([]byte(`["DAY","HOUR","MONTH"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["DAY","HOUR","MINUTE","MONTH"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -26,6 +27,64 @@ type ClusterStorageInfoEcConfig struct {
 	// m
 	// Required: true
 	M *int32 `json:"m"`
+
+	MarshalOpts *ClusterStorageInfoEcConfigMarshalOpts `json:"-"`
+}
+
+type ClusterStorageInfoEcConfigMarshalOpts struct {
+	K_Explicit_Null_When_Empty bool
+
+	M_Explicit_Null_When_Empty bool
+}
+
+func (m ClusterStorageInfoEcConfig) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field k
+	if m.K != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"k\":")
+		bytes, err := swag.WriteJSON(m.K)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.K_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"k\":null")
+		first = false
+	}
+
+	// handle nullable field m
+	if m.M != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"m\":")
+		bytes, err := swag.WriteJSON(m.M)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.M_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"m\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this cluster storage info ec config

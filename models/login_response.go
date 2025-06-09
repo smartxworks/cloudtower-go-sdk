@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
 
 	"github.com/go-openapi/errors"
@@ -22,6 +23,42 @@ type LoginResponse struct {
 	// token
 	// Required: true
 	Token *string `json:"token"`
+
+	MarshalOpts *LoginResponseMarshalOpts `json:"-"`
+}
+
+type LoginResponseMarshalOpts struct {
+	Token_Explicit_Null_When_Empty bool
+}
+
+func (m LoginResponse) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field token
+	if m.Token != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"token\":")
+		bytes, err := swag.WriteJSON(m.Token)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Token_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"token\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
 }
 
 // Validate validates this login response
