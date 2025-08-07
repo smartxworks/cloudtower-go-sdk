@@ -66,6 +66,9 @@ type DeleteConsistencyGroupSnapshotParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.ConsistencyGroupSnapshotDeletionParams
 
@@ -144,6 +147,17 @@ func (o *DeleteConsistencyGroupSnapshotParams) SetContentLanguage(contentLanguag
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete consistency group snapshot params
+func (o *DeleteConsistencyGroupSnapshotParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteConsistencyGroupSnapshotParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete consistency group snapshot params
+func (o *DeleteConsistencyGroupSnapshotParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete consistency group snapshot params
 func (o *DeleteConsistencyGroupSnapshotParams) WithRequestBody(requestBody *models.ConsistencyGroupSnapshotDeletionParams) *DeleteConsistencyGroupSnapshotParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteConsistencyGroupSnapshotParams) WriteToRequest(r runtime.ClientRe
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

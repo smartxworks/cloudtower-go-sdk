@@ -66,6 +66,9 @@ type InstallVmtoolsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.InstallVmtoolsParams
 
@@ -144,6 +147,17 @@ func (o *InstallVmtoolsParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the install vmtools params
+func (o *InstallVmtoolsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *InstallVmtoolsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the install vmtools params
+func (o *InstallVmtoolsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the install vmtools params
 func (o *InstallVmtoolsParams) WithRequestBody(requestBody *models.InstallVmtoolsParams) *InstallVmtoolsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *InstallVmtoolsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

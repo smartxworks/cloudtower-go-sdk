@@ -102,11 +102,41 @@ const (
 	// IscsiTargetOrderByInputChapSecretDESC captures enum value "chap_secret_DESC"
 	IscsiTargetOrderByInputChapSecretDESC IscsiTargetOrderByInput = "chap_secret_DESC"
 
+	// IscsiTargetOrderByInputConfigurationAdaptiveASC captures enum value "configuration_adaptive_ASC"
+	IscsiTargetOrderByInputConfigurationAdaptiveASC IscsiTargetOrderByInput = "configuration_adaptive_ASC"
+
+	// IscsiTargetOrderByInputConfigurationAdaptiveDESC captures enum value "configuration_adaptive_DESC"
+	IscsiTargetOrderByInputConfigurationAdaptiveDESC IscsiTargetOrderByInput = "configuration_adaptive_DESC"
+
+	// IscsiTargetOrderByInputConfigurationMethodASC captures enum value "configuration_method_ASC"
+	IscsiTargetOrderByInputConfigurationMethodASC IscsiTargetOrderByInput = "configuration_method_ASC"
+
+	// IscsiTargetOrderByInputConfigurationMethodDESC captures enum value "configuration_method_DESC"
+	IscsiTargetOrderByInputConfigurationMethodDESC IscsiTargetOrderByInput = "configuration_method_DESC"
+
 	// IscsiTargetOrderByInputDescriptionASC captures enum value "description_ASC"
 	IscsiTargetOrderByInputDescriptionASC IscsiTargetOrderByInput = "description_ASC"
 
 	// IscsiTargetOrderByInputDescriptionDESC captures enum value "description_DESC"
 	IscsiTargetOrderByInputDescriptionDESC IscsiTargetOrderByInput = "description_DESC"
+
+	// IscsiTargetOrderByInputEckASC captures enum value "ec_k_ASC"
+	IscsiTargetOrderByInputEckASC IscsiTargetOrderByInput = "ec_k_ASC"
+
+	// IscsiTargetOrderByInputEckDESC captures enum value "ec_k_DESC"
+	IscsiTargetOrderByInputEckDESC IscsiTargetOrderByInput = "ec_k_DESC"
+
+	// IscsiTargetOrderByInputEcmASC captures enum value "ec_m_ASC"
+	IscsiTargetOrderByInputEcmASC IscsiTargetOrderByInput = "ec_m_ASC"
+
+	// IscsiTargetOrderByInputEcmDESC captures enum value "ec_m_DESC"
+	IscsiTargetOrderByInputEcmDESC IscsiTargetOrderByInput = "ec_m_DESC"
+
+	// IscsiTargetOrderByInputEncryptMethodASC captures enum value "encrypt_method_ASC"
+	IscsiTargetOrderByInputEncryptMethodASC IscsiTargetOrderByInput = "encrypt_method_ASC"
+
+	// IscsiTargetOrderByInputEncryptMethodDESC captures enum value "encrypt_method_DESC"
+	IscsiTargetOrderByInputEncryptMethodDESC IscsiTargetOrderByInput = "encrypt_method_DESC"
 
 	// IscsiTargetOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	IscsiTargetOrderByInputEntityAsyncStatusASC IscsiTargetOrderByInput = "entityAsyncStatus_ASC"
@@ -216,6 +246,12 @@ const (
 	// IscsiTargetOrderByInputIqnWhitelistDESC captures enum value "iqn_whitelist_DESC"
 	IscsiTargetOrderByInputIqnWhitelistDESC IscsiTargetOrderByInput = "iqn_whitelist_DESC"
 
+	// IscsiTargetOrderByInputIscsiLunsNumASC captures enum value "iscsi_luns_num_ASC"
+	IscsiTargetOrderByInputIscsiLunsNumASC IscsiTargetOrderByInput = "iscsi_luns_num_ASC"
+
+	// IscsiTargetOrderByInputIscsiLunsNumDESC captures enum value "iscsi_luns_num_DESC"
+	IscsiTargetOrderByInputIscsiLunsNumDESC IscsiTargetOrderByInput = "iscsi_luns_num_DESC"
+
 	// IscsiTargetOrderByInputLocalIDASC captures enum value "local_id_ASC"
 	IscsiTargetOrderByInputLocalIDASC IscsiTargetOrderByInput = "local_id_ASC"
 
@@ -228,11 +264,23 @@ const (
 	// IscsiTargetOrderByInputNameDESC captures enum value "name_DESC"
 	IscsiTargetOrderByInputNameDESC IscsiTargetOrderByInput = "name_DESC"
 
+	// IscsiTargetOrderByInputPrioritizedASC captures enum value "prioritized_ASC"
+	IscsiTargetOrderByInputPrioritizedASC IscsiTargetOrderByInput = "prioritized_ASC"
+
+	// IscsiTargetOrderByInputPrioritizedDESC captures enum value "prioritized_DESC"
+	IscsiTargetOrderByInputPrioritizedDESC IscsiTargetOrderByInput = "prioritized_DESC"
+
 	// IscsiTargetOrderByInputReplicaNumASC captures enum value "replica_num_ASC"
 	IscsiTargetOrderByInputReplicaNumASC IscsiTargetOrderByInput = "replica_num_ASC"
 
 	// IscsiTargetOrderByInputReplicaNumDESC captures enum value "replica_num_DESC"
 	IscsiTargetOrderByInputReplicaNumDESC IscsiTargetOrderByInput = "replica_num_DESC"
+
+	// IscsiTargetOrderByInputResiliencyTypeASC captures enum value "resiliency_type_ASC"
+	IscsiTargetOrderByInputResiliencyTypeASC IscsiTargetOrderByInput = "resiliency_type_ASC"
+
+	// IscsiTargetOrderByInputResiliencyTypeDESC captures enum value "resiliency_type_DESC"
+	IscsiTargetOrderByInputResiliencyTypeDESC IscsiTargetOrderByInput = "resiliency_type_DESC"
 
 	// IscsiTargetOrderByInputStripeNumASC captures enum value "stripe_num_ASC"
 	IscsiTargetOrderByInputStripeNumASC IscsiTargetOrderByInput = "stripe_num_ASC"
@@ -251,6 +299,12 @@ const (
 
 	// IscsiTargetOrderByInputThinProvisionDESC captures enum value "thin_provision_DESC"
 	IscsiTargetOrderByInputThinProvisionDESC IscsiTargetOrderByInput = "thin_provision_DESC"
+
+	// IscsiTargetOrderByInputUsageASC captures enum value "usage_ASC"
+	IscsiTargetOrderByInputUsageASC IscsiTargetOrderByInput = "usage_ASC"
+
+	// IscsiTargetOrderByInputUsageDESC captures enum value "usage_DESC"
+	IscsiTargetOrderByInputUsageDESC IscsiTargetOrderByInput = "usage_DESC"
 )
 
 // for schema
@@ -258,7 +312,7 @@ var iscsiTargetOrderByInputEnum []interface{}
 
 func init() {
 	var res []IscsiTargetOrderByInput
-	if err := json.Unmarshal([]byte(`["bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","chap_enabled_ASC","chap_enabled_DESC","chap_name_ASC","chap_name_DESC","chap_secret_ASC","chap_secret_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_use_ASC","external_use_DESC","id_ASC","id_DESC","initiator_chaps_ASC","initiator_chaps_DESC","internal_ASC","internal_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","ip_whitelist_ASC","ip_whitelist_DESC","iqn_name_ASC","iqn_name_DESC","iqn_whitelist_ASC","iqn_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","chap_enabled_ASC","chap_enabled_DESC","chap_name_ASC","chap_name_DESC","chap_secret_ASC","chap_secret_DESC","configuration_adaptive_ASC","configuration_adaptive_DESC","configuration_method_ASC","configuration_method_DESC","description_ASC","description_DESC","ec_k_ASC","ec_k_DESC","ec_m_ASC","ec_m_DESC","encrypt_method_ASC","encrypt_method_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_use_ASC","external_use_DESC","id_ASC","id_DESC","initiator_chaps_ASC","initiator_chaps_DESC","internal_ASC","internal_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","ip_whitelist_ASC","ip_whitelist_DESC","iqn_name_ASC","iqn_name_DESC","iqn_whitelist_ASC","iqn_whitelist_DESC","iscsi_luns_num_ASC","iscsi_luns_num_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","prioritized_ASC","prioritized_DESC","replica_num_ASC","replica_num_DESC","resiliency_type_ASC","resiliency_type_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","usage_ASC","usage_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

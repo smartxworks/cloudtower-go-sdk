@@ -66,6 +66,9 @@ type ClearSystemServiceAlertNotificationConfigParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.DisassociateSystemServiceFromObsServiceParams
 
@@ -144,6 +147,17 @@ func (o *ClearSystemServiceAlertNotificationConfigParams) SetContentLanguage(con
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the clear system service alert notification config params
+func (o *ClearSystemServiceAlertNotificationConfigParams) WithExternalCloudtowerID(externalCloudtowerID *string) *ClearSystemServiceAlertNotificationConfigParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the clear system service alert notification config params
+func (o *ClearSystemServiceAlertNotificationConfigParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the clear system service alert notification config params
 func (o *ClearSystemServiceAlertNotificationConfigParams) WithRequestBody(requestBody *models.DisassociateSystemServiceFromObsServiceParams) *ClearSystemServiceAlertNotificationConfigParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *ClearSystemServiceAlertNotificationConfigParams) WriteToRequest(r runti
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

@@ -66,6 +66,9 @@ type GetAlertNotifiersConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetAlertNotifiersConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetAlertNotifiersConnectionParams) SetContentLanguage(contentLanguage *
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get alert notifiers connection params
+func (o *GetAlertNotifiersConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetAlertNotifiersConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get alert notifiers connection params
+func (o *GetAlertNotifiersConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get alert notifiers connection params
 func (o *GetAlertNotifiersConnectionParams) WithRequestBody(requestBody *models.GetAlertNotifiersConnectionRequestBody) *GetAlertNotifiersConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetAlertNotifiersConnectionParams) WriteToRequest(r runtime.ClientReque
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

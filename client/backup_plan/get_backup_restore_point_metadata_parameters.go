@@ -61,6 +61,9 @@ func NewGetBackupRestorePointMetadataParamsWithHTTPClient(client *http.Client) *
 */
 type GetBackupRestorePointMetadataParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetBackupRestorePointMetadataRequestBody
 
@@ -117,6 +120,17 @@ func (o *GetBackupRestorePointMetadataParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get backup restore point metadata params
+func (o *GetBackupRestorePointMetadataParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetBackupRestorePointMetadataParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get backup restore point metadata params
+func (o *GetBackupRestorePointMetadataParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get backup restore point metadata params
 func (o *GetBackupRestorePointMetadataParams) WithRequestBody(requestBody *models.GetBackupRestorePointMetadataRequestBody) *GetBackupRestorePointMetadataParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetBackupRestorePointMetadataParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

@@ -66,6 +66,9 @@ type MigrateVMParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMMigrateParams
 
@@ -144,6 +147,17 @@ func (o *MigrateVMParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the migrate Vm params
+func (o *MigrateVMParams) WithExternalCloudtowerID(externalCloudtowerID *string) *MigrateVMParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the migrate Vm params
+func (o *MigrateVMParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the migrate Vm params
 func (o *MigrateVMParams) WithRequestBody(requestBody *models.VMMigrateParams) *MigrateVMParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *MigrateVMParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

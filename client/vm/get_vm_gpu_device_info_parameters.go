@@ -66,6 +66,9 @@ type GetVMGpuDeviceInfoParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVmsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetVMGpuDeviceInfoParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Vm gpu device info params
+func (o *GetVMGpuDeviceInfoParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVMGpuDeviceInfoParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Vm gpu device info params
+func (o *GetVMGpuDeviceInfoParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get Vm gpu device info params
 func (o *GetVMGpuDeviceInfoParams) WithRequestBody(requestBody *models.GetVmsRequestBody) *GetVMGpuDeviceInfoParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVMGpuDeviceInfoParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

@@ -66,6 +66,9 @@ type AddLabelsToResourcesParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.AddLabelsToResourcesParams
 
@@ -144,6 +147,17 @@ func (o *AddLabelsToResourcesParams) SetContentLanguage(contentLanguage *string)
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the add labels to resources params
+func (o *AddLabelsToResourcesParams) WithExternalCloudtowerID(externalCloudtowerID *string) *AddLabelsToResourcesParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the add labels to resources params
+func (o *AddLabelsToResourcesParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the add labels to resources params
 func (o *AddLabelsToResourcesParams) WithRequestBody(requestBody *models.AddLabelsToResourcesParams) *AddLabelsToResourcesParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *AddLabelsToResourcesParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

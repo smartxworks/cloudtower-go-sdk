@@ -66,6 +66,9 @@ type GetBackupRestoreExecutionsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetBackupRestoreExecutionsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetBackupRestoreExecutionsParams) SetContentLanguage(contentLanguage *s
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get backup restore executions params
+func (o *GetBackupRestoreExecutionsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetBackupRestoreExecutionsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get backup restore executions params
+func (o *GetBackupRestoreExecutionsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get backup restore executions params
 func (o *GetBackupRestoreExecutionsParams) WithRequestBody(requestBody *models.GetBackupRestoreExecutionsRequestBody) *GetBackupRestoreExecutionsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetBackupRestoreExecutionsParams) WriteToRequest(r runtime.ClientReques
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

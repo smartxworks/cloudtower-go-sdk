@@ -66,6 +66,9 @@ type GetUsbDevicesConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetUsbDevicesConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetUsbDevicesConnectionParams) SetContentLanguage(contentLanguage *stri
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get usb devices connection params
+func (o *GetUsbDevicesConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetUsbDevicesConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get usb devices connection params
+func (o *GetUsbDevicesConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get usb devices connection params
 func (o *GetUsbDevicesConnectionParams) WithRequestBody(requestBody *models.GetUsbDevicesConnectionRequestBody) *GetUsbDevicesConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetUsbDevicesConnectionParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

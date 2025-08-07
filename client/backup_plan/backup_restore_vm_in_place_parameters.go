@@ -66,6 +66,9 @@ type BackupRestoreVMInPlaceParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.BackupRestorePointRestoreInPlaceParams
 
@@ -144,6 +147,17 @@ func (o *BackupRestoreVMInPlaceParams) SetContentLanguage(contentLanguage *strin
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the backup restore Vm in place params
+func (o *BackupRestoreVMInPlaceParams) WithExternalCloudtowerID(externalCloudtowerID *string) *BackupRestoreVMInPlaceParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the backup restore Vm in place params
+func (o *BackupRestoreVMInPlaceParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the backup restore Vm in place params
 func (o *BackupRestoreVMInPlaceParams) WithRequestBody(requestBody *models.BackupRestorePointRestoreInPlaceParams) *BackupRestoreVMInPlaceParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *BackupRestoreVMInPlaceParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

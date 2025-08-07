@@ -61,6 +61,9 @@ func NewGetHostServicekMetricsParamsWithHTTPClient(client *http.Client) *GetHost
 */
 type GetHostServicekMetricsParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetHostServiceMetricInput
 
@@ -117,6 +120,17 @@ func (o *GetHostServicekMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get host servicek metrics params
+func (o *GetHostServicekMetricsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetHostServicekMetricsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get host servicek metrics params
+func (o *GetHostServicekMetricsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get host servicek metrics params
 func (o *GetHostServicekMetricsParams) WithRequestBody(requestBody *models.GetHostServiceMetricInput) *GetHostServicekMetricsParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetHostServicekMetricsParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

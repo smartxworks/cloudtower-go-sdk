@@ -245,6 +245,24 @@ type IscsiTargetWhereInput struct {
 	// bps wr not in
 	BpsWrNotIn []int64 `json:"bps_wr_not_in,omitempty"`
 
+	// business host groups every
+	BusinessHostGroupsEvery *BusinessHostGroupWhereInput `json:"business_host_groups_every,omitempty"`
+
+	// business host groups none
+	BusinessHostGroupsNone *BusinessHostGroupWhereInput `json:"business_host_groups_none,omitempty"`
+
+	// business host groups some
+	BusinessHostGroupsSome *BusinessHostGroupWhereInput `json:"business_host_groups_some,omitempty"`
+
+	// business hosts every
+	BusinessHostsEvery *BusinessHostWhereInput `json:"business_hosts_every,omitempty"`
+
+	// business hosts none
+	BusinessHostsNone *BusinessHostWhereInput `json:"business_hosts_none,omitempty"`
+
+	// business hosts some
+	BusinessHostsSome *BusinessHostWhereInput `json:"business_hosts_some,omitempty"`
+
 	// chap enabled
 	ChapEnabled *bool `json:"chap_enabled,omitempty"`
 
@@ -338,6 +356,24 @@ type IscsiTargetWhereInput struct {
 	// cluster
 	Cluster *ClusterWhereInput `json:"cluster,omitempty"`
 
+	// configuration adaptive
+	ConfigurationAdaptive *bool `json:"configuration_adaptive,omitempty"`
+
+	// configuration adaptive not
+	ConfigurationAdaptiveNot *bool `json:"configuration_adaptive_not,omitempty"`
+
+	// configuration method
+	ConfigurationMethod *ConfigurationMethod `json:"configuration_method,omitempty"`
+
+	// configuration method in
+	ConfigurationMethodIn []ConfigurationMethod `json:"configuration_method_in,omitempty"`
+
+	// configuration method not
+	ConfigurationMethodNot *ConfigurationMethod `json:"configuration_method_not,omitempty"`
+
+	// configuration method not in
+	ConfigurationMethodNotIn []ConfigurationMethod `json:"configuration_method_not_in,omitempty"`
+
 	// description
 	Description *string `json:"description,omitempty"`
 
@@ -379,6 +415,66 @@ type IscsiTargetWhereInput struct {
 
 	// description starts with
 	DescriptionStartsWith *string `json:"description_starts_with,omitempty"`
+
+	// ec k
+	Eck *int32 `json:"ec_k,omitempty"`
+
+	// ec k gt
+	EckGt *int32 `json:"ec_k_gt,omitempty"`
+
+	// ec k gte
+	EckGte *int32 `json:"ec_k_gte,omitempty"`
+
+	// ec k in
+	EckIn []int32 `json:"ec_k_in,omitempty"`
+
+	// ec k lt
+	EckLt *int32 `json:"ec_k_lt,omitempty"`
+
+	// ec k lte
+	EckLte *int32 `json:"ec_k_lte,omitempty"`
+
+	// ec k not
+	EckNot *int32 `json:"ec_k_not,omitempty"`
+
+	// ec k not in
+	EckNotIn []int32 `json:"ec_k_not_in,omitempty"`
+
+	// ec m
+	Ecm *int32 `json:"ec_m,omitempty"`
+
+	// ec m gt
+	EcmGt *int32 `json:"ec_m_gt,omitempty"`
+
+	// ec m gte
+	EcmGte *int32 `json:"ec_m_gte,omitempty"`
+
+	// ec m in
+	EcmIn []int32 `json:"ec_m_in,omitempty"`
+
+	// ec m lt
+	EcmLt *int32 `json:"ec_m_lt,omitempty"`
+
+	// ec m lte
+	EcmLte *int32 `json:"ec_m_lte,omitempty"`
+
+	// ec m not
+	EcmNot *int32 `json:"ec_m_not,omitempty"`
+
+	// ec m not in
+	EcmNotIn []int32 `json:"ec_m_not_in,omitempty"`
+
+	// encrypt method
+	EncryptMethod *EncryptMethod `json:"encrypt_method,omitempty"`
+
+	// encrypt method in
+	EncryptMethodIn []EncryptMethod `json:"encrypt_method_in,omitempty"`
+
+	// encrypt method not
+	EncryptMethodNot *EncryptMethod `json:"encrypt_method_not,omitempty"`
+
+	// encrypt method not in
+	EncryptMethodNotIn []EncryptMethod `json:"encrypt_method_not_in,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -812,6 +908,39 @@ type IscsiTargetWhereInput struct {
 	// iqn whitelist starts with
 	IqnWhitelistStartsWith *string `json:"iqn_whitelist_starts_with,omitempty"`
 
+	// iscsi connections every
+	IscsiConnectionsEvery *IscsiConnectionWhereInput `json:"iscsi_connections_every,omitempty"`
+
+	// iscsi connections none
+	IscsiConnectionsNone *IscsiConnectionWhereInput `json:"iscsi_connections_none,omitempty"`
+
+	// iscsi connections some
+	IscsiConnectionsSome *IscsiConnectionWhereInput `json:"iscsi_connections_some,omitempty"`
+
+	// iscsi luns num
+	IscsiLunsNum *int32 `json:"iscsi_luns_num,omitempty"`
+
+	// iscsi luns num gt
+	IscsiLunsNumGt *int32 `json:"iscsi_luns_num_gt,omitempty"`
+
+	// iscsi luns num gte
+	IscsiLunsNumGte *int32 `json:"iscsi_luns_num_gte,omitempty"`
+
+	// iscsi luns num in
+	IscsiLunsNumIn []int32 `json:"iscsi_luns_num_in,omitempty"`
+
+	// iscsi luns num lt
+	IscsiLunsNumLt *int32 `json:"iscsi_luns_num_lt,omitempty"`
+
+	// iscsi luns num lte
+	IscsiLunsNumLte *int32 `json:"iscsi_luns_num_lte,omitempty"`
+
+	// iscsi luns num not
+	IscsiLunsNumNot *int32 `json:"iscsi_luns_num_not,omitempty"`
+
+	// iscsi luns num not in
+	IscsiLunsNumNotIn []int32 `json:"iscsi_luns_num_not_in,omitempty"`
+
 	// labels every
 	LabelsEvery *LabelWhereInput `json:"labels_every,omitempty"`
 
@@ -914,6 +1043,12 @@ type IscsiTargetWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
+	// prioritized
+	Prioritized *bool `json:"prioritized,omitempty"`
+
+	// prioritized not
+	PrioritizedNot *bool `json:"prioritized_not,omitempty"`
+
 	// replica num
 	ReplicaNum *int32 `json:"replica_num,omitempty"`
 
@@ -937,6 +1072,18 @@ type IscsiTargetWhereInput struct {
 
 	// replica num not in
 	ReplicaNumNotIn []int32 `json:"replica_num_not_in,omitempty"`
+
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
+
+	// resiliency type in
+	ResiliencyTypeIn []ResiliencyType `json:"resiliency_type_in,omitempty"`
+
+	// resiliency type not
+	ResiliencyTypeNot *ResiliencyType `json:"resiliency_type_not,omitempty"`
+
+	// resiliency type not in
+	ResiliencyTypeNotIn []ResiliencyType `json:"resiliency_type_not_in,omitempty"`
 
 	// stripe num
 	StripeNum *int32 `json:"stripe_num,omitempty"`
@@ -991,6 +1138,18 @@ type IscsiTargetWhereInput struct {
 
 	// thin provision not
 	ThinProvisionNot *bool `json:"thin_provision_not,omitempty"`
+
+	// usage
+	Usage *IscsiTargetUsage `json:"usage,omitempty"`
+
+	// usage in
+	UsageIn []IscsiTargetUsage `json:"usage_in,omitempty"`
+
+	// usage not
+	UsageNot *IscsiTargetUsage `json:"usage_not,omitempty"`
+
+	// usage not in
+	UsageNotIn []IscsiTargetUsage `json:"usage_not_in,omitempty"`
 
 	MarshalOpts *IscsiTargetWhereInputMarshalOpts `json:"-"`
 }
@@ -1146,6 +1305,18 @@ type IscsiTargetWhereInputMarshalOpts struct {
 
 	BpsWrNotIn_Explicit_Null_When_Empty bool
 
+	BusinessHostGroupsEvery_Explicit_Null_When_Empty bool
+
+	BusinessHostGroupsNone_Explicit_Null_When_Empty bool
+
+	BusinessHostGroupsSome_Explicit_Null_When_Empty bool
+
+	BusinessHostsEvery_Explicit_Null_When_Empty bool
+
+	BusinessHostsNone_Explicit_Null_When_Empty bool
+
+	BusinessHostsSome_Explicit_Null_When_Empty bool
+
 	ChapEnabled_Explicit_Null_When_Empty bool
 
 	ChapEnabledNot_Explicit_Null_When_Empty bool
@@ -1208,6 +1379,18 @@ type IscsiTargetWhereInputMarshalOpts struct {
 
 	Cluster_Explicit_Null_When_Empty bool
 
+	ConfigurationAdaptive_Explicit_Null_When_Empty bool
+
+	ConfigurationAdaptiveNot_Explicit_Null_When_Empty bool
+
+	ConfigurationMethod_Explicit_Null_When_Empty bool
+
+	ConfigurationMethodIn_Explicit_Null_When_Empty bool
+
+	ConfigurationMethodNot_Explicit_Null_When_Empty bool
+
+	ConfigurationMethodNotIn_Explicit_Null_When_Empty bool
+
 	Description_Explicit_Null_When_Empty bool
 
 	DescriptionContains_Explicit_Null_When_Empty bool
@@ -1235,6 +1418,46 @@ type IscsiTargetWhereInputMarshalOpts struct {
 	DescriptionNotStartsWith_Explicit_Null_When_Empty bool
 
 	DescriptionStartsWith_Explicit_Null_When_Empty bool
+
+	Eck_Explicit_Null_When_Empty bool
+
+	EckGt_Explicit_Null_When_Empty bool
+
+	EckGte_Explicit_Null_When_Empty bool
+
+	EckIn_Explicit_Null_When_Empty bool
+
+	EckLt_Explicit_Null_When_Empty bool
+
+	EckLte_Explicit_Null_When_Empty bool
+
+	EckNot_Explicit_Null_When_Empty bool
+
+	EckNotIn_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
+	EcmGt_Explicit_Null_When_Empty bool
+
+	EcmGte_Explicit_Null_When_Empty bool
+
+	EcmIn_Explicit_Null_When_Empty bool
+
+	EcmLt_Explicit_Null_When_Empty bool
+
+	EcmLte_Explicit_Null_When_Empty bool
+
+	EcmNot_Explicit_Null_When_Empty bool
+
+	EcmNotIn_Explicit_Null_When_Empty bool
+
+	EncryptMethod_Explicit_Null_When_Empty bool
+
+	EncryptMethodIn_Explicit_Null_When_Empty bool
+
+	EncryptMethodNot_Explicit_Null_When_Empty bool
+
+	EncryptMethodNotIn_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -1524,6 +1747,28 @@ type IscsiTargetWhereInputMarshalOpts struct {
 
 	IqnWhitelistStartsWith_Explicit_Null_When_Empty bool
 
+	IscsiConnectionsEvery_Explicit_Null_When_Empty bool
+
+	IscsiConnectionsNone_Explicit_Null_When_Empty bool
+
+	IscsiConnectionsSome_Explicit_Null_When_Empty bool
+
+	IscsiLunsNum_Explicit_Null_When_Empty bool
+
+	IscsiLunsNumGt_Explicit_Null_When_Empty bool
+
+	IscsiLunsNumGte_Explicit_Null_When_Empty bool
+
+	IscsiLunsNumIn_Explicit_Null_When_Empty bool
+
+	IscsiLunsNumLt_Explicit_Null_When_Empty bool
+
+	IscsiLunsNumLte_Explicit_Null_When_Empty bool
+
+	IscsiLunsNumNot_Explicit_Null_When_Empty bool
+
+	IscsiLunsNumNotIn_Explicit_Null_When_Empty bool
+
 	LabelsEvery_Explicit_Null_When_Empty bool
 
 	LabelsNone_Explicit_Null_When_Empty bool
@@ -1592,6 +1837,10 @@ type IscsiTargetWhereInputMarshalOpts struct {
 
 	NameStartsWith_Explicit_Null_When_Empty bool
 
+	Prioritized_Explicit_Null_When_Empty bool
+
+	PrioritizedNot_Explicit_Null_When_Empty bool
+
 	ReplicaNum_Explicit_Null_When_Empty bool
 
 	ReplicaNumGt_Explicit_Null_When_Empty bool
@@ -1607,6 +1856,14 @@ type IscsiTargetWhereInputMarshalOpts struct {
 	ReplicaNumNot_Explicit_Null_When_Empty bool
 
 	ReplicaNumNotIn_Explicit_Null_When_Empty bool
+
+	ResiliencyType_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeIn_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeNot_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeNotIn_Explicit_Null_When_Empty bool
 
 	StripeNum_Explicit_Null_When_Empty bool
 
@@ -1643,6 +1900,14 @@ type IscsiTargetWhereInputMarshalOpts struct {
 	ThinProvision_Explicit_Null_When_Empty bool
 
 	ThinProvisionNot_Explicit_Null_When_Empty bool
+
+	Usage_Explicit_Null_When_Empty bool
+
+	UsageIn_Explicit_Null_When_Empty bool
+
+	UsageNot_Explicit_Null_When_Empty bool
+
+	UsageNotIn_Explicit_Null_When_Empty bool
 }
 
 func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
@@ -3025,6 +3290,126 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field business_host_groups_every
+	if m.BusinessHostGroupsEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups_every\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostGroupsEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroupsEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups_every\":null")
+		first = false
+	}
+
+	// handle nullable field business_host_groups_none
+	if m.BusinessHostGroupsNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups_none\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostGroupsNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroupsNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups_none\":null")
+		first = false
+	}
+
+	// handle nullable field business_host_groups_some
+	if m.BusinessHostGroupsSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups_some\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostGroupsSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroupsSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups_some\":null")
+		first = false
+	}
+
+	// handle nullable field business_hosts_every
+	if m.BusinessHostsEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts_every\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostsEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostsEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts_every\":null")
+		first = false
+	}
+
+	// handle nullable field business_hosts_none
+	if m.BusinessHostsNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts_none\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostsNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostsNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts_none\":null")
+		first = false
+	}
+
+	// handle nullable field business_hosts_some
+	if m.BusinessHostsSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts_some\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostsSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostsSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts_some\":null")
+		first = false
+	}
+
 	// handle nullable field chap_enabled
 	if m.ChapEnabled != nil {
 		if !first {
@@ -3621,6 +4006,114 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field configuration_adaptive
+	if m.ConfigurationAdaptive != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_adaptive\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationAdaptive)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationAdaptive_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_adaptive\":null")
+		first = false
+	}
+
+	// handle nullable field configuration_adaptive_not
+	if m.ConfigurationAdaptiveNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_adaptive_not\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationAdaptiveNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationAdaptiveNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_adaptive_not\":null")
+		first = false
+	}
+
+	// handle nullable field configuration_method
+	if m.ConfigurationMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method\":null")
+		first = false
+	}
+
+	// handle non nullable field configuration_method_in with omitempty
+	if !swag.IsZero(m.ConfigurationMethodIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method_in\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationMethodIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field configuration_method_not
+	if m.ConfigurationMethodNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method_not\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationMethodNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationMethodNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method_not\":null")
+		first = false
+	}
+
+	// handle non nullable field configuration_method_not_in with omitempty
+	if !swag.IsZero(m.ConfigurationMethodNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method_not_in\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationMethodNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field description
 	if m.Description != nil {
 		if !first {
@@ -3886,6 +4379,370 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"description_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_gt
+	if m.EckGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gt\":")
+		bytes, err := swag.WriteJSON(m.EckGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_gte
+	if m.EckGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gte\":")
+		bytes, err := swag.WriteJSON(m.EckGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_k_in with omitempty
+	if !swag.IsZero(m.EckIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_in\":")
+		bytes, err := swag.WriteJSON(m.EckIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_k_lt
+	if m.EckLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lt\":")
+		bytes, err := swag.WriteJSON(m.EckLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_lte
+	if m.EckLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lte\":")
+		bytes, err := swag.WriteJSON(m.EckLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lte\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_not
+	if m.EckNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not\":")
+		bytes, err := swag.WriteJSON(m.EckNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_k_not_in with omitempty
+	if !swag.IsZero(m.EckNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not_in\":")
+		bytes, err := swag.WriteJSON(m.EckNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_gt
+	if m.EcmGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gt\":")
+		bytes, err := swag.WriteJSON(m.EcmGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_gte
+	if m.EcmGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gte\":")
+		bytes, err := swag.WriteJSON(m.EcmGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_m_in with omitempty
+	if !swag.IsZero(m.EcmIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_in\":")
+		bytes, err := swag.WriteJSON(m.EcmIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_m_lt
+	if m.EcmLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lt\":")
+		bytes, err := swag.WriteJSON(m.EcmLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_lte
+	if m.EcmLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lte\":")
+		bytes, err := swag.WriteJSON(m.EcmLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lte\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_not
+	if m.EcmNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not\":")
+		bytes, err := swag.WriteJSON(m.EcmNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_m_not_in with omitempty
+	if !swag.IsZero(m.EcmNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not_in\":")
+		bytes, err := swag.WriteJSON(m.EcmNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field encrypt_method
+	if m.EncryptMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EncryptMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":null")
+		first = false
+	}
+
+	// handle non nullable field encrypt_method_in with omitempty
+	if !swag.IsZero(m.EncryptMethodIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method_in\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethodIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field encrypt_method_not
+	if m.EncryptMethodNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method_not\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethodNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EncryptMethodNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method_not\":null")
+		first = false
+	}
+
+	// handle non nullable field encrypt_method_not_in with omitempty
+	if !swag.IsZero(m.EncryptMethodNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method_not_in\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethodNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -6589,6 +7446,214 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field iscsi_connections_every
+	if m.IscsiConnectionsEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_connections_every\":")
+		bytes, err := swag.WriteJSON(m.IscsiConnectionsEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiConnectionsEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_connections_every\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_connections_none
+	if m.IscsiConnectionsNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_connections_none\":")
+		bytes, err := swag.WriteJSON(m.IscsiConnectionsNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiConnectionsNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_connections_none\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_connections_some
+	if m.IscsiConnectionsSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_connections_some\":")
+		bytes, err := swag.WriteJSON(m.IscsiConnectionsSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiConnectionsSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_connections_some\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_luns_num
+	if m.IscsiLunsNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunsNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunsNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_luns_num_gt
+	if m.IscsiLunsNumGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_gt\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunsNumGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunsNumGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_gt\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_luns_num_gte
+	if m.IscsiLunsNumGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_gte\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunsNumGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunsNumGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field iscsi_luns_num_in with omitempty
+	if !swag.IsZero(m.IscsiLunsNumIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_in\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunsNumIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field iscsi_luns_num_lt
+	if m.IscsiLunsNumLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_lt\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunsNumLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunsNumLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_lt\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_luns_num_lte
+	if m.IscsiLunsNumLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_lte\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunsNumLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunsNumLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_lte\":null")
+		first = false
+	}
+
+	// handle nullable field iscsi_luns_num_not
+	if m.IscsiLunsNumNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_not\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunsNumNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunsNumNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_not\":null")
+		first = false
+	}
+
+	// handle non nullable field iscsi_luns_num_not_in with omitempty
+	if !swag.IsZero(m.IscsiLunsNumNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_luns_num_not_in\":")
+		bytes, err := swag.WriteJSON(m.IscsiLunsNumNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field labels_every
 	if m.LabelsEvery != nil {
 		if !first {
@@ -7245,6 +8310,46 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field prioritized
+	if m.Prioritized != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":")
+		bytes, err := swag.WriteJSON(m.Prioritized)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Prioritized_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":null")
+		first = false
+	}
+
+	// handle nullable field prioritized_not
+	if m.PrioritizedNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized_not\":")
+		bytes, err := swag.WriteJSON(m.PrioritizedNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrioritizedNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized_not\":null")
+		first = false
+	}
+
 	// handle nullable field replica_num
 	if m.ReplicaNum != nil {
 		if !first {
@@ -7386,6 +8491,74 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 		}
 		b.WriteString("\"replica_num_not_in\":")
 		bytes, err := swag.WriteJSON(m.ReplicaNumNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
+		first = false
+	}
+
+	// handle non nullable field resiliency_type_in with omitempty
+	if !swag.IsZero(m.ResiliencyTypeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_in\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field resiliency_type_not
+	if m.ResiliencyTypeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyTypeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not\":null")
+		first = false
+	}
+
+	// handle non nullable field resiliency_type_not_in with omitempty
+	if !swag.IsZero(m.ResiliencyTypeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not_in\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeNotIn)
 		if err != nil {
 			return nil, err
 		}
@@ -7729,6 +8902,74 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field usage
+	if m.Usage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage\":")
+		bytes, err := swag.WriteJSON(m.Usage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Usage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage\":null")
+		first = false
+	}
+
+	// handle non nullable field usage_in with omitempty
+	if !swag.IsZero(m.UsageIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_in\":")
+		bytes, err := swag.WriteJSON(m.UsageIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field usage_not
+	if m.UsageNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not\":")
+		bytes, err := swag.WriteJSON(m.UsageNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UsageNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not\":null")
+		first = false
+	}
+
+	// handle non nullable field usage_not_in with omitempty
+	if !swag.IsZero(m.UsageNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not_in\":")
+		bytes, err := swag.WriteJSON(m.UsageNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -7749,7 +8990,63 @@ func (m *IscsiTargetWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateBusinessHostGroupsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHostGroupsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHostGroupsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHostsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHostsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHostsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCluster(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConfigurationMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConfigurationMethodIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConfigurationMethodNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConfigurationMethodNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethodIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethodNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethodNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -7766,6 +9063,18 @@ func (m *IscsiTargetWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEntityAsyncStatusNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIscsiConnectionsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIscsiConnectionsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIscsiConnectionsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -7790,6 +9099,38 @@ func (m *IscsiTargetWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLunsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -7877,6 +9218,120 @@ func (m *IscsiTargetWhereInput) validateOR(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IscsiTargetWhereInput) validateBusinessHostGroupsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostGroupsEvery) { // not required
+		return nil
+	}
+
+	if m.BusinessHostGroupsEvery != nil {
+		if err := m.BusinessHostGroupsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateBusinessHostGroupsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostGroupsNone) { // not required
+		return nil
+	}
+
+	if m.BusinessHostGroupsNone != nil {
+		if err := m.BusinessHostGroupsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateBusinessHostGroupsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostGroupsSome) { // not required
+		return nil
+	}
+
+	if m.BusinessHostGroupsSome != nil {
+		if err := m.BusinessHostGroupsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateBusinessHostsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostsEvery) { // not required
+		return nil
+	}
+
+	if m.BusinessHostsEvery != nil {
+		if err := m.BusinessHostsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateBusinessHostsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostsNone) { // not required
+		return nil
+	}
+
+	if m.BusinessHostsNone != nil {
+		if err := m.BusinessHostsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateBusinessHostsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostsSome) { // not required
+		return nil
+	}
+
+	if m.BusinessHostsSome != nil {
+		if err := m.BusinessHostsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IscsiTargetWhereInput) validateCluster(formats strfmt.Registry) error {
 	if swag.IsZero(m.Cluster) { // not required
 		return nil
@@ -7891,6 +9346,166 @@ func (m *IscsiTargetWhereInput) validateCluster(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateConfigurationMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConfigurationMethod) { // not required
+		return nil
+	}
+
+	if m.ConfigurationMethod != nil {
+		if err := m.ConfigurationMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateConfigurationMethodIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConfigurationMethodIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ConfigurationMethodIn); i++ {
+
+		if err := m.ConfigurationMethodIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateConfigurationMethodNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConfigurationMethodNot) { // not required
+		return nil
+	}
+
+	if m.ConfigurationMethodNot != nil {
+		if err := m.ConfigurationMethodNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateConfigurationMethodNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConfigurationMethodNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ConfigurationMethodNotIn); i++ {
+
+		if err := m.ConfigurationMethodNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateEncryptMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethod) { // not required
+		return nil
+	}
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateEncryptMethodIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethodIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EncryptMethodIn); i++ {
+
+		if err := m.EncryptMethodIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateEncryptMethodNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethodNot) { // not required
+		return nil
+	}
+
+	if m.EncryptMethodNot != nil {
+		if err := m.EncryptMethodNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateEncryptMethodNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethodNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EncryptMethodNotIn); i++ {
+
+		if err := m.EncryptMethodNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil
@@ -7971,6 +9586,63 @@ func (m *IscsiTargetWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Re
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateIscsiConnectionsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.IscsiConnectionsEvery) { // not required
+		return nil
+	}
+
+	if m.IscsiConnectionsEvery != nil {
+		if err := m.IscsiConnectionsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iscsi_connections_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iscsi_connections_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateIscsiConnectionsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.IscsiConnectionsNone) { // not required
+		return nil
+	}
+
+	if m.IscsiConnectionsNone != nil {
+		if err := m.IscsiConnectionsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iscsi_connections_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iscsi_connections_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateIscsiConnectionsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.IscsiConnectionsSome) { // not required
+		return nil
+	}
+
+	if m.IscsiConnectionsSome != nil {
+		if err := m.IscsiConnectionsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iscsi_connections_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iscsi_connections_some")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -8090,6 +9762,166 @@ func (m *IscsiTargetWhereInput) validateLunsSome(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *IscsiTargetWhereInput) validateResiliencyType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateResiliencyTypeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ResiliencyTypeIn); i++ {
+
+		if err := m.ResiliencyTypeIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateResiliencyTypeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeNot) { // not required
+		return nil
+	}
+
+	if m.ResiliencyTypeNot != nil {
+		if err := m.ResiliencyTypeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateResiliencyTypeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ResiliencyTypeNotIn); i++ {
+
+		if err := m.ResiliencyTypeNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateUsage(formats strfmt.Registry) error {
+	if swag.IsZero(m.Usage) { // not required
+		return nil
+	}
+
+	if m.Usage != nil {
+		if err := m.Usage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateUsageIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsageIn); i++ {
+
+		if err := m.UsageIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateUsageNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageNot) { // not required
+		return nil
+	}
+
+	if m.UsageNot != nil {
+		if err := m.UsageNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) validateUsageNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsageNotIn); i++ {
+
+		if err := m.UsageNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this iscsi target where input based on the context it is used
 func (m *IscsiTargetWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -8106,7 +9938,63 @@ func (m *IscsiTargetWhereInput) ContextValidate(ctx context.Context, formats str
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateBusinessHostGroupsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHostGroupsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHostGroupsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHostsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHostsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHostsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCluster(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateConfigurationMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateConfigurationMethodIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateConfigurationMethodNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateConfigurationMethodNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethodIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethodNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethodNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -8123,6 +10011,18 @@ func (m *IscsiTargetWhereInput) ContextValidate(ctx context.Context, formats str
 	}
 
 	if err := m.contextValidateEntityAsyncStatusNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIscsiConnectionsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIscsiConnectionsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIscsiConnectionsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -8147,6 +10047,38 @@ func (m *IscsiTargetWhereInput) ContextValidate(ctx context.Context, formats str
 	}
 
 	if err := m.contextValidateLunsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -8216,6 +10148,102 @@ func (m *IscsiTargetWhereInput) contextValidateOR(ctx context.Context, formats s
 	return nil
 }
 
+func (m *IscsiTargetWhereInput) contextValidateBusinessHostGroupsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHostGroupsEvery != nil {
+		if err := m.BusinessHostGroupsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateBusinessHostGroupsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHostGroupsNone != nil {
+		if err := m.BusinessHostGroupsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateBusinessHostGroupsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHostGroupsSome != nil {
+		if err := m.BusinessHostGroupsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateBusinessHostsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHostsEvery != nil {
+		if err := m.BusinessHostsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateBusinessHostsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHostsNone != nil {
+		if err := m.BusinessHostsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateBusinessHostsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHostsSome != nil {
+		if err := m.BusinessHostsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IscsiTargetWhereInput) contextValidateCluster(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Cluster != nil {
@@ -8227,6 +10255,142 @@ func (m *IscsiTargetWhereInput) contextValidateCluster(ctx context.Context, form
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateConfigurationMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConfigurationMethod != nil {
+		if err := m.ConfigurationMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateConfigurationMethodIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ConfigurationMethodIn); i++ {
+
+		if err := m.ConfigurationMethodIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateConfigurationMethodNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConfigurationMethodNot != nil {
+		if err := m.ConfigurationMethodNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateConfigurationMethodNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ConfigurationMethodNotIn); i++ {
+
+		if err := m.ConfigurationMethodNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateEncryptMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateEncryptMethodIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EncryptMethodIn); i++ {
+
+		if err := m.EncryptMethodIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateEncryptMethodNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EncryptMethodNot != nil {
+		if err := m.EncryptMethodNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateEncryptMethodNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EncryptMethodNotIn); i++ {
+
+		if err := m.EncryptMethodNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil
@@ -8295,6 +10459,54 @@ func (m *IscsiTargetWhereInput) contextValidateEntityAsyncStatusNotIn(ctx contex
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateIscsiConnectionsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IscsiConnectionsEvery != nil {
+		if err := m.IscsiConnectionsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iscsi_connections_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iscsi_connections_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateIscsiConnectionsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IscsiConnectionsNone != nil {
+		if err := m.IscsiConnectionsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iscsi_connections_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iscsi_connections_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateIscsiConnectionsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IscsiConnectionsSome != nil {
+		if err := m.IscsiConnectionsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("iscsi_connections_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("iscsi_connections_some")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -8391,6 +10603,142 @@ func (m *IscsiTargetWhereInput) contextValidateLunsSome(ctx context.Context, for
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateResiliencyTypeIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ResiliencyTypeIn); i++ {
+
+		if err := m.ResiliencyTypeIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateResiliencyTypeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyTypeNot != nil {
+		if err := m.ResiliencyTypeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateResiliencyTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ResiliencyTypeNotIn); i++ {
+
+		if err := m.ResiliencyTypeNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateUsage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Usage != nil {
+		if err := m.Usage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateUsageIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsageIn); i++ {
+
+		if err := m.UsageIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateUsageNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UsageNot != nil {
+		if err := m.UsageNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetWhereInput) contextValidateUsageNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsageNotIn); i++ {
+
+		if err := m.UsageNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil

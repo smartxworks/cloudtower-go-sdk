@@ -66,6 +66,9 @@ type ResetVMGuestOsPasswordParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMResetGuestOsPasswordParams
 
@@ -144,6 +147,17 @@ func (o *ResetVMGuestOsPasswordParams) SetContentLanguage(contentLanguage *strin
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the reset Vm guest os password params
+func (o *ResetVMGuestOsPasswordParams) WithExternalCloudtowerID(externalCloudtowerID *string) *ResetVMGuestOsPasswordParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the reset Vm guest os password params
+func (o *ResetVMGuestOsPasswordParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the reset Vm guest os password params
 func (o *ResetVMGuestOsPasswordParams) WithRequestBody(requestBody *models.VMResetGuestOsPasswordParams) *ResetVMGuestOsPasswordParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *ResetVMGuestOsPasswordParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

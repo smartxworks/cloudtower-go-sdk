@@ -66,6 +66,9 @@ type UpdateClusterNetworkSettingParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.ClusterNetworkSettingUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateClusterNetworkSettingParams) SetContentLanguage(contentLanguage *
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update cluster network setting params
+func (o *UpdateClusterNetworkSettingParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateClusterNetworkSettingParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update cluster network setting params
+func (o *UpdateClusterNetworkSettingParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update cluster network setting params
 func (o *UpdateClusterNetworkSettingParams) WithRequestBody(requestBody *models.ClusterNetworkSettingUpdationParams) *UpdateClusterNetworkSettingParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateClusterNetworkSettingParams) WriteToRequest(r runtime.ClientReque
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

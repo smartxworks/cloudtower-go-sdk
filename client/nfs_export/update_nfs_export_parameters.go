@@ -66,6 +66,9 @@ type UpdateNfsExportParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.NfsExportUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateNfsExportParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update nfs export params
+func (o *UpdateNfsExportParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateNfsExportParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update nfs export params
+func (o *UpdateNfsExportParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update nfs export params
 func (o *UpdateNfsExportParams) WithRequestBody(requestBody *models.NfsExportUpdationParams) *UpdateNfsExportParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateNfsExportParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

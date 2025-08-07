@@ -66,6 +66,9 @@ type GetVirtualPrivateCloudsConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVirtualPrivateCloudsConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetVirtualPrivateCloudsConnectionParams) SetContentLanguage(contentLang
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get virtual private clouds connection params
+func (o *GetVirtualPrivateCloudsConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVirtualPrivateCloudsConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get virtual private clouds connection params
+func (o *GetVirtualPrivateCloudsConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get virtual private clouds connection params
 func (o *GetVirtualPrivateCloudsConnectionParams) WithRequestBody(requestBody *models.GetVirtualPrivateCloudsConnectionRequestBody) *GetVirtualPrivateCloudsConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVirtualPrivateCloudsConnectionParams) WriteToRequest(r runtime.Clien
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

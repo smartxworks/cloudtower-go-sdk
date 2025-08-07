@@ -70,6 +70,9 @@ type CreateElfImageParams struct {
 	// Description.
 	Description *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// File.
 	File runtime.NamedReadCloser
 
@@ -182,6 +185,17 @@ func (o *CreateElfImageParams) SetDescription(description *string) {
 	o.Description = description
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the create elf image params
+func (o *CreateElfImageParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CreateElfImageParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the create elf image params
+func (o *CreateElfImageParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithFile adds the file to the create elf image params
 func (o *CreateElfImageParams) WithFile(file runtime.NamedReadCloser) *CreateElfImageParams {
 	o.SetFile(file)
@@ -280,6 +294,14 @@ func (o *CreateElfImageParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 			if err := r.SetFormParam("description", fDescription); err != nil {
 				return err
 			}
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
 		}
 	}
 	// form file param file

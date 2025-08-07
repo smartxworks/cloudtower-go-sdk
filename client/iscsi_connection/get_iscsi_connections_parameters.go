@@ -66,6 +66,9 @@ type GetIscsiConnectionsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetIscsiConnectionsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetIscsiConnectionsParams) SetContentLanguage(contentLanguage *string) 
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get iscsi connections params
+func (o *GetIscsiConnectionsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetIscsiConnectionsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get iscsi connections params
+func (o *GetIscsiConnectionsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get iscsi connections params
 func (o *GetIscsiConnectionsParams) WithRequestBody(requestBody *models.GetIscsiConnectionsRequestBody) *GetIscsiConnectionsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetIscsiConnectionsParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

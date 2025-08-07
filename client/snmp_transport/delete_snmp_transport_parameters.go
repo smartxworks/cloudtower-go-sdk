@@ -66,6 +66,9 @@ type DeleteSnmpTransportParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.SnmpTransportDeletionParams
 
@@ -144,6 +147,17 @@ func (o *DeleteSnmpTransportParams) SetContentLanguage(contentLanguage *string) 
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete snmp transport params
+func (o *DeleteSnmpTransportParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteSnmpTransportParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete snmp transport params
+func (o *DeleteSnmpTransportParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete snmp transport params
 func (o *DeleteSnmpTransportParams) WithRequestBody(requestBody *models.SnmpTransportDeletionParams) *DeleteSnmpTransportParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteSnmpTransportParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

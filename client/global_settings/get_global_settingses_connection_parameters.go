@@ -66,6 +66,9 @@ type GetGlobalSettingsesConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetGlobalSettingsesConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetGlobalSettingsesConnectionParams) SetContentLanguage(contentLanguage
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get global settingses connection params
+func (o *GetGlobalSettingsesConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetGlobalSettingsesConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get global settingses connection params
+func (o *GetGlobalSettingsesConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get global settingses connection params
 func (o *GetGlobalSettingsesConnectionParams) WithRequestBody(requestBody *models.GetGlobalSettingsesConnectionRequestBody) *GetGlobalSettingsesConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetGlobalSettingsesConnectionParams) WriteToRequest(r runtime.ClientReq
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

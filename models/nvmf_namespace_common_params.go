@@ -64,6 +64,21 @@ type NvmfNamespaceCommonParams struct {
 	// bps wr unit
 	BpsWrUnit *BPSUnit `json:"bps_wr_unit,omitempty"`
 
+	// business host groups
+	BusinessHostGroups *BusinessHostGroupWhereInput `json:"business_host_groups,omitempty"`
+
+	// business host is same with parent
+	BusinessHostIsSameWithParent *bool `json:"business_host_is_same_with_parent,omitempty"`
+
+	// business hosts
+	BusinessHosts *BusinessHostWhereInput `json:"business_hosts,omitempty"`
+
+	// configuration method
+	ConfigurationMethod *ConfigurationMethod `json:"configuration_method,omitempty"`
+
+	// encrypt method
+	EncryptMethod *EncryptMethod `json:"encrypt_method,omitempty"`
+
 	// iops
 	Iops *int64 `json:"iops,omitempty"`
 
@@ -93,6 +108,9 @@ type NvmfNamespaceCommonParams struct {
 
 	// nqn whitelist
 	NqnWhitelist *string `json:"nqn_whitelist,omitempty"`
+
+	// prioritized
+	Prioritized *bool `json:"prioritized,omitempty"`
 
 	MarshalOpts *NvmfNamespaceCommonParamsMarshalOpts `json:"-"`
 }
@@ -128,6 +146,16 @@ type NvmfNamespaceCommonParamsMarshalOpts struct {
 
 	BpsWrUnit_Explicit_Null_When_Empty bool
 
+	BusinessHostGroups_Explicit_Null_When_Empty bool
+
+	BusinessHostIsSameWithParent_Explicit_Null_When_Empty bool
+
+	BusinessHosts_Explicit_Null_When_Empty bool
+
+	ConfigurationMethod_Explicit_Null_When_Empty bool
+
+	EncryptMethod_Explicit_Null_When_Empty bool
+
 	Iops_Explicit_Null_When_Empty bool
 
 	IopsMax_Explicit_Null_When_Empty bool
@@ -147,6 +175,8 @@ type NvmfNamespaceCommonParamsMarshalOpts struct {
 	IopsWrMaxLength_Explicit_Null_When_Empty bool
 
 	NqnWhitelist_Explicit_Null_When_Empty bool
+
+	Prioritized_Explicit_Null_When_Empty bool
 }
 
 func (m NvmfNamespaceCommonParams) MarshalJSON() ([]byte, error) {
@@ -455,6 +485,106 @@ func (m NvmfNamespaceCommonParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field business_host_groups
+	if m.BusinessHostGroups != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroups_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups\":null")
+		first = false
+	}
+
+	// handle nullable field business_host_is_same_with_parent
+	if m.BusinessHostIsSameWithParent != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_is_same_with_parent\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostIsSameWithParent)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostIsSameWithParent_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_is_same_with_parent\":null")
+		first = false
+	}
+
+	// handle nullable field business_hosts
+	if m.BusinessHosts != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts\":")
+		bytes, err := swag.WriteJSON(m.BusinessHosts)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHosts_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts\":null")
+		first = false
+	}
+
+	// handle nullable field configuration_method
+	if m.ConfigurationMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method\":null")
+		first = false
+	}
+
+	// handle nullable field encrypt_method
+	if m.EncryptMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EncryptMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":null")
+		first = false
+	}
+
 	// handle nullable field iops
 	if m.Iops != nil {
 		if !first {
@@ -655,6 +785,26 @@ func (m NvmfNamespaceCommonParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field prioritized
+	if m.Prioritized != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":")
+		bytes, err := swag.WriteJSON(m.Prioritized)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Prioritized_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -684,6 +834,22 @@ func (m *NvmfNamespaceCommonParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateBpsWrUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHostGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHosts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConfigurationMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethod(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -807,6 +973,82 @@ func (m *NvmfNamespaceCommonParams) validateBpsWrUnit(formats strfmt.Registry) e
 	return nil
 }
 
+func (m *NvmfNamespaceCommonParams) validateBusinessHostGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostGroups) { // not required
+		return nil
+	}
+
+	if m.BusinessHostGroups != nil {
+		if err := m.BusinessHostGroups.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCommonParams) validateBusinessHosts(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHosts) { // not required
+		return nil
+	}
+
+	if m.BusinessHosts != nil {
+		if err := m.BusinessHosts.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCommonParams) validateConfigurationMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConfigurationMethod) { // not required
+		return nil
+	}
+
+	if m.ConfigurationMethod != nil {
+		if err := m.ConfigurationMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCommonParams) validateEncryptMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethod) { // not required
+		return nil
+	}
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this nvmf namespace common params based on the context it is used
 func (m *NvmfNamespaceCommonParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -832,6 +1074,22 @@ func (m *NvmfNamespaceCommonParams) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidateBpsWrUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHostGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateConfigurationMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethod(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -929,6 +1187,70 @@ func (m *NvmfNamespaceCommonParams) contextValidateBpsWrUnit(ctx context.Context
 				return ve.ValidateName("bps_wr_unit")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("bps_wr_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCommonParams) contextValidateBusinessHostGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHostGroups != nil {
+		if err := m.BusinessHostGroups.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCommonParams) contextValidateBusinessHosts(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHosts != nil {
+		if err := m.BusinessHosts.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCommonParams) contextValidateConfigurationMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConfigurationMethod != nil {
+		if err := m.ConfigurationMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCommonParams) contextValidateEncryptMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
 			}
 			return err
 		}

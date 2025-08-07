@@ -53,6 +53,90 @@ type NfsInodeWhereInput struct {
 	// assigned size not in
 	AssignedSizeNotIn []int64 `json:"assigned_size_not_in,omitempty"`
 
+	// downgraded prioritized space
+	DowngradedPrioritizedSpace *int64 `json:"downgraded_prioritized_space,omitempty"`
+
+	// downgraded prioritized space gt
+	DowngradedPrioritizedSpaceGt *int64 `json:"downgraded_prioritized_space_gt,omitempty"`
+
+	// downgraded prioritized space gte
+	DowngradedPrioritizedSpaceGte *int64 `json:"downgraded_prioritized_space_gte,omitempty"`
+
+	// downgraded prioritized space in
+	DowngradedPrioritizedSpaceIn []int64 `json:"downgraded_prioritized_space_in,omitempty"`
+
+	// downgraded prioritized space lt
+	DowngradedPrioritizedSpaceLt *int64 `json:"downgraded_prioritized_space_lt,omitempty"`
+
+	// downgraded prioritized space lte
+	DowngradedPrioritizedSpaceLte *int64 `json:"downgraded_prioritized_space_lte,omitempty"`
+
+	// downgraded prioritized space not
+	DowngradedPrioritizedSpaceNot *int64 `json:"downgraded_prioritized_space_not,omitempty"`
+
+	// downgraded prioritized space not in
+	DowngradedPrioritizedSpaceNotIn []int64 `json:"downgraded_prioritized_space_not_in,omitempty"`
+
+	// ec k
+	Eck *int32 `json:"ec_k,omitempty"`
+
+	// ec k gt
+	EckGt *int32 `json:"ec_k_gt,omitempty"`
+
+	// ec k gte
+	EckGte *int32 `json:"ec_k_gte,omitempty"`
+
+	// ec k in
+	EckIn []int32 `json:"ec_k_in,omitempty"`
+
+	// ec k lt
+	EckLt *int32 `json:"ec_k_lt,omitempty"`
+
+	// ec k lte
+	EckLte *int32 `json:"ec_k_lte,omitempty"`
+
+	// ec k not
+	EckNot *int32 `json:"ec_k_not,omitempty"`
+
+	// ec k not in
+	EckNotIn []int32 `json:"ec_k_not_in,omitempty"`
+
+	// ec m
+	Ecm *int32 `json:"ec_m,omitempty"`
+
+	// ec m gt
+	EcmGt *int32 `json:"ec_m_gt,omitempty"`
+
+	// ec m gte
+	EcmGte *int32 `json:"ec_m_gte,omitempty"`
+
+	// ec m in
+	EcmIn []int32 `json:"ec_m_in,omitempty"`
+
+	// ec m lt
+	EcmLt *int32 `json:"ec_m_lt,omitempty"`
+
+	// ec m lte
+	EcmLte *int32 `json:"ec_m_lte,omitempty"`
+
+	// ec m not
+	EcmNot *int32 `json:"ec_m_not,omitempty"`
+
+	// ec m not in
+	EcmNotIn []int32 `json:"ec_m_not_in,omitempty"`
+
+	// encrypt method
+	EncryptMethod *EncryptMethod `json:"encrypt_method,omitempty"`
+
+	// encrypt method in
+	EncryptMethodIn []EncryptMethod `json:"encrypt_method_in,omitempty"`
+
+	// encrypt method not
+	EncryptMethodNot *EncryptMethod `json:"encrypt_method_not,omitempty"`
+
+	// encrypt method not in
+	EncryptMethodNotIn []EncryptMethod `json:"encrypt_method_not_in,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -275,6 +359,24 @@ type NfsInodeWhereInput struct {
 	// parent id starts with
 	ParentIDStartsWith *string `json:"parent_id_starts_with,omitempty"`
 
+	// prioritized
+	Prioritized *bool `json:"prioritized,omitempty"`
+
+	// prioritized not
+	PrioritizedNot *bool `json:"prioritized_not,omitempty"`
+
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
+
+	// resiliency type in
+	ResiliencyTypeIn []ResiliencyType `json:"resiliency_type_in,omitempty"`
+
+	// resiliency type not
+	ResiliencyTypeNot *ResiliencyType `json:"resiliency_type_not,omitempty"`
+
+	// resiliency type not in
+	ResiliencyTypeNotIn []ResiliencyType `json:"resiliency_type_not_in,omitempty"`
+
 	// shared size
 	SharedSize *int64 `json:"shared_size,omitempty"`
 
@@ -396,6 +498,62 @@ type NfsInodeWhereInputMarshalOpts struct {
 	AssignedSizeNot_Explicit_Null_When_Empty bool
 
 	AssignedSizeNotIn_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpace_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpaceGt_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpaceGte_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpaceIn_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpaceLt_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpaceLte_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpaceNot_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpaceNotIn_Explicit_Null_When_Empty bool
+
+	Eck_Explicit_Null_When_Empty bool
+
+	EckGt_Explicit_Null_When_Empty bool
+
+	EckGte_Explicit_Null_When_Empty bool
+
+	EckIn_Explicit_Null_When_Empty bool
+
+	EckLt_Explicit_Null_When_Empty bool
+
+	EckLte_Explicit_Null_When_Empty bool
+
+	EckNot_Explicit_Null_When_Empty bool
+
+	EckNotIn_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
+	EcmGt_Explicit_Null_When_Empty bool
+
+	EcmGte_Explicit_Null_When_Empty bool
+
+	EcmIn_Explicit_Null_When_Empty bool
+
+	EcmLt_Explicit_Null_When_Empty bool
+
+	EcmLte_Explicit_Null_When_Empty bool
+
+	EcmNot_Explicit_Null_When_Empty bool
+
+	EcmNotIn_Explicit_Null_When_Empty bool
+
+	EncryptMethod_Explicit_Null_When_Empty bool
+
+	EncryptMethodIn_Explicit_Null_When_Empty bool
+
+	EncryptMethodNot_Explicit_Null_When_Empty bool
+
+	EncryptMethodNotIn_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -544,6 +702,18 @@ type NfsInodeWhereInputMarshalOpts struct {
 	ParentIDNotStartsWith_Explicit_Null_When_Empty bool
 
 	ParentIDStartsWith_Explicit_Null_When_Empty bool
+
+	Prioritized_Explicit_Null_When_Empty bool
+
+	PrioritizedNot_Explicit_Null_When_Empty bool
+
+	ResiliencyType_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeIn_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeNot_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeNotIn_Explicit_Null_When_Empty bool
 
 	SharedSize_Explicit_Null_When_Empty bool
 
@@ -799,6 +969,518 @@ func (m NfsInodeWhereInput) MarshalJSON() ([]byte, error) {
 		}
 		b.WriteString("\"assigned_size_not_in\":")
 		bytes, err := swag.WriteJSON(m.AssignedSizeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field downgraded_prioritized_space
+	if m.DowngradedPrioritizedSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DowngradedPrioritizedSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space\":null")
+		first = false
+	}
+
+	// handle nullable field downgraded_prioritized_space_gt
+	if m.DowngradedPrioritizedSpaceGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_gt\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpaceGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DowngradedPrioritizedSpaceGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_gt\":null")
+		first = false
+	}
+
+	// handle nullable field downgraded_prioritized_space_gte
+	if m.DowngradedPrioritizedSpaceGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_gte\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpaceGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DowngradedPrioritizedSpaceGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field downgraded_prioritized_space_in with omitempty
+	if !swag.IsZero(m.DowngradedPrioritizedSpaceIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_in\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpaceIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field downgraded_prioritized_space_lt
+	if m.DowngradedPrioritizedSpaceLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_lt\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpaceLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DowngradedPrioritizedSpaceLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_lt\":null")
+		first = false
+	}
+
+	// handle nullable field downgraded_prioritized_space_lte
+	if m.DowngradedPrioritizedSpaceLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_lte\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpaceLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DowngradedPrioritizedSpaceLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_lte\":null")
+		first = false
+	}
+
+	// handle nullable field downgraded_prioritized_space_not
+	if m.DowngradedPrioritizedSpaceNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_not\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpaceNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DowngradedPrioritizedSpaceNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_not\":null")
+		first = false
+	}
+
+	// handle non nullable field downgraded_prioritized_space_not_in with omitempty
+	if !swag.IsZero(m.DowngradedPrioritizedSpaceNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space_not_in\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpaceNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_gt
+	if m.EckGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gt\":")
+		bytes, err := swag.WriteJSON(m.EckGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_gte
+	if m.EckGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gte\":")
+		bytes, err := swag.WriteJSON(m.EckGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_k_in with omitempty
+	if !swag.IsZero(m.EckIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_in\":")
+		bytes, err := swag.WriteJSON(m.EckIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_k_lt
+	if m.EckLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lt\":")
+		bytes, err := swag.WriteJSON(m.EckLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_lte
+	if m.EckLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lte\":")
+		bytes, err := swag.WriteJSON(m.EckLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lte\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_not
+	if m.EckNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not\":")
+		bytes, err := swag.WriteJSON(m.EckNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_k_not_in with omitempty
+	if !swag.IsZero(m.EckNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not_in\":")
+		bytes, err := swag.WriteJSON(m.EckNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_gt
+	if m.EcmGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gt\":")
+		bytes, err := swag.WriteJSON(m.EcmGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_gte
+	if m.EcmGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gte\":")
+		bytes, err := swag.WriteJSON(m.EcmGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_m_in with omitempty
+	if !swag.IsZero(m.EcmIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_in\":")
+		bytes, err := swag.WriteJSON(m.EcmIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_m_lt
+	if m.EcmLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lt\":")
+		bytes, err := swag.WriteJSON(m.EcmLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_lte
+	if m.EcmLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lte\":")
+		bytes, err := swag.WriteJSON(m.EcmLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lte\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_not
+	if m.EcmNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not\":")
+		bytes, err := swag.WriteJSON(m.EcmNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_m_not_in with omitempty
+	if !swag.IsZero(m.EcmNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not_in\":")
+		bytes, err := swag.WriteJSON(m.EcmNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field encrypt_method
+	if m.EncryptMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EncryptMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":null")
+		first = false
+	}
+
+	// handle non nullable field encrypt_method_in with omitempty
+	if !swag.IsZero(m.EncryptMethodIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method_in\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethodIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field encrypt_method_not
+	if m.EncryptMethodNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method_not\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethodNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EncryptMethodNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method_not\":null")
+		first = false
+	}
+
+	// handle non nullable field encrypt_method_not_in with omitempty
+	if !swag.IsZero(m.EncryptMethodNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method_not_in\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethodNotIn)
 		if err != nil {
 			return nil, err
 		}
@@ -2214,6 +2896,114 @@ func (m NfsInodeWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field prioritized
+	if m.Prioritized != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":")
+		bytes, err := swag.WriteJSON(m.Prioritized)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Prioritized_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":null")
+		first = false
+	}
+
+	// handle nullable field prioritized_not
+	if m.PrioritizedNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized_not\":")
+		bytes, err := swag.WriteJSON(m.PrioritizedNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrioritizedNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized_not\":null")
+		first = false
+	}
+
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
+		first = false
+	}
+
+	// handle non nullable field resiliency_type_in with omitempty
+	if !swag.IsZero(m.ResiliencyTypeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_in\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field resiliency_type_not
+	if m.ResiliencyTypeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyTypeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not\":null")
+		first = false
+	}
+
+	// handle non nullable field resiliency_type_not_in with omitempty
+	if !swag.IsZero(m.ResiliencyTypeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not_in\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field shared_size
 	if m.SharedSize != nil {
 		if !first {
@@ -2826,6 +3616,22 @@ func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEncryptMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethodIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethodNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethodNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -2855,6 +3661,22 @@ func (m *NfsInodeWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNfsExport(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2935,6 +3757,86 @@ func (m *NfsInodeWhereInput) validateOR(formats strfmt.Registry) error {
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) validateEncryptMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethod) { // not required
+		return nil
+	}
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) validateEncryptMethodIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethodIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EncryptMethodIn); i++ {
+
+		if err := m.EncryptMethodIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) validateEncryptMethodNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethodNot) { // not required
+		return nil
+	}
+
+	if m.EncryptMethodNot != nil {
+		if err := m.EncryptMethodNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) validateEncryptMethodNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethodNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EncryptMethodNotIn); i++ {
+
+		if err := m.EncryptMethodNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
 		}
 
 	}
@@ -3098,6 +4000,86 @@ func (m *NfsInodeWhereInput) validateNfsExport(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NfsInodeWhereInput) validateResiliencyType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) validateResiliencyTypeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ResiliencyTypeIn); i++ {
+
+		if err := m.ResiliencyTypeIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) validateResiliencyTypeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeNot) { // not required
+		return nil
+	}
+
+	if m.ResiliencyTypeNot != nil {
+		if err := m.ResiliencyTypeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) validateResiliencyTypeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ResiliencyTypeNotIn); i++ {
+
+		if err := m.ResiliencyTypeNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this nfs inode where input based on the context it is used
 func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -3111,6 +4093,22 @@ func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateOR(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethodIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethodNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethodNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -3143,6 +4141,22 @@ func (m *NfsInodeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateNfsExport(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -3205,6 +4219,74 @@ func (m *NfsInodeWhereInput) contextValidateOR(ctx context.Context, formats strf
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) contextValidateEncryptMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) contextValidateEncryptMethodIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EncryptMethodIn); i++ {
+
+		if err := m.EncryptMethodIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) contextValidateEncryptMethodNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EncryptMethodNot != nil {
+		if err := m.EncryptMethodNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) contextValidateEncryptMethodNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EncryptMethodNotIn); i++ {
+
+		if err := m.EncryptMethodNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
 		}
 
 	}
@@ -3339,6 +4421,74 @@ func (m *NfsInodeWhereInput) contextValidateNfsExport(ctx context.Context, forma
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) contextValidateResiliencyTypeIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ResiliencyTypeIn); i++ {
+
+		if err := m.ResiliencyTypeIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) contextValidateResiliencyTypeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyTypeNot != nil {
+		if err := m.ResiliencyTypeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsInodeWhereInput) contextValidateResiliencyTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ResiliencyTypeNotIn); i++ {
+
+		if err := m.ResiliencyTypeNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil

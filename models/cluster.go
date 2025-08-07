@@ -21,6 +21,15 @@ import (
 // swagger:model Cluster
 type Cluster struct {
 
+	// access write compress enabled
+	AccessWriteCompressEnabled *bool `json:"access_write_compress_enabled,omitempty"`
+
+	// allocated prioritized space
+	AllocatedPrioritizedSpace *int64 `json:"allocated_prioritized_space,omitempty"`
+
+	// allocated prioritized space usage
+	AllocatedPrioritizedSpaceUsage *float64 `json:"allocated_prioritized_space_usage,omitempty"`
+
 	// application highest version
 	ApplicationHighestVersion *string `json:"application_highest_version,omitempty"`
 
@@ -34,6 +43,9 @@ type Cluster struct {
 	// auto converge
 	AutoConverge *bool `json:"auto_converge,omitempty"`
 
+	// commited memory bytes
+	CommitedMemoryBytes *int64 `json:"commited_memory_bytes,omitempty"`
+
 	// connect state
 	// Required: true
 	ConnectState *ConnectState `json:"connect_state"`
@@ -43,6 +55,12 @@ type Cluster struct {
 
 	// current cpu model
 	CurrentCPUModel *string `json:"current_cpu_model,omitempty"`
+
+	// data reduction ratio
+	DataReductionRatio *float64 `json:"data_reduction_ratio,omitempty"`
+
+	// data reduction saving
+	DataReductionSaving *float64 `json:"data_reduction_saving,omitempty"`
 
 	// datacenters
 	Datacenters []*NestedDatacenter `json:"datacenters,omitempty"`
@@ -56,6 +74,15 @@ type Cluster struct {
 	// dns
 	// Required: true
 	DNS []string `json:"dns"`
+
+	// downgraded prioritized space
+	DowngradedPrioritizedSpace *int64 `json:"downgraded_prioritized_space,omitempty"`
+
+	// ecp license
+	EcpLicense *NestedEcpLicense `json:"ecp_license,omitempty"`
+
+	// enable tiering
+	EnableTiering *bool `json:"enable_tiering,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -110,6 +137,9 @@ type Cluster struct {
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
 
+	// logical used data space
+	LogicalUsedDataSpace *int64 `json:"logical_used_data_space,omitempty"`
+
 	// maintenance end date
 	MaintenanceEndDate *string `json:"maintenance_end_date,omitempty"`
 
@@ -147,6 +177,9 @@ type Cluster struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// no performance layer
+	NoPerformanceLayer *bool `json:"no_performance_layer,omitempty"`
+
 	// ntp mode
 	NtpMode *NtpMode `json:"ntp_mode,omitempty"`
 
@@ -163,8 +196,32 @@ type Cluster struct {
 	// nvmf enabled
 	NvmfEnabled *bool `json:"nvmf_enabled,omitempty"`
 
+	// overall efficiency
+	OverallEfficiency *float64 `json:"overall_efficiency,omitempty"`
+
+	// perf allocated data space
+	PerfAllocatedDataSpace *int64 `json:"perf_allocated_data_space,omitempty"`
+
+	// perf failure data space
+	PerfFailureDataSpace *int64 `json:"perf_failure_data_space,omitempty"`
+
+	// perf total data capacity
+	PerfTotalDataCapacity *int64 `json:"perf_total_data_capacity,omitempty"`
+
+	// perf used data space
+	PerfUsedDataSpace *int64 `json:"perf_used_data_space,omitempty"`
+
+	// perf valid data space
+	PerfValidDataSpace *int64 `json:"perf_valid_data_space,omitempty"`
+
+	// planned prioritized space
+	PlannedPrioritizedSpace *int64 `json:"planned_prioritized_space,omitempty"`
+
 	// pmem enabled
 	PmemEnabled *bool `json:"pmem_enabled,omitempty"`
+
+	// prio space percentage
+	PrioSpacePercentage *float64 `json:"prio_space_percentage,omitempty"`
 
 	// provisioned cpu cores
 	ProvisionedCPUCores *int32 `json:"provisioned_cpu_cores,omitempty"`
@@ -193,6 +250,9 @@ type Cluster struct {
 
 	// recover speed
 	RecoverSpeed *int64 `json:"recover_speed,omitempty"`
+
+	// replica capacity only
+	ReplicaCapacityOnly *bool `json:"replica_capacity_only,omitempty"`
 
 	// reserved cpu cores for system service
 	ReservedCPUCoresForSystemService *int32 `json:"reserved_cpu_cores_for_system_service,omitempty"`
@@ -237,12 +297,24 @@ type Cluster struct {
 	// total memory bytes
 	TotalMemoryBytes *int64 `json:"total_memory_bytes,omitempty"`
 
+	// total prio volume size
+	TotalPrioVolumeSize *int64 `json:"total_prio_volume_size,omitempty"`
+
+	// total prio volume size usage
+	TotalPrioVolumeSizeUsage *float64 `json:"total_prio_volume_size_usage,omitempty"`
+
 	// type
 	// Required: true
 	Type *ClusterType `json:"type"`
 
+	// upgrade for tiering
+	UpgradeForTiering *bool `json:"upgrade_for_tiering,omitempty"`
+
 	// upgrade tool version
 	UpgradeToolVersion *string `json:"upgrade_tool_version,omitempty"`
+
+	// used cache space
+	UsedCacheSpace *int64 `json:"used_cache_space,omitempty"`
 
 	// used cpu hz
 	UsedCPUHz *float64 `json:"used_cpu_hz,omitempty"`
@@ -252,6 +324,9 @@ type Cluster struct {
 
 	// used memory bytes
 	UsedMemoryBytes *float64 `json:"used_memory_bytes,omitempty"`
+
+	// valid cache space
+	ValidCacheSpace *int64 `json:"valid_cache_space,omitempty"`
 
 	// valid data space
 	ValidDataSpace *int64 `json:"valid_data_space,omitempty"`
@@ -291,6 +366,12 @@ type Cluster struct {
 }
 
 type ClusterMarshalOpts struct {
+	AccessWriteCompressEnabled_Explicit_Null_When_Empty bool
+
+	AllocatedPrioritizedSpace_Explicit_Null_When_Empty bool
+
+	AllocatedPrioritizedSpaceUsage_Explicit_Null_When_Empty bool
+
 	ApplicationHighestVersion_Explicit_Null_When_Empty bool
 
 	Applications_Explicit_Null_When_Empty bool
@@ -299,11 +380,17 @@ type ClusterMarshalOpts struct {
 
 	AutoConverge_Explicit_Null_When_Empty bool
 
+	CommitedMemoryBytes_Explicit_Null_When_Empty bool
+
 	ConnectState_Explicit_Null_When_Empty bool
 
 	ConsistencyGroups_Explicit_Null_When_Empty bool
 
 	CurrentCPUModel_Explicit_Null_When_Empty bool
+
+	DataReductionRatio_Explicit_Null_When_Empty bool
+
+	DataReductionSaving_Explicit_Null_When_Empty bool
 
 	Datacenters_Explicit_Null_When_Empty bool
 
@@ -312,6 +399,12 @@ type ClusterMarshalOpts struct {
 	DisconnectedReason_Explicit_Null_When_Empty bool
 
 	DNS_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpace_Explicit_Null_When_Empty bool
+
+	EcpLicense_Explicit_Null_When_Empty bool
+
+	EnableTiering_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -347,6 +440,8 @@ type ClusterMarshalOpts struct {
 
 	LocalID_Explicit_Null_When_Empty bool
 
+	LogicalUsedDataSpace_Explicit_Null_When_Empty bool
+
 	MaintenanceEndDate_Explicit_Null_When_Empty bool
 
 	MaintenanceStartDate_Explicit_Null_When_Empty bool
@@ -371,6 +466,8 @@ type ClusterMarshalOpts struct {
 
 	Name_Explicit_Null_When_Empty bool
 
+	NoPerformanceLayer_Explicit_Null_When_Empty bool
+
 	NtpMode_Explicit_Null_When_Empty bool
 
 	NtpServers_Explicit_Null_When_Empty bool
@@ -381,7 +478,23 @@ type ClusterMarshalOpts struct {
 
 	NvmfEnabled_Explicit_Null_When_Empty bool
 
+	OverallEfficiency_Explicit_Null_When_Empty bool
+
+	PerfAllocatedDataSpace_Explicit_Null_When_Empty bool
+
+	PerfFailureDataSpace_Explicit_Null_When_Empty bool
+
+	PerfTotalDataCapacity_Explicit_Null_When_Empty bool
+
+	PerfUsedDataSpace_Explicit_Null_When_Empty bool
+
+	PerfValidDataSpace_Explicit_Null_When_Empty bool
+
+	PlannedPrioritizedSpace_Explicit_Null_When_Empty bool
+
 	PmemEnabled_Explicit_Null_When_Empty bool
+
+	PrioSpacePercentage_Explicit_Null_When_Empty bool
 
 	ProvisionedCPUCores_Explicit_Null_When_Empty bool
 
@@ -400,6 +513,8 @@ type ClusterMarshalOpts struct {
 	RecoverDataSize_Explicit_Null_When_Empty bool
 
 	RecoverSpeed_Explicit_Null_When_Empty bool
+
+	ReplicaCapacityOnly_Explicit_Null_When_Empty bool
 
 	ReservedCPUCoresForSystemService_Explicit_Null_When_Empty bool
 
@@ -429,15 +544,25 @@ type ClusterMarshalOpts struct {
 
 	TotalMemoryBytes_Explicit_Null_When_Empty bool
 
+	TotalPrioVolumeSize_Explicit_Null_When_Empty bool
+
+	TotalPrioVolumeSizeUsage_Explicit_Null_When_Empty bool
+
 	Type_Explicit_Null_When_Empty bool
 
+	UpgradeForTiering_Explicit_Null_When_Empty bool
+
 	UpgradeToolVersion_Explicit_Null_When_Empty bool
+
+	UsedCacheSpace_Explicit_Null_When_Empty bool
 
 	UsedCPUHz_Explicit_Null_When_Empty bool
 
 	UsedDataSpace_Explicit_Null_When_Empty bool
 
 	UsedMemoryBytes_Explicit_Null_When_Empty bool
+
+	ValidCacheSpace_Explicit_Null_When_Empty bool
 
 	ValidDataSpace_Explicit_Null_When_Empty bool
 
@@ -467,6 +592,66 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
+
+	// handle nullable field access_write_compress_enabled
+	if m.AccessWriteCompressEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"access_write_compress_enabled\":")
+		bytes, err := swag.WriteJSON(m.AccessWriteCompressEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AccessWriteCompressEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"access_write_compress_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field allocated_prioritized_space
+	if m.AllocatedPrioritizedSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_prioritized_space\":")
+		bytes, err := swag.WriteJSON(m.AllocatedPrioritizedSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AllocatedPrioritizedSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_prioritized_space\":null")
+		first = false
+	}
+
+	// handle nullable field allocated_prioritized_space_usage
+	if m.AllocatedPrioritizedSpaceUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_prioritized_space_usage\":")
+		bytes, err := swag.WriteJSON(m.AllocatedPrioritizedSpaceUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AllocatedPrioritizedSpaceUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_prioritized_space_usage\":null")
+		first = false
+	}
 
 	// handle nullable field application_highest_version
 	if m.ApplicationHighestVersion != nil {
@@ -542,6 +727,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field commited_memory_bytes
+	if m.CommitedMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"commited_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.CommitedMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CommitedMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"commited_memory_bytes\":null")
+		first = false
+	}
+
 	// handle nullable field connect_state
 	if m.ConnectState != nil {
 		if !first {
@@ -593,6 +798,46 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"current_cpu_model\":null")
+		first = false
+	}
+
+	// handle nullable field data_reduction_ratio
+	if m.DataReductionRatio != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data_reduction_ratio\":")
+		bytes, err := swag.WriteJSON(m.DataReductionRatio)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DataReductionRatio_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data_reduction_ratio\":null")
+		first = false
+	}
+
+	// handle nullable field data_reduction_saving
+	if m.DataReductionSaving != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data_reduction_saving\":")
+		bytes, err := swag.WriteJSON(m.DataReductionSaving)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DataReductionSaving_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"data_reduction_saving\":null")
 		first = false
 	}
 
@@ -661,6 +906,66 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field downgraded_prioritized_space
+	if m.DowngradedPrioritizedSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DowngradedPrioritizedSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space\":null")
+		first = false
+	}
+
+	// handle nullable field ecp_license
+	if m.EcpLicense != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ecp_license\":")
+		bytes, err := swag.WriteJSON(m.EcpLicense)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcpLicense_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ecp_license\":null")
+		first = false
+	}
+
+	// handle nullable field enable_tiering
+	if m.EnableTiering != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_tiering\":")
+		bytes, err := swag.WriteJSON(m.EnableTiering)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EnableTiering_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"enable_tiering\":null")
 		first = false
 	}
 
@@ -992,6 +1297,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field logical_used_data_space
+	if m.LogicalUsedDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"logical_used_data_space\":")
+		bytes, err := swag.WriteJSON(m.LogicalUsedDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LogicalUsedDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"logical_used_data_space\":null")
+		first = false
+	}
+
 	// handle nullable field maintenance_end_date
 	if m.MaintenanceEndDate != nil {
 		if !first {
@@ -1232,6 +1557,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field no_performance_layer
+	if m.NoPerformanceLayer != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"no_performance_layer\":")
+		bytes, err := swag.WriteJSON(m.NoPerformanceLayer)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NoPerformanceLayer_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"no_performance_layer\":null")
+		first = false
+	}
+
 	// handle nullable field ntp_mode
 	if m.NtpMode != nil {
 		if !first {
@@ -1326,6 +1671,146 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field overall_efficiency
+	if m.OverallEfficiency != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overall_efficiency\":")
+		bytes, err := swag.WriteJSON(m.OverallEfficiency)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OverallEfficiency_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overall_efficiency\":null")
+		first = false
+	}
+
+	// handle nullable field perf_allocated_data_space
+	if m.PerfAllocatedDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_allocated_data_space\":")
+		bytes, err := swag.WriteJSON(m.PerfAllocatedDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfAllocatedDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_allocated_data_space\":null")
+		first = false
+	}
+
+	// handle nullable field perf_failure_data_space
+	if m.PerfFailureDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_failure_data_space\":")
+		bytes, err := swag.WriteJSON(m.PerfFailureDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfFailureDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_failure_data_space\":null")
+		first = false
+	}
+
+	// handle nullable field perf_total_data_capacity
+	if m.PerfTotalDataCapacity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_total_data_capacity\":")
+		bytes, err := swag.WriteJSON(m.PerfTotalDataCapacity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfTotalDataCapacity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_total_data_capacity\":null")
+		first = false
+	}
+
+	// handle nullable field perf_used_data_space
+	if m.PerfUsedDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_used_data_space\":")
+		bytes, err := swag.WriteJSON(m.PerfUsedDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfUsedDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_used_data_space\":null")
+		first = false
+	}
+
+	// handle nullable field perf_valid_data_space
+	if m.PerfValidDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_valid_data_space\":")
+		bytes, err := swag.WriteJSON(m.PerfValidDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfValidDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_valid_data_space\":null")
+		first = false
+	}
+
+	// handle nullable field planned_prioritized_space
+	if m.PlannedPrioritizedSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"planned_prioritized_space\":")
+		bytes, err := swag.WriteJSON(m.PlannedPrioritizedSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PlannedPrioritizedSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"planned_prioritized_space\":null")
+		first = false
+	}
+
 	// handle nullable field pmem_enabled
 	if m.PmemEnabled != nil {
 		if !first {
@@ -1343,6 +1828,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"pmem_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field prio_space_percentage
+	if m.PrioSpacePercentage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prio_space_percentage\":")
+		bytes, err := swag.WriteJSON(m.PrioSpacePercentage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrioSpacePercentage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prio_space_percentage\":null")
 		first = false
 	}
 
@@ -1517,6 +2022,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"recover_speed\":null")
+		first = false
+	}
+
+	// handle nullable field replica_capacity_only
+	if m.ReplicaCapacityOnly != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica_capacity_only\":")
+		bytes, err := swag.WriteJSON(m.ReplicaCapacityOnly)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ReplicaCapacityOnly_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica_capacity_only\":null")
 		first = false
 	}
 
@@ -1794,6 +2319,46 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field total_prio_volume_size
+	if m.TotalPrioVolumeSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_prio_volume_size\":")
+		bytes, err := swag.WriteJSON(m.TotalPrioVolumeSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalPrioVolumeSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_prio_volume_size\":null")
+		first = false
+	}
+
+	// handle nullable field total_prio_volume_size_usage
+	if m.TotalPrioVolumeSizeUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_prio_volume_size_usage\":")
+		bytes, err := swag.WriteJSON(m.TotalPrioVolumeSizeUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalPrioVolumeSizeUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_prio_volume_size_usage\":null")
+		first = false
+	}
+
 	// handle nullable field type
 	if m.Type != nil {
 		if !first {
@@ -1814,6 +2379,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field upgrade_for_tiering
+	if m.UpgradeForTiering != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"upgrade_for_tiering\":")
+		bytes, err := swag.WriteJSON(m.UpgradeForTiering)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UpgradeForTiering_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"upgrade_for_tiering\":null")
+		first = false
+	}
+
 	// handle nullable field upgrade_tool_version
 	if m.UpgradeToolVersion != nil {
 		if !first {
@@ -1831,6 +2416,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"upgrade_tool_version\":null")
+		first = false
+	}
+
+	// handle nullable field used_cache_space
+	if m.UsedCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"used_cache_space\":")
+		bytes, err := swag.WriteJSON(m.UsedCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UsedCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"used_cache_space\":null")
 		first = false
 	}
 
@@ -1891,6 +2496,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"used_memory_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field valid_cache_space
+	if m.ValidCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_cache_space\":")
+		bytes, err := swag.WriteJSON(m.ValidCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ValidCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_cache_space\":null")
 		first = false
 	}
 
@@ -2117,6 +2742,10 @@ func (m *Cluster) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDNS(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEcpLicense(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2375,6 +3004,25 @@ func (m *Cluster) validateDNS(formats strfmt.Registry) error {
 
 	if err := validate.Required("dns", "body", m.DNS); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Cluster) validateEcpLicense(formats strfmt.Registry) error {
+	if swag.IsZero(m.EcpLicense) { // not required
+		return nil
+	}
+
+	if m.EcpLicense != nil {
+		if err := m.EcpLicense.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ecp_license")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ecp_license")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -2867,6 +3515,10 @@ func (m *Cluster) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEcpLicense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3045,6 +3697,22 @@ func (m *Cluster) contextValidateDisconnectedReason(ctx context.Context, formats
 				return ve.ValidateName("disconnected_reason")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("disconnected_reason")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Cluster) contextValidateEcpLicense(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EcpLicense != nil {
+		if err := m.EcpLicense.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ecp_license")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ecp_license")
 			}
 			return err
 		}

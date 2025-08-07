@@ -66,6 +66,9 @@ type UpgradeCloudTowerApplicationParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.UpgradeCloudTowerApplicationParams
 
@@ -144,6 +147,17 @@ func (o *UpgradeCloudTowerApplicationParams) SetContentLanguage(contentLanguage 
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the upgrade cloud tower application params
+func (o *UpgradeCloudTowerApplicationParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpgradeCloudTowerApplicationParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the upgrade cloud tower application params
+func (o *UpgradeCloudTowerApplicationParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the upgrade cloud tower application params
 func (o *UpgradeCloudTowerApplicationParams) WithRequestBody(requestBody *models.UpgradeCloudTowerApplicationParams) *UpgradeCloudTowerApplicationParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpgradeCloudTowerApplicationParams) WriteToRequest(r runtime.ClientRequ
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

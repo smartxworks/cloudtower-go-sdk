@@ -30,6 +30,18 @@ type ClusterSettings struct {
 	// default storage policy
 	DefaultStoragePolicy *VMVolumeElfStoragePolicyType `json:"default_storage_policy,omitempty"`
 
+	// default storage policy ec k
+	DefaultStoragePolicyEck *int32 `json:"default_storage_policy_ec_k,omitempty"`
+
+	// default storage policy ec m
+	DefaultStoragePolicyEcm *int32 `json:"default_storage_policy_ec_m,omitempty"`
+
+	// default storage policy replica num
+	DefaultStoragePolicyReplicaNum *int32 `json:"default_storage_policy_replica_num,omitempty"`
+
+	// default storage policy thin provision
+	DefaultStoragePolicyThinProvision *bool `json:"default_storage_policy_thin_provision,omitempty"`
+
 	// enabled iscsi
 	EnabledIscsi *bool `json:"enabled_iscsi,omitempty"`
 
@@ -49,6 +61,14 @@ type ClusterSettingsMarshalOpts struct {
 	DefaultHa_Explicit_Null_When_Empty bool
 
 	DefaultStoragePolicy_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyEck_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyEcm_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyReplicaNum_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyThinProvision_Explicit_Null_When_Empty bool
 
 	EnabledIscsi_Explicit_Null_When_Empty bool
 
@@ -120,6 +140,86 @@ func (m ClusterSettings) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"default_storage_policy\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_ec_k
+	if m.DefaultStoragePolicyEck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_ec_k\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyEck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyEck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_ec_m
+	if m.DefaultStoragePolicyEcm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_ec_m\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyEcm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyEcm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_replica_num
+	if m.DefaultStoragePolicyReplicaNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_replica_num\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyReplicaNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyReplicaNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_replica_num\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_thin_provision
+	if m.DefaultStoragePolicyThinProvision != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_thin_provision\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyThinProvision)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyThinProvision_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_thin_provision\":null")
 		first = false
 	}
 

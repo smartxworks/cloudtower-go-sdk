@@ -66,6 +66,9 @@ type GetVMVolumeSnapshotsConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVMVolumeSnapshotsConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetVMVolumeSnapshotsConnectionParams) SetContentLanguage(contentLanguag
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Vm volume snapshots connection params
+func (o *GetVMVolumeSnapshotsConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVMVolumeSnapshotsConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Vm volume snapshots connection params
+func (o *GetVMVolumeSnapshotsConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get Vm volume snapshots connection params
 func (o *GetVMVolumeSnapshotsConnectionParams) WithRequestBody(requestBody *models.GetVMVolumeSnapshotsConnectionRequestBody) *GetVMVolumeSnapshotsConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVMVolumeSnapshotsConnectionParams) WriteToRequest(r runtime.ClientRe
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

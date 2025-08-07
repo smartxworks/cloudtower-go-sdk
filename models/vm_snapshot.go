@@ -56,6 +56,9 @@ type VMSnapshot struct {
 	// Required: true
 	Ha *bool `json:"ha"`
 
+	// ha priority
+	HaPriority *VMHaPriority `json:"ha_priority,omitempty"`
+
 	// id
 	// Required: true
 	ID *string `json:"id"`
@@ -138,6 +141,8 @@ type VMSnapshotMarshalOpts struct {
 	Firmware_Explicit_Null_When_Empty bool
 
 	Ha_Explicit_Null_When_Empty bool
+
+	HaPriority_Explicit_Null_When_Empty bool
 
 	ID_Explicit_Null_When_Empty bool
 
@@ -359,6 +364,26 @@ func (m VMSnapshot) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"ha\":null")
+		first = false
+	}
+
+	// handle nullable field ha_priority
+	if m.HaPriority != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority\":")
+		bytes, err := swag.WriteJSON(m.HaPriority)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HaPriority_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority\":null")
 		first = false
 	}
 
@@ -748,6 +773,10 @@ func (m *VMSnapshot) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateHaPriority(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -967,6 +996,25 @@ func (m *VMSnapshot) validateHa(formats strfmt.Registry) error {
 
 	if err := validate.Required("ha", "body", m.Ha); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *VMSnapshot) validateHaPriority(formats strfmt.Registry) error {
+	if swag.IsZero(m.HaPriority) { // not required
+		return nil
+	}
+
+	if m.HaPriority != nil {
+		if err := m.HaPriority.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1236,6 +1284,10 @@ func (m *VMSnapshot) ContextValidate(ctx context.Context, formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateHaPriority(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIoPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1362,6 +1414,22 @@ func (m *VMSnapshot) contextValidateFirmware(ctx context.Context, formats strfmt
 				return ve.ValidateName("firmware")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("firmware")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMSnapshot) contextValidateHaPriority(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HaPriority != nil {
+		if err := m.HaPriority.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority")
 			}
 			return err
 		}

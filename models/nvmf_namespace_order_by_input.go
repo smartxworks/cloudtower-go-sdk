@@ -90,6 +90,42 @@ const (
 	// NvmfNamespaceOrderByInputBpsWrMaxLengthDESC captures enum value "bps_wr_max_length_DESC"
 	NvmfNamespaceOrderByInputBpsWrMaxLengthDESC NvmfNamespaceOrderByInput = "bps_wr_max_length_DESC"
 
+	// NvmfNamespaceOrderByInputBusinessHostIsSameWithParentASC captures enum value "business_host_is_same_with_parent_ASC"
+	NvmfNamespaceOrderByInputBusinessHostIsSameWithParentASC NvmfNamespaceOrderByInput = "business_host_is_same_with_parent_ASC"
+
+	// NvmfNamespaceOrderByInputBusinessHostIsSameWithParentDESC captures enum value "business_host_is_same_with_parent_DESC"
+	NvmfNamespaceOrderByInputBusinessHostIsSameWithParentDESC NvmfNamespaceOrderByInput = "business_host_is_same_with_parent_DESC"
+
+	// NvmfNamespaceOrderByInputConfigurationMethodASC captures enum value "configuration_method_ASC"
+	NvmfNamespaceOrderByInputConfigurationMethodASC NvmfNamespaceOrderByInput = "configuration_method_ASC"
+
+	// NvmfNamespaceOrderByInputConfigurationMethodDESC captures enum value "configuration_method_DESC"
+	NvmfNamespaceOrderByInputConfigurationMethodDESC NvmfNamespaceOrderByInput = "configuration_method_DESC"
+
+	// NvmfNamespaceOrderByInputDowngradedPrioritizedSpaceASC captures enum value "downgraded_prioritized_space_ASC"
+	NvmfNamespaceOrderByInputDowngradedPrioritizedSpaceASC NvmfNamespaceOrderByInput = "downgraded_prioritized_space_ASC"
+
+	// NvmfNamespaceOrderByInputDowngradedPrioritizedSpaceDESC captures enum value "downgraded_prioritized_space_DESC"
+	NvmfNamespaceOrderByInputDowngradedPrioritizedSpaceDESC NvmfNamespaceOrderByInput = "downgraded_prioritized_space_DESC"
+
+	// NvmfNamespaceOrderByInputEckASC captures enum value "ec_k_ASC"
+	NvmfNamespaceOrderByInputEckASC NvmfNamespaceOrderByInput = "ec_k_ASC"
+
+	// NvmfNamespaceOrderByInputEckDESC captures enum value "ec_k_DESC"
+	NvmfNamespaceOrderByInputEckDESC NvmfNamespaceOrderByInput = "ec_k_DESC"
+
+	// NvmfNamespaceOrderByInputEcmASC captures enum value "ec_m_ASC"
+	NvmfNamespaceOrderByInputEcmASC NvmfNamespaceOrderByInput = "ec_m_ASC"
+
+	// NvmfNamespaceOrderByInputEcmDESC captures enum value "ec_m_DESC"
+	NvmfNamespaceOrderByInputEcmDESC NvmfNamespaceOrderByInput = "ec_m_DESC"
+
+	// NvmfNamespaceOrderByInputEncryptMethodASC captures enum value "encrypt_method_ASC"
+	NvmfNamespaceOrderByInputEncryptMethodASC NvmfNamespaceOrderByInput = "encrypt_method_ASC"
+
+	// NvmfNamespaceOrderByInputEncryptMethodDESC captures enum value "encrypt_method_DESC"
+	NvmfNamespaceOrderByInputEncryptMethodDESC NvmfNamespaceOrderByInput = "encrypt_method_DESC"
+
 	// NvmfNamespaceOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	NvmfNamespaceOrderByInputEntityAsyncStatusASC NvmfNamespaceOrderByInput = "entityAsyncStatus_ASC"
 
@@ -198,11 +234,23 @@ const (
 	// NvmfNamespaceOrderByInputNqnWhitelistDESC captures enum value "nqn_whitelist_DESC"
 	NvmfNamespaceOrderByInputNqnWhitelistDESC NvmfNamespaceOrderByInput = "nqn_whitelist_DESC"
 
+	// NvmfNamespaceOrderByInputPrioritizedASC captures enum value "prioritized_ASC"
+	NvmfNamespaceOrderByInputPrioritizedASC NvmfNamespaceOrderByInput = "prioritized_ASC"
+
+	// NvmfNamespaceOrderByInputPrioritizedDESC captures enum value "prioritized_DESC"
+	NvmfNamespaceOrderByInputPrioritizedDESC NvmfNamespaceOrderByInput = "prioritized_DESC"
+
 	// NvmfNamespaceOrderByInputReplicaNumASC captures enum value "replica_num_ASC"
 	NvmfNamespaceOrderByInputReplicaNumASC NvmfNamespaceOrderByInput = "replica_num_ASC"
 
 	// NvmfNamespaceOrderByInputReplicaNumDESC captures enum value "replica_num_DESC"
 	NvmfNamespaceOrderByInputReplicaNumDESC NvmfNamespaceOrderByInput = "replica_num_DESC"
+
+	// NvmfNamespaceOrderByInputResiliencyTypeASC captures enum value "resiliency_type_ASC"
+	NvmfNamespaceOrderByInputResiliencyTypeASC NvmfNamespaceOrderByInput = "resiliency_type_ASC"
+
+	// NvmfNamespaceOrderByInputResiliencyTypeDESC captures enum value "resiliency_type_DESC"
+	NvmfNamespaceOrderByInputResiliencyTypeDESC NvmfNamespaceOrderByInput = "resiliency_type_DESC"
 
 	// NvmfNamespaceOrderByInputSharedSizeASC captures enum value "shared_size_ASC"
 	NvmfNamespaceOrderByInputSharedSizeASC NvmfNamespaceOrderByInput = "shared_size_ASC"
@@ -258,7 +306,7 @@ var nvmfNamespaceOrderByInputEnum []interface{}
 
 func init() {
 	var res []NvmfNamespaceOrderByInput
-	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","is_shared_ASC","is_shared_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","namespace_id_ASC","namespace_id_DESC","nqn_whitelist_ASC","nqn_whitelist_DESC","replica_num_ASC","replica_num_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC","zbs_volume_id_ASC","zbs_volume_id_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","business_host_is_same_with_parent_ASC","business_host_is_same_with_parent_DESC","configuration_method_ASC","configuration_method_DESC","downgraded_prioritized_space_ASC","downgraded_prioritized_space_DESC","ec_k_ASC","ec_k_DESC","ec_m_ASC","ec_m_DESC","encrypt_method_ASC","encrypt_method_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","is_shared_ASC","is_shared_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","namespace_id_ASC","namespace_id_DESC","nqn_whitelist_ASC","nqn_whitelist_DESC","prioritized_ASC","prioritized_DESC","replica_num_ASC","replica_num_DESC","resiliency_type_ASC","resiliency_type_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC","zbs_volume_id_ASC","zbs_volume_id_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

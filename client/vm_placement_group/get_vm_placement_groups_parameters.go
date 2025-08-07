@@ -66,6 +66,9 @@ type GetVMPlacementGroupsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVMPlacementGroupsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetVMPlacementGroupsParams) SetContentLanguage(contentLanguage *string)
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Vm placement groups params
+func (o *GetVMPlacementGroupsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVMPlacementGroupsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Vm placement groups params
+func (o *GetVMPlacementGroupsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get Vm placement groups params
 func (o *GetVMPlacementGroupsParams) WithRequestBody(requestBody *models.GetVMPlacementGroupsRequestBody) *GetVMPlacementGroupsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVMPlacementGroupsParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

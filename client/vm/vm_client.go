@@ -112,6 +112,8 @@ type ClientService interface {
 
 	RollbackVM(params *RollbackVMParams, opts ...ClientOption) (*RollbackVMOK, error)
 
+	SetVMDiskResidentInCache(params *SetVMDiskResidentInCacheParams, opts ...ClientOption) (*SetVMDiskResidentInCacheOK, error)
+
 	ShutDownVM(params *ShutDownVMParams, opts ...ClientOption) (*ShutDownVMOK, error)
 
 	StartVM(params *StartVMParams, opts ...ClientOption) (*StartVMOK, error)
@@ -1702,6 +1704,44 @@ func (a *Client) RollbackVM(params *RollbackVMParams, opts ...ClientOption) (*Ro
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for RollbackVm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  SetVMDiskResidentInCache set Vm disk resident in cache API
+*/
+func (a *Client) SetVMDiskResidentInCache(params *SetVMDiskResidentInCacheParams, opts ...ClientOption) (*SetVMDiskResidentInCacheOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSetVMDiskResidentInCacheParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "SetVmDiskResidentInCache",
+		Method:             "POST",
+		PathPattern:        "/set-vm-disk-resident-in-cache",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &SetVMDiskResidentInCacheReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SetVMDiskResidentInCacheOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for SetVmDiskResidentInCache: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

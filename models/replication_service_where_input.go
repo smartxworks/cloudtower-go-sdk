@@ -392,30 +392,6 @@ type ReplicationServiceWhereInput struct {
 	// replication plans some
 	ReplicationPlansSome *ReplicationPlanWhereInput `json:"replication_plans_some,omitempty"`
 
-	// resource version
-	ResourceVersion *int32 `json:"resource_version,omitempty"`
-
-	// resource version gt
-	ResourceVersionGt *int32 `json:"resource_version_gt,omitempty"`
-
-	// resource version gte
-	ResourceVersionGte *int32 `json:"resource_version_gte,omitempty"`
-
-	// resource version in
-	ResourceVersionIn []int32 `json:"resource_version_in,omitempty"`
-
-	// resource version lt
-	ResourceVersionLt *int32 `json:"resource_version_lt,omitempty"`
-
-	// resource version lte
-	ResourceVersionLte *int32 `json:"resource_version_lte,omitempty"`
-
-	// resource version not
-	ResourceVersionNot *int32 `json:"resource_version_not,omitempty"`
-
-	// resource version not in
-	ResourceVersionNotIn []int32 `json:"resource_version_not_in,omitempty"`
-
 	// retry interval
 	RetryInterval *int32 `json:"retry_interval,omitempty"`
 
@@ -715,22 +691,6 @@ type ReplicationServiceWhereInputMarshalOpts struct {
 	ReplicationPlansNone_Explicit_Null_When_Empty bool
 
 	ReplicationPlansSome_Explicit_Null_When_Empty bool
-
-	ResourceVersion_Explicit_Null_When_Empty bool
-
-	ResourceVersionGt_Explicit_Null_When_Empty bool
-
-	ResourceVersionGte_Explicit_Null_When_Empty bool
-
-	ResourceVersionIn_Explicit_Null_When_Empty bool
-
-	ResourceVersionLt_Explicit_Null_When_Empty bool
-
-	ResourceVersionLte_Explicit_Null_When_Empty bool
-
-	ResourceVersionNot_Explicit_Null_When_Empty bool
-
-	ResourceVersionNotIn_Explicit_Null_When_Empty bool
 
 	RetryInterval_Explicit_Null_When_Empty bool
 
@@ -3098,154 +3058,6 @@ func (m ReplicationServiceWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"replication_plans_some\":null")
-		first = false
-	}
-
-	// handle nullable field resource_version
-	if m.ResourceVersion != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version\":")
-		bytes, err := swag.WriteJSON(m.ResourceVersion)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersion_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version\":null")
-		first = false
-	}
-
-	// handle nullable field resource_version_gt
-	if m.ResourceVersionGt != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_gt\":")
-		bytes, err := swag.WriteJSON(m.ResourceVersionGt)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionGt_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_gt\":null")
-		first = false
-	}
-
-	// handle nullable field resource_version_gte
-	if m.ResourceVersionGte != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_gte\":")
-		bytes, err := swag.WriteJSON(m.ResourceVersionGte)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionGte_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_gte\":null")
-		first = false
-	}
-
-	// handle non nullable field resource_version_in with omitempty
-	if !swag.IsZero(m.ResourceVersionIn) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_in\":")
-		bytes, err := swag.WriteJSON(m.ResourceVersionIn)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	}
-
-	// handle nullable field resource_version_lt
-	if m.ResourceVersionLt != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_lt\":")
-		bytes, err := swag.WriteJSON(m.ResourceVersionLt)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionLt_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_lt\":null")
-		first = false
-	}
-
-	// handle nullable field resource_version_lte
-	if m.ResourceVersionLte != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_lte\":")
-		bytes, err := swag.WriteJSON(m.ResourceVersionLte)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionLte_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_lte\":null")
-		first = false
-	}
-
-	// handle nullable field resource_version_not
-	if m.ResourceVersionNot != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_not\":")
-		bytes, err := swag.WriteJSON(m.ResourceVersionNot)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionNot_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_not\":null")
-		first = false
-	}
-
-	// handle non nullable field resource_version_not_in with omitempty
-	if !swag.IsZero(m.ResourceVersionNotIn) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"resource_version_not_in\":")
-		bytes, err := swag.WriteJSON(m.ResourceVersionNotIn)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
 		first = false
 	}
 

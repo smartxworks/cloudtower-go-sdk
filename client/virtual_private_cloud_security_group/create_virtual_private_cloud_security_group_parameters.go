@@ -66,6 +66,9 @@ type CreateVirtualPrivateCloudSecurityGroupParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.VirtualPrivateCloudSecurityGroupCreationParams
 
@@ -144,6 +147,17 @@ func (o *CreateVirtualPrivateCloudSecurityGroupParams) SetContentLanguage(conten
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the create virtual private cloud security group params
+func (o *CreateVirtualPrivateCloudSecurityGroupParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CreateVirtualPrivateCloudSecurityGroupParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the create virtual private cloud security group params
+func (o *CreateVirtualPrivateCloudSecurityGroupParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the create virtual private cloud security group params
 func (o *CreateVirtualPrivateCloudSecurityGroupParams) WithRequestBody(requestBody []*models.VirtualPrivateCloudSecurityGroupCreationParams) *CreateVirtualPrivateCloudSecurityGroupParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *CreateVirtualPrivateCloudSecurityGroupParams) WriteToRequest(r runtime.
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

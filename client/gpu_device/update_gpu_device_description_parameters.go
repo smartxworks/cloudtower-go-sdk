@@ -66,6 +66,9 @@ type UpdateGpuDeviceDescriptionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GpuDeviceDescriptionUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateGpuDeviceDescriptionParams) SetContentLanguage(contentLanguage *s
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update gpu device description params
+func (o *UpdateGpuDeviceDescriptionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateGpuDeviceDescriptionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update gpu device description params
+func (o *UpdateGpuDeviceDescriptionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update gpu device description params
 func (o *UpdateGpuDeviceDescriptionParams) WithRequestBody(requestBody *models.GpuDeviceDescriptionUpdationParams) *UpdateGpuDeviceDescriptionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateGpuDeviceDescriptionParams) WriteToRequest(r runtime.ClientReques
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

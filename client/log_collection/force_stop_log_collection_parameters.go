@@ -61,6 +61,9 @@ func NewForceStopLogCollectionParamsWithHTTPClient(client *http.Client) *ForceSt
 */
 type ForceStopLogCollectionParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.ForceStopLogCollectionParams
 
@@ -117,6 +120,17 @@ func (o *ForceStopLogCollectionParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the force stop log collection params
+func (o *ForceStopLogCollectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *ForceStopLogCollectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the force stop log collection params
+func (o *ForceStopLogCollectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the force stop log collection params
 func (o *ForceStopLogCollectionParams) WithRequestBody(requestBody *models.ForceStopLogCollectionParams) *ForceStopLogCollectionParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *ForceStopLogCollectionParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

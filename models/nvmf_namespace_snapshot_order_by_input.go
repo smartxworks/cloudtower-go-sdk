@@ -30,6 +30,18 @@ func (m NvmfNamespaceSnapshotOrderByInput) Pointer() *NvmfNamespaceSnapshotOrder
 
 const (
 
+	// NvmfNamespaceSnapshotOrderByInputEckASC captures enum value "ec_k_ASC"
+	NvmfNamespaceSnapshotOrderByInputEckASC NvmfNamespaceSnapshotOrderByInput = "ec_k_ASC"
+
+	// NvmfNamespaceSnapshotOrderByInputEckDESC captures enum value "ec_k_DESC"
+	NvmfNamespaceSnapshotOrderByInputEckDESC NvmfNamespaceSnapshotOrderByInput = "ec_k_DESC"
+
+	// NvmfNamespaceSnapshotOrderByInputEcmASC captures enum value "ec_m_ASC"
+	NvmfNamespaceSnapshotOrderByInputEcmASC NvmfNamespaceSnapshotOrderByInput = "ec_m_ASC"
+
+	// NvmfNamespaceSnapshotOrderByInputEcmDESC captures enum value "ec_m_DESC"
+	NvmfNamespaceSnapshotOrderByInputEcmDESC NvmfNamespaceSnapshotOrderByInput = "ec_m_DESC"
+
 	// NvmfNamespaceSnapshotOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	NvmfNamespaceSnapshotOrderByInputEntityAsyncStatusASC NvmfNamespaceSnapshotOrderByInput = "entityAsyncStatus_ASC"
 
@@ -60,6 +72,12 @@ const (
 	// NvmfNamespaceSnapshotOrderByInputNameDESC captures enum value "name_DESC"
 	NvmfNamespaceSnapshotOrderByInputNameDESC NvmfNamespaceSnapshotOrderByInput = "name_DESC"
 
+	// NvmfNamespaceSnapshotOrderByInputResiliencyTypeASC captures enum value "resiliency_type_ASC"
+	NvmfNamespaceSnapshotOrderByInputResiliencyTypeASC NvmfNamespaceSnapshotOrderByInput = "resiliency_type_ASC"
+
+	// NvmfNamespaceSnapshotOrderByInputResiliencyTypeDESC captures enum value "resiliency_type_DESC"
+	NvmfNamespaceSnapshotOrderByInputResiliencyTypeDESC NvmfNamespaceSnapshotOrderByInput = "resiliency_type_DESC"
+
 	// NvmfNamespaceSnapshotOrderByInputUniqueSizeASC captures enum value "unique_size_ASC"
 	NvmfNamespaceSnapshotOrderByInputUniqueSizeASC NvmfNamespaceSnapshotOrderByInput = "unique_size_ASC"
 
@@ -72,7 +90,7 @@ var nvmfNamespaceSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []NvmfNamespaceSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ec_k_ASC","ec_k_DESC","ec_m_ASC","ec_m_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","resiliency_type_ASC","resiliency_type_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

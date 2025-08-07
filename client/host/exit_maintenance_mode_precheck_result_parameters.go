@@ -66,6 +66,9 @@ type ExitMaintenanceModePrecheckResultParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.ExitMaintenanceModeResultParams
 
@@ -144,6 +147,17 @@ func (o *ExitMaintenanceModePrecheckResultParams) SetContentLanguage(contentLang
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the exit maintenance mode precheck result params
+func (o *ExitMaintenanceModePrecheckResultParams) WithExternalCloudtowerID(externalCloudtowerID *string) *ExitMaintenanceModePrecheckResultParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the exit maintenance mode precheck result params
+func (o *ExitMaintenanceModePrecheckResultParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the exit maintenance mode precheck result params
 func (o *ExitMaintenanceModePrecheckResultParams) WithRequestBody(requestBody *models.ExitMaintenanceModeResultParams) *ExitMaintenanceModePrecheckResultParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *ExitMaintenanceModePrecheckResultParams) WriteToRequest(r runtime.Clien
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

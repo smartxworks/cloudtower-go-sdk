@@ -28,6 +28,9 @@ type MetricLabel struct {
 	// chunk
 	Chunk *string `json:"_chunk,omitempty"`
 
+	// cid
+	Cid *string `json:"_cid,omitempty"`
+
 	// cluster
 	Cluster *string `json:"_cluster,omitempty"`
 
@@ -95,6 +98,8 @@ type MetricLabelMarshalOpts struct {
 	Typename_Explicit_Null_When_Empty bool
 
 	Chunk_Explicit_Null_When_Empty bool
+
+	Cid_Explicit_Null_When_Empty bool
 
 	Cluster_Explicit_Null_When_Empty bool
 
@@ -180,6 +185,26 @@ func (m MetricLabel) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"_chunk\":null")
+		first = false
+	}
+
+	// handle nullable field _cid
+	if m.Cid != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"_cid\":")
+		bytes, err := swag.WriteJSON(m.Cid)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cid_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"_cid\":null")
 		first = false
 	}
 

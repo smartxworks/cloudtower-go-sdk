@@ -66,6 +66,9 @@ type RollbackSnapshotGroupParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.SnapshotGroupRollbackParams
 
@@ -144,6 +147,17 @@ func (o *RollbackSnapshotGroupParams) SetContentLanguage(contentLanguage *string
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the rollback snapshot group params
+func (o *RollbackSnapshotGroupParams) WithExternalCloudtowerID(externalCloudtowerID *string) *RollbackSnapshotGroupParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the rollback snapshot group params
+func (o *RollbackSnapshotGroupParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the rollback snapshot group params
 func (o *RollbackSnapshotGroupParams) WithRequestBody(requestBody *models.SnapshotGroupRollbackParams) *RollbackSnapshotGroupParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *RollbackSnapshotGroupParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

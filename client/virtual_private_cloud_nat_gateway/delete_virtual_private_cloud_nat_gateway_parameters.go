@@ -66,6 +66,9 @@ type DeleteVirtualPrivateCloudNatGatewayParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VirtualPrivateCloudNatGatewayDeletionParams
 
@@ -144,6 +147,17 @@ func (o *DeleteVirtualPrivateCloudNatGatewayParams) SetContentLanguage(contentLa
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete virtual private cloud nat gateway params
+func (o *DeleteVirtualPrivateCloudNatGatewayParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteVirtualPrivateCloudNatGatewayParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete virtual private cloud nat gateway params
+func (o *DeleteVirtualPrivateCloudNatGatewayParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete virtual private cloud nat gateway params
 func (o *DeleteVirtualPrivateCloudNatGatewayParams) WithRequestBody(requestBody *models.VirtualPrivateCloudNatGatewayDeletionParams) *DeleteVirtualPrivateCloudNatGatewayParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteVirtualPrivateCloudNatGatewayParams) WriteToRequest(r runtime.Cli
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

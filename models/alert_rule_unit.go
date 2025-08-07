@@ -48,6 +48,9 @@ const (
 	// AlertRuleUnitMICROSECOND captures enum value "MICROSECOND"
 	AlertRuleUnitMICROSECOND AlertRuleUnit = "MICROSECOND"
 
+	// AlertRuleUnitMILLISECOND captures enum value "MILLISECOND"
+	AlertRuleUnitMILLISECOND AlertRuleUnit = "MILLISECOND"
+
 	// AlertRuleUnitNANOSECOND captures enum value "NANOSECOND"
 	AlertRuleUnitNANOSECOND AlertRuleUnit = "NANOSECOND"
 
@@ -66,7 +69,7 @@ var alertRuleUnitEnum []interface{}
 
 func init() {
 	var res []AlertRuleUnit
-	if err := json.Unmarshal([]byte(`["BIT","BYTE","BYTE_PER_SECOND","CELSIUS","HERTZ","MICROSECOND","NANOSECOND","PERCENT","SECOND","UNIT_UNSPECIFIED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BIT","BYTE","BYTE_PER_SECOND","CELSIUS","HERTZ","MICROSECOND","MILLISECOND","NANOSECOND","PERCENT","SECOND","UNIT_UNSPECIFIED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

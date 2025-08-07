@@ -66,6 +66,9 @@ type GetDeploysParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetDeploysRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetDeploysParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get deploys params
+func (o *GetDeploysParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetDeploysParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get deploys params
+func (o *GetDeploysParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get deploys params
 func (o *GetDeploysParams) WithRequestBody(requestBody *models.GetDeploysRequestBody) *GetDeploysParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetDeploysParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

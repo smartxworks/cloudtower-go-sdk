@@ -66,6 +66,9 @@ type EnterMaintenanceModeParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.EnterMaintenanceModeParams
 
@@ -144,6 +147,17 @@ func (o *EnterMaintenanceModeParams) SetContentLanguage(contentLanguage *string)
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the enter maintenance mode params
+func (o *EnterMaintenanceModeParams) WithExternalCloudtowerID(externalCloudtowerID *string) *EnterMaintenanceModeParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the enter maintenance mode params
+func (o *EnterMaintenanceModeParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the enter maintenance mode params
 func (o *EnterMaintenanceModeParams) WithRequestBody(requestBody *models.EnterMaintenanceModeParams) *EnterMaintenanceModeParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *EnterMaintenanceModeParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

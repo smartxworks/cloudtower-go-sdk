@@ -61,6 +61,9 @@ func NewDeleteLogCollectionParamsWithHTTPClient(client *http.Client) *DeleteLogC
 */
 type DeleteLogCollectionParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.LogCollectionDeletionParams
 
@@ -117,6 +120,17 @@ func (o *DeleteLogCollectionParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete log collection params
+func (o *DeleteLogCollectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteLogCollectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete log collection params
+func (o *DeleteLogCollectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete log collection params
 func (o *DeleteLogCollectionParams) WithRequestBody(requestBody *models.LogCollectionDeletionParams) *DeleteLogCollectionParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *DeleteLogCollectionParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

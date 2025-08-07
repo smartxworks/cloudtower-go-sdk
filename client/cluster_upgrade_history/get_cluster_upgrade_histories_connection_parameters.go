@@ -66,6 +66,9 @@ type GetClusterUpgradeHistoriesConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetClusterUpgradeHistoriesConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetClusterUpgradeHistoriesConnectionParams) SetContentLanguage(contentL
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get cluster upgrade histories connection params
+func (o *GetClusterUpgradeHistoriesConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetClusterUpgradeHistoriesConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get cluster upgrade histories connection params
+func (o *GetClusterUpgradeHistoriesConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get cluster upgrade histories connection params
 func (o *GetClusterUpgradeHistoriesConnectionParams) WithRequestBody(requestBody *models.GetClusterUpgradeHistoriesConnectionRequestBody) *GetClusterUpgradeHistoriesConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetClusterUpgradeHistoriesConnectionParams) WriteToRequest(r runtime.Cl
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

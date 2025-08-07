@@ -66,6 +66,9 @@ type AddVMPciNicParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMOperatePciNicParams
 
@@ -144,6 +147,17 @@ func (o *AddVMPciNicParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the add Vm pci nic params
+func (o *AddVMPciNicParams) WithExternalCloudtowerID(externalCloudtowerID *string) *AddVMPciNicParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the add Vm pci nic params
+func (o *AddVMPciNicParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the add Vm pci nic params
 func (o *AddVMPciNicParams) WithRequestBody(requestBody *models.VMOperatePciNicParams) *AddVMPciNicParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *AddVMPciNicParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

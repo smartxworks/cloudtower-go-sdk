@@ -66,6 +66,9 @@ type TriggerDiskBlinkParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.TriggerDiskBlinkParams
 
@@ -144,6 +147,17 @@ func (o *TriggerDiskBlinkParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the trigger disk blink params
+func (o *TriggerDiskBlinkParams) WithExternalCloudtowerID(externalCloudtowerID *string) *TriggerDiskBlinkParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the trigger disk blink params
+func (o *TriggerDiskBlinkParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the trigger disk blink params
 func (o *TriggerDiskBlinkParams) WithRequestBody(requestBody []*models.TriggerDiskBlinkParams) *TriggerDiskBlinkParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *TriggerDiskBlinkParams) WriteToRequest(r runtime.ClientRequest, reg str
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

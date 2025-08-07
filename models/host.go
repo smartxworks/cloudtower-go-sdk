@@ -31,6 +31,12 @@ type Host struct {
 	// Required: true
 	AllocatableMemoryBytes *int64 `json:"allocatable_memory_bytes"`
 
+	// allocated prioritized space
+	AllocatedPrioritizedSpace *int64 `json:"allocated_prioritized_space,omitempty"`
+
+	// allocated prioritized space usage
+	AllocatedPrioritizedSpaceUsage *float64 `json:"allocated_prioritized_space_usage,omitempty"`
+
 	// chunk id
 	// Required: true
 	ChunkID *string `json:"chunk_id"`
@@ -39,9 +45,15 @@ type Host struct {
 	// Required: true
 	Cluster *NestedCluster `json:"cluster"`
 
+	// commited memory bytes
+	CommitedMemoryBytes *int64 `json:"commited_memory_bytes,omitempty"`
+
 	// compatible cpu models
 	// Required: true
 	CompatibleCPUModels []string `json:"compatible_cpu_models"`
+
+	// connect status
+	ConnectStatus *HostConnectStatus `json:"connect_status,omitempty"`
 
 	// cpu brand
 	// Required: true
@@ -72,8 +84,14 @@ type Host struct {
 	// data ip
 	DataIP *string `json:"data_ip,omitempty"`
 
+	// disk pools
+	DiskPools []*NestedDiskPool `json:"disk_pools,omitempty"`
+
 	// disks
 	Disks []*NestedDisk `json:"disks,omitempty"`
+
+	// downgraded prioritized space
+	DowngradedPrioritizedSpace *int64 `json:"downgraded_prioritized_space,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -127,6 +145,9 @@ type Host struct {
 	// Required: true
 	ManagementIP *string `json:"management_ip"`
 
+	// merged status
+	MergedStatus *HostMergedStatus `json:"merged_status,omitempty"`
+
 	// model
 	// Required: true
 	Model *string `json:"model"`
@@ -156,6 +177,24 @@ type Host struct {
 	// os version
 	OsVersion *string `json:"os_version,omitempty"`
 
+	// perf allocated data space
+	PerfAllocatedDataSpace *int64 `json:"perf_allocated_data_space,omitempty"`
+
+	// perf failure data space
+	PerfFailureDataSpace *int64 `json:"perf_failure_data_space,omitempty"`
+
+	// perf total data capacity
+	PerfTotalDataCapacity *int64 `json:"perf_total_data_capacity,omitempty"`
+
+	// perf used data space
+	PerfUsedDataSpace *int64 `json:"perf_used_data_space,omitempty"`
+
+	// perf valid data space
+	PerfValidDataSpace *int64 `json:"perf_valid_data_space,omitempty"`
+
+	// planned prioritized space
+	PlannedPrioritizedSpace *int64 `json:"planned_prioritized_space,omitempty"`
+
 	// pmem dimm capacity
 	// Required: true
 	PmemDimmCapacity *int64 `json:"pmem_dimm_capacity"`
@@ -170,6 +209,9 @@ type Host struct {
 	// pmem disk count
 	// Required: true
 	PmemDiskCount *int32 `json:"pmem_disk_count"`
+
+	// prio space percentage
+	PrioSpacePercentage *float64 `json:"prio_space_percentage,omitempty"`
 
 	// provisioned cpu cores
 	// Required: true
@@ -245,6 +287,9 @@ type Host struct {
 	// usb devices
 	UsbDevices []*NestedUsbDevice `json:"usb_devices,omitempty"`
 
+	// used cache space
+	UsedCacheSpace *int64 `json:"used_cache_space,omitempty"`
+
 	// used cpu hz
 	UsedCPUHz *float64 `json:"used_cpu_hz,omitempty"`
 
@@ -254,6 +299,12 @@ type Host struct {
 
 	// used memory bytes
 	UsedMemoryBytes *float64 `json:"used_memory_bytes,omitempty"`
+
+	// valid cache space
+	ValidCacheSpace *int64 `json:"valid_cache_space,omitempty"`
+
+	// valid free cache space
+	ValidFreeCacheSpace *int64 `json:"valid_free_cache_space,omitempty"`
 
 	// vm num
 	VMNum *int32 `json:"vm_num,omitempty"`
@@ -283,11 +334,19 @@ type HostMarshalOpts struct {
 
 	AllocatableMemoryBytes_Explicit_Null_When_Empty bool
 
+	AllocatedPrioritizedSpace_Explicit_Null_When_Empty bool
+
+	AllocatedPrioritizedSpaceUsage_Explicit_Null_When_Empty bool
+
 	ChunkID_Explicit_Null_When_Empty bool
 
 	Cluster_Explicit_Null_When_Empty bool
 
+	CommitedMemoryBytes_Explicit_Null_When_Empty bool
+
 	CompatibleCPUModels_Explicit_Null_When_Empty bool
+
+	ConnectStatus_Explicit_Null_When_Empty bool
 
 	CPUBrand_Explicit_Null_When_Empty bool
 
@@ -305,7 +364,11 @@ type HostMarshalOpts struct {
 
 	DataIP_Explicit_Null_When_Empty bool
 
+	DiskPools_Explicit_Null_When_Empty bool
+
 	Disks_Explicit_Null_When_Empty bool
+
+	DowngradedPrioritizedSpace_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -337,6 +400,8 @@ type HostMarshalOpts struct {
 
 	ManagementIP_Explicit_Null_When_Empty bool
 
+	MergedStatus_Explicit_Null_When_Empty bool
+
 	Model_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
@@ -353,6 +418,18 @@ type HostMarshalOpts struct {
 
 	OsVersion_Explicit_Null_When_Empty bool
 
+	PerfAllocatedDataSpace_Explicit_Null_When_Empty bool
+
+	PerfFailureDataSpace_Explicit_Null_When_Empty bool
+
+	PerfTotalDataCapacity_Explicit_Null_When_Empty bool
+
+	PerfUsedDataSpace_Explicit_Null_When_Empty bool
+
+	PerfValidDataSpace_Explicit_Null_When_Empty bool
+
+	PlannedPrioritizedSpace_Explicit_Null_When_Empty bool
+
 	PmemDimmCapacity_Explicit_Null_When_Empty bool
 
 	PmemDimmCount_Explicit_Null_When_Empty bool
@@ -360,6 +437,8 @@ type HostMarshalOpts struct {
 	PmemDimms_Explicit_Null_When_Empty bool
 
 	PmemDiskCount_Explicit_Null_When_Empty bool
+
+	PrioSpacePercentage_Explicit_Null_When_Empty bool
 
 	ProvisionedCPUCores_Explicit_Null_When_Empty bool
 
@@ -403,11 +482,17 @@ type HostMarshalOpts struct {
 
 	UsbDevices_Explicit_Null_When_Empty bool
 
+	UsedCacheSpace_Explicit_Null_When_Empty bool
+
 	UsedCPUHz_Explicit_Null_When_Empty bool
 
 	UsedDataSpace_Explicit_Null_When_Empty bool
 
 	UsedMemoryBytes_Explicit_Null_When_Empty bool
+
+	ValidCacheSpace_Explicit_Null_When_Empty bool
+
+	ValidFreeCacheSpace_Explicit_Null_When_Empty bool
 
 	VMNum_Explicit_Null_When_Empty bool
 
@@ -488,6 +573,46 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field allocated_prioritized_space
+	if m.AllocatedPrioritizedSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_prioritized_space\":")
+		bytes, err := swag.WriteJSON(m.AllocatedPrioritizedSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AllocatedPrioritizedSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_prioritized_space\":null")
+		first = false
+	}
+
+	// handle nullable field allocated_prioritized_space_usage
+	if m.AllocatedPrioritizedSpaceUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_prioritized_space_usage\":")
+		bytes, err := swag.WriteJSON(m.AllocatedPrioritizedSpaceUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AllocatedPrioritizedSpaceUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_prioritized_space_usage\":null")
+		first = false
+	}
+
 	// handle nullable field chunk_id
 	if m.ChunkID != nil {
 		if !first {
@@ -528,6 +653,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field commited_memory_bytes
+	if m.CommitedMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"commited_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.CommitedMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CommitedMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"commited_memory_bytes\":null")
+		first = false
+	}
+
 	// handle non nullable field compatible_cpu_models without omitempty
 	{
 		if !first {
@@ -539,6 +684,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field connect_status
+	if m.ConnectStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"connect_status\":")
+		bytes, err := swag.WriteJSON(m.ConnectStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConnectStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"connect_status\":null")
 		first = false
 	}
 
@@ -690,6 +855,20 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle non nullable field disk_pools with omitempty
+	if !swag.IsZero(m.DiskPools) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"disk_pools\":")
+		bytes, err := swag.WriteJSON(m.DiskPools)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle non nullable field disks with omitempty
 	if !swag.IsZero(m.Disks) {
 		if !first {
@@ -701,6 +880,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field downgraded_prioritized_space
+	if m.DowngradedPrioritizedSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space\":")
+		bytes, err := swag.WriteJSON(m.DowngradedPrioritizedSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DowngradedPrioritizedSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"downgraded_prioritized_space\":null")
 		first = false
 	}
 
@@ -992,6 +1191,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field merged_status
+	if m.MergedStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"merged_status\":")
+		bytes, err := swag.WriteJSON(m.MergedStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MergedStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"merged_status\":null")
+		first = false
+	}
+
 	// handle nullable field model
 	if m.Model != nil {
 		if !first {
@@ -1146,6 +1365,126 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field perf_allocated_data_space
+	if m.PerfAllocatedDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_allocated_data_space\":")
+		bytes, err := swag.WriteJSON(m.PerfAllocatedDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfAllocatedDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_allocated_data_space\":null")
+		first = false
+	}
+
+	// handle nullable field perf_failure_data_space
+	if m.PerfFailureDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_failure_data_space\":")
+		bytes, err := swag.WriteJSON(m.PerfFailureDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfFailureDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_failure_data_space\":null")
+		first = false
+	}
+
+	// handle nullable field perf_total_data_capacity
+	if m.PerfTotalDataCapacity != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_total_data_capacity\":")
+		bytes, err := swag.WriteJSON(m.PerfTotalDataCapacity)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfTotalDataCapacity_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_total_data_capacity\":null")
+		first = false
+	}
+
+	// handle nullable field perf_used_data_space
+	if m.PerfUsedDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_used_data_space\":")
+		bytes, err := swag.WriteJSON(m.PerfUsedDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfUsedDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_used_data_space\":null")
+		first = false
+	}
+
+	// handle nullable field perf_valid_data_space
+	if m.PerfValidDataSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_valid_data_space\":")
+		bytes, err := swag.WriteJSON(m.PerfValidDataSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PerfValidDataSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"perf_valid_data_space\":null")
+		first = false
+	}
+
+	// handle nullable field planned_prioritized_space
+	if m.PlannedPrioritizedSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"planned_prioritized_space\":")
+		bytes, err := swag.WriteJSON(m.PlannedPrioritizedSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PlannedPrioritizedSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"planned_prioritized_space\":null")
+		first = false
+	}
+
 	// handle nullable field pmem_dimm_capacity
 	if m.PmemDimmCapacity != nil {
 		if !first {
@@ -1217,6 +1556,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"pmem_disk_count\":null")
+		first = false
+	}
+
+	// handle nullable field prio_space_percentage
+	if m.PrioSpacePercentage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prio_space_percentage\":")
+		bytes, err := swag.WriteJSON(m.PrioSpacePercentage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PrioSpacePercentage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prio_space_percentage\":null")
 		first = false
 	}
 
@@ -1634,6 +1993,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field used_cache_space
+	if m.UsedCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"used_cache_space\":")
+		bytes, err := swag.WriteJSON(m.UsedCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UsedCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"used_cache_space\":null")
+		first = false
+	}
+
 	// handle nullable field used_cpu_hz
 	if m.UsedCPUHz != nil {
 		if !first {
@@ -1691,6 +2070,46 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"used_memory_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field valid_cache_space
+	if m.ValidCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_cache_space\":")
+		bytes, err := swag.WriteJSON(m.ValidCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ValidCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_cache_space\":null")
+		first = false
+	}
+
+	// handle nullable field valid_free_cache_space
+	if m.ValidFreeCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_free_cache_space\":")
+		bytes, err := swag.WriteJSON(m.ValidFreeCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ValidFreeCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"valid_free_cache_space\":null")
 		first = false
 	}
 
@@ -1832,6 +2251,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateConnectStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCPUBrand(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1853,6 +2276,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCPUTemperatureCelsius(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDiskPools(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1909,6 +2336,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateManagementIP(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMergedStatus(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2069,6 +2500,25 @@ func (m *Host) validateCompatibleCPUModels(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Host) validateConnectStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConnectStatus) { // not required
+		return nil
+	}
+
+	if m.ConnectStatus != nil {
+		if err := m.ConnectStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("connect_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("connect_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Host) validateCPUBrand(formats strfmt.Registry) error {
 
 	if err := validate.Required("cpu_brand", "body", m.CPUBrand); err != nil {
@@ -2128,6 +2578,32 @@ func (m *Host) validateCPUTemperatureCelsius(formats strfmt.Registry) error {
 
 	if err := validate.Required("cpu_temperature_celsius", "body", m.CPUTemperatureCelsius); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Host) validateDiskPools(formats strfmt.Registry) error {
+	if swag.IsZero(m.DiskPools) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DiskPools); i++ {
+		if swag.IsZero(m.DiskPools[i]) { // not required
+			continue
+		}
+
+		if m.DiskPools[i] != nil {
+			if err := m.DiskPools[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("disk_pools" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("disk_pools" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -2345,6 +2821,25 @@ func (m *Host) validateManagementIP(formats strfmt.Registry) error {
 
 	if err := validate.Required("management_ip", "body", m.ManagementIP); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Host) validateMergedStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.MergedStatus) { // not required
+		return nil
+	}
+
+	if m.MergedStatus != nil {
+		if err := m.MergedStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("merged_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("merged_status")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -2710,7 +3205,15 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateConnectStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCPUFanSpeedUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDiskPools(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2739,6 +3242,10 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 	}
 
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMergedStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2796,6 +3303,22 @@ func (m *Host) contextValidateCluster(ctx context.Context, formats strfmt.Regist
 	return nil
 }
 
+func (m *Host) contextValidateConnectStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConnectStatus != nil {
+		if err := m.ConnectStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("connect_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("connect_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Host) contextValidateCPUFanSpeedUnit(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CPUFanSpeedUnit != nil {
@@ -2807,6 +3330,26 @@ func (m *Host) contextValidateCPUFanSpeedUnit(ctx context.Context, formats strfm
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateDiskPools(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DiskPools); i++ {
+
+		if m.DiskPools[i] != nil {
+			if err := m.DiskPools[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("disk_pools" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("disk_pools" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -2931,6 +3474,22 @@ func (m *Host) contextValidateLabels(ctx context.Context, formats strfmt.Registr
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateMergedStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MergedStatus != nil {
+		if err := m.MergedStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("merged_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("merged_status")
+			}
+			return err
+		}
 	}
 
 	return nil

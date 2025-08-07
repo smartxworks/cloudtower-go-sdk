@@ -66,6 +66,9 @@ type GetNamespaceGroupsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetNamespaceGroupsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetNamespaceGroupsParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get namespace groups params
+func (o *GetNamespaceGroupsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetNamespaceGroupsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get namespace groups params
+func (o *GetNamespaceGroupsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get namespace groups params
 func (o *GetNamespaceGroupsParams) WithRequestBody(requestBody *models.GetNamespaceGroupsRequestBody) *GetNamespaceGroupsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetNamespaceGroupsParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

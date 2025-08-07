@@ -66,6 +66,9 @@ type KeepSnapshotGroupParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.SnapshotGroupKeepParams
 
@@ -144,6 +147,17 @@ func (o *KeepSnapshotGroupParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the keep snapshot group params
+func (o *KeepSnapshotGroupParams) WithExternalCloudtowerID(externalCloudtowerID *string) *KeepSnapshotGroupParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the keep snapshot group params
+func (o *KeepSnapshotGroupParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the keep snapshot group params
 func (o *KeepSnapshotGroupParams) WithRequestBody(requestBody *models.SnapshotGroupKeepParams) *KeepSnapshotGroupParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *KeepSnapshotGroupParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

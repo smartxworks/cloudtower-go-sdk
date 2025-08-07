@@ -136,7 +136,8 @@ type BackupPlan struct {
 	LastManualExecutedAt *string `json:"last_manual_executed_at,omitempty"`
 
 	// logical size
-	LogicalSize *int64 `json:"logical_size,omitempty"`
+	// Required: true
+	LogicalSize *int64 `json:"logical_size"`
 
 	// name
 	// Required: true
@@ -149,7 +150,8 @@ type BackupPlan struct {
 	Phase *BackupPlanPhase `json:"phase,omitempty"`
 
 	// physical size
-	PhysicalSize *int64 `json:"physical_size,omitempty"`
+	// Required: true
+	PhysicalSize *int64 `json:"physical_size"`
 
 	// snapshot consistent type
 	SnapshotConsistentType *ConsistentType `json:"snapshot_consistent_type,omitempty"`
@@ -159,10 +161,12 @@ type BackupPlan struct {
 	Status *BackupPlanStatus `json:"status"`
 
 	// valid size of backup object
-	ValidSizeOfBackupObject *int64 `json:"valid_size_of_backup_object,omitempty"`
+	// Required: true
+	ValidSizeOfBackupObject *int64 `json:"valid_size_of_backup_object"`
 
 	// valid size of restore point
-	ValidSizeOfRestorePoint *int64 `json:"valid_size_of_restore_point,omitempty"`
+	// Required: true
+	ValidSizeOfRestorePoint *int64 `json:"valid_size_of_restore_point"`
 
 	// vms
 	Vms []*NestedVM `json:"vms,omitempty"`
@@ -1250,6 +1254,10 @@ func (m *BackupPlan) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateLogicalSize(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1258,11 +1266,23 @@ func (m *BackupPlan) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validatePhysicalSize(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSnapshotConsistentType(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateValidSizeOfBackupObject(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateValidSizeOfRestorePoint(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1644,6 +1664,15 @@ func (m *BackupPlan) validateLastManualExecuteStatus(formats strfmt.Registry) er
 	return nil
 }
 
+func (m *BackupPlan) validateLogicalSize(formats strfmt.Registry) error {
+
+	if err := validate.Required("logical_size", "body", m.LogicalSize); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *BackupPlan) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
@@ -1667,6 +1696,15 @@ func (m *BackupPlan) validatePhase(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) validatePhysicalSize(formats strfmt.Registry) error {
+
+	if err := validate.Required("physical_size", "body", m.PhysicalSize); err != nil {
+		return err
 	}
 
 	return nil
@@ -1710,6 +1748,24 @@ func (m *BackupPlan) validateStatus(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) validateValidSizeOfBackupObject(formats strfmt.Registry) error {
+
+	if err := validate.Required("valid_size_of_backup_object", "body", m.ValidSizeOfBackupObject); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BackupPlan) validateValidSizeOfRestorePoint(formats strfmt.Registry) error {
+
+	if err := validate.Required("valid_size_of_restore_point", "body", m.ValidSizeOfRestorePoint); err != nil {
+		return err
 	}
 
 	return nil

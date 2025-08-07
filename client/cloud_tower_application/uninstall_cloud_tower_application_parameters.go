@@ -66,6 +66,9 @@ type UninstallCloudTowerApplicationParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.UninstallCloudTowerApplicationParams
 
@@ -144,6 +147,17 @@ func (o *UninstallCloudTowerApplicationParams) SetContentLanguage(contentLanguag
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the uninstall cloud tower application params
+func (o *UninstallCloudTowerApplicationParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UninstallCloudTowerApplicationParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the uninstall cloud tower application params
+func (o *UninstallCloudTowerApplicationParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the uninstall cloud tower application params
 func (o *UninstallCloudTowerApplicationParams) WithRequestBody(requestBody *models.UninstallCloudTowerApplicationParams) *UninstallCloudTowerApplicationParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UninstallCloudTowerApplicationParams) WriteToRequest(r runtime.ClientRe
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

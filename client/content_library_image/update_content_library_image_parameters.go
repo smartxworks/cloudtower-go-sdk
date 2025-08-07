@@ -66,6 +66,9 @@ type UpdateContentLibraryImageParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.ContentLibraryImageUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateContentLibraryImageParams) SetContentLanguage(contentLanguage *st
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update content library image params
+func (o *UpdateContentLibraryImageParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateContentLibraryImageParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update content library image params
+func (o *UpdateContentLibraryImageParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update content library image params
 func (o *UpdateContentLibraryImageParams) WithRequestBody(requestBody *models.ContentLibraryImageUpdationParams) *UpdateContentLibraryImageParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateContentLibraryImageParams) WriteToRequest(r runtime.ClientRequest
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

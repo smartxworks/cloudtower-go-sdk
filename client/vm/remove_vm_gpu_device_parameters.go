@@ -66,6 +66,9 @@ type RemoveVMGpuDeviceParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMRemoveGpuDeviceParams
 
@@ -144,6 +147,17 @@ func (o *RemoveVMGpuDeviceParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the remove Vm gpu device params
+func (o *RemoveVMGpuDeviceParams) WithExternalCloudtowerID(externalCloudtowerID *string) *RemoveVMGpuDeviceParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the remove Vm gpu device params
+func (o *RemoveVMGpuDeviceParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the remove Vm gpu device params
 func (o *RemoveVMGpuDeviceParams) WithRequestBody(requestBody *models.VMRemoveGpuDeviceParams) *RemoveVMGpuDeviceParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *RemoveVMGpuDeviceParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

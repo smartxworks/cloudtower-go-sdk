@@ -66,6 +66,9 @@ type UpdateIscsiTargetParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.IscsiTargetUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateIscsiTargetParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update iscsi target params
+func (o *UpdateIscsiTargetParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateIscsiTargetParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update iscsi target params
+func (o *UpdateIscsiTargetParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update iscsi target params
 func (o *UpdateIscsiTargetParams) WithRequestBody(requestBody *models.IscsiTargetUpdationParams) *UpdateIscsiTargetParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateIscsiTargetParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

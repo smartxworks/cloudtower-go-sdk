@@ -66,6 +66,9 @@ type GetCloudTowerApplicationPackagesConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetCloudTowerApplicationPackagesConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetCloudTowerApplicationPackagesConnectionParams) SetContentLanguage(co
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get cloud tower application packages connection params
+func (o *GetCloudTowerApplicationPackagesConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetCloudTowerApplicationPackagesConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get cloud tower application packages connection params
+func (o *GetCloudTowerApplicationPackagesConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get cloud tower application packages connection params
 func (o *GetCloudTowerApplicationPackagesConnectionParams) WithRequestBody(requestBody *models.GetCloudTowerApplicationPackagesConnectionRequestBody) *GetCloudTowerApplicationPackagesConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetCloudTowerApplicationPackagesConnectionParams) WriteToRequest(r runt
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

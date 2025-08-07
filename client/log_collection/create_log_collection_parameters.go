@@ -61,6 +61,9 @@ func NewCreateLogCollectionParamsWithHTTPClient(client *http.Client) *CreateLogC
 */
 type CreateLogCollectionParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.LogCollectionCreationParams
 
@@ -117,6 +120,17 @@ func (o *CreateLogCollectionParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the create log collection params
+func (o *CreateLogCollectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CreateLogCollectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the create log collection params
+func (o *CreateLogCollectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the create log collection params
 func (o *CreateLogCollectionParams) WithRequestBody(requestBody []*models.LogCollectionCreationParams) *CreateLogCollectionParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *CreateLogCollectionParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

@@ -66,6 +66,9 @@ type MountDiskParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.DiskMountParams
 
@@ -144,6 +147,17 @@ func (o *MountDiskParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the mount disk params
+func (o *MountDiskParams) WithExternalCloudtowerID(externalCloudtowerID *string) *MountDiskParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the mount disk params
+func (o *MountDiskParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the mount disk params
 func (o *MountDiskParams) WithRequestBody(requestBody *models.DiskMountParams) *MountDiskParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *MountDiskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

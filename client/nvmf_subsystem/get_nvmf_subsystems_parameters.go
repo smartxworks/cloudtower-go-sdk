@@ -66,6 +66,9 @@ type GetNvmfSubsystemsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetNvmfSubsystemsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetNvmfSubsystemsParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get nvmf subsystems params
+func (o *GetNvmfSubsystemsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetNvmfSubsystemsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get nvmf subsystems params
+func (o *GetNvmfSubsystemsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get nvmf subsystems params
 func (o *GetNvmfSubsystemsParams) WithRequestBody(requestBody *models.GetNvmfSubsystemsRequestBody) *GetNvmfSubsystemsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetNvmfSubsystemsParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

@@ -66,6 +66,9 @@ type CreateNetworkPolicyRuleServiceParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.NetworkPolicyRuleServiceCreationParams
 
@@ -144,6 +147,17 @@ func (o *CreateNetworkPolicyRuleServiceParams) SetContentLanguage(contentLanguag
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the create network policy rule service params
+func (o *CreateNetworkPolicyRuleServiceParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CreateNetworkPolicyRuleServiceParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the create network policy rule service params
+func (o *CreateNetworkPolicyRuleServiceParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the create network policy rule service params
 func (o *CreateNetworkPolicyRuleServiceParams) WithRequestBody(requestBody []*models.NetworkPolicyRuleServiceCreationParams) *CreateNetworkPolicyRuleServiceParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *CreateNetworkPolicyRuleServiceParams) WriteToRequest(r runtime.ClientRe
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

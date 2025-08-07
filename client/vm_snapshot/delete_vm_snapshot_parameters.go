@@ -66,6 +66,9 @@ type DeleteVMSnapshotParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMSnapshotDeletionParams
 
@@ -144,6 +147,17 @@ func (o *DeleteVMSnapshotParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete Vm snapshot params
+func (o *DeleteVMSnapshotParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteVMSnapshotParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete Vm snapshot params
+func (o *DeleteVMSnapshotParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete Vm snapshot params
 func (o *DeleteVMSnapshotParams) WithRequestBody(requestBody *models.VMSnapshotDeletionParams) *DeleteVMSnapshotParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteVMSnapshotParams) WriteToRequest(r runtime.ClientRequest, reg str
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

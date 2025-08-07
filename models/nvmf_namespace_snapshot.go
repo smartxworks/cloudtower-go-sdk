@@ -24,6 +24,12 @@ type NvmfNamespaceSnapshot struct {
 	// consistency group snapshot
 	ConsistencyGroupSnapshot *NestedConsistencyGroupSnapshot `json:"consistency_group_snapshot,omitempty"`
 
+	// ec k
+	Eck *int32 `json:"ec_k,omitempty"`
+
+	// ec m
+	Ecm *int32 `json:"ec_m,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -53,6 +59,12 @@ type NvmfNamespaceSnapshot struct {
 	// Required: true
 	NvmfSubsystem *NestedNvmfSubsystem `json:"nvmf_subsystem"`
 
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
+
+	// snapshot group
+	SnapshotGroup *NestedSnapshotGroup `json:"snapshot_group,omitempty"`
+
 	// unique size
 	// Required: true
 	UniqueSize *int64 `json:"unique_size"`
@@ -62,6 +74,10 @@ type NvmfNamespaceSnapshot struct {
 
 type NvmfNamespaceSnapshotMarshalOpts struct {
 	ConsistencyGroupSnapshot_Explicit_Null_When_Empty bool
+
+	Eck_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -78,6 +94,10 @@ type NvmfNamespaceSnapshotMarshalOpts struct {
 	NvmfNamespace_Explicit_Null_When_Empty bool
 
 	NvmfSubsystem_Explicit_Null_When_Empty bool
+
+	ResiliencyType_Explicit_Null_When_Empty bool
+
+	SnapshotGroup_Explicit_Null_When_Empty bool
 
 	UniqueSize_Explicit_Null_When_Empty bool
 }
@@ -105,6 +125,46 @@ func (m NvmfNamespaceSnapshot) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"consistency_group_snapshot\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
 		first = false
 	}
 
@@ -262,6 +322,46 @@ func (m NvmfNamespaceSnapshot) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
+		first = false
+	}
+
+	// handle nullable field snapshot_group
+	if m.SnapshotGroup != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_group\":")
+		bytes, err := swag.WriteJSON(m.SnapshotGroup)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotGroup_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_group\":null")
+		first = false
+	}
+
 	// handle nullable field unique_size
 	if m.UniqueSize != nil {
 		if !first {
@@ -323,6 +423,14 @@ func (m *NvmfNamespaceSnapshot) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNvmfSubsystem(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSnapshotGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -475,6 +583,44 @@ func (m *NvmfNamespaceSnapshot) validateNvmfSubsystem(formats strfmt.Registry) e
 	return nil
 }
 
+func (m *NvmfNamespaceSnapshot) validateResiliencyType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceSnapshot) validateSnapshotGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.SnapshotGroup) { // not required
+		return nil
+	}
+
+	if m.SnapshotGroup != nil {
+		if err := m.SnapshotGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("snapshot_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("snapshot_group")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NvmfNamespaceSnapshot) validateUniqueSize(formats strfmt.Registry) error {
 
 	if err := validate.Required("unique_size", "body", m.UniqueSize); err != nil {
@@ -505,6 +651,14 @@ func (m *NvmfNamespaceSnapshot) ContextValidate(ctx context.Context, formats str
 	}
 
 	if err := m.contextValidateNvmfSubsystem(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSnapshotGroup(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -590,6 +744,38 @@ func (m *NvmfNamespaceSnapshot) contextValidateNvmfSubsystem(ctx context.Context
 				return ve.ValidateName("nvmf_subsystem")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("nvmf_subsystem")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceSnapshot) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceSnapshot) contextValidateSnapshotGroup(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SnapshotGroup != nil {
+		if err := m.SnapshotGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("snapshot_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("snapshot_group")
 			}
 			return err
 		}

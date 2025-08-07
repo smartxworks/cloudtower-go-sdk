@@ -66,6 +66,9 @@ type CloneVMTemplateFromVMParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.VMTemplateCreationParams
 
@@ -144,6 +147,17 @@ func (o *CloneVMTemplateFromVMParams) SetContentLanguage(contentLanguage *string
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the clone Vm template from Vm params
+func (o *CloneVMTemplateFromVMParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CloneVMTemplateFromVMParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the clone Vm template from Vm params
+func (o *CloneVMTemplateFromVMParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the clone Vm template from Vm params
 func (o *CloneVMTemplateFromVMParams) WithRequestBody(requestBody []*models.VMTemplateCreationParams) *CloneVMTemplateFromVMParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *CloneVMTemplateFromVMParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

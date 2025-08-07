@@ -66,6 +66,9 @@ type GetSecurityPoliciesParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetSecurityPoliciesRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetSecurityPoliciesParams) SetContentLanguage(contentLanguage *string) 
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get security policies params
+func (o *GetSecurityPoliciesParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetSecurityPoliciesParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get security policies params
+func (o *GetSecurityPoliciesParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get security policies params
 func (o *GetSecurityPoliciesParams) WithRequestBody(requestBody *models.GetSecurityPoliciesRequestBody) *GetSecurityPoliciesParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetSecurityPoliciesParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

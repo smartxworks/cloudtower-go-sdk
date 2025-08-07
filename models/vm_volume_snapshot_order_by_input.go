@@ -48,6 +48,30 @@ const (
 	// VMVolumeSnapshotOrderByInputElfStoragePolicyDESC captures enum value "elf_storage_policy_DESC"
 	VMVolumeSnapshotOrderByInputElfStoragePolicyDESC VMVolumeSnapshotOrderByInput = "elf_storage_policy_DESC"
 
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyEckASC captures enum value "elf_storage_policy_ec_k_ASC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyEckASC VMVolumeSnapshotOrderByInput = "elf_storage_policy_ec_k_ASC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyEckDESC captures enum value "elf_storage_policy_ec_k_DESC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyEckDESC VMVolumeSnapshotOrderByInput = "elf_storage_policy_ec_k_DESC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyEcmASC captures enum value "elf_storage_policy_ec_m_ASC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyEcmASC VMVolumeSnapshotOrderByInput = "elf_storage_policy_ec_m_ASC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyEcmDESC captures enum value "elf_storage_policy_ec_m_DESC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyEcmDESC VMVolumeSnapshotOrderByInput = "elf_storage_policy_ec_m_DESC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyReplicaNumASC captures enum value "elf_storage_policy_replica_num_ASC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyReplicaNumASC VMVolumeSnapshotOrderByInput = "elf_storage_policy_replica_num_ASC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyReplicaNumDESC captures enum value "elf_storage_policy_replica_num_DESC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyReplicaNumDESC VMVolumeSnapshotOrderByInput = "elf_storage_policy_replica_num_DESC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyThinProvisionASC captures enum value "elf_storage_policy_thin_provision_ASC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyThinProvisionASC VMVolumeSnapshotOrderByInput = "elf_storage_policy_thin_provision_ASC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyThinProvisionDESC captures enum value "elf_storage_policy_thin_provision_DESC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyThinProvisionDESC VMVolumeSnapshotOrderByInput = "elf_storage_policy_thin_provision_DESC"
+
 	// VMVolumeSnapshotOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	VMVolumeSnapshotOrderByInputEntityAsyncStatusASC VMVolumeSnapshotOrderByInput = "entityAsyncStatus_ASC"
 
@@ -77,6 +101,12 @@ const (
 
 	// VMVolumeSnapshotOrderByInputNameDESC captures enum value "name_DESC"
 	VMVolumeSnapshotOrderByInputNameDESC VMVolumeSnapshotOrderByInput = "name_DESC"
+
+	// VMVolumeSnapshotOrderByInputResidentInCacheASC captures enum value "resident_in_cache_ASC"
+	VMVolumeSnapshotOrderByInputResidentInCacheASC VMVolumeSnapshotOrderByInput = "resident_in_cache_ASC"
+
+	// VMVolumeSnapshotOrderByInputResidentInCacheDESC captures enum value "resident_in_cache_DESC"
+	VMVolumeSnapshotOrderByInputResidentInCacheDESC VMVolumeSnapshotOrderByInput = "resident_in_cache_DESC"
 
 	// VMVolumeSnapshotOrderByInputSharedSizeASC captures enum value "shared_size_ASC"
 	VMVolumeSnapshotOrderByInputSharedSizeASC VMVolumeSnapshotOrderByInput = "shared_size_ASC"
@@ -126,7 +156,7 @@ var vmVolumeSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMVolumeSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["createAt_ASC","createAt_DESC","description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","shared_size_ASC","shared_size_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC","volume_sharing_ASC","volume_sharing_DESC","volume_size_ASC","volume_size_DESC","zbs_snapshot_uuid_ASC","zbs_snapshot_uuid_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createAt_ASC","createAt_DESC","description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","elf_storage_policy_ec_k_ASC","elf_storage_policy_ec_k_DESC","elf_storage_policy_ec_m_ASC","elf_storage_policy_ec_m_DESC","elf_storage_policy_replica_num_ASC","elf_storage_policy_replica_num_DESC","elf_storage_policy_thin_provision_ASC","elf_storage_policy_thin_provision_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","resident_in_cache_ASC","resident_in_cache_DESC","shared_size_ASC","shared_size_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC","volume_sharing_ASC","volume_sharing_DESC","volume_size_ASC","volume_size_DESC","zbs_snapshot_uuid_ASC","zbs_snapshot_uuid_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

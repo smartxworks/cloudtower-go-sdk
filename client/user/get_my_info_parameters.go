@@ -58,6 +58,10 @@ func NewGetMyInfoParamsWithHTTPClient(client *http.Client) *GetMyInfoParams {
    Typically these are written to a http.Request.
 */
 type GetMyInfoParams struct {
+
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -111,6 +115,17 @@ func (o *GetMyInfoParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get my info params
+func (o *GetMyInfoParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetMyInfoParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get my info params
+func (o *GetMyInfoParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetMyInfoParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -118,6 +133,14 @@ func (o *GetMyInfoParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
