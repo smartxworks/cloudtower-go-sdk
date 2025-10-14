@@ -66,6 +66,9 @@ type GetSMTPServersConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetSMTPServersConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetSMTPServersConnectionParams) SetContentLanguage(contentLanguage *str
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Smtp servers connection params
+func (o *GetSMTPServersConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetSMTPServersConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Smtp servers connection params
+func (o *GetSMTPServersConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get Smtp servers connection params
 func (o *GetSMTPServersConnectionParams) WithRequestBody(requestBody *models.GetSMTPServersConnectionRequestBody) *GetSMTPServersConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetSMTPServersConnectionParams) WriteToRequest(r runtime.ClientRequest,
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

@@ -66,6 +66,9 @@ type GetEntityFiltersParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetEntityFiltersRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetEntityFiltersParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get entity filters params
+func (o *GetEntityFiltersParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetEntityFiltersParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get entity filters params
+func (o *GetEntityFiltersParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get entity filters params
 func (o *GetEntityFiltersParams) WithRequestBody(requestBody *models.GetEntityFiltersRequestBody) *GetEntityFiltersParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetEntityFiltersParams) WriteToRequest(r runtime.ClientRequest, reg str
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

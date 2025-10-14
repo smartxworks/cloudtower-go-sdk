@@ -66,6 +66,9 @@ type GetV2EverouteLicensesConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetV2EverouteLicensesConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetV2EverouteLicensesConnectionParams) SetContentLanguage(contentLangua
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get v2 everoute licenses connection params
+func (o *GetV2EverouteLicensesConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetV2EverouteLicensesConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get v2 everoute licenses connection params
+func (o *GetV2EverouteLicensesConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get v2 everoute licenses connection params
 func (o *GetV2EverouteLicensesConnectionParams) WithRequestBody(requestBody *models.GetV2EverouteLicensesConnectionRequestBody) *GetV2EverouteLicensesConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetV2EverouteLicensesConnectionParams) WriteToRequest(r runtime.ClientR
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

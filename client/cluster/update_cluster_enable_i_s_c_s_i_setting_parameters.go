@@ -66,6 +66,9 @@ type UpdateClusterEnableISCSISettingParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.ClusterEnableIscsiUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateClusterEnableISCSISettingParams) SetContentLanguage(contentLangua
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update cluster enable i s c s i setting params
+func (o *UpdateClusterEnableISCSISettingParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateClusterEnableISCSISettingParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update cluster enable i s c s i setting params
+func (o *UpdateClusterEnableISCSISettingParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update cluster enable i s c s i setting params
 func (o *UpdateClusterEnableISCSISettingParams) WithRequestBody(requestBody *models.ClusterEnableIscsiUpdationParams) *UpdateClusterEnableISCSISettingParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateClusterEnableISCSISettingParams) WriteToRequest(r runtime.ClientR
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

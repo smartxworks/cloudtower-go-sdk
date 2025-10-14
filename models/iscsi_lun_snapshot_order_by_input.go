@@ -30,6 +30,18 @@ func (m IscsiLunSnapshotOrderByInput) Pointer() *IscsiLunSnapshotOrderByInput {
 
 const (
 
+	// IscsiLunSnapshotOrderByInputEckASC captures enum value "ec_k_ASC"
+	IscsiLunSnapshotOrderByInputEckASC IscsiLunSnapshotOrderByInput = "ec_k_ASC"
+
+	// IscsiLunSnapshotOrderByInputEckDESC captures enum value "ec_k_DESC"
+	IscsiLunSnapshotOrderByInputEckDESC IscsiLunSnapshotOrderByInput = "ec_k_DESC"
+
+	// IscsiLunSnapshotOrderByInputEcmASC captures enum value "ec_m_ASC"
+	IscsiLunSnapshotOrderByInputEcmASC IscsiLunSnapshotOrderByInput = "ec_m_ASC"
+
+	// IscsiLunSnapshotOrderByInputEcmDESC captures enum value "ec_m_DESC"
+	IscsiLunSnapshotOrderByInputEcmDESC IscsiLunSnapshotOrderByInput = "ec_m_DESC"
+
 	// IscsiLunSnapshotOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	IscsiLunSnapshotOrderByInputEntityAsyncStatusASC IscsiLunSnapshotOrderByInput = "entityAsyncStatus_ASC"
 
@@ -60,6 +72,12 @@ const (
 	// IscsiLunSnapshotOrderByInputNameDESC captures enum value "name_DESC"
 	IscsiLunSnapshotOrderByInputNameDESC IscsiLunSnapshotOrderByInput = "name_DESC"
 
+	// IscsiLunSnapshotOrderByInputResiliencyTypeASC captures enum value "resiliency_type_ASC"
+	IscsiLunSnapshotOrderByInputResiliencyTypeASC IscsiLunSnapshotOrderByInput = "resiliency_type_ASC"
+
+	// IscsiLunSnapshotOrderByInputResiliencyTypeDESC captures enum value "resiliency_type_DESC"
+	IscsiLunSnapshotOrderByInputResiliencyTypeDESC IscsiLunSnapshotOrderByInput = "resiliency_type_DESC"
+
 	// IscsiLunSnapshotOrderByInputUniqueSizeASC captures enum value "unique_size_ASC"
 	IscsiLunSnapshotOrderByInputUniqueSizeASC IscsiLunSnapshotOrderByInput = "unique_size_ASC"
 
@@ -72,7 +90,7 @@ var iscsiLunSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []IscsiLunSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ec_k_ASC","ec_k_DESC","ec_m_ASC","ec_m_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","resiliency_type_ASC","resiliency_type_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

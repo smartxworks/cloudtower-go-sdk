@@ -96,6 +96,42 @@ const (
 	// IscsiLunOrderByInputBpsWrMaxLengthDESC captures enum value "bps_wr_max_length_DESC"
 	IscsiLunOrderByInputBpsWrMaxLengthDESC IscsiLunOrderByInput = "bps_wr_max_length_DESC"
 
+	// IscsiLunOrderByInputBusinessHostIsSameWithParentASC captures enum value "business_host_is_same_with_parent_ASC"
+	IscsiLunOrderByInputBusinessHostIsSameWithParentASC IscsiLunOrderByInput = "business_host_is_same_with_parent_ASC"
+
+	// IscsiLunOrderByInputBusinessHostIsSameWithParentDESC captures enum value "business_host_is_same_with_parent_DESC"
+	IscsiLunOrderByInputBusinessHostIsSameWithParentDESC IscsiLunOrderByInput = "business_host_is_same_with_parent_DESC"
+
+	// IscsiLunOrderByInputConfigurationMethodASC captures enum value "configuration_method_ASC"
+	IscsiLunOrderByInputConfigurationMethodASC IscsiLunOrderByInput = "configuration_method_ASC"
+
+	// IscsiLunOrderByInputConfigurationMethodDESC captures enum value "configuration_method_DESC"
+	IscsiLunOrderByInputConfigurationMethodDESC IscsiLunOrderByInput = "configuration_method_DESC"
+
+	// IscsiLunOrderByInputDowngradedPrioritizedSpaceASC captures enum value "downgraded_prioritized_space_ASC"
+	IscsiLunOrderByInputDowngradedPrioritizedSpaceASC IscsiLunOrderByInput = "downgraded_prioritized_space_ASC"
+
+	// IscsiLunOrderByInputDowngradedPrioritizedSpaceDESC captures enum value "downgraded_prioritized_space_DESC"
+	IscsiLunOrderByInputDowngradedPrioritizedSpaceDESC IscsiLunOrderByInput = "downgraded_prioritized_space_DESC"
+
+	// IscsiLunOrderByInputEckASC captures enum value "ec_k_ASC"
+	IscsiLunOrderByInputEckASC IscsiLunOrderByInput = "ec_k_ASC"
+
+	// IscsiLunOrderByInputEckDESC captures enum value "ec_k_DESC"
+	IscsiLunOrderByInputEckDESC IscsiLunOrderByInput = "ec_k_DESC"
+
+	// IscsiLunOrderByInputEcmASC captures enum value "ec_m_ASC"
+	IscsiLunOrderByInputEcmASC IscsiLunOrderByInput = "ec_m_ASC"
+
+	// IscsiLunOrderByInputEcmDESC captures enum value "ec_m_DESC"
+	IscsiLunOrderByInputEcmDESC IscsiLunOrderByInput = "ec_m_DESC"
+
+	// IscsiLunOrderByInputEncryptMethodASC captures enum value "encrypt_method_ASC"
+	IscsiLunOrderByInputEncryptMethodASC IscsiLunOrderByInput = "encrypt_method_ASC"
+
+	// IscsiLunOrderByInputEncryptMethodDESC captures enum value "encrypt_method_DESC"
+	IscsiLunOrderByInputEncryptMethodDESC IscsiLunOrderByInput = "encrypt_method_DESC"
+
 	// IscsiLunOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	IscsiLunOrderByInputEntityAsyncStatusASC IscsiLunOrderByInput = "entityAsyncStatus_ASC"
 
@@ -192,11 +228,23 @@ const (
 	// IscsiLunOrderByInputNameDESC captures enum value "name_DESC"
 	IscsiLunOrderByInputNameDESC IscsiLunOrderByInput = "name_DESC"
 
+	// IscsiLunOrderByInputPrioritizedASC captures enum value "prioritized_ASC"
+	IscsiLunOrderByInputPrioritizedASC IscsiLunOrderByInput = "prioritized_ASC"
+
+	// IscsiLunOrderByInputPrioritizedDESC captures enum value "prioritized_DESC"
+	IscsiLunOrderByInputPrioritizedDESC IscsiLunOrderByInput = "prioritized_DESC"
+
 	// IscsiLunOrderByInputReplicaNumASC captures enum value "replica_num_ASC"
 	IscsiLunOrderByInputReplicaNumASC IscsiLunOrderByInput = "replica_num_ASC"
 
 	// IscsiLunOrderByInputReplicaNumDESC captures enum value "replica_num_DESC"
 	IscsiLunOrderByInputReplicaNumDESC IscsiLunOrderByInput = "replica_num_DESC"
+
+	// IscsiLunOrderByInputResiliencyTypeASC captures enum value "resiliency_type_ASC"
+	IscsiLunOrderByInputResiliencyTypeASC IscsiLunOrderByInput = "resiliency_type_ASC"
+
+	// IscsiLunOrderByInputResiliencyTypeDESC captures enum value "resiliency_type_DESC"
+	IscsiLunOrderByInputResiliencyTypeDESC IscsiLunOrderByInput = "resiliency_type_DESC"
 
 	// IscsiLunOrderByInputSharedSizeASC captures enum value "shared_size_ASC"
 	IscsiLunOrderByInputSharedSizeASC IscsiLunOrderByInput = "shared_size_ASC"
@@ -252,7 +300,7 @@ var iscsiLunOrderByInputEnum []interface{}
 
 func init() {
 	var res []IscsiLunOrderByInput
-	if err := json.Unmarshal([]byte(`["allowed_initiators_ASC","allowed_initiators_DESC","assigned_size_ASC","assigned_size_DESC","bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","lun_id_ASC","lun_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC","zbs_volume_id_ASC","zbs_volume_id_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["allowed_initiators_ASC","allowed_initiators_DESC","assigned_size_ASC","assigned_size_DESC","bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","business_host_is_same_with_parent_ASC","business_host_is_same_with_parent_DESC","configuration_method_ASC","configuration_method_DESC","downgraded_prioritized_space_ASC","downgraded_prioritized_space_DESC","ec_k_ASC","ec_k_DESC","ec_m_ASC","ec_m_DESC","encrypt_method_ASC","encrypt_method_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","lun_id_ASC","lun_id_DESC","name_ASC","name_DESC","prioritized_ASC","prioritized_DESC","replica_num_ASC","replica_num_DESC","resiliency_type_ASC","resiliency_type_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC","zbs_volume_id_ASC","zbs_volume_id_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

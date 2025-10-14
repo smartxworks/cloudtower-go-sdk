@@ -66,6 +66,9 @@ type RemoveVMNicByWhereParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMRemoveNicByWhereParams
 
@@ -144,6 +147,17 @@ func (o *RemoveVMNicByWhereParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the remove Vm nic by where params
+func (o *RemoveVMNicByWhereParams) WithExternalCloudtowerID(externalCloudtowerID *string) *RemoveVMNicByWhereParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the remove Vm nic by where params
+func (o *RemoveVMNicByWhereParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the remove Vm nic by where params
 func (o *RemoveVMNicByWhereParams) WithRequestBody(requestBody *models.VMRemoveNicByWhereParams) *RemoveVMNicByWhereParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *RemoveVMNicByWhereParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

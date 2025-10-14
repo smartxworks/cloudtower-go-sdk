@@ -22,7 +22,7 @@ type IscsiTargetUpdationParams struct {
 
 	// data
 	// Required: true
-	Data *IscsiTargetCommonParams `json:"data"`
+	Data *IscsiTargetUpdationParamsData `json:"data"`
 
 	// where
 	// Required: true

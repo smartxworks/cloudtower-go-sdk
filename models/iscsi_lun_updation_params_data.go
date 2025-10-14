@@ -28,6 +28,12 @@ type IscsiLunUpdationParamsData struct {
 	// name
 	Name *string `json:"name,omitempty"`
 
+	// replica num
+	ReplicaNum *int32 `json:"replica_num,omitempty"`
+
+	// thin provision
+	ThinProvision *bool `json:"thin_provision,omitempty"`
+
 	IscsiLunCommonParams
 
 	MarshalOpts *IscsiLunUpdationParamsDataMarshalOpts `json:"-"`
@@ -39,6 +45,10 @@ type IscsiLunUpdationParamsDataMarshalOpts struct {
 	AssignedSizeUnit_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
+
+	ReplicaNum_Explicit_Null_When_Empty bool
+
+	ThinProvision_Explicit_Null_When_Empty bool
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -50,6 +60,10 @@ func (m *IscsiLunUpdationParamsData) UnmarshalJSON(raw []byte) error {
 		AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
 
 		Name *string `json:"name,omitempty"`
+
+		ReplicaNum *int32 `json:"replica_num,omitempty"`
+
+		ThinProvision *bool `json:"thin_provision,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO0); err != nil {
 		return err
@@ -60,6 +74,10 @@ func (m *IscsiLunUpdationParamsData) UnmarshalJSON(raw []byte) error {
 	m.AssignedSizeUnit = dataAO0.AssignedSizeUnit
 
 	m.Name = dataAO0.Name
+
+	m.ReplicaNum = dataAO0.ReplicaNum
+
+	m.ThinProvision = dataAO0.ThinProvision
 
 	// AO1
 	var aO1 IscsiLunCommonParams
@@ -136,6 +154,46 @@ func (m IscsiLunUpdationParamsData) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field replica_num
+	if m.ReplicaNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica_num\":")
+		bytes, err := swag.WriteJSON(m.ReplicaNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ReplicaNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"replica_num\":null")
+		first = false
+	}
+
+	// handle nullable field thin_provision
+	if m.ThinProvision != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":")
+		bytes, err := swag.WriteJSON(m.ThinProvision)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ThinProvision_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":null")
 		first = false
 	}
 	b.WriteString("}")

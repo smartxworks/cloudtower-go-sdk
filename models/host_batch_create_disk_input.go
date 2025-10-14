@@ -20,6 +20,9 @@ import (
 // swagger:model HostBatchCreateDiskInput
 type HostBatchCreateDiskInput struct {
 
+	// chunk ins id
+	ChunkInsID *int32 `json:"chunk_ins_id,omitempty"`
+
 	// drive
 	// Required: true
 	Drive *string `json:"drive"`
@@ -37,6 +40,8 @@ type HostBatchCreateDiskInput struct {
 }
 
 type HostBatchCreateDiskInputMarshalOpts struct {
+	ChunkInsID_Explicit_Null_When_Empty bool
+
 	Drive_Explicit_Null_When_Empty bool
 
 	Function_Explicit_Null_When_Empty bool
@@ -51,6 +56,26 @@ func (m HostBatchCreateDiskInput) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
+
+	// handle nullable field chunk_ins_id
+	if m.ChunkInsID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_ins_id\":")
+		bytes, err := swag.WriteJSON(m.ChunkInsID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ChunkInsID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"chunk_ins_id\":null")
+		first = false
+	}
 
 	// handle nullable field drive
 	if m.Drive != nil {

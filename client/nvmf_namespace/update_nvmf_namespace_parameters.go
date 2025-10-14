@@ -66,6 +66,9 @@ type UpdateNvmfNamespaceParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.NvmfNamespaceUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateNvmfNamespaceParams) SetContentLanguage(contentLanguage *string) 
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update nvmf namespace params
+func (o *UpdateNvmfNamespaceParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateNvmfNamespaceParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update nvmf namespace params
+func (o *UpdateNvmfNamespaceParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update nvmf namespace params
 func (o *UpdateNvmfNamespaceParams) WithRequestBody(requestBody *models.NvmfNamespaceUpdationParams) *UpdateNvmfNamespaceParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateNvmfNamespaceParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

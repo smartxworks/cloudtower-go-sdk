@@ -36,6 +36,30 @@ const (
 	// NfsInodeOrderByInputAssignedSizeDESC captures enum value "assigned_size_DESC"
 	NfsInodeOrderByInputAssignedSizeDESC NfsInodeOrderByInput = "assigned_size_DESC"
 
+	// NfsInodeOrderByInputDowngradedPrioritizedSpaceASC captures enum value "downgraded_prioritized_space_ASC"
+	NfsInodeOrderByInputDowngradedPrioritizedSpaceASC NfsInodeOrderByInput = "downgraded_prioritized_space_ASC"
+
+	// NfsInodeOrderByInputDowngradedPrioritizedSpaceDESC captures enum value "downgraded_prioritized_space_DESC"
+	NfsInodeOrderByInputDowngradedPrioritizedSpaceDESC NfsInodeOrderByInput = "downgraded_prioritized_space_DESC"
+
+	// NfsInodeOrderByInputEckASC captures enum value "ec_k_ASC"
+	NfsInodeOrderByInputEckASC NfsInodeOrderByInput = "ec_k_ASC"
+
+	// NfsInodeOrderByInputEckDESC captures enum value "ec_k_DESC"
+	NfsInodeOrderByInputEckDESC NfsInodeOrderByInput = "ec_k_DESC"
+
+	// NfsInodeOrderByInputEcmASC captures enum value "ec_m_ASC"
+	NfsInodeOrderByInputEcmASC NfsInodeOrderByInput = "ec_m_ASC"
+
+	// NfsInodeOrderByInputEcmDESC captures enum value "ec_m_DESC"
+	NfsInodeOrderByInputEcmDESC NfsInodeOrderByInput = "ec_m_DESC"
+
+	// NfsInodeOrderByInputEncryptMethodASC captures enum value "encrypt_method_ASC"
+	NfsInodeOrderByInputEncryptMethodASC NfsInodeOrderByInput = "encrypt_method_ASC"
+
+	// NfsInodeOrderByInputEncryptMethodDESC captures enum value "encrypt_method_DESC"
+	NfsInodeOrderByInputEncryptMethodDESC NfsInodeOrderByInput = "encrypt_method_DESC"
+
 	// NfsInodeOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	NfsInodeOrderByInputEntityAsyncStatusASC NfsInodeOrderByInput = "entityAsyncStatus_ASC"
 
@@ -78,6 +102,18 @@ const (
 	// NfsInodeOrderByInputParentIDDESC captures enum value "parent_id_DESC"
 	NfsInodeOrderByInputParentIDDESC NfsInodeOrderByInput = "parent_id_DESC"
 
+	// NfsInodeOrderByInputPrioritizedASC captures enum value "prioritized_ASC"
+	NfsInodeOrderByInputPrioritizedASC NfsInodeOrderByInput = "prioritized_ASC"
+
+	// NfsInodeOrderByInputPrioritizedDESC captures enum value "prioritized_DESC"
+	NfsInodeOrderByInputPrioritizedDESC NfsInodeOrderByInput = "prioritized_DESC"
+
+	// NfsInodeOrderByInputResiliencyTypeASC captures enum value "resiliency_type_ASC"
+	NfsInodeOrderByInputResiliencyTypeASC NfsInodeOrderByInput = "resiliency_type_ASC"
+
+	// NfsInodeOrderByInputResiliencyTypeDESC captures enum value "resiliency_type_DESC"
+	NfsInodeOrderByInputResiliencyTypeDESC NfsInodeOrderByInput = "resiliency_type_DESC"
+
 	// NfsInodeOrderByInputSharedSizeASC captures enum value "shared_size_ASC"
 	NfsInodeOrderByInputSharedSizeASC NfsInodeOrderByInput = "shared_size_ASC"
 
@@ -108,7 +144,7 @@ var nfsInodeOrderByInputEnum []interface{}
 
 func init() {
 	var res []NfsInodeOrderByInput
-	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","file_ASC","file_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","local_updated_at_ASC","local_updated_at_DESC","name_ASC","name_DESC","parent_id_ASC","parent_id_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["assigned_size_ASC","assigned_size_DESC","downgraded_prioritized_space_ASC","downgraded_prioritized_space_DESC","ec_k_ASC","ec_k_DESC","ec_m_ASC","ec_m_DESC","encrypt_method_ASC","encrypt_method_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","file_ASC","file_DESC","id_ASC","id_DESC","local_id_ASC","local_id_DESC","local_updated_at_ASC","local_updated_at_DESC","name_ASC","name_DESC","parent_id_ASC","parent_id_DESC","prioritized_ASC","prioritized_DESC","resiliency_type_ASC","resiliency_type_DESC","shared_size_ASC","shared_size_DESC","snapshot_num_ASC","snapshot_num_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -61,6 +61,9 @@ func NewGetVMNetWorkMetricsParamsWithHTTPClient(client *http.Client) *GetVMNetWo
 */
 type GetVMNetWorkMetricsParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVMNetWorkMetricInput
 
@@ -117,6 +120,17 @@ func (o *GetVMNetWorkMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Vm net work metrics params
+func (o *GetVMNetWorkMetricsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVMNetWorkMetricsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Vm net work metrics params
+func (o *GetVMNetWorkMetricsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get Vm net work metrics params
 func (o *GetVMNetWorkMetricsParams) WithRequestBody(requestBody *models.GetVMNetWorkMetricInput) *GetVMNetWorkMetricsParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetVMNetWorkMetricsParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

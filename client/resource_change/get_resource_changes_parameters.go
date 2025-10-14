@@ -63,6 +63,9 @@ type GetResourceChangesParams struct {
 	// Action.
 	Action *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// Limit.
 	//
 	// Format: int32
@@ -141,6 +144,17 @@ func (o *GetResourceChangesParams) SetAction(action *string) {
 	o.Action = action
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get resource changes params
+func (o *GetResourceChangesParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetResourceChangesParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get resource changes params
+func (o *GetResourceChangesParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithLimit adds the limit to the get resource changes params
 func (o *GetResourceChangesParams) WithLimit(limit *int32) *GetResourceChangesParams {
 	o.SetLimit(limit)
@@ -207,6 +221,14 @@ func (o *GetResourceChangesParams) WriteToRequest(r runtime.ClientRequest, reg s
 			if err := r.SetQueryParam("action", qAction); err != nil {
 				return err
 			}
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
 		}
 	}
 

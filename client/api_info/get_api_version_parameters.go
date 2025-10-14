@@ -58,6 +58,10 @@ func NewGetAPIVersionParamsWithHTTPClient(client *http.Client) *GetAPIVersionPar
    Typically these are written to a http.Request.
 */
 type GetAPIVersionParams struct {
+
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -111,6 +115,17 @@ func (o *GetAPIVersionParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Api version params
+func (o *GetAPIVersionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetAPIVersionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Api version params
+func (o *GetAPIVersionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetAPIVersionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -118,6 +133,14 @@ func (o *GetAPIVersionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)

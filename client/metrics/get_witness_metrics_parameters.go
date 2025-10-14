@@ -61,6 +61,9 @@ func NewGetWitnessMetricsParamsWithHTTPClient(client *http.Client) *GetWitnessMe
 */
 type GetWitnessMetricsParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetWitnessMetricInput
 
@@ -117,6 +120,17 @@ func (o *GetWitnessMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get witness metrics params
+func (o *GetWitnessMetricsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetWitnessMetricsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get witness metrics params
+func (o *GetWitnessMetricsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get witness metrics params
 func (o *GetWitnessMetricsParams) WithRequestBody(requestBody *models.GetWitnessMetricInput) *GetWitnessMetricsParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetWitnessMetricsParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

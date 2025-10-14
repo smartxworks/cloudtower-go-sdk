@@ -32,6 +32,18 @@ type VMVolume struct {
 	// Required: true
 	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy"`
 
+	// elf storage policy ec k
+	ElfStoragePolicyEck *int32 `json:"elf_storage_policy_ec_k,omitempty"`
+
+	// elf storage policy ec m
+	ElfStoragePolicyEcm *int32 `json:"elf_storage_policy_ec_m,omitempty"`
+
+	// elf storage policy replica num
+	ElfStoragePolicyReplicaNum *int32 `json:"elf_storage_policy_replica_num,omitempty"`
+
+	// elf storage policy thin provision
+	ElfStoragePolicyThinProvision *bool `json:"elf_storage_policy_thin_provision,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -71,6 +83,9 @@ type VMVolume struct {
 	// Required: true
 	Path *string `json:"path"`
 
+	// resident in cache
+	ResidentInCache *bool `json:"resident_in_cache,omitempty"`
+
 	// sharing
 	// Required: true
 	Sharing *bool `json:"sharing"`
@@ -107,6 +122,14 @@ type VMVolumeMarshalOpts struct {
 
 	ElfStoragePolicy_Explicit_Null_When_Empty bool
 
+	ElfStoragePolicyEck_Explicit_Null_When_Empty bool
+
+	ElfStoragePolicyEcm_Explicit_Null_When_Empty bool
+
+	ElfStoragePolicyReplicaNum_Explicit_Null_When_Empty bool
+
+	ElfStoragePolicyThinProvision_Explicit_Null_When_Empty bool
+
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
 	GuestSizeUsage_Explicit_Null_When_Empty bool
@@ -128,6 +151,8 @@ type VMVolumeMarshalOpts struct {
 	Name_Explicit_Null_When_Empty bool
 
 	Path_Explicit_Null_When_Empty bool
+
+	ResidentInCache_Explicit_Null_When_Empty bool
 
 	Sharing_Explicit_Null_When_Empty bool
 
@@ -209,6 +234,86 @@ func (m VMVolume) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"elf_storage_policy\":null")
+		first = false
+	}
+
+	// handle nullable field elf_storage_policy_ec_k
+	if m.ElfStoragePolicyEck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_ec_k\":")
+		bytes, err := swag.WriteJSON(m.ElfStoragePolicyEck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfStoragePolicyEck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field elf_storage_policy_ec_m
+	if m.ElfStoragePolicyEcm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_ec_m\":")
+		bytes, err := swag.WriteJSON(m.ElfStoragePolicyEcm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfStoragePolicyEcm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field elf_storage_policy_replica_num
+	if m.ElfStoragePolicyReplicaNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_replica_num\":")
+		bytes, err := swag.WriteJSON(m.ElfStoragePolicyReplicaNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfStoragePolicyReplicaNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_replica_num\":null")
+		first = false
+	}
+
+	// handle nullable field elf_storage_policy_thin_provision
+	if m.ElfStoragePolicyThinProvision != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_thin_provision\":")
+		bytes, err := swag.WriteJSON(m.ElfStoragePolicyThinProvision)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfStoragePolicyThinProvision_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_thin_provision\":null")
 		first = false
 	}
 
@@ -423,6 +528,26 @@ func (m VMVolume) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"path\":null")
+		first = false
+	}
+
+	// handle nullable field resident_in_cache
+	if m.ResidentInCache != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resident_in_cache\":")
+		bytes, err := swag.WriteJSON(m.ResidentInCache)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResidentInCache_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resident_in_cache\":null")
 		first = false
 	}
 

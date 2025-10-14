@@ -66,6 +66,9 @@ type UnmountDiskParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.DiskUnmountParams
 
@@ -144,6 +147,17 @@ func (o *UnmountDiskParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the unmount disk params
+func (o *UnmountDiskParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UnmountDiskParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the unmount disk params
+func (o *UnmountDiskParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the unmount disk params
 func (o *UnmountDiskParams) WithRequestBody(requestBody *models.DiskUnmountParams) *UnmountDiskParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UnmountDiskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

@@ -61,6 +61,9 @@ func NewGetZoneMetricsParamsWithHTTPClient(client *http.Client) *GetZoneMetricsP
 */
 type GetZoneMetricsParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetZoneMetricInput
 
@@ -117,6 +120,17 @@ func (o *GetZoneMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get zone metrics params
+func (o *GetZoneMetricsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetZoneMetricsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get zone metrics params
+func (o *GetZoneMetricsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get zone metrics params
 func (o *GetZoneMetricsParams) WithRequestBody(requestBody *models.GetZoneMetricInput) *GetZoneMetricsParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetZoneMetricsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

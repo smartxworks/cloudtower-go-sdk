@@ -66,6 +66,9 @@ type UpdateGlobalRecycleBinSettingParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GlobalRecycleBinUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateGlobalRecycleBinSettingParams) SetContentLanguage(contentLanguage
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update global recycle bin setting params
+func (o *UpdateGlobalRecycleBinSettingParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateGlobalRecycleBinSettingParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update global recycle bin setting params
+func (o *UpdateGlobalRecycleBinSettingParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update global recycle bin setting params
 func (o *UpdateGlobalRecycleBinSettingParams) WithRequestBody(requestBody *models.GlobalRecycleBinUpdationParams) *UpdateGlobalRecycleBinSettingParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateGlobalRecycleBinSettingParams) WriteToRequest(r runtime.ClientReq
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

@@ -66,6 +66,9 @@ type GetReplicaVmsConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetReplicaVmsConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetReplicaVmsConnectionParams) SetContentLanguage(contentLanguage *stri
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get replica vms connection params
+func (o *GetReplicaVmsConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetReplicaVmsConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get replica vms connection params
+func (o *GetReplicaVmsConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get replica vms connection params
 func (o *GetReplicaVmsConnectionParams) WithRequestBody(requestBody *models.GetReplicaVmsConnectionRequestBody) *GetReplicaVmsConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetReplicaVmsConnectionParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

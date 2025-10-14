@@ -66,6 +66,9 @@ type GetVMVncInfoParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVMVncInfoParams
 
@@ -144,6 +147,17 @@ func (o *GetVMVncInfoParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Vm vnc info params
+func (o *GetVMVncInfoParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVMVncInfoParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Vm vnc info params
+func (o *GetVMVncInfoParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get Vm vnc info params
 func (o *GetVMVncInfoParams) WithRequestBody(requestBody *models.GetVMVncInfoParams) *GetVMVncInfoParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVMVncInfoParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

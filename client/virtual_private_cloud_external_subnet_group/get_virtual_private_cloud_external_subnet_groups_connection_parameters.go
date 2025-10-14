@@ -66,6 +66,9 @@ type GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVirtualPrivateCloudExternalSubnetGroupsConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams) SetContentL
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get virtual private cloud external subnet groups connection params
+func (o *GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get virtual private cloud external subnet groups connection params
+func (o *GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get virtual private cloud external subnet groups connection params
 func (o *GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams) WithRequestBody(requestBody *models.GetVirtualPrivateCloudExternalSubnetGroupsConnectionRequestBody) *GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams) WriteToRequ
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

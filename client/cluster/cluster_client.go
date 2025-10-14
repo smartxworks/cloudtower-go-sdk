@@ -34,6 +34,8 @@ type ClientService interface {
 
 	DeleteCluster(params *DeleteClusterParams, opts ...ClientOption) (*DeleteClusterOK, error)
 
+	GetClusterPinInPerformanceInfo(params *GetClusterPinInPerformanceInfoParams, opts ...ClientOption) (*GetClusterPinInPerformanceInfoOK, error)
+
 	GetClusterStorageInfo(params *GetClusterStorageInfoParams, opts ...ClientOption) (*GetClusterStorageInfoOK, error)
 
 	GetClusters(params *GetClustersParams, opts ...ClientOption) (*GetClustersOK, error)
@@ -44,7 +46,11 @@ type ClientService interface {
 
 	UpdateCluster(params *UpdateClusterParams, opts ...ClientOption) (*UpdateClusterOK, error)
 
+	UpdateClusterDisablePinInPerformance(params *UpdateClusterDisablePinInPerformanceParams, opts ...ClientOption) (*UpdateClusterDisablePinInPerformanceOK, error)
+
 	UpdateClusterEnableISCSISetting(params *UpdateClusterEnableISCSISettingParams, opts ...ClientOption) (*UpdateClusterEnableISCSISettingOK, error)
+
+	UpdateClusterEnablePinInPerformance(params *UpdateClusterEnablePinInPerformanceParams, opts ...ClientOption) (*UpdateClusterEnablePinInPerformanceOK, error)
 
 	UpdateClusterHaSetting(params *UpdateClusterHaSettingParams, opts ...ClientOption) (*UpdateClusterHaSettingOK, error)
 
@@ -130,6 +136,44 @@ func (a *Client) DeleteCluster(params *DeleteClusterParams, opts ...ClientOption
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for DeleteCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetClusterPinInPerformanceInfo get cluster pin in performance info API
+*/
+func (a *Client) GetClusterPinInPerformanceInfo(params *GetClusterPinInPerformanceInfoParams, opts ...ClientOption) (*GetClusterPinInPerformanceInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetClusterPinInPerformanceInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetClusterPinInPerformanceInfo",
+		Method:             "POST",
+		PathPattern:        "/get-cluster-pin-in-performance-info",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetClusterPinInPerformanceInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetClusterPinInPerformanceInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for GetClusterPinInPerformanceInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -324,6 +368,44 @@ func (a *Client) UpdateCluster(params *UpdateClusterParams, opts ...ClientOption
 }
 
 /*
+  UpdateClusterDisablePinInPerformance update cluster disable pin in performance API
+*/
+func (a *Client) UpdateClusterDisablePinInPerformance(params *UpdateClusterDisablePinInPerformanceParams, opts ...ClientOption) (*UpdateClusterDisablePinInPerformanceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateClusterDisablePinInPerformanceParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateClusterDisablePinInPerformance",
+		Method:             "POST",
+		PathPattern:        "/disable-cluster-pin-in-performance",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateClusterDisablePinInPerformanceReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateClusterDisablePinInPerformanceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateClusterDisablePinInPerformance: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   UpdateClusterEnableISCSISetting update cluster enable i s c s i setting API
 */
 func (a *Client) UpdateClusterEnableISCSISetting(params *UpdateClusterEnableISCSISettingParams, opts ...ClientOption) (*UpdateClusterEnableISCSISettingOK, error) {
@@ -358,6 +440,44 @@ func (a *Client) UpdateClusterEnableISCSISetting(params *UpdateClusterEnableISCS
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateClusterEnableISCSISetting: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateClusterEnablePinInPerformance update cluster enable pin in performance API
+*/
+func (a *Client) UpdateClusterEnablePinInPerformance(params *UpdateClusterEnablePinInPerformanceParams, opts ...ClientOption) (*UpdateClusterEnablePinInPerformanceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateClusterEnablePinInPerformanceParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateClusterEnablePinInPerformance",
+		Method:             "POST",
+		PathPattern:        "/enable-cluster-pin-in-performance",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateClusterEnablePinInPerformanceReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateClusterEnablePinInPerformanceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateClusterEnablePinInPerformance: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

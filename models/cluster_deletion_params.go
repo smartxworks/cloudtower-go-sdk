@@ -20,6 +20,9 @@ import (
 // swagger:model ClusterDeletionParams
 type ClusterDeletionParams struct {
 
+	// force
+	Force *bool `json:"force,omitempty"`
+
 	// where
 	// Required: true
 	Where *ClusterWhereInput `json:"where"`
@@ -28,6 +31,8 @@ type ClusterDeletionParams struct {
 }
 
 type ClusterDeletionParamsMarshalOpts struct {
+	Force_Explicit_Null_When_Empty bool
+
 	Where_Explicit_Null_When_Empty bool
 }
 
@@ -36,6 +41,26 @@ func (m ClusterDeletionParams) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
+
+	// handle nullable field force
+	if m.Force != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"force\":")
+		bytes, err := swag.WriteJSON(m.Force)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Force_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"force\":null")
+		first = false
+	}
 
 	// handle nullable field where
 	if m.Where != nil {

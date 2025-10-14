@@ -24,6 +24,15 @@ type NfsExportCreationParams struct {
 	// Required: true
 	ClusterID *string `json:"cluster_id"`
 
+	// ec k
+	Eck *float64 `json:"ec_k,omitempty"`
+
+	// ec m
+	Ecm *float64 `json:"ec_m,omitempty"`
+
+	// encrypt method
+	EncryptMethod *EncryptMethod `json:"encrypt_method,omitempty"`
+
 	// ip whitelist
 	IPWhitelist *string `json:"ip_whitelist,omitempty"`
 
@@ -35,6 +44,9 @@ type NfsExportCreationParams struct {
 	// Required: true
 	ReplicaNum *int32 `json:"replica_num"`
 
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
+
 	// thin provision
 	// Required: true
 	ThinProvision *bool `json:"thin_provision"`
@@ -45,11 +57,19 @@ type NfsExportCreationParams struct {
 type NfsExportCreationParamsMarshalOpts struct {
 	ClusterID_Explicit_Null_When_Empty bool
 
+	Eck_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
+	EncryptMethod_Explicit_Null_When_Empty bool
+
 	IPWhitelist_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
 
 	ReplicaNum_Explicit_Null_When_Empty bool
+
+	ResiliencyType_Explicit_Null_When_Empty bool
 
 	ThinProvision_Explicit_Null_When_Empty bool
 }
@@ -77,6 +97,66 @@ func (m NfsExportCreationParams) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field encrypt_method
+	if m.EncryptMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EncryptMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":null")
 		first = false
 	}
 
@@ -140,6 +220,26 @@ func (m NfsExportCreationParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
+		first = false
+	}
+
 	// handle nullable field thin_provision
 	if m.ThinProvision != nil {
 		if !first {
@@ -172,11 +272,19 @@ func (m *NfsExportCreationParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEncryptMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateReplicaNum(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -194,6 +302,25 @@ func (m *NfsExportCreationParams) validateClusterID(formats strfmt.Registry) err
 
 	if err := validate.Required("cluster_id", "body", m.ClusterID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *NfsExportCreationParams) validateEncryptMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethod) { // not required
+		return nil
+	}
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -217,6 +344,25 @@ func (m *NfsExportCreationParams) validateReplicaNum(formats strfmt.Registry) er
 	return nil
 }
 
+func (m *NfsExportCreationParams) validateResiliencyType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NfsExportCreationParams) validateThinProvision(formats strfmt.Registry) error {
 
 	if err := validate.Required("thin_provision", "body", m.ThinProvision); err != nil {
@@ -226,8 +372,53 @@ func (m *NfsExportCreationParams) validateThinProvision(formats strfmt.Registry)
 	return nil
 }
 
-// ContextValidate validates this nfs export creation params based on context it is used
+// ContextValidate validate this nfs export creation params based on the context it is used
 func (m *NfsExportCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateEncryptMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NfsExportCreationParams) contextValidateEncryptMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NfsExportCreationParams) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

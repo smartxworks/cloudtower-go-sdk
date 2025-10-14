@@ -66,6 +66,9 @@ type GetSvtImagesParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetSvtImagesRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetSvtImagesParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get svt images params
+func (o *GetSvtImagesParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetSvtImagesParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get svt images params
+func (o *GetSvtImagesParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get svt images params
 func (o *GetSvtImagesParams) WithRequestBody(requestBody *models.GetSvtImagesRequestBody) *GetSvtImagesParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetSvtImagesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

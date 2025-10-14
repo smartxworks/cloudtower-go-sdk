@@ -66,6 +66,9 @@ type CloneNvmfNamespaceFromSnapshotParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.NvmfNamespaceCloneParams
 
@@ -144,6 +147,17 @@ func (o *CloneNvmfNamespaceFromSnapshotParams) SetContentLanguage(contentLanguag
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the clone nvmf namespace from snapshot params
+func (o *CloneNvmfNamespaceFromSnapshotParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CloneNvmfNamespaceFromSnapshotParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the clone nvmf namespace from snapshot params
+func (o *CloneNvmfNamespaceFromSnapshotParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the clone nvmf namespace from snapshot params
 func (o *CloneNvmfNamespaceFromSnapshotParams) WithRequestBody(requestBody []*models.NvmfNamespaceCloneParams) *CloneNvmfNamespaceFromSnapshotParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *CloneNvmfNamespaceFromSnapshotParams) WriteToRequest(r runtime.ClientRe
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

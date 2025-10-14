@@ -170,6 +170,18 @@ type VMSnapshotWhereInput struct {
 	// ha not
 	HaNot *bool `json:"ha_not,omitempty"`
 
+	// ha priority
+	HaPriority *VMHaPriority `json:"ha_priority,omitempty"`
+
+	// ha priority in
+	HaPriorityIn []VMHaPriority `json:"ha_priority_in,omitempty"`
+
+	// ha priority not
+	HaPriorityNot *VMHaPriority `json:"ha_priority_not,omitempty"`
+
+	// ha priority not in
+	HaPriorityNotIn []VMHaPriority `json:"ha_priority_not_in,omitempty"`
+
 	// id
 	ID *string `json:"id,omitempty"`
 
@@ -600,6 +612,14 @@ type VMSnapshotWhereInputMarshalOpts struct {
 	Ha_Explicit_Null_When_Empty bool
 
 	HaNot_Explicit_Null_When_Empty bool
+
+	HaPriority_Explicit_Null_When_Empty bool
+
+	HaPriorityIn_Explicit_Null_When_Empty bool
+
+	HaPriorityNot_Explicit_Null_When_Empty bool
+
+	HaPriorityNotIn_Explicit_Null_When_Empty bool
 
 	ID_Explicit_Null_When_Empty bool
 
@@ -1733,6 +1753,74 @@ func (m VMSnapshotWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"ha_not\":null")
+		first = false
+	}
+
+	// handle nullable field ha_priority
+	if m.HaPriority != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority\":")
+		bytes, err := swag.WriteJSON(m.HaPriority)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HaPriority_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority\":null")
+		first = false
+	}
+
+	// handle non nullable field ha_priority_in with omitempty
+	if !swag.IsZero(m.HaPriorityIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority_in\":")
+		bytes, err := swag.WriteJSON(m.HaPriorityIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ha_priority_not
+	if m.HaPriorityNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority_not\":")
+		bytes, err := swag.WriteJSON(m.HaPriorityNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HaPriorityNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority_not\":null")
+		first = false
+	}
+
+	// handle non nullable field ha_priority_not_in with omitempty
+	if !swag.IsZero(m.HaPriorityNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority_not_in\":")
+		bytes, err := swag.WriteJSON(m.HaPriorityNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -3860,6 +3948,22 @@ func (m *VMSnapshotWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateHaPriority(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHaPriorityIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHaPriorityNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHaPriorityNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIoPolicy(formats); err != nil {
 		res = append(res, err)
 	}
@@ -4351,6 +4455,86 @@ func (m *VMSnapshotWhereInput) validateFirmwareNotIn(formats strfmt.Registry) er
 	return nil
 }
 
+func (m *VMSnapshotWhereInput) validateHaPriority(formats strfmt.Registry) error {
+	if swag.IsZero(m.HaPriority) { // not required
+		return nil
+	}
+
+	if m.HaPriority != nil {
+		if err := m.HaPriority.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMSnapshotWhereInput) validateHaPriorityIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.HaPriorityIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.HaPriorityIn); i++ {
+
+		if err := m.HaPriorityIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMSnapshotWhereInput) validateHaPriorityNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.HaPriorityNot) { // not required
+		return nil
+	}
+
+	if m.HaPriorityNot != nil {
+		if err := m.HaPriorityNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMSnapshotWhereInput) validateHaPriorityNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.HaPriorityNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.HaPriorityNotIn); i++ {
+
+		if err := m.HaPriorityNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *VMSnapshotWhereInput) validateIoPolicy(formats strfmt.Registry) error {
 	if swag.IsZero(m.IoPolicy) { // not required
 		return nil
@@ -4770,6 +4954,22 @@ func (m *VMSnapshotWhereInput) ContextValidate(ctx context.Context, formats strf
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateHaPriority(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHaPriorityIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHaPriorityNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateHaPriorityNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIoPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -5183,6 +5383,74 @@ func (m *VMSnapshotWhereInput) contextValidateFirmwareNotIn(ctx context.Context,
 				return ve.ValidateName("firmware_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("firmware_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMSnapshotWhereInput) contextValidateHaPriority(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HaPriority != nil {
+		if err := m.HaPriority.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMSnapshotWhereInput) contextValidateHaPriorityIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.HaPriorityIn); i++ {
+
+		if err := m.HaPriorityIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMSnapshotWhereInput) contextValidateHaPriorityNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HaPriorityNot != nil {
+		if err := m.HaPriorityNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMSnapshotWhereInput) contextValidateHaPriorityNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.HaPriorityNotIn); i++ {
+
+		if err := m.HaPriorityNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

@@ -78,6 +78,12 @@ const (
 	// VMSnapshotOrderByInputHaDESC captures enum value "ha_DESC"
 	VMSnapshotOrderByInputHaDESC VMSnapshotOrderByInput = "ha_DESC"
 
+	// VMSnapshotOrderByInputHaPriorityASC captures enum value "ha_priority_ASC"
+	VMSnapshotOrderByInputHaPriorityASC VMSnapshotOrderByInput = "ha_priority_ASC"
+
+	// VMSnapshotOrderByInputHaPriorityDESC captures enum value "ha_priority_DESC"
+	VMSnapshotOrderByInputHaPriorityDESC VMSnapshotOrderByInput = "ha_priority_DESC"
+
 	// VMSnapshotOrderByInputIDASC captures enum value "id_ASC"
 	VMSnapshotOrderByInputIDASC VMSnapshotOrderByInput = "id_ASC"
 
@@ -174,7 +180,7 @@ var vmSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["clock_offset_ASC","clock_offset_DESC","consistent_type_ASC","consistent_type_DESC","cpu_ASC","cpu_DESC","cpu_model_ASC","cpu_model_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","firmware_ASC","firmware_DESC","ha_ASC","ha_DESC","id_ASC","id_DESC","io_policy_ASC","io_policy_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","max_bandwidth_ASC","max_bandwidth_DESC","max_bandwidth_policy_ASC","max_bandwidth_policy_DESC","max_iops_ASC","max_iops_DESC","max_iops_policy_ASC","max_iops_policy_DESC","memory_ASC","memory_DESC","name_ASC","name_DESC","size_ASC","size_DESC","vcpu_ASC","vcpu_DESC","vm_disks_ASC","vm_disks_DESC","vm_nics_ASC","vm_nics_DESC","win_opt_ASC","win_opt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["clock_offset_ASC","clock_offset_DESC","consistent_type_ASC","consistent_type_DESC","cpu_ASC","cpu_DESC","cpu_model_ASC","cpu_model_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","firmware_ASC","firmware_DESC","ha_ASC","ha_DESC","ha_priority_ASC","ha_priority_DESC","id_ASC","id_DESC","io_policy_ASC","io_policy_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","max_bandwidth_ASC","max_bandwidth_DESC","max_bandwidth_policy_ASC","max_bandwidth_policy_DESC","max_iops_ASC","max_iops_DESC","max_iops_policy_ASC","max_iops_policy_DESC","memory_ASC","memory_DESC","name_ASC","name_DESC","size_ASC","size_DESC","vcpu_ASC","vcpu_DESC","vm_disks_ASC","vm_disks_DESC","vm_nics_ASC","vm_nics_DESC","win_opt_ASC","win_opt_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -66,6 +66,9 @@ type DeleteVirtualPrivateCloudSubnetParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VirtualPrivateCloudSubnetDeletionParams
 
@@ -144,6 +147,17 @@ func (o *DeleteVirtualPrivateCloudSubnetParams) SetContentLanguage(contentLangua
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete virtual private cloud subnet params
+func (o *DeleteVirtualPrivateCloudSubnetParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteVirtualPrivateCloudSubnetParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete virtual private cloud subnet params
+func (o *DeleteVirtualPrivateCloudSubnetParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete virtual private cloud subnet params
 func (o *DeleteVirtualPrivateCloudSubnetParams) WithRequestBody(requestBody *models.VirtualPrivateCloudSubnetDeletionParams) *DeleteVirtualPrivateCloudSubnetParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteVirtualPrivateCloudSubnetParams) WriteToRequest(r runtime.ClientR
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

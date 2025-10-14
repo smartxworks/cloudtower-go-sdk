@@ -70,6 +70,9 @@ type CreateContentLibraryImageParams struct {
 	// Description.
 	Description *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// File.
 	File runtime.NamedReadCloser
 
@@ -182,6 +185,17 @@ func (o *CreateContentLibraryImageParams) SetDescription(description *string) {
 	o.Description = description
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the create content library image params
+func (o *CreateContentLibraryImageParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CreateContentLibraryImageParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the create content library image params
+func (o *CreateContentLibraryImageParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithFile adds the file to the create content library image params
 func (o *CreateContentLibraryImageParams) WithFile(file runtime.NamedReadCloser) *CreateContentLibraryImageParams {
 	o.SetFile(file)
@@ -274,6 +288,14 @@ func (o *CreateContentLibraryImageParams) WriteToRequest(r runtime.ClientRequest
 			if err := r.SetFormParam("description", fDescription); err != nil {
 				return err
 			}
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
 		}
 	}
 	// form file param file

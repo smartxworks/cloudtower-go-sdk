@@ -61,6 +61,9 @@ func NewGetNvmfNamespaceMetricsParamsWithHTTPClient(client *http.Client) *GetNvm
 */
 type GetNvmfNamespaceMetricsParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetNvmfNamespaceMetricInput
 
@@ -117,6 +120,17 @@ func (o *GetNvmfNamespaceMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get nvmf namespace metrics params
+func (o *GetNvmfNamespaceMetricsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetNvmfNamespaceMetricsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get nvmf namespace metrics params
+func (o *GetNvmfNamespaceMetricsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get nvmf namespace metrics params
 func (o *GetNvmfNamespaceMetricsParams) WithRequestBody(requestBody *models.GetNvmfNamespaceMetricInput) *GetNvmfNamespaceMetricsParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetNvmfNamespaceMetricsParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

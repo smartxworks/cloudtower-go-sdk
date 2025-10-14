@@ -68,6 +68,12 @@ type IscsiTargetCommonParams struct {
 	// bps wr unit
 	BpsWrUnit *BPSUnit `json:"bps_wr_unit,omitempty"`
 
+	// business host groups
+	BusinessHostGroups *BusinessHostGroupWhereInput `json:"business_host_groups,omitempty"`
+
+	// business hosts
+	BusinessHosts *BusinessHostWhereInput `json:"business_hosts,omitempty"`
+
 	// chap enabled
 	ChapEnabled *bool `json:"chap_enabled,omitempty"`
 
@@ -77,8 +83,23 @@ type IscsiTargetCommonParams struct {
 	// chap secret
 	ChapSecret *string `json:"chap_secret,omitempty"`
 
+	// configuration adaptive
+	ConfigurationAdaptive *bool `json:"configuration_adaptive,omitempty"`
+
+	// configuration method
+	ConfigurationMethod *ConfigurationMethod `json:"configuration_method,omitempty"`
+
 	// description
 	Description *string `json:"description,omitempty"`
+
+	// ec k
+	Eck *float64 `json:"ec_k,omitempty"`
+
+	// ec m
+	Ecm *float64 `json:"ec_m,omitempty"`
+
+	// encrypt method
+	EncryptMethod *EncryptMethod `json:"encrypt_method,omitempty"`
 
 	// initiator chaps
 	InitiatorChaps []*IscsiTargetCommonParamsInitiatorChaps `json:"initiator_chaps,omitempty"`
@@ -116,6 +137,12 @@ type IscsiTargetCommonParams struct {
 	// iqn whitelist
 	IqnWhitelist *string `json:"iqn_whitelist,omitempty"`
 
+	// prioritized
+	Prioritized *bool `json:"prioritized,omitempty"`
+
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
+
 	MarshalOpts *IscsiTargetCommonParamsMarshalOpts `json:"-"`
 }
 
@@ -152,13 +179,27 @@ type IscsiTargetCommonParamsMarshalOpts struct {
 
 	BpsWrUnit_Explicit_Null_When_Empty bool
 
+	BusinessHostGroups_Explicit_Null_When_Empty bool
+
+	BusinessHosts_Explicit_Null_When_Empty bool
+
 	ChapEnabled_Explicit_Null_When_Empty bool
 
 	ChapName_Explicit_Null_When_Empty bool
 
 	ChapSecret_Explicit_Null_When_Empty bool
 
+	ConfigurationAdaptive_Explicit_Null_When_Empty bool
+
+	ConfigurationMethod_Explicit_Null_When_Empty bool
+
 	Description_Explicit_Null_When_Empty bool
+
+	Eck_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
+	EncryptMethod_Explicit_Null_When_Empty bool
 
 	InitiatorChaps_Explicit_Null_When_Empty bool
 
@@ -183,6 +224,10 @@ type IscsiTargetCommonParamsMarshalOpts struct {
 	IPWhitelist_Explicit_Null_When_Empty bool
 
 	IqnWhitelist_Explicit_Null_When_Empty bool
+
+	Prioritized_Explicit_Null_When_Empty bool
+
+	ResiliencyType_Explicit_Null_When_Empty bool
 }
 
 func (m IscsiTargetCommonParams) MarshalJSON() ([]byte, error) {
@@ -511,6 +556,46 @@ func (m IscsiTargetCommonParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field business_host_groups
+	if m.BusinessHostGroups != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroups_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups\":null")
+		first = false
+	}
+
+	// handle nullable field business_hosts
+	if m.BusinessHosts != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts\":")
+		bytes, err := swag.WriteJSON(m.BusinessHosts)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHosts_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts\":null")
+		first = false
+	}
+
 	// handle nullable field chap_enabled
 	if m.ChapEnabled != nil {
 		if !first {
@@ -571,6 +656,46 @@ func (m IscsiTargetCommonParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field configuration_adaptive
+	if m.ConfigurationAdaptive != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_adaptive\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationAdaptive)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationAdaptive_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_adaptive\":null")
+		first = false
+	}
+
+	// handle nullable field configuration_method
+	if m.ConfigurationMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method\":null")
+		first = false
+	}
+
 	// handle nullable field description
 	if m.Description != nil {
 		if !first {
@@ -588,6 +713,66 @@ func (m IscsiTargetCommonParams) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field encrypt_method
+	if m.EncryptMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EncryptMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":null")
 		first = false
 	}
 
@@ -825,6 +1010,46 @@ func (m IscsiTargetCommonParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field prioritized
+	if m.Prioritized != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":")
+		bytes, err := swag.WriteJSON(m.Prioritized)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Prioritized_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":null")
+		first = false
+	}
+
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -861,7 +1086,27 @@ func (m *IscsiTargetCommonParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateBusinessHostGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHosts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConfigurationMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateInitiatorChaps(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1004,6 +1249,82 @@ func (m *IscsiTargetCommonParams) validateBpsWrUnit(formats strfmt.Registry) err
 	return nil
 }
 
+func (m *IscsiTargetCommonParams) validateBusinessHostGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostGroups) { // not required
+		return nil
+	}
+
+	if m.BusinessHostGroups != nil {
+		if err := m.BusinessHostGroups.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateBusinessHosts(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHosts) { // not required
+		return nil
+	}
+
+	if m.BusinessHosts != nil {
+		if err := m.BusinessHosts.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateConfigurationMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConfigurationMethod) { // not required
+		return nil
+	}
+
+	if m.ConfigurationMethod != nil {
+		if err := m.ConfigurationMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateEncryptMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethod) { // not required
+		return nil
+	}
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IscsiTargetCommonParams) validateInitiatorChaps(formats strfmt.Registry) error {
 	if swag.IsZero(m.InitiatorChaps) { // not required
 		return nil
@@ -1025,6 +1346,25 @@ func (m *IscsiTargetCommonParams) validateInitiatorChaps(formats strfmt.Registry
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) validateResiliencyType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1062,7 +1402,27 @@ func (m *IscsiTargetCommonParams) ContextValidate(ctx context.Context, formats s
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateBusinessHostGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateConfigurationMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateInitiatorChaps(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1184,6 +1544,70 @@ func (m *IscsiTargetCommonParams) contextValidateBpsWrUnit(ctx context.Context, 
 	return nil
 }
 
+func (m *IscsiTargetCommonParams) contextValidateBusinessHostGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHostGroups != nil {
+		if err := m.BusinessHostGroups.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_host_groups")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_host_groups")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateBusinessHosts(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BusinessHosts != nil {
+		if err := m.BusinessHosts.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("business_hosts")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("business_hosts")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateConfigurationMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConfigurationMethod != nil {
+		if err := m.ConfigurationMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateEncryptMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IscsiTargetCommonParams) contextValidateInitiatorChaps(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.InitiatorChaps); i++ {
@@ -1199,6 +1623,22 @@ func (m *IscsiTargetCommonParams) contextValidateInitiatorChaps(ctx context.Cont
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *IscsiTargetCommonParams) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
 	}
 
 	return nil

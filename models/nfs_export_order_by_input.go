@@ -36,6 +36,24 @@ const (
 	// NfsExportOrderByInputDescriptionDESC captures enum value "description_DESC"
 	NfsExportOrderByInputDescriptionDESC NfsExportOrderByInput = "description_DESC"
 
+	// NfsExportOrderByInputEckASC captures enum value "ec_k_ASC"
+	NfsExportOrderByInputEckASC NfsExportOrderByInput = "ec_k_ASC"
+
+	// NfsExportOrderByInputEckDESC captures enum value "ec_k_DESC"
+	NfsExportOrderByInputEckDESC NfsExportOrderByInput = "ec_k_DESC"
+
+	// NfsExportOrderByInputEcmASC captures enum value "ec_m_ASC"
+	NfsExportOrderByInputEcmASC NfsExportOrderByInput = "ec_m_ASC"
+
+	// NfsExportOrderByInputEcmDESC captures enum value "ec_m_DESC"
+	NfsExportOrderByInputEcmDESC NfsExportOrderByInput = "ec_m_DESC"
+
+	// NfsExportOrderByInputEncryptMethodASC captures enum value "encrypt_method_ASC"
+	NfsExportOrderByInputEncryptMethodASC NfsExportOrderByInput = "encrypt_method_ASC"
+
+	// NfsExportOrderByInputEncryptMethodDESC captures enum value "encrypt_method_DESC"
+	NfsExportOrderByInputEncryptMethodDESC NfsExportOrderByInput = "encrypt_method_DESC"
+
 	// NfsExportOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	NfsExportOrderByInputEntityAsyncStatusASC NfsExportOrderByInput = "entityAsyncStatus_ASC"
 
@@ -78,11 +96,23 @@ const (
 	// NfsExportOrderByInputNameDESC captures enum value "name_DESC"
 	NfsExportOrderByInputNameDESC NfsExportOrderByInput = "name_DESC"
 
+	// NfsExportOrderByInputPrioritizedASC captures enum value "prioritized_ASC"
+	NfsExportOrderByInputPrioritizedASC NfsExportOrderByInput = "prioritized_ASC"
+
+	// NfsExportOrderByInputPrioritizedDESC captures enum value "prioritized_DESC"
+	NfsExportOrderByInputPrioritizedDESC NfsExportOrderByInput = "prioritized_DESC"
+
 	// NfsExportOrderByInputReplicaNumASC captures enum value "replica_num_ASC"
 	NfsExportOrderByInputReplicaNumASC NfsExportOrderByInput = "replica_num_ASC"
 
 	// NfsExportOrderByInputReplicaNumDESC captures enum value "replica_num_DESC"
 	NfsExportOrderByInputReplicaNumDESC NfsExportOrderByInput = "replica_num_DESC"
+
+	// NfsExportOrderByInputResiliencyTypeASC captures enum value "resiliency_type_ASC"
+	NfsExportOrderByInputResiliencyTypeASC NfsExportOrderByInput = "resiliency_type_ASC"
+
+	// NfsExportOrderByInputResiliencyTypeDESC captures enum value "resiliency_type_DESC"
+	NfsExportOrderByInputResiliencyTypeDESC NfsExportOrderByInput = "resiliency_type_DESC"
 
 	// NfsExportOrderByInputThinProvisionASC captures enum value "thin_provision_ASC"
 	NfsExportOrderByInputThinProvisionASC NfsExportOrderByInput = "thin_provision_ASC"
@@ -96,7 +126,7 @@ var nfsExportOrderByInputEnum []interface{}
 
 func init() {
 	var res []NfsExportOrderByInput
-	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","export_inode_id_ASC","export_inode_id_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ip_whitelist_ASC","ip_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","replica_num_ASC","replica_num_DESC","thin_provision_ASC","thin_provision_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","ec_k_ASC","ec_k_DESC","ec_m_ASC","ec_m_DESC","encrypt_method_ASC","encrypt_method_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","export_inode_id_ASC","export_inode_id_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","ip_whitelist_ASC","ip_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","prioritized_ASC","prioritized_DESC","replica_num_ASC","replica_num_DESC","resiliency_type_ASC","resiliency_type_DESC","thin_provision_ASC","thin_provision_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

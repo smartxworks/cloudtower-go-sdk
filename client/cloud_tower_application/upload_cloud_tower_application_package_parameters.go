@@ -64,6 +64,9 @@ type UploadCloudTowerApplicationPackageParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// File.
 	File runtime.NamedReadCloser
 
@@ -154,6 +157,17 @@ func (o *UploadCloudTowerApplicationPackageParams) SetContentLanguage(contentLan
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the upload cloud tower application package params
+func (o *UploadCloudTowerApplicationPackageParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UploadCloudTowerApplicationPackageParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the upload cloud tower application package params
+func (o *UploadCloudTowerApplicationPackageParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithFile adds the file to the upload cloud tower application package params
 func (o *UploadCloudTowerApplicationPackageParams) WithFile(file runtime.NamedReadCloser) *UploadCloudTowerApplicationPackageParams {
 	o.SetFile(file)
@@ -221,6 +235,14 @@ func (o *UploadCloudTowerApplicationPackageParams) WriteToRequest(r runtime.Clie
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

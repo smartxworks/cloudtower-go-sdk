@@ -66,6 +66,9 @@ type GetExportFileDownloadLinksParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetExportFileDownloadLinksParams
 
@@ -144,6 +147,17 @@ func (o *GetExportFileDownloadLinksParams) SetContentLanguage(contentLanguage *s
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get export file download links params
+func (o *GetExportFileDownloadLinksParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetExportFileDownloadLinksParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get export file download links params
+func (o *GetExportFileDownloadLinksParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get export file download links params
 func (o *GetExportFileDownloadLinksParams) WithRequestBody(requestBody *models.GetExportFileDownloadLinksParams) *GetExportFileDownloadLinksParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetExportFileDownloadLinksParams) WriteToRequest(r runtime.ClientReques
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}
