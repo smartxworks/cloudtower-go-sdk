@@ -66,6 +66,9 @@ type GetNodeTopoesConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetNodeTopoesConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetNodeTopoesConnectionParams) SetContentLanguage(contentLanguage *stri
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get node topoes connection params
+func (o *GetNodeTopoesConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetNodeTopoesConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get node topoes connection params
+func (o *GetNodeTopoesConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get node topoes connection params
 func (o *GetNodeTopoesConnectionParams) WithRequestBody(requestBody *models.GetNodeTopoesConnectionRequestBody) *GetNodeTopoesConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetNodeTopoesConnectionParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

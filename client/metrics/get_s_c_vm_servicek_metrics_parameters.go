@@ -61,6 +61,9 @@ func NewGetSCVMServicekMetricsParamsWithHTTPClient(client *http.Client) *GetSCVM
 */
 type GetSCVMServicekMetricsParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetScvmServiceMetricInput
 
@@ -117,6 +120,17 @@ func (o *GetSCVMServicekMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get s c VM servicek metrics params
+func (o *GetSCVMServicekMetricsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetSCVMServicekMetricsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get s c VM servicek metrics params
+func (o *GetSCVMServicekMetricsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get s c VM servicek metrics params
 func (o *GetSCVMServicekMetricsParams) WithRequestBody(requestBody *models.GetScvmServiceMetricInput) *GetSCVMServicekMetricsParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetSCVMServicekMetricsParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

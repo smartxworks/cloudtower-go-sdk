@@ -230,6 +230,9 @@ type VMUpdateParamsData struct {
 	// ha
 	Ha *bool `json:"ha,omitempty"`
 
+	// ha priority
+	HaPriority *VMHaPriority `json:"ha_priority,omitempty"`
+
 	// memory
 	Memory *int64 `json:"memory,omitempty"`
 
@@ -253,6 +256,8 @@ type VMUpdateParamsDataMarshalOpts struct {
 	Description_Explicit_Null_When_Empty bool
 
 	Ha_Explicit_Null_When_Empty bool
+
+	HaPriority_Explicit_Null_When_Empty bool
 
 	Memory_Explicit_Null_When_Empty bool
 
@@ -349,6 +354,26 @@ func (m VMUpdateParamsData) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field ha_priority
+	if m.HaPriority != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority\":")
+		bytes, err := swag.WriteJSON(m.HaPriority)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HaPriority_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority\":null")
+		first = false
+	}
+
 	// handle nullable field memory
 	if m.Memory != nil {
 		if !first {
@@ -437,6 +462,10 @@ func (m VMUpdateParamsData) MarshalJSON() ([]byte, error) {
 func (m *VMUpdateParamsData) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateHaPriority(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateMemoryUnit(formats); err != nil {
 		res = append(res, err)
 	}
@@ -444,6 +473,25 @@ func (m *VMUpdateParamsData) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMUpdateParamsData) validateHaPriority(formats strfmt.Registry) error {
+	if swag.IsZero(m.HaPriority) { // not required
+		return nil
+	}
+
+	if m.HaPriority != nil {
+		if err := m.HaPriority.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "ha_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "ha_priority")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -470,6 +518,10 @@ func (m *VMUpdateParamsData) validateMemoryUnit(formats strfmt.Registry) error {
 func (m *VMUpdateParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateHaPriority(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMemoryUnit(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -477,6 +529,22 @@ func (m *VMUpdateParamsData) ContextValidate(ctx context.Context, formats strfmt
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMUpdateParamsData) contextValidateHaPriority(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HaPriority != nil {
+		if err := m.HaPriority.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "ha_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "ha_priority")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

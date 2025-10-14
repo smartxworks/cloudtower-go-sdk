@@ -66,6 +66,9 @@ type CreateSnmpTrapReceiverParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.SnmpTrapReceiverCreationParams
 
@@ -144,6 +147,17 @@ func (o *CreateSnmpTrapReceiverParams) SetContentLanguage(contentLanguage *strin
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the create snmp trap receiver params
+func (o *CreateSnmpTrapReceiverParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CreateSnmpTrapReceiverParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the create snmp trap receiver params
+func (o *CreateSnmpTrapReceiverParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the create snmp trap receiver params
 func (o *CreateSnmpTrapReceiverParams) WithRequestBody(requestBody []*models.SnmpTrapReceiverCreationParams) *CreateSnmpTrapReceiverParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *CreateSnmpTrapReceiverParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

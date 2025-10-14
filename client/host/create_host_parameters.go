@@ -66,6 +66,9 @@ type CreateHostParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.HostCreationParams
 
@@ -144,6 +147,17 @@ func (o *CreateHostParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the create host params
+func (o *CreateHostParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CreateHostParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the create host params
+func (o *CreateHostParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the create host params
 func (o *CreateHostParams) WithRequestBody(requestBody []*models.HostCreationParams) *CreateHostParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *CreateHostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

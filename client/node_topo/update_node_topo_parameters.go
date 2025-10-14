@@ -66,6 +66,9 @@ type UpdateNodeTopoParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody models.NodeTopoUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateNodeTopoParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update node topo params
+func (o *UpdateNodeTopoParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateNodeTopoParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update node topo params
+func (o *UpdateNodeTopoParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update node topo params
 func (o *UpdateNodeTopoParams) WithRequestBody(requestBody models.NodeTopoUpdationParams) *UpdateNodeTopoParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateNodeTopoParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

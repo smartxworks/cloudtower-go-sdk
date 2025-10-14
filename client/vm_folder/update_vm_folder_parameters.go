@@ -66,6 +66,9 @@ type UpdateVMFolderParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMFolderUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateVMFolderParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update Vm folder params
+func (o *UpdateVMFolderParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateVMFolderParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update Vm folder params
+func (o *UpdateVMFolderParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update Vm folder params
 func (o *UpdateVMFolderParams) WithRequestBody(requestBody *models.VMFolderUpdationParams) *UpdateVMFolderParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateVMFolderParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

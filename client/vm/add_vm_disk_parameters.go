@@ -66,6 +66,9 @@ type AddVMDiskParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMAddDiskParams
 
@@ -144,6 +147,17 @@ func (o *AddVMDiskParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the add Vm disk params
+func (o *AddVMDiskParams) WithExternalCloudtowerID(externalCloudtowerID *string) *AddVMDiskParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the add Vm disk params
+func (o *AddVMDiskParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the add Vm disk params
 func (o *AddVMDiskParams) WithRequestBody(requestBody *models.VMAddDiskParams) *AddVMDiskParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *AddVMDiskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

@@ -48,13 +48,34 @@ type NvmfSubsystem struct {
 	// bps wr max length
 	BpsWrMaxLength *int64 `json:"bps_wr_max_length,omitempty"`
 
+	// business host groups
+	BusinessHostGroups []*NestedBusinessHostGroup `json:"business_host_groups,omitempty"`
+
+	// business hosts
+	BusinessHosts []*NestedBusinessHost `json:"business_hosts,omitempty"`
+
 	// cluster
 	// Required: true
 	Cluster *NestedCluster `json:"cluster"`
 
+	// configuration adaptive
+	ConfigurationAdaptive *bool `json:"configuration_adaptive,omitempty"`
+
+	// configuration method
+	ConfigurationMethod *ConfigurationMethod `json:"configuration_method,omitempty"`
+
 	// description
 	// Required: true
 	Description *string `json:"description"`
+
+	// ec k
+	Eck *int32 `json:"ec_k,omitempty"`
+
+	// ec m
+	Ecm *int32 `json:"ec_m,omitempty"`
+
+	// encrypt method
+	EncryptMethod *EncryptMethod `json:"encrypt_method,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -105,6 +126,9 @@ type NvmfSubsystem struct {
 	// Required: true
 	IPWhitelist *string `json:"ip_whitelist"`
 
+	// iscsi connections
+	IscsiConnections []*NestedIscsiConnection `json:"iscsi_connections,omitempty"`
+
 	// labels
 	Labels []*NestedLabel `json:"labels,omitempty"`
 
@@ -130,13 +154,22 @@ type NvmfSubsystem struct {
 	// Required: true
 	NqnWhitelist *string `json:"nqn_whitelist"`
 
+	// nvmf namespaces num
+	NvmfNamespacesNum *int32 `json:"nvmf_namespaces_num,omitempty"`
+
 	// policy
 	// Required: true
 	Policy *NvmfSubsystemPolicyType `json:"policy"`
 
+	// prioritized
+	Prioritized *bool `json:"prioritized,omitempty"`
+
 	// replica num
 	// Required: true
 	ReplicaNum *int32 `json:"replica_num"`
+
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
 
 	// stripe num
 	// Required: true
@@ -172,9 +205,23 @@ type NvmfSubsystemMarshalOpts struct {
 
 	BpsWrMaxLength_Explicit_Null_When_Empty bool
 
+	BusinessHostGroups_Explicit_Null_When_Empty bool
+
+	BusinessHosts_Explicit_Null_When_Empty bool
+
 	Cluster_Explicit_Null_When_Empty bool
 
+	ConfigurationAdaptive_Explicit_Null_When_Empty bool
+
+	ConfigurationMethod_Explicit_Null_When_Empty bool
+
 	Description_Explicit_Null_When_Empty bool
+
+	Eck_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
+	EncryptMethod_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -206,6 +253,8 @@ type NvmfSubsystemMarshalOpts struct {
 
 	IPWhitelist_Explicit_Null_When_Empty bool
 
+	IscsiConnections_Explicit_Null_When_Empty bool
+
 	Labels_Explicit_Null_When_Empty bool
 
 	LocalID_Explicit_Null_When_Empty bool
@@ -220,9 +269,15 @@ type NvmfSubsystemMarshalOpts struct {
 
 	NqnWhitelist_Explicit_Null_When_Empty bool
 
+	NvmfNamespacesNum_Explicit_Null_When_Empty bool
+
 	Policy_Explicit_Null_When_Empty bool
 
+	Prioritized_Explicit_Null_When_Empty bool
+
 	ReplicaNum_Explicit_Null_When_Empty bool
+
+	ResiliencyType_Explicit_Null_When_Empty bool
 
 	StripeNum_Explicit_Null_When_Empty bool
 
@@ -417,6 +472,34 @@ func (m NvmfSubsystem) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle non nullable field business_host_groups with omitempty
+	if !swag.IsZero(m.BusinessHostGroups) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_host_groups\":")
+		bytes, err := swag.WriteJSON(m.BusinessHostGroups)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field business_hosts with omitempty
+	if !swag.IsZero(m.BusinessHosts) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"business_hosts\":")
+		bytes, err := swag.WriteJSON(m.BusinessHosts)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field cluster
 	if m.Cluster != nil {
 		if !first {
@@ -437,6 +520,46 @@ func (m NvmfSubsystem) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field configuration_adaptive
+	if m.ConfigurationAdaptive != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_adaptive\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationAdaptive)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationAdaptive_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_adaptive\":null")
+		first = false
+	}
+
+	// handle nullable field configuration_method
+	if m.ConfigurationMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method\":")
+		bytes, err := swag.WriteJSON(m.ConfigurationMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ConfigurationMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"configuration_method\":null")
+		first = false
+	}
+
 	// handle nullable field description
 	if m.Description != nil {
 		if !first {
@@ -454,6 +577,66 @@ func (m NvmfSubsystem) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"description\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field encrypt_method
+	if m.EncryptMethod != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":")
+		bytes, err := swag.WriteJSON(m.EncryptMethod)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EncryptMethod_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"encrypt_method\":null")
 		first = false
 	}
 
@@ -757,6 +940,20 @@ func (m NvmfSubsystem) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle non nullable field iscsi_connections with omitempty
+	if !swag.IsZero(m.IscsiConnections) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"iscsi_connections\":")
+		bytes, err := swag.WriteJSON(m.IscsiConnections)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle non nullable field labels with omitempty
 	if !swag.IsZero(m.Labels) {
 		if !first {
@@ -879,6 +1076,26 @@ func (m NvmfSubsystem) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field nvmf_namespaces_num
+	if m.NvmfNamespacesNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_namespaces_num\":")
+		bytes, err := swag.WriteJSON(m.NvmfNamespacesNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfNamespacesNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"nvmf_namespaces_num\":null")
+		first = false
+	}
+
 	// handle nullable field policy
 	if m.Policy != nil {
 		if !first {
@@ -899,6 +1116,26 @@ func (m NvmfSubsystem) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field prioritized
+	if m.Prioritized != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":")
+		bytes, err := swag.WriteJSON(m.Prioritized)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Prioritized_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"prioritized\":null")
+		first = false
+	}
+
 	// handle nullable field replica_num
 	if m.ReplicaNum != nil {
 		if !first {
@@ -916,6 +1153,26 @@ func (m NvmfSubsystem) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"replica_num\":null")
+		first = false
+	}
+
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
 		first = false
 	}
 
@@ -987,11 +1244,27 @@ func (m NvmfSubsystem) MarshalJSON() ([]byte, error) {
 func (m *NvmfSubsystem) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateBusinessHostGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBusinessHosts(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCluster(formats); err != nil {
 		res = append(res, err)
 	}
 
+	if err := m.validateConfigurationMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDescription(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEncryptMethod(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1012,6 +1285,10 @@ func (m *NvmfSubsystem) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIPWhitelist(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIscsiConnections(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1051,6 +1328,10 @@ func (m *NvmfSubsystem) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateResiliencyType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStripeNum(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1066,6 +1347,58 @@ func (m *NvmfSubsystem) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NvmfSubsystem) validateBusinessHostGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHostGroups) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BusinessHostGroups); i++ {
+		if swag.IsZero(m.BusinessHostGroups[i]) { // not required
+			continue
+		}
+
+		if m.BusinessHostGroups[i] != nil {
+			if err := m.BusinessHostGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystem) validateBusinessHosts(formats strfmt.Registry) error {
+	if swag.IsZero(m.BusinessHosts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BusinessHosts); i++ {
+		if swag.IsZero(m.BusinessHosts[i]) { // not required
+			continue
+		}
+
+		if m.BusinessHosts[i] != nil {
+			if err := m.BusinessHosts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("business_hosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("business_hosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -1089,10 +1422,48 @@ func (m *NvmfSubsystem) validateCluster(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NvmfSubsystem) validateConfigurationMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConfigurationMethod) { // not required
+		return nil
+	}
+
+	if m.ConfigurationMethod != nil {
+		if err := m.ConfigurationMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NvmfSubsystem) validateDescription(formats strfmt.Registry) error {
 
 	if err := validate.Required("description", "body", m.Description); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystem) validateEncryptMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.EncryptMethod) { // not required
+		return nil
+	}
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1148,6 +1519,32 @@ func (m *NvmfSubsystem) validateIPWhitelist(formats strfmt.Registry) error {
 
 	if err := validate.Required("ip_whitelist", "body", m.IPWhitelist); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystem) validateIscsiConnections(formats strfmt.Registry) error {
+	if swag.IsZero(m.IscsiConnections) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IscsiConnections); i++ {
+		if swag.IsZero(m.IscsiConnections[i]) { // not required
+			continue
+		}
+
+		if m.IscsiConnections[i] != nil {
+			if err := m.IscsiConnections[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("iscsi_connections" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("iscsi_connections" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -1300,6 +1697,25 @@ func (m *NvmfSubsystem) validateReplicaNum(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NvmfSubsystem) validateResiliencyType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NvmfSubsystem) validateStripeNum(formats strfmt.Registry) error {
 
 	if err := validate.Required("stripe_num", "body", m.StripeNum); err != nil {
@@ -1331,11 +1747,31 @@ func (m *NvmfSubsystem) validateThinProvision(formats strfmt.Registry) error {
 func (m *NvmfSubsystem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateBusinessHostGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBusinessHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCluster(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateConfigurationMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEncryptMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIscsiConnections(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1355,9 +1791,53 @@ func (m *NvmfSubsystem) ContextValidate(ctx context.Context, formats strfmt.Regi
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NvmfSubsystem) contextValidateBusinessHostGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BusinessHostGroups); i++ {
+
+		if m.BusinessHostGroups[i] != nil {
+			if err := m.BusinessHostGroups[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystem) contextValidateBusinessHosts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BusinessHosts); i++ {
+
+		if m.BusinessHosts[i] != nil {
+			if err := m.BusinessHosts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("business_hosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("business_hosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -1377,6 +1857,38 @@ func (m *NvmfSubsystem) contextValidateCluster(ctx context.Context, formats strf
 	return nil
 }
 
+func (m *NvmfSubsystem) contextValidateConfigurationMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConfigurationMethod != nil {
+		if err := m.ConfigurationMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configuration_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configuration_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystem) contextValidateEncryptMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EncryptMethod != nil {
+		if err := m.EncryptMethod.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("encrypt_method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("encrypt_method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NvmfSubsystem) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatus != nil {
@@ -1388,6 +1900,26 @@ func (m *NvmfSubsystem) contextValidateEntityAsyncStatus(ctx context.Context, fo
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystem) contextValidateIscsiConnections(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IscsiConnections); i++ {
+
+		if m.IscsiConnections[i] != nil {
+			if err := m.IscsiConnections[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("iscsi_connections" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("iscsi_connections" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -1461,6 +1993,22 @@ func (m *NvmfSubsystem) contextValidatePolicy(ctx context.Context, formats strfm
 				return ve.ValidateName("policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfSubsystem) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
 			}
 			return err
 		}

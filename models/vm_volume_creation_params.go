@@ -24,13 +24,21 @@ type VMVolumeCreationParams struct {
 	// Required: true
 	ClusterID *string `json:"cluster_id"`
 
+	// elf ec storage policy
+	ElfEcStoragePolicy *VMVolumeCreationParamsElfEcStoragePolicy `json:"elf_ec_storage_policy,omitempty"`
+
+	// elf replica storage policy
+	ElfReplicaStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_replica_storage_policy,omitempty"`
+
 	// elf storage policy
-	// Required: true
-	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy"`
+	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy,omitempty"`
 
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	// resident in cache
+	ResidentInCache *bool `json:"resident_in_cache,omitempty"`
 
 	// sharing
 	// Required: true
@@ -49,9 +57,15 @@ type VMVolumeCreationParams struct {
 type VMVolumeCreationParamsMarshalOpts struct {
 	ClusterID_Explicit_Null_When_Empty bool
 
+	ElfEcStoragePolicy_Explicit_Null_When_Empty bool
+
+	ElfReplicaStoragePolicy_Explicit_Null_When_Empty bool
+
 	ElfStoragePolicy_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
+
+	ResidentInCache_Explicit_Null_When_Empty bool
 
 	Sharing_Explicit_Null_When_Empty bool
 
@@ -83,6 +97,46 @@ func (m VMVolumeCreationParams) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"cluster_id\":null")
+		first = false
+	}
+
+	// handle nullable field elf_ec_storage_policy
+	if m.ElfEcStoragePolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_ec_storage_policy\":")
+		bytes, err := swag.WriteJSON(m.ElfEcStoragePolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfEcStoragePolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_ec_storage_policy\":null")
+		first = false
+	}
+
+	// handle nullable field elf_replica_storage_policy
+	if m.ElfReplicaStoragePolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_replica_storage_policy\":")
+		bytes, err := swag.WriteJSON(m.ElfReplicaStoragePolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfReplicaStoragePolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_replica_storage_policy\":null")
 		first = false
 	}
 
@@ -123,6 +177,26 @@ func (m VMVolumeCreationParams) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field resident_in_cache
+	if m.ResidentInCache != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resident_in_cache\":")
+		bytes, err := swag.WriteJSON(m.ResidentInCache)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResidentInCache_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resident_in_cache\":null")
 		first = false
 	}
 
@@ -198,6 +272,14 @@ func (m *VMVolumeCreationParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateElfEcStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateElfReplicaStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateElfStoragePolicy(formats); err != nil {
 		res = append(res, err)
 	}
@@ -233,14 +315,47 @@ func (m *VMVolumeCreationParams) validateClusterID(formats strfmt.Registry) erro
 	return nil
 }
 
-func (m *VMVolumeCreationParams) validateElfStoragePolicy(formats strfmt.Registry) error {
-
-	if err := validate.Required("elf_storage_policy", "body", m.ElfStoragePolicy); err != nil {
-		return err
+func (m *VMVolumeCreationParams) validateElfEcStoragePolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfEcStoragePolicy) { // not required
+		return nil
 	}
 
-	if err := validate.Required("elf_storage_policy", "body", m.ElfStoragePolicy); err != nil {
-		return err
+	if m.ElfEcStoragePolicy != nil {
+		if err := m.ElfEcStoragePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_ec_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_ec_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeCreationParams) validateElfReplicaStoragePolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfReplicaStoragePolicy) { // not required
+		return nil
+	}
+
+	if m.ElfReplicaStoragePolicy != nil {
+		if err := m.ElfReplicaStoragePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_replica_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_replica_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeCreationParams) validateElfStoragePolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfStoragePolicy) { // not required
+		return nil
 	}
 
 	if m.ElfStoragePolicy != nil {
@@ -307,6 +422,14 @@ func (m *VMVolumeCreationParams) validateSizeUnit(formats strfmt.Registry) error
 func (m *VMVolumeCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateElfEcStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateElfReplicaStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateElfStoragePolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -318,6 +441,38 @@ func (m *VMVolumeCreationParams) ContextValidate(ctx context.Context, formats st
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMVolumeCreationParams) contextValidateElfEcStoragePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ElfEcStoragePolicy != nil {
+		if err := m.ElfEcStoragePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_ec_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_ec_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeCreationParams) contextValidateElfReplicaStoragePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ElfReplicaStoragePolicy != nil {
+		if err := m.ElfReplicaStoragePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_replica_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_replica_storage_policy")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -364,6 +519,129 @@ func (m *VMVolumeCreationParams) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *VMVolumeCreationParams) UnmarshalBinary(b []byte) error {
 	var res VMVolumeCreationParams
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// VMVolumeCreationParamsElfEcStoragePolicy VM volume creation params elf ec storage policy
+//
+// swagger:model VMVolumeCreationParamsElfEcStoragePolicy
+type VMVolumeCreationParamsElfEcStoragePolicy struct {
+
+	// ec k
+	Eck *int32 `json:"ec_k,omitempty"`
+
+	// ec m
+	Ecm *int32 `json:"ec_m,omitempty"`
+
+	// thin provision
+	ThinProvision *bool `json:"thin_provision,omitempty"`
+
+	MarshalOpts *VMVolumeCreationParamsElfEcStoragePolicyMarshalOpts `json:"-"`
+}
+
+type VMVolumeCreationParamsElfEcStoragePolicyMarshalOpts struct {
+	Eck_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
+	ThinProvision_Explicit_Null_When_Empty bool
+}
+
+func (m VMVolumeCreationParamsElfEcStoragePolicy) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field thin_provision
+	if m.ThinProvision != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":")
+		bytes, err := swag.WriteJSON(m.ThinProvision)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ThinProvision_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
+}
+
+// Validate validates this VM volume creation params elf ec storage policy
+func (m *VMVolumeCreationParamsElfEcStoragePolicy) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this VM volume creation params elf ec storage policy based on context it is used
+func (m *VMVolumeCreationParamsElfEcStoragePolicy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *VMVolumeCreationParamsElfEcStoragePolicy) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *VMVolumeCreationParamsElfEcStoragePolicy) UnmarshalBinary(b []byte) error {
+	var res VMVolumeCreationParamsElfEcStoragePolicy
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

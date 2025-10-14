@@ -66,6 +66,9 @@ type CreateVdsWithAccessVlanParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.VdsCreationWithMAccessVlanParams
 
@@ -144,6 +147,17 @@ func (o *CreateVdsWithAccessVlanParams) SetContentLanguage(contentLanguage *stri
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the create vds with access vlan params
+func (o *CreateVdsWithAccessVlanParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CreateVdsWithAccessVlanParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the create vds with access vlan params
+func (o *CreateVdsWithAccessVlanParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the create vds with access vlan params
 func (o *CreateVdsWithAccessVlanParams) WithRequestBody(requestBody []*models.VdsCreationWithMAccessVlanParams) *CreateVdsWithAccessVlanParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *CreateVdsWithAccessVlanParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

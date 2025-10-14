@@ -66,6 +66,9 @@ type UnmountUsbDeviceParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.UsbDeviceUnmountParams
 
@@ -144,6 +147,17 @@ func (o *UnmountUsbDeviceParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the unmount usb device params
+func (o *UnmountUsbDeviceParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UnmountUsbDeviceParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the unmount usb device params
+func (o *UnmountUsbDeviceParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the unmount usb device params
 func (o *UnmountUsbDeviceParams) WithRequestBody(requestBody *models.UsbDeviceUnmountParams) *UnmountUsbDeviceParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UnmountUsbDeviceParams) WriteToRequest(r runtime.ClientRequest, reg str
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

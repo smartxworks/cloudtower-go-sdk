@@ -66,6 +66,9 @@ type DeleteSecurityPolicyParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.SecurityPolicyDeleteParams
 
@@ -144,6 +147,17 @@ func (o *DeleteSecurityPolicyParams) SetContentLanguage(contentLanguage *string)
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete security policy params
+func (o *DeleteSecurityPolicyParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteSecurityPolicyParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete security policy params
+func (o *DeleteSecurityPolicyParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete security policy params
 func (o *DeleteSecurityPolicyParams) WithRequestBody(requestBody *models.SecurityPolicyDeleteParams) *DeleteSecurityPolicyParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteSecurityPolicyParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

@@ -66,6 +66,9 @@ type GetContentLibraryVMTemplatesConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetContentLibraryVMTemplatesConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetContentLibraryVMTemplatesConnectionParams) SetContentLanguage(conten
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get content library Vm templates connection params
+func (o *GetContentLibraryVMTemplatesConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetContentLibraryVMTemplatesConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get content library Vm templates connection params
+func (o *GetContentLibraryVMTemplatesConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get content library Vm templates connection params
 func (o *GetContentLibraryVMTemplatesConnectionParams) WithRequestBody(requestBody *models.GetContentLibraryVMTemplatesConnectionRequestBody) *GetContentLibraryVMTemplatesConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetContentLibraryVMTemplatesConnectionParams) WriteToRequest(r runtime.
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

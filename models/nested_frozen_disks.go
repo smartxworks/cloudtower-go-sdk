@@ -64,6 +64,9 @@ type NestedFrozenDisks struct {
 	// Required: true
 	Path *string `json:"path"`
 
+	// resident in cache
+	ResidentInCache *bool `json:"resident_in_cache,omitempty"`
+
 	// size
 	// Required: true
 	Size *int64 `json:"size"`
@@ -122,6 +125,8 @@ type NestedFrozenDisksMarshalOpts struct {
 	MaxIopsPolicy_Explicit_Null_When_Empty bool
 
 	Path_Explicit_Null_When_Empty bool
+
+	ResidentInCache_Explicit_Null_When_Empty bool
 
 	Size_Explicit_Null_When_Empty bool
 
@@ -403,6 +408,26 @@ func (m NestedFrozenDisks) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"path\":null")
+		first = false
+	}
+
+	// handle nullable field resident_in_cache
+	if m.ResidentInCache != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resident_in_cache\":")
+		bytes, err := swag.WriteJSON(m.ResidentInCache)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResidentInCache_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resident_in_cache\":null")
 		first = false
 	}
 

@@ -66,6 +66,9 @@ type ImportContentLibraryVMTemplateParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.ContentLibraryVMTemplateImportParams
 
@@ -144,6 +147,17 @@ func (o *ImportContentLibraryVMTemplateParams) SetContentLanguage(contentLanguag
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the import content library Vm template params
+func (o *ImportContentLibraryVMTemplateParams) WithExternalCloudtowerID(externalCloudtowerID *string) *ImportContentLibraryVMTemplateParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the import content library Vm template params
+func (o *ImportContentLibraryVMTemplateParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the import content library Vm template params
 func (o *ImportContentLibraryVMTemplateParams) WithRequestBody(requestBody []*models.ContentLibraryVMTemplateImportParams) *ImportContentLibraryVMTemplateParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *ImportContentLibraryVMTemplateParams) WriteToRequest(r runtime.ClientRe
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

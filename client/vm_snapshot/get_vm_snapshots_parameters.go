@@ -66,6 +66,9 @@ type GetVMSnapshotsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVMSnapshotsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetVMSnapshotsParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Vm snapshots params
+func (o *GetVMSnapshotsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVMSnapshotsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Vm snapshots params
+func (o *GetVMSnapshotsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get Vm snapshots params
 func (o *GetVMSnapshotsParams) WithRequestBody(requestBody *models.GetVMSnapshotsRequestBody) *GetVMSnapshotsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVMSnapshotsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

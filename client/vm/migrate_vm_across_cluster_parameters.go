@@ -66,6 +66,9 @@ type MigrateVMAcrossClusterParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMMigrateAcrossClusterParams
 
@@ -144,6 +147,17 @@ func (o *MigrateVMAcrossClusterParams) SetContentLanguage(contentLanguage *strin
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the migrate Vm across cluster params
+func (o *MigrateVMAcrossClusterParams) WithExternalCloudtowerID(externalCloudtowerID *string) *MigrateVMAcrossClusterParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the migrate Vm across cluster params
+func (o *MigrateVMAcrossClusterParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the migrate Vm across cluster params
 func (o *MigrateVMAcrossClusterParams) WithRequestBody(requestBody *models.VMMigrateAcrossClusterParams) *MigrateVMAcrossClusterParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *MigrateVMAcrossClusterParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

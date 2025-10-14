@@ -61,6 +61,9 @@ func NewDeleteAlertNotifierParamsWithHTTPClient(client *http.Client) *DeleteAler
 */
 type DeleteAlertNotifierParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.DeleteAlertNotifierParams
 
@@ -117,6 +120,17 @@ func (o *DeleteAlertNotifierParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete alert notifier params
+func (o *DeleteAlertNotifierParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteAlertNotifierParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete alert notifier params
+func (o *DeleteAlertNotifierParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete alert notifier params
 func (o *DeleteAlertNotifierParams) WithRequestBody(requestBody *models.DeleteAlertNotifierParams) *DeleteAlertNotifierParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *DeleteAlertNotifierParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

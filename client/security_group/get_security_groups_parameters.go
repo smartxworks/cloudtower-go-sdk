@@ -66,6 +66,9 @@ type GetSecurityGroupsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetSecurityGroupsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetSecurityGroupsParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get security groups params
+func (o *GetSecurityGroupsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetSecurityGroupsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get security groups params
+func (o *GetSecurityGroupsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get security groups params
 func (o *GetSecurityGroupsParams) WithRequestBody(requestBody *models.GetSecurityGroupsRequestBody) *GetSecurityGroupsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetSecurityGroupsParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

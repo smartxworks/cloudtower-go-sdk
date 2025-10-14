@@ -66,6 +66,9 @@ type DeleteBackupRestorePointParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.BackupRestorePointDeletionParams
 
@@ -144,6 +147,17 @@ func (o *DeleteBackupRestorePointParams) SetContentLanguage(contentLanguage *str
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete backup restore point params
+func (o *DeleteBackupRestorePointParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteBackupRestorePointParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete backup restore point params
+func (o *DeleteBackupRestorePointParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete backup restore point params
 func (o *DeleteBackupRestorePointParams) WithRequestBody(requestBody *models.BackupRestorePointDeletionParams) *DeleteBackupRestorePointParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteBackupRestorePointParams) WriteToRequest(r runtime.ClientRequest,
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

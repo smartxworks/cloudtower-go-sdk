@@ -66,6 +66,9 @@ type ShutDownVMParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMOperateParams
 
@@ -144,6 +147,17 @@ func (o *ShutDownVMParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the shut down Vm params
+func (o *ShutDownVMParams) WithExternalCloudtowerID(externalCloudtowerID *string) *ShutDownVMParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the shut down Vm params
+func (o *ShutDownVMParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the shut down Vm params
 func (o *ShutDownVMParams) WithRequestBody(requestBody *models.VMOperateParams) *ShutDownVMParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *ShutDownVMParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

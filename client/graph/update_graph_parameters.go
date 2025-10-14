@@ -66,6 +66,9 @@ type UpdateGraphParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GraphUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateGraphParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update graph params
+func (o *UpdateGraphParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateGraphParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update graph params
+func (o *UpdateGraphParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update graph params
 func (o *UpdateGraphParams) WithRequestBody(requestBody *models.GraphUpdationParams) *UpdateGraphParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateGraphParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

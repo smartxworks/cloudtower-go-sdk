@@ -66,6 +66,9 @@ type DeleteVMVolumeFromVMParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMVolumeDeletionParams
 
@@ -144,6 +147,17 @@ func (o *DeleteVMVolumeFromVMParams) SetContentLanguage(contentLanguage *string)
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete Vm volume from Vm params
+func (o *DeleteVMVolumeFromVMParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteVMVolumeFromVMParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete Vm volume from Vm params
+func (o *DeleteVMVolumeFromVMParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete Vm volume from Vm params
 func (o *DeleteVMVolumeFromVMParams) WithRequestBody(requestBody *models.VMVolumeDeletionParams) *DeleteVMVolumeFromVMParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteVMVolumeFromVMParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

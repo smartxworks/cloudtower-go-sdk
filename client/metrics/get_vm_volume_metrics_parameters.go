@@ -61,6 +61,9 @@ func NewGetVMVolumeMetricsParamsWithHTTPClient(client *http.Client) *GetVMVolume
 */
 type GetVMVolumeMetricsParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVMVolumeMetricInput
 
@@ -117,6 +120,17 @@ func (o *GetVMVolumeMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get Vm volume metrics params
+func (o *GetVMVolumeMetricsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVMVolumeMetricsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get Vm volume metrics params
+func (o *GetVMVolumeMetricsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get Vm volume metrics params
 func (o *GetVMVolumeMetricsParams) WithRequestBody(requestBody *models.GetVMVolumeMetricInput) *GetVMVolumeMetricsParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetVMVolumeMetricsParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

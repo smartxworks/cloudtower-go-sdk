@@ -66,6 +66,9 @@ type RecoverVMFromRecycleBinParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.VMOperateParams
 
@@ -144,6 +147,17 @@ func (o *RecoverVMFromRecycleBinParams) SetContentLanguage(contentLanguage *stri
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the recover Vm from recycle bin params
+func (o *RecoverVMFromRecycleBinParams) WithExternalCloudtowerID(externalCloudtowerID *string) *RecoverVMFromRecycleBinParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the recover Vm from recycle bin params
+func (o *RecoverVMFromRecycleBinParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the recover Vm from recycle bin params
 func (o *RecoverVMFromRecycleBinParams) WithRequestBody(requestBody *models.VMOperateParams) *RecoverVMFromRecycleBinParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *RecoverVMFromRecycleBinParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

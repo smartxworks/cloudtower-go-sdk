@@ -30,6 +30,24 @@ func (m ClusterOrderByInput) Pointer() *ClusterOrderByInput {
 
 const (
 
+	// ClusterOrderByInputAccessWriteCompressEnabledASC captures enum value "access_write_compress_enabled_ASC"
+	ClusterOrderByInputAccessWriteCompressEnabledASC ClusterOrderByInput = "access_write_compress_enabled_ASC"
+
+	// ClusterOrderByInputAccessWriteCompressEnabledDESC captures enum value "access_write_compress_enabled_DESC"
+	ClusterOrderByInputAccessWriteCompressEnabledDESC ClusterOrderByInput = "access_write_compress_enabled_DESC"
+
+	// ClusterOrderByInputAllocatedPrioritizedSpaceASC captures enum value "allocated_prioritized_space_ASC"
+	ClusterOrderByInputAllocatedPrioritizedSpaceASC ClusterOrderByInput = "allocated_prioritized_space_ASC"
+
+	// ClusterOrderByInputAllocatedPrioritizedSpaceDESC captures enum value "allocated_prioritized_space_DESC"
+	ClusterOrderByInputAllocatedPrioritizedSpaceDESC ClusterOrderByInput = "allocated_prioritized_space_DESC"
+
+	// ClusterOrderByInputAllocatedPrioritizedSpaceUsageASC captures enum value "allocated_prioritized_space_usage_ASC"
+	ClusterOrderByInputAllocatedPrioritizedSpaceUsageASC ClusterOrderByInput = "allocated_prioritized_space_usage_ASC"
+
+	// ClusterOrderByInputAllocatedPrioritizedSpaceUsageDESC captures enum value "allocated_prioritized_space_usage_DESC"
+	ClusterOrderByInputAllocatedPrioritizedSpaceUsageDESC ClusterOrderByInput = "allocated_prioritized_space_usage_DESC"
+
 	// ClusterOrderByInputApplicationHighestVersionASC captures enum value "application_highest_version_ASC"
 	ClusterOrderByInputApplicationHighestVersionASC ClusterOrderByInput = "application_highest_version_ASC"
 
@@ -48,6 +66,12 @@ const (
 	// ClusterOrderByInputAutoConvergeDESC captures enum value "auto_converge_DESC"
 	ClusterOrderByInputAutoConvergeDESC ClusterOrderByInput = "auto_converge_DESC"
 
+	// ClusterOrderByInputCommitedMemoryBytesASC captures enum value "commited_memory_bytes_ASC"
+	ClusterOrderByInputCommitedMemoryBytesASC ClusterOrderByInput = "commited_memory_bytes_ASC"
+
+	// ClusterOrderByInputCommitedMemoryBytesDESC captures enum value "commited_memory_bytes_DESC"
+	ClusterOrderByInputCommitedMemoryBytesDESC ClusterOrderByInput = "commited_memory_bytes_DESC"
+
 	// ClusterOrderByInputConnectStateASC captures enum value "connect_state_ASC"
 	ClusterOrderByInputConnectStateASC ClusterOrderByInput = "connect_state_ASC"
 
@@ -60,6 +84,18 @@ const (
 	// ClusterOrderByInputCurrentCPUModelDESC captures enum value "current_cpu_model_DESC"
 	ClusterOrderByInputCurrentCPUModelDESC ClusterOrderByInput = "current_cpu_model_DESC"
 
+	// ClusterOrderByInputDataReductionRatioASC captures enum value "data_reduction_ratio_ASC"
+	ClusterOrderByInputDataReductionRatioASC ClusterOrderByInput = "data_reduction_ratio_ASC"
+
+	// ClusterOrderByInputDataReductionRatioDESC captures enum value "data_reduction_ratio_DESC"
+	ClusterOrderByInputDataReductionRatioDESC ClusterOrderByInput = "data_reduction_ratio_DESC"
+
+	// ClusterOrderByInputDataReductionSavingASC captures enum value "data_reduction_saving_ASC"
+	ClusterOrderByInputDataReductionSavingASC ClusterOrderByInput = "data_reduction_saving_ASC"
+
+	// ClusterOrderByInputDataReductionSavingDESC captures enum value "data_reduction_saving_DESC"
+	ClusterOrderByInputDataReductionSavingDESC ClusterOrderByInput = "data_reduction_saving_DESC"
+
 	// ClusterOrderByInputDisconnectedDateASC captures enum value "disconnected_date_ASC"
 	ClusterOrderByInputDisconnectedDateASC ClusterOrderByInput = "disconnected_date_ASC"
 
@@ -71,6 +107,18 @@ const (
 
 	// ClusterOrderByInputDisconnectedReasonDESC captures enum value "disconnected_reason_DESC"
 	ClusterOrderByInputDisconnectedReasonDESC ClusterOrderByInput = "disconnected_reason_DESC"
+
+	// ClusterOrderByInputDowngradedPrioritizedSpaceASC captures enum value "downgraded_prioritized_space_ASC"
+	ClusterOrderByInputDowngradedPrioritizedSpaceASC ClusterOrderByInput = "downgraded_prioritized_space_ASC"
+
+	// ClusterOrderByInputDowngradedPrioritizedSpaceDESC captures enum value "downgraded_prioritized_space_DESC"
+	ClusterOrderByInputDowngradedPrioritizedSpaceDESC ClusterOrderByInput = "downgraded_prioritized_space_DESC"
+
+	// ClusterOrderByInputEnableTieringASC captures enum value "enable_tiering_ASC"
+	ClusterOrderByInputEnableTieringASC ClusterOrderByInput = "enable_tiering_ASC"
+
+	// ClusterOrderByInputEnableTieringDESC captures enum value "enable_tiering_DESC"
+	ClusterOrderByInputEnableTieringDESC ClusterOrderByInput = "enable_tiering_DESC"
 
 	// ClusterOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	ClusterOrderByInputEntityAsyncStatusASC ClusterOrderByInput = "entityAsyncStatus_ASC"
@@ -156,6 +204,12 @@ const (
 	// ClusterOrderByInputLocalIDDESC captures enum value "local_id_DESC"
 	ClusterOrderByInputLocalIDDESC ClusterOrderByInput = "local_id_DESC"
 
+	// ClusterOrderByInputLogicalUsedDataSpaceASC captures enum value "logical_used_data_space_ASC"
+	ClusterOrderByInputLogicalUsedDataSpaceASC ClusterOrderByInput = "logical_used_data_space_ASC"
+
+	// ClusterOrderByInputLogicalUsedDataSpaceDESC captures enum value "logical_used_data_space_DESC"
+	ClusterOrderByInputLogicalUsedDataSpaceDESC ClusterOrderByInput = "logical_used_data_space_DESC"
+
 	// ClusterOrderByInputMaintenanceEndDateASC captures enum value "maintenance_end_date_ASC"
 	ClusterOrderByInputMaintenanceEndDateASC ClusterOrderByInput = "maintenance_end_date_ASC"
 
@@ -228,6 +282,12 @@ const (
 	// ClusterOrderByInputNameDESC captures enum value "name_DESC"
 	ClusterOrderByInputNameDESC ClusterOrderByInput = "name_DESC"
 
+	// ClusterOrderByInputNoPerformanceLayerASC captures enum value "no_performance_layer_ASC"
+	ClusterOrderByInputNoPerformanceLayerASC ClusterOrderByInput = "no_performance_layer_ASC"
+
+	// ClusterOrderByInputNoPerformanceLayerDESC captures enum value "no_performance_layer_DESC"
+	ClusterOrderByInputNoPerformanceLayerDESC ClusterOrderByInput = "no_performance_layer_DESC"
+
 	// ClusterOrderByInputNtpModeASC captures enum value "ntp_mode_ASC"
 	ClusterOrderByInputNtpModeASC ClusterOrderByInput = "ntp_mode_ASC"
 
@@ -252,11 +312,59 @@ const (
 	// ClusterOrderByInputNvmfEnabledDESC captures enum value "nvmf_enabled_DESC"
 	ClusterOrderByInputNvmfEnabledDESC ClusterOrderByInput = "nvmf_enabled_DESC"
 
+	// ClusterOrderByInputOverallEfficiencyASC captures enum value "overall_efficiency_ASC"
+	ClusterOrderByInputOverallEfficiencyASC ClusterOrderByInput = "overall_efficiency_ASC"
+
+	// ClusterOrderByInputOverallEfficiencyDESC captures enum value "overall_efficiency_DESC"
+	ClusterOrderByInputOverallEfficiencyDESC ClusterOrderByInput = "overall_efficiency_DESC"
+
+	// ClusterOrderByInputPerfAllocatedDataSpaceASC captures enum value "perf_allocated_data_space_ASC"
+	ClusterOrderByInputPerfAllocatedDataSpaceASC ClusterOrderByInput = "perf_allocated_data_space_ASC"
+
+	// ClusterOrderByInputPerfAllocatedDataSpaceDESC captures enum value "perf_allocated_data_space_DESC"
+	ClusterOrderByInputPerfAllocatedDataSpaceDESC ClusterOrderByInput = "perf_allocated_data_space_DESC"
+
+	// ClusterOrderByInputPerfFailureDataSpaceASC captures enum value "perf_failure_data_space_ASC"
+	ClusterOrderByInputPerfFailureDataSpaceASC ClusterOrderByInput = "perf_failure_data_space_ASC"
+
+	// ClusterOrderByInputPerfFailureDataSpaceDESC captures enum value "perf_failure_data_space_DESC"
+	ClusterOrderByInputPerfFailureDataSpaceDESC ClusterOrderByInput = "perf_failure_data_space_DESC"
+
+	// ClusterOrderByInputPerfTotalDataCapacityASC captures enum value "perf_total_data_capacity_ASC"
+	ClusterOrderByInputPerfTotalDataCapacityASC ClusterOrderByInput = "perf_total_data_capacity_ASC"
+
+	// ClusterOrderByInputPerfTotalDataCapacityDESC captures enum value "perf_total_data_capacity_DESC"
+	ClusterOrderByInputPerfTotalDataCapacityDESC ClusterOrderByInput = "perf_total_data_capacity_DESC"
+
+	// ClusterOrderByInputPerfUsedDataSpaceASC captures enum value "perf_used_data_space_ASC"
+	ClusterOrderByInputPerfUsedDataSpaceASC ClusterOrderByInput = "perf_used_data_space_ASC"
+
+	// ClusterOrderByInputPerfUsedDataSpaceDESC captures enum value "perf_used_data_space_DESC"
+	ClusterOrderByInputPerfUsedDataSpaceDESC ClusterOrderByInput = "perf_used_data_space_DESC"
+
+	// ClusterOrderByInputPerfValidDataSpaceASC captures enum value "perf_valid_data_space_ASC"
+	ClusterOrderByInputPerfValidDataSpaceASC ClusterOrderByInput = "perf_valid_data_space_ASC"
+
+	// ClusterOrderByInputPerfValidDataSpaceDESC captures enum value "perf_valid_data_space_DESC"
+	ClusterOrderByInputPerfValidDataSpaceDESC ClusterOrderByInput = "perf_valid_data_space_DESC"
+
+	// ClusterOrderByInputPlannedPrioritizedSpaceASC captures enum value "planned_prioritized_space_ASC"
+	ClusterOrderByInputPlannedPrioritizedSpaceASC ClusterOrderByInput = "planned_prioritized_space_ASC"
+
+	// ClusterOrderByInputPlannedPrioritizedSpaceDESC captures enum value "planned_prioritized_space_DESC"
+	ClusterOrderByInputPlannedPrioritizedSpaceDESC ClusterOrderByInput = "planned_prioritized_space_DESC"
+
 	// ClusterOrderByInputPmemEnabledASC captures enum value "pmem_enabled_ASC"
 	ClusterOrderByInputPmemEnabledASC ClusterOrderByInput = "pmem_enabled_ASC"
 
 	// ClusterOrderByInputPmemEnabledDESC captures enum value "pmem_enabled_DESC"
 	ClusterOrderByInputPmemEnabledDESC ClusterOrderByInput = "pmem_enabled_DESC"
+
+	// ClusterOrderByInputPrioSpacePercentageASC captures enum value "prio_space_percentage_ASC"
+	ClusterOrderByInputPrioSpacePercentageASC ClusterOrderByInput = "prio_space_percentage_ASC"
+
+	// ClusterOrderByInputPrioSpacePercentageDESC captures enum value "prio_space_percentage_DESC"
+	ClusterOrderByInputPrioSpacePercentageDESC ClusterOrderByInput = "prio_space_percentage_DESC"
 
 	// ClusterOrderByInputProvisionedCPUCoresASC captures enum value "provisioned_cpu_cores_ASC"
 	ClusterOrderByInputProvisionedCPUCoresASC ClusterOrderByInput = "provisioned_cpu_cores_ASC"
@@ -305,6 +413,12 @@ const (
 
 	// ClusterOrderByInputRecoverSpeedDESC captures enum value "recover_speed_DESC"
 	ClusterOrderByInputRecoverSpeedDESC ClusterOrderByInput = "recover_speed_DESC"
+
+	// ClusterOrderByInputReplicaCapacityOnlyASC captures enum value "replica_capacity_only_ASC"
+	ClusterOrderByInputReplicaCapacityOnlyASC ClusterOrderByInput = "replica_capacity_only_ASC"
+
+	// ClusterOrderByInputReplicaCapacityOnlyDESC captures enum value "replica_capacity_only_DESC"
+	ClusterOrderByInputReplicaCapacityOnlyDESC ClusterOrderByInput = "replica_capacity_only_DESC"
 
 	// ClusterOrderByInputReservedCPUCoresForSystemServiceASC captures enum value "reserved_cpu_cores_for_system_service_ASC"
 	ClusterOrderByInputReservedCPUCoresForSystemServiceASC ClusterOrderByInput = "reserved_cpu_cores_for_system_service_ASC"
@@ -378,17 +492,41 @@ const (
 	// ClusterOrderByInputTotalMemoryBytesDESC captures enum value "total_memory_bytes_DESC"
 	ClusterOrderByInputTotalMemoryBytesDESC ClusterOrderByInput = "total_memory_bytes_DESC"
 
+	// ClusterOrderByInputTotalPrioVolumeSizeASC captures enum value "total_prio_volume_size_ASC"
+	ClusterOrderByInputTotalPrioVolumeSizeASC ClusterOrderByInput = "total_prio_volume_size_ASC"
+
+	// ClusterOrderByInputTotalPrioVolumeSizeDESC captures enum value "total_prio_volume_size_DESC"
+	ClusterOrderByInputTotalPrioVolumeSizeDESC ClusterOrderByInput = "total_prio_volume_size_DESC"
+
+	// ClusterOrderByInputTotalPrioVolumeSizeUsageASC captures enum value "total_prio_volume_size_usage_ASC"
+	ClusterOrderByInputTotalPrioVolumeSizeUsageASC ClusterOrderByInput = "total_prio_volume_size_usage_ASC"
+
+	// ClusterOrderByInputTotalPrioVolumeSizeUsageDESC captures enum value "total_prio_volume_size_usage_DESC"
+	ClusterOrderByInputTotalPrioVolumeSizeUsageDESC ClusterOrderByInput = "total_prio_volume_size_usage_DESC"
+
 	// ClusterOrderByInputTypeASC captures enum value "type_ASC"
 	ClusterOrderByInputTypeASC ClusterOrderByInput = "type_ASC"
 
 	// ClusterOrderByInputTypeDESC captures enum value "type_DESC"
 	ClusterOrderByInputTypeDESC ClusterOrderByInput = "type_DESC"
 
+	// ClusterOrderByInputUpgradeForTieringASC captures enum value "upgrade_for_tiering_ASC"
+	ClusterOrderByInputUpgradeForTieringASC ClusterOrderByInput = "upgrade_for_tiering_ASC"
+
+	// ClusterOrderByInputUpgradeForTieringDESC captures enum value "upgrade_for_tiering_DESC"
+	ClusterOrderByInputUpgradeForTieringDESC ClusterOrderByInput = "upgrade_for_tiering_DESC"
+
 	// ClusterOrderByInputUpgradeToolVersionASC captures enum value "upgrade_tool_version_ASC"
 	ClusterOrderByInputUpgradeToolVersionASC ClusterOrderByInput = "upgrade_tool_version_ASC"
 
 	// ClusterOrderByInputUpgradeToolVersionDESC captures enum value "upgrade_tool_version_DESC"
 	ClusterOrderByInputUpgradeToolVersionDESC ClusterOrderByInput = "upgrade_tool_version_DESC"
+
+	// ClusterOrderByInputUsedCacheSpaceASC captures enum value "used_cache_space_ASC"
+	ClusterOrderByInputUsedCacheSpaceASC ClusterOrderByInput = "used_cache_space_ASC"
+
+	// ClusterOrderByInputUsedCacheSpaceDESC captures enum value "used_cache_space_DESC"
+	ClusterOrderByInputUsedCacheSpaceDESC ClusterOrderByInput = "used_cache_space_DESC"
 
 	// ClusterOrderByInputUsedCPUHzASC captures enum value "used_cpu_hz_ASC"
 	ClusterOrderByInputUsedCPUHzASC ClusterOrderByInput = "used_cpu_hz_ASC"
@@ -407,6 +545,12 @@ const (
 
 	// ClusterOrderByInputUsedMemoryBytesDESC captures enum value "used_memory_bytes_DESC"
 	ClusterOrderByInputUsedMemoryBytesDESC ClusterOrderByInput = "used_memory_bytes_DESC"
+
+	// ClusterOrderByInputValidCacheSpaceASC captures enum value "valid_cache_space_ASC"
+	ClusterOrderByInputValidCacheSpaceASC ClusterOrderByInput = "valid_cache_space_ASC"
+
+	// ClusterOrderByInputValidCacheSpaceDESC captures enum value "valid_cache_space_DESC"
+	ClusterOrderByInputValidCacheSpaceDESC ClusterOrderByInput = "valid_cache_space_DESC"
 
 	// ClusterOrderByInputValidDataSpaceASC captures enum value "valid_data_space_ASC"
 	ClusterOrderByInputValidDataSpaceASC ClusterOrderByInput = "valid_data_space_ASC"
@@ -438,7 +582,7 @@ var clusterOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterOrderByInput
-	if err := json.Unmarshal([]byte(`["application_highest_version_ASC","application_highest_version_DESC","architecture_ASC","architecture_DESC","auto_converge_ASC","auto_converge_DESC","connect_state_ASC","connect_state_DESC","current_cpu_model_ASC","current_cpu_model_DESC","disconnected_date_ASC","disconnected_date_DESC","disconnected_reason_ASC","disconnected_reason_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_data_space_ASC","failure_data_space_DESC","has_metrox_ASC","has_metrox_DESC","host_num_ASC","host_num_DESC","hypervisor_ASC","hypervisor_DESC","id_ASC","id_DESC","ip_ASC","ip_DESC","is_all_flash_ASC","is_all_flash_DESC","iscsi_vip_ASC","iscsi_vip_DESC","license_expire_date_ASC","license_expire_date_DESC","license_serial_ASC","license_serial_DESC","license_sign_date_ASC","license_sign_date_DESC","license_type_ASC","license_type_DESC","local_id_ASC","local_id_DESC","maintenance_end_date_ASC","maintenance_end_date_DESC","maintenance_start_date_ASC","maintenance_start_date_DESC","management_vip_ASC","management_vip_DESC","max_chunk_num_ASC","max_chunk_num_DESC","max_physical_data_capacity_ASC","max_physical_data_capacity_DESC","max_physical_data_capacity_per_node_ASC","max_physical_data_capacity_per_node_DESC","metro_availability_checklist_ASC","metro_availability_checklist_DESC","mgt_gateway_ASC","mgt_gateway_DESC","mgt_netmask_ASC","mgt_netmask_DESC","migration_data_size_ASC","migration_data_size_DESC","migration_speed_ASC","migration_speed_DESC","name_ASC","name_DESC","ntp_mode_ASC","ntp_mode_DESC","nvme_over_rdma_enabled_ASC","nvme_over_rdma_enabled_DESC","nvme_over_tcp_enabled_ASC","nvme_over_tcp_enabled_DESC","nvmf_enabled_ASC","nvmf_enabled_DESC","pmem_enabled_ASC","pmem_enabled_DESC","provisioned_cpu_cores_ASC","provisioned_cpu_cores_DESC","provisioned_cpu_cores_for_active_vm_ASC","provisioned_cpu_cores_for_active_vm_DESC","provisioned_for_active_vm_ratio_ASC","provisioned_for_active_vm_ratio_DESC","provisioned_memory_bytes_ASC","provisioned_memory_bytes_DESC","provisioned_ratio_ASC","provisioned_ratio_DESC","rdma_enabled_ASC","rdma_enabled_DESC","recover_data_size_ASC","recover_data_size_DESC","recover_speed_ASC","recover_speed_DESC","reserved_cpu_cores_for_system_service_ASC","reserved_cpu_cores_for_system_service_DESC","running_vm_num_ASC","running_vm_num_DESC","software_edition_ASC","software_edition_DESC","stopped_vm_num_ASC","stopped_vm_num_DESC","stretch_ASC","stretch_DESC","suspended_vm_num_ASC","suspended_vm_num_DESC","total_cache_capacity_ASC","total_cache_capacity_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_cpu_sockets_ASC","total_cpu_sockets_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","type_ASC","type_DESC","upgrade_tool_version_ASC","upgrade_tool_version_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","valid_data_space_ASC","valid_data_space_DESC","version_ASC","version_DESC","vhost_enabled_ASC","vhost_enabled_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["access_write_compress_enabled_ASC","access_write_compress_enabled_DESC","allocated_prioritized_space_ASC","allocated_prioritized_space_DESC","allocated_prioritized_space_usage_ASC","allocated_prioritized_space_usage_DESC","application_highest_version_ASC","application_highest_version_DESC","architecture_ASC","architecture_DESC","auto_converge_ASC","auto_converge_DESC","commited_memory_bytes_ASC","commited_memory_bytes_DESC","connect_state_ASC","connect_state_DESC","current_cpu_model_ASC","current_cpu_model_DESC","data_reduction_ratio_ASC","data_reduction_ratio_DESC","data_reduction_saving_ASC","data_reduction_saving_DESC","disconnected_date_ASC","disconnected_date_DESC","disconnected_reason_ASC","disconnected_reason_DESC","downgraded_prioritized_space_ASC","downgraded_prioritized_space_DESC","enable_tiering_ASC","enable_tiering_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_data_space_ASC","failure_data_space_DESC","has_metrox_ASC","has_metrox_DESC","host_num_ASC","host_num_DESC","hypervisor_ASC","hypervisor_DESC","id_ASC","id_DESC","ip_ASC","ip_DESC","is_all_flash_ASC","is_all_flash_DESC","iscsi_vip_ASC","iscsi_vip_DESC","license_expire_date_ASC","license_expire_date_DESC","license_serial_ASC","license_serial_DESC","license_sign_date_ASC","license_sign_date_DESC","license_type_ASC","license_type_DESC","local_id_ASC","local_id_DESC","logical_used_data_space_ASC","logical_used_data_space_DESC","maintenance_end_date_ASC","maintenance_end_date_DESC","maintenance_start_date_ASC","maintenance_start_date_DESC","management_vip_ASC","management_vip_DESC","max_chunk_num_ASC","max_chunk_num_DESC","max_physical_data_capacity_ASC","max_physical_data_capacity_DESC","max_physical_data_capacity_per_node_ASC","max_physical_data_capacity_per_node_DESC","metro_availability_checklist_ASC","metro_availability_checklist_DESC","mgt_gateway_ASC","mgt_gateway_DESC","mgt_netmask_ASC","mgt_netmask_DESC","migration_data_size_ASC","migration_data_size_DESC","migration_speed_ASC","migration_speed_DESC","name_ASC","name_DESC","no_performance_layer_ASC","no_performance_layer_DESC","ntp_mode_ASC","ntp_mode_DESC","nvme_over_rdma_enabled_ASC","nvme_over_rdma_enabled_DESC","nvme_over_tcp_enabled_ASC","nvme_over_tcp_enabled_DESC","nvmf_enabled_ASC","nvmf_enabled_DESC","overall_efficiency_ASC","overall_efficiency_DESC","perf_allocated_data_space_ASC","perf_allocated_data_space_DESC","perf_failure_data_space_ASC","perf_failure_data_space_DESC","perf_total_data_capacity_ASC","perf_total_data_capacity_DESC","perf_used_data_space_ASC","perf_used_data_space_DESC","perf_valid_data_space_ASC","perf_valid_data_space_DESC","planned_prioritized_space_ASC","planned_prioritized_space_DESC","pmem_enabled_ASC","pmem_enabled_DESC","prio_space_percentage_ASC","prio_space_percentage_DESC","provisioned_cpu_cores_ASC","provisioned_cpu_cores_DESC","provisioned_cpu_cores_for_active_vm_ASC","provisioned_cpu_cores_for_active_vm_DESC","provisioned_for_active_vm_ratio_ASC","provisioned_for_active_vm_ratio_DESC","provisioned_memory_bytes_ASC","provisioned_memory_bytes_DESC","provisioned_ratio_ASC","provisioned_ratio_DESC","rdma_enabled_ASC","rdma_enabled_DESC","recover_data_size_ASC","recover_data_size_DESC","recover_speed_ASC","recover_speed_DESC","replica_capacity_only_ASC","replica_capacity_only_DESC","reserved_cpu_cores_for_system_service_ASC","reserved_cpu_cores_for_system_service_DESC","running_vm_num_ASC","running_vm_num_DESC","software_edition_ASC","software_edition_DESC","stopped_vm_num_ASC","stopped_vm_num_DESC","stretch_ASC","stretch_DESC","suspended_vm_num_ASC","suspended_vm_num_DESC","total_cache_capacity_ASC","total_cache_capacity_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_cpu_sockets_ASC","total_cpu_sockets_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","total_prio_volume_size_ASC","total_prio_volume_size_DESC","total_prio_volume_size_usage_ASC","total_prio_volume_size_usage_DESC","type_ASC","type_DESC","upgrade_for_tiering_ASC","upgrade_for_tiering_DESC","upgrade_tool_version_ASC","upgrade_tool_version_DESC","used_cache_space_ASC","used_cache_space_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","valid_cache_space_ASC","valid_cache_space_DESC","valid_data_space_ASC","valid_data_space_DESC","version_ASC","version_DESC","vhost_enabled_ASC","vhost_enabled_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

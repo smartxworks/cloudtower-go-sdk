@@ -66,6 +66,9 @@ type GetSystemAuditLogsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetSystemAuditLogsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetSystemAuditLogsParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get system audit logs params
+func (o *GetSystemAuditLogsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetSystemAuditLogsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get system audit logs params
+func (o *GetSystemAuditLogsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get system audit logs params
 func (o *GetSystemAuditLogsParams) WithRequestBody(requestBody *models.GetSystemAuditLogsRequestBody) *GetSystemAuditLogsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetSystemAuditLogsParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

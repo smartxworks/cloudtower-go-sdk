@@ -61,6 +61,9 @@ func NewUpdateManyAlertNotifiersParamsWithHTTPClient(client *http.Client) *Updat
 */
 type UpdateManyAlertNotifiersParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.AlertNotifierManyUpdationParams
 
@@ -117,6 +120,17 @@ func (o *UpdateManyAlertNotifiersParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update many alert notifiers params
+func (o *UpdateManyAlertNotifiersParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateManyAlertNotifiersParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update many alert notifiers params
+func (o *UpdateManyAlertNotifiersParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update many alert notifiers params
 func (o *UpdateManyAlertNotifiersParams) WithRequestBody(requestBody *models.AlertNotifierManyUpdationParams) *UpdateManyAlertNotifiersParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *UpdateManyAlertNotifiersParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

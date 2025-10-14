@@ -66,6 +66,9 @@ type UpdateRoleParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.RoleUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateRoleParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update role params
+func (o *UpdateRoleParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateRoleParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update role params
+func (o *UpdateRoleParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update role params
 func (o *UpdateRoleParams) WithRequestBody(requestBody *models.RoleUpdationParams) *UpdateRoleParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateRoleParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

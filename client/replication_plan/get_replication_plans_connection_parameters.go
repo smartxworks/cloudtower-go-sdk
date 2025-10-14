@@ -66,6 +66,9 @@ type GetReplicationPlansConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetReplicationPlansConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetReplicationPlansConnectionParams) SetContentLanguage(contentLanguage
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get replication plans connection params
+func (o *GetReplicationPlansConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetReplicationPlansConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get replication plans connection params
+func (o *GetReplicationPlansConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get replication plans connection params
 func (o *GetReplicationPlansConnectionParams) WithRequestBody(requestBody *models.GetReplicationPlansConnectionRequestBody) *GetReplicationPlansConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetReplicationPlansConnectionParams) WriteToRequest(r runtime.ClientReq
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

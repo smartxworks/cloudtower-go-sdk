@@ -32,6 +32,54 @@ type IscsiLunSnapshotWhereInput struct {
 	// consistency group snapshot
 	ConsistencyGroupSnapshot *ConsistencyGroupSnapshotWhereInput `json:"consistency_group_snapshot,omitempty"`
 
+	// ec k
+	Eck *int32 `json:"ec_k,omitempty"`
+
+	// ec k gt
+	EckGt *int32 `json:"ec_k_gt,omitempty"`
+
+	// ec k gte
+	EckGte *int32 `json:"ec_k_gte,omitempty"`
+
+	// ec k in
+	EckIn []int32 `json:"ec_k_in,omitempty"`
+
+	// ec k lt
+	EckLt *int32 `json:"ec_k_lt,omitempty"`
+
+	// ec k lte
+	EckLte *int32 `json:"ec_k_lte,omitempty"`
+
+	// ec k not
+	EckNot *int32 `json:"ec_k_not,omitempty"`
+
+	// ec k not in
+	EckNotIn []int32 `json:"ec_k_not_in,omitempty"`
+
+	// ec m
+	Ecm *int32 `json:"ec_m,omitempty"`
+
+	// ec m gt
+	EcmGt *int32 `json:"ec_m_gt,omitempty"`
+
+	// ec m gte
+	EcmGte *int32 `json:"ec_m_gte,omitempty"`
+
+	// ec m in
+	EcmIn []int32 `json:"ec_m_in,omitempty"`
+
+	// ec m lt
+	EcmLt *int32 `json:"ec_m_lt,omitempty"`
+
+	// ec m lte
+	EcmLte *int32 `json:"ec_m_lte,omitempty"`
+
+	// ec m not
+	EcmNot *int32 `json:"ec_m_not,omitempty"`
+
+	// ec m not in
+	EcmNotIn []int32 `json:"ec_m_not_in,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -209,6 +257,21 @@ type IscsiLunSnapshotWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
+
+	// resiliency type in
+	ResiliencyTypeIn []ResiliencyType `json:"resiliency_type_in,omitempty"`
+
+	// resiliency type not
+	ResiliencyTypeNot *ResiliencyType `json:"resiliency_type_not,omitempty"`
+
+	// resiliency type not in
+	ResiliencyTypeNotIn []ResiliencyType `json:"resiliency_type_not_in,omitempty"`
+
+	// snapshot group
+	SnapshotGroup *SnapshotGroupWhereInput `json:"snapshot_group,omitempty"`
+
 	// unique size
 	UniqueSize *int64 `json:"unique_size,omitempty"`
 
@@ -244,6 +307,38 @@ type IscsiLunSnapshotWhereInputMarshalOpts struct {
 	OR_Explicit_Null_When_Empty bool
 
 	ConsistencyGroupSnapshot_Explicit_Null_When_Empty bool
+
+	Eck_Explicit_Null_When_Empty bool
+
+	EckGt_Explicit_Null_When_Empty bool
+
+	EckGte_Explicit_Null_When_Empty bool
+
+	EckIn_Explicit_Null_When_Empty bool
+
+	EckLt_Explicit_Null_When_Empty bool
+
+	EckLte_Explicit_Null_When_Empty bool
+
+	EckNot_Explicit_Null_When_Empty bool
+
+	EckNotIn_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
+	EcmGt_Explicit_Null_When_Empty bool
+
+	EcmGte_Explicit_Null_When_Empty bool
+
+	EcmIn_Explicit_Null_When_Empty bool
+
+	EcmLt_Explicit_Null_When_Empty bool
+
+	EcmLte_Explicit_Null_When_Empty bool
+
+	EcmNot_Explicit_Null_When_Empty bool
+
+	EcmNotIn_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -363,6 +458,16 @@ type IscsiLunSnapshotWhereInputMarshalOpts struct {
 
 	NameStartsWith_Explicit_Null_When_Empty bool
 
+	ResiliencyType_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeIn_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeNot_Explicit_Null_When_Empty bool
+
+	ResiliencyTypeNotIn_Explicit_Null_When_Empty bool
+
+	SnapshotGroup_Explicit_Null_When_Empty bool
+
 	UniqueSize_Explicit_Null_When_Empty bool
 
 	UniqueSizeGt_Explicit_Null_When_Empty bool
@@ -445,6 +550,302 @@ func (m IscsiLunSnapshotWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"consistency_group_snapshot\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_gt
+	if m.EckGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gt\":")
+		bytes, err := swag.WriteJSON(m.EckGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_gte
+	if m.EckGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gte\":")
+		bytes, err := swag.WriteJSON(m.EckGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_k_in with omitempty
+	if !swag.IsZero(m.EckIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_in\":")
+		bytes, err := swag.WriteJSON(m.EckIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_k_lt
+	if m.EckLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lt\":")
+		bytes, err := swag.WriteJSON(m.EckLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_lte
+	if m.EckLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lte\":")
+		bytes, err := swag.WriteJSON(m.EckLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_lte\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k_not
+	if m.EckNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not\":")
+		bytes, err := swag.WriteJSON(m.EckNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EckNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_k_not_in with omitempty
+	if !swag.IsZero(m.EckNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k_not_in\":")
+		bytes, err := swag.WriteJSON(m.EckNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_gt
+	if m.EcmGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gt\":")
+		bytes, err := swag.WriteJSON(m.EcmGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_gte
+	if m.EcmGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gte\":")
+		bytes, err := swag.WriteJSON(m.EcmGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_m_in with omitempty
+	if !swag.IsZero(m.EcmIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_in\":")
+		bytes, err := swag.WriteJSON(m.EcmIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ec_m_lt
+	if m.EcmLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lt\":")
+		bytes, err := swag.WriteJSON(m.EcmLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lt\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_lte
+	if m.EcmLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lte\":")
+		bytes, err := swag.WriteJSON(m.EcmLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_lte\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m_not
+	if m.EcmNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not\":")
+		bytes, err := swag.WriteJSON(m.EcmNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EcmNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not\":null")
+		first = false
+	}
+
+	// handle non nullable field ec_m_not_in with omitempty
+	if !swag.IsZero(m.EcmNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m_not_in\":")
+		bytes, err := swag.WriteJSON(m.EcmNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -1568,6 +1969,94 @@ func (m IscsiLunSnapshotWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
+		first = false
+	}
+
+	// handle non nullable field resiliency_type_in with omitempty
+	if !swag.IsZero(m.ResiliencyTypeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_in\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field resiliency_type_not
+	if m.ResiliencyTypeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyTypeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not\":null")
+		first = false
+	}
+
+	// handle non nullable field resiliency_type_not_in with omitempty
+	if !swag.IsZero(m.ResiliencyTypeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type_not_in\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyTypeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field snapshot_group
+	if m.SnapshotGroup != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_group\":")
+		bytes, err := swag.WriteJSON(m.SnapshotGroup)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotGroup_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"snapshot_group\":null")
+		first = false
+	}
+
 	// handle nullable field unique_size
 	if m.UniqueSize != nil {
 		if !first {
@@ -1773,6 +2262,26 @@ func (m *IscsiLunSnapshotWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLabelsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyTypeNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSnapshotGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2054,6 +2563,105 @@ func (m *IscsiLunSnapshotWhereInput) validateLabelsSome(formats strfmt.Registry)
 	return nil
 }
 
+func (m *IscsiLunSnapshotWhereInput) validateResiliencyType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) validateResiliencyTypeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ResiliencyTypeIn); i++ {
+
+		if err := m.ResiliencyTypeIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) validateResiliencyTypeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeNot) { // not required
+		return nil
+	}
+
+	if m.ResiliencyTypeNot != nil {
+		if err := m.ResiliencyTypeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) validateResiliencyTypeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyTypeNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ResiliencyTypeNotIn); i++ {
+
+		if err := m.ResiliencyTypeNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) validateSnapshotGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.SnapshotGroup) { // not required
+		return nil
+	}
+
+	if m.SnapshotGroup != nil {
+		if err := m.SnapshotGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("snapshot_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("snapshot_group")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this iscsi lun snapshot where input based on the context it is used
 func (m *IscsiLunSnapshotWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -2107,6 +2715,26 @@ func (m *IscsiLunSnapshotWhereInput) ContextValidate(ctx context.Context, format
 	}
 
 	if err := m.contextValidateLabelsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyTypeNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSnapshotGroup(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2332,6 +2960,90 @@ func (m *IscsiLunSnapshotWhereInput) contextValidateLabelsSome(ctx context.Conte
 				return ve.ValidateName("labels_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("labels_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) contextValidateResiliencyTypeIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ResiliencyTypeIn); i++ {
+
+		if err := m.ResiliencyTypeIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) contextValidateResiliencyTypeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyTypeNot != nil {
+		if err := m.ResiliencyTypeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) contextValidateResiliencyTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ResiliencyTypeNotIn); i++ {
+
+		if err := m.ResiliencyTypeNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IscsiLunSnapshotWhereInput) contextValidateSnapshotGroup(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SnapshotGroup != nil {
+		if err := m.SnapshotGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("snapshot_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("snapshot_group")
 			}
 			return err
 		}

@@ -22,7 +22,7 @@ type NvmfSubsystemUpdationParams struct {
 
 	// data
 	// Required: true
-	Data *NvmfSubsystemCommonParams `json:"data"`
+	Data *NvmfSubsystemUpdationParamsData `json:"data"`
 
 	// where
 	// Required: true

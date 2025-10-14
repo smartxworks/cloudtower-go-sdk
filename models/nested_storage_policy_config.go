@@ -9,6 +9,7 @@ import (
 	"bytes"
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -18,8 +19,17 @@ import (
 // swagger:model NestedStoragePolicyConfig
 type NestedStoragePolicyConfig struct {
 
+	// ec k
+	Eck *int32 `json:"ec_k,omitempty"`
+
+	// ec m
+	Ecm *int32 `json:"ec_m,omitempty"`
+
 	// replica num
 	ReplicaNum *int32 `json:"replica_num,omitempty"`
+
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
 
 	// thin provision
 	ThinProvision *bool `json:"thin_provision,omitempty"`
@@ -28,7 +38,13 @@ type NestedStoragePolicyConfig struct {
 }
 
 type NestedStoragePolicyConfigMarshalOpts struct {
+	Eck_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
 	ReplicaNum_Explicit_Null_When_Empty bool
+
+	ResiliencyType_Explicit_Null_When_Empty bool
 
 	ThinProvision_Explicit_Null_When_Empty bool
 }
@@ -38,6 +54,46 @@ func (m NestedStoragePolicyConfig) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
 
 	// handle nullable field replica_num
 	if m.ReplicaNum != nil {
@@ -56,6 +112,26 @@ func (m NestedStoragePolicyConfig) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"replica_num\":null")
+		first = false
+	}
+
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
 		first = false
 	}
 
@@ -85,11 +161,64 @@ func (m NestedStoragePolicyConfig) MarshalJSON() ([]byte, error) {
 
 // Validate validates this nested storage policy config
 func (m *NestedStoragePolicyConfig) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateResiliencyType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this nested storage policy config based on context it is used
+func (m *NestedStoragePolicyConfig) validateResiliencyType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this nested storage policy config based on the context it is used
 func (m *NestedStoragePolicyConfig) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NestedStoragePolicyConfig) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

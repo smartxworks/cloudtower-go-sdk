@@ -66,6 +66,9 @@ type GetWitnessesConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetWitnessesConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetWitnessesConnectionParams) SetContentLanguage(contentLanguage *strin
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get witnesses connection params
+func (o *GetWitnessesConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetWitnessesConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get witnesses connection params
+func (o *GetWitnessesConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get witnesses connection params
 func (o *GetWitnessesConnectionParams) WithRequestBody(requestBody *models.GetWitnessesConnectionRequestBody) *GetWitnessesConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetWitnessesConnectionParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

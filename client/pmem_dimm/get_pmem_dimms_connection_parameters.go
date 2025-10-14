@@ -66,6 +66,9 @@ type GetPmemDimmsConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetPmemDimmsConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetPmemDimmsConnectionParams) SetContentLanguage(contentLanguage *strin
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get pmem dimms connection params
+func (o *GetPmemDimmsConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetPmemDimmsConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get pmem dimms connection params
+func (o *GetPmemDimmsConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get pmem dimms connection params
 func (o *GetPmemDimmsConnectionParams) WithRequestBody(requestBody *models.GetPmemDimmsConnectionRequestBody) *GetPmemDimmsConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetPmemDimmsConnectionParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

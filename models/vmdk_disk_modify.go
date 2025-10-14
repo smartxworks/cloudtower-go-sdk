@@ -26,6 +26,12 @@ type VmdkDiskModify struct {
 	// bus
 	Bus *Bus `json:"bus,omitempty"`
 
+	// elf ec storage policy
+	ElfEcStoragePolicy *VmdkDiskModifyElfEcStoragePolicy `json:"elf_ec_storage_policy,omitempty"`
+
+	// elf replica storage policy
+	ElfReplicaStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_replica_storage_policy,omitempty"`
+
 	// elf storage policy
 	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy,omitempty"`
 
@@ -43,6 +49,10 @@ type VmdkDiskModifyMarshalOpts struct {
 	Boot_Explicit_Null_When_Empty bool
 
 	Bus_Explicit_Null_When_Empty bool
+
+	ElfEcStoragePolicy_Explicit_Null_When_Empty bool
+
+	ElfReplicaStoragePolicy_Explicit_Null_When_Empty bool
 
 	ElfStoragePolicy_Explicit_Null_When_Empty bool
 
@@ -94,6 +104,46 @@ func (m VmdkDiskModify) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"bus\":null")
+		first = false
+	}
+
+	// handle nullable field elf_ec_storage_policy
+	if m.ElfEcStoragePolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_ec_storage_policy\":")
+		bytes, err := swag.WriteJSON(m.ElfEcStoragePolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfEcStoragePolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_ec_storage_policy\":null")
+		first = false
+	}
+
+	// handle nullable field elf_replica_storage_policy
+	if m.ElfReplicaStoragePolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_replica_storage_policy\":")
+		bytes, err := swag.WriteJSON(m.ElfReplicaStoragePolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfReplicaStoragePolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_replica_storage_policy\":null")
 		first = false
 	}
 
@@ -169,6 +219,14 @@ func (m *VmdkDiskModify) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateElfEcStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateElfReplicaStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateElfStoragePolicy(formats); err != nil {
 		res = append(res, err)
 	}
@@ -194,6 +252,44 @@ func (m *VmdkDiskModify) validateBus(formats strfmt.Registry) error {
 				return ve.ValidateName("bus")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("bus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VmdkDiskModify) validateElfEcStoragePolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfEcStoragePolicy) { // not required
+		return nil
+	}
+
+	if m.ElfEcStoragePolicy != nil {
+		if err := m.ElfEcStoragePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_ec_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_ec_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VmdkDiskModify) validateElfReplicaStoragePolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ElfReplicaStoragePolicy) { // not required
+		return nil
+	}
+
+	if m.ElfReplicaStoragePolicy != nil {
+		if err := m.ElfReplicaStoragePolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_replica_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_replica_storage_policy")
 			}
 			return err
 		}
@@ -238,6 +334,14 @@ func (m *VmdkDiskModify) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateElfEcStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateElfReplicaStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateElfStoragePolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -256,6 +360,38 @@ func (m *VmdkDiskModify) contextValidateBus(ctx context.Context, formats strfmt.
 				return ve.ValidateName("bus")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("bus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VmdkDiskModify) contextValidateElfEcStoragePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ElfEcStoragePolicy != nil {
+		if err := m.ElfEcStoragePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_ec_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_ec_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VmdkDiskModify) contextValidateElfReplicaStoragePolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ElfReplicaStoragePolicy != nil {
+		if err := m.ElfReplicaStoragePolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("elf_replica_storage_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elf_replica_storage_policy")
 			}
 			return err
 		}
@@ -291,6 +427,129 @@ func (m *VmdkDiskModify) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *VmdkDiskModify) UnmarshalBinary(b []byte) error {
 	var res VmdkDiskModify
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// VmdkDiskModifyElfEcStoragePolicy vmdk disk modify elf ec storage policy
+//
+// swagger:model VmdkDiskModifyElfEcStoragePolicy
+type VmdkDiskModifyElfEcStoragePolicy struct {
+
+	// ec k
+	Eck *int32 `json:"ec_k,omitempty"`
+
+	// ec m
+	Ecm *int32 `json:"ec_m,omitempty"`
+
+	// thin provision
+	ThinProvision *bool `json:"thin_provision,omitempty"`
+
+	MarshalOpts *VmdkDiskModifyElfEcStoragePolicyMarshalOpts `json:"-"`
+}
+
+type VmdkDiskModifyElfEcStoragePolicyMarshalOpts struct {
+	Eck_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
+
+	ThinProvision_Explicit_Null_When_Empty bool
+}
+
+func (m VmdkDiskModifyElfEcStoragePolicy) MarshalJSON() ([]byte, error) {
+	var b bytes.Buffer
+	b.WriteString("{")
+
+	first := true
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
+		first = false
+	}
+
+	// handle nullable field thin_provision
+	if m.ThinProvision != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":")
+		bytes, err := swag.WriteJSON(m.ThinProvision)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ThinProvision_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":null")
+		first = false
+	}
+
+	b.WriteString("}")
+	return b.Bytes(), nil
+}
+
+// Validate validates this vmdk disk modify elf ec storage policy
+func (m *VmdkDiskModifyElfEcStoragePolicy) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this vmdk disk modify elf ec storage policy based on context it is used
+func (m *VmdkDiskModifyElfEcStoragePolicy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *VmdkDiskModifyElfEcStoragePolicy) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *VmdkDiskModifyElfEcStoragePolicy) UnmarshalBinary(b []byte) error {
+	var res VmdkDiskModifyElfEcStoragePolicy
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

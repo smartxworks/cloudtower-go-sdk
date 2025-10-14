@@ -66,6 +66,9 @@ type ExportCSVParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.TableReporterParams
 
@@ -144,6 +147,17 @@ func (o *ExportCSVParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the export c s v params
+func (o *ExportCSVParams) WithExternalCloudtowerID(externalCloudtowerID *string) *ExportCSVParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the export c s v params
+func (o *ExportCSVParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the export c s v params
 func (o *ExportCSVParams) WithRequestBody(requestBody *models.TableReporterParams) *ExportCSVParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *ExportCSVParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

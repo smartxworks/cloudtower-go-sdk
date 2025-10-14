@@ -53,6 +53,9 @@ type VMCreationParams struct {
 	// Required: true
 	Ha *bool `json:"ha"`
 
+	// ha priority
+	HaPriority *VMHaPriority `json:"ha_priority,omitempty"`
+
 	// host id
 	HostID *string `json:"host_id,omitempty"`
 
@@ -130,6 +133,8 @@ type VMCreationParamsMarshalOpts struct {
 	GuestOsType_Explicit_Null_When_Empty bool
 
 	Ha_Explicit_Null_When_Empty bool
+
+	HaPriority_Explicit_Null_When_Empty bool
 
 	HostID_Explicit_Null_When_Empty bool
 
@@ -343,6 +348,26 @@ func (m VMCreationParams) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"ha\":null")
+		first = false
+	}
+
+	// handle nullable field ha_priority
+	if m.HaPriority != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority\":")
+		bytes, err := swag.WriteJSON(m.HaPriority)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HaPriority_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ha_priority\":null")
 		first = false
 	}
 
@@ -716,6 +741,10 @@ func (m *VMCreationParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateHaPriority(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIoPolicy(formats); err != nil {
 		res = append(res, err)
 	}
@@ -874,6 +903,25 @@ func (m *VMCreationParams) validateHa(formats strfmt.Registry) error {
 
 	if err := validate.Required("ha", "body", m.Ha); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *VMCreationParams) validateHaPriority(formats strfmt.Registry) error {
+	if swag.IsZero(m.HaPriority) { // not required
+		return nil
+	}
+
+	if m.HaPriority != nil {
+		if err := m.HaPriority.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1136,6 +1184,10 @@ func (m *VMCreationParams) ContextValidate(ctx context.Context, formats strfmt.R
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateHaPriority(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIoPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1230,6 +1282,22 @@ func (m *VMCreationParams) contextValidateGuestOsType(ctx context.Context, forma
 				return ve.ValidateName("guest_os_type")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("guest_os_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMCreationParams) contextValidateHaPriority(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HaPriority != nil {
+		if err := m.HaPriority.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ha_priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ha_priority")
 			}
 			return err
 		}

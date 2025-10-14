@@ -66,6 +66,9 @@ type MoveBrickTopoParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.BrickTopoMoveParams
 
@@ -144,6 +147,17 @@ func (o *MoveBrickTopoParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the move brick topo params
+func (o *MoveBrickTopoParams) WithExternalCloudtowerID(externalCloudtowerID *string) *MoveBrickTopoParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the move brick topo params
+func (o *MoveBrickTopoParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the move brick topo params
 func (o *MoveBrickTopoParams) WithRequestBody(requestBody *models.BrickTopoMoveParams) *MoveBrickTopoParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *MoveBrickTopoParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

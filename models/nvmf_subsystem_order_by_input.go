@@ -84,11 +84,41 @@ const (
 	// NvmfSubsystemOrderByInputBpsWrMaxLengthDESC captures enum value "bps_wr_max_length_DESC"
 	NvmfSubsystemOrderByInputBpsWrMaxLengthDESC NvmfSubsystemOrderByInput = "bps_wr_max_length_DESC"
 
+	// NvmfSubsystemOrderByInputConfigurationAdaptiveASC captures enum value "configuration_adaptive_ASC"
+	NvmfSubsystemOrderByInputConfigurationAdaptiveASC NvmfSubsystemOrderByInput = "configuration_adaptive_ASC"
+
+	// NvmfSubsystemOrderByInputConfigurationAdaptiveDESC captures enum value "configuration_adaptive_DESC"
+	NvmfSubsystemOrderByInputConfigurationAdaptiveDESC NvmfSubsystemOrderByInput = "configuration_adaptive_DESC"
+
+	// NvmfSubsystemOrderByInputConfigurationMethodASC captures enum value "configuration_method_ASC"
+	NvmfSubsystemOrderByInputConfigurationMethodASC NvmfSubsystemOrderByInput = "configuration_method_ASC"
+
+	// NvmfSubsystemOrderByInputConfigurationMethodDESC captures enum value "configuration_method_DESC"
+	NvmfSubsystemOrderByInputConfigurationMethodDESC NvmfSubsystemOrderByInput = "configuration_method_DESC"
+
 	// NvmfSubsystemOrderByInputDescriptionASC captures enum value "description_ASC"
 	NvmfSubsystemOrderByInputDescriptionASC NvmfSubsystemOrderByInput = "description_ASC"
 
 	// NvmfSubsystemOrderByInputDescriptionDESC captures enum value "description_DESC"
 	NvmfSubsystemOrderByInputDescriptionDESC NvmfSubsystemOrderByInput = "description_DESC"
+
+	// NvmfSubsystemOrderByInputEckASC captures enum value "ec_k_ASC"
+	NvmfSubsystemOrderByInputEckASC NvmfSubsystemOrderByInput = "ec_k_ASC"
+
+	// NvmfSubsystemOrderByInputEckDESC captures enum value "ec_k_DESC"
+	NvmfSubsystemOrderByInputEckDESC NvmfSubsystemOrderByInput = "ec_k_DESC"
+
+	// NvmfSubsystemOrderByInputEcmASC captures enum value "ec_m_ASC"
+	NvmfSubsystemOrderByInputEcmASC NvmfSubsystemOrderByInput = "ec_m_ASC"
+
+	// NvmfSubsystemOrderByInputEcmDESC captures enum value "ec_m_DESC"
+	NvmfSubsystemOrderByInputEcmDESC NvmfSubsystemOrderByInput = "ec_m_DESC"
+
+	// NvmfSubsystemOrderByInputEncryptMethodASC captures enum value "encrypt_method_ASC"
+	NvmfSubsystemOrderByInputEncryptMethodASC NvmfSubsystemOrderByInput = "encrypt_method_ASC"
+
+	// NvmfSubsystemOrderByInputEncryptMethodDESC captures enum value "encrypt_method_DESC"
+	NvmfSubsystemOrderByInputEncryptMethodDESC NvmfSubsystemOrderByInput = "encrypt_method_DESC"
 
 	// NvmfSubsystemOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
 	NvmfSubsystemOrderByInputEntityAsyncStatusASC NvmfSubsystemOrderByInput = "entityAsyncStatus_ASC"
@@ -204,17 +234,35 @@ const (
 	// NvmfSubsystemOrderByInputNqnWhitelistDESC captures enum value "nqn_whitelist_DESC"
 	NvmfSubsystemOrderByInputNqnWhitelistDESC NvmfSubsystemOrderByInput = "nqn_whitelist_DESC"
 
+	// NvmfSubsystemOrderByInputNvmfNamespacesNumASC captures enum value "nvmf_namespaces_num_ASC"
+	NvmfSubsystemOrderByInputNvmfNamespacesNumASC NvmfSubsystemOrderByInput = "nvmf_namespaces_num_ASC"
+
+	// NvmfSubsystemOrderByInputNvmfNamespacesNumDESC captures enum value "nvmf_namespaces_num_DESC"
+	NvmfSubsystemOrderByInputNvmfNamespacesNumDESC NvmfSubsystemOrderByInput = "nvmf_namespaces_num_DESC"
+
 	// NvmfSubsystemOrderByInputPolicyASC captures enum value "policy_ASC"
 	NvmfSubsystemOrderByInputPolicyASC NvmfSubsystemOrderByInput = "policy_ASC"
 
 	// NvmfSubsystemOrderByInputPolicyDESC captures enum value "policy_DESC"
 	NvmfSubsystemOrderByInputPolicyDESC NvmfSubsystemOrderByInput = "policy_DESC"
 
+	// NvmfSubsystemOrderByInputPrioritizedASC captures enum value "prioritized_ASC"
+	NvmfSubsystemOrderByInputPrioritizedASC NvmfSubsystemOrderByInput = "prioritized_ASC"
+
+	// NvmfSubsystemOrderByInputPrioritizedDESC captures enum value "prioritized_DESC"
+	NvmfSubsystemOrderByInputPrioritizedDESC NvmfSubsystemOrderByInput = "prioritized_DESC"
+
 	// NvmfSubsystemOrderByInputReplicaNumASC captures enum value "replica_num_ASC"
 	NvmfSubsystemOrderByInputReplicaNumASC NvmfSubsystemOrderByInput = "replica_num_ASC"
 
 	// NvmfSubsystemOrderByInputReplicaNumDESC captures enum value "replica_num_DESC"
 	NvmfSubsystemOrderByInputReplicaNumDESC NvmfSubsystemOrderByInput = "replica_num_DESC"
+
+	// NvmfSubsystemOrderByInputResiliencyTypeASC captures enum value "resiliency_type_ASC"
+	NvmfSubsystemOrderByInputResiliencyTypeASC NvmfSubsystemOrderByInput = "resiliency_type_ASC"
+
+	// NvmfSubsystemOrderByInputResiliencyTypeDESC captures enum value "resiliency_type_DESC"
+	NvmfSubsystemOrderByInputResiliencyTypeDESC NvmfSubsystemOrderByInput = "resiliency_type_DESC"
 
 	// NvmfSubsystemOrderByInputStripeNumASC captures enum value "stripe_num_ASC"
 	NvmfSubsystemOrderByInputStripeNumASC NvmfSubsystemOrderByInput = "stripe_num_ASC"
@@ -240,7 +288,7 @@ var nvmfSubsystemOrderByInputEnum []interface{}
 
 func init() {
 	var res []NvmfSubsystemOrderByInput
-	if err := json.Unmarshal([]byte(`["bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_use_ASC","external_use_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","ip_whitelist_ASC","ip_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","nqn_name_ASC","nqn_name_DESC","nqn_whitelist_ASC","nqn_whitelist_DESC","policy_ASC","policy_DESC","replica_num_ASC","replica_num_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["bps_ASC","bps_DESC","bps_max_ASC","bps_max_DESC","bps_max_length_ASC","bps_max_length_DESC","bps_rd_ASC","bps_rd_DESC","bps_rd_max_ASC","bps_rd_max_DESC","bps_rd_max_length_ASC","bps_rd_max_length_DESC","bps_wr_ASC","bps_wr_DESC","bps_wr_max_ASC","bps_wr_max_DESC","bps_wr_max_length_ASC","bps_wr_max_length_DESC","configuration_adaptive_ASC","configuration_adaptive_DESC","configuration_method_ASC","configuration_method_DESC","description_ASC","description_DESC","ec_k_ASC","ec_k_DESC","ec_m_ASC","ec_m_DESC","encrypt_method_ASC","encrypt_method_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","external_use_ASC","external_use_DESC","id_ASC","id_DESC","internal_ASC","internal_DESC","io_size_ASC","io_size_DESC","iops_ASC","iops_DESC","iops_max_ASC","iops_max_DESC","iops_max_length_ASC","iops_max_length_DESC","iops_rd_ASC","iops_rd_DESC","iops_rd_max_ASC","iops_rd_max_DESC","iops_rd_max_length_ASC","iops_rd_max_length_DESC","iops_wr_ASC","iops_wr_DESC","iops_wr_max_ASC","iops_wr_max_DESC","iops_wr_max_length_ASC","iops_wr_max_length_DESC","ip_whitelist_ASC","ip_whitelist_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","nqn_name_ASC","nqn_name_DESC","nqn_whitelist_ASC","nqn_whitelist_DESC","nvmf_namespaces_num_ASC","nvmf_namespaces_num_DESC","policy_ASC","policy_DESC","prioritized_ASC","prioritized_DESC","replica_num_ASC","replica_num_DESC","resiliency_type_ASC","resiliency_type_DESC","stripe_num_ASC","stripe_num_DESC","stripe_size_ASC","stripe_size_DESC","thin_provision_ASC","thin_provision_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

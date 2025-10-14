@@ -66,6 +66,9 @@ type CloneIscsiLunFromSnapshotParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody []*models.IscsiLunCloneParams
 
@@ -144,6 +147,17 @@ func (o *CloneIscsiLunFromSnapshotParams) SetContentLanguage(contentLanguage *st
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the clone iscsi lun from snapshot params
+func (o *CloneIscsiLunFromSnapshotParams) WithExternalCloudtowerID(externalCloudtowerID *string) *CloneIscsiLunFromSnapshotParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the clone iscsi lun from snapshot params
+func (o *CloneIscsiLunFromSnapshotParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the clone iscsi lun from snapshot params
 func (o *CloneIscsiLunFromSnapshotParams) WithRequestBody(requestBody []*models.IscsiLunCloneParams) *CloneIscsiLunFromSnapshotParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *CloneIscsiLunFromSnapshotParams) WriteToRequest(r runtime.ClientRequest
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

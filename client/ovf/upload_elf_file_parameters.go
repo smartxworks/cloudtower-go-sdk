@@ -67,6 +67,9 @@ type UploadElfFileParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// File.
 	File runtime.NamedReadCloser
 
@@ -168,6 +171,17 @@ func (o *UploadElfFileParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the upload elf file params
+func (o *UploadElfFileParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UploadElfFileParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the upload elf file params
+func (o *UploadElfFileParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithFile adds the file to the upload elf file params
 func (o *UploadElfFileParams) WithFile(file runtime.NamedReadCloser) *UploadElfFileParams {
 	o.SetFile(file)
@@ -250,6 +264,14 @@ func (o *UploadElfFileParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

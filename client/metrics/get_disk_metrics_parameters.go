@@ -61,6 +61,9 @@ func NewGetDiskMetricsParamsWithHTTPClient(client *http.Client) *GetDiskMetricsP
 */
 type GetDiskMetricsParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetDiskMetricInput
 
@@ -117,6 +120,17 @@ func (o *GetDiskMetricsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get disk metrics params
+func (o *GetDiskMetricsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetDiskMetricsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get disk metrics params
+func (o *GetDiskMetricsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get disk metrics params
 func (o *GetDiskMetricsParams) WithRequestBody(requestBody *models.GetDiskMetricInput) *GetDiskMetricsParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetDiskMetricsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

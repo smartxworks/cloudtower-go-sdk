@@ -42,6 +42,30 @@ const (
 	// ClusterSettingsOrderByInputDefaultStoragePolicyDESC captures enum value "default_storage_policy_DESC"
 	ClusterSettingsOrderByInputDefaultStoragePolicyDESC ClusterSettingsOrderByInput = "default_storage_policy_DESC"
 
+	// ClusterSettingsOrderByInputDefaultStoragePolicyEckASC captures enum value "default_storage_policy_ec_k_ASC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyEckASC ClusterSettingsOrderByInput = "default_storage_policy_ec_k_ASC"
+
+	// ClusterSettingsOrderByInputDefaultStoragePolicyEckDESC captures enum value "default_storage_policy_ec_k_DESC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyEckDESC ClusterSettingsOrderByInput = "default_storage_policy_ec_k_DESC"
+
+	// ClusterSettingsOrderByInputDefaultStoragePolicyEcmASC captures enum value "default_storage_policy_ec_m_ASC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyEcmASC ClusterSettingsOrderByInput = "default_storage_policy_ec_m_ASC"
+
+	// ClusterSettingsOrderByInputDefaultStoragePolicyEcmDESC captures enum value "default_storage_policy_ec_m_DESC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyEcmDESC ClusterSettingsOrderByInput = "default_storage_policy_ec_m_DESC"
+
+	// ClusterSettingsOrderByInputDefaultStoragePolicyReplicaNumASC captures enum value "default_storage_policy_replica_num_ASC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyReplicaNumASC ClusterSettingsOrderByInput = "default_storage_policy_replica_num_ASC"
+
+	// ClusterSettingsOrderByInputDefaultStoragePolicyReplicaNumDESC captures enum value "default_storage_policy_replica_num_DESC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyReplicaNumDESC ClusterSettingsOrderByInput = "default_storage_policy_replica_num_DESC"
+
+	// ClusterSettingsOrderByInputDefaultStoragePolicyThinProvisionASC captures enum value "default_storage_policy_thin_provision_ASC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyThinProvisionASC ClusterSettingsOrderByInput = "default_storage_policy_thin_provision_ASC"
+
+	// ClusterSettingsOrderByInputDefaultStoragePolicyThinProvisionDESC captures enum value "default_storage_policy_thin_provision_DESC"
+	ClusterSettingsOrderByInputDefaultStoragePolicyThinProvisionDESC ClusterSettingsOrderByInput = "default_storage_policy_thin_provision_DESC"
+
 	// ClusterSettingsOrderByInputEnabledIscsiASC captures enum value "enabled_iscsi_ASC"
 	ClusterSettingsOrderByInputEnabledIscsiASC ClusterSettingsOrderByInput = "enabled_iscsi_ASC"
 
@@ -66,7 +90,7 @@ var clusterSettingsOrderByInputEnum []interface{}
 
 func init() {
 	var res []ClusterSettingsOrderByInput
-	if err := json.Unmarshal([]byte(`["default_ha_ASC","default_ha_DESC","default_storage_policy_ASC","default_storage_policy_DESC","enabled_iscsi_ASC","enabled_iscsi_DESC","id_ASC","id_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["default_ha_ASC","default_ha_DESC","default_storage_policy_ASC","default_storage_policy_DESC","default_storage_policy_ec_k_ASC","default_storage_policy_ec_k_DESC","default_storage_policy_ec_m_ASC","default_storage_policy_ec_m_DESC","default_storage_policy_replica_num_ASC","default_storage_policy_replica_num_DESC","default_storage_policy_thin_provision_ASC","default_storage_policy_thin_provision_DESC","enabled_iscsi_ASC","enabled_iscsi_DESC","id_ASC","id_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

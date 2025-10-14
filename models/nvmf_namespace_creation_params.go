@@ -27,6 +27,12 @@ type NvmfNamespaceCreationParams struct {
 	// assigned size unit
 	AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
 
+	// ec k
+	Eck *float64 `json:"ec_k,omitempty"`
+
+	// ec m
+	Ecm *float64 `json:"ec_m,omitempty"`
+
 	// group id
 	GroupID *string `json:"group_id,omitempty"`
 
@@ -48,6 +54,12 @@ type NvmfNamespaceCreationParams struct {
 	// Required: true
 	ReplicaNum *int32 `json:"replica_num"`
 
+	// resiliency type
+	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
+
+	// thin provision
+	ThinProvision *bool `json:"thin_provision,omitempty"`
+
 	NvmfNamespaceCommonParams
 
 	MarshalOpts *NvmfNamespaceCreationParamsMarshalOpts `json:"-"`
@@ -57,6 +69,10 @@ type NvmfNamespaceCreationParamsMarshalOpts struct {
 	AssignedSize_Explicit_Null_When_Empty bool
 
 	AssignedSizeUnit_Explicit_Null_When_Empty bool
+
+	Eck_Explicit_Null_When_Empty bool
+
+	Ecm_Explicit_Null_When_Empty bool
 
 	GroupID_Explicit_Null_When_Empty bool
 
@@ -69,6 +85,10 @@ type NvmfNamespaceCreationParamsMarshalOpts struct {
 	NvmfSubsystemID_Explicit_Null_When_Empty bool
 
 	ReplicaNum_Explicit_Null_When_Empty bool
+
+	ResiliencyType_Explicit_Null_When_Empty bool
+
+	ThinProvision_Explicit_Null_When_Empty bool
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -78,6 +98,10 @@ func (m *NvmfNamespaceCreationParams) UnmarshalJSON(raw []byte) error {
 		AssignedSize *int64 `json:"assigned_size"`
 
 		AssignedSizeUnit *ByteUnit `json:"assigned_size_unit,omitempty"`
+
+		Eck *float64 `json:"ec_k,omitempty"`
+
+		Ecm *float64 `json:"ec_m,omitempty"`
 
 		GroupID *string `json:"group_id,omitempty"`
 
@@ -90,6 +114,10 @@ func (m *NvmfNamespaceCreationParams) UnmarshalJSON(raw []byte) error {
 		NvmfSubsystemID *string `json:"nvmf_subsystem_id"`
 
 		ReplicaNum *int32 `json:"replica_num"`
+
+		ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
+
+		ThinProvision *bool `json:"thin_provision,omitempty"`
 	}
 	if err := swag.ReadJSON(raw, &dataAO0); err != nil {
 		return err
@@ -98,6 +126,10 @@ func (m *NvmfNamespaceCreationParams) UnmarshalJSON(raw []byte) error {
 	m.AssignedSize = dataAO0.AssignedSize
 
 	m.AssignedSizeUnit = dataAO0.AssignedSizeUnit
+
+	m.Eck = dataAO0.Eck
+
+	m.Ecm = dataAO0.Ecm
 
 	m.GroupID = dataAO0.GroupID
 
@@ -110,6 +142,10 @@ func (m *NvmfNamespaceCreationParams) UnmarshalJSON(raw []byte) error {
 	m.NvmfSubsystemID = dataAO0.NvmfSubsystemID
 
 	m.ReplicaNum = dataAO0.ReplicaNum
+
+	m.ResiliencyType = dataAO0.ResiliencyType
+
+	m.ThinProvision = dataAO0.ThinProvision
 
 	// AO1
 	var aO1 NvmfNamespaceCommonParams
@@ -166,6 +202,46 @@ func (m NvmfNamespaceCreationParams) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"assigned_size_unit\":null")
+		first = false
+	}
+
+	// handle nullable field ec_k
+	if m.Eck != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":")
+		bytes, err := swag.WriteJSON(m.Eck)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Eck_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_k\":null")
+		first = false
+	}
+
+	// handle nullable field ec_m
+	if m.Ecm != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":")
+		bytes, err := swag.WriteJSON(m.Ecm)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ecm_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ec_m\":null")
 		first = false
 	}
 
@@ -288,6 +364,46 @@ func (m NvmfNamespaceCreationParams) MarshalJSON() ([]byte, error) {
 		b.WriteString("\"replica_num\":null")
 		first = false
 	}
+
+	// handle nullable field resiliency_type
+	if m.ResiliencyType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":")
+		bytes, err := swag.WriteJSON(m.ResiliencyType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResiliencyType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resiliency_type\":null")
+		first = false
+	}
+
+	// handle nullable field thin_provision
+	if m.ThinProvision != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":")
+		bytes, err := swag.WriteJSON(m.ThinProvision)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ThinProvision_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"thin_provision\":null")
+		first = false
+	}
 	b.WriteString("}")
 	_parts = append(_parts, b.Bytes())
 
@@ -320,6 +436,10 @@ func (m *NvmfNamespaceCreationParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateReplicaNum(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResiliencyType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -390,11 +510,35 @@ func (m *NvmfNamespaceCreationParams) validateReplicaNum(formats strfmt.Registry
 	return nil
 }
 
+func (m *NvmfNamespaceCreationParams) validateResiliencyType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ResiliencyType) { // not required
+		return nil
+	}
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this nvmf namespace creation params based on the context it is used
 func (m *NvmfNamespaceCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateAssignedSizeUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -417,6 +561,22 @@ func (m *NvmfNamespaceCreationParams) contextValidateAssignedSizeUnit(ctx contex
 				return ve.ValidateName("assigned_size_unit")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("assigned_size_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NvmfNamespaceCreationParams) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResiliencyType != nil {
+		if err := m.ResiliencyType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resiliency_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resiliency_type")
 			}
 			return err
 		}

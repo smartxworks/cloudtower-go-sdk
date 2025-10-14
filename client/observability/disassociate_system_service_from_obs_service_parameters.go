@@ -66,6 +66,9 @@ type DisassociateSystemServiceFromObsServiceParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.DisassociateSystemServiceFromObsServiceParams
 
@@ -144,6 +147,17 @@ func (o *DisassociateSystemServiceFromObsServiceParams) SetContentLanguage(conte
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the disassociate system service from obs service params
+func (o *DisassociateSystemServiceFromObsServiceParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DisassociateSystemServiceFromObsServiceParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the disassociate system service from obs service params
+func (o *DisassociateSystemServiceFromObsServiceParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the disassociate system service from obs service params
 func (o *DisassociateSystemServiceFromObsServiceParams) WithRequestBody(requestBody *models.DisassociateSystemServiceFromObsServiceParams) *DisassociateSystemServiceFromObsServiceParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DisassociateSystemServiceFromObsServiceParams) WriteToRequest(r runtime
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

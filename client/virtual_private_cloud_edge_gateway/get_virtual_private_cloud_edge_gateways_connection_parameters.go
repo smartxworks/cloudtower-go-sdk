@@ -66,6 +66,9 @@ type GetVirtualPrivateCloudEdgeGatewaysConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVirtualPrivateCloudEdgeGatewaysConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetVirtualPrivateCloudEdgeGatewaysConnectionParams) SetContentLanguage(
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get virtual private cloud edge gateways connection params
+func (o *GetVirtualPrivateCloudEdgeGatewaysConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVirtualPrivateCloudEdgeGatewaysConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get virtual private cloud edge gateways connection params
+func (o *GetVirtualPrivateCloudEdgeGatewaysConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get virtual private cloud edge gateways connection params
 func (o *GetVirtualPrivateCloudEdgeGatewaysConnectionParams) WithRequestBody(requestBody *models.GetVirtualPrivateCloudEdgeGatewaysConnectionRequestBody) *GetVirtualPrivateCloudEdgeGatewaysConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVirtualPrivateCloudEdgeGatewaysConnectionParams) WriteToRequest(r ru
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

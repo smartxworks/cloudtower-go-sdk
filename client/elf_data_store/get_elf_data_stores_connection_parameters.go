@@ -66,6 +66,9 @@ type GetElfDataStoresConnectionParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetElfDataStoresConnectionRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetElfDataStoresConnectionParams) SetContentLanguage(contentLanguage *s
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get elf data stores connection params
+func (o *GetElfDataStoresConnectionParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetElfDataStoresConnectionParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get elf data stores connection params
+func (o *GetElfDataStoresConnectionParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get elf data stores connection params
 func (o *GetElfDataStoresConnectionParams) WithRequestBody(requestBody *models.GetElfDataStoresConnectionRequestBody) *GetElfDataStoresConnectionParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetElfDataStoresConnectionParams) WriteToRequest(r runtime.ClientReques
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

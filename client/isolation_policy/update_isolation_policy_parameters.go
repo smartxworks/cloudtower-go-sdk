@@ -66,6 +66,9 @@ type UpdateIsolationPolicyParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.IsolationPolicyUpdateBody
 
@@ -144,6 +147,17 @@ func (o *UpdateIsolationPolicyParams) SetContentLanguage(contentLanguage *string
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update isolation policy params
+func (o *UpdateIsolationPolicyParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateIsolationPolicyParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update isolation policy params
+func (o *UpdateIsolationPolicyParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update isolation policy params
 func (o *UpdateIsolationPolicyParams) WithRequestBody(requestBody *models.IsolationPolicyUpdateBody) *UpdateIsolationPolicyParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateIsolationPolicyParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

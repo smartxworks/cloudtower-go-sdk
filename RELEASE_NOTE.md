@@ -1,5 +1,33 @@
 # RELEASE NOTE
 
+## release 日期 2025-10-14
+
+v2.21.0 release (tower version 4.7.0)
+
+### features
+
+- 增加 [EcpLicenseApi] 用于 ECP 许可信息的的查询
+- 增加 [ReplicationServiceApi] 用于复制服务的查询
+- 增加 [BusinessHostApi] 与 [BusinessHostGroupApi] 用于业务主机
+- [VmApi]: 创建虚拟机类 API 支持在 ha 字段配置为 true 的情况下配置 HaPriority 字段用于配置
+- [VmApi]: [updateVmBasicInfo] 支持配置编辑虚拟机的 HaPriority 字段，仅当 ha 为 true 或现 vm ha 字段已经为 true 时生效。
+- [VmApi]: 为电源操作类 API 引入前置条件检查，避免未定义行为
+- [VmApi]: 虚拟机支持 EC 存储策略的配置
+- [VmVolumeApi]: 虚拟卷支持 EC 存储策略的配置
+- [IscsiLunApi], [IscsiTargetApi], [NfsExportApi], [NfsInodeApi], [NvmfNamespaceApi], [NvmfSubsystemApi]: 增加 EC 存储策略的支持，允许副本数提升，精简置备转厚置备
+- [ClusterApi]: 支持查询, 编辑集群常驻缓存功能
+- [Host]: 新增字段 MergedStatus, ConnectStatus 与 CommitedMemoryBytes 字段
+- [Cluster]: 新增字段 CommitedMemoryBytes
+
+### bugfix
+
+- [VmApi]: 为创建虚拟机类 API 修复未配置 VPC 网卡的 IP 时创建出错
+- [VmApi]: [CreateVMFromContentLibraryTemplateBatch] 修复单位未生效的问题
+
+### breaking change
+
+- [IscsiTargetApi]: [UpdateIscsiTarget] 入参的 Data 字段类型由 IscsiTargetCommonParams 改为 IscsiTargetUpdationParamsData
+
 ## release 日期 2025-06-09
 
 v2.20.0 release (tower version 4.6.0)

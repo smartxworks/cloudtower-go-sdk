@@ -66,6 +66,9 @@ type DeleteIscsiLunSnapshotParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.IscsiLunSnapshotDeletionParams
 
@@ -144,6 +147,17 @@ func (o *DeleteIscsiLunSnapshotParams) SetContentLanguage(contentLanguage *strin
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the delete iscsi lun snapshot params
+func (o *DeleteIscsiLunSnapshotParams) WithExternalCloudtowerID(externalCloudtowerID *string) *DeleteIscsiLunSnapshotParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the delete iscsi lun snapshot params
+func (o *DeleteIscsiLunSnapshotParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the delete iscsi lun snapshot params
 func (o *DeleteIscsiLunSnapshotParams) WithRequestBody(requestBody *models.IscsiLunSnapshotDeletionParams) *DeleteIscsiLunSnapshotParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *DeleteIscsiLunSnapshotParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

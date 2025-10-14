@@ -66,6 +66,9 @@ type GetVsphereEsxiAccountsParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetVsphereEsxiAccountsRequestBody
 
@@ -144,6 +147,17 @@ func (o *GetVsphereEsxiAccountsParams) SetContentLanguage(contentLanguage *strin
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get vsphere esxi accounts params
+func (o *GetVsphereEsxiAccountsParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetVsphereEsxiAccountsParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get vsphere esxi accounts params
+func (o *GetVsphereEsxiAccountsParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get vsphere esxi accounts params
 func (o *GetVsphereEsxiAccountsParams) WithRequestBody(requestBody *models.GetVsphereEsxiAccountsRequestBody) *GetVsphereEsxiAccountsParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *GetVsphereEsxiAccountsParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}

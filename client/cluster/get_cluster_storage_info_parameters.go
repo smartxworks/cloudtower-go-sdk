@@ -61,6 +61,9 @@ func NewGetClusterStorageInfoParamsWithHTTPClient(client *http.Client) *GetClust
 */
 type GetClusterStorageInfoParams struct {
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.GetClusterStorageInfoRequestBody
 
@@ -117,6 +120,17 @@ func (o *GetClusterStorageInfoParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the get cluster storage info params
+func (o *GetClusterStorageInfoParams) WithExternalCloudtowerID(externalCloudtowerID *string) *GetClusterStorageInfoParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the get cluster storage info params
+func (o *GetClusterStorageInfoParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the get cluster storage info params
 func (o *GetClusterStorageInfoParams) WithRequestBody(requestBody *models.GetClusterStorageInfoRequestBody) *GetClusterStorageInfoParams {
 	o.SetRequestBody(requestBody)
@@ -135,6 +149,14 @@ func (o *GetClusterStorageInfoParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
+			return err
+		}
+	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
 			return err

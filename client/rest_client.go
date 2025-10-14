@@ -23,6 +23,8 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_store_repository"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_target_execution"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/brick_topo"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/business_host"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/business_host_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cloud_tower_application"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cloud_tower_application_package"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster"
@@ -38,6 +40,8 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/deploy"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/discovered_host"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/disk"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/disk_pool"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ecp_license"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_data_store"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_image"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_storage_policy"
@@ -79,6 +83,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/rack_topo"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replica_vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replication_plan"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replication_service"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_template"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/resource_change"
@@ -190,6 +195,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.BackupStoreRepository = backup_store_repository.New(transport, formats)
 	cli.BackupTargetExecution = backup_target_execution.New(transport, formats)
 	cli.BrickTopo = brick_topo.New(transport, formats)
+	cli.BusinessHost = business_host.New(transport, formats)
+	cli.BusinessHostGroup = business_host_group.New(transport, formats)
 	cli.CloudTowerApplication = cloud_tower_application.New(transport, formats)
 	cli.CloudTowerApplicationPackage = cloud_tower_application_package.New(transport, formats)
 	cli.Cluster = cluster.New(transport, formats)
@@ -205,6 +212,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.Deploy = deploy.New(transport, formats)
 	cli.DiscoveredHost = discovered_host.New(transport, formats)
 	cli.Disk = disk.New(transport, formats)
+	cli.DiskPool = disk_pool.New(transport, formats)
+	cli.EcpLicense = ecp_license.New(transport, formats)
 	cli.ElfDataStore = elf_data_store.New(transport, formats)
 	cli.ElfImage = elf_image.New(transport, formats)
 	cli.ElfStoragePolicy = elf_storage_policy.New(transport, formats)
@@ -246,6 +255,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.RackTopo = rack_topo.New(transport, formats)
 	cli.ReplicaVM = replica_vm.New(transport, formats)
 	cli.ReplicationPlan = replication_plan.New(transport, formats)
+	cli.ReplicationService = replication_service.New(transport, formats)
 	cli.ReportTask = report_task.New(transport, formats)
 	cli.ReportTemplate = report_template.New(transport, formats)
 	cli.ResourceChange = resource_change.New(transport, formats)
@@ -370,6 +380,10 @@ type Cloudtower struct {
 
 	BrickTopo brick_topo.ClientService
 
+	BusinessHost business_host.ClientService
+
+	BusinessHostGroup business_host_group.ClientService
+
 	CloudTowerApplication cloud_tower_application.ClientService
 
 	CloudTowerApplicationPackage cloud_tower_application_package.ClientService
@@ -399,6 +413,10 @@ type Cloudtower struct {
 	DiscoveredHost discovered_host.ClientService
 
 	Disk disk.ClientService
+
+	DiskPool disk_pool.ClientService
+
+	EcpLicense ecp_license.ClientService
 
 	ElfDataStore elf_data_store.ClientService
 
@@ -481,6 +499,8 @@ type Cloudtower struct {
 	ReplicaVM replica_vm.ClientService
 
 	ReplicationPlan replication_plan.ClientService
+
+	ReplicationService replication_service.ClientService
 
 	ReportTask report_task.ClientService
 
@@ -609,6 +629,8 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.BackupStoreRepository.SetTransport(transport)
 	c.BackupTargetExecution.SetTransport(transport)
 	c.BrickTopo.SetTransport(transport)
+	c.BusinessHost.SetTransport(transport)
+	c.BusinessHostGroup.SetTransport(transport)
 	c.CloudTowerApplication.SetTransport(transport)
 	c.CloudTowerApplicationPackage.SetTransport(transport)
 	c.Cluster.SetTransport(transport)
@@ -624,6 +646,8 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.Deploy.SetTransport(transport)
 	c.DiscoveredHost.SetTransport(transport)
 	c.Disk.SetTransport(transport)
+	c.DiskPool.SetTransport(transport)
+	c.EcpLicense.SetTransport(transport)
 	c.ElfDataStore.SetTransport(transport)
 	c.ElfImage.SetTransport(transport)
 	c.ElfStoragePolicy.SetTransport(transport)
@@ -665,6 +689,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.RackTopo.SetTransport(transport)
 	c.ReplicaVM.SetTransport(transport)
 	c.ReplicationPlan.SetTransport(transport)
+	c.ReplicationService.SetTransport(transport)
 	c.ReportTask.SetTransport(transport)
 	c.ReportTemplate.SetTransport(transport)
 	c.ResourceChange.SetTransport(transport)

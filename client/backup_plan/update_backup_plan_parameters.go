@@ -66,6 +66,9 @@ type UpdateBackupPlanParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	// ExternalCloudtowerID.
+	ExternalCloudtowerID *string
+
 	// RequestBody.
 	RequestBody *models.BackupPlanUpdationParams
 
@@ -144,6 +147,17 @@ func (o *UpdateBackupPlanParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithExternalCloudtowerID adds the externalCloudtowerID to the update backup plan params
+func (o *UpdateBackupPlanParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UpdateBackupPlanParams {
+	o.SetExternalCloudtowerID(externalCloudtowerID)
+	return o
+}
+
+// SetExternalCloudtowerID adds the externalCloudtowerId to the update backup plan params
+func (o *UpdateBackupPlanParams) SetExternalCloudtowerID(externalCloudtowerID *string) {
+	o.ExternalCloudtowerID = externalCloudtowerID
+}
+
 // WithRequestBody adds the requestBody to the update backup plan params
 func (o *UpdateBackupPlanParams) WithRequestBody(requestBody *models.BackupPlanUpdationParams) *UpdateBackupPlanParams {
 	o.SetRequestBody(requestBody)
@@ -167,6 +181,14 @@ func (o *UpdateBackupPlanParams) WriteToRequest(r runtime.ClientRequest, reg str
 
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
+			return err
+		}
+	}
+
+	if o.ExternalCloudtowerID != nil {
+
+		// header param external-cloudtower-id
+		if err := r.SetHeaderParam("external-cloudtower-id", *o.ExternalCloudtowerID); err != nil {
 			return err
 		}
 	}
