@@ -15,31 +15,19 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// VnetBondWhereInput vnet bond where input
+// VnetBondGroupWhereInput vnet bond group where input
 //
-// swagger:model VnetBondWhereInput
-type VnetBondWhereInput struct {
+// swagger:model VnetBondGroupWhereInput
+type VnetBondGroupWhereInput struct {
 
 	// a n d
-	AND []*VnetBondWhereInput `json:"AND,omitempty"`
+	AND []*VnetBondGroupWhereInput `json:"AND,omitempty"`
 
 	// n o t
-	NOT []*VnetBondWhereInput `json:"NOT,omitempty"`
+	NOT []*VnetBondGroupWhereInput `json:"NOT,omitempty"`
 
 	// o r
-	OR []*VnetBondWhereInput `json:"OR,omitempty"`
-
-	// bond for client
-	BondForClient *bool `json:"bond_for_client,omitempty"`
-
-	// bond for client not
-	BondForClientNot *bool `json:"bond_for_client_not,omitempty"`
-
-	// bond for server
-	BondForServer *bool `json:"bond_for_server,omitempty"`
-
-	// bond for server not
-	BondForServerNot *bool `json:"bond_for_server_not,omitempty"`
+	OR []*VnetBondGroupWhereInput `json:"OR,omitempty"`
 
 	// created at
 	CreatedAt *string `json:"createdAt,omitempty"`
@@ -64,6 +52,48 @@ type VnetBondWhereInput struct {
 
 	// created at not in
 	CreatedAtNotIn []string `json:"createdAt_not_in,omitempty"`
+
+	// display name
+	DisplayName *string `json:"display_name,omitempty"`
+
+	// display name contains
+	DisplayNameContains *string `json:"display_name_contains,omitempty"`
+
+	// display name ends with
+	DisplayNameEndsWith *string `json:"display_name_ends_with,omitempty"`
+
+	// display name gt
+	DisplayNameGt *string `json:"display_name_gt,omitempty"`
+
+	// display name gte
+	DisplayNameGte *string `json:"display_name_gte,omitempty"`
+
+	// display name in
+	DisplayNameIn []string `json:"display_name_in,omitempty"`
+
+	// display name lt
+	DisplayNameLt *string `json:"display_name_lt,omitempty"`
+
+	// display name lte
+	DisplayNameLte *string `json:"display_name_lte,omitempty"`
+
+	// display name not
+	DisplayNameNot *string `json:"display_name_not,omitempty"`
+
+	// display name not contains
+	DisplayNameNotContains *string `json:"display_name_not_contains,omitempty"`
+
+	// display name not ends with
+	DisplayNameNotEndsWith *string `json:"display_name_not_ends_with,omitempty"`
+
+	// display name not in
+	DisplayNameNotIn []string `json:"display_name_not_in,omitempty"`
+
+	// display name not starts with
+	DisplayNameNotStartsWith *string `json:"display_name_not_starts_with,omitempty"`
+
+	// display name starts with
+	DisplayNameStartsWith *string `json:"display_name_starts_with,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -119,11 +149,8 @@ type VnetBondWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// load balancer instance
-	LoadBalancerInstance *LoadBalancerInstanceWhereInput `json:"load_balancer_instance,omitempty"`
-
-	// load balancer service
-	LoadBalancerService *LoadBalancerServiceWhereInput `json:"load_balancer_service,omitempty"`
+	// load balancer instance group
+	LoadBalancerInstanceGroup *LoadBalancerInstanceGroupWhereInput `json:"load_balancer_instance_group,omitempty"`
 
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
@@ -209,48 +236,6 @@ type VnetBondWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
-	// namespace
-	Namespace *string `json:"namespace,omitempty"`
-
-	// namespace contains
-	NamespaceContains *string `json:"namespace_contains,omitempty"`
-
-	// namespace ends with
-	NamespaceEndsWith *string `json:"namespace_ends_with,omitempty"`
-
-	// namespace gt
-	NamespaceGt *string `json:"namespace_gt,omitempty"`
-
-	// namespace gte
-	NamespaceGte *string `json:"namespace_gte,omitempty"`
-
-	// namespace in
-	NamespaceIn []string `json:"namespace_in,omitempty"`
-
-	// namespace lt
-	NamespaceLt *string `json:"namespace_lt,omitempty"`
-
-	// namespace lte
-	NamespaceLte *string `json:"namespace_lte,omitempty"`
-
-	// namespace not
-	NamespaceNot *string `json:"namespace_not,omitempty"`
-
-	// namespace not contains
-	NamespaceNotContains *string `json:"namespace_not_contains,omitempty"`
-
-	// namespace not ends with
-	NamespaceNotEndsWith *string `json:"namespace_not_ends_with,omitempty"`
-
-	// namespace not in
-	NamespaceNotIn []string `json:"namespace_not_in,omitempty"`
-
-	// namespace not starts with
-	NamespaceNotStartsWith *string `json:"namespace_not_starts_with,omitempty"`
-
-	// namespace starts with
-	NamespaceStartsWith *string `json:"namespace_starts_with,omitempty"`
-
 	// network type
 	NetworkType *VnetBondNetworkType `json:"network_type,omitempty"`
 
@@ -263,35 +248,24 @@ type VnetBondWhereInput struct {
 	// network type not in
 	NetworkTypeNotIn []VnetBondNetworkType `json:"network_type_not_in,omitempty"`
 
-	// vlan
-	Vlan *VlanWhereInput `json:"vlan,omitempty"`
+	// vnet bonds every
+	VnetBondsEvery *VnetBondWhereInput `json:"vnet_bonds_every,omitempty"`
 
-	// vnet bond group
-	VnetBondGroup *VnetBondGroupWhereInput `json:"vnet_bond_group,omitempty"`
+	// vnet bonds none
+	VnetBondsNone *VnetBondWhereInput `json:"vnet_bonds_none,omitempty"`
 
-	// vpc
-	Vpc *VirtualPrivateCloudWhereInput `json:"vpc,omitempty"`
+	// vnet bonds some
+	VnetBondsSome *VnetBondWhereInput `json:"vnet_bonds_some,omitempty"`
 
-	// vpc subnet
-	VpcSubnet *VirtualPrivateCloudSubnetWhereInput `json:"vpc_subnet,omitempty"`
-
-	MarshalOpts *VnetBondWhereInputMarshalOpts `json:"-"`
+	MarshalOpts *VnetBondGroupWhereInputMarshalOpts `json:"-"`
 }
 
-type VnetBondWhereInputMarshalOpts struct {
+type VnetBondGroupWhereInputMarshalOpts struct {
 	AND_Explicit_Null_When_Empty bool
 
 	NOT_Explicit_Null_When_Empty bool
 
 	OR_Explicit_Null_When_Empty bool
-
-	BondForClient_Explicit_Null_When_Empty bool
-
-	BondForClientNot_Explicit_Null_When_Empty bool
-
-	BondForServer_Explicit_Null_When_Empty bool
-
-	BondForServerNot_Explicit_Null_When_Empty bool
 
 	CreatedAt_Explicit_Null_When_Empty bool
 
@@ -308,6 +282,34 @@ type VnetBondWhereInputMarshalOpts struct {
 	CreatedAtNot_Explicit_Null_When_Empty bool
 
 	CreatedAtNotIn_Explicit_Null_When_Empty bool
+
+	DisplayName_Explicit_Null_When_Empty bool
+
+	DisplayNameContains_Explicit_Null_When_Empty bool
+
+	DisplayNameEndsWith_Explicit_Null_When_Empty bool
+
+	DisplayNameGt_Explicit_Null_When_Empty bool
+
+	DisplayNameGte_Explicit_Null_When_Empty bool
+
+	DisplayNameIn_Explicit_Null_When_Empty bool
+
+	DisplayNameLt_Explicit_Null_When_Empty bool
+
+	DisplayNameLte_Explicit_Null_When_Empty bool
+
+	DisplayNameNot_Explicit_Null_When_Empty bool
+
+	DisplayNameNotContains_Explicit_Null_When_Empty bool
+
+	DisplayNameNotEndsWith_Explicit_Null_When_Empty bool
+
+	DisplayNameNotIn_Explicit_Null_When_Empty bool
+
+	DisplayNameNotStartsWith_Explicit_Null_When_Empty bool
+
+	DisplayNameStartsWith_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -345,9 +347,7 @@ type VnetBondWhereInputMarshalOpts struct {
 
 	IDStartsWith_Explicit_Null_When_Empty bool
 
-	LoadBalancerInstance_Explicit_Null_When_Empty bool
-
-	LoadBalancerService_Explicit_Null_When_Empty bool
+	LoadBalancerInstanceGroup_Explicit_Null_When_Empty bool
 
 	LocalID_Explicit_Null_When_Empty bool
 
@@ -405,34 +405,6 @@ type VnetBondWhereInputMarshalOpts struct {
 
 	NameStartsWith_Explicit_Null_When_Empty bool
 
-	Namespace_Explicit_Null_When_Empty bool
-
-	NamespaceContains_Explicit_Null_When_Empty bool
-
-	NamespaceEndsWith_Explicit_Null_When_Empty bool
-
-	NamespaceGt_Explicit_Null_When_Empty bool
-
-	NamespaceGte_Explicit_Null_When_Empty bool
-
-	NamespaceIn_Explicit_Null_When_Empty bool
-
-	NamespaceLt_Explicit_Null_When_Empty bool
-
-	NamespaceLte_Explicit_Null_When_Empty bool
-
-	NamespaceNot_Explicit_Null_When_Empty bool
-
-	NamespaceNotContains_Explicit_Null_When_Empty bool
-
-	NamespaceNotEndsWith_Explicit_Null_When_Empty bool
-
-	NamespaceNotIn_Explicit_Null_When_Empty bool
-
-	NamespaceNotStartsWith_Explicit_Null_When_Empty bool
-
-	NamespaceStartsWith_Explicit_Null_When_Empty bool
-
 	NetworkType_Explicit_Null_When_Empty bool
 
 	NetworkTypeIn_Explicit_Null_When_Empty bool
@@ -441,16 +413,14 @@ type VnetBondWhereInputMarshalOpts struct {
 
 	NetworkTypeNotIn_Explicit_Null_When_Empty bool
 
-	Vlan_Explicit_Null_When_Empty bool
+	VnetBondsEvery_Explicit_Null_When_Empty bool
 
-	VnetBondGroup_Explicit_Null_When_Empty bool
+	VnetBondsNone_Explicit_Null_When_Empty bool
 
-	Vpc_Explicit_Null_When_Empty bool
-
-	VpcSubnet_Explicit_Null_When_Empty bool
+	VnetBondsSome_Explicit_Null_When_Empty bool
 }
 
-func (m VnetBondWhereInput) MarshalJSON() ([]byte, error) {
+func (m VnetBondGroupWhereInput) MarshalJSON() ([]byte, error) {
 	var b bytes.Buffer
 	b.WriteString("{")
 
@@ -495,86 +465,6 @@ func (m VnetBondWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
-		first = false
-	}
-
-	// handle nullable field bond_for_client
-	if m.BondForClient != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"bond_for_client\":")
-		bytes, err := swag.WriteJSON(m.BondForClient)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BondForClient_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"bond_for_client\":null")
-		first = false
-	}
-
-	// handle nullable field bond_for_client_not
-	if m.BondForClientNot != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"bond_for_client_not\":")
-		bytes, err := swag.WriteJSON(m.BondForClientNot)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BondForClientNot_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"bond_for_client_not\":null")
-		first = false
-	}
-
-	// handle nullable field bond_for_server
-	if m.BondForServer != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"bond_for_server\":")
-		bytes, err := swag.WriteJSON(m.BondForServer)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BondForServer_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"bond_for_server\":null")
-		first = false
-	}
-
-	// handle nullable field bond_for_server_not
-	if m.BondForServerNot != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"bond_for_server_not\":")
-		bytes, err := swag.WriteJSON(m.BondForServerNot)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BondForServerNot_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"bond_for_server_not\":null")
 		first = false
 	}
 
@@ -723,6 +613,274 @@ func (m VnetBondWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field display_name
+	if m.DisplayName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name\":")
+		bytes, err := swag.WriteJSON(m.DisplayName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_contains
+	if m.DisplayNameContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_contains\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_contains\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_ends_with
+	if m.DisplayNameEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_ends_with\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_gt
+	if m.DisplayNameGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_gt\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_gt\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_gte
+	if m.DisplayNameGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_gte\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field display_name_in with omitempty
+	if !swag.IsZero(m.DisplayNameIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_in\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field display_name_lt
+	if m.DisplayNameLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_lt\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_lt\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_lte
+	if m.DisplayNameLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_lte\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_lte\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_not
+	if m.DisplayNameNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_not_contains
+	if m.DisplayNameNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not_contains\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_not_ends_with
+	if m.DisplayNameNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field display_name_not_in with omitempty
+	if !swag.IsZero(m.DisplayNameNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not_in\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field display_name_not_starts_with
+	if m.DisplayNameNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field display_name_starts_with
+	if m.DisplayNameStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_starts_with\":")
+		bytes, err := swag.WriteJSON(m.DisplayNameStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DisplayNameStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"display_name_starts_with\":null")
 		first = false
 	}
 
@@ -1062,43 +1220,23 @@ func (m VnetBondWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field load_balancer_instance
-	if m.LoadBalancerInstance != nil {
+	// handle nullable field load_balancer_instance_group
+	if m.LoadBalancerInstanceGroup != nil {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"load_balancer_instance\":")
-		bytes, err := swag.WriteJSON(m.LoadBalancerInstance)
+		b.WriteString("\"load_balancer_instance_group\":")
+		bytes, err := swag.WriteJSON(m.LoadBalancerInstanceGroup)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
 		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.LoadBalancerInstance_Explicit_Null_When_Empty {
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LoadBalancerInstanceGroup_Explicit_Null_When_Empty {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"load_balancer_instance\":null")
-		first = false
-	}
-
-	// handle nullable field load_balancer_service
-	if m.LoadBalancerService != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"load_balancer_service\":")
-		bytes, err := swag.WriteJSON(m.LoadBalancerService)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.LoadBalancerService_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"load_balancer_service\":null")
+		b.WriteString("\"load_balancer_instance_group\":null")
 		first = false
 	}
 
@@ -1638,274 +1776,6 @@ func (m VnetBondWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field namespace
-	if m.Namespace != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace\":")
-		bytes, err := swag.WriteJSON(m.Namespace)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Namespace_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_contains
-	if m.NamespaceContains != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_contains\":")
-		bytes, err := swag.WriteJSON(m.NamespaceContains)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceContains_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_contains\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_ends_with
-	if m.NamespaceEndsWith != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_ends_with\":")
-		bytes, err := swag.WriteJSON(m.NamespaceEndsWith)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceEndsWith_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_ends_with\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_gt
-	if m.NamespaceGt != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_gt\":")
-		bytes, err := swag.WriteJSON(m.NamespaceGt)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceGt_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_gt\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_gte
-	if m.NamespaceGte != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_gte\":")
-		bytes, err := swag.WriteJSON(m.NamespaceGte)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceGte_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_gte\":null")
-		first = false
-	}
-
-	// handle non nullable field namespace_in with omitempty
-	if !swag.IsZero(m.NamespaceIn) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_in\":")
-		bytes, err := swag.WriteJSON(m.NamespaceIn)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	}
-
-	// handle nullable field namespace_lt
-	if m.NamespaceLt != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_lt\":")
-		bytes, err := swag.WriteJSON(m.NamespaceLt)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceLt_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_lt\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_lte
-	if m.NamespaceLte != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_lte\":")
-		bytes, err := swag.WriteJSON(m.NamespaceLte)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceLte_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_lte\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_not
-	if m.NamespaceNot != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not\":")
-		bytes, err := swag.WriteJSON(m.NamespaceNot)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceNot_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_not_contains
-	if m.NamespaceNotContains != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not_contains\":")
-		bytes, err := swag.WriteJSON(m.NamespaceNotContains)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceNotContains_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not_contains\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_not_ends_with
-	if m.NamespaceNotEndsWith != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not_ends_with\":")
-		bytes, err := swag.WriteJSON(m.NamespaceNotEndsWith)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceNotEndsWith_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not_ends_with\":null")
-		first = false
-	}
-
-	// handle non nullable field namespace_not_in with omitempty
-	if !swag.IsZero(m.NamespaceNotIn) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not_in\":")
-		bytes, err := swag.WriteJSON(m.NamespaceNotIn)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	}
-
-	// handle nullable field namespace_not_starts_with
-	if m.NamespaceNotStartsWith != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not_starts_with\":")
-		bytes, err := swag.WriteJSON(m.NamespaceNotStartsWith)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceNotStartsWith_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_not_starts_with\":null")
-		first = false
-	}
-
-	// handle nullable field namespace_starts_with
-	if m.NamespaceStartsWith != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_starts_with\":")
-		bytes, err := swag.WriteJSON(m.NamespaceStartsWith)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceStartsWith_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_starts_with\":null")
-		first = false
-	}
-
 	// handle nullable field network_type
 	if m.NetworkType != nil {
 		if !first {
@@ -1974,83 +1844,63 @@ func (m VnetBondWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field vlan
-	if m.Vlan != nil {
+	// handle nullable field vnet_bonds_every
+	if m.VnetBondsEvery != nil {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vlan\":")
-		bytes, err := swag.WriteJSON(m.Vlan)
+		b.WriteString("\"vnet_bonds_every\":")
+		bytes, err := swag.WriteJSON(m.VnetBondsEvery)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
 		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Vlan_Explicit_Null_When_Empty {
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VnetBondsEvery_Explicit_Null_When_Empty {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vlan\":null")
+		b.WriteString("\"vnet_bonds_every\":null")
 		first = false
 	}
 
-	// handle nullable field vnet_bond_group
-	if m.VnetBondGroup != nil {
+	// handle nullable field vnet_bonds_none
+	if m.VnetBondsNone != nil {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vnet_bond_group\":")
-		bytes, err := swag.WriteJSON(m.VnetBondGroup)
+		b.WriteString("\"vnet_bonds_none\":")
+		bytes, err := swag.WriteJSON(m.VnetBondsNone)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
 		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VnetBondGroup_Explicit_Null_When_Empty {
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VnetBondsNone_Explicit_Null_When_Empty {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vnet_bond_group\":null")
+		b.WriteString("\"vnet_bonds_none\":null")
 		first = false
 	}
 
-	// handle nullable field vpc
-	if m.Vpc != nil {
+	// handle nullable field vnet_bonds_some
+	if m.VnetBondsSome != nil {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vpc\":")
-		bytes, err := swag.WriteJSON(m.Vpc)
+		b.WriteString("\"vnet_bonds_some\":")
+		bytes, err := swag.WriteJSON(m.VnetBondsSome)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
 		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Vpc_Explicit_Null_When_Empty {
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VnetBondsSome_Explicit_Null_When_Empty {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vpc\":null")
-		first = false
-	}
-
-	// handle nullable field vpc_subnet
-	if m.VpcSubnet != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vpc_subnet\":")
-		bytes, err := swag.WriteJSON(m.VpcSubnet)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcSubnet_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vpc_subnet\":null")
+		b.WriteString("\"vnet_bonds_some\":null")
 		first = false
 	}
 
@@ -2058,8 +1908,8 @@ func (m VnetBondWhereInput) MarshalJSON() ([]byte, error) {
 	return b.Bytes(), nil
 }
 
-// Validate validates this vnet bond where input
-func (m *VnetBondWhereInput) Validate(formats strfmt.Registry) error {
+// Validate validates this vnet bond group where input
+func (m *VnetBondGroupWhereInput) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAND(formats); err != nil {
@@ -2090,11 +1940,7 @@ func (m *VnetBondWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateLoadBalancerInstance(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLoadBalancerService(formats); err != nil {
+	if err := m.validateLoadBalancerInstanceGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2114,19 +1960,15 @@ func (m *VnetBondWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateVlan(formats); err != nil {
+	if err := m.validateVnetBondsEvery(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateVnetBondGroup(formats); err != nil {
+	if err := m.validateVnetBondsNone(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateVpc(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcSubnet(formats); err != nil {
+	if err := m.validateVnetBondsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2136,7 +1978,7 @@ func (m *VnetBondWhereInput) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateAND(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateAND(formats strfmt.Registry) error {
 	if swag.IsZero(m.AND) { // not required
 		return nil
 	}
@@ -2162,7 +2004,7 @@ func (m *VnetBondWhereInput) validateAND(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateNOT(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateNOT(formats strfmt.Registry) error {
 	if swag.IsZero(m.NOT) { // not required
 		return nil
 	}
@@ -2188,7 +2030,7 @@ func (m *VnetBondWhereInput) validateNOT(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateOR(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateOR(formats strfmt.Registry) error {
 	if swag.IsZero(m.OR) { // not required
 		return nil
 	}
@@ -2214,7 +2056,7 @@ func (m *VnetBondWhereInput) validateOR(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatus) { // not required
 		return nil
 	}
@@ -2233,7 +2075,7 @@ func (m *VnetBondWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusIn) { // not required
 		return nil
 	}
@@ -2254,7 +2096,7 @@ func (m *VnetBondWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusNot) { // not required
 		return nil
 	}
@@ -2273,7 +2115,7 @@ func (m *VnetBondWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registr
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusNotIn) { // not required
 		return nil
 	}
@@ -2294,17 +2136,17 @@ func (m *VnetBondWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Regis
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateLoadBalancerInstance(formats strfmt.Registry) error {
-	if swag.IsZero(m.LoadBalancerInstance) { // not required
+func (m *VnetBondGroupWhereInput) validateLoadBalancerInstanceGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.LoadBalancerInstanceGroup) { // not required
 		return nil
 	}
 
-	if m.LoadBalancerInstance != nil {
-		if err := m.LoadBalancerInstance.Validate(formats); err != nil {
+	if m.LoadBalancerInstanceGroup != nil {
+		if err := m.LoadBalancerInstanceGroup.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("load_balancer_instance")
+				return ve.ValidateName("load_balancer_instance_group")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("load_balancer_instance")
+				return ce.ValidateName("load_balancer_instance_group")
 			}
 			return err
 		}
@@ -2313,26 +2155,7 @@ func (m *VnetBondWhereInput) validateLoadBalancerInstance(formats strfmt.Registr
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateLoadBalancerService(formats strfmt.Registry) error {
-	if swag.IsZero(m.LoadBalancerService) { // not required
-		return nil
-	}
-
-	if m.LoadBalancerService != nil {
-		if err := m.LoadBalancerService.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("load_balancer_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("load_balancer_service")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VnetBondWhereInput) validateNetworkType(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateNetworkType(formats strfmt.Registry) error {
 	if swag.IsZero(m.NetworkType) { // not required
 		return nil
 	}
@@ -2351,7 +2174,7 @@ func (m *VnetBondWhereInput) validateNetworkType(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateNetworkTypeIn(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateNetworkTypeIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.NetworkTypeIn) { // not required
 		return nil
 	}
@@ -2372,7 +2195,7 @@ func (m *VnetBondWhereInput) validateNetworkTypeIn(formats strfmt.Registry) erro
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateNetworkTypeNot(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateNetworkTypeNot(formats strfmt.Registry) error {
 	if swag.IsZero(m.NetworkTypeNot) { // not required
 		return nil
 	}
@@ -2391,7 +2214,7 @@ func (m *VnetBondWhereInput) validateNetworkTypeNot(formats strfmt.Registry) err
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateNetworkTypeNotIn(formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) validateNetworkTypeNotIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.NetworkTypeNotIn) { // not required
 		return nil
 	}
@@ -2412,17 +2235,17 @@ func (m *VnetBondWhereInput) validateNetworkTypeNotIn(formats strfmt.Registry) e
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateVlan(formats strfmt.Registry) error {
-	if swag.IsZero(m.Vlan) { // not required
+func (m *VnetBondGroupWhereInput) validateVnetBondsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.VnetBondsEvery) { // not required
 		return nil
 	}
 
-	if m.Vlan != nil {
-		if err := m.Vlan.Validate(formats); err != nil {
+	if m.VnetBondsEvery != nil {
+		if err := m.VnetBondsEvery.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vlan")
+				return ve.ValidateName("vnet_bonds_every")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vlan")
+				return ce.ValidateName("vnet_bonds_every")
 			}
 			return err
 		}
@@ -2431,17 +2254,17 @@ func (m *VnetBondWhereInput) validateVlan(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateVnetBondGroup(formats strfmt.Registry) error {
-	if swag.IsZero(m.VnetBondGroup) { // not required
+func (m *VnetBondGroupWhereInput) validateVnetBondsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.VnetBondsNone) { // not required
 		return nil
 	}
 
-	if m.VnetBondGroup != nil {
-		if err := m.VnetBondGroup.Validate(formats); err != nil {
+	if m.VnetBondsNone != nil {
+		if err := m.VnetBondsNone.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vnet_bond_group")
+				return ve.ValidateName("vnet_bonds_none")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vnet_bond_group")
+				return ce.ValidateName("vnet_bonds_none")
 			}
 			return err
 		}
@@ -2450,17 +2273,17 @@ func (m *VnetBondWhereInput) validateVnetBondGroup(formats strfmt.Registry) erro
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateVpc(formats strfmt.Registry) error {
-	if swag.IsZero(m.Vpc) { // not required
+func (m *VnetBondGroupWhereInput) validateVnetBondsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.VnetBondsSome) { // not required
 		return nil
 	}
 
-	if m.Vpc != nil {
-		if err := m.Vpc.Validate(formats); err != nil {
+	if m.VnetBondsSome != nil {
+		if err := m.VnetBondsSome.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc")
+				return ve.ValidateName("vnet_bonds_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc")
+				return ce.ValidateName("vnet_bonds_some")
 			}
 			return err
 		}
@@ -2469,27 +2292,8 @@ func (m *VnetBondWhereInput) validateVpc(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VnetBondWhereInput) validateVpcSubnet(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcSubnet) { // not required
-		return nil
-	}
-
-	if m.VpcSubnet != nil {
-		if err := m.VpcSubnet.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_subnet")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_subnet")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this vnet bond where input based on the context it is used
-func (m *VnetBondWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this vnet bond group where input based on the context it is used
+func (m *VnetBondGroupWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateAND(ctx, formats); err != nil {
@@ -2520,11 +2324,7 @@ func (m *VnetBondWhereInput) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateLoadBalancerInstance(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateLoadBalancerService(ctx, formats); err != nil {
+	if err := m.contextValidateLoadBalancerInstanceGroup(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2544,19 +2344,15 @@ func (m *VnetBondWhereInput) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVlan(ctx, formats); err != nil {
+	if err := m.contextValidateVnetBondsEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVnetBondGroup(ctx, formats); err != nil {
+	if err := m.contextValidateVnetBondsNone(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVpc(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcSubnet(ctx, formats); err != nil {
+	if err := m.contextValidateVnetBondsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2566,7 +2362,7 @@ func (m *VnetBondWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateAND(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateAND(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.AND); i++ {
 
@@ -2586,7 +2382,7 @@ func (m *VnetBondWhereInput) contextValidateAND(ctx context.Context, formats str
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateNOT(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateNOT(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.NOT); i++ {
 
@@ -2606,7 +2402,7 @@ func (m *VnetBondWhereInput) contextValidateNOT(ctx context.Context, formats str
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.OR); i++ {
 
@@ -2626,7 +2422,7 @@ func (m *VnetBondWhereInput) contextValidateOR(ctx context.Context, formats strf
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatus != nil {
 		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
@@ -2642,7 +2438,7 @@ func (m *VnetBondWhereInput) contextValidateEntityAsyncStatus(ctx context.Contex
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.EntityAsyncStatusIn); i++ {
 
@@ -2660,7 +2456,7 @@ func (m *VnetBondWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Cont
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatusNot != nil {
 		if err := m.EntityAsyncStatusNot.ContextValidate(ctx, formats); err != nil {
@@ -2676,7 +2472,7 @@ func (m *VnetBondWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Con
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.EntityAsyncStatusNotIn); i++ {
 
@@ -2694,14 +2490,14 @@ func (m *VnetBondWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.C
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateLoadBalancerInstance(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateLoadBalancerInstanceGroup(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.LoadBalancerInstance != nil {
-		if err := m.LoadBalancerInstance.ContextValidate(ctx, formats); err != nil {
+	if m.LoadBalancerInstanceGroup != nil {
+		if err := m.LoadBalancerInstanceGroup.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("load_balancer_instance")
+				return ve.ValidateName("load_balancer_instance_group")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("load_balancer_instance")
+				return ce.ValidateName("load_balancer_instance_group")
 			}
 			return err
 		}
@@ -2710,23 +2506,7 @@ func (m *VnetBondWhereInput) contextValidateLoadBalancerInstance(ctx context.Con
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateLoadBalancerService(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.LoadBalancerService != nil {
-		if err := m.LoadBalancerService.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("load_balancer_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("load_balancer_service")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VnetBondWhereInput) contextValidateNetworkType(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateNetworkType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NetworkType != nil {
 		if err := m.NetworkType.ContextValidate(ctx, formats); err != nil {
@@ -2742,7 +2522,7 @@ func (m *VnetBondWhereInput) contextValidateNetworkType(ctx context.Context, for
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateNetworkTypeIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateNetworkTypeIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.NetworkTypeIn); i++ {
 
@@ -2760,7 +2540,7 @@ func (m *VnetBondWhereInput) contextValidateNetworkTypeIn(ctx context.Context, f
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateNetworkTypeNot(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateNetworkTypeNot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NetworkTypeNot != nil {
 		if err := m.NetworkTypeNot.ContextValidate(ctx, formats); err != nil {
@@ -2776,7 +2556,7 @@ func (m *VnetBondWhereInput) contextValidateNetworkTypeNot(ctx context.Context, 
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateNetworkTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateNetworkTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.NetworkTypeNotIn); i++ {
 
@@ -2794,14 +2574,14 @@ func (m *VnetBondWhereInput) contextValidateNetworkTypeNotIn(ctx context.Context
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateVlan(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateVnetBondsEvery(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Vlan != nil {
-		if err := m.Vlan.ContextValidate(ctx, formats); err != nil {
+	if m.VnetBondsEvery != nil {
+		if err := m.VnetBondsEvery.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vlan")
+				return ve.ValidateName("vnet_bonds_every")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vlan")
+				return ce.ValidateName("vnet_bonds_every")
 			}
 			return err
 		}
@@ -2810,14 +2590,14 @@ func (m *VnetBondWhereInput) contextValidateVlan(ctx context.Context, formats st
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateVnetBondGroup(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateVnetBondsNone(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.VnetBondGroup != nil {
-		if err := m.VnetBondGroup.ContextValidate(ctx, formats); err != nil {
+	if m.VnetBondsNone != nil {
+		if err := m.VnetBondsNone.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vnet_bond_group")
+				return ve.ValidateName("vnet_bonds_none")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vnet_bond_group")
+				return ce.ValidateName("vnet_bonds_none")
 			}
 			return err
 		}
@@ -2826,30 +2606,14 @@ func (m *VnetBondWhereInput) contextValidateVnetBondGroup(ctx context.Context, f
 	return nil
 }
 
-func (m *VnetBondWhereInput) contextValidateVpc(ctx context.Context, formats strfmt.Registry) error {
+func (m *VnetBondGroupWhereInput) contextValidateVnetBondsSome(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Vpc != nil {
-		if err := m.Vpc.ContextValidate(ctx, formats); err != nil {
+	if m.VnetBondsSome != nil {
+		if err := m.VnetBondsSome.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc")
+				return ve.ValidateName("vnet_bonds_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VnetBondWhereInput) contextValidateVpcSubnet(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcSubnet != nil {
-		if err := m.VpcSubnet.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_subnet")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_subnet")
+				return ce.ValidateName("vnet_bonds_some")
 			}
 			return err
 		}
@@ -2859,7 +2623,7 @@ func (m *VnetBondWhereInput) contextValidateVpcSubnet(ctx context.Context, forma
 }
 
 // MarshalBinary interface implementation
-func (m *VnetBondWhereInput) MarshalBinary() ([]byte, error) {
+func (m *VnetBondGroupWhereInput) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -2867,8 +2631,8 @@ func (m *VnetBondWhereInput) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *VnetBondWhereInput) UnmarshalBinary(b []byte) error {
-	var res VnetBondWhereInput
+func (m *VnetBondGroupWhereInput) UnmarshalBinary(b []byte) error {
+	var res VnetBondGroupWhereInput
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

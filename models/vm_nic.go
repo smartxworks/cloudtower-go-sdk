@@ -20,6 +20,9 @@ import (
 // swagger:model VmNic
 type VMNic struct {
 
+	// dpi enabled
+	DpiEnabled *bool `json:"dpi_enabled,omitempty"`
+
 	// egress rate limit burst in bit
 	EgressRateLimitBurstInBit *float64 `json:"egress_rate_limit_burst_in_bit,omitempty"`
 
@@ -34,6 +37,14 @@ type VMNic struct {
 
 	// gateway
 	Gateway *string `json:"gateway,omitempty"`
+
+	// guest info ip addresses
+	// Required: true
+	GuestInfoIPAddresses []string `json:"guest_info_ip_addresses"`
+
+	// guest info ip addresses v6
+	// Required: true
+	GuestInfoIPAddressesV6 []string `json:"guest_info_ip_addresses_v6"`
 
 	// id
 	// Required: true
@@ -93,6 +104,8 @@ type VMNic struct {
 }
 
 type VMNicMarshalOpts struct {
+	DpiEnabled_Explicit_Null_When_Empty bool
+
 	EgressRateLimitBurstInBit_Explicit_Null_When_Empty bool
 
 	EgressRateLimitEnabled_Explicit_Null_When_Empty bool
@@ -102,6 +115,10 @@ type VMNicMarshalOpts struct {
 	Enabled_Explicit_Null_When_Empty bool
 
 	Gateway_Explicit_Null_When_Empty bool
+
+	GuestInfoIPAddresses_Explicit_Null_When_Empty bool
+
+	GuestInfoIPAddressesV6_Explicit_Null_When_Empty bool
 
 	ID_Explicit_Null_When_Empty bool
 
@@ -143,6 +160,26 @@ func (m VMNic) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
+
+	// handle nullable field dpi_enabled
+	if m.DpiEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled\":")
+		bytes, err := swag.WriteJSON(m.DpiEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DpiEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled\":null")
+		first = false
+	}
 
 	// handle nullable field egress_rate_limit_burst_in_bit
 	if m.EgressRateLimitBurstInBit != nil {
@@ -241,6 +278,34 @@ func (m VMNic) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"gateway\":null")
+		first = false
+	}
+
+	// handle non nullable field guest_info_ip_addresses without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"guest_info_ip_addresses\":")
+		bytes, err := swag.WriteJSON(m.GuestInfoIPAddresses)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle non nullable field guest_info_ip_addresses_v6 without omitempty
+	{
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"guest_info_ip_addresses_v6\":")
+		bytes, err := swag.WriteJSON(m.GuestInfoIPAddressesV6)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -592,6 +657,14 @@ func (m VMNic) MarshalJSON() ([]byte, error) {
 func (m *VMNic) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateGuestInfoIPAddresses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGuestInfoIPAddressesV6(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -627,6 +700,24 @@ func (m *VMNic) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMNic) validateGuestInfoIPAddresses(formats strfmt.Registry) error {
+
+	if err := validate.Required("guest_info_ip_addresses", "body", m.GuestInfoIPAddresses); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *VMNic) validateGuestInfoIPAddressesV6(formats strfmt.Registry) error {
+
+	if err := validate.Required("guest_info_ip_addresses_v6", "body", m.GuestInfoIPAddressesV6); err != nil {
+		return err
+	}
+
 	return nil
 }
 

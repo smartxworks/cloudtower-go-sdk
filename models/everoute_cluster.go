@@ -32,8 +32,7 @@ type EverouteCluster struct {
 	ControllerInstances []*NestedEverouteControllerInstance `json:"controller_instances"`
 
 	// controller template
-	// Required: true
-	ControllerTemplate *NestedEverouteControllerTemplate `json:"controller_template"`
+	ControllerTemplate *NestedEverouteControllerTemplate `json:"controller_template,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -545,9 +544,8 @@ func (m *EverouteCluster) validateControllerInstances(formats strfmt.Registry) e
 }
 
 func (m *EverouteCluster) validateControllerTemplate(formats strfmt.Registry) error {
-
-	if err := validate.Required("controller_template", "body", m.ControllerTemplate); err != nil {
-		return err
+	if swag.IsZero(m.ControllerTemplate) { // not required
+		return nil
 	}
 
 	if m.ControllerTemplate != nil {

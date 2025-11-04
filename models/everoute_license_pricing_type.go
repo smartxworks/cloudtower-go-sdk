@@ -33,6 +33,9 @@ const (
 	// EverouteLicensePricingTypeCPUSLOTNUM captures enum value "CPU_SLOT_NUM"
 	EverouteLicensePricingTypeCPUSLOTNUM EverouteLicensePricingType = "CPU_SLOT_NUM"
 
+	// EverouteLicensePricingTypeVCPUNUM captures enum value "VCPU_NUM"
+	EverouteLicensePricingTypeVCPUNUM EverouteLicensePricingType = "VCPU_NUM"
+
 	// EverouteLicensePricingTypeVMNUM captures enum value "VM_NUM"
 	EverouteLicensePricingTypeVMNUM EverouteLicensePricingType = "VM_NUM"
 )
@@ -42,7 +45,7 @@ var everouteLicensePricingTypeEnum []interface{}
 
 func init() {
 	var res []EverouteLicensePricingType
-	if err := json.Unmarshal([]byte(`["CPU_SLOT_NUM","VM_NUM"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CPU_SLOT_NUM","VCPU_NUM","VM_NUM"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
