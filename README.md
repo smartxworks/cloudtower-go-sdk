@@ -1,6 +1,6 @@
 # Cloudtower Go SDK
 
-Golang 环境下的 Cloudtower SDK，适用于 golang 1.16 及以上版本
+Golang 环境下的 Cloudtower SDK，适用于 golang 1.18 及以上版本
 
 - [源码地址](https://github.com/smartxworks/cloudtower-go-sdk)
 - [下载地址](https://github.com/smartxworks/cloudtower-go-sdk/releases)
@@ -168,7 +168,7 @@ if err != nil {
 tasks := funk.Map(startRes.Payload, func(tvm *models.WithTaskVM) string {
 	return *tvm.TaskID
 }).([]string)
-err = utils.WaitTask(context.TODO(), client, tasks, 1*time.Second)
+err = utils.WaitTasks(context.TODO(), client, tasks, 1*time.Second)
 if err != nil {
 	return err
 }

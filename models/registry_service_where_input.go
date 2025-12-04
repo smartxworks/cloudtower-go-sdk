@@ -15,19 +15,22 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// VirtualPrivateCloudEdgeGatewayWhereInput virtual private cloud edge gateway where input
+// RegistryServiceWhereInput registry service where input
 //
-// swagger:model VirtualPrivateCloudEdgeGatewayWhereInput
-type VirtualPrivateCloudEdgeGatewayWhereInput struct {
+// swagger:model RegistryServiceWhereInput
+type RegistryServiceWhereInput struct {
 
 	// a n d
-	AND []*VirtualPrivateCloudEdgeGatewayWhereInput `json:"AND,omitempty"`
+	AND []*RegistryServiceWhereInput `json:"AND,omitempty"`
 
 	// n o t
-	NOT []*VirtualPrivateCloudEdgeGatewayWhereInput `json:"NOT,omitempty"`
+	NOT []*RegistryServiceWhereInput `json:"NOT,omitempty"`
 
 	// o r
-	OR []*VirtualPrivateCloudEdgeGatewayWhereInput `json:"OR,omitempty"`
+	OR []*RegistryServiceWhereInput `json:"OR,omitempty"`
+
+	// application
+	Application *CloudTowerApplicationWhereInput `json:"application,omitempty"`
 
 	// description
 	Description *string `json:"description,omitempty"`
@@ -71,9 +74,6 @@ type VirtualPrivateCloudEdgeGatewayWhereInput struct {
 	// description starts with
 	DescriptionStartsWith *string `json:"description_starts_with,omitempty"`
 
-	// edge gateway group
-	EdgeGatewayGroup *VirtualPrivateCloudEdgeGatewayGroupWhereInput `json:"edge_gateway_group,omitempty"`
-
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -85,6 +85,48 @@ type VirtualPrivateCloudEdgeGatewayWhereInput struct {
 
 	// entity async status not in
 	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
+
+	// hostname
+	Hostname *string `json:"hostname,omitempty"`
+
+	// hostname contains
+	HostnameContains *string `json:"hostname_contains,omitempty"`
+
+	// hostname ends with
+	HostnameEndsWith *string `json:"hostname_ends_with,omitempty"`
+
+	// hostname gt
+	HostnameGt *string `json:"hostname_gt,omitempty"`
+
+	// hostname gte
+	HostnameGte *string `json:"hostname_gte,omitempty"`
+
+	// hostname in
+	HostnameIn []string `json:"hostname_in,omitempty"`
+
+	// hostname lt
+	HostnameLt *string `json:"hostname_lt,omitempty"`
+
+	// hostname lte
+	HostnameLte *string `json:"hostname_lte,omitempty"`
+
+	// hostname not
+	HostnameNot *string `json:"hostname_not,omitempty"`
+
+	// hostname not contains
+	HostnameNotContains *string `json:"hostname_not_contains,omitempty"`
+
+	// hostname not ends with
+	HostnameNotEndsWith *string `json:"hostname_not_ends_with,omitempty"`
+
+	// hostname not in
+	HostnameNotIn []string `json:"hostname_not_in,omitempty"`
+
+	// hostname not starts with
+	HostnameNotStartsWith *string `json:"hostname_not_starts_with,omitempty"`
+
+	// hostname starts with
+	HostnameStartsWith *string `json:"hostname_starts_with,omitempty"`
 
 	// id
 	ID *string `json:"id,omitempty"`
@@ -170,27 +212,29 @@ type VirtualPrivateCloudEdgeGatewayWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
-	// vdses every
-	VdsesEvery *VdsWhereInput `json:"vdses_every,omitempty"`
+	// usage
+	Usage *RegistryServiceUsage `json:"usage,omitempty"`
 
-	// vdses none
-	VdsesNone *VdsWhereInput `json:"vdses_none,omitempty"`
+	// usage in
+	UsageIn []RegistryServiceUsage `json:"usage_in,omitempty"`
 
-	// vdses some
-	VdsesSome *VdsWhereInput `json:"vdses_some,omitempty"`
+	// usage not
+	UsageNot *RegistryServiceUsage `json:"usage_not,omitempty"`
 
-	// vpc service
-	VpcService *VirtualPrivateCloudServiceWhereInput `json:"vpc_service,omitempty"`
+	// usage not in
+	UsageNotIn []RegistryServiceUsage `json:"usage_not_in,omitempty"`
 
-	MarshalOpts *VirtualPrivateCloudEdgeGatewayWhereInputMarshalOpts `json:"-"`
+	MarshalOpts *RegistryServiceWhereInputMarshalOpts `json:"-"`
 }
 
-type VirtualPrivateCloudEdgeGatewayWhereInputMarshalOpts struct {
+type RegistryServiceWhereInputMarshalOpts struct {
 	AND_Explicit_Null_When_Empty bool
 
 	NOT_Explicit_Null_When_Empty bool
 
 	OR_Explicit_Null_When_Empty bool
+
+	Application_Explicit_Null_When_Empty bool
 
 	Description_Explicit_Null_When_Empty bool
 
@@ -220,8 +264,6 @@ type VirtualPrivateCloudEdgeGatewayWhereInputMarshalOpts struct {
 
 	DescriptionStartsWith_Explicit_Null_When_Empty bool
 
-	EdgeGatewayGroup_Explicit_Null_When_Empty bool
-
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatusIn_Explicit_Null_When_Empty bool
@@ -229,6 +271,34 @@ type VirtualPrivateCloudEdgeGatewayWhereInputMarshalOpts struct {
 	EntityAsyncStatusNot_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatusNotIn_Explicit_Null_When_Empty bool
+
+	Hostname_Explicit_Null_When_Empty bool
+
+	HostnameContains_Explicit_Null_When_Empty bool
+
+	HostnameEndsWith_Explicit_Null_When_Empty bool
+
+	HostnameGt_Explicit_Null_When_Empty bool
+
+	HostnameGte_Explicit_Null_When_Empty bool
+
+	HostnameIn_Explicit_Null_When_Empty bool
+
+	HostnameLt_Explicit_Null_When_Empty bool
+
+	HostnameLte_Explicit_Null_When_Empty bool
+
+	HostnameNot_Explicit_Null_When_Empty bool
+
+	HostnameNotContains_Explicit_Null_When_Empty bool
+
+	HostnameNotEndsWith_Explicit_Null_When_Empty bool
+
+	HostnameNotIn_Explicit_Null_When_Empty bool
+
+	HostnameNotStartsWith_Explicit_Null_When_Empty bool
+
+	HostnameStartsWith_Explicit_Null_When_Empty bool
 
 	ID_Explicit_Null_When_Empty bool
 
@@ -286,16 +356,16 @@ type VirtualPrivateCloudEdgeGatewayWhereInputMarshalOpts struct {
 
 	NameStartsWith_Explicit_Null_When_Empty bool
 
-	VdsesEvery_Explicit_Null_When_Empty bool
+	Usage_Explicit_Null_When_Empty bool
 
-	VdsesNone_Explicit_Null_When_Empty bool
+	UsageIn_Explicit_Null_When_Empty bool
 
-	VdsesSome_Explicit_Null_When_Empty bool
+	UsageNot_Explicit_Null_When_Empty bool
 
-	VpcService_Explicit_Null_When_Empty bool
+	UsageNotIn_Explicit_Null_When_Empty bool
 }
 
-func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) {
+func (m RegistryServiceWhereInput) MarshalJSON() ([]byte, error) {
 	var b bytes.Buffer
 	b.WriteString("{")
 
@@ -340,6 +410,26 @@ func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) 
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field application
+	if m.Application != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"application\":")
+		bytes, err := swag.WriteJSON(m.Application)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Application_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"application\":null")
 		first = false
 	}
 
@@ -611,26 +701,6 @@ func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) 
 		first = false
 	}
 
-	// handle nullable field edge_gateway_group
-	if m.EdgeGatewayGroup != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"edge_gateway_group\":")
-		bytes, err := swag.WriteJSON(m.EdgeGatewayGroup)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.EdgeGatewayGroup_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"edge_gateway_group\":null")
-		first = false
-	}
-
 	// handle nullable field entityAsyncStatus
 	if m.EntityAsyncStatus != nil {
 		if !first {
@@ -696,6 +766,274 @@ func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) 
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field hostname
+	if m.Hostname != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname\":")
+		bytes, err := swag.WriteJSON(m.Hostname)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Hostname_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_contains
+	if m.HostnameContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_contains\":")
+		bytes, err := swag.WriteJSON(m.HostnameContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_contains\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_ends_with
+	if m.HostnameEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_ends_with\":")
+		bytes, err := swag.WriteJSON(m.HostnameEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_gt
+	if m.HostnameGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_gt\":")
+		bytes, err := swag.WriteJSON(m.HostnameGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_gt\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_gte
+	if m.HostnameGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_gte\":")
+		bytes, err := swag.WriteJSON(m.HostnameGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field hostname_in with omitempty
+	if !swag.IsZero(m.HostnameIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_in\":")
+		bytes, err := swag.WriteJSON(m.HostnameIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field hostname_lt
+	if m.HostnameLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_lt\":")
+		bytes, err := swag.WriteJSON(m.HostnameLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_lt\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_lte
+	if m.HostnameLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_lte\":")
+		bytes, err := swag.WriteJSON(m.HostnameLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_lte\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_not
+	if m.HostnameNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not\":")
+		bytes, err := swag.WriteJSON(m.HostnameNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_not_contains
+	if m.HostnameNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not_contains\":")
+		bytes, err := swag.WriteJSON(m.HostnameNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_not_ends_with
+	if m.HostnameNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.HostnameNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field hostname_not_in with omitempty
+	if !swag.IsZero(m.HostnameNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not_in\":")
+		bytes, err := swag.WriteJSON(m.HostnameNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field hostname_not_starts_with
+	if m.HostnameNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.HostnameNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field hostname_starts_with
+	if m.HostnameStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_starts_with\":")
+		bytes, err := swag.WriteJSON(m.HostnameStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.HostnameStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"hostname_starts_with\":null")
 		first = false
 	}
 
@@ -1235,83 +1573,71 @@ func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) 
 		first = false
 	}
 
-	// handle nullable field vdses_every
-	if m.VdsesEvery != nil {
+	// handle nullable field usage
+	if m.Usage != nil {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vdses_every\":")
-		bytes, err := swag.WriteJSON(m.VdsesEvery)
+		b.WriteString("\"usage\":")
+		bytes, err := swag.WriteJSON(m.Usage)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
 		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VdsesEvery_Explicit_Null_When_Empty {
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Usage_Explicit_Null_When_Empty {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vdses_every\":null")
+		b.WriteString("\"usage\":null")
 		first = false
 	}
 
-	// handle nullable field vdses_none
-	if m.VdsesNone != nil {
+	// handle non nullable field usage_in with omitempty
+	if !swag.IsZero(m.UsageIn) {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vdses_none\":")
-		bytes, err := swag.WriteJSON(m.VdsesNone)
+		b.WriteString("\"usage_in\":")
+		bytes, err := swag.WriteJSON(m.UsageIn)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VdsesNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vdses_none\":null")
 		first = false
 	}
 
-	// handle nullable field vdses_some
-	if m.VdsesSome != nil {
+	// handle nullable field usage_not
+	if m.UsageNot != nil {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vdses_some\":")
-		bytes, err := swag.WriteJSON(m.VdsesSome)
+		b.WriteString("\"usage_not\":")
+		bytes, err := swag.WriteJSON(m.UsageNot)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
 		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VdsesSome_Explicit_Null_When_Empty {
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UsageNot_Explicit_Null_When_Empty {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vdses_some\":null")
+		b.WriteString("\"usage_not\":null")
 		first = false
 	}
 
-	// handle nullable field vpc_service
-	if m.VpcService != nil {
+	// handle non nullable field usage_not_in with omitempty
+	if !swag.IsZero(m.UsageNotIn) {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"vpc_service\":")
-		bytes, err := swag.WriteJSON(m.VpcService)
+		b.WriteString("\"usage_not_in\":")
+		bytes, err := swag.WriteJSON(m.UsageNotIn)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcService_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vpc_service\":null")
 		first = false
 	}
 
@@ -1319,8 +1645,8 @@ func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) 
 	return b.Bytes(), nil
 }
 
-// Validate validates this virtual private cloud edge gateway where input
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) Validate(formats strfmt.Registry) error {
+// Validate validates this registry service where input
+func (m *RegistryServiceWhereInput) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAND(formats); err != nil {
@@ -1335,7 +1661,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) Validate(formats strfmt.Regis
 		res = append(res, err)
 	}
 
-	if err := m.validateEdgeGatewayGroup(formats); err != nil {
+	if err := m.validateApplication(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1355,19 +1681,19 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) Validate(formats strfmt.Regis
 		res = append(res, err)
 	}
 
-	if err := m.validateVdsesEvery(formats); err != nil {
+	if err := m.validateUsage(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateVdsesNone(formats); err != nil {
+	if err := m.validateUsageIn(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateVdsesSome(formats); err != nil {
+	if err := m.validateUsageNot(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateVpcService(formats); err != nil {
+	if err := m.validateUsageNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1377,7 +1703,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) Validate(formats strfmt.Regis
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateAND(formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) validateAND(formats strfmt.Registry) error {
 	if swag.IsZero(m.AND) { // not required
 		return nil
 	}
@@ -1403,7 +1729,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateAND(formats strfmt.Re
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateNOT(formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) validateNOT(formats strfmt.Registry) error {
 	if swag.IsZero(m.NOT) { // not required
 		return nil
 	}
@@ -1429,7 +1755,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateNOT(formats strfmt.Re
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateOR(formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) validateOR(formats strfmt.Registry) error {
 	if swag.IsZero(m.OR) { // not required
 		return nil
 	}
@@ -1455,17 +1781,17 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateOR(formats strfmt.Reg
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEdgeGatewayGroup(formats strfmt.Registry) error {
-	if swag.IsZero(m.EdgeGatewayGroup) { // not required
+func (m *RegistryServiceWhereInput) validateApplication(formats strfmt.Registry) error {
+	if swag.IsZero(m.Application) { // not required
 		return nil
 	}
 
-	if m.EdgeGatewayGroup != nil {
-		if err := m.EdgeGatewayGroup.Validate(formats); err != nil {
+	if m.Application != nil {
+		if err := m.Application.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("edge_gateway_group")
+				return ve.ValidateName("application")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("edge_gateway_group")
+				return ce.ValidateName("application")
 			}
 			return err
 		}
@@ -1474,7 +1800,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEdgeGatewayGroup(form
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) validateEntityAsyncStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatus) { // not required
 		return nil
 	}
@@ -1493,7 +1819,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEntityAsyncStatus(for
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) validateEntityAsyncStatusIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusIn) { // not required
 		return nil
 	}
@@ -1514,7 +1840,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEntityAsyncStatusIn(f
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) validateEntityAsyncStatusNot(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusNot) { // not required
 		return nil
 	}
@@ -1533,7 +1859,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEntityAsyncStatusNot(
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) error {
 	if swag.IsZero(m.EntityAsyncStatusNotIn) { // not required
 		return nil
 	}
@@ -1554,17 +1880,17 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEntityAsyncStatusNotI
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateVdsesEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.VdsesEvery) { // not required
+func (m *RegistryServiceWhereInput) validateUsage(formats strfmt.Registry) error {
+	if swag.IsZero(m.Usage) { // not required
 		return nil
 	}
 
-	if m.VdsesEvery != nil {
-		if err := m.VdsesEvery.Validate(formats); err != nil {
+	if m.Usage != nil {
+		if err := m.Usage.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vdses_every")
+				return ve.ValidateName("usage")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vdses_every")
+				return ce.ValidateName("usage")
 			}
 			return err
 		}
@@ -1573,17 +1899,38 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateVdsesEvery(formats st
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateVdsesNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.VdsesNone) { // not required
+func (m *RegistryServiceWhereInput) validateUsageIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageIn) { // not required
 		return nil
 	}
 
-	if m.VdsesNone != nil {
-		if err := m.VdsesNone.Validate(formats); err != nil {
+	for i := 0; i < len(m.UsageIn); i++ {
+
+		if err := m.UsageIn[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vdses_none")
+				return ve.ValidateName("usage_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vdses_none")
+				return ce.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *RegistryServiceWhereInput) validateUsageNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageNot) { // not required
+		return nil
+	}
+
+	if m.UsageNot != nil {
+		if err := m.UsageNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not")
 			}
 			return err
 		}
@@ -1592,46 +1939,29 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateVdsesNone(formats str
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateVdsesSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.VdsesSome) { // not required
+func (m *RegistryServiceWhereInput) validateUsageNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageNotIn) { // not required
 		return nil
 	}
 
-	if m.VdsesSome != nil {
-		if err := m.VdsesSome.Validate(formats); err != nil {
+	for i := 0; i < len(m.UsageNotIn); i++ {
+
+		if err := m.UsageNotIn[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vdses_some")
+				return ve.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vdses_some")
+				return ce.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
+
 	}
 
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateVpcService(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcService) { // not required
-		return nil
-	}
-
-	if m.VpcService != nil {
-		if err := m.VpcService.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_service")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this virtual private cloud edge gateway where input based on the context it is used
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this registry service where input based on the context it is used
+func (m *RegistryServiceWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateAND(ctx, formats); err != nil {
@@ -1646,7 +1976,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) ContextValidate(ctx context.C
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateEdgeGatewayGroup(ctx, formats); err != nil {
+	if err := m.contextValidateApplication(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1666,19 +1996,19 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) ContextValidate(ctx context.C
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVdsesEvery(ctx, formats); err != nil {
+	if err := m.contextValidateUsage(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVdsesNone(ctx, formats); err != nil {
+	if err := m.contextValidateUsageIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVdsesSome(ctx, formats); err != nil {
+	if err := m.contextValidateUsageNot(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVpcService(ctx, formats); err != nil {
+	if err := m.contextValidateUsageNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1688,7 +2018,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) ContextValidate(ctx context.C
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateAND(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateAND(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.AND); i++ {
 
@@ -1708,7 +2038,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateAND(ctx contex
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateNOT(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateNOT(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.NOT); i++ {
 
@@ -1728,7 +2058,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateNOT(ctx contex
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.OR); i++ {
 
@@ -1748,14 +2078,14 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateOR(ctx context
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEdgeGatewayGroup(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateApplication(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.EdgeGatewayGroup != nil {
-		if err := m.EdgeGatewayGroup.ContextValidate(ctx, formats); err != nil {
+	if m.Application != nil {
+		if err := m.Application.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("edge_gateway_group")
+				return ve.ValidateName("application")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("edge_gateway_group")
+				return ce.ValidateName("application")
 			}
 			return err
 		}
@@ -1764,7 +2094,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEdgeGatewayGro
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatus != nil {
 		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
@@ -1780,7 +2110,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEntityAsyncSta
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateEntityAsyncStatusIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.EntityAsyncStatusIn); i++ {
 
@@ -1798,7 +2128,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEntityAsyncSta
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateEntityAsyncStatusNot(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EntityAsyncStatusNot != nil {
 		if err := m.EntityAsyncStatusNot.ContextValidate(ctx, formats); err != nil {
@@ -1814,7 +2144,7 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEntityAsyncSta
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.EntityAsyncStatusNotIn); i++ {
 
@@ -1832,14 +2162,14 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEntityAsyncSta
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateVdsesEvery(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateUsage(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.VdsesEvery != nil {
-		if err := m.VdsesEvery.ContextValidate(ctx, formats); err != nil {
+	if m.Usage != nil {
+		if err := m.Usage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vdses_every")
+				return ve.ValidateName("usage")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vdses_every")
+				return ce.ValidateName("usage")
 			}
 			return err
 		}
@@ -1848,14 +2178,32 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateVdsesEvery(ctx
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateVdsesNone(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateUsageIn(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.VdsesNone != nil {
-		if err := m.VdsesNone.ContextValidate(ctx, formats); err != nil {
+	for i := 0; i < len(m.UsageIn); i++ {
+
+		if err := m.UsageIn[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vdses_none")
+				return ve.ValidateName("usage_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vdses_none")
+				return ce.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *RegistryServiceWhereInput) contextValidateUsageNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UsageNot != nil {
+		if err := m.UsageNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not")
 			}
 			return err
 		}
@@ -1864,40 +2212,26 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateVdsesNone(ctx 
 	return nil
 }
 
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateVdsesSome(ctx context.Context, formats strfmt.Registry) error {
+func (m *RegistryServiceWhereInput) contextValidateUsageNotIn(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.VdsesSome != nil {
-		if err := m.VdsesSome.ContextValidate(ctx, formats); err != nil {
+	for i := 0; i < len(m.UsageNotIn); i++ {
+
+		if err := m.UsageNotIn[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vdses_some")
+				return ve.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vdses_some")
+				return ce.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
-	}
 
-	return nil
-}
-
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcService != nil {
-		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_service")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_service")
-			}
-			return err
-		}
 	}
 
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) MarshalBinary() ([]byte, error) {
+func (m *RegistryServiceWhereInput) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -1905,8 +2239,8 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) MarshalBinary() ([]byte, erro
 }
 
 // UnmarshalBinary interface implementation
-func (m *VirtualPrivateCloudEdgeGatewayWhereInput) UnmarshalBinary(b []byte) error {
-	var res VirtualPrivateCloudEdgeGatewayWhereInput
+func (m *RegistryServiceWhereInput) UnmarshalBinary(b []byte) error {
+	var res RegistryServiceWhereInput
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
