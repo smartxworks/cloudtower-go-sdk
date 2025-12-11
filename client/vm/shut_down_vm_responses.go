@@ -62,7 +62,7 @@ func NewShutDownVMOK() *ShutDownVMOK {
 ShutDownVMOK shut down Vm o k
 */
 type ShutDownVMOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.WithTaskVM
 }
@@ -76,11 +76,11 @@ func (o *ShutDownVMOK) GetPayload() []*models.WithTaskVM {
 
 func (o *ShutDownVMOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -101,7 +101,7 @@ func NewShutDownVMBadRequest() *ShutDownVMBadRequest {
 Bad request
 */
 type ShutDownVMBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -115,11 +115,11 @@ func (o *ShutDownVMBadRequest) GetPayload() *models.ErrorBody {
 
 func (o *ShutDownVMBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -142,7 +142,7 @@ func NewShutDownVMNotFound() *ShutDownVMNotFound {
 Not found
 */
 type ShutDownVMNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -156,11 +156,11 @@ func (o *ShutDownVMNotFound) GetPayload() *models.ErrorBody {
 
 func (o *ShutDownVMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -183,7 +183,7 @@ func NewShutDownVMInternalServerError() *ShutDownVMInternalServerError {
 Server error
 */
 type ShutDownVMInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -197,11 +197,11 @@ func (o *ShutDownVMInternalServerError) GetPayload() *models.ErrorBody {
 
 func (o *ShutDownVMInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

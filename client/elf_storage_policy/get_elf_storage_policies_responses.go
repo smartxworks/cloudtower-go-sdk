@@ -62,7 +62,7 @@ func NewGetElfStoragePoliciesOK() *GetElfStoragePoliciesOK {
 GetElfStoragePoliciesOK get elf storage policies o k
 */
 type GetElfStoragePoliciesOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.ElfStoragePolicy
 }
@@ -76,11 +76,11 @@ func (o *GetElfStoragePoliciesOK) GetPayload() []*models.ElfStoragePolicy {
 
 func (o *GetElfStoragePoliciesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -101,7 +101,7 @@ func NewGetElfStoragePoliciesBadRequest() *GetElfStoragePoliciesBadRequest {
 Bad request
 */
 type GetElfStoragePoliciesBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -115,11 +115,11 @@ func (o *GetElfStoragePoliciesBadRequest) GetPayload() *models.ErrorBody {
 
 func (o *GetElfStoragePoliciesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -142,7 +142,7 @@ func NewGetElfStoragePoliciesNotFound() *GetElfStoragePoliciesNotFound {
 Not found
 */
 type GetElfStoragePoliciesNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -156,11 +156,11 @@ func (o *GetElfStoragePoliciesNotFound) GetPayload() *models.ErrorBody {
 
 func (o *GetElfStoragePoliciesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -183,7 +183,7 @@ func NewGetElfStoragePoliciesInternalServerError() *GetElfStoragePoliciesInterna
 Server error
 */
 type GetElfStoragePoliciesInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -197,11 +197,11 @@ func (o *GetElfStoragePoliciesInternalServerError) GetPayload() *models.ErrorBod
 
 func (o *GetElfStoragePoliciesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

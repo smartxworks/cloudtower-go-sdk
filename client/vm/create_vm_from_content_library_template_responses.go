@@ -62,7 +62,7 @@ func NewCreateVMFromContentLibraryTemplateOK() *CreateVMFromContentLibraryTempla
 CreateVMFromContentLibraryTemplateOK create Vm from content library template o k
 */
 type CreateVMFromContentLibraryTemplateOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.WithTaskVM
 }
@@ -76,11 +76,11 @@ func (o *CreateVMFromContentLibraryTemplateOK) GetPayload() []*models.WithTaskVM
 
 func (o *CreateVMFromContentLibraryTemplateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -101,7 +101,7 @@ func NewCreateVMFromContentLibraryTemplateBadRequest() *CreateVMFromContentLibra
 Bad request
 */
 type CreateVMFromContentLibraryTemplateBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -115,11 +115,11 @@ func (o *CreateVMFromContentLibraryTemplateBadRequest) GetPayload() *models.Erro
 
 func (o *CreateVMFromContentLibraryTemplateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -142,7 +142,7 @@ func NewCreateVMFromContentLibraryTemplateNotFound() *CreateVMFromContentLibrary
 Not found
 */
 type CreateVMFromContentLibraryTemplateNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -156,11 +156,11 @@ func (o *CreateVMFromContentLibraryTemplateNotFound) GetPayload() *models.ErrorB
 
 func (o *CreateVMFromContentLibraryTemplateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -183,7 +183,7 @@ func NewCreateVMFromContentLibraryTemplateInternalServerError() *CreateVMFromCon
 Server error
 */
 type CreateVMFromContentLibraryTemplateInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -197,11 +197,11 @@ func (o *CreateVMFromContentLibraryTemplateInternalServerError) GetPayload() *mo
 
 func (o *CreateVMFromContentLibraryTemplateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

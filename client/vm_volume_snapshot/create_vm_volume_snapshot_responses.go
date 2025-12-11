@@ -62,7 +62,7 @@ func NewCreateVMVolumeSnapshotOK() *CreateVMVolumeSnapshotOK {
 CreateVMVolumeSnapshotOK create Vm volume snapshot o k
 */
 type CreateVMVolumeSnapshotOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.WithTaskVMVolumeSnapshot
 }
@@ -76,11 +76,11 @@ func (o *CreateVMVolumeSnapshotOK) GetPayload() []*models.WithTaskVMVolumeSnapsh
 
 func (o *CreateVMVolumeSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -101,7 +101,7 @@ func NewCreateVMVolumeSnapshotBadRequest() *CreateVMVolumeSnapshotBadRequest {
 Bad request
 */
 type CreateVMVolumeSnapshotBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -115,11 +115,11 @@ func (o *CreateVMVolumeSnapshotBadRequest) GetPayload() *models.ErrorBody {
 
 func (o *CreateVMVolumeSnapshotBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -142,7 +142,7 @@ func NewCreateVMVolumeSnapshotNotFound() *CreateVMVolumeSnapshotNotFound {
 Not found
 */
 type CreateVMVolumeSnapshotNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -156,11 +156,11 @@ func (o *CreateVMVolumeSnapshotNotFound) GetPayload() *models.ErrorBody {
 
 func (o *CreateVMVolumeSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -183,7 +183,7 @@ func NewCreateVMVolumeSnapshotInternalServerError() *CreateVMVolumeSnapshotInter
 Server error
 */
 type CreateVMVolumeSnapshotInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -197,11 +197,11 @@ func (o *CreateVMVolumeSnapshotInternalServerError) GetPayload() *models.ErrorBo
 
 func (o *CreateVMVolumeSnapshotInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

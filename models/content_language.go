@@ -30,14 +30,8 @@ func (m ContentLanguage) Pointer() *ContentLanguage {
 
 const (
 
-	// ContentLanguageZhDashCN captures enum value "zh-CN"
-	ContentLanguageZhDashCN ContentLanguage = "zh-CN"
-
 	// ContentLanguageEnDashUS captures enum value "en-US"
 	ContentLanguageEnDashUS ContentLanguage = "en-US"
-
-	// ContentLanguageAsterisk captures enum value "*"
-	ContentLanguageAsterisk ContentLanguage = "*"
 )
 
 // for schema
@@ -45,7 +39,7 @@ var contentLanguageEnum []interface{}
 
 func init() {
 	var res []ContentLanguage
-	if err := json.Unmarshal([]byte(`["zh-CN","en-US","*"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["en-US"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

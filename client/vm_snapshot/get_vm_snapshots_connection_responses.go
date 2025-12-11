@@ -62,7 +62,7 @@ func NewGetVMSnapshotsConnectionOK() *GetVMSnapshotsConnectionOK {
 GetVMSnapshotsConnectionOK get Vm snapshots connection o k
 */
 type GetVMSnapshotsConnectionOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.VMSnapshotConnection
 }
@@ -76,11 +76,11 @@ func (o *GetVMSnapshotsConnectionOK) GetPayload() *models.VMSnapshotConnection {
 
 func (o *GetVMSnapshotsConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.VMSnapshotConnection)
@@ -103,7 +103,7 @@ func NewGetVMSnapshotsConnectionBadRequest() *GetVMSnapshotsConnectionBadRequest
 Bad request
 */
 type GetVMSnapshotsConnectionBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *GetVMSnapshotsConnectionBadRequest) GetPayload() *models.ErrorBody {
 
 func (o *GetVMSnapshotsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewGetVMSnapshotsConnectionNotFound() *GetVMSnapshotsConnectionNotFound {
 Not found
 */
 type GetVMSnapshotsConnectionNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *GetVMSnapshotsConnectionNotFound) GetPayload() *models.ErrorBody {
 
 func (o *GetVMSnapshotsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewGetVMSnapshotsConnectionInternalServerError() *GetVMSnapshotsConnectionI
 Server error
 */
 type GetVMSnapshotsConnectionInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *GetVMSnapshotsConnectionInternalServerError) GetPayload() *models.Error
 
 func (o *GetVMSnapshotsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

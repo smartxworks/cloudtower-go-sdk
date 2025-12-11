@@ -245,24 +245,6 @@ type IscsiTargetWhereInput struct {
 	// bps wr not in
 	BpsWrNotIn []int64 `json:"bps_wr_not_in,omitempty"`
 
-	// business host groups every
-	BusinessHostGroupsEvery *BusinessHostGroupWhereInput `json:"business_host_groups_every,omitempty"`
-
-	// business host groups none
-	BusinessHostGroupsNone *BusinessHostGroupWhereInput `json:"business_host_groups_none,omitempty"`
-
-	// business host groups some
-	BusinessHostGroupsSome *BusinessHostGroupWhereInput `json:"business_host_groups_some,omitempty"`
-
-	// business hosts every
-	BusinessHostsEvery *BusinessHostWhereInput `json:"business_hosts_every,omitempty"`
-
-	// business hosts none
-	BusinessHostsNone *BusinessHostWhereInput `json:"business_hosts_none,omitempty"`
-
-	// business hosts some
-	BusinessHostsSome *BusinessHostWhereInput `json:"business_hosts_some,omitempty"`
-
 	// chap enabled
 	ChapEnabled *bool `json:"chap_enabled,omitempty"`
 
@@ -908,15 +890,6 @@ type IscsiTargetWhereInput struct {
 	// iqn whitelist starts with
 	IqnWhitelistStartsWith *string `json:"iqn_whitelist_starts_with,omitempty"`
 
-	// iscsi connections every
-	IscsiConnectionsEvery *IscsiConnectionWhereInput `json:"iscsi_connections_every,omitempty"`
-
-	// iscsi connections none
-	IscsiConnectionsNone *IscsiConnectionWhereInput `json:"iscsi_connections_none,omitempty"`
-
-	// iscsi connections some
-	IscsiConnectionsSome *IscsiConnectionWhereInput `json:"iscsi_connections_some,omitempty"`
-
 	// iscsi luns num
 	IscsiLunsNum *int32 `json:"iscsi_luns_num,omitempty"`
 
@@ -1292,18 +1265,6 @@ type IscsiTargetWhereInputMarshalOpts struct {
 	BpsWrNot_Explicit_Null_When_Empty bool
 
 	BpsWrNotIn_Explicit_Null_When_Empty bool
-
-	BusinessHostGroupsEvery_Explicit_Null_When_Empty bool
-
-	BusinessHostGroupsNone_Explicit_Null_When_Empty bool
-
-	BusinessHostGroupsSome_Explicit_Null_When_Empty bool
-
-	BusinessHostsEvery_Explicit_Null_When_Empty bool
-
-	BusinessHostsNone_Explicit_Null_When_Empty bool
-
-	BusinessHostsSome_Explicit_Null_When_Empty bool
 
 	ChapEnabled_Explicit_Null_When_Empty bool
 
@@ -1734,12 +1695,6 @@ type IscsiTargetWhereInputMarshalOpts struct {
 	IqnWhitelistNotStartsWith_Explicit_Null_When_Empty bool
 
 	IqnWhitelistStartsWith_Explicit_Null_When_Empty bool
-
-	IscsiConnectionsEvery_Explicit_Null_When_Empty bool
-
-	IscsiConnectionsNone_Explicit_Null_When_Empty bool
-
-	IscsiConnectionsSome_Explicit_Null_When_Empty bool
 
 	IscsiLunsNum_Explicit_Null_When_Empty bool
 
@@ -3267,126 +3222,6 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
-		first = false
-	}
-
-	// handle nullable field business_host_groups_every
-	if m.BusinessHostGroupsEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups_every\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostGroupsEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroupsEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups_every\":null")
-		first = false
-	}
-
-	// handle nullable field business_host_groups_none
-	if m.BusinessHostGroupsNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups_none\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostGroupsNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroupsNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups_none\":null")
-		first = false
-	}
-
-	// handle nullable field business_host_groups_some
-	if m.BusinessHostGroupsSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups_some\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostGroupsSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroupsSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups_some\":null")
-		first = false
-	}
-
-	// handle nullable field business_hosts_every
-	if m.BusinessHostsEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts_every\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostsEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostsEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts_every\":null")
-		first = false
-	}
-
-	// handle nullable field business_hosts_none
-	if m.BusinessHostsNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts_none\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostsNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostsNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts_none\":null")
-		first = false
-	}
-
-	// handle nullable field business_hosts_some
-	if m.BusinessHostsSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts_some\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostsSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostsSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts_some\":null")
 		first = false
 	}
 
@@ -7426,66 +7261,6 @@ func (m IscsiTargetWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field iscsi_connections_every
-	if m.IscsiConnectionsEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_connections_every\":")
-		bytes, err := swag.WriteJSON(m.IscsiConnectionsEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiConnectionsEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_connections_every\":null")
-		first = false
-	}
-
-	// handle nullable field iscsi_connections_none
-	if m.IscsiConnectionsNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_connections_none\":")
-		bytes, err := swag.WriteJSON(m.IscsiConnectionsNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiConnectionsNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_connections_none\":null")
-		first = false
-	}
-
-	// handle nullable field iscsi_connections_some
-	if m.IscsiConnectionsSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_connections_some\":")
-		bytes, err := swag.WriteJSON(m.IscsiConnectionsSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiConnectionsSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_connections_some\":null")
-		first = false
-	}
-
 	// handle nullable field iscsi_luns_num
 	if m.IscsiLunsNum != nil {
 		if !first {
@@ -8902,30 +8677,6 @@ func (m *IscsiTargetWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateBusinessHostGroupsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBusinessHostGroupsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBusinessHostGroupsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBusinessHostsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBusinessHostsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBusinessHostsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateCluster(formats); err != nil {
 		res = append(res, err)
 	}
@@ -8975,18 +8726,6 @@ func (m *IscsiTargetWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEntityAsyncStatusNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIscsiConnectionsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIscsiConnectionsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIscsiConnectionsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -9109,120 +8848,6 @@ func (m *IscsiTargetWhereInput) validateOR(formats strfmt.Registry) error {
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) validateBusinessHostGroupsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostGroupsEvery) { // not required
-		return nil
-	}
-
-	if m.BusinessHostGroupsEvery != nil {
-		if err := m.BusinessHostGroupsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_host_groups_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_host_groups_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) validateBusinessHostGroupsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostGroupsNone) { // not required
-		return nil
-	}
-
-	if m.BusinessHostGroupsNone != nil {
-		if err := m.BusinessHostGroupsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_host_groups_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_host_groups_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) validateBusinessHostGroupsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostGroupsSome) { // not required
-		return nil
-	}
-
-	if m.BusinessHostGroupsSome != nil {
-		if err := m.BusinessHostGroupsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_host_groups_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_host_groups_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) validateBusinessHostsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostsEvery) { // not required
-		return nil
-	}
-
-	if m.BusinessHostsEvery != nil {
-		if err := m.BusinessHostsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_hosts_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_hosts_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) validateBusinessHostsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostsNone) { // not required
-		return nil
-	}
-
-	if m.BusinessHostsNone != nil {
-		if err := m.BusinessHostsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_hosts_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_hosts_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) validateBusinessHostsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostsSome) { // not required
-		return nil
-	}
-
-	if m.BusinessHostsSome != nil {
-		if err := m.BusinessHostsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_hosts_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_hosts_some")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -9487,63 +9112,6 @@ func (m *IscsiTargetWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Re
 	return nil
 }
 
-func (m *IscsiTargetWhereInput) validateIscsiConnectionsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiConnectionsEvery) { // not required
-		return nil
-	}
-
-	if m.IscsiConnectionsEvery != nil {
-		if err := m.IscsiConnectionsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_connections_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_connections_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) validateIscsiConnectionsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiConnectionsNone) { // not required
-		return nil
-	}
-
-	if m.IscsiConnectionsNone != nil {
-		if err := m.IscsiConnectionsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_connections_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_connections_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) validateIscsiConnectionsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiConnectionsSome) { // not required
-		return nil
-	}
-
-	if m.IscsiConnectionsSome != nil {
-		if err := m.IscsiConnectionsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_connections_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_connections_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *IscsiTargetWhereInput) validateLabelsEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.LabelsEvery) { // not required
 		return nil
@@ -9754,30 +9322,6 @@ func (m *IscsiTargetWhereInput) ContextValidate(ctx context.Context, formats str
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateBusinessHostGroupsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHostGroupsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHostGroupsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHostsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHostsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHostsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateCluster(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -9827,18 +9371,6 @@ func (m *IscsiTargetWhereInput) ContextValidate(ctx context.Context, formats str
 	}
 
 	if err := m.contextValidateEntityAsyncStatusNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIscsiConnectionsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIscsiConnectionsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIscsiConnectionsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -9943,102 +9475,6 @@ func (m *IscsiTargetWhereInput) contextValidateOR(ctx context.Context, formats s
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateBusinessHostGroupsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BusinessHostGroupsEvery != nil {
-		if err := m.BusinessHostGroupsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_host_groups_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_host_groups_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateBusinessHostGroupsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BusinessHostGroupsNone != nil {
-		if err := m.BusinessHostGroupsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_host_groups_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_host_groups_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateBusinessHostGroupsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BusinessHostGroupsSome != nil {
-		if err := m.BusinessHostGroupsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_host_groups_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_host_groups_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateBusinessHostsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BusinessHostsEvery != nil {
-		if err := m.BusinessHostsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_hosts_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_hosts_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateBusinessHostsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BusinessHostsNone != nil {
-		if err := m.BusinessHostsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_hosts_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_hosts_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateBusinessHostsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BusinessHostsSome != nil {
-		if err := m.BusinessHostsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_hosts_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_hosts_some")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -10259,54 +9695,6 @@ func (m *IscsiTargetWhereInput) contextValidateEntityAsyncStatusNotIn(ctx contex
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateIscsiConnectionsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IscsiConnectionsEvery != nil {
-		if err := m.IscsiConnectionsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_connections_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_connections_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateIscsiConnectionsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IscsiConnectionsNone != nil {
-		if err := m.IscsiConnectionsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_connections_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_connections_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiTargetWhereInput) contextValidateIscsiConnectionsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IscsiConnectionsSome != nil {
-		if err := m.IscsiConnectionsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("iscsi_connections_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("iscsi_connections_some")
-			}
-			return err
-		}
 	}
 
 	return nil

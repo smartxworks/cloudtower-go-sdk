@@ -62,7 +62,7 @@ func NewGetUsbDevicesConnectionOK() *GetUsbDevicesConnectionOK {
 GetUsbDevicesConnectionOK get usb devices connection o k
 */
 type GetUsbDevicesConnectionOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.UsbDeviceConnection
 }
@@ -76,11 +76,11 @@ func (o *GetUsbDevicesConnectionOK) GetPayload() *models.UsbDeviceConnection {
 
 func (o *GetUsbDevicesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.UsbDeviceConnection)
@@ -103,7 +103,7 @@ func NewGetUsbDevicesConnectionBadRequest() *GetUsbDevicesConnectionBadRequest {
 Bad request
 */
 type GetUsbDevicesConnectionBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *GetUsbDevicesConnectionBadRequest) GetPayload() *models.ErrorBody {
 
 func (o *GetUsbDevicesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewGetUsbDevicesConnectionNotFound() *GetUsbDevicesConnectionNotFound {
 Not found
 */
 type GetUsbDevicesConnectionNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *GetUsbDevicesConnectionNotFound) GetPayload() *models.ErrorBody {
 
 func (o *GetUsbDevicesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewGetUsbDevicesConnectionInternalServerError() *GetUsbDevicesConnectionInt
 Server error
 */
 type GetUsbDevicesConnectionInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *GetUsbDevicesConnectionInternalServerError) GetPayload() *models.ErrorB
 
 func (o *GetUsbDevicesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

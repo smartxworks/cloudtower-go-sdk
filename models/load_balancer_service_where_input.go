@@ -107,15 +107,6 @@ type LoadBalancerServiceWhereInput struct {
 	// vm instances some
 	VMInstancesSome *VMWhereInput `json:"vm_instances_some,omitempty"`
 
-	// vnet bonds every
-	VnetBondsEvery *VnetBondWhereInput `json:"vnet_bonds_every,omitempty"`
-
-	// vnet bonds none
-	VnetBondsNone *VnetBondWhereInput `json:"vnet_bonds_none,omitempty"`
-
-	// vnet bonds some
-	VnetBondsSome *VnetBondWhereInput `json:"vnet_bonds_some,omitempty"`
-
 	MarshalOpts *LoadBalancerServiceWhereInputMarshalOpts `json:"-"`
 }
 
@@ -177,12 +168,6 @@ type LoadBalancerServiceWhereInputMarshalOpts struct {
 	VMInstancesNone_Explicit_Null_When_Empty bool
 
 	VMInstancesSome_Explicit_Null_When_Empty bool
-
-	VnetBondsEvery_Explicit_Null_When_Empty bool
-
-	VnetBondsNone_Explicit_Null_When_Empty bool
-
-	VnetBondsSome_Explicit_Null_When_Empty bool
 }
 
 func (m LoadBalancerServiceWhereInput) MarshalJSON() ([]byte, error) {
@@ -717,66 +702,6 @@ func (m LoadBalancerServiceWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field vnet_bonds_every
-	if m.VnetBondsEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vnet_bonds_every\":")
-		bytes, err := swag.WriteJSON(m.VnetBondsEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VnetBondsEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vnet_bonds_every\":null")
-		first = false
-	}
-
-	// handle nullable field vnet_bonds_none
-	if m.VnetBondsNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vnet_bonds_none\":")
-		bytes, err := swag.WriteJSON(m.VnetBondsNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VnetBondsNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vnet_bonds_none\":null")
-		first = false
-	}
-
-	// handle nullable field vnet_bonds_some
-	if m.VnetBondsSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vnet_bonds_some\":")
-		bytes, err := swag.WriteJSON(m.VnetBondsSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VnetBondsSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vnet_bonds_some\":null")
-		first = false
-	}
-
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -842,18 +767,6 @@ func (m *LoadBalancerServiceWhereInput) Validate(formats strfmt.Registry) error 
 	}
 
 	if err := m.validateVMInstancesSome(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVnetBondsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVnetBondsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVnetBondsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1177,63 +1090,6 @@ func (m *LoadBalancerServiceWhereInput) validateVMInstancesSome(formats strfmt.R
 	return nil
 }
 
-func (m *LoadBalancerServiceWhereInput) validateVnetBondsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.VnetBondsEvery) { // not required
-		return nil
-	}
-
-	if m.VnetBondsEvery != nil {
-		if err := m.VnetBondsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vnet_bonds_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vnet_bonds_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LoadBalancerServiceWhereInput) validateVnetBondsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.VnetBondsNone) { // not required
-		return nil
-	}
-
-	if m.VnetBondsNone != nil {
-		if err := m.VnetBondsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vnet_bonds_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vnet_bonds_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LoadBalancerServiceWhereInput) validateVnetBondsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.VnetBondsSome) { // not required
-		return nil
-	}
-
-	if m.VnetBondsSome != nil {
-		if err := m.VnetBondsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vnet_bonds_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vnet_bonds_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this load balancer service where input based on the context it is used
 func (m *LoadBalancerServiceWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -1295,18 +1151,6 @@ func (m *LoadBalancerServiceWhereInput) ContextValidate(ctx context.Context, for
 	}
 
 	if err := m.contextValidateVMInstancesSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVnetBondsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVnetBondsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVnetBondsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1568,54 +1412,6 @@ func (m *LoadBalancerServiceWhereInput) contextValidateVMInstancesSome(ctx conte
 				return ve.ValidateName("vm_instances_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vm_instances_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LoadBalancerServiceWhereInput) contextValidateVnetBondsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VnetBondsEvery != nil {
-		if err := m.VnetBondsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vnet_bonds_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vnet_bonds_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LoadBalancerServiceWhereInput) contextValidateVnetBondsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VnetBondsNone != nil {
-		if err := m.VnetBondsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vnet_bonds_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vnet_bonds_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *LoadBalancerServiceWhereInput) contextValidateVnetBondsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VnetBondsSome != nil {
-		if err := m.VnetBondsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vnet_bonds_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vnet_bonds_some")
 			}
 			return err
 		}

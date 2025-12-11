@@ -62,7 +62,7 @@ func NewGetVirtualPrivateCloudRouteTablesConnectionOK() *GetVirtualPrivateCloudR
 GetVirtualPrivateCloudRouteTablesConnectionOK get virtual private cloud route tables connection o k
 */
 type GetVirtualPrivateCloudRouteTablesConnectionOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.VirtualPrivateCloudRouteTableConnection
 }
@@ -76,11 +76,11 @@ func (o *GetVirtualPrivateCloudRouteTablesConnectionOK) GetPayload() *models.Vir
 
 func (o *GetVirtualPrivateCloudRouteTablesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.VirtualPrivateCloudRouteTableConnection)
@@ -103,7 +103,7 @@ func NewGetVirtualPrivateCloudRouteTablesConnectionBadRequest() *GetVirtualPriva
 Bad request
 */
 type GetVirtualPrivateCloudRouteTablesConnectionBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *GetVirtualPrivateCloudRouteTablesConnectionBadRequest) GetPayload() *mo
 
 func (o *GetVirtualPrivateCloudRouteTablesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewGetVirtualPrivateCloudRouteTablesConnectionNotFound() *GetVirtualPrivate
 Not found
 */
 type GetVirtualPrivateCloudRouteTablesConnectionNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *GetVirtualPrivateCloudRouteTablesConnectionNotFound) GetPayload() *mode
 
 func (o *GetVirtualPrivateCloudRouteTablesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewGetVirtualPrivateCloudRouteTablesConnectionInternalServerError() *GetVir
 Server error
 */
 type GetVirtualPrivateCloudRouteTablesConnectionInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *GetVirtualPrivateCloudRouteTablesConnectionInternalServerError) GetPayl
 
 func (o *GetVirtualPrivateCloudRouteTablesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

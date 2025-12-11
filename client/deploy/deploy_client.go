@@ -32,8 +32,6 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetDeploys(params *GetDeploysParams, opts ...ClientOption) (*GetDeploysOK, error)
 
-	GetDeploysConnection(params *GetDeploysConnectionParams, opts ...ClientOption) (*GetDeploysConnectionOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -72,44 +70,6 @@ func (a *Client) GetDeploys(params *GetDeploysParams, opts ...ClientOption) (*Ge
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetDeploys: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetDeploysConnection get deploys connection API
-*/
-func (a *Client) GetDeploysConnection(params *GetDeploysConnectionParams, opts ...ClientOption) (*GetDeploysConnectionOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetDeploysConnectionParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "GetDeploysConnection",
-		Method:             "POST",
-		PathPattern:        "/get-deploys-connection",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetDeploysConnectionReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetDeploysConnectionOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for GetDeploysConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

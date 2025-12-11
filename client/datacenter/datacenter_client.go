@@ -30,59 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AddClustersToDatacenter(params *AddClustersToDatacenterParams, opts ...ClientOption) (*AddClustersToDatacenterOK, error)
-
 	CreateDatacenter(params *CreateDatacenterParams, opts ...ClientOption) (*CreateDatacenterOK, error)
-
-	DeleteDatacenter(params *DeleteDatacenterParams, opts ...ClientOption) (*DeleteDatacenterOK, error)
 
 	GetDatacenters(params *GetDatacentersParams, opts ...ClientOption) (*GetDatacentersOK, error)
 
 	GetDatacentersConnection(params *GetDatacentersConnectionParams, opts ...ClientOption) (*GetDatacentersConnectionOK, error)
 
-	RemoveClustersFromDatacenter(params *RemoveClustersFromDatacenterParams, opts ...ClientOption) (*RemoveClustersFromDatacenterOK, error)
-
-	UpdateDatacenter(params *UpdateDatacenterParams, opts ...ClientOption) (*UpdateDatacenterOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-  AddClustersToDatacenter add clusters to datacenter API
-*/
-func (a *Client) AddClustersToDatacenter(params *AddClustersToDatacenterParams, opts ...ClientOption) (*AddClustersToDatacenterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAddClustersToDatacenterParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "AddClustersToDatacenter",
-		Method:             "POST",
-		PathPattern:        "/add-clusters-to-datacenter",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &AddClustersToDatacenterReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AddClustersToDatacenterOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for AddClustersToDatacenter: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*
@@ -120,44 +74,6 @@ func (a *Client) CreateDatacenter(params *CreateDatacenterParams, opts ...Client
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CreateDatacenter: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteDatacenter delete datacenter API
-*/
-func (a *Client) DeleteDatacenter(params *DeleteDatacenterParams, opts ...ClientOption) (*DeleteDatacenterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteDatacenterParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "DeleteDatacenter",
-		Method:             "POST",
-		PathPattern:        "/delete-datacenter",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &DeleteDatacenterReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteDatacenterOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for DeleteDatacenter: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -234,82 +150,6 @@ func (a *Client) GetDatacentersConnection(params *GetDatacentersConnectionParams
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetDatacentersConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  RemoveClustersFromDatacenter remove clusters from datacenter API
-*/
-func (a *Client) RemoveClustersFromDatacenter(params *RemoveClustersFromDatacenterParams, opts ...ClientOption) (*RemoveClustersFromDatacenterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewRemoveClustersFromDatacenterParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "RemoveClustersFromDatacenter",
-		Method:             "POST",
-		PathPattern:        "/remove-clusters-from-datacenter",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &RemoveClustersFromDatacenterReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*RemoveClustersFromDatacenterOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for RemoveClustersFromDatacenter: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateDatacenter update datacenter API
-*/
-func (a *Client) UpdateDatacenter(params *UpdateDatacenterParams, opts ...ClientOption) (*UpdateDatacenterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateDatacenterParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UpdateDatacenter",
-		Method:             "POST",
-		PathPattern:        "/update-datacenter",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &UpdateDatacenterReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateDatacenterOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UpdateDatacenter: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

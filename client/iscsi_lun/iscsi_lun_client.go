@@ -30,10 +30,6 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CloneIscsiLunFromSnapshot(params *CloneIscsiLunFromSnapshotParams, opts ...ClientOption) (*CloneIscsiLunFromSnapshotOK, error)
-
-	CopyIscsiLun(params *CopyIscsiLunParams, opts ...ClientOption) (*CopyIscsiLunOK, error)
-
 	CreateIscsiLun(params *CreateIscsiLunParams, opts ...ClientOption) (*CreateIscsiLunOK, error)
 
 	DeleteIscsiLun(params *DeleteIscsiLunParams, opts ...ClientOption) (*DeleteIscsiLunOK, error)
@@ -42,87 +38,7 @@ type ClientService interface {
 
 	GetIscsiLunsConnection(params *GetIscsiLunsConnectionParams, opts ...ClientOption) (*GetIscsiLunsConnectionOK, error)
 
-	RollbackIscsiLunFromSnapshot(params *RollbackIscsiLunFromSnapshotParams, opts ...ClientOption) (*RollbackIscsiLunFromSnapshotOK, error)
-
-	UpdateIscsiLun(params *UpdateIscsiLunParams, opts ...ClientOption) (*UpdateIscsiLunOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-  CloneIscsiLunFromSnapshot clone iscsi lun from snapshot API
-*/
-func (a *Client) CloneIscsiLunFromSnapshot(params *CloneIscsiLunFromSnapshotParams, opts ...ClientOption) (*CloneIscsiLunFromSnapshotOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCloneIscsiLunFromSnapshotParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "CloneIscsiLunFromSnapshot",
-		Method:             "POST",
-		PathPattern:        "/clone-iscsi-lun-from-snapshot",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &CloneIscsiLunFromSnapshotReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*CloneIscsiLunFromSnapshotOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for CloneIscsiLunFromSnapshot: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  CopyIscsiLun copy iscsi lun API
-*/
-func (a *Client) CopyIscsiLun(params *CopyIscsiLunParams, opts ...ClientOption) (*CopyIscsiLunOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCopyIscsiLunParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "CopyIscsiLun",
-		Method:             "POST",
-		PathPattern:        "/copy-iscsi-lun",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &CopyIscsiLunReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*CopyIscsiLunOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for CopyIscsiLun: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*
@@ -274,82 +190,6 @@ func (a *Client) GetIscsiLunsConnection(params *GetIscsiLunsConnectionParams, op
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetIscsiLunsConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  RollbackIscsiLunFromSnapshot rollback iscsi lun from snapshot API
-*/
-func (a *Client) RollbackIscsiLunFromSnapshot(params *RollbackIscsiLunFromSnapshotParams, opts ...ClientOption) (*RollbackIscsiLunFromSnapshotOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewRollbackIscsiLunFromSnapshotParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "RollbackIscsiLunFromSnapshot",
-		Method:             "POST",
-		PathPattern:        "/rollback-iscsi-lun-from-snapshot",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &RollbackIscsiLunFromSnapshotReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*RollbackIscsiLunFromSnapshotOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for RollbackIscsiLunFromSnapshot: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateIscsiLun update iscsi lun API
-*/
-func (a *Client) UpdateIscsiLun(params *UpdateIscsiLunParams, opts ...ClientOption) (*UpdateIscsiLunOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateIscsiLunParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UpdateIscsiLun",
-		Method:             "POST",
-		PathPattern:        "/update-iscsi-lun",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &UpdateIscsiLunReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateIscsiLunOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UpdateIscsiLun: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

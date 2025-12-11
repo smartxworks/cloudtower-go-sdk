@@ -62,7 +62,7 @@ func NewGetVirtualPrivateCloudNatGatewaysConnectionOK() *GetVirtualPrivateCloudN
 GetVirtualPrivateCloudNatGatewaysConnectionOK get virtual private cloud nat gateways connection o k
 */
 type GetVirtualPrivateCloudNatGatewaysConnectionOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.VirtualPrivateCloudNatGatewayConnection
 }
@@ -76,11 +76,11 @@ func (o *GetVirtualPrivateCloudNatGatewaysConnectionOK) GetPayload() *models.Vir
 
 func (o *GetVirtualPrivateCloudNatGatewaysConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.VirtualPrivateCloudNatGatewayConnection)
@@ -103,7 +103,7 @@ func NewGetVirtualPrivateCloudNatGatewaysConnectionBadRequest() *GetVirtualPriva
 Bad request
 */
 type GetVirtualPrivateCloudNatGatewaysConnectionBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *GetVirtualPrivateCloudNatGatewaysConnectionBadRequest) GetPayload() *mo
 
 func (o *GetVirtualPrivateCloudNatGatewaysConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewGetVirtualPrivateCloudNatGatewaysConnectionNotFound() *GetVirtualPrivate
 Not found
 */
 type GetVirtualPrivateCloudNatGatewaysConnectionNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *GetVirtualPrivateCloudNatGatewaysConnectionNotFound) GetPayload() *mode
 
 func (o *GetVirtualPrivateCloudNatGatewaysConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewGetVirtualPrivateCloudNatGatewaysConnectionInternalServerError() *GetVir
 Server error
 */
 type GetVirtualPrivateCloudNatGatewaysConnectionInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *GetVirtualPrivateCloudNatGatewaysConnectionInternalServerError) GetPayl
 
 func (o *GetVirtualPrivateCloudNatGatewaysConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

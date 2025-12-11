@@ -32,13 +32,9 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateOrganization(params *CreateOrganizationParams, opts ...ClientOption) (*CreateOrganizationOK, error)
 
-	DeleteOrganization(params *DeleteOrganizationParams, opts ...ClientOption) (*DeleteOrganizationOK, error)
-
 	GetOrganizations(params *GetOrganizationsParams, opts ...ClientOption) (*GetOrganizationsOK, error)
 
 	GetOrganizationsConnection(params *GetOrganizationsConnectionParams, opts ...ClientOption) (*GetOrganizationsConnectionOK, error)
-
-	UpdateOrganization(params *UpdateOrganizationParams, opts ...ClientOption) (*UpdateOrganizationOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -78,44 +74,6 @@ func (a *Client) CreateOrganization(params *CreateOrganizationParams, opts ...Cl
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CreateOrganization: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteOrganization delete organization API
-*/
-func (a *Client) DeleteOrganization(params *DeleteOrganizationParams, opts ...ClientOption) (*DeleteOrganizationOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteOrganizationParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "DeleteOrganization",
-		Method:             "POST",
-		PathPattern:        "/delete-organization",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &DeleteOrganizationReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteOrganizationOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for DeleteOrganization: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -192,44 +150,6 @@ func (a *Client) GetOrganizationsConnection(params *GetOrganizationsConnectionPa
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetOrganizationsConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateOrganization update organization API
-*/
-func (a *Client) UpdateOrganization(params *UpdateOrganizationParams, opts ...ClientOption) (*UpdateOrganizationOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateOrganizationParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UpdateOrganization",
-		Method:             "POST",
-		PathPattern:        "/update-organization",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &UpdateOrganizationReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateOrganizationOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UpdateOrganization: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

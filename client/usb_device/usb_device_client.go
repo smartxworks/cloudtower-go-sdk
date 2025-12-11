@@ -34,10 +34,6 @@ type ClientService interface {
 
 	GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, opts ...ClientOption) (*GetUsbDevicesConnectionOK, error)
 
-	MountUsbDevice(params *MountUsbDeviceParams, opts ...ClientOption) (*MountUsbDeviceOK, error)
-
-	UnmountUsbDevice(params *UnmountUsbDeviceParams, opts ...ClientOption) (*UnmountUsbDeviceOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -114,82 +110,6 @@ func (a *Client) GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetUsbDevicesConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  MountUsbDevice mount usb device API
-*/
-func (a *Client) MountUsbDevice(params *MountUsbDeviceParams, opts ...ClientOption) (*MountUsbDeviceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewMountUsbDeviceParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "MountUsbDevice",
-		Method:             "POST",
-		PathPattern:        "/mount-usb-device",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &MountUsbDeviceReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*MountUsbDeviceOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for MountUsbDevice: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UnmountUsbDevice unmount usb device API
-*/
-func (a *Client) UnmountUsbDevice(params *UnmountUsbDeviceParams, opts ...ClientOption) (*UnmountUsbDeviceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUnmountUsbDeviceParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UnmountUsbDevice",
-		Method:             "POST",
-		PathPattern:        "/unmount-usb-device",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &UnmountUsbDeviceReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UnmountUsbDeviceOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UnmountUsbDevice: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

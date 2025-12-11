@@ -55,9 +55,6 @@ type GpuVMDetail struct {
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
-	// entity filter results
-	EntityFilterResults []*NestedVMEntityFilterResult `json:"entity_filter_results,omitempty"`
-
 	// firmware
 	// Required: true
 	Firmware *VMFirmware `json:"firmware"`
@@ -185,9 +182,6 @@ type GpuVMDetail struct {
 	// size
 	Size *int64 `json:"size,omitempty"`
 
-	// snapshot plan
-	SnapshotPlan *NestedSnapshotPlan `json:"snapshot_plan,omitempty"`
-
 	// snapshots
 	Snapshots []*NestedVMSnapshot `json:"snapshots,omitempty"`
 
@@ -257,8 +251,6 @@ type GpuVMDetailMarshalOpts struct {
 	DNSServers_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
-
-	EntityFilterResults_Explicit_Null_When_Empty bool
 
 	Firmware_Explicit_Null_When_Empty bool
 
@@ -335,8 +327,6 @@ type GpuVMDetailMarshalOpts struct {
 	ProvisionedSize_Explicit_Null_When_Empty bool
 
 	Size_Explicit_Null_When_Empty bool
-
-	SnapshotPlan_Explicit_Null_When_Empty bool
 
 	Snapshots_Explicit_Null_When_Empty bool
 
@@ -570,20 +560,6 @@ func (m GpuVMDetail) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"entityAsyncStatus\":null")
-		first = false
-	}
-
-	// handle non nullable field entity_filter_results with omitempty
-	if !swag.IsZero(m.EntityFilterResults) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"entity_filter_results\":")
-		bytes, err := swag.WriteJSON(m.EntityFilterResults)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
 		first = false
 	}
 
@@ -1323,26 +1299,6 @@ func (m GpuVMDetail) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field snapshot_plan
-	if m.SnapshotPlan != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_plan\":")
-		bytes, err := swag.WriteJSON(m.SnapshotPlan)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotPlan_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_plan\":null")
-		first = false
-	}
-
 	// handle non nullable field snapshots with omitempty
 	if !swag.IsZero(m.Snapshots) {
 		if !first {
@@ -1625,10 +1581,6 @@ func (m *GpuVMDetail) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateEntityFilterResults(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateFirmware(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1718,10 +1670,6 @@ func (m *GpuVMDetail) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateProtected(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSnapshotPlan(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1870,32 +1818,6 @@ func (m *GpuVMDetail) validateEntityAsyncStatus(formats strfmt.Registry) error {
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *GpuVMDetail) validateEntityFilterResults(formats strfmt.Registry) error {
-	if swag.IsZero(m.EntityFilterResults) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.EntityFilterResults); i++ {
-		if swag.IsZero(m.EntityFilterResults[i]) { // not required
-			continue
-		}
-
-		if m.EntityFilterResults[i] != nil {
-			if err := m.EntityFilterResults[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("entity_filter_results" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("entity_filter_results" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
@@ -2244,25 +2166,6 @@ func (m *GpuVMDetail) validateProtected(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *GpuVMDetail) validateSnapshotPlan(formats strfmt.Registry) error {
-	if swag.IsZero(m.SnapshotPlan) { // not required
-		return nil
-	}
-
-	if m.SnapshotPlan != nil {
-		if err := m.SnapshotPlan.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot_plan")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot_plan")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *GpuVMDetail) validateSnapshots(formats strfmt.Registry) error {
 	if swag.IsZero(m.Snapshots) { // not required
 		return nil
@@ -2517,10 +2420,6 @@ func (m *GpuVMDetail) ContextValidate(ctx context.Context, formats strfmt.Regist
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateEntityFilterResults(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateFirmware(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -2562,10 +2461,6 @@ func (m *GpuVMDetail) ContextValidate(ctx context.Context, formats strfmt.Regist
 	}
 
 	if err := m.contextValidatePciNics(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSnapshotPlan(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2670,26 +2565,6 @@ func (m *GpuVMDetail) contextValidateEntityAsyncStatus(ctx context.Context, form
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *GpuVMDetail) contextValidateEntityFilterResults(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.EntityFilterResults); i++ {
-
-		if m.EntityFilterResults[i] != nil {
-			if err := m.EntityFilterResults[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("entity_filter_results" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("entity_filter_results" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
@@ -2878,22 +2753,6 @@ func (m *GpuVMDetail) contextValidatePciNics(ctx context.Context, formats strfmt
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *GpuVMDetail) contextValidateSnapshotPlan(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SnapshotPlan != nil {
-		if err := m.SnapshotPlan.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot_plan")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot_plan")
-			}
-			return err
-		}
 	}
 
 	return nil

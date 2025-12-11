@@ -62,7 +62,7 @@ func NewDeleteVirtualPrivateCloudFloatingIPOK() *DeleteVirtualPrivateCloudFloati
 DeleteVirtualPrivateCloudFloatingIPOK delete virtual private cloud floating Ip o k
 */
 type DeleteVirtualPrivateCloudFloatingIPOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.WithTaskDeleteVirtualPrivateCloudFloatingIP
 }
@@ -76,11 +76,11 @@ func (o *DeleteVirtualPrivateCloudFloatingIPOK) GetPayload() []*models.WithTaskD
 
 func (o *DeleteVirtualPrivateCloudFloatingIPOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -101,7 +101,7 @@ func NewDeleteVirtualPrivateCloudFloatingIPBadRequest() *DeleteVirtualPrivateClo
 Bad request
 */
 type DeleteVirtualPrivateCloudFloatingIPBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -115,11 +115,11 @@ func (o *DeleteVirtualPrivateCloudFloatingIPBadRequest) GetPayload() *models.Err
 
 func (o *DeleteVirtualPrivateCloudFloatingIPBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -142,7 +142,7 @@ func NewDeleteVirtualPrivateCloudFloatingIPNotFound() *DeleteVirtualPrivateCloud
 Not found
 */
 type DeleteVirtualPrivateCloudFloatingIPNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -156,11 +156,11 @@ func (o *DeleteVirtualPrivateCloudFloatingIPNotFound) GetPayload() *models.Error
 
 func (o *DeleteVirtualPrivateCloudFloatingIPNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -183,7 +183,7 @@ func NewDeleteVirtualPrivateCloudFloatingIPInternalServerError() *DeleteVirtualP
 Server error
 */
 type DeleteVirtualPrivateCloudFloatingIPInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -197,11 +197,11 @@ func (o *DeleteVirtualPrivateCloudFloatingIPInternalServerError) GetPayload() *m
 
 func (o *DeleteVirtualPrivateCloudFloatingIPInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

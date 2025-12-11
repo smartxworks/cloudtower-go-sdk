@@ -62,7 +62,7 @@ func NewUpdateVirtualPrivateCloudSecurityGroupOK() *UpdateVirtualPrivateCloudSec
 UpdateVirtualPrivateCloudSecurityGroupOK update virtual private cloud security group o k
 */
 type UpdateVirtualPrivateCloudSecurityGroupOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.WithTaskVirtualPrivateCloudSecurityGroup
 }
@@ -76,11 +76,11 @@ func (o *UpdateVirtualPrivateCloudSecurityGroupOK) GetPayload() []*models.WithTa
 
 func (o *UpdateVirtualPrivateCloudSecurityGroupOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -101,7 +101,7 @@ func NewUpdateVirtualPrivateCloudSecurityGroupBadRequest() *UpdateVirtualPrivate
 Bad request
 */
 type UpdateVirtualPrivateCloudSecurityGroupBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -115,11 +115,11 @@ func (o *UpdateVirtualPrivateCloudSecurityGroupBadRequest) GetPayload() *models.
 
 func (o *UpdateVirtualPrivateCloudSecurityGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -142,7 +142,7 @@ func NewUpdateVirtualPrivateCloudSecurityGroupNotFound() *UpdateVirtualPrivateCl
 Not found
 */
 type UpdateVirtualPrivateCloudSecurityGroupNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -156,11 +156,11 @@ func (o *UpdateVirtualPrivateCloudSecurityGroupNotFound) GetPayload() *models.Er
 
 func (o *UpdateVirtualPrivateCloudSecurityGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -183,7 +183,7 @@ func NewUpdateVirtualPrivateCloudSecurityGroupInternalServerError() *UpdateVirtu
 Server error
 */
 type UpdateVirtualPrivateCloudSecurityGroupInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -197,11 +197,11 @@ func (o *UpdateVirtualPrivateCloudSecurityGroupInternalServerError) GetPayload()
 
 func (o *UpdateVirtualPrivateCloudSecurityGroupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

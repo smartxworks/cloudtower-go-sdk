@@ -34,9 +34,6 @@ type VirtualPrivateCloud struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// isolation policies
-	IsolationPolicies []*NestedVirtualPrivateCloudIsolationPolicy `json:"isolation_policies,omitempty"`
-
 	// local id
 	// Required: true
 	LocalID *string `json:"local_id"`
@@ -75,8 +72,6 @@ type VirtualPrivateCloudMarshalOpts struct {
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
 	ID_Explicit_Null_When_Empty bool
-
-	IsolationPolicies_Explicit_Null_When_Empty bool
 
 	LocalID_Explicit_Null_When_Empty bool
 
@@ -178,20 +173,6 @@ func (m VirtualPrivateCloud) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"id\":null")
-		first = false
-	}
-
-	// handle non nullable field isolation_policies with omitempty
-	if !swag.IsZero(m.IsolationPolicies) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"isolation_policies\":")
-		bytes, err := swag.WriteJSON(m.IsolationPolicies)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
 		first = false
 	}
 
@@ -347,10 +328,6 @@ func (m *VirtualPrivateCloud) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateIsolationPolicies(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateLocalID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -408,32 +385,6 @@ func (m *VirtualPrivateCloud) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloud) validateIsolationPolicies(formats strfmt.Registry) error {
-	if swag.IsZero(m.IsolationPolicies) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.IsolationPolicies); i++ {
-		if swag.IsZero(m.IsolationPolicies[i]) { // not required
-			continue
-		}
-
-		if m.IsolationPolicies[i] != nil {
-			if err := m.IsolationPolicies[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("isolation_policies" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("isolation_policies" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
@@ -589,10 +540,6 @@ func (m *VirtualPrivateCloud) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIsolationPolicies(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateRouteTables(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -630,26 +577,6 @@ func (m *VirtualPrivateCloud) contextValidateEntityAsyncStatus(ctx context.Conte
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloud) contextValidateIsolationPolicies(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.IsolationPolicies); i++ {
-
-		if m.IsolationPolicies[i] != nil {
-			if err := m.IsolationPolicies[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("isolation_policies" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("isolation_policies" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil

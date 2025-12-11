@@ -37,9 +37,6 @@ type GetIscsiLunSnapshotsRequestBody struct {
 	// skip
 	Skip *int32 `json:"skip,omitempty"`
 
-	// where
-	Where *IscsiLunSnapshotWhereInput `json:"where,omitempty"`
-
 	MarshalOpts *GetIscsiLunSnapshotsRequestBodyMarshalOpts `json:"-"`
 }
 
@@ -55,8 +52,6 @@ type GetIscsiLunSnapshotsRequestBodyMarshalOpts struct {
 	OrderBy_Explicit_Null_When_Empty bool
 
 	Skip_Explicit_Null_When_Empty bool
-
-	Where_Explicit_Null_When_Empty bool
 }
 
 func (m GetIscsiLunSnapshotsRequestBody) MarshalJSON() ([]byte, error) {
@@ -185,26 +180,6 @@ func (m GetIscsiLunSnapshotsRequestBody) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field where
-	if m.Where != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"where\":")
-		bytes, err := swag.WriteJSON(m.Where)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"where\":null")
-		first = false
-	}
-
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -214,10 +189,6 @@ func (m *GetIscsiLunSnapshotsRequestBody) Validate(formats strfmt.Registry) erro
 	var res []error
 
 	if err := m.validateOrderBy(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateWhere(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -246,34 +217,11 @@ func (m *GetIscsiLunSnapshotsRequestBody) validateOrderBy(formats strfmt.Registr
 	return nil
 }
 
-func (m *GetIscsiLunSnapshotsRequestBody) validateWhere(formats strfmt.Registry) error {
-	if swag.IsZero(m.Where) { // not required
-		return nil
-	}
-
-	if m.Where != nil {
-		if err := m.Where.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("where")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("where")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this get iscsi lun snapshots request body based on the context it is used
 func (m *GetIscsiLunSnapshotsRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateOrderBy(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateWhere(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -291,22 +239,6 @@ func (m *GetIscsiLunSnapshotsRequestBody) contextValidateOrderBy(ctx context.Con
 				return ve.ValidateName("orderBy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("orderBy")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *GetIscsiLunSnapshotsRequestBody) contextValidateWhere(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Where != nil {
-		if err := m.Where.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("where")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("where")
 			}
 			return err
 		}

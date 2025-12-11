@@ -62,7 +62,7 @@ func NewUpdateVirtualPrivateCloudNatGatewayOK() *UpdateVirtualPrivateCloudNatGat
 UpdateVirtualPrivateCloudNatGatewayOK update virtual private cloud nat gateway o k
 */
 type UpdateVirtualPrivateCloudNatGatewayOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.WithTaskVirtualPrivateCloudNatGateway
 }
@@ -76,11 +76,11 @@ func (o *UpdateVirtualPrivateCloudNatGatewayOK) GetPayload() []*models.WithTaskV
 
 func (o *UpdateVirtualPrivateCloudNatGatewayOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -101,7 +101,7 @@ func NewUpdateVirtualPrivateCloudNatGatewayBadRequest() *UpdateVirtualPrivateClo
 Bad request
 */
 type UpdateVirtualPrivateCloudNatGatewayBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -115,11 +115,11 @@ func (o *UpdateVirtualPrivateCloudNatGatewayBadRequest) GetPayload() *models.Err
 
 func (o *UpdateVirtualPrivateCloudNatGatewayBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -142,7 +142,7 @@ func NewUpdateVirtualPrivateCloudNatGatewayNotFound() *UpdateVirtualPrivateCloud
 Not found
 */
 type UpdateVirtualPrivateCloudNatGatewayNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -156,11 +156,11 @@ func (o *UpdateVirtualPrivateCloudNatGatewayNotFound) GetPayload() *models.Error
 
 func (o *UpdateVirtualPrivateCloudNatGatewayNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -183,7 +183,7 @@ func NewUpdateVirtualPrivateCloudNatGatewayInternalServerError() *UpdateVirtualP
 Server error
 */
 type UpdateVirtualPrivateCloudNatGatewayInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -197,11 +197,11 @@ func (o *UpdateVirtualPrivateCloudNatGatewayInternalServerError) GetPayload() *m
 
 func (o *UpdateVirtualPrivateCloudNatGatewayInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

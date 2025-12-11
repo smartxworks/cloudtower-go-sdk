@@ -65,20 +65,11 @@ type IscsiLun struct {
 	// Required: true
 	BpsWrMaxLength *int64 `json:"bps_wr_max_length"`
 
-	// business host groups
-	BusinessHostGroups []*NestedBusinessHostGroup `json:"business_host_groups,omitempty"`
-
 	// business host is same with parent
 	BusinessHostIsSameWithParent *bool `json:"business_host_is_same_with_parent,omitempty"`
 
-	// business hosts
-	BusinessHosts []*NestedBusinessHost `json:"business_hosts,omitempty"`
-
 	// configuration method
 	ConfigurationMethod *ConfigurationMethod `json:"configuration_method,omitempty"`
-
-	// consistency group
-	ConsistencyGroup *NestedConsistencyGroup `json:"consistency_group,omitempty"`
 
 	// downgraded prioritized space
 	DowngradedPrioritizedSpace *int64 `json:"downgraded_prioritized_space,omitempty"`
@@ -169,9 +160,6 @@ type IscsiLun struct {
 	// Required: true
 	ReplicaNum *int32 `json:"replica_num"`
 
-	// replication plans
-	ReplicationPlans []*NestedReplicationPlan `json:"replication_plans,omitempty"`
-
 	// resiliency type
 	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
 
@@ -182,9 +170,6 @@ type IscsiLun struct {
 	// snapshot num
 	// Required: true
 	SnapshotNum *int32 `json:"snapshot_num"`
-
-	// snapshot plans
-	SnapshotPlans []*NestedSnapshotPlan `json:"snapshot_plans,omitempty"`
 
 	// stripe num
 	// Required: true
@@ -235,15 +220,9 @@ type IscsiLunMarshalOpts struct {
 
 	BpsWrMaxLength_Explicit_Null_When_Empty bool
 
-	BusinessHostGroups_Explicit_Null_When_Empty bool
-
 	BusinessHostIsSameWithParent_Explicit_Null_When_Empty bool
 
-	BusinessHosts_Explicit_Null_When_Empty bool
-
 	ConfigurationMethod_Explicit_Null_When_Empty bool
-
-	ConsistencyGroup_Explicit_Null_When_Empty bool
 
 	DowngradedPrioritizedSpace_Explicit_Null_When_Empty bool
 
@@ -293,15 +272,11 @@ type IscsiLunMarshalOpts struct {
 
 	ReplicaNum_Explicit_Null_When_Empty bool
 
-	ReplicationPlans_Explicit_Null_When_Empty bool
-
 	ResiliencyType_Explicit_Null_When_Empty bool
 
 	SharedSize_Explicit_Null_When_Empty bool
 
 	SnapshotNum_Explicit_Null_When_Empty bool
-
-	SnapshotPlans_Explicit_Null_When_Empty bool
 
 	StripeNum_Explicit_Null_When_Empty bool
 
@@ -542,20 +517,6 @@ func (m IscsiLun) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle non nullable field business_host_groups with omitempty
-	if !swag.IsZero(m.BusinessHostGroups) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostGroups)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	}
-
 	// handle nullable field business_host_is_same_with_parent
 	if m.BusinessHostIsSameWithParent != nil {
 		if !first {
@@ -576,20 +537,6 @@ func (m IscsiLun) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle non nullable field business_hosts with omitempty
-	if !swag.IsZero(m.BusinessHosts) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts\":")
-		bytes, err := swag.WriteJSON(m.BusinessHosts)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	}
-
 	// handle nullable field configuration_method
 	if m.ConfigurationMethod != nil {
 		if !first {
@@ -607,26 +554,6 @@ func (m IscsiLun) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"configuration_method\":null")
-		first = false
-	}
-
-	// handle nullable field consistency_group
-	if m.ConsistencyGroup != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_group\":")
-		bytes, err := swag.WriteJSON(m.ConsistencyGroup)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroup_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_group\":null")
 		first = false
 	}
 
@@ -1104,20 +1031,6 @@ func (m IscsiLun) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle non nullable field replication_plans with omitempty
-	if !swag.IsZero(m.ReplicationPlans) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"replication_plans\":")
-		bytes, err := swag.WriteJSON(m.ReplicationPlans)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	}
-
 	// handle nullable field resiliency_type
 	if m.ResiliencyType != nil {
 		if !first {
@@ -1175,20 +1088,6 @@ func (m IscsiLun) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"snapshot_num\":null")
-		first = false
-	}
-
-	// handle non nullable field snapshot_plans with omitempty
-	if !swag.IsZero(m.SnapshotPlans) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_plans\":")
-		bytes, err := swag.WriteJSON(m.SnapshotPlans)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
 		first = false
 	}
 
@@ -1364,19 +1263,7 @@ func (m *IscsiLun) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateBusinessHostGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBusinessHosts(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateConfigurationMethod(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateConsistencyGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1460,10 +1347,6 @@ func (m *IscsiLun) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateReplicationPlans(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateResiliencyType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1473,10 +1356,6 @@ func (m *IscsiLun) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSnapshotNum(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSnapshotPlans(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1605,58 +1484,6 @@ func (m *IscsiLun) validateBpsWrMaxLength(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *IscsiLun) validateBusinessHostGroups(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostGroups) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.BusinessHostGroups); i++ {
-		if swag.IsZero(m.BusinessHostGroups[i]) { // not required
-			continue
-		}
-
-		if m.BusinessHostGroups[i] != nil {
-			if err := m.BusinessHostGroups[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IscsiLun) validateBusinessHosts(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHosts) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.BusinessHosts); i++ {
-		if swag.IsZero(m.BusinessHosts[i]) { // not required
-			continue
-		}
-
-		if m.BusinessHosts[i] != nil {
-			if err := m.BusinessHosts[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("business_hosts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("business_hosts" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *IscsiLun) validateConfigurationMethod(formats strfmt.Registry) error {
 	if swag.IsZero(m.ConfigurationMethod) { // not required
 		return nil
@@ -1668,25 +1495,6 @@ func (m *IscsiLun) validateConfigurationMethod(formats strfmt.Registry) error {
 				return ve.ValidateName("configuration_method")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("configuration_method")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiLun) validateConsistencyGroup(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsistencyGroup) { // not required
-		return nil
-	}
-
-	if m.ConsistencyGroup != nil {
-		if err := m.ConsistencyGroup.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_group")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_group")
 			}
 			return err
 		}
@@ -1923,32 +1731,6 @@ func (m *IscsiLun) validateReplicaNum(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *IscsiLun) validateReplicationPlans(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicationPlans) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.ReplicationPlans); i++ {
-		if swag.IsZero(m.ReplicationPlans[i]) { // not required
-			continue
-		}
-
-		if m.ReplicationPlans[i] != nil {
-			if err := m.ReplicationPlans[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("replication_plans" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("replication_plans" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *IscsiLun) validateResiliencyType(formats strfmt.Registry) error {
 	if swag.IsZero(m.ResiliencyType) { // not required
 		return nil
@@ -1981,32 +1763,6 @@ func (m *IscsiLun) validateSnapshotNum(formats strfmt.Registry) error {
 
 	if err := validate.Required("snapshot_num", "body", m.SnapshotNum); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-func (m *IscsiLun) validateSnapshotPlans(formats strfmt.Registry) error {
-	if swag.IsZero(m.SnapshotPlans) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.SnapshotPlans); i++ {
-		if swag.IsZero(m.SnapshotPlans[i]) { // not required
-			continue
-		}
-
-		if m.SnapshotPlans[i] != nil {
-			if err := m.SnapshotPlans[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("snapshot_plans" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("snapshot_plans" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
@@ -2061,19 +1817,7 @@ func (m *IscsiLun) validateZbsVolumeID(formats strfmt.Registry) error {
 func (m *IscsiLun) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateBusinessHostGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHosts(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateConfigurationMethod(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateConsistencyGroup(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2093,61 +1837,13 @@ func (m *IscsiLun) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateReplicationPlans(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateResiliencyType(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSnapshotPlans(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *IscsiLun) contextValidateBusinessHostGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.BusinessHostGroups); i++ {
-
-		if m.BusinessHostGroups[i] != nil {
-			if err := m.BusinessHostGroups[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IscsiLun) contextValidateBusinessHosts(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.BusinessHosts); i++ {
-
-		if m.BusinessHosts[i] != nil {
-			if err := m.BusinessHosts[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("business_hosts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("business_hosts" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 
@@ -2159,22 +1855,6 @@ func (m *IscsiLun) contextValidateConfigurationMethod(ctx context.Context, forma
 				return ve.ValidateName("configuration_method")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("configuration_method")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiLun) contextValidateConsistencyGroup(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ConsistencyGroup != nil {
-		if err := m.ConsistencyGroup.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_group")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_group")
 			}
 			return err
 		}
@@ -2251,26 +1931,6 @@ func (m *IscsiLun) contextValidateLabels(ctx context.Context, formats strfmt.Reg
 	return nil
 }
 
-func (m *IscsiLun) contextValidateReplicationPlans(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.ReplicationPlans); i++ {
-
-		if m.ReplicationPlans[i] != nil {
-			if err := m.ReplicationPlans[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("replication_plans" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("replication_plans" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *IscsiLun) contextValidateResiliencyType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResiliencyType != nil {
@@ -2282,26 +1942,6 @@ func (m *IscsiLun) contextValidateResiliencyType(ctx context.Context, formats st
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *IscsiLun) contextValidateSnapshotPlans(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.SnapshotPlans); i++ {
-
-		if m.SnapshotPlans[i] != nil {
-			if err := m.SnapshotPlans[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("snapshot_plans" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("snapshot_plans" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil

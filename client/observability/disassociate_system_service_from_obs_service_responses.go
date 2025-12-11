@@ -62,7 +62,7 @@ func NewDisassociateSystemServiceFromObsServiceOK() *DisassociateSystemServiceFr
 DisassociateSystemServiceFromObsServiceOK disassociate system service from obs service o k
 */
 type DisassociateSystemServiceFromObsServiceOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.WithTaskDisassociateSystemServiceFromObsServiceResult
 }
@@ -76,11 +76,11 @@ func (o *DisassociateSystemServiceFromObsServiceOK) GetPayload() *models.WithTas
 
 func (o *DisassociateSystemServiceFromObsServiceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.WithTaskDisassociateSystemServiceFromObsServiceResult)
@@ -103,7 +103,7 @@ func NewDisassociateSystemServiceFromObsServiceBadRequest() *DisassociateSystemS
 Bad request
 */
 type DisassociateSystemServiceFromObsServiceBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *DisassociateSystemServiceFromObsServiceBadRequest) GetPayload() *models
 
 func (o *DisassociateSystemServiceFromObsServiceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewDisassociateSystemServiceFromObsServiceNotFound() *DisassociateSystemSer
 Not found
 */
 type DisassociateSystemServiceFromObsServiceNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *DisassociateSystemServiceFromObsServiceNotFound) GetPayload() *models.E
 
 func (o *DisassociateSystemServiceFromObsServiceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewDisassociateSystemServiceFromObsServiceInternalServerError() *Disassocia
 Server error
 */
 type DisassociateSystemServiceFromObsServiceInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *DisassociateSystemServiceFromObsServiceInternalServerError) GetPayload(
 
 func (o *DisassociateSystemServiceFromObsServiceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

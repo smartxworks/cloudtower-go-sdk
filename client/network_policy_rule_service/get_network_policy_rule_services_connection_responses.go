@@ -62,7 +62,7 @@ func NewGetNetworkPolicyRuleServicesConnectionOK() *GetNetworkPolicyRuleServices
 GetNetworkPolicyRuleServicesConnectionOK get network policy rule services connection o k
 */
 type GetNetworkPolicyRuleServicesConnectionOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.NetworkPolicyRuleServiceConnection
 }
@@ -76,11 +76,11 @@ func (o *GetNetworkPolicyRuleServicesConnectionOK) GetPayload() *models.NetworkP
 
 func (o *GetNetworkPolicyRuleServicesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.NetworkPolicyRuleServiceConnection)
@@ -103,7 +103,7 @@ func NewGetNetworkPolicyRuleServicesConnectionBadRequest() *GetNetworkPolicyRule
 Bad request
 */
 type GetNetworkPolicyRuleServicesConnectionBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *GetNetworkPolicyRuleServicesConnectionBadRequest) GetPayload() *models.
 
 func (o *GetNetworkPolicyRuleServicesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewGetNetworkPolicyRuleServicesConnectionNotFound() *GetNetworkPolicyRuleSe
 Not found
 */
 type GetNetworkPolicyRuleServicesConnectionNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *GetNetworkPolicyRuleServicesConnectionNotFound) GetPayload() *models.Er
 
 func (o *GetNetworkPolicyRuleServicesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewGetNetworkPolicyRuleServicesConnectionInternalServerError() *GetNetworkP
 Server error
 */
 type GetNetworkPolicyRuleServicesConnectionInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *GetNetworkPolicyRuleServicesConnectionInternalServerError) GetPayload()
 
 func (o *GetNetworkPolicyRuleServicesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

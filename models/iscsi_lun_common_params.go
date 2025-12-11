@@ -67,14 +67,8 @@ type IscsiLunCommonParams struct {
 	// bps wr unit
 	BpsWrUnit *BPSUnit `json:"bps_wr_unit,omitempty"`
 
-	// business host groups
-	BusinessHostGroups *BusinessHostGroupWhereInput `json:"business_host_groups,omitempty"`
-
 	// business host is same with parent
 	BusinessHostIsSameWithParent *bool `json:"business_host_is_same_with_parent,omitempty"`
-
-	// business hosts
-	BusinessHosts *BusinessHostWhereInput `json:"business_hosts,omitempty"`
 
 	// configuration method
 	ConfigurationMethod *ConfigurationMethod `json:"configuration_method,omitempty"`
@@ -148,11 +142,7 @@ type IscsiLunCommonParamsMarshalOpts struct {
 
 	BpsWrUnit_Explicit_Null_When_Empty bool
 
-	BusinessHostGroups_Explicit_Null_When_Empty bool
-
 	BusinessHostIsSameWithParent_Explicit_Null_When_Empty bool
-
-	BusinessHosts_Explicit_Null_When_Empty bool
 
 	ConfigurationMethod_Explicit_Null_When_Empty bool
 
@@ -505,26 +495,6 @@ func (m IscsiLunCommonParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field business_host_groups
-	if m.BusinessHostGroups != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostGroups)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHostGroups_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups\":null")
-		first = false
-	}
-
 	// handle nullable field business_host_is_same_with_parent
 	if m.BusinessHostIsSameWithParent != nil {
 		if !first {
@@ -542,26 +512,6 @@ func (m IscsiLunCommonParams) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"business_host_is_same_with_parent\":null")
-		first = false
-	}
-
-	// handle nullable field business_hosts
-	if m.BusinessHosts != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts\":")
-		bytes, err := swag.WriteJSON(m.BusinessHosts)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BusinessHosts_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts\":null")
 		first = false
 	}
 
@@ -837,14 +787,6 @@ func (m *IscsiLunCommonParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateBusinessHostGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBusinessHosts(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateConfigurationMethod(formats); err != nil {
 		res = append(res, err)
 	}
@@ -973,44 +915,6 @@ func (m *IscsiLunCommonParams) validateBpsWrUnit(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *IscsiLunCommonParams) validateBusinessHostGroups(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostGroups) { // not required
-		return nil
-	}
-
-	if m.BusinessHostGroups != nil {
-		if err := m.BusinessHostGroups.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_host_groups")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_host_groups")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiLunCommonParams) validateBusinessHosts(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHosts) { // not required
-		return nil
-	}
-
-	if m.BusinessHosts != nil {
-		if err := m.BusinessHosts.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_hosts")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_hosts")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *IscsiLunCommonParams) validateConfigurationMethod(formats strfmt.Registry) error {
 	if swag.IsZero(m.ConfigurationMethod) { // not required
 		return nil
@@ -1074,14 +978,6 @@ func (m *IscsiLunCommonParams) ContextValidate(ctx context.Context, formats strf
 	}
 
 	if err := m.contextValidateBpsWrUnit(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHostGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHosts(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1187,38 +1083,6 @@ func (m *IscsiLunCommonParams) contextValidateBpsWrUnit(ctx context.Context, for
 				return ve.ValidateName("bps_wr_unit")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("bps_wr_unit")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiLunCommonParams) contextValidateBusinessHostGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BusinessHostGroups != nil {
-		if err := m.BusinessHostGroups.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_host_groups")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_host_groups")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiLunCommonParams) contextValidateBusinessHosts(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BusinessHosts != nil {
-		if err := m.BusinessHosts.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("business_hosts")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("business_hosts")
 			}
 			return err
 		}

@@ -24,9 +24,6 @@ type Deploy struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// license
-	License *NestedLicense `json:"license,omitempty"`
-
 	// version
 	// Required: true
 	Version *string `json:"version"`
@@ -36,8 +33,6 @@ type Deploy struct {
 
 type DeployMarshalOpts struct {
 	ID_Explicit_Null_When_Empty bool
-
-	License_Explicit_Null_When_Empty bool
 
 	Version_Explicit_Null_When_Empty bool
 }
@@ -65,26 +60,6 @@ func (m Deploy) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"id\":null")
-		first = false
-	}
-
-	// handle nullable field license
-	if m.License != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"license\":")
-		bytes, err := swag.WriteJSON(m.License)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.License_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"license\":null")
 		first = false
 	}
 
@@ -120,10 +95,6 @@ func (m *Deploy) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateLicense(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateVersion(formats); err != nil {
 		res = append(res, err)
 	}
@@ -143,25 +114,6 @@ func (m *Deploy) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Deploy) validateLicense(formats strfmt.Registry) error {
-	if swag.IsZero(m.License) { // not required
-		return nil
-	}
-
-	if m.License != nil {
-		if err := m.License.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("license")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("license")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *Deploy) validateVersion(formats strfmt.Registry) error {
 
 	if err := validate.Required("version", "body", m.Version); err != nil {
@@ -171,33 +123,8 @@ func (m *Deploy) validateVersion(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this deploy based on the context it is used
+// ContextValidate validates this deploy based on context it is used
 func (m *Deploy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateLicense(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *Deploy) contextValidateLicense(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.License != nil {
-		if err := m.License.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("license")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("license")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 

@@ -52,8 +52,6 @@ type ClientService interface {
 
 	CreateVMFromContentLibraryTemplate(params *CreateVMFromContentLibraryTemplateParams, opts ...ClientOption) (*CreateVMFromContentLibraryTemplateOK, error)
 
-	CreateVMFromContentLibraryTemplateBatch(params *CreateVMFromContentLibraryTemplateBatchParams, opts ...ClientOption) (*CreateVMFromContentLibraryTemplateBatchOK, error)
-
 	CreateVMFromTemplate(params *CreateVMFromTemplateParams, opts ...ClientOption) (*CreateVMFromTemplateOK, error)
 
 	DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*DeleteVMOK, error)
@@ -112,8 +110,6 @@ type ClientService interface {
 
 	RollbackVM(params *RollbackVMParams, opts ...ClientOption) (*RollbackVMOK, error)
 
-	SetVMDiskResidentInCache(params *SetVMDiskResidentInCacheParams, opts ...ClientOption) (*SetVMDiskResidentInCacheOK, error)
-
 	ShutDownVM(params *ShutDownVMParams, opts ...ClientOption) (*ShutDownVMOK, error)
 
 	StartVM(params *StartVMParams, opts ...ClientOption) (*StartVMOK, error)
@@ -141,8 +137,6 @@ type ClientService interface {
 	UpdateVMNicBasicInfo(params *UpdateVMNicBasicInfoParams, opts ...ClientOption) (*UpdateVMNicBasicInfoOK, error)
 
 	UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts ...ClientOption) (*UpdateVMNicQosOptionOK, error)
-
-	UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...ClientOption) (*UpdateVMNicVpcInfoOK, error)
 
 	UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption) (*UpdateVMOwnerOK, error)
 
@@ -564,44 +558,6 @@ func (a *Client) CreateVMFromContentLibraryTemplate(params *CreateVMFromContentL
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CreateVmFromContentLibraryTemplate: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  CreateVMFromContentLibraryTemplateBatch create Vm from content library template batch API
-*/
-func (a *Client) CreateVMFromContentLibraryTemplateBatch(params *CreateVMFromContentLibraryTemplateBatchParams, opts ...ClientOption) (*CreateVMFromContentLibraryTemplateBatchOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCreateVMFromContentLibraryTemplateBatchParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "CreateVmFromContentLibraryTemplateBatch",
-		Method:             "POST",
-		PathPattern:        "/create-vm-from-content-library-template-batch",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &CreateVMFromContentLibraryTemplateBatchReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*CreateVMFromContentLibraryTemplateBatchOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for CreateVmFromContentLibraryTemplateBatch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1708,44 +1664,6 @@ func (a *Client) RollbackVM(params *RollbackVMParams, opts ...ClientOption) (*Ro
 }
 
 /*
-  SetVMDiskResidentInCache set Vm disk resident in cache API
-*/
-func (a *Client) SetVMDiskResidentInCache(params *SetVMDiskResidentInCacheParams, opts ...ClientOption) (*SetVMDiskResidentInCacheOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewSetVMDiskResidentInCacheParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "SetVmDiskResidentInCache",
-		Method:             "POST",
-		PathPattern:        "/set-vm-disk-resident-in-cache",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &SetVMDiskResidentInCacheReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*SetVMDiskResidentInCacheOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for SetVmDiskResidentInCache: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
   ShutDownVM shut down Vm API
 */
 func (a *Client) ShutDownVM(params *ShutDownVMParams, opts ...ClientOption) (*ShutDownVMOK, error) {
@@ -2274,44 +2192,6 @@ func (a *Client) UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts .
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateVmNicQosOption: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateVMNicVpcInfo update Vm nic vpc info API
-*/
-func (a *Client) UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...ClientOption) (*UpdateVMNicVpcInfoOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateVMNicVpcInfoParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UpdateVmNicVpcInfo",
-		Method:             "POST",
-		PathPattern:        "/update-vm-vpc-nic",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &UpdateVMNicVpcInfoReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateVMNicVpcInfoOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UpdateVmNicVpcInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

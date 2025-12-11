@@ -272,9 +272,6 @@ type VirtualPrivateCloudRouteWhereInput struct {
 	// router gateway
 	RouterGateway *VirtualPrivateCloudRouterGatewayWhereInput `json:"router_gateway,omitempty"`
 
-	// vpc peering
-	VpcPeering *VirtualPrivateCloudPeeringWhereInput `json:"vpc_peering,omitempty"`
-
 	MarshalOpts *VirtualPrivateCloudRouteWhereInputMarshalOpts `json:"-"`
 }
 
@@ -446,8 +443,6 @@ type VirtualPrivateCloudRouteWhereInputMarshalOpts struct {
 	RouteTable_Explicit_Null_When_Empty bool
 
 	RouterGateway_Explicit_Null_When_Empty bool
-
-	VpcPeering_Explicit_Null_When_Empty bool
 }
 
 func (m VirtualPrivateCloudRouteWhereInput) MarshalJSON() ([]byte, error) {
@@ -2034,26 +2029,6 @@ func (m VirtualPrivateCloudRouteWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field vpc_peering
-	if m.VpcPeering != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vpc_peering\":")
-		bytes, err := swag.WriteJSON(m.VpcPeering)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcPeering_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vpc_peering\":null")
-		first = false
-	}
-
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -2115,10 +2090,6 @@ func (m *VirtualPrivateCloudRouteWhereInput) Validate(formats strfmt.Registry) e
 	}
 
 	if err := m.validateRouterGateway(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcPeering(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2423,25 +2394,6 @@ func (m *VirtualPrivateCloudRouteWhereInput) validateRouterGateway(formats strfm
 	return nil
 }
 
-func (m *VirtualPrivateCloudRouteWhereInput) validateVpcPeering(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcPeering) { // not required
-		return nil
-	}
-
-	if m.VpcPeering != nil {
-		if err := m.VpcPeering.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_peering")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_peering")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this virtual private cloud route where input based on the context it is used
 func (m *VirtualPrivateCloudRouteWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -2499,10 +2451,6 @@ func (m *VirtualPrivateCloudRouteWhereInput) ContextValidate(ctx context.Context
 	}
 
 	if err := m.contextValidateRouterGateway(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcPeering(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2748,22 +2696,6 @@ func (m *VirtualPrivateCloudRouteWhereInput) contextValidateRouterGateway(ctx co
 				return ve.ValidateName("router_gateway")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("router_gateway")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudRouteWhereInput) contextValidateVpcPeering(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcPeering != nil {
-		if err := m.VpcPeering.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_peering")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_peering")
 			}
 			return err
 		}

@@ -62,7 +62,7 @@ func NewDeleteVirtualPrivateCloudRouterGatewayOK() *DeleteVirtualPrivateCloudRou
 DeleteVirtualPrivateCloudRouterGatewayOK delete virtual private cloud router gateway o k
 */
 type DeleteVirtualPrivateCloudRouterGatewayOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.WithTaskDeleteVirtualPrivateCloudRouterGateway
 }
@@ -76,11 +76,11 @@ func (o *DeleteVirtualPrivateCloudRouterGatewayOK) GetPayload() []*models.WithTa
 
 func (o *DeleteVirtualPrivateCloudRouterGatewayOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -101,7 +101,7 @@ func NewDeleteVirtualPrivateCloudRouterGatewayBadRequest() *DeleteVirtualPrivate
 Bad request
 */
 type DeleteVirtualPrivateCloudRouterGatewayBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -115,11 +115,11 @@ func (o *DeleteVirtualPrivateCloudRouterGatewayBadRequest) GetPayload() *models.
 
 func (o *DeleteVirtualPrivateCloudRouterGatewayBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -142,7 +142,7 @@ func NewDeleteVirtualPrivateCloudRouterGatewayNotFound() *DeleteVirtualPrivateCl
 Not found
 */
 type DeleteVirtualPrivateCloudRouterGatewayNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -156,11 +156,11 @@ func (o *DeleteVirtualPrivateCloudRouterGatewayNotFound) GetPayload() *models.Er
 
 func (o *DeleteVirtualPrivateCloudRouterGatewayNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -183,7 +183,7 @@ func NewDeleteVirtualPrivateCloudRouterGatewayInternalServerError() *DeleteVirtu
 Server error
 */
 type DeleteVirtualPrivateCloudRouterGatewayInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -197,11 +197,11 @@ func (o *DeleteVirtualPrivateCloudRouterGatewayInternalServerError) GetPayload()
 
 func (o *DeleteVirtualPrivateCloudRouterGatewayInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

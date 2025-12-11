@@ -62,7 +62,7 @@ func NewGetSystemAuditLogsConnectionOK() *GetSystemAuditLogsConnectionOK {
 GetSystemAuditLogsConnectionOK get system audit logs connection o k
 */
 type GetSystemAuditLogsConnectionOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.SystemAuditLogConnection
 }
@@ -76,11 +76,11 @@ func (o *GetSystemAuditLogsConnectionOK) GetPayload() *models.SystemAuditLogConn
 
 func (o *GetSystemAuditLogsConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.SystemAuditLogConnection)
@@ -103,7 +103,7 @@ func NewGetSystemAuditLogsConnectionBadRequest() *GetSystemAuditLogsConnectionBa
 Bad request
 */
 type GetSystemAuditLogsConnectionBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *GetSystemAuditLogsConnectionBadRequest) GetPayload() *models.ErrorBody 
 
 func (o *GetSystemAuditLogsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewGetSystemAuditLogsConnectionNotFound() *GetSystemAuditLogsConnectionNotF
 Not found
 */
 type GetSystemAuditLogsConnectionNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *GetSystemAuditLogsConnectionNotFound) GetPayload() *models.ErrorBody {
 
 func (o *GetSystemAuditLogsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewGetSystemAuditLogsConnectionInternalServerError() *GetSystemAuditLogsCon
 Server error
 */
 type GetSystemAuditLogsConnectionInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *GetSystemAuditLogsConnectionInternalServerError) GetPayload() *models.E
 
 func (o *GetSystemAuditLogsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

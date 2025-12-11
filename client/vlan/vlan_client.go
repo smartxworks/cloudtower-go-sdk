@@ -38,10 +38,6 @@ type ClientService interface {
 
 	GetVlansConnection(params *GetVlansConnectionParams, opts ...ClientOption) (*GetVlansConnectionOK, error)
 
-	UpdateManagementVlan(params *UpdateManagementVlanParams, opts ...ClientOption) (*UpdateManagementVlanOK, error)
-
-	UpdateMigrationVlan(params *UpdateMigrationVlanParams, opts ...ClientOption) (*UpdateMigrationVlanOK, error)
-
 	UpdateVlan(params *UpdateVlanParams, opts ...ClientOption) (*UpdateVlanOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -196,82 +192,6 @@ func (a *Client) GetVlansConnection(params *GetVlansConnectionParams, opts ...Cl
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetVlansConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateManagementVlan update management vlan API
-*/
-func (a *Client) UpdateManagementVlan(params *UpdateManagementVlanParams, opts ...ClientOption) (*UpdateManagementVlanOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateManagementVlanParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UpdateManagementVlan",
-		Method:             "POST",
-		PathPattern:        "/update-management-vlan",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &UpdateManagementVlanReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateManagementVlanOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UpdateManagementVlan: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateMigrationVlan update migration vlan API
-*/
-func (a *Client) UpdateMigrationVlan(params *UpdateMigrationVlanParams, opts ...ClientOption) (*UpdateMigrationVlanOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateMigrationVlanParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UpdateMigrationVlan",
-		Method:             "POST",
-		PathPattern:        "/update-migration-vlan",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &UpdateMigrationVlanReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateMigrationVlanOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UpdateMigrationVlan: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

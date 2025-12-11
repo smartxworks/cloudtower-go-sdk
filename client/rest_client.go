@@ -11,93 +11,32 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/alert"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/alert_notifier"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/alert_rule"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/api_info"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/application"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_plan"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_plan_execution"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_restore_execution"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_restore_point"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_service"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_store_repository"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/backup_target_execution"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/brick_topo"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/business_host"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/business_host_group"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cloud_tower_application"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cloud_tower_application_package"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster_image"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster_settings"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster_topo"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/cluster_upgrade_history"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/consistency_group"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/consistency_group_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/content_library_image"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/content_library_vm_template"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/datacenter"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/deploy"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/discovered_host"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/disk"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/disk_pool"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ecp_license"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_data_store"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_image"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/elf_storage_policy"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/entity_filter"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/everoute_cluster"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/everoute_license"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/everoute_package"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/global_alert_rule"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/global_settings"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/gpu_device"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/graph"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/host"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ipmi"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/iscsi_connection"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/iscsi_lun"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/iscsi_lun_snapshot"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/iscsi_target"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/isolation_policy"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/label"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/license"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/log_collection"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/log_service_config"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/metrics"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/namespace_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/network_policy_rule_service"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nfs_export"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nfs_inode"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nic"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/node_topo"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ntp"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_namespace_snapshot"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/nvmf_subsystem"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/observability"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/organization"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/ovf"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pci_device"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pmem_dimm"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/rack_topo"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replica_vm"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replication_plan"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replication_service"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_task"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/report_template"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/resource_change"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_group"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/security_policy"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/smtp_server"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_group"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_plan"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snapshot_plan_task"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snmp_transport"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snmp_trap_receiver"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/svt_image"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/system_audit_log"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/table_reporter"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/upload_task"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/usb_device"
@@ -105,9 +44,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user_audit_log"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/user_role_next"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/v2_everoute_license"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vcenter_account"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vds"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/view"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_cluster_binding"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/virtual_private_cloud_edge_gateway"
@@ -124,7 +61,6 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vlan"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_disk"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_entity_filter_result"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_export_file"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_folder"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_nic"
@@ -133,11 +69,6 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_template"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_volume"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vm_volume_snapshot"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/vsphere_esxi_account"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/witness"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/witness_service"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/zone"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/zone_topo"
 )
 
 // Default cloudtower HTTP client.
@@ -183,93 +114,32 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli := new(Cloudtower)
 	cli.Transport = transport
 	cli.Alert = alert.New(transport, formats)
-	cli.AlertNotifier = alert_notifier.New(transport, formats)
-	cli.AlertRule = alert_rule.New(transport, formats)
-	cli.APIInfo = api_info.New(transport, formats)
-	cli.Application = application.New(transport, formats)
-	cli.BackupPlan = backup_plan.New(transport, formats)
-	cli.BackupPlanExecution = backup_plan_execution.New(transport, formats)
-	cli.BackupRestoreExecution = backup_restore_execution.New(transport, formats)
-	cli.BackupRestorePoint = backup_restore_point.New(transport, formats)
-	cli.BackupService = backup_service.New(transport, formats)
-	cli.BackupStoreRepository = backup_store_repository.New(transport, formats)
-	cli.BackupTargetExecution = backup_target_execution.New(transport, formats)
-	cli.BrickTopo = brick_topo.New(transport, formats)
-	cli.BusinessHost = business_host.New(transport, formats)
-	cli.BusinessHostGroup = business_host_group.New(transport, formats)
-	cli.CloudTowerApplication = cloud_tower_application.New(transport, formats)
-	cli.CloudTowerApplicationPackage = cloud_tower_application_package.New(transport, formats)
 	cli.Cluster = cluster.New(transport, formats)
-	cli.ClusterImage = cluster_image.New(transport, formats)
-	cli.ClusterSettings = cluster_settings.New(transport, formats)
-	cli.ClusterTopo = cluster_topo.New(transport, formats)
-	cli.ClusterUpgradeHistory = cluster_upgrade_history.New(transport, formats)
-	cli.ConsistencyGroup = consistency_group.New(transport, formats)
-	cli.ConsistencyGroupSnapshot = consistency_group_snapshot.New(transport, formats)
 	cli.ContentLibraryImage = content_library_image.New(transport, formats)
 	cli.ContentLibraryVMTemplate = content_library_vm_template.New(transport, formats)
 	cli.Datacenter = datacenter.New(transport, formats)
 	cli.Deploy = deploy.New(transport, formats)
-	cli.DiscoveredHost = discovered_host.New(transport, formats)
-	cli.Disk = disk.New(transport, formats)
-	cli.DiskPool = disk_pool.New(transport, formats)
-	cli.EcpLicense = ecp_license.New(transport, formats)
-	cli.ElfDataStore = elf_data_store.New(transport, formats)
 	cli.ElfImage = elf_image.New(transport, formats)
 	cli.ElfStoragePolicy = elf_storage_policy.New(transport, formats)
-	cli.EntityFilter = entity_filter.New(transport, formats)
 	cli.EverouteCluster = everoute_cluster.New(transport, formats)
 	cli.EverouteLicense = everoute_license.New(transport, formats)
 	cli.EveroutePackage = everoute_package.New(transport, formats)
-	cli.GlobalAlertRule = global_alert_rule.New(transport, formats)
-	cli.GlobalSettings = global_settings.New(transport, formats)
 	cli.GpuDevice = gpu_device.New(transport, formats)
-	cli.Graph = graph.New(transport, formats)
 	cli.Host = host.New(transport, formats)
-	cli.Ipmi = ipmi.New(transport, formats)
-	cli.IscsiConnection = iscsi_connection.New(transport, formats)
 	cli.IscsiLun = iscsi_lun.New(transport, formats)
 	cli.IscsiLunSnapshot = iscsi_lun_snapshot.New(transport, formats)
 	cli.IscsiTarget = iscsi_target.New(transport, formats)
 	cli.IsolationPolicy = isolation_policy.New(transport, formats)
 	cli.Label = label.New(transport, formats)
-	cli.License = license.New(transport, formats)
-	cli.LogCollection = log_collection.New(transport, formats)
-	cli.LogServiceConfig = log_service_config.New(transport, formats)
-	cli.Metrics = metrics.New(transport, formats)
-	cli.NamespaceGroup = namespace_group.New(transport, formats)
 	cli.NetworkPolicyRuleService = network_policy_rule_service.New(transport, formats)
-	cli.NfsExport = nfs_export.New(transport, formats)
-	cli.NfsInode = nfs_inode.New(transport, formats)
 	cli.Nic = nic.New(transport, formats)
-	cli.NodeTopo = node_topo.New(transport, formats)
-	cli.Ntp = ntp.New(transport, formats)
-	cli.NvmfNamespace = nvmf_namespace.New(transport, formats)
-	cli.NvmfNamespaceSnapshot = nvmf_namespace_snapshot.New(transport, formats)
-	cli.NvmfSubsystem = nvmf_subsystem.New(transport, formats)
 	cli.Observability = observability.New(transport, formats)
 	cli.Organization = organization.New(transport, formats)
 	cli.Ovf = ovf.New(transport, formats)
-	cli.PciDevice = pci_device.New(transport, formats)
-	cli.PmemDimm = pmem_dimm.New(transport, formats)
-	cli.RackTopo = rack_topo.New(transport, formats)
-	cli.ReplicaVM = replica_vm.New(transport, formats)
-	cli.ReplicationPlan = replication_plan.New(transport, formats)
-	cli.ReplicationService = replication_service.New(transport, formats)
-	cli.ReportTask = report_task.New(transport, formats)
-	cli.ReportTemplate = report_template.New(transport, formats)
-	cli.ResourceChange = resource_change.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.SecurityPolicy = security_policy.New(transport, formats)
-	cli.SMTPServer = smtp_server.New(transport, formats)
-	cli.SnapshotGroup = snapshot_group.New(transport, formats)
-	cli.SnapshotPlan = snapshot_plan.New(transport, formats)
-	cli.SnapshotPlanTask = snapshot_plan_task.New(transport, formats)
-	cli.SnmpTransport = snmp_transport.New(transport, formats)
-	cli.SnmpTrapReceiver = snmp_trap_receiver.New(transport, formats)
 	cli.SvtImage = svt_image.New(transport, formats)
 	cli.SystemAuditLog = system_audit_log.New(transport, formats)
-	cli.TableReporter = table_reporter.New(transport, formats)
 	cli.Task = task.New(transport, formats)
 	cli.UploadTask = upload_task.New(transport, formats)
 	cli.UsbDevice = usb_device.New(transport, formats)
@@ -277,9 +147,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.UserAuditLog = user_audit_log.New(transport, formats)
 	cli.UserRoleNext = user_role_next.New(transport, formats)
 	cli.V2EverouteLicense = v2_everoute_license.New(transport, formats)
-	cli.VcenterAccount = vcenter_account.New(transport, formats)
 	cli.Vds = vds.New(transport, formats)
-	cli.View = view.New(transport, formats)
 	cli.VirtualPrivateCloud = virtual_private_cloud.New(transport, formats)
 	cli.VirtualPrivateCloudClusterBinding = virtual_private_cloud_cluster_binding.New(transport, formats)
 	cli.VirtualPrivateCloudEdgeGateway = virtual_private_cloud_edge_gateway.New(transport, formats)
@@ -296,7 +164,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.Vlan = vlan.New(transport, formats)
 	cli.VM = vm.New(transport, formats)
 	cli.VMDisk = vm_disk.New(transport, formats)
-	cli.VMEntityFilterResult = vm_entity_filter_result.New(transport, formats)
 	cli.VMExportFile = vm_export_file.New(transport, formats)
 	cli.VMFolder = vm_folder.New(transport, formats)
 	cli.VMNic = vm_nic.New(transport, formats)
@@ -305,11 +172,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.VMTemplate = vm_template.New(transport, formats)
 	cli.VMVolume = vm_volume.New(transport, formats)
 	cli.VMVolumeSnapshot = vm_volume_snapshot.New(transport, formats)
-	cli.VsphereEsxiAccount = vsphere_esxi_account.New(transport, formats)
-	cli.Witness = witness.New(transport, formats)
-	cli.WitnessService = witness_service.New(transport, formats)
-	cli.Zone = zone.New(transport, formats)
-	cli.ZoneTopo = zone_topo.New(transport, formats)
 	return cli
 }
 
@@ -356,51 +218,7 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type Cloudtower struct {
 	Alert alert.ClientService
 
-	AlertNotifier alert_notifier.ClientService
-
-	AlertRule alert_rule.ClientService
-
-	APIInfo api_info.ClientService
-
-	Application application.ClientService
-
-	BackupPlan backup_plan.ClientService
-
-	BackupPlanExecution backup_plan_execution.ClientService
-
-	BackupRestoreExecution backup_restore_execution.ClientService
-
-	BackupRestorePoint backup_restore_point.ClientService
-
-	BackupService backup_service.ClientService
-
-	BackupStoreRepository backup_store_repository.ClientService
-
-	BackupTargetExecution backup_target_execution.ClientService
-
-	BrickTopo brick_topo.ClientService
-
-	BusinessHost business_host.ClientService
-
-	BusinessHostGroup business_host_group.ClientService
-
-	CloudTowerApplication cloud_tower_application.ClientService
-
-	CloudTowerApplicationPackage cloud_tower_application_package.ClientService
-
 	Cluster cluster.ClientService
-
-	ClusterImage cluster_image.ClientService
-
-	ClusterSettings cluster_settings.ClientService
-
-	ClusterTopo cluster_topo.ClientService
-
-	ClusterUpgradeHistory cluster_upgrade_history.ClientService
-
-	ConsistencyGroup consistency_group.ClientService
-
-	ConsistencyGroupSnapshot consistency_group_snapshot.ClientService
 
 	ContentLibraryImage content_library_image.ClientService
 
@@ -410,21 +228,9 @@ type Cloudtower struct {
 
 	Deploy deploy.ClientService
 
-	DiscoveredHost discovered_host.ClientService
-
-	Disk disk.ClientService
-
-	DiskPool disk_pool.ClientService
-
-	EcpLicense ecp_license.ClientService
-
-	ElfDataStore elf_data_store.ClientService
-
 	ElfImage elf_image.ClientService
 
 	ElfStoragePolicy elf_storage_policy.ClientService
-
-	EntityFilter entity_filter.ClientService
 
 	EverouteCluster everoute_cluster.ClientService
 
@@ -432,19 +238,9 @@ type Cloudtower struct {
 
 	EveroutePackage everoute_package.ClientService
 
-	GlobalAlertRule global_alert_rule.ClientService
-
-	GlobalSettings global_settings.ClientService
-
 	GpuDevice gpu_device.ClientService
 
-	Graph graph.ClientService
-
 	Host host.ClientService
-
-	Ipmi ipmi.ClientService
-
-	IscsiConnection iscsi_connection.ClientService
 
 	IscsiLun iscsi_lun.ClientService
 
@@ -456,33 +252,9 @@ type Cloudtower struct {
 
 	Label label.ClientService
 
-	License license.ClientService
-
-	LogCollection log_collection.ClientService
-
-	LogServiceConfig log_service_config.ClientService
-
-	Metrics metrics.ClientService
-
-	NamespaceGroup namespace_group.ClientService
-
 	NetworkPolicyRuleService network_policy_rule_service.ClientService
 
-	NfsExport nfs_export.ClientService
-
-	NfsInode nfs_inode.ClientService
-
 	Nic nic.ClientService
-
-	NodeTopo node_topo.ClientService
-
-	Ntp ntp.ClientService
-
-	NvmfNamespace nvmf_namespace.ClientService
-
-	NvmfNamespaceSnapshot nvmf_namespace_snapshot.ClientService
-
-	NvmfSubsystem nvmf_subsystem.ClientService
 
 	Observability observability.ClientService
 
@@ -490,45 +262,13 @@ type Cloudtower struct {
 
 	Ovf ovf.ClientService
 
-	PciDevice pci_device.ClientService
-
-	PmemDimm pmem_dimm.ClientService
-
-	RackTopo rack_topo.ClientService
-
-	ReplicaVM replica_vm.ClientService
-
-	ReplicationPlan replication_plan.ClientService
-
-	ReplicationService replication_service.ClientService
-
-	ReportTask report_task.ClientService
-
-	ReportTemplate report_template.ClientService
-
-	ResourceChange resource_change.ClientService
-
 	SecurityGroup security_group.ClientService
 
 	SecurityPolicy security_policy.ClientService
 
-	SMTPServer smtp_server.ClientService
-
-	SnapshotGroup snapshot_group.ClientService
-
-	SnapshotPlan snapshot_plan.ClientService
-
-	SnapshotPlanTask snapshot_plan_task.ClientService
-
-	SnmpTransport snmp_transport.ClientService
-
-	SnmpTrapReceiver snmp_trap_receiver.ClientService
-
 	SvtImage svt_image.ClientService
 
 	SystemAuditLog system_audit_log.ClientService
-
-	TableReporter table_reporter.ClientService
 
 	Task task.ClientService
 
@@ -544,11 +284,7 @@ type Cloudtower struct {
 
 	V2EverouteLicense v2_everoute_license.ClientService
 
-	VcenterAccount vcenter_account.ClientService
-
 	Vds vds.ClientService
-
-	View view.ClientService
 
 	VirtualPrivateCloud virtual_private_cloud.ClientService
 
@@ -582,8 +318,6 @@ type Cloudtower struct {
 
 	VMDisk vm_disk.ClientService
 
-	VMEntityFilterResult vm_entity_filter_result.ClientService
-
 	VMExportFile vm_export_file.ClientService
 
 	VMFolder vm_folder.ClientService
@@ -600,16 +334,6 @@ type Cloudtower struct {
 
 	VMVolumeSnapshot vm_volume_snapshot.ClientService
 
-	VsphereEsxiAccount vsphere_esxi_account.ClientService
-
-	Witness witness.ClientService
-
-	WitnessService witness_service.ClientService
-
-	Zone zone.ClientService
-
-	ZoneTopo zone_topo.ClientService
-
 	Transport runtime.ClientTransport
 }
 
@@ -617,93 +341,32 @@ type Cloudtower struct {
 func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Alert.SetTransport(transport)
-	c.AlertNotifier.SetTransport(transport)
-	c.AlertRule.SetTransport(transport)
-	c.APIInfo.SetTransport(transport)
-	c.Application.SetTransport(transport)
-	c.BackupPlan.SetTransport(transport)
-	c.BackupPlanExecution.SetTransport(transport)
-	c.BackupRestoreExecution.SetTransport(transport)
-	c.BackupRestorePoint.SetTransport(transport)
-	c.BackupService.SetTransport(transport)
-	c.BackupStoreRepository.SetTransport(transport)
-	c.BackupTargetExecution.SetTransport(transport)
-	c.BrickTopo.SetTransport(transport)
-	c.BusinessHost.SetTransport(transport)
-	c.BusinessHostGroup.SetTransport(transport)
-	c.CloudTowerApplication.SetTransport(transport)
-	c.CloudTowerApplicationPackage.SetTransport(transport)
 	c.Cluster.SetTransport(transport)
-	c.ClusterImage.SetTransport(transport)
-	c.ClusterSettings.SetTransport(transport)
-	c.ClusterTopo.SetTransport(transport)
-	c.ClusterUpgradeHistory.SetTransport(transport)
-	c.ConsistencyGroup.SetTransport(transport)
-	c.ConsistencyGroupSnapshot.SetTransport(transport)
 	c.ContentLibraryImage.SetTransport(transport)
 	c.ContentLibraryVMTemplate.SetTransport(transport)
 	c.Datacenter.SetTransport(transport)
 	c.Deploy.SetTransport(transport)
-	c.DiscoveredHost.SetTransport(transport)
-	c.Disk.SetTransport(transport)
-	c.DiskPool.SetTransport(transport)
-	c.EcpLicense.SetTransport(transport)
-	c.ElfDataStore.SetTransport(transport)
 	c.ElfImage.SetTransport(transport)
 	c.ElfStoragePolicy.SetTransport(transport)
-	c.EntityFilter.SetTransport(transport)
 	c.EverouteCluster.SetTransport(transport)
 	c.EverouteLicense.SetTransport(transport)
 	c.EveroutePackage.SetTransport(transport)
-	c.GlobalAlertRule.SetTransport(transport)
-	c.GlobalSettings.SetTransport(transport)
 	c.GpuDevice.SetTransport(transport)
-	c.Graph.SetTransport(transport)
 	c.Host.SetTransport(transport)
-	c.Ipmi.SetTransport(transport)
-	c.IscsiConnection.SetTransport(transport)
 	c.IscsiLun.SetTransport(transport)
 	c.IscsiLunSnapshot.SetTransport(transport)
 	c.IscsiTarget.SetTransport(transport)
 	c.IsolationPolicy.SetTransport(transport)
 	c.Label.SetTransport(transport)
-	c.License.SetTransport(transport)
-	c.LogCollection.SetTransport(transport)
-	c.LogServiceConfig.SetTransport(transport)
-	c.Metrics.SetTransport(transport)
-	c.NamespaceGroup.SetTransport(transport)
 	c.NetworkPolicyRuleService.SetTransport(transport)
-	c.NfsExport.SetTransport(transport)
-	c.NfsInode.SetTransport(transport)
 	c.Nic.SetTransport(transport)
-	c.NodeTopo.SetTransport(transport)
-	c.Ntp.SetTransport(transport)
-	c.NvmfNamespace.SetTransport(transport)
-	c.NvmfNamespaceSnapshot.SetTransport(transport)
-	c.NvmfSubsystem.SetTransport(transport)
 	c.Observability.SetTransport(transport)
 	c.Organization.SetTransport(transport)
 	c.Ovf.SetTransport(transport)
-	c.PciDevice.SetTransport(transport)
-	c.PmemDimm.SetTransport(transport)
-	c.RackTopo.SetTransport(transport)
-	c.ReplicaVM.SetTransport(transport)
-	c.ReplicationPlan.SetTransport(transport)
-	c.ReplicationService.SetTransport(transport)
-	c.ReportTask.SetTransport(transport)
-	c.ReportTemplate.SetTransport(transport)
-	c.ResourceChange.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)
 	c.SecurityPolicy.SetTransport(transport)
-	c.SMTPServer.SetTransport(transport)
-	c.SnapshotGroup.SetTransport(transport)
-	c.SnapshotPlan.SetTransport(transport)
-	c.SnapshotPlanTask.SetTransport(transport)
-	c.SnmpTransport.SetTransport(transport)
-	c.SnmpTrapReceiver.SetTransport(transport)
 	c.SvtImage.SetTransport(transport)
 	c.SystemAuditLog.SetTransport(transport)
-	c.TableReporter.SetTransport(transport)
 	c.Task.SetTransport(transport)
 	c.UploadTask.SetTransport(transport)
 	c.UsbDevice.SetTransport(transport)
@@ -711,9 +374,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.UserAuditLog.SetTransport(transport)
 	c.UserRoleNext.SetTransport(transport)
 	c.V2EverouteLicense.SetTransport(transport)
-	c.VcenterAccount.SetTransport(transport)
 	c.Vds.SetTransport(transport)
-	c.View.SetTransport(transport)
 	c.VirtualPrivateCloud.SetTransport(transport)
 	c.VirtualPrivateCloudClusterBinding.SetTransport(transport)
 	c.VirtualPrivateCloudEdgeGateway.SetTransport(transport)
@@ -730,7 +391,6 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.Vlan.SetTransport(transport)
 	c.VM.SetTransport(transport)
 	c.VMDisk.SetTransport(transport)
-	c.VMEntityFilterResult.SetTransport(transport)
 	c.VMExportFile.SetTransport(transport)
 	c.VMFolder.SetTransport(transport)
 	c.VMNic.SetTransport(transport)
@@ -739,9 +399,4 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.VMTemplate.SetTransport(transport)
 	c.VMVolume.SetTransport(transport)
 	c.VMVolumeSnapshot.SetTransport(transport)
-	c.VsphereEsxiAccount.SetTransport(transport)
-	c.Witness.SetTransport(transport)
-	c.WitnessService.SetTransport(transport)
-	c.Zone.SetTransport(transport)
-	c.ZoneTopo.SetTransport(transport)
 }

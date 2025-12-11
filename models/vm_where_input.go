@@ -29,14 +29,11 @@ type VMWhereInput struct {
 	// o r
 	OR []*VMWhereInput `json:"OR,omitempty"`
 
-	// backup plans every
-	BackupPlansEvery *BackupPlanWhereInput `json:"backup_plans_every,omitempty"`
+	// anti malware enabled
+	AntiMalwareEnabled *bool `json:"anti_malware_enabled,omitempty"`
 
-	// backup plans none
-	BackupPlansNone *BackupPlanWhereInput `json:"backup_plans_none,omitempty"`
-
-	// backup plans some
-	BackupPlansSome *BackupPlanWhereInput `json:"backup_plans_some,omitempty"`
+	// anti malware enabled not
+	AntiMalwareEnabledNot *bool `json:"anti_malware_enabled_not,omitempty"`
 
 	// bios uuid
 	BiosUUID *string `json:"bios_uuid,omitempty"`
@@ -275,6 +272,12 @@ type VMWhereInput struct {
 	// dns servers starts with
 	DNSServersStartsWith *string `json:"dns_servers_starts_with,omitempty"`
 
+	// dpi enabled
+	DpiEnabled *bool `json:"dpi_enabled,omitempty"`
+
+	// dpi enabled not
+	DpiEnabledNot *bool `json:"dpi_enabled_not,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -286,15 +289,6 @@ type VMWhereInput struct {
 
 	// entity async status not in
 	EntityAsyncStatusNotIn []EntityAsyncStatus `json:"entityAsyncStatus_not_in,omitempty"`
-
-	// entity filter results every
-	EntityFilterResultsEvery *VMEntityFilterResultWhereInput `json:"entity_filter_results_every,omitempty"`
-
-	// entity filter results none
-	EntityFilterResultsNone *VMEntityFilterResultWhereInput `json:"entity_filter_results_none,omitempty"`
-
-	// entity filter results some
-	EntityFilterResultsSome *VMEntityFilterResultWhereInput `json:"entity_filter_results_some,omitempty"`
 
 	// firmware
 	Firmware *VMFirmware `json:"firmware,omitempty"`
@@ -538,6 +532,90 @@ type VMWhereInput struct {
 
 	// internal not
 	InternalNot *bool `json:"internal_not,omitempty"`
+
+	// internal product
+	InternalProduct *string `json:"internal_product,omitempty"`
+
+	// internal product contains
+	InternalProductContains *string `json:"internal_product_contains,omitempty"`
+
+	// internal product ends with
+	InternalProductEndsWith *string `json:"internal_product_ends_with,omitempty"`
+
+	// internal product gt
+	InternalProductGt *string `json:"internal_product_gt,omitempty"`
+
+	// internal product gte
+	InternalProductGte *string `json:"internal_product_gte,omitempty"`
+
+	// internal product in
+	InternalProductIn []string `json:"internal_product_in,omitempty"`
+
+	// internal product lt
+	InternalProductLt *string `json:"internal_product_lt,omitempty"`
+
+	// internal product lte
+	InternalProductLte *string `json:"internal_product_lte,omitempty"`
+
+	// internal product name
+	InternalProductName *string `json:"internal_product_name,omitempty"`
+
+	// internal product name contains
+	InternalProductNameContains *string `json:"internal_product_name_contains,omitempty"`
+
+	// internal product name ends with
+	InternalProductNameEndsWith *string `json:"internal_product_name_ends_with,omitempty"`
+
+	// internal product name gt
+	InternalProductNameGt *string `json:"internal_product_name_gt,omitempty"`
+
+	// internal product name gte
+	InternalProductNameGte *string `json:"internal_product_name_gte,omitempty"`
+
+	// internal product name in
+	InternalProductNameIn []string `json:"internal_product_name_in,omitempty"`
+
+	// internal product name lt
+	InternalProductNameLt *string `json:"internal_product_name_lt,omitempty"`
+
+	// internal product name lte
+	InternalProductNameLte *string `json:"internal_product_name_lte,omitempty"`
+
+	// internal product name not
+	InternalProductNameNot *string `json:"internal_product_name_not,omitempty"`
+
+	// internal product name not contains
+	InternalProductNameNotContains *string `json:"internal_product_name_not_contains,omitempty"`
+
+	// internal product name not ends with
+	InternalProductNameNotEndsWith *string `json:"internal_product_name_not_ends_with,omitempty"`
+
+	// internal product name not in
+	InternalProductNameNotIn []string `json:"internal_product_name_not_in,omitempty"`
+
+	// internal product name not starts with
+	InternalProductNameNotStartsWith *string `json:"internal_product_name_not_starts_with,omitempty"`
+
+	// internal product name starts with
+	InternalProductNameStartsWith *string `json:"internal_product_name_starts_with,omitempty"`
+
+	// internal product not
+	InternalProductNot *string `json:"internal_product_not,omitempty"`
+
+	// internal product not contains
+	InternalProductNotContains *string `json:"internal_product_not_contains,omitempty"`
+
+	// internal product not ends with
+	InternalProductNotEndsWith *string `json:"internal_product_not_ends_with,omitempty"`
+
+	// internal product not in
+	InternalProductNotIn []string `json:"internal_product_not_in,omitempty"`
+
+	// internal product not starts with
+	InternalProductNotStartsWith *string `json:"internal_product_not_starts_with,omitempty"`
+
+	// internal product starts with
+	InternalProductStartsWith *string `json:"internal_product_starts_with,omitempty"`
 
 	// io policy
 	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
@@ -1118,9 +1196,6 @@ type VMWhereInput struct {
 	// size not in
 	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
-	// snapshot plan
-	SnapshotPlan *SnapshotPlanWhereInput `json:"snapshot_plan,omitempty"`
-
 	// snapshots every
 	SnapshotsEvery *VMSnapshotWhereInput `json:"snapshots_every,omitempty"`
 
@@ -1392,11 +1467,9 @@ type VMWhereInputMarshalOpts struct {
 
 	OR_Explicit_Null_When_Empty bool
 
-	BackupPlansEvery_Explicit_Null_When_Empty bool
+	AntiMalwareEnabled_Explicit_Null_When_Empty bool
 
-	BackupPlansNone_Explicit_Null_When_Empty bool
-
-	BackupPlansSome_Explicit_Null_When_Empty bool
+	AntiMalwareEnabledNot_Explicit_Null_When_Empty bool
 
 	BiosUUID_Explicit_Null_When_Empty bool
 
@@ -1556,6 +1629,10 @@ type VMWhereInputMarshalOpts struct {
 
 	DNSServersStartsWith_Explicit_Null_When_Empty bool
 
+	DpiEnabled_Explicit_Null_When_Empty bool
+
+	DpiEnabledNot_Explicit_Null_When_Empty bool
+
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatusIn_Explicit_Null_When_Empty bool
@@ -1563,12 +1640,6 @@ type VMWhereInputMarshalOpts struct {
 	EntityAsyncStatusNot_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatusNotIn_Explicit_Null_When_Empty bool
-
-	EntityFilterResultsEvery_Explicit_Null_When_Empty bool
-
-	EntityFilterResultsNone_Explicit_Null_When_Empty bool
-
-	EntityFilterResultsSome_Explicit_Null_When_Empty bool
 
 	Firmware_Explicit_Null_When_Empty bool
 
@@ -1731,6 +1802,62 @@ type VMWhereInputMarshalOpts struct {
 	Internal_Explicit_Null_When_Empty bool
 
 	InternalNot_Explicit_Null_When_Empty bool
+
+	InternalProduct_Explicit_Null_When_Empty bool
+
+	InternalProductContains_Explicit_Null_When_Empty bool
+
+	InternalProductEndsWith_Explicit_Null_When_Empty bool
+
+	InternalProductGt_Explicit_Null_When_Empty bool
+
+	InternalProductGte_Explicit_Null_When_Empty bool
+
+	InternalProductIn_Explicit_Null_When_Empty bool
+
+	InternalProductLt_Explicit_Null_When_Empty bool
+
+	InternalProductLte_Explicit_Null_When_Empty bool
+
+	InternalProductName_Explicit_Null_When_Empty bool
+
+	InternalProductNameContains_Explicit_Null_When_Empty bool
+
+	InternalProductNameEndsWith_Explicit_Null_When_Empty bool
+
+	InternalProductNameGt_Explicit_Null_When_Empty bool
+
+	InternalProductNameGte_Explicit_Null_When_Empty bool
+
+	InternalProductNameIn_Explicit_Null_When_Empty bool
+
+	InternalProductNameLt_Explicit_Null_When_Empty bool
+
+	InternalProductNameLte_Explicit_Null_When_Empty bool
+
+	InternalProductNameNot_Explicit_Null_When_Empty bool
+
+	InternalProductNameNotContains_Explicit_Null_When_Empty bool
+
+	InternalProductNameNotEndsWith_Explicit_Null_When_Empty bool
+
+	InternalProductNameNotIn_Explicit_Null_When_Empty bool
+
+	InternalProductNameNotStartsWith_Explicit_Null_When_Empty bool
+
+	InternalProductNameStartsWith_Explicit_Null_When_Empty bool
+
+	InternalProductNot_Explicit_Null_When_Empty bool
+
+	InternalProductNotContains_Explicit_Null_When_Empty bool
+
+	InternalProductNotEndsWith_Explicit_Null_When_Empty bool
+
+	InternalProductNotIn_Explicit_Null_When_Empty bool
+
+	InternalProductNotStartsWith_Explicit_Null_When_Empty bool
+
+	InternalProductStartsWith_Explicit_Null_When_Empty bool
 
 	IoPolicy_Explicit_Null_When_Empty bool
 
@@ -2118,8 +2245,6 @@ type VMWhereInputMarshalOpts struct {
 
 	SizeNotIn_Explicit_Null_When_Empty bool
 
-	SnapshotPlan_Explicit_Null_When_Empty bool
-
 	SnapshotsEvery_Explicit_Null_When_Empty bool
 
 	SnapshotsNone_Explicit_Null_When_Empty bool
@@ -2343,63 +2468,43 @@ func (m VMWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field backup_plans_every
-	if m.BackupPlansEvery != nil {
+	// handle nullable field anti_malware_enabled
+	if m.AntiMalwareEnabled != nil {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"backup_plans_every\":")
-		bytes, err := swag.WriteJSON(m.BackupPlansEvery)
+		b.WriteString("\"anti_malware_enabled\":")
+		bytes, err := swag.WriteJSON(m.AntiMalwareEnabled)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
 		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupPlansEvery_Explicit_Null_When_Empty {
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AntiMalwareEnabled_Explicit_Null_When_Empty {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"backup_plans_every\":null")
+		b.WriteString("\"anti_malware_enabled\":null")
 		first = false
 	}
 
-	// handle nullable field backup_plans_none
-	if m.BackupPlansNone != nil {
+	// handle nullable field anti_malware_enabled_not
+	if m.AntiMalwareEnabledNot != nil {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"backup_plans_none\":")
-		bytes, err := swag.WriteJSON(m.BackupPlansNone)
+		b.WriteString("\"anti_malware_enabled_not\":")
+		bytes, err := swag.WriteJSON(m.AntiMalwareEnabledNot)
 		if err != nil {
 			return nil, err
 		}
 		b.Write(bytes)
 		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupPlansNone_Explicit_Null_When_Empty {
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AntiMalwareEnabledNot_Explicit_Null_When_Empty {
 		if !first {
 			b.WriteString(",")
 		}
-		b.WriteString("\"backup_plans_none\":null")
-		first = false
-	}
-
-	// handle nullable field backup_plans_some
-	if m.BackupPlansSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"backup_plans_some\":")
-		bytes, err := swag.WriteJSON(m.BackupPlansSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.BackupPlansSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"backup_plans_some\":null")
+		b.WriteString("\"anti_malware_enabled_not\":null")
 		first = false
 	}
 
@@ -3899,6 +4004,46 @@ func (m VMWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field dpi_enabled
+	if m.DpiEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled\":")
+		bytes, err := swag.WriteJSON(m.DpiEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DpiEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field dpi_enabled_not
+	if m.DpiEnabledNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled_not\":")
+		bytes, err := swag.WriteJSON(m.DpiEnabledNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DpiEnabledNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled_not\":null")
+		first = false
+	}
+
 	// handle nullable field entityAsyncStatus
 	if m.EntityAsyncStatus != nil {
 		if !first {
@@ -3964,66 +4109,6 @@ func (m VMWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
-		first = false
-	}
-
-	// handle nullable field entity_filter_results_every
-	if m.EntityFilterResultsEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"entity_filter_results_every\":")
-		bytes, err := swag.WriteJSON(m.EntityFilterResultsEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityFilterResultsEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"entity_filter_results_every\":null")
-		first = false
-	}
-
-	// handle nullable field entity_filter_results_none
-	if m.EntityFilterResultsNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"entity_filter_results_none\":")
-		bytes, err := swag.WriteJSON(m.EntityFilterResultsNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityFilterResultsNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"entity_filter_results_none\":null")
-		first = false
-	}
-
-	// handle nullable field entity_filter_results_some
-	if m.EntityFilterResultsSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"entity_filter_results_some\":")
-		bytes, err := swag.WriteJSON(m.EntityFilterResultsSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityFilterResultsSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"entity_filter_results_some\":null")
 		first = false
 	}
 
@@ -5548,6 +5633,542 @@ func (m VMWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"internal_not\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product
+	if m.InternalProduct != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product\":")
+		bytes, err := swag.WriteJSON(m.InternalProduct)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProduct_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_contains
+	if m.InternalProductContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_contains\":")
+		bytes, err := swag.WriteJSON(m.InternalProductContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_contains\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_ends_with
+	if m.InternalProductEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_ends_with\":")
+		bytes, err := swag.WriteJSON(m.InternalProductEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_gt
+	if m.InternalProductGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_gt\":")
+		bytes, err := swag.WriteJSON(m.InternalProductGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_gt\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_gte
+	if m.InternalProductGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_gte\":")
+		bytes, err := swag.WriteJSON(m.InternalProductGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field internal_product_in with omitempty
+	if !swag.IsZero(m.InternalProductIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_in\":")
+		bytes, err := swag.WriteJSON(m.InternalProductIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field internal_product_lt
+	if m.InternalProductLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_lt\":")
+		bytes, err := swag.WriteJSON(m.InternalProductLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_lt\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_lte
+	if m.InternalProductLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_lte\":")
+		bytes, err := swag.WriteJSON(m.InternalProductLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_lte\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name
+	if m.InternalProductName != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name\":")
+		bytes, err := swag.WriteJSON(m.InternalProductName)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductName_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_contains
+	if m.InternalProductNameContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_contains\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_contains\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_ends_with
+	if m.InternalProductNameEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_ends_with\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_gt
+	if m.InternalProductNameGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_gt\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_gt\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_gte
+	if m.InternalProductNameGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_gte\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field internal_product_name_in with omitempty
+	if !swag.IsZero(m.InternalProductNameIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_in\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field internal_product_name_lt
+	if m.InternalProductNameLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_lt\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_lt\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_lte
+	if m.InternalProductNameLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_lte\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_lte\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_not
+	if m.InternalProductNameNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_not_contains
+	if m.InternalProductNameNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not_contains\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_not_ends_with
+	if m.InternalProductNameNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field internal_product_name_not_in with omitempty
+	if !swag.IsZero(m.InternalProductNameNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not_in\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field internal_product_name_not_starts_with
+	if m.InternalProductNameNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_name_starts_with
+	if m.InternalProductNameStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_starts_with\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNameStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNameStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_name_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_not
+	if m.InternalProductNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_not_contains
+	if m.InternalProductNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not_contains\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_not_ends_with
+	if m.InternalProductNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field internal_product_not_in with omitempty
+	if !swag.IsZero(m.InternalProductNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not_in\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field internal_product_not_starts_with
+	if m.InternalProductNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.InternalProductNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field internal_product_starts_with
+	if m.InternalProductStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_starts_with\":")
+		bytes, err := swag.WriteJSON(m.InternalProductStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"internal_product_starts_with\":null")
 		first = false
 	}
 
@@ -9183,26 +9804,6 @@ func (m VMWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field snapshot_plan
-	if m.SnapshotPlan != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_plan\":")
-		bytes, err := swag.WriteJSON(m.SnapshotPlan)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotPlan_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_plan\":null")
-		first = false
-	}
-
 	// handle nullable field snapshots_every
 	if m.SnapshotsEvery != nil {
 		if !first {
@@ -10843,18 +11444,6 @@ func (m *VMWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateBackupPlansEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBackupPlansNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBackupPlansSome(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateClockOffset(formats); err != nil {
 		res = append(res, err)
 	}
@@ -10888,18 +11477,6 @@ func (m *VMWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEntityAsyncStatusNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateEntityFilterResultsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateEntityFilterResultsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateEntityFilterResultsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -11044,10 +11621,6 @@ func (m *VMWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePciNicsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSnapshotPlan(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -11259,63 +11832,6 @@ func (m *VMWhereInput) validateOR(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VMWhereInput) validateBackupPlansEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.BackupPlansEvery) { // not required
-		return nil
-	}
-
-	if m.BackupPlansEvery != nil {
-		if err := m.BackupPlansEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("backup_plans_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("backup_plans_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) validateBackupPlansNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.BackupPlansNone) { // not required
-		return nil
-	}
-
-	if m.BackupPlansNone != nil {
-		if err := m.BackupPlansNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("backup_plans_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("backup_plans_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) validateBackupPlansSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.BackupPlansSome) { // not required
-		return nil
-	}
-
-	if m.BackupPlansSome != nil {
-		if err := m.BackupPlansSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("backup_plans_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("backup_plans_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VMWhereInput) validateClockOffset(formats strfmt.Registry) error {
 	if swag.IsZero(m.ClockOffset) { // not required
 		return nil
@@ -11490,63 +12006,6 @@ func (m *VMWhereInput) validateEntityAsyncStatusNotIn(formats strfmt.Registry) e
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) validateEntityFilterResultsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.EntityFilterResultsEvery) { // not required
-		return nil
-	}
-
-	if m.EntityFilterResultsEvery != nil {
-		if err := m.EntityFilterResultsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("entity_filter_results_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("entity_filter_results_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) validateEntityFilterResultsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.EntityFilterResultsNone) { // not required
-		return nil
-	}
-
-	if m.EntityFilterResultsNone != nil {
-		if err := m.EntityFilterResultsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("entity_filter_results_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("entity_filter_results_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) validateEntityFilterResultsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.EntityFilterResultsSome) { // not required
-		return nil
-	}
-
-	if m.EntityFilterResultsSome != nil {
-		if err := m.EntityFilterResultsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("entity_filter_results_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("entity_filter_results_some")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -12260,25 +12719,6 @@ func (m *VMWhereInput) validatePciNicsSome(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VMWhereInput) validateSnapshotPlan(formats strfmt.Registry) error {
-	if swag.IsZero(m.SnapshotPlan) { // not required
-		return nil
-	}
-
-	if m.SnapshotPlan != nil {
-		if err := m.SnapshotPlan.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot_plan")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot_plan")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VMWhereInput) validateSnapshotsEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.SnapshotsEvery) { // not required
 		return nil
@@ -12900,18 +13340,6 @@ func (m *VMWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regis
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateBackupPlansEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBackupPlansNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBackupPlansSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateClockOffset(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -12945,18 +13373,6 @@ func (m *VMWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regis
 	}
 
 	if err := m.contextValidateEntityAsyncStatusNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateEntityFilterResultsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateEntityFilterResultsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateEntityFilterResultsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -13101,10 +13517,6 @@ func (m *VMWhereInput) ContextValidate(ctx context.Context, formats strfmt.Regis
 	}
 
 	if err := m.contextValidatePciNicsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSnapshotPlan(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -13298,54 +13710,6 @@ func (m *VMWhereInput) contextValidateOR(ctx context.Context, formats strfmt.Reg
 	return nil
 }
 
-func (m *VMWhereInput) contextValidateBackupPlansEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BackupPlansEvery != nil {
-		if err := m.BackupPlansEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("backup_plans_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("backup_plans_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) contextValidateBackupPlansNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BackupPlansNone != nil {
-		if err := m.BackupPlansNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("backup_plans_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("backup_plans_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) contextValidateBackupPlansSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.BackupPlansSome != nil {
-		if err := m.BackupPlansSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("backup_plans_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("backup_plans_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VMWhereInput) contextValidateClockOffset(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClockOffset != nil {
@@ -13493,54 +13857,6 @@ func (m *VMWhereInput) contextValidateEntityAsyncStatusNotIn(ctx context.Context
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) contextValidateEntityFilterResultsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.EntityFilterResultsEvery != nil {
-		if err := m.EntityFilterResultsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("entity_filter_results_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("entity_filter_results_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) contextValidateEntityFilterResultsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.EntityFilterResultsNone != nil {
-		if err := m.EntityFilterResultsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("entity_filter_results_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("entity_filter_results_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) contextValidateEntityFilterResultsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.EntityFilterResultsSome != nil {
-		if err := m.EntityFilterResultsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("entity_filter_results_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("entity_filter_results_some")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -14138,22 +14454,6 @@ func (m *VMWhereInput) contextValidatePciNicsSome(ctx context.Context, formats s
 				return ve.ValidateName("pci_nics_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("pci_nics_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMWhereInput) contextValidateSnapshotPlan(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SnapshotPlan != nil {
-		if err := m.SnapshotPlan.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot_plan")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot_plan")
 			}
 			return err
 		}

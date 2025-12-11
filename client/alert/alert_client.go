@@ -34,8 +34,6 @@ type ClientService interface {
 
 	GetAlertsConnection(params *GetAlertsConnectionParams, opts ...ClientOption) (*GetAlertsConnectionOK, error)
 
-	ResolveAlert(params *ResolveAlertParams, opts ...ClientOption) (*ResolveAlertOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -112,44 +110,6 @@ func (a *Client) GetAlertsConnection(params *GetAlertsConnectionParams, opts ...
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for GetAlertsConnection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  ResolveAlert resolve alert API
-*/
-func (a *Client) ResolveAlert(params *ResolveAlertParams, opts ...ClientOption) (*ResolveAlertOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewResolveAlertParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "ResolveAlert",
-		Method:             "POST",
-		PathPattern:        "/resolve-alert",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ResolveAlertReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*ResolveAlertOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for ResolveAlert: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

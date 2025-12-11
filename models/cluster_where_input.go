@@ -125,15 +125,6 @@ type ClusterWhereInput struct {
 	// application highest version starts with
 	ApplicationHighestVersionStartsWith *string `json:"application_highest_version_starts_with,omitempty"`
 
-	// applications every
-	ApplicationsEvery *ApplicationWhereInput `json:"applications_every,omitempty"`
-
-	// applications none
-	ApplicationsNone *ApplicationWhereInput `json:"applications_none,omitempty"`
-
-	// applications some
-	ApplicationsSome *ApplicationWhereInput `json:"applications_some,omitempty"`
-
 	// architecture
 	Architecture *Architecture `json:"architecture,omitempty"`
 
@@ -187,15 +178,6 @@ type ClusterWhereInput struct {
 
 	// connect state not in
 	ConnectStateNotIn []ConnectState `json:"connect_state_not_in,omitempty"`
-
-	// consistency groups every
-	ConsistencyGroupsEvery *ConsistencyGroupWhereInput `json:"consistency_groups_every,omitempty"`
-
-	// consistency groups none
-	ConsistencyGroupsNone *ConsistencyGroupWhereInput `json:"consistency_groups_none,omitempty"`
-
-	// consistency groups some
-	ConsistencyGroupsSome *ConsistencyGroupWhereInput `json:"consistency_groups_some,omitempty"`
 
 	// current cpu model
 	CurrentCPUModel *string `json:"current_cpu_model,omitempty"`
@@ -355,9 +337,6 @@ type ClusterWhereInput struct {
 
 	// downgraded prioritized space not in
 	DowngradedPrioritizedSpaceNotIn []int64 `json:"downgraded_prioritized_space_not_in,omitempty"`
-
-	// ecp license
-	EcpLicense *EcpLicenseWhereInput `json:"ecp_license,omitempty"`
 
 	// enable tiering
 	EnableTiering *bool `json:"enable_tiering,omitempty"`
@@ -1562,9 +1541,6 @@ type ClusterWhereInput struct {
 	// running vm num not in
 	RunningVMNumNotIn []int32 `json:"running_vm_num_not_in,omitempty"`
 
-	// settings
-	Settings *ClusterSettingsWhereInput `json:"settings,omitempty"`
-
 	// software edition
 	SoftwareEdition *SoftwareEdition `json:"software_edition,omitempty"`
 
@@ -2027,9 +2003,6 @@ type ClusterWhereInput struct {
 	// valid data space not in
 	ValidDataSpaceNotIn []int64 `json:"valid_data_space_not_in,omitempty"`
 
-	// vcenter account
-	VcenterAccount *VcenterAccountWhereInput `json:"vcenterAccount,omitempty"`
-
 	// vdses every
 	VdsesEvery *VdsWhereInput `json:"vdses_every,omitempty"`
 
@@ -2138,18 +2111,6 @@ type ClusterWhereInput struct {
 	// vms some
 	VmsSome *VMWhereInput `json:"vms_some,omitempty"`
 
-	// witness
-	Witness *WitnessWhereInput `json:"witness,omitempty"`
-
-	// zones every
-	ZonesEvery *ZoneWhereInput `json:"zones_every,omitempty"`
-
-	// zones none
-	ZonesNone *ZoneWhereInput `json:"zones_none,omitempty"`
-
-	// zones some
-	ZonesSome *ZoneWhereInput `json:"zones_some,omitempty"`
-
 	MarshalOpts *ClusterWhereInputMarshalOpts `json:"-"`
 }
 
@@ -2224,12 +2185,6 @@ type ClusterWhereInputMarshalOpts struct {
 
 	ApplicationHighestVersionStartsWith_Explicit_Null_When_Empty bool
 
-	ApplicationsEvery_Explicit_Null_When_Empty bool
-
-	ApplicationsNone_Explicit_Null_When_Empty bool
-
-	ApplicationsSome_Explicit_Null_When_Empty bool
-
 	Architecture_Explicit_Null_When_Empty bool
 
 	ArchitectureIn_Explicit_Null_When_Empty bool
@@ -2265,12 +2220,6 @@ type ClusterWhereInputMarshalOpts struct {
 	ConnectStateNot_Explicit_Null_When_Empty bool
 
 	ConnectStateNotIn_Explicit_Null_When_Empty bool
-
-	ConsistencyGroupsEvery_Explicit_Null_When_Empty bool
-
-	ConsistencyGroupsNone_Explicit_Null_When_Empty bool
-
-	ConsistencyGroupsSome_Explicit_Null_When_Empty bool
 
 	CurrentCPUModel_Explicit_Null_When_Empty bool
 
@@ -2377,8 +2326,6 @@ type ClusterWhereInputMarshalOpts struct {
 	DowngradedPrioritizedSpaceNot_Explicit_Null_When_Empty bool
 
 	DowngradedPrioritizedSpaceNotIn_Explicit_Null_When_Empty bool
-
-	EcpLicense_Explicit_Null_When_Empty bool
 
 	EnableTiering_Explicit_Null_When_Empty bool
 
@@ -3182,8 +3129,6 @@ type ClusterWhereInputMarshalOpts struct {
 
 	RunningVMNumNotIn_Explicit_Null_When_Empty bool
 
-	Settings_Explicit_Null_When_Empty bool
-
 	SoftwareEdition_Explicit_Null_When_Empty bool
 
 	SoftwareEditionIn_Explicit_Null_When_Empty bool
@@ -3492,8 +3437,6 @@ type ClusterWhereInputMarshalOpts struct {
 
 	ValidDataSpaceNotIn_Explicit_Null_When_Empty bool
 
-	VcenterAccount_Explicit_Null_When_Empty bool
-
 	VdsesEvery_Explicit_Null_When_Empty bool
 
 	VdsesNone_Explicit_Null_When_Empty bool
@@ -3565,14 +3508,6 @@ type ClusterWhereInputMarshalOpts struct {
 	VmsNone_Explicit_Null_When_Empty bool
 
 	VmsSome_Explicit_Null_When_Empty bool
-
-	Witness_Explicit_Null_When_Empty bool
-
-	ZonesEvery_Explicit_Null_When_Empty bool
-
-	ZonesNone_Explicit_Null_When_Empty bool
-
-	ZonesSome_Explicit_Null_When_Empty bool
 }
 
 func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
@@ -4227,66 +4162,6 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field applications_every
-	if m.ApplicationsEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"applications_every\":")
-		bytes, err := swag.WriteJSON(m.ApplicationsEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ApplicationsEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"applications_every\":null")
-		first = false
-	}
-
-	// handle nullable field applications_none
-	if m.ApplicationsNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"applications_none\":")
-		bytes, err := swag.WriteJSON(m.ApplicationsNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ApplicationsNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"applications_none\":null")
-		first = false
-	}
-
-	// handle nullable field applications_some
-	if m.ApplicationsSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"applications_some\":")
-		bytes, err := swag.WriteJSON(m.ApplicationsSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ApplicationsSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"applications_some\":null")
-		first = false
-	}
-
 	// handle nullable field architecture
 	if m.Architecture != nil {
 		if !first {
@@ -4608,66 +4483,6 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
-		first = false
-	}
-
-	// handle nullable field consistency_groups_every
-	if m.ConsistencyGroupsEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_groups_every\":")
-		bytes, err := swag.WriteJSON(m.ConsistencyGroupsEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroupsEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_groups_every\":null")
-		first = false
-	}
-
-	// handle nullable field consistency_groups_none
-	if m.ConsistencyGroupsNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_groups_none\":")
-		bytes, err := swag.WriteJSON(m.ConsistencyGroupsNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroupsNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_groups_none\":null")
-		first = false
-	}
-
-	// handle nullable field consistency_groups_some
-	if m.ConsistencyGroupsSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_groups_some\":")
-		bytes, err := swag.WriteJSON(m.ConsistencyGroupsSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroupsSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_groups_some\":null")
 		first = false
 	}
 
@@ -5656,26 +5471,6 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
-		first = false
-	}
-
-	// handle nullable field ecp_license
-	if m.EcpLicense != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"ecp_license\":")
-		bytes, err := swag.WriteJSON(m.EcpLicense)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.EcpLicense_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"ecp_license\":null")
 		first = false
 	}
 
@@ -13195,26 +12990,6 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field settings
-	if m.Settings != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"settings\":")
-		bytes, err := swag.WriteJSON(m.Settings)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Settings_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"settings\":null")
-		first = false
-	}
-
 	// handle nullable field software_edition
 	if m.SoftwareEdition != nil {
 		if !first {
@@ -16067,26 +15842,6 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field vcenterAccount
-	if m.VcenterAccount != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vcenterAccount\":")
-		bytes, err := swag.WriteJSON(m.VcenterAccount)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VcenterAccount_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vcenterAccount\":null")
-		first = false
-	}
-
 	// handle nullable field vdses_every
 	if m.VdsesEvery != nil {
 		if !first {
@@ -16783,86 +16538,6 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field witness
-	if m.Witness != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"witness\":")
-		bytes, err := swag.WriteJSON(m.Witness)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Witness_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"witness\":null")
-		first = false
-	}
-
-	// handle nullable field zones_every
-	if m.ZonesEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"zones_every\":")
-		bytes, err := swag.WriteJSON(m.ZonesEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ZonesEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"zones_every\":null")
-		first = false
-	}
-
-	// handle nullable field zones_none
-	if m.ZonesNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"zones_none\":")
-		bytes, err := swag.WriteJSON(m.ZonesNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ZonesNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"zones_none\":null")
-		first = false
-	}
-
-	// handle nullable field zones_some
-	if m.ZonesSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"zones_some\":")
-		bytes, err := swag.WriteJSON(m.ZonesSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ZonesSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"zones_some\":null")
-		first = false
-	}
-
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -16880,18 +16555,6 @@ func (m *ClusterWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOR(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateApplicationsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateApplicationsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateApplicationsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -16927,18 +16590,6 @@ func (m *ClusterWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateConsistencyGroupsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateConsistencyGroupsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateConsistencyGroupsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateDatacentersEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -16964,10 +16615,6 @@ func (m *ClusterWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDisconnectedReasonNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateEcpLicense(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -17063,10 +16710,6 @@ func (m *ClusterWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateSettings(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateSoftwareEdition(formats); err != nil {
 		res = append(res, err)
 	}
@@ -17096,10 +16739,6 @@ func (m *ClusterWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateTypeNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVcenterAccount(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -17148,22 +16787,6 @@ func (m *ClusterWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVmsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateWitness(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateZonesEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateZonesNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateZonesSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -17246,63 +16869,6 @@ func (m *ClusterWhereInput) validateOR(formats strfmt.Registry) error {
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateApplicationsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.ApplicationsEvery) { // not required
-		return nil
-	}
-
-	if m.ApplicationsEvery != nil {
-		if err := m.ApplicationsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("applications_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("applications_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateApplicationsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.ApplicationsNone) { // not required
-		return nil
-	}
-
-	if m.ApplicationsNone != nil {
-		if err := m.ApplicationsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("applications_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("applications_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateApplicationsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.ApplicationsSome) { // not required
-		return nil
-	}
-
-	if m.ApplicationsSome != nil {
-		if err := m.ApplicationsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("applications_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("applications_some")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -17468,63 +17034,6 @@ func (m *ClusterWhereInput) validateConnectStateNotIn(formats strfmt.Registry) e
 	return nil
 }
 
-func (m *ClusterWhereInput) validateConsistencyGroupsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsistencyGroupsEvery) { // not required
-		return nil
-	}
-
-	if m.ConsistencyGroupsEvery != nil {
-		if err := m.ConsistencyGroupsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_groups_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_groups_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateConsistencyGroupsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsistencyGroupsNone) { // not required
-		return nil
-	}
-
-	if m.ConsistencyGroupsNone != nil {
-		if err := m.ConsistencyGroupsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_groups_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_groups_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateConsistencyGroupsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsistencyGroupsSome) { // not required
-		return nil
-	}
-
-	if m.ConsistencyGroupsSome != nil {
-		if err := m.ConsistencyGroupsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_groups_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_groups_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ClusterWhereInput) validateDatacentersEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.DatacentersEvery) { // not required
 		return nil
@@ -17657,25 +17166,6 @@ func (m *ClusterWhereInput) validateDisconnectedReasonNotIn(formats strfmt.Regis
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateEcpLicense(formats strfmt.Registry) error {
-	if swag.IsZero(m.EcpLicense) { // not required
-		return nil
-	}
-
-	if m.EcpLicense != nil {
-		if err := m.EcpLicense.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("ecp_license")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("ecp_license")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -18134,25 +17624,6 @@ func (m *ClusterWhereInput) validateNtpModeNotIn(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *ClusterWhereInput) validateSettings(formats strfmt.Registry) error {
-	if swag.IsZero(m.Settings) { // not required
-		return nil
-	}
-
-	if m.Settings != nil {
-		if err := m.Settings.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("settings")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("settings")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ClusterWhereInput) validateSoftwareEdition(formats strfmt.Registry) error {
 	if swag.IsZero(m.SoftwareEdition) { // not required
 		return nil
@@ -18308,25 +17779,6 @@ func (m *ClusterWhereInput) validateTypeNotIn(formats strfmt.Registry) error {
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateVcenterAccount(formats strfmt.Registry) error {
-	if swag.IsZero(m.VcenterAccount) { // not required
-		return nil
-	}
-
-	if m.VcenterAccount != nil {
-		if err := m.VcenterAccount.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vcenterAccount")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vcenterAccount")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -18560,82 +18012,6 @@ func (m *ClusterWhereInput) validateVmsSome(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ClusterWhereInput) validateWitness(formats strfmt.Registry) error {
-	if swag.IsZero(m.Witness) { // not required
-		return nil
-	}
-
-	if m.Witness != nil {
-		if err := m.Witness.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("witness")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("witness")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateZonesEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.ZonesEvery) { // not required
-		return nil
-	}
-
-	if m.ZonesEvery != nil {
-		if err := m.ZonesEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("zones_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("zones_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateZonesNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.ZonesNone) { // not required
-		return nil
-	}
-
-	if m.ZonesNone != nil {
-		if err := m.ZonesNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("zones_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("zones_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) validateZonesSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.ZonesSome) { // not required
-		return nil
-	}
-
-	if m.ZonesSome != nil {
-		if err := m.ZonesSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("zones_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("zones_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this cluster where input based on the context it is used
 func (m *ClusterWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -18649,18 +18025,6 @@ func (m *ClusterWhereInput) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateOR(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateApplicationsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateApplicationsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateApplicationsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -18696,18 +18060,6 @@ func (m *ClusterWhereInput) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateConsistencyGroupsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateConsistencyGroupsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateConsistencyGroupsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateDatacentersEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -18733,10 +18085,6 @@ func (m *ClusterWhereInput) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateDisconnectedReasonNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateEcpLicense(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -18832,10 +18180,6 @@ func (m *ClusterWhereInput) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateSettings(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateSoftwareEdition(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -18865,10 +18209,6 @@ func (m *ClusterWhereInput) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateTypeNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVcenterAccount(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -18917,22 +18257,6 @@ func (m *ClusterWhereInput) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateVmsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateWitness(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateZonesEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateZonesNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateZonesSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -18997,54 +18321,6 @@ func (m *ClusterWhereInput) contextValidateOR(ctx context.Context, formats strfm
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateApplicationsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ApplicationsEvery != nil {
-		if err := m.ApplicationsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("applications_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("applications_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateApplicationsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ApplicationsNone != nil {
-		if err := m.ApplicationsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("applications_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("applications_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateApplicationsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ApplicationsSome != nil {
-		if err := m.ApplicationsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("applications_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("applications_some")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -19186,54 +18462,6 @@ func (m *ClusterWhereInput) contextValidateConnectStateNotIn(ctx context.Context
 	return nil
 }
 
-func (m *ClusterWhereInput) contextValidateConsistencyGroupsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ConsistencyGroupsEvery != nil {
-		if err := m.ConsistencyGroupsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_groups_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_groups_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateConsistencyGroupsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ConsistencyGroupsNone != nil {
-		if err := m.ConsistencyGroupsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_groups_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_groups_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateConsistencyGroupsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ConsistencyGroupsSome != nil {
-		if err := m.ConsistencyGroupsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_groups_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_groups_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ClusterWhereInput) contextValidateDatacentersEvery(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DatacentersEvery != nil {
@@ -19345,22 +18573,6 @@ func (m *ClusterWhereInput) contextValidateDisconnectedReasonNotIn(ctx context.C
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateEcpLicense(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.EcpLicense != nil {
-		if err := m.EcpLicense.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("ecp_license")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("ecp_license")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -19750,22 +18962,6 @@ func (m *ClusterWhereInput) contextValidateNtpModeNotIn(ctx context.Context, for
 	return nil
 }
 
-func (m *ClusterWhereInput) contextValidateSettings(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Settings != nil {
-		if err := m.Settings.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("settings")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("settings")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ClusterWhereInput) contextValidateSoftwareEdition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SoftwareEdition != nil {
@@ -19897,22 +19093,6 @@ func (m *ClusterWhereInput) contextValidateTypeNotIn(ctx context.Context, format
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateVcenterAccount(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VcenterAccount != nil {
-		if err := m.VcenterAccount.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vcenterAccount")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vcenterAccount")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -20102,70 +19282,6 @@ func (m *ClusterWhereInput) contextValidateVmsSome(ctx context.Context, formats 
 				return ve.ValidateName("vms_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vms_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateWitness(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Witness != nil {
-		if err := m.Witness.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("witness")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("witness")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateZonesEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ZonesEvery != nil {
-		if err := m.ZonesEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("zones_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("zones_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateZonesNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ZonesNone != nil {
-		if err := m.ZonesNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("zones_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("zones_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ClusterWhereInput) contextValidateZonesSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ZonesSome != nil {
-		if err := m.ZonesSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("zones_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("zones_some")
 			}
 			return err
 		}

@@ -62,7 +62,7 @@ func NewGetVirtualPrivateCloudEdgeGatewayGroupsConnectionOK() *GetVirtualPrivate
 GetVirtualPrivateCloudEdgeGatewayGroupsConnectionOK get virtual private cloud edge gateway groups connection o k
 */
 type GetVirtualPrivateCloudEdgeGatewayGroupsConnectionOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.VirtualPrivateCloudEdgeGatewayGroupConnection
 }
@@ -76,11 +76,11 @@ func (o *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionOK) GetPayload() *mode
 
 func (o *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.VirtualPrivateCloudEdgeGatewayGroupConnection)
@@ -103,7 +103,7 @@ func NewGetVirtualPrivateCloudEdgeGatewayGroupsConnectionBadRequest() *GetVirtua
 Bad request
 */
 type GetVirtualPrivateCloudEdgeGatewayGroupsConnectionBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionBadRequest) GetPayload
 
 func (o *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewGetVirtualPrivateCloudEdgeGatewayGroupsConnectionNotFound() *GetVirtualP
 Not found
 */
 type GetVirtualPrivateCloudEdgeGatewayGroupsConnectionNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionNotFound) GetPayload()
 
 func (o *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewGetVirtualPrivateCloudEdgeGatewayGroupsConnectionInternalServerError() *
 Server error
 */
 type GetVirtualPrivateCloudEdgeGatewayGroupsConnectionInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionInternalServerError) G
 
 func (o *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

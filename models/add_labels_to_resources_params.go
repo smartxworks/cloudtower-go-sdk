@@ -221,12 +221,6 @@ type AddLabelsToResourcesParamsData struct {
 	// clusters
 	Clusters *ClusterWhereInput `json:"clusters,omitempty"`
 
-	// consistency group snapshots
-	ConsistencyGroupSnapshots *ConsistencyGroupSnapshotWhereInput `json:"consistency_group_snapshots,omitempty"`
-
-	// consistency groups
-	ConsistencyGroups *ConsistencyGroupWhereInput `json:"consistency_groups,omitempty"`
-
 	// content library images
 	ContentLibraryImages *ContentLibraryImageWhereInput `json:"content_library_images,omitempty"`
 
@@ -235,9 +229,6 @@ type AddLabelsToResourcesParamsData struct {
 
 	// datacenters
 	Datacenters *DatacenterWhereInput `json:"datacenters,omitempty"`
-
-	// disks
-	Disks *DiskWhereInput `json:"disks,omitempty"`
 
 	// elf images
 	ElfImages *ElfImageWhereInput `json:"elf_images,omitempty"`
@@ -248,9 +239,6 @@ type AddLabelsToResourcesParamsData struct {
 	// hosts
 	Hosts *HostWhereInput `json:"hosts,omitempty"`
 
-	// iscsi lun snapshots
-	IscsiLunSnapshots *IscsiLunSnapshotWhereInput `json:"iscsi_lun_snapshots,omitempty"`
-
 	// iscsi luns
 	IscsiLuns *IscsiLunWhereInput `json:"iscsi_luns,omitempty"`
 
@@ -260,26 +248,8 @@ type AddLabelsToResourcesParamsData struct {
 	// isolation policies
 	IsolationPolicies *IsolationPolicyWhereInput `json:"isolation_policies,omitempty"`
 
-	// namespace groups
-	NamespaceGroups *NamespaceGroupWhereInput `json:"namespace_groups,omitempty"`
-
-	// nfs exports
-	NfsExports *NfsExportWhereInput `json:"nfs_exports,omitempty"`
-
-	// nfs inodes
-	NfsInodes *NfsInodeWhereInput `json:"nfs_inodes,omitempty"`
-
 	// nics
 	Nics *NicWhereInput `json:"nics,omitempty"`
-
-	// nvmf namespace snapshots
-	NvmfNamespaceSnapshots *NvmfNamespaceSnapshotWhereInput `json:"nvmf_namespace_snapshots,omitempty"`
-
-	// nvmf namespaces
-	NvmfNamespaces *NvmfNamespaceWhereInput `json:"nvmf_namespaces,omitempty"`
-
-	// nvmf subsystems
-	NvmfSubsystems *NvmfSubsystemWhereInput `json:"nvmf_subsystems,omitempty"`
 
 	// security policies
 	SecurityPolicies *SecurityPolicyWhereInput `json:"security_policies,omitempty"`
@@ -311,17 +281,11 @@ type AddLabelsToResourcesParamsData struct {
 type AddLabelsToResourcesParamsDataMarshalOpts struct {
 	Clusters_Explicit_Null_When_Empty bool
 
-	ConsistencyGroupSnapshots_Explicit_Null_When_Empty bool
-
-	ConsistencyGroups_Explicit_Null_When_Empty bool
-
 	ContentLibraryImages_Explicit_Null_When_Empty bool
 
 	ContentLibraryVMTemplates_Explicit_Null_When_Empty bool
 
 	Datacenters_Explicit_Null_When_Empty bool
-
-	Disks_Explicit_Null_When_Empty bool
 
 	ElfImages_Explicit_Null_When_Empty bool
 
@@ -329,27 +293,13 @@ type AddLabelsToResourcesParamsDataMarshalOpts struct {
 
 	Hosts_Explicit_Null_When_Empty bool
 
-	IscsiLunSnapshots_Explicit_Null_When_Empty bool
-
 	IscsiLuns_Explicit_Null_When_Empty bool
 
 	IscsiTargets_Explicit_Null_When_Empty bool
 
 	IsolationPolicies_Explicit_Null_When_Empty bool
 
-	NamespaceGroups_Explicit_Null_When_Empty bool
-
-	NfsExports_Explicit_Null_When_Empty bool
-
-	NfsInodes_Explicit_Null_When_Empty bool
-
 	Nics_Explicit_Null_When_Empty bool
-
-	NvmfNamespaceSnapshots_Explicit_Null_When_Empty bool
-
-	NvmfNamespaces_Explicit_Null_When_Empty bool
-
-	NvmfSubsystems_Explicit_Null_When_Empty bool
 
 	SecurityPolicies_Explicit_Null_When_Empty bool
 
@@ -391,46 +341,6 @@ func (m AddLabelsToResourcesParamsData) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"clusters\":null")
-		first = false
-	}
-
-	// handle nullable field consistency_group_snapshots
-	if m.ConsistencyGroupSnapshots != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_group_snapshots\":")
-		bytes, err := swag.WriteJSON(m.ConsistencyGroupSnapshots)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroupSnapshots_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_group_snapshots\":null")
-		first = false
-	}
-
-	// handle nullable field consistency_groups
-	if m.ConsistencyGroups != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_groups\":")
-		bytes, err := swag.WriteJSON(m.ConsistencyGroups)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroups_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_groups\":null")
 		first = false
 	}
 
@@ -494,26 +404,6 @@ func (m AddLabelsToResourcesParamsData) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field disks
-	if m.Disks != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"disks\":")
-		bytes, err := swag.WriteJSON(m.Disks)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Disks_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"disks\":null")
-		first = false
-	}
-
 	// handle nullable field elf_images
 	if m.ElfImages != nil {
 		if !first {
@@ -571,26 +461,6 @@ func (m AddLabelsToResourcesParamsData) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"hosts\":null")
-		first = false
-	}
-
-	// handle nullable field iscsi_lun_snapshots
-	if m.IscsiLunSnapshots != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_lun_snapshots\":")
-		bytes, err := swag.WriteJSON(m.IscsiLunSnapshots)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.IscsiLunSnapshots_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_lun_snapshots\":null")
 		first = false
 	}
 
@@ -654,66 +524,6 @@ func (m AddLabelsToResourcesParamsData) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field namespace_groups
-	if m.NamespaceGroups != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_groups\":")
-		bytes, err := swag.WriteJSON(m.NamespaceGroups)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NamespaceGroups_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"namespace_groups\":null")
-		first = false
-	}
-
-	// handle nullable field nfs_exports
-	if m.NfsExports != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nfs_exports\":")
-		bytes, err := swag.WriteJSON(m.NfsExports)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NfsExports_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nfs_exports\":null")
-		first = false
-	}
-
-	// handle nullable field nfs_inodes
-	if m.NfsInodes != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nfs_inodes\":")
-		bytes, err := swag.WriteJSON(m.NfsInodes)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NfsInodes_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nfs_inodes\":null")
-		first = false
-	}
-
 	// handle nullable field nics
 	if m.Nics != nil {
 		if !first {
@@ -731,66 +541,6 @@ func (m AddLabelsToResourcesParamsData) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"nics\":null")
-		first = false
-	}
-
-	// handle nullable field nvmf_namespace_snapshots
-	if m.NvmfNamespaceSnapshots != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nvmf_namespace_snapshots\":")
-		bytes, err := swag.WriteJSON(m.NvmfNamespaceSnapshots)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfNamespaceSnapshots_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nvmf_namespace_snapshots\":null")
-		first = false
-	}
-
-	// handle nullable field nvmf_namespaces
-	if m.NvmfNamespaces != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nvmf_namespaces\":")
-		bytes, err := swag.WriteJSON(m.NvmfNamespaces)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfNamespaces_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nvmf_namespaces\":null")
-		first = false
-	}
-
-	// handle nullable field nvmf_subsystems
-	if m.NvmfSubsystems != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nvmf_subsystems\":")
-		bytes, err := swag.WriteJSON(m.NvmfSubsystems)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.NvmfSubsystems_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"nvmf_subsystems\":null")
 		first = false
 	}
 
@@ -966,14 +716,6 @@ func (m *AddLabelsToResourcesParamsData) Validate(formats strfmt.Registry) error
 		res = append(res, err)
 	}
 
-	if err := m.validateConsistencyGroupSnapshots(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateConsistencyGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateContentLibraryImages(formats); err != nil {
 		res = append(res, err)
 	}
@@ -983,10 +725,6 @@ func (m *AddLabelsToResourcesParamsData) Validate(formats strfmt.Registry) error
 	}
 
 	if err := m.validateDatacenters(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateDisks(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1002,10 +740,6 @@ func (m *AddLabelsToResourcesParamsData) Validate(formats strfmt.Registry) error
 		res = append(res, err)
 	}
 
-	if err := m.validateIscsiLunSnapshots(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateIscsiLuns(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1018,31 +752,7 @@ func (m *AddLabelsToResourcesParamsData) Validate(formats strfmt.Registry) error
 		res = append(res, err)
 	}
 
-	if err := m.validateNamespaceGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNfsExports(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNfsInodes(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateNics(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNvmfNamespaceSnapshots(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNvmfNamespaces(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNvmfSubsystems(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1095,44 +805,6 @@ func (m *AddLabelsToResourcesParamsData) validateClusters(formats strfmt.Registr
 				return ve.ValidateName("data" + "." + "clusters")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "clusters")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) validateConsistencyGroupSnapshots(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsistencyGroupSnapshots) { // not required
-		return nil
-	}
-
-	if m.ConsistencyGroupSnapshots != nil {
-		if err := m.ConsistencyGroupSnapshots.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "consistency_group_snapshots")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "consistency_group_snapshots")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) validateConsistencyGroups(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsistencyGroups) { // not required
-		return nil
-	}
-
-	if m.ConsistencyGroups != nil {
-		if err := m.ConsistencyGroups.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "consistency_groups")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "consistency_groups")
 			}
 			return err
 		}
@@ -1198,25 +870,6 @@ func (m *AddLabelsToResourcesParamsData) validateDatacenters(formats strfmt.Regi
 	return nil
 }
 
-func (m *AddLabelsToResourcesParamsData) validateDisks(formats strfmt.Registry) error {
-	if swag.IsZero(m.Disks) { // not required
-		return nil
-	}
-
-	if m.Disks != nil {
-		if err := m.Disks.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "disks")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "disks")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *AddLabelsToResourcesParamsData) validateElfImages(formats strfmt.Registry) error {
 	if swag.IsZero(m.ElfImages) { // not required
 		return nil
@@ -1266,25 +919,6 @@ func (m *AddLabelsToResourcesParamsData) validateHosts(formats strfmt.Registry) 
 				return ve.ValidateName("data" + "." + "hosts")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "hosts")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) validateIscsiLunSnapshots(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiLunSnapshots) { // not required
-		return nil
-	}
-
-	if m.IscsiLunSnapshots != nil {
-		if err := m.IscsiLunSnapshots.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "iscsi_lun_snapshots")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "iscsi_lun_snapshots")
 			}
 			return err
 		}
@@ -1350,63 +984,6 @@ func (m *AddLabelsToResourcesParamsData) validateIsolationPolicies(formats strfm
 	return nil
 }
 
-func (m *AddLabelsToResourcesParamsData) validateNamespaceGroups(formats strfmt.Registry) error {
-	if swag.IsZero(m.NamespaceGroups) { // not required
-		return nil
-	}
-
-	if m.NamespaceGroups != nil {
-		if err := m.NamespaceGroups.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "namespace_groups")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "namespace_groups")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) validateNfsExports(formats strfmt.Registry) error {
-	if swag.IsZero(m.NfsExports) { // not required
-		return nil
-	}
-
-	if m.NfsExports != nil {
-		if err := m.NfsExports.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nfs_exports")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nfs_exports")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) validateNfsInodes(formats strfmt.Registry) error {
-	if swag.IsZero(m.NfsInodes) { // not required
-		return nil
-	}
-
-	if m.NfsInodes != nil {
-		if err := m.NfsInodes.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nfs_inodes")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nfs_inodes")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *AddLabelsToResourcesParamsData) validateNics(formats strfmt.Registry) error {
 	if swag.IsZero(m.Nics) { // not required
 		return nil
@@ -1418,63 +995,6 @@ func (m *AddLabelsToResourcesParamsData) validateNics(formats strfmt.Registry) e
 				return ve.ValidateName("data" + "." + "nics")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "nics")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) validateNvmfNamespaceSnapshots(formats strfmt.Registry) error {
-	if swag.IsZero(m.NvmfNamespaceSnapshots) { // not required
-		return nil
-	}
-
-	if m.NvmfNamespaceSnapshots != nil {
-		if err := m.NvmfNamespaceSnapshots.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nvmf_namespace_snapshots")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nvmf_namespace_snapshots")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) validateNvmfNamespaces(formats strfmt.Registry) error {
-	if swag.IsZero(m.NvmfNamespaces) { // not required
-		return nil
-	}
-
-	if m.NvmfNamespaces != nil {
-		if err := m.NvmfNamespaces.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nvmf_namespaces")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nvmf_namespaces")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) validateNvmfSubsystems(formats strfmt.Registry) error {
-	if swag.IsZero(m.NvmfSubsystems) { // not required
-		return nil
-	}
-
-	if m.NvmfSubsystems != nil {
-		if err := m.NvmfSubsystems.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nvmf_subsystems")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nvmf_subsystems")
 			}
 			return err
 		}
@@ -1643,14 +1163,6 @@ func (m *AddLabelsToResourcesParamsData) ContextValidate(ctx context.Context, fo
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateConsistencyGroupSnapshots(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateConsistencyGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateContentLibraryImages(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1660,10 +1172,6 @@ func (m *AddLabelsToResourcesParamsData) ContextValidate(ctx context.Context, fo
 	}
 
 	if err := m.contextValidateDatacenters(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateDisks(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1679,10 +1187,6 @@ func (m *AddLabelsToResourcesParamsData) ContextValidate(ctx context.Context, fo
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIscsiLunSnapshots(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateIscsiLuns(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1695,31 +1199,7 @@ func (m *AddLabelsToResourcesParamsData) ContextValidate(ctx context.Context, fo
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateNamespaceGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateNfsExports(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateNfsInodes(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateNics(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateNvmfNamespaceSnapshots(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateNvmfNamespaces(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateNvmfSubsystems(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1777,38 +1257,6 @@ func (m *AddLabelsToResourcesParamsData) contextValidateClusters(ctx context.Con
 	return nil
 }
 
-func (m *AddLabelsToResourcesParamsData) contextValidateConsistencyGroupSnapshots(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ConsistencyGroupSnapshots != nil {
-		if err := m.ConsistencyGroupSnapshots.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "consistency_group_snapshots")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "consistency_group_snapshots")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) contextValidateConsistencyGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ConsistencyGroups != nil {
-		if err := m.ConsistencyGroups.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "consistency_groups")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "consistency_groups")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *AddLabelsToResourcesParamsData) contextValidateContentLibraryImages(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ContentLibraryImages != nil {
@@ -1849,22 +1297,6 @@ func (m *AddLabelsToResourcesParamsData) contextValidateDatacenters(ctx context.
 				return ve.ValidateName("data" + "." + "datacenters")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "datacenters")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) contextValidateDisks(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Disks != nil {
-		if err := m.Disks.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "disks")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "disks")
 			}
 			return err
 		}
@@ -1921,22 +1353,6 @@ func (m *AddLabelsToResourcesParamsData) contextValidateHosts(ctx context.Contex
 	return nil
 }
 
-func (m *AddLabelsToResourcesParamsData) contextValidateIscsiLunSnapshots(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IscsiLunSnapshots != nil {
-		if err := m.IscsiLunSnapshots.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "iscsi_lun_snapshots")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "iscsi_lun_snapshots")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *AddLabelsToResourcesParamsData) contextValidateIscsiLuns(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IscsiLuns != nil {
@@ -1985,54 +1401,6 @@ func (m *AddLabelsToResourcesParamsData) contextValidateIsolationPolicies(ctx co
 	return nil
 }
 
-func (m *AddLabelsToResourcesParamsData) contextValidateNamespaceGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.NamespaceGroups != nil {
-		if err := m.NamespaceGroups.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "namespace_groups")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "namespace_groups")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) contextValidateNfsExports(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.NfsExports != nil {
-		if err := m.NfsExports.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nfs_exports")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nfs_exports")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) contextValidateNfsInodes(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.NfsInodes != nil {
-		if err := m.NfsInodes.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nfs_inodes")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nfs_inodes")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *AddLabelsToResourcesParamsData) contextValidateNics(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Nics != nil {
@@ -2041,54 +1409,6 @@ func (m *AddLabelsToResourcesParamsData) contextValidateNics(ctx context.Context
 				return ve.ValidateName("data" + "." + "nics")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("data" + "." + "nics")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) contextValidateNvmfNamespaceSnapshots(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.NvmfNamespaceSnapshots != nil {
-		if err := m.NvmfNamespaceSnapshots.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nvmf_namespace_snapshots")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nvmf_namespace_snapshots")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) contextValidateNvmfNamespaces(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.NvmfNamespaces != nil {
-		if err := m.NvmfNamespaces.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nvmf_namespaces")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nvmf_namespaces")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *AddLabelsToResourcesParamsData) contextValidateNvmfSubsystems(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.NvmfSubsystems != nil {
-		if err := m.NvmfSubsystems.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("data" + "." + "nvmf_subsystems")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("data" + "." + "nvmf_subsystems")
 			}
 			return err
 		}

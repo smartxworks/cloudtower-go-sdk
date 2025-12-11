@@ -48,12 +48,6 @@ type IscsiTarget struct {
 	// bps wr max length
 	BpsWrMaxLength *int64 `json:"bps_wr_max_length,omitempty"`
 
-	// business host groups
-	BusinessHostGroups []*NestedBusinessHostGroup `json:"business_host_groups,omitempty"`
-
-	// business hosts
-	BusinessHosts []*NestedBusinessHost `json:"business_hosts,omitempty"`
-
 	// chap enabled
 	// Required: true
 	ChapEnabled *bool `json:"chap_enabled"`
@@ -147,9 +141,6 @@ type IscsiTarget struct {
 	// Required: true
 	IqnWhitelist *string `json:"iqn_whitelist"`
 
-	// iscsi connections
-	IscsiConnections []*NestedIscsiConnection `json:"iscsi_connections,omitempty"`
-
 	// iscsi luns num
 	IscsiLunsNum *int32 `json:"iscsi_luns_num,omitempty"`
 
@@ -211,10 +202,6 @@ type IscsiTargetMarshalOpts struct {
 
 	BpsWrMaxLength_Explicit_Null_When_Empty bool
 
-	BusinessHostGroups_Explicit_Null_When_Empty bool
-
-	BusinessHosts_Explicit_Null_When_Empty bool
-
 	ChapEnabled_Explicit_Null_When_Empty bool
 
 	ChapName_Explicit_Null_When_Empty bool
@@ -270,8 +257,6 @@ type IscsiTargetMarshalOpts struct {
 	IqnName_Explicit_Null_When_Empty bool
 
 	IqnWhitelist_Explicit_Null_When_Empty bool
-
-	IscsiConnections_Explicit_Null_When_Empty bool
 
 	IscsiLunsNum_Explicit_Null_When_Empty bool
 
@@ -479,34 +464,6 @@ func (m IscsiTarget) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"bps_wr_max_length\":null")
-		first = false
-	}
-
-	// handle non nullable field business_host_groups with omitempty
-	if !swag.IsZero(m.BusinessHostGroups) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_host_groups\":")
-		bytes, err := swag.WriteJSON(m.BusinessHostGroups)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	}
-
-	// handle non nullable field business_hosts with omitempty
-	if !swag.IsZero(m.BusinessHosts) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"business_hosts\":")
-		bytes, err := swag.WriteJSON(m.BusinessHosts)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
 		first = false
 	}
 
@@ -1064,20 +1021,6 @@ func (m IscsiTarget) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle non nullable field iscsi_connections with omitempty
-	if !swag.IsZero(m.IscsiConnections) {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"iscsi_connections\":")
-		bytes, err := swag.WriteJSON(m.IscsiConnections)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	}
-
 	// handle nullable field iscsi_luns_num
 	if m.IscsiLunsNum != nil {
 		if !first {
@@ -1294,14 +1237,6 @@ func (m IscsiTarget) MarshalJSON() ([]byte, error) {
 func (m *IscsiTarget) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateBusinessHostGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateBusinessHosts(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateChapEnabled(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1354,10 +1289,6 @@ func (m *IscsiTarget) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateIscsiConnections(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateLabels(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1397,58 +1328,6 @@ func (m *IscsiTarget) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *IscsiTarget) validateBusinessHostGroups(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHostGroups) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.BusinessHostGroups); i++ {
-		if swag.IsZero(m.BusinessHostGroups[i]) { // not required
-			continue
-		}
-
-		if m.BusinessHostGroups[i] != nil {
-			if err := m.BusinessHostGroups[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IscsiTarget) validateBusinessHosts(formats strfmt.Registry) error {
-	if swag.IsZero(m.BusinessHosts) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.BusinessHosts); i++ {
-		if swag.IsZero(m.BusinessHosts[i]) { // not required
-			continue
-		}
-
-		if m.BusinessHosts[i] != nil {
-			if err := m.BusinessHosts[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("business_hosts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("business_hosts" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 
@@ -1627,32 +1506,6 @@ func (m *IscsiTarget) validateIqnWhitelist(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *IscsiTarget) validateIscsiConnections(formats strfmt.Registry) error {
-	if swag.IsZero(m.IscsiConnections) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.IscsiConnections); i++ {
-		if swag.IsZero(m.IscsiConnections[i]) { // not required
-			continue
-		}
-
-		if m.IscsiConnections[i] != nil {
-			if err := m.IscsiConnections[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("iscsi_connections" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("iscsi_connections" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *IscsiTarget) validateLabels(formats strfmt.Registry) error {
 	if swag.IsZero(m.Labels) { // not required
 		return nil
@@ -1782,14 +1635,6 @@ func (m *IscsiTarget) validateThinProvision(formats strfmt.Registry) error {
 func (m *IscsiTarget) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateBusinessHostGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateBusinessHosts(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateCluster(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1810,10 +1655,6 @@ func (m *IscsiTarget) ContextValidate(ctx context.Context, formats strfmt.Regist
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIscsiConnections(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1829,46 +1670,6 @@ func (m *IscsiTarget) ContextValidate(ctx context.Context, formats strfmt.Regist
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *IscsiTarget) contextValidateBusinessHostGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.BusinessHostGroups); i++ {
-
-		if m.BusinessHostGroups[i] != nil {
-			if err := m.BusinessHostGroups[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("business_host_groups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IscsiTarget) contextValidateBusinessHosts(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.BusinessHosts); i++ {
-
-		if m.BusinessHosts[i] != nil {
-			if err := m.BusinessHosts[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("business_hosts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("business_hosts" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 
@@ -1946,26 +1747,6 @@ func (m *IscsiTarget) contextValidateInitiatorChaps(ctx context.Context, formats
 					return ve.ValidateName("initiator_chaps" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("initiator_chaps" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IscsiTarget) contextValidateIscsiConnections(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.IscsiConnections); i++ {
-
-		if m.IscsiConnections[i] != nil {
-			if err := m.IscsiConnections[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("iscsi_connections" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("iscsi_connections" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

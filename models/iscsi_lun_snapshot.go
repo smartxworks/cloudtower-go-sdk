@@ -21,9 +21,6 @@ import (
 // swagger:model IscsiLunSnapshot
 type IscsiLunSnapshot struct {
 
-	// consistency group snapshot
-	ConsistencyGroupSnapshot *NestedConsistencyGroupSnapshot `json:"consistency_group_snapshot,omitempty"`
-
 	// ec k
 	Eck *int32 `json:"ec_k,omitempty"`
 
@@ -62,9 +59,6 @@ type IscsiLunSnapshot struct {
 	// resiliency type
 	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
 
-	// snapshot group
-	SnapshotGroup *NestedSnapshotGroup `json:"snapshot_group,omitempty"`
-
 	// unique size
 	// Required: true
 	UniqueSize *int64 `json:"unique_size"`
@@ -73,8 +67,6 @@ type IscsiLunSnapshot struct {
 }
 
 type IscsiLunSnapshotMarshalOpts struct {
-	ConsistencyGroupSnapshot_Explicit_Null_When_Empty bool
-
 	Eck_Explicit_Null_When_Empty bool
 
 	Ecm_Explicit_Null_When_Empty bool
@@ -97,8 +89,6 @@ type IscsiLunSnapshotMarshalOpts struct {
 
 	ResiliencyType_Explicit_Null_When_Empty bool
 
-	SnapshotGroup_Explicit_Null_When_Empty bool
-
 	UniqueSize_Explicit_Null_When_Empty bool
 }
 
@@ -107,26 +97,6 @@ func (m IscsiLunSnapshot) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
-
-	// handle nullable field consistency_group_snapshot
-	if m.ConsistencyGroupSnapshot != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_group_snapshot\":")
-		bytes, err := swag.WriteJSON(m.ConsistencyGroupSnapshot)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ConsistencyGroupSnapshot_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"consistency_group_snapshot\":null")
-		first = false
-	}
 
 	// handle nullable field ec_k
 	if m.Eck != nil {
@@ -342,26 +312,6 @@ func (m IscsiLunSnapshot) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field snapshot_group
-	if m.SnapshotGroup != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_group\":")
-		bytes, err := swag.WriteJSON(m.SnapshotGroup)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotGroup_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_group\":null")
-		first = false
-	}
-
 	// handle nullable field unique_size
 	if m.UniqueSize != nil {
 		if !first {
@@ -389,10 +339,6 @@ func (m IscsiLunSnapshot) MarshalJSON() ([]byte, error) {
 // Validate validates this iscsi lun snapshot
 func (m *IscsiLunSnapshot) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateConsistencyGroupSnapshot(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
@@ -430,10 +376,6 @@ func (m *IscsiLunSnapshot) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateSnapshotGroup(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateUniqueSize(formats); err != nil {
 		res = append(res, err)
 	}
@@ -441,25 +383,6 @@ func (m *IscsiLunSnapshot) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *IscsiLunSnapshot) validateConsistencyGroupSnapshot(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsistencyGroupSnapshot) { // not required
-		return nil
-	}
-
-	if m.ConsistencyGroupSnapshot != nil {
-		if err := m.ConsistencyGroupSnapshot.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_group_snapshot")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_group_snapshot")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -602,25 +525,6 @@ func (m *IscsiLunSnapshot) validateResiliencyType(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *IscsiLunSnapshot) validateSnapshotGroup(formats strfmt.Registry) error {
-	if swag.IsZero(m.SnapshotGroup) { // not required
-		return nil
-	}
-
-	if m.SnapshotGroup != nil {
-		if err := m.SnapshotGroup.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot_group")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot_group")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *IscsiLunSnapshot) validateUniqueSize(formats strfmt.Registry) error {
 
 	if err := validate.Required("unique_size", "body", m.UniqueSize); err != nil {
@@ -633,10 +537,6 @@ func (m *IscsiLunSnapshot) validateUniqueSize(formats strfmt.Registry) error {
 // ContextValidate validate this iscsi lun snapshot based on the context it is used
 func (m *IscsiLunSnapshot) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.contextValidateConsistencyGroupSnapshot(ctx, formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
@@ -658,29 +558,9 @@ func (m *IscsiLunSnapshot) ContextValidate(ctx context.Context, formats strfmt.R
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateSnapshotGroup(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *IscsiLunSnapshot) contextValidateConsistencyGroupSnapshot(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ConsistencyGroupSnapshot != nil {
-		if err := m.ConsistencyGroupSnapshot.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("consistency_group_snapshot")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("consistency_group_snapshot")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -760,22 +640,6 @@ func (m *IscsiLunSnapshot) contextValidateResiliencyType(ctx context.Context, fo
 				return ve.ValidateName("resiliency_type")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("resiliency_type")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *IscsiLunSnapshot) contextValidateSnapshotGroup(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SnapshotGroup != nil {
-		if err := m.SnapshotGroup.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot_group")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot_group")
 			}
 			return err
 		}

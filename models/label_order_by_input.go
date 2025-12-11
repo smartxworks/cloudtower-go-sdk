@@ -36,18 +36,6 @@ const (
 	// LabelOrderByInputClusterNumDESC captures enum value "cluster_num_DESC"
 	LabelOrderByInputClusterNumDESC LabelOrderByInput = "cluster_num_DESC"
 
-	// LabelOrderByInputConsistencyGroupNumASC captures enum value "consistency_group_num_ASC"
-	LabelOrderByInputConsistencyGroupNumASC LabelOrderByInput = "consistency_group_num_ASC"
-
-	// LabelOrderByInputConsistencyGroupNumDESC captures enum value "consistency_group_num_DESC"
-	LabelOrderByInputConsistencyGroupNumDESC LabelOrderByInput = "consistency_group_num_DESC"
-
-	// LabelOrderByInputConsistencyGroupSnapshotNumASC captures enum value "consistency_group_snapshot_num_ASC"
-	LabelOrderByInputConsistencyGroupSnapshotNumASC LabelOrderByInput = "consistency_group_snapshot_num_ASC"
-
-	// LabelOrderByInputConsistencyGroupSnapshotNumDESC captures enum value "consistency_group_snapshot_num_DESC"
-	LabelOrderByInputConsistencyGroupSnapshotNumDESC LabelOrderByInput = "consistency_group_snapshot_num_DESC"
-
 	// LabelOrderByInputContentLibraryImageNumASC captures enum value "content_library_image_num_ASC"
 	LabelOrderByInputContentLibraryImageNumASC LabelOrderByInput = "content_library_image_num_ASC"
 
@@ -120,65 +108,17 @@ const (
 	// LabelOrderByInputIscsiTargetNumDESC captures enum value "iscsi_target_num_DESC"
 	LabelOrderByInputIscsiTargetNumDESC LabelOrderByInput = "iscsi_target_num_DESC"
 
-	// LabelOrderByInputIsolationPolicyNumASC captures enum value "isolation_policy_num_ASC"
-	LabelOrderByInputIsolationPolicyNumASC LabelOrderByInput = "isolation_policy_num_ASC"
-
-	// LabelOrderByInputIsolationPolicyNumDESC captures enum value "isolation_policy_num_DESC"
-	LabelOrderByInputIsolationPolicyNumDESC LabelOrderByInput = "isolation_policy_num_DESC"
-
 	// LabelOrderByInputKeyASC captures enum value "key_ASC"
 	LabelOrderByInputKeyASC LabelOrderByInput = "key_ASC"
 
 	// LabelOrderByInputKeyDESC captures enum value "key_DESC"
 	LabelOrderByInputKeyDESC LabelOrderByInput = "key_DESC"
 
-	// LabelOrderByInputNamespaceGroupNumASC captures enum value "namespace_group_num_ASC"
-	LabelOrderByInputNamespaceGroupNumASC LabelOrderByInput = "namespace_group_num_ASC"
-
-	// LabelOrderByInputNamespaceGroupNumDESC captures enum value "namespace_group_num_DESC"
-	LabelOrderByInputNamespaceGroupNumDESC LabelOrderByInput = "namespace_group_num_DESC"
-
-	// LabelOrderByInputNfsExportNumASC captures enum value "nfs_export_num_ASC"
-	LabelOrderByInputNfsExportNumASC LabelOrderByInput = "nfs_export_num_ASC"
-
-	// LabelOrderByInputNfsExportNumDESC captures enum value "nfs_export_num_DESC"
-	LabelOrderByInputNfsExportNumDESC LabelOrderByInput = "nfs_export_num_DESC"
-
-	// LabelOrderByInputNfsInodeNumASC captures enum value "nfs_inode_num_ASC"
-	LabelOrderByInputNfsInodeNumASC LabelOrderByInput = "nfs_inode_num_ASC"
-
-	// LabelOrderByInputNfsInodeNumDESC captures enum value "nfs_inode_num_DESC"
-	LabelOrderByInputNfsInodeNumDESC LabelOrderByInput = "nfs_inode_num_DESC"
-
 	// LabelOrderByInputNicNumASC captures enum value "nic_num_ASC"
 	LabelOrderByInputNicNumASC LabelOrderByInput = "nic_num_ASC"
 
 	// LabelOrderByInputNicNumDESC captures enum value "nic_num_DESC"
 	LabelOrderByInputNicNumDESC LabelOrderByInput = "nic_num_DESC"
-
-	// LabelOrderByInputNvmfNamespaceNumASC captures enum value "nvmf_namespace_num_ASC"
-	LabelOrderByInputNvmfNamespaceNumASC LabelOrderByInput = "nvmf_namespace_num_ASC"
-
-	// LabelOrderByInputNvmfNamespaceNumDESC captures enum value "nvmf_namespace_num_DESC"
-	LabelOrderByInputNvmfNamespaceNumDESC LabelOrderByInput = "nvmf_namespace_num_DESC"
-
-	// LabelOrderByInputNvmfNamespaceSnapshotNumASC captures enum value "nvmf_namespace_snapshot_num_ASC"
-	LabelOrderByInputNvmfNamespaceSnapshotNumASC LabelOrderByInput = "nvmf_namespace_snapshot_num_ASC"
-
-	// LabelOrderByInputNvmfNamespaceSnapshotNumDESC captures enum value "nvmf_namespace_snapshot_num_DESC"
-	LabelOrderByInputNvmfNamespaceSnapshotNumDESC LabelOrderByInput = "nvmf_namespace_snapshot_num_DESC"
-
-	// LabelOrderByInputNvmfSubsystemNumASC captures enum value "nvmf_subsystem_num_ASC"
-	LabelOrderByInputNvmfSubsystemNumASC LabelOrderByInput = "nvmf_subsystem_num_ASC"
-
-	// LabelOrderByInputNvmfSubsystemNumDESC captures enum value "nvmf_subsystem_num_DESC"
-	LabelOrderByInputNvmfSubsystemNumDESC LabelOrderByInput = "nvmf_subsystem_num_DESC"
-
-	// LabelOrderByInputSecurityPolicyNumASC captures enum value "security_policy_num_ASC"
-	LabelOrderByInputSecurityPolicyNumASC LabelOrderByInput = "security_policy_num_ASC"
-
-	// LabelOrderByInputSecurityPolicyNumDESC captures enum value "security_policy_num_DESC"
-	LabelOrderByInputSecurityPolicyNumDESC LabelOrderByInput = "security_policy_num_DESC"
 
 	// LabelOrderByInputSystemVlanNumASC captures enum value "system_vlan_num_ASC"
 	LabelOrderByInputSystemVlanNumASC LabelOrderByInput = "system_vlan_num_ASC"
@@ -246,7 +186,7 @@ var labelOrderByInputEnum []interface{}
 
 func init() {
 	var res []LabelOrderByInput
-	if err := json.Unmarshal([]byte(`["cluster_num_ASC","cluster_num_DESC","consistency_group_num_ASC","consistency_group_num_DESC","consistency_group_snapshot_num_ASC","consistency_group_snapshot_num_DESC","content_library_image_num_ASC","content_library_image_num_DESC","content_library_vm_template_num_ASC","content_library_vm_template_num_DESC","createdAt_ASC","createdAt_DESC","datacenter_num_ASC","datacenter_num_DESC","disk_num_ASC","disk_num_DESC","elf_image_num_ASC","elf_image_num_DESC","gpu_device_num_ASC","gpu_device_num_DESC","host_num_ASC","host_num_DESC","id_ASC","id_DESC","iscsi_lun_num_ASC","iscsi_lun_num_DESC","iscsi_lun_snapshot_num_ASC","iscsi_lun_snapshot_num_DESC","iscsi_target_num_ASC","iscsi_target_num_DESC","isolation_policy_num_ASC","isolation_policy_num_DESC","key_ASC","key_DESC","namespace_group_num_ASC","namespace_group_num_DESC","nfs_export_num_ASC","nfs_export_num_DESC","nfs_inode_num_ASC","nfs_inode_num_DESC","nic_num_ASC","nic_num_DESC","nvmf_namespace_num_ASC","nvmf_namespace_num_DESC","nvmf_namespace_snapshot_num_ASC","nvmf_namespace_snapshot_num_DESC","nvmf_subsystem_num_ASC","nvmf_subsystem_num_DESC","security_policy_num_ASC","security_policy_num_DESC","system_vlan_num_ASC","system_vlan_num_DESC","total_num_ASC","total_num_DESC","value_ASC","value_DESC","vds_num_ASC","vds_num_DESC","vm_num_ASC","vm_num_DESC","vm_snapshot_num_ASC","vm_snapshot_num_DESC","vm_template_num_ASC","vm_template_num_DESC","vm_vlan_num_ASC","vm_vlan_num_DESC","vm_volume_num_ASC","vm_volume_num_DESC","vm_volume_snapshot_num_ASC","vm_volume_snapshot_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["cluster_num_ASC","cluster_num_DESC","content_library_image_num_ASC","content_library_image_num_DESC","content_library_vm_template_num_ASC","content_library_vm_template_num_DESC","createdAt_ASC","createdAt_DESC","datacenter_num_ASC","datacenter_num_DESC","disk_num_ASC","disk_num_DESC","elf_image_num_ASC","elf_image_num_DESC","gpu_device_num_ASC","gpu_device_num_DESC","host_num_ASC","host_num_DESC","id_ASC","id_DESC","iscsi_lun_num_ASC","iscsi_lun_num_DESC","iscsi_lun_snapshot_num_ASC","iscsi_lun_snapshot_num_DESC","iscsi_target_num_ASC","iscsi_target_num_DESC","key_ASC","key_DESC","nic_num_ASC","nic_num_DESC","system_vlan_num_ASC","system_vlan_num_DESC","total_num_ASC","total_num_DESC","value_ASC","value_DESC","vds_num_ASC","vds_num_DESC","vm_num_ASC","vm_num_DESC","vm_snapshot_num_ASC","vm_snapshot_num_DESC","vm_template_num_ASC","vm_template_num_DESC","vm_vlan_num_ASC","vm_vlan_num_DESC","vm_volume_num_ASC","vm_volume_num_DESC","vm_volume_snapshot_num_ASC","vm_volume_snapshot_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

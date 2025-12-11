@@ -62,7 +62,7 @@ func NewGetContentLibraryVMTemplatesConnectionOK() *GetContentLibraryVMTemplates
 GetContentLibraryVMTemplatesConnectionOK get content library Vm templates connection o k
 */
 type GetContentLibraryVMTemplatesConnectionOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ContentLibraryVMTemplateConnection
 }
@@ -76,11 +76,11 @@ func (o *GetContentLibraryVMTemplatesConnectionOK) GetPayload() *models.ContentL
 
 func (o *GetContentLibraryVMTemplatesConnectionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ContentLibraryVMTemplateConnection)
@@ -103,7 +103,7 @@ func NewGetContentLibraryVMTemplatesConnectionBadRequest() *GetContentLibraryVMT
 Bad request
 */
 type GetContentLibraryVMTemplatesConnectionBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -117,11 +117,11 @@ func (o *GetContentLibraryVMTemplatesConnectionBadRequest) GetPayload() *models.
 
 func (o *GetContentLibraryVMTemplatesConnectionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -144,7 +144,7 @@ func NewGetContentLibraryVMTemplatesConnectionNotFound() *GetContentLibraryVMTem
 Not found
 */
 type GetContentLibraryVMTemplatesConnectionNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -158,11 +158,11 @@ func (o *GetContentLibraryVMTemplatesConnectionNotFound) GetPayload() *models.Er
 
 func (o *GetContentLibraryVMTemplatesConnectionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -185,7 +185,7 @@ func NewGetContentLibraryVMTemplatesConnectionInternalServerError() *GetContentL
 Server error
 */
 type GetContentLibraryVMTemplatesConnectionInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -199,11 +199,11 @@ func (o *GetContentLibraryVMTemplatesConnectionInternalServerError) GetPayload()
 
 func (o *GetContentLibraryVMTemplatesConnectionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

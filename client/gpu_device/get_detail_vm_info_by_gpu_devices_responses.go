@@ -68,7 +68,7 @@ func NewGetDetailVMInfoByGpuDevicesOK() *GetDetailVMInfoByGpuDevicesOK {
 GetDetailVMInfoByGpuDevicesOK get detail Vm info by gpu devices o k
 */
 type GetDetailVMInfoByGpuDevicesOK struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload []*models.GpuVMInfo
 }
@@ -82,11 +82,11 @@ func (o *GetDetailVMInfoByGpuDevicesOK) GetPayload() []*models.GpuVMInfo {
 
 func (o *GetDetailVMInfoByGpuDevicesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	// response payload
@@ -128,7 +128,7 @@ func NewGetDetailVMInfoByGpuDevicesBadRequest() *GetDetailVMInfoByGpuDevicesBadR
 Bad request
 */
 type GetDetailVMInfoByGpuDevicesBadRequest struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -142,11 +142,11 @@ func (o *GetDetailVMInfoByGpuDevicesBadRequest) GetPayload() *models.ErrorBody {
 
 func (o *GetDetailVMInfoByGpuDevicesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -169,7 +169,7 @@ func NewGetDetailVMInfoByGpuDevicesNotFound() *GetDetailVMInfoByGpuDevicesNotFou
 Not found
 */
 type GetDetailVMInfoByGpuDevicesNotFound struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -183,11 +183,11 @@ func (o *GetDetailVMInfoByGpuDevicesNotFound) GetPayload() *models.ErrorBody {
 
 func (o *GetDetailVMInfoByGpuDevicesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)
@@ -210,7 +210,7 @@ func NewGetDetailVMInfoByGpuDevicesInternalServerError() *GetDetailVMInfoByGpuDe
 Server error
 */
 type GetDetailVMInfoByGpuDevicesInternalServerError struct {
-	XTowerRequestID string
+	XAocRequestID string
 
 	Payload *models.ErrorBody
 }
@@ -224,11 +224,11 @@ func (o *GetDetailVMInfoByGpuDevicesInternalServerError) GetPayload() *models.Er
 
 func (o *GetDetailVMInfoByGpuDevicesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// hydrates response header x-tower-request-id
-	hdrXTowerRequestID := response.GetHeader("x-tower-request-id")
+	// hydrates response header x-aoc-request-id
+	hdrXAocRequestID := response.GetHeader("x-aoc-request-id")
 
-	if hdrXTowerRequestID != "" {
-		o.XTowerRequestID = hdrXTowerRequestID
+	if hdrXAocRequestID != "" {
+		o.XAocRequestID = hdrXAocRequestID
 	}
 
 	o.Payload = new(models.ErrorBody)

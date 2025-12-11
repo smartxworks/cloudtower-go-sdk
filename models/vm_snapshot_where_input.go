@@ -473,9 +473,6 @@ type VMSnapshotWhereInput struct {
 	// size not in
 	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
-	// snapshot group
-	SnapshotGroup *SnapshotGroupWhereInput `json:"snapshot_group,omitempty"`
-
 	// vcpu
 	Vcpu *int32 `json:"vcpu,omitempty"`
 
@@ -814,8 +811,6 @@ type VMSnapshotWhereInputMarshalOpts struct {
 	SizeNot_Explicit_Null_When_Empty bool
 
 	SizeNotIn_Explicit_Null_When_Empty bool
-
-	SnapshotGroup_Explicit_Null_When_Empty bool
 
 	Vcpu_Explicit_Null_When_Empty bool
 
@@ -3632,26 +3627,6 @@ func (m VMSnapshotWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field snapshot_group
-	if m.SnapshotGroup != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_group\":")
-		bytes, err := swag.WriteJSON(m.SnapshotGroup)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.SnapshotGroup_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"snapshot_group\":null")
-		first = false
-	}
-
 	// handle nullable field vcpu
 	if m.Vcpu != nil {
 		if !first {
@@ -4021,10 +3996,6 @@ func (m *VMSnapshotWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMaxIopsPolicyNotIn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSnapshotGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -4832,25 +4803,6 @@ func (m *VMSnapshotWhereInput) validateMaxIopsPolicyNotIn(formats strfmt.Registr
 	return nil
 }
 
-func (m *VMSnapshotWhereInput) validateSnapshotGroup(formats strfmt.Registry) error {
-	if swag.IsZero(m.SnapshotGroup) { // not required
-		return nil
-	}
-
-	if m.SnapshotGroup != nil {
-		if err := m.SnapshotGroup.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot_group")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot_group")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *VMSnapshotWhereInput) validateVM(formats strfmt.Registry) error {
 	if swag.IsZero(m.VM) { // not required
 		return nil
@@ -5027,10 +4979,6 @@ func (m *VMSnapshotWhereInput) ContextValidate(ctx context.Context, formats strf
 	}
 
 	if err := m.contextValidateMaxIopsPolicyNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSnapshotGroup(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -5707,22 +5655,6 @@ func (m *VMSnapshotWhereInput) contextValidateMaxIopsPolicyNotIn(ctx context.Con
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *VMSnapshotWhereInput) contextValidateSnapshotGroup(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SnapshotGroup != nil {
-		if err := m.SnapshotGroup.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("snapshot_group")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("snapshot_group")
-			}
-			return err
-		}
 	}
 
 	return nil

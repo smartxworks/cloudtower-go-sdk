@@ -37,9 +37,6 @@ type GetElfStoragePoliciesConnectionRequestBody struct {
 	// skip
 	Skip *int32 `json:"skip,omitempty"`
 
-	// where
-	Where *ElfStoragePolicyWhereInput `json:"where,omitempty"`
-
 	MarshalOpts *GetElfStoragePoliciesConnectionRequestBodyMarshalOpts `json:"-"`
 }
 
@@ -55,8 +52,6 @@ type GetElfStoragePoliciesConnectionRequestBodyMarshalOpts struct {
 	OrderBy_Explicit_Null_When_Empty bool
 
 	Skip_Explicit_Null_When_Empty bool
-
-	Where_Explicit_Null_When_Empty bool
 }
 
 func (m GetElfStoragePoliciesConnectionRequestBody) MarshalJSON() ([]byte, error) {
@@ -185,26 +180,6 @@ func (m GetElfStoragePoliciesConnectionRequestBody) MarshalJSON() ([]byte, error
 		first = false
 	}
 
-	// handle nullable field where
-	if m.Where != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"where\":")
-		bytes, err := swag.WriteJSON(m.Where)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Where_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"where\":null")
-		first = false
-	}
-
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -214,10 +189,6 @@ func (m *GetElfStoragePoliciesConnectionRequestBody) Validate(formats strfmt.Reg
 	var res []error
 
 	if err := m.validateOrderBy(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateWhere(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -246,34 +217,11 @@ func (m *GetElfStoragePoliciesConnectionRequestBody) validateOrderBy(formats str
 	return nil
 }
 
-func (m *GetElfStoragePoliciesConnectionRequestBody) validateWhere(formats strfmt.Registry) error {
-	if swag.IsZero(m.Where) { // not required
-		return nil
-	}
-
-	if m.Where != nil {
-		if err := m.Where.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("where")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("where")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this get elf storage policies connection request body based on the context it is used
 func (m *GetElfStoragePoliciesConnectionRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateOrderBy(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateWhere(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -291,22 +239,6 @@ func (m *GetElfStoragePoliciesConnectionRequestBody) contextValidateOrderBy(ctx 
 				return ve.ValidateName("orderBy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("orderBy")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *GetElfStoragePoliciesConnectionRequestBody) contextValidateWhere(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Where != nil {
-		if err := m.Where.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("where")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("where")
 			}
 			return err
 		}

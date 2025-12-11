@@ -149,15 +149,6 @@ type VirtualPrivateCloudWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
-	// isolation policies every
-	IsolationPoliciesEvery *VirtualPrivateCloudIsolationPolicyWhereInput `json:"isolation_policies_every,omitempty"`
-
-	// isolation policies none
-	IsolationPoliciesNone *VirtualPrivateCloudIsolationPolicyWhereInput `json:"isolation_policies_none,omitempty"`
-
-	// isolation policies some
-	IsolationPoliciesSome *VirtualPrivateCloudIsolationPolicyWhereInput `json:"isolation_policies_some,omitempty"`
-
 	// local id
 	LocalID *string `json:"local_id,omitempty"`
 
@@ -394,12 +385,6 @@ type VirtualPrivateCloudWhereInputMarshalOpts struct {
 	IDNotStartsWith_Explicit_Null_When_Empty bool
 
 	IDStartsWith_Explicit_Null_When_Empty bool
-
-	IsolationPoliciesEvery_Explicit_Null_When_Empty bool
-
-	IsolationPoliciesNone_Explicit_Null_When_Empty bool
-
-	IsolationPoliciesSome_Explicit_Null_When_Empty bool
 
 	LocalID_Explicit_Null_When_Empty bool
 
@@ -1297,66 +1282,6 @@ func (m VirtualPrivateCloudWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"id_starts_with\":null")
-		first = false
-	}
-
-	// handle nullable field isolation_policies_every
-	if m.IsolationPoliciesEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"isolation_policies_every\":")
-		bytes, err := swag.WriteJSON(m.IsolationPoliciesEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.IsolationPoliciesEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"isolation_policies_every\":null")
-		first = false
-	}
-
-	// handle nullable field isolation_policies_none
-	if m.IsolationPoliciesNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"isolation_policies_none\":")
-		bytes, err := swag.WriteJSON(m.IsolationPoliciesNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.IsolationPoliciesNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"isolation_policies_none\":null")
-		first = false
-	}
-
-	// handle nullable field isolation_policies_some
-	if m.IsolationPoliciesSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"isolation_policies_some\":")
-		bytes, err := swag.WriteJSON(m.IsolationPoliciesSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.IsolationPoliciesSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"isolation_policies_some\":null")
 		first = false
 	}
 
@@ -2340,18 +2265,6 @@ func (m *VirtualPrivateCloudWhereInput) Validate(formats strfmt.Registry) error 
 		res = append(res, err)
 	}
 
-	if err := m.validateIsolationPoliciesEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIsolationPoliciesNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIsolationPoliciesSome(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateRouteTablesEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -2563,63 +2476,6 @@ func (m *VirtualPrivateCloudWhereInput) validateEntityAsyncStatusNotIn(formats s
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudWhereInput) validateIsolationPoliciesEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.IsolationPoliciesEvery) { // not required
-		return nil
-	}
-
-	if m.IsolationPoliciesEvery != nil {
-		if err := m.IsolationPoliciesEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudWhereInput) validateIsolationPoliciesNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.IsolationPoliciesNone) { // not required
-		return nil
-	}
-
-	if m.IsolationPoliciesNone != nil {
-		if err := m.IsolationPoliciesNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudWhereInput) validateIsolationPoliciesSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.IsolationPoliciesSome) { // not required
-		return nil
-	}
-
-	if m.IsolationPoliciesSome != nil {
-		if err := m.IsolationPoliciesSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_some")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -2904,18 +2760,6 @@ func (m *VirtualPrivateCloudWhereInput) ContextValidate(ctx context.Context, for
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIsolationPoliciesEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIsolationPoliciesNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIsolationPoliciesSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateRouteTablesEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3097,54 +2941,6 @@ func (m *VirtualPrivateCloudWhereInput) contextValidateEntityAsyncStatusNotIn(ct
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudWhereInput) contextValidateIsolationPoliciesEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IsolationPoliciesEvery != nil {
-		if err := m.IsolationPoliciesEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudWhereInput) contextValidateIsolationPoliciesNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IsolationPoliciesNone != nil {
-		if err := m.IsolationPoliciesNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VirtualPrivateCloudWhereInput) contextValidateIsolationPoliciesSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.IsolationPoliciesSome != nil {
-		if err := m.IsolationPoliciesSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("isolation_policies_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("isolation_policies_some")
-			}
-			return err
-		}
 	}
 
 	return nil

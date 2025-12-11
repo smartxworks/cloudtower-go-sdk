@@ -29,6 +29,12 @@ type VMNicWhereInput struct {
 	// o r
 	OR []*VMNicWhereInput `json:"OR,omitempty"`
 
+	// dpi enabled
+	DpiEnabled *bool `json:"dpi_enabled,omitempty"`
+
+	// dpi enabled not
+	DpiEnabledNot *bool `json:"dpi_enabled_not,omitempty"`
+
 	// egress rate limit burst in bit
 	EgressRateLimitBurstInBit *float64 `json:"egress_rate_limit_burst_in_bit,omitempty"`
 
@@ -500,9 +506,6 @@ type VMNicWhereInput struct {
 	// vm
 	VM *VMWhereInput `json:"vm,omitempty"`
 
-	// vpc nic
-	VpcNic *VirtualPrivateCloudNicWhereInput `json:"vpc_nic,omitempty"`
-
 	MarshalOpts *VMNicWhereInputMarshalOpts `json:"-"`
 }
 
@@ -512,6 +515,10 @@ type VMNicWhereInputMarshalOpts struct {
 	NOT_Explicit_Null_When_Empty bool
 
 	OR_Explicit_Null_When_Empty bool
+
+	DpiEnabled_Explicit_Null_When_Empty bool
+
+	DpiEnabledNot_Explicit_Null_When_Empty bool
 
 	EgressRateLimitBurstInBit_Explicit_Null_When_Empty bool
 
@@ -826,8 +833,6 @@ type VMNicWhereInputMarshalOpts struct {
 	Vlan_Explicit_Null_When_Empty bool
 
 	VM_Explicit_Null_When_Empty bool
-
-	VpcNic_Explicit_Null_When_Empty bool
 }
 
 func (m VMNicWhereInput) MarshalJSON() ([]byte, error) {
@@ -875,6 +880,46 @@ func (m VMNicWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field dpi_enabled
+	if m.DpiEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled\":")
+		bytes, err := swag.WriteJSON(m.DpiEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DpiEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field dpi_enabled_not
+	if m.DpiEnabledNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled_not\":")
+		bytes, err := swag.WriteJSON(m.DpiEnabledNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DpiEnabledNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled_not\":null")
 		first = false
 	}
 
@@ -3850,26 +3895,6 @@ func (m VMNicWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field vpc_nic
-	if m.VpcNic != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vpc_nic\":")
-		bytes, err := swag.WriteJSON(m.VpcNic)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcNic_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"vpc_nic\":null")
-		first = false
-	}
-
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -3931,10 +3956,6 @@ func (m *VMNicWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVM(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpcNic(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -4239,25 +4260,6 @@ func (m *VMNicWhereInput) validateVM(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VMNicWhereInput) validateVpcNic(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpcNic) { // not required
-		return nil
-	}
-
-	if m.VpcNic != nil {
-		if err := m.VpcNic.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nic")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nic")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this Vm nic where input based on the context it is used
 func (m *VMNicWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -4315,10 +4317,6 @@ func (m *VMNicWhereInput) ContextValidate(ctx context.Context, formats strfmt.Re
 	}
 
 	if err := m.contextValidateVM(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpcNic(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -4564,22 +4562,6 @@ func (m *VMNicWhereInput) contextValidateVM(ctx context.Context, formats strfmt.
 				return ve.ValidateName("vm")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vm")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *VMNicWhereInput) contextValidateVpcNic(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VpcNic != nil {
-		if err := m.VpcNic.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpc_nic")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpc_nic")
 			}
 			return err
 		}
