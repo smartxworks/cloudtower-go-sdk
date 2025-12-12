@@ -71,6 +71,9 @@ type VirtualPrivateCloudEdgeGatewayWhereInput struct {
 	// description starts with
 	DescriptionStartsWith *string `json:"description_starts_with,omitempty"`
 
+	// edge gateway group
+	EdgeGatewayGroup *VirtualPrivateCloudEdgeGatewayGroupWhereInput `json:"edge_gateway_group,omitempty"`
+
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
@@ -176,6 +179,9 @@ type VirtualPrivateCloudEdgeGatewayWhereInput struct {
 	// vdses some
 	VdsesSome *VdsWhereInput `json:"vdses_some,omitempty"`
 
+	// vpc service
+	VpcService *VirtualPrivateCloudServiceWhereInput `json:"vpc_service,omitempty"`
+
 	MarshalOpts *VirtualPrivateCloudEdgeGatewayWhereInputMarshalOpts `json:"-"`
 }
 
@@ -213,6 +219,8 @@ type VirtualPrivateCloudEdgeGatewayWhereInputMarshalOpts struct {
 	DescriptionNotStartsWith_Explicit_Null_When_Empty bool
 
 	DescriptionStartsWith_Explicit_Null_When_Empty bool
+
+	EdgeGatewayGroup_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -283,6 +291,8 @@ type VirtualPrivateCloudEdgeGatewayWhereInputMarshalOpts struct {
 	VdsesNone_Explicit_Null_When_Empty bool
 
 	VdsesSome_Explicit_Null_When_Empty bool
+
+	VpcService_Explicit_Null_When_Empty bool
 }
 
 func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) {
@@ -598,6 +608,26 @@ func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) 
 			b.WriteString(",")
 		}
 		b.WriteString("\"description_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field edge_gateway_group
+	if m.EdgeGatewayGroup != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"edge_gateway_group\":")
+		bytes, err := swag.WriteJSON(m.EdgeGatewayGroup)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EdgeGatewayGroup_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"edge_gateway_group\":null")
 		first = false
 	}
 
@@ -1265,6 +1295,26 @@ func (m VirtualPrivateCloudEdgeGatewayWhereInput) MarshalJSON() ([]byte, error) 
 		first = false
 	}
 
+	// handle nullable field vpc_service
+	if m.VpcService != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_service\":")
+		bytes, err := swag.WriteJSON(m.VpcService)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcService_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_service\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -1282,6 +1332,10 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) Validate(formats strfmt.Regis
 	}
 
 	if err := m.validateOR(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEdgeGatewayGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1310,6 +1364,10 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) Validate(formats strfmt.Regis
 	}
 
 	if err := m.validateVdsesSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1392,6 +1450,25 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateOR(formats strfmt.Reg
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateEdgeGatewayGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeGatewayGroup) { // not required
+		return nil
+	}
+
+	if m.EdgeGatewayGroup != nil {
+		if err := m.EdgeGatewayGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_group")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1534,6 +1611,25 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateVdsesSome(formats str
 	return nil
 }
 
+func (m *VirtualPrivateCloudEdgeGatewayWhereInput) validateVpcService(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpcService) { // not required
+		return nil
+	}
+
+	if m.VpcService != nil {
+		if err := m.VpcService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this virtual private cloud edge gateway where input based on the context it is used
 func (m *VirtualPrivateCloudEdgeGatewayWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -1547,6 +1643,10 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) ContextValidate(ctx context.C
 	}
 
 	if err := m.contextValidateOR(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEdgeGatewayGroup(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1575,6 +1675,10 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) ContextValidate(ctx context.C
 	}
 
 	if err := m.contextValidateVdsesSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1639,6 +1743,22 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateOR(ctx context
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateEdgeGatewayGroup(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeGatewayGroup != nil {
+		if err := m.EdgeGatewayGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edge_gateway_group")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edge_gateway_group")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -1752,6 +1872,22 @@ func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateVdsesSome(ctx 
 				return ve.ValidateName("vdses_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vdses_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudEdgeGatewayWhereInput) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcService != nil {
+		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
 			}
 			return err
 		}

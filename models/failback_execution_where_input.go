@@ -134,6 +134,12 @@ type FailbackExecutionWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
+	// is sync replication
+	IsSyncReplication *bool `json:"is_sync_replication,omitempty"`
+
+	// is sync replication not
+	IsSyncReplicationNot *bool `json:"is_sync_replication_not,omitempty"`
+
 	// replication failback target executions every
 	ReplicationFailbackTargetExecutionsEvery *ReplicationFailbackTargetExecutionWhereInput `json:"replication_failback_target_executions_every,omitempty"`
 
@@ -333,6 +339,10 @@ type FailbackExecutionWhereInputMarshalOpts struct {
 	IDNotStartsWith_Explicit_Null_When_Empty bool
 
 	IDStartsWith_Explicit_Null_When_Empty bool
+
+	IsSyncReplication_Explicit_Null_When_Empty bool
+
+	IsSyncReplicationNot_Explicit_Null_When_Empty bool
 
 	ReplicationFailbackTargetExecutionsEvery_Explicit_Null_When_Empty bool
 
@@ -1112,6 +1122,46 @@ func (m FailbackExecutionWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"id_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field is_sync_replication
+	if m.IsSyncReplication != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_sync_replication\":")
+		bytes, err := swag.WriteJSON(m.IsSyncReplication)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsSyncReplication_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_sync_replication\":null")
+		first = false
+	}
+
+	// handle nullable field is_sync_replication_not
+	if m.IsSyncReplicationNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_sync_replication_not\":")
+		bytes, err := swag.WriteJSON(m.IsSyncReplicationNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IsSyncReplicationNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"is_sync_replication_not\":null")
 		first = false
 	}
 

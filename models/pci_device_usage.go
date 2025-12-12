@@ -38,6 +38,9 @@ const (
 
 	// PciDeviceUsageSRIOVVF captures enum value "SRIOV_VF"
 	PciDeviceUsageSRIOVVF PciDeviceUsage = "SRIOV_VF"
+
+	// PciDeviceUsageUNKNOWN captures enum value "UNKNOWN"
+	PciDeviceUsageUNKNOWN PciDeviceUsage = "UNKNOWN"
 )
 
 // for schema
@@ -45,7 +48,7 @@ var pciDeviceUsageEnum []interface{}
 
 func init() {
 	var res []PciDeviceUsage
-	if err := json.Unmarshal([]byte(`["MDEV","PASS_THROUGH","SRIOV_VF"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["MDEV","PASS_THROUGH","SRIOV_VF","UNKNOWN"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

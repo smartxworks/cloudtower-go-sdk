@@ -60,6 +60,12 @@ const (
 	// VMVolumeOrderByInputElfStoragePolicyReplicaNumDESC captures enum value "elf_storage_policy_replica_num_DESC"
 	VMVolumeOrderByInputElfStoragePolicyReplicaNumDESC VMVolumeOrderByInput = "elf_storage_policy_replica_num_DESC"
 
+	// VMVolumeOrderByInputElfStoragePolicyStripeNumASC captures enum value "elf_storage_policy_stripe_num_ASC"
+	VMVolumeOrderByInputElfStoragePolicyStripeNumASC VMVolumeOrderByInput = "elf_storage_policy_stripe_num_ASC"
+
+	// VMVolumeOrderByInputElfStoragePolicyStripeNumDESC captures enum value "elf_storage_policy_stripe_num_DESC"
+	VMVolumeOrderByInputElfStoragePolicyStripeNumDESC VMVolumeOrderByInput = "elf_storage_policy_stripe_num_DESC"
+
 	// VMVolumeOrderByInputElfStoragePolicyThinProvisionASC captures enum value "elf_storage_policy_thin_provision_ASC"
 	VMVolumeOrderByInputElfStoragePolicyThinProvisionASC VMVolumeOrderByInput = "elf_storage_policy_thin_provision_ASC"
 
@@ -174,7 +180,7 @@ var vmVolumeOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMVolumeOrderByInput
-	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","elf_storage_policy_ec_k_ASC","elf_storage_policy_ec_k_DESC","elf_storage_policy_ec_m_ASC","elf_storage_policy_ec_m_DESC","elf_storage_policy_replica_num_ASC","elf_storage_policy_replica_num_DESC","elf_storage_policy_thin_provision_ASC","elf_storage_policy_thin_provision_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","guest_size_usage_ASC","guest_size_usage_DESC","guest_used_size_ASC","guest_used_size_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","mounting_ASC","mounting_DESC","name_ASC","name_DESC","path_ASC","path_DESC","resident_in_cache_ASC","resident_in_cache_DESC","sharing_ASC","sharing_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC","used_size_ASC","used_size_DESC","used_size_usage_ASC","used_size_usage_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","elf_storage_policy_ec_k_ASC","elf_storage_policy_ec_k_DESC","elf_storage_policy_ec_m_ASC","elf_storage_policy_ec_m_DESC","elf_storage_policy_replica_num_ASC","elf_storage_policy_replica_num_DESC","elf_storage_policy_stripe_num_ASC","elf_storage_policy_stripe_num_DESC","elf_storage_policy_thin_provision_ASC","elf_storage_policy_thin_provision_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","guest_size_usage_ASC","guest_size_usage_DESC","guest_used_size_ASC","guest_used_size_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","mounting_ASC","mounting_DESC","name_ASC","name_DESC","path_ASC","path_DESC","resident_in_cache_ASC","resident_in_cache_DESC","sharing_ASC","sharing_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_logical_size_ASC","unique_logical_size_DESC","unique_size_ASC","unique_size_DESC","used_size_ASC","used_size_DESC","used_size_usage_ASC","used_size_usage_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

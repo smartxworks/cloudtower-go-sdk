@@ -45,6 +45,10 @@ type VirtualPrivateCloudEdgeGatewayGroup struct {
 	// primary edge gateway id
 	PrimaryEdgeGatewayID *string `json:"primary_edge_gateway_id,omitempty"`
 
+	// vpc service
+	// Required: true
+	VpcService *NestedVirtualPrivateCloudService `json:"vpc_service"`
+
 	MarshalOpts *VirtualPrivateCloudEdgeGatewayGroupMarshalOpts `json:"-"`
 }
 
@@ -62,6 +66,8 @@ type VirtualPrivateCloudEdgeGatewayGroupMarshalOpts struct {
 	Name_Explicit_Null_When_Empty bool
 
 	PrimaryEdgeGatewayID_Explicit_Null_When_Empty bool
+
+	VpcService_Explicit_Null_When_Empty bool
 }
 
 func (m VirtualPrivateCloudEdgeGatewayGroup) MarshalJSON() ([]byte, error) {
@@ -198,6 +204,26 @@ func (m VirtualPrivateCloudEdgeGatewayGroup) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field vpc_service
+	if m.VpcService != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_service\":")
+		bytes, err := swag.WriteJSON(m.VpcService)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VpcService_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vpc_service\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -223,6 +249,10 @@ func (m *VirtualPrivateCloudEdgeGatewayGroup) Validate(formats strfmt.Registry) 
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpcService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -304,6 +334,26 @@ func (m *VirtualPrivateCloudEdgeGatewayGroup) validateName(formats strfmt.Regist
 	return nil
 }
 
+func (m *VirtualPrivateCloudEdgeGatewayGroup) validateVpcService(formats strfmt.Registry) error {
+
+	if err := validate.Required("vpc_service", "body", m.VpcService); err != nil {
+		return err
+	}
+
+	if m.VpcService != nil {
+		if err := m.VpcService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this virtual private cloud edge gateway group based on the context it is used
 func (m *VirtualPrivateCloudEdgeGatewayGroup) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -313,6 +363,10 @@ func (m *VirtualPrivateCloudEdgeGatewayGroup) ContextValidate(ctx context.Contex
 	}
 
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpcService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -350,6 +404,22 @@ func (m *VirtualPrivateCloudEdgeGatewayGroup) contextValidateEntityAsyncStatus(c
 				return ve.ValidateName("entityAsyncStatus")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VirtualPrivateCloudEdgeGatewayGroup) contextValidateVpcService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VpcService != nil {
+		if err := m.VpcService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vpc_service")
 			}
 			return err
 		}

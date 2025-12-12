@@ -66,6 +66,12 @@ const (
 	// VMVolumeSnapshotOrderByInputElfStoragePolicyReplicaNumDESC captures enum value "elf_storage_policy_replica_num_DESC"
 	VMVolumeSnapshotOrderByInputElfStoragePolicyReplicaNumDESC VMVolumeSnapshotOrderByInput = "elf_storage_policy_replica_num_DESC"
 
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyStripeNumASC captures enum value "elf_storage_policy_stripe_num_ASC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyStripeNumASC VMVolumeSnapshotOrderByInput = "elf_storage_policy_stripe_num_ASC"
+
+	// VMVolumeSnapshotOrderByInputElfStoragePolicyStripeNumDESC captures enum value "elf_storage_policy_stripe_num_DESC"
+	VMVolumeSnapshotOrderByInputElfStoragePolicyStripeNumDESC VMVolumeSnapshotOrderByInput = "elf_storage_policy_stripe_num_DESC"
+
 	// VMVolumeSnapshotOrderByInputElfStoragePolicyThinProvisionASC captures enum value "elf_storage_policy_thin_provision_ASC"
 	VMVolumeSnapshotOrderByInputElfStoragePolicyThinProvisionASC VMVolumeSnapshotOrderByInput = "elf_storage_policy_thin_provision_ASC"
 
@@ -156,7 +162,7 @@ var vmVolumeSnapshotOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMVolumeSnapshotOrderByInput
-	if err := json.Unmarshal([]byte(`["createAt_ASC","createAt_DESC","description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","elf_storage_policy_ec_k_ASC","elf_storage_policy_ec_k_DESC","elf_storage_policy_ec_m_ASC","elf_storage_policy_ec_m_DESC","elf_storage_policy_replica_num_ASC","elf_storage_policy_replica_num_DESC","elf_storage_policy_thin_provision_ASC","elf_storage_policy_thin_provision_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","resident_in_cache_ASC","resident_in_cache_DESC","shared_size_ASC","shared_size_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC","volume_sharing_ASC","volume_sharing_DESC","volume_size_ASC","volume_size_DESC","zbs_snapshot_uuid_ASC","zbs_snapshot_uuid_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createAt_ASC","createAt_DESC","description_ASC","description_DESC","elf_storage_policy_ASC","elf_storage_policy_DESC","elf_storage_policy_ec_k_ASC","elf_storage_policy_ec_k_DESC","elf_storage_policy_ec_m_ASC","elf_storage_policy_ec_m_DESC","elf_storage_policy_replica_num_ASC","elf_storage_policy_replica_num_DESC","elf_storage_policy_stripe_num_ASC","elf_storage_policy_stripe_num_DESC","elf_storage_policy_thin_provision_ASC","elf_storage_policy_thin_provision_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","local_created_at_ASC","local_created_at_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","resident_in_cache_ASC","resident_in_cache_DESC","shared_size_ASC","shared_size_DESC","size_ASC","size_DESC","type_ASC","type_DESC","unique_size_ASC","unique_size_DESC","volume_sharing_ASC","volume_sharing_DESC","volume_size_ASC","volume_size_DESC","zbs_snapshot_uuid_ASC","zbs_snapshot_uuid_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

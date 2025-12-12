@@ -33,6 +33,9 @@ const (
 	// ConnectStateCONNECTED captures enum value "CONNECTED"
 	ConnectStateCONNECTED ConnectState = "CONNECTED"
 
+	// ConnectStateCONNECTEDERROR captures enum value "CONNECTED_ERROR"
+	ConnectStateCONNECTEDERROR ConnectState = "CONNECTED_ERROR"
+
 	// ConnectStateDISCONNECTED captures enum value "DISCONNECTED"
 	ConnectStateDISCONNECTED ConnectState = "DISCONNECTED"
 
@@ -48,7 +51,7 @@ var connectStateEnum []interface{}
 
 func init() {
 	var res []ConnectState
-	if err := json.Unmarshal([]byte(`["CONNECTED","DISCONNECTED","INITIALIZING","REMOVING"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CONNECTED","CONNECTED_ERROR","DISCONNECTED","INITIALIZING","REMOVING"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

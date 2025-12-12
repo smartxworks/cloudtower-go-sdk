@@ -44,6 +44,18 @@ const (
 
 	// BackupRestorePointCreationMANUAL captures enum value "MANUAL"
 	BackupRestorePointCreationMANUAL BackupRestorePointCreation = "MANUAL"
+
+	// BackupRestorePointCreationSYNCREPLICATION captures enum value "SYNC_REPLICATION"
+	BackupRestorePointCreationSYNCREPLICATION BackupRestorePointCreation = "SYNC_REPLICATION"
+
+	// BackupRestorePointCreationSYNCREPLICATIONERROR captures enum value "SYNC_REPLICATION_ERROR"
+	BackupRestorePointCreationSYNCREPLICATIONERROR BackupRestorePointCreation = "SYNC_REPLICATION_ERROR"
+
+	// BackupRestorePointCreationSYNCREPLICATIONINITIALIZATION captures enum value "SYNC_REPLICATION_INITIALIZATION"
+	BackupRestorePointCreationSYNCREPLICATIONINITIALIZATION BackupRestorePointCreation = "SYNC_REPLICATION_INITIALIZATION"
+
+	// BackupRestorePointCreationSYNCREPLICATIONSYNCING captures enum value "SYNC_REPLICATION_SYNCING"
+	BackupRestorePointCreationSYNCREPLICATIONSYNCING BackupRestorePointCreation = "SYNC_REPLICATION_SYNCING"
 )
 
 // for schema
@@ -51,7 +63,7 @@ var backupRestorePointCreationEnum []interface{}
 
 func init() {
 	var res []BackupRestorePointCreation
-	if err := json.Unmarshal([]byte(`["AUTO","FAILBACK","FAILOVER","FAILOVER_TEST","MANUAL"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["AUTO","FAILBACK","FAILOVER","FAILOVER_TEST","MANUAL","SYNC_REPLICATION","SYNC_REPLICATION_ERROR","SYNC_REPLICATION_INITIALIZATION","SYNC_REPLICATION_SYNCING"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
