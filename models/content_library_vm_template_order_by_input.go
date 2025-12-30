@@ -156,6 +156,12 @@ const (
 	// ContentLibraryVMTemplateOrderByInputTemplateConfigDESC captures enum value "template_config_DESC"
 	ContentLibraryVMTemplateOrderByInputTemplateConfigDESC ContentLibraryVMTemplateOrderByInput = "template_config_DESC"
 
+	// ContentLibraryVMTemplateOrderByInputUsageASC captures enum value "usage_ASC"
+	ContentLibraryVMTemplateOrderByInputUsageASC ContentLibraryVMTemplateOrderByInput = "usage_ASC"
+
+	// ContentLibraryVMTemplateOrderByInputUsageDESC captures enum value "usage_DESC"
+	ContentLibraryVMTemplateOrderByInputUsageDESC ContentLibraryVMTemplateOrderByInput = "usage_DESC"
+
 	// ContentLibraryVMTemplateOrderByInputVcpuASC captures enum value "vcpu_ASC"
 	ContentLibraryVMTemplateOrderByInputVcpuASC ContentLibraryVMTemplateOrderByInput = "vcpu_ASC"
 
@@ -198,7 +204,7 @@ var contentLibraryVmTemplateOrderByInputEnum []interface{}
 
 func init() {
 	var res []ContentLibraryVMTemplateOrderByInput
-	if err := json.Unmarshal([]byte(`["architecture_ASC","architecture_DESC","clock_offset_ASC","clock_offset_DESC","cloud_init_supported_ASC","cloud_init_supported_DESC","cpu_ASC","cpu_DESC","cpu_model_ASC","cpu_model_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","firmware_ASC","firmware_DESC","ha_ASC","ha_DESC","id_ASC","id_DESC","io_policy_ASC","io_policy_DESC","max_bandwidth_ASC","max_bandwidth_DESC","max_bandwidth_policy_ASC","max_bandwidth_policy_DESC","max_iops_ASC","max_iops_DESC","max_iops_policy_ASC","max_iops_policy_DESC","memory_ASC","memory_DESC","name_ASC","name_DESC","os_ASC","os_DESC","size_ASC","size_DESC","template_config_ASC","template_config_DESC","vcpu_ASC","vcpu_DESC","video_type_ASC","video_type_DESC","vm_disks_ASC","vm_disks_DESC","vm_nics_ASC","vm_nics_DESC","win_opt_ASC","win_opt_DESC","zbs_storage_info_ASC","zbs_storage_info_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["architecture_ASC","architecture_DESC","clock_offset_ASC","clock_offset_DESC","cloud_init_supported_ASC","cloud_init_supported_DESC","cpu_ASC","cpu_DESC","cpu_model_ASC","cpu_model_DESC","createdAt_ASC","createdAt_DESC","description_ASC","description_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","firmware_ASC","firmware_DESC","ha_ASC","ha_DESC","id_ASC","id_DESC","io_policy_ASC","io_policy_DESC","max_bandwidth_ASC","max_bandwidth_DESC","max_bandwidth_policy_ASC","max_bandwidth_policy_DESC","max_iops_ASC","max_iops_DESC","max_iops_policy_ASC","max_iops_policy_DESC","memory_ASC","memory_DESC","name_ASC","name_DESC","os_ASC","os_DESC","size_ASC","size_DESC","template_config_ASC","template_config_DESC","usage_ASC","usage_DESC","vcpu_ASC","vcpu_DESC","video_type_ASC","video_type_DESC","vm_disks_ASC","vm_disks_DESC","vm_nics_ASC","vm_nics_DESC","win_opt_ASC","win_opt_DESC","zbs_storage_info_ASC","zbs_storage_info_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -56,6 +56,9 @@ type VMPlacementGroup struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// usage
+	Usage *VMPlacementGroupUsage `json:"usage,omitempty"`
+
 	// vm host must enabled
 	// Required: true
 	VMHostMustEnabled *bool `json:"vm_host_must_enabled"`
@@ -110,6 +113,8 @@ type VMPlacementGroupMarshalOpts struct {
 	LocalUpdatedAt_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
+
+	Usage_Explicit_Null_When_Empty bool
 
 	VMHostMustEnabled_Explicit_Null_When_Empty bool
 
@@ -313,6 +318,26 @@ func (m VMPlacementGroup) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field usage
+	if m.Usage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage\":")
+		bytes, err := swag.WriteJSON(m.Usage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Usage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage\":null")
 		first = false
 	}
 
@@ -522,6 +547,10 @@ func (m *VMPlacementGroup) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateUsage(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVMHostMustEnabled(formats); err != nil {
 		res = append(res, err)
 	}
@@ -661,6 +690,25 @@ func (m *VMPlacementGroup) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroup) validateUsage(formats strfmt.Registry) error {
+	if swag.IsZero(m.Usage) { // not required
+		return nil
+	}
+
+	if m.Usage != nil {
+		if err := m.Usage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -825,6 +873,10 @@ func (m *VMPlacementGroup) ContextValidate(ctx context.Context, formats strfmt.R
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateUsage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVMHostMustHostUuids(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -871,6 +923,22 @@ func (m *VMPlacementGroup) contextValidateEntityAsyncStatus(ctx context.Context,
 				return ve.ValidateName("entityAsyncStatus")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroup) contextValidateUsage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Usage != nil {
+		if err := m.Usage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage")
 			}
 			return err
 		}

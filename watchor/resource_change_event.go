@@ -45,7 +45,7 @@ type ErrorEvent struct {
 	CompactRevision *string
 }
 
-// ResourceChangeWatchClient watches for resource changes in CloudTower
+// ResourceChangeWatchClient watches for resource changes in Cloudtower
 type ResourceChangeWatchClient struct {
 	client        *client.Cloudtower
 	clientOptions resource_change_client.ClientOption
@@ -70,7 +70,7 @@ type ResourceChangeWatchClient struct {
 
 // NewResourceChangeWatchClientParams contains parameters for creating a new ResourceChangeWatchClient
 type NewResourceChangeWatchClientParams struct {
-	// Client is the CloudTower client instance
+	// Client is the Cloudtower client instance
 	Client *client.Cloudtower
 	// ClientOptions is the options for the client
 	ClientOptions resource_change_client.ClientOption

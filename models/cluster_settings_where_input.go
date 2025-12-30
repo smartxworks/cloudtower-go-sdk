@@ -122,6 +122,30 @@ type ClusterSettingsWhereInput struct {
 	// default storage policy replica num not in
 	DefaultStoragePolicyReplicaNumNotIn []int32 `json:"default_storage_policy_replica_num_not_in,omitempty"`
 
+	// default storage policy stripe num
+	DefaultStoragePolicyStripeNum *int32 `json:"default_storage_policy_stripe_num,omitempty"`
+
+	// default storage policy stripe num gt
+	DefaultStoragePolicyStripeNumGt *int32 `json:"default_storage_policy_stripe_num_gt,omitempty"`
+
+	// default storage policy stripe num gte
+	DefaultStoragePolicyStripeNumGte *int32 `json:"default_storage_policy_stripe_num_gte,omitempty"`
+
+	// default storage policy stripe num in
+	DefaultStoragePolicyStripeNumIn []int32 `json:"default_storage_policy_stripe_num_in,omitempty"`
+
+	// default storage policy stripe num lt
+	DefaultStoragePolicyStripeNumLt *int32 `json:"default_storage_policy_stripe_num_lt,omitempty"`
+
+	// default storage policy stripe num lte
+	DefaultStoragePolicyStripeNumLte *int32 `json:"default_storage_policy_stripe_num_lte,omitempty"`
+
+	// default storage policy stripe num not
+	DefaultStoragePolicyStripeNumNot *int32 `json:"default_storage_policy_stripe_num_not,omitempty"`
+
+	// default storage policy stripe num not in
+	DefaultStoragePolicyStripeNumNotIn []int32 `json:"default_storage_policy_stripe_num_not_in,omitempty"`
+
 	// default storage policy thin provision
 	DefaultStoragePolicyThinProvision *bool `json:"default_storage_policy_thin_provision,omitempty"`
 
@@ -247,6 +271,22 @@ type ClusterSettingsWhereInputMarshalOpts struct {
 	DefaultStoragePolicyReplicaNumNot_Explicit_Null_When_Empty bool
 
 	DefaultStoragePolicyReplicaNumNotIn_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyStripeNum_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyStripeNumGt_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyStripeNumGte_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyStripeNumIn_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyStripeNumLt_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyStripeNumLte_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyStripeNumNot_Explicit_Null_When_Empty bool
+
+	DefaultStoragePolicyStripeNumNotIn_Explicit_Null_When_Empty bool
 
 	DefaultStoragePolicyThinProvision_Explicit_Null_When_Empty bool
 
@@ -898,6 +938,154 @@ func (m ClusterSettingsWhereInput) MarshalJSON() ([]byte, error) {
 		}
 		b.WriteString("\"default_storage_policy_replica_num_not_in\":")
 		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyReplicaNumNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_stripe_num
+	if m.DefaultStoragePolicyStripeNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyStripeNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_stripe_num_gt
+	if m.DefaultStoragePolicyStripeNumGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_gt\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNumGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyStripeNumGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_gt\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_stripe_num_gte
+	if m.DefaultStoragePolicyStripeNumGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_gte\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNumGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyStripeNumGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field default_storage_policy_stripe_num_in with omitempty
+	if !swag.IsZero(m.DefaultStoragePolicyStripeNumIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_in\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNumIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_stripe_num_lt
+	if m.DefaultStoragePolicyStripeNumLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_lt\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNumLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyStripeNumLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_lt\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_stripe_num_lte
+	if m.DefaultStoragePolicyStripeNumLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_lte\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNumLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyStripeNumLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_lte\":null")
+		first = false
+	}
+
+	// handle nullable field default_storage_policy_stripe_num_not
+	if m.DefaultStoragePolicyStripeNumNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_not\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNumNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyStripeNumNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_not\":null")
+		first = false
+	}
+
+	// handle non nullable field default_storage_policy_stripe_num_not_in with omitempty
+	if !swag.IsZero(m.DefaultStoragePolicyStripeNumNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"default_storage_policy_stripe_num_not_in\":")
+		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNumNotIn)
 		if err != nil {
 			return nil, err
 		}
