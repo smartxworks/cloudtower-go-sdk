@@ -33,6 +33,9 @@ const (
 	// HostBatchCreateIfaceFunctionACCESS captures enum value "ACCESS"
 	HostBatchCreateIfaceFunctionACCESS HostBatchCreateIfaceFunction = "ACCESS"
 
+	// HostBatchCreateIfaceFunctionERSPAN captures enum value "ERSPAN"
+	HostBatchCreateIfaceFunctionERSPAN HostBatchCreateIfaceFunction = "ERSPAN"
+
 	// HostBatchCreateIfaceFunctionMANAGEMENT captures enum value "MANAGEMENT"
 	HostBatchCreateIfaceFunctionMANAGEMENT HostBatchCreateIfaceFunction = "MANAGEMENT"
 
@@ -51,7 +54,7 @@ var hostBatchCreateIfaceFunctionEnum []interface{}
 
 func init() {
 	var res []HostBatchCreateIfaceFunction
-	if err := json.Unmarshal([]byte(`["ACCESS","MANAGEMENT","MIGRATION","STORAGE","VMWARE_ACCESS"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ACCESS","ERSPAN","MANAGEMENT","MIGRATION","STORAGE","VMWARE_ACCESS"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

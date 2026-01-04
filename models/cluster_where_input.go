@@ -296,6 +296,54 @@ type ClusterWhereInput struct {
 	// datacenters some
 	DatacentersSome *DatacenterWhereInput `json:"datacenters_some,omitempty"`
 
+	// dirty cache space
+	DirtyCacheSpace *int64 `json:"dirty_cache_space,omitempty"`
+
+	// dirty cache space gt
+	DirtyCacheSpaceGt *int64 `json:"dirty_cache_space_gt,omitempty"`
+
+	// dirty cache space gte
+	DirtyCacheSpaceGte *int64 `json:"dirty_cache_space_gte,omitempty"`
+
+	// dirty cache space in
+	DirtyCacheSpaceIn []int64 `json:"dirty_cache_space_in,omitempty"`
+
+	// dirty cache space lt
+	DirtyCacheSpaceLt *int64 `json:"dirty_cache_space_lt,omitempty"`
+
+	// dirty cache space lte
+	DirtyCacheSpaceLte *int64 `json:"dirty_cache_space_lte,omitempty"`
+
+	// dirty cache space not
+	DirtyCacheSpaceNot *int64 `json:"dirty_cache_space_not,omitempty"`
+
+	// dirty cache space not in
+	DirtyCacheSpaceNotIn []int64 `json:"dirty_cache_space_not_in,omitempty"`
+
+	// dirty cache usage
+	DirtyCacheUsage *float64 `json:"dirty_cache_usage,omitempty"`
+
+	// dirty cache usage gt
+	DirtyCacheUsageGt *float64 `json:"dirty_cache_usage_gt,omitempty"`
+
+	// dirty cache usage gte
+	DirtyCacheUsageGte *float64 `json:"dirty_cache_usage_gte,omitempty"`
+
+	// dirty cache usage in
+	DirtyCacheUsageIn []float64 `json:"dirty_cache_usage_in,omitempty"`
+
+	// dirty cache usage lt
+	DirtyCacheUsageLt *float64 `json:"dirty_cache_usage_lt,omitempty"`
+
+	// dirty cache usage lte
+	DirtyCacheUsageLte *float64 `json:"dirty_cache_usage_lte,omitempty"`
+
+	// dirty cache usage not
+	DirtyCacheUsageNot *float64 `json:"dirty_cache_usage_not,omitempty"`
+
+	// dirty cache usage not in
+	DirtyCacheUsageNotIn []float64 `json:"dirty_cache_usage_not_in,omitempty"`
+
 	// disconnected date
 	DisconnectedDate *string `json:"disconnected_date,omitempty"`
 
@@ -379,6 +427,30 @@ type ClusterWhereInput struct {
 
 	// everoute cluster
 	EverouteCluster *EverouteClusterWhereInput `json:"everoute_cluster,omitempty"`
+
+	// failure cache space
+	FailureCacheSpace *int64 `json:"failure_cache_space,omitempty"`
+
+	// failure cache space gt
+	FailureCacheSpaceGt *int64 `json:"failure_cache_space_gt,omitempty"`
+
+	// failure cache space gte
+	FailureCacheSpaceGte *int64 `json:"failure_cache_space_gte,omitempty"`
+
+	// failure cache space in
+	FailureCacheSpaceIn []int64 `json:"failure_cache_space_in,omitempty"`
+
+	// failure cache space lt
+	FailureCacheSpaceLt *int64 `json:"failure_cache_space_lt,omitempty"`
+
+	// failure cache space lte
+	FailureCacheSpaceLte *int64 `json:"failure_cache_space_lte,omitempty"`
+
+	// failure cache space not
+	FailureCacheSpaceNot *int64 `json:"failure_cache_space_not,omitempty"`
+
+	// failure cache space not in
+	FailureCacheSpaceNotIn []int64 `json:"failure_cache_space_not_in,omitempty"`
 
 	// failure data space
 	FailureDataSpace *int64 `json:"failure_data_space,omitempty"`
@@ -2338,6 +2410,38 @@ type ClusterWhereInputMarshalOpts struct {
 
 	DatacentersSome_Explicit_Null_When_Empty bool
 
+	DirtyCacheSpace_Explicit_Null_When_Empty bool
+
+	DirtyCacheSpaceGt_Explicit_Null_When_Empty bool
+
+	DirtyCacheSpaceGte_Explicit_Null_When_Empty bool
+
+	DirtyCacheSpaceIn_Explicit_Null_When_Empty bool
+
+	DirtyCacheSpaceLt_Explicit_Null_When_Empty bool
+
+	DirtyCacheSpaceLte_Explicit_Null_When_Empty bool
+
+	DirtyCacheSpaceNot_Explicit_Null_When_Empty bool
+
+	DirtyCacheSpaceNotIn_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsage_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsageGt_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsageGte_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsageIn_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsageLt_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsageLte_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsageNot_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsageNotIn_Explicit_Null_When_Empty bool
+
 	DisconnectedDate_Explicit_Null_When_Empty bool
 
 	DisconnectedDateGt_Explicit_Null_When_Empty bool
@@ -2393,6 +2497,22 @@ type ClusterWhereInputMarshalOpts struct {
 	EntityAsyncStatusNotIn_Explicit_Null_When_Empty bool
 
 	EverouteCluster_Explicit_Null_When_Empty bool
+
+	FailureCacheSpace_Explicit_Null_When_Empty bool
+
+	FailureCacheSpaceGt_Explicit_Null_When_Empty bool
+
+	FailureCacheSpaceGte_Explicit_Null_When_Empty bool
+
+	FailureCacheSpaceIn_Explicit_Null_When_Empty bool
+
+	FailureCacheSpaceLt_Explicit_Null_When_Empty bool
+
+	FailureCacheSpaceLte_Explicit_Null_When_Empty bool
+
+	FailureCacheSpaceNot_Explicit_Null_When_Empty bool
+
+	FailureCacheSpaceNotIn_Explicit_Null_When_Empty bool
 
 	FailureDataSpace_Explicit_Null_When_Empty bool
 
@@ -5295,6 +5415,302 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field dirty_cache_space
+	if m.DirtyCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_space_gt
+	if m.DirtyCacheSpaceGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_gt\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpaceGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheSpaceGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_gt\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_space_gte
+	if m.DirtyCacheSpaceGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_gte\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpaceGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheSpaceGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field dirty_cache_space_in with omitempty
+	if !swag.IsZero(m.DirtyCacheSpaceIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_in\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpaceIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field dirty_cache_space_lt
+	if m.DirtyCacheSpaceLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_lt\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpaceLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheSpaceLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_lt\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_space_lte
+	if m.DirtyCacheSpaceLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_lte\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpaceLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheSpaceLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_lte\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_space_not
+	if m.DirtyCacheSpaceNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_not\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpaceNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheSpaceNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_not\":null")
+		first = false
+	}
+
+	// handle non nullable field dirty_cache_space_not_in with omitempty
+	if !swag.IsZero(m.DirtyCacheSpaceNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space_not_in\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpaceNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field dirty_cache_usage
+	if m.DirtyCacheUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_usage_gt
+	if m.DirtyCacheUsageGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_gt\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsageGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheUsageGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_gt\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_usage_gte
+	if m.DirtyCacheUsageGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_gte\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsageGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheUsageGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field dirty_cache_usage_in with omitempty
+	if !swag.IsZero(m.DirtyCacheUsageIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_in\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsageIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field dirty_cache_usage_lt
+	if m.DirtyCacheUsageLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_lt\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsageLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheUsageLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_lt\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_usage_lte
+	if m.DirtyCacheUsageLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_lte\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsageLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheUsageLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_lte\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_usage_not
+	if m.DirtyCacheUsageNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_not\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsageNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheUsageNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_not\":null")
+		first = false
+	}
+
+	// handle non nullable field dirty_cache_usage_not_in with omitempty
+	if !swag.IsZero(m.DirtyCacheUsageNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage_not_in\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsageNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field disconnected_date
 	if m.DisconnectedDate != nil {
 		if !first {
@@ -5804,6 +6220,154 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"everoute_cluster\":null")
+		first = false
+	}
+
+	// handle nullable field failure_cache_space
+	if m.FailureCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FailureCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space\":null")
+		first = false
+	}
+
+	// handle nullable field failure_cache_space_gt
+	if m.FailureCacheSpaceGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_gt\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpaceGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FailureCacheSpaceGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_gt\":null")
+		first = false
+	}
+
+	// handle nullable field failure_cache_space_gte
+	if m.FailureCacheSpaceGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_gte\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpaceGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FailureCacheSpaceGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field failure_cache_space_in with omitempty
+	if !swag.IsZero(m.FailureCacheSpaceIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_in\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpaceIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field failure_cache_space_lt
+	if m.FailureCacheSpaceLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_lt\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpaceLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FailureCacheSpaceLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_lt\":null")
+		first = false
+	}
+
+	// handle nullable field failure_cache_space_lte
+	if m.FailureCacheSpaceLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_lte\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpaceLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FailureCacheSpaceLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_lte\":null")
+		first = false
+	}
+
+	// handle nullable field failure_cache_space_not
+	if m.FailureCacheSpaceNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_not\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpaceNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FailureCacheSpaceNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_not\":null")
+		first = false
+	}
+
+	// handle non nullable field failure_cache_space_not_in with omitempty
+	if !swag.IsZero(m.FailureCacheSpaceNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space_not_in\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpaceNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 

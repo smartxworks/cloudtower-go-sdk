@@ -38,6 +38,9 @@ const (
 
 	// ReplicationTargetExecutionCreationREPLICATION captures enum value "REPLICATION"
 	ReplicationTargetExecutionCreationREPLICATION ReplicationTargetExecutionCreation = "REPLICATION"
+
+	// ReplicationTargetExecutionCreationSYNCREPLICATION captures enum value "SYNC_REPLICATION"
+	ReplicationTargetExecutionCreationSYNCREPLICATION ReplicationTargetExecutionCreation = "SYNC_REPLICATION"
 )
 
 // for schema
@@ -45,7 +48,7 @@ var replicationTargetExecutionCreationEnum []interface{}
 
 func init() {
 	var res []ReplicationTargetExecutionCreation
-	if err := json.Unmarshal([]byte(`["FAILBACK","FAILOVER","REPLICATION"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["FAILBACK","FAILOVER","REPLICATION","SYNC_REPLICATION"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
