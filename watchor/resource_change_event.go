@@ -294,7 +294,6 @@ func (c *ResourceChangeWatchClient) pollOnce() error {
 		if !c.started.Load() {
 			return nil
 		}
-
 		c.currentRevision = event.Revision
 		c.writeToChannel(event)
 	}
