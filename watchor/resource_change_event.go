@@ -294,9 +294,16 @@ func (c *ResourceChangeWatchClient) pollOnce() error {
 		if !c.started.Load() {
 			return nil
 		}
-
 		c.currentRevision = event.Revision
 		c.writeToChannel(event)
+	}
+
+	if len(events.Payload.Data) == 0 {
+		if !c.catchedUp.Load() {
+			c.catchedUp.Store(true)
+		}
+		c.currentRevision = events.Payload.CurrentRevision
+		return nil
 	}
 
 	if !c.catchedUp.Load() {
