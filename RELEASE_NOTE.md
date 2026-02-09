@@ -2,6 +2,8 @@
 
 ## release 日期 2026-02-09
 
+v2.22.0 release (tower version 4.8.0)
+
 ### features
 
 - 增加 [RegistryServiceApi] 用于镜像仓库的查询
