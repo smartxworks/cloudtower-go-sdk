@@ -266,6 +266,18 @@ type VMPlacementGroupWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
+	// usage
+	Usage *VMPlacementGroupUsage `json:"usage,omitempty"`
+
+	// usage in
+	UsageIn []VMPlacementGroupUsage `json:"usage_in,omitempty"`
+
+	// usage not
+	UsageNot *VMPlacementGroupUsage `json:"usage_not,omitempty"`
+
+	// usage not in
+	UsageNotIn []VMPlacementGroupUsage `json:"usage_not_in,omitempty"`
+
 	// vm host must enabled
 	VMHostMustEnabled *bool `json:"vm_host_must_enabled,omitempty"`
 
@@ -502,6 +514,14 @@ type VMPlacementGroupWhereInputMarshalOpts struct {
 	NameNotStartsWith_Explicit_Null_When_Empty bool
 
 	NameStartsWith_Explicit_Null_When_Empty bool
+
+	Usage_Explicit_Null_When_Empty bool
+
+	UsageIn_Explicit_Null_When_Empty bool
+
+	UsageNot_Explicit_Null_When_Empty bool
+
+	UsageNotIn_Explicit_Null_When_Empty bool
 
 	VMHostMustEnabled_Explicit_Null_When_Empty bool
 
@@ -2094,6 +2114,74 @@ func (m VMPlacementGroupWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field usage
+	if m.Usage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage\":")
+		bytes, err := swag.WriteJSON(m.Usage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Usage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage\":null")
+		first = false
+	}
+
+	// handle non nullable field usage_in with omitempty
+	if !swag.IsZero(m.UsageIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_in\":")
+		bytes, err := swag.WriteJSON(m.UsageIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field usage_not
+	if m.UsageNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not\":")
+		bytes, err := swag.WriteJSON(m.UsageNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UsageNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not\":null")
+		first = false
+	}
+
+	// handle non nullable field usage_not_in with omitempty
+	if !swag.IsZero(m.UsageNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not_in\":")
+		bytes, err := swag.WriteJSON(m.UsageNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field vm_host_must_enabled
 	if m.VMHostMustEnabled != nil {
 		if !first {
@@ -2582,6 +2670,22 @@ func (m *VMPlacementGroupWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateUsage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVMHostMustHostUuidsEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -2808,6 +2912,86 @@ func (m *VMPlacementGroupWhereInput) validateEntityAsyncStatusNotIn(formats strf
 				return ve.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroupWhereInput) validateUsage(formats strfmt.Registry) error {
+	if swag.IsZero(m.Usage) { // not required
+		return nil
+	}
+
+	if m.Usage != nil {
+		if err := m.Usage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroupWhereInput) validateUsageIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsageIn); i++ {
+
+		if err := m.UsageIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroupWhereInput) validateUsageNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageNot) { // not required
+		return nil
+	}
+
+	if m.UsageNot != nil {
+		if err := m.UsageNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroupWhereInput) validateUsageNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsageNotIn); i++ {
+
+		if err := m.UsageNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -3104,6 +3288,22 @@ func (m *VMPlacementGroupWhereInput) ContextValidate(ctx context.Context, format
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateUsage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVMHostMustHostUuidsEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3297,6 +3497,74 @@ func (m *VMPlacementGroupWhereInput) contextValidateEntityAsyncStatusNotIn(ctx c
 				return ve.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("entityAsyncStatus_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroupWhereInput) contextValidateUsage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Usage != nil {
+		if err := m.Usage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroupWhereInput) contextValidateUsageIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsageIn); i++ {
+
+		if err := m.UsageIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroupWhereInput) contextValidateUsageNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UsageNot != nil {
+		if err := m.UsageNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMPlacementGroupWhereInput) contextValidateUsageNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsageNotIn); i++ {
+
+		if err := m.UsageNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

@@ -45,6 +45,9 @@ type VMVolumeSnapshot struct {
 	// elf storage policy replica num
 	ElfStoragePolicyReplicaNum *int32 `json:"elf_storage_policy_replica_num,omitempty"`
 
+	// elf storage policy stripe num
+	ElfStoragePolicyStripeNum *int32 `json:"elf_storage_policy_stripe_num,omitempty"`
+
 	// elf storage policy thin provision
 	ElfStoragePolicyThinProvision *bool `json:"elf_storage_policy_thin_provision,omitempty"`
 
@@ -115,6 +118,8 @@ type VMVolumeSnapshotMarshalOpts struct {
 	ElfStoragePolicyEcm_Explicit_Null_When_Empty bool
 
 	ElfStoragePolicyReplicaNum_Explicit_Null_When_Empty bool
+
+	ElfStoragePolicyStripeNum_Explicit_Null_When_Empty bool
 
 	ElfStoragePolicyThinProvision_Explicit_Null_When_Empty bool
 
@@ -292,6 +297,26 @@ func (m VMVolumeSnapshot) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"elf_storage_policy_replica_num\":null")
+		first = false
+	}
+
+	// handle nullable field elf_storage_policy_stripe_num
+	if m.ElfStoragePolicyStripeNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_stripe_num\":")
+		bytes, err := swag.WriteJSON(m.ElfStoragePolicyStripeNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ElfStoragePolicyStripeNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"elf_storage_policy_stripe_num\":null")
 		first = false
 	}
 

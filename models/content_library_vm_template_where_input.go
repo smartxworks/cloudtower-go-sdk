@@ -473,6 +473,18 @@ type ContentLibraryVMTemplateWhereInput struct {
 	// size not in
 	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
+	// usage
+	Usage *ContentLibraryVMTemplateUsage `json:"usage,omitempty"`
+
+	// usage in
+	UsageIn []ContentLibraryVMTemplateUsage `json:"usage_in,omitempty"`
+
+	// usage not
+	UsageNot *ContentLibraryVMTemplateUsage `json:"usage_not,omitempty"`
+
+	// usage not in
+	UsageNotIn []ContentLibraryVMTemplateUsage `json:"usage_not_in,omitempty"`
+
 	// vcpu
 	Vcpu *int32 `json:"vcpu,omitempty"`
 
@@ -859,6 +871,14 @@ type ContentLibraryVMTemplateWhereInputMarshalOpts struct {
 	SizeNot_Explicit_Null_When_Empty bool
 
 	SizeNotIn_Explicit_Null_When_Empty bool
+
+	Usage_Explicit_Null_When_Empty bool
+
+	UsageIn_Explicit_Null_When_Empty bool
+
+	UsageNot_Explicit_Null_When_Empty bool
+
+	UsageNotIn_Explicit_Null_When_Empty bool
 
 	Vcpu_Explicit_Null_When_Empty bool
 
@@ -3719,6 +3739,74 @@ func (m ContentLibraryVMTemplateWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field usage
+	if m.Usage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage\":")
+		bytes, err := swag.WriteJSON(m.Usage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Usage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage\":null")
+		first = false
+	}
+
+	// handle non nullable field usage_in with omitempty
+	if !swag.IsZero(m.UsageIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_in\":")
+		bytes, err := swag.WriteJSON(m.UsageIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field usage_not
+	if m.UsageNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not\":")
+		bytes, err := swag.WriteJSON(m.UsageNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.UsageNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not\":null")
+		first = false
+	}
+
+	// handle non nullable field usage_not_in with omitempty
+	if !swag.IsZero(m.UsageNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"usage_not_in\":")
+		bytes, err := swag.WriteJSON(m.UsageNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field vcpu
 	if m.Vcpu != nil {
 		if !first {
@@ -4388,6 +4476,22 @@ func (m *ContentLibraryVMTemplateWhereInput) Validate(formats strfmt.Registry) e
 	}
 
 	if err := m.validateMaxIopsPolicyNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsageNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -5161,6 +5265,86 @@ func (m *ContentLibraryVMTemplateWhereInput) validateMaxIopsPolicyNotIn(formats 
 	return nil
 }
 
+func (m *ContentLibraryVMTemplateWhereInput) validateUsage(formats strfmt.Registry) error {
+	if swag.IsZero(m.Usage) { // not required
+		return nil
+	}
+
+	if m.Usage != nil {
+		if err := m.Usage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateUsageIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsageIn); i++ {
+
+		if err := m.UsageIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateUsageNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageNot) { // not required
+		return nil
+	}
+
+	if m.UsageNot != nil {
+		if err := m.UsageNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateUsageNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsageNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsageNotIn); i++ {
+
+		if err := m.UsageNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplateWhereInput) validateVMTemplatesEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMTemplatesEvery) { // not required
 		return nil
@@ -5367,6 +5551,22 @@ func (m *ContentLibraryVMTemplateWhereInput) ContextValidate(ctx context.Context
 	}
 
 	if err := m.contextValidateMaxIopsPolicyNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsageNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -6011,6 +6211,74 @@ func (m *ContentLibraryVMTemplateWhereInput) contextValidateMaxIopsPolicyNotIn(c
 				return ve.ValidateName("max_iops_policy_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("max_iops_policy_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateUsage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Usage != nil {
+		if err := m.Usage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateUsageIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsageIn); i++ {
+
+		if err := m.UsageIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateUsageNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UsageNot != nil {
+		if err := m.UsageNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateUsageNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsageNotIn); i++ {
+
+		if err := m.UsageNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("usage_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
