@@ -84,6 +84,12 @@ type Host struct {
 	// data ip
 	DataIP *string `json:"data_ip,omitempty"`
 
+	// dirty cache space
+	DirtyCacheSpace *int64 `json:"dirty_cache_space,omitempty"`
+
+	// dirty cache usage
+	DirtyCacheUsage *float64 `json:"dirty_cache_usage,omitempty"`
+
 	// disk pools
 	DiskPools []*NestedDiskPool `json:"disk_pools,omitempty"`
 
@@ -95,6 +101,9 @@ type Host struct {
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
+	// failure cache space
+	FailureCacheSpace *int64 `json:"failure_cache_space,omitempty"`
 
 	// failure data space
 	// Required: true
@@ -364,6 +373,10 @@ type HostMarshalOpts struct {
 
 	DataIP_Explicit_Null_When_Empty bool
 
+	DirtyCacheSpace_Explicit_Null_When_Empty bool
+
+	DirtyCacheUsage_Explicit_Null_When_Empty bool
+
 	DiskPools_Explicit_Null_When_Empty bool
 
 	Disks_Explicit_Null_When_Empty bool
@@ -371,6 +384,8 @@ type HostMarshalOpts struct {
 	DowngradedPrioritizedSpace_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
+
+	FailureCacheSpace_Explicit_Null_When_Empty bool
 
 	FailureDataSpace_Explicit_Null_When_Empty bool
 
@@ -855,6 +870,46 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field dirty_cache_space
+	if m.DirtyCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_space\":null")
+		first = false
+	}
+
+	// handle nullable field dirty_cache_usage
+	if m.DirtyCacheUsage != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage\":")
+		bytes, err := swag.WriteJSON(m.DirtyCacheUsage)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DirtyCacheUsage_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dirty_cache_usage\":null")
+		first = false
+	}
+
 	// handle non nullable field disk_pools with omitempty
 	if !swag.IsZero(m.DiskPools) {
 		if !first {
@@ -920,6 +975,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"entityAsyncStatus\":null")
+		first = false
+	}
+
+	// handle nullable field failure_cache_space
+	if m.FailureCacheSpace != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space\":")
+		bytes, err := swag.WriteJSON(m.FailureCacheSpace)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.FailureCacheSpace_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"failure_cache_space\":null")
 		first = false
 	}
 

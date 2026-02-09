@@ -29,6 +29,12 @@ type VMNicWhereInput struct {
 	// o r
 	OR []*VMNicWhereInput `json:"OR,omitempty"`
 
+	// dpi enabled
+	DpiEnabled *bool `json:"dpi_enabled,omitempty"`
+
+	// dpi enabled not
+	DpiEnabledNot *bool `json:"dpi_enabled_not,omitempty"`
+
 	// egress rate limit burst in bit
 	EgressRateLimitBurstInBit *float64 `json:"egress_rate_limit_burst_in_bit,omitempty"`
 
@@ -513,6 +519,10 @@ type VMNicWhereInputMarshalOpts struct {
 
 	OR_Explicit_Null_When_Empty bool
 
+	DpiEnabled_Explicit_Null_When_Empty bool
+
+	DpiEnabledNot_Explicit_Null_When_Empty bool
+
 	EgressRateLimitBurstInBit_Explicit_Null_When_Empty bool
 
 	EgressRateLimitBurstInBitGt_Explicit_Null_When_Empty bool
@@ -875,6 +885,46 @@ func (m VMNicWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field dpi_enabled
+	if m.DpiEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled\":")
+		bytes, err := swag.WriteJSON(m.DpiEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DpiEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field dpi_enabled_not
+	if m.DpiEnabledNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled_not\":")
+		bytes, err := swag.WriteJSON(m.DpiEnabledNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DpiEnabledNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"dpi_enabled_not\":null")
 		first = false
 	}
 
