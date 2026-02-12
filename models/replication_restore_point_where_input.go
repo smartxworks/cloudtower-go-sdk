@@ -359,9 +359,6 @@ type ReplicationRestorePointWhereInput struct {
 	// snapshot consistent type not in
 	SnapshotConsistentTypeNotIn []ConsistentType `json:"snapshot_consistent_type_not_in,omitempty"`
 
-	// sync replication plan
-	SyncReplicationPlan *SyncReplicationPlanWhereInput `json:"sync_replication_plan,omitempty"`
-
 	// tower deploy id
 	TowerDeployID *string `json:"tower_deploy_id,omitempty"`
 
@@ -732,8 +729,6 @@ type ReplicationRestorePointWhereInputMarshalOpts struct {
 	SnapshotConsistentTypeNot_Explicit_Null_When_Empty bool
 
 	SnapshotConsistentTypeNotIn_Explicit_Null_When_Empty bool
-
-	SyncReplicationPlan_Explicit_Null_When_Empty bool
 
 	TowerDeployID_Explicit_Null_When_Empty bool
 
@@ -2946,26 +2941,6 @@ func (m ReplicationRestorePointWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field sync_replication_plan
-	if m.SyncReplicationPlan != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"sync_replication_plan\":")
-		bytes, err := swag.WriteJSON(m.SyncReplicationPlan)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationPlan_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"sync_replication_plan\":null")
-		first = false
-	}
-
 	// handle nullable field tower_deploy_id
 	if m.TowerDeployID != nil {
 		if !first {
@@ -3974,10 +3949,6 @@ func (m *ReplicationRestorePointWhereInput) Validate(formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
-	if err := m.validateSyncReplicationPlan(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -4554,25 +4525,6 @@ func (m *ReplicationRestorePointWhereInput) validateSnapshotConsistentTypeNotIn(
 	return nil
 }
 
-func (m *ReplicationRestorePointWhereInput) validateSyncReplicationPlan(formats strfmt.Registry) error {
-	if swag.IsZero(m.SyncReplicationPlan) { // not required
-		return nil
-	}
-
-	if m.SyncReplicationPlan != nil {
-		if err := m.SyncReplicationPlan.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("sync_replication_plan")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("sync_replication_plan")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ReplicationRestorePointWhereInput) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
@@ -4781,10 +4733,6 @@ func (m *ReplicationRestorePointWhereInput) ContextValidate(ctx context.Context,
 	}
 
 	if err := m.contextValidateSnapshotConsistentTypeNotIn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSyncReplicationPlan(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -5269,22 +5217,6 @@ func (m *ReplicationRestorePointWhereInput) contextValidateSnapshotConsistentTyp
 			return err
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ReplicationRestorePointWhereInput) contextValidateSyncReplicationPlan(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SyncReplicationPlan != nil {
-		if err := m.SyncReplicationPlan.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("sync_replication_plan")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("sync_replication_plan")
-			}
-			return err
-		}
 	}
 
 	return nil

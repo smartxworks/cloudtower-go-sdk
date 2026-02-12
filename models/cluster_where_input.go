@@ -1232,6 +1232,30 @@ type ClusterWhereInput struct {
 	// overall efficiency not in
 	OverallEfficiencyNotIn []float64 `json:"overall_efficiency_not_in,omitempty"`
 
+	// overprovision ratio
+	OverprovisionRatio *float64 `json:"overprovision_ratio,omitempty"`
+
+	// overprovision ratio gt
+	OverprovisionRatioGt *float64 `json:"overprovision_ratio_gt,omitempty"`
+
+	// overprovision ratio gte
+	OverprovisionRatioGte *float64 `json:"overprovision_ratio_gte,omitempty"`
+
+	// overprovision ratio in
+	OverprovisionRatioIn []float64 `json:"overprovision_ratio_in,omitempty"`
+
+	// overprovision ratio lt
+	OverprovisionRatioLt *float64 `json:"overprovision_ratio_lt,omitempty"`
+
+	// overprovision ratio lte
+	OverprovisionRatioLte *float64 `json:"overprovision_ratio_lte,omitempty"`
+
+	// overprovision ratio not
+	OverprovisionRatioNot *float64 `json:"overprovision_ratio_not,omitempty"`
+
+	// overprovision ratio not in
+	OverprovisionRatioNotIn []float64 `json:"overprovision_ratio_not_in,omitempty"`
+
 	// perf allocated data space
 	PerfAllocatedDataSpace *int64 `json:"perf_allocated_data_space,omitempty"`
 
@@ -3033,6 +3057,22 @@ type ClusterWhereInputMarshalOpts struct {
 	OverallEfficiencyNot_Explicit_Null_When_Empty bool
 
 	OverallEfficiencyNotIn_Explicit_Null_When_Empty bool
+
+	OverprovisionRatio_Explicit_Null_When_Empty bool
+
+	OverprovisionRatioGt_Explicit_Null_When_Empty bool
+
+	OverprovisionRatioGte_Explicit_Null_When_Empty bool
+
+	OverprovisionRatioIn_Explicit_Null_When_Empty bool
+
+	OverprovisionRatioLt_Explicit_Null_When_Empty bool
+
+	OverprovisionRatioLte_Explicit_Null_When_Empty bool
+
+	OverprovisionRatioNot_Explicit_Null_When_Empty bool
+
+	OverprovisionRatioNotIn_Explicit_Null_When_Empty bool
 
 	PerfAllocatedDataSpace_Explicit_Null_When_Empty bool
 
@@ -11264,6 +11304,154 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 		}
 		b.WriteString("\"overall_efficiency_not_in\":")
 		bytes, err := swag.WriteJSON(m.OverallEfficiencyNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field overprovision_ratio
+	if m.OverprovisionRatio != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatio)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OverprovisionRatio_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio\":null")
+		first = false
+	}
+
+	// handle nullable field overprovision_ratio_gt
+	if m.OverprovisionRatioGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_gt\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatioGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OverprovisionRatioGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_gt\":null")
+		first = false
+	}
+
+	// handle nullable field overprovision_ratio_gte
+	if m.OverprovisionRatioGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_gte\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatioGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OverprovisionRatioGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field overprovision_ratio_in with omitempty
+	if !swag.IsZero(m.OverprovisionRatioIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_in\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatioIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field overprovision_ratio_lt
+	if m.OverprovisionRatioLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_lt\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatioLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OverprovisionRatioLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_lt\":null")
+		first = false
+	}
+
+	// handle nullable field overprovision_ratio_lte
+	if m.OverprovisionRatioLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_lte\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatioLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OverprovisionRatioLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_lte\":null")
+		first = false
+	}
+
+	// handle nullable field overprovision_ratio_not
+	if m.OverprovisionRatioNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_not\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatioNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OverprovisionRatioNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_not\":null")
+		first = false
+	}
+
+	// handle non nullable field overprovision_ratio_not_in with omitempty
+	if !swag.IsZero(m.OverprovisionRatioNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio_not_in\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatioNotIn)
 		if err != nil {
 			return nil, err
 		}

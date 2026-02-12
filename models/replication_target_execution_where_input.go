@@ -230,9 +230,6 @@ type ReplicationTargetExecutionWhereInput struct {
 	// started at not in
 	StartedAtNotIn []string `json:"started_at_not_in,omitempty"`
 
-	// sync replication plan
-	SyncReplicationPlan *SyncReplicationPlanWhereInput `json:"sync_replication_plan,omitempty"`
-
 	// type
 	Type *BackupExecutionType `json:"type,omitempty"`
 
@@ -388,8 +385,6 @@ type ReplicationTargetExecutionWhereInputMarshalOpts struct {
 	StartedAtNot_Explicit_Null_When_Empty bool
 
 	StartedAtNotIn_Explicit_Null_When_Empty bool
-
-	SyncReplicationPlan_Explicit_Null_When_Empty bool
 
 	Type_Explicit_Null_When_Empty bool
 
@@ -1692,26 +1687,6 @@ func (m ReplicationTargetExecutionWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field sync_replication_plan
-	if m.SyncReplicationPlan != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"sync_replication_plan\":")
-		bytes, err := swag.WriteJSON(m.SyncReplicationPlan)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationPlan_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"sync_replication_plan\":null")
-		first = false
-	}
-
 	// handle nullable field type
 	if m.Type != nil {
 		if !first {
@@ -1857,10 +1832,6 @@ func (m *ReplicationTargetExecutionWhereInput) Validate(formats strfmt.Registry)
 	}
 
 	if err := m.validateReplicationPlanExecution(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSyncReplicationPlan(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2261,25 +2232,6 @@ func (m *ReplicationTargetExecutionWhereInput) validateReplicationPlanExecution(
 	return nil
 }
 
-func (m *ReplicationTargetExecutionWhereInput) validateSyncReplicationPlan(formats strfmt.Registry) error {
-	if swag.IsZero(m.SyncReplicationPlan) { // not required
-		return nil
-	}
-
-	if m.SyncReplicationPlan != nil {
-		if err := m.SyncReplicationPlan.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("sync_replication_plan")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("sync_replication_plan")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ReplicationTargetExecutionWhereInput) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
@@ -2433,10 +2385,6 @@ func (m *ReplicationTargetExecutionWhereInput) ContextValidate(ctx context.Conte
 	}
 
 	if err := m.contextValidateReplicationPlanExecution(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateSyncReplicationPlan(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2766,22 +2714,6 @@ func (m *ReplicationTargetExecutionWhereInput) contextValidateReplicationPlanExe
 				return ve.ValidateName("replication_plan_execution")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("replication_plan_execution")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ReplicationTargetExecutionWhereInput) contextValidateSyncReplicationPlan(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.SyncReplicationPlan != nil {
-		if err := m.SyncReplicationPlan.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("sync_replication_plan")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("sync_replication_plan")
 			}
 			return err
 		}
