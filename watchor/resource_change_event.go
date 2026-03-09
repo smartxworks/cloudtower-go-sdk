@@ -62,10 +62,12 @@ type ResourceChangeWatchClient struct {
 	catchedUp       atomic.Bool
 
 	// initial data, should readonly
-	resourceID      *string
-	resourceTypes   []string
-	maxRetries      int
-	pollingInterval time.Duration
+	resourceID             *string
+	resourceTypes          []string
+	maxRetries             int
+	pollingInterval        time.Duration
+	catchUpPollingInterval time.Duration
+	limit                  int32
 }
 
 // NewResourceChangeWatchClientParams contains parameters for creating a new ResourceChangeWatchClient
@@ -83,6 +85,10 @@ type NewResourceChangeWatchClientParams struct {
 	ResourceTypes []string
 	// PollingInterval is the interval between polling requests
 	PollingInterval time.Duration
+	// CatchUpPollingInterval is the interval between polling requests when catching up, will use PollingInterval if not set
+	CatchUpPollingInterval time.Duration
+	// Limit is the maximum number of events to fetch per request, default is 100, maximum is 1000
+	Limit int32
 }
 
 // NewResourceChangeWatchClient creates a new ResourceChangeWatchClient with the given parameters
@@ -104,21 +110,35 @@ func NewResourceChangeWatchClient(params *NewResourceChangeWatchClientParams) (*
 	} else if params.PollingInterval == 0 {
 		params.PollingInterval = 1 * time.Second
 	}
+	if params.CatchUpPollingInterval < 0 {
+		error_list = append(error_list, errors.New("catch up polling interval must be greater than 0"))
+	} else if params.CatchUpPollingInterval == 0 {
+		params.CatchUpPollingInterval = params.PollingInterval
+	}
+	if params.Limit < 0 {
+		error_list = append(error_list, errors.New("limit must be greater than 0"))
+	} else if params.Limit > 1000 {
+		error_list = append(error_list, errors.New("limit must be less than or equal to 1000"))
+	} else if params.Limit == 0 {
+		params.Limit = 100
+	}
 
 	if len(error_list) > 0 {
 		return nil, errors.Join(error_list...)
 	}
 
 	return &ResourceChangeWatchClient{
-		client:          params.Client,
-		clientOptions:   params.ClientOptions,
-		mu:              sync.RWMutex{},
-		started:         atomic.Bool{},
-		catchedUp:       atomic.Bool{},
-		resourceID:      params.ResourceID,
-		resourceTypes:   params.ResourceTypes,
-		maxRetries:      params.MaxRetries,
-		pollingInterval: params.PollingInterval,
+		client:                 params.Client,
+		clientOptions:          params.ClientOptions,
+		mu:                     sync.RWMutex{},
+		started:                atomic.Bool{},
+		catchedUp:              atomic.Bool{},
+		resourceID:             params.ResourceID,
+		resourceTypes:          params.ResourceTypes,
+		maxRetries:             params.MaxRetries,
+		pollingInterval:        params.PollingInterval,
+		catchUpPollingInterval: params.CatchUpPollingInterval,
+		limit:                  params.Limit,
 	}, nil
 }
 
@@ -157,7 +177,7 @@ func (c *ResourceChangeWatchClient) initialized(params *ResourceChangeWatchStart
 	// reset catched up flag on start
 	c.catchedUp.Store(false)
 
-	c.channel = make(chan *models.ResourceChangeEvent, 500)
+	c.channel = make(chan *models.ResourceChangeEvent, 5*c.limit)
 	c.warningChannel = make(chan *WarningEvent)
 	c.errorChannel = make(chan *ErrorEvent)
 	return nil
@@ -219,6 +239,11 @@ func (c *ResourceChangeWatchClient) poll() {
 			return
 		}
 
+		interval := c.pollingInterval
+		if !c.catchedUp.Load() {
+			interval = c.catchUpPollingInterval
+		}
+
 		if err := c.pollOnce(); err != nil {
 			if err, ok := err.(*models.UnexpectedError); ok {
 				if err.Code() == 404 {
@@ -230,7 +255,7 @@ func (c *ResourceChangeWatchClient) poll() {
 				}
 			}
 			// exponential backoff = interval * 2^i seconds
-			time.Sleep(time.Duration(math.Pow(2, float64(requestErrCount))) * c.pollingInterval)
+			time.Sleep(time.Duration(math.Pow(2, float64(requestErrCount))) * interval)
 			requestErrCount++
 			if requestErrCount > c.maxRetries {
 				c.writeToErrorChannel(&ErrorEvent{
@@ -245,7 +270,7 @@ func (c *ResourceChangeWatchClient) poll() {
 			}
 		} else {
 			requestErrCount = 0
-			time.Sleep(c.pollingInterval)
+			time.Sleep(interval)
 		}
 	}
 }
@@ -259,8 +284,7 @@ func (c *ResourceChangeWatchClient) createParams() (*resource_change_client.GetR
 		params.ResourceType = &resourceTypes
 	}
 	params.StartRevision = c.currentRevision
-	var limit int32 = 100
-	params.Limit = &limit
+	params.Limit = &c.limit
 	return params, c.clientOptions
 }
 
@@ -298,7 +322,7 @@ func (c *ResourceChangeWatchClient) pollOnce() error {
 		c.writeToChannel(event)
 	}
 
-	if len(events.Payload.Data) == 0 {
+	if len(events.Payload.Data) < int(c.limit) {
 		if !c.catchedUp.Load() {
 			c.catchedUp.Store(true)
 		}
@@ -322,7 +346,15 @@ func (c *ResourceChangeWatchClient) pollOnce() error {
 // writeToChannel sends an event to the resource change event channel
 func (c *ResourceChangeWatchClient) writeToChannel(event *models.ResourceChangeEvent) {
 	if c.channel != nil {
-		c.channel <- event
+		select {
+		case c.channel <- event:
+		default:
+			// if channel is full, send a warning then block until channel is available to avoid data loss, since we have no way to know which event is lost, we just send a warning without the event info
+			c.writeToWarningChannel(&WarningEvent{
+				Err: errors.New("event channel is full"),
+			})
+			c.channel <- event
+		}
 	}
 }
 
