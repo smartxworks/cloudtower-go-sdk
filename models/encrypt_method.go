@@ -35,6 +35,9 @@ const (
 
 	// EncryptMethodPLAINTEXT captures enum value "PLAIN_TEXT"
 	EncryptMethodPLAINTEXT EncryptMethod = "PLAIN_TEXT"
+
+	// EncryptMethodSM4CTR captures enum value "SM4_CTR"
+	EncryptMethodSM4CTR EncryptMethod = "SM4_CTR"
 )
 
 // for schema
@@ -42,7 +45,7 @@ var encryptMethodEnum []interface{}
 
 func init() {
 	var res []EncryptMethod
-	if err := json.Unmarshal([]byte(`["AES256_CTR","PLAIN_TEXT"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["AES256_CTR","PLAIN_TEXT","SM4_CTR"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
