@@ -97,6 +97,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snmp_transport"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snmp_trap_receiver"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/svt_image"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/sync_replication_plan"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/system_audit_log"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/table_reporter"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/task"
@@ -270,6 +271,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.SnmpTransport = snmp_transport.New(transport, formats)
 	cli.SnmpTrapReceiver = snmp_trap_receiver.New(transport, formats)
 	cli.SvtImage = svt_image.New(transport, formats)
+	cli.SyncReplicationPlan = sync_replication_plan.New(transport, formats)
 	cli.SystemAuditLog = system_audit_log.New(transport, formats)
 	cli.TableReporter = table_reporter.New(transport, formats)
 	cli.Task = task.New(transport, formats)
@@ -530,6 +532,8 @@ type Cloudtower struct {
 
 	SvtImage svt_image.ClientService
 
+	SyncReplicationPlan sync_replication_plan.ClientService
+
 	SystemAuditLog system_audit_log.ClientService
 
 	TableReporter table_reporter.ClientService
@@ -707,6 +711,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.SnmpTransport.SetTransport(transport)
 	c.SnmpTrapReceiver.SetTransport(transport)
 	c.SvtImage.SetTransport(transport)
+	c.SyncReplicationPlan.SetTransport(transport)
 	c.SystemAuditLog.SetTransport(transport)
 	c.TableReporter.SetTransport(transport)
 	c.Task.SetTransport(transport)
