@@ -1,5 +1,16 @@
 # RELEASE NOTE
 
+## release 日期 2026-04-28
+
+v2.21.1 release (tower version 4.7.2)
+
+### features
+
+- [BackupPlanApi]: [GetBackupPlanWithoutExecutions] 提供不返回 execution 的备份计划查询 API
+- [ReplicationPlanApi]: [GetReplicationPlanWithoutExecutions] 提供不返回 execution 的复制计划查询 API
+- [Host]: 新增字段 `dirty_cache_space`, `dirty_cache_usage` 和 `failure_cache_space`
+- [Cluster]: 新增字段 `dirty_cache_space`, `dirty_cache_usage` 和 `failure_cache_space`
+
 ## release 日期 2025-10-14
 
 v2.21.0 release (tower version 4.7.0)
