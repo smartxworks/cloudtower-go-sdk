@@ -208,6 +208,9 @@ type Cluster struct {
 	// overall efficiency
 	OverallEfficiency *float64 `json:"overall_efficiency,omitempty"`
 
+	// overprovision ratio
+	OverprovisionRatio *float64 `json:"overprovision_ratio,omitempty"`
+
 	// perf allocated data space
 	PerfAllocatedDataSpace *int64 `json:"perf_allocated_data_space,omitempty"`
 
@@ -494,6 +497,8 @@ type ClusterMarshalOpts struct {
 	NvmfEnabled_Explicit_Null_When_Empty bool
 
 	OverallEfficiency_Explicit_Null_When_Empty bool
+
+	OverprovisionRatio_Explicit_Null_When_Empty bool
 
 	PerfAllocatedDataSpace_Explicit_Null_When_Empty bool
 
@@ -1763,6 +1768,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"overall_efficiency\":null")
+		first = false
+	}
+
+	// handle nullable field overprovision_ratio
+	if m.OverprovisionRatio != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio\":")
+		bytes, err := swag.WriteJSON(m.OverprovisionRatio)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OverprovisionRatio_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overprovision_ratio\":null")
 		first = false
 	}
 
