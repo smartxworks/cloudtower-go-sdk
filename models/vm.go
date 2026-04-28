@@ -21,9 +21,6 @@ import (
 // swagger:model Vm
 type VM struct {
 
-	// anti malware enabled
-	AntiMalwareEnabled *bool `json:"anti_malware_enabled,omitempty"`
-
 	// backup plans
 	BackupPlans []*NestedBackupPlan `json:"backup_plans,omitempty"`
 
@@ -60,9 +57,6 @@ type VM struct {
 
 	// dns servers
 	DNSServers *string `json:"dns_servers,omitempty"`
-
-	// dpi enabled
-	DpiEnabled *bool `json:"dpi_enabled,omitempty"`
 
 	// entity async status
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
@@ -116,12 +110,6 @@ type VM struct {
 	// internal
 	// Required: true
 	Internal *bool `json:"internal"`
-
-	// internal product
-	InternalProduct *string `json:"internal_product,omitempty"`
-
-	// internal product name
-	InternalProductName *string `json:"internal_product_name,omitempty"`
 
 	// io policy
 	IoPolicy *VMDiskIoPolicy `json:"io_policy,omitempty"`
@@ -265,8 +253,6 @@ type VM struct {
 }
 
 type VMMarshalOpts struct {
-	AntiMalwareEnabled_Explicit_Null_When_Empty bool
-
 	BackupPlans_Explicit_Null_When_Empty bool
 
 	BiosUUID_Explicit_Null_When_Empty bool
@@ -288,8 +274,6 @@ type VMMarshalOpts struct {
 	Description_Explicit_Null_When_Empty bool
 
 	DNSServers_Explicit_Null_When_Empty bool
-
-	DpiEnabled_Explicit_Null_When_Empty bool
 
 	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
@@ -322,10 +306,6 @@ type VMMarshalOpts struct {
 	InRecycleBin_Explicit_Null_When_Empty bool
 
 	Internal_Explicit_Null_When_Empty bool
-
-	InternalProduct_Explicit_Null_When_Empty bool
-
-	InternalProductName_Explicit_Null_When_Empty bool
 
 	IoPolicy_Explicit_Null_When_Empty bool
 
@@ -417,26 +397,6 @@ func (m VM) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
-
-	// handle nullable field anti_malware_enabled
-	if m.AntiMalwareEnabled != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"anti_malware_enabled\":")
-		bytes, err := swag.WriteJSON(m.AntiMalwareEnabled)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.AntiMalwareEnabled_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"anti_malware_enabled\":null")
-		first = false
-	}
 
 	// handle non nullable field backup_plans with omitempty
 	if !swag.IsZero(m.BackupPlans) {
@@ -649,26 +609,6 @@ func (m VM) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"dns_servers\":null")
-		first = false
-	}
-
-	// handle nullable field dpi_enabled
-	if m.DpiEnabled != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"dpi_enabled\":")
-		bytes, err := swag.WriteJSON(m.DpiEnabled)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.DpiEnabled_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"dpi_enabled\":null")
 		first = false
 	}
 
@@ -977,46 +917,6 @@ func (m VM) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"internal\":null")
-		first = false
-	}
-
-	// handle nullable field internal_product
-	if m.InternalProduct != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"internal_product\":")
-		bytes, err := swag.WriteJSON(m.InternalProduct)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProduct_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"internal_product\":null")
-		first = false
-	}
-
-	// handle nullable field internal_product_name
-	if m.InternalProductName != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"internal_product_name\":")
-		bytes, err := swag.WriteJSON(m.InternalProductName)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.InternalProductName_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"internal_product_name\":null")
 		first = false
 	}
 

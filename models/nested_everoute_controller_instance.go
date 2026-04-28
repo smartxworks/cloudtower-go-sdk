@@ -9,8 +9,10 @@ import (
 	"bytes"
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // NestedEverouteControllerInstance nested everoute controller instance
@@ -19,10 +21,12 @@ import (
 type NestedEverouteControllerInstance struct {
 
 	// ip addr
-	IPAddr *string `json:"ipAddr,omitempty"`
+	// Required: true
+	IPAddr *string `json:"ipAddr"`
 
 	// vlan
-	Vlan *string `json:"vlan,omitempty"`
+	// Required: true
+	Vlan *string `json:"vlan"`
 
 	MarshalOpts *NestedEverouteControllerInstanceMarshalOpts `json:"-"`
 }
@@ -85,6 +89,37 @@ func (m NestedEverouteControllerInstance) MarshalJSON() ([]byte, error) {
 
 // Validate validates this nested everoute controller instance
 func (m *NestedEverouteControllerInstance) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateIPAddr(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVlan(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NestedEverouteControllerInstance) validateIPAddr(formats strfmt.Registry) error {
+
+	if err := validate.Required("ipAddr", "body", m.IPAddr); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NestedEverouteControllerInstance) validateVlan(formats strfmt.Registry) error {
+
+	if err := validate.Required("vlan", "body", m.Vlan); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -21,10 +21,6 @@ import (
 // swagger:model NestedVirtualPrivateCloudService
 type NestedVirtualPrivateCloudService struct {
 
-	// everoute cluster
-	// Required: true
-	EverouteCluster *NestedEverouteCluster `json:"everoute_cluster"`
-
 	// id
 	// Required: true
 	ID *string `json:"id"`
@@ -41,8 +37,6 @@ type NestedVirtualPrivateCloudService struct {
 }
 
 type NestedVirtualPrivateCloudServiceMarshalOpts struct {
-	EverouteCluster_Explicit_Null_When_Empty bool
-
 	ID_Explicit_Null_When_Empty bool
 
 	InternalCidr_Explicit_Null_When_Empty bool
@@ -55,26 +49,6 @@ func (m NestedVirtualPrivateCloudService) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
-
-	// handle nullable field everoute_cluster
-	if m.EverouteCluster != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"everoute_cluster\":")
-		bytes, err := swag.WriteJSON(m.EverouteCluster)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.EverouteCluster_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"everoute_cluster\":null")
-		first = false
-	}
 
 	// handle nullable field id
 	if m.ID != nil {
@@ -138,10 +112,6 @@ func (m NestedVirtualPrivateCloudService) MarshalJSON() ([]byte, error) {
 func (m *NestedVirtualPrivateCloudService) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateEverouteCluster(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -157,26 +127,6 @@ func (m *NestedVirtualPrivateCloudService) Validate(formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *NestedVirtualPrivateCloudService) validateEverouteCluster(formats strfmt.Registry) error {
-
-	if err := validate.Required("everoute_cluster", "body", m.EverouteCluster); err != nil {
-		return err
-	}
-
-	if m.EverouteCluster != nil {
-		if err := m.EverouteCluster.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("everoute_cluster")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("everoute_cluster")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -229,10 +179,6 @@ func (m *NestedVirtualPrivateCloudService) validateTepIPPools(formats strfmt.Reg
 func (m *NestedVirtualPrivateCloudService) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateEverouteCluster(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateTepIPPools(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -240,22 +186,6 @@ func (m *NestedVirtualPrivateCloudService) ContextValidate(ctx context.Context, 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *NestedVirtualPrivateCloudService) contextValidateEverouteCluster(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.EverouteCluster != nil {
-		if err := m.EverouteCluster.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("everoute_cluster")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("everoute_cluster")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 

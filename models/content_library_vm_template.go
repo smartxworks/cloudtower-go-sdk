@@ -98,9 +98,6 @@ type ContentLibraryVMTemplate struct {
 	// template config
 	TemplateConfig *NestedTemplateConfig `json:"template_config,omitempty"`
 
-	// usage
-	Usage *ContentLibraryVMTemplateUsage `json:"usage,omitempty"`
-
 	// vcpu
 	// Required: true
 	Vcpu *int32 `json:"vcpu"`
@@ -176,8 +173,6 @@ type ContentLibraryVMTemplateMarshalOpts struct {
 	Size_Explicit_Null_When_Empty bool
 
 	TemplateConfig_Explicit_Null_When_Empty bool
-
-	Usage_Explicit_Null_When_Empty bool
 
 	Vcpu_Explicit_Null_When_Empty bool
 
@@ -650,26 +645,6 @@ func (m ContentLibraryVMTemplate) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field usage
-	if m.Usage != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"usage\":")
-		bytes, err := swag.WriteJSON(m.Usage)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.Usage_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"usage\":null")
-		first = false
-	}
-
 	// handle nullable field vcpu
 	if m.Vcpu != nil {
 		if !first {
@@ -877,10 +852,6 @@ func (m *ContentLibraryVMTemplate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateTemplateConfig(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateUsage(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1205,25 +1176,6 @@ func (m *ContentLibraryVMTemplate) validateTemplateConfig(formats strfmt.Registr
 	return nil
 }
 
-func (m *ContentLibraryVMTemplate) validateUsage(formats strfmt.Registry) error {
-	if swag.IsZero(m.Usage) { // not required
-		return nil
-	}
-
-	if m.Usage != nil {
-		if err := m.Usage.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("usage")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("usage")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ContentLibraryVMTemplate) validateVcpu(formats strfmt.Registry) error {
 
 	if err := validate.Required("vcpu", "body", m.Vcpu); err != nil {
@@ -1391,10 +1343,6 @@ func (m *ContentLibraryVMTemplate) ContextValidate(ctx context.Context, formats 
 	}
 
 	if err := m.contextValidateTemplateConfig(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateUsage(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1596,22 +1544,6 @@ func (m *ContentLibraryVMTemplate) contextValidateTemplateConfig(ctx context.Con
 				return ve.ValidateName("template_config")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("template_config")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ContentLibraryVMTemplate) contextValidateUsage(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Usage != nil {
-		if err := m.Usage.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("usage")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("usage")
 			}
 			return err
 		}

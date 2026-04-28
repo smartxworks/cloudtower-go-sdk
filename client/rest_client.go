@@ -81,7 +81,6 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pci_device"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/pmem_dimm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/rack_topo"
-	"github.com/smartxworks/cloudtower-go-sdk/v2/client/registry_service"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replica_vm"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replication_plan"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/replication_service"
@@ -254,7 +253,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.PciDevice = pci_device.New(transport, formats)
 	cli.PmemDimm = pmem_dimm.New(transport, formats)
 	cli.RackTopo = rack_topo.New(transport, formats)
-	cli.RegistryService = registry_service.New(transport, formats)
 	cli.ReplicaVM = replica_vm.New(transport, formats)
 	cli.ReplicationPlan = replication_plan.New(transport, formats)
 	cli.ReplicationService = replication_service.New(transport, formats)
@@ -498,8 +496,6 @@ type Cloudtower struct {
 
 	RackTopo rack_topo.ClientService
 
-	RegistryService registry_service.ClientService
-
 	ReplicaVM replica_vm.ClientService
 
 	ReplicationPlan replication_plan.ClientService
@@ -691,7 +687,6 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.PciDevice.SetTransport(transport)
 	c.PmemDimm.SetTransport(transport)
 	c.RackTopo.SetTransport(transport)
-	c.RegistryService.SetTransport(transport)
 	c.ReplicaVM.SetTransport(transport)
 	c.ReplicationPlan.SetTransport(transport)
 	c.ReplicationService.SetTransport(transport)

@@ -39,9 +39,6 @@ type ClusterSettings struct {
 	// default storage policy replica num
 	DefaultStoragePolicyReplicaNum *int32 `json:"default_storage_policy_replica_num,omitempty"`
 
-	// default storage policy stripe num
-	DefaultStoragePolicyStripeNum *int32 `json:"default_storage_policy_stripe_num,omitempty"`
-
 	// default storage policy thin provision
 	DefaultStoragePolicyThinProvision *bool `json:"default_storage_policy_thin_provision,omitempty"`
 
@@ -70,8 +67,6 @@ type ClusterSettingsMarshalOpts struct {
 	DefaultStoragePolicyEcm_Explicit_Null_When_Empty bool
 
 	DefaultStoragePolicyReplicaNum_Explicit_Null_When_Empty bool
-
-	DefaultStoragePolicyStripeNum_Explicit_Null_When_Empty bool
 
 	DefaultStoragePolicyThinProvision_Explicit_Null_When_Empty bool
 
@@ -205,26 +200,6 @@ func (m ClusterSettings) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"default_storage_policy_replica_num\":null")
-		first = false
-	}
-
-	// handle nullable field default_storage_policy_stripe_num
-	if m.DefaultStoragePolicyStripeNum != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"default_storage_policy_stripe_num\":")
-		bytes, err := swag.WriteJSON(m.DefaultStoragePolicyStripeNum)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.DefaultStoragePolicyStripeNum_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"default_storage_policy_stripe_num\":null")
 		first = false
 	}
 
