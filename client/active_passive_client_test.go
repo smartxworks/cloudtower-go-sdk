@@ -5,6 +5,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
+	"net/http/httptest"
 	"net/url"
 	"testing"
 	"time"
@@ -34,6 +35,38 @@ func newTestActivePassiveTransport(t *testing.T, serverURLs ...string) *ActivePa
 	}
 
 	return transport
+}
+
+func TestActivePassiveProbeUsesConfiguredHTTPClientTLS(t *testing.T) {
+	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case "/api/healthz":
+			w.WriteHeader(http.StatusOK)
+		default:
+			w.WriteHeader(http.StatusNotFound)
+		}
+	}))
+	defer server.Close()
+
+	host := testServerHost(t, server.URL)
+	transport, err := newActivePassiveTransport(ActivePassiveClientConfig{
+		Endpoints:    []string{host},
+		BasePath:     "/v2/api",
+		Schemes:      []string{"https"},
+		ProbeTimeout: time.Second,
+		HTTPClient:   server.Client(),
+	}, strfmt.Default)
+	if err != nil {
+		t.Fatalf("newActivePassiveTransport() error = %v", err)
+	}
+
+	activeHost, err := transport.ensureActiveHost(context.Background())
+	if err != nil {
+		t.Fatalf("ensureActiveHost() error = %v", err)
+	}
+	if activeHost != host {
+		t.Fatalf("ensureActiveHost() = %q, want %q", activeHost, host)
+	}
 }
 
 func newTestActivePassiveTransportWithStrategy(t *testing.T, strategy FailoverStrategy, serverURLs ...string) *ActivePassiveTransport {

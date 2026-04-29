@@ -80,10 +80,11 @@ type ActivePassiveClient struct {
 }
 
 type activePassiveEndpoint struct {
-	host        string
-	runtime     *httptransport.Runtime
-	httpClient  *http.Client
-	probeClient *Cloudtower
+	host         string
+	runtime      *httptransport.Runtime
+	httpClient   *http.Client
+	probeRuntime *httptransport.Runtime
+	probeClient  *http.Client
 }
 
 type activePassiveSubmitState int
@@ -216,13 +217,13 @@ func newActivePassiveTransport(clientConfig ActivePassiveClientConfig, formats s
 		runtime.Formats = formats
 		probeRuntime := httptransport.NewWithClient(host, "/", cfg.Schemes, httpClient)
 		probeRuntime.Formats = formats
-		probeClient := New(probeRuntime, formats)
 
 		transport.endpoints[host] = &activePassiveEndpoint{
-			host:        host,
-			runtime:     runtime,
-			httpClient:  httpClient,
-			probeClient: probeClient,
+			host:         host,
+			runtime:      runtime,
+			httpClient:   httpClient,
+			probeRuntime: probeRuntime,
+			probeClient:  httpClient,
 		}
 		transport.orderedHosts = append(transport.orderedHosts, host)
 	}
@@ -412,15 +413,41 @@ func (t *ActivePassiveTransport) probeHost(ctx context.Context, host string) (ac
 	reqCtx, cancel := context.WithTimeout(defaultContext(ctx), t.probeTimeout)
 	defer cancel()
 
-	isActive, err := endpoint.probeClient.ProbeActivePassive(reqCtx)
+	req, err := endpoint.probeRuntime.CreateHttpRequest(activePassiveProbeOperation(reqCtx))
 	if err != nil {
 		return 0, err
 	}
-	if isActive {
-		return activePassiveProbeActive, nil
-	}
 
-	return activePassiveProbePassive, nil
+	resp, err := endpoint.probeClient.Do(req.WithContext(reqCtx))
+	if err != nil {
+		return 0, err
+	}
+	defer resp.Body.Close()
+
+	switch resp.StatusCode {
+	case http.StatusOK:
+		return activePassiveProbeActive, nil
+	case http.StatusTemporaryRedirect:
+		return activePassiveProbePassive, nil
+	default:
+		return 0, goruntime.NewAPIError("probe active-passive returned unexpected status", activePassiveHTTPResponse{response: resp}, resp.StatusCode)
+	}
+}
+
+func activePassiveProbeOperation(ctx context.Context) *goruntime.ClientOperation {
+	return &goruntime.ClientOperation{
+		ID:                 "probe-active-passive",
+		Method:             http.MethodGet,
+		PathPattern:        "/api/healthz",
+		ProducesMediaTypes: []string{goruntime.JSONMime},
+		Params: goruntime.ClientRequestWriterFunc(func(goruntime.ClientRequest, strfmt.Registry) error {
+			return nil
+		}),
+		Reader: goruntime.ClientResponseReaderFunc(func(goruntime.ClientResponse, goruntime.Consumer) (interface{}, error) {
+			return nil, nil
+		}),
+		Context: ctx,
+	}
 }
 
 func (t *ActivePassiveTransport) submitToHost(host string, op *goruntime.ClientOperation) activePassiveSubmitResult {
