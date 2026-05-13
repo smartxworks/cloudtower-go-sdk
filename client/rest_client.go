@@ -6,6 +6,10 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"fmt"
+	"net/http"
+
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
@@ -749,4 +753,66 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.WitnessService.SetTransport(transport)
 	c.Zone.SetTransport(transport)
 	c.ZoneTopo.SetTransport(transport)
+}
+
+// ProbeActivePassive probes the current endpoint and reports whether it is active.
+// It sends a GET request to /api/healthz on the endpoint base URL.
+// 200 means active, 307 means passive, and any other result is treated as an error.
+func (c *Cloudtower) ProbeActivePassive(ctx context.Context) (bool, error) {
+	transport, ok := c.Transport.(*httptransport.Runtime)
+	if !ok {
+		return false, fmt.Errorf("unsupported transport type for ProbeActivePassive: %T", c.Transport)
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+
+	if transport.Host == "" {
+		return false, fmt.Errorf("probe active-passive missing host")
+	}
+
+	op := &runtime.ClientOperation{
+		ID:                 "probe-active-passive",
+		Method:             http.MethodGet,
+		PathPattern:        "/api/healthz",
+		ProducesMediaTypes: []string{runtime.JSONMime},
+		Params: runtime.ClientRequestWriterFunc(func(runtime.ClientRequest, strfmt.Registry) error {
+			return nil
+		}),
+		Reader: runtime.ClientResponseReaderFunc(func(runtime.ClientResponse, runtime.Consumer) (interface{}, error) {
+			return nil, nil
+		}),
+		Context: ctx,
+	}
+
+	req, err := transport.CreateHttpRequest(op)
+	if err != nil {
+		return false, err
+	}
+
+	httpClient := &http.Client{
+		Transport: transport.Transport,
+		Jar:       transport.Jar,
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			return http.ErrUseLastResponse
+		},
+	}
+	if httpClient.Transport == nil {
+		httpClient.Transport = http.DefaultTransport
+	}
+
+	resp, err := httpClient.Do(req.WithContext(ctx))
+	if err != nil {
+		return false, err
+	}
+	defer resp.Body.Close()
+
+	switch resp.StatusCode {
+	case http.StatusOK:
+		return true, nil
+	case http.StatusTemporaryRedirect:
+		return false, nil
+	default:
+		return false, runtime.NewAPIError("probe active-passive returned unexpected status", activePassiveHTTPResponse{response: resp}, resp.StatusCode)
+	}
 }

@@ -79,26 +79,36 @@ func NewWithUserConfig(clientConfig ClientConfig, userConfig UserConfig) (*Cloud
 	} else {
 		client = New(transport, *clientConfig.formats)
 	}
-	var configId string
-	if userConfig.Source == models.UserSourceLDAP {
-		// try get auth stategies to replace legacy ldap login source
-		straetgyMap := getAuthConfigs(fmt.Sprintf("http://%s/api", clientConfig.Host))
-		configId = straetgyMap["LDAP"]
+	if err := loginWithUserConfig(client, clientConfig.Host, userConfig); err != nil {
+		return nil, err
 	}
+	return client, nil
+}
+
+func loginWithUserConfig(client *Cloudtower, authConfigHost string, userConfig UserConfig) error {
+	var configID string
+	if userConfig.Source == models.UserSourceLDAP {
+		// Try get auth strategies to replace legacy ldap login source.
+		strategyMap := getAuthConfigs(fmt.Sprintf("http://%s/api", authConfigHost))
+		configID = strategyMap["LDAP"]
+	}
+
 	params := user.NewLoginParams()
 	params.RequestBody = &models.LoginInput{
 		Username: &userConfig.Name,
 		Password: &userConfig.Password,
 		Source:   userConfig.Source.Pointer(),
 	}
-	if configId != "" {
-		params.RequestBody.AuthConfigID = &configId
+	if configID != "" {
+		params.RequestBody.AuthConfigID = &configID
 		params.RequestBody.Source = models.UserSourceAUTHN.Pointer()
 	}
+
 	resp, err := client.User.Login(params)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", *resp.Payload.Data.Token)
-	return client, nil
+
+	client.SetDefaultAuthentication(httptransport.APIKeyAuth("Authorization", "header", *resp.Payload.Data.Token))
+	return nil
 }
