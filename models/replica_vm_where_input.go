@@ -164,6 +164,108 @@ type ReplicaVMWhereInput struct {
 	// iscsi lun
 	IscsiLun *IscsiLunWhereInput `json:"iscsi_lun,omitempty"`
 
+	// last out of sync at
+	LastOutOfSyncAt *string `json:"last_out_of_sync_at,omitempty"`
+
+	// last out of sync at gt
+	LastOutOfSyncAtGt *string `json:"last_out_of_sync_at_gt,omitempty"`
+
+	// last out of sync at gte
+	LastOutOfSyncAtGte *string `json:"last_out_of_sync_at_gte,omitempty"`
+
+	// last out of sync at in
+	LastOutOfSyncAtIn []string `json:"last_out_of_sync_at_in,omitempty"`
+
+	// last out of sync at lt
+	LastOutOfSyncAtLt *string `json:"last_out_of_sync_at_lt,omitempty"`
+
+	// last out of sync at lte
+	LastOutOfSyncAtLte *string `json:"last_out_of_sync_at_lte,omitempty"`
+
+	// last out of sync at not
+	LastOutOfSyncAtNot *string `json:"last_out_of_sync_at_not,omitempty"`
+
+	// last out of sync at not in
+	LastOutOfSyncAtNotIn []string `json:"last_out_of_sync_at_not_in,omitempty"`
+
+	// last out of sync reason
+	LastOutOfSyncReason *string `json:"last_out_of_sync_reason,omitempty"`
+
+	// last out of sync reason contains
+	LastOutOfSyncReasonContains *string `json:"last_out_of_sync_reason_contains,omitempty"`
+
+	// last out of sync reason ends with
+	LastOutOfSyncReasonEndsWith *string `json:"last_out_of_sync_reason_ends_with,omitempty"`
+
+	// last out of sync reason gt
+	LastOutOfSyncReasonGt *string `json:"last_out_of_sync_reason_gt,omitempty"`
+
+	// last out of sync reason gte
+	LastOutOfSyncReasonGte *string `json:"last_out_of_sync_reason_gte,omitempty"`
+
+	// last out of sync reason in
+	LastOutOfSyncReasonIn []string `json:"last_out_of_sync_reason_in,omitempty"`
+
+	// last out of sync reason lt
+	LastOutOfSyncReasonLt *string `json:"last_out_of_sync_reason_lt,omitempty"`
+
+	// last out of sync reason lte
+	LastOutOfSyncReasonLte *string `json:"last_out_of_sync_reason_lte,omitempty"`
+
+	// last out of sync reason not
+	LastOutOfSyncReasonNot *string `json:"last_out_of_sync_reason_not,omitempty"`
+
+	// last out of sync reason not contains
+	LastOutOfSyncReasonNotContains *string `json:"last_out_of_sync_reason_not_contains,omitempty"`
+
+	// last out of sync reason not ends with
+	LastOutOfSyncReasonNotEndsWith *string `json:"last_out_of_sync_reason_not_ends_with,omitempty"`
+
+	// last out of sync reason not in
+	LastOutOfSyncReasonNotIn []string `json:"last_out_of_sync_reason_not_in,omitempty"`
+
+	// last out of sync reason not starts with
+	LastOutOfSyncReasonNotStartsWith *string `json:"last_out_of_sync_reason_not_starts_with,omitempty"`
+
+	// last out of sync reason starts with
+	LastOutOfSyncReasonStartsWith *string `json:"last_out_of_sync_reason_starts_with,omitempty"`
+
+	// last synced at
+	LastSyncedAt *string `json:"last_synced_at,omitempty"`
+
+	// last synced at gt
+	LastSyncedAtGt *string `json:"last_synced_at_gt,omitempty"`
+
+	// last synced at gte
+	LastSyncedAtGte *string `json:"last_synced_at_gte,omitempty"`
+
+	// last synced at in
+	LastSyncedAtIn []string `json:"last_synced_at_in,omitempty"`
+
+	// last synced at lt
+	LastSyncedAtLt *string `json:"last_synced_at_lt,omitempty"`
+
+	// last synced at lte
+	LastSyncedAtLte *string `json:"last_synced_at_lte,omitempty"`
+
+	// last synced at not
+	LastSyncedAtNot *string `json:"last_synced_at_not,omitempty"`
+
+	// last synced at not in
+	LastSyncedAtNotIn []string `json:"last_synced_at_not_in,omitempty"`
+
+	// method
+	Method *ReplicationMethod `json:"method,omitempty"`
+
+	// method in
+	MethodIn []ReplicationMethod `json:"method_in,omitempty"`
+
+	// method not
+	MethodNot *ReplicationMethod `json:"method_not,omitempty"`
+
+	// method not in
+	MethodNotIn []ReplicationMethod `json:"method_not_in,omitempty"`
+
 	// origin iscsi lun
 	OriginIscsiLun *IscsiLunWhereInput `json:"origin_iscsi_lun,omitempty"`
 
@@ -437,6 +539,30 @@ type ReplicaVMWhereInput struct {
 	// replication target executions some
 	ReplicationTargetExecutionsSome *ReplicationTargetExecutionWhereInput `json:"replication_target_executions_some,omitempty"`
 
+	// resource version
+	ResourceVersion *int32 `json:"resource_version,omitempty"`
+
+	// resource version gt
+	ResourceVersionGt *int32 `json:"resource_version_gt,omitempty"`
+
+	// resource version gte
+	ResourceVersionGte *int32 `json:"resource_version_gte,omitempty"`
+
+	// resource version in
+	ResourceVersionIn []int32 `json:"resource_version_in,omitempty"`
+
+	// resource version lt
+	ResourceVersionLt *int32 `json:"resource_version_lt,omitempty"`
+
+	// resource version lte
+	ResourceVersionLte *int32 `json:"resource_version_lte,omitempty"`
+
+	// resource version not
+	ResourceVersionNot *int32 `json:"resource_version_not,omitempty"`
+
+	// resource version not in
+	ResourceVersionNotIn []int32 `json:"resource_version_not_in,omitempty"`
+
 	// restore points every
 	RestorePointsEvery *ReplicationRestorePointWhereInput `json:"restore_points_every,omitempty"`
 
@@ -457,6 +583,33 @@ type ReplicaVMWhereInput struct {
 
 	// state not in
 	StateNotIn []ReplicaVMState `json:"state_not_in,omitempty"`
+
+	// sync replication object status
+	SyncReplicationObjectStatus *SyncReplicationObjectStatus `json:"sync_replication_object_status,omitempty"`
+
+	// sync replication object status in
+	SyncReplicationObjectStatusIn []SyncReplicationObjectStatus `json:"sync_replication_object_status_in,omitempty"`
+
+	// sync replication object status not
+	SyncReplicationObjectStatusNot *SyncReplicationObjectStatus `json:"sync_replication_object_status_not,omitempty"`
+
+	// sync replication object status not in
+	SyncReplicationObjectStatusNotIn []SyncReplicationObjectStatus `json:"sync_replication_object_status_not_in,omitempty"`
+
+	// sync replication plan
+	SyncReplicationPlan *SyncReplicationPlanWhereInput `json:"sync_replication_plan,omitempty"`
+
+	// sync replication status
+	SyncReplicationStatus *SyncReplicationStatus `json:"sync_replication_status,omitempty"`
+
+	// sync replication status in
+	SyncReplicationStatusIn []SyncReplicationStatus `json:"sync_replication_status_in,omitempty"`
+
+	// sync replication status not
+	SyncReplicationStatusNot *SyncReplicationStatus `json:"sync_replication_status_not,omitempty"`
+
+	// sync replication status not in
+	SyncReplicationStatusNotIn []SyncReplicationStatus `json:"sync_replication_status_not_in,omitempty"`
 
 	// targets deletable
 	TargetsDeletable *bool `json:"targets_deletable,omitempty"`
@@ -602,6 +755,74 @@ type ReplicaVMWhereInputMarshalOpts struct {
 	InboundNot_Explicit_Null_When_Empty bool
 
 	IscsiLun_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncAt_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncAtGt_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncAtGte_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncAtIn_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncAtLt_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncAtLte_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncAtNot_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncAtNotIn_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReason_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonContains_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonEndsWith_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonGt_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonGte_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonIn_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonLt_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonLte_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonNot_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonNotContains_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonNotEndsWith_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonNotIn_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonNotStartsWith_Explicit_Null_When_Empty bool
+
+	LastOutOfSyncReasonStartsWith_Explicit_Null_When_Empty bool
+
+	LastSyncedAt_Explicit_Null_When_Empty bool
+
+	LastSyncedAtGt_Explicit_Null_When_Empty bool
+
+	LastSyncedAtGte_Explicit_Null_When_Empty bool
+
+	LastSyncedAtIn_Explicit_Null_When_Empty bool
+
+	LastSyncedAtLt_Explicit_Null_When_Empty bool
+
+	LastSyncedAtLte_Explicit_Null_When_Empty bool
+
+	LastSyncedAtNot_Explicit_Null_When_Empty bool
+
+	LastSyncedAtNotIn_Explicit_Null_When_Empty bool
+
+	Method_Explicit_Null_When_Empty bool
+
+	MethodIn_Explicit_Null_When_Empty bool
+
+	MethodNot_Explicit_Null_When_Empty bool
+
+	MethodNotIn_Explicit_Null_When_Empty bool
 
 	OriginIscsiLun_Explicit_Null_When_Empty bool
 
@@ -785,6 +1006,22 @@ type ReplicaVMWhereInputMarshalOpts struct {
 
 	ReplicationTargetExecutionsSome_Explicit_Null_When_Empty bool
 
+	ResourceVersion_Explicit_Null_When_Empty bool
+
+	ResourceVersionGt_Explicit_Null_When_Empty bool
+
+	ResourceVersionGte_Explicit_Null_When_Empty bool
+
+	ResourceVersionIn_Explicit_Null_When_Empty bool
+
+	ResourceVersionLt_Explicit_Null_When_Empty bool
+
+	ResourceVersionLte_Explicit_Null_When_Empty bool
+
+	ResourceVersionNot_Explicit_Null_When_Empty bool
+
+	ResourceVersionNotIn_Explicit_Null_When_Empty bool
+
 	RestorePointsEvery_Explicit_Null_When_Empty bool
 
 	RestorePointsNone_Explicit_Null_When_Empty bool
@@ -798,6 +1035,24 @@ type ReplicaVMWhereInputMarshalOpts struct {
 	StateNot_Explicit_Null_When_Empty bool
 
 	StateNotIn_Explicit_Null_When_Empty bool
+
+	SyncReplicationObjectStatus_Explicit_Null_When_Empty bool
+
+	SyncReplicationObjectStatusIn_Explicit_Null_When_Empty bool
+
+	SyncReplicationObjectStatusNot_Explicit_Null_When_Empty bool
+
+	SyncReplicationObjectStatusNotIn_Explicit_Null_When_Empty bool
+
+	SyncReplicationPlan_Explicit_Null_When_Empty bool
+
+	SyncReplicationStatus_Explicit_Null_When_Empty bool
+
+	SyncReplicationStatusIn_Explicit_Null_When_Empty bool
+
+	SyncReplicationStatusNot_Explicit_Null_When_Empty bool
+
+	SyncReplicationStatusNotIn_Explicit_Null_When_Empty bool
 
 	TargetsDeletable_Explicit_Null_When_Empty bool
 
@@ -1727,6 +1982,638 @@ func (m ReplicaVMWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"iscsi_lun\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_at
+	if m.LastOutOfSyncAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_at_gt
+	if m.LastOutOfSyncAtGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_gt\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncAtGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncAtGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_gt\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_at_gte
+	if m.LastOutOfSyncAtGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_gte\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncAtGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncAtGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field last_out_of_sync_at_in with omitempty
+	if !swag.IsZero(m.LastOutOfSyncAtIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_in\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncAtIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_at_lt
+	if m.LastOutOfSyncAtLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_lt\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncAtLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncAtLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_lt\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_at_lte
+	if m.LastOutOfSyncAtLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_lte\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncAtLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncAtLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_lte\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_at_not
+	if m.LastOutOfSyncAtNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_not\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncAtNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncAtNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_not\":null")
+		first = false
+	}
+
+	// handle non nullable field last_out_of_sync_at_not_in with omitempty
+	if !swag.IsZero(m.LastOutOfSyncAtNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_at_not_in\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncAtNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason
+	if m.LastOutOfSyncReason != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReason)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReason_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_contains
+	if m.LastOutOfSyncReasonContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_contains\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_contains\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_ends_with
+	if m.LastOutOfSyncReasonEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_ends_with\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_gt
+	if m.LastOutOfSyncReasonGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_gt\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_gt\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_gte
+	if m.LastOutOfSyncReasonGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_gte\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field last_out_of_sync_reason_in with omitempty
+	if !swag.IsZero(m.LastOutOfSyncReasonIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_in\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_lt
+	if m.LastOutOfSyncReasonLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_lt\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_lt\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_lte
+	if m.LastOutOfSyncReasonLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_lte\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_lte\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_not
+	if m.LastOutOfSyncReasonNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_not_contains
+	if m.LastOutOfSyncReasonNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not_contains\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_not_ends_with
+	if m.LastOutOfSyncReasonNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field last_out_of_sync_reason_not_in with omitempty
+	if !swag.IsZero(m.LastOutOfSyncReasonNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not_in\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_not_starts_with
+	if m.LastOutOfSyncReasonNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field last_out_of_sync_reason_starts_with
+	if m.LastOutOfSyncReasonStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_starts_with\":")
+		bytes, err := swag.WriteJSON(m.LastOutOfSyncReasonStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastOutOfSyncReasonStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_out_of_sync_reason_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field last_synced_at
+	if m.LastSyncedAt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at\":")
+		bytes, err := swag.WriteJSON(m.LastSyncedAt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastSyncedAt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at\":null")
+		first = false
+	}
+
+	// handle nullable field last_synced_at_gt
+	if m.LastSyncedAtGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_gt\":")
+		bytes, err := swag.WriteJSON(m.LastSyncedAtGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastSyncedAtGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_gt\":null")
+		first = false
+	}
+
+	// handle nullable field last_synced_at_gte
+	if m.LastSyncedAtGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_gte\":")
+		bytes, err := swag.WriteJSON(m.LastSyncedAtGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastSyncedAtGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field last_synced_at_in with omitempty
+	if !swag.IsZero(m.LastSyncedAtIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_in\":")
+		bytes, err := swag.WriteJSON(m.LastSyncedAtIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field last_synced_at_lt
+	if m.LastSyncedAtLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_lt\":")
+		bytes, err := swag.WriteJSON(m.LastSyncedAtLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastSyncedAtLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_lt\":null")
+		first = false
+	}
+
+	// handle nullable field last_synced_at_lte
+	if m.LastSyncedAtLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_lte\":")
+		bytes, err := swag.WriteJSON(m.LastSyncedAtLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastSyncedAtLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_lte\":null")
+		first = false
+	}
+
+	// handle nullable field last_synced_at_not
+	if m.LastSyncedAtNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_not\":")
+		bytes, err := swag.WriteJSON(m.LastSyncedAtNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.LastSyncedAtNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_not\":null")
+		first = false
+	}
+
+	// handle non nullable field last_synced_at_not_in with omitempty
+	if !swag.IsZero(m.LastSyncedAtNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"last_synced_at_not_in\":")
+		bytes, err := swag.WriteJSON(m.LastSyncedAtNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field method
+	if m.Method != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"method\":")
+		bytes, err := swag.WriteJSON(m.Method)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Method_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"method\":null")
+		first = false
+	}
+
+	// handle non nullable field method_in with omitempty
+	if !swag.IsZero(m.MethodIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"method_in\":")
+		bytes, err := swag.WriteJSON(m.MethodIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field method_not
+	if m.MethodNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"method_not\":")
+		bytes, err := swag.WriteJSON(m.MethodNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MethodNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"method_not\":null")
+		first = false
+	}
+
+	// handle non nullable field method_not_in with omitempty
+	if !swag.IsZero(m.MethodNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"method_not_in\":")
+		bytes, err := swag.WriteJSON(m.MethodNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -3478,6 +4365,154 @@ func (m ReplicaVMWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field resource_version
+	if m.ResourceVersion != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersion)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersion_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version\":null")
+		first = false
+	}
+
+	// handle nullable field resource_version_gt
+	if m.ResourceVersionGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_gt\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersionGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_gt\":null")
+		first = false
+	}
+
+	// handle nullable field resource_version_gte
+	if m.ResourceVersionGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_gte\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersionGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field resource_version_in with omitempty
+	if !swag.IsZero(m.ResourceVersionIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_in\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersionIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field resource_version_lt
+	if m.ResourceVersionLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_lt\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersionLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_lt\":null")
+		first = false
+	}
+
+	// handle nullable field resource_version_lte
+	if m.ResourceVersionLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_lte\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersionLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_lte\":null")
+		first = false
+	}
+
+	// handle nullable field resource_version_not
+	if m.ResourceVersionNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_not\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersionNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ResourceVersionNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_not\":null")
+		first = false
+	}
+
+	// handle non nullable field resource_version_not_in with omitempty
+	if !swag.IsZero(m.ResourceVersionNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"resource_version_not_in\":")
+		bytes, err := swag.WriteJSON(m.ResourceVersionNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field restore_points_every
 	if m.RestorePointsEvery != nil {
 		if !first {
@@ -3599,6 +4634,162 @@ func (m ReplicaVMWhereInput) MarshalJSON() ([]byte, error) {
 		}
 		b.WriteString("\"state_not_in\":")
 		bytes, err := swag.WriteJSON(m.StateNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field sync_replication_object_status
+	if m.SyncReplicationObjectStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_object_status\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationObjectStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationObjectStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_object_status\":null")
+		first = false
+	}
+
+	// handle non nullable field sync_replication_object_status_in with omitempty
+	if !swag.IsZero(m.SyncReplicationObjectStatusIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_object_status_in\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationObjectStatusIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field sync_replication_object_status_not
+	if m.SyncReplicationObjectStatusNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_object_status_not\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationObjectStatusNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationObjectStatusNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_object_status_not\":null")
+		first = false
+	}
+
+	// handle non nullable field sync_replication_object_status_not_in with omitempty
+	if !swag.IsZero(m.SyncReplicationObjectStatusNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_object_status_not_in\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationObjectStatusNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field sync_replication_plan
+	if m.SyncReplicationPlan != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plan\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationPlan)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationPlan_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plan\":null")
+		first = false
+	}
+
+	// handle nullable field sync_replication_status
+	if m.SyncReplicationStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_status\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_status\":null")
+		first = false
+	}
+
+	// handle non nullable field sync_replication_status_in with omitempty
+	if !swag.IsZero(m.SyncReplicationStatusIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_status_in\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationStatusIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field sync_replication_status_not
+	if m.SyncReplicationStatusNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_status_not\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationStatusNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationStatusNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_status_not\":null")
+		first = false
+	}
+
+	// handle non nullable field sync_replication_status_not_in with omitempty
+	if !swag.IsZero(m.SyncReplicationStatusNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_status_not_in\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationStatusNotIn)
 		if err != nil {
 			return nil, err
 		}
@@ -3930,6 +5121,22 @@ func (m *ReplicaVMWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateMethod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMethodIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMethodNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMethodNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateOriginIscsiLun(formats); err != nil {
 		res = append(res, err)
 	}
@@ -3983,6 +5190,42 @@ func (m *ReplicaVMWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStateNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationObjectStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationObjectStatusIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationObjectStatusNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationObjectStatusNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationPlan(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationStatusIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationStatusNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationStatusNotIn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -4222,6 +5465,86 @@ func (m *ReplicaVMWhereInput) validateIscsiLun(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateMethod(formats strfmt.Registry) error {
+	if swag.IsZero(m.Method) { // not required
+		return nil
+	}
+
+	if m.Method != nil {
+		if err := m.Method.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateMethodIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.MethodIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MethodIn); i++ {
+
+		if err := m.MethodIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("method_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("method_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateMethodNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.MethodNot) { // not required
+		return nil
+	}
+
+	if m.MethodNot != nil {
+		if err := m.MethodNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("method_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("method_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateMethodNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.MethodNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MethodNotIn); i++ {
+
+		if err := m.MethodNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("method_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("method_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil
@@ -4497,6 +5820,185 @@ func (m *ReplicaVMWhereInput) validateStateNotIn(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *ReplicaVMWhereInput) validateSyncReplicationObjectStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationObjectStatus) { // not required
+		return nil
+	}
+
+	if m.SyncReplicationObjectStatus != nil {
+		if err := m.SyncReplicationObjectStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_object_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_object_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateSyncReplicationObjectStatusIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationObjectStatusIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SyncReplicationObjectStatusIn); i++ {
+
+		if err := m.SyncReplicationObjectStatusIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_object_status_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_object_status_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateSyncReplicationObjectStatusNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationObjectStatusNot) { // not required
+		return nil
+	}
+
+	if m.SyncReplicationObjectStatusNot != nil {
+		if err := m.SyncReplicationObjectStatusNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_object_status_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_object_status_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateSyncReplicationObjectStatusNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationObjectStatusNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SyncReplicationObjectStatusNotIn); i++ {
+
+		if err := m.SyncReplicationObjectStatusNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_object_status_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_object_status_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateSyncReplicationPlan(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationPlan) { // not required
+		return nil
+	}
+
+	if m.SyncReplicationPlan != nil {
+		if err := m.SyncReplicationPlan.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_plan")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateSyncReplicationStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationStatus) { // not required
+		return nil
+	}
+
+	if m.SyncReplicationStatus != nil {
+		if err := m.SyncReplicationStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateSyncReplicationStatusIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationStatusIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SyncReplicationStatusIn); i++ {
+
+		if err := m.SyncReplicationStatusIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_status_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_status_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateSyncReplicationStatusNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationStatusNot) { // not required
+		return nil
+	}
+
+	if m.SyncReplicationStatusNot != nil {
+		if err := m.SyncReplicationStatusNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_status_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_status_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) validateSyncReplicationStatusNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationStatusNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SyncReplicationStatusNotIn); i++ {
+
+		if err := m.SyncReplicationStatusNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_status_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_status_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ReplicaVMWhereInput) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
@@ -4640,6 +6142,22 @@ func (m *ReplicaVMWhereInput) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMethod(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMethodIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMethodNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMethodNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateOriginIscsiLun(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -4693,6 +6211,42 @@ func (m *ReplicaVMWhereInput) ContextValidate(ctx context.Context, formats strfm
 	}
 
 	if err := m.contextValidateStateNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationObjectStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationObjectStatusIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationObjectStatusNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationObjectStatusNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationPlan(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationStatusIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationStatusNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationStatusNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -4893,6 +6447,74 @@ func (m *ReplicaVMWhereInput) contextValidateIscsiLun(ctx context.Context, forma
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateMethod(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Method != nil {
+		if err := m.Method.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("method")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("method")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateMethodIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MethodIn); i++ {
+
+		if err := m.MethodIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("method_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("method_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateMethodNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MethodNot != nil {
+		if err := m.MethodNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("method_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("method_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateMethodNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MethodNotIn); i++ {
+
+		if err := m.MethodNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("method_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("method_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil
@@ -5117,6 +6739,158 @@ func (m *ReplicaVMWhereInput) contextValidateStateNotIn(ctx context.Context, for
 				return ve.ValidateName("state_not_in" + "." + strconv.Itoa(i))
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("state_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationObjectStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SyncReplicationObjectStatus != nil {
+		if err := m.SyncReplicationObjectStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_object_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_object_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationObjectStatusIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SyncReplicationObjectStatusIn); i++ {
+
+		if err := m.SyncReplicationObjectStatusIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_object_status_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_object_status_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationObjectStatusNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SyncReplicationObjectStatusNot != nil {
+		if err := m.SyncReplicationObjectStatusNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_object_status_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_object_status_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationObjectStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SyncReplicationObjectStatusNotIn); i++ {
+
+		if err := m.SyncReplicationObjectStatusNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_object_status_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_object_status_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationPlan(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SyncReplicationPlan != nil {
+		if err := m.SyncReplicationPlan.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_plan")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SyncReplicationStatus != nil {
+		if err := m.SyncReplicationStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationStatusIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SyncReplicationStatusIn); i++ {
+
+		if err := m.SyncReplicationStatusIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_status_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_status_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationStatusNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SyncReplicationStatusNot != nil {
+		if err := m.SyncReplicationStatusNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_status_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_status_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicaVMWhereInput) contextValidateSyncReplicationStatusNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SyncReplicationStatusNotIn); i++ {
+
+		if err := m.SyncReplicationStatusNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_status_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_status_not_in" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

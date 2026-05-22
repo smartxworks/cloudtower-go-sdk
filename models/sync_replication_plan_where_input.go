@@ -602,15 +602,6 @@ type SyncReplicationPlanWhereInput struct {
 	// replication restore points some
 	ReplicationRestorePointsSome *ReplicationRestorePointWhereInput `json:"replication_restore_points_some,omitempty"`
 
-	// replication target executions every
-	ReplicationTargetExecutionsEvery *ReplicationTargetExecutionWhereInput `json:"replication_target_executions_every,omitempty"`
-
-	// replication target executions none
-	ReplicationTargetExecutionsNone *ReplicationTargetExecutionWhereInput `json:"replication_target_executions_none,omitempty"`
-
-	// replication target executions some
-	ReplicationTargetExecutionsSome *ReplicationTargetExecutionWhereInput `json:"replication_target_executions_some,omitempty"`
-
 	// resiliency type
 	ResiliencyType *ResiliencyType `json:"resiliency_type,omitempty"`
 
@@ -1137,12 +1128,6 @@ type SyncReplicationPlanWhereInputMarshalOpts struct {
 	ReplicationRestorePointsNone_Explicit_Null_When_Empty bool
 
 	ReplicationRestorePointsSome_Explicit_Null_When_Empty bool
-
-	ReplicationTargetExecutionsEvery_Explicit_Null_When_Empty bool
-
-	ReplicationTargetExecutionsNone_Explicit_Null_When_Empty bool
-
-	ReplicationTargetExecutionsSome_Explicit_Null_When_Empty bool
 
 	ResiliencyType_Explicit_Null_When_Empty bool
 
@@ -4851,66 +4836,6 @@ func (m SyncReplicationPlanWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
-	// handle nullable field replication_target_executions_every
-	if m.ReplicationTargetExecutionsEvery != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"replication_target_executions_every\":")
-		bytes, err := swag.WriteJSON(m.ReplicationTargetExecutionsEvery)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ReplicationTargetExecutionsEvery_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"replication_target_executions_every\":null")
-		first = false
-	}
-
-	// handle nullable field replication_target_executions_none
-	if m.ReplicationTargetExecutionsNone != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"replication_target_executions_none\":")
-		bytes, err := swag.WriteJSON(m.ReplicationTargetExecutionsNone)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ReplicationTargetExecutionsNone_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"replication_target_executions_none\":null")
-		first = false
-	}
-
-	// handle nullable field replication_target_executions_some
-	if m.ReplicationTargetExecutionsSome != nil {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"replication_target_executions_some\":")
-		bytes, err := swag.WriteJSON(m.ReplicationTargetExecutionsSome)
-		if err != nil {
-			return nil, err
-		}
-		b.Write(bytes)
-		first = false
-	} else if m.MarshalOpts != nil && m.MarshalOpts.ReplicationTargetExecutionsSome_Explicit_Null_When_Empty {
-		if !first {
-			b.WriteString(",")
-		}
-		b.WriteString("\"replication_target_executions_some\":null")
-		first = false
-	}
-
 	// handle nullable field resiliency_type
 	if m.ResiliencyType != nil {
 		if !first {
@@ -5887,18 +5812,6 @@ func (m *SyncReplicationPlanWhereInput) Validate(formats strfmt.Registry) error 
 		res = append(res, err)
 	}
 
-	if err := m.validateReplicationTargetExecutionsEvery(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateReplicationTargetExecutionsNone(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateReplicationTargetExecutionsSome(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateResiliencyType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -6776,63 +6689,6 @@ func (m *SyncReplicationPlanWhereInput) validateReplicationRestorePointsSome(for
 	return nil
 }
 
-func (m *SyncReplicationPlanWhereInput) validateReplicationTargetExecutionsEvery(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicationTargetExecutionsEvery) { // not required
-		return nil
-	}
-
-	if m.ReplicationTargetExecutionsEvery != nil {
-		if err := m.ReplicationTargetExecutionsEvery.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("replication_target_executions_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("replication_target_executions_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *SyncReplicationPlanWhereInput) validateReplicationTargetExecutionsNone(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicationTargetExecutionsNone) { // not required
-		return nil
-	}
-
-	if m.ReplicationTargetExecutionsNone != nil {
-		if err := m.ReplicationTargetExecutionsNone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("replication_target_executions_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("replication_target_executions_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *SyncReplicationPlanWhereInput) validateReplicationTargetExecutionsSome(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicationTargetExecutionsSome) { // not required
-		return nil
-	}
-
-	if m.ReplicationTargetExecutionsSome != nil {
-		if err := m.ReplicationTargetExecutionsSome.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("replication_target_executions_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("replication_target_executions_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *SyncReplicationPlanWhereInput) validateResiliencyType(formats strfmt.Registry) error {
 	if swag.IsZero(m.ResiliencyType) { // not required
 		return nil
@@ -7481,18 +7337,6 @@ func (m *SyncReplicationPlanWhereInput) ContextValidate(ctx context.Context, for
 	}
 
 	if err := m.contextValidateReplicationRestorePointsSome(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateReplicationTargetExecutionsEvery(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateReplicationTargetExecutionsNone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateReplicationTargetExecutionsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -8242,54 +8086,6 @@ func (m *SyncReplicationPlanWhereInput) contextValidateReplicationRestorePointsS
 				return ve.ValidateName("replication_restore_points_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("replication_restore_points_some")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *SyncReplicationPlanWhereInput) contextValidateReplicationTargetExecutionsEvery(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ReplicationTargetExecutionsEvery != nil {
-		if err := m.ReplicationTargetExecutionsEvery.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("replication_target_executions_every")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("replication_target_executions_every")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *SyncReplicationPlanWhereInput) contextValidateReplicationTargetExecutionsNone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ReplicationTargetExecutionsNone != nil {
-		if err := m.ReplicationTargetExecutionsNone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("replication_target_executions_none")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("replication_target_executions_none")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *SyncReplicationPlanWhereInput) contextValidateReplicationTargetExecutionsSome(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ReplicationTargetExecutionsSome != nil {
-		if err := m.ReplicationTargetExecutionsSome.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("replication_target_executions_some")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("replication_target_executions_some")
 			}
 			return err
 		}

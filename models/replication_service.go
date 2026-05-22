@@ -92,6 +92,9 @@ type ReplicationService struct {
 	// Required: true
 	StorageNetwork *NestedReplicationServiceNetwork `json:"storage_network"`
 
+	// sync replication plans
+	SyncReplicationPlans []*NestedSyncReplicationPlan `json:"sync_replication_plans,omitempty"`
+
 	// updated at
 	// Required: true
 	UpdatedAt *string `json:"updatedAt"`
@@ -141,6 +144,8 @@ type ReplicationServiceMarshalOpts struct {
 	RetryInterval_Explicit_Null_When_Empty bool
 
 	StorageNetwork_Explicit_Null_When_Empty bool
+
+	SyncReplicationPlans_Explicit_Null_When_Empty bool
 
 	UpdatedAt_Explicit_Null_When_Empty bool
 }
@@ -541,6 +546,20 @@ func (m ReplicationService) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle non nullable field sync_replication_plans with omitempty
+	if !swag.IsZero(m.SyncReplicationPlans) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plans\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationPlans)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field updatedAt
 	if m.UpdatedAt != nil {
 		if !first {
@@ -622,6 +641,10 @@ func (m *ReplicationService) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStorageNetwork(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationPlans(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -900,6 +923,32 @@ func (m *ReplicationService) validateStorageNetwork(formats strfmt.Registry) err
 	return nil
 }
 
+func (m *ReplicationService) validateSyncReplicationPlans(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationPlans) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SyncReplicationPlans); i++ {
+		if swag.IsZero(m.SyncReplicationPlans[i]) { // not required
+			continue
+		}
+
+		if m.SyncReplicationPlans[i] != nil {
+			if err := m.SyncReplicationPlans[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("sync_replication_plans" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("sync_replication_plans" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ReplicationService) validateUpdatedAt(formats strfmt.Registry) error {
 
 	if err := validate.Required("updatedAt", "body", m.UpdatedAt); err != nil {
@@ -950,6 +999,10 @@ func (m *ReplicationService) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateStorageNetwork(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationPlans(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1134,6 +1187,26 @@ func (m *ReplicationService) contextValidateStorageNetwork(ctx context.Context, 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ReplicationService) contextValidateSyncReplicationPlans(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SyncReplicationPlans); i++ {
+
+		if m.SyncReplicationPlans[i] != nil {
+			if err := m.SyncReplicationPlans[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("sync_replication_plans" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("sync_replication_plans" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

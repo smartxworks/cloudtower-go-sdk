@@ -11,6 +11,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
+	"strings"
 
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
@@ -59,10 +61,12 @@ func getAuthConfigs(url string) map[string]string {
 }
 
 type ClientConfig struct {
-	Host     string
-	BasePath string
-	Schemes  []string
-	formats  *strfmt.Registry
+	CommonBasePath string
+	Host           string
+	BasePath       string
+	ProbePath      string
+	Schemes        []string
+	formats        *strfmt.Registry
 }
 
 type UserConfig struct {
@@ -72,33 +76,82 @@ type UserConfig struct {
 }
 
 func NewWithUserConfig(clientConfig ClientConfig, userConfig UserConfig) (*Cloudtower, error) {
-	transport := httptransport.New(clientConfig.Host, clientConfig.BasePath, clientConfig.Schemes)
+	host := clientConfig.Host
+	basePath := clientConfig.BasePath
+	probePath := clientConfig.ProbePath
+	schemes := clientConfig.Schemes
+	if probePath == "" {
+		probePath = activePassiveDefaultProbePath
+	}
+	commonPath := clientConfig.CommonBasePath
+	if parsed, err := url.Parse(strings.TrimSpace(clientConfig.CommonBasePath)); err == nil && parsed.Scheme != "" && parsed.Host != "" {
+		commonPath = parsed.Path
+		host = parsed.Host
+		schemes = []string{parsed.Scheme}
+	}
+	basePath = joinURLPaths(commonPath, basePath)
+	probePath = joinURLPaths(commonPath, probePath)
+	transport := httptransport.New(host, basePath, schemes)
 	var client *Cloudtower
 	if clientConfig.formats == nil {
 		client = New(transport, strfmt.Default)
 	} else {
 		client = New(transport, *clientConfig.formats)
 	}
-	var configId string
-	if userConfig.Source == models.UserSourceLDAP {
-		// try get auth stategies to replace legacy ldap login source
-		straetgyMap := getAuthConfigs(fmt.Sprintf("http://%s/api", clientConfig.Host))
-		configId = straetgyMap["LDAP"]
+	client.probePath = probePath
+	authConfigEndpoint := host + normalizeURLPath(commonPath)
+	if len(schemes) > 0 && host != "" {
+		authConfigEndpoint = schemes[0] + "://" + authConfigEndpoint
 	}
+	if err := loginWithUserConfig(client, authConfigEndpoint, userConfig); err != nil {
+		return nil, err
+	}
+	return client, nil
+}
+
+func loginWithUserConfig(client *Cloudtower, authConfigHost string, userConfig UserConfig) error {
+	var configID string
+	if userConfig.Source == models.UserSourceLDAP {
+		// Try get auth strategies to replace legacy ldap login source.
+		strategyMap := getAuthConfigs(authConfigEndpointAPIURL(authConfigHost))
+		configID = strategyMap["LDAP"]
+	}
+
 	params := user.NewLoginParams()
 	params.RequestBody = &models.LoginInput{
 		Username: &userConfig.Name,
 		Password: &userConfig.Password,
 		Source:   userConfig.Source.Pointer(),
 	}
-	if configId != "" {
-		params.RequestBody.AuthConfigID = &configId
+	if configID != "" {
+		params.RequestBody.AuthConfigID = &configID
 		params.RequestBody.Source = models.UserSourceAUTHN.Pointer()
 	}
+
 	resp, err := client.User.Login(params)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", *resp.Payload.Data.Token)
-	return client, nil
+
+	client.SetDefaultAuthentication(httptransport.APIKeyAuth("Authorization", "header", *resp.Payload.Data.Token))
+	return nil
+}
+
+func authConfigEndpointAPIURL(authConfigEndpoint string) string {
+	trimmed := strings.TrimSpace(authConfigEndpoint)
+	parsed, err := url.Parse(trimmed)
+	if err == nil && parsed.Scheme != "" && parsed.Host != "" {
+		path := strings.TrimRight(parsed.Path, "/")
+		if path == "" {
+			path = "/api"
+		} else {
+			path += "/api"
+		}
+		parsed.Path = path
+		parsed.RawPath = ""
+		parsed.RawQuery = ""
+		parsed.Fragment = ""
+		return parsed.String()
+	}
+	return fmt.Sprintf("http://%s/api", authConfigEndpoint)
 }

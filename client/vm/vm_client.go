@@ -58,6 +58,8 @@ type ClientService interface {
 
 	DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*DeleteVMOK, error)
 
+	DownloadNvram(params *DownloadNvramParams, opts ...ClientOption) (*DownloadNvramOK, error)
+
 	EjectIsoFromVMCdRom(params *EjectIsoFromVMCdRomParams, opts ...ClientOption) (*EjectIsoFromVMCdRomOK, error)
 
 	ExpandVMDisk(params *ExpandVMDiskParams, opts ...ClientOption) (*ExpandVMDiskOK, error)
@@ -145,6 +147,8 @@ type ClientService interface {
 	UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...ClientOption) (*UpdateVMNicVpcInfoOK, error)
 
 	UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption) (*UpdateVMOwnerOK, error)
+
+	UploadNvram(params *UploadNvramParams, opts ...ClientOption) (*UploadNvramOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -678,6 +682,44 @@ func (a *Client) DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*Delete
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for DeleteVm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DownloadNvram download nvram API
+*/
+func (a *Client) DownloadNvram(params *DownloadNvramParams, opts ...ClientOption) (*DownloadNvramOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDownloadNvramParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "DownloadNvram",
+		Method:             "POST",
+		PathPattern:        "/download_nvram",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &DownloadNvramReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DownloadNvramOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for DownloadNvram: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -2350,6 +2392,44 @@ func (a *Client) UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UpdateVmOwner: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UploadNvram upload nvram API
+*/
+func (a *Client) UploadNvram(params *UploadNvramParams, opts ...ClientOption) (*UploadNvramOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUploadNvramParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UploadNvram",
+		Method:             "POST",
+		PathPattern:        "/upload_nvram",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UploadNvramReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UploadNvramOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UploadNvram: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

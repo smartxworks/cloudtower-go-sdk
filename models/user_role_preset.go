@@ -48,6 +48,9 @@ const (
 	// UserRolePresetVMUSER captures enum value "VM_USER"
 	UserRolePresetVMUSER UserRolePreset = "VM_USER"
 
+	// UserRolePresetWORKLOADCLUSTERREGISTRYUSER captures enum value "WORKLOAD_CLUSTER_REGISTRY_USER"
+	UserRolePresetWORKLOADCLUSTERREGISTRYUSER UserRolePreset = "WORKLOAD_CLUSTER_REGISTRY_USER"
+
 	// UserRolePresetWORKLOADCLUSTERUSER captures enum value "WORKLOAD_CLUSTER_USER"
 	UserRolePresetWORKLOADCLUSTERUSER UserRolePreset = "WORKLOAD_CLUSTER_USER"
 )
@@ -57,7 +60,7 @@ var userRolePresetEnum []interface{}
 
 func init() {
 	var res []UserRolePreset
-	if err := json.Unmarshal([]byte(`["ADMIN","AUDITOR","READ_ONLY","ROOT","USER_ADMIN","VM_USER","WORKLOAD_CLUSTER_USER"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ADMIN","AUDITOR","READ_ONLY","ROOT","USER_ADMIN","VM_USER","WORKLOAD_CLUSTER_REGISTRY_USER","WORKLOAD_CLUSTER_USER"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

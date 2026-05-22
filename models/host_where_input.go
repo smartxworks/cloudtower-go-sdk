@@ -1823,6 +1823,30 @@ type HostWhereInput struct {
 	// total data capacity not in
 	TotalDataCapacityNotIn []int64 `json:"total_data_capacity_not_in,omitempty"`
 
+	// total logical cpu cores
+	TotalLogicalCPUCores *int32 `json:"total_logical_cpu_cores,omitempty"`
+
+	// total logical cpu cores gt
+	TotalLogicalCPUCoresGt *int32 `json:"total_logical_cpu_cores_gt,omitempty"`
+
+	// total logical cpu cores gte
+	TotalLogicalCPUCoresGte *int32 `json:"total_logical_cpu_cores_gte,omitempty"`
+
+	// total logical cpu cores in
+	TotalLogicalCPUCoresIn []int32 `json:"total_logical_cpu_cores_in,omitempty"`
+
+	// total logical cpu cores lt
+	TotalLogicalCPUCoresLt *int32 `json:"total_logical_cpu_cores_lt,omitempty"`
+
+	// total logical cpu cores lte
+	TotalLogicalCPUCoresLte *int32 `json:"total_logical_cpu_cores_lte,omitempty"`
+
+	// total logical cpu cores not
+	TotalLogicalCPUCoresNot *int32 `json:"total_logical_cpu_cores_not,omitempty"`
+
+	// total logical cpu cores not in
+	TotalLogicalCPUCoresNotIn []int32 `json:"total_logical_cpu_cores_not_in,omitempty"`
+
 	// total memory bytes
 	TotalMemoryBytes *int64 `json:"total_memory_bytes,omitempty"`
 
@@ -3292,6 +3316,22 @@ type HostWhereInputMarshalOpts struct {
 	TotalDataCapacityNot_Explicit_Null_When_Empty bool
 
 	TotalDataCapacityNotIn_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCores_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCoresGt_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCoresGte_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCoresIn_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCoresLt_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCoresLte_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCoresNot_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCoresNotIn_Explicit_Null_When_Empty bool
 
 	TotalMemoryBytes_Explicit_Null_When_Empty bool
 
@@ -14715,6 +14755,154 @@ func (m HostWhereInput) MarshalJSON() ([]byte, error) {
 		}
 		b.WriteString("\"total_data_capacity_not_in\":")
 		bytes, err := swag.WriteJSON(m.TotalDataCapacityNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field total_logical_cpu_cores
+	if m.TotalLogicalCPUCores != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCores)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalLogicalCPUCores_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores\":null")
+		first = false
+	}
+
+	// handle nullable field total_logical_cpu_cores_gt
+	if m.TotalLogicalCPUCoresGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_gt\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCoresGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalLogicalCPUCoresGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_gt\":null")
+		first = false
+	}
+
+	// handle nullable field total_logical_cpu_cores_gte
+	if m.TotalLogicalCPUCoresGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_gte\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCoresGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalLogicalCPUCoresGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field total_logical_cpu_cores_in with omitempty
+	if !swag.IsZero(m.TotalLogicalCPUCoresIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_in\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCoresIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field total_logical_cpu_cores_lt
+	if m.TotalLogicalCPUCoresLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_lt\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCoresLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalLogicalCPUCoresLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_lt\":null")
+		first = false
+	}
+
+	// handle nullable field total_logical_cpu_cores_lte
+	if m.TotalLogicalCPUCoresLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_lte\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCoresLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalLogicalCPUCoresLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_lte\":null")
+		first = false
+	}
+
+	// handle nullable field total_logical_cpu_cores_not
+	if m.TotalLogicalCPUCoresNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_not\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCoresNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalLogicalCPUCoresNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_not\":null")
+		first = false
+	}
+
+	// handle non nullable field total_logical_cpu_cores_not_in with omitempty
+	if !swag.IsZero(m.TotalLogicalCPUCoresNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores_not_in\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCoresNotIn)
 		if err != nil {
 			return nil, err
 		}

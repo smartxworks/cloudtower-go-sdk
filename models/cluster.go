@@ -43,6 +43,12 @@ type Cluster struct {
 	// auto converge
 	AutoConverge *bool `json:"auto_converge,omitempty"`
 
+	// cap snapshot unique size
+	CapSnapshotUniqueSize *int64 `json:"cap_snapshot_unique_size,omitempty"`
+
+	// cap volume unique size
+	CapVolumeUniqueSize *int64 `json:"cap_volume_unique_size,omitempty"`
+
 	// commited memory bytes
 	CommitedMemoryBytes *int64 `json:"commited_memory_bytes,omitempty"`
 
@@ -391,6 +397,10 @@ type ClusterMarshalOpts struct {
 	Architecture_Explicit_Null_When_Empty bool
 
 	AutoConverge_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSize_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSize_Explicit_Null_When_Empty bool
 
 	CommitedMemoryBytes_Explicit_Null_When_Empty bool
 
@@ -744,6 +754,46 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"auto_converge\":null")
+		first = false
+	}
+
+	// handle nullable field cap_snapshot_unique_size
+	if m.CapSnapshotUniqueSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapSnapshotUniqueSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size\":null")
+		first = false
+	}
+
+	// handle nullable field cap_volume_unique_size
+	if m.CapVolumeUniqueSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapVolumeUniqueSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size\":null")
 		first = false
 	}
 
