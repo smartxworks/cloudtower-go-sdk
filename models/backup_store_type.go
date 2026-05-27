@@ -30,6 +30,9 @@ func (m BackupStoreType) Pointer() *BackupStoreType {
 
 const (
 
+	// BackupStoreTypeBOOSTFS captures enum value "BOOSTFS"
+	BackupStoreTypeBOOSTFS BackupStoreType = "BOOSTFS"
+
 	// BackupStoreTypeISCSI captures enum value "ISCSI"
 	BackupStoreTypeISCSI BackupStoreType = "ISCSI"
 
@@ -45,7 +48,7 @@ var backupStoreTypeEnum []interface{}
 
 func init() {
 	var res []BackupStoreType
-	if err := json.Unmarshal([]byte(`["ISCSI","NFS3","NFS4"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BOOSTFS","ISCSI","NFS3","NFS4"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

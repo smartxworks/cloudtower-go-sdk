@@ -289,6 +289,9 @@ type Host struct {
 	// Required: true
 	TotalDataCapacity *int64 `json:"total_data_capacity"`
 
+	// total logical cpu cores
+	TotalLogicalCPUCores *int32 `json:"total_logical_cpu_cores,omitempty"`
+
 	// total memory bytes
 	// Required: true
 	TotalMemoryBytes *int64 `json:"total_memory_bytes"`
@@ -492,6 +495,8 @@ type HostMarshalOpts struct {
 	TotalCPUSockets_Explicit_Null_When_Empty bool
 
 	TotalDataCapacity_Explicit_Null_When_Empty bool
+
+	TotalLogicalCPUCores_Explicit_Null_When_Empty bool
 
 	TotalMemoryBytes_Explicit_Null_When_Empty bool
 
@@ -2031,6 +2036,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"total_data_capacity\":null")
+		first = false
+	}
+
+	// handle nullable field total_logical_cpu_cores
+	if m.TotalLogicalCPUCores != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores\":")
+		bytes, err := swag.WriteJSON(m.TotalLogicalCPUCores)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalLogicalCPUCores_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_logical_cpu_cores\":null")
 		first = false
 	}
 

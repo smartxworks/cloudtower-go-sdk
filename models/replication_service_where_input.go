@@ -416,6 +416,15 @@ type ReplicationServiceWhereInput struct {
 	// retry interval not in
 	RetryIntervalNotIn []int32 `json:"retry_interval_not_in,omitempty"`
 
+	// sync replication plans every
+	SyncReplicationPlansEvery *SyncReplicationPlanWhereInput `json:"sync_replication_plans_every,omitempty"`
+
+	// sync replication plans none
+	SyncReplicationPlansNone *SyncReplicationPlanWhereInput `json:"sync_replication_plans_none,omitempty"`
+
+	// sync replication plans some
+	SyncReplicationPlansSome *SyncReplicationPlanWhereInput `json:"sync_replication_plans_some,omitempty"`
+
 	// updated at
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 
@@ -707,6 +716,12 @@ type ReplicationServiceWhereInputMarshalOpts struct {
 	RetryIntervalNot_Explicit_Null_When_Empty bool
 
 	RetryIntervalNotIn_Explicit_Null_When_Empty bool
+
+	SyncReplicationPlansEvery_Explicit_Null_When_Empty bool
+
+	SyncReplicationPlansNone_Explicit_Null_When_Empty bool
+
+	SyncReplicationPlansSome_Explicit_Null_When_Empty bool
 
 	UpdatedAt_Explicit_Null_When_Empty bool
 
@@ -3209,6 +3224,66 @@ func (m ReplicationServiceWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field sync_replication_plans_every
+	if m.SyncReplicationPlansEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plans_every\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationPlansEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationPlansEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plans_every\":null")
+		first = false
+	}
+
+	// handle nullable field sync_replication_plans_none
+	if m.SyncReplicationPlansNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plans_none\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationPlansNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationPlansNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plans_none\":null")
+		first = false
+	}
+
+	// handle nullable field sync_replication_plans_some
+	if m.SyncReplicationPlansSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plans_some\":")
+		bytes, err := swag.WriteJSON(m.SyncReplicationPlansSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.SyncReplicationPlansSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"sync_replication_plans_some\":null")
+		first = false
+	}
+
 	// handle nullable field updatedAt
 	if m.UpdatedAt != nil {
 		if !first {
@@ -3442,6 +3517,18 @@ func (m *ReplicationServiceWhereInput) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateReplicationPlansSome(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationPlansEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationPlansNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSyncReplicationPlansSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -3856,6 +3943,63 @@ func (m *ReplicationServiceWhereInput) validateReplicationPlansSome(formats strf
 	return nil
 }
 
+func (m *ReplicationServiceWhereInput) validateSyncReplicationPlansEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationPlansEvery) { // not required
+		return nil
+	}
+
+	if m.SyncReplicationPlansEvery != nil {
+		if err := m.SyncReplicationPlansEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_plans_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_plans_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicationServiceWhereInput) validateSyncReplicationPlansNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationPlansNone) { // not required
+		return nil
+	}
+
+	if m.SyncReplicationPlansNone != nil {
+		if err := m.SyncReplicationPlansNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_plans_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_plans_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicationServiceWhereInput) validateSyncReplicationPlansSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.SyncReplicationPlansSome) { // not required
+		return nil
+	}
+
+	if m.SyncReplicationPlansSome != nil {
+		if err := m.SyncReplicationPlansSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_plans_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_plans_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this replication service where input based on the context it is used
 func (m *ReplicationServiceWhereInput) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -3937,6 +4081,18 @@ func (m *ReplicationServiceWhereInput) ContextValidate(ctx context.Context, form
 	}
 
 	if err := m.contextValidateReplicationPlansSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationPlansEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationPlansNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSyncReplicationPlansSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -4274,6 +4430,54 @@ func (m *ReplicationServiceWhereInput) contextValidateReplicationPlansSome(ctx c
 				return ve.ValidateName("replication_plans_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("replication_plans_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicationServiceWhereInput) contextValidateSyncReplicationPlansEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SyncReplicationPlansEvery != nil {
+		if err := m.SyncReplicationPlansEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_plans_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_plans_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicationServiceWhereInput) contextValidateSyncReplicationPlansNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SyncReplicationPlansNone != nil {
+		if err := m.SyncReplicationPlansNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_plans_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_plans_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ReplicationServiceWhereInput) contextValidateSyncReplicationPlansSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SyncReplicationPlansSome != nil {
+		if err := m.SyncReplicationPlansSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sync_replication_plans_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sync_replication_plans_some")
 			}
 			return err
 		}

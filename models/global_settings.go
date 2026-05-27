@@ -23,6 +23,9 @@ type GlobalSettings struct {
 	// auth
 	Auth *NestedAuthSettings `json:"auth,omitempty"`
 
+	// entity async status
+	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
+
 	// id
 	// Required: true
 	ID *string `json:"id"`
@@ -36,6 +39,8 @@ type GlobalSettings struct {
 
 type GlobalSettingsMarshalOpts struct {
 	Auth_Explicit_Null_When_Empty bool
+
+	EntityAsyncStatus_Explicit_Null_When_Empty bool
 
 	ID_Explicit_Null_When_Empty bool
 
@@ -65,6 +70,26 @@ func (m GlobalSettings) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"auth\":null")
+		first = false
+	}
+
+	// handle nullable field entityAsyncStatus
+	if m.EntityAsyncStatus != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":")
+		bytes, err := swag.WriteJSON(m.EntityAsyncStatus)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.EntityAsyncStatus_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"entityAsyncStatus\":null")
 		first = false
 	}
 
@@ -120,6 +145,10 @@ func (m *GlobalSettings) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEntityAsyncStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -145,6 +174,25 @@ func (m *GlobalSettings) validateAuth(formats strfmt.Registry) error {
 				return ve.ValidateName("auth")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("auth")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *GlobalSettings) validateEntityAsyncStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.EntityAsyncStatus) { // not required
+		return nil
+	}
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
 			}
 			return err
 		}
@@ -190,6 +238,10 @@ func (m *GlobalSettings) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVMRecycleBin(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -208,6 +260,22 @@ func (m *GlobalSettings) contextValidateAuth(ctx context.Context, formats strfmt
 				return ve.ValidateName("auth")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("auth")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *GlobalSettings) contextValidateEntityAsyncStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EntityAsyncStatus != nil {
+		if err := m.EntityAsyncStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entityAsyncStatus")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entityAsyncStatus")
 			}
 			return err
 		}

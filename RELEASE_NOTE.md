@@ -1,5 +1,21 @@
 # RELEASE NOTE
 
+## release 日期 2026-05-27
+
+v2.23.0 release (tower version 4.9.0)
+
+### features
+
+- 新增 `ActivePassiveApiClient` 支持 CloudTower 4.9.0 多管理 IP 主备部署，支持配置故障切换策略
+- 增加 [SyncReplicationPlanApi] 用于同步复制计划的查询
+  - [GetSyncReplicationPlans] 获取同步复制计划列表
+  - [GetSyncReplicationPlansConnection] 获取同步复制计划连接数
+- [VmApi]: 新增 [DownloadNvram] API 用于下载 NVRAM
+- [VmApi]: 新增 [UploadNvram] API 用于上传 NVRAM
+- [Cluster]: 新增字段 `CapSnapshotUniqueSize`, `CapVolumeUniqueSize`
+- [Host]: 新增字段 `TotalLogicalCpuCores`
+- [ReplicaVm]: 新增同步复制相关字段 `LastOutOfSyncAt`, `LastOutOfSyncReason`, `LastSyncedAt`, `Method`, `ResourceVersion`, `SyncReplicationObjectStatus`, `SyncReplicationPlan`, `SyncReplicationStatus`
+
 ## release 日期 2026-04-28
 
 v2.22.1 release (tower version 4.8.1)
