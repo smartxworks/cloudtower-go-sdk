@@ -66,6 +66,30 @@ const (
 	// ReplicaVMOrderByInputInboundDESC captures enum value "inbound_DESC"
 	ReplicaVMOrderByInputInboundDESC ReplicaVMOrderByInput = "inbound_DESC"
 
+	// ReplicaVMOrderByInputLastOutOfSyncAtASC captures enum value "last_out_of_sync_at_ASC"
+	ReplicaVMOrderByInputLastOutOfSyncAtASC ReplicaVMOrderByInput = "last_out_of_sync_at_ASC"
+
+	// ReplicaVMOrderByInputLastOutOfSyncAtDESC captures enum value "last_out_of_sync_at_DESC"
+	ReplicaVMOrderByInputLastOutOfSyncAtDESC ReplicaVMOrderByInput = "last_out_of_sync_at_DESC"
+
+	// ReplicaVMOrderByInputLastOutOfSyncReasonASC captures enum value "last_out_of_sync_reason_ASC"
+	ReplicaVMOrderByInputLastOutOfSyncReasonASC ReplicaVMOrderByInput = "last_out_of_sync_reason_ASC"
+
+	// ReplicaVMOrderByInputLastOutOfSyncReasonDESC captures enum value "last_out_of_sync_reason_DESC"
+	ReplicaVMOrderByInputLastOutOfSyncReasonDESC ReplicaVMOrderByInput = "last_out_of_sync_reason_DESC"
+
+	// ReplicaVMOrderByInputLastSyncedAtASC captures enum value "last_synced_at_ASC"
+	ReplicaVMOrderByInputLastSyncedAtASC ReplicaVMOrderByInput = "last_synced_at_ASC"
+
+	// ReplicaVMOrderByInputLastSyncedAtDESC captures enum value "last_synced_at_DESC"
+	ReplicaVMOrderByInputLastSyncedAtDESC ReplicaVMOrderByInput = "last_synced_at_DESC"
+
+	// ReplicaVMOrderByInputMethodASC captures enum value "method_ASC"
+	ReplicaVMOrderByInputMethodASC ReplicaVMOrderByInput = "method_ASC"
+
+	// ReplicaVMOrderByInputMethodDESC captures enum value "method_DESC"
+	ReplicaVMOrderByInputMethodDESC ReplicaVMOrderByInput = "method_DESC"
+
 	// ReplicaVMOrderByInputObjectDescriptorASC captures enum value "object_descriptor_ASC"
 	ReplicaVMOrderByInputObjectDescriptorASC ReplicaVMOrderByInput = "object_descriptor_ASC"
 
@@ -114,11 +138,29 @@ const (
 	// ReplicaVMOrderByInputReplicationGroupDESC captures enum value "replication_group_DESC"
 	ReplicaVMOrderByInputReplicationGroupDESC ReplicaVMOrderByInput = "replication_group_DESC"
 
+	// ReplicaVMOrderByInputResourceVersionASC captures enum value "resource_version_ASC"
+	ReplicaVMOrderByInputResourceVersionASC ReplicaVMOrderByInput = "resource_version_ASC"
+
+	// ReplicaVMOrderByInputResourceVersionDESC captures enum value "resource_version_DESC"
+	ReplicaVMOrderByInputResourceVersionDESC ReplicaVMOrderByInput = "resource_version_DESC"
+
 	// ReplicaVMOrderByInputStateASC captures enum value "state_ASC"
 	ReplicaVMOrderByInputStateASC ReplicaVMOrderByInput = "state_ASC"
 
 	// ReplicaVMOrderByInputStateDESC captures enum value "state_DESC"
 	ReplicaVMOrderByInputStateDESC ReplicaVMOrderByInput = "state_DESC"
+
+	// ReplicaVMOrderByInputSyncReplicationObjectStatusASC captures enum value "sync_replication_object_status_ASC"
+	ReplicaVMOrderByInputSyncReplicationObjectStatusASC ReplicaVMOrderByInput = "sync_replication_object_status_ASC"
+
+	// ReplicaVMOrderByInputSyncReplicationObjectStatusDESC captures enum value "sync_replication_object_status_DESC"
+	ReplicaVMOrderByInputSyncReplicationObjectStatusDESC ReplicaVMOrderByInput = "sync_replication_object_status_DESC"
+
+	// ReplicaVMOrderByInputSyncReplicationStatusASC captures enum value "sync_replication_status_ASC"
+	ReplicaVMOrderByInputSyncReplicationStatusASC ReplicaVMOrderByInput = "sync_replication_status_ASC"
+
+	// ReplicaVMOrderByInputSyncReplicationStatusDESC captures enum value "sync_replication_status_DESC"
+	ReplicaVMOrderByInputSyncReplicationStatusDESC ReplicaVMOrderByInput = "sync_replication_status_DESC"
 
 	// ReplicaVMOrderByInputTargetsDeletableASC captures enum value "targets_deletable_ASC"
 	ReplicaVMOrderByInputTargetsDeletableASC ReplicaVMOrderByInput = "targets_deletable_ASC"
@@ -144,7 +186,7 @@ var replicaVmOrderByInputEnum []interface{}
 
 func init() {
 	var res []ReplicaVMOrderByInput
-	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failover_test_object_descriptor_ASC","failover_test_object_descriptor_DESC","failover_test_replica_group_ASC","failover_test_replica_group_DESC","id_ASC","id_DESC","inbound_ASC","inbound_DESC","object_descriptor_ASC","object_descriptor_DESC","origin_object_descriptor_ASC","origin_object_descriptor_DESC","origin_vm_cluster_local_id_ASC","origin_vm_cluster_local_id_DESC","origin_vm_cluster_name_ASC","origin_vm_cluster_name_DESC","origin_vm_local_id_ASC","origin_vm_local_id_DESC","origin_vm_name_ASC","origin_vm_name_DESC","replica_group_ASC","replica_group_DESC","replication_group_ASC","replication_group_DESC","state_ASC","state_DESC","targets_deletable_ASC","targets_deletable_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["createdAt_ASC","createdAt_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failover_test_object_descriptor_ASC","failover_test_object_descriptor_DESC","failover_test_replica_group_ASC","failover_test_replica_group_DESC","id_ASC","id_DESC","inbound_ASC","inbound_DESC","last_out_of_sync_at_ASC","last_out_of_sync_at_DESC","last_out_of_sync_reason_ASC","last_out_of_sync_reason_DESC","last_synced_at_ASC","last_synced_at_DESC","method_ASC","method_DESC","object_descriptor_ASC","object_descriptor_DESC","origin_object_descriptor_ASC","origin_object_descriptor_DESC","origin_vm_cluster_local_id_ASC","origin_vm_cluster_local_id_DESC","origin_vm_cluster_name_ASC","origin_vm_cluster_name_DESC","origin_vm_local_id_ASC","origin_vm_local_id_DESC","origin_vm_name_ASC","origin_vm_name_DESC","replica_group_ASC","replica_group_DESC","replication_group_ASC","replication_group_DESC","resource_version_ASC","resource_version_DESC","state_ASC","state_DESC","sync_replication_object_status_ASC","sync_replication_object_status_DESC","sync_replication_status_ASC","sync_replication_status_DESC","targets_deletable_ASC","targets_deletable_DESC","type_ASC","type_DESC","updatedAt_ASC","updatedAt_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

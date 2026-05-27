@@ -25,7 +25,7 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
-transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 client := apiclient.New(transport, strfmt.Default)
 ```
 
@@ -44,7 +44,7 @@ if err != nil {
 	fmt.Print(err)
 	return
 }
-transport := httptransport.NewWithClient("192.168.29.157", "/v2/api", []string{"https"}, tlsClient)
+transport := httptransport.NewWithClient("tower.example.com", "/v2/api", []string{"https"}, tlsClient)
 client := apiclient.New(transport, strfmt.Default)
 ```
 
@@ -75,8 +75,8 @@ client, err := apiclient.NewWithUserConfig(apiclient.ClientConfig{
 	BasePath: "v2/api",
 	Schemes:  []string{"http"},
 }, apiclient.UserConfig{
-	Name:     "Name",
-	Password: "Password",
+	Name:     "<username>",
+	Password: "<password>",
 	Source:   models.UserSourceLOCAL,
 })
 ```
@@ -89,8 +89,8 @@ import (
 )
 loginParams := User.NewLoginParams()
 loginParams.RequestBody = &models.LoginInput{
-	Username: pointy.String("username"),
-	Password: pointy.String("password"),
+	Username: pointy.String("<username>"),
+	Password: pointy.String("<password>"),
 	Source:   models.NewUserSource(models.UserSourceLOCAL),
 }
 logRes, err := client.User.Login(loginParams)
@@ -176,6 +176,67 @@ if err != nil {
 
 #### 其他
 
+##### 创建 `ActivePassiveApiClient` 实例
+
+CloudTower 在 4.9.0 引入了多管理 IP 主备部署，如果需要访问此类 CloudTower，可以使用 `ActivePassiveApiClient` 配置同一个主备集群的多个 endpoint。同一时间预期最多只有一个 active endpoint，传入顺序不代表主备关系，客户端会通过探测结果选择当前 active endpoint。
+
+```go
+import (
+	"context"
+	apiclient "github.com/smartxworks/cloudtower-go-sdk/v2/client"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/models"
+)
+
+client, err := apiclient.NewActivePassiveWithUserConfig(
+	context.Background(),
+	apiclient.ActivePassiveClientConfig{
+		Endpoints: []apiclient.ActivePassiveEndpointConfig{
+			{Host: "tower-a.example.com", Schemes: []string{"https"}},
+			{Host: "tower-b.example.com", Schemes: []string{"https"}},
+		},
+	},
+	apiclient.UserConfig{
+		Name:     "<username>",
+		Password: "<password>",
+		Source:   models.UserSourceLOCAL,
+	},
+)
+if err != nil {
+	return err
+}
+```
+
+##### 故障切换策略
+
+`ActivePassiveApiClient` 支持以下故障切换策略：
+
+- `AUTO_FAILOVER`：默认的策略，当没有缓存的 active endpoint 时，会尝试探测并缓存当前 active endpoint；请求返回 307 后自动重新探测并重试一次；请求发生网络 I/O 异常后清空缓存，但不会自动重试。
+- `MANUAL_FAILOVER`：请求返回 307 后不自动重新探测和重试，清空缓存由调用方处理故障切换，其余业务逻辑和 `AUTO_FAILOVER` 一致。
+- `ALWAYS_PROBE`：不缓存 active endpoint，每次请求前都重新探测 active endpoint；请求返回 307 后不自动重试。
+
+如果需要指定故障切换策略，可以在创建实例时传入：
+
+```go
+client, err := apiclient.NewActivePassiveWithUserConfig(
+	context.Background(),
+	apiclient.ActivePassiveClientConfig{
+		Endpoints: []apiclient.ActivePassiveEndpointConfig{
+			{Host: "tower-a.example.com", Schemes: []string{"https"}},
+			{Host: "tower-b.example.com", Schemes: []string{"https"}},
+		},
+		FailoverStrategy: apiclient.FailoverStrategyManualFailover,
+	},
+	apiclient.UserConfig{
+		Name:     "<username>",
+		Password: "<password>",
+		Source:   models.UserSourceLOCAL,
+	},
+)
+if err != nil {
+	return err
+}
+```
+
 ##### 设置返回信息的语言
 
 > 可以设置请求 params 中的 `ContentLanguage` 项设置返回值的语言，可选值为 `["en-US", "zh-CN"]`，默认值为 `en-US`，不在可选值范围内的语言会返回一个 HTTP 400 错误
@@ -217,7 +278,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	vms, err := getAllVms(client)
@@ -256,7 +317,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	vms, err := getVmsWithPagination(client)
@@ -300,7 +361,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	vms, err := getAllRunningVms(client)
@@ -343,7 +404,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	vms, err := getVmsMatchStr(client, "matchStr")
@@ -387,7 +448,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	vms, err := getVmshasNMoreCpuCore(client, 4)
@@ -436,7 +497,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	createdVm, err := createVmFromTemplate(client, "templateId", "clusterId", "vm_name")
@@ -503,7 +564,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	createdVm, err := createVmFromTemplate(client, "templateId", "clusterId", "vm_name")
@@ -609,7 +670,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	createdVm, err := createVmFromTemplate(client, "templateId", "clusterId", "vm_name")
@@ -685,7 +746,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	createParams := vm.NewCreateVMParams()
@@ -770,7 +831,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	createParams := vm.NewCreateVMParams()
@@ -853,7 +914,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	createParams := vm.NewCreateVMParams()
@@ -937,7 +998,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	createParams := vm.NewCreateVMParams()
@@ -1024,7 +1085,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	createParams := vm.NewCreateVMParams()
@@ -1113,7 +1174,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	updateParams := vm.NewUpdateVMParams()
@@ -1186,7 +1247,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	addCdRomParams := vm.NewAddVMCdRomParams()
@@ -1257,7 +1318,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	updateParams := vm.NewRemoveVMCdRomParams()
@@ -1324,7 +1385,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	updateParams := vm.NewAddVMDiskParams()
@@ -1401,7 +1462,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	updateParams := vm.NewAddVMDiskParams()
@@ -1475,7 +1536,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	updateParams := vm.NewRemoveVMDiskParams()
@@ -1542,7 +1603,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	updateParams := vm.NewAddVMNicParams()
@@ -1613,7 +1674,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	updateParams := vm.NewUpdateVMNicParams()
@@ -1680,7 +1741,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 	updateParams := vm.NewRemoveVMNicParams()
@@ -1748,7 +1809,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -1815,7 +1876,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -1882,7 +1943,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -1948,7 +2009,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2022,7 +2083,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2091,7 +2152,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2157,7 +2218,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2231,7 +2292,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2296,7 +2357,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2374,7 +2435,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2439,7 +2500,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2513,7 +2574,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2578,7 +2639,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2655,7 +2716,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2720,7 +2781,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2798,7 +2859,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2863,7 +2924,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -2942,7 +3003,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -3008,7 +3069,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 
@@ -3073,7 +3134,7 @@ import (
 )
 
 func main() {
-	transport := httptransport.New("192.168.36.133", "/v2/api", []string{"http"})
+	transport := httptransport.New("tower.example.com", "/v2/api", []string{"http"})
 	client := apiclient.New(transport, strfmt.Default)
 	transport.DefaultAuthentication = httptransport.APIKeyAuth("Authorization", "header", "token")
 

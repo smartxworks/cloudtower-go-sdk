@@ -36,6 +36,12 @@ const (
 	// GlobalSettingsOrderByInputAuthDESC captures enum value "auth_DESC"
 	GlobalSettingsOrderByInputAuthDESC GlobalSettingsOrderByInput = "auth_DESC"
 
+	// GlobalSettingsOrderByInputEntityAsyncStatusASC captures enum value "entityAsyncStatus_ASC"
+	GlobalSettingsOrderByInputEntityAsyncStatusASC GlobalSettingsOrderByInput = "entityAsyncStatus_ASC"
+
+	// GlobalSettingsOrderByInputEntityAsyncStatusDESC captures enum value "entityAsyncStatus_DESC"
+	GlobalSettingsOrderByInputEntityAsyncStatusDESC GlobalSettingsOrderByInput = "entityAsyncStatus_DESC"
+
 	// GlobalSettingsOrderByInputIDASC captures enum value "id_ASC"
 	GlobalSettingsOrderByInputIDASC GlobalSettingsOrderByInput = "id_ASC"
 
@@ -54,7 +60,7 @@ var globalSettingsOrderByInputEnum []interface{}
 
 func init() {
 	var res []GlobalSettingsOrderByInput
-	if err := json.Unmarshal([]byte(`["auth_ASC","auth_DESC","id_ASC","id_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["auth_ASC","auth_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","id_ASC","id_DESC","vm_recycle_bin_ASC","vm_recycle_bin_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

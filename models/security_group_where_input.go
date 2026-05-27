@@ -74,6 +74,48 @@ type SecurityGroupWhereInput struct {
 	// everoute cluster
 	EverouteCluster *EverouteClusterWhereInput `json:"everoute_cluster,omitempty"`
 
+	// exclude ips
+	ExcludeIps *string `json:"exclude_ips,omitempty"`
+
+	// exclude ips contains
+	ExcludeIpsContains *string `json:"exclude_ips_contains,omitempty"`
+
+	// exclude ips ends with
+	ExcludeIpsEndsWith *string `json:"exclude_ips_ends_with,omitempty"`
+
+	// exclude ips gt
+	ExcludeIpsGt *string `json:"exclude_ips_gt,omitempty"`
+
+	// exclude ips gte
+	ExcludeIpsGte *string `json:"exclude_ips_gte,omitempty"`
+
+	// exclude ips in
+	ExcludeIpsIn []string `json:"exclude_ips_in,omitempty"`
+
+	// exclude ips lt
+	ExcludeIpsLt *string `json:"exclude_ips_lt,omitempty"`
+
+	// exclude ips lte
+	ExcludeIpsLte *string `json:"exclude_ips_lte,omitempty"`
+
+	// exclude ips not
+	ExcludeIpsNot *string `json:"exclude_ips_not,omitempty"`
+
+	// exclude ips not contains
+	ExcludeIpsNotContains *string `json:"exclude_ips_not_contains,omitempty"`
+
+	// exclude ips not ends with
+	ExcludeIpsNotEndsWith *string `json:"exclude_ips_not_ends_with,omitempty"`
+
+	// exclude ips not in
+	ExcludeIpsNotIn []string `json:"exclude_ips_not_in,omitempty"`
+
+	// exclude ips not starts with
+	ExcludeIpsNotStartsWith *string `json:"exclude_ips_not_starts_with,omitempty"`
+
+	// exclude ips starts with
+	ExcludeIpsStartsWith *string `json:"exclude_ips_starts_with,omitempty"`
+
 	// id
 	ID *string `json:"id,omitempty"`
 
@@ -116,6 +158,48 @@ type SecurityGroupWhereInput struct {
 	// id starts with
 	IDStartsWith *string `json:"id_starts_with,omitempty"`
 
+	// ips
+	Ips *string `json:"ips,omitempty"`
+
+	// ips contains
+	IpsContains *string `json:"ips_contains,omitempty"`
+
+	// ips ends with
+	IpsEndsWith *string `json:"ips_ends_with,omitempty"`
+
+	// ips gt
+	IpsGt *string `json:"ips_gt,omitempty"`
+
+	// ips gte
+	IpsGte *string `json:"ips_gte,omitempty"`
+
+	// ips in
+	IpsIn []string `json:"ips_in,omitempty"`
+
+	// ips lt
+	IpsLt *string `json:"ips_lt,omitempty"`
+
+	// ips lte
+	IpsLte *string `json:"ips_lte,omitempty"`
+
+	// ips not
+	IpsNot *string `json:"ips_not,omitempty"`
+
+	// ips not contains
+	IpsNotContains *string `json:"ips_not_contains,omitempty"`
+
+	// ips not ends with
+	IpsNotEndsWith *string `json:"ips_not_ends_with,omitempty"`
+
+	// ips not in
+	IpsNotIn []string `json:"ips_not_in,omitempty"`
+
+	// ips not starts with
+	IpsNotStartsWith *string `json:"ips_not_starts_with,omitempty"`
+
+	// ips starts with
+	IpsStartsWith *string `json:"ips_starts_with,omitempty"`
+
 	// isolation policies every
 	IsolationPoliciesEvery *IsolationPolicyWhereInput `json:"isolation_policies_every,omitempty"`
 
@@ -124,6 +208,18 @@ type SecurityGroupWhereInput struct {
 
 	// isolation policies some
 	IsolationPoliciesSome *IsolationPolicyWhereInput `json:"isolation_policies_some,omitempty"`
+
+	// member type
+	MemberType *SecurityGroupMemberType `json:"member_type,omitempty"`
+
+	// member type in
+	MemberTypeIn []SecurityGroupMemberType `json:"member_type_in,omitempty"`
+
+	// member type not
+	MemberTypeNot *SecurityGroupMemberType `json:"member_type_not,omitempty"`
+
+	// member type not in
+	MemberTypeNotIn []SecurityGroupMemberType `json:"member_type_not_in,omitempty"`
 
 	// name
 	Name *string `json:"name,omitempty"`
@@ -225,6 +321,34 @@ type SecurityGroupWhereInputMarshalOpts struct {
 
 	EverouteCluster_Explicit_Null_When_Empty bool
 
+	ExcludeIps_Explicit_Null_When_Empty bool
+
+	ExcludeIpsContains_Explicit_Null_When_Empty bool
+
+	ExcludeIpsEndsWith_Explicit_Null_When_Empty bool
+
+	ExcludeIpsGt_Explicit_Null_When_Empty bool
+
+	ExcludeIpsGte_Explicit_Null_When_Empty bool
+
+	ExcludeIpsIn_Explicit_Null_When_Empty bool
+
+	ExcludeIpsLt_Explicit_Null_When_Empty bool
+
+	ExcludeIpsLte_Explicit_Null_When_Empty bool
+
+	ExcludeIpsNot_Explicit_Null_When_Empty bool
+
+	ExcludeIpsNotContains_Explicit_Null_When_Empty bool
+
+	ExcludeIpsNotEndsWith_Explicit_Null_When_Empty bool
+
+	ExcludeIpsNotIn_Explicit_Null_When_Empty bool
+
+	ExcludeIpsNotStartsWith_Explicit_Null_When_Empty bool
+
+	ExcludeIpsStartsWith_Explicit_Null_When_Empty bool
+
 	ID_Explicit_Null_When_Empty bool
 
 	IDContains_Explicit_Null_When_Empty bool
@@ -253,11 +377,47 @@ type SecurityGroupWhereInputMarshalOpts struct {
 
 	IDStartsWith_Explicit_Null_When_Empty bool
 
+	Ips_Explicit_Null_When_Empty bool
+
+	IpsContains_Explicit_Null_When_Empty bool
+
+	IpsEndsWith_Explicit_Null_When_Empty bool
+
+	IpsGt_Explicit_Null_When_Empty bool
+
+	IpsGte_Explicit_Null_When_Empty bool
+
+	IpsIn_Explicit_Null_When_Empty bool
+
+	IpsLt_Explicit_Null_When_Empty bool
+
+	IpsLte_Explicit_Null_When_Empty bool
+
+	IpsNot_Explicit_Null_When_Empty bool
+
+	IpsNotContains_Explicit_Null_When_Empty bool
+
+	IpsNotEndsWith_Explicit_Null_When_Empty bool
+
+	IpsNotIn_Explicit_Null_When_Empty bool
+
+	IpsNotStartsWith_Explicit_Null_When_Empty bool
+
+	IpsStartsWith_Explicit_Null_When_Empty bool
+
 	IsolationPoliciesEvery_Explicit_Null_When_Empty bool
 
 	IsolationPoliciesNone_Explicit_Null_When_Empty bool
 
 	IsolationPoliciesSome_Explicit_Null_When_Empty bool
+
+	MemberType_Explicit_Null_When_Empty bool
+
+	MemberTypeIn_Explicit_Null_When_Empty bool
+
+	MemberTypeNot_Explicit_Null_When_Empty bool
+
+	MemberTypeNotIn_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
 
@@ -636,6 +796,274 @@ func (m SecurityGroupWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field exclude_ips
+	if m.ExcludeIps != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIps)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIps_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_contains
+	if m.ExcludeIpsContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_contains\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_contains\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_ends_with
+	if m.ExcludeIpsEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_ends_with\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_gt
+	if m.ExcludeIpsGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_gt\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_gt\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_gte
+	if m.ExcludeIpsGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_gte\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field exclude_ips_in with omitempty
+	if !swag.IsZero(m.ExcludeIpsIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_in\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field exclude_ips_lt
+	if m.ExcludeIpsLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_lt\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_lt\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_lte
+	if m.ExcludeIpsLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_lte\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_lte\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_not
+	if m.ExcludeIpsNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_not_contains
+	if m.ExcludeIpsNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not_contains\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_not_ends_with
+	if m.ExcludeIpsNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field exclude_ips_not_in with omitempty
+	if !swag.IsZero(m.ExcludeIpsNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not_in\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field exclude_ips_not_starts_with
+	if m.ExcludeIpsNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field exclude_ips_starts_with
+	if m.ExcludeIpsStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_starts_with\":")
+		bytes, err := swag.WriteJSON(m.ExcludeIpsStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ExcludeIpsStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"exclude_ips_starts_with\":null")
+		first = false
+	}
+
 	// handle nullable field id
 	if m.ID != nil {
 		if !first {
@@ -904,6 +1332,274 @@ func (m SecurityGroupWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field ips
+	if m.Ips != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips\":")
+		bytes, err := swag.WriteJSON(m.Ips)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Ips_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips\":null")
+		first = false
+	}
+
+	// handle nullable field ips_contains
+	if m.IpsContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_contains\":")
+		bytes, err := swag.WriteJSON(m.IpsContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_contains\":null")
+		first = false
+	}
+
+	// handle nullable field ips_ends_with
+	if m.IpsEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_ends_with\":")
+		bytes, err := swag.WriteJSON(m.IpsEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field ips_gt
+	if m.IpsGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_gt\":")
+		bytes, err := swag.WriteJSON(m.IpsGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_gt\":null")
+		first = false
+	}
+
+	// handle nullable field ips_gte
+	if m.IpsGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_gte\":")
+		bytes, err := swag.WriteJSON(m.IpsGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field ips_in with omitempty
+	if !swag.IsZero(m.IpsIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_in\":")
+		bytes, err := swag.WriteJSON(m.IpsIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ips_lt
+	if m.IpsLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_lt\":")
+		bytes, err := swag.WriteJSON(m.IpsLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_lt\":null")
+		first = false
+	}
+
+	// handle nullable field ips_lte
+	if m.IpsLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_lte\":")
+		bytes, err := swag.WriteJSON(m.IpsLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_lte\":null")
+		first = false
+	}
+
+	// handle nullable field ips_not
+	if m.IpsNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not\":")
+		bytes, err := swag.WriteJSON(m.IpsNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not\":null")
+		first = false
+	}
+
+	// handle nullable field ips_not_contains
+	if m.IpsNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not_contains\":")
+		bytes, err := swag.WriteJSON(m.IpsNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field ips_not_ends_with
+	if m.IpsNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.IpsNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field ips_not_in with omitempty
+	if !swag.IsZero(m.IpsNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not_in\":")
+		bytes, err := swag.WriteJSON(m.IpsNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field ips_not_starts_with
+	if m.IpsNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.IpsNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field ips_starts_with
+	if m.IpsStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_starts_with\":")
+		bytes, err := swag.WriteJSON(m.IpsStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.IpsStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"ips_starts_with\":null")
+		first = false
+	}
+
 	// handle nullable field isolation_policies_every
 	if m.IsolationPoliciesEvery != nil {
 		if !first {
@@ -961,6 +1657,74 @@ func (m SecurityGroupWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"isolation_policies_some\":null")
+		first = false
+	}
+
+	// handle nullable field member_type
+	if m.MemberType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"member_type\":")
+		bytes, err := swag.WriteJSON(m.MemberType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MemberType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"member_type\":null")
+		first = false
+	}
+
+	// handle non nullable field member_type_in with omitempty
+	if !swag.IsZero(m.MemberTypeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"member_type_in\":")
+		bytes, err := swag.WriteJSON(m.MemberTypeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field member_type_not
+	if m.MemberTypeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"member_type_not\":")
+		bytes, err := swag.WriteJSON(m.MemberTypeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MemberTypeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"member_type_not\":null")
+		first = false
+	}
+
+	// handle non nullable field member_type_not_in with omitempty
+	if !swag.IsZero(m.MemberTypeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"member_type_not_in\":")
+		bytes, err := swag.WriteJSON(m.MemberTypeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -1388,6 +2152,22 @@ func (m *SecurityGroupWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateMemberType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMemberTypeIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMemberTypeNot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMemberTypeNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSecurityPoliciesEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1572,6 +2352,86 @@ func (m *SecurityGroupWhereInput) validateIsolationPoliciesSome(formats strfmt.R
 	return nil
 }
 
+func (m *SecurityGroupWhereInput) validateMemberType(formats strfmt.Registry) error {
+	if swag.IsZero(m.MemberType) { // not required
+		return nil
+	}
+
+	if m.MemberType != nil {
+		if err := m.MemberType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("member_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("member_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SecurityGroupWhereInput) validateMemberTypeIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.MemberTypeIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MemberTypeIn); i++ {
+
+		if err := m.MemberTypeIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("member_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("member_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *SecurityGroupWhereInput) validateMemberTypeNot(formats strfmt.Registry) error {
+	if swag.IsZero(m.MemberTypeNot) { // not required
+		return nil
+	}
+
+	if m.MemberTypeNot != nil {
+		if err := m.MemberTypeNot.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("member_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("member_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SecurityGroupWhereInput) validateMemberTypeNotIn(formats strfmt.Registry) error {
+	if swag.IsZero(m.MemberTypeNotIn) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MemberTypeNotIn); i++ {
+
+		if err := m.MemberTypeNotIn[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("member_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("member_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
 func (m *SecurityGroupWhereInput) validateSecurityPoliciesEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.SecurityPoliciesEvery) { // not required
 		return nil
@@ -1715,6 +2575,22 @@ func (m *SecurityGroupWhereInput) ContextValidate(ctx context.Context, formats s
 	}
 
 	if err := m.contextValidateIsolationPoliciesSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMemberType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMemberTypeIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMemberTypeNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMemberTypeNotIn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1867,6 +2743,74 @@ func (m *SecurityGroupWhereInput) contextValidateIsolationPoliciesSome(ctx conte
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *SecurityGroupWhereInput) contextValidateMemberType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MemberType != nil {
+		if err := m.MemberType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("member_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("member_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SecurityGroupWhereInput) contextValidateMemberTypeIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MemberTypeIn); i++ {
+
+		if err := m.MemberTypeIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("member_type_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("member_type_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *SecurityGroupWhereInput) contextValidateMemberTypeNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MemberTypeNot != nil {
+		if err := m.MemberTypeNot.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("member_type_not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("member_type_not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SecurityGroupWhereInput) contextValidateMemberTypeNotIn(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MemberTypeNotIn); i++ {
+
+		if err := m.MemberTypeNotIn[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("member_type_not_in" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("member_type_not_in" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
 	return nil

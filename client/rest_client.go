@@ -6,6 +6,12 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"fmt"
+	"net/http"
+	"net/url"
+	"strings"
+
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
@@ -97,6 +103,7 @@ import (
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snmp_transport"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/snmp_trap_receiver"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/svt_image"
+	"github.com/smartxworks/cloudtower-go-sdk/v2/client/sync_replication_plan"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/system_audit_log"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/table_reporter"
 	"github.com/smartxworks/cloudtower-go-sdk/v2/client/task"
@@ -170,8 +177,25 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Clo
 	}
 
 	// create transport and client
-	transport := httptransport.New(cfg.Host, cfg.BasePath, cfg.Schemes)
-	return New(transport, formats)
+	host := cfg.Host
+	basePath := cfg.BasePath
+	probePath := cfg.ProbePath
+	schemes := cfg.Schemes
+	if probePath == "" {
+		probePath = activePassiveDefaultProbePath
+	}
+	commonPath := cfg.CommonBasePath
+	if parsed, err := url.Parse(strings.TrimSpace(cfg.CommonBasePath)); err == nil && parsed.Scheme != "" && parsed.Host != "" {
+		commonPath = parsed.Path
+		host = parsed.Host
+		schemes = []string{parsed.Scheme}
+	}
+	basePath = joinURLPaths(commonPath, basePath)
+	probePath = joinURLPaths(commonPath, probePath)
+	transport := httptransport.New(host, basePath, schemes)
+	client := New(transport, formats)
+	client.probePath = probePath
+	return client
 }
 
 // New creates a new cloudtower client
@@ -270,6 +294,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 	cli.SnmpTransport = snmp_transport.New(transport, formats)
 	cli.SnmpTrapReceiver = snmp_trap_receiver.New(transport, formats)
 	cli.SvtImage = svt_image.New(transport, formats)
+	cli.SyncReplicationPlan = sync_replication_plan.New(transport, formats)
 	cli.SystemAuditLog = system_audit_log.New(transport, formats)
 	cli.TableReporter = table_reporter.New(transport, formats)
 	cli.Task = task.New(transport, formats)
@@ -319,18 +344,27 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Cloudtower
 // default settings taken from the meta section of the spec file.
 func DefaultTransportConfig() *TransportConfig {
 	return &TransportConfig{
-		Host:     DefaultHost,
-		BasePath: DefaultBasePath,
-		Schemes:  DefaultSchemes,
+		Host:      DefaultHost,
+		BasePath:  DefaultBasePath,
+		ProbePath: activePassiveDefaultProbePath,
+		Schemes:   DefaultSchemes,
 	}
 }
 
 // TransportConfig contains the transport related info,
 // found in the meta section of the spec file.
 type TransportConfig struct {
-	Host     string
-	BasePath string
-	Schemes  []string
+	CommonBasePath string
+	Host           string
+	BasePath       string
+	ProbePath      string
+	Schemes        []string
+}
+
+// WithCommonBasePath overrides the common base path used by API requests and probes.
+func (cfg *TransportConfig) WithCommonBasePath(commonBasePath string) *TransportConfig {
+	cfg.CommonBasePath = commonBasePath
+	return cfg
 }
 
 // WithHost overrides the default host,
@@ -344,6 +378,12 @@ func (cfg *TransportConfig) WithHost(host string) *TransportConfig {
 // provided by the meta section of the spec file.
 func (cfg *TransportConfig) WithBasePath(basePath string) *TransportConfig {
 	cfg.BasePath = basePath
+	return cfg
+}
+
+// WithProbePath overrides the default active/passive probe path.
+func (cfg *TransportConfig) WithProbePath(probePath string) *TransportConfig {
+	cfg.ProbePath = probePath
 	return cfg
 }
 
@@ -530,6 +570,8 @@ type Cloudtower struct {
 
 	SvtImage svt_image.ClientService
 
+	SyncReplicationPlan sync_replication_plan.ClientService
+
 	SystemAuditLog system_audit_log.ClientService
 
 	TableReporter table_reporter.ClientService
@@ -615,6 +657,8 @@ type Cloudtower struct {
 	ZoneTopo zone_topo.ClientService
 
 	Transport runtime.ClientTransport
+
+	probePath string
 }
 
 // SetTransport changes the transport on the client and all its subresources
@@ -707,6 +751,7 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.SnmpTransport.SetTransport(transport)
 	c.SnmpTrapReceiver.SetTransport(transport)
 	c.SvtImage.SetTransport(transport)
+	c.SyncReplicationPlan.SetTransport(transport)
 	c.SystemAuditLog.SetTransport(transport)
 	c.TableReporter.SetTransport(transport)
 	c.Task.SetTransport(transport)
@@ -749,4 +794,73 @@ func (c *Cloudtower) SetTransport(transport runtime.ClientTransport) {
 	c.WitnessService.SetTransport(transport)
 	c.Zone.SetTransport(transport)
 	c.ZoneTopo.SetTransport(transport)
+}
+
+// ProbeActivePassive probes the current endpoint and reports whether it is active.
+// It sends a GET request to /api/healthz on the endpoint base URL.
+// 200 means active, 307 means passive, and any other result is treated as an error.
+func (c *Cloudtower) ProbeActivePassive(ctx context.Context) (bool, error) {
+	transport, ok := c.Transport.(*httptransport.Runtime)
+	if !ok {
+		return false, fmt.Errorf("unsupported transport type for ProbeActivePassive: %T", c.Transport)
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+
+	if transport.Host == "" {
+		return false, fmt.Errorf("probe active-passive missing host")
+	}
+	probePath := c.probePath
+	if probePath == "" {
+		probePath = activePassiveDefaultProbePath
+	}
+
+	op := &runtime.ClientOperation{
+		ID:                 "probe-active-passive",
+		Method:             http.MethodGet,
+		PathPattern:        "/",
+		ProducesMediaTypes: []string{runtime.JSONMime},
+		Params: runtime.ClientRequestWriterFunc(func(runtime.ClientRequest, strfmt.Registry) error {
+			return nil
+		}),
+		Reader: runtime.ClientResponseReaderFunc(func(runtime.ClientResponse, runtime.Consumer) (interface{}, error) {
+			return nil, nil
+		}),
+		Context: ctx,
+	}
+
+	req, err := transport.CreateHttpRequest(op)
+	if err != nil {
+		return false, err
+	}
+	req.URL.Path = probePath
+	req.URL.RawPath = ""
+	req.URL.RawQuery = ""
+
+	httpClient := &http.Client{
+		Transport: transport.Transport,
+		Jar:       transport.Jar,
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			return http.ErrUseLastResponse
+		},
+	}
+	if httpClient.Transport == nil {
+		httpClient.Transport = http.DefaultTransport
+	}
+
+	resp, err := httpClient.Do(req.WithContext(ctx))
+	if err != nil {
+		return false, err
+	}
+	defer resp.Body.Close()
+
+	switch resp.StatusCode {
+	case http.StatusOK:
+		return true, nil
+	case http.StatusTemporaryRedirect:
+		return false, nil
+	default:
+		return false, runtime.NewAPIError("probe active-passive returned unexpected status", activePassiveHTTPResponse{response: resp}, resp.StatusCode)
+	}
 }
