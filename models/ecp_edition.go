@@ -33,6 +33,9 @@ const (
 	// EcpEditionECPADVANCED captures enum value "ECP_ADVANCED"
 	EcpEditionECPADVANCED EcpEdition = "ECP_ADVANCED"
 
+	// EcpEditionECPCOMPUTE captures enum value "ECP_COMPUTE"
+	EcpEditionECPCOMPUTE EcpEdition = "ECP_COMPUTE"
+
 	// EcpEditionECPESSENTIAL captures enum value "ECP_ESSENTIAL"
 	EcpEditionECPESSENTIAL EcpEdition = "ECP_ESSENTIAL"
 
@@ -41,6 +44,9 @@ const (
 
 	// EcpEditionECPVDIESSENTIAL captures enum value "ECP_VDI_ESSENTIAL"
 	EcpEditionECPVDIESSENTIAL EcpEdition = "ECP_VDI_ESSENTIAL"
+
+	// EcpEditionECPVDISTANDARD captures enum value "ECP_VDI_STANDARD"
+	EcpEditionECPVDISTANDARD EcpEdition = "ECP_VDI_STANDARD"
 )
 
 // for schema
@@ -48,7 +54,7 @@ var ecpEditionEnum []interface{}
 
 func init() {
 	var res []EcpEdition
-	if err := json.Unmarshal([]byte(`["ECP_ADVANCED","ECP_ESSENTIAL","ECP_STANDARD","ECP_VDI_ESSENTIAL"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ECP_ADVANCED","ECP_COMPUTE","ECP_ESSENTIAL","ECP_STANDARD","ECP_VDI_ESSENTIAL","ECP_VDI_STANDARD"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

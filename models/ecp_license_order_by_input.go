@@ -30,11 +30,35 @@ func (m EcpLicenseOrderByInput) Pointer() *EcpLicenseOrderByInput {
 
 const (
 
+	// EcpLicenseOrderByInputAsyncReplicationASC captures enum value "async_replication_ASC"
+	EcpLicenseOrderByInputAsyncReplicationASC EcpLicenseOrderByInput = "async_replication_ASC"
+
+	// EcpLicenseOrderByInputAsyncReplicationDESC captures enum value "async_replication_DESC"
+	EcpLicenseOrderByInputAsyncReplicationDESC EcpLicenseOrderByInput = "async_replication_DESC"
+
+	// EcpLicenseOrderByInputBackupASC captures enum value "backup_ASC"
+	EcpLicenseOrderByInputBackupASC EcpLicenseOrderByInput = "backup_ASC"
+
+	// EcpLicenseOrderByInputBackupDESC captures enum value "backup_DESC"
+	EcpLicenseOrderByInputBackupDESC EcpLicenseOrderByInput = "backup_DESC"
+
+	// EcpLicenseOrderByInputBrandASC captures enum value "brand_ASC"
+	EcpLicenseOrderByInputBrandASC EcpLicenseOrderByInput = "brand_ASC"
+
+	// EcpLicenseOrderByInputBrandDESC captures enum value "brand_DESC"
+	EcpLicenseOrderByInputBrandDESC EcpLicenseOrderByInput = "brand_DESC"
+
 	// EcpLicenseOrderByInputClusterLocalIDASC captures enum value "cluster_local_id_ASC"
 	EcpLicenseOrderByInputClusterLocalIDASC EcpLicenseOrderByInput = "cluster_local_id_ASC"
 
 	// EcpLicenseOrderByInputClusterLocalIDDESC captures enum value "cluster_local_id_DESC"
 	EcpLicenseOrderByInputClusterLocalIDDESC EcpLicenseOrderByInput = "cluster_local_id_DESC"
+
+	// EcpLicenseOrderByInputDfwASC captures enum value "dfw_ASC"
+	EcpLicenseOrderByInputDfwASC EcpLicenseOrderByInput = "dfw_ASC"
+
+	// EcpLicenseOrderByInputDfwDESC captures enum value "dfw_DESC"
+	EcpLicenseOrderByInputDfwDESC EcpLicenseOrderByInput = "dfw_DESC"
 
 	// EcpLicenseOrderByInputEcpEditionASC captures enum value "ecp_edition_ASC"
 	EcpLicenseOrderByInputEcpEditionASC EcpLicenseOrderByInput = "ecp_edition_ASC"
@@ -47,6 +71,18 @@ const (
 
 	// EcpLicenseOrderByInputExpireDateDESC captures enum value "expire_date_DESC"
 	EcpLicenseOrderByInputExpireDateDESC EcpLicenseOrderByInput = "expire_date_DESC"
+
+	// EcpLicenseOrderByInputExternalStorageASC captures enum value "external_storage_ASC"
+	EcpLicenseOrderByInputExternalStorageASC EcpLicenseOrderByInput = "external_storage_ASC"
+
+	// EcpLicenseOrderByInputExternalStorageDESC captures enum value "external_storage_DESC"
+	EcpLicenseOrderByInputExternalStorageDESC EcpLicenseOrderByInput = "external_storage_DESC"
+
+	// EcpLicenseOrderByInputFileStorageASC captures enum value "file_storage_ASC"
+	EcpLicenseOrderByInputFileStorageASC EcpLicenseOrderByInput = "file_storage_ASC"
+
+	// EcpLicenseOrderByInputFileStorageDESC captures enum value "file_storage_DESC"
+	EcpLicenseOrderByInputFileStorageDESC EcpLicenseOrderByInput = "file_storage_DESC"
 
 	// EcpLicenseOrderByInputHasMetroxASC captures enum value "has_metrox_ASC"
 	EcpLicenseOrderByInputHasMetroxASC EcpLicenseOrderByInput = "has_metrox_ASC"
@@ -65,6 +101,30 @@ const (
 
 	// EcpLicenseOrderByInputIDDESC captures enum value "id_DESC"
 	EcpLicenseOrderByInputIDDESC EcpLicenseOrderByInput = "id_DESC"
+
+	// EcpLicenseOrderByInputK8sBareMetalASC captures enum value "k8s_bare_metal_ASC"
+	EcpLicenseOrderByInputK8sBareMetalASC EcpLicenseOrderByInput = "k8s_bare_metal_ASC"
+
+	// EcpLicenseOrderByInputK8sBareMetalDESC captures enum value "k8s_bare_metal_DESC"
+	EcpLicenseOrderByInputK8sBareMetalDESC EcpLicenseOrderByInput = "k8s_bare_metal_DESC"
+
+	// EcpLicenseOrderByInputK8sServiceASC captures enum value "k8s_service_ASC"
+	EcpLicenseOrderByInputK8sServiceASC EcpLicenseOrderByInput = "k8s_service_ASC"
+
+	// EcpLicenseOrderByInputK8sServiceDESC captures enum value "k8s_service_DESC"
+	EcpLicenseOrderByInputK8sServiceDESC EcpLicenseOrderByInput = "k8s_service_DESC"
+
+	// EcpLicenseOrderByInputLbASC captures enum value "lb_ASC"
+	EcpLicenseOrderByInputLbASC EcpLicenseOrderByInput = "lb_ASC"
+
+	// EcpLicenseOrderByInputLbDESC captures enum value "lb_DESC"
+	EcpLicenseOrderByInputLbDESC EcpLicenseOrderByInput = "lb_DESC"
+
+	// EcpLicenseOrderByInputLicenseSignatureASC captures enum value "license_signature_ASC"
+	EcpLicenseOrderByInputLicenseSignatureASC EcpLicenseOrderByInput = "license_signature_ASC"
+
+	// EcpLicenseOrderByInputLicenseSignatureDESC captures enum value "license_signature_DESC"
+	EcpLicenseOrderByInputLicenseSignatureDESC EcpLicenseOrderByInput = "license_signature_DESC"
 
 	// EcpLicenseOrderByInputLicenseTypeASC captures enum value "license_type_ASC"
 	EcpLicenseOrderByInputLicenseTypeASC EcpLicenseOrderByInput = "license_type_ASC"
@@ -120,6 +180,18 @@ const (
 	// EcpLicenseOrderByInputSubscriptionStartDateDESC captures enum value "subscription_start_date_DESC"
 	EcpLicenseOrderByInputSubscriptionStartDateDESC EcpLicenseOrderByInput = "subscription_start_date_DESC"
 
+	// EcpLicenseOrderByInputSyncReplicationASC captures enum value "sync_replication_ASC"
+	EcpLicenseOrderByInputSyncReplicationASC EcpLicenseOrderByInput = "sync_replication_ASC"
+
+	// EcpLicenseOrderByInputSyncReplicationDESC captures enum value "sync_replication_DESC"
+	EcpLicenseOrderByInputSyncReplicationDESC EcpLicenseOrderByInput = "sync_replication_DESC"
+
+	// EcpLicenseOrderByInputTrafficVisualizationASC captures enum value "traffic_visualization_ASC"
+	EcpLicenseOrderByInputTrafficVisualizationASC EcpLicenseOrderByInput = "traffic_visualization_ASC"
+
+	// EcpLicenseOrderByInputTrafficVisualizationDESC captures enum value "traffic_visualization_DESC"
+	EcpLicenseOrderByInputTrafficVisualizationDESC EcpLicenseOrderByInput = "traffic_visualization_DESC"
+
 	// EcpLicenseOrderByInputVendorASC captures enum value "vendor_ASC"
 	EcpLicenseOrderByInputVendorASC EcpLicenseOrderByInput = "vendor_ASC"
 
@@ -131,6 +203,12 @@ const (
 
 	// EcpLicenseOrderByInputVersionDESC captures enum value "version_DESC"
 	EcpLicenseOrderByInputVersionDESC EcpLicenseOrderByInput = "version_DESC"
+
+	// EcpLicenseOrderByInputVpcASC captures enum value "vpc_ASC"
+	EcpLicenseOrderByInputVpcASC EcpLicenseOrderByInput = "vpc_ASC"
+
+	// EcpLicenseOrderByInputVpcDESC captures enum value "vpc_DESC"
+	EcpLicenseOrderByInputVpcDESC EcpLicenseOrderByInput = "vpc_DESC"
 )
 
 // for schema
@@ -138,7 +216,7 @@ var ecpLicenseOrderByInputEnum []interface{}
 
 func init() {
 	var res []EcpLicenseOrderByInput
-	if err := json.Unmarshal([]byte(`["cluster_local_id_ASC","cluster_local_id_DESC","ecp_edition_ASC","ecp_edition_DESC","expire_date_ASC","expire_date_DESC","has_metrox_ASC","has_metrox_DESC","has_remote_backup_ASC","has_remote_backup_DESC","id_ASC","id_DESC","license_type_ASC","license_type_DESC","max_core_num_ASC","max_core_num_DESC","max_physical_data_capacity_ASC","max_physical_data_capacity_DESC","original_code_ASC","original_code_DESC","product_name_ASC","product_name_DESC","serial_ASC","serial_DESC","sign_date_ASC","sign_date_DESC","subscription_expire_date_ASC","subscription_expire_date_DESC","subscription_start_date_ASC","subscription_start_date_DESC","vendor_ASC","vendor_DESC","version_ASC","version_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["async_replication_ASC","async_replication_DESC","backup_ASC","backup_DESC","brand_ASC","brand_DESC","cluster_local_id_ASC","cluster_local_id_DESC","dfw_ASC","dfw_DESC","ecp_edition_ASC","ecp_edition_DESC","expire_date_ASC","expire_date_DESC","external_storage_ASC","external_storage_DESC","file_storage_ASC","file_storage_DESC","has_metrox_ASC","has_metrox_DESC","has_remote_backup_ASC","has_remote_backup_DESC","id_ASC","id_DESC","k8s_bare_metal_ASC","k8s_bare_metal_DESC","k8s_service_ASC","k8s_service_DESC","lb_ASC","lb_DESC","license_signature_ASC","license_signature_DESC","license_type_ASC","license_type_DESC","max_core_num_ASC","max_core_num_DESC","max_physical_data_capacity_ASC","max_physical_data_capacity_DESC","original_code_ASC","original_code_DESC","product_name_ASC","product_name_DESC","serial_ASC","serial_DESC","sign_date_ASC","sign_date_DESC","subscription_expire_date_ASC","subscription_expire_date_DESC","subscription_start_date_ASC","subscription_start_date_DESC","sync_replication_ASC","sync_replication_DESC","traffic_visualization_ASC","traffic_visualization_DESC","vendor_ASC","vendor_DESC","version_ASC","version_DESC","vpc_ASC","vpc_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

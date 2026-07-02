@@ -25,6 +25,9 @@ type MetricLabel struct {
 	// Enum: [MetricLabel]
 	Typename *string `json:"__typename,omitempty"`
 
+	// adapter
+	Adapter *string `json:"_adapter,omitempty"`
+
 	// chunk
 	Chunk *string `json:"_chunk,omitempty"`
 
@@ -70,6 +73,12 @@ type MetricLabel struct {
 	// zone
 	Zone *string `json:"_zone,omitempty"`
 
+	// adapter type
+	AdapterType *string `json:"adapter_type,omitempty"`
+
+	// identifier
+	Identifier *string `json:"identifier,omitempty"`
+
 	// instance
 	Instance *string `json:"instance,omitempty"`
 
@@ -96,6 +105,8 @@ type MetricLabel struct {
 
 type MetricLabelMarshalOpts struct {
 	Typename_Explicit_Null_When_Empty bool
+
+	Adapter_Explicit_Null_When_Empty bool
 
 	Chunk_Explicit_Null_When_Empty bool
 
@@ -126,6 +137,10 @@ type MetricLabelMarshalOpts struct {
 	Witness_Explicit_Null_When_Empty bool
 
 	Zone_Explicit_Null_When_Empty bool
+
+	AdapterType_Explicit_Null_When_Empty bool
+
+	Identifier_Explicit_Null_When_Empty bool
 
 	Instance_Explicit_Null_When_Empty bool
 
@@ -165,6 +180,26 @@ func (m MetricLabel) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"__typename\":null")
+		first = false
+	}
+
+	// handle nullable field _adapter
+	if m.Adapter != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"_adapter\":")
+		bytes, err := swag.WriteJSON(m.Adapter)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Adapter_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"_adapter\":null")
 		first = false
 	}
 
@@ -465,6 +500,46 @@ func (m MetricLabel) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"_zone\":null")
+		first = false
+	}
+
+	// handle nullable field adapter_type
+	if m.AdapterType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"adapter_type\":")
+		bytes, err := swag.WriteJSON(m.AdapterType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AdapterType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"adapter_type\":null")
+		first = false
+	}
+
+	// handle nullable field identifier
+	if m.Identifier != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"identifier\":")
+		bytes, err := swag.WriteJSON(m.Identifier)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Identifier_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"identifier\":null")
 		first = false
 	}
 
