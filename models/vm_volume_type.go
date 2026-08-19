@@ -35,6 +35,9 @@ const (
 
 	// VMVolumeTypeKVMVOLUMEISCSI captures enum value "KVM_VOLUME_ISCSI"
 	VMVolumeTypeKVMVOLUMEISCSI VMVolumeType = "KVM_VOLUME_ISCSI"
+
+	// VMVolumeTypeKVMVOLUMEVCFS captures enum value "KVM_VOLUME_VCFS"
+	VMVolumeTypeKVMVOLUMEVCFS VMVolumeType = "KVM_VOLUME_VCFS"
 )
 
 // for schema
@@ -42,7 +45,7 @@ var vmVolumeTypeEnum []interface{}
 
 func init() {
 	var res []VMVolumeType
-	if err := json.Unmarshal([]byte(`["KVM_VOLUME","KVM_VOLUME_ISCSI"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["KVM_VOLUME","KVM_VOLUME_ISCSI","KVM_VOLUME_VCFS"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

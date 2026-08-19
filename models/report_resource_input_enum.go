@@ -39,14 +39,17 @@ const (
 	// ReportResourceInputEnumCLUSTER captures enum value "CLUSTER"
 	ReportResourceInputEnumCLUSTER ReportResourceInputEnum = "CLUSTER"
 
+	// ReportResourceInputEnumCONTENTLIBRARYIMAGE captures enum value "CONTENT_LIBRARY_IMAGE"
+	ReportResourceInputEnumCONTENTLIBRARYIMAGE ReportResourceInputEnum = "CONTENT_LIBRARY_IMAGE"
+
+	// ReportResourceInputEnumCONTENTLIBRARYVMTEMPLATE captures enum value "CONTENT_LIBRARY_VM_TEMPLATE"
+	ReportResourceInputEnumCONTENTLIBRARYVMTEMPLATE ReportResourceInputEnum = "CONTENT_LIBRARY_VM_TEMPLATE"
+
 	// ReportResourceInputEnumDATACENTER captures enum value "DATA_CENTER"
 	ReportResourceInputEnumDATACENTER ReportResourceInputEnum = "DATA_CENTER"
 
 	// ReportResourceInputEnumDISK captures enum value "DISK"
 	ReportResourceInputEnumDISK ReportResourceInputEnum = "DISK"
-
-	// ReportResourceInputEnumELFIMAGE captures enum value "ELF_IMAGE"
-	ReportResourceInputEnumELFIMAGE ReportResourceInputEnum = "ELF_IMAGE"
 
 	// ReportResourceInputEnumENTITYFILTERS captures enum value "ENTITY_FILTERS"
 	ReportResourceInputEnumENTITYFILTERS ReportResourceInputEnum = "ENTITY_FILTERS"
@@ -68,9 +71,6 @@ const (
 
 	// ReportResourceInputEnumVM captures enum value "VM"
 	ReportResourceInputEnumVM ReportResourceInputEnum = "VM"
-
-	// ReportResourceInputEnumVMTEMPLATE captures enum value "VM_TEMPLATE"
-	ReportResourceInputEnumVMTEMPLATE ReportResourceInputEnum = "VM_TEMPLATE"
 )
 
 // for schema
@@ -78,7 +78,7 @@ var reportResourceInputEnumEnum []interface{}
 
 func init() {
 	var res []ReportResourceInputEnum
-	if err := json.Unmarshal([]byte(`["ALERT","ALL","CLUSTER","DATA_CENTER","DISK","ELF_IMAGE","ENTITY_FILTERS","GLOBAL_ALERT_RULE","HOST","TASK","VDS","VLAN","VM","VM_TEMPLATE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ALERT","ALL","CLUSTER","CONTENT_LIBRARY_IMAGE","CONTENT_LIBRARY_VM_TEMPLATE","DATA_CENTER","DISK","ENTITY_FILTERS","GLOBAL_ALERT_RULE","HOST","TASK","VDS","VLAN","VM"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
