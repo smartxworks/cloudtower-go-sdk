@@ -36,6 +36,8 @@ type ClientService interface {
 
 	DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserOK, error)
 
+	GetAuthConfigs(params *GetAuthConfigsParams, opts ...ClientOption) (*GetAuthConfigsOK, error)
+
 	GetMyInfo(params *GetMyInfoParams, opts ...ClientOption) (*GetMyInfoOK, error)
 
 	GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error)
@@ -160,6 +162,44 @@ func (a *Client) DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*De
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for DeleteUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetAuthConfigs get auth configs API
+*/
+func (a *Client) GetAuthConfigs(params *GetAuthConfigsParams, opts ...ClientOption) (*GetAuthConfigsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAuthConfigsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetAuthConfigs",
+		Method:             "POST",
+		PathPattern:        "/get-auth-configs",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetAuthConfigsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAuthConfigsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for GetAuthConfigs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -48,6 +48,18 @@ const (
 	// VMFolderOrderByInputNameDESC captures enum value "name_DESC"
 	VMFolderOrderByInputNameDESC VMFolderOrderByInput = "name_DESC"
 
+	// VMFolderOrderByInputPathASC captures enum value "path_ASC"
+	VMFolderOrderByInputPathASC VMFolderOrderByInput = "path_ASC"
+
+	// VMFolderOrderByInputPathDESC captures enum value "path_DESC"
+	VMFolderOrderByInputPathDESC VMFolderOrderByInput = "path_DESC"
+
+	// VMFolderOrderByInputTotalVMNumASC captures enum value "total_vm_num_ASC"
+	VMFolderOrderByInputTotalVMNumASC VMFolderOrderByInput = "total_vm_num_ASC"
+
+	// VMFolderOrderByInputTotalVMNumDESC captures enum value "total_vm_num_DESC"
+	VMFolderOrderByInputTotalVMNumDESC VMFolderOrderByInput = "total_vm_num_DESC"
+
 	// VMFolderOrderByInputVMNumASC captures enum value "vm_num_ASC"
 	VMFolderOrderByInputVMNumASC VMFolderOrderByInput = "vm_num_ASC"
 
@@ -60,7 +72,7 @@ var vmFolderOrderByInputEnum []interface{}
 
 func init() {
 	var res []VMFolderOrderByInput
-	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["id_ASC","id_DESC","local_id_ASC","local_id_DESC","name_ASC","name_DESC","path_ASC","path_DESC","total_vm_num_ASC","total_vm_num_DESC","vm_num_ASC","vm_num_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

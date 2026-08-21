@@ -219,14 +219,18 @@ func (m *VMFolderUpdationParams) UnmarshalBinary(b []byte) error {
 type VMFolderUpdationParamsData struct {
 
 	// name
-	// Required: true
-	Name *string `json:"name"`
+	Name *string `json:"name,omitempty"`
+
+	// parent id
+	ParentID *string `json:"parent_id,omitempty"`
 
 	MarshalOpts *VMFolderUpdationParamsDataMarshalOpts `json:"-"`
 }
 
 type VMFolderUpdationParamsDataMarshalOpts struct {
 	Name_Explicit_Null_When_Empty bool
+
+	ParentID_Explicit_Null_When_Empty bool
 }
 
 func (m VMFolderUpdationParamsData) MarshalJSON() ([]byte, error) {
@@ -255,30 +259,32 @@ func (m VMFolderUpdationParamsData) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field parent_id
+	if m.ParentID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent_id\":")
+		bytes, err := swag.WriteJSON(m.ParentID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ParentID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent_id\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
 
 // Validate validates this VM folder updation params data
 func (m *VMFolderUpdationParamsData) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *VMFolderUpdationParamsData) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("data"+"."+"name", "body", m.Name); err != nil {
-		return err
-	}
-
 	return nil
 }
 

@@ -158,6 +158,75 @@ type VMFolderWhereInput struct {
 	// name starts with
 	NameStartsWith *string `json:"name_starts_with,omitempty"`
 
+	// parent
+	Parent *VMFolderWhereInput `json:"parent,omitempty"`
+
+	// path
+	Path *string `json:"path,omitempty"`
+
+	// path contains
+	PathContains *string `json:"path_contains,omitempty"`
+
+	// path ends with
+	PathEndsWith *string `json:"path_ends_with,omitempty"`
+
+	// path gt
+	PathGt *string `json:"path_gt,omitempty"`
+
+	// path gte
+	PathGte *string `json:"path_gte,omitempty"`
+
+	// path in
+	PathIn []string `json:"path_in,omitempty"`
+
+	// path lt
+	PathLt *string `json:"path_lt,omitempty"`
+
+	// path lte
+	PathLte *string `json:"path_lte,omitempty"`
+
+	// path not
+	PathNot *string `json:"path_not,omitempty"`
+
+	// path not contains
+	PathNotContains *string `json:"path_not_contains,omitempty"`
+
+	// path not ends with
+	PathNotEndsWith *string `json:"path_not_ends_with,omitempty"`
+
+	// path not in
+	PathNotIn []string `json:"path_not_in,omitempty"`
+
+	// path not starts with
+	PathNotStartsWith *string `json:"path_not_starts_with,omitempty"`
+
+	// path starts with
+	PathStartsWith *string `json:"path_starts_with,omitempty"`
+
+	// total vm num
+	TotalVMNum *int32 `json:"total_vm_num,omitempty"`
+
+	// total vm num gt
+	TotalVMNumGt *int32 `json:"total_vm_num_gt,omitempty"`
+
+	// total vm num gte
+	TotalVMNumGte *int32 `json:"total_vm_num_gte,omitempty"`
+
+	// total vm num in
+	TotalVMNumIn []int32 `json:"total_vm_num_in,omitempty"`
+
+	// total vm num lt
+	TotalVMNumLt *int32 `json:"total_vm_num_lt,omitempty"`
+
+	// total vm num lte
+	TotalVMNumLte *int32 `json:"total_vm_num_lte,omitempty"`
+
+	// total vm num not
+	TotalVMNumNot *int32 `json:"total_vm_num_not,omitempty"`
+
+	// total vm num not in
+	TotalVMNumNotIn []int32 `json:"total_vm_num_not_in,omitempty"`
+
 	// vm num
 	VMNum *int32 `json:"vm_num,omitempty"`
 
@@ -286,6 +355,52 @@ type VMFolderWhereInputMarshalOpts struct {
 	NameNotStartsWith_Explicit_Null_When_Empty bool
 
 	NameStartsWith_Explicit_Null_When_Empty bool
+
+	Parent_Explicit_Null_When_Empty bool
+
+	Path_Explicit_Null_When_Empty bool
+
+	PathContains_Explicit_Null_When_Empty bool
+
+	PathEndsWith_Explicit_Null_When_Empty bool
+
+	PathGt_Explicit_Null_When_Empty bool
+
+	PathGte_Explicit_Null_When_Empty bool
+
+	PathIn_Explicit_Null_When_Empty bool
+
+	PathLt_Explicit_Null_When_Empty bool
+
+	PathLte_Explicit_Null_When_Empty bool
+
+	PathNot_Explicit_Null_When_Empty bool
+
+	PathNotContains_Explicit_Null_When_Empty bool
+
+	PathNotEndsWith_Explicit_Null_When_Empty bool
+
+	PathNotIn_Explicit_Null_When_Empty bool
+
+	PathNotStartsWith_Explicit_Null_When_Empty bool
+
+	PathStartsWith_Explicit_Null_When_Empty bool
+
+	TotalVMNum_Explicit_Null_When_Empty bool
+
+	TotalVMNumGt_Explicit_Null_When_Empty bool
+
+	TotalVMNumGte_Explicit_Null_When_Empty bool
+
+	TotalVMNumIn_Explicit_Null_When_Empty bool
+
+	TotalVMNumLt_Explicit_Null_When_Empty bool
+
+	TotalVMNumLte_Explicit_Null_When_Empty bool
+
+	TotalVMNumNot_Explicit_Null_When_Empty bool
+
+	TotalVMNumNotIn_Explicit_Null_When_Empty bool
 
 	VMNum_Explicit_Null_When_Empty bool
 
@@ -1182,6 +1297,442 @@ func (m VMFolderWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field parent
+	if m.Parent != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent\":")
+		bytes, err := swag.WriteJSON(m.Parent)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Parent_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent\":null")
+		first = false
+	}
+
+	// handle nullable field path
+	if m.Path != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":")
+		bytes, err := swag.WriteJSON(m.Path)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Path_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":null")
+		first = false
+	}
+
+	// handle nullable field path_contains
+	if m.PathContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_contains\":")
+		bytes, err := swag.WriteJSON(m.PathContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_contains\":null")
+		first = false
+	}
+
+	// handle nullable field path_ends_with
+	if m.PathEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_ends_with\":")
+		bytes, err := swag.WriteJSON(m.PathEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field path_gt
+	if m.PathGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_gt\":")
+		bytes, err := swag.WriteJSON(m.PathGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_gt\":null")
+		first = false
+	}
+
+	// handle nullable field path_gte
+	if m.PathGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_gte\":")
+		bytes, err := swag.WriteJSON(m.PathGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field path_in with omitempty
+	if !swag.IsZero(m.PathIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_in\":")
+		bytes, err := swag.WriteJSON(m.PathIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field path_lt
+	if m.PathLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_lt\":")
+		bytes, err := swag.WriteJSON(m.PathLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_lt\":null")
+		first = false
+	}
+
+	// handle nullable field path_lte
+	if m.PathLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_lte\":")
+		bytes, err := swag.WriteJSON(m.PathLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_lte\":null")
+		first = false
+	}
+
+	// handle nullable field path_not
+	if m.PathNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not\":")
+		bytes, err := swag.WriteJSON(m.PathNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not\":null")
+		first = false
+	}
+
+	// handle nullable field path_not_contains
+	if m.PathNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not_contains\":")
+		bytes, err := swag.WriteJSON(m.PathNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field path_not_ends_with
+	if m.PathNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.PathNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field path_not_in with omitempty
+	if !swag.IsZero(m.PathNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not_in\":")
+		bytes, err := swag.WriteJSON(m.PathNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field path_not_starts_with
+	if m.PathNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.PathNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field path_starts_with
+	if m.PathStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_starts_with\":")
+		bytes, err := swag.WriteJSON(m.PathStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.PathStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field total_vm_num
+	if m.TotalVMNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalVMNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num\":null")
+		first = false
+	}
+
+	// handle nullable field total_vm_num_gt
+	if m.TotalVMNumGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_gt\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNumGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalVMNumGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_gt\":null")
+		first = false
+	}
+
+	// handle nullable field total_vm_num_gte
+	if m.TotalVMNumGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_gte\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNumGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalVMNumGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field total_vm_num_in with omitempty
+	if !swag.IsZero(m.TotalVMNumIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_in\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNumIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field total_vm_num_lt
+	if m.TotalVMNumLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_lt\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNumLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalVMNumLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_lt\":null")
+		first = false
+	}
+
+	// handle nullable field total_vm_num_lte
+	if m.TotalVMNumLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_lte\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNumLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalVMNumLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_lte\":null")
+		first = false
+	}
+
+	// handle nullable field total_vm_num_not
+	if m.TotalVMNumNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_not\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNumNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalVMNumNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_not\":null")
+		first = false
+	}
+
+	// handle non nullable field total_vm_num_not_in with omitempty
+	if !swag.IsZero(m.TotalVMNumNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num_not_in\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNumNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field vm_num
 	if m.VMNum != nil {
 		if !first {
@@ -1414,6 +1965,10 @@ func (m *VMFolderWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateParent(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVmsEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1529,6 +2084,25 @@ func (m *VMFolderWhereInput) validateCluster(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMFolderWhereInput) validateParent(formats strfmt.Registry) error {
+	if swag.IsZero(m.Parent) { // not required
+		return nil
+	}
+
+	if m.Parent != nil {
+		if err := m.Parent.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("parent")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("parent")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMFolderWhereInput) validateVmsEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.VmsEvery) { // not required
 		return nil
@@ -1603,6 +2177,10 @@ func (m *VMFolderWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateCluster(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateParent(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1692,6 +2270,22 @@ func (m *VMFolderWhereInput) contextValidateCluster(ctx context.Context, formats
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMFolderWhereInput) contextValidateParent(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Parent != nil {
+		if err := m.Parent.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("parent")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("parent")
 			}
 			return err
 		}
