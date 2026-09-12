@@ -38,7 +38,7 @@ type VMCreateVMFromContentLibraryTemplateParams struct {
 	Description *string `json:"description,omitempty"`
 
 	// disk operate
-	DiskOperate *VMDiskOperate `json:"disk_operate,omitempty"`
+	DiskOperate *ContentLibraryVMTemplateDiskOperate `json:"disk_operate,omitempty"`
 
 	// firmware
 	Firmware *VMFirmware `json:"firmware,omitempty"`
@@ -101,6 +101,9 @@ type VMCreateVMFromContentLibraryTemplateParams struct {
 
 	// status
 	Status *VMStatus `json:"status,omitempty"`
+
+	// storage config
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
 
 	// template id
 	// Required: true
@@ -170,6 +173,8 @@ type VMCreateVMFromContentLibraryTemplateParamsMarshalOpts struct {
 	PciNics_Explicit_Null_When_Empty bool
 
 	Status_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 
 	TemplateID_Explicit_Null_When_Empty bool
 
@@ -700,6 +705,26 @@ func (m VMCreateVMFromContentLibraryTemplateParams) MarshalJSON() ([]byte, error
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	// handle nullable field template_id
 	if m.TemplateID != nil {
 		if !first {
@@ -847,6 +872,10 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) Validate(formats strfmt.Reg
 	}
 
 	if err := m.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1168,6 +1197,25 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) validateStatus(formats strf
 	return nil
 }
 
+func (m *VMCreateVMFromContentLibraryTemplateParams) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMCreateVMFromContentLibraryTemplateParams) validateTemplateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("template_id", "body", m.TemplateID); err != nil {
@@ -1279,6 +1327,10 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) ContextValidate(ctx context
 	}
 
 	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1516,6 +1568,22 @@ func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateStatus(ctx c
 				return ve.ValidateName("status")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMCreateVMFromContentLibraryTemplateParams) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
 			}
 			return err
 		}

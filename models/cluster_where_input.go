@@ -152,6 +152,54 @@ type ClusterWhereInput struct {
 	// auto converge not
 	AutoConvergeNot *bool `json:"auto_converge_not,omitempty"`
 
+	// cap snapshot unique size
+	CapSnapshotUniqueSize *int64 `json:"cap_snapshot_unique_size,omitempty"`
+
+	// cap snapshot unique size gt
+	CapSnapshotUniqueSizeGt *int64 `json:"cap_snapshot_unique_size_gt,omitempty"`
+
+	// cap snapshot unique size gte
+	CapSnapshotUniqueSizeGte *int64 `json:"cap_snapshot_unique_size_gte,omitempty"`
+
+	// cap snapshot unique size in
+	CapSnapshotUniqueSizeIn []int64 `json:"cap_snapshot_unique_size_in,omitempty"`
+
+	// cap snapshot unique size lt
+	CapSnapshotUniqueSizeLt *int64 `json:"cap_snapshot_unique_size_lt,omitempty"`
+
+	// cap snapshot unique size lte
+	CapSnapshotUniqueSizeLte *int64 `json:"cap_snapshot_unique_size_lte,omitempty"`
+
+	// cap snapshot unique size not
+	CapSnapshotUniqueSizeNot *int64 `json:"cap_snapshot_unique_size_not,omitempty"`
+
+	// cap snapshot unique size not in
+	CapSnapshotUniqueSizeNotIn []int64 `json:"cap_snapshot_unique_size_not_in,omitempty"`
+
+	// cap volume unique size
+	CapVolumeUniqueSize *int64 `json:"cap_volume_unique_size,omitempty"`
+
+	// cap volume unique size gt
+	CapVolumeUniqueSizeGt *int64 `json:"cap_volume_unique_size_gt,omitempty"`
+
+	// cap volume unique size gte
+	CapVolumeUniqueSizeGte *int64 `json:"cap_volume_unique_size_gte,omitempty"`
+
+	// cap volume unique size in
+	CapVolumeUniqueSizeIn []int64 `json:"cap_volume_unique_size_in,omitempty"`
+
+	// cap volume unique size lt
+	CapVolumeUniqueSizeLt *int64 `json:"cap_volume_unique_size_lt,omitempty"`
+
+	// cap volume unique size lte
+	CapVolumeUniqueSizeLte *int64 `json:"cap_volume_unique_size_lte,omitempty"`
+
+	// cap volume unique size not
+	CapVolumeUniqueSizeNot *int64 `json:"cap_volume_unique_size_not,omitempty"`
+
+	// cap volume unique size not in
+	CapVolumeUniqueSizeNotIn []int64 `json:"cap_volume_unique_size_not_in,omitempty"`
+
 	// commited memory bytes
 	CommitedMemoryBytes *int64 `json:"commited_memory_bytes,omitempty"`
 
@@ -2337,6 +2385,38 @@ type ClusterWhereInputMarshalOpts struct {
 	AutoConverge_Explicit_Null_When_Empty bool
 
 	AutoConvergeNot_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSize_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSizeGt_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSizeGte_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSizeIn_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSizeLt_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSizeLte_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSizeNot_Explicit_Null_When_Empty bool
+
+	CapSnapshotUniqueSizeNotIn_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSize_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSizeGt_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSizeGte_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSizeIn_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSizeLt_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSizeLte_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSizeNot_Explicit_Null_When_Empty bool
+
+	CapVolumeUniqueSizeNotIn_Explicit_Null_When_Empty bool
 
 	CommitedMemoryBytes_Explicit_Null_When_Empty bool
 
@@ -4552,6 +4632,302 @@ func (m ClusterWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"auto_converge_not\":null")
+		first = false
+	}
+
+	// handle nullable field cap_snapshot_unique_size
+	if m.CapSnapshotUniqueSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapSnapshotUniqueSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size\":null")
+		first = false
+	}
+
+	// handle nullable field cap_snapshot_unique_size_gt
+	if m.CapSnapshotUniqueSizeGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_gt\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSizeGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapSnapshotUniqueSizeGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_gt\":null")
+		first = false
+	}
+
+	// handle nullable field cap_snapshot_unique_size_gte
+	if m.CapSnapshotUniqueSizeGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_gte\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSizeGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapSnapshotUniqueSizeGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field cap_snapshot_unique_size_in with omitempty
+	if !swag.IsZero(m.CapSnapshotUniqueSizeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_in\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSizeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field cap_snapshot_unique_size_lt
+	if m.CapSnapshotUniqueSizeLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_lt\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSizeLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapSnapshotUniqueSizeLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_lt\":null")
+		first = false
+	}
+
+	// handle nullable field cap_snapshot_unique_size_lte
+	if m.CapSnapshotUniqueSizeLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_lte\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSizeLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapSnapshotUniqueSizeLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_lte\":null")
+		first = false
+	}
+
+	// handle nullable field cap_snapshot_unique_size_not
+	if m.CapSnapshotUniqueSizeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_not\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSizeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapSnapshotUniqueSizeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_not\":null")
+		first = false
+	}
+
+	// handle non nullable field cap_snapshot_unique_size_not_in with omitempty
+	if !swag.IsZero(m.CapSnapshotUniqueSizeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_snapshot_unique_size_not_in\":")
+		bytes, err := swag.WriteJSON(m.CapSnapshotUniqueSizeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field cap_volume_unique_size
+	if m.CapVolumeUniqueSize != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSize)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapVolumeUniqueSize_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size\":null")
+		first = false
+	}
+
+	// handle nullable field cap_volume_unique_size_gt
+	if m.CapVolumeUniqueSizeGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_gt\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSizeGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapVolumeUniqueSizeGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_gt\":null")
+		first = false
+	}
+
+	// handle nullable field cap_volume_unique_size_gte
+	if m.CapVolumeUniqueSizeGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_gte\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSizeGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapVolumeUniqueSizeGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field cap_volume_unique_size_in with omitempty
+	if !swag.IsZero(m.CapVolumeUniqueSizeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_in\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSizeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field cap_volume_unique_size_lt
+	if m.CapVolumeUniqueSizeLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_lt\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSizeLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapVolumeUniqueSizeLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_lt\":null")
+		first = false
+	}
+
+	// handle nullable field cap_volume_unique_size_lte
+	if m.CapVolumeUniqueSizeLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_lte\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSizeLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapVolumeUniqueSizeLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_lte\":null")
+		first = false
+	}
+
+	// handle nullable field cap_volume_unique_size_not
+	if m.CapVolumeUniqueSizeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_not\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSizeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.CapVolumeUniqueSizeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_not\":null")
+		first = false
+	}
+
+	// handle non nullable field cap_volume_unique_size_not_in with omitempty
+	if !swag.IsZero(m.CapVolumeUniqueSizeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cap_volume_unique_size_not_in\":")
+		bytes, err := swag.WriteJSON(m.CapVolumeUniqueSizeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 

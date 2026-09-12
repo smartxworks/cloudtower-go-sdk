@@ -452,6 +452,15 @@ type HostWhereInput struct {
 	// data ip starts with
 	DataIPStartsWith *string `json:"data_ip_starts_with,omitempty"`
 
+	// datastore mounts every
+	DatastoreMountsEvery *DatastoreMountWhereInput `json:"datastore_mounts_every,omitempty"`
+
+	// datastore mounts none
+	DatastoreMountsNone *DatastoreMountWhereInput `json:"datastore_mounts_none,omitempty"`
+
+	// datastore mounts some
+	DatastoreMountsSome *DatastoreMountWhereInput `json:"datastore_mounts_some,omitempty"`
+
 	// dirty cache space
 	DirtyCacheSpace *int64 `json:"dirty_cache_space,omitempty"`
 
@@ -2402,6 +2411,12 @@ type HostWhereInputMarshalOpts struct {
 	DataIPNotStartsWith_Explicit_Null_When_Empty bool
 
 	DataIPStartsWith_Explicit_Null_When_Empty bool
+
+	DatastoreMountsEvery_Explicit_Null_When_Empty bool
+
+	DatastoreMountsNone_Explicit_Null_When_Empty bool
+
+	DatastoreMountsSome_Explicit_Null_When_Empty bool
 
 	DirtyCacheSpace_Explicit_Null_When_Empty bool
 
@@ -6207,6 +6222,66 @@ func (m HostWhereInput) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"data_ip_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field datastore_mounts_every
+	if m.DatastoreMountsEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore_mounts_every\":")
+		bytes, err := swag.WriteJSON(m.DatastoreMountsEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoreMountsEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore_mounts_every\":null")
+		first = false
+	}
+
+	// handle nullable field datastore_mounts_none
+	if m.DatastoreMountsNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore_mounts_none\":")
+		bytes, err := swag.WriteJSON(m.DatastoreMountsNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoreMountsNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore_mounts_none\":null")
+		first = false
+	}
+
+	// handle nullable field datastore_mounts_some
+	if m.DatastoreMountsSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore_mounts_some\":")
+		bytes, err := swag.WriteJSON(m.DatastoreMountsSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoreMountsSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore_mounts_some\":null")
 		first = false
 	}
 
@@ -16618,6 +16693,18 @@ func (m *HostWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastoreMountsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDatastoreMountsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDatastoreMountsSome(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDiskPoolsEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -17064,6 +17151,63 @@ func (m *HostWhereInput) validateCPUFanSpeedUnitNotIn(formats strfmt.Registry) e
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateDatastoreMountsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoreMountsEvery) { // not required
+		return nil
+	}
+
+	if m.DatastoreMountsEvery != nil {
+		if err := m.DatastoreMountsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastore_mounts_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastore_mounts_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateDatastoreMountsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoreMountsNone) { // not required
+		return nil
+	}
+
+	if m.DatastoreMountsNone != nil {
+		if err := m.DatastoreMountsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastore_mounts_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastore_mounts_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) validateDatastoreMountsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoreMountsSome) { // not required
+		return nil
+	}
+
+	if m.DatastoreMountsSome != nil {
+		if err := m.DatastoreMountsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastore_mounts_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastore_mounts_some")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -18034,6 +18178,18 @@ func (m *HostWhereInput) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDatastoreMountsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastoreMountsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastoreMountsSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDiskPoolsEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -18435,6 +18591,54 @@ func (m *HostWhereInput) contextValidateCPUFanSpeedUnitNotIn(ctx context.Context
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateDatastoreMountsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoreMountsEvery != nil {
+		if err := m.DatastoreMountsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastore_mounts_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastore_mounts_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateDatastoreMountsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoreMountsNone != nil {
+		if err := m.DatastoreMountsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastore_mounts_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastore_mounts_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostWhereInput) contextValidateDatastoreMountsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoreMountsSome != nil {
+		if err := m.DatastoreMountsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastore_mounts_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastore_mounts_some")
+			}
+			return err
+		}
 	}
 
 	return nil
