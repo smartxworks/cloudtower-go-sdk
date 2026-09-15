@@ -494,6 +494,9 @@ type VMVolumeWhereInput struct {
 	// size not in
 	SizeNotIn []int64 `json:"size_not_in,omitempty"`
 
+	// storage cluster config
+	StorageClusterConfig *StorageClusterConfigWhereInput `json:"storage_cluster_config,omitempty"`
+
 	// type
 	Type *VMVolumeType `json:"type,omitempty"`
 
@@ -930,6 +933,8 @@ type VMVolumeWhereInputMarshalOpts struct {
 	SizeNot_Explicit_Null_When_Empty bool
 
 	SizeNotIn_Explicit_Null_When_Empty bool
+
+	StorageClusterConfig_Explicit_Null_When_Empty bool
 
 	Type_Explicit_Null_When_Empty bool
 
@@ -3978,6 +3983,26 @@ func (m VMVolumeWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_cluster_config
+	if m.StorageClusterConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_cluster_config\":")
+		bytes, err := swag.WriteJSON(m.StorageClusterConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageClusterConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_cluster_config\":null")
+		first = false
+	}
+
 	// handle nullable field type
 	if m.Type != nil {
 		if !first {
@@ -4770,6 +4795,10 @@ func (m *VMVolumeWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateStorageClusterConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -5137,6 +5166,25 @@ func (m *VMVolumeWhereInput) validateLun(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMVolumeWhereInput) validateStorageClusterConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageClusterConfig) { // not required
+		return nil
+	}
+
+	if m.StorageClusterConfig != nil {
+		if err := m.StorageClusterConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_cluster_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_cluster_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMVolumeWhereInput) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
@@ -5339,6 +5387,10 @@ func (m *VMVolumeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateLun(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageClusterConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -5644,6 +5696,22 @@ func (m *VMVolumeWhereInput) contextValidateLun(ctx context.Context, formats str
 				return ve.ValidateName("lun")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("lun")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) contextValidateStorageClusterConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageClusterConfig != nil {
+		if err := m.StorageClusterConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_cluster_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_cluster_config")
 			}
 			return err
 		}

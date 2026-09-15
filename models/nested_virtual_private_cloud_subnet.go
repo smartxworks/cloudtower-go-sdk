@@ -20,6 +20,10 @@ import (
 // swagger:model NestedVirtualPrivateCloudSubnet
 type NestedVirtualPrivateCloudSubnet struct {
 
+	// cidr
+	// Required: true
+	Cidr *string `json:"cidr"`
+
 	// id
 	// Required: true
 	ID *string `json:"id"`
@@ -32,6 +36,8 @@ type NestedVirtualPrivateCloudSubnet struct {
 }
 
 type NestedVirtualPrivateCloudSubnetMarshalOpts struct {
+	Cidr_Explicit_Null_When_Empty bool
+
 	ID_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
@@ -42,6 +48,26 @@ func (m NestedVirtualPrivateCloudSubnet) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
+
+	// handle nullable field cidr
+	if m.Cidr != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cidr\":")
+		bytes, err := swag.WriteJSON(m.Cidr)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Cidr_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"cidr\":null")
+		first = false
+	}
 
 	// handle nullable field id
 	if m.ID != nil {
@@ -91,6 +117,10 @@ func (m NestedVirtualPrivateCloudSubnet) MarshalJSON() ([]byte, error) {
 func (m *NestedVirtualPrivateCloudSubnet) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCidr(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -102,6 +132,15 @@ func (m *NestedVirtualPrivateCloudSubnet) Validate(formats strfmt.Registry) erro
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NestedVirtualPrivateCloudSubnet) validateCidr(formats strfmt.Registry) error {
+
+	if err := validate.Required("cidr", "body", m.Cidr); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -36,6 +36,9 @@ const (
 	// AlertRuleObjectCLUSTER captures enum value "CLUSTER"
 	AlertRuleObjectCLUSTER AlertRuleObject = "CLUSTER"
 
+	// AlertRuleObjectDATASTORE captures enum value "DATASTORE"
+	AlertRuleObjectDATASTORE AlertRuleObject = "DATASTORE"
+
 	// AlertRuleObjectDISK captures enum value "DISK"
 	AlertRuleObjectDISK AlertRuleObject = "DISK"
 
@@ -117,7 +120,7 @@ var alertRuleObjectEnum []interface{}
 
 func init() {
 	var res []AlertRuleObject
-	if err := json.Unmarshal([]byte(`["BRICK","CLUSTER","DISK","DISK_POOL","HYPERVISOR","NETWORK","NTP_SERVER","OBSERVABILITY_CONNECTED_SYSTEM_SERVICE","OBSERVABILITY_SERVICE","PHYSICAL_HOST","POD","SCVM","SKS_CLUSTER","SKS_CLUSTER_NODE","SKS_PV","SKS_PVC","SKS_REGISTRY","SKS_SERVICE","SNAPSHOT_PLAN","STORAGE_CHUNK","STORAGE_POOL","SYSTEM_SERVICE","TIME_MACHINE_PLAN","VM","WITNESS","WITNESS_NETWORK","ZBS_ZONE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BRICK","CLUSTER","DATASTORE","DISK","DISK_POOL","HYPERVISOR","NETWORK","NTP_SERVER","OBSERVABILITY_CONNECTED_SYSTEM_SERVICE","OBSERVABILITY_SERVICE","PHYSICAL_HOST","POD","SCVM","SKS_CLUSTER","SKS_CLUSTER_NODE","SKS_PV","SKS_PVC","SKS_REGISTRY","SKS_SERVICE","SNAPSHOT_PLAN","STORAGE_CHUNK","STORAGE_POOL","SYSTEM_SERVICE","TIME_MACHINE_PLAN","VM","WITNESS","WITNESS_NETWORK","ZBS_ZONE"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
