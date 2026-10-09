@@ -35,6 +35,9 @@ const (
 
 	// VMVolumeSnapshotTypeKVMVOLUMESNAPSHOT captures enum value "KVM_VOLUME_SNAPSHOT"
 	VMVolumeSnapshotTypeKVMVOLUMESNAPSHOT VMVolumeSnapshotType = "KVM_VOLUME_SNAPSHOT"
+
+	// VMVolumeSnapshotTypeKVMVOLUMEVCFSSNAPSHOT captures enum value "KVM_VOLUME_VCFS_SNAPSHOT"
+	VMVolumeSnapshotTypeKVMVOLUMEVCFSSNAPSHOT VMVolumeSnapshotType = "KVM_VOLUME_VCFS_SNAPSHOT"
 )
 
 // for schema
@@ -42,7 +45,7 @@ var vmVolumeSnapshotTypeEnum []interface{}
 
 func init() {
 	var res []VMVolumeSnapshotType
-	if err := json.Unmarshal([]byte(`["KVM_VOLUME_ISCSI_SNAPSHOT","KVM_VOLUME_SNAPSHOT"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["KVM_VOLUME_ISCSI_SNAPSHOT","KVM_VOLUME_SNAPSHOT","KVM_VOLUME_VCFS_SNAPSHOT"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

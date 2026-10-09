@@ -43,6 +43,10 @@ type NestedReplicationObjectDescriptor struct {
 	// tower deploy id
 	TowerDeployID *string `json:"tower_deploy_id,omitempty"`
 
+	// type
+	// Required: true
+	Type *ReplicationObjectType `json:"type"`
+
 	// zbs volume id
 	ZbsVolumeID *string `json:"zbs_volume_id,omitempty"`
 
@@ -63,6 +67,8 @@ type NestedReplicationObjectDescriptorMarshalOpts struct {
 	ParentObjectName_Explicit_Null_When_Empty bool
 
 	TowerDeployID_Explicit_Null_When_Empty bool
+
+	Type_Explicit_Null_When_Empty bool
 
 	ZbsVolumeID_Explicit_Null_When_Empty bool
 }
@@ -213,6 +219,26 @@ func (m NestedReplicationObjectDescriptor) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field type
+	if m.Type != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":")
+		bytes, err := swag.WriteJSON(m.Type)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Type_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"type\":null")
+		first = false
+	}
+
 	// handle nullable field zbs_volume_id
 	if m.ZbsVolumeID != nil {
 		if !first {
@@ -249,6 +275,10 @@ func (m *NestedReplicationObjectDescriptor) Validate(formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -273,8 +303,57 @@ func (m *NestedReplicationObjectDescriptor) validateObjectLocalID(formats strfmt
 	return nil
 }
 
-// ContextValidate validates this nested replication object descriptor based on context it is used
+func (m *NestedReplicationObjectDescriptor) validateType(formats strfmt.Registry) error {
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this nested replication object descriptor based on the context it is used
 func (m *NestedReplicationObjectDescriptor) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NestedReplicationObjectDescriptor) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

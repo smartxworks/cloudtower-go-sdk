@@ -68,7 +68,7 @@ type GetV2EverouteLicensesConnectionOK struct {
 }
 
 func (o *GetV2EverouteLicensesConnectionOK) Error() string {
-	return fmt.Sprintf("[POST /get-v-2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /get-v2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionOK  %+v", 200, o.Payload)
 }
 func (o *GetV2EverouteLicensesConnectionOK) GetPayload() *models.V2EverouteLicenseConnection {
 	return o.Payload
@@ -109,7 +109,7 @@ type GetV2EverouteLicensesConnectionBadRequest struct {
 }
 
 func (o *GetV2EverouteLicensesConnectionBadRequest) Error() string {
-	return fmt.Sprintf("[POST /get-v-2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /get-v2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionBadRequest  %+v", 400, o.Payload)
 }
 func (o *GetV2EverouteLicensesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
@@ -150,7 +150,7 @@ type GetV2EverouteLicensesConnectionNotFound struct {
 }
 
 func (o *GetV2EverouteLicensesConnectionNotFound) Error() string {
-	return fmt.Sprintf("[POST /get-v-2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /get-v2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionNotFound  %+v", 404, o.Payload)
 }
 func (o *GetV2EverouteLicensesConnectionNotFound) GetPayload() *models.ErrorBody {
 	return o.Payload
@@ -191,7 +191,7 @@ type GetV2EverouteLicensesConnectionInternalServerError struct {
 }
 
 func (o *GetV2EverouteLicensesConnectionInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /get-v-2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /get-v2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionInternalServerError  %+v", 500, o.Payload)
 }
 func (o *GetV2EverouteLicensesConnectionInternalServerError) GetPayload() *models.ErrorBody {
 	return o.Payload

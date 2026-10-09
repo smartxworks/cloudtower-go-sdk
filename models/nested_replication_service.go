@@ -24,11 +24,17 @@ type NestedReplicationService struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// name
+	// Required: true
+	Name *string `json:"name"`
+
 	MarshalOpts *NestedReplicationServiceMarshalOpts `json:"-"`
 }
 
 type NestedReplicationServiceMarshalOpts struct {
 	ID_Explicit_Null_When_Empty bool
+
+	Name_Explicit_Null_When_Empty bool
 }
 
 func (m NestedReplicationService) MarshalJSON() ([]byte, error) {
@@ -57,6 +63,26 @@ func (m NestedReplicationService) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field name
+	if m.Name != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":")
+		bytes, err := swag.WriteJSON(m.Name)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Name_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"name\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -69,6 +95,10 @@ func (m *NestedReplicationService) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -78,6 +108,15 @@ func (m *NestedReplicationService) Validate(formats strfmt.Registry) error {
 func (m *NestedReplicationService) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NestedReplicationService) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
 	}
 

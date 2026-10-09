@@ -28,6 +28,9 @@ type NestedVMFolder struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// path
+	Path *string `json:"path,omitempty"`
+
 	MarshalOpts *NestedVMFolderMarshalOpts `json:"-"`
 }
 
@@ -35,6 +38,8 @@ type NestedVMFolderMarshalOpts struct {
 	ID_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
+
+	Path_Explicit_Null_When_Empty bool
 }
 
 func (m NestedVMFolder) MarshalJSON() ([]byte, error) {
@@ -80,6 +85,26 @@ func (m NestedVMFolder) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field path
+	if m.Path != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":")
+		bytes, err := swag.WriteJSON(m.Path)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Path_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":null")
 		first = false
 	}
 
