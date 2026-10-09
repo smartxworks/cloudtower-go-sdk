@@ -27,6 +27,9 @@ type DiskOperateModifyDisk struct {
 	// Required: true
 	DiskIndex *int32 `json:"disk_index"`
 
+	// Associated storage for a compute cluster.
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
 	// vm volume id
 	VMVolumeID *string `json:"vm_volume_id,omitempty"`
 
@@ -37,6 +40,8 @@ type DiskOperateModifyDiskMarshalOpts struct {
 	Bus_Explicit_Null_When_Empty bool
 
 	DiskIndex_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 
 	VMVolumeID_Explicit_Null_When_Empty bool
 }
@@ -87,6 +92,26 @@ func (m DiskOperateModifyDisk) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	// handle nullable field vm_volume_id
 	if m.VMVolumeID != nil {
 		if !first {
@@ -120,6 +145,10 @@ func (m *DiskOperateModifyDisk) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDiskIndex(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -157,11 +186,34 @@ func (m *DiskOperateModifyDisk) validateDiskIndex(formats strfmt.Registry) error
 	return nil
 }
 
+func (m *DiskOperateModifyDisk) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this disk operate modify disk based on the context it is used
 func (m *DiskOperateModifyDisk) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateBus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -179,6 +231,22 @@ func (m *DiskOperateModifyDisk) contextValidateBus(ctx context.Context, formats 
 				return ve.ValidateName("bus")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("bus")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *DiskOperateModifyDisk) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
 			}
 			return err
 		}

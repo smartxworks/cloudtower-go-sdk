@@ -28,6 +28,9 @@ type VMFolderCreationParams struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// parent id
+	ParentID *string `json:"parent_id,omitempty"`
+
 	MarshalOpts *VMFolderCreationParamsMarshalOpts `json:"-"`
 }
 
@@ -35,6 +38,8 @@ type VMFolderCreationParamsMarshalOpts struct {
 	ClusterID_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
+
+	ParentID_Explicit_Null_When_Empty bool
 }
 
 func (m VMFolderCreationParams) MarshalJSON() ([]byte, error) {
@@ -80,6 +85,26 @@ func (m VMFolderCreationParams) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"name\":null")
+		first = false
+	}
+
+	// handle nullable field parent_id
+	if m.ParentID != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent_id\":")
+		bytes, err := swag.WriteJSON(m.ParentID)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ParentID_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent_id\":null")
 		first = false
 	}
 

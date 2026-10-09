@@ -37,6 +37,9 @@ type VMVolumeCreationParams struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// Provisioning type when associated storage is a datastore.
+	ProvisionPolicy *VMVolumeProvisionPolicy `json:"provision_policy,omitempty"`
+
 	// resident in cache
 	ResidentInCache *bool `json:"resident_in_cache,omitempty"`
 
@@ -50,6 +53,9 @@ type VMVolumeCreationParams struct {
 
 	// size unit
 	SizeUnit *ByteUnit `json:"size_unit,omitempty"`
+
+	// Associated storage for a compute cluster.
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
 
 	MarshalOpts *VMVolumeCreationParamsMarshalOpts `json:"-"`
 }
@@ -65,6 +71,8 @@ type VMVolumeCreationParamsMarshalOpts struct {
 
 	Name_Explicit_Null_When_Empty bool
 
+	ProvisionPolicy_Explicit_Null_When_Empty bool
+
 	ResidentInCache_Explicit_Null_When_Empty bool
 
 	Sharing_Explicit_Null_When_Empty bool
@@ -72,6 +80,8 @@ type VMVolumeCreationParamsMarshalOpts struct {
 	Size_Explicit_Null_When_Empty bool
 
 	SizeUnit_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 }
 
 func (m VMVolumeCreationParams) MarshalJSON() ([]byte, error) {
@@ -180,6 +190,26 @@ func (m VMVolumeCreationParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field provision_policy
+	if m.ProvisionPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":null")
+		first = false
+	}
+
 	// handle nullable field resident_in_cache
 	if m.ResidentInCache != nil {
 		if !first {
@@ -260,6 +290,26 @@ func (m VMVolumeCreationParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -288,6 +338,10 @@ func (m *VMVolumeCreationParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateProvisionPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSharing(formats); err != nil {
 		res = append(res, err)
 	}
@@ -297,6 +351,10 @@ func (m *VMVolumeCreationParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSizeUnit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -381,6 +439,25 @@ func (m *VMVolumeCreationParams) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMVolumeCreationParams) validateProvisionPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProvisionPolicy) { // not required
+		return nil
+	}
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("provision_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMVolumeCreationParams) validateSharing(formats strfmt.Registry) error {
 
 	if err := validate.Required("sharing", "body", m.Sharing); err != nil {
@@ -418,6 +495,25 @@ func (m *VMVolumeCreationParams) validateSizeUnit(formats strfmt.Registry) error
 	return nil
 }
 
+func (m *VMVolumeCreationParams) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this Vm volume creation params based on the context it is used
 func (m *VMVolumeCreationParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -434,7 +530,15 @@ func (m *VMVolumeCreationParams) ContextValidate(ctx context.Context, formats st
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateProvisionPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSizeUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -492,6 +596,22 @@ func (m *VMVolumeCreationParams) contextValidateElfStoragePolicy(ctx context.Con
 	return nil
 }
 
+func (m *VMVolumeCreationParams) contextValidateProvisionPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("provision_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMVolumeCreationParams) contextValidateSizeUnit(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SizeUnit != nil {
@@ -500,6 +620,22 @@ func (m *VMVolumeCreationParams) contextValidateSizeUnit(ctx context.Context, fo
 				return ve.ValidateName("size_unit")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("size_unit")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeCreationParams) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
 			}
 			return err
 		}

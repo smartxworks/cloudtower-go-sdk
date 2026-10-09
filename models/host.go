@@ -84,6 +84,9 @@ type Host struct {
 	// data ip
 	DataIP *string `json:"data_ip,omitempty"`
 
+	// datastore mounts
+	DatastoreMounts []*NestedDatastoreMount `json:"datastore_mounts,omitempty"`
+
 	// dirty cache space
 	DirtyCacheSpace *int64 `json:"dirty_cache_space,omitempty"`
 
@@ -375,6 +378,8 @@ type HostMarshalOpts struct {
 	CPUVendor_Explicit_Null_When_Empty bool
 
 	DataIP_Explicit_Null_When_Empty bool
+
+	DatastoreMounts_Explicit_Null_When_Empty bool
 
 	DirtyCacheSpace_Explicit_Null_When_Empty bool
 
@@ -872,6 +877,20 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"data_ip\":null")
+		first = false
+	}
+
+	// handle non nullable field datastore_mounts with omitempty
+	if !swag.IsZero(m.DatastoreMounts) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore_mounts\":")
+		bytes, err := swag.WriteJSON(m.DatastoreMounts)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -2379,6 +2398,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastoreMounts(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDiskPools(formats); err != nil {
 		res = append(res, err)
 	}
@@ -2678,6 +2701,32 @@ func (m *Host) validateCPUTemperatureCelsius(formats strfmt.Registry) error {
 
 	if err := validate.Required("cpu_temperature_celsius", "body", m.CPUTemperatureCelsius); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Host) validateDatastoreMounts(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoreMounts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DatastoreMounts); i++ {
+		if swag.IsZero(m.DatastoreMounts[i]) { // not required
+			continue
+		}
+
+		if m.DatastoreMounts[i] != nil {
+			if err := m.DatastoreMounts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("datastore_mounts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("datastore_mounts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -3313,6 +3362,10 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDatastoreMounts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDiskPools(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3430,6 +3483,26 @@ func (m *Host) contextValidateCPUFanSpeedUnit(ctx context.Context, formats strfm
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateDatastoreMounts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DatastoreMounts); i++ {
+
+		if m.DatastoreMounts[i] != nil {
+			if err := m.DatastoreMounts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("datastore_mounts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("datastore_mounts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

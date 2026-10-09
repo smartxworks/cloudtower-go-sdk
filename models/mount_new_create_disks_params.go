@@ -49,6 +49,9 @@ type MountNewCreateDisksParams struct {
 	// max iops policy
 	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
 
+	// Associated storage for a compute cluster.
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
 	// vm volume
 	// Required: true
 	VMVolume *MountNewCreateDisksParamsVMVolume `json:"vm_volume"`
@@ -74,6 +77,8 @@ type MountNewCreateDisksParamsMarshalOpts struct {
 	MaxIops_Explicit_Null_When_Empty bool
 
 	MaxIopsPolicy_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 
 	VMVolume_Explicit_Null_When_Empty bool
 }
@@ -264,6 +269,26 @@ func (m MountNewCreateDisksParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	// handle nullable field vm_volume
 	if m.VMVolume != nil {
 		if !first {
@@ -309,6 +334,10 @@ func (m *MountNewCreateDisksParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMaxIopsPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -412,6 +441,25 @@ func (m *MountNewCreateDisksParams) validateMaxIopsPolicy(formats strfmt.Registr
 	return nil
 }
 
+func (m *MountNewCreateDisksParams) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MountNewCreateDisksParams) validateVMVolume(formats strfmt.Registry) error {
 
 	if err := validate.Required("vm_volume", "body", m.VMVolume); err != nil {
@@ -449,6 +497,10 @@ func (m *MountNewCreateDisksParams) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -518,6 +570,22 @@ func (m *MountNewCreateDisksParams) contextValidateMaxIopsPolicy(ctx context.Con
 				return ve.ValidateName("max_iops_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("max_iops_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MountNewCreateDisksParams) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
 			}
 			return err
 		}
