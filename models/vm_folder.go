@@ -36,6 +36,15 @@ type VMFolder struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// parent
+	Parent *NestedVMFolder `json:"parent,omitempty"`
+
+	// path
+	Path *string `json:"path,omitempty"`
+
+	// total vm num
+	TotalVMNum *int32 `json:"total_vm_num,omitempty"`
+
 	// vm num
 	VMNum *int32 `json:"vm_num,omitempty"`
 
@@ -53,6 +62,12 @@ type VMFolderMarshalOpts struct {
 	LocalID_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
+
+	Parent_Explicit_Null_When_Empty bool
+
+	Path_Explicit_Null_When_Empty bool
+
+	TotalVMNum_Explicit_Null_When_Empty bool
 
 	VMNum_Explicit_Null_When_Empty bool
 
@@ -145,6 +160,66 @@ func (m VMFolder) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field parent
+	if m.Parent != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent\":")
+		bytes, err := swag.WriteJSON(m.Parent)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Parent_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"parent\":null")
+		first = false
+	}
+
+	// handle nullable field path
+	if m.Path != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":")
+		bytes, err := swag.WriteJSON(m.Path)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Path_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"path\":null")
+		first = false
+	}
+
+	// handle nullable field total_vm_num
+	if m.TotalVMNum != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num\":")
+		bytes, err := swag.WriteJSON(m.TotalVMNum)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalVMNum_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_vm_num\":null")
+		first = false
+	}
+
 	// handle nullable field vm_num
 	if m.VMNum != nil {
 		if !first {
@@ -199,6 +274,10 @@ func (m *VMFolder) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateParent(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVms(formats); err != nil {
 		res = append(res, err)
 	}
@@ -247,6 +326,25 @@ func (m *VMFolder) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMFolder) validateParent(formats strfmt.Registry) error {
+	if swag.IsZero(m.Parent) { // not required
+		return nil
+	}
+
+	if m.Parent != nil {
+		if err := m.Parent.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("parent")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("parent")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMFolder) validateVms(formats strfmt.Registry) error {
 	if swag.IsZero(m.Vms) { // not required
 		return nil
@@ -281,6 +379,10 @@ func (m *VMFolder) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateParent(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVms(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -299,6 +401,22 @@ func (m *VMFolder) contextValidateCluster(ctx context.Context, formats strfmt.Re
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMFolder) contextValidateParent(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Parent != nil {
+		if err := m.Parent.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("parent")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("parent")
 			}
 			return err
 		}

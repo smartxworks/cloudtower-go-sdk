@@ -30,6 +30,9 @@ func (m EverouteLicensePricingType) Pointer() *EverouteLicensePricingType {
 
 const (
 
+	// EverouteLicensePricingTypeCORENUM captures enum value "CORE_NUM"
+	EverouteLicensePricingTypeCORENUM EverouteLicensePricingType = "CORE_NUM"
+
 	// EverouteLicensePricingTypeCPUSLOTNUM captures enum value "CPU_SLOT_NUM"
 	EverouteLicensePricingTypeCPUSLOTNUM EverouteLicensePricingType = "CPU_SLOT_NUM"
 
@@ -45,7 +48,7 @@ var everouteLicensePricingTypeEnum []interface{}
 
 func init() {
 	var res []EverouteLicensePricingType
-	if err := json.Unmarshal([]byte(`["CPU_SLOT_NUM","VCPU_NUM","VM_NUM"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CORE_NUM","CPU_SLOT_NUM","VCPU_NUM","VM_NUM"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

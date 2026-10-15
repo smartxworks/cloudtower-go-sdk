@@ -34,6 +34,8 @@ type ClientService interface {
 
 	DeleteCluster(params *DeleteClusterParams, opts ...ClientOption) (*DeleteClusterOK, error)
 
+	GetClusterNtpServices(params *GetClusterNtpServicesParams, opts ...ClientOption) (*GetClusterNtpServicesOK, error)
+
 	GetClusterPinInPerformanceInfo(params *GetClusterPinInPerformanceInfoParams, opts ...ClientOption) (*GetClusterPinInPerformanceInfoOK, error)
 
 	GetClusterStorageInfo(params *GetClusterStorageInfoParams, opts ...ClientOption) (*GetClusterStorageInfoOK, error)
@@ -136,6 +138,44 @@ func (a *Client) DeleteCluster(params *DeleteClusterParams, opts ...ClientOption
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for DeleteCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetClusterNtpServices get cluster ntp services API
+*/
+func (a *Client) GetClusterNtpServices(params *GetClusterNtpServicesParams, opts ...ClientOption) (*GetClusterNtpServicesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetClusterNtpServicesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetClusterNtpServices",
+		Method:             "POST",
+		PathPattern:        "/get-cluster-ntp-services",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetClusterNtpServicesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetClusterNtpServicesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for GetClusterNtpServices: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

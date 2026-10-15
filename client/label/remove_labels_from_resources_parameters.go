@@ -72,6 +72,9 @@ type RemoveLabelsFromResourcesParams struct {
 	// RequestBody.
 	RequestBody *models.RemoveLabelsFromResourcesParams
 
+	// XSkipResources.
+	XSkipResources *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -169,6 +172,17 @@ func (o *RemoveLabelsFromResourcesParams) SetRequestBody(requestBody *models.Rem
 	o.RequestBody = requestBody
 }
 
+// WithXSkipResources adds the xSkipResources to the remove labels from resources params
+func (o *RemoveLabelsFromResourcesParams) WithXSkipResources(xSkipResources *string) *RemoveLabelsFromResourcesParams {
+	o.SetXSkipResources(xSkipResources)
+	return o
+}
+
+// SetXSkipResources adds the xSkipResources to the remove labels from resources params
+func (o *RemoveLabelsFromResourcesParams) SetXSkipResources(xSkipResources *string) {
+	o.XSkipResources = xSkipResources
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *RemoveLabelsFromResourcesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -194,6 +208,14 @@ func (o *RemoveLabelsFromResourcesParams) WriteToRequest(r runtime.ClientRequest
 	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
+			return err
+		}
+	}
+
+	if o.XSkipResources != nil {
+
+		// header param x-skip-resources
+		if err := r.SetHeaderParam("x-skip-resources", *o.XSkipResources); err != nil {
 			return err
 		}
 	}

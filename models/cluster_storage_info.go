@@ -41,6 +41,9 @@ type ClusterStorageInfo struct {
 	// storage cluster
 	StorageCluster []*ClusterStorageInfo `json:"storage_cluster,omitempty"`
 
+	// storage cluster configs
+	StorageClusterConfigs []*ClusterStorageClusterConfig `json:"storage_cluster_configs,omitempty"`
+
 	// stretch
 	Stretch *bool `json:"stretch,omitempty"`
 
@@ -69,6 +72,8 @@ type ClusterStorageInfoMarshalOpts struct {
 	Name_Explicit_Null_When_Empty bool
 
 	StorageCluster_Explicit_Null_When_Empty bool
+
+	StorageClusterConfigs_Explicit_Null_When_Empty bool
 
 	Stretch_Explicit_Null_When_Empty bool
 
@@ -199,6 +204,20 @@ func (m ClusterStorageInfo) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle non nullable field storage_cluster_configs with omitempty
+	if !swag.IsZero(m.StorageClusterConfigs) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_cluster_configs\":")
+		bytes, err := swag.WriteJSON(m.StorageClusterConfigs)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field stretch
 	if m.Stretch != nil {
 		if !first {
@@ -303,6 +322,10 @@ func (m *ClusterStorageInfo) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateStorageClusterConfigs(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -376,6 +399,32 @@ func (m *ClusterStorageInfo) validateStorageCluster(formats strfmt.Registry) err
 	return nil
 }
 
+func (m *ClusterStorageInfo) validateStorageClusterConfigs(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageClusterConfigs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StorageClusterConfigs); i++ {
+		if swag.IsZero(m.StorageClusterConfigs[i]) { // not required
+			continue
+		}
+
+		if m.StorageClusterConfigs[i] != nil {
+			if err := m.StorageClusterConfigs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("storage_cluster_configs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("storage_cluster_configs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ClusterStorageInfo) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
@@ -409,6 +458,10 @@ func (m *ClusterStorageInfo) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateStorageCluster(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageClusterConfigs(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -448,6 +501,26 @@ func (m *ClusterStorageInfo) contextValidateStorageCluster(ctx context.Context, 
 					return ve.ValidateName("storage_cluster" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("storage_cluster" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ClusterStorageInfo) contextValidateStorageClusterConfigs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StorageClusterConfigs); i++ {
+
+		if m.StorageClusterConfigs[i] != nil {
+			if err := m.StorageClusterConfigs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("storage_cluster_configs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("storage_cluster_configs" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
