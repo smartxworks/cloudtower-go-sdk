@@ -86,7 +86,7 @@ func (a *Client) GetV2EverouteLicensesConnection(params *GetV2EverouteLicensesCo
 	op := &runtime.ClientOperation{
 		ID:                 "GetV2EverouteLicensesConnection",
 		Method:             "POST",
-		PathPattern:        "/get-v-2-everoute-licenses-connection",
+		PathPattern:        "/get-v2-everoute-licenses-connection",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

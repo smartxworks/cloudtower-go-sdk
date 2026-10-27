@@ -48,6 +48,12 @@ const (
 	// HostOrderByInputAllocatableMemoryBytesDESC captures enum value "allocatable_memory_bytes_DESC"
 	HostOrderByInputAllocatableMemoryBytesDESC HostOrderByInput = "allocatable_memory_bytes_DESC"
 
+	// HostOrderByInputAllocatedMemoryBytesASC captures enum value "allocated_memory_bytes_ASC"
+	HostOrderByInputAllocatedMemoryBytesASC HostOrderByInput = "allocated_memory_bytes_ASC"
+
+	// HostOrderByInputAllocatedMemoryBytesDESC captures enum value "allocated_memory_bytes_DESC"
+	HostOrderByInputAllocatedMemoryBytesDESC HostOrderByInput = "allocated_memory_bytes_DESC"
+
 	// HostOrderByInputAllocatedPrioritizedSpaceASC captures enum value "allocated_prioritized_space_ASC"
 	HostOrderByInputAllocatedPrioritizedSpaceASC HostOrderByInput = "allocated_prioritized_space_ASC"
 
@@ -210,6 +216,18 @@ const (
 	// HostOrderByInputManagementIPDESC captures enum value "management_ip_DESC"
 	HostOrderByInputManagementIPDESC HostOrderByInput = "management_ip_DESC"
 
+	// HostOrderByInputMemoryAllocationRateASC captures enum value "memory_allocation_rate_ASC"
+	HostOrderByInputMemoryAllocationRateASC HostOrderByInput = "memory_allocation_rate_ASC"
+
+	// HostOrderByInputMemoryAllocationRateDESC captures enum value "memory_allocation_rate_DESC"
+	HostOrderByInputMemoryAllocationRateDESC HostOrderByInput = "memory_allocation_rate_DESC"
+
+	// HostOrderByInputMemoryOvercommitEnabledASC captures enum value "memory_overcommit_enabled_ASC"
+	HostOrderByInputMemoryOvercommitEnabledASC HostOrderByInput = "memory_overcommit_enabled_ASC"
+
+	// HostOrderByInputMemoryOvercommitEnabledDESC captures enum value "memory_overcommit_enabled_DESC"
+	HostOrderByInputMemoryOvercommitEnabledDESC HostOrderByInput = "memory_overcommit_enabled_DESC"
+
 	// HostOrderByInputMergedStatusASC captures enum value "merged_status_ASC"
 	HostOrderByInputMergedStatusASC HostOrderByInput = "merged_status_ASC"
 
@@ -257,6 +275,24 @@ const (
 
 	// HostOrderByInputOsVersionDESC captures enum value "os_version_DESC"
 	HostOrderByInputOsVersionDESC HostOrderByInput = "os_version_DESC"
+
+	// HostOrderByInputOvercommitActiveMemoryBytesASC captures enum value "overcommit_active_memory_bytes_ASC"
+	HostOrderByInputOvercommitActiveMemoryBytesASC HostOrderByInput = "overcommit_active_memory_bytes_ASC"
+
+	// HostOrderByInputOvercommitActiveMemoryBytesDESC captures enum value "overcommit_active_memory_bytes_DESC"
+	HostOrderByInputOvercommitActiveMemoryBytesDESC HostOrderByInput = "overcommit_active_memory_bytes_DESC"
+
+	// HostOrderByInputOvercommitMemoryBytesASC captures enum value "overcommit_memory_bytes_ASC"
+	HostOrderByInputOvercommitMemoryBytesASC HostOrderByInput = "overcommit_memory_bytes_ASC"
+
+	// HostOrderByInputOvercommitMemoryBytesDESC captures enum value "overcommit_memory_bytes_DESC"
+	HostOrderByInputOvercommitMemoryBytesDESC HostOrderByInput = "overcommit_memory_bytes_DESC"
+
+	// HostOrderByInputOvercommitMemoryRatioASC captures enum value "overcommit_memory_ratio_ASC"
+	HostOrderByInputOvercommitMemoryRatioASC HostOrderByInput = "overcommit_memory_ratio_ASC"
+
+	// HostOrderByInputOvercommitMemoryRatioDESC captures enum value "overcommit_memory_ratio_DESC"
+	HostOrderByInputOvercommitMemoryRatioDESC HostOrderByInput = "overcommit_memory_ratio_DESC"
 
 	// HostOrderByInputPerfAllocatedDataSpaceASC captures enum value "perf_allocated_data_space_ASC"
 	HostOrderByInputPerfAllocatedDataSpaceASC HostOrderByInput = "perf_allocated_data_space_ASC"
@@ -329,6 +365,24 @@ const (
 
 	// HostOrderByInputProvisionedMemoryBytesDESC captures enum value "provisioned_memory_bytes_DESC"
 	HostOrderByInputProvisionedMemoryBytesDESC HostOrderByInput = "provisioned_memory_bytes_DESC"
+
+	// HostOrderByInputReservedMemoryBytesASC captures enum value "reserved_memory_bytes_ASC"
+	HostOrderByInputReservedMemoryBytesASC HostOrderByInput = "reserved_memory_bytes_ASC"
+
+	// HostOrderByInputReservedMemoryBytesDESC captures enum value "reserved_memory_bytes_DESC"
+	HostOrderByInputReservedMemoryBytesDESC HostOrderByInput = "reserved_memory_bytes_DESC"
+
+	// HostOrderByInputRunningPauseOvercommitMemoryBytesASC captures enum value "running_pause_overcommit_memory_bytes_ASC"
+	HostOrderByInputRunningPauseOvercommitMemoryBytesASC HostOrderByInput = "running_pause_overcommit_memory_bytes_ASC"
+
+	// HostOrderByInputRunningPauseOvercommitMemoryBytesDESC captures enum value "running_pause_overcommit_memory_bytes_DESC"
+	HostOrderByInputRunningPauseOvercommitMemoryBytesDESC HostOrderByInput = "running_pause_overcommit_memory_bytes_DESC"
+
+	// HostOrderByInputRunningPauseReservedMemoryBytesASC captures enum value "running_pause_reserved_memory_bytes_ASC"
+	HostOrderByInputRunningPauseReservedMemoryBytesASC HostOrderByInput = "running_pause_reserved_memory_bytes_ASC"
+
+	// HostOrderByInputRunningPauseReservedMemoryBytesDESC captures enum value "running_pause_reserved_memory_bytes_DESC"
+	HostOrderByInputRunningPauseReservedMemoryBytesDESC HostOrderByInput = "running_pause_reserved_memory_bytes_DESC"
 
 	// HostOrderByInputRunningPauseVMMemoryBytesASC captures enum value "running_pause_vm_memory_bytes_ASC"
 	HostOrderByInputRunningPauseVMMemoryBytesASC HostOrderByInput = "running_pause_vm_memory_bytes_ASC"
@@ -444,6 +498,12 @@ const (
 	// HostOrderByInputTotalMemoryBytesDESC captures enum value "total_memory_bytes_DESC"
 	HostOrderByInputTotalMemoryBytesDESC HostOrderByInput = "total_memory_bytes_DESC"
 
+	// HostOrderByInputTotalPhysicalMemoryBytesASC captures enum value "total_physical_memory_bytes_ASC"
+	HostOrderByInputTotalPhysicalMemoryBytesASC HostOrderByInput = "total_physical_memory_bytes_ASC"
+
+	// HostOrderByInputTotalPhysicalMemoryBytesDESC captures enum value "total_physical_memory_bytes_DESC"
+	HostOrderByInputTotalPhysicalMemoryBytesDESC HostOrderByInput = "total_physical_memory_bytes_DESC"
+
 	// HostOrderByInputUsedCacheSpaceASC captures enum value "used_cache_space_ASC"
 	HostOrderByInputUsedCacheSpaceASC HostOrderByInput = "used_cache_space_ASC"
 
@@ -504,7 +564,7 @@ var hostOrderByInputEnum []interface{}
 
 func init() {
 	var res []HostOrderByInput
-	if err := json.Unmarshal([]byte(`["access_ip_ASC","access_ip_DESC","allocable_cpu_cores_for_vm_exclusive_ASC","allocable_cpu_cores_for_vm_exclusive_DESC","allocatable_memory_bytes_ASC","allocatable_memory_bytes_DESC","allocated_prioritized_space_ASC","allocated_prioritized_space_DESC","allocated_prioritized_space_usage_ASC","allocated_prioritized_space_usage_DESC","chunk_id_ASC","chunk_id_DESC","commited_memory_bytes_ASC","commited_memory_bytes_DESC","connect_status_ASC","connect_status_DESC","cpu_brand_ASC","cpu_brand_DESC","cpu_fan_speed_unit_ASC","cpu_fan_speed_unit_DESC","cpu_hz_per_core_ASC","cpu_hz_per_core_DESC","cpu_model_ASC","cpu_model_DESC","cpu_vendor_ASC","cpu_vendor_DESC","data_ip_ASC","data_ip_DESC","dirty_cache_space_ASC","dirty_cache_space_DESC","dirty_cache_usage_ASC","dirty_cache_usage_DESC","downgraded_prioritized_space_ASC","downgraded_prioritized_space_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_cache_space_ASC","failure_cache_space_DESC","failure_data_space_ASC","failure_data_space_DESC","hdd_data_capacity_ASC","hdd_data_capacity_DESC","hdd_disk_count_ASC","hdd_disk_count_DESC","host_state_ASC","host_state_DESC","hypervisor_ip_ASC","hypervisor_ip_DESC","id_ASC","id_DESC","iommu_ASC","iommu_DESC","is_os_in_raid1_ASC","is_os_in_raid1_DESC","local_id_ASC","local_id_DESC","lsm_cap_disk_safe_umount_ASC","lsm_cap_disk_safe_umount_DESC","management_ip_ASC","management_ip_DESC","merged_status_ASC","merged_status_DESC","model_ASC","model_DESC","name_ASC","name_DESC","nested_virtualization_ASC","nested_virtualization_DESC","nic_count_ASC","nic_count_DESC","node_topo_local_id_ASC","node_topo_local_id_DESC","os_memory_bytes_ASC","os_memory_bytes_DESC","os_version_ASC","os_version_DESC","perf_allocated_data_space_ASC","perf_allocated_data_space_DESC","perf_failure_data_space_ASC","perf_failure_data_space_DESC","perf_total_data_capacity_ASC","perf_total_data_capacity_DESC","perf_used_data_space_ASC","perf_used_data_space_DESC","perf_valid_data_space_ASC","perf_valid_data_space_DESC","planned_prioritized_space_ASC","planned_prioritized_space_DESC","pmem_dimm_capacity_ASC","pmem_dimm_capacity_DESC","pmem_dimm_count_ASC","pmem_dimm_count_DESC","pmem_disk_count_ASC","pmem_disk_count_DESC","prio_space_percentage_ASC","prio_space_percentage_DESC","provisioned_cpu_cores_ASC","provisioned_cpu_cores_DESC","provisioned_memory_bytes_ASC","provisioned_memory_bytes_DESC","running_pause_vm_memory_bytes_ASC","running_pause_vm_memory_bytes_DESC","running_vm_num_ASC","running_vm_num_DESC","scvm_cpu_ASC","scvm_cpu_DESC","scvm_memory_ASC","scvm_memory_DESC","scvm_name_ASC","scvm_name_DESC","serial_ASC","serial_DESC","ssd_data_capacity_ASC","ssd_data_capacity_DESC","ssd_disk_count_ASC","ssd_disk_count_DESC","state_ASC","state_DESC","status_ASC","status_DESC","stopped_vm_num_ASC","stopped_vm_num_DESC","suspended_vm_num_ASC","suspended_vm_num_DESC","total_cache_capacity_ASC","total_cache_capacity_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_cpu_sockets_ASC","total_cpu_sockets_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_logical_cpu_cores_ASC","total_logical_cpu_cores_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","used_cache_space_ASC","used_cache_space_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","valid_cache_space_ASC","valid_cache_space_DESC","valid_free_cache_space_ASC","valid_free_cache_space_DESC","vm_num_ASC","vm_num_DESC","vmotion_ip_ASC","vmotion_ip_DESC","with_faster_ssd_as_cache_ASC","with_faster_ssd_as_cache_DESC"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["access_ip_ASC","access_ip_DESC","allocable_cpu_cores_for_vm_exclusive_ASC","allocable_cpu_cores_for_vm_exclusive_DESC","allocatable_memory_bytes_ASC","allocatable_memory_bytes_DESC","allocated_memory_bytes_ASC","allocated_memory_bytes_DESC","allocated_prioritized_space_ASC","allocated_prioritized_space_DESC","allocated_prioritized_space_usage_ASC","allocated_prioritized_space_usage_DESC","chunk_id_ASC","chunk_id_DESC","commited_memory_bytes_ASC","commited_memory_bytes_DESC","connect_status_ASC","connect_status_DESC","cpu_brand_ASC","cpu_brand_DESC","cpu_fan_speed_unit_ASC","cpu_fan_speed_unit_DESC","cpu_hz_per_core_ASC","cpu_hz_per_core_DESC","cpu_model_ASC","cpu_model_DESC","cpu_vendor_ASC","cpu_vendor_DESC","data_ip_ASC","data_ip_DESC","dirty_cache_space_ASC","dirty_cache_space_DESC","dirty_cache_usage_ASC","dirty_cache_usage_DESC","downgraded_prioritized_space_ASC","downgraded_prioritized_space_DESC","entityAsyncStatus_ASC","entityAsyncStatus_DESC","failure_cache_space_ASC","failure_cache_space_DESC","failure_data_space_ASC","failure_data_space_DESC","hdd_data_capacity_ASC","hdd_data_capacity_DESC","hdd_disk_count_ASC","hdd_disk_count_DESC","host_state_ASC","host_state_DESC","hypervisor_ip_ASC","hypervisor_ip_DESC","id_ASC","id_DESC","iommu_ASC","iommu_DESC","is_os_in_raid1_ASC","is_os_in_raid1_DESC","local_id_ASC","local_id_DESC","lsm_cap_disk_safe_umount_ASC","lsm_cap_disk_safe_umount_DESC","management_ip_ASC","management_ip_DESC","memory_allocation_rate_ASC","memory_allocation_rate_DESC","memory_overcommit_enabled_ASC","memory_overcommit_enabled_DESC","merged_status_ASC","merged_status_DESC","model_ASC","model_DESC","name_ASC","name_DESC","nested_virtualization_ASC","nested_virtualization_DESC","nic_count_ASC","nic_count_DESC","node_topo_local_id_ASC","node_topo_local_id_DESC","os_memory_bytes_ASC","os_memory_bytes_DESC","os_version_ASC","os_version_DESC","overcommit_active_memory_bytes_ASC","overcommit_active_memory_bytes_DESC","overcommit_memory_bytes_ASC","overcommit_memory_bytes_DESC","overcommit_memory_ratio_ASC","overcommit_memory_ratio_DESC","perf_allocated_data_space_ASC","perf_allocated_data_space_DESC","perf_failure_data_space_ASC","perf_failure_data_space_DESC","perf_total_data_capacity_ASC","perf_total_data_capacity_DESC","perf_used_data_space_ASC","perf_used_data_space_DESC","perf_valid_data_space_ASC","perf_valid_data_space_DESC","planned_prioritized_space_ASC","planned_prioritized_space_DESC","pmem_dimm_capacity_ASC","pmem_dimm_capacity_DESC","pmem_dimm_count_ASC","pmem_dimm_count_DESC","pmem_disk_count_ASC","pmem_disk_count_DESC","prio_space_percentage_ASC","prio_space_percentage_DESC","provisioned_cpu_cores_ASC","provisioned_cpu_cores_DESC","provisioned_memory_bytes_ASC","provisioned_memory_bytes_DESC","reserved_memory_bytes_ASC","reserved_memory_bytes_DESC","running_pause_overcommit_memory_bytes_ASC","running_pause_overcommit_memory_bytes_DESC","running_pause_reserved_memory_bytes_ASC","running_pause_reserved_memory_bytes_DESC","running_pause_vm_memory_bytes_ASC","running_pause_vm_memory_bytes_DESC","running_vm_num_ASC","running_vm_num_DESC","scvm_cpu_ASC","scvm_cpu_DESC","scvm_memory_ASC","scvm_memory_DESC","scvm_name_ASC","scvm_name_DESC","serial_ASC","serial_DESC","ssd_data_capacity_ASC","ssd_data_capacity_DESC","ssd_disk_count_ASC","ssd_disk_count_DESC","state_ASC","state_DESC","status_ASC","status_DESC","stopped_vm_num_ASC","stopped_vm_num_DESC","suspended_vm_num_ASC","suspended_vm_num_DESC","total_cache_capacity_ASC","total_cache_capacity_DESC","total_cpu_cores_ASC","total_cpu_cores_DESC","total_cpu_hz_ASC","total_cpu_hz_DESC","total_cpu_sockets_ASC","total_cpu_sockets_DESC","total_data_capacity_ASC","total_data_capacity_DESC","total_logical_cpu_cores_ASC","total_logical_cpu_cores_DESC","total_memory_bytes_ASC","total_memory_bytes_DESC","total_physical_memory_bytes_ASC","total_physical_memory_bytes_DESC","used_cache_space_ASC","used_cache_space_DESC","used_cpu_hz_ASC","used_cpu_hz_DESC","used_data_space_ASC","used_data_space_DESC","used_memory_bytes_ASC","used_memory_bytes_DESC","valid_cache_space_ASC","valid_cache_space_DESC","valid_free_cache_space_ASC","valid_free_cache_space_DESC","vm_num_ASC","vm_num_DESC","vmotion_ip_ASC","vmotion_ip_DESC","with_faster_ssd_as_cache_ASC","with_faster_ssd_as_cache_DESC"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

@@ -62,6 +62,15 @@ type ContentLibraryImageWhereInput struct {
 	// created at not in
 	CreatedAtNotIn []string `json:"createdAt_not_in,omitempty"`
 
+	// datastores every
+	DatastoresEvery *DatastoreWhereInput `json:"datastores_every,omitempty"`
+
+	// datastores none
+	DatastoresNone *DatastoreWhereInput `json:"datastores_none,omitempty"`
+
+	// datastores some
+	DatastoresSome *DatastoreWhereInput `json:"datastores_some,omitempty"`
+
 	// description
 	Description *string `json:"description,omitempty"`
 
@@ -351,6 +360,12 @@ type ContentLibraryImageWhereInputMarshalOpts struct {
 	CreatedAtNot_Explicit_Null_When_Empty bool
 
 	CreatedAtNotIn_Explicit_Null_When_Empty bool
+
+	DatastoresEvery_Explicit_Null_When_Empty bool
+
+	DatastoresNone_Explicit_Null_When_Empty bool
+
+	DatastoresSome_Explicit_Null_When_Empty bool
 
 	Description_Explicit_Null_When_Empty bool
 
@@ -778,6 +793,66 @@ func (m ContentLibraryImageWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field datastores_every
+	if m.DatastoresEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_every\":")
+		bytes, err := swag.WriteJSON(m.DatastoresEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoresEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_every\":null")
+		first = false
+	}
+
+	// handle nullable field datastores_none
+	if m.DatastoresNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_none\":")
+		bytes, err := swag.WriteJSON(m.DatastoresNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoresNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_none\":null")
+		first = false
+	}
+
+	// handle nullable field datastores_some
+	if m.DatastoresSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_some\":")
+		bytes, err := swag.WriteJSON(m.DatastoresSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoresSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_some\":null")
 		first = false
 	}
 
@@ -2461,6 +2536,18 @@ func (m *ContentLibraryImageWhereInput) Validate(formats strfmt.Registry) error 
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastoresEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDatastoresNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDatastoresSome(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateElfImagesEvery(formats); err != nil {
 		res = append(res, err)
 	}
@@ -2682,6 +2769,63 @@ func (m *ContentLibraryImageWhereInput) validateClustersSome(formats strfmt.Regi
 				return ve.ValidateName("clusters_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("clusters_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageWhereInput) validateDatastoresEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoresEvery) { // not required
+		return nil
+	}
+
+	if m.DatastoresEvery != nil {
+		if err := m.DatastoresEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageWhereInput) validateDatastoresNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoresNone) { // not required
+		return nil
+	}
+
+	if m.DatastoresNone != nil {
+		if err := m.DatastoresNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageWhereInput) validateDatastoresSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoresSome) { // not required
+		return nil
+	}
+
+	if m.DatastoresSome != nil {
+		if err := m.DatastoresSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_some")
 			}
 			return err
 		}
@@ -3140,6 +3284,18 @@ func (m *ContentLibraryImageWhereInput) ContextValidate(ctx context.Context, for
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDatastoresEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastoresNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastoresSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateElfImagesEvery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -3334,6 +3490,54 @@ func (m *ContentLibraryImageWhereInput) contextValidateClustersSome(ctx context.
 				return ve.ValidateName("clusters_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("clusters_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageWhereInput) contextValidateDatastoresEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoresEvery != nil {
+		if err := m.DatastoresEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageWhereInput) contextValidateDatastoresNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoresNone != nil {
+		if err := m.DatastoresNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageWhereInput) contextValidateDatastoresSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoresSome != nil {
+		if err := m.DatastoresSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_some")
 			}
 			return err
 		}

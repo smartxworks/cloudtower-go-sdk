@@ -24,6 +24,9 @@ type Cluster struct {
 	// access write compress enabled
 	AccessWriteCompressEnabled *bool `json:"access_write_compress_enabled,omitempty"`
 
+	// allocated memory bytes
+	AllocatedMemoryBytes *int64 `json:"allocated_memory_bytes,omitempty"`
+
 	// allocated prioritized space
 	AllocatedPrioritizedSpace *int64 `json:"allocated_prioritized_space,omitempty"`
 
@@ -173,6 +176,9 @@ type Cluster struct {
 	// max physical data capacity per node
 	MaxPhysicalDataCapacityPerNode *int64 `json:"max_physical_data_capacity_per_node,omitempty"`
 
+	// memory allocation rate
+	MemoryAllocationRate *float64 `json:"memory_allocation_rate,omitempty"`
+
 	// metro availability checklist
 	MetroAvailabilityChecklist *NestedMetroAvailabilityChecklist `json:"metro_availability_checklist,omitempty"`
 
@@ -213,6 +219,9 @@ type Cluster struct {
 
 	// overall efficiency
 	OverallEfficiency *float64 `json:"overall_efficiency,omitempty"`
+
+	// overcommit memory ratio
+	OvercommitMemoryRatio *float64 `json:"overcommit_memory_ratio,omitempty"`
 
 	// overprovision ratio
 	OverprovisionRatio *float64 `json:"overprovision_ratio,omitempty"`
@@ -386,6 +395,8 @@ type Cluster struct {
 type ClusterMarshalOpts struct {
 	AccessWriteCompressEnabled_Explicit_Null_When_Empty bool
 
+	AllocatedMemoryBytes_Explicit_Null_When_Empty bool
+
 	AllocatedPrioritizedSpace_Explicit_Null_When_Empty bool
 
 	AllocatedPrioritizedSpaceUsage_Explicit_Null_When_Empty bool
@@ -482,6 +493,8 @@ type ClusterMarshalOpts struct {
 
 	MaxPhysicalDataCapacityPerNode_Explicit_Null_When_Empty bool
 
+	MemoryAllocationRate_Explicit_Null_When_Empty bool
+
 	MetroAvailabilityChecklist_Explicit_Null_When_Empty bool
 
 	MgtGateway_Explicit_Null_When_Empty bool
@@ -507,6 +520,8 @@ type ClusterMarshalOpts struct {
 	NvmfEnabled_Explicit_Null_When_Empty bool
 
 	OverallEfficiency_Explicit_Null_When_Empty bool
+
+	OvercommitMemoryRatio_Explicit_Null_When_Empty bool
 
 	OverprovisionRatio_Explicit_Null_When_Empty bool
 
@@ -640,6 +655,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"access_write_compress_enabled\":null")
+		first = false
+	}
+
+	// handle nullable field allocated_memory_bytes
+	if m.AllocatedMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.AllocatedMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AllocatedMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_memory_bytes\":null")
 		first = false
 	}
 
@@ -1567,6 +1602,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field memory_allocation_rate
+	if m.MemoryAllocationRate != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memory_allocation_rate\":")
+		bytes, err := swag.WriteJSON(m.MemoryAllocationRate)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MemoryAllocationRate_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memory_allocation_rate\":null")
+		first = false
+	}
+
 	// handle nullable field metro_availability_checklist
 	if m.MetroAvailabilityChecklist != nil {
 		if !first {
@@ -1818,6 +1873,26 @@ func (m Cluster) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"overall_efficiency\":null")
+		first = false
+	}
+
+	// handle nullable field overcommit_memory_ratio
+	if m.OvercommitMemoryRatio != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overcommit_memory_ratio\":")
+		bytes, err := swag.WriteJSON(m.OvercommitMemoryRatio)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvercommitMemoryRatio_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overcommit_memory_ratio\":null")
 		first = false
 	}
 

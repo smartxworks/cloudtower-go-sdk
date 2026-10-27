@@ -225,6 +225,10 @@ type CloneVMVolumeParamsData struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// Datastore volumes only. Omitted means inheriting the source policy.
+	// Shared volumes require thick_eager_zeroed.
+	ProvisionPolicy *VMVolumeProvisionPolicy `json:"provision_policy,omitempty"`
+
 	MarshalOpts *CloneVMVolumeParamsDataMarshalOpts `json:"-"`
 }
 
@@ -232,6 +236,8 @@ type CloneVMVolumeParamsDataMarshalOpts struct {
 	Description_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
+
+	ProvisionPolicy_Explicit_Null_When_Empty bool
 }
 
 func (m CloneVMVolumeParamsData) MarshalJSON() ([]byte, error) {
@@ -280,6 +286,26 @@ func (m CloneVMVolumeParamsData) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field provision_policy
+	if m.ProvisionPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -289,6 +315,10 @@ func (m *CloneVMVolumeParamsData) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProvisionPolicy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -307,8 +337,52 @@ func (m *CloneVMVolumeParamsData) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this clone VM volume params data based on context it is used
+func (m *CloneVMVolumeParamsData) validateProvisionPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProvisionPolicy) { // not required
+		return nil
+	}
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "provision_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this clone VM volume params data based on the context it is used
 func (m *CloneVMVolumeParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProvisionPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CloneVMVolumeParamsData) contextValidateProvisionPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "provision_policy")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

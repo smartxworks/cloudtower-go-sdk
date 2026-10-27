@@ -49,6 +49,9 @@ type MountNewCreateDisksParams struct {
 	// max iops policy
 	MaxIopsPolicy *VMDiskIoRestrictType `json:"max_iops_policy,omitempty"`
 
+	// Associated storage for a compute cluster.
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
 	// vm volume
 	// Required: true
 	VMVolume *MountNewCreateDisksParamsVMVolume `json:"vm_volume"`
@@ -74,6 +77,8 @@ type MountNewCreateDisksParamsMarshalOpts struct {
 	MaxIops_Explicit_Null_When_Empty bool
 
 	MaxIopsPolicy_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 
 	VMVolume_Explicit_Null_When_Empty bool
 }
@@ -264,6 +269,26 @@ func (m MountNewCreateDisksParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	// handle nullable field vm_volume
 	if m.VMVolume != nil {
 		if !first {
@@ -309,6 +334,10 @@ func (m *MountNewCreateDisksParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMaxIopsPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -412,6 +441,25 @@ func (m *MountNewCreateDisksParams) validateMaxIopsPolicy(formats strfmt.Registr
 	return nil
 }
 
+func (m *MountNewCreateDisksParams) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MountNewCreateDisksParams) validateVMVolume(formats strfmt.Registry) error {
 
 	if err := validate.Required("vm_volume", "body", m.VMVolume); err != nil {
@@ -449,6 +497,10 @@ func (m *MountNewCreateDisksParams) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidateMaxIopsPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -526,6 +578,22 @@ func (m *MountNewCreateDisksParams) contextValidateMaxIopsPolicy(ctx context.Con
 	return nil
 }
 
+func (m *MountNewCreateDisksParams) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MountNewCreateDisksParams) contextValidateVMVolume(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VMVolume != nil {
@@ -581,6 +649,9 @@ type MountNewCreateDisksParamsVMVolume struct {
 	// path
 	Path *string `json:"path,omitempty"`
 
+	// Provisioning type for imported datastore volumes.
+	ProvisionPolicy *VMVolumeProvisionPolicy `json:"provision_policy,omitempty"`
+
 	// resident in cache
 	ResidentInCache *bool `json:"resident_in_cache,omitempty"`
 
@@ -604,6 +675,8 @@ type MountNewCreateDisksParamsVMVolumeMarshalOpts struct {
 	Name_Explicit_Null_When_Empty bool
 
 	Path_Explicit_Null_When_Empty bool
+
+	ProvisionPolicy_Explicit_Null_When_Empty bool
 
 	ResidentInCache_Explicit_Null_When_Empty bool
 
@@ -718,6 +791,26 @@ func (m MountNewCreateDisksParamsVMVolume) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field provision_policy
+	if m.ProvisionPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":null")
+		first = false
+	}
+
 	// handle nullable field resident_in_cache
 	if m.ResidentInCache != nil {
 		if !first {
@@ -802,6 +895,10 @@ func (m *MountNewCreateDisksParamsVMVolume) Validate(formats strfmt.Registry) er
 		res = append(res, err)
 	}
 
+	if err := m.validateProvisionPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSize(formats); err != nil {
 		res = append(res, err)
 	}
@@ -882,6 +979,25 @@ func (m *MountNewCreateDisksParamsVMVolume) validateName(formats strfmt.Registry
 	return nil
 }
 
+func (m *MountNewCreateDisksParamsVMVolume) validateProvisionPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProvisionPolicy) { // not required
+		return nil
+	}
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume" + "." + "provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume" + "." + "provision_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MountNewCreateDisksParamsVMVolume) validateSize(formats strfmt.Registry) error {
 
 	if err := validate.Required("vm_volume"+"."+"size", "body", m.Size); err != nil {
@@ -923,6 +1039,10 @@ func (m *MountNewCreateDisksParamsVMVolume) ContextValidate(ctx context.Context,
 	}
 
 	if err := m.contextValidateElfStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProvisionPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -976,6 +1096,22 @@ func (m *MountNewCreateDisksParamsVMVolume) contextValidateElfStoragePolicy(ctx 
 				return ve.ValidateName("vm_volume" + "." + "elf_storage_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("vm_volume" + "." + "elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MountNewCreateDisksParamsVMVolume) contextValidateProvisionPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_volume" + "." + "provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_volume" + "." + "provision_policy")
 			}
 			return err
 		}

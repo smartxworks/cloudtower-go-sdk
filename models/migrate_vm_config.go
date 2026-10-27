@@ -33,6 +33,9 @@ type MigrateVMConfig struct {
 	// elf storage policy
 	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy,omitempty"`
 
+	// Omitted means migrating both compute resources and storage.
+	MigrateMode *MigrateMode `json:"migrate_mode,omitempty"`
+
 	// migrate type
 	// Required: true
 	MigrateType *MigrateType `json:"migrate_type"`
@@ -43,6 +46,9 @@ type MigrateVMConfig struct {
 
 	// new name
 	NewName *string `json:"new_name,omitempty"`
+
+	// Target datastore provision for live migration; cold storage migration preserves the source provision.
+	ProvisionPolicy *VMVolumeProvisionPolicy `json:"provision_policy,omitempty"`
 
 	// remove unmovable devices
 	RemoveUnmovableDevices *bool `json:"remove_unmovable_devices,omitempty"`
@@ -59,11 +65,15 @@ type MigrateVMConfigMarshalOpts struct {
 
 	ElfStoragePolicy_Explicit_Null_When_Empty bool
 
+	MigrateMode_Explicit_Null_When_Empty bool
+
 	MigrateType_Explicit_Null_When_Empty bool
 
 	NetworkMapping_Explicit_Null_When_Empty bool
 
 	NewName_Explicit_Null_When_Empty bool
+
+	ProvisionPolicy_Explicit_Null_When_Empty bool
 
 	RemoveUnmovableDevices_Explicit_Null_When_Empty bool
 }
@@ -154,6 +164,26 @@ func (m MigrateVMConfig) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field migrate_mode
+	if m.MigrateMode != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"migrate_mode\":")
+		bytes, err := swag.WriteJSON(m.MigrateMode)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MigrateMode_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"migrate_mode\":null")
+		first = false
+	}
+
 	// handle nullable field migrate_type
 	if m.MigrateType != nil {
 		if !first {
@@ -208,6 +238,26 @@ func (m MigrateVMConfig) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field provision_policy
+	if m.ProvisionPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":null")
+		first = false
+	}
+
 	// handle nullable field remove_unmovable_devices
 	if m.RemoveUnmovableDevices != nil {
 		if !first {
@@ -248,11 +298,19 @@ func (m *MigrateVMConfig) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateMigrateMode(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateMigrateType(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateNetworkMapping(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProvisionPolicy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -319,6 +377,25 @@ func (m *MigrateVMConfig) validateElfStoragePolicy(formats strfmt.Registry) erro
 	return nil
 }
 
+func (m *MigrateVMConfig) validateMigrateMode(formats strfmt.Registry) error {
+	if swag.IsZero(m.MigrateMode) { // not required
+		return nil
+	}
+
+	if m.MigrateMode != nil {
+		if err := m.MigrateMode.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("migrate_mode")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("migrate_mode")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MigrateVMConfig) validateMigrateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("migrate_type", "body", m.MigrateType); err != nil {
@@ -370,6 +447,25 @@ func (m *MigrateVMConfig) validateNetworkMapping(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *MigrateVMConfig) validateProvisionPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProvisionPolicy) { // not required
+		return nil
+	}
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("provision_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this migrate Vm config based on the context it is used
 func (m *MigrateVMConfig) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -386,11 +482,19 @@ func (m *MigrateVMConfig) ContextValidate(ctx context.Context, formats strfmt.Re
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMigrateMode(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMigrateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateNetworkMapping(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProvisionPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -448,6 +552,22 @@ func (m *MigrateVMConfig) contextValidateElfStoragePolicy(ctx context.Context, f
 	return nil
 }
 
+func (m *MigrateVMConfig) contextValidateMigrateMode(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MigrateMode != nil {
+		if err := m.MigrateMode.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("migrate_mode")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("migrate_mode")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MigrateVMConfig) contextValidateMigrateType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MigrateType != nil {
@@ -479,6 +599,22 @@ func (m *MigrateVMConfig) contextValidateNetworkMapping(ctx context.Context, for
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *MigrateVMConfig) contextValidateProvisionPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("provision_policy")
+			}
+			return err
+		}
 	}
 
 	return nil

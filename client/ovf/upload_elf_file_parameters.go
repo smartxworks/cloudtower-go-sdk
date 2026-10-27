@@ -67,6 +67,12 @@ type UploadElfFileParams struct {
 	// Default: "en-US"
 	ContentLanguage *string
 
+	/* DatastoreID.
+
+	   Associated VCFS datastore ID for initialization.
+	*/
+	DatastoreID *string
+
 	// ExternalCloudtowerID.
 	ExternalCloudtowerID *string
 
@@ -81,6 +87,12 @@ type UploadElfFileParams struct {
 
 	// SizeUnit.
 	SizeUnit *string
+
+	/* StorageClusterID.
+
+	   Associated clustered-storage ID for initialization.
+	*/
+	StorageClusterID *string
 
 	// UploadTaskID.
 	UploadTaskID *string
@@ -171,6 +183,17 @@ func (o *UploadElfFileParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
 }
 
+// WithDatastoreID adds the datastoreID to the upload elf file params
+func (o *UploadElfFileParams) WithDatastoreID(datastoreID *string) *UploadElfFileParams {
+	o.SetDatastoreID(datastoreID)
+	return o
+}
+
+// SetDatastoreID adds the datastoreId to the upload elf file params
+func (o *UploadElfFileParams) SetDatastoreID(datastoreID *string) {
+	o.DatastoreID = datastoreID
+}
+
 // WithExternalCloudtowerID adds the externalCloudtowerID to the upload elf file params
 func (o *UploadElfFileParams) WithExternalCloudtowerID(externalCloudtowerID *string) *UploadElfFileParams {
 	o.SetExternalCloudtowerID(externalCloudtowerID)
@@ -226,6 +249,17 @@ func (o *UploadElfFileParams) SetSizeUnit(sizeUnit *string) {
 	o.SizeUnit = sizeUnit
 }
 
+// WithStorageClusterID adds the storageClusterID to the upload elf file params
+func (o *UploadElfFileParams) WithStorageClusterID(storageClusterID *string) *UploadElfFileParams {
+	o.SetStorageClusterID(storageClusterID)
+	return o
+}
+
+// SetStorageClusterID adds the storageClusterId to the upload elf file params
+func (o *UploadElfFileParams) SetStorageClusterID(storageClusterID *string) {
+	o.StorageClusterID = storageClusterID
+}
+
 // WithUploadTaskID adds the uploadTaskID to the upload elf file params
 func (o *UploadElfFileParams) WithUploadTaskID(uploadTaskID *string) *UploadElfFileParams {
 	o.SetUploadTaskID(uploadTaskID)
@@ -265,6 +299,21 @@ func (o *UploadElfFileParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
 			return err
+		}
+	}
+
+	if o.DatastoreID != nil {
+
+		// form param datastore_id
+		var frDatastoreID string
+		if o.DatastoreID != nil {
+			frDatastoreID = *o.DatastoreID
+		}
+		fDatastoreID := frDatastoreID
+		if fDatastoreID != "" {
+			if err := r.SetFormParam("datastore_id", fDatastoreID); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -320,6 +369,21 @@ func (o *UploadElfFileParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		fSizeUnit := frSizeUnit
 		if fSizeUnit != "" {
 			if err := r.SetFormParam("size_unit", fSizeUnit); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.StorageClusterID != nil {
+
+		// form param storage_cluster_id
+		var frStorageClusterID string
+		if o.StorageClusterID != nil {
+			frStorageClusterID = *o.StorageClusterID
+		}
+		fStorageClusterID := frStorageClusterID
+		if fStorageClusterID != "" {
+			if err := r.SetFormParam("storage_cluster_id", fStorageClusterID); err != nil {
 				return err
 			}
 		}

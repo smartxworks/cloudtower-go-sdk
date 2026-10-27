@@ -60,12 +60,15 @@ func NewCreateContentLibraryImageParamsWithHTTPClient(client *http.Client) *Crea
 type CreateContentLibraryImageParams struct {
 
 	// Clusters.
-	Clusters string
+	Clusters *string
 
 	// ContentLanguage.
 	//
 	// Default: "en-US"
 	ContentLanguage *string
+
+	// Datastores.
+	Datastores *string
 
 	// Description.
 	Description *string
@@ -153,13 +156,13 @@ func (o *CreateContentLibraryImageParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithClusters adds the clusters to the create content library image params
-func (o *CreateContentLibraryImageParams) WithClusters(clusters string) *CreateContentLibraryImageParams {
+func (o *CreateContentLibraryImageParams) WithClusters(clusters *string) *CreateContentLibraryImageParams {
 	o.SetClusters(clusters)
 	return o
 }
 
 // SetClusters adds the clusters to the create content library image params
-func (o *CreateContentLibraryImageParams) SetClusters(clusters string) {
+func (o *CreateContentLibraryImageParams) SetClusters(clusters *string) {
 	o.Clusters = clusters
 }
 
@@ -172,6 +175,17 @@ func (o *CreateContentLibraryImageParams) WithContentLanguage(contentLanguage *s
 // SetContentLanguage adds the contentLanguage to the create content library image params
 func (o *CreateContentLibraryImageParams) SetContentLanguage(contentLanguage *string) {
 	o.ContentLanguage = contentLanguage
+}
+
+// WithDatastores adds the datastores to the create content library image params
+func (o *CreateContentLibraryImageParams) WithDatastores(datastores *string) *CreateContentLibraryImageParams {
+	o.SetDatastores(datastores)
+	return o
+}
+
+// SetDatastores adds the datastores to the create content library image params
+func (o *CreateContentLibraryImageParams) SetDatastores(datastores *string) {
+	o.Datastores = datastores
 }
 
 // WithDescription adds the description to the create content library image params
@@ -259,12 +273,18 @@ func (o *CreateContentLibraryImageParams) WriteToRequest(r runtime.ClientRequest
 	}
 	var res []error
 
-	// form param clusters
-	frClusters := o.Clusters
-	fClusters := frClusters
-	if fClusters != "" {
-		if err := r.SetFormParam("clusters", fClusters); err != nil {
-			return err
+	if o.Clusters != nil {
+
+		// form param clusters
+		var frClusters string
+		if o.Clusters != nil {
+			frClusters = *o.Clusters
+		}
+		fClusters := frClusters
+		if fClusters != "" {
+			if err := r.SetFormParam("clusters", fClusters); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -273,6 +293,21 @@ func (o *CreateContentLibraryImageParams) WriteToRequest(r runtime.ClientRequest
 		// header param content-language
 		if err := r.SetHeaderParam("content-language", *o.ContentLanguage); err != nil {
 			return err
+		}
+	}
+
+	if o.Datastores != nil {
+
+		// form param datastores
+		var frDatastores string
+		if o.Datastores != nil {
+			frDatastores = *o.Datastores
+		}
+		fDatastores := frDatastores
+		if fDatastores != "" {
+			if err := r.SetFormParam("datastores", fDatastores); err != nil {
+				return err
+			}
 		}
 	}
 

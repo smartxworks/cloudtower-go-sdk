@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ContentLibraryImageUpdationClusterParamsData content library image updation cluster params data
@@ -21,14 +20,18 @@ import (
 type ContentLibraryImageUpdationClusterParamsData struct {
 
 	// clusters
-	// Required: true
-	Clusters *ClusterWhereInput `json:"clusters"`
+	Clusters *ClusterWhereInput `json:"clusters,omitempty"`
+
+	// datastores
+	Datastores *DatastoreWhereInput `json:"datastores,omitempty"`
 
 	MarshalOpts *ContentLibraryImageUpdationClusterParamsDataMarshalOpts `json:"-"`
 }
 
 type ContentLibraryImageUpdationClusterParamsDataMarshalOpts struct {
 	Clusters_Explicit_Null_When_Empty bool
+
+	Datastores_Explicit_Null_When_Empty bool
 }
 
 func (m ContentLibraryImageUpdationClusterParamsData) MarshalJSON() ([]byte, error) {
@@ -57,6 +60,26 @@ func (m ContentLibraryImageUpdationClusterParamsData) MarshalJSON() ([]byte, err
 		first = false
 	}
 
+	// handle nullable field datastores
+	if m.Datastores != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores\":")
+		bytes, err := swag.WriteJSON(m.Datastores)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Datastores_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -69,6 +92,10 @@ func (m *ContentLibraryImageUpdationClusterParamsData) Validate(formats strfmt.R
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastores(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -76,9 +103,8 @@ func (m *ContentLibraryImageUpdationClusterParamsData) Validate(formats strfmt.R
 }
 
 func (m *ContentLibraryImageUpdationClusterParamsData) validateClusters(formats strfmt.Registry) error {
-
-	if err := validate.Required("clusters", "body", m.Clusters); err != nil {
-		return err
+	if swag.IsZero(m.Clusters) { // not required
+		return nil
 	}
 
 	if m.Clusters != nil {
@@ -95,11 +121,34 @@ func (m *ContentLibraryImageUpdationClusterParamsData) validateClusters(formats 
 	return nil
 }
 
+func (m *ContentLibraryImageUpdationClusterParamsData) validateDatastores(formats strfmt.Registry) error {
+	if swag.IsZero(m.Datastores) { // not required
+		return nil
+	}
+
+	if m.Datastores != nil {
+		if err := m.Datastores.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this content library image updation cluster params data based on the context it is used
 func (m *ContentLibraryImageUpdationClusterParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateClusters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastores(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -117,6 +166,22 @@ func (m *ContentLibraryImageUpdationClusterParamsData) contextValidateClusters(c
 				return ve.ValidateName("clusters")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("clusters")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageUpdationClusterParamsData) contextValidateDatastores(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Datastores != nil {
+		if err := m.Datastores.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores")
 			}
 			return err
 		}

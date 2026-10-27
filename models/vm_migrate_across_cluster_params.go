@@ -225,6 +225,9 @@ type VMMigrateAcrossClusterParamsData struct {
 	// host id
 	HostID *string `json:"host_id,omitempty"`
 
+	// Required for ELF targets when migrating storage.
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
 	// vm config
 	// Required: true
 	VMConfig *MigrateVMConfig `json:"vm_config"`
@@ -236,6 +239,8 @@ type VMMigrateAcrossClusterParamsDataMarshalOpts struct {
 	ClusterID_Explicit_Null_When_Empty bool
 
 	HostID_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 
 	VMConfig_Explicit_Null_When_Empty bool
 }
@@ -286,6 +291,26 @@ func (m VMMigrateAcrossClusterParamsData) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	// handle nullable field vm_config
 	if m.VMConfig != nil {
 		if !first {
@@ -318,6 +343,10 @@ func (m *VMMigrateAcrossClusterParamsData) Validate(formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.validateStorageConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVMConfig(formats); err != nil {
 		res = append(res, err)
 	}
@@ -332,6 +361,25 @@ func (m *VMMigrateAcrossClusterParamsData) validateClusterID(formats strfmt.Regi
 
 	if err := validate.Required("data"+"."+"cluster_id", "body", m.ClusterID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *VMMigrateAcrossClusterParamsData) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "storage_config")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -361,6 +409,10 @@ func (m *VMMigrateAcrossClusterParamsData) validateVMConfig(formats strfmt.Regis
 func (m *VMMigrateAcrossClusterParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVMConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -368,6 +420,22 @@ func (m *VMMigrateAcrossClusterParamsData) ContextValidate(ctx context.Context, 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VMMigrateAcrossClusterParamsData) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("data" + "." + "storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("data" + "." + "storage_config")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

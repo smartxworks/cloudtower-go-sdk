@@ -28,6 +28,9 @@ type ContentLibraryImage struct {
 	// Required: true
 	CreatedAt *string `json:"createdAt"`
 
+	// datastores
+	Datastores []*NestedDatastore `json:"datastores,omitempty"`
+
 	// description
 	// Required: true
 	Description *string `json:"description"`
@@ -80,6 +83,8 @@ type ContentLibraryImageMarshalOpts struct {
 	Clusters_Explicit_Null_When_Empty bool
 
 	CreatedAt_Explicit_Null_When_Empty bool
+
+	Datastores_Explicit_Null_When_Empty bool
 
 	Description_Explicit_Null_When_Empty bool
 
@@ -145,6 +150,20 @@ func (m ContentLibraryImage) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"createdAt\":null")
+		first = false
+	}
+
+	// handle non nullable field datastores with omitempty
+	if !swag.IsZero(m.Datastores) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores\":")
+		bytes, err := swag.WriteJSON(m.Datastores)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -382,6 +401,10 @@ func (m *ContentLibraryImage) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastores(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDescription(formats); err != nil {
 		res = append(res, err)
 	}
@@ -470,6 +493,32 @@ func (m *ContentLibraryImage) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.Required("createdAt", "body", m.CreatedAt); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImage) validateDatastores(formats strfmt.Registry) error {
+	if swag.IsZero(m.Datastores) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Datastores); i++ {
+		if swag.IsZero(m.Datastores[i]) { // not required
+			continue
+		}
+
+		if m.Datastores[i] != nil {
+			if err := m.Datastores[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("datastores" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("datastores" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -712,6 +761,10 @@ func (m *ContentLibraryImage) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDatastores(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateElfImages(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -756,6 +809,26 @@ func (m *ContentLibraryImage) contextValidateClusters(ctx context.Context, forma
 					return ve.ValidateName("clusters" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("clusters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImage) contextValidateDatastores(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Datastores); i++ {
+
+		if m.Datastores[i] != nil {
+			if err := m.Datastores[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("datastores" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("datastores" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

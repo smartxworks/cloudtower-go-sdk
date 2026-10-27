@@ -87,6 +87,9 @@ type VMImportParams struct {
 	// status
 	Status *VMStatus `json:"status,omitempty"`
 
+	// storage config
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
 	// upload tasks
 	// Required: true
 	UploadTasks []string `json:"upload_tasks"`
@@ -142,6 +145,8 @@ type VMImportParamsMarshalOpts struct {
 	ParsedOvf_Explicit_Null_When_Empty bool
 
 	Status_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 
 	UploadTasks_Explicit_Null_When_Empty bool
 
@@ -576,6 +581,26 @@ func (m VMImportParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	// handle non nullable field upload_tasks without omitempty
 	{
 		if !first {
@@ -673,6 +698,10 @@ func (m *VMImportParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -880,6 +909,25 @@ func (m *VMImportParams) validateStatus(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMImportParams) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMImportParams) validateUploadTasks(formats strfmt.Registry) error {
 
 	if err := validate.Required("upload_tasks", "body", m.UploadTasks); err != nil {
@@ -952,6 +1000,10 @@ func (m *VMImportParams) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1101,6 +1153,22 @@ func (m *VMImportParams) contextValidateStatus(ctx context.Context, formats strf
 				return ve.ValidateName("status")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMImportParams) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
 			}
 			return err
 		}

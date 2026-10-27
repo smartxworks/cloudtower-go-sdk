@@ -98,6 +98,9 @@ type VMRebuildParams struct {
 	// status
 	Status *VMStatus `json:"status,omitempty"`
 
+	// Associated storage for a compute cluster.
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
 	// vcpu
 	Vcpu *int32 `json:"vcpu,omitempty"`
 
@@ -163,6 +166,8 @@ type VMRebuildParamsMarshalOpts struct {
 	RebuildFromSnapshotID_Explicit_Null_When_Empty bool
 
 	Status_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 
 	Vcpu_Explicit_Null_When_Empty bool
 
@@ -673,6 +678,26 @@ func (m VMRebuildParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	// handle nullable field vcpu
 	if m.Vcpu != nil {
 		if !first {
@@ -808,6 +833,10 @@ func (m *VMRebuildParams) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1082,6 +1111,25 @@ func (m *VMRebuildParams) validateStatus(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMRebuildParams) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMRebuildParams) validateVMDisks(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMDisks) { // not required
 		return nil
@@ -1195,6 +1243,10 @@ func (m *VMRebuildParams) ContextValidate(ctx context.Context, formats strfmt.Re
 	}
 
 	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1404,6 +1456,22 @@ func (m *VMRebuildParams) contextValidateStatus(ctx context.Context, formats str
 				return ve.ValidateName("status")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMRebuildParams) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
 			}
 			return err
 		}
