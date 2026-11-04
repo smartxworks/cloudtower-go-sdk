@@ -57,7 +57,8 @@ func NewGetBackupServicesConnectionOK() *GetBackupServicesConnectionOK {
 	return &GetBackupServicesConnectionOK{}
 }
 
-/* GetBackupServicesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetBackupServicesConnectionOK describes a response with status code 200, with default header values.
 
 GetBackupServicesConnectionOK get backup services connection o k
 */
@@ -98,7 +99,8 @@ func NewGetBackupServicesConnectionBadRequest() *GetBackupServicesConnectionBadR
 	return &GetBackupServicesConnectionBadRequest{}
 }
 
-/* GetBackupServicesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetBackupServicesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetBackupServicesConnectionNotFound() *GetBackupServicesConnectionNotFou
 	return &GetBackupServicesConnectionNotFound{}
 }
 
-/* GetBackupServicesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetBackupServicesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetBackupServicesConnectionInternalServerError() *GetBackupServicesConne
 	return &GetBackupServicesConnectionInternalServerError{}
 }
 
-/* GetBackupServicesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetBackupServicesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewImportVMVolumeParamsWithHTTPClient(client *http.Client) *ImportVMVolumeP
 	}
 }
 
-/* ImportVMVolumeParams contains all the parameters to send to the API endpoint
-   for the import Vm volume operation.
+/*
+ImportVMVolumeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the import Vm volume operation.
+
+	Typically these are written to a http.Request.
 */
 type ImportVMVolumeParams struct {
 

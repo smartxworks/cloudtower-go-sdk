@@ -54,10 +54,12 @@ func NewGetVMPlacementGroupsConnectionParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetVMPlacementGroupsConnectionParams contains all the parameters to send to the API endpoint
-   for the get Vm placement groups connection operation.
+/*
+GetVMPlacementGroupsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm placement groups connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMPlacementGroupsConnectionParams struct {
 

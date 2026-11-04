@@ -54,10 +54,12 @@ func NewCreateVcenterAccountParamsWithHTTPClient(client *http.Client) *CreateVce
 	}
 }
 
-/* CreateVcenterAccountParams contains all the parameters to send to the API endpoint
-   for the create vcenter account operation.
+/*
+CreateVcenterAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create vcenter account operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVcenterAccountParams struct {
 

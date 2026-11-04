@@ -57,7 +57,8 @@ func NewGetVlansOK() *GetVlansOK {
 	return &GetVlansOK{}
 }
 
-/* GetVlansOK describes a response with status code 200, with default header values.
+/*
+GetVlansOK describes a response with status code 200, with default header values.
 
 GetVlansOK get vlans o k
 */
@@ -96,7 +97,8 @@ func NewGetVlansBadRequest() *GetVlansBadRequest {
 	return &GetVlansBadRequest{}
 }
 
-/* GetVlansBadRequest describes a response with status code 400, with default header values.
+/*
+GetVlansBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVlansNotFound() *GetVlansNotFound {
 	return &GetVlansNotFound{}
 }
 
-/* GetVlansNotFound describes a response with status code 404, with default header values.
+/*
+GetVlansNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVlansInternalServerError() *GetVlansInternalServerError {
 	return &GetVlansInternalServerError{}
 }
 
-/* GetVlansInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVlansInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

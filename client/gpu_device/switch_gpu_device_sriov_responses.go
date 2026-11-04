@@ -63,7 +63,8 @@ func NewSwitchGpuDeviceSriovOK() *SwitchGpuDeviceSriovOK {
 	return &SwitchGpuDeviceSriovOK{}
 }
 
-/* SwitchGpuDeviceSriovOK describes a response with status code 200, with default header values.
+/*
+SwitchGpuDeviceSriovOK describes a response with status code 200, with default header values.
 
 SwitchGpuDeviceSriovOK switch gpu device sriov o k
 */
@@ -102,7 +103,8 @@ func NewSwitchGpuDeviceSriovNotModified() *SwitchGpuDeviceSriovNotModified {
 	return &SwitchGpuDeviceSriovNotModified{}
 }
 
-/* SwitchGpuDeviceSriovNotModified describes a response with status code 304, with default header values.
+/*
+SwitchGpuDeviceSriovNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewSwitchGpuDeviceSriovBadRequest() *SwitchGpuDeviceSriovBadRequest {
 	return &SwitchGpuDeviceSriovBadRequest{}
 }
 
-/* SwitchGpuDeviceSriovBadRequest describes a response with status code 400, with default header values.
+/*
+SwitchGpuDeviceSriovBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewSwitchGpuDeviceSriovNotFound() *SwitchGpuDeviceSriovNotFound {
 	return &SwitchGpuDeviceSriovNotFound{}
 }
 
-/* SwitchGpuDeviceSriovNotFound describes a response with status code 404, with default header values.
+/*
+SwitchGpuDeviceSriovNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewSwitchGpuDeviceSriovInternalServerError() *SwitchGpuDeviceSriovInternalS
 	return &SwitchGpuDeviceSriovInternalServerError{}
 }
 
-/* SwitchGpuDeviceSriovInternalServerError describes a response with status code 500, with default header values.
+/*
+SwitchGpuDeviceSriovInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

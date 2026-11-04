@@ -54,10 +54,12 @@ func NewImportContentLibraryImageParamsWithHTTPClient(client *http.Client) *Impo
 	}
 }
 
-/* ImportContentLibraryImageParams contains all the parameters to send to the API endpoint
-   for the import content library image operation.
+/*
+ImportContentLibraryImageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the import content library image operation.
+
+	Typically these are written to a http.Request.
 */
 type ImportContentLibraryImageParams struct {
 

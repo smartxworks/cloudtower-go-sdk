@@ -57,7 +57,8 @@ func NewDeleteVirtualPrivateCloudNatGatewayOK() *DeleteVirtualPrivateCloudNatGat
 	return &DeleteVirtualPrivateCloudNatGatewayOK{}
 }
 
-/* DeleteVirtualPrivateCloudNatGatewayOK describes a response with status code 200, with default header values.
+/*
+DeleteVirtualPrivateCloudNatGatewayOK describes a response with status code 200, with default header values.
 
 DeleteVirtualPrivateCloudNatGatewayOK delete virtual private cloud nat gateway o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVirtualPrivateCloudNatGatewayBadRequest() *DeleteVirtualPrivateClo
 	return &DeleteVirtualPrivateCloudNatGatewayBadRequest{}
 }
 
-/* DeleteVirtualPrivateCloudNatGatewayBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVirtualPrivateCloudNatGatewayBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVirtualPrivateCloudNatGatewayNotFound() *DeleteVirtualPrivateCloud
 	return &DeleteVirtualPrivateCloudNatGatewayNotFound{}
 }
 
-/* DeleteVirtualPrivateCloudNatGatewayNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVirtualPrivateCloudNatGatewayNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVirtualPrivateCloudNatGatewayInternalServerError() *DeleteVirtualP
 	return &DeleteVirtualPrivateCloudNatGatewayInternalServerError{}
 }
 
-/* DeleteVirtualPrivateCloudNatGatewayInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVirtualPrivateCloudNatGatewayInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

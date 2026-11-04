@@ -57,7 +57,8 @@ func NewDeleteNfsExportOK() *DeleteNfsExportOK {
 	return &DeleteNfsExportOK{}
 }
 
-/* DeleteNfsExportOK describes a response with status code 200, with default header values.
+/*
+DeleteNfsExportOK describes a response with status code 200, with default header values.
 
 DeleteNfsExportOK delete nfs export o k
 */
@@ -96,7 +97,8 @@ func NewDeleteNfsExportBadRequest() *DeleteNfsExportBadRequest {
 	return &DeleteNfsExportBadRequest{}
 }
 
-/* DeleteNfsExportBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteNfsExportBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteNfsExportNotFound() *DeleteNfsExportNotFound {
 	return &DeleteNfsExportNotFound{}
 }
 
-/* DeleteNfsExportNotFound describes a response with status code 404, with default header values.
+/*
+DeleteNfsExportNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteNfsExportInternalServerError() *DeleteNfsExportInternalServerError
 	return &DeleteNfsExportInternalServerError{}
 }
 
-/* DeleteNfsExportInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteNfsExportInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

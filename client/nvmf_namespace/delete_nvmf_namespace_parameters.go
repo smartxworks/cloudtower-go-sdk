@@ -54,10 +54,12 @@ func NewDeleteNvmfNamespaceParamsWithHTTPClient(client *http.Client) *DeleteNvmf
 	}
 }
 
-/* DeleteNvmfNamespaceParams contains all the parameters to send to the API endpoint
-   for the delete nvmf namespace operation.
+/*
+DeleteNvmfNamespaceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete nvmf namespace operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteNvmfNamespaceParams struct {
 

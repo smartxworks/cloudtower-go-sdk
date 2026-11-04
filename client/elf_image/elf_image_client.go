@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateElfImage create elf image API
+CreateElfImage create elf image API
 */
 func (a *Client) CreateElfImage(params *CreateElfImageParams, opts ...ClientOption) (*CreateElfImageOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateElfImage(params *CreateElfImageParams, opts ...ClientOpti
 }
 
 /*
-  DeleteElfImage delete elf image API
+DeleteElfImage delete elf image API
 */
 func (a *Client) DeleteElfImage(params *DeleteElfImageParams, opts ...ClientOption) (*DeleteElfImageOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteElfImage(params *DeleteElfImageParams, opts ...ClientOpti
 }
 
 /*
-  GetElfImages get elf images API
+GetElfImages get elf images API
 */
 func (a *Client) GetElfImages(params *GetElfImagesParams, opts ...ClientOption) (*GetElfImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetElfImages(params *GetElfImagesParams, opts ...ClientOption) 
 }
 
 /*
-  GetElfImagesConnection get elf images connection API
+GetElfImagesConnection get elf images connection API
 */
 func (a *Client) GetElfImagesConnection(params *GetElfImagesConnectionParams, opts ...ClientOption) (*GetElfImagesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetElfImagesConnection(params *GetElfImagesConnectionParams, op
 }
 
 /*
-  UpdateElfImage update elf image API
+UpdateElfImage update elf image API
 */
 func (a *Client) UpdateElfImage(params *UpdateElfImageParams, opts ...ClientOption) (*UpdateElfImageOK, error) {
 	// TODO: Validate the params before sending

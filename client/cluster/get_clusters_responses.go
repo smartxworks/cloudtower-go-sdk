@@ -57,7 +57,8 @@ func NewGetClustersOK() *GetClustersOK {
 	return &GetClustersOK{}
 }
 
-/* GetClustersOK describes a response with status code 200, with default header values.
+/*
+GetClustersOK describes a response with status code 200, with default header values.
 
 GetClustersOK get clusters o k
 */
@@ -96,7 +97,8 @@ func NewGetClustersBadRequest() *GetClustersBadRequest {
 	return &GetClustersBadRequest{}
 }
 
-/* GetClustersBadRequest describes a response with status code 400, with default header values.
+/*
+GetClustersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetClustersNotFound() *GetClustersNotFound {
 	return &GetClustersNotFound{}
 }
 
-/* GetClustersNotFound describes a response with status code 404, with default header values.
+/*
+GetClustersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetClustersInternalServerError() *GetClustersInternalServerError {
 	return &GetClustersInternalServerError{}
 }
 
-/* GetClustersInternalServerError describes a response with status code 500, with default header values.
+/*
+GetClustersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

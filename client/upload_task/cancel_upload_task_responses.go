@@ -63,7 +63,8 @@ func NewCancelUploadTaskOK() *CancelUploadTaskOK {
 	return &CancelUploadTaskOK{}
 }
 
-/* CancelUploadTaskOK describes a response with status code 200, with default header values.
+/*
+CancelUploadTaskOK describes a response with status code 200, with default header values.
 
 CancelUploadTaskOK cancel upload task o k
 */
@@ -102,7 +103,8 @@ func NewCancelUploadTaskNotModified() *CancelUploadTaskNotModified {
 	return &CancelUploadTaskNotModified{}
 }
 
-/* CancelUploadTaskNotModified describes a response with status code 304, with default header values.
+/*
+CancelUploadTaskNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewCancelUploadTaskBadRequest() *CancelUploadTaskBadRequest {
 	return &CancelUploadTaskBadRequest{}
 }
 
-/* CancelUploadTaskBadRequest describes a response with status code 400, with default header values.
+/*
+CancelUploadTaskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewCancelUploadTaskNotFound() *CancelUploadTaskNotFound {
 	return &CancelUploadTaskNotFound{}
 }
 
-/* CancelUploadTaskNotFound describes a response with status code 404, with default header values.
+/*
+CancelUploadTaskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewCancelUploadTaskInternalServerError() *CancelUploadTaskInternalServerErr
 	return &CancelUploadTaskInternalServerError{}
 }
 
-/* CancelUploadTaskInternalServerError describes a response with status code 500, with default header values.
+/*
+CancelUploadTaskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

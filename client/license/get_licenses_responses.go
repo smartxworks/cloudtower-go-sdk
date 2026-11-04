@@ -57,7 +57,8 @@ func NewGetLicensesOK() *GetLicensesOK {
 	return &GetLicensesOK{}
 }
 
-/* GetLicensesOK describes a response with status code 200, with default header values.
+/*
+GetLicensesOK describes a response with status code 200, with default header values.
 
 GetLicensesOK get licenses o k
 */
@@ -96,7 +97,8 @@ func NewGetLicensesBadRequest() *GetLicensesBadRequest {
 	return &GetLicensesBadRequest{}
 }
 
-/* GetLicensesBadRequest describes a response with status code 400, with default header values.
+/*
+GetLicensesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetLicensesNotFound() *GetLicensesNotFound {
 	return &GetLicensesNotFound{}
 }
 
-/* GetLicensesNotFound describes a response with status code 404, with default header values.
+/*
+GetLicensesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetLicensesInternalServerError() *GetLicensesInternalServerError {
 	return &GetLicensesInternalServerError{}
 }
 
-/* GetLicensesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetLicensesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

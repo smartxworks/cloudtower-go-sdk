@@ -57,7 +57,8 @@ func NewCreateVMOK() *CreateVMOK {
 	return &CreateVMOK{}
 }
 
-/* CreateVMOK describes a response with status code 200, with default header values.
+/*
+CreateVMOK describes a response with status code 200, with default header values.
 
 CreateVMOK create Vm o k
 */
@@ -96,7 +97,8 @@ func NewCreateVMBadRequest() *CreateVMBadRequest {
 	return &CreateVMBadRequest{}
 }
 
-/* CreateVMBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVMNotFound() *CreateVMNotFound {
 	return &CreateVMNotFound{}
 }
 
-/* CreateVMNotFound describes a response with status code 404, with default header values.
+/*
+CreateVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVMInternalServerError() *CreateVMInternalServerError {
 	return &CreateVMInternalServerError{}
 }
 
-/* CreateVMInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

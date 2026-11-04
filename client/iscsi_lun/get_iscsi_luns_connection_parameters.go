@@ -54,10 +54,12 @@ func NewGetIscsiLunsConnectionParamsWithHTTPClient(client *http.Client) *GetIscs
 	}
 }
 
-/* GetIscsiLunsConnectionParams contains all the parameters to send to the API endpoint
-   for the get iscsi luns connection operation.
+/*
+GetIscsiLunsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get iscsi luns connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetIscsiLunsConnectionParams struct {
 

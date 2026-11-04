@@ -57,7 +57,8 @@ func NewGetVirtualPrivateCloudFloatingIpsConnectionOK() *GetVirtualPrivateCloudF
 	return &GetVirtualPrivateCloudFloatingIpsConnectionOK{}
 }
 
-/* GetVirtualPrivateCloudFloatingIpsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVirtualPrivateCloudFloatingIpsConnectionOK describes a response with status code 200, with default header values.
 
 GetVirtualPrivateCloudFloatingIpsConnectionOK get virtual private cloud floating ips connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVirtualPrivateCloudFloatingIpsConnectionBadRequest() *GetVirtualPriva
 	return &GetVirtualPrivateCloudFloatingIpsConnectionBadRequest{}
 }
 
-/* GetVirtualPrivateCloudFloatingIpsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVirtualPrivateCloudFloatingIpsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVirtualPrivateCloudFloatingIpsConnectionNotFound() *GetVirtualPrivate
 	return &GetVirtualPrivateCloudFloatingIpsConnectionNotFound{}
 }
 
-/* GetVirtualPrivateCloudFloatingIpsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVirtualPrivateCloudFloatingIpsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVirtualPrivateCloudFloatingIpsConnectionInternalServerError() *GetVir
 	return &GetVirtualPrivateCloudFloatingIpsConnectionInternalServerError{}
 }
 
-/* GetVirtualPrivateCloudFloatingIpsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVirtualPrivateCloudFloatingIpsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

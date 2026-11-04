@@ -57,7 +57,8 @@ func NewDeleteSecurityGroupOK() *DeleteSecurityGroupOK {
 	return &DeleteSecurityGroupOK{}
 }
 
-/* DeleteSecurityGroupOK describes a response with status code 200, with default header values.
+/*
+DeleteSecurityGroupOK describes a response with status code 200, with default header values.
 
 DeleteSecurityGroupOK delete security group o k
 */
@@ -96,7 +97,8 @@ func NewDeleteSecurityGroupBadRequest() *DeleteSecurityGroupBadRequest {
 	return &DeleteSecurityGroupBadRequest{}
 }
 
-/* DeleteSecurityGroupBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteSecurityGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteSecurityGroupNotFound() *DeleteSecurityGroupNotFound {
 	return &DeleteSecurityGroupNotFound{}
 }
 
-/* DeleteSecurityGroupNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSecurityGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteSecurityGroupInternalServerError() *DeleteSecurityGroupInternalSer
 	return &DeleteSecurityGroupInternalServerError{}
 }
 
-/* DeleteSecurityGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteSecurityGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

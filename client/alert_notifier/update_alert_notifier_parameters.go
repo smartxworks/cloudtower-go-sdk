@@ -54,10 +54,12 @@ func NewUpdateAlertNotifierParamsWithHTTPClient(client *http.Client) *UpdateAler
 	}
 }
 
-/* UpdateAlertNotifierParams contains all the parameters to send to the API endpoint
-   for the update alert notifier operation.
+/*
+UpdateAlertNotifierParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update alert notifier operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateAlertNotifierParams struct {
 

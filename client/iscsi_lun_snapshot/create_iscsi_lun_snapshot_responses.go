@@ -57,7 +57,8 @@ func NewCreateIscsiLunSnapshotOK() *CreateIscsiLunSnapshotOK {
 	return &CreateIscsiLunSnapshotOK{}
 }
 
-/* CreateIscsiLunSnapshotOK describes a response with status code 200, with default header values.
+/*
+CreateIscsiLunSnapshotOK describes a response with status code 200, with default header values.
 
 CreateIscsiLunSnapshotOK create iscsi lun snapshot o k
 */
@@ -96,7 +97,8 @@ func NewCreateIscsiLunSnapshotBadRequest() *CreateIscsiLunSnapshotBadRequest {
 	return &CreateIscsiLunSnapshotBadRequest{}
 }
 
-/* CreateIscsiLunSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+CreateIscsiLunSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateIscsiLunSnapshotNotFound() *CreateIscsiLunSnapshotNotFound {
 	return &CreateIscsiLunSnapshotNotFound{}
 }
 
-/* CreateIscsiLunSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+CreateIscsiLunSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateIscsiLunSnapshotInternalServerError() *CreateIscsiLunSnapshotInter
 	return &CreateIscsiLunSnapshotInternalServerError{}
 }
 
-/* CreateIscsiLunSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateIscsiLunSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

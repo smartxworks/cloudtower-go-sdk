@@ -57,7 +57,8 @@ func NewGetIscsiLunsConnectionOK() *GetIscsiLunsConnectionOK {
 	return &GetIscsiLunsConnectionOK{}
 }
 
-/* GetIscsiLunsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetIscsiLunsConnectionOK describes a response with status code 200, with default header values.
 
 GetIscsiLunsConnectionOK get iscsi luns connection o k
 */
@@ -98,7 +99,8 @@ func NewGetIscsiLunsConnectionBadRequest() *GetIscsiLunsConnectionBadRequest {
 	return &GetIscsiLunsConnectionBadRequest{}
 }
 
-/* GetIscsiLunsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetIscsiLunsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetIscsiLunsConnectionNotFound() *GetIscsiLunsConnectionNotFound {
 	return &GetIscsiLunsConnectionNotFound{}
 }
 
-/* GetIscsiLunsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetIscsiLunsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetIscsiLunsConnectionInternalServerError() *GetIscsiLunsConnectionInter
 	return &GetIscsiLunsConnectionInternalServerError{}
 }
 
-/* GetIscsiLunsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetIscsiLunsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

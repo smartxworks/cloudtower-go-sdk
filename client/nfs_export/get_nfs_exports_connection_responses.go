@@ -57,7 +57,8 @@ func NewGetNfsExportsConnectionOK() *GetNfsExportsConnectionOK {
 	return &GetNfsExportsConnectionOK{}
 }
 
-/* GetNfsExportsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetNfsExportsConnectionOK describes a response with status code 200, with default header values.
 
 GetNfsExportsConnectionOK get nfs exports connection o k
 */
@@ -98,7 +99,8 @@ func NewGetNfsExportsConnectionBadRequest() *GetNfsExportsConnectionBadRequest {
 	return &GetNfsExportsConnectionBadRequest{}
 }
 
-/* GetNfsExportsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetNfsExportsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetNfsExportsConnectionNotFound() *GetNfsExportsConnectionNotFound {
 	return &GetNfsExportsConnectionNotFound{}
 }
 
-/* GetNfsExportsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetNfsExportsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetNfsExportsConnectionInternalServerError() *GetNfsExportsConnectionInt
 	return &GetNfsExportsConnectionInternalServerError{}
 }
 
-/* GetNfsExportsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNfsExportsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

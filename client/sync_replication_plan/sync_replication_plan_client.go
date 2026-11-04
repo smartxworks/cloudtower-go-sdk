@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetSyncReplicationPlans get sync replication plans API
+GetSyncReplicationPlans get sync replication plans API
 */
 func (a *Client) GetSyncReplicationPlans(params *GetSyncReplicationPlansParams, opts ...ClientOption) (*GetSyncReplicationPlansOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetSyncReplicationPlans(params *GetSyncReplicationPlansParams, 
 }
 
 /*
-  GetSyncReplicationPlansConnection get sync replication plans connection API
+GetSyncReplicationPlansConnection get sync replication plans connection API
 */
 func (a *Client) GetSyncReplicationPlansConnection(params *GetSyncReplicationPlansConnectionParams, opts ...ClientOption) (*GetSyncReplicationPlansConnectionOK, error) {
 	// TODO: Validate the params before sending

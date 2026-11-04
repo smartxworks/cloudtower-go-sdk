@@ -57,7 +57,8 @@ func NewGetNvmfSubsystemsOK() *GetNvmfSubsystemsOK {
 	return &GetNvmfSubsystemsOK{}
 }
 
-/* GetNvmfSubsystemsOK describes a response with status code 200, with default header values.
+/*
+GetNvmfSubsystemsOK describes a response with status code 200, with default header values.
 
 GetNvmfSubsystemsOK get nvmf subsystems o k
 */
@@ -96,7 +97,8 @@ func NewGetNvmfSubsystemsBadRequest() *GetNvmfSubsystemsBadRequest {
 	return &GetNvmfSubsystemsBadRequest{}
 }
 
-/* GetNvmfSubsystemsBadRequest describes a response with status code 400, with default header values.
+/*
+GetNvmfSubsystemsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetNvmfSubsystemsNotFound() *GetNvmfSubsystemsNotFound {
 	return &GetNvmfSubsystemsNotFound{}
 }
 
-/* GetNvmfSubsystemsNotFound describes a response with status code 404, with default header values.
+/*
+GetNvmfSubsystemsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetNvmfSubsystemsInternalServerError() *GetNvmfSubsystemsInternalServerE
 	return &GetNvmfSubsystemsInternalServerError{}
 }
 
-/* GetNvmfSubsystemsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNvmfSubsystemsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

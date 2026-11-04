@@ -57,7 +57,8 @@ func NewGetContentLibraryImagesConnectionOK() *GetContentLibraryImagesConnection
 	return &GetContentLibraryImagesConnectionOK{}
 }
 
-/* GetContentLibraryImagesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetContentLibraryImagesConnectionOK describes a response with status code 200, with default header values.
 
 GetContentLibraryImagesConnectionOK get content library images connection o k
 */
@@ -98,7 +99,8 @@ func NewGetContentLibraryImagesConnectionBadRequest() *GetContentLibraryImagesCo
 	return &GetContentLibraryImagesConnectionBadRequest{}
 }
 
-/* GetContentLibraryImagesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetContentLibraryImagesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetContentLibraryImagesConnectionNotFound() *GetContentLibraryImagesConn
 	return &GetContentLibraryImagesConnectionNotFound{}
 }
 
-/* GetContentLibraryImagesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetContentLibraryImagesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetContentLibraryImagesConnectionInternalServerError() *GetContentLibrar
 	return &GetContentLibraryImagesConnectionInternalServerError{}
 }
 
-/* GetContentLibraryImagesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetContentLibraryImagesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

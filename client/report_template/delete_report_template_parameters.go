@@ -54,10 +54,12 @@ func NewDeleteReportTemplateParamsWithHTTPClient(client *http.Client) *DeleteRep
 	}
 }
 
-/* DeleteReportTemplateParams contains all the parameters to send to the API endpoint
-   for the delete report template operation.
+/*
+DeleteReportTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete report template operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteReportTemplateParams struct {
 

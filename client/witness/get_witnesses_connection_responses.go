@@ -57,7 +57,8 @@ func NewGetWitnessesConnectionOK() *GetWitnessesConnectionOK {
 	return &GetWitnessesConnectionOK{}
 }
 
-/* GetWitnessesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetWitnessesConnectionOK describes a response with status code 200, with default header values.
 
 GetWitnessesConnectionOK get witnesses connection o k
 */
@@ -98,7 +99,8 @@ func NewGetWitnessesConnectionBadRequest() *GetWitnessesConnectionBadRequest {
 	return &GetWitnessesConnectionBadRequest{}
 }
 
-/* GetWitnessesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetWitnessesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetWitnessesConnectionNotFound() *GetWitnessesConnectionNotFound {
 	return &GetWitnessesConnectionNotFound{}
 }
 
-/* GetWitnessesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetWitnessesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetWitnessesConnectionInternalServerError() *GetWitnessesConnectionInter
 	return &GetWitnessesConnectionInternalServerError{}
 }
 
-/* GetWitnessesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetWitnessesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

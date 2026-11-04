@@ -54,10 +54,12 @@ func NewGetNvmfNamespaceSnapshotsConnectionParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* GetNvmfNamespaceSnapshotsConnectionParams contains all the parameters to send to the API endpoint
-   for the get nvmf namespace snapshots connection operation.
+/*
+GetNvmfNamespaceSnapshotsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get nvmf namespace snapshots connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNvmfNamespaceSnapshotsConnectionParams struct {
 

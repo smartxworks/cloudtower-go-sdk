@@ -54,10 +54,12 @@ func NewGetHostServicekMetricsParamsWithHTTPClient(client *http.Client) *GetHost
 	}
 }
 
-/* GetHostServicekMetricsParams contains all the parameters to send to the API endpoint
-   for the get host servicek metrics operation.
+/*
+GetHostServicekMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get host servicek metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetHostServicekMetricsParams struct {
 

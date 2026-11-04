@@ -57,7 +57,8 @@ func NewGetVirtualPrivateCloudsConnectionOK() *GetVirtualPrivateCloudsConnection
 	return &GetVirtualPrivateCloudsConnectionOK{}
 }
 
-/* GetVirtualPrivateCloudsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVirtualPrivateCloudsConnectionOK describes a response with status code 200, with default header values.
 
 GetVirtualPrivateCloudsConnectionOK get virtual private clouds connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVirtualPrivateCloudsConnectionBadRequest() *GetVirtualPrivateCloudsCo
 	return &GetVirtualPrivateCloudsConnectionBadRequest{}
 }
 
-/* GetVirtualPrivateCloudsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVirtualPrivateCloudsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVirtualPrivateCloudsConnectionNotFound() *GetVirtualPrivateCloudsConn
 	return &GetVirtualPrivateCloudsConnectionNotFound{}
 }
 
-/* GetVirtualPrivateCloudsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVirtualPrivateCloudsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVirtualPrivateCloudsConnectionInternalServerError() *GetVirtualPrivat
 	return &GetVirtualPrivateCloudsConnectionInternalServerError{}
 }
 
-/* GetVirtualPrivateCloudsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVirtualPrivateCloudsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

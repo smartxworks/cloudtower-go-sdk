@@ -54,10 +54,12 @@ func NewRemoveClustersFromDatacenterParamsWithHTTPClient(client *http.Client) *R
 	}
 }
 
-/* RemoveClustersFromDatacenterParams contains all the parameters to send to the API endpoint
-   for the remove clusters from datacenter operation.
+/*
+RemoveClustersFromDatacenterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove clusters from datacenter operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveClustersFromDatacenterParams struct {
 

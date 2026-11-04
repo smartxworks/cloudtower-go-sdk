@@ -57,7 +57,8 @@ func NewGetClusterImagesConnectionOK() *GetClusterImagesConnectionOK {
 	return &GetClusterImagesConnectionOK{}
 }
 
-/* GetClusterImagesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetClusterImagesConnectionOK describes a response with status code 200, with default header values.
 
 GetClusterImagesConnectionOK get cluster images connection o k
 */
@@ -98,7 +99,8 @@ func NewGetClusterImagesConnectionBadRequest() *GetClusterImagesConnectionBadReq
 	return &GetClusterImagesConnectionBadRequest{}
 }
 
-/* GetClusterImagesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetClusterImagesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetClusterImagesConnectionNotFound() *GetClusterImagesConnectionNotFound
 	return &GetClusterImagesConnectionNotFound{}
 }
 
-/* GetClusterImagesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetClusterImagesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetClusterImagesConnectionInternalServerError() *GetClusterImagesConnect
 	return &GetClusterImagesConnectionInternalServerError{}
 }
 
-/* GetClusterImagesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetClusterImagesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

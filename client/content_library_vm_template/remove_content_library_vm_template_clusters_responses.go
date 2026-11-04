@@ -57,7 +57,8 @@ func NewRemoveContentLibraryVMTemplateClustersOK() *RemoveContentLibraryVMTempla
 	return &RemoveContentLibraryVMTemplateClustersOK{}
 }
 
-/* RemoveContentLibraryVMTemplateClustersOK describes a response with status code 200, with default header values.
+/*
+RemoveContentLibraryVMTemplateClustersOK describes a response with status code 200, with default header values.
 
 RemoveContentLibraryVMTemplateClustersOK remove content library Vm template clusters o k
 */
@@ -96,7 +97,8 @@ func NewRemoveContentLibraryVMTemplateClustersBadRequest() *RemoveContentLibrary
 	return &RemoveContentLibraryVMTemplateClustersBadRequest{}
 }
 
-/* RemoveContentLibraryVMTemplateClustersBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveContentLibraryVMTemplateClustersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRemoveContentLibraryVMTemplateClustersNotFound() *RemoveContentLibraryVM
 	return &RemoveContentLibraryVMTemplateClustersNotFound{}
 }
 
-/* RemoveContentLibraryVMTemplateClustersNotFound describes a response with status code 404, with default header values.
+/*
+RemoveContentLibraryVMTemplateClustersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRemoveContentLibraryVMTemplateClustersInternalServerError() *RemoveConte
 	return &RemoveContentLibraryVMTemplateClustersInternalServerError{}
 }
 
-/* RemoveContentLibraryVMTemplateClustersInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveContentLibraryVMTemplateClustersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

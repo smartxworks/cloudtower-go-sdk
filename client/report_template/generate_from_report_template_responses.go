@@ -57,7 +57,8 @@ func NewGenerateFromReportTemplateOK() *GenerateFromReportTemplateOK {
 	return &GenerateFromReportTemplateOK{}
 }
 
-/* GenerateFromReportTemplateOK describes a response with status code 200, with default header values.
+/*
+GenerateFromReportTemplateOK describes a response with status code 200, with default header values.
 
 GenerateFromReportTemplateOK generate from report template o k
 */
@@ -96,7 +97,8 @@ func NewGenerateFromReportTemplateBadRequest() *GenerateFromReportTemplateBadReq
 	return &GenerateFromReportTemplateBadRequest{}
 }
 
-/* GenerateFromReportTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+GenerateFromReportTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGenerateFromReportTemplateNotFound() *GenerateFromReportTemplateNotFound
 	return &GenerateFromReportTemplateNotFound{}
 }
 
-/* GenerateFromReportTemplateNotFound describes a response with status code 404, with default header values.
+/*
+GenerateFromReportTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGenerateFromReportTemplateInternalServerError() *GenerateFromReportTempl
 	return &GenerateFromReportTemplateInternalServerError{}
 }
 
-/* GenerateFromReportTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+GenerateFromReportTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

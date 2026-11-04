@@ -57,7 +57,8 @@ func NewCloneVMVolumeOK() *CloneVMVolumeOK {
 	return &CloneVMVolumeOK{}
 }
 
-/* CloneVMVolumeOK describes a response with status code 200, with default header values.
+/*
+CloneVMVolumeOK describes a response with status code 200, with default header values.
 
 CloneVMVolumeOK clone Vm volume o k
 */
@@ -96,7 +97,8 @@ func NewCloneVMVolumeBadRequest() *CloneVMVolumeBadRequest {
 	return &CloneVMVolumeBadRequest{}
 }
 
-/* CloneVMVolumeBadRequest describes a response with status code 400, with default header values.
+/*
+CloneVMVolumeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCloneVMVolumeNotFound() *CloneVMVolumeNotFound {
 	return &CloneVMVolumeNotFound{}
 }
 
-/* CloneVMVolumeNotFound describes a response with status code 404, with default header values.
+/*
+CloneVMVolumeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCloneVMVolumeInternalServerError() *CloneVMVolumeInternalServerError {
 	return &CloneVMVolumeInternalServerError{}
 }
 
-/* CloneVMVolumeInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneVMVolumeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

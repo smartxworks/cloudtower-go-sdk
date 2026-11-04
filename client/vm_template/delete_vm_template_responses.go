@@ -57,7 +57,8 @@ func NewDeleteVMTemplateOK() *DeleteVMTemplateOK {
 	return &DeleteVMTemplateOK{}
 }
 
-/* DeleteVMTemplateOK describes a response with status code 200, with default header values.
+/*
+DeleteVMTemplateOK describes a response with status code 200, with default header values.
 
 DeleteVMTemplateOK delete Vm template o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVMTemplateBadRequest() *DeleteVMTemplateBadRequest {
 	return &DeleteVMTemplateBadRequest{}
 }
 
-/* DeleteVMTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVMTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVMTemplateNotFound() *DeleteVMTemplateNotFound {
 	return &DeleteVMTemplateNotFound{}
 }
 
-/* DeleteVMTemplateNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVMTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVMTemplateInternalServerError() *DeleteVMTemplateInternalServerErr
 	return &DeleteVMTemplateInternalServerError{}
 }
 
-/* DeleteVMTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVMTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewCreateUserAuditLogOK() *CreateUserAuditLogOK {
 	return &CreateUserAuditLogOK{}
 }
 
-/* CreateUserAuditLogOK describes a response with status code 200, with default header values.
+/*
+CreateUserAuditLogOK describes a response with status code 200, with default header values.
 
 CreateUserAuditLogOK create user audit log o k
 */
@@ -96,7 +97,8 @@ func NewCreateUserAuditLogBadRequest() *CreateUserAuditLogBadRequest {
 	return &CreateUserAuditLogBadRequest{}
 }
 
-/* CreateUserAuditLogBadRequest describes a response with status code 400, with default header values.
+/*
+CreateUserAuditLogBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateUserAuditLogNotFound() *CreateUserAuditLogNotFound {
 	return &CreateUserAuditLogNotFound{}
 }
 
-/* CreateUserAuditLogNotFound describes a response with status code 404, with default header values.
+/*
+CreateUserAuditLogNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateUserAuditLogInternalServerError() *CreateUserAuditLogInternalServe
 	return &CreateUserAuditLogInternalServerError{}
 }
 
-/* CreateUserAuditLogInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateUserAuditLogInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewGetReplicationPlanWithoutExecutionsParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* GetReplicationPlanWithoutExecutionsParams contains all the parameters to send to the API endpoint
-   for the get replication plan without executions operation.
+/*
+GetReplicationPlanWithoutExecutionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get replication plan without executions operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReplicationPlanWithoutExecutionsParams struct {
 

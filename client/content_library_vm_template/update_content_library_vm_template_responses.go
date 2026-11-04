@@ -57,7 +57,8 @@ func NewUpdateContentLibraryVMTemplateOK() *UpdateContentLibraryVMTemplateOK {
 	return &UpdateContentLibraryVMTemplateOK{}
 }
 
-/* UpdateContentLibraryVMTemplateOK describes a response with status code 200, with default header values.
+/*
+UpdateContentLibraryVMTemplateOK describes a response with status code 200, with default header values.
 
 UpdateContentLibraryVMTemplateOK update content library Vm template o k
 */
@@ -96,7 +97,8 @@ func NewUpdateContentLibraryVMTemplateBadRequest() *UpdateContentLibraryVMTempla
 	return &UpdateContentLibraryVMTemplateBadRequest{}
 }
 
-/* UpdateContentLibraryVMTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateContentLibraryVMTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateContentLibraryVMTemplateNotFound() *UpdateContentLibraryVMTemplate
 	return &UpdateContentLibraryVMTemplateNotFound{}
 }
 
-/* UpdateContentLibraryVMTemplateNotFound describes a response with status code 404, with default header values.
+/*
+UpdateContentLibraryVMTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateContentLibraryVMTemplateInternalServerError() *UpdateContentLibrar
 	return &UpdateContentLibraryVMTemplateInternalServerError{}
 }
 
-/* UpdateContentLibraryVMTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateContentLibraryVMTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

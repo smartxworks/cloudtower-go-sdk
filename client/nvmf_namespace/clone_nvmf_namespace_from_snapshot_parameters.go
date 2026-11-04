@@ -54,10 +54,12 @@ func NewCloneNvmfNamespaceFromSnapshotParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* CloneNvmfNamespaceFromSnapshotParams contains all the parameters to send to the API endpoint
-   for the clone nvmf namespace from snapshot operation.
+/*
+CloneNvmfNamespaceFromSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clone nvmf namespace from snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type CloneNvmfNamespaceFromSnapshotParams struct {
 

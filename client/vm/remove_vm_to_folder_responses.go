@@ -57,7 +57,8 @@ func NewRemoveVMToFolderOK() *RemoveVMToFolderOK {
 	return &RemoveVMToFolderOK{}
 }
 
-/* RemoveVMToFolderOK describes a response with status code 200, with default header values.
+/*
+RemoveVMToFolderOK describes a response with status code 200, with default header values.
 
 RemoveVMToFolderOK remove Vm to folder o k
 */
@@ -96,7 +97,8 @@ func NewRemoveVMToFolderBadRequest() *RemoveVMToFolderBadRequest {
 	return &RemoveVMToFolderBadRequest{}
 }
 
-/* RemoveVMToFolderBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveVMToFolderBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRemoveVMToFolderNotFound() *RemoveVMToFolderNotFound {
 	return &RemoveVMToFolderNotFound{}
 }
 
-/* RemoveVMToFolderNotFound describes a response with status code 404, with default header values.
+/*
+RemoveVMToFolderNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRemoveVMToFolderInternalServerError() *RemoveVMToFolderInternalServerErr
 	return &RemoveVMToFolderInternalServerError{}
 }
 
-/* RemoveVMToFolderInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveVMToFolderInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

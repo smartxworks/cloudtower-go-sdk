@@ -57,7 +57,8 @@ func NewGetDeploysConnectionOK() *GetDeploysConnectionOK {
 	return &GetDeploysConnectionOK{}
 }
 
-/* GetDeploysConnectionOK describes a response with status code 200, with default header values.
+/*
+GetDeploysConnectionOK describes a response with status code 200, with default header values.
 
 GetDeploysConnectionOK get deploys connection o k
 */
@@ -98,7 +99,8 @@ func NewGetDeploysConnectionBadRequest() *GetDeploysConnectionBadRequest {
 	return &GetDeploysConnectionBadRequest{}
 }
 
-/* GetDeploysConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetDeploysConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetDeploysConnectionNotFound() *GetDeploysConnectionNotFound {
 	return &GetDeploysConnectionNotFound{}
 }
 
-/* GetDeploysConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetDeploysConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetDeploysConnectionInternalServerError() *GetDeploysConnectionInternalS
 	return &GetDeploysConnectionInternalServerError{}
 }
 
-/* GetDeploysConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDeploysConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

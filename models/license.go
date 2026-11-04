@@ -20,6 +20,9 @@ import (
 // swagger:model License
 type License struct {
 
+	// bundle type
+	BundleType *string `json:"bundle_type,omitempty"`
+
 	// expire date
 	// Required: true
 	ExpireDate *string `json:"expire_date"`
@@ -62,6 +65,8 @@ type License struct {
 }
 
 type LicenseMarshalOpts struct {
+	BundleType_Explicit_Null_When_Empty bool
+
 	ExpireDate_Explicit_Null_When_Empty bool
 
 	ID_Explicit_Null_When_Empty bool
@@ -88,6 +93,26 @@ func (m License) MarshalJSON() ([]byte, error) {
 	b.WriteString("{")
 
 	first := true
+
+	// handle nullable field bundle_type
+	if m.BundleType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type\":")
+		bytes, err := swag.WriteJSON(m.BundleType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type\":null")
+		first = false
+	}
 
 	// handle nullable field expire_date
 	if m.ExpireDate != nil {

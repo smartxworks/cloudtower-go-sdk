@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  CreateReportTemplate create report template API
+CreateReportTemplate create report template API
 */
 func (a *Client) CreateReportTemplate(params *CreateReportTemplateParams, opts ...ClientOption) (*CreateReportTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -84,7 +84,7 @@ func (a *Client) CreateReportTemplate(params *CreateReportTemplateParams, opts .
 }
 
 /*
-  DeleteReportTemplate delete report template API
+DeleteReportTemplate delete report template API
 */
 func (a *Client) DeleteReportTemplate(params *DeleteReportTemplateParams, opts ...ClientOption) (*DeleteReportTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) DeleteReportTemplate(params *DeleteReportTemplateParams, opts .
 }
 
 /*
-  GenerateFromReportTemplate generate from report template API
+GenerateFromReportTemplate generate from report template API
 */
 func (a *Client) GenerateFromReportTemplate(params *GenerateFromReportTemplateParams, opts ...ClientOption) (*GenerateFromReportTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) GenerateFromReportTemplate(params *GenerateFromReportTemplatePa
 }
 
 /*
-  GetReportTemplates get report templates API
+GetReportTemplates get report templates API
 */
 func (a *Client) GetReportTemplates(params *GetReportTemplatesParams, opts ...ClientOption) (*GetReportTemplatesOK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +198,7 @@ func (a *Client) GetReportTemplates(params *GetReportTemplatesParams, opts ...Cl
 }
 
 /*
-  GetReportTemplatesConnection get report templates connection API
+GetReportTemplatesConnection get report templates connection API
 */
 func (a *Client) GetReportTemplatesConnection(params *GetReportTemplatesConnectionParams, opts ...ClientOption) (*GetReportTemplatesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -236,7 +236,7 @@ func (a *Client) GetReportTemplatesConnection(params *GetReportTemplatesConnecti
 }
 
 /*
-  UpdateReportTemplate update report template API
+UpdateReportTemplate update report template API
 */
 func (a *Client) UpdateReportTemplate(params *UpdateReportTemplateParams, opts ...ClientOption) (*UpdateReportTemplateOK, error) {
 	// TODO: Validate the params before sending

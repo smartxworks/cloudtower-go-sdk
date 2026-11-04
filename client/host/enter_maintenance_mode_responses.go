@@ -57,7 +57,8 @@ func NewEnterMaintenanceModeOK() *EnterMaintenanceModeOK {
 	return &EnterMaintenanceModeOK{}
 }
 
-/* EnterMaintenanceModeOK describes a response with status code 200, with default header values.
+/*
+EnterMaintenanceModeOK describes a response with status code 200, with default header values.
 
 EnterMaintenanceModeOK enter maintenance mode o k
 */
@@ -98,7 +99,8 @@ func NewEnterMaintenanceModeBadRequest() *EnterMaintenanceModeBadRequest {
 	return &EnterMaintenanceModeBadRequest{}
 }
 
-/* EnterMaintenanceModeBadRequest describes a response with status code 400, with default header values.
+/*
+EnterMaintenanceModeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewEnterMaintenanceModeNotFound() *EnterMaintenanceModeNotFound {
 	return &EnterMaintenanceModeNotFound{}
 }
 
-/* EnterMaintenanceModeNotFound describes a response with status code 404, with default header values.
+/*
+EnterMaintenanceModeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewEnterMaintenanceModeInternalServerError() *EnterMaintenanceModeInternalS
 	return &EnterMaintenanceModeInternalServerError{}
 }
 
-/* EnterMaintenanceModeInternalServerError describes a response with status code 500, with default header values.
+/*
+EnterMaintenanceModeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

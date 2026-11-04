@@ -57,7 +57,8 @@ func NewCloneSnapshotGroupOK() *CloneSnapshotGroupOK {
 	return &CloneSnapshotGroupOK{}
 }
 
-/* CloneSnapshotGroupOK describes a response with status code 200, with default header values.
+/*
+CloneSnapshotGroupOK describes a response with status code 200, with default header values.
 
 CloneSnapshotGroupOK clone snapshot group o k
 */
@@ -96,7 +97,8 @@ func NewCloneSnapshotGroupBadRequest() *CloneSnapshotGroupBadRequest {
 	return &CloneSnapshotGroupBadRequest{}
 }
 
-/* CloneSnapshotGroupBadRequest describes a response with status code 400, with default header values.
+/*
+CloneSnapshotGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCloneSnapshotGroupNotFound() *CloneSnapshotGroupNotFound {
 	return &CloneSnapshotGroupNotFound{}
 }
 
-/* CloneSnapshotGroupNotFound describes a response with status code 404, with default header values.
+/*
+CloneSnapshotGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCloneSnapshotGroupInternalServerError() *CloneSnapshotGroupInternalServe
 	return &CloneSnapshotGroupInternalServerError{}
 }
 
-/* CloneSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

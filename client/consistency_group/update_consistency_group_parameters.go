@@ -54,10 +54,12 @@ func NewUpdateConsistencyGroupParamsWithHTTPClient(client *http.Client) *UpdateC
 	}
 }
 
-/* UpdateConsistencyGroupParams contains all the parameters to send to the API endpoint
-   for the update consistency group operation.
+/*
+UpdateConsistencyGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update consistency group operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateConsistencyGroupParams struct {
 

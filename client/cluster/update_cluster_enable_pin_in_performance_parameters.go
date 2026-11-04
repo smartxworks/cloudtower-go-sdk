@@ -54,10 +54,12 @@ func NewUpdateClusterEnablePinInPerformanceParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* UpdateClusterEnablePinInPerformanceParams contains all the parameters to send to the API endpoint
-   for the update cluster enable pin in performance operation.
+/*
+UpdateClusterEnablePinInPerformanceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update cluster enable pin in performance operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateClusterEnablePinInPerformanceParams struct {
 

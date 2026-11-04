@@ -57,7 +57,8 @@ func NewGetClusterMetricsOK() *GetClusterMetricsOK {
 	return &GetClusterMetricsOK{}
 }
 
-/* GetClusterMetricsOK describes a response with status code 200, with default header values.
+/*
+GetClusterMetricsOK describes a response with status code 200, with default header values.
 
 GetClusterMetricsOK get cluster metrics o k
 */
@@ -96,7 +97,8 @@ func NewGetClusterMetricsBadRequest() *GetClusterMetricsBadRequest {
 	return &GetClusterMetricsBadRequest{}
 }
 
-/* GetClusterMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetClusterMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetClusterMetricsNotFound() *GetClusterMetricsNotFound {
 	return &GetClusterMetricsNotFound{}
 }
 
-/* GetClusterMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetClusterMetricsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetClusterMetricsInternalServerError() *GetClusterMetricsInternalServerE
 	return &GetClusterMetricsInternalServerError{}
 }
 
-/* GetClusterMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetClusterMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

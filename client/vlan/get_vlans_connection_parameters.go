@@ -54,10 +54,12 @@ func NewGetVlansConnectionParamsWithHTTPClient(client *http.Client) *GetVlansCon
 	}
 }
 
-/* GetVlansConnectionParams contains all the parameters to send to the API endpoint
-   for the get vlans connection operation.
+/*
+GetVlansConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get vlans connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVlansConnectionParams struct {
 

@@ -54,10 +54,12 @@ func NewGetContentLibraryImagesParamsWithHTTPClient(client *http.Client) *GetCon
 	}
 }
 
-/* GetContentLibraryImagesParams contains all the parameters to send to the API endpoint
-   for the get content library images operation.
+/*
+GetContentLibraryImagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get content library images operation.
+
+	Typically these are written to a http.Request.
 */
 type GetContentLibraryImagesParams struct {
 

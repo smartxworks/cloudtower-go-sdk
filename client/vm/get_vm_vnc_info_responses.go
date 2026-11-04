@@ -57,7 +57,8 @@ func NewGetVMVncInfoOK() *GetVMVncInfoOK {
 	return &GetVMVncInfoOK{}
 }
 
-/* GetVMVncInfoOK describes a response with status code 200, with default header values.
+/*
+GetVMVncInfoOK describes a response with status code 200, with default header values.
 
 GetVMVncInfoOK get Vm vnc info o k
 */
@@ -98,7 +99,8 @@ func NewGetVMVncInfoBadRequest() *GetVMVncInfoBadRequest {
 	return &GetVMVncInfoBadRequest{}
 }
 
-/* GetVMVncInfoBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMVncInfoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVMVncInfoNotFound() *GetVMVncInfoNotFound {
 	return &GetVMVncInfoNotFound{}
 }
 
-/* GetVMVncInfoNotFound describes a response with status code 404, with default header values.
+/*
+GetVMVncInfoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVMVncInfoInternalServerError() *GetVMVncInfoInternalServerError {
 	return &GetVMVncInfoInternalServerError{}
 }
 
-/* GetVMVncInfoInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMVncInfoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

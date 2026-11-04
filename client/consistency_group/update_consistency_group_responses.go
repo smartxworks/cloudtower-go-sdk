@@ -57,7 +57,8 @@ func NewUpdateConsistencyGroupOK() *UpdateConsistencyGroupOK {
 	return &UpdateConsistencyGroupOK{}
 }
 
-/* UpdateConsistencyGroupOK describes a response with status code 200, with default header values.
+/*
+UpdateConsistencyGroupOK describes a response with status code 200, with default header values.
 
 UpdateConsistencyGroupOK update consistency group o k
 */
@@ -96,7 +97,8 @@ func NewUpdateConsistencyGroupBadRequest() *UpdateConsistencyGroupBadRequest {
 	return &UpdateConsistencyGroupBadRequest{}
 }
 
-/* UpdateConsistencyGroupBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateConsistencyGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateConsistencyGroupNotFound() *UpdateConsistencyGroupNotFound {
 	return &UpdateConsistencyGroupNotFound{}
 }
 
-/* UpdateConsistencyGroupNotFound describes a response with status code 404, with default header values.
+/*
+UpdateConsistencyGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateConsistencyGroupInternalServerError() *UpdateConsistencyGroupInter
 	return &UpdateConsistencyGroupInternalServerError{}
 }
 
-/* UpdateConsistencyGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateConsistencyGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

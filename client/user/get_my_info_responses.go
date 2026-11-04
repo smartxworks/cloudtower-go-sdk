@@ -57,7 +57,8 @@ func NewGetMyInfoOK() *GetMyInfoOK {
 	return &GetMyInfoOK{}
 }
 
-/* GetMyInfoOK describes a response with status code 200, with default header values.
+/*
+GetMyInfoOK describes a response with status code 200, with default header values.
 
 GetMyInfoOK get my info o k
 */
@@ -98,7 +99,8 @@ func NewGetMyInfoBadRequest() *GetMyInfoBadRequest {
 	return &GetMyInfoBadRequest{}
 }
 
-/* GetMyInfoBadRequest describes a response with status code 400, with default header values.
+/*
+GetMyInfoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetMyInfoNotFound() *GetMyInfoNotFound {
 	return &GetMyInfoNotFound{}
 }
 
-/* GetMyInfoNotFound describes a response with status code 404, with default header values.
+/*
+GetMyInfoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetMyInfoInternalServerError() *GetMyInfoInternalServerError {
 	return &GetMyInfoInternalServerError{}
 }
 
-/* GetMyInfoInternalServerError describes a response with status code 500, with default header values.
+/*
+GetMyInfoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

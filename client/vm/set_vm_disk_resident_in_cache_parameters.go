@@ -54,10 +54,12 @@ func NewSetVMDiskResidentInCacheParamsWithHTTPClient(client *http.Client) *SetVM
 	}
 }
 
-/* SetVMDiskResidentInCacheParams contains all the parameters to send to the API endpoint
-   for the set Vm disk resident in cache operation.
+/*
+SetVMDiskResidentInCacheParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the set Vm disk resident in cache operation.
+
+	Typically these are written to a http.Request.
 */
 type SetVMDiskResidentInCacheParams struct {
 

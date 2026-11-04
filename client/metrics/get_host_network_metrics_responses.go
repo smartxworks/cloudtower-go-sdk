@@ -57,7 +57,8 @@ func NewGetHostNetworkMetricsOK() *GetHostNetworkMetricsOK {
 	return &GetHostNetworkMetricsOK{}
 }
 
-/* GetHostNetworkMetricsOK describes a response with status code 200, with default header values.
+/*
+GetHostNetworkMetricsOK describes a response with status code 200, with default header values.
 
 GetHostNetworkMetricsOK get host network metrics o k
 */
@@ -96,7 +97,8 @@ func NewGetHostNetworkMetricsBadRequest() *GetHostNetworkMetricsBadRequest {
 	return &GetHostNetworkMetricsBadRequest{}
 }
 
-/* GetHostNetworkMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetHostNetworkMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetHostNetworkMetricsNotFound() *GetHostNetworkMetricsNotFound {
 	return &GetHostNetworkMetricsNotFound{}
 }
 
-/* GetHostNetworkMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetHostNetworkMetricsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetHostNetworkMetricsInternalServerError() *GetHostNetworkMetricsInterna
 	return &GetHostNetworkMetricsInternalServerError{}
 }
 
-/* GetHostNetworkMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetHostNetworkMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

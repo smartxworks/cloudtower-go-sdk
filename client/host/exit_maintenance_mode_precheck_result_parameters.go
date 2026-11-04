@@ -54,10 +54,12 @@ func NewExitMaintenanceModePrecheckResultParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* ExitMaintenanceModePrecheckResultParams contains all the parameters to send to the API endpoint
-   for the exit maintenance mode precheck result operation.
+/*
+ExitMaintenanceModePrecheckResultParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the exit maintenance mode precheck result operation.
+
+	Typically these are written to a http.Request.
 */
 type ExitMaintenanceModePrecheckResultParams struct {
 

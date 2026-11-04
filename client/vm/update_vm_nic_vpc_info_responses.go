@@ -63,7 +63,8 @@ func NewUpdateVMNicVpcInfoOK() *UpdateVMNicVpcInfoOK {
 	return &UpdateVMNicVpcInfoOK{}
 }
 
-/* UpdateVMNicVpcInfoOK describes a response with status code 200, with default header values.
+/*
+UpdateVMNicVpcInfoOK describes a response with status code 200, with default header values.
 
 UpdateVMNicVpcInfoOK update Vm nic vpc info o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVMNicVpcInfoNotModified() *UpdateVMNicVpcInfoNotModified {
 	return &UpdateVMNicVpcInfoNotModified{}
 }
 
-/* UpdateVMNicVpcInfoNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVMNicVpcInfoNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVMNicVpcInfoBadRequest() *UpdateVMNicVpcInfoBadRequest {
 	return &UpdateVMNicVpcInfoBadRequest{}
 }
 
-/* UpdateVMNicVpcInfoBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMNicVpcInfoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVMNicVpcInfoNotFound() *UpdateVMNicVpcInfoNotFound {
 	return &UpdateVMNicVpcInfoNotFound{}
 }
 
-/* UpdateVMNicVpcInfoNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMNicVpcInfoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVMNicVpcInfoInternalServerError() *UpdateVMNicVpcInfoInternalServe
 	return &UpdateVMNicVpcInfoInternalServerError{}
 }
 
-/* UpdateVMNicVpcInfoInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMNicVpcInfoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

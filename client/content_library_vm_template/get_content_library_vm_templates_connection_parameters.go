@@ -54,10 +54,12 @@ func NewGetContentLibraryVMTemplatesConnectionParamsWithHTTPClient(client *http.
 	}
 }
 
-/* GetContentLibraryVMTemplatesConnectionParams contains all the parameters to send to the API endpoint
-   for the get content library Vm templates connection operation.
+/*
+GetContentLibraryVMTemplatesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get content library Vm templates connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetContentLibraryVMTemplatesConnectionParams struct {
 

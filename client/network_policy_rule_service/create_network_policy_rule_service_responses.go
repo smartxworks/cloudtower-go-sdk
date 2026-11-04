@@ -57,7 +57,8 @@ func NewCreateNetworkPolicyRuleServiceOK() *CreateNetworkPolicyRuleServiceOK {
 	return &CreateNetworkPolicyRuleServiceOK{}
 }
 
-/* CreateNetworkPolicyRuleServiceOK describes a response with status code 200, with default header values.
+/*
+CreateNetworkPolicyRuleServiceOK describes a response with status code 200, with default header values.
 
 CreateNetworkPolicyRuleServiceOK create network policy rule service o k
 */
@@ -96,7 +97,8 @@ func NewCreateNetworkPolicyRuleServiceBadRequest() *CreateNetworkPolicyRuleServi
 	return &CreateNetworkPolicyRuleServiceBadRequest{}
 }
 
-/* CreateNetworkPolicyRuleServiceBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNetworkPolicyRuleServiceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateNetworkPolicyRuleServiceNotFound() *CreateNetworkPolicyRuleService
 	return &CreateNetworkPolicyRuleServiceNotFound{}
 }
 
-/* CreateNetworkPolicyRuleServiceNotFound describes a response with status code 404, with default header values.
+/*
+CreateNetworkPolicyRuleServiceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateNetworkPolicyRuleServiceInternalServerError() *CreateNetworkPolicy
 	return &CreateNetworkPolicyRuleServiceInternalServerError{}
 }
 
-/* CreateNetworkPolicyRuleServiceInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateNetworkPolicyRuleServiceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

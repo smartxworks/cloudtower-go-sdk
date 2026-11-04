@@ -57,7 +57,8 @@ func NewGetElfDataStoresConnectionOK() *GetElfDataStoresConnectionOK {
 	return &GetElfDataStoresConnectionOK{}
 }
 
-/* GetElfDataStoresConnectionOK describes a response with status code 200, with default header values.
+/*
+GetElfDataStoresConnectionOK describes a response with status code 200, with default header values.
 
 GetElfDataStoresConnectionOK get elf data stores connection o k
 */
@@ -98,7 +99,8 @@ func NewGetElfDataStoresConnectionBadRequest() *GetElfDataStoresConnectionBadReq
 	return &GetElfDataStoresConnectionBadRequest{}
 }
 
-/* GetElfDataStoresConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetElfDataStoresConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetElfDataStoresConnectionNotFound() *GetElfDataStoresConnectionNotFound
 	return &GetElfDataStoresConnectionNotFound{}
 }
 
-/* GetElfDataStoresConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetElfDataStoresConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetElfDataStoresConnectionInternalServerError() *GetElfDataStoresConnect
 	return &GetElfDataStoresConnectionInternalServerError{}
 }
 
-/* GetElfDataStoresConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetElfDataStoresConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

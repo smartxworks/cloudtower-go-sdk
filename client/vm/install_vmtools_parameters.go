@@ -54,10 +54,12 @@ func NewInstallVmtoolsParamsWithHTTPClient(client *http.Client) *InstallVmtoolsP
 	}
 }
 
-/* InstallVmtoolsParams contains all the parameters to send to the API endpoint
-   for the install vmtools operation.
+/*
+InstallVmtoolsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the install vmtools operation.
+
+	Typically these are written to a http.Request.
 */
 type InstallVmtoolsParams struct {
 

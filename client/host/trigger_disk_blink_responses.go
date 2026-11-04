@@ -57,7 +57,8 @@ func NewTriggerDiskBlinkOK() *TriggerDiskBlinkOK {
 	return &TriggerDiskBlinkOK{}
 }
 
-/* TriggerDiskBlinkOK describes a response with status code 200, with default header values.
+/*
+TriggerDiskBlinkOK describes a response with status code 200, with default header values.
 
 TriggerDiskBlinkOK trigger disk blink o k
 */
@@ -96,7 +97,8 @@ func NewTriggerDiskBlinkBadRequest() *TriggerDiskBlinkBadRequest {
 	return &TriggerDiskBlinkBadRequest{}
 }
 
-/* TriggerDiskBlinkBadRequest describes a response with status code 400, with default header values.
+/*
+TriggerDiskBlinkBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewTriggerDiskBlinkNotFound() *TriggerDiskBlinkNotFound {
 	return &TriggerDiskBlinkNotFound{}
 }
 
-/* TriggerDiskBlinkNotFound describes a response with status code 404, with default header values.
+/*
+TriggerDiskBlinkNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewTriggerDiskBlinkInternalServerError() *TriggerDiskBlinkInternalServerErr
 	return &TriggerDiskBlinkInternalServerError{}
 }
 
-/* TriggerDiskBlinkInternalServerError describes a response with status code 500, with default header values.
+/*
+TriggerDiskBlinkInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

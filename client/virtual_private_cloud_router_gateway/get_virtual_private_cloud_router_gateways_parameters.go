@@ -54,10 +54,12 @@ func NewGetVirtualPrivateCloudRouterGatewaysParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* GetVirtualPrivateCloudRouterGatewaysParams contains all the parameters to send to the API endpoint
-   for the get virtual private cloud router gateways operation.
+/*
+GetVirtualPrivateCloudRouterGatewaysParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get virtual private cloud router gateways operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVirtualPrivateCloudRouterGatewaysParams struct {
 

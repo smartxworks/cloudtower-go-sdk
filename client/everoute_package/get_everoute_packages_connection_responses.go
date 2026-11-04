@@ -57,7 +57,8 @@ func NewGetEveroutePackagesConnectionOK() *GetEveroutePackagesConnectionOK {
 	return &GetEveroutePackagesConnectionOK{}
 }
 
-/* GetEveroutePackagesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetEveroutePackagesConnectionOK describes a response with status code 200, with default header values.
 
 GetEveroutePackagesConnectionOK get everoute packages connection o k
 */
@@ -98,7 +99,8 @@ func NewGetEveroutePackagesConnectionBadRequest() *GetEveroutePackagesConnection
 	return &GetEveroutePackagesConnectionBadRequest{}
 }
 
-/* GetEveroutePackagesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetEveroutePackagesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetEveroutePackagesConnectionNotFound() *GetEveroutePackagesConnectionNo
 	return &GetEveroutePackagesConnectionNotFound{}
 }
 
-/* GetEveroutePackagesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetEveroutePackagesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetEveroutePackagesConnectionInternalServerError() *GetEveroutePackagesC
 	return &GetEveroutePackagesConnectionInternalServerError{}
 }
 
-/* GetEveroutePackagesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEveroutePackagesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

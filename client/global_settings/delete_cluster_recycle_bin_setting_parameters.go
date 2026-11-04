@@ -54,10 +54,12 @@ func NewDeleteClusterRecycleBinSettingParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* DeleteClusterRecycleBinSettingParams contains all the parameters to send to the API endpoint
-   for the delete cluster recycle bin setting operation.
+/*
+DeleteClusterRecycleBinSettingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete cluster recycle bin setting operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteClusterRecycleBinSettingParams struct {
 

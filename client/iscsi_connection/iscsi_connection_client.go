@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetIscsiConnections get iscsi connections API
+GetIscsiConnections get iscsi connections API
 */
 func (a *Client) GetIscsiConnections(params *GetIscsiConnectionsParams, opts ...ClientOption) (*GetIscsiConnectionsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetIscsiConnections(params *GetIscsiConnectionsParams, opts ...
 }
 
 /*
-  GetIscsiConnectionsConnection get iscsi connections connection API
+GetIscsiConnectionsConnection get iscsi connections connection API
 */
 func (a *Client) GetIscsiConnectionsConnection(params *GetIscsiConnectionsConnectionParams, opts ...ClientOption) (*GetIscsiConnectionsConnectionOK, error) {
 	// TODO: Validate the params before sending

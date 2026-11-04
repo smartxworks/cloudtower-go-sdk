@@ -54,10 +54,12 @@ func NewUpdateVMPlacementGroupParamsWithHTTPClient(client *http.Client) *UpdateV
 	}
 }
 
-/* UpdateVMPlacementGroupParams contains all the parameters to send to the API endpoint
-   for the update Vm placement group operation.
+/*
+UpdateVMPlacementGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm placement group operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMPlacementGroupParams struct {
 

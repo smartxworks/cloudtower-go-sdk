@@ -57,7 +57,8 @@ func NewCreateVMSnapshotOK() *CreateVMSnapshotOK {
 	return &CreateVMSnapshotOK{}
 }
 
-/* CreateVMSnapshotOK describes a response with status code 200, with default header values.
+/*
+CreateVMSnapshotOK describes a response with status code 200, with default header values.
 
 CreateVMSnapshotOK create Vm snapshot o k
 */
@@ -96,7 +97,8 @@ func NewCreateVMSnapshotBadRequest() *CreateVMSnapshotBadRequest {
 	return &CreateVMSnapshotBadRequest{}
 }
 
-/* CreateVMSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVMSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVMSnapshotNotFound() *CreateVMSnapshotNotFound {
 	return &CreateVMSnapshotNotFound{}
 }
 
-/* CreateVMSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+CreateVMSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVMSnapshotInternalServerError() *CreateVMSnapshotInternalServerErr
 	return &CreateVMSnapshotInternalServerError{}
 }
 
-/* CreateVMSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVMSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

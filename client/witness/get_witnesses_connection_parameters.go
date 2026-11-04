@@ -54,10 +54,12 @@ func NewGetWitnessesConnectionParamsWithHTTPClient(client *http.Client) *GetWitn
 	}
 }
 
-/* GetWitnessesConnectionParams contains all the parameters to send to the API endpoint
-   for the get witnesses connection operation.
+/*
+GetWitnessesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get witnesses connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetWitnessesConnectionParams struct {
 

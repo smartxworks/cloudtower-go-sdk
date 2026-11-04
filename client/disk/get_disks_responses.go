@@ -57,7 +57,8 @@ func NewGetDisksOK() *GetDisksOK {
 	return &GetDisksOK{}
 }
 
-/* GetDisksOK describes a response with status code 200, with default header values.
+/*
+GetDisksOK describes a response with status code 200, with default header values.
 
 GetDisksOK get disks o k
 */
@@ -96,7 +97,8 @@ func NewGetDisksBadRequest() *GetDisksBadRequest {
 	return &GetDisksBadRequest{}
 }
 
-/* GetDisksBadRequest describes a response with status code 400, with default header values.
+/*
+GetDisksBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetDisksNotFound() *GetDisksNotFound {
 	return &GetDisksNotFound{}
 }
 
-/* GetDisksNotFound describes a response with status code 404, with default header values.
+/*
+GetDisksNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetDisksInternalServerError() *GetDisksInternalServerError {
 	return &GetDisksInternalServerError{}
 }
 
-/* GetDisksInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDisksInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

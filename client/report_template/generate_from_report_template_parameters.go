@@ -54,10 +54,12 @@ func NewGenerateFromReportTemplateParamsWithHTTPClient(client *http.Client) *Gen
 	}
 }
 
-/* GenerateFromReportTemplateParams contains all the parameters to send to the API endpoint
-   for the generate from report template operation.
+/*
+GenerateFromReportTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the generate from report template operation.
+
+	Typically these are written to a http.Request.
 */
 type GenerateFromReportTemplateParams struct {
 

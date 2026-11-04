@@ -68,16 +68,13 @@ type BackupPlan struct {
 	EntityAsyncStatus *EntityAsyncStatus `json:"entityAsyncStatus,omitempty"`
 
 	// full interval
-	// Required: true
-	FullInterval *int32 `json:"full_interval"`
+	FullInterval *int32 `json:"full_interval,omitempty"`
 
 	// full period
-	// Required: true
-	FullPeriod *BackupPlanPeriod `json:"full_period"`
+	FullPeriod *BackupPlanPeriod `json:"full_period,omitempty"`
 
 	// full time point
-	// Required: true
-	FullTimePoint *NestedBackupPlanTimePoint `json:"full_time_point"`
+	FullTimePoint *NestedBackupPlanTimePoint `json:"full_time_point,omitempty"`
 
 	// id
 	// Required: true
@@ -1214,10 +1211,6 @@ func (m *BackupPlan) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateFullInterval(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateFullPeriod(formats); err != nil {
 		res = append(res, err)
 	}
@@ -1463,23 +1456,9 @@ func (m *BackupPlan) validateEntityAsyncStatus(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *BackupPlan) validateFullInterval(formats strfmt.Registry) error {
-
-	if err := validate.Required("full_interval", "body", m.FullInterval); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *BackupPlan) validateFullPeriod(formats strfmt.Registry) error {
-
-	if err := validate.Required("full_period", "body", m.FullPeriod); err != nil {
-		return err
-	}
-
-	if err := validate.Required("full_period", "body", m.FullPeriod); err != nil {
-		return err
+	if swag.IsZero(m.FullPeriod) { // not required
+		return nil
 	}
 
 	if m.FullPeriod != nil {
@@ -1497,9 +1476,8 @@ func (m *BackupPlan) validateFullPeriod(formats strfmt.Registry) error {
 }
 
 func (m *BackupPlan) validateFullTimePoint(formats strfmt.Registry) error {
-
-	if err := validate.Required("full_time_point", "body", m.FullTimePoint); err != nil {
-		return err
+	if swag.IsZero(m.FullTimePoint) { // not required
+		return nil
 	}
 
 	if m.FullTimePoint != nil {

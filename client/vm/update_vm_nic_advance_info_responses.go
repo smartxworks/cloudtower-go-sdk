@@ -63,7 +63,8 @@ func NewUpdateVMNicAdvanceInfoOK() *UpdateVMNicAdvanceInfoOK {
 	return &UpdateVMNicAdvanceInfoOK{}
 }
 
-/* UpdateVMNicAdvanceInfoOK describes a response with status code 200, with default header values.
+/*
+UpdateVMNicAdvanceInfoOK describes a response with status code 200, with default header values.
 
 UpdateVMNicAdvanceInfoOK update Vm nic advance info o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVMNicAdvanceInfoNotModified() *UpdateVMNicAdvanceInfoNotModified {
 	return &UpdateVMNicAdvanceInfoNotModified{}
 }
 
-/* UpdateVMNicAdvanceInfoNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVMNicAdvanceInfoNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVMNicAdvanceInfoBadRequest() *UpdateVMNicAdvanceInfoBadRequest {
 	return &UpdateVMNicAdvanceInfoBadRequest{}
 }
 
-/* UpdateVMNicAdvanceInfoBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMNicAdvanceInfoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVMNicAdvanceInfoNotFound() *UpdateVMNicAdvanceInfoNotFound {
 	return &UpdateVMNicAdvanceInfoNotFound{}
 }
 
-/* UpdateVMNicAdvanceInfoNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMNicAdvanceInfoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVMNicAdvanceInfoInternalServerError() *UpdateVMNicAdvanceInfoInter
 	return &UpdateVMNicAdvanceInfoInternalServerError{}
 }
 
-/* UpdateVMNicAdvanceInfoInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMNicAdvanceInfoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

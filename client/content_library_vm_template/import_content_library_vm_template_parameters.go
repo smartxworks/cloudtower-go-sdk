@@ -54,10 +54,12 @@ func NewImportContentLibraryVMTemplateParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* ImportContentLibraryVMTemplateParams contains all the parameters to send to the API endpoint
-   for the import content library Vm template operation.
+/*
+ImportContentLibraryVMTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the import content library Vm template operation.
+
+	Typically these are written to a http.Request.
 */
 type ImportContentLibraryVMTemplateParams struct {
 

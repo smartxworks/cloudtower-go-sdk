@@ -57,7 +57,8 @@ func NewGetZoneMetricsOK() *GetZoneMetricsOK {
 	return &GetZoneMetricsOK{}
 }
 
-/* GetZoneMetricsOK describes a response with status code 200, with default header values.
+/*
+GetZoneMetricsOK describes a response with status code 200, with default header values.
 
 GetZoneMetricsOK get zone metrics o k
 */
@@ -96,7 +97,8 @@ func NewGetZoneMetricsBadRequest() *GetZoneMetricsBadRequest {
 	return &GetZoneMetricsBadRequest{}
 }
 
-/* GetZoneMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetZoneMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetZoneMetricsNotFound() *GetZoneMetricsNotFound {
 	return &GetZoneMetricsNotFound{}
 }
 
-/* GetZoneMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetZoneMetricsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetZoneMetricsInternalServerError() *GetZoneMetricsInternalServerError {
 	return &GetZoneMetricsInternalServerError{}
 }
 
-/* GetZoneMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetZoneMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewGetAlertRulesConnectionParamsWithHTTPClient(client *http.Client) *GetAle
 	}
 }
 
-/* GetAlertRulesConnectionParams contains all the parameters to send to the API endpoint
-   for the get alert rules connection operation.
+/*
+GetAlertRulesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get alert rules connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAlertRulesConnectionParams struct {
 

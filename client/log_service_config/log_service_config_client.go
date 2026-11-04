@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetLogServiceConfigs get log service configs API
+GetLogServiceConfigs get log service configs API
 */
 func (a *Client) GetLogServiceConfigs(params *GetLogServiceConfigsParams, opts ...ClientOption) (*GetLogServiceConfigsOK, error) {
 	// TODO: Validate the params before sending

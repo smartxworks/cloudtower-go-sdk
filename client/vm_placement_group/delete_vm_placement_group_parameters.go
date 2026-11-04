@@ -54,10 +54,12 @@ func NewDeleteVMPlacementGroupParamsWithHTTPClient(client *http.Client) *DeleteV
 	}
 }
 
-/* DeleteVMPlacementGroupParams contains all the parameters to send to the API endpoint
-   for the delete Vm placement group operation.
+/*
+DeleteVMPlacementGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete Vm placement group operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVMPlacementGroupParams struct {
 

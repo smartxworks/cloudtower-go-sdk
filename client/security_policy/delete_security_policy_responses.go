@@ -57,7 +57,8 @@ func NewDeleteSecurityPolicyOK() *DeleteSecurityPolicyOK {
 	return &DeleteSecurityPolicyOK{}
 }
 
-/* DeleteSecurityPolicyOK describes a response with status code 200, with default header values.
+/*
+DeleteSecurityPolicyOK describes a response with status code 200, with default header values.
 
 DeleteSecurityPolicyOK delete security policy o k
 */
@@ -96,7 +97,8 @@ func NewDeleteSecurityPolicyBadRequest() *DeleteSecurityPolicyBadRequest {
 	return &DeleteSecurityPolicyBadRequest{}
 }
 
-/* DeleteSecurityPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteSecurityPolicyBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteSecurityPolicyNotFound() *DeleteSecurityPolicyNotFound {
 	return &DeleteSecurityPolicyNotFound{}
 }
 
-/* DeleteSecurityPolicyNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSecurityPolicyNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteSecurityPolicyInternalServerError() *DeleteSecurityPolicyInternalS
 	return &DeleteSecurityPolicyInternalServerError{}
 }
 
-/* DeleteSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

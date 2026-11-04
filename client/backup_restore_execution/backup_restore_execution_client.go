@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetBackupRestoreExecutions get backup restore executions API
+GetBackupRestoreExecutions get backup restore executions API
 */
 func (a *Client) GetBackupRestoreExecutions(params *GetBackupRestoreExecutionsParams, opts ...ClientOption) (*GetBackupRestoreExecutionsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetBackupRestoreExecutions(params *GetBackupRestoreExecutionsPa
 }
 
 /*
-  GetBackupRestoreExecutionsConnection get backup restore executions connection API
+GetBackupRestoreExecutionsConnection get backup restore executions connection API
 */
 func (a *Client) GetBackupRestoreExecutionsConnection(params *GetBackupRestoreExecutionsConnectionParams, opts ...ClientOption) (*GetBackupRestoreExecutionsConnectionOK, error) {
 	// TODO: Validate the params before sending

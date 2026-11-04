@@ -54,10 +54,12 @@ func NewGetCloudTowerApplicationPackagesParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* GetCloudTowerApplicationPackagesParams contains all the parameters to send to the API endpoint
-   for the get cloud tower application packages operation.
+/*
+GetCloudTowerApplicationPackagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get cloud tower application packages operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCloudTowerApplicationPackagesParams struct {
 

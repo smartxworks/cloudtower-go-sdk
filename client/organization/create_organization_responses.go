@@ -57,7 +57,8 @@ func NewCreateOrganizationOK() *CreateOrganizationOK {
 	return &CreateOrganizationOK{}
 }
 
-/* CreateOrganizationOK describes a response with status code 200, with default header values.
+/*
+CreateOrganizationOK describes a response with status code 200, with default header values.
 
 CreateOrganizationOK create organization o k
 */
@@ -96,7 +97,8 @@ func NewCreateOrganizationBadRequest() *CreateOrganizationBadRequest {
 	return &CreateOrganizationBadRequest{}
 }
 
-/* CreateOrganizationBadRequest describes a response with status code 400, with default header values.
+/*
+CreateOrganizationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateOrganizationNotFound() *CreateOrganizationNotFound {
 	return &CreateOrganizationNotFound{}
 }
 
-/* CreateOrganizationNotFound describes a response with status code 404, with default header values.
+/*
+CreateOrganizationNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateOrganizationInternalServerError() *CreateOrganizationInternalServe
 	return &CreateOrganizationInternalServerError{}
 }
 
-/* CreateOrganizationInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateOrganizationInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

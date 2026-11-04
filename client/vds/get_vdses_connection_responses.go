@@ -57,7 +57,8 @@ func NewGetVdsesConnectionOK() *GetVdsesConnectionOK {
 	return &GetVdsesConnectionOK{}
 }
 
-/* GetVdsesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVdsesConnectionOK describes a response with status code 200, with default header values.
 
 GetVdsesConnectionOK get vdses connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVdsesConnectionBadRequest() *GetVdsesConnectionBadRequest {
 	return &GetVdsesConnectionBadRequest{}
 }
 
-/* GetVdsesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVdsesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVdsesConnectionNotFound() *GetVdsesConnectionNotFound {
 	return &GetVdsesConnectionNotFound{}
 }
 
-/* GetVdsesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVdsesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVdsesConnectionInternalServerError() *GetVdsesConnectionInternalServe
 	return &GetVdsesConnectionInternalServerError{}
 }
 
-/* GetVdsesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVdsesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

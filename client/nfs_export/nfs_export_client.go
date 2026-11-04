@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateNfsExport create nfs export API
+CreateNfsExport create nfs export API
 */
 func (a *Client) CreateNfsExport(params *CreateNfsExportParams, opts ...ClientOption) (*CreateNfsExportOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateNfsExport(params *CreateNfsExportParams, opts ...ClientOp
 }
 
 /*
-  DeleteNfsExport delete nfs export API
+DeleteNfsExport delete nfs export API
 */
 func (a *Client) DeleteNfsExport(params *DeleteNfsExportParams, opts ...ClientOption) (*DeleteNfsExportOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteNfsExport(params *DeleteNfsExportParams, opts ...ClientOp
 }
 
 /*
-  GetNfsExports get nfs exports API
+GetNfsExports get nfs exports API
 */
 func (a *Client) GetNfsExports(params *GetNfsExportsParams, opts ...ClientOption) (*GetNfsExportsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetNfsExports(params *GetNfsExportsParams, opts ...ClientOption
 }
 
 /*
-  GetNfsExportsConnection get nfs exports connection API
+GetNfsExportsConnection get nfs exports connection API
 */
 func (a *Client) GetNfsExportsConnection(params *GetNfsExportsConnectionParams, opts ...ClientOption) (*GetNfsExportsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetNfsExportsConnection(params *GetNfsExportsConnectionParams, 
 }
 
 /*
-  UpdateNfsExport update nfs export API
+UpdateNfsExport update nfs export API
 */
 func (a *Client) UpdateNfsExport(params *UpdateNfsExportParams, opts ...ClientOption) (*UpdateNfsExportOK, error) {
 	// TODO: Validate the params before sending

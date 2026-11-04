@@ -57,7 +57,8 @@ func NewGetSnapshotGroupsConnectionOK() *GetSnapshotGroupsConnectionOK {
 	return &GetSnapshotGroupsConnectionOK{}
 }
 
-/* GetSnapshotGroupsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetSnapshotGroupsConnectionOK describes a response with status code 200, with default header values.
 
 GetSnapshotGroupsConnectionOK get snapshot groups connection o k
 */
@@ -98,7 +99,8 @@ func NewGetSnapshotGroupsConnectionBadRequest() *GetSnapshotGroupsConnectionBadR
 	return &GetSnapshotGroupsConnectionBadRequest{}
 }
 
-/* GetSnapshotGroupsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetSnapshotGroupsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetSnapshotGroupsConnectionNotFound() *GetSnapshotGroupsConnectionNotFou
 	return &GetSnapshotGroupsConnectionNotFound{}
 }
 
-/* GetSnapshotGroupsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetSnapshotGroupsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetSnapshotGroupsConnectionInternalServerError() *GetSnapshotGroupsConne
 	return &GetSnapshotGroupsConnectionInternalServerError{}
 }
 
-/* GetSnapshotGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSnapshotGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

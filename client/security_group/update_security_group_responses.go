@@ -57,7 +57,8 @@ func NewUpdateSecurityGroupOK() *UpdateSecurityGroupOK {
 	return &UpdateSecurityGroupOK{}
 }
 
-/* UpdateSecurityGroupOK describes a response with status code 200, with default header values.
+/*
+UpdateSecurityGroupOK describes a response with status code 200, with default header values.
 
 UpdateSecurityGroupOK update security group o k
 */
@@ -96,7 +97,8 @@ func NewUpdateSecurityGroupBadRequest() *UpdateSecurityGroupBadRequest {
 	return &UpdateSecurityGroupBadRequest{}
 }
 
-/* UpdateSecurityGroupBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateSecurityGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateSecurityGroupNotFound() *UpdateSecurityGroupNotFound {
 	return &UpdateSecurityGroupNotFound{}
 }
 
-/* UpdateSecurityGroupNotFound describes a response with status code 404, with default header values.
+/*
+UpdateSecurityGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateSecurityGroupInternalServerError() *UpdateSecurityGroupInternalSer
 	return &UpdateSecurityGroupInternalServerError{}
 }
 
-/* UpdateSecurityGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateSecurityGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

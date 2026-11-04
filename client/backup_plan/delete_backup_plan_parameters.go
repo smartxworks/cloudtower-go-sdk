@@ -54,10 +54,12 @@ func NewDeleteBackupPlanParamsWithHTTPClient(client *http.Client) *DeleteBackupP
 	}
 }
 
-/* DeleteBackupPlanParams contains all the parameters to send to the API endpoint
-   for the delete backup plan operation.
+/*
+DeleteBackupPlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete backup plan operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteBackupPlanParams struct {
 

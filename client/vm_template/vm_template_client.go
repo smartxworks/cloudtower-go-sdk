@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  CloneVMTemplateFromVM clone Vm template from Vm API
+CloneVMTemplateFromVM clone Vm template from Vm API
 */
 func (a *Client) CloneVMTemplateFromVM(params *CloneVMTemplateFromVMParams, opts ...ClientOption) (*CloneVMTemplateFromVMOK, error) {
 	// TODO: Validate the params before sending
@@ -84,7 +84,7 @@ func (a *Client) CloneVMTemplateFromVM(params *CloneVMTemplateFromVMParams, opts
 }
 
 /*
-  ConvertVMTemplateFromVM convert Vm template from Vm API
+ConvertVMTemplateFromVM convert Vm template from Vm API
 */
 func (a *Client) ConvertVMTemplateFromVM(params *ConvertVMTemplateFromVMParams, opts ...ClientOption) (*ConvertVMTemplateFromVMOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) ConvertVMTemplateFromVM(params *ConvertVMTemplateFromVMParams, 
 }
 
 /*
-  DeleteVMTemplate delete Vm template API
+DeleteVMTemplate delete Vm template API
 */
 func (a *Client) DeleteVMTemplate(params *DeleteVMTemplateParams, opts ...ClientOption) (*DeleteVMTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) DeleteVMTemplate(params *DeleteVMTemplateParams, opts ...Client
 }
 
 /*
-  GetVMTemplates get Vm templates API
+GetVMTemplates get Vm templates API
 */
 func (a *Client) GetVMTemplates(params *GetVMTemplatesParams, opts ...ClientOption) (*GetVMTemplatesOK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +198,7 @@ func (a *Client) GetVMTemplates(params *GetVMTemplatesParams, opts ...ClientOpti
 }
 
 /*
-  GetVMTemplatesConnection get Vm templates connection API
+GetVMTemplatesConnection get Vm templates connection API
 */
 func (a *Client) GetVMTemplatesConnection(params *GetVMTemplatesConnectionParams, opts ...ClientOption) (*GetVMTemplatesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -236,7 +236,7 @@ func (a *Client) GetVMTemplatesConnection(params *GetVMTemplatesConnectionParams
 }
 
 /*
-  UpdateVMTemplate update Vm template API
+UpdateVMTemplate update Vm template API
 */
 func (a *Client) UpdateVMTemplate(params *UpdateVMTemplateParams, opts ...ClientOption) (*UpdateVMTemplateOK, error) {
 	// TODO: Validate the params before sending

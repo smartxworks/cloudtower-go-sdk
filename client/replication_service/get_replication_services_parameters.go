@@ -54,10 +54,12 @@ func NewGetReplicationServicesParamsWithHTTPClient(client *http.Client) *GetRepl
 	}
 }
 
-/* GetReplicationServicesParams contains all the parameters to send to the API endpoint
-   for the get replication services operation.
+/*
+GetReplicationServicesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get replication services operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReplicationServicesParams struct {
 

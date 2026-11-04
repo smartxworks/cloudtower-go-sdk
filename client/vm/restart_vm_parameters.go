@@ -54,10 +54,12 @@ func NewRestartVMParamsWithHTTPClient(client *http.Client) *RestartVMParams {
 	}
 }
 
-/* RestartVMParams contains all the parameters to send to the API endpoint
-   for the restart Vm operation.
+/*
+RestartVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the restart Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type RestartVMParams struct {
 

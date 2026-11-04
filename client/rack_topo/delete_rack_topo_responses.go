@@ -57,7 +57,8 @@ func NewDeleteRackTopoOK() *DeleteRackTopoOK {
 	return &DeleteRackTopoOK{}
 }
 
-/* DeleteRackTopoOK describes a response with status code 200, with default header values.
+/*
+DeleteRackTopoOK describes a response with status code 200, with default header values.
 
 DeleteRackTopoOK delete rack topo o k
 */
@@ -96,7 +97,8 @@ func NewDeleteRackTopoBadRequest() *DeleteRackTopoBadRequest {
 	return &DeleteRackTopoBadRequest{}
 }
 
-/* DeleteRackTopoBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteRackTopoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteRackTopoNotFound() *DeleteRackTopoNotFound {
 	return &DeleteRackTopoNotFound{}
 }
 
-/* DeleteRackTopoNotFound describes a response with status code 404, with default header values.
+/*
+DeleteRackTopoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteRackTopoInternalServerError() *DeleteRackTopoInternalServerError {
 	return &DeleteRackTopoInternalServerError{}
 }
 
-/* DeleteRackTopoInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteRackTopoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

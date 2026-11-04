@@ -54,10 +54,12 @@ func NewRemoveVMNicByWhereParamsWithHTTPClient(client *http.Client) *RemoveVMNic
 	}
 }
 
-/* RemoveVMNicByWhereParams contains all the parameters to send to the API endpoint
-   for the remove Vm nic by where operation.
+/*
+RemoveVMNicByWhereParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove Vm nic by where operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveVMNicByWhereParams struct {
 

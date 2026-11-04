@@ -54,10 +54,12 @@ func NewMigrateVMParamsWithHTTPClient(client *http.Client) *MigrateVMParams {
 	}
 }
 
-/* MigrateVMParams contains all the parameters to send to the API endpoint
-   for the migrate Vm operation.
+/*
+MigrateVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the migrate Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type MigrateVMParams struct {
 

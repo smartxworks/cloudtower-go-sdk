@@ -54,10 +54,12 @@ func NewUpdateClusterRecycleBinSettingParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* UpdateClusterRecycleBinSettingParams contains all the parameters to send to the API endpoint
-   for the update cluster recycle bin setting operation.
+/*
+UpdateClusterRecycleBinSettingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update cluster recycle bin setting operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateClusterRecycleBinSettingParams struct {
 

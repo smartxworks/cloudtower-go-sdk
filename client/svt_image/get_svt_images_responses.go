@@ -57,7 +57,8 @@ func NewGetSvtImagesOK() *GetSvtImagesOK {
 	return &GetSvtImagesOK{}
 }
 
-/* GetSvtImagesOK describes a response with status code 200, with default header values.
+/*
+GetSvtImagesOK describes a response with status code 200, with default header values.
 
 GetSvtImagesOK get svt images o k
 */
@@ -96,7 +97,8 @@ func NewGetSvtImagesBadRequest() *GetSvtImagesBadRequest {
 	return &GetSvtImagesBadRequest{}
 }
 
-/* GetSvtImagesBadRequest describes a response with status code 400, with default header values.
+/*
+GetSvtImagesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetSvtImagesNotFound() *GetSvtImagesNotFound {
 	return &GetSvtImagesNotFound{}
 }
 
-/* GetSvtImagesNotFound describes a response with status code 404, with default header values.
+/*
+GetSvtImagesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetSvtImagesInternalServerError() *GetSvtImagesInternalServerError {
 	return &GetSvtImagesInternalServerError{}
 }
 
-/* GetSvtImagesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSvtImagesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

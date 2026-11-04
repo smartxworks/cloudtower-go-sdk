@@ -57,7 +57,8 @@ func NewCreateNfsExportOK() *CreateNfsExportOK {
 	return &CreateNfsExportOK{}
 }
 
-/* CreateNfsExportOK describes a response with status code 200, with default header values.
+/*
+CreateNfsExportOK describes a response with status code 200, with default header values.
 
 CreateNfsExportOK create nfs export o k
 */
@@ -96,7 +97,8 @@ func NewCreateNfsExportBadRequest() *CreateNfsExportBadRequest {
 	return &CreateNfsExportBadRequest{}
 }
 
-/* CreateNfsExportBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNfsExportBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateNfsExportNotFound() *CreateNfsExportNotFound {
 	return &CreateNfsExportNotFound{}
 }
 
-/* CreateNfsExportNotFound describes a response with status code 404, with default header values.
+/*
+CreateNfsExportNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateNfsExportInternalServerError() *CreateNfsExportInternalServerError
 	return &CreateNfsExportInternalServerError{}
 }
 
-/* CreateNfsExportInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateNfsExportInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

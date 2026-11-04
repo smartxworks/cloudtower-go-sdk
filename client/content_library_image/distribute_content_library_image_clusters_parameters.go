@@ -54,10 +54,12 @@ func NewDistributeContentLibraryImageClustersParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* DistributeContentLibraryImageClustersParams contains all the parameters to send to the API endpoint
-   for the distribute content library image clusters operation.
+/*
+DistributeContentLibraryImageClustersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the distribute content library image clusters operation.
+
+	Typically these are written to a http.Request.
 */
 type DistributeContentLibraryImageClustersParams struct {
 

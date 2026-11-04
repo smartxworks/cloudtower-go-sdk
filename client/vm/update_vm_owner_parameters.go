@@ -54,10 +54,12 @@ func NewUpdateVMOwnerParamsWithHTTPClient(client *http.Client) *UpdateVMOwnerPar
 	}
 }
 
-/* UpdateVMOwnerParams contains all the parameters to send to the API endpoint
-   for the update Vm owner operation.
+/*
+UpdateVMOwnerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm owner operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMOwnerParams struct {
 

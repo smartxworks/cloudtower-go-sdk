@@ -57,7 +57,8 @@ func NewUploadElfFileOK() *UploadElfFileOK {
 	return &UploadElfFileOK{}
 }
 
-/* UploadElfFileOK describes a response with status code 200, with default header values.
+/*
+UploadElfFileOK describes a response with status code 200, with default header values.
 
 UploadElfFileOK upload elf file o k
 */
@@ -98,7 +99,8 @@ func NewUploadElfFileBadRequest() *UploadElfFileBadRequest {
 	return &UploadElfFileBadRequest{}
 }
 
-/* UploadElfFileBadRequest describes a response with status code 400, with default header values.
+/*
+UploadElfFileBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewUploadElfFileNotFound() *UploadElfFileNotFound {
 	return &UploadElfFileNotFound{}
 }
 
-/* UploadElfFileNotFound describes a response with status code 404, with default header values.
+/*
+UploadElfFileNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewUploadElfFileInternalServerError() *UploadElfFileInternalServerError {
 	return &UploadElfFileInternalServerError{}
 }
 
-/* UploadElfFileInternalServerError describes a response with status code 500, with default header values.
+/*
+UploadElfFileInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

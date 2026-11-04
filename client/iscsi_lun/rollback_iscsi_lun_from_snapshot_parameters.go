@@ -54,10 +54,12 @@ func NewRollbackIscsiLunFromSnapshotParamsWithHTTPClient(client *http.Client) *R
 	}
 }
 
-/* RollbackIscsiLunFromSnapshotParams contains all the parameters to send to the API endpoint
-   for the rollback iscsi lun from snapshot operation.
+/*
+RollbackIscsiLunFromSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the rollback iscsi lun from snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type RollbackIscsiLunFromSnapshotParams struct {
 

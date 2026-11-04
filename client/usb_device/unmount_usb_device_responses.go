@@ -57,7 +57,8 @@ func NewUnmountUsbDeviceOK() *UnmountUsbDeviceOK {
 	return &UnmountUsbDeviceOK{}
 }
 
-/* UnmountUsbDeviceOK describes a response with status code 200, with default header values.
+/*
+UnmountUsbDeviceOK describes a response with status code 200, with default header values.
 
 UnmountUsbDeviceOK unmount usb device o k
 */
@@ -96,7 +97,8 @@ func NewUnmountUsbDeviceBadRequest() *UnmountUsbDeviceBadRequest {
 	return &UnmountUsbDeviceBadRequest{}
 }
 
-/* UnmountUsbDeviceBadRequest describes a response with status code 400, with default header values.
+/*
+UnmountUsbDeviceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUnmountUsbDeviceNotFound() *UnmountUsbDeviceNotFound {
 	return &UnmountUsbDeviceNotFound{}
 }
 
-/* UnmountUsbDeviceNotFound describes a response with status code 404, with default header values.
+/*
+UnmountUsbDeviceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUnmountUsbDeviceInternalServerError() *UnmountUsbDeviceInternalServerErr
 	return &UnmountUsbDeviceInternalServerError{}
 }
 
-/* UnmountUsbDeviceInternalServerError describes a response with status code 500, with default header values.
+/*
+UnmountUsbDeviceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

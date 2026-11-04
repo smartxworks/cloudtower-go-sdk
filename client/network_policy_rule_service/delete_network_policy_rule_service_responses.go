@@ -57,7 +57,8 @@ func NewDeleteNetworkPolicyRuleServiceOK() *DeleteNetworkPolicyRuleServiceOK {
 	return &DeleteNetworkPolicyRuleServiceOK{}
 }
 
-/* DeleteNetworkPolicyRuleServiceOK describes a response with status code 200, with default header values.
+/*
+DeleteNetworkPolicyRuleServiceOK describes a response with status code 200, with default header values.
 
 DeleteNetworkPolicyRuleServiceOK delete network policy rule service o k
 */
@@ -96,7 +97,8 @@ func NewDeleteNetworkPolicyRuleServiceBadRequest() *DeleteNetworkPolicyRuleServi
 	return &DeleteNetworkPolicyRuleServiceBadRequest{}
 }
 
-/* DeleteNetworkPolicyRuleServiceBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteNetworkPolicyRuleServiceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteNetworkPolicyRuleServiceNotFound() *DeleteNetworkPolicyRuleService
 	return &DeleteNetworkPolicyRuleServiceNotFound{}
 }
 
-/* DeleteNetworkPolicyRuleServiceNotFound describes a response with status code 404, with default header values.
+/*
+DeleteNetworkPolicyRuleServiceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteNetworkPolicyRuleServiceInternalServerError() *DeleteNetworkPolicy
 	return &DeleteNetworkPolicyRuleServiceInternalServerError{}
 }
 
-/* DeleteNetworkPolicyRuleServiceInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteNetworkPolicyRuleServiceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

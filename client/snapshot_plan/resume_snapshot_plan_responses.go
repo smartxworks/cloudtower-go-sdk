@@ -57,7 +57,8 @@ func NewResumeSnapshotPlanOK() *ResumeSnapshotPlanOK {
 	return &ResumeSnapshotPlanOK{}
 }
 
-/* ResumeSnapshotPlanOK describes a response with status code 200, with default header values.
+/*
+ResumeSnapshotPlanOK describes a response with status code 200, with default header values.
 
 ResumeSnapshotPlanOK resume snapshot plan o k
 */
@@ -96,7 +97,8 @@ func NewResumeSnapshotPlanBadRequest() *ResumeSnapshotPlanBadRequest {
 	return &ResumeSnapshotPlanBadRequest{}
 }
 
-/* ResumeSnapshotPlanBadRequest describes a response with status code 400, with default header values.
+/*
+ResumeSnapshotPlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewResumeSnapshotPlanNotFound() *ResumeSnapshotPlanNotFound {
 	return &ResumeSnapshotPlanNotFound{}
 }
 
-/* ResumeSnapshotPlanNotFound describes a response with status code 404, with default header values.
+/*
+ResumeSnapshotPlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewResumeSnapshotPlanInternalServerError() *ResumeSnapshotPlanInternalServe
 	return &ResumeSnapshotPlanInternalServerError{}
 }
 
-/* ResumeSnapshotPlanInternalServerError describes a response with status code 500, with default header values.
+/*
+ResumeSnapshotPlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

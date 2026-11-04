@@ -57,7 +57,8 @@ func NewRemoveVMCdRomOK() *RemoveVMCdRomOK {
 	return &RemoveVMCdRomOK{}
 }
 
-/* RemoveVMCdRomOK describes a response with status code 200, with default header values.
+/*
+RemoveVMCdRomOK describes a response with status code 200, with default header values.
 
 RemoveVMCdRomOK remove Vm cd rom o k
 */
@@ -96,7 +97,8 @@ func NewRemoveVMCdRomBadRequest() *RemoveVMCdRomBadRequest {
 	return &RemoveVMCdRomBadRequest{}
 }
 
-/* RemoveVMCdRomBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveVMCdRomBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRemoveVMCdRomNotFound() *RemoveVMCdRomNotFound {
 	return &RemoveVMCdRomNotFound{}
 }
 
-/* RemoveVMCdRomNotFound describes a response with status code 404, with default header values.
+/*
+RemoveVMCdRomNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRemoveVMCdRomInternalServerError() *RemoveVMCdRomInternalServerError {
 	return &RemoveVMCdRomInternalServerError{}
 }
 
-/* RemoveVMCdRomInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveVMCdRomInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

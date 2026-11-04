@@ -57,7 +57,8 @@ func NewCreateNvmfSubsystemOK() *CreateNvmfSubsystemOK {
 	return &CreateNvmfSubsystemOK{}
 }
 
-/* CreateNvmfSubsystemOK describes a response with status code 200, with default header values.
+/*
+CreateNvmfSubsystemOK describes a response with status code 200, with default header values.
 
 CreateNvmfSubsystemOK create nvmf subsystem o k
 */
@@ -96,7 +97,8 @@ func NewCreateNvmfSubsystemBadRequest() *CreateNvmfSubsystemBadRequest {
 	return &CreateNvmfSubsystemBadRequest{}
 }
 
-/* CreateNvmfSubsystemBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNvmfSubsystemBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateNvmfSubsystemNotFound() *CreateNvmfSubsystemNotFound {
 	return &CreateNvmfSubsystemNotFound{}
 }
 
-/* CreateNvmfSubsystemNotFound describes a response with status code 404, with default header values.
+/*
+CreateNvmfSubsystemNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateNvmfSubsystemInternalServerError() *CreateNvmfSubsystemInternalSer
 	return &CreateNvmfSubsystemInternalServerError{}
 }
 
-/* CreateNvmfSubsystemInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateNvmfSubsystemInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

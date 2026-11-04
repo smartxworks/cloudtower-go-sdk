@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetVsphereEsxiAccounts get vsphere esxi accounts API
+GetVsphereEsxiAccounts get vsphere esxi accounts API
 */
 func (a *Client) GetVsphereEsxiAccounts(params *GetVsphereEsxiAccountsParams, opts ...ClientOption) (*GetVsphereEsxiAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -78,7 +78,7 @@ func (a *Client) GetVsphereEsxiAccounts(params *GetVsphereEsxiAccountsParams, op
 }
 
 /*
-  GetVsphereEsxiAccountsConnection get vsphere esxi accounts connection API
+GetVsphereEsxiAccountsConnection get vsphere esxi accounts connection API
 */
 func (a *Client) GetVsphereEsxiAccountsConnection(params *GetVsphereEsxiAccountsConnectionParams, opts ...ClientOption) (*GetVsphereEsxiAccountsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -116,7 +116,7 @@ func (a *Client) GetVsphereEsxiAccountsConnection(params *GetVsphereEsxiAccounts
 }
 
 /*
-  UpdateVsphereEsxiAccount update vsphere esxi account API
+UpdateVsphereEsxiAccount update vsphere esxi account API
 */
 func (a *Client) UpdateVsphereEsxiAccount(params *UpdateVsphereEsxiAccountParams, opts ...ClientOption) (*UpdateVsphereEsxiAccountOK, error) {
 	// TODO: Validate the params before sending

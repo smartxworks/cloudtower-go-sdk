@@ -54,10 +54,12 @@ func NewCloneVMVolumeParamsWithHTTPClient(client *http.Client) *CloneVMVolumePar
 	}
 }
 
-/* CloneVMVolumeParams contains all the parameters to send to the API endpoint
-   for the clone Vm volume operation.
+/*
+CloneVMVolumeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clone Vm volume operation.
+
+	Typically these are written to a http.Request.
 */
 type CloneVMVolumeParams struct {
 

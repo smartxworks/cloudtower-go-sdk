@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVirtualPrivateCloudNatGateway create virtual private cloud nat gateway API
+CreateVirtualPrivateCloudNatGateway create virtual private cloud nat gateway API
 */
 func (a *Client) CreateVirtualPrivateCloudNatGateway(params *CreateVirtualPrivateCloudNatGatewayParams, opts ...ClientOption) (*CreateVirtualPrivateCloudNatGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVirtualPrivateCloudNatGateway(params *CreateVirtualPrivat
 }
 
 /*
-  DeleteVirtualPrivateCloudNatGateway delete virtual private cloud nat gateway API
+DeleteVirtualPrivateCloudNatGateway delete virtual private cloud nat gateway API
 */
 func (a *Client) DeleteVirtualPrivateCloudNatGateway(params *DeleteVirtualPrivateCloudNatGatewayParams, opts ...ClientOption) (*DeleteVirtualPrivateCloudNatGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVirtualPrivateCloudNatGateway(params *DeleteVirtualPrivat
 }
 
 /*
-  GetVirtualPrivateCloudNatGateways get virtual private cloud nat gateways API
+GetVirtualPrivateCloudNatGateways get virtual private cloud nat gateways API
 */
 func (a *Client) GetVirtualPrivateCloudNatGateways(params *GetVirtualPrivateCloudNatGatewaysParams, opts ...ClientOption) (*GetVirtualPrivateCloudNatGatewaysOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVirtualPrivateCloudNatGateways(params *GetVirtualPrivateClou
 }
 
 /*
-  GetVirtualPrivateCloudNatGatewaysConnection get virtual private cloud nat gateways connection API
+GetVirtualPrivateCloudNatGatewaysConnection get virtual private cloud nat gateways connection API
 */
 func (a *Client) GetVirtualPrivateCloudNatGatewaysConnection(params *GetVirtualPrivateCloudNatGatewaysConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudNatGatewaysConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVirtualPrivateCloudNatGatewaysConnection(params *GetVirtualP
 }
 
 /*
-  UpdateVirtualPrivateCloudNatGateway update virtual private cloud nat gateway API
+UpdateVirtualPrivateCloudNatGateway update virtual private cloud nat gateway API
 */
 func (a *Client) UpdateVirtualPrivateCloudNatGateway(params *UpdateVirtualPrivateCloudNatGatewayParams, opts ...ClientOption) (*UpdateVirtualPrivateCloudNatGatewayOK, error) {
 	// TODO: Validate the params before sending

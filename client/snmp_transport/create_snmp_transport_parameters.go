@@ -54,10 +54,12 @@ func NewCreateSnmpTransportParamsWithHTTPClient(client *http.Client) *CreateSnmp
 	}
 }
 
-/* CreateSnmpTransportParams contains all the parameters to send to the API endpoint
-   for the create snmp transport operation.
+/*
+CreateSnmpTransportParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create snmp transport operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateSnmpTransportParams struct {
 

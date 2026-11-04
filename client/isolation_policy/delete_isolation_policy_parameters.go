@@ -54,10 +54,12 @@ func NewDeleteIsolationPolicyParamsWithHTTPClient(client *http.Client) *DeleteIs
 	}
 }
 
-/* DeleteIsolationPolicyParams contains all the parameters to send to the API endpoint
-   for the delete isolation policy operation.
+/*
+DeleteIsolationPolicyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete isolation policy operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteIsolationPolicyParams struct {
 

@@ -54,10 +54,12 @@ func NewUpdateVsphereEsxiAccountParamsWithHTTPClient(client *http.Client) *Updat
 	}
 }
 
-/* UpdateVsphereEsxiAccountParams contains all the parameters to send to the API endpoint
-   for the update vsphere esxi account operation.
+/*
+UpdateVsphereEsxiAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update vsphere esxi account operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVsphereEsxiAccountParams struct {
 

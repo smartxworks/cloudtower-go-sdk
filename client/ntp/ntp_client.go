@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetNtpServiceURL get ntp service Url API
+GetNtpServiceURL get ntp service Url API
 */
 func (a *Client) GetNtpServiceURL(params *GetNtpServiceURLParams, opts ...ClientOption) (*GetNtpServiceURLOK, error) {
 	// TODO: Validate the params before sending

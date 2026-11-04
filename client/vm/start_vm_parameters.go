@@ -54,10 +54,12 @@ func NewStartVMParamsWithHTTPClient(client *http.Client) *StartVMParams {
 	}
 }
 
-/* StartVMParams contains all the parameters to send to the API endpoint
-   for the start Vm operation.
+/*
+StartVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the start Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type StartVMParams struct {
 

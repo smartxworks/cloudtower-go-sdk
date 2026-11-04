@@ -57,7 +57,8 @@ func NewDeleteIscsiTargetOK() *DeleteIscsiTargetOK {
 	return &DeleteIscsiTargetOK{}
 }
 
-/* DeleteIscsiTargetOK describes a response with status code 200, with default header values.
+/*
+DeleteIscsiTargetOK describes a response with status code 200, with default header values.
 
 DeleteIscsiTargetOK delete iscsi target o k
 */
@@ -96,7 +97,8 @@ func NewDeleteIscsiTargetBadRequest() *DeleteIscsiTargetBadRequest {
 	return &DeleteIscsiTargetBadRequest{}
 }
 
-/* DeleteIscsiTargetBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteIscsiTargetBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteIscsiTargetNotFound() *DeleteIscsiTargetNotFound {
 	return &DeleteIscsiTargetNotFound{}
 }
 
-/* DeleteIscsiTargetNotFound describes a response with status code 404, with default header values.
+/*
+DeleteIscsiTargetNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteIscsiTargetInternalServerError() *DeleteIscsiTargetInternalServerE
 	return &DeleteIscsiTargetInternalServerError{}
 }
 
-/* DeleteIscsiTargetInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteIscsiTargetInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

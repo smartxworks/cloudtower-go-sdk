@@ -57,7 +57,8 @@ func NewDistributeContentLibraryVmtemplateClustersOK() *DistributeContentLibrary
 	return &DistributeContentLibraryVmtemplateClustersOK{}
 }
 
-/* DistributeContentLibraryVmtemplateClustersOK describes a response with status code 200, with default header values.
+/*
+DistributeContentLibraryVmtemplateClustersOK describes a response with status code 200, with default header values.
 
 DistributeContentLibraryVmtemplateClustersOK distribute content library vmtemplate clusters o k
 */
@@ -96,7 +97,8 @@ func NewDistributeContentLibraryVmtemplateClustersBadRequest() *DistributeConten
 	return &DistributeContentLibraryVmtemplateClustersBadRequest{}
 }
 
-/* DistributeContentLibraryVmtemplateClustersBadRequest describes a response with status code 400, with default header values.
+/*
+DistributeContentLibraryVmtemplateClustersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDistributeContentLibraryVmtemplateClustersNotFound() *DistributeContentL
 	return &DistributeContentLibraryVmtemplateClustersNotFound{}
 }
 
-/* DistributeContentLibraryVmtemplateClustersNotFound describes a response with status code 404, with default header values.
+/*
+DistributeContentLibraryVmtemplateClustersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDistributeContentLibraryVmtemplateClustersInternalServerError() *Distrib
 	return &DistributeContentLibraryVmtemplateClustersInternalServerError{}
 }
 
-/* DistributeContentLibraryVmtemplateClustersInternalServerError describes a response with status code 500, with default header values.
+/*
+DistributeContentLibraryVmtemplateClustersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

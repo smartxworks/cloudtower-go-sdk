@@ -54,10 +54,12 @@ func NewGetVdsesParamsWithHTTPClient(client *http.Client) *GetVdsesParams {
 	}
 }
 
-/* GetVdsesParams contains all the parameters to send to the API endpoint
-   for the get vdses operation.
+/*
+GetVdsesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get vdses operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVdsesParams struct {
 

@@ -57,7 +57,8 @@ func NewUpdateDatacenterOK() *UpdateDatacenterOK {
 	return &UpdateDatacenterOK{}
 }
 
-/* UpdateDatacenterOK describes a response with status code 200, with default header values.
+/*
+UpdateDatacenterOK describes a response with status code 200, with default header values.
 
 UpdateDatacenterOK update datacenter o k
 */
@@ -96,7 +97,8 @@ func NewUpdateDatacenterBadRequest() *UpdateDatacenterBadRequest {
 	return &UpdateDatacenterBadRequest{}
 }
 
-/* UpdateDatacenterBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateDatacenterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateDatacenterNotFound() *UpdateDatacenterNotFound {
 	return &UpdateDatacenterNotFound{}
 }
 
-/* UpdateDatacenterNotFound describes a response with status code 404, with default header values.
+/*
+UpdateDatacenterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateDatacenterInternalServerError() *UpdateDatacenterInternalServerErr
 	return &UpdateDatacenterInternalServerError{}
 }
 
-/* UpdateDatacenterInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateDatacenterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

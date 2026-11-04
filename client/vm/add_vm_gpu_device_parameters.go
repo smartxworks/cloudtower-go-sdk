@@ -54,10 +54,12 @@ func NewAddVMGpuDeviceParamsWithHTTPClient(client *http.Client) *AddVMGpuDeviceP
 	}
 }
 
-/* AddVMGpuDeviceParams contains all the parameters to send to the API endpoint
-   for the add Vm gpu device operation.
+/*
+AddVMGpuDeviceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add Vm gpu device operation.
+
+	Typically these are written to a http.Request.
 */
 type AddVMGpuDeviceParams struct {
 

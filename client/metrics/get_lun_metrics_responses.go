@@ -57,7 +57,8 @@ func NewGetLunMetricsOK() *GetLunMetricsOK {
 	return &GetLunMetricsOK{}
 }
 
-/* GetLunMetricsOK describes a response with status code 200, with default header values.
+/*
+GetLunMetricsOK describes a response with status code 200, with default header values.
 
 GetLunMetricsOK get lun metrics o k
 */
@@ -96,7 +97,8 @@ func NewGetLunMetricsBadRequest() *GetLunMetricsBadRequest {
 	return &GetLunMetricsBadRequest{}
 }
 
-/* GetLunMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetLunMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetLunMetricsNotFound() *GetLunMetricsNotFound {
 	return &GetLunMetricsNotFound{}
 }
 
-/* GetLunMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetLunMetricsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetLunMetricsInternalServerError() *GetLunMetricsInternalServerError {
 	return &GetLunMetricsInternalServerError{}
 }
 
-/* GetLunMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetLunMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

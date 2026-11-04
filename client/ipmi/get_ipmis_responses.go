@@ -57,7 +57,8 @@ func NewGetIpmisOK() *GetIpmisOK {
 	return &GetIpmisOK{}
 }
 
-/* GetIpmisOK describes a response with status code 200, with default header values.
+/*
+GetIpmisOK describes a response with status code 200, with default header values.
 
 GetIpmisOK get ipmis o k
 */
@@ -96,7 +97,8 @@ func NewGetIpmisBadRequest() *GetIpmisBadRequest {
 	return &GetIpmisBadRequest{}
 }
 
-/* GetIpmisBadRequest describes a response with status code 400, with default header values.
+/*
+GetIpmisBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetIpmisNotFound() *GetIpmisNotFound {
 	return &GetIpmisNotFound{}
 }
 
-/* GetIpmisNotFound describes a response with status code 404, with default header values.
+/*
+GetIpmisNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetIpmisInternalServerError() *GetIpmisInternalServerError {
 	return &GetIpmisInternalServerError{}
 }
 
-/* GetIpmisInternalServerError describes a response with status code 500, with default header values.
+/*
+GetIpmisInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -63,7 +63,8 @@ func NewAddVMCdRomOK() *AddVMCdRomOK {
 	return &AddVMCdRomOK{}
 }
 
-/* AddVMCdRomOK describes a response with status code 200, with default header values.
+/*
+AddVMCdRomOK describes a response with status code 200, with default header values.
 
 AddVMCdRomOK add Vm cd rom o k
 */
@@ -102,7 +103,8 @@ func NewAddVMCdRomNotModified() *AddVMCdRomNotModified {
 	return &AddVMCdRomNotModified{}
 }
 
-/* AddVMCdRomNotModified describes a response with status code 304, with default header values.
+/*
+AddVMCdRomNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewAddVMCdRomBadRequest() *AddVMCdRomBadRequest {
 	return &AddVMCdRomBadRequest{}
 }
 
-/* AddVMCdRomBadRequest describes a response with status code 400, with default header values.
+/*
+AddVMCdRomBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewAddVMCdRomNotFound() *AddVMCdRomNotFound {
 	return &AddVMCdRomNotFound{}
 }
 
-/* AddVMCdRomNotFound describes a response with status code 404, with default header values.
+/*
+AddVMCdRomNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewAddVMCdRomInternalServerError() *AddVMCdRomInternalServerError {
 	return &AddVMCdRomInternalServerError{}
 }
 
-/* AddVMCdRomInternalServerError describes a response with status code 500, with default header values.
+/*
+AddVMCdRomInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

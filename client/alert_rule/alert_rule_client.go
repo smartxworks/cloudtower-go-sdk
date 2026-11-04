@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetAlertRules get alert rules API
+GetAlertRules get alert rules API
 */
 func (a *Client) GetAlertRules(params *GetAlertRulesParams, opts ...ClientOption) (*GetAlertRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetAlertRules(params *GetAlertRulesParams, opts ...ClientOption
 }
 
 /*
-  GetAlertRulesConnection get alert rules connection API
+GetAlertRulesConnection get alert rules connection API
 */
 func (a *Client) GetAlertRulesConnection(params *GetAlertRulesConnectionParams, opts ...ClientOption) (*GetAlertRulesConnectionOK, error) {
 	// TODO: Validate the params before sending

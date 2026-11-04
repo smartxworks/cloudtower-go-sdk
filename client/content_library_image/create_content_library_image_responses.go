@@ -63,7 +63,8 @@ func NewCreateContentLibraryImageOK() *CreateContentLibraryImageOK {
 	return &CreateContentLibraryImageOK{}
 }
 
-/* CreateContentLibraryImageOK describes a response with status code 200, with default header values.
+/*
+CreateContentLibraryImageOK describes a response with status code 200, with default header values.
 
 CreateContentLibraryImageOK create content library image o k
 */
@@ -102,7 +103,8 @@ func NewCreateContentLibraryImageNotModified() *CreateContentLibraryImageNotModi
 	return &CreateContentLibraryImageNotModified{}
 }
 
-/* CreateContentLibraryImageNotModified describes a response with status code 304, with default header values.
+/*
+CreateContentLibraryImageNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewCreateContentLibraryImageBadRequest() *CreateContentLibraryImageBadReque
 	return &CreateContentLibraryImageBadRequest{}
 }
 
-/* CreateContentLibraryImageBadRequest describes a response with status code 400, with default header values.
+/*
+CreateContentLibraryImageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewCreateContentLibraryImageNotFound() *CreateContentLibraryImageNotFound {
 	return &CreateContentLibraryImageNotFound{}
 }
 
-/* CreateContentLibraryImageNotFound describes a response with status code 404, with default header values.
+/*
+CreateContentLibraryImageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewCreateContentLibraryImageInternalServerError() *CreateContentLibraryImag
 	return &CreateContentLibraryImageInternalServerError{}
 }
 
-/* CreateContentLibraryImageInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateContentLibraryImageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

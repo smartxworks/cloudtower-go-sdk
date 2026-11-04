@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVirtualPrivateCloudRouteTable create virtual private cloud route table API
+CreateVirtualPrivateCloudRouteTable create virtual private cloud route table API
 */
 func (a *Client) CreateVirtualPrivateCloudRouteTable(params *CreateVirtualPrivateCloudRouteTableParams, opts ...ClientOption) (*CreateVirtualPrivateCloudRouteTableOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVirtualPrivateCloudRouteTable(params *CreateVirtualPrivat
 }
 
 /*
-  DeleteVirtualPrivateCloudRouteTable delete virtual private cloud route table API
+DeleteVirtualPrivateCloudRouteTable delete virtual private cloud route table API
 */
 func (a *Client) DeleteVirtualPrivateCloudRouteTable(params *DeleteVirtualPrivateCloudRouteTableParams, opts ...ClientOption) (*DeleteVirtualPrivateCloudRouteTableOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVirtualPrivateCloudRouteTable(params *DeleteVirtualPrivat
 }
 
 /*
-  GetVirtualPrivateCloudRouteTables get virtual private cloud route tables API
+GetVirtualPrivateCloudRouteTables get virtual private cloud route tables API
 */
 func (a *Client) GetVirtualPrivateCloudRouteTables(params *GetVirtualPrivateCloudRouteTablesParams, opts ...ClientOption) (*GetVirtualPrivateCloudRouteTablesOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVirtualPrivateCloudRouteTables(params *GetVirtualPrivateClou
 }
 
 /*
-  GetVirtualPrivateCloudRouteTablesConnection get virtual private cloud route tables connection API
+GetVirtualPrivateCloudRouteTablesConnection get virtual private cloud route tables connection API
 */
 func (a *Client) GetVirtualPrivateCloudRouteTablesConnection(params *GetVirtualPrivateCloudRouteTablesConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudRouteTablesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVirtualPrivateCloudRouteTablesConnection(params *GetVirtualP
 }
 
 /*
-  UpdateVirtualPrivateCloudRouteTable update virtual private cloud route table API
+UpdateVirtualPrivateCloudRouteTable update virtual private cloud route table API
 */
 func (a *Client) UpdateVirtualPrivateCloudRouteTable(params *UpdateVirtualPrivateCloudRouteTableParams, opts ...ClientOption) (*UpdateVirtualPrivateCloudRouteTableOK, error) {
 	// TODO: Validate the params before sending

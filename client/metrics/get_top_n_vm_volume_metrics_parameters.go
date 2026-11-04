@@ -54,10 +54,12 @@ func NewGetTopNVMVolumeMetricsParamsWithHTTPClient(client *http.Client) *GetTopN
 	}
 }
 
-/* GetTopNVMVolumeMetricsParams contains all the parameters to send to the API endpoint
-   for the get top n Vm volume metrics operation.
+/*
+GetTopNVMVolumeMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get top n Vm volume metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTopNVMVolumeMetricsParams struct {
 

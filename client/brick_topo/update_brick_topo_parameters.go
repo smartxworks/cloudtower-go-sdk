@@ -54,10 +54,12 @@ func NewUpdateBrickTopoParamsWithHTTPClient(client *http.Client) *UpdateBrickTop
 	}
 }
 
-/* UpdateBrickTopoParams contains all the parameters to send to the API endpoint
-   for the update brick topo operation.
+/*
+UpdateBrickTopoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update brick topo operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateBrickTopoParams struct {
 

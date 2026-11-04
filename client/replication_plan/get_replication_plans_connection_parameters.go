@@ -54,10 +54,12 @@ func NewGetReplicationPlansConnectionParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetReplicationPlansConnectionParams contains all the parameters to send to the API endpoint
-   for the get replication plans connection operation.
+/*
+GetReplicationPlansConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get replication plans connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReplicationPlansConnectionParams struct {
 

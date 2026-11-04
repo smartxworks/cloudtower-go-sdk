@@ -57,7 +57,8 @@ func NewGetSCVMMetricsOK() *GetSCVMMetricsOK {
 	return &GetSCVMMetricsOK{}
 }
 
-/* GetSCVMMetricsOK describes a response with status code 200, with default header values.
+/*
+GetSCVMMetricsOK describes a response with status code 200, with default header values.
 
 GetSCVMMetricsOK get s c Vm metrics o k
 */
@@ -96,7 +97,8 @@ func NewGetSCVMMetricsBadRequest() *GetSCVMMetricsBadRequest {
 	return &GetSCVMMetricsBadRequest{}
 }
 
-/* GetSCVMMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetSCVMMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetSCVMMetricsNotFound() *GetSCVMMetricsNotFound {
 	return &GetSCVMMetricsNotFound{}
 }
 
-/* GetSCVMMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetSCVMMetricsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetSCVMMetricsInternalServerError() *GetSCVMMetricsInternalServerError {
 	return &GetSCVMMetricsInternalServerError{}
 }
 
-/* GetSCVMMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSCVMMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

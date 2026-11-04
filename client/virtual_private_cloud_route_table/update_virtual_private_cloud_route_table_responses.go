@@ -57,7 +57,8 @@ func NewUpdateVirtualPrivateCloudRouteTableOK() *UpdateVirtualPrivateCloudRouteT
 	return &UpdateVirtualPrivateCloudRouteTableOK{}
 }
 
-/* UpdateVirtualPrivateCloudRouteTableOK describes a response with status code 200, with default header values.
+/*
+UpdateVirtualPrivateCloudRouteTableOK describes a response with status code 200, with default header values.
 
 UpdateVirtualPrivateCloudRouteTableOK update virtual private cloud route table o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVirtualPrivateCloudRouteTableBadRequest() *UpdateVirtualPrivateClo
 	return &UpdateVirtualPrivateCloudRouteTableBadRequest{}
 }
 
-/* UpdateVirtualPrivateCloudRouteTableBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVirtualPrivateCloudRouteTableBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVirtualPrivateCloudRouteTableNotFound() *UpdateVirtualPrivateCloud
 	return &UpdateVirtualPrivateCloudRouteTableNotFound{}
 }
 
-/* UpdateVirtualPrivateCloudRouteTableNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVirtualPrivateCloudRouteTableNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVirtualPrivateCloudRouteTableInternalServerError() *UpdateVirtualP
 	return &UpdateVirtualPrivateCloudRouteTableInternalServerError{}
 }
 
-/* UpdateVirtualPrivateCloudRouteTableInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVirtualPrivateCloudRouteTableInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

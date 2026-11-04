@@ -57,7 +57,8 @@ func NewGetHostsConnectionOK() *GetHostsConnectionOK {
 	return &GetHostsConnectionOK{}
 }
 
-/* GetHostsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetHostsConnectionOK describes a response with status code 200, with default header values.
 
 GetHostsConnectionOK get hosts connection o k
 */
@@ -98,7 +99,8 @@ func NewGetHostsConnectionBadRequest() *GetHostsConnectionBadRequest {
 	return &GetHostsConnectionBadRequest{}
 }
 
-/* GetHostsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetHostsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetHostsConnectionNotFound() *GetHostsConnectionNotFound {
 	return &GetHostsConnectionNotFound{}
 }
 
-/* GetHostsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetHostsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetHostsConnectionInternalServerError() *GetHostsConnectionInternalServe
 	return &GetHostsConnectionInternalServerError{}
 }
 
-/* GetHostsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetHostsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

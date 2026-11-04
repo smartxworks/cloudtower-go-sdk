@@ -54,10 +54,12 @@ func NewEnterMaintenanceModeParamsWithHTTPClient(client *http.Client) *EnterMain
 	}
 }
 
-/* EnterMaintenanceModeParams contains all the parameters to send to the API endpoint
-   for the enter maintenance mode operation.
+/*
+EnterMaintenanceModeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enter maintenance mode operation.
+
+	Typically these are written to a http.Request.
 */
 type EnterMaintenanceModeParams struct {
 

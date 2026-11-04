@@ -57,7 +57,8 @@ func NewCreateElfImageOK() *CreateElfImageOK {
 	return &CreateElfImageOK{}
 }
 
-/* CreateElfImageOK describes a response with status code 200, with default header values.
+/*
+CreateElfImageOK describes a response with status code 200, with default header values.
 
 CreateElfImageOK create elf image o k
 */
@@ -96,7 +97,8 @@ func NewCreateElfImageBadRequest() *CreateElfImageBadRequest {
 	return &CreateElfImageBadRequest{}
 }
 
-/* CreateElfImageBadRequest describes a response with status code 400, with default header values.
+/*
+CreateElfImageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateElfImageNotFound() *CreateElfImageNotFound {
 	return &CreateElfImageNotFound{}
 }
 
-/* CreateElfImageNotFound describes a response with status code 404, with default header values.
+/*
+CreateElfImageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateElfImageInternalServerError() *CreateElfImageInternalServerError {
 	return &CreateElfImageInternalServerError{}
 }
 
-/* CreateElfImageInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateElfImageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

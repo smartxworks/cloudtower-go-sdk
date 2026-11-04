@@ -54,10 +54,12 @@ func NewGetPmemDimmsConnectionParamsWithHTTPClient(client *http.Client) *GetPmem
 	}
 }
 
-/* GetPmemDimmsConnectionParams contains all the parameters to send to the API endpoint
-   for the get pmem dimms connection operation.
+/*
+GetPmemDimmsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get pmem dimms connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPmemDimmsConnectionParams struct {
 

@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateRackTopo create rack topo API
+CreateRackTopo create rack topo API
 */
 func (a *Client) CreateRackTopo(params *CreateRackTopoParams, opts ...ClientOption) (*CreateRackTopoOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateRackTopo(params *CreateRackTopoParams, opts ...ClientOpti
 }
 
 /*
-  DeleteRackTopo delete rack topo API
+DeleteRackTopo delete rack topo API
 */
 func (a *Client) DeleteRackTopo(params *DeleteRackTopoParams, opts ...ClientOption) (*DeleteRackTopoOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteRackTopo(params *DeleteRackTopoParams, opts ...ClientOpti
 }
 
 /*
-  GetRackTopoes get rack topoes API
+GetRackTopoes get rack topoes API
 */
 func (a *Client) GetRackTopoes(params *GetRackTopoesParams, opts ...ClientOption) (*GetRackTopoesOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetRackTopoes(params *GetRackTopoesParams, opts ...ClientOption
 }
 
 /*
-  GetRackTopoesConnection get rack topoes connection API
+GetRackTopoesConnection get rack topoes connection API
 */
 func (a *Client) GetRackTopoesConnection(params *GetRackTopoesConnectionParams, opts ...ClientOption) (*GetRackTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetRackTopoesConnection(params *GetRackTopoesConnectionParams, 
 }
 
 /*
-  UpdateRackTopo update rack topo API
+UpdateRackTopo update rack topo API
 */
 func (a *Client) UpdateRackTopo(params *UpdateRackTopoParams, opts ...ClientOption) (*UpdateRackTopoOK, error) {
 	// TODO: Validate the params before sending

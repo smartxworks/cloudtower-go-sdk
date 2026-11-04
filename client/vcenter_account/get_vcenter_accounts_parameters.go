@@ -54,10 +54,12 @@ func NewGetVcenterAccountsParamsWithHTTPClient(client *http.Client) *GetVcenterA
 	}
 }
 
-/* GetVcenterAccountsParams contains all the parameters to send to the API endpoint
-   for the get vcenter accounts operation.
+/*
+GetVcenterAccountsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get vcenter accounts operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVcenterAccountsParams struct {
 

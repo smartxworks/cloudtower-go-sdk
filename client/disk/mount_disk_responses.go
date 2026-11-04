@@ -57,7 +57,8 @@ func NewMountDiskOK() *MountDiskOK {
 	return &MountDiskOK{}
 }
 
-/* MountDiskOK describes a response with status code 200, with default header values.
+/*
+MountDiskOK describes a response with status code 200, with default header values.
 
 MountDiskOK mount disk o k
 */
@@ -96,7 +97,8 @@ func NewMountDiskBadRequest() *MountDiskBadRequest {
 	return &MountDiskBadRequest{}
 }
 
-/* MountDiskBadRequest describes a response with status code 400, with default header values.
+/*
+MountDiskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewMountDiskNotFound() *MountDiskNotFound {
 	return &MountDiskNotFound{}
 }
 
-/* MountDiskNotFound describes a response with status code 404, with default header values.
+/*
+MountDiskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewMountDiskInternalServerError() *MountDiskInternalServerError {
 	return &MountDiskInternalServerError{}
 }
 
-/* MountDiskInternalServerError describes a response with status code 500, with default header values.
+/*
+MountDiskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

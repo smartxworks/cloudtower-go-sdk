@@ -57,7 +57,8 @@ func NewGetRackTopoesConnectionOK() *GetRackTopoesConnectionOK {
 	return &GetRackTopoesConnectionOK{}
 }
 
-/* GetRackTopoesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetRackTopoesConnectionOK describes a response with status code 200, with default header values.
 
 GetRackTopoesConnectionOK get rack topoes connection o k
 */
@@ -98,7 +99,8 @@ func NewGetRackTopoesConnectionBadRequest() *GetRackTopoesConnectionBadRequest {
 	return &GetRackTopoesConnectionBadRequest{}
 }
 
-/* GetRackTopoesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetRackTopoesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetRackTopoesConnectionNotFound() *GetRackTopoesConnectionNotFound {
 	return &GetRackTopoesConnectionNotFound{}
 }
 
-/* GetRackTopoesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetRackTopoesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetRackTopoesConnectionInternalServerError() *GetRackTopoesConnectionInt
 	return &GetRackTopoesConnectionInternalServerError{}
 }
 
-/* GetRackTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetRackTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

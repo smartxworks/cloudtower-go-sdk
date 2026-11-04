@@ -57,7 +57,8 @@ func NewDeleteSnmpTrapReceiverOK() *DeleteSnmpTrapReceiverOK {
 	return &DeleteSnmpTrapReceiverOK{}
 }
 
-/* DeleteSnmpTrapReceiverOK describes a response with status code 200, with default header values.
+/*
+DeleteSnmpTrapReceiverOK describes a response with status code 200, with default header values.
 
 DeleteSnmpTrapReceiverOK delete snmp trap receiver o k
 */
@@ -96,7 +97,8 @@ func NewDeleteSnmpTrapReceiverBadRequest() *DeleteSnmpTrapReceiverBadRequest {
 	return &DeleteSnmpTrapReceiverBadRequest{}
 }
 
-/* DeleteSnmpTrapReceiverBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteSnmpTrapReceiverBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteSnmpTrapReceiverNotFound() *DeleteSnmpTrapReceiverNotFound {
 	return &DeleteSnmpTrapReceiverNotFound{}
 }
 
-/* DeleteSnmpTrapReceiverNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSnmpTrapReceiverNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteSnmpTrapReceiverInternalServerError() *DeleteSnmpTrapReceiverInter
 	return &DeleteSnmpTrapReceiverInternalServerError{}
 }
 
-/* DeleteSnmpTrapReceiverInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteSnmpTrapReceiverInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

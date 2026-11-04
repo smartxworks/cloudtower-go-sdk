@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateView create view API
+CreateView create view API
 */
 func (a *Client) CreateView(params *CreateViewParams, opts ...ClientOption) (*CreateViewOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateView(params *CreateViewParams, opts ...ClientOption) (*Cr
 }
 
 /*
-  DeleteView delete view API
+DeleteView delete view API
 */
 func (a *Client) DeleteView(params *DeleteViewParams, opts ...ClientOption) (*DeleteViewOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteView(params *DeleteViewParams, opts ...ClientOption) (*De
 }
 
 /*
-  GetViews get views API
+GetViews get views API
 */
 func (a *Client) GetViews(params *GetViewsParams, opts ...ClientOption) (*GetViewsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetViews(params *GetViewsParams, opts ...ClientOption) (*GetVie
 }
 
 /*
-  GetViewsConnection get views connection API
+GetViewsConnection get views connection API
 */
 func (a *Client) GetViewsConnection(params *GetViewsConnectionParams, opts ...ClientOption) (*GetViewsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetViewsConnection(params *GetViewsConnectionParams, opts ...Cl
 }
 
 /*
-  UpdateView update view API
+UpdateView update view API
 */
 func (a *Client) UpdateView(params *UpdateViewParams, opts ...ClientOption) (*UpdateViewOK, error) {
 	// TODO: Validate the params before sending

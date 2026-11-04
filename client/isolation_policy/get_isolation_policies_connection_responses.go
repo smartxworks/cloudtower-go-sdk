@@ -57,7 +57,8 @@ func NewGetIsolationPoliciesConnectionOK() *GetIsolationPoliciesConnectionOK {
 	return &GetIsolationPoliciesConnectionOK{}
 }
 
-/* GetIsolationPoliciesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetIsolationPoliciesConnectionOK describes a response with status code 200, with default header values.
 
 GetIsolationPoliciesConnectionOK get isolation policies connection o k
 */
@@ -98,7 +99,8 @@ func NewGetIsolationPoliciesConnectionBadRequest() *GetIsolationPoliciesConnecti
 	return &GetIsolationPoliciesConnectionBadRequest{}
 }
 
-/* GetIsolationPoliciesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetIsolationPoliciesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetIsolationPoliciesConnectionNotFound() *GetIsolationPoliciesConnection
 	return &GetIsolationPoliciesConnectionNotFound{}
 }
 
-/* GetIsolationPoliciesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetIsolationPoliciesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetIsolationPoliciesConnectionInternalServerError() *GetIsolationPolicie
 	return &GetIsolationPoliciesConnectionInternalServerError{}
 }
 
-/* GetIsolationPoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetIsolationPoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

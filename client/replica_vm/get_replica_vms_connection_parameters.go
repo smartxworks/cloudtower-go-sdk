@@ -54,10 +54,12 @@ func NewGetReplicaVmsConnectionParamsWithHTTPClient(client *http.Client) *GetRep
 	}
 }
 
-/* GetReplicaVmsConnectionParams contains all the parameters to send to the API endpoint
-   for the get replica vms connection operation.
+/*
+GetReplicaVmsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get replica vms connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReplicaVmsConnectionParams struct {
 

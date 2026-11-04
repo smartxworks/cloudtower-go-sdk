@@ -57,7 +57,8 @@ func NewDeleteVirtualPrivateCloudFloatingIPOK() *DeleteVirtualPrivateCloudFloati
 	return &DeleteVirtualPrivateCloudFloatingIPOK{}
 }
 
-/* DeleteVirtualPrivateCloudFloatingIPOK describes a response with status code 200, with default header values.
+/*
+DeleteVirtualPrivateCloudFloatingIPOK describes a response with status code 200, with default header values.
 
 DeleteVirtualPrivateCloudFloatingIPOK delete virtual private cloud floating Ip o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVirtualPrivateCloudFloatingIPBadRequest() *DeleteVirtualPrivateClo
 	return &DeleteVirtualPrivateCloudFloatingIPBadRequest{}
 }
 
-/* DeleteVirtualPrivateCloudFloatingIPBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVirtualPrivateCloudFloatingIPBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVirtualPrivateCloudFloatingIPNotFound() *DeleteVirtualPrivateCloud
 	return &DeleteVirtualPrivateCloudFloatingIPNotFound{}
 }
 
-/* DeleteVirtualPrivateCloudFloatingIPNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVirtualPrivateCloudFloatingIPNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVirtualPrivateCloudFloatingIPInternalServerError() *DeleteVirtualP
 	return &DeleteVirtualPrivateCloudFloatingIPInternalServerError{}
 }
 
-/* DeleteVirtualPrivateCloudFloatingIPInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVirtualPrivateCloudFloatingIPInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

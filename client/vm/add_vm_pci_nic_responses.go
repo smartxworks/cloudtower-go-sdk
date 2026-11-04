@@ -63,7 +63,8 @@ func NewAddVMPciNicOK() *AddVMPciNicOK {
 	return &AddVMPciNicOK{}
 }
 
-/* AddVMPciNicOK describes a response with status code 200, with default header values.
+/*
+AddVMPciNicOK describes a response with status code 200, with default header values.
 
 AddVMPciNicOK add Vm pci nic o k
 */
@@ -102,7 +103,8 @@ func NewAddVMPciNicNotModified() *AddVMPciNicNotModified {
 	return &AddVMPciNicNotModified{}
 }
 
-/* AddVMPciNicNotModified describes a response with status code 304, with default header values.
+/*
+AddVMPciNicNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewAddVMPciNicBadRequest() *AddVMPciNicBadRequest {
 	return &AddVMPciNicBadRequest{}
 }
 
-/* AddVMPciNicBadRequest describes a response with status code 400, with default header values.
+/*
+AddVMPciNicBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewAddVMPciNicNotFound() *AddVMPciNicNotFound {
 	return &AddVMPciNicNotFound{}
 }
 
-/* AddVMPciNicNotFound describes a response with status code 404, with default header values.
+/*
+AddVMPciNicNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewAddVMPciNicInternalServerError() *AddVMPciNicInternalServerError {
 	return &AddVMPciNicInternalServerError{}
 }
 
-/* AddVMPciNicInternalServerError describes a response with status code 500, with default header values.
+/*
+AddVMPciNicInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

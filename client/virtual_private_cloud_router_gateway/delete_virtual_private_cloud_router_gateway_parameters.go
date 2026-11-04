@@ -54,10 +54,12 @@ func NewDeleteVirtualPrivateCloudRouterGatewayParamsWithHTTPClient(client *http.
 	}
 }
 
-/* DeleteVirtualPrivateCloudRouterGatewayParams contains all the parameters to send to the API endpoint
-   for the delete virtual private cloud router gateway operation.
+/*
+DeleteVirtualPrivateCloudRouterGatewayParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete virtual private cloud router gateway operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVirtualPrivateCloudRouterGatewayParams struct {
 

@@ -54,10 +54,12 @@ func NewUpdateElfImageParamsWithHTTPClient(client *http.Client) *UpdateElfImageP
 	}
 }
 
-/* UpdateElfImageParams contains all the parameters to send to the API endpoint
-   for the update elf image operation.
+/*
+UpdateElfImageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update elf image operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateElfImageParams struct {
 

@@ -57,7 +57,8 @@ func NewGetClusterTopoesConnectionOK() *GetClusterTopoesConnectionOK {
 	return &GetClusterTopoesConnectionOK{}
 }
 
-/* GetClusterTopoesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetClusterTopoesConnectionOK describes a response with status code 200, with default header values.
 
 GetClusterTopoesConnectionOK get cluster topoes connection o k
 */
@@ -98,7 +99,8 @@ func NewGetClusterTopoesConnectionBadRequest() *GetClusterTopoesConnectionBadReq
 	return &GetClusterTopoesConnectionBadRequest{}
 }
 
-/* GetClusterTopoesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetClusterTopoesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetClusterTopoesConnectionNotFound() *GetClusterTopoesConnectionNotFound
 	return &GetClusterTopoesConnectionNotFound{}
 }
 
-/* GetClusterTopoesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetClusterTopoesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetClusterTopoesConnectionInternalServerError() *GetClusterTopoesConnect
 	return &GetClusterTopoesConnectionInternalServerError{}
 }
 
-/* GetClusterTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetClusterTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

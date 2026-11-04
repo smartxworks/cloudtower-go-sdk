@@ -54,10 +54,12 @@ func NewRemoveContentLibraryImageClustersParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* RemoveContentLibraryImageClustersParams contains all the parameters to send to the API endpoint
-   for the remove content library image clusters operation.
+/*
+RemoveContentLibraryImageClustersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove content library image clusters operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveContentLibraryImageClustersParams struct {
 

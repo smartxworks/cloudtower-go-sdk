@@ -57,7 +57,8 @@ func NewGetNfsInodesOK() *GetNfsInodesOK {
 	return &GetNfsInodesOK{}
 }
 
-/* GetNfsInodesOK describes a response with status code 200, with default header values.
+/*
+GetNfsInodesOK describes a response with status code 200, with default header values.
 
 GetNfsInodesOK get nfs inodes o k
 */
@@ -96,7 +97,8 @@ func NewGetNfsInodesBadRequest() *GetNfsInodesBadRequest {
 	return &GetNfsInodesBadRequest{}
 }
 
-/* GetNfsInodesBadRequest describes a response with status code 400, with default header values.
+/*
+GetNfsInodesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetNfsInodesNotFound() *GetNfsInodesNotFound {
 	return &GetNfsInodesNotFound{}
 }
 
-/* GetNfsInodesNotFound describes a response with status code 404, with default header values.
+/*
+GetNfsInodesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetNfsInodesInternalServerError() *GetNfsInodesInternalServerError {
 	return &GetNfsInodesInternalServerError{}
 }
 
-/* GetNfsInodesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNfsInodesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

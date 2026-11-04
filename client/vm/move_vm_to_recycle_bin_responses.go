@@ -57,7 +57,8 @@ func NewMoveVMToRecycleBinOK() *MoveVMToRecycleBinOK {
 	return &MoveVMToRecycleBinOK{}
 }
 
-/* MoveVMToRecycleBinOK describes a response with status code 200, with default header values.
+/*
+MoveVMToRecycleBinOK describes a response with status code 200, with default header values.
 
 MoveVMToRecycleBinOK move Vm to recycle bin o k
 */
@@ -96,7 +97,8 @@ func NewMoveVMToRecycleBinBadRequest() *MoveVMToRecycleBinBadRequest {
 	return &MoveVMToRecycleBinBadRequest{}
 }
 
-/* MoveVMToRecycleBinBadRequest describes a response with status code 400, with default header values.
+/*
+MoveVMToRecycleBinBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewMoveVMToRecycleBinNotFound() *MoveVMToRecycleBinNotFound {
 	return &MoveVMToRecycleBinNotFound{}
 }
 
-/* MoveVMToRecycleBinNotFound describes a response with status code 404, with default header values.
+/*
+MoveVMToRecycleBinNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewMoveVMToRecycleBinInternalServerError() *MoveVMToRecycleBinInternalServe
 	return &MoveVMToRecycleBinInternalServerError{}
 }
 
-/* MoveVMToRecycleBinInternalServerError describes a response with status code 500, with default header values.
+/*
+MoveVMToRecycleBinInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

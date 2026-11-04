@@ -54,10 +54,12 @@ func NewForceRestartVMParamsWithHTTPClient(client *http.Client) *ForceRestartVMP
 	}
 }
 
-/* ForceRestartVMParams contains all the parameters to send to the API endpoint
-   for the force restart Vm operation.
+/*
+ForceRestartVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the force restart Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type ForceRestartVMParams struct {
 

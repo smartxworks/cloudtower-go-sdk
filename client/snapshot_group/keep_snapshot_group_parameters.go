@@ -54,10 +54,12 @@ func NewKeepSnapshotGroupParamsWithHTTPClient(client *http.Client) *KeepSnapshot
 	}
 }
 
-/* KeepSnapshotGroupParams contains all the parameters to send to the API endpoint
-   for the keep snapshot group operation.
+/*
+KeepSnapshotGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the keep snapshot group operation.
+
+	Typically these are written to a http.Request.
 */
 type KeepSnapshotGroupParams struct {
 

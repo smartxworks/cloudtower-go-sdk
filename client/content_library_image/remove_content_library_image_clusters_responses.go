@@ -57,7 +57,8 @@ func NewRemoveContentLibraryImageClustersOK() *RemoveContentLibraryImageClusters
 	return &RemoveContentLibraryImageClustersOK{}
 }
 
-/* RemoveContentLibraryImageClustersOK describes a response with status code 200, with default header values.
+/*
+RemoveContentLibraryImageClustersOK describes a response with status code 200, with default header values.
 
 RemoveContentLibraryImageClustersOK remove content library image clusters o k
 */
@@ -96,7 +97,8 @@ func NewRemoveContentLibraryImageClustersBadRequest() *RemoveContentLibraryImage
 	return &RemoveContentLibraryImageClustersBadRequest{}
 }
 
-/* RemoveContentLibraryImageClustersBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveContentLibraryImageClustersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRemoveContentLibraryImageClustersNotFound() *RemoveContentLibraryImageCl
 	return &RemoveContentLibraryImageClustersNotFound{}
 }
 
-/* RemoveContentLibraryImageClustersNotFound describes a response with status code 404, with default header values.
+/*
+RemoveContentLibraryImageClustersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRemoveContentLibraryImageClustersInternalServerError() *RemoveContentLib
 	return &RemoveContentLibraryImageClustersInternalServerError{}
 }
 
-/* RemoveContentLibraryImageClustersInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveContentLibraryImageClustersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

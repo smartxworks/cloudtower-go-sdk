@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  GetDisks get disks API
+GetDisks get disks API
 */
 func (a *Client) GetDisks(params *GetDisksParams, opts ...ClientOption) (*GetDisksOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) GetDisks(params *GetDisksParams, opts ...ClientOption) (*GetDis
 }
 
 /*
-  GetDisksConnection get disks connection API
+GetDisksConnection get disks connection API
 */
 func (a *Client) GetDisksConnection(params *GetDisksConnectionParams, opts ...ClientOption) (*GetDisksConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) GetDisksConnection(params *GetDisksConnectionParams, opts ...Cl
 }
 
 /*
-  MountDisk mount disk API
+MountDisk mount disk API
 */
 func (a *Client) MountDisk(params *MountDiskParams, opts ...ClientOption) (*MountDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) MountDisk(params *MountDiskParams, opts ...ClientOption) (*Moun
 }
 
 /*
-  UnmountDisk unmount disk API
+UnmountDisk unmount disk API
 */
 func (a *Client) UnmountDisk(params *UnmountDiskParams, opts ...ClientOption) (*UnmountDiskOK, error) {
 	// TODO: Validate the params before sending

@@ -57,7 +57,8 @@ func NewUpdateVirtualPrivateCloudSecurityGroupOK() *UpdateVirtualPrivateCloudSec
 	return &UpdateVirtualPrivateCloudSecurityGroupOK{}
 }
 
-/* UpdateVirtualPrivateCloudSecurityGroupOK describes a response with status code 200, with default header values.
+/*
+UpdateVirtualPrivateCloudSecurityGroupOK describes a response with status code 200, with default header values.
 
 UpdateVirtualPrivateCloudSecurityGroupOK update virtual private cloud security group o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVirtualPrivateCloudSecurityGroupBadRequest() *UpdateVirtualPrivate
 	return &UpdateVirtualPrivateCloudSecurityGroupBadRequest{}
 }
 
-/* UpdateVirtualPrivateCloudSecurityGroupBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVirtualPrivateCloudSecurityGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVirtualPrivateCloudSecurityGroupNotFound() *UpdateVirtualPrivateCl
 	return &UpdateVirtualPrivateCloudSecurityGroupNotFound{}
 }
 
-/* UpdateVirtualPrivateCloudSecurityGroupNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVirtualPrivateCloudSecurityGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVirtualPrivateCloudSecurityGroupInternalServerError() *UpdateVirtu
 	return &UpdateVirtualPrivateCloudSecurityGroupInternalServerError{}
 }
 
-/* UpdateVirtualPrivateCloudSecurityGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVirtualPrivateCloudSecurityGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

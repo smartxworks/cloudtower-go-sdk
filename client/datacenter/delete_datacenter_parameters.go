@@ -54,10 +54,12 @@ func NewDeleteDatacenterParamsWithHTTPClient(client *http.Client) *DeleteDatacen
 	}
 }
 
-/* DeleteDatacenterParams contains all the parameters to send to the API endpoint
-   for the delete datacenter operation.
+/*
+DeleteDatacenterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete datacenter operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteDatacenterParams struct {
 

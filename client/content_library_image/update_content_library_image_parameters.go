@@ -54,10 +54,12 @@ func NewUpdateContentLibraryImageParamsWithHTTPClient(client *http.Client) *Upda
 	}
 }
 
-/* UpdateContentLibraryImageParams contains all the parameters to send to the API endpoint
-   for the update content library image operation.
+/*
+UpdateContentLibraryImageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update content library image operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateContentLibraryImageParams struct {
 

@@ -63,7 +63,8 @@ func NewUpdateLabelOK() *UpdateLabelOK {
 	return &UpdateLabelOK{}
 }
 
-/* UpdateLabelOK describes a response with status code 200, with default header values.
+/*
+UpdateLabelOK describes a response with status code 200, with default header values.
 
 UpdateLabelOK update label o k
 */
@@ -102,7 +103,8 @@ func NewUpdateLabelNotModified() *UpdateLabelNotModified {
 	return &UpdateLabelNotModified{}
 }
 
-/* UpdateLabelNotModified describes a response with status code 304, with default header values.
+/*
+UpdateLabelNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateLabelBadRequest() *UpdateLabelBadRequest {
 	return &UpdateLabelBadRequest{}
 }
 
-/* UpdateLabelBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateLabelBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateLabelNotFound() *UpdateLabelNotFound {
 	return &UpdateLabelNotFound{}
 }
 
-/* UpdateLabelNotFound describes a response with status code 404, with default header values.
+/*
+UpdateLabelNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateLabelInternalServerError() *UpdateLabelInternalServerError {
 	return &UpdateLabelInternalServerError{}
 }
 
-/* UpdateLabelInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateLabelInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

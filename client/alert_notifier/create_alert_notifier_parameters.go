@@ -54,10 +54,12 @@ func NewCreateAlertNotifierParamsWithHTTPClient(client *http.Client) *CreateAler
 	}
 }
 
-/* CreateAlertNotifierParams contains all the parameters to send to the API endpoint
-   for the create alert notifier operation.
+/*
+CreateAlertNotifierParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create alert notifier operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateAlertNotifierParams struct {
 

@@ -54,10 +54,12 @@ func NewDeleteVirtualPrivateCloudSecurityPolicyParamsWithHTTPClient(client *http
 	}
 }
 
-/* DeleteVirtualPrivateCloudSecurityPolicyParams contains all the parameters to send to the API endpoint
-   for the delete virtual private cloud security policy operation.
+/*
+DeleteVirtualPrivateCloudSecurityPolicyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete virtual private cloud security policy operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVirtualPrivateCloudSecurityPolicyParams struct {
 

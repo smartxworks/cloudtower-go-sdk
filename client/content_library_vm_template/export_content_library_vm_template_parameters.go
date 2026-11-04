@@ -54,10 +54,12 @@ func NewExportContentLibraryVMTemplateParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* ExportContentLibraryVMTemplateParams contains all the parameters to send to the API endpoint
-   for the export content library Vm template operation.
+/*
+ExportContentLibraryVMTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the export content library Vm template operation.
+
+	Typically these are written to a http.Request.
 */
 type ExportContentLibraryVMTemplateParams struct {
 

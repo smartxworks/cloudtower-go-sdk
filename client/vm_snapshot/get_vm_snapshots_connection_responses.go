@@ -57,7 +57,8 @@ func NewGetVMSnapshotsConnectionOK() *GetVMSnapshotsConnectionOK {
 	return &GetVMSnapshotsConnectionOK{}
 }
 
-/* GetVMSnapshotsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVMSnapshotsConnectionOK describes a response with status code 200, with default header values.
 
 GetVMSnapshotsConnectionOK get Vm snapshots connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVMSnapshotsConnectionBadRequest() *GetVMSnapshotsConnectionBadRequest
 	return &GetVMSnapshotsConnectionBadRequest{}
 }
 
-/* GetVMSnapshotsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMSnapshotsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVMSnapshotsConnectionNotFound() *GetVMSnapshotsConnectionNotFound {
 	return &GetVMSnapshotsConnectionNotFound{}
 }
 
-/* GetVMSnapshotsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVMSnapshotsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVMSnapshotsConnectionInternalServerError() *GetVMSnapshotsConnectionI
 	return &GetVMSnapshotsConnectionInternalServerError{}
 }
 
-/* GetVMSnapshotsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMSnapshotsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

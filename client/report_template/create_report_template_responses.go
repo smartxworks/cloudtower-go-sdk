@@ -57,7 +57,8 @@ func NewCreateReportTemplateOK() *CreateReportTemplateOK {
 	return &CreateReportTemplateOK{}
 }
 
-/* CreateReportTemplateOK describes a response with status code 200, with default header values.
+/*
+CreateReportTemplateOK describes a response with status code 200, with default header values.
 
 CreateReportTemplateOK create report template o k
 */
@@ -96,7 +97,8 @@ func NewCreateReportTemplateBadRequest() *CreateReportTemplateBadRequest {
 	return &CreateReportTemplateBadRequest{}
 }
 
-/* CreateReportTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+CreateReportTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateReportTemplateNotFound() *CreateReportTemplateNotFound {
 	return &CreateReportTemplateNotFound{}
 }
 
-/* CreateReportTemplateNotFound describes a response with status code 404, with default header values.
+/*
+CreateReportTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateReportTemplateInternalServerError() *CreateReportTemplateInternalS
 	return &CreateReportTemplateInternalServerError{}
 }
 
-/* CreateReportTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateReportTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

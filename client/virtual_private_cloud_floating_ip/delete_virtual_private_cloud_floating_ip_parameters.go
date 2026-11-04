@@ -54,10 +54,12 @@ func NewDeleteVirtualPrivateCloudFloatingIPParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* DeleteVirtualPrivateCloudFloatingIPParams contains all the parameters to send to the API endpoint
-   for the delete virtual private cloud floating Ip operation.
+/*
+DeleteVirtualPrivateCloudFloatingIPParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete virtual private cloud floating Ip operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVirtualPrivateCloudFloatingIPParams struct {
 

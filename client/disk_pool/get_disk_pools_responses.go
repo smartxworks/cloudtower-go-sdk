@@ -57,7 +57,8 @@ func NewGetDiskPoolsOK() *GetDiskPoolsOK {
 	return &GetDiskPoolsOK{}
 }
 
-/* GetDiskPoolsOK describes a response with status code 200, with default header values.
+/*
+GetDiskPoolsOK describes a response with status code 200, with default header values.
 
 GetDiskPoolsOK get disk pools o k
 */
@@ -96,7 +97,8 @@ func NewGetDiskPoolsBadRequest() *GetDiskPoolsBadRequest {
 	return &GetDiskPoolsBadRequest{}
 }
 
-/* GetDiskPoolsBadRequest describes a response with status code 400, with default header values.
+/*
+GetDiskPoolsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetDiskPoolsNotFound() *GetDiskPoolsNotFound {
 	return &GetDiskPoolsNotFound{}
 }
 
-/* GetDiskPoolsNotFound describes a response with status code 404, with default header values.
+/*
+GetDiskPoolsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetDiskPoolsInternalServerError() *GetDiskPoolsInternalServerError {
 	return &GetDiskPoolsInternalServerError{}
 }
 
-/* GetDiskPoolsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDiskPoolsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

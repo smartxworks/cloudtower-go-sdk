@@ -63,7 +63,8 @@ func NewUpdateGpuDeviceDescriptionOK() *UpdateGpuDeviceDescriptionOK {
 	return &UpdateGpuDeviceDescriptionOK{}
 }
 
-/* UpdateGpuDeviceDescriptionOK describes a response with status code 200, with default header values.
+/*
+UpdateGpuDeviceDescriptionOK describes a response with status code 200, with default header values.
 
 UpdateGpuDeviceDescriptionOK update gpu device description o k
 */
@@ -102,7 +103,8 @@ func NewUpdateGpuDeviceDescriptionNotModified() *UpdateGpuDeviceDescriptionNotMo
 	return &UpdateGpuDeviceDescriptionNotModified{}
 }
 
-/* UpdateGpuDeviceDescriptionNotModified describes a response with status code 304, with default header values.
+/*
+UpdateGpuDeviceDescriptionNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateGpuDeviceDescriptionBadRequest() *UpdateGpuDeviceDescriptionBadReq
 	return &UpdateGpuDeviceDescriptionBadRequest{}
 }
 
-/* UpdateGpuDeviceDescriptionBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateGpuDeviceDescriptionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateGpuDeviceDescriptionNotFound() *UpdateGpuDeviceDescriptionNotFound
 	return &UpdateGpuDeviceDescriptionNotFound{}
 }
 
-/* UpdateGpuDeviceDescriptionNotFound describes a response with status code 404, with default header values.
+/*
+UpdateGpuDeviceDescriptionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateGpuDeviceDescriptionInternalServerError() *UpdateGpuDeviceDescript
 	return &UpdateGpuDeviceDescriptionInternalServerError{}
 }
 
-/* UpdateGpuDeviceDescriptionInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateGpuDeviceDescriptionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

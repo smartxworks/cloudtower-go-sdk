@@ -57,7 +57,8 @@ func NewGetLicensesConnectionOK() *GetLicensesConnectionOK {
 	return &GetLicensesConnectionOK{}
 }
 
-/* GetLicensesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetLicensesConnectionOK describes a response with status code 200, with default header values.
 
 GetLicensesConnectionOK get licenses connection o k
 */
@@ -98,7 +99,8 @@ func NewGetLicensesConnectionBadRequest() *GetLicensesConnectionBadRequest {
 	return &GetLicensesConnectionBadRequest{}
 }
 
-/* GetLicensesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetLicensesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetLicensesConnectionNotFound() *GetLicensesConnectionNotFound {
 	return &GetLicensesConnectionNotFound{}
 }
 
-/* GetLicensesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetLicensesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetLicensesConnectionInternalServerError() *GetLicensesConnectionInterna
 	return &GetLicensesConnectionInternalServerError{}
 }
 
-/* GetLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

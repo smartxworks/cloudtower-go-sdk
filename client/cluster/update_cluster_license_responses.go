@@ -57,7 +57,8 @@ func NewUpdateClusterLicenseOK() *UpdateClusterLicenseOK {
 	return &UpdateClusterLicenseOK{}
 }
 
-/* UpdateClusterLicenseOK describes a response with status code 200, with default header values.
+/*
+UpdateClusterLicenseOK describes a response with status code 200, with default header values.
 
 UpdateClusterLicenseOK update cluster license o k
 */
@@ -96,7 +97,8 @@ func NewUpdateClusterLicenseBadRequest() *UpdateClusterLicenseBadRequest {
 	return &UpdateClusterLicenseBadRequest{}
 }
 
-/* UpdateClusterLicenseBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateClusterLicenseBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateClusterLicenseNotFound() *UpdateClusterLicenseNotFound {
 	return &UpdateClusterLicenseNotFound{}
 }
 
-/* UpdateClusterLicenseNotFound describes a response with status code 404, with default header values.
+/*
+UpdateClusterLicenseNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateClusterLicenseInternalServerError() *UpdateClusterLicenseInternalS
 	return &UpdateClusterLicenseInternalServerError{}
 }
 
-/* UpdateClusterLicenseInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateClusterLicenseInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewCreateVMFromTemplateOK() *CreateVMFromTemplateOK {
 	return &CreateVMFromTemplateOK{}
 }
 
-/* CreateVMFromTemplateOK describes a response with status code 200, with default header values.
+/*
+CreateVMFromTemplateOK describes a response with status code 200, with default header values.
 
 CreateVMFromTemplateOK create Vm from template o k
 */
@@ -96,7 +97,8 @@ func NewCreateVMFromTemplateBadRequest() *CreateVMFromTemplateBadRequest {
 	return &CreateVMFromTemplateBadRequest{}
 }
 
-/* CreateVMFromTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVMFromTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVMFromTemplateNotFound() *CreateVMFromTemplateNotFound {
 	return &CreateVMFromTemplateNotFound{}
 }
 
-/* CreateVMFromTemplateNotFound describes a response with status code 404, with default header values.
+/*
+CreateVMFromTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVMFromTemplateInternalServerError() *CreateVMFromTemplateInternalS
 	return &CreateVMFromTemplateInternalServerError{}
 }
 
-/* CreateVMFromTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVMFromTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewDeleteBackupRestorePointOK() *DeleteBackupRestorePointOK {
 	return &DeleteBackupRestorePointOK{}
 }
 
-/* DeleteBackupRestorePointOK describes a response with status code 200, with default header values.
+/*
+DeleteBackupRestorePointOK describes a response with status code 200, with default header values.
 
 DeleteBackupRestorePointOK delete backup restore point o k
 */
@@ -96,7 +97,8 @@ func NewDeleteBackupRestorePointBadRequest() *DeleteBackupRestorePointBadRequest
 	return &DeleteBackupRestorePointBadRequest{}
 }
 
-/* DeleteBackupRestorePointBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteBackupRestorePointBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteBackupRestorePointNotFound() *DeleteBackupRestorePointNotFound {
 	return &DeleteBackupRestorePointNotFound{}
 }
 
-/* DeleteBackupRestorePointNotFound describes a response with status code 404, with default header values.
+/*
+DeleteBackupRestorePointNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteBackupRestorePointInternalServerError() *DeleteBackupRestorePointI
 	return &DeleteBackupRestorePointInternalServerError{}
 }
 
-/* DeleteBackupRestorePointInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteBackupRestorePointInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

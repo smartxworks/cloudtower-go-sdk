@@ -57,7 +57,8 @@ func NewClearSystemServiceAlertNotificationConfigOK() *ClearSystemServiceAlertNo
 	return &ClearSystemServiceAlertNotificationConfigOK{}
 }
 
-/* ClearSystemServiceAlertNotificationConfigOK describes a response with status code 200, with default header values.
+/*
+ClearSystemServiceAlertNotificationConfigOK describes a response with status code 200, with default header values.
 
 ClearSystemServiceAlertNotificationConfigOK clear system service alert notification config o k
 */
@@ -98,7 +99,8 @@ func NewClearSystemServiceAlertNotificationConfigBadRequest() *ClearSystemServic
 	return &ClearSystemServiceAlertNotificationConfigBadRequest{}
 }
 
-/* ClearSystemServiceAlertNotificationConfigBadRequest describes a response with status code 400, with default header values.
+/*
+ClearSystemServiceAlertNotificationConfigBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewClearSystemServiceAlertNotificationConfigNotFound() *ClearSystemServiceA
 	return &ClearSystemServiceAlertNotificationConfigNotFound{}
 }
 
-/* ClearSystemServiceAlertNotificationConfigNotFound describes a response with status code 404, with default header values.
+/*
+ClearSystemServiceAlertNotificationConfigNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewClearSystemServiceAlertNotificationConfigInternalServerError() *ClearSys
 	return &ClearSystemServiceAlertNotificationConfigInternalServerError{}
 }
 
-/* ClearSystemServiceAlertNotificationConfigInternalServerError describes a response with status code 500, with default header values.
+/*
+ClearSystemServiceAlertNotificationConfigInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

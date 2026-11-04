@@ -54,10 +54,12 @@ func NewCreateRootUserParamsWithHTTPClient(client *http.Client) *CreateRootUserP
 	}
 }
 
-/* CreateRootUserParams contains all the parameters to send to the API endpoint
-   for the create root user operation.
+/*
+CreateRootUserParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create root user operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateRootUserParams struct {
 

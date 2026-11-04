@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetBackupPlanExecutions get backup plan executions API
+GetBackupPlanExecutions get backup plan executions API
 */
 func (a *Client) GetBackupPlanExecutions(params *GetBackupPlanExecutionsParams, opts ...ClientOption) (*GetBackupPlanExecutionsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetBackupPlanExecutions(params *GetBackupPlanExecutionsParams, 
 }
 
 /*
-  GetBackupPlanExecutionsConnection get backup plan executions connection API
+GetBackupPlanExecutionsConnection get backup plan executions connection API
 */
 func (a *Client) GetBackupPlanExecutionsConnection(params *GetBackupPlanExecutionsConnectionParams, opts ...ClientOption) (*GetBackupPlanExecutionsConnectionOK, error) {
 	// TODO: Validate the params before sending

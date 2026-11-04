@@ -57,7 +57,8 @@ func NewGetPciDevicesOK() *GetPciDevicesOK {
 	return &GetPciDevicesOK{}
 }
 
-/* GetPciDevicesOK describes a response with status code 200, with default header values.
+/*
+GetPciDevicesOK describes a response with status code 200, with default header values.
 
 GetPciDevicesOK get pci devices o k
 */
@@ -96,7 +97,8 @@ func NewGetPciDevicesBadRequest() *GetPciDevicesBadRequest {
 	return &GetPciDevicesBadRequest{}
 }
 
-/* GetPciDevicesBadRequest describes a response with status code 400, with default header values.
+/*
+GetPciDevicesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetPciDevicesNotFound() *GetPciDevicesNotFound {
 	return &GetPciDevicesNotFound{}
 }
 
-/* GetPciDevicesNotFound describes a response with status code 404, with default header values.
+/*
+GetPciDevicesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetPciDevicesInternalServerError() *GetPciDevicesInternalServerError {
 	return &GetPciDevicesInternalServerError{}
 }
 
-/* GetPciDevicesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetPciDevicesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

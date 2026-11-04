@@ -54,10 +54,12 @@ func NewCreateReportTemplateParamsWithHTTPClient(client *http.Client) *CreateRep
 	}
 }
 
-/* CreateReportTemplateParams contains all the parameters to send to the API endpoint
-   for the create report template operation.
+/*
+CreateReportTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create report template operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateReportTemplateParams struct {
 

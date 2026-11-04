@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVMSnapshot create Vm snapshot API
+CreateVMSnapshot create Vm snapshot API
 */
 func (a *Client) CreateVMSnapshot(params *CreateVMSnapshotParams, opts ...ClientOption) (*CreateVMSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) CreateVMSnapshot(params *CreateVMSnapshotParams, opts ...Client
 }
 
 /*
-  DeleteVMSnapshot delete Vm snapshot API
+DeleteVMSnapshot delete Vm snapshot API
 */
 func (a *Client) DeleteVMSnapshot(params *DeleteVMSnapshotParams, opts ...ClientOption) (*DeleteVMSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) DeleteVMSnapshot(params *DeleteVMSnapshotParams, opts ...Client
 }
 
 /*
-  GetVMSnapshots get Vm snapshots API
+GetVMSnapshots get Vm snapshots API
 */
 func (a *Client) GetVMSnapshots(params *GetVMSnapshotsParams, opts ...ClientOption) (*GetVMSnapshotsOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) GetVMSnapshots(params *GetVMSnapshotsParams, opts ...ClientOpti
 }
 
 /*
-  GetVMSnapshotsConnection get Vm snapshots connection API
+GetVMSnapshotsConnection get Vm snapshots connection API
 */
 func (a *Client) GetVMSnapshotsConnection(params *GetVMSnapshotsConnectionParams, opts ...ClientOption) (*GetVMSnapshotsConnectionOK, error) {
 	// TODO: Validate the params before sending

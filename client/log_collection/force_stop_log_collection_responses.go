@@ -57,7 +57,8 @@ func NewForceStopLogCollectionOK() *ForceStopLogCollectionOK {
 	return &ForceStopLogCollectionOK{}
 }
 
-/* ForceStopLogCollectionOK describes a response with status code 200, with default header values.
+/*
+ForceStopLogCollectionOK describes a response with status code 200, with default header values.
 
 ForceStopLogCollectionOK force stop log collection o k
 */
@@ -96,7 +97,8 @@ func NewForceStopLogCollectionBadRequest() *ForceStopLogCollectionBadRequest {
 	return &ForceStopLogCollectionBadRequest{}
 }
 
-/* ForceStopLogCollectionBadRequest describes a response with status code 400, with default header values.
+/*
+ForceStopLogCollectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewForceStopLogCollectionNotFound() *ForceStopLogCollectionNotFound {
 	return &ForceStopLogCollectionNotFound{}
 }
 
-/* ForceStopLogCollectionNotFound describes a response with status code 404, with default header values.
+/*
+ForceStopLogCollectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewForceStopLogCollectionInternalServerError() *ForceStopLogCollectionInter
 	return &ForceStopLogCollectionInternalServerError{}
 }
 
-/* ForceStopLogCollectionInternalServerError describes a response with status code 500, with default header values.
+/*
+ForceStopLogCollectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

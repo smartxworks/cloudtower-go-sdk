@@ -63,7 +63,8 @@ func NewAddLabelsToResourcesOK() *AddLabelsToResourcesOK {
 	return &AddLabelsToResourcesOK{}
 }
 
-/* AddLabelsToResourcesOK describes a response with status code 200, with default header values.
+/*
+AddLabelsToResourcesOK describes a response with status code 200, with default header values.
 
 AddLabelsToResourcesOK add labels to resources o k
 */
@@ -102,7 +103,8 @@ func NewAddLabelsToResourcesNotModified() *AddLabelsToResourcesNotModified {
 	return &AddLabelsToResourcesNotModified{}
 }
 
-/* AddLabelsToResourcesNotModified describes a response with status code 304, with default header values.
+/*
+AddLabelsToResourcesNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewAddLabelsToResourcesBadRequest() *AddLabelsToResourcesBadRequest {
 	return &AddLabelsToResourcesBadRequest{}
 }
 
-/* AddLabelsToResourcesBadRequest describes a response with status code 400, with default header values.
+/*
+AddLabelsToResourcesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewAddLabelsToResourcesNotFound() *AddLabelsToResourcesNotFound {
 	return &AddLabelsToResourcesNotFound{}
 }
 
-/* AddLabelsToResourcesNotFound describes a response with status code 404, with default header values.
+/*
+AddLabelsToResourcesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewAddLabelsToResourcesInternalServerError() *AddLabelsToResourcesInternalS
 	return &AddLabelsToResourcesInternalServerError{}
 }
 
-/* AddLabelsToResourcesInternalServerError describes a response with status code 500, with default header values.
+/*
+AddLabelsToResourcesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

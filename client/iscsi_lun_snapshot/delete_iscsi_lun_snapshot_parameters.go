@@ -54,10 +54,12 @@ func NewDeleteIscsiLunSnapshotParamsWithHTTPClient(client *http.Client) *DeleteI
 	}
 }
 
-/* DeleteIscsiLunSnapshotParams contains all the parameters to send to the API endpoint
-   for the delete iscsi lun snapshot operation.
+/*
+DeleteIscsiLunSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete iscsi lun snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteIscsiLunSnapshotParams struct {
 

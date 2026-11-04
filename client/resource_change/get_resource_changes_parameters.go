@@ -53,10 +53,12 @@ func NewGetResourceChangesParamsWithHTTPClient(client *http.Client) *GetResource
 	}
 }
 
-/* GetResourceChangesParams contains all the parameters to send to the API endpoint
-   for the get resource changes operation.
+/*
+GetResourceChangesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get resource changes operation.
+
+	Typically these are written to a http.Request.
 */
 type GetResourceChangesParams struct {
 

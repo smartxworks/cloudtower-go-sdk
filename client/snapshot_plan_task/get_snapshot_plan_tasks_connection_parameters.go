@@ -54,10 +54,12 @@ func NewGetSnapshotPlanTasksConnectionParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetSnapshotPlanTasksConnectionParams contains all the parameters to send to the API endpoint
-   for the get snapshot plan tasks connection operation.
+/*
+GetSnapshotPlanTasksConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get snapshot plan tasks connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSnapshotPlanTasksConnectionParams struct {
 

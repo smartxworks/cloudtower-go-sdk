@@ -54,10 +54,12 @@ func NewResumeVMParamsWithHTTPClient(client *http.Client) *ResumeVMParams {
 	}
 }
 
-/* ResumeVMParams contains all the parameters to send to the API endpoint
-   for the resume Vm operation.
+/*
+ResumeVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the resume Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type ResumeVMParams struct {
 

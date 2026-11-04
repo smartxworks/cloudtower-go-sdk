@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetWitnessServices get witness services API
+GetWitnessServices get witness services API
 */
 func (a *Client) GetWitnessServices(params *GetWitnessServicesParams, opts ...ClientOption) (*GetWitnessServicesOK, error) {
 	// TODO: Validate the params before sending

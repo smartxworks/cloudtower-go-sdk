@@ -54,10 +54,12 @@ func NewRebuildVMParamsWithHTTPClient(client *http.Client) *RebuildVMParams {
 	}
 }
 
-/* RebuildVMParams contains all the parameters to send to the API endpoint
-   for the rebuild Vm operation.
+/*
+RebuildVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the rebuild Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type RebuildVMParams struct {
 

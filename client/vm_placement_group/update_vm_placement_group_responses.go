@@ -57,7 +57,8 @@ func NewUpdateVMPlacementGroupOK() *UpdateVMPlacementGroupOK {
 	return &UpdateVMPlacementGroupOK{}
 }
 
-/* UpdateVMPlacementGroupOK describes a response with status code 200, with default header values.
+/*
+UpdateVMPlacementGroupOK describes a response with status code 200, with default header values.
 
 UpdateVMPlacementGroupOK update Vm placement group o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVMPlacementGroupBadRequest() *UpdateVMPlacementGroupBadRequest {
 	return &UpdateVMPlacementGroupBadRequest{}
 }
 
-/* UpdateVMPlacementGroupBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMPlacementGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVMPlacementGroupNotFound() *UpdateVMPlacementGroupNotFound {
 	return &UpdateVMPlacementGroupNotFound{}
 }
 
-/* UpdateVMPlacementGroupNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMPlacementGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVMPlacementGroupInternalServerError() *UpdateVMPlacementGroupInter
 	return &UpdateVMPlacementGroupInternalServerError{}
 }
 
-/* UpdateVMPlacementGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMPlacementGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewBackupRestoreVMInPlaceOK() *BackupRestoreVMInPlaceOK {
 	return &BackupRestoreVMInPlaceOK{}
 }
 
-/* BackupRestoreVMInPlaceOK describes a response with status code 200, with default header values.
+/*
+BackupRestoreVMInPlaceOK describes a response with status code 200, with default header values.
 
 BackupRestoreVMInPlaceOK backup restore Vm in place o k
 */
@@ -96,7 +97,8 @@ func NewBackupRestoreVMInPlaceBadRequest() *BackupRestoreVMInPlaceBadRequest {
 	return &BackupRestoreVMInPlaceBadRequest{}
 }
 
-/* BackupRestoreVMInPlaceBadRequest describes a response with status code 400, with default header values.
+/*
+BackupRestoreVMInPlaceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewBackupRestoreVMInPlaceNotFound() *BackupRestoreVMInPlaceNotFound {
 	return &BackupRestoreVMInPlaceNotFound{}
 }
 
-/* BackupRestoreVMInPlaceNotFound describes a response with status code 404, with default header values.
+/*
+BackupRestoreVMInPlaceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewBackupRestoreVMInPlaceInternalServerError() *BackupRestoreVMInPlaceInter
 	return &BackupRestoreVMInPlaceInternalServerError{}
 }
 
-/* BackupRestoreVMInPlaceInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupRestoreVMInPlaceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

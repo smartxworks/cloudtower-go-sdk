@@ -57,7 +57,8 @@ func NewDeleteVMFolderOK() *DeleteVMFolderOK {
 	return &DeleteVMFolderOK{}
 }
 
-/* DeleteVMFolderOK describes a response with status code 200, with default header values.
+/*
+DeleteVMFolderOK describes a response with status code 200, with default header values.
 
 DeleteVMFolderOK delete Vm folder o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVMFolderBadRequest() *DeleteVMFolderBadRequest {
 	return &DeleteVMFolderBadRequest{}
 }
 
-/* DeleteVMFolderBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVMFolderBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVMFolderNotFound() *DeleteVMFolderNotFound {
 	return &DeleteVMFolderNotFound{}
 }
 
-/* DeleteVMFolderNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVMFolderNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVMFolderInternalServerError() *DeleteVMFolderInternalServerError {
 	return &DeleteVMFolderInternalServerError{}
 }
 
-/* DeleteVMFolderInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVMFolderInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

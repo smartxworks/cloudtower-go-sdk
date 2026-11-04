@@ -54,10 +54,12 @@ func NewGetSecurityPoliciesConnectionParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetSecurityPoliciesConnectionParams contains all the parameters to send to the API endpoint
-   for the get security policies connection operation.
+/*
+GetSecurityPoliciesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get security policies connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSecurityPoliciesConnectionParams struct {
 

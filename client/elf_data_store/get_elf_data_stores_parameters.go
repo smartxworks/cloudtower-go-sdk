@@ -54,10 +54,12 @@ func NewGetElfDataStoresParamsWithHTTPClient(client *http.Client) *GetElfDataSto
 	}
 }
 
-/* GetElfDataStoresParams contains all the parameters to send to the API endpoint
-   for the get elf data stores operation.
+/*
+GetElfDataStoresParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get elf data stores operation.
+
+	Typically these are written to a http.Request.
 */
 type GetElfDataStoresParams struct {
 

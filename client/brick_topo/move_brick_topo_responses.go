@@ -57,7 +57,8 @@ func NewMoveBrickTopoOK() *MoveBrickTopoOK {
 	return &MoveBrickTopoOK{}
 }
 
-/* MoveBrickTopoOK describes a response with status code 200, with default header values.
+/*
+MoveBrickTopoOK describes a response with status code 200, with default header values.
 
 MoveBrickTopoOK move brick topo o k
 */
@@ -96,7 +97,8 @@ func NewMoveBrickTopoBadRequest() *MoveBrickTopoBadRequest {
 	return &MoveBrickTopoBadRequest{}
 }
 
-/* MoveBrickTopoBadRequest describes a response with status code 400, with default header values.
+/*
+MoveBrickTopoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewMoveBrickTopoNotFound() *MoveBrickTopoNotFound {
 	return &MoveBrickTopoNotFound{}
 }
 
-/* MoveBrickTopoNotFound describes a response with status code 404, with default header values.
+/*
+MoveBrickTopoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewMoveBrickTopoInternalServerError() *MoveBrickTopoInternalServerError {
 	return &MoveBrickTopoInternalServerError{}
 }
 
-/* MoveBrickTopoInternalServerError describes a response with status code 500, with default header values.
+/*
+MoveBrickTopoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

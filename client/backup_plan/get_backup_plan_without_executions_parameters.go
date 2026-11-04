@@ -54,10 +54,12 @@ func NewGetBackupPlanWithoutExecutionsParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetBackupPlanWithoutExecutionsParams contains all the parameters to send to the API endpoint
-   for the get backup plan without executions operation.
+/*
+GetBackupPlanWithoutExecutionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backup plan without executions operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackupPlanWithoutExecutionsParams struct {
 

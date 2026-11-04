@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetReplicaVms get replica vms API
+GetReplicaVms get replica vms API
 */
 func (a *Client) GetReplicaVms(params *GetReplicaVmsParams, opts ...ClientOption) (*GetReplicaVmsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetReplicaVms(params *GetReplicaVmsParams, opts ...ClientOption
 }
 
 /*
-  GetReplicaVmsConnection get replica vms connection API
+GetReplicaVmsConnection get replica vms connection API
 */
 func (a *Client) GetReplicaVmsConnection(params *GetReplicaVmsConnectionParams, opts ...ClientOption) (*GetReplicaVmsConnectionOK, error) {
 	// TODO: Validate the params before sending

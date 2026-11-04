@@ -54,10 +54,12 @@ func NewMoveVMToRecycleBinParamsWithHTTPClient(client *http.Client) *MoveVMToRec
 	}
 }
 
-/* MoveVMToRecycleBinParams contains all the parameters to send to the API endpoint
-   for the move Vm to recycle bin operation.
+/*
+MoveVMToRecycleBinParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the move Vm to recycle bin operation.
+
+	Typically these are written to a http.Request.
 */
 type MoveVMToRecycleBinParams struct {
 

@@ -54,10 +54,12 @@ func NewGetSystemAuditLogsParamsWithHTTPClient(client *http.Client) *GetSystemAu
 	}
 }
 
-/* GetSystemAuditLogsParams contains all the parameters to send to the API endpoint
-   for the get system audit logs operation.
+/*
+GetSystemAuditLogsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get system audit logs operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSystemAuditLogsParams struct {
 

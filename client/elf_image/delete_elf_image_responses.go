@@ -57,7 +57,8 @@ func NewDeleteElfImageOK() *DeleteElfImageOK {
 	return &DeleteElfImageOK{}
 }
 
-/* DeleteElfImageOK describes a response with status code 200, with default header values.
+/*
+DeleteElfImageOK describes a response with status code 200, with default header values.
 
 DeleteElfImageOK delete elf image o k
 */
@@ -96,7 +97,8 @@ func NewDeleteElfImageBadRequest() *DeleteElfImageBadRequest {
 	return &DeleteElfImageBadRequest{}
 }
 
-/* DeleteElfImageBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteElfImageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteElfImageNotFound() *DeleteElfImageNotFound {
 	return &DeleteElfImageNotFound{}
 }
 
-/* DeleteElfImageNotFound describes a response with status code 404, with default header values.
+/*
+DeleteElfImageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteElfImageInternalServerError() *DeleteElfImageInternalServerError {
 	return &DeleteElfImageInternalServerError{}
 }
 
-/* DeleteElfImageInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteElfImageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

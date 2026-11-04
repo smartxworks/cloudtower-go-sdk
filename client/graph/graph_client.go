@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateGraph create graph API
+CreateGraph create graph API
 */
 func (a *Client) CreateGraph(params *CreateGraphParams, opts ...ClientOption) (*CreateGraphOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateGraph(params *CreateGraphParams, opts ...ClientOption) (*
 }
 
 /*
-  DeleteGraph delete graph API
+DeleteGraph delete graph API
 */
 func (a *Client) DeleteGraph(params *DeleteGraphParams, opts ...ClientOption) (*DeleteGraphOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteGraph(params *DeleteGraphParams, opts ...ClientOption) (*
 }
 
 /*
-  GetGraphs get graphs API
+GetGraphs get graphs API
 */
 func (a *Client) GetGraphs(params *GetGraphsParams, opts ...ClientOption) (*GetGraphsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetGraphs(params *GetGraphsParams, opts ...ClientOption) (*GetG
 }
 
 /*
-  GetGraphsConnection get graphs connection API
+GetGraphsConnection get graphs connection API
 */
 func (a *Client) GetGraphsConnection(params *GetGraphsConnectionParams, opts ...ClientOption) (*GetGraphsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetGraphsConnection(params *GetGraphsConnectionParams, opts ...
 }
 
 /*
-  UpdateGraph update graph API
+UpdateGraph update graph API
 */
 func (a *Client) UpdateGraph(params *UpdateGraphParams, opts ...ClientOption) (*UpdateGraphOK, error) {
 	// TODO: Validate the params before sending

@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetPciDevices get pci devices API
+GetPciDevices get pci devices API
 */
 func (a *Client) GetPciDevices(params *GetPciDevicesParams, opts ...ClientOption) (*GetPciDevicesOK, error) {
 	// TODO: Validate the params before sending

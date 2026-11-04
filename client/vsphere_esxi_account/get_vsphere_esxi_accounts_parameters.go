@@ -54,10 +54,12 @@ func NewGetVsphereEsxiAccountsParamsWithHTTPClient(client *http.Client) *GetVsph
 	}
 }
 
-/* GetVsphereEsxiAccountsParams contains all the parameters to send to the API endpoint
-   for the get vsphere esxi accounts operation.
+/*
+GetVsphereEsxiAccountsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get vsphere esxi accounts operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVsphereEsxiAccountsParams struct {
 

@@ -57,7 +57,8 @@ func NewGetReportTasksConnectionOK() *GetReportTasksConnectionOK {
 	return &GetReportTasksConnectionOK{}
 }
 
-/* GetReportTasksConnectionOK describes a response with status code 200, with default header values.
+/*
+GetReportTasksConnectionOK describes a response with status code 200, with default header values.
 
 GetReportTasksConnectionOK get report tasks connection o k
 */
@@ -98,7 +99,8 @@ func NewGetReportTasksConnectionBadRequest() *GetReportTasksConnectionBadRequest
 	return &GetReportTasksConnectionBadRequest{}
 }
 
-/* GetReportTasksConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetReportTasksConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetReportTasksConnectionNotFound() *GetReportTasksConnectionNotFound {
 	return &GetReportTasksConnectionNotFound{}
 }
 
-/* GetReportTasksConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetReportTasksConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetReportTasksConnectionInternalServerError() *GetReportTasksConnectionI
 	return &GetReportTasksConnectionInternalServerError{}
 }
 
-/* GetReportTasksConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetReportTasksConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

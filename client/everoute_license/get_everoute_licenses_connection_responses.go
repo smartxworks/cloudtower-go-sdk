@@ -57,7 +57,8 @@ func NewGetEverouteLicensesConnectionOK() *GetEverouteLicensesConnectionOK {
 	return &GetEverouteLicensesConnectionOK{}
 }
 
-/* GetEverouteLicensesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetEverouteLicensesConnectionOK describes a response with status code 200, with default header values.
 
 GetEverouteLicensesConnectionOK get everoute licenses connection o k
 */
@@ -98,7 +99,8 @@ func NewGetEverouteLicensesConnectionBadRequest() *GetEverouteLicensesConnection
 	return &GetEverouteLicensesConnectionBadRequest{}
 }
 
-/* GetEverouteLicensesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetEverouteLicensesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetEverouteLicensesConnectionNotFound() *GetEverouteLicensesConnectionNo
 	return &GetEverouteLicensesConnectionNotFound{}
 }
 
-/* GetEverouteLicensesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetEverouteLicensesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetEverouteLicensesConnectionInternalServerError() *GetEverouteLicensesC
 	return &GetEverouteLicensesConnectionInternalServerError{}
 }
 
-/* GetEverouteLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEverouteLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

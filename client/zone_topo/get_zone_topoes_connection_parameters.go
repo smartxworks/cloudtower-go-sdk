@@ -54,10 +54,12 @@ func NewGetZoneTopoesConnectionParamsWithHTTPClient(client *http.Client) *GetZon
 	}
 }
 
-/* GetZoneTopoesConnectionParams contains all the parameters to send to the API endpoint
-   for the get zone topoes connection operation.
+/*
+GetZoneTopoesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get zone topoes connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetZoneTopoesConnectionParams struct {
 

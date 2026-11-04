@@ -54,10 +54,12 @@ func NewDeleteLogCollectionParamsWithHTTPClient(client *http.Client) *DeleteLogC
 	}
 }
 
-/* DeleteLogCollectionParams contains all the parameters to send to the API endpoint
-   for the delete log collection operation.
+/*
+DeleteLogCollectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete log collection operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteLogCollectionParams struct {
 

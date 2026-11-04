@@ -57,7 +57,8 @@ func NewDeleteIsolationPolicyOK() *DeleteIsolationPolicyOK {
 	return &DeleteIsolationPolicyOK{}
 }
 
-/* DeleteIsolationPolicyOK describes a response with status code 200, with default header values.
+/*
+DeleteIsolationPolicyOK describes a response with status code 200, with default header values.
 
 DeleteIsolationPolicyOK delete isolation policy o k
 */
@@ -96,7 +97,8 @@ func NewDeleteIsolationPolicyBadRequest() *DeleteIsolationPolicyBadRequest {
 	return &DeleteIsolationPolicyBadRequest{}
 }
 
-/* DeleteIsolationPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteIsolationPolicyBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteIsolationPolicyNotFound() *DeleteIsolationPolicyNotFound {
 	return &DeleteIsolationPolicyNotFound{}
 }
 
-/* DeleteIsolationPolicyNotFound describes a response with status code 404, with default header values.
+/*
+DeleteIsolationPolicyNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteIsolationPolicyInternalServerError() *DeleteIsolationPolicyInterna
 	return &DeleteIsolationPolicyInternalServerError{}
 }
 
-/* DeleteIsolationPolicyInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteIsolationPolicyInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

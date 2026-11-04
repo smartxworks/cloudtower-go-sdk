@@ -54,10 +54,12 @@ func NewUpdateSnmpTrapReceiverParamsWithHTTPClient(client *http.Client) *UpdateS
 	}
 }
 
-/* UpdateSnmpTrapReceiverParams contains all the parameters to send to the API endpoint
-   for the update snmp trap receiver operation.
+/*
+UpdateSnmpTrapReceiverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update snmp trap receiver operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateSnmpTrapReceiverParams struct {
 

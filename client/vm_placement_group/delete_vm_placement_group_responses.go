@@ -57,7 +57,8 @@ func NewDeleteVMPlacementGroupOK() *DeleteVMPlacementGroupOK {
 	return &DeleteVMPlacementGroupOK{}
 }
 
-/* DeleteVMPlacementGroupOK describes a response with status code 200, with default header values.
+/*
+DeleteVMPlacementGroupOK describes a response with status code 200, with default header values.
 
 DeleteVMPlacementGroupOK delete Vm placement group o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVMPlacementGroupBadRequest() *DeleteVMPlacementGroupBadRequest {
 	return &DeleteVMPlacementGroupBadRequest{}
 }
 
-/* DeleteVMPlacementGroupBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVMPlacementGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVMPlacementGroupNotFound() *DeleteVMPlacementGroupNotFound {
 	return &DeleteVMPlacementGroupNotFound{}
 }
 
-/* DeleteVMPlacementGroupNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVMPlacementGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVMPlacementGroupInternalServerError() *DeleteVMPlacementGroupInter
 	return &DeleteVMPlacementGroupInternalServerError{}
 }
 
-/* DeleteVMPlacementGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVMPlacementGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

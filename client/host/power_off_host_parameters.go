@@ -54,10 +54,12 @@ func NewPowerOffHostParamsWithHTTPClient(client *http.Client) *PowerOffHostParam
 	}
 }
 
-/* PowerOffHostParams contains all the parameters to send to the API endpoint
-   for the power off host operation.
+/*
+PowerOffHostParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the power off host operation.
+
+	Typically these are written to a http.Request.
 */
 type PowerOffHostParams struct {
 

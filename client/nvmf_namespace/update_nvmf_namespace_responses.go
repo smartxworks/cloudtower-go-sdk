@@ -57,7 +57,8 @@ func NewUpdateNvmfNamespaceOK() *UpdateNvmfNamespaceOK {
 	return &UpdateNvmfNamespaceOK{}
 }
 
-/* UpdateNvmfNamespaceOK describes a response with status code 200, with default header values.
+/*
+UpdateNvmfNamespaceOK describes a response with status code 200, with default header values.
 
 UpdateNvmfNamespaceOK update nvmf namespace o k
 */
@@ -96,7 +97,8 @@ func NewUpdateNvmfNamespaceBadRequest() *UpdateNvmfNamespaceBadRequest {
 	return &UpdateNvmfNamespaceBadRequest{}
 }
 
-/* UpdateNvmfNamespaceBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateNvmfNamespaceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateNvmfNamespaceNotFound() *UpdateNvmfNamespaceNotFound {
 	return &UpdateNvmfNamespaceNotFound{}
 }
 
-/* UpdateNvmfNamespaceNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNvmfNamespaceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateNvmfNamespaceInternalServerError() *UpdateNvmfNamespaceInternalSer
 	return &UpdateNvmfNamespaceInternalServerError{}
 }
 
-/* UpdateNvmfNamespaceInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateNvmfNamespaceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

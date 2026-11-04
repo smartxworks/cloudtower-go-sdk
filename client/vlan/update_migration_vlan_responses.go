@@ -57,7 +57,8 @@ func NewUpdateMigrationVlanOK() *UpdateMigrationVlanOK {
 	return &UpdateMigrationVlanOK{}
 }
 
-/* UpdateMigrationVlanOK describes a response with status code 200, with default header values.
+/*
+UpdateMigrationVlanOK describes a response with status code 200, with default header values.
 
 UpdateMigrationVlanOK update migration vlan o k
 */
@@ -96,7 +97,8 @@ func NewUpdateMigrationVlanBadRequest() *UpdateMigrationVlanBadRequest {
 	return &UpdateMigrationVlanBadRequest{}
 }
 
-/* UpdateMigrationVlanBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateMigrationVlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateMigrationVlanNotFound() *UpdateMigrationVlanNotFound {
 	return &UpdateMigrationVlanNotFound{}
 }
 
-/* UpdateMigrationVlanNotFound describes a response with status code 404, with default header values.
+/*
+UpdateMigrationVlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateMigrationVlanInternalServerError() *UpdateMigrationVlanInternalSer
 	return &UpdateMigrationVlanInternalServerError{}
 }
 
-/* UpdateMigrationVlanInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateMigrationVlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

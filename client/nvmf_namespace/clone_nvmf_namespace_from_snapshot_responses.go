@@ -57,7 +57,8 @@ func NewCloneNvmfNamespaceFromSnapshotOK() *CloneNvmfNamespaceFromSnapshotOK {
 	return &CloneNvmfNamespaceFromSnapshotOK{}
 }
 
-/* CloneNvmfNamespaceFromSnapshotOK describes a response with status code 200, with default header values.
+/*
+CloneNvmfNamespaceFromSnapshotOK describes a response with status code 200, with default header values.
 
 CloneNvmfNamespaceFromSnapshotOK clone nvmf namespace from snapshot o k
 */
@@ -96,7 +97,8 @@ func NewCloneNvmfNamespaceFromSnapshotBadRequest() *CloneNvmfNamespaceFromSnapsh
 	return &CloneNvmfNamespaceFromSnapshotBadRequest{}
 }
 
-/* CloneNvmfNamespaceFromSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+CloneNvmfNamespaceFromSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCloneNvmfNamespaceFromSnapshotNotFound() *CloneNvmfNamespaceFromSnapshot
 	return &CloneNvmfNamespaceFromSnapshotNotFound{}
 }
 
-/* CloneNvmfNamespaceFromSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+CloneNvmfNamespaceFromSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCloneNvmfNamespaceFromSnapshotInternalServerError() *CloneNvmfNamespaceF
 	return &CloneNvmfNamespaceFromSnapshotInternalServerError{}
 }
 
-/* CloneNvmfNamespaceFromSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneNvmfNamespaceFromSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

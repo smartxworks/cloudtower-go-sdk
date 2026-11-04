@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVirtualPrivateCloud create virtual private cloud API
+CreateVirtualPrivateCloud create virtual private cloud API
 */
 func (a *Client) CreateVirtualPrivateCloud(params *CreateVirtualPrivateCloudParams, opts ...ClientOption) (*CreateVirtualPrivateCloudOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVirtualPrivateCloud(params *CreateVirtualPrivateCloudPara
 }
 
 /*
-  DeleteVirtualPrivateCloud delete virtual private cloud API
+DeleteVirtualPrivateCloud delete virtual private cloud API
 */
 func (a *Client) DeleteVirtualPrivateCloud(params *DeleteVirtualPrivateCloudParams, opts ...ClientOption) (*DeleteVirtualPrivateCloudOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVirtualPrivateCloud(params *DeleteVirtualPrivateCloudPara
 }
 
 /*
-  GetVirtualPrivateClouds get virtual private clouds API
+GetVirtualPrivateClouds get virtual private clouds API
 */
 func (a *Client) GetVirtualPrivateClouds(params *GetVirtualPrivateCloudsParams, opts ...ClientOption) (*GetVirtualPrivateCloudsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVirtualPrivateClouds(params *GetVirtualPrivateCloudsParams, 
 }
 
 /*
-  GetVirtualPrivateCloudsConnection get virtual private clouds connection API
+GetVirtualPrivateCloudsConnection get virtual private clouds connection API
 */
 func (a *Client) GetVirtualPrivateCloudsConnection(params *GetVirtualPrivateCloudsConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVirtualPrivateCloudsConnection(params *GetVirtualPrivateClou
 }
 
 /*
-  UpdateVirtualPrivateCloud update virtual private cloud API
+UpdateVirtualPrivateCloud update virtual private cloud API
 */
 func (a *Client) UpdateVirtualPrivateCloud(params *UpdateVirtualPrivateCloudParams, opts ...ClientOption) (*UpdateVirtualPrivateCloudOK, error) {
 	// TODO: Validate the params before sending

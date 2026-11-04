@@ -57,7 +57,8 @@ func NewGetAlertsConnectionOK() *GetAlertsConnectionOK {
 	return &GetAlertsConnectionOK{}
 }
 
-/* GetAlertsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetAlertsConnectionOK describes a response with status code 200, with default header values.
 
 GetAlertsConnectionOK get alerts connection o k
 */
@@ -98,7 +99,8 @@ func NewGetAlertsConnectionBadRequest() *GetAlertsConnectionBadRequest {
 	return &GetAlertsConnectionBadRequest{}
 }
 
-/* GetAlertsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetAlertsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetAlertsConnectionNotFound() *GetAlertsConnectionNotFound {
 	return &GetAlertsConnectionNotFound{}
 }
 
-/* GetAlertsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetAlertsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetAlertsConnectionInternalServerError() *GetAlertsConnectionInternalSer
 	return &GetAlertsConnectionInternalServerError{}
 }
 
-/* GetAlertsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetAlertsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

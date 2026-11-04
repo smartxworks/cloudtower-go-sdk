@@ -54,10 +54,12 @@ func NewGetVMFoldersConnectionParamsWithHTTPClient(client *http.Client) *GetVMFo
 	}
 }
 
-/* GetVMFoldersConnectionParams contains all the parameters to send to the API endpoint
-   for the get Vm folders connection operation.
+/*
+GetVMFoldersConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm folders connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMFoldersConnectionParams struct {
 

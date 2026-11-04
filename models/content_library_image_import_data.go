@@ -21,8 +21,10 @@ import (
 type ContentLibraryImageImportData struct {
 
 	// cluster
-	// Required: true
-	Cluster *ClusterWhereInput `json:"cluster"`
+	Cluster *ClusterWhereInput `json:"cluster,omitempty"`
+
+	// datastore
+	Datastore *DatastoreWhereInput `json:"datastore,omitempty"`
 
 	// description
 	Description *string `json:"description,omitempty"`
@@ -40,6 +42,8 @@ type ContentLibraryImageImportData struct {
 
 type ContentLibraryImageImportDataMarshalOpts struct {
 	Cluster_Explicit_Null_When_Empty bool
+
+	Datastore_Explicit_Null_When_Empty bool
 
 	Description_Explicit_Null_When_Empty bool
 
@@ -71,6 +75,26 @@ func (m ContentLibraryImageImportData) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"cluster\":null")
+		first = false
+	}
+
+	// handle nullable field datastore
+	if m.Datastore != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore\":")
+		bytes, err := swag.WriteJSON(m.Datastore)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Datastore_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore\":null")
 		first = false
 	}
 
@@ -146,6 +170,10 @@ func (m *ContentLibraryImageImportData) Validate(formats strfmt.Registry) error 
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastore(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -161,9 +189,8 @@ func (m *ContentLibraryImageImportData) Validate(formats strfmt.Registry) error 
 }
 
 func (m *ContentLibraryImageImportData) validateCluster(formats strfmt.Registry) error {
-
-	if err := validate.Required("cluster", "body", m.Cluster); err != nil {
-		return err
+	if swag.IsZero(m.Cluster) { // not required
+		return nil
 	}
 
 	if m.Cluster != nil {
@@ -172,6 +199,25 @@ func (m *ContentLibraryImageImportData) validateCluster(formats strfmt.Registry)
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageImportData) validateDatastore(formats strfmt.Registry) error {
+	if swag.IsZero(m.Datastore) { // not required
+		return nil
+	}
+
+	if m.Datastore != nil {
+		if err := m.Datastore.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastore")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastore")
 			}
 			return err
 		}
@@ -206,6 +252,10 @@ func (m *ContentLibraryImageImportData) ContextValidate(ctx context.Context, for
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDatastore(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -220,6 +270,22 @@ func (m *ContentLibraryImageImportData) contextValidateCluster(ctx context.Conte
 				return ve.ValidateName("cluster")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("cluster")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageImportData) contextValidateDatastore(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Datastore != nil {
+		if err := m.Datastore.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastore")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastore")
 			}
 			return err
 		}

@@ -57,7 +57,8 @@ func NewExportVMVolumeOK() *ExportVMVolumeOK {
 	return &ExportVMVolumeOK{}
 }
 
-/* ExportVMVolumeOK describes a response with status code 200, with default header values.
+/*
+ExportVMVolumeOK describes a response with status code 200, with default header values.
 
 ExportVMVolumeOK export Vm volume o k
 */
@@ -96,7 +97,8 @@ func NewExportVMVolumeBadRequest() *ExportVMVolumeBadRequest {
 	return &ExportVMVolumeBadRequest{}
 }
 
-/* ExportVMVolumeBadRequest describes a response with status code 400, with default header values.
+/*
+ExportVMVolumeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewExportVMVolumeNotFound() *ExportVMVolumeNotFound {
 	return &ExportVMVolumeNotFound{}
 }
 
-/* ExportVMVolumeNotFound describes a response with status code 404, with default header values.
+/*
+ExportVMVolumeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewExportVMVolumeInternalServerError() *ExportVMVolumeInternalServerError {
 	return &ExportVMVolumeInternalServerError{}
 }
 
-/* ExportVMVolumeInternalServerError describes a response with status code 500, with default header values.
+/*
+ExportVMVolumeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

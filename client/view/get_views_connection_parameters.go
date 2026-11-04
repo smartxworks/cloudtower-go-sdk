@@ -54,10 +54,12 @@ func NewGetViewsConnectionParamsWithHTTPClient(client *http.Client) *GetViewsCon
 	}
 }
 
-/* GetViewsConnectionParams contains all the parameters to send to the API endpoint
-   for the get views connection operation.
+/*
+GetViewsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get views connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetViewsConnectionParams struct {
 

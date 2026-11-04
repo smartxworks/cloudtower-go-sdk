@@ -57,7 +57,8 @@ func NewDeleteIscsiLunSnapshotOK() *DeleteIscsiLunSnapshotOK {
 	return &DeleteIscsiLunSnapshotOK{}
 }
 
-/* DeleteIscsiLunSnapshotOK describes a response with status code 200, with default header values.
+/*
+DeleteIscsiLunSnapshotOK describes a response with status code 200, with default header values.
 
 DeleteIscsiLunSnapshotOK delete iscsi lun snapshot o k
 */
@@ -96,7 +97,8 @@ func NewDeleteIscsiLunSnapshotBadRequest() *DeleteIscsiLunSnapshotBadRequest {
 	return &DeleteIscsiLunSnapshotBadRequest{}
 }
 
-/* DeleteIscsiLunSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteIscsiLunSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteIscsiLunSnapshotNotFound() *DeleteIscsiLunSnapshotNotFound {
 	return &DeleteIscsiLunSnapshotNotFound{}
 }
 
-/* DeleteIscsiLunSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+DeleteIscsiLunSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteIscsiLunSnapshotInternalServerError() *DeleteIscsiLunSnapshotInter
 	return &DeleteIscsiLunSnapshotInternalServerError{}
 }
 
-/* DeleteIscsiLunSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteIscsiLunSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

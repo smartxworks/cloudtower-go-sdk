@@ -54,10 +54,12 @@ func NewCreateClusterRecycleBinSettingParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* CreateClusterRecycleBinSettingParams contains all the parameters to send to the API endpoint
-   for the create cluster recycle bin setting operation.
+/*
+CreateClusterRecycleBinSettingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create cluster recycle bin setting operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateClusterRecycleBinSettingParams struct {
 

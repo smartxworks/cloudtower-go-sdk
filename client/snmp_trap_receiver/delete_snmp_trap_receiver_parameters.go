@@ -54,10 +54,12 @@ func NewDeleteSnmpTrapReceiverParamsWithHTTPClient(client *http.Client) *DeleteS
 	}
 }
 
-/* DeleteSnmpTrapReceiverParams contains all the parameters to send to the API endpoint
-   for the delete snmp trap receiver operation.
+/*
+DeleteSnmpTrapReceiverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete snmp trap receiver operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSnmpTrapReceiverParams struct {
 

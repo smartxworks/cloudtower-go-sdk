@@ -57,7 +57,8 @@ func NewStopVMInCutoverMigrationOK() *StopVMInCutoverMigrationOK {
 	return &StopVMInCutoverMigrationOK{}
 }
 
-/* StopVMInCutoverMigrationOK describes a response with status code 200, with default header values.
+/*
+StopVMInCutoverMigrationOK describes a response with status code 200, with default header values.
 
 StopVMInCutoverMigrationOK stop Vm in cutover migration o k
 */
@@ -96,7 +97,8 @@ func NewStopVMInCutoverMigrationBadRequest() *StopVMInCutoverMigrationBadRequest
 	return &StopVMInCutoverMigrationBadRequest{}
 }
 
-/* StopVMInCutoverMigrationBadRequest describes a response with status code 400, with default header values.
+/*
+StopVMInCutoverMigrationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewStopVMInCutoverMigrationNotFound() *StopVMInCutoverMigrationNotFound {
 	return &StopVMInCutoverMigrationNotFound{}
 }
 
-/* StopVMInCutoverMigrationNotFound describes a response with status code 404, with default header values.
+/*
+StopVMInCutoverMigrationNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewStopVMInCutoverMigrationInternalServerError() *StopVMInCutoverMigrationI
 	return &StopVMInCutoverMigrationInternalServerError{}
 }
 
-/* StopVMInCutoverMigrationInternalServerError describes a response with status code 500, with default header values.
+/*
+StopVMInCutoverMigrationInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -31,6 +31,9 @@ type Host struct {
 	// Required: true
 	AllocatableMemoryBytes *int64 `json:"allocatable_memory_bytes"`
 
+	// allocated memory bytes
+	AllocatedMemoryBytes *int64 `json:"allocated_memory_bytes,omitempty"`
+
 	// allocated prioritized space
 	AllocatedPrioritizedSpace *int64 `json:"allocated_prioritized_space,omitempty"`
 
@@ -83,6 +86,9 @@ type Host struct {
 
 	// data ip
 	DataIP *string `json:"data_ip,omitempty"`
+
+	// datastore mounts
+	DatastoreMounts []*NestedDatastoreMount `json:"datastore_mounts,omitempty"`
 
 	// dirty cache space
 	DirtyCacheSpace *int64 `json:"dirty_cache_space,omitempty"`
@@ -154,6 +160,12 @@ type Host struct {
 	// Required: true
 	ManagementIP *string `json:"management_ip"`
 
+	// memory allocation rate
+	MemoryAllocationRate *float64 `json:"memory_allocation_rate,omitempty"`
+
+	// memory overcommit enabled
+	MemoryOvercommitEnabled *bool `json:"memory_overcommit_enabled,omitempty"`
+
 	// merged status
 	MergedStatus *HostMergedStatus `json:"merged_status,omitempty"`
 
@@ -185,6 +197,15 @@ type Host struct {
 
 	// os version
 	OsVersion *string `json:"os_version,omitempty"`
+
+	// overcommit active memory bytes
+	OvercommitActiveMemoryBytes *int64 `json:"overcommit_active_memory_bytes,omitempty"`
+
+	// overcommit memory bytes
+	OvercommitMemoryBytes *int64 `json:"overcommit_memory_bytes,omitempty"`
+
+	// overcommit memory ratio
+	OvercommitMemoryRatio *float64 `json:"overcommit_memory_ratio,omitempty"`
 
 	// perf allocated data space
 	PerfAllocatedDataSpace *int64 `json:"perf_allocated_data_space,omitempty"`
@@ -229,6 +250,15 @@ type Host struct {
 	// provisioned memory bytes
 	// Required: true
 	ProvisionedMemoryBytes *int64 `json:"provisioned_memory_bytes"`
+
+	// reserved memory bytes
+	ReservedMemoryBytes *int64 `json:"reserved_memory_bytes,omitempty"`
+
+	// running pause overcommit memory bytes
+	RunningPauseOvercommitMemoryBytes *int64 `json:"running_pause_overcommit_memory_bytes,omitempty"`
+
+	// running pause reserved memory bytes
+	RunningPauseReservedMemoryBytes *int64 `json:"running_pause_reserved_memory_bytes,omitempty"`
 
 	// running pause vm memory bytes
 	// Required: true
@@ -296,6 +326,10 @@ type Host struct {
 	// Required: true
 	TotalMemoryBytes *int64 `json:"total_memory_bytes"`
 
+	// total physical memory bytes
+	// Required: true
+	TotalPhysicalMemoryBytes *int64 `json:"total_physical_memory_bytes"`
+
 	// usb devices
 	UsbDevices []*NestedUsbDevice `json:"usb_devices,omitempty"`
 
@@ -346,6 +380,8 @@ type HostMarshalOpts struct {
 
 	AllocatableMemoryBytes_Explicit_Null_When_Empty bool
 
+	AllocatedMemoryBytes_Explicit_Null_When_Empty bool
+
 	AllocatedPrioritizedSpace_Explicit_Null_When_Empty bool
 
 	AllocatedPrioritizedSpaceUsage_Explicit_Null_When_Empty bool
@@ -375,6 +411,8 @@ type HostMarshalOpts struct {
 	CPUVendor_Explicit_Null_When_Empty bool
 
 	DataIP_Explicit_Null_When_Empty bool
+
+	DatastoreMounts_Explicit_Null_When_Empty bool
 
 	DirtyCacheSpace_Explicit_Null_When_Empty bool
 
@@ -418,6 +456,10 @@ type HostMarshalOpts struct {
 
 	ManagementIP_Explicit_Null_When_Empty bool
 
+	MemoryAllocationRate_Explicit_Null_When_Empty bool
+
+	MemoryOvercommitEnabled_Explicit_Null_When_Empty bool
+
 	MergedStatus_Explicit_Null_When_Empty bool
 
 	Model_Explicit_Null_When_Empty bool
@@ -435,6 +477,12 @@ type HostMarshalOpts struct {
 	OsMemoryBytes_Explicit_Null_When_Empty bool
 
 	OsVersion_Explicit_Null_When_Empty bool
+
+	OvercommitActiveMemoryBytes_Explicit_Null_When_Empty bool
+
+	OvercommitMemoryBytes_Explicit_Null_When_Empty bool
+
+	OvercommitMemoryRatio_Explicit_Null_When_Empty bool
 
 	PerfAllocatedDataSpace_Explicit_Null_When_Empty bool
 
@@ -461,6 +509,12 @@ type HostMarshalOpts struct {
 	ProvisionedCPUCores_Explicit_Null_When_Empty bool
 
 	ProvisionedMemoryBytes_Explicit_Null_When_Empty bool
+
+	ReservedMemoryBytes_Explicit_Null_When_Empty bool
+
+	RunningPauseOvercommitMemoryBytes_Explicit_Null_When_Empty bool
+
+	RunningPauseReservedMemoryBytes_Explicit_Null_When_Empty bool
 
 	RunningPauseVMMemoryBytes_Explicit_Null_When_Empty bool
 
@@ -499,6 +553,8 @@ type HostMarshalOpts struct {
 	TotalLogicalCPUCores_Explicit_Null_When_Empty bool
 
 	TotalMemoryBytes_Explicit_Null_When_Empty bool
+
+	TotalPhysicalMemoryBytes_Explicit_Null_When_Empty bool
 
 	UsbDevices_Explicit_Null_When_Empty bool
 
@@ -590,6 +646,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"allocatable_memory_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field allocated_memory_bytes
+	if m.AllocatedMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.AllocatedMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.AllocatedMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"allocated_memory_bytes\":null")
 		first = false
 	}
 
@@ -872,6 +948,20 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"data_ip\":null")
+		first = false
+	}
+
+	// handle non nullable field datastore_mounts with omitempty
+	if !swag.IsZero(m.DatastoreMounts) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastore_mounts\":")
+		bytes, err := swag.WriteJSON(m.DatastoreMounts)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -1271,6 +1361,46 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field memory_allocation_rate
+	if m.MemoryAllocationRate != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memory_allocation_rate\":")
+		bytes, err := swag.WriteJSON(m.MemoryAllocationRate)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MemoryAllocationRate_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memory_allocation_rate\":null")
+		first = false
+	}
+
+	// handle nullable field memory_overcommit_enabled
+	if m.MemoryOvercommitEnabled != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memory_overcommit_enabled\":")
+		bytes, err := swag.WriteJSON(m.MemoryOvercommitEnabled)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.MemoryOvercommitEnabled_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"memory_overcommit_enabled\":null")
+		first = false
+	}
+
 	// handle nullable field merged_status
 	if m.MergedStatus != nil {
 		if !first {
@@ -1442,6 +1572,66 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"os_version\":null")
+		first = false
+	}
+
+	// handle nullable field overcommit_active_memory_bytes
+	if m.OvercommitActiveMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overcommit_active_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.OvercommitActiveMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvercommitActiveMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overcommit_active_memory_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field overcommit_memory_bytes
+	if m.OvercommitMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overcommit_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.OvercommitMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvercommitMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overcommit_memory_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field overcommit_memory_ratio
+	if m.OvercommitMemoryRatio != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overcommit_memory_ratio\":")
+		bytes, err := swag.WriteJSON(m.OvercommitMemoryRatio)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.OvercommitMemoryRatio_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"overcommit_memory_ratio\":null")
 		first = false
 	}
 
@@ -1696,6 +1886,66 @@ func (m Host) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"provisioned_memory_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field reserved_memory_bytes
+	if m.ReservedMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reserved_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.ReservedMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ReservedMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"reserved_memory_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field running_pause_overcommit_memory_bytes
+	if m.RunningPauseOvercommitMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"running_pause_overcommit_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.RunningPauseOvercommitMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RunningPauseOvercommitMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"running_pause_overcommit_memory_bytes\":null")
+		first = false
+	}
+
+	// handle nullable field running_pause_reserved_memory_bytes
+	if m.RunningPauseReservedMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"running_pause_reserved_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.RunningPauseReservedMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.RunningPauseReservedMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"running_pause_reserved_memory_bytes\":null")
 		first = false
 	}
 
@@ -2079,6 +2329,26 @@ func (m Host) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field total_physical_memory_bytes
+	if m.TotalPhysicalMemoryBytes != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_physical_memory_bytes\":")
+		bytes, err := swag.WriteJSON(m.TotalPhysicalMemoryBytes)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TotalPhysicalMemoryBytes_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"total_physical_memory_bytes\":null")
+		first = false
+	}
+
 	// handle non nullable field usb_devices with omitempty
 	if !swag.IsZero(m.UsbDevices) {
 		if !first {
@@ -2379,6 +2649,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastoreMounts(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDiskPools(formats); err != nil {
 		res = append(res, err)
 	}
@@ -2524,6 +2798,10 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateTotalMemoryBytes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTotalPhysicalMemoryBytes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -2678,6 +2956,32 @@ func (m *Host) validateCPUTemperatureCelsius(formats strfmt.Registry) error {
 
 	if err := validate.Required("cpu_temperature_celsius", "body", m.CPUTemperatureCelsius); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Host) validateDatastoreMounts(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoreMounts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DatastoreMounts); i++ {
+		if swag.IsZero(m.DatastoreMounts[i]) { // not required
+			continue
+		}
+
+		if m.DatastoreMounts[i] != nil {
+			if err := m.DatastoreMounts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("datastore_mounts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("datastore_mounts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -3198,6 +3502,15 @@ func (m *Host) validateTotalMemoryBytes(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Host) validateTotalPhysicalMemoryBytes(formats strfmt.Registry) error {
+
+	if err := validate.Required("total_physical_memory_bytes", "body", m.TotalPhysicalMemoryBytes); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *Host) validateUsbDevices(formats strfmt.Registry) error {
 	if swag.IsZero(m.UsbDevices) { // not required
 		return nil
@@ -3310,6 +3623,10 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 	}
 
 	if err := m.contextValidateCPUFanSpeedUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastoreMounts(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -3430,6 +3747,26 @@ func (m *Host) contextValidateCPUFanSpeedUnit(ctx context.Context, formats strfm
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateDatastoreMounts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DatastoreMounts); i++ {
+
+		if m.DatastoreMounts[i] != nil {
+			if err := m.DatastoreMounts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("datastore_mounts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("datastore_mounts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

@@ -57,7 +57,8 @@ func NewUploadNvramOK() *UploadNvramOK {
 	return &UploadNvramOK{}
 }
 
-/* UploadNvramOK describes a response with status code 200, with default header values.
+/*
+UploadNvramOK describes a response with status code 200, with default header values.
 
 UploadNvramOK upload nvram o k
 */
@@ -96,7 +97,8 @@ func NewUploadNvramBadRequest() *UploadNvramBadRequest {
 	return &UploadNvramBadRequest{}
 }
 
-/* UploadNvramBadRequest describes a response with status code 400, with default header values.
+/*
+UploadNvramBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUploadNvramNotFound() *UploadNvramNotFound {
 	return &UploadNvramNotFound{}
 }
 
-/* UploadNvramNotFound describes a response with status code 404, with default header values.
+/*
+UploadNvramNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUploadNvramInternalServerError() *UploadNvramInternalServerError {
 	return &UploadNvramInternalServerError{}
 }
 
-/* UploadNvramInternalServerError describes a response with status code 500, with default header values.
+/*
+UploadNvramInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

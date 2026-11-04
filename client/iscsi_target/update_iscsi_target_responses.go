@@ -57,7 +57,8 @@ func NewUpdateIscsiTargetOK() *UpdateIscsiTargetOK {
 	return &UpdateIscsiTargetOK{}
 }
 
-/* UpdateIscsiTargetOK describes a response with status code 200, with default header values.
+/*
+UpdateIscsiTargetOK describes a response with status code 200, with default header values.
 
 UpdateIscsiTargetOK update iscsi target o k
 */
@@ -96,7 +97,8 @@ func NewUpdateIscsiTargetBadRequest() *UpdateIscsiTargetBadRequest {
 	return &UpdateIscsiTargetBadRequest{}
 }
 
-/* UpdateIscsiTargetBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateIscsiTargetBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateIscsiTargetNotFound() *UpdateIscsiTargetNotFound {
 	return &UpdateIscsiTargetNotFound{}
 }
 
-/* UpdateIscsiTargetNotFound describes a response with status code 404, with default header values.
+/*
+UpdateIscsiTargetNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateIscsiTargetInternalServerError() *UpdateIscsiTargetInternalServerE
 	return &UpdateIscsiTargetInternalServerError{}
 }
 
-/* UpdateIscsiTargetInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateIscsiTargetInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

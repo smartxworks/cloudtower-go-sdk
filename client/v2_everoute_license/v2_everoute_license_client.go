@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetV2EverouteLicenses get v2 everoute licenses API
+GetV2EverouteLicenses get v2 everoute licenses API
 */
 func (a *Client) GetV2EverouteLicenses(params *GetV2EverouteLicensesParams, opts ...ClientOption) (*GetV2EverouteLicensesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetV2EverouteLicenses(params *GetV2EverouteLicensesParams, opts
 }
 
 /*
-  GetV2EverouteLicensesConnection get v2 everoute licenses connection API
+GetV2EverouteLicensesConnection get v2 everoute licenses connection API
 */
 func (a *Client) GetV2EverouteLicensesConnection(params *GetV2EverouteLicensesConnectionParams, opts ...ClientOption) (*GetV2EverouteLicensesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) GetV2EverouteLicensesConnection(params *GetV2EverouteLicensesCo
 	op := &runtime.ClientOperation{
 		ID:                 "GetV2EverouteLicensesConnection",
 		Method:             "POST",
-		PathPattern:        "/get-v-2-everoute-licenses-connection",
+		PathPattern:        "/get-v2-everoute-licenses-connection",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

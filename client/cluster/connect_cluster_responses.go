@@ -57,7 +57,8 @@ func NewConnectClusterOK() *ConnectClusterOK {
 	return &ConnectClusterOK{}
 }
 
-/* ConnectClusterOK describes a response with status code 200, with default header values.
+/*
+ConnectClusterOK describes a response with status code 200, with default header values.
 
 ConnectClusterOK connect cluster o k
 */
@@ -96,7 +97,8 @@ func NewConnectClusterBadRequest() *ConnectClusterBadRequest {
 	return &ConnectClusterBadRequest{}
 }
 
-/* ConnectClusterBadRequest describes a response with status code 400, with default header values.
+/*
+ConnectClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewConnectClusterNotFound() *ConnectClusterNotFound {
 	return &ConnectClusterNotFound{}
 }
 
-/* ConnectClusterNotFound describes a response with status code 404, with default header values.
+/*
+ConnectClusterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewConnectClusterInternalServerError() *ConnectClusterInternalServerError {
 	return &ConnectClusterInternalServerError{}
 }
 
-/* ConnectClusterInternalServerError describes a response with status code 500, with default header values.
+/*
+ConnectClusterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

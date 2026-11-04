@@ -57,7 +57,8 @@ func NewGetApplicationsConnectionOK() *GetApplicationsConnectionOK {
 	return &GetApplicationsConnectionOK{}
 }
 
-/* GetApplicationsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetApplicationsConnectionOK describes a response with status code 200, with default header values.
 
 GetApplicationsConnectionOK get applications connection o k
 */
@@ -98,7 +99,8 @@ func NewGetApplicationsConnectionBadRequest() *GetApplicationsConnectionBadReque
 	return &GetApplicationsConnectionBadRequest{}
 }
 
-/* GetApplicationsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetApplicationsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetApplicationsConnectionNotFound() *GetApplicationsConnectionNotFound {
 	return &GetApplicationsConnectionNotFound{}
 }
 
-/* GetApplicationsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetApplicationsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetApplicationsConnectionInternalServerError() *GetApplicationsConnectio
 	return &GetApplicationsConnectionInternalServerError{}
 }
 
-/* GetApplicationsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetApplicationsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

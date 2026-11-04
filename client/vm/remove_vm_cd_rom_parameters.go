@@ -54,10 +54,12 @@ func NewRemoveVMCdRomParamsWithHTTPClient(client *http.Client) *RemoveVMCdRomPar
 	}
 }
 
-/* RemoveVMCdRomParams contains all the parameters to send to the API endpoint
-   for the remove Vm cd rom operation.
+/*
+RemoveVMCdRomParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove Vm cd rom operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveVMCdRomParams struct {
 

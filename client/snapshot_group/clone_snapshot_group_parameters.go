@@ -54,10 +54,12 @@ func NewCloneSnapshotGroupParamsWithHTTPClient(client *http.Client) *CloneSnapsh
 	}
 }
 
-/* CloneSnapshotGroupParams contains all the parameters to send to the API endpoint
-   for the clone snapshot group operation.
+/*
+CloneSnapshotGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clone snapshot group operation.
+
+	Typically these are written to a http.Request.
 */
 type CloneSnapshotGroupParams struct {
 

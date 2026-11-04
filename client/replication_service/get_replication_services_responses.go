@@ -57,7 +57,8 @@ func NewGetReplicationServicesOK() *GetReplicationServicesOK {
 	return &GetReplicationServicesOK{}
 }
 
-/* GetReplicationServicesOK describes a response with status code 200, with default header values.
+/*
+GetReplicationServicesOK describes a response with status code 200, with default header values.
 
 GetReplicationServicesOK get replication services o k
 */
@@ -96,7 +97,8 @@ func NewGetReplicationServicesBadRequest() *GetReplicationServicesBadRequest {
 	return &GetReplicationServicesBadRequest{}
 }
 
-/* GetReplicationServicesBadRequest describes a response with status code 400, with default header values.
+/*
+GetReplicationServicesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetReplicationServicesNotFound() *GetReplicationServicesNotFound {
 	return &GetReplicationServicesNotFound{}
 }
 
-/* GetReplicationServicesNotFound describes a response with status code 404, with default header values.
+/*
+GetReplicationServicesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetReplicationServicesInternalServerError() *GetReplicationServicesInter
 	return &GetReplicationServicesInternalServerError{}
 }
 
-/* GetReplicationServicesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetReplicationServicesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

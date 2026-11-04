@@ -57,7 +57,8 @@ func NewPoweroffVMOK() *PoweroffVMOK {
 	return &PoweroffVMOK{}
 }
 
-/* PoweroffVMOK describes a response with status code 200, with default header values.
+/*
+PoweroffVMOK describes a response with status code 200, with default header values.
 
 PoweroffVMOK poweroff Vm o k
 */
@@ -96,7 +97,8 @@ func NewPoweroffVMBadRequest() *PoweroffVMBadRequest {
 	return &PoweroffVMBadRequest{}
 }
 
-/* PoweroffVMBadRequest describes a response with status code 400, with default header values.
+/*
+PoweroffVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewPoweroffVMNotFound() *PoweroffVMNotFound {
 	return &PoweroffVMNotFound{}
 }
 
-/* PoweroffVMNotFound describes a response with status code 404, with default header values.
+/*
+PoweroffVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewPoweroffVMInternalServerError() *PoweroffVMInternalServerError {
 	return &PoweroffVMInternalServerError{}
 }
 
-/* PoweroffVMInternalServerError describes a response with status code 500, with default header values.
+/*
+PoweroffVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

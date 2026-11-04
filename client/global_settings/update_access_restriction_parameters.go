@@ -54,10 +54,12 @@ func NewUpdateAccessRestrictionParamsWithHTTPClient(client *http.Client) *Update
 	}
 }
 
-/* UpdateAccessRestrictionParams contains all the parameters to send to the API endpoint
-   for the update access restriction operation.
+/*
+UpdateAccessRestrictionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update access restriction operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateAccessRestrictionParams struct {
 

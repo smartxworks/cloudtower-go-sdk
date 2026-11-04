@@ -57,7 +57,8 @@ func NewGetGlobalAlertRulesOK() *GetGlobalAlertRulesOK {
 	return &GetGlobalAlertRulesOK{}
 }
 
-/* GetGlobalAlertRulesOK describes a response with status code 200, with default header values.
+/*
+GetGlobalAlertRulesOK describes a response with status code 200, with default header values.
 
 GetGlobalAlertRulesOK get global alert rules o k
 */
@@ -96,7 +97,8 @@ func NewGetGlobalAlertRulesBadRequest() *GetGlobalAlertRulesBadRequest {
 	return &GetGlobalAlertRulesBadRequest{}
 }
 
-/* GetGlobalAlertRulesBadRequest describes a response with status code 400, with default header values.
+/*
+GetGlobalAlertRulesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetGlobalAlertRulesNotFound() *GetGlobalAlertRulesNotFound {
 	return &GetGlobalAlertRulesNotFound{}
 }
 
-/* GetGlobalAlertRulesNotFound describes a response with status code 404, with default header values.
+/*
+GetGlobalAlertRulesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetGlobalAlertRulesInternalServerError() *GetGlobalAlertRulesInternalSer
 	return &GetGlobalAlertRulesInternalServerError{}
 }
 
-/* GetGlobalAlertRulesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGlobalAlertRulesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

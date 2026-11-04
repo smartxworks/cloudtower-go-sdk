@@ -54,10 +54,12 @@ func NewCreateNamespaceGroupParamsWithHTTPClient(client *http.Client) *CreateNam
 	}
 }
 
-/* CreateNamespaceGroupParams contains all the parameters to send to the API endpoint
-   for the create namespace group operation.
+/*
+CreateNamespaceGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create namespace group operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateNamespaceGroupParams struct {
 

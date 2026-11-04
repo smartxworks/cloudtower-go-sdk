@@ -57,7 +57,8 @@ func NewGetElfImagesOK() *GetElfImagesOK {
 	return &GetElfImagesOK{}
 }
 
-/* GetElfImagesOK describes a response with status code 200, with default header values.
+/*
+GetElfImagesOK describes a response with status code 200, with default header values.
 
 GetElfImagesOK get elf images o k
 */
@@ -96,7 +97,8 @@ func NewGetElfImagesBadRequest() *GetElfImagesBadRequest {
 	return &GetElfImagesBadRequest{}
 }
 
-/* GetElfImagesBadRequest describes a response with status code 400, with default header values.
+/*
+GetElfImagesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetElfImagesNotFound() *GetElfImagesNotFound {
 	return &GetElfImagesNotFound{}
 }
 
-/* GetElfImagesNotFound describes a response with status code 404, with default header values.
+/*
+GetElfImagesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetElfImagesInternalServerError() *GetElfImagesInternalServerError {
 	return &GetElfImagesInternalServerError{}
 }
 
-/* GetElfImagesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetElfImagesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

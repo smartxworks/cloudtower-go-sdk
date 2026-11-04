@@ -57,7 +57,8 @@ func NewGetEntityFiltersOK() *GetEntityFiltersOK {
 	return &GetEntityFiltersOK{}
 }
 
-/* GetEntityFiltersOK describes a response with status code 200, with default header values.
+/*
+GetEntityFiltersOK describes a response with status code 200, with default header values.
 
 GetEntityFiltersOK get entity filters o k
 */
@@ -96,7 +97,8 @@ func NewGetEntityFiltersBadRequest() *GetEntityFiltersBadRequest {
 	return &GetEntityFiltersBadRequest{}
 }
 
-/* GetEntityFiltersBadRequest describes a response with status code 400, with default header values.
+/*
+GetEntityFiltersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetEntityFiltersNotFound() *GetEntityFiltersNotFound {
 	return &GetEntityFiltersNotFound{}
 }
 
-/* GetEntityFiltersNotFound describes a response with status code 404, with default header values.
+/*
+GetEntityFiltersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetEntityFiltersInternalServerError() *GetEntityFiltersInternalServerErr
 	return &GetEntityFiltersInternalServerError{}
 }
 
-/* GetEntityFiltersInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEntityFiltersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewRecoverVMFromRecycleBinParamsWithHTTPClient(client *http.Client) *Recove
 	}
 }
 
-/* RecoverVMFromRecycleBinParams contains all the parameters to send to the API endpoint
-   for the recover Vm from recycle bin operation.
+/*
+RecoverVMFromRecycleBinParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the recover Vm from recycle bin operation.
+
+	Typically these are written to a http.Request.
 */
 type RecoverVMFromRecycleBinParams struct {
 

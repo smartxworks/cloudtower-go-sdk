@@ -57,7 +57,8 @@ func NewGetReplicationServicesConnectionOK() *GetReplicationServicesConnectionOK
 	return &GetReplicationServicesConnectionOK{}
 }
 
-/* GetReplicationServicesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetReplicationServicesConnectionOK describes a response with status code 200, with default header values.
 
 GetReplicationServicesConnectionOK get replication services connection o k
 */
@@ -98,7 +99,8 @@ func NewGetReplicationServicesConnectionBadRequest() *GetReplicationServicesConn
 	return &GetReplicationServicesConnectionBadRequest{}
 }
 
-/* GetReplicationServicesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetReplicationServicesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetReplicationServicesConnectionNotFound() *GetReplicationServicesConnec
 	return &GetReplicationServicesConnectionNotFound{}
 }
 
-/* GetReplicationServicesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetReplicationServicesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetReplicationServicesConnectionInternalServerError() *GetReplicationSer
 	return &GetReplicationServicesConnectionInternalServerError{}
 }
 
-/* GetReplicationServicesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetReplicationServicesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

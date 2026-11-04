@@ -57,7 +57,8 @@ func NewGetNetworkPolicyRuleServicesConnectionOK() *GetNetworkPolicyRuleServices
 	return &GetNetworkPolicyRuleServicesConnectionOK{}
 }
 
-/* GetNetworkPolicyRuleServicesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetNetworkPolicyRuleServicesConnectionOK describes a response with status code 200, with default header values.
 
 GetNetworkPolicyRuleServicesConnectionOK get network policy rule services connection o k
 */
@@ -98,7 +99,8 @@ func NewGetNetworkPolicyRuleServicesConnectionBadRequest() *GetNetworkPolicyRule
 	return &GetNetworkPolicyRuleServicesConnectionBadRequest{}
 }
 
-/* GetNetworkPolicyRuleServicesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetNetworkPolicyRuleServicesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetNetworkPolicyRuleServicesConnectionNotFound() *GetNetworkPolicyRuleSe
 	return &GetNetworkPolicyRuleServicesConnectionNotFound{}
 }
 
-/* GetNetworkPolicyRuleServicesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetNetworkPolicyRuleServicesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetNetworkPolicyRuleServicesConnectionInternalServerError() *GetNetworkP
 	return &GetNetworkPolicyRuleServicesConnectionInternalServerError{}
 }
 
-/* GetNetworkPolicyRuleServicesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNetworkPolicyRuleServicesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

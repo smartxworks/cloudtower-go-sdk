@@ -57,7 +57,8 @@ func NewCreateVirtualPrivateCloudRouterGatewayOK() *CreateVirtualPrivateCloudRou
 	return &CreateVirtualPrivateCloudRouterGatewayOK{}
 }
 
-/* CreateVirtualPrivateCloudRouterGatewayOK describes a response with status code 200, with default header values.
+/*
+CreateVirtualPrivateCloudRouterGatewayOK describes a response with status code 200, with default header values.
 
 CreateVirtualPrivateCloudRouterGatewayOK create virtual private cloud router gateway o k
 */
@@ -96,7 +97,8 @@ func NewCreateVirtualPrivateCloudRouterGatewayBadRequest() *CreateVirtualPrivate
 	return &CreateVirtualPrivateCloudRouterGatewayBadRequest{}
 }
 
-/* CreateVirtualPrivateCloudRouterGatewayBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVirtualPrivateCloudRouterGatewayBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVirtualPrivateCloudRouterGatewayNotFound() *CreateVirtualPrivateCl
 	return &CreateVirtualPrivateCloudRouterGatewayNotFound{}
 }
 
-/* CreateVirtualPrivateCloudRouterGatewayNotFound describes a response with status code 404, with default header values.
+/*
+CreateVirtualPrivateCloudRouterGatewayNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVirtualPrivateCloudRouterGatewayInternalServerError() *CreateVirtu
 	return &CreateVirtualPrivateCloudRouterGatewayInternalServerError{}
 }
 
-/* CreateVirtualPrivateCloudRouterGatewayInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVirtualPrivateCloudRouterGatewayInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

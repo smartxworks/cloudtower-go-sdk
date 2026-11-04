@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetZoneTopoes get zone topoes API
+GetZoneTopoes get zone topoes API
 */
 func (a *Client) GetZoneTopoes(params *GetZoneTopoesParams, opts ...ClientOption) (*GetZoneTopoesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetZoneTopoes(params *GetZoneTopoesParams, opts ...ClientOption
 }
 
 /*
-  GetZoneTopoesConnection get zone topoes connection API
+GetZoneTopoesConnection get zone topoes connection API
 */
 func (a *Client) GetZoneTopoesConnection(params *GetZoneTopoesConnectionParams, opts ...ClientOption) (*GetZoneTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending

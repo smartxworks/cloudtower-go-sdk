@@ -57,7 +57,8 @@ func NewCreateSecurityGroupOK() *CreateSecurityGroupOK {
 	return &CreateSecurityGroupOK{}
 }
 
-/* CreateSecurityGroupOK describes a response with status code 200, with default header values.
+/*
+CreateSecurityGroupOK describes a response with status code 200, with default header values.
 
 CreateSecurityGroupOK create security group o k
 */
@@ -98,7 +99,8 @@ func NewCreateSecurityGroupBadRequest() *CreateSecurityGroupBadRequest {
 	return &CreateSecurityGroupBadRequest{}
 }
 
-/* CreateSecurityGroupBadRequest describes a response with status code 400, with default header values.
+/*
+CreateSecurityGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewCreateSecurityGroupNotFound() *CreateSecurityGroupNotFound {
 	return &CreateSecurityGroupNotFound{}
 }
 
-/* CreateSecurityGroupNotFound describes a response with status code 404, with default header values.
+/*
+CreateSecurityGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewCreateSecurityGroupInternalServerError() *CreateSecurityGroupInternalSer
 	return &CreateSecurityGroupInternalServerError{}
 }
 
-/* CreateSecurityGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateSecurityGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

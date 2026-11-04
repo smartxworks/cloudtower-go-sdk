@@ -57,7 +57,8 @@ func NewUpgradeCloudTowerApplicationOK() *UpgradeCloudTowerApplicationOK {
 	return &UpgradeCloudTowerApplicationOK{}
 }
 
-/* UpgradeCloudTowerApplicationOK describes a response with status code 200, with default header values.
+/*
+UpgradeCloudTowerApplicationOK describes a response with status code 200, with default header values.
 
 UpgradeCloudTowerApplicationOK upgrade cloud tower application o k
 */
@@ -98,7 +99,8 @@ func NewUpgradeCloudTowerApplicationBadRequest() *UpgradeCloudTowerApplicationBa
 	return &UpgradeCloudTowerApplicationBadRequest{}
 }
 
-/* UpgradeCloudTowerApplicationBadRequest describes a response with status code 400, with default header values.
+/*
+UpgradeCloudTowerApplicationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewUpgradeCloudTowerApplicationNotFound() *UpgradeCloudTowerApplicationNotF
 	return &UpgradeCloudTowerApplicationNotFound{}
 }
 
-/* UpgradeCloudTowerApplicationNotFound describes a response with status code 404, with default header values.
+/*
+UpgradeCloudTowerApplicationNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewUpgradeCloudTowerApplicationInternalServerError() *UpgradeCloudTowerAppl
 	return &UpgradeCloudTowerApplicationInternalServerError{}
 }
 
-/* UpgradeCloudTowerApplicationInternalServerError describes a response with status code 500, with default header values.
+/*
+UpgradeCloudTowerApplicationInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewGetSCVMMetricsParamsWithHTTPClient(client *http.Client) *GetSCVMMetricsP
 	}
 }
 
-/* GetSCVMMetricsParams contains all the parameters to send to the API endpoint
-   for the get s c VM metrics operation.
+/*
+GetSCVMMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get s c VM metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSCVMMetricsParams struct {
 

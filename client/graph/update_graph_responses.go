@@ -57,7 +57,8 @@ func NewUpdateGraphOK() *UpdateGraphOK {
 	return &UpdateGraphOK{}
 }
 
-/* UpdateGraphOK describes a response with status code 200, with default header values.
+/*
+UpdateGraphOK describes a response with status code 200, with default header values.
 
 UpdateGraphOK update graph o k
 */
@@ -96,7 +97,8 @@ func NewUpdateGraphBadRequest() *UpdateGraphBadRequest {
 	return &UpdateGraphBadRequest{}
 }
 
-/* UpdateGraphBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateGraphBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateGraphNotFound() *UpdateGraphNotFound {
 	return &UpdateGraphNotFound{}
 }
 
-/* UpdateGraphNotFound describes a response with status code 404, with default header values.
+/*
+UpdateGraphNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateGraphInternalServerError() *UpdateGraphInternalServerError {
 	return &UpdateGraphInternalServerError{}
 }
 
-/* UpdateGraphInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateGraphInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

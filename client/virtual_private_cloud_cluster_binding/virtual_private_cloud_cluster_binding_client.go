@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetVirtualPrivateCloudClusterBindings get virtual private cloud cluster bindings API
+GetVirtualPrivateCloudClusterBindings get virtual private cloud cluster bindings API
 */
 func (a *Client) GetVirtualPrivateCloudClusterBindings(params *GetVirtualPrivateCloudClusterBindingsParams, opts ...ClientOption) (*GetVirtualPrivateCloudClusterBindingsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetVirtualPrivateCloudClusterBindings(params *GetVirtualPrivate
 }
 
 /*
-  GetVirtualPrivateCloudClusterBindingsConnection get virtual private cloud cluster bindings connection API
+GetVirtualPrivateCloudClusterBindingsConnection get virtual private cloud cluster bindings connection API
 */
 func (a *Client) GetVirtualPrivateCloudClusterBindingsConnection(params *GetVirtualPrivateCloudClusterBindingsConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudClusterBindingsConnectionOK, error) {
 	// TODO: Validate the params before sending

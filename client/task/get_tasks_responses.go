@@ -57,7 +57,8 @@ func NewGetTasksOK() *GetTasksOK {
 	return &GetTasksOK{}
 }
 
-/* GetTasksOK describes a response with status code 200, with default header values.
+/*
+GetTasksOK describes a response with status code 200, with default header values.
 
 GetTasksOK get tasks o k
 */
@@ -96,7 +97,8 @@ func NewGetTasksBadRequest() *GetTasksBadRequest {
 	return &GetTasksBadRequest{}
 }
 
-/* GetTasksBadRequest describes a response with status code 400, with default header values.
+/*
+GetTasksBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetTasksNotFound() *GetTasksNotFound {
 	return &GetTasksNotFound{}
 }
 
-/* GetTasksNotFound describes a response with status code 404, with default header values.
+/*
+GetTasksNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetTasksInternalServerError() *GetTasksInternalServerError {
 	return &GetTasksInternalServerError{}
 }
 
-/* GetTasksInternalServerError describes a response with status code 500, with default header values.
+/*
+GetTasksInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

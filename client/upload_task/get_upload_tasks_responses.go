@@ -57,7 +57,8 @@ func NewGetUploadTasksOK() *GetUploadTasksOK {
 	return &GetUploadTasksOK{}
 }
 
-/* GetUploadTasksOK describes a response with status code 200, with default header values.
+/*
+GetUploadTasksOK describes a response with status code 200, with default header values.
 
 GetUploadTasksOK get upload tasks o k
 */
@@ -96,7 +97,8 @@ func NewGetUploadTasksBadRequest() *GetUploadTasksBadRequest {
 	return &GetUploadTasksBadRequest{}
 }
 
-/* GetUploadTasksBadRequest describes a response with status code 400, with default header values.
+/*
+GetUploadTasksBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetUploadTasksNotFound() *GetUploadTasksNotFound {
 	return &GetUploadTasksNotFound{}
 }
 
-/* GetUploadTasksNotFound describes a response with status code 404, with default header values.
+/*
+GetUploadTasksNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetUploadTasksInternalServerError() *GetUploadTasksInternalServerError {
 	return &GetUploadTasksInternalServerError{}
 }
 
-/* GetUploadTasksInternalServerError describes a response with status code 500, with default header values.
+/*
+GetUploadTasksInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

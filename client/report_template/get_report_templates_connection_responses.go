@@ -57,7 +57,8 @@ func NewGetReportTemplatesConnectionOK() *GetReportTemplatesConnectionOK {
 	return &GetReportTemplatesConnectionOK{}
 }
 
-/* GetReportTemplatesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetReportTemplatesConnectionOK describes a response with status code 200, with default header values.
 
 GetReportTemplatesConnectionOK get report templates connection o k
 */
@@ -98,7 +99,8 @@ func NewGetReportTemplatesConnectionBadRequest() *GetReportTemplatesConnectionBa
 	return &GetReportTemplatesConnectionBadRequest{}
 }
 
-/* GetReportTemplatesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetReportTemplatesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetReportTemplatesConnectionNotFound() *GetReportTemplatesConnectionNotF
 	return &GetReportTemplatesConnectionNotFound{}
 }
 
-/* GetReportTemplatesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetReportTemplatesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetReportTemplatesConnectionInternalServerError() *GetReportTemplatesCon
 	return &GetReportTemplatesConnectionInternalServerError{}
 }
 
-/* GetReportTemplatesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetReportTemplatesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

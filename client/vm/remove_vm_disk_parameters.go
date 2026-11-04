@@ -54,10 +54,12 @@ func NewRemoveVMDiskParamsWithHTTPClient(client *http.Client) *RemoveVMDiskParam
 	}
 }
 
-/* RemoveVMDiskParams contains all the parameters to send to the API endpoint
-   for the remove Vm disk operation.
+/*
+RemoveVMDiskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove Vm disk operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveVMDiskParams struct {
 

@@ -54,10 +54,12 @@ func NewGetLogServiceConfigsParamsWithHTTPClient(client *http.Client) *GetLogSer
 	}
 }
 
-/* GetLogServiceConfigsParams contains all the parameters to send to the API endpoint
-   for the get log service configs operation.
+/*
+GetLogServiceConfigsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get log service configs operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLogServiceConfigsParams struct {
 

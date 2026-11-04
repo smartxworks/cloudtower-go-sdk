@@ -63,7 +63,8 @@ func NewResetVMGuestOsPasswordOK() *ResetVMGuestOsPasswordOK {
 	return &ResetVMGuestOsPasswordOK{}
 }
 
-/* ResetVMGuestOsPasswordOK describes a response with status code 200, with default header values.
+/*
+ResetVMGuestOsPasswordOK describes a response with status code 200, with default header values.
 
 ResetVMGuestOsPasswordOK reset Vm guest os password o k
 */
@@ -102,7 +103,8 @@ func NewResetVMGuestOsPasswordNotModified() *ResetVMGuestOsPasswordNotModified {
 	return &ResetVMGuestOsPasswordNotModified{}
 }
 
-/* ResetVMGuestOsPasswordNotModified describes a response with status code 304, with default header values.
+/*
+ResetVMGuestOsPasswordNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewResetVMGuestOsPasswordBadRequest() *ResetVMGuestOsPasswordBadRequest {
 	return &ResetVMGuestOsPasswordBadRequest{}
 }
 
-/* ResetVMGuestOsPasswordBadRequest describes a response with status code 400, with default header values.
+/*
+ResetVMGuestOsPasswordBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewResetVMGuestOsPasswordNotFound() *ResetVMGuestOsPasswordNotFound {
 	return &ResetVMGuestOsPasswordNotFound{}
 }
 
-/* ResetVMGuestOsPasswordNotFound describes a response with status code 404, with default header values.
+/*
+ResetVMGuestOsPasswordNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewResetVMGuestOsPasswordInternalServerError() *ResetVMGuestOsPasswordInter
 	return &ResetVMGuestOsPasswordInternalServerError{}
 }
 
-/* ResetVMGuestOsPasswordInternalServerError describes a response with status code 500, with default header values.
+/*
+ResetVMGuestOsPasswordInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

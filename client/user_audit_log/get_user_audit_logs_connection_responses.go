@@ -57,7 +57,8 @@ func NewGetUserAuditLogsConnectionOK() *GetUserAuditLogsConnectionOK {
 	return &GetUserAuditLogsConnectionOK{}
 }
 
-/* GetUserAuditLogsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetUserAuditLogsConnectionOK describes a response with status code 200, with default header values.
 
 GetUserAuditLogsConnectionOK get user audit logs connection o k
 */
@@ -98,7 +99,8 @@ func NewGetUserAuditLogsConnectionBadRequest() *GetUserAuditLogsConnectionBadReq
 	return &GetUserAuditLogsConnectionBadRequest{}
 }
 
-/* GetUserAuditLogsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetUserAuditLogsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetUserAuditLogsConnectionNotFound() *GetUserAuditLogsConnectionNotFound
 	return &GetUserAuditLogsConnectionNotFound{}
 }
 
-/* GetUserAuditLogsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetUserAuditLogsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetUserAuditLogsConnectionInternalServerError() *GetUserAuditLogsConnect
 	return &GetUserAuditLogsConnectionInternalServerError{}
 }
 
-/* GetUserAuditLogsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetUserAuditLogsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

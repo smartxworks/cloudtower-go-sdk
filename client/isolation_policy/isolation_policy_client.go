@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateIsolationPolicy create isolation policy API
+CreateIsolationPolicy create isolation policy API
 */
 func (a *Client) CreateIsolationPolicy(params *CreateIsolationPolicyParams, opts ...ClientOption) (*CreateIsolationPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateIsolationPolicy(params *CreateIsolationPolicyParams, opts
 }
 
 /*
-  DeleteIsolationPolicy delete isolation policy API
+DeleteIsolationPolicy delete isolation policy API
 */
 func (a *Client) DeleteIsolationPolicy(params *DeleteIsolationPolicyParams, opts ...ClientOption) (*DeleteIsolationPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteIsolationPolicy(params *DeleteIsolationPolicyParams, opts
 }
 
 /*
-  GetIsolationPolicies get isolation policies API
+GetIsolationPolicies get isolation policies API
 */
 func (a *Client) GetIsolationPolicies(params *GetIsolationPoliciesParams, opts ...ClientOption) (*GetIsolationPoliciesOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetIsolationPolicies(params *GetIsolationPoliciesParams, opts .
 }
 
 /*
-  GetIsolationPoliciesConnection get isolation policies connection API
+GetIsolationPoliciesConnection get isolation policies connection API
 */
 func (a *Client) GetIsolationPoliciesConnection(params *GetIsolationPoliciesConnectionParams, opts ...ClientOption) (*GetIsolationPoliciesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetIsolationPoliciesConnection(params *GetIsolationPoliciesConn
 }
 
 /*
-  UpdateIsolationPolicy update isolation policy API
+UpdateIsolationPolicy update isolation policy API
 */
 func (a *Client) UpdateIsolationPolicy(params *UpdateIsolationPolicyParams, opts ...ClientOption) (*UpdateIsolationPolicyOK, error) {
 	// TODO: Validate the params before sending

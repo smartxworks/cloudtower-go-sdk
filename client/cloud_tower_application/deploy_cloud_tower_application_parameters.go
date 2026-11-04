@@ -54,10 +54,12 @@ func NewDeployCloudTowerApplicationParamsWithHTTPClient(client *http.Client) *De
 	}
 }
 
-/* DeployCloudTowerApplicationParams contains all the parameters to send to the API endpoint
-   for the deploy cloud tower application operation.
+/*
+DeployCloudTowerApplicationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the deploy cloud tower application operation.
+
+	Typically these are written to a http.Request.
 */
 type DeployCloudTowerApplicationParams struct {
 

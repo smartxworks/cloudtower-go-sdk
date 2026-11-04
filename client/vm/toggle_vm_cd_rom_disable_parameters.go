@@ -54,10 +54,12 @@ func NewToggleVMCdRomDisableParamsWithHTTPClient(client *http.Client) *ToggleVMC
 	}
 }
 
-/* ToggleVMCdRomDisableParams contains all the parameters to send to the API endpoint
-   for the toggle Vm cd rom disable operation.
+/*
+ToggleVMCdRomDisableParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the toggle Vm cd rom disable operation.
+
+	Typically these are written to a http.Request.
 */
 type ToggleVMCdRomDisableParams struct {
 

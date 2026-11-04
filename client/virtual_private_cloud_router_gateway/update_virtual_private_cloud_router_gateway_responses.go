@@ -57,7 +57,8 @@ func NewUpdateVirtualPrivateCloudRouterGatewayOK() *UpdateVirtualPrivateCloudRou
 	return &UpdateVirtualPrivateCloudRouterGatewayOK{}
 }
 
-/* UpdateVirtualPrivateCloudRouterGatewayOK describes a response with status code 200, with default header values.
+/*
+UpdateVirtualPrivateCloudRouterGatewayOK describes a response with status code 200, with default header values.
 
 UpdateVirtualPrivateCloudRouterGatewayOK update virtual private cloud router gateway o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVirtualPrivateCloudRouterGatewayBadRequest() *UpdateVirtualPrivate
 	return &UpdateVirtualPrivateCloudRouterGatewayBadRequest{}
 }
 
-/* UpdateVirtualPrivateCloudRouterGatewayBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVirtualPrivateCloudRouterGatewayBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVirtualPrivateCloudRouterGatewayNotFound() *UpdateVirtualPrivateCl
 	return &UpdateVirtualPrivateCloudRouterGatewayNotFound{}
 }
 
-/* UpdateVirtualPrivateCloudRouterGatewayNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVirtualPrivateCloudRouterGatewayNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVirtualPrivateCloudRouterGatewayInternalServerError() *UpdateVirtu
 	return &UpdateVirtualPrivateCloudRouterGatewayInternalServerError{}
 }
 
-/* UpdateVirtualPrivateCloudRouterGatewayInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVirtualPrivateCloudRouterGatewayInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

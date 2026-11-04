@@ -57,7 +57,8 @@ func NewGetVirtualPrivateCloudRouteTablesConnectionOK() *GetVirtualPrivateCloudR
 	return &GetVirtualPrivateCloudRouteTablesConnectionOK{}
 }
 
-/* GetVirtualPrivateCloudRouteTablesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVirtualPrivateCloudRouteTablesConnectionOK describes a response with status code 200, with default header values.
 
 GetVirtualPrivateCloudRouteTablesConnectionOK get virtual private cloud route tables connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVirtualPrivateCloudRouteTablesConnectionBadRequest() *GetVirtualPriva
 	return &GetVirtualPrivateCloudRouteTablesConnectionBadRequest{}
 }
 
-/* GetVirtualPrivateCloudRouteTablesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVirtualPrivateCloudRouteTablesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVirtualPrivateCloudRouteTablesConnectionNotFound() *GetVirtualPrivate
 	return &GetVirtualPrivateCloudRouteTablesConnectionNotFound{}
 }
 
-/* GetVirtualPrivateCloudRouteTablesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVirtualPrivateCloudRouteTablesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVirtualPrivateCloudRouteTablesConnectionInternalServerError() *GetVir
 	return &GetVirtualPrivateCloudRouteTablesConnectionInternalServerError{}
 }
 
-/* GetVirtualPrivateCloudRouteTablesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVirtualPrivateCloudRouteTablesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

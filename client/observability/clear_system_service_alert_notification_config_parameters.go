@@ -54,10 +54,12 @@ func NewClearSystemServiceAlertNotificationConfigParamsWithHTTPClient(client *ht
 	}
 }
 
-/* ClearSystemServiceAlertNotificationConfigParams contains all the parameters to send to the API endpoint
-   for the clear system service alert notification config operation.
+/*
+ClearSystemServiceAlertNotificationConfigParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clear system service alert notification config operation.
+
+	Typically these are written to a http.Request.
 */
 type ClearSystemServiceAlertNotificationConfigParams struct {
 

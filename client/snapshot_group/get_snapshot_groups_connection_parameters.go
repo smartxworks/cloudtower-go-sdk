@@ -54,10 +54,12 @@ func NewGetSnapshotGroupsConnectionParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetSnapshotGroupsConnectionParams contains all the parameters to send to the API endpoint
-   for the get snapshot groups connection operation.
+/*
+GetSnapshotGroupsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get snapshot groups connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSnapshotGroupsConnectionParams struct {
 

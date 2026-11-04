@@ -54,10 +54,12 @@ func NewDeleteVdsParamsWithHTTPClient(client *http.Client) *DeleteVdsParams {
 	}
 }
 
-/* DeleteVdsParams contains all the parameters to send to the API endpoint
-   for the delete vds operation.
+/*
+DeleteVdsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete vds operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVdsParams struct {
 

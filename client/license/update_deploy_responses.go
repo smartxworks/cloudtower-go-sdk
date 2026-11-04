@@ -57,7 +57,8 @@ func NewUpdateDeployOK() *UpdateDeployOK {
 	return &UpdateDeployOK{}
 }
 
-/* UpdateDeployOK describes a response with status code 200, with default header values.
+/*
+UpdateDeployOK describes a response with status code 200, with default header values.
 
 UpdateDeployOK update deploy o k
 */
@@ -98,7 +99,8 @@ func NewUpdateDeployBadRequest() *UpdateDeployBadRequest {
 	return &UpdateDeployBadRequest{}
 }
 
-/* UpdateDeployBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateDeployBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewUpdateDeployNotFound() *UpdateDeployNotFound {
 	return &UpdateDeployNotFound{}
 }
 
-/* UpdateDeployNotFound describes a response with status code 404, with default header values.
+/*
+UpdateDeployNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewUpdateDeployInternalServerError() *UpdateDeployInternalServerError {
 	return &UpdateDeployInternalServerError{}
 }
 
-/* UpdateDeployInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateDeployInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

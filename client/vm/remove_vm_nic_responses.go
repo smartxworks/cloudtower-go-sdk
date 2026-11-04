@@ -57,7 +57,8 @@ func NewRemoveVMNicOK() *RemoveVMNicOK {
 	return &RemoveVMNicOK{}
 }
 
-/* RemoveVMNicOK describes a response with status code 200, with default header values.
+/*
+RemoveVMNicOK describes a response with status code 200, with default header values.
 
 RemoveVMNicOK remove Vm nic o k
 */
@@ -96,7 +97,8 @@ func NewRemoveVMNicBadRequest() *RemoveVMNicBadRequest {
 	return &RemoveVMNicBadRequest{}
 }
 
-/* RemoveVMNicBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveVMNicBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRemoveVMNicNotFound() *RemoveVMNicNotFound {
 	return &RemoveVMNicNotFound{}
 }
 
-/* RemoveVMNicNotFound describes a response with status code 404, with default header values.
+/*
+RemoveVMNicNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRemoveVMNicInternalServerError() *RemoveVMNicInternalServerError {
 	return &RemoveVMNicInternalServerError{}
 }
 
-/* RemoveVMNicInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveVMNicInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

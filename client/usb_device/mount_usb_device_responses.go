@@ -57,7 +57,8 @@ func NewMountUsbDeviceOK() *MountUsbDeviceOK {
 	return &MountUsbDeviceOK{}
 }
 
-/* MountUsbDeviceOK describes a response with status code 200, with default header values.
+/*
+MountUsbDeviceOK describes a response with status code 200, with default header values.
 
 MountUsbDeviceOK mount usb device o k
 */
@@ -96,7 +97,8 @@ func NewMountUsbDeviceBadRequest() *MountUsbDeviceBadRequest {
 	return &MountUsbDeviceBadRequest{}
 }
 
-/* MountUsbDeviceBadRequest describes a response with status code 400, with default header values.
+/*
+MountUsbDeviceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewMountUsbDeviceNotFound() *MountUsbDeviceNotFound {
 	return &MountUsbDeviceNotFound{}
 }
 
-/* MountUsbDeviceNotFound describes a response with status code 404, with default header values.
+/*
+MountUsbDeviceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewMountUsbDeviceInternalServerError() *MountUsbDeviceInternalServerError {
 	return &MountUsbDeviceInternalServerError{}
 }
 
-/* MountUsbDeviceInternalServerError describes a response with status code 500, with default header values.
+/*
+MountUsbDeviceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

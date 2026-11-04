@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVirtualPrivateCloudSubnet create virtual private cloud subnet API
+CreateVirtualPrivateCloudSubnet create virtual private cloud subnet API
 */
 func (a *Client) CreateVirtualPrivateCloudSubnet(params *CreateVirtualPrivateCloudSubnetParams, opts ...ClientOption) (*CreateVirtualPrivateCloudSubnetOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVirtualPrivateCloudSubnet(params *CreateVirtualPrivateClo
 }
 
 /*
-  DeleteVirtualPrivateCloudSubnet delete virtual private cloud subnet API
+DeleteVirtualPrivateCloudSubnet delete virtual private cloud subnet API
 */
 func (a *Client) DeleteVirtualPrivateCloudSubnet(params *DeleteVirtualPrivateCloudSubnetParams, opts ...ClientOption) (*DeleteVirtualPrivateCloudSubnetOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVirtualPrivateCloudSubnet(params *DeleteVirtualPrivateClo
 }
 
 /*
-  GetVirtualPrivateCloudSubnets get virtual private cloud subnets API
+GetVirtualPrivateCloudSubnets get virtual private cloud subnets API
 */
 func (a *Client) GetVirtualPrivateCloudSubnets(params *GetVirtualPrivateCloudSubnetsParams, opts ...ClientOption) (*GetVirtualPrivateCloudSubnetsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVirtualPrivateCloudSubnets(params *GetVirtualPrivateCloudSub
 }
 
 /*
-  GetVirtualPrivateCloudSubnetsConnection get virtual private cloud subnets connection API
+GetVirtualPrivateCloudSubnetsConnection get virtual private cloud subnets connection API
 */
 func (a *Client) GetVirtualPrivateCloudSubnetsConnection(params *GetVirtualPrivateCloudSubnetsConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudSubnetsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVirtualPrivateCloudSubnetsConnection(params *GetVirtualPriva
 }
 
 /*
-  UpdateVirtualPrivateCloudSubnet update virtual private cloud subnet API
+UpdateVirtualPrivateCloudSubnet update virtual private cloud subnet API
 */
 func (a *Client) UpdateVirtualPrivateCloudSubnet(params *UpdateVirtualPrivateCloudSubnetParams, opts ...ClientOption) (*UpdateVirtualPrivateCloudSubnetOK, error) {
 	// TODO: Validate the params before sending

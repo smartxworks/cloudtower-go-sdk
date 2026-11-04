@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetBackupRestorePoints get backup restore points API
+GetBackupRestorePoints get backup restore points API
 */
 func (a *Client) GetBackupRestorePoints(params *GetBackupRestorePointsParams, opts ...ClientOption) (*GetBackupRestorePointsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetBackupRestorePoints(params *GetBackupRestorePointsParams, op
 }
 
 /*
-  GetBackupRestorePointsConnection get backup restore points connection API
+GetBackupRestorePointsConnection get backup restore points connection API
 */
 func (a *Client) GetBackupRestorePointsConnection(params *GetBackupRestorePointsConnectionParams, opts ...ClientOption) (*GetBackupRestorePointsConnectionOK, error) {
 	// TODO: Validate the params before sending

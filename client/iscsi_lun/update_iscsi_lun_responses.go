@@ -57,7 +57,8 @@ func NewUpdateIscsiLunOK() *UpdateIscsiLunOK {
 	return &UpdateIscsiLunOK{}
 }
 
-/* UpdateIscsiLunOK describes a response with status code 200, with default header values.
+/*
+UpdateIscsiLunOK describes a response with status code 200, with default header values.
 
 UpdateIscsiLunOK update iscsi lun o k
 */
@@ -96,7 +97,8 @@ func NewUpdateIscsiLunBadRequest() *UpdateIscsiLunBadRequest {
 	return &UpdateIscsiLunBadRequest{}
 }
 
-/* UpdateIscsiLunBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateIscsiLunBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateIscsiLunNotFound() *UpdateIscsiLunNotFound {
 	return &UpdateIscsiLunNotFound{}
 }
 
-/* UpdateIscsiLunNotFound describes a response with status code 404, with default header values.
+/*
+UpdateIscsiLunNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateIscsiLunInternalServerError() *UpdateIscsiLunInternalServerError {
 	return &UpdateIscsiLunInternalServerError{}
 }
 
-/* UpdateIscsiLunInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateIscsiLunInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

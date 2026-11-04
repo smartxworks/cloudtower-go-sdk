@@ -54,10 +54,12 @@ func NewAddVMPciNicParamsWithHTTPClient(client *http.Client) *AddVMPciNicParams 
 	}
 }
 
-/* AddVMPciNicParams contains all the parameters to send to the API endpoint
-   for the add Vm pci nic operation.
+/*
+AddVMPciNicParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add Vm pci nic operation.
+
+	Typically these are written to a http.Request.
 */
 type AddVMPciNicParams struct {
 

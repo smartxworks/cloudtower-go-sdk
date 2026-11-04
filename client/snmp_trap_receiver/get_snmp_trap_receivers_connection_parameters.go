@@ -54,10 +54,12 @@ func NewGetSnmpTrapReceiversConnectionParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetSnmpTrapReceiversConnectionParams contains all the parameters to send to the API endpoint
-   for the get snmp trap receivers connection operation.
+/*
+GetSnmpTrapReceiversConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get snmp trap receivers connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSnmpTrapReceiversConnectionParams struct {
 

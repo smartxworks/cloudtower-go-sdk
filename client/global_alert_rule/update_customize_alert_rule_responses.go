@@ -57,7 +57,8 @@ func NewUpdateCustomizeAlertRuleOK() *UpdateCustomizeAlertRuleOK {
 	return &UpdateCustomizeAlertRuleOK{}
 }
 
-/* UpdateCustomizeAlertRuleOK describes a response with status code 200, with default header values.
+/*
+UpdateCustomizeAlertRuleOK describes a response with status code 200, with default header values.
 
 UpdateCustomizeAlertRuleOK update customize alert rule o k
 */
@@ -96,7 +97,8 @@ func NewUpdateCustomizeAlertRuleBadRequest() *UpdateCustomizeAlertRuleBadRequest
 	return &UpdateCustomizeAlertRuleBadRequest{}
 }
 
-/* UpdateCustomizeAlertRuleBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateCustomizeAlertRuleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateCustomizeAlertRuleNotFound() *UpdateCustomizeAlertRuleNotFound {
 	return &UpdateCustomizeAlertRuleNotFound{}
 }
 
-/* UpdateCustomizeAlertRuleNotFound describes a response with status code 404, with default header values.
+/*
+UpdateCustomizeAlertRuleNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateCustomizeAlertRuleInternalServerError() *UpdateCustomizeAlertRuleI
 	return &UpdateCustomizeAlertRuleInternalServerError{}
 }
 
-/* UpdateCustomizeAlertRuleInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateCustomizeAlertRuleInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

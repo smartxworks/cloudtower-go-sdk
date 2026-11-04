@@ -57,7 +57,8 @@ func NewGetRegistryServicesConnectionOK() *GetRegistryServicesConnectionOK {
 	return &GetRegistryServicesConnectionOK{}
 }
 
-/* GetRegistryServicesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetRegistryServicesConnectionOK describes a response with status code 200, with default header values.
 
 GetRegistryServicesConnectionOK get registry services connection o k
 */
@@ -98,7 +99,8 @@ func NewGetRegistryServicesConnectionBadRequest() *GetRegistryServicesConnection
 	return &GetRegistryServicesConnectionBadRequest{}
 }
 
-/* GetRegistryServicesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetRegistryServicesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetRegistryServicesConnectionNotFound() *GetRegistryServicesConnectionNo
 	return &GetRegistryServicesConnectionNotFound{}
 }
 
-/* GetRegistryServicesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetRegistryServicesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetRegistryServicesConnectionInternalServerError() *GetRegistryServicesC
 	return &GetRegistryServicesConnectionInternalServerError{}
 }
 
-/* GetRegistryServicesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetRegistryServicesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

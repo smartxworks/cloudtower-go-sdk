@@ -57,7 +57,8 @@ func NewGetContentLibraryVMTemplatesOK() *GetContentLibraryVMTemplatesOK {
 	return &GetContentLibraryVMTemplatesOK{}
 }
 
-/* GetContentLibraryVMTemplatesOK describes a response with status code 200, with default header values.
+/*
+GetContentLibraryVMTemplatesOK describes a response with status code 200, with default header values.
 
 GetContentLibraryVMTemplatesOK get content library Vm templates o k
 */
@@ -96,7 +97,8 @@ func NewGetContentLibraryVMTemplatesBadRequest() *GetContentLibraryVMTemplatesBa
 	return &GetContentLibraryVMTemplatesBadRequest{}
 }
 
-/* GetContentLibraryVMTemplatesBadRequest describes a response with status code 400, with default header values.
+/*
+GetContentLibraryVMTemplatesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetContentLibraryVMTemplatesNotFound() *GetContentLibraryVMTemplatesNotF
 	return &GetContentLibraryVMTemplatesNotFound{}
 }
 
-/* GetContentLibraryVMTemplatesNotFound describes a response with status code 404, with default header values.
+/*
+GetContentLibraryVMTemplatesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetContentLibraryVMTemplatesInternalServerError() *GetContentLibraryVMTe
 	return &GetContentLibraryVMTemplatesInternalServerError{}
 }
 
-/* GetContentLibraryVMTemplatesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetContentLibraryVMTemplatesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

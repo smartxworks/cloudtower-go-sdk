@@ -57,7 +57,8 @@ func NewDeleteNvmfSubsystemOK() *DeleteNvmfSubsystemOK {
 	return &DeleteNvmfSubsystemOK{}
 }
 
-/* DeleteNvmfSubsystemOK describes a response with status code 200, with default header values.
+/*
+DeleteNvmfSubsystemOK describes a response with status code 200, with default header values.
 
 DeleteNvmfSubsystemOK delete nvmf subsystem o k
 */
@@ -96,7 +97,8 @@ func NewDeleteNvmfSubsystemBadRequest() *DeleteNvmfSubsystemBadRequest {
 	return &DeleteNvmfSubsystemBadRequest{}
 }
 
-/* DeleteNvmfSubsystemBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteNvmfSubsystemBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteNvmfSubsystemNotFound() *DeleteNvmfSubsystemNotFound {
 	return &DeleteNvmfSubsystemNotFound{}
 }
 
-/* DeleteNvmfSubsystemNotFound describes a response with status code 404, with default header values.
+/*
+DeleteNvmfSubsystemNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteNvmfSubsystemInternalServerError() *DeleteNvmfSubsystemInternalSer
 	return &DeleteNvmfSubsystemInternalServerError{}
 }
 
-/* DeleteNvmfSubsystemInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteNvmfSubsystemInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

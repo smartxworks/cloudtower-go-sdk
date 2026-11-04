@@ -57,7 +57,8 @@ func NewCreateVdsOK() *CreateVdsOK {
 	return &CreateVdsOK{}
 }
 
-/* CreateVdsOK describes a response with status code 200, with default header values.
+/*
+CreateVdsOK describes a response with status code 200, with default header values.
 
 CreateVdsOK create vds o k
 */
@@ -96,7 +97,8 @@ func NewCreateVdsBadRequest() *CreateVdsBadRequest {
 	return &CreateVdsBadRequest{}
 }
 
-/* CreateVdsBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVdsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVdsNotFound() *CreateVdsNotFound {
 	return &CreateVdsNotFound{}
 }
 
-/* CreateVdsNotFound describes a response with status code 404, with default header values.
+/*
+CreateVdsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVdsInternalServerError() *CreateVdsInternalServerError {
 	return &CreateVdsInternalServerError{}
 }
 
-/* CreateVdsInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVdsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

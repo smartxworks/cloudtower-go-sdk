@@ -57,7 +57,8 @@ func NewResumeVMOK() *ResumeVMOK {
 	return &ResumeVMOK{}
 }
 
-/* ResumeVMOK describes a response with status code 200, with default header values.
+/*
+ResumeVMOK describes a response with status code 200, with default header values.
 
 ResumeVMOK resume Vm o k
 */
@@ -96,7 +97,8 @@ func NewResumeVMBadRequest() *ResumeVMBadRequest {
 	return &ResumeVMBadRequest{}
 }
 
-/* ResumeVMBadRequest describes a response with status code 400, with default header values.
+/*
+ResumeVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewResumeVMNotFound() *ResumeVMNotFound {
 	return &ResumeVMNotFound{}
 }
 
-/* ResumeVMNotFound describes a response with status code 404, with default header values.
+/*
+ResumeVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewResumeVMInternalServerError() *ResumeVMInternalServerError {
 	return &ResumeVMInternalServerError{}
 }
 
-/* ResumeVMInternalServerError describes a response with status code 500, with default header values.
+/*
+ResumeVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */
