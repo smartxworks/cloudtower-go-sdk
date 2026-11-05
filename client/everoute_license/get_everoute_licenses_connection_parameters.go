@@ -54,10 +54,12 @@ func NewGetEverouteLicensesConnectionParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetEverouteLicensesConnectionParams contains all the parameters to send to the API endpoint
-   for the get everoute licenses connection operation.
+/*
+GetEverouteLicensesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get everoute licenses connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEverouteLicensesConnectionParams struct {
 

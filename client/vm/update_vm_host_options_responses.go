@@ -63,7 +63,8 @@ func NewUpdateVMHostOptionsOK() *UpdateVMHostOptionsOK {
 	return &UpdateVMHostOptionsOK{}
 }
 
-/* UpdateVMHostOptionsOK describes a response with status code 200, with default header values.
+/*
+UpdateVMHostOptionsOK describes a response with status code 200, with default header values.
 
 UpdateVMHostOptionsOK update Vm host options o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVMHostOptionsNotModified() *UpdateVMHostOptionsNotModified {
 	return &UpdateVMHostOptionsNotModified{}
 }
 
-/* UpdateVMHostOptionsNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVMHostOptionsNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVMHostOptionsBadRequest() *UpdateVMHostOptionsBadRequest {
 	return &UpdateVMHostOptionsBadRequest{}
 }
 
-/* UpdateVMHostOptionsBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMHostOptionsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVMHostOptionsNotFound() *UpdateVMHostOptionsNotFound {
 	return &UpdateVMHostOptionsNotFound{}
 }
 
-/* UpdateVMHostOptionsNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMHostOptionsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVMHostOptionsInternalServerError() *UpdateVMHostOptionsInternalSer
 	return &UpdateVMHostOptionsInternalServerError{}
 }
 
-/* UpdateVMHostOptionsInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMHostOptionsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

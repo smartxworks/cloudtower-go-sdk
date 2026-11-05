@@ -36,6 +36,8 @@ type ClientService interface {
 
 	DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserOK, error)
 
+	GetAuthConfigs(params *GetAuthConfigsParams, opts ...ClientOption) (*GetAuthConfigsOK, error)
+
 	GetMyInfo(params *GetMyInfoParams, opts ...ClientOption) (*GetMyInfoOK, error)
 
 	GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error)
@@ -50,7 +52,7 @@ type ClientService interface {
 }
 
 /*
-  CreateRootUser create root user API
+CreateRootUser create root user API
 */
 func (a *Client) CreateRootUser(params *CreateRootUserParams, opts ...ClientOption) (*CreateRootUserOK, error) {
 	// TODO: Validate the params before sending
@@ -88,7 +90,7 @@ func (a *Client) CreateRootUser(params *CreateRootUserParams, opts ...ClientOpti
 }
 
 /*
-  CreateUser create user API
+CreateUser create user API
 */
 func (a *Client) CreateUser(params *CreateUserParams, opts ...ClientOption) (*CreateUserOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +128,7 @@ func (a *Client) CreateUser(params *CreateUserParams, opts ...ClientOption) (*Cr
 }
 
 /*
-  DeleteUser delete user API
+DeleteUser delete user API
 */
 func (a *Client) DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserOK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +166,45 @@ func (a *Client) DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*De
 }
 
 /*
-  GetMyInfo get my info API
+GetAuthConfigs get auth configs API
+*/
+func (a *Client) GetAuthConfigs(params *GetAuthConfigsParams, opts ...ClientOption) (*GetAuthConfigsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAuthConfigsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetAuthConfigs",
+		Method:             "POST",
+		PathPattern:        "/get-auth-configs",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetAuthConfigsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAuthConfigsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for GetAuthConfigs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetMyInfo get my info API
 */
 func (a *Client) GetMyInfo(params *GetMyInfoParams, opts ...ClientOption) (*GetMyInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +242,7 @@ func (a *Client) GetMyInfo(params *GetMyInfoParams, opts ...ClientOption) (*GetM
 }
 
 /*
-  GetUsers get users API
+GetUsers get users API
 */
 func (a *Client) GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error) {
 	// TODO: Validate the params before sending
@@ -240,7 +280,7 @@ func (a *Client) GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUse
 }
 
 /*
-  GetUsersConnection get users connection API
+GetUsersConnection get users connection API
 */
 func (a *Client) GetUsersConnection(params *GetUsersConnectionParams, opts ...ClientOption) (*GetUsersConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -278,7 +318,7 @@ func (a *Client) GetUsersConnection(params *GetUsersConnectionParams, opts ...Cl
 }
 
 /*
-  Login login API
+Login login API
 */
 func (a *Client) Login(params *LoginParams, opts ...ClientOption) (*LoginOK, error) {
 	// TODO: Validate the params before sending
@@ -316,7 +356,7 @@ func (a *Client) Login(params *LoginParams, opts ...ClientOption) (*LoginOK, err
 }
 
 /*
-  UpdateUser update user API
+UpdateUser update user API
 */
 func (a *Client) UpdateUser(params *UpdateUserParams, opts ...ClientOption) (*UpdateUserOK, error) {
 	// TODO: Validate the params before sending

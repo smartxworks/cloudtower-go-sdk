@@ -57,7 +57,8 @@ func NewCreateHostOK() *CreateHostOK {
 	return &CreateHostOK{}
 }
 
-/* CreateHostOK describes a response with status code 200, with default header values.
+/*
+CreateHostOK describes a response with status code 200, with default header values.
 
 CreateHostOK create host o k
 */
@@ -96,7 +97,8 @@ func NewCreateHostBadRequest() *CreateHostBadRequest {
 	return &CreateHostBadRequest{}
 }
 
-/* CreateHostBadRequest describes a response with status code 400, with default header values.
+/*
+CreateHostBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateHostNotFound() *CreateHostNotFound {
 	return &CreateHostNotFound{}
 }
 
-/* CreateHostNotFound describes a response with status code 404, with default header values.
+/*
+CreateHostNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateHostInternalServerError() *CreateHostInternalServerError {
 	return &CreateHostInternalServerError{}
 }
 
-/* CreateHostInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateHostInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

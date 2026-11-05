@@ -54,10 +54,12 @@ func NewUpdateVMFolderParamsWithHTTPClient(client *http.Client) *UpdateVMFolderP
 	}
 }
 
-/* UpdateVMFolderParams contains all the parameters to send to the API endpoint
-   for the update Vm folder operation.
+/*
+UpdateVMFolderParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm folder operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMFolderParams struct {
 

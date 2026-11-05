@@ -54,10 +54,12 @@ func NewUploadNvramParamsWithHTTPClient(client *http.Client) *UploadNvramParams 
 	}
 }
 
-/* UploadNvramParams contains all the parameters to send to the API endpoint
-   for the upload nvram operation.
+/*
+UploadNvramParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the upload nvram operation.
+
+	Typically these are written to a http.Request.
 */
 type UploadNvramParams struct {
 

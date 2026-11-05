@@ -57,7 +57,8 @@ func NewUpdateVMFolderOK() *UpdateVMFolderOK {
 	return &UpdateVMFolderOK{}
 }
 
-/* UpdateVMFolderOK describes a response with status code 200, with default header values.
+/*
+UpdateVMFolderOK describes a response with status code 200, with default header values.
 
 UpdateVMFolderOK update Vm folder o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVMFolderBadRequest() *UpdateVMFolderBadRequest {
 	return &UpdateVMFolderBadRequest{}
 }
 
-/* UpdateVMFolderBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMFolderBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVMFolderNotFound() *UpdateVMFolderNotFound {
 	return &UpdateVMFolderNotFound{}
 }
 
-/* UpdateVMFolderNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMFolderNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVMFolderInternalServerError() *UpdateVMFolderInternalServerError {
 	return &UpdateVMFolderInternalServerError{}
 }
 
-/* UpdateVMFolderInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMFolderInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

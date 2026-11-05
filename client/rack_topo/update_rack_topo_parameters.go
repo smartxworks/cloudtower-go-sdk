@@ -54,10 +54,12 @@ func NewUpdateRackTopoParamsWithHTTPClient(client *http.Client) *UpdateRackTopoP
 	}
 }
 
-/* UpdateRackTopoParams contains all the parameters to send to the API endpoint
-   for the update rack topo operation.
+/*
+UpdateRackTopoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update rack topo operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateRackTopoParams struct {
 

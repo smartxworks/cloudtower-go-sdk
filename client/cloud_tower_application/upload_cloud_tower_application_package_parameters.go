@@ -52,10 +52,12 @@ func NewUploadCloudTowerApplicationPackageParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* UploadCloudTowerApplicationPackageParams contains all the parameters to send to the API endpoint
-   for the upload cloud tower application package operation.
+/*
+UploadCloudTowerApplicationPackageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the upload cloud tower application package operation.
+
+	Typically these are written to a http.Request.
 */
 type UploadCloudTowerApplicationPackageParams struct {
 

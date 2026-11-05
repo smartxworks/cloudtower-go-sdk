@@ -57,7 +57,8 @@ func NewUpdateAccessRestrictionOK() *UpdateAccessRestrictionOK {
 	return &UpdateAccessRestrictionOK{}
 }
 
-/* UpdateAccessRestrictionOK describes a response with status code 200, with default header values.
+/*
+UpdateAccessRestrictionOK describes a response with status code 200, with default header values.
 
 UpdateAccessRestrictionOK update access restriction o k
 */
@@ -98,7 +99,8 @@ func NewUpdateAccessRestrictionBadRequest() *UpdateAccessRestrictionBadRequest {
 	return &UpdateAccessRestrictionBadRequest{}
 }
 
-/* UpdateAccessRestrictionBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateAccessRestrictionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewUpdateAccessRestrictionNotFound() *UpdateAccessRestrictionNotFound {
 	return &UpdateAccessRestrictionNotFound{}
 }
 
-/* UpdateAccessRestrictionNotFound describes a response with status code 404, with default header values.
+/*
+UpdateAccessRestrictionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewUpdateAccessRestrictionInternalServerError() *UpdateAccessRestrictionInt
 	return &UpdateAccessRestrictionInternalServerError{}
 }
 
-/* UpdateAccessRestrictionInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateAccessRestrictionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

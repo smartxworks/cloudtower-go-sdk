@@ -57,7 +57,8 @@ func NewGetBackupStoreRepositoriesOK() *GetBackupStoreRepositoriesOK {
 	return &GetBackupStoreRepositoriesOK{}
 }
 
-/* GetBackupStoreRepositoriesOK describes a response with status code 200, with default header values.
+/*
+GetBackupStoreRepositoriesOK describes a response with status code 200, with default header values.
 
 GetBackupStoreRepositoriesOK get backup store repositories o k
 */
@@ -96,7 +97,8 @@ func NewGetBackupStoreRepositoriesBadRequest() *GetBackupStoreRepositoriesBadReq
 	return &GetBackupStoreRepositoriesBadRequest{}
 }
 
-/* GetBackupStoreRepositoriesBadRequest describes a response with status code 400, with default header values.
+/*
+GetBackupStoreRepositoriesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetBackupStoreRepositoriesNotFound() *GetBackupStoreRepositoriesNotFound
 	return &GetBackupStoreRepositoriesNotFound{}
 }
 
-/* GetBackupStoreRepositoriesNotFound describes a response with status code 404, with default header values.
+/*
+GetBackupStoreRepositoriesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetBackupStoreRepositoriesInternalServerError() *GetBackupStoreRepositor
 	return &GetBackupStoreRepositoriesInternalServerError{}
 }
 
-/* GetBackupStoreRepositoriesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetBackupStoreRepositoriesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

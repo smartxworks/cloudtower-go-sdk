@@ -54,10 +54,12 @@ func NewGetBackupServicesConnectionParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetBackupServicesConnectionParams contains all the parameters to send to the API endpoint
-   for the get backup services connection operation.
+/*
+GetBackupServicesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backup services connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackupServicesConnectionParams struct {
 

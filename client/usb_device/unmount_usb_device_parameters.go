@@ -54,10 +54,12 @@ func NewUnmountUsbDeviceParamsWithHTTPClient(client *http.Client) *UnmountUsbDev
 	}
 }
 
-/* UnmountUsbDeviceParams contains all the parameters to send to the API endpoint
-   for the unmount usb device operation.
+/*
+UnmountUsbDeviceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the unmount usb device operation.
+
+	Typically these are written to a http.Request.
 */
 type UnmountUsbDeviceParams struct {
 

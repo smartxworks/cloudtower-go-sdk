@@ -57,7 +57,8 @@ func NewUpdateVMOK() *UpdateVMOK {
 	return &UpdateVMOK{}
 }
 
-/* UpdateVMOK describes a response with status code 200, with default header values.
+/*
+UpdateVMOK describes a response with status code 200, with default header values.
 
 UpdateVMOK update Vm o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVMBadRequest() *UpdateVMBadRequest {
 	return &UpdateVMBadRequest{}
 }
 
-/* UpdateVMBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVMNotFound() *UpdateVMNotFound {
 	return &UpdateVMNotFound{}
 }
 
-/* UpdateVMNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVMInternalServerError() *UpdateVMInternalServerError {
 	return &UpdateVMInternalServerError{}
 }
 
-/* UpdateVMInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewCreateHostParamsWithHTTPClient(client *http.Client) *CreateHostParams {
 	}
 }
 
-/* CreateHostParams contains all the parameters to send to the API endpoint
-   for the create host operation.
+/*
+CreateHostParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create host operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateHostParams struct {
 

@@ -57,7 +57,8 @@ func NewGetIscsiConnectionsOK() *GetIscsiConnectionsOK {
 	return &GetIscsiConnectionsOK{}
 }
 
-/* GetIscsiConnectionsOK describes a response with status code 200, with default header values.
+/*
+GetIscsiConnectionsOK describes a response with status code 200, with default header values.
 
 GetIscsiConnectionsOK get iscsi connections o k
 */
@@ -96,7 +97,8 @@ func NewGetIscsiConnectionsBadRequest() *GetIscsiConnectionsBadRequest {
 	return &GetIscsiConnectionsBadRequest{}
 }
 
-/* GetIscsiConnectionsBadRequest describes a response with status code 400, with default header values.
+/*
+GetIscsiConnectionsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetIscsiConnectionsNotFound() *GetIscsiConnectionsNotFound {
 	return &GetIscsiConnectionsNotFound{}
 }
 
-/* GetIscsiConnectionsNotFound describes a response with status code 404, with default header values.
+/*
+GetIscsiConnectionsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetIscsiConnectionsInternalServerError() *GetIscsiConnectionsInternalSer
 	return &GetIscsiConnectionsInternalServerError{}
 }
 
-/* GetIscsiConnectionsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetIscsiConnectionsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

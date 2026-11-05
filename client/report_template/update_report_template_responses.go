@@ -57,7 +57,8 @@ func NewUpdateReportTemplateOK() *UpdateReportTemplateOK {
 	return &UpdateReportTemplateOK{}
 }
 
-/* UpdateReportTemplateOK describes a response with status code 200, with default header values.
+/*
+UpdateReportTemplateOK describes a response with status code 200, with default header values.
 
 UpdateReportTemplateOK update report template o k
 */
@@ -96,7 +97,8 @@ func NewUpdateReportTemplateBadRequest() *UpdateReportTemplateBadRequest {
 	return &UpdateReportTemplateBadRequest{}
 }
 
-/* UpdateReportTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateReportTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateReportTemplateNotFound() *UpdateReportTemplateNotFound {
 	return &UpdateReportTemplateNotFound{}
 }
 
-/* UpdateReportTemplateNotFound describes a response with status code 404, with default header values.
+/*
+UpdateReportTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateReportTemplateInternalServerError() *UpdateReportTemplateInternalS
 	return &UpdateReportTemplateInternalServerError{}
 }
 
-/* UpdateReportTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateReportTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

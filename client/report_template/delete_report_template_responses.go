@@ -57,7 +57,8 @@ func NewDeleteReportTemplateOK() *DeleteReportTemplateOK {
 	return &DeleteReportTemplateOK{}
 }
 
-/* DeleteReportTemplateOK describes a response with status code 200, with default header values.
+/*
+DeleteReportTemplateOK describes a response with status code 200, with default header values.
 
 DeleteReportTemplateOK delete report template o k
 */
@@ -96,7 +97,8 @@ func NewDeleteReportTemplateBadRequest() *DeleteReportTemplateBadRequest {
 	return &DeleteReportTemplateBadRequest{}
 }
 
-/* DeleteReportTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteReportTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteReportTemplateNotFound() *DeleteReportTemplateNotFound {
 	return &DeleteReportTemplateNotFound{}
 }
 
-/* DeleteReportTemplateNotFound describes a response with status code 404, with default header values.
+/*
+DeleteReportTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteReportTemplateInternalServerError() *DeleteReportTemplateInternalS
 	return &DeleteReportTemplateInternalServerError{}
 }
 
-/* DeleteReportTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteReportTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

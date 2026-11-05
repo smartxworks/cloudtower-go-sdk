@@ -57,7 +57,8 @@ func NewGetMetaLeaderOK() *GetMetaLeaderOK {
 	return &GetMetaLeaderOK{}
 }
 
-/* GetMetaLeaderOK describes a response with status code 200, with default header values.
+/*
+GetMetaLeaderOK describes a response with status code 200, with default header values.
 
 GetMetaLeaderOK get meta leader o k
 */
@@ -96,7 +97,8 @@ func NewGetMetaLeaderBadRequest() *GetMetaLeaderBadRequest {
 	return &GetMetaLeaderBadRequest{}
 }
 
-/* GetMetaLeaderBadRequest describes a response with status code 400, with default header values.
+/*
+GetMetaLeaderBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetMetaLeaderNotFound() *GetMetaLeaderNotFound {
 	return &GetMetaLeaderNotFound{}
 }
 
-/* GetMetaLeaderNotFound describes a response with status code 404, with default header values.
+/*
+GetMetaLeaderNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetMetaLeaderInternalServerError() *GetMetaLeaderInternalServerError {
 	return &GetMetaLeaderInternalServerError{}
 }
 
-/* GetMetaLeaderInternalServerError describes a response with status code 500, with default header values.
+/*
+GetMetaLeaderInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

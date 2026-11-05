@@ -54,10 +54,12 @@ func NewGetBackupRestorePointsConnectionParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* GetBackupRestorePointsConnectionParams contains all the parameters to send to the API endpoint
-   for the get backup restore points connection operation.
+/*
+GetBackupRestorePointsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backup restore points connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackupRestorePointsConnectionParams struct {
 

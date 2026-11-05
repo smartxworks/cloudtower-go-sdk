@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetSMTPServers get Smtp servers API
+GetSMTPServers get Smtp servers API
 */
 func (a *Client) GetSMTPServers(params *GetSMTPServersParams, opts ...ClientOption) (*GetSMTPServersOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetSMTPServers(params *GetSMTPServersParams, opts ...ClientOpti
 }
 
 /*
-  GetSMTPServersConnection get Smtp servers connection API
+GetSMTPServersConnection get Smtp servers connection API
 */
 func (a *Client) GetSMTPServersConnection(params *GetSMTPServersConnectionParams, opts ...ClientOption) (*GetSMTPServersConnectionOK, error) {
 	// TODO: Validate the params before sending

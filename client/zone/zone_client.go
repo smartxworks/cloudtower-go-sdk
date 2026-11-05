@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetZones get zones API
+GetZones get zones API
 */
 func (a *Client) GetZones(params *GetZonesParams, opts ...ClientOption) (*GetZonesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetZones(params *GetZonesParams, opts ...ClientOption) (*GetZon
 }
 
 /*
-  GetZonesConnection get zones connection API
+GetZonesConnection get zones connection API
 */
 func (a *Client) GetZonesConnection(params *GetZonesConnectionParams, opts ...ClientOption) (*GetZonesConnectionOK, error) {
 	// TODO: Validate the params before sending

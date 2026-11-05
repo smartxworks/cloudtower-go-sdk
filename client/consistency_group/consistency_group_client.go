@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateConsistencyGroup create consistency group API
+CreateConsistencyGroup create consistency group API
 */
 func (a *Client) CreateConsistencyGroup(params *CreateConsistencyGroupParams, opts ...ClientOption) (*CreateConsistencyGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateConsistencyGroup(params *CreateConsistencyGroupParams, op
 }
 
 /*
-  DeleteConsistencyGroup delete consistency group API
+DeleteConsistencyGroup delete consistency group API
 */
 func (a *Client) DeleteConsistencyGroup(params *DeleteConsistencyGroupParams, opts ...ClientOption) (*DeleteConsistencyGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteConsistencyGroup(params *DeleteConsistencyGroupParams, op
 }
 
 /*
-  GetConsistencyGroups get consistency groups API
+GetConsistencyGroups get consistency groups API
 */
 func (a *Client) GetConsistencyGroups(params *GetConsistencyGroupsParams, opts ...ClientOption) (*GetConsistencyGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetConsistencyGroups(params *GetConsistencyGroupsParams, opts .
 }
 
 /*
-  GetConsistencyGroupsConnection get consistency groups connection API
+GetConsistencyGroupsConnection get consistency groups connection API
 */
 func (a *Client) GetConsistencyGroupsConnection(params *GetConsistencyGroupsConnectionParams, opts ...ClientOption) (*GetConsistencyGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetConsistencyGroupsConnection(params *GetConsistencyGroupsConn
 }
 
 /*
-  UpdateConsistencyGroup update consistency group API
+UpdateConsistencyGroup update consistency group API
 */
 func (a *Client) UpdateConsistencyGroup(params *UpdateConsistencyGroupParams, opts ...ClientOption) (*UpdateConsistencyGroupOK, error) {
 	// TODO: Validate the params before sending

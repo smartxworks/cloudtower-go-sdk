@@ -52,7 +52,7 @@ type ClientService interface {
 }
 
 /*
-  CreateClusterRecycleBinSetting create cluster recycle bin setting API
+CreateClusterRecycleBinSetting create cluster recycle bin setting API
 */
 func (a *Client) CreateClusterRecycleBinSetting(params *CreateClusterRecycleBinSettingParams, opts ...ClientOption) (*CreateClusterRecycleBinSettingOK, error) {
 	// TODO: Validate the params before sending
@@ -90,7 +90,7 @@ func (a *Client) CreateClusterRecycleBinSetting(params *CreateClusterRecycleBinS
 }
 
 /*
-  DeleteClusterRecycleBinSetting delete cluster recycle bin setting API
+DeleteClusterRecycleBinSetting delete cluster recycle bin setting API
 */
 func (a *Client) DeleteClusterRecycleBinSetting(params *DeleteClusterRecycleBinSettingParams, opts ...ClientOption) (*DeleteClusterRecycleBinSettingOK, error) {
 	// TODO: Validate the params before sending
@@ -128,7 +128,7 @@ func (a *Client) DeleteClusterRecycleBinSetting(params *DeleteClusterRecycleBinS
 }
 
 /*
-  GetGlobalSettingses get global settingses API
+GetGlobalSettingses get global settingses API
 */
 func (a *Client) GetGlobalSettingses(params *GetGlobalSettingsesParams, opts ...ClientOption) (*GetGlobalSettingsesOK, error) {
 	// TODO: Validate the params before sending
@@ -166,7 +166,7 @@ func (a *Client) GetGlobalSettingses(params *GetGlobalSettingsesParams, opts ...
 }
 
 /*
-  GetGlobalSettingsesConnection get global settingses connection API
+GetGlobalSettingsesConnection get global settingses connection API
 */
 func (a *Client) GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnectionParams, opts ...ClientOption) (*GetGlobalSettingsesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -204,7 +204,7 @@ func (a *Client) GetGlobalSettingsesConnection(params *GetGlobalSettingsesConnec
 }
 
 /*
-  UpdateAccessRestriction update access restriction API
+UpdateAccessRestriction update access restriction API
 */
 func (a *Client) UpdateAccessRestriction(params *UpdateAccessRestrictionParams, opts ...ClientOption) (*UpdateAccessRestrictionOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +242,7 @@ func (a *Client) UpdateAccessRestriction(params *UpdateAccessRestrictionParams, 
 }
 
 /*
-  UpdateClusterRecycleBinSetting update cluster recycle bin setting API
+UpdateClusterRecycleBinSetting update cluster recycle bin setting API
 */
 func (a *Client) UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinSettingParams, opts ...ClientOption) (*UpdateClusterRecycleBinSettingOK, error) {
 	// TODO: Validate the params before sending
@@ -280,7 +280,7 @@ func (a *Client) UpdateClusterRecycleBinSetting(params *UpdateClusterRecycleBinS
 }
 
 /*
-  UpdateGlobalRecycleBinSetting update global recycle bin setting API
+UpdateGlobalRecycleBinSetting update global recycle bin setting API
 */
 func (a *Client) UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSettingParams, opts ...ClientOption) (*UpdateGlobalRecycleBinSettingOK, error) {
 	// TODO: Validate the params before sending
@@ -318,7 +318,7 @@ func (a *Client) UpdateGlobalRecycleBinSetting(params *UpdateGlobalRecycleBinSet
 }
 
 /*
-  UpdatePasswordSecurity update password security API
+UpdatePasswordSecurity update password security API
 */
 func (a *Client) UpdatePasswordSecurity(params *UpdatePasswordSecurityParams, opts ...ClientOption) (*UpdatePasswordSecurityOK, error) {
 	// TODO: Validate the params before sending
@@ -356,7 +356,7 @@ func (a *Client) UpdatePasswordSecurity(params *UpdatePasswordSecurityParams, op
 }
 
 /*
-  UpdateSessionTimeout update session timeout API
+UpdateSessionTimeout update session timeout API
 */
 func (a *Client) UpdateSessionTimeout(params *UpdateSessionTimeoutParams, opts ...ClientOption) (*UpdateSessionTimeoutOK, error) {
 	// TODO: Validate the params before sending

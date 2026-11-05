@@ -57,7 +57,8 @@ func NewGetVMNicsConnectionOK() *GetVMNicsConnectionOK {
 	return &GetVMNicsConnectionOK{}
 }
 
-/* GetVMNicsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVMNicsConnectionOK describes a response with status code 200, with default header values.
 
 GetVMNicsConnectionOK get Vm nics connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVMNicsConnectionBadRequest() *GetVMNicsConnectionBadRequest {
 	return &GetVMNicsConnectionBadRequest{}
 }
 
-/* GetVMNicsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMNicsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVMNicsConnectionNotFound() *GetVMNicsConnectionNotFound {
 	return &GetVMNicsConnectionNotFound{}
 }
 
-/* GetVMNicsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVMNicsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVMNicsConnectionInternalServerError() *GetVMNicsConnectionInternalSer
 	return &GetVMNicsConnectionInternalServerError{}
 }
 
-/* GetVMNicsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMNicsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

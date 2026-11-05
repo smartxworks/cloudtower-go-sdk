@@ -57,7 +57,8 @@ func NewUnmountDiskOK() *UnmountDiskOK {
 	return &UnmountDiskOK{}
 }
 
-/* UnmountDiskOK describes a response with status code 200, with default header values.
+/*
+UnmountDiskOK describes a response with status code 200, with default header values.
 
 UnmountDiskOK unmount disk o k
 */
@@ -96,7 +97,8 @@ func NewUnmountDiskBadRequest() *UnmountDiskBadRequest {
 	return &UnmountDiskBadRequest{}
 }
 
-/* UnmountDiskBadRequest describes a response with status code 400, with default header values.
+/*
+UnmountDiskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUnmountDiskNotFound() *UnmountDiskNotFound {
 	return &UnmountDiskNotFound{}
 }
 
-/* UnmountDiskNotFound describes a response with status code 404, with default header values.
+/*
+UnmountDiskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUnmountDiskInternalServerError() *UnmountDiskInternalServerError {
 	return &UnmountDiskInternalServerError{}
 }
 
-/* UnmountDiskInternalServerError describes a response with status code 500, with default header values.
+/*
+UnmountDiskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

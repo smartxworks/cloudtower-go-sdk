@@ -57,7 +57,8 @@ func NewUpdateVMDiskOK() *UpdateVMDiskOK {
 	return &UpdateVMDiskOK{}
 }
 
-/* UpdateVMDiskOK describes a response with status code 200, with default header values.
+/*
+UpdateVMDiskOK describes a response with status code 200, with default header values.
 
 UpdateVMDiskOK update Vm disk o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVMDiskBadRequest() *UpdateVMDiskBadRequest {
 	return &UpdateVMDiskBadRequest{}
 }
 
-/* UpdateVMDiskBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMDiskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVMDiskNotFound() *UpdateVMDiskNotFound {
 	return &UpdateVMDiskNotFound{}
 }
 
-/* UpdateVMDiskNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMDiskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVMDiskInternalServerError() *UpdateVMDiskInternalServerError {
 	return &UpdateVMDiskInternalServerError{}
 }
 
-/* UpdateVMDiskInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMDiskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

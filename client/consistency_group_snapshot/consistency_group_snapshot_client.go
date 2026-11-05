@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateConsistencyGroupSnapshot create consistency group snapshot API
+CreateConsistencyGroupSnapshot create consistency group snapshot API
 */
 func (a *Client) CreateConsistencyGroupSnapshot(params *CreateConsistencyGroupSnapshotParams, opts ...ClientOption) (*CreateConsistencyGroupSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateConsistencyGroupSnapshot(params *CreateConsistencyGroupSn
 }
 
 /*
-  DeleteConsistencyGroupSnapshot delete consistency group snapshot API
+DeleteConsistencyGroupSnapshot delete consistency group snapshot API
 */
 func (a *Client) DeleteConsistencyGroupSnapshot(params *DeleteConsistencyGroupSnapshotParams, opts ...ClientOption) (*DeleteConsistencyGroupSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteConsistencyGroupSnapshot(params *DeleteConsistencyGroupSn
 }
 
 /*
-  GetConsistencyGroupSnapshots get consistency group snapshots API
+GetConsistencyGroupSnapshots get consistency group snapshots API
 */
 func (a *Client) GetConsistencyGroupSnapshots(params *GetConsistencyGroupSnapshotsParams, opts ...ClientOption) (*GetConsistencyGroupSnapshotsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetConsistencyGroupSnapshots(params *GetConsistencyGroupSnapsho
 }
 
 /*
-  GetConsistencyGroupSnapshotsConnection get consistency group snapshots connection API
+GetConsistencyGroupSnapshotsConnection get consistency group snapshots connection API
 */
 func (a *Client) GetConsistencyGroupSnapshotsConnection(params *GetConsistencyGroupSnapshotsConnectionParams, opts ...ClientOption) (*GetConsistencyGroupSnapshotsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetConsistencyGroupSnapshotsConnection(params *GetConsistencyGr
 }
 
 /*
-  UpdateConsistencyGroupSnapshot update consistency group snapshot API
+UpdateConsistencyGroupSnapshot update consistency group snapshot API
 */
 func (a *Client) UpdateConsistencyGroupSnapshot(params *UpdateConsistencyGroupSnapshotParams, opts ...ClientOption) (*UpdateConsistencyGroupSnapshotOK, error) {
 	// TODO: Validate the params before sending

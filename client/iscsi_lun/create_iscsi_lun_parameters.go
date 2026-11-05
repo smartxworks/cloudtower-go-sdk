@@ -54,10 +54,12 @@ func NewCreateIscsiLunParamsWithHTTPClient(client *http.Client) *CreateIscsiLunP
 	}
 }
 
-/* CreateIscsiLunParams contains all the parameters to send to the API endpoint
-   for the create iscsi lun operation.
+/*
+CreateIscsiLunParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create iscsi lun operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateIscsiLunParams struct {
 

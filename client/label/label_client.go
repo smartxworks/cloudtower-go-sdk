@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  AddLabelsToResources add labels to resources API
+AddLabelsToResources add labels to resources API
 */
 func (a *Client) AddLabelsToResources(params *AddLabelsToResourcesParams, opts ...ClientOption) (*AddLabelsToResourcesOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) AddLabelsToResources(params *AddLabelsToResourcesParams, opts .
 }
 
 /*
-  CreateLabel create label API
+CreateLabel create label API
 */
 func (a *Client) CreateLabel(params *CreateLabelParams, opts ...ClientOption) (*CreateLabelOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) CreateLabel(params *CreateLabelParams, opts ...ClientOption) (*
 }
 
 /*
-  DeleteLabel delete label API
+DeleteLabel delete label API
 */
 func (a *Client) DeleteLabel(params *DeleteLabelParams, opts ...ClientOption) (*DeleteLabelOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) DeleteLabel(params *DeleteLabelParams, opts ...ClientOption) (*
 }
 
 /*
-  GetLabels get labels API
+GetLabels get labels API
 */
 func (a *Client) GetLabels(params *GetLabelsParams, opts ...ClientOption) (*GetLabelsOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) GetLabels(params *GetLabelsParams, opts ...ClientOption) (*GetL
 }
 
 /*
-  GetLabelsConnection get labels connection API
+GetLabelsConnection get labels connection API
 */
 func (a *Client) GetLabelsConnection(params *GetLabelsConnectionParams, opts ...ClientOption) (*GetLabelsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -238,7 +238,7 @@ func (a *Client) GetLabelsConnection(params *GetLabelsConnectionParams, opts ...
 }
 
 /*
-  RemoveLabelsFromResources remove labels from resources API
+RemoveLabelsFromResources remove labels from resources API
 */
 func (a *Client) RemoveLabelsFromResources(params *RemoveLabelsFromResourcesParams, opts ...ClientOption) (*RemoveLabelsFromResourcesOK, error) {
 	// TODO: Validate the params before sending
@@ -276,7 +276,7 @@ func (a *Client) RemoveLabelsFromResources(params *RemoveLabelsFromResourcesPara
 }
 
 /*
-  UpdateLabel update label API
+UpdateLabel update label API
 */
 func (a *Client) UpdateLabel(params *UpdateLabelParams, opts ...ClientOption) (*UpdateLabelOK, error) {
 	// TODO: Validate the params before sending

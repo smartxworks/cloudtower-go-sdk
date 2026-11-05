@@ -54,10 +54,12 @@ func NewCreateDatacenterParamsWithHTTPClient(client *http.Client) *CreateDatacen
 	}
 }
 
-/* CreateDatacenterParams contains all the parameters to send to the API endpoint
-   for the create datacenter operation.
+/*
+CreateDatacenterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create datacenter operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateDatacenterParams struct {
 

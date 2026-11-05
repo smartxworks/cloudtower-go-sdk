@@ -57,7 +57,8 @@ func NewCreateLogCollectionOK() *CreateLogCollectionOK {
 	return &CreateLogCollectionOK{}
 }
 
-/* CreateLogCollectionOK describes a response with status code 200, with default header values.
+/*
+CreateLogCollectionOK describes a response with status code 200, with default header values.
 
 CreateLogCollectionOK create log collection o k
 */
@@ -96,7 +97,8 @@ func NewCreateLogCollectionBadRequest() *CreateLogCollectionBadRequest {
 	return &CreateLogCollectionBadRequest{}
 }
 
-/* CreateLogCollectionBadRequest describes a response with status code 400, with default header values.
+/*
+CreateLogCollectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateLogCollectionNotFound() *CreateLogCollectionNotFound {
 	return &CreateLogCollectionNotFound{}
 }
 
-/* CreateLogCollectionNotFound describes a response with status code 404, with default header values.
+/*
+CreateLogCollectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateLogCollectionInternalServerError() *CreateLogCollectionInternalSer
 	return &CreateLogCollectionInternalServerError{}
 }
 
-/* CreateLogCollectionInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateLogCollectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

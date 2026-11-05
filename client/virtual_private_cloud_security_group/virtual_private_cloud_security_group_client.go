@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVirtualPrivateCloudSecurityGroup create virtual private cloud security group API
+CreateVirtualPrivateCloudSecurityGroup create virtual private cloud security group API
 */
 func (a *Client) CreateVirtualPrivateCloudSecurityGroup(params *CreateVirtualPrivateCloudSecurityGroupParams, opts ...ClientOption) (*CreateVirtualPrivateCloudSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVirtualPrivateCloudSecurityGroup(params *CreateVirtualPri
 }
 
 /*
-  DeleteVirtualPrivateCloudSecurityGroup delete virtual private cloud security group API
+DeleteVirtualPrivateCloudSecurityGroup delete virtual private cloud security group API
 */
 func (a *Client) DeleteVirtualPrivateCloudSecurityGroup(params *DeleteVirtualPrivateCloudSecurityGroupParams, opts ...ClientOption) (*DeleteVirtualPrivateCloudSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVirtualPrivateCloudSecurityGroup(params *DeleteVirtualPri
 }
 
 /*
-  GetVirtualPrivateCloudSecurityGroups get virtual private cloud security groups API
+GetVirtualPrivateCloudSecurityGroups get virtual private cloud security groups API
 */
 func (a *Client) GetVirtualPrivateCloudSecurityGroups(params *GetVirtualPrivateCloudSecurityGroupsParams, opts ...ClientOption) (*GetVirtualPrivateCloudSecurityGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVirtualPrivateCloudSecurityGroups(params *GetVirtualPrivateC
 }
 
 /*
-  GetVirtualPrivateCloudSecurityGroupsConnection get virtual private cloud security groups connection API
+GetVirtualPrivateCloudSecurityGroupsConnection get virtual private cloud security groups connection API
 */
 func (a *Client) GetVirtualPrivateCloudSecurityGroupsConnection(params *GetVirtualPrivateCloudSecurityGroupsConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudSecurityGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVirtualPrivateCloudSecurityGroupsConnection(params *GetVirtu
 }
 
 /*
-  UpdateVirtualPrivateCloudSecurityGroup update virtual private cloud security group API
+UpdateVirtualPrivateCloudSecurityGroup update virtual private cloud security group API
 */
 func (a *Client) UpdateVirtualPrivateCloudSecurityGroup(params *UpdateVirtualPrivateCloudSecurityGroupParams, opts ...ClientOption) (*UpdateVirtualPrivateCloudSecurityGroupOK, error) {
 	// TODO: Validate the params before sending

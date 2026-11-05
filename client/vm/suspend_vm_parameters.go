@@ -54,10 +54,12 @@ func NewSuspendVMParamsWithHTTPClient(client *http.Client) *SuspendVMParams {
 	}
 }
 
-/* SuspendVMParams contains all the parameters to send to the API endpoint
-   for the suspend Vm operation.
+/*
+SuspendVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the suspend Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type SuspendVMParams struct {
 

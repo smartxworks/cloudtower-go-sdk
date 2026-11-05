@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateSecurityGroup create security group API
+CreateSecurityGroup create security group API
 */
 func (a *Client) CreateSecurityGroup(params *CreateSecurityGroupParams, opts ...ClientOption) (*CreateSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateSecurityGroup(params *CreateSecurityGroupParams, opts ...
 }
 
 /*
-  DeleteSecurityGroup delete security group API
+DeleteSecurityGroup delete security group API
 */
 func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams, opts ...ClientOption) (*DeleteSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams, opts ...
 }
 
 /*
-  GetSecurityGroups get security groups API
+GetSecurityGroups get security groups API
 */
 func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams, opts ...ClientOption) (*GetSecurityGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams, opts ...Clie
 }
 
 /*
-  GetSecurityGroupsConnection get security groups connection API
+GetSecurityGroupsConnection get security groups connection API
 */
 func (a *Client) GetSecurityGroupsConnection(params *GetSecurityGroupsConnectionParams, opts ...ClientOption) (*GetSecurityGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetSecurityGroupsConnection(params *GetSecurityGroupsConnection
 }
 
 /*
-  UpdateSecurityGroup update security group API
+UpdateSecurityGroup update security group API
 */
 func (a *Client) UpdateSecurityGroup(params *UpdateSecurityGroupParams, opts ...ClientOption) (*UpdateSecurityGroupOK, error) {
 	// TODO: Validate the params before sending

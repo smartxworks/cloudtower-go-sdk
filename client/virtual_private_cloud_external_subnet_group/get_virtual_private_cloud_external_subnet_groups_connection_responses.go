@@ -57,7 +57,8 @@ func NewGetVirtualPrivateCloudExternalSubnetGroupsConnectionOK() *GetVirtualPriv
 	return &GetVirtualPrivateCloudExternalSubnetGroupsConnectionOK{}
 }
 
-/* GetVirtualPrivateCloudExternalSubnetGroupsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVirtualPrivateCloudExternalSubnetGroupsConnectionOK describes a response with status code 200, with default header values.
 
 GetVirtualPrivateCloudExternalSubnetGroupsConnectionOK get virtual private cloud external subnet groups connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVirtualPrivateCloudExternalSubnetGroupsConnectionBadRequest() *GetVir
 	return &GetVirtualPrivateCloudExternalSubnetGroupsConnectionBadRequest{}
 }
 
-/* GetVirtualPrivateCloudExternalSubnetGroupsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVirtualPrivateCloudExternalSubnetGroupsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVirtualPrivateCloudExternalSubnetGroupsConnectionNotFound() *GetVirtu
 	return &GetVirtualPrivateCloudExternalSubnetGroupsConnectionNotFound{}
 }
 
-/* GetVirtualPrivateCloudExternalSubnetGroupsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVirtualPrivateCloudExternalSubnetGroupsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVirtualPrivateCloudExternalSubnetGroupsConnectionInternalServerError(
 	return &GetVirtualPrivateCloudExternalSubnetGroupsConnectionInternalServerError{}
 }
 
-/* GetVirtualPrivateCloudExternalSubnetGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVirtualPrivateCloudExternalSubnetGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

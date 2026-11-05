@@ -54,10 +54,12 @@ func NewGetVMVolumeMetricsParamsWithHTTPClient(client *http.Client) *GetVMVolume
 	}
 }
 
-/* GetVMVolumeMetricsParams contains all the parameters to send to the API endpoint
-   for the get Vm volume metrics operation.
+/*
+GetVMVolumeMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm volume metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMVolumeMetricsParams struct {
 

@@ -57,7 +57,8 @@ func NewUpdateNfsInodeOK() *UpdateNfsInodeOK {
 	return &UpdateNfsInodeOK{}
 }
 
-/* UpdateNfsInodeOK describes a response with status code 200, with default header values.
+/*
+UpdateNfsInodeOK describes a response with status code 200, with default header values.
 
 UpdateNfsInodeOK update nfs inode o k
 */
@@ -96,7 +97,8 @@ func NewUpdateNfsInodeBadRequest() *UpdateNfsInodeBadRequest {
 	return &UpdateNfsInodeBadRequest{}
 }
 
-/* UpdateNfsInodeBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateNfsInodeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateNfsInodeNotFound() *UpdateNfsInodeNotFound {
 	return &UpdateNfsInodeNotFound{}
 }
 
-/* UpdateNfsInodeNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNfsInodeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateNfsInodeInternalServerError() *UpdateNfsInodeInternalServerError {
 	return &UpdateNfsInodeInternalServerError{}
 }
 
-/* UpdateNfsInodeInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateNfsInodeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewCreateSecurityPolicyOK() *CreateSecurityPolicyOK {
 	return &CreateSecurityPolicyOK{}
 }
 
-/* CreateSecurityPolicyOK describes a response with status code 200, with default header values.
+/*
+CreateSecurityPolicyOK describes a response with status code 200, with default header values.
 
 CreateSecurityPolicyOK create security policy o k
 */
@@ -98,7 +99,8 @@ func NewCreateSecurityPolicyBadRequest() *CreateSecurityPolicyBadRequest {
 	return &CreateSecurityPolicyBadRequest{}
 }
 
-/* CreateSecurityPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+CreateSecurityPolicyBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewCreateSecurityPolicyNotFound() *CreateSecurityPolicyNotFound {
 	return &CreateSecurityPolicyNotFound{}
 }
 
-/* CreateSecurityPolicyNotFound describes a response with status code 404, with default header values.
+/*
+CreateSecurityPolicyNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewCreateSecurityPolicyInternalServerError() *CreateSecurityPolicyInternalS
 	return &CreateSecurityPolicyInternalServerError{}
 }
 
-/* CreateSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

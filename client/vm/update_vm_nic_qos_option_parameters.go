@@ -54,10 +54,12 @@ func NewUpdateVMNicQosOptionParamsWithHTTPClient(client *http.Client) *UpdateVMN
 	}
 }
 
-/* UpdateVMNicQosOptionParams contains all the parameters to send to the API endpoint
-   for the update Vm nic qos option operation.
+/*
+UpdateVMNicQosOptionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm nic qos option operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMNicQosOptionParams struct {
 

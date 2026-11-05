@@ -57,7 +57,8 @@ func NewDistributeContentLibraryImageClustersOK() *DistributeContentLibraryImage
 	return &DistributeContentLibraryImageClustersOK{}
 }
 
-/* DistributeContentLibraryImageClustersOK describes a response with status code 200, with default header values.
+/*
+DistributeContentLibraryImageClustersOK describes a response with status code 200, with default header values.
 
 DistributeContentLibraryImageClustersOK distribute content library image clusters o k
 */
@@ -96,7 +97,8 @@ func NewDistributeContentLibraryImageClustersBadRequest() *DistributeContentLibr
 	return &DistributeContentLibraryImageClustersBadRequest{}
 }
 
-/* DistributeContentLibraryImageClustersBadRequest describes a response with status code 400, with default header values.
+/*
+DistributeContentLibraryImageClustersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDistributeContentLibraryImageClustersNotFound() *DistributeContentLibrar
 	return &DistributeContentLibraryImageClustersNotFound{}
 }
 
-/* DistributeContentLibraryImageClustersNotFound describes a response with status code 404, with default header values.
+/*
+DistributeContentLibraryImageClustersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDistributeContentLibraryImageClustersInternalServerError() *DistributeCo
 	return &DistributeContentLibraryImageClustersInternalServerError{}
 }
 
-/* DistributeContentLibraryImageClustersInternalServerError describes a response with status code 500, with default header values.
+/*
+DistributeContentLibraryImageClustersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

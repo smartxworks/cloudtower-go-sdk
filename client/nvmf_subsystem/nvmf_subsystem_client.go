@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateNvmfSubsystem create nvmf subsystem API
+CreateNvmfSubsystem create nvmf subsystem API
 */
 func (a *Client) CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, opts ...ClientOption) (*CreateNvmfSubsystemOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateNvmfSubsystem(params *CreateNvmfSubsystemParams, opts ...
 }
 
 /*
-  DeleteNvmfSubsystem delete nvmf subsystem API
+DeleteNvmfSubsystem delete nvmf subsystem API
 */
 func (a *Client) DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, opts ...ClientOption) (*DeleteNvmfSubsystemOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteNvmfSubsystem(params *DeleteNvmfSubsystemParams, opts ...
 }
 
 /*
-  GetNvmfSubsystems get nvmf subsystems API
+GetNvmfSubsystems get nvmf subsystems API
 */
 func (a *Client) GetNvmfSubsystems(params *GetNvmfSubsystemsParams, opts ...ClientOption) (*GetNvmfSubsystemsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetNvmfSubsystems(params *GetNvmfSubsystemsParams, opts ...Clie
 }
 
 /*
-  GetNvmfSubsystemsConnection get nvmf subsystems connection API
+GetNvmfSubsystemsConnection get nvmf subsystems connection API
 */
 func (a *Client) GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnectionParams, opts ...ClientOption) (*GetNvmfSubsystemsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetNvmfSubsystemsConnection(params *GetNvmfSubsystemsConnection
 }
 
 /*
-  UpdateNvmfSubsystem update nvmf subsystem API
+UpdateNvmfSubsystem update nvmf subsystem API
 */
 func (a *Client) UpdateNvmfSubsystem(params *UpdateNvmfSubsystemParams, opts ...ClientOption) (*UpdateNvmfSubsystemOK, error) {
 	// TODO: Validate the params before sending

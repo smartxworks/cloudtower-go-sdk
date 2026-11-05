@@ -54,10 +54,12 @@ func NewGetVMVolumesConnectionParamsWithHTTPClient(client *http.Client) *GetVMVo
 	}
 }
 
-/* GetVMVolumesConnectionParams contains all the parameters to send to the API endpoint
-   for the get Vm volumes connection operation.
+/*
+GetVMVolumesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm volumes connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMVolumesConnectionParams struct {
 

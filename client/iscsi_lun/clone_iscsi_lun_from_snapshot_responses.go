@@ -57,7 +57,8 @@ func NewCloneIscsiLunFromSnapshotOK() *CloneIscsiLunFromSnapshotOK {
 	return &CloneIscsiLunFromSnapshotOK{}
 }
 
-/* CloneIscsiLunFromSnapshotOK describes a response with status code 200, with default header values.
+/*
+CloneIscsiLunFromSnapshotOK describes a response with status code 200, with default header values.
 
 CloneIscsiLunFromSnapshotOK clone iscsi lun from snapshot o k
 */
@@ -96,7 +97,8 @@ func NewCloneIscsiLunFromSnapshotBadRequest() *CloneIscsiLunFromSnapshotBadReque
 	return &CloneIscsiLunFromSnapshotBadRequest{}
 }
 
-/* CloneIscsiLunFromSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+CloneIscsiLunFromSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCloneIscsiLunFromSnapshotNotFound() *CloneIscsiLunFromSnapshotNotFound {
 	return &CloneIscsiLunFromSnapshotNotFound{}
 }
 
-/* CloneIscsiLunFromSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+CloneIscsiLunFromSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCloneIscsiLunFromSnapshotInternalServerError() *CloneIscsiLunFromSnapsho
 	return &CloneIscsiLunFromSnapshotInternalServerError{}
 }
 
-/* CloneIscsiLunFromSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneIscsiLunFromSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

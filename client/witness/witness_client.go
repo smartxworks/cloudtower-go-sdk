@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetWitnesses get witnesses API
+GetWitnesses get witnesses API
 */
 func (a *Client) GetWitnesses(params *GetWitnessesParams, opts ...ClientOption) (*GetWitnessesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetWitnesses(params *GetWitnessesParams, opts ...ClientOption) 
 }
 
 /*
-  GetWitnessesConnection get witnesses connection API
+GetWitnessesConnection get witnesses connection API
 */
 func (a *Client) GetWitnessesConnection(params *GetWitnessesConnectionParams, opts ...ClientOption) (*GetWitnessesConnectionOK, error) {
 	// TODO: Validate the params before sending

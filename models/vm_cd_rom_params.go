@@ -36,6 +36,9 @@ type VMCdRomParams struct {
 	// key
 	Key *int32 `json:"key,omitempty"`
 
+	// Associated storage for a compute cluster.
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
 	MarshalOpts *VMCdRomParamsMarshalOpts `json:"-"`
 }
 
@@ -49,6 +52,8 @@ type VMCdRomParamsMarshalOpts struct {
 	Index_Explicit_Null_When_Empty bool
 
 	Key_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 }
 
 func (m VMCdRomParams) MarshalJSON() ([]byte, error) {
@@ -157,6 +162,26 @@ func (m VMCdRomParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	b.WriteString("}")
 	return b.Bytes(), nil
 }
@@ -166,6 +191,10 @@ func (m *VMCdRomParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateBoot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -184,8 +213,52 @@ func (m *VMCdRomParams) validateBoot(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this Vm cd rom params based on context it is used
+func (m *VMCdRomParams) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this Vm cd rom params based on the context it is used
 func (m *VMCdRomParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VMCdRomParams) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

@@ -57,7 +57,8 @@ func NewCreateVirtualPrivateCloudSubnetOK() *CreateVirtualPrivateCloudSubnetOK {
 	return &CreateVirtualPrivateCloudSubnetOK{}
 }
 
-/* CreateVirtualPrivateCloudSubnetOK describes a response with status code 200, with default header values.
+/*
+CreateVirtualPrivateCloudSubnetOK describes a response with status code 200, with default header values.
 
 CreateVirtualPrivateCloudSubnetOK create virtual private cloud subnet o k
 */
@@ -96,7 +97,8 @@ func NewCreateVirtualPrivateCloudSubnetBadRequest() *CreateVirtualPrivateCloudSu
 	return &CreateVirtualPrivateCloudSubnetBadRequest{}
 }
 
-/* CreateVirtualPrivateCloudSubnetBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVirtualPrivateCloudSubnetBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVirtualPrivateCloudSubnetNotFound() *CreateVirtualPrivateCloudSubn
 	return &CreateVirtualPrivateCloudSubnetNotFound{}
 }
 
-/* CreateVirtualPrivateCloudSubnetNotFound describes a response with status code 404, with default header values.
+/*
+CreateVirtualPrivateCloudSubnetNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVirtualPrivateCloudSubnetInternalServerError() *CreateVirtualPriva
 	return &CreateVirtualPrivateCloudSubnetInternalServerError{}
 }
 
-/* CreateVirtualPrivateCloudSubnetInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVirtualPrivateCloudSubnetInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

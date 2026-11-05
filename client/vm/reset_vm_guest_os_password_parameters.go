@@ -54,10 +54,12 @@ func NewResetVMGuestOsPasswordParamsWithHTTPClient(client *http.Client) *ResetVM
 	}
 }
 
-/* ResetVMGuestOsPasswordParams contains all the parameters to send to the API endpoint
-   for the reset Vm guest os password operation.
+/*
+ResetVMGuestOsPasswordParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the reset Vm guest os password operation.
+
+	Typically these are written to a http.Request.
 */
 type ResetVMGuestOsPasswordParams struct {
 

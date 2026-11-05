@@ -57,7 +57,8 @@ func NewCreateEntityFilterOK() *CreateEntityFilterOK {
 	return &CreateEntityFilterOK{}
 }
 
-/* CreateEntityFilterOK describes a response with status code 200, with default header values.
+/*
+CreateEntityFilterOK describes a response with status code 200, with default header values.
 
 CreateEntityFilterOK create entity filter o k
 */
@@ -96,7 +97,8 @@ func NewCreateEntityFilterBadRequest() *CreateEntityFilterBadRequest {
 	return &CreateEntityFilterBadRequest{}
 }
 
-/* CreateEntityFilterBadRequest describes a response with status code 400, with default header values.
+/*
+CreateEntityFilterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateEntityFilterNotFound() *CreateEntityFilterNotFound {
 	return &CreateEntityFilterNotFound{}
 }
 
-/* CreateEntityFilterNotFound describes a response with status code 404, with default header values.
+/*
+CreateEntityFilterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateEntityFilterInternalServerError() *CreateEntityFilterInternalServe
 	return &CreateEntityFilterInternalServerError{}
 }
 
-/* CreateEntityFilterInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateEntityFilterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

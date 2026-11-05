@@ -57,7 +57,8 @@ func NewCopyIscsiLunOK() *CopyIscsiLunOK {
 	return &CopyIscsiLunOK{}
 }
 
-/* CopyIscsiLunOK describes a response with status code 200, with default header values.
+/*
+CopyIscsiLunOK describes a response with status code 200, with default header values.
 
 CopyIscsiLunOK copy iscsi lun o k
 */
@@ -96,7 +97,8 @@ func NewCopyIscsiLunBadRequest() *CopyIscsiLunBadRequest {
 	return &CopyIscsiLunBadRequest{}
 }
 
-/* CopyIscsiLunBadRequest describes a response with status code 400, with default header values.
+/*
+CopyIscsiLunBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCopyIscsiLunNotFound() *CopyIscsiLunNotFound {
 	return &CopyIscsiLunNotFound{}
 }
 
-/* CopyIscsiLunNotFound describes a response with status code 404, with default header values.
+/*
+CopyIscsiLunNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCopyIscsiLunInternalServerError() *CopyIscsiLunInternalServerError {
 	return &CopyIscsiLunInternalServerError{}
 }
 
-/* CopyIscsiLunInternalServerError describes a response with status code 500, with default header values.
+/*
+CopyIscsiLunInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

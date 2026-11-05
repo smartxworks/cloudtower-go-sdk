@@ -57,7 +57,8 @@ func NewKeepSnapshotGroupOK() *KeepSnapshotGroupOK {
 	return &KeepSnapshotGroupOK{}
 }
 
-/* KeepSnapshotGroupOK describes a response with status code 200, with default header values.
+/*
+KeepSnapshotGroupOK describes a response with status code 200, with default header values.
 
 KeepSnapshotGroupOK keep snapshot group o k
 */
@@ -96,7 +97,8 @@ func NewKeepSnapshotGroupBadRequest() *KeepSnapshotGroupBadRequest {
 	return &KeepSnapshotGroupBadRequest{}
 }
 
-/* KeepSnapshotGroupBadRequest describes a response with status code 400, with default header values.
+/*
+KeepSnapshotGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewKeepSnapshotGroupNotFound() *KeepSnapshotGroupNotFound {
 	return &KeepSnapshotGroupNotFound{}
 }
 
-/* KeepSnapshotGroupNotFound describes a response with status code 404, with default header values.
+/*
+KeepSnapshotGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewKeepSnapshotGroupInternalServerError() *KeepSnapshotGroupInternalServerE
 	return &KeepSnapshotGroupInternalServerError{}
 }
 
-/* KeepSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+KeepSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

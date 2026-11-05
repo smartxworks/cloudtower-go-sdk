@@ -44,6 +44,9 @@ const (
 
 	// DiskHealthStatusUNHEALTHY captures enum value "UNHEALTHY"
 	DiskHealthStatusUNHEALTHY DiskHealthStatus = "UNHEALTHY"
+
+	// DiskHealthStatusUNKNOWN captures enum value "UNKNOWN"
+	DiskHealthStatusUNKNOWN DiskHealthStatus = "UNKNOWN"
 )
 
 // for schema
@@ -51,7 +54,7 @@ var diskHealthStatusEnum []interface{}
 
 func init() {
 	var res []DiskHealthStatus
-	if err := json.Unmarshal([]byte(`["HEALTHY","SMART_FAILED","SOFTWARE_RAID_FAILURE","SUBHEALTHY","UNHEALTHY"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["HEALTHY","SMART_FAILED","SOFTWARE_RAID_FAILURE","SUBHEALTHY","UNHEALTHY","UNKNOWN"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

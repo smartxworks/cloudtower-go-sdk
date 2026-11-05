@@ -54,10 +54,12 @@ func NewUpdateSnmpTransportParamsWithHTTPClient(client *http.Client) *UpdateSnmp
 	}
 }
 
-/* UpdateSnmpTransportParams contains all the parameters to send to the API endpoint
-   for the update snmp transport operation.
+/*
+UpdateSnmpTransportParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update snmp transport operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateSnmpTransportParams struct {
 

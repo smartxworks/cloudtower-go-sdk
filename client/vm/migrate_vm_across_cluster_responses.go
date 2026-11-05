@@ -63,7 +63,8 @@ func NewMigrateVMAcrossClusterOK() *MigrateVMAcrossClusterOK {
 	return &MigrateVMAcrossClusterOK{}
 }
 
-/* MigrateVMAcrossClusterOK describes a response with status code 200, with default header values.
+/*
+MigrateVMAcrossClusterOK describes a response with status code 200, with default header values.
 
 MigrateVMAcrossClusterOK migrate Vm across cluster o k
 */
@@ -102,7 +103,8 @@ func NewMigrateVMAcrossClusterNotModified() *MigrateVMAcrossClusterNotModified {
 	return &MigrateVMAcrossClusterNotModified{}
 }
 
-/* MigrateVMAcrossClusterNotModified describes a response with status code 304, with default header values.
+/*
+MigrateVMAcrossClusterNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewMigrateVMAcrossClusterBadRequest() *MigrateVMAcrossClusterBadRequest {
 	return &MigrateVMAcrossClusterBadRequest{}
 }
 
-/* MigrateVMAcrossClusterBadRequest describes a response with status code 400, with default header values.
+/*
+MigrateVMAcrossClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewMigrateVMAcrossClusterNotFound() *MigrateVMAcrossClusterNotFound {
 	return &MigrateVMAcrossClusterNotFound{}
 }
 
-/* MigrateVMAcrossClusterNotFound describes a response with status code 404, with default header values.
+/*
+MigrateVMAcrossClusterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewMigrateVMAcrossClusterInternalServerError() *MigrateVMAcrossClusterInter
 	return &MigrateVMAcrossClusterInternalServerError{}
 }
 
-/* MigrateVMAcrossClusterInternalServerError describes a response with status code 500, with default header values.
+/*
+MigrateVMAcrossClusterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

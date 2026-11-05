@@ -57,7 +57,8 @@ func NewGetVirtualPrivateCloudSecurityPoliciesConnectionOK() *GetVirtualPrivateC
 	return &GetVirtualPrivateCloudSecurityPoliciesConnectionOK{}
 }
 
-/* GetVirtualPrivateCloudSecurityPoliciesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVirtualPrivateCloudSecurityPoliciesConnectionOK describes a response with status code 200, with default header values.
 
 GetVirtualPrivateCloudSecurityPoliciesConnectionOK get virtual private cloud security policies connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVirtualPrivateCloudSecurityPoliciesConnectionBadRequest() *GetVirtual
 	return &GetVirtualPrivateCloudSecurityPoliciesConnectionBadRequest{}
 }
 
-/* GetVirtualPrivateCloudSecurityPoliciesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVirtualPrivateCloudSecurityPoliciesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVirtualPrivateCloudSecurityPoliciesConnectionNotFound() *GetVirtualPr
 	return &GetVirtualPrivateCloudSecurityPoliciesConnectionNotFound{}
 }
 
-/* GetVirtualPrivateCloudSecurityPoliciesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVirtualPrivateCloudSecurityPoliciesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVirtualPrivateCloudSecurityPoliciesConnectionInternalServerError() *G
 	return &GetVirtualPrivateCloudSecurityPoliciesConnectionInternalServerError{}
 }
 
-/* GetVirtualPrivateCloudSecurityPoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVirtualPrivateCloudSecurityPoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

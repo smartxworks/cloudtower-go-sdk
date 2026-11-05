@@ -57,7 +57,8 @@ func NewCreateVcenterAccountOK() *CreateVcenterAccountOK {
 	return &CreateVcenterAccountOK{}
 }
 
-/* CreateVcenterAccountOK describes a response with status code 200, with default header values.
+/*
+CreateVcenterAccountOK describes a response with status code 200, with default header values.
 
 CreateVcenterAccountOK create vcenter account o k
 */
@@ -98,7 +99,8 @@ func NewCreateVcenterAccountBadRequest() *CreateVcenterAccountBadRequest {
 	return &CreateVcenterAccountBadRequest{}
 }
 
-/* CreateVcenterAccountBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVcenterAccountBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewCreateVcenterAccountNotFound() *CreateVcenterAccountNotFound {
 	return &CreateVcenterAccountNotFound{}
 }
 
-/* CreateVcenterAccountNotFound describes a response with status code 404, with default header values.
+/*
+CreateVcenterAccountNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewCreateVcenterAccountInternalServerError() *CreateVcenterAccountInternalS
 	return &CreateVcenterAccountInternalServerError{}
 }
 
-/* CreateVcenterAccountInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVcenterAccountInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

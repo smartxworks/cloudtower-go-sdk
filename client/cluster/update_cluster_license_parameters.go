@@ -54,10 +54,12 @@ func NewUpdateClusterLicenseParamsWithHTTPClient(client *http.Client) *UpdateClu
 	}
 }
 
-/* UpdateClusterLicenseParams contains all the parameters to send to the API endpoint
-   for the update cluster license operation.
+/*
+UpdateClusterLicenseParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update cluster license operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateClusterLicenseParams struct {
 

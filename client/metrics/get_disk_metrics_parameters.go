@@ -54,10 +54,12 @@ func NewGetDiskMetricsParamsWithHTTPClient(client *http.Client) *GetDiskMetricsP
 	}
 }
 
-/* GetDiskMetricsParams contains all the parameters to send to the API endpoint
-   for the get disk metrics operation.
+/*
+GetDiskMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get disk metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDiskMetricsParams struct {
 

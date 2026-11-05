@@ -42,6 +42,8 @@ type ClientService interface {
 
 	ImportContentLibraryImage(params *ImportContentLibraryImageParams, opts ...ClientOption) (*ImportContentLibraryImageOK, error)
 
+	ImportContentLibraryImageV2(params *ImportContentLibraryImageV2Params, opts ...ClientOption) (*ImportContentLibraryImageV2OK, error)
+
 	RemoveContentLibraryImageClusters(params *RemoveContentLibraryImageClustersParams, opts ...ClientOption) (*RemoveContentLibraryImageClustersOK, error)
 
 	UpdateContentLibraryImage(params *UpdateContentLibraryImageParams, opts ...ClientOption) (*UpdateContentLibraryImageOK, error)
@@ -50,7 +52,7 @@ type ClientService interface {
 }
 
 /*
-  CreateContentLibraryImage create content library image API
+CreateContentLibraryImage create content library image API
 */
 func (a *Client) CreateContentLibraryImage(params *CreateContentLibraryImageParams, opts ...ClientOption) (*CreateContentLibraryImageOK, error) {
 	// TODO: Validate the params before sending
@@ -88,7 +90,7 @@ func (a *Client) CreateContentLibraryImage(params *CreateContentLibraryImagePara
 }
 
 /*
-  DeleteContentLibraryImage delete content library image API
+DeleteContentLibraryImage delete content library image API
 */
 func (a *Client) DeleteContentLibraryImage(params *DeleteContentLibraryImageParams, opts ...ClientOption) (*DeleteContentLibraryImageOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +128,7 @@ func (a *Client) DeleteContentLibraryImage(params *DeleteContentLibraryImagePara
 }
 
 /*
-  DistributeContentLibraryImageClusters distribute content library image clusters API
+DistributeContentLibraryImageClusters distribute content library image clusters API
 */
 func (a *Client) DistributeContentLibraryImageClusters(params *DistributeContentLibraryImageClustersParams, opts ...ClientOption) (*DistributeContentLibraryImageClustersOK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +166,7 @@ func (a *Client) DistributeContentLibraryImageClusters(params *DistributeContent
 }
 
 /*
-  GetContentLibraryImages get content library images API
+GetContentLibraryImages get content library images API
 */
 func (a *Client) GetContentLibraryImages(params *GetContentLibraryImagesParams, opts ...ClientOption) (*GetContentLibraryImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +204,7 @@ func (a *Client) GetContentLibraryImages(params *GetContentLibraryImagesParams, 
 }
 
 /*
-  GetContentLibraryImagesConnection get content library images connection API
+GetContentLibraryImagesConnection get content library images connection API
 */
 func (a *Client) GetContentLibraryImagesConnection(params *GetContentLibraryImagesConnectionParams, opts ...ClientOption) (*GetContentLibraryImagesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -240,7 +242,7 @@ func (a *Client) GetContentLibraryImagesConnection(params *GetContentLibraryImag
 }
 
 /*
-  ImportContentLibraryImage import content library image API
+ImportContentLibraryImage import content library image API
 */
 func (a *Client) ImportContentLibraryImage(params *ImportContentLibraryImageParams, opts ...ClientOption) (*ImportContentLibraryImageOK, error) {
 	// TODO: Validate the params before sending
@@ -278,7 +280,45 @@ func (a *Client) ImportContentLibraryImage(params *ImportContentLibraryImagePara
 }
 
 /*
-  RemoveContentLibraryImageClusters remove content library image clusters API
+ImportContentLibraryImageV2 import content library image v2 API
+*/
+func (a *Client) ImportContentLibraryImageV2(params *ImportContentLibraryImageV2Params, opts ...ClientOption) (*ImportContentLibraryImageV2OK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImportContentLibraryImageV2Params()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ImportContentLibraryImageV2",
+		Method:             "POST",
+		PathPattern:        "/import-content-library-image-v2",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ImportContentLibraryImageV2Reader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImportContentLibraryImageV2OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ImportContentLibraryImageV2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RemoveContentLibraryImageClusters remove content library image clusters API
 */
 func (a *Client) RemoveContentLibraryImageClusters(params *RemoveContentLibraryImageClustersParams, opts ...ClientOption) (*RemoveContentLibraryImageClustersOK, error) {
 	// TODO: Validate the params before sending
@@ -316,7 +356,7 @@ func (a *Client) RemoveContentLibraryImageClusters(params *RemoveContentLibraryI
 }
 
 /*
-  UpdateContentLibraryImage update content library image API
+UpdateContentLibraryImage update content library image API
 */
 func (a *Client) UpdateContentLibraryImage(params *UpdateContentLibraryImageParams, opts ...ClientOption) (*UpdateContentLibraryImageOK, error) {
 	// TODO: Validate the params before sending

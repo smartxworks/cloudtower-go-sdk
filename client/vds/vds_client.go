@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVds create vds API
+CreateVds create vds API
 */
 func (a *Client) CreateVds(params *CreateVdsParams, opts ...ClientOption) (*CreateVdsOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) CreateVds(params *CreateVdsParams, opts ...ClientOption) (*Crea
 }
 
 /*
-  CreateVdsWithAccessVlan create vds with access vlan API
+CreateVdsWithAccessVlan create vds with access vlan API
 */
 func (a *Client) CreateVdsWithAccessVlan(params *CreateVdsWithAccessVlanParams, opts ...ClientOption) (*CreateVdsWithAccessVlanOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) CreateVdsWithAccessVlan(params *CreateVdsWithAccessVlanParams, 
 }
 
 /*
-  CreateVdsWithMigrateVlan create vds with migrate vlan API
+CreateVdsWithMigrateVlan create vds with migrate vlan API
 */
 func (a *Client) CreateVdsWithMigrateVlan(params *CreateVdsWithMigrateVlanParams, opts ...ClientOption) (*CreateVdsWithMigrateVlanOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) CreateVdsWithMigrateVlan(params *CreateVdsWithMigrateVlanParams
 }
 
 /*
-  DeleteVds delete vds API
+DeleteVds delete vds API
 */
 func (a *Client) DeleteVds(params *DeleteVdsParams, opts ...ClientOption) (*DeleteVdsOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) DeleteVds(params *DeleteVdsParams, opts ...ClientOption) (*Dele
 }
 
 /*
-  GetVdses get vdses API
+GetVdses get vdses API
 */
 func (a *Client) GetVdses(params *GetVdsesParams, opts ...ClientOption) (*GetVdsesOK, error) {
 	// TODO: Validate the params before sending
@@ -238,7 +238,7 @@ func (a *Client) GetVdses(params *GetVdsesParams, opts ...ClientOption) (*GetVds
 }
 
 /*
-  GetVdsesConnection get vdses connection API
+GetVdsesConnection get vdses connection API
 */
 func (a *Client) GetVdsesConnection(params *GetVdsesConnectionParams, opts ...ClientOption) (*GetVdsesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -276,7 +276,7 @@ func (a *Client) GetVdsesConnection(params *GetVdsesConnectionParams, opts ...Cl
 }
 
 /*
-  UpdateVds update vds API
+UpdateVds update vds API
 */
 func (a *Client) UpdateVds(params *UpdateVdsParams, opts ...ClientOption) (*UpdateVdsOK, error) {
 	// TODO: Validate the params before sending

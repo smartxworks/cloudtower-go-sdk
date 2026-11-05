@@ -57,7 +57,8 @@ func NewRollbackIscsiLunFromSnapshotOK() *RollbackIscsiLunFromSnapshotOK {
 	return &RollbackIscsiLunFromSnapshotOK{}
 }
 
-/* RollbackIscsiLunFromSnapshotOK describes a response with status code 200, with default header values.
+/*
+RollbackIscsiLunFromSnapshotOK describes a response with status code 200, with default header values.
 
 RollbackIscsiLunFromSnapshotOK rollback iscsi lun from snapshot o k
 */
@@ -96,7 +97,8 @@ func NewRollbackIscsiLunFromSnapshotBadRequest() *RollbackIscsiLunFromSnapshotBa
 	return &RollbackIscsiLunFromSnapshotBadRequest{}
 }
 
-/* RollbackIscsiLunFromSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+RollbackIscsiLunFromSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRollbackIscsiLunFromSnapshotNotFound() *RollbackIscsiLunFromSnapshotNotF
 	return &RollbackIscsiLunFromSnapshotNotFound{}
 }
 
-/* RollbackIscsiLunFromSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+RollbackIscsiLunFromSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRollbackIscsiLunFromSnapshotInternalServerError() *RollbackIscsiLunFromS
 	return &RollbackIscsiLunFromSnapshotInternalServerError{}
 }
 
-/* RollbackIscsiLunFromSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+RollbackIscsiLunFromSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

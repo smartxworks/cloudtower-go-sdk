@@ -54,10 +54,12 @@ func NewBatchCreateVirtualPrivateCloudFloatingIpsParamsWithHTTPClient(client *ht
 	}
 }
 
-/* BatchCreateVirtualPrivateCloudFloatingIpsParams contains all the parameters to send to the API endpoint
-   for the batch create virtual private cloud floating ips operation.
+/*
+BatchCreateVirtualPrivateCloudFloatingIpsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the batch create virtual private cloud floating ips operation.
+
+	Typically these are written to a http.Request.
 */
 type BatchCreateVirtualPrivateCloudFloatingIpsParams struct {
 

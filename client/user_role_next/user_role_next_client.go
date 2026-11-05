@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateRole create role API
+CreateRole create role API
 */
 func (a *Client) CreateRole(params *CreateRoleParams, opts ...ClientOption) (*CreateRoleOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateRole(params *CreateRoleParams, opts ...ClientOption) (*Cr
 }
 
 /*
-  DeleteRole delete role API
+DeleteRole delete role API
 */
 func (a *Client) DeleteRole(params *DeleteRoleParams, opts ...ClientOption) (*DeleteRoleOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteRole(params *DeleteRoleParams, opts ...ClientOption) (*De
 }
 
 /*
-  GetUserRoleNexts get user role nexts API
+GetUserRoleNexts get user role nexts API
 */
 func (a *Client) GetUserRoleNexts(params *GetUserRoleNextsParams, opts ...ClientOption) (*GetUserRoleNextsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetUserRoleNexts(params *GetUserRoleNextsParams, opts ...Client
 }
 
 /*
-  GetUserRoleNextsConnection get user role nexts connection API
+GetUserRoleNextsConnection get user role nexts connection API
 */
 func (a *Client) GetUserRoleNextsConnection(params *GetUserRoleNextsConnectionParams, opts ...ClientOption) (*GetUserRoleNextsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetUserRoleNextsConnection(params *GetUserRoleNextsConnectionPa
 }
 
 /*
-  UpdateRole update role API
+UpdateRole update role API
 */
 func (a *Client) UpdateRole(params *UpdateRoleParams, opts ...ClientOption) (*UpdateRoleOK, error) {
 	// TODO: Validate the params before sending

@@ -57,7 +57,8 @@ func NewImportContentLibraryImageOK() *ImportContentLibraryImageOK {
 	return &ImportContentLibraryImageOK{}
 }
 
-/* ImportContentLibraryImageOK describes a response with status code 200, with default header values.
+/*
+ImportContentLibraryImageOK describes a response with status code 200, with default header values.
 
 ImportContentLibraryImageOK import content library image o k
 */
@@ -98,7 +99,8 @@ func NewImportContentLibraryImageBadRequest() *ImportContentLibraryImageBadReque
 	return &ImportContentLibraryImageBadRequest{}
 }
 
-/* ImportContentLibraryImageBadRequest describes a response with status code 400, with default header values.
+/*
+ImportContentLibraryImageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewImportContentLibraryImageNotFound() *ImportContentLibraryImageNotFound {
 	return &ImportContentLibraryImageNotFound{}
 }
 
-/* ImportContentLibraryImageNotFound describes a response with status code 404, with default header values.
+/*
+ImportContentLibraryImageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewImportContentLibraryImageInternalServerError() *ImportContentLibraryImag
 	return &ImportContentLibraryImageInternalServerError{}
 }
 
-/* ImportContentLibraryImageInternalServerError describes a response with status code 500, with default header values.
+/*
+ImportContentLibraryImageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

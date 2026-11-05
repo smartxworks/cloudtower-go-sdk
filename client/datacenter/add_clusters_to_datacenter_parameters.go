@@ -54,10 +54,12 @@ func NewAddClustersToDatacenterParamsWithHTTPClient(client *http.Client) *AddClu
 	}
 }
 
-/* AddClustersToDatacenterParams contains all the parameters to send to the API endpoint
-   for the add clusters to datacenter operation.
+/*
+AddClustersToDatacenterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add clusters to datacenter operation.
+
+	Typically these are written to a http.Request.
 */
 type AddClustersToDatacenterParams struct {
 

@@ -57,7 +57,8 @@ func NewExportContentLibraryVMTemplateOK() *ExportContentLibraryVMTemplateOK {
 	return &ExportContentLibraryVMTemplateOK{}
 }
 
-/* ExportContentLibraryVMTemplateOK describes a response with status code 200, with default header values.
+/*
+ExportContentLibraryVMTemplateOK describes a response with status code 200, with default header values.
 
 ExportContentLibraryVMTemplateOK export content library Vm template o k
 */
@@ -96,7 +97,8 @@ func NewExportContentLibraryVMTemplateBadRequest() *ExportContentLibraryVMTempla
 	return &ExportContentLibraryVMTemplateBadRequest{}
 }
 
-/* ExportContentLibraryVMTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+ExportContentLibraryVMTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewExportContentLibraryVMTemplateNotFound() *ExportContentLibraryVMTemplate
 	return &ExportContentLibraryVMTemplateNotFound{}
 }
 
-/* ExportContentLibraryVMTemplateNotFound describes a response with status code 404, with default header values.
+/*
+ExportContentLibraryVMTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewExportContentLibraryVMTemplateInternalServerError() *ExportContentLibrar
 	return &ExportContentLibraryVMTemplateInternalServerError{}
 }
 
-/* ExportContentLibraryVMTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+ExportContentLibraryVMTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

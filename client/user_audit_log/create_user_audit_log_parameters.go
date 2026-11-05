@@ -54,10 +54,12 @@ func NewCreateUserAuditLogParamsWithHTTPClient(client *http.Client) *CreateUserA
 	}
 }
 
-/* CreateUserAuditLogParams contains all the parameters to send to the API endpoint
-   for the create user audit log operation.
+/*
+CreateUserAuditLogParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create user audit log operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateUserAuditLogParams struct {
 

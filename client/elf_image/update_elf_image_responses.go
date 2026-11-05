@@ -57,7 +57,8 @@ func NewUpdateElfImageOK() *UpdateElfImageOK {
 	return &UpdateElfImageOK{}
 }
 
-/* UpdateElfImageOK describes a response with status code 200, with default header values.
+/*
+UpdateElfImageOK describes a response with status code 200, with default header values.
 
 UpdateElfImageOK update elf image o k
 */
@@ -96,7 +97,8 @@ func NewUpdateElfImageBadRequest() *UpdateElfImageBadRequest {
 	return &UpdateElfImageBadRequest{}
 }
 
-/* UpdateElfImageBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateElfImageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateElfImageNotFound() *UpdateElfImageNotFound {
 	return &UpdateElfImageNotFound{}
 }
 
-/* UpdateElfImageNotFound describes a response with status code 404, with default header values.
+/*
+UpdateElfImageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateElfImageInternalServerError() *UpdateElfImageInternalServerError {
 	return &UpdateElfImageInternalServerError{}
 }
 
-/* UpdateElfImageInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateElfImageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

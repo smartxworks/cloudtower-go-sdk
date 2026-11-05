@@ -54,10 +54,12 @@ func NewGetBrickTopoesConnectionParamsWithHTTPClient(client *http.Client) *GetBr
 	}
 }
 
-/* GetBrickTopoesConnectionParams contains all the parameters to send to the API endpoint
-   for the get brick topoes connection operation.
+/*
+GetBrickTopoesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get brick topoes connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBrickTopoesConnectionParams struct {
 

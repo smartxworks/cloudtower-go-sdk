@@ -54,10 +54,12 @@ func NewDeleteVMSnapshotParamsWithHTTPClient(client *http.Client) *DeleteVMSnaps
 	}
 }
 
-/* DeleteVMSnapshotParams contains all the parameters to send to the API endpoint
-   for the delete Vm snapshot operation.
+/*
+DeleteVMSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete Vm snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVMSnapshotParams struct {
 

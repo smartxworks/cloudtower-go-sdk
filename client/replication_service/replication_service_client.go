@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetReplicationServices get replication services API
+GetReplicationServices get replication services API
 */
 func (a *Client) GetReplicationServices(params *GetReplicationServicesParams, opts ...ClientOption) (*GetReplicationServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetReplicationServices(params *GetReplicationServicesParams, op
 }
 
 /*
-  GetReplicationServicesConnection get replication services connection API
+GetReplicationServicesConnection get replication services connection API
 */
 func (a *Client) GetReplicationServicesConnection(params *GetReplicationServicesConnectionParams, opts ...ClientOption) (*GetReplicationServicesConnectionOK, error) {
 	// TODO: Validate the params before sending

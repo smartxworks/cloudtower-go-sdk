@@ -54,10 +54,12 @@ func NewUpdateVMAdvancedOptionsParamsWithHTTPClient(client *http.Client) *Update
 	}
 }
 
-/* UpdateVMAdvancedOptionsParams contains all the parameters to send to the API endpoint
-   for the update Vm advanced options operation.
+/*
+UpdateVMAdvancedOptionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm advanced options operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMAdvancedOptionsParams struct {
 

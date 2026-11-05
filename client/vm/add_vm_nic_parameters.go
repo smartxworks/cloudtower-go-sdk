@@ -54,10 +54,12 @@ func NewAddVMNicParamsWithHTTPClient(client *http.Client) *AddVMNicParams {
 	}
 }
 
-/* AddVMNicParams contains all the parameters to send to the API endpoint
-   for the add Vm nic operation.
+/*
+AddVMNicParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add Vm nic operation.
+
+	Typically these are written to a http.Request.
 */
 type AddVMNicParams struct {
 

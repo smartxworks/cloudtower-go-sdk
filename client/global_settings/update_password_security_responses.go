@@ -57,7 +57,8 @@ func NewUpdatePasswordSecurityOK() *UpdatePasswordSecurityOK {
 	return &UpdatePasswordSecurityOK{}
 }
 
-/* UpdatePasswordSecurityOK describes a response with status code 200, with default header values.
+/*
+UpdatePasswordSecurityOK describes a response with status code 200, with default header values.
 
 UpdatePasswordSecurityOK update password security o k
 */
@@ -98,7 +99,8 @@ func NewUpdatePasswordSecurityBadRequest() *UpdatePasswordSecurityBadRequest {
 	return &UpdatePasswordSecurityBadRequest{}
 }
 
-/* UpdatePasswordSecurityBadRequest describes a response with status code 400, with default header values.
+/*
+UpdatePasswordSecurityBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewUpdatePasswordSecurityNotFound() *UpdatePasswordSecurityNotFound {
 	return &UpdatePasswordSecurityNotFound{}
 }
 
-/* UpdatePasswordSecurityNotFound describes a response with status code 404, with default header values.
+/*
+UpdatePasswordSecurityNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewUpdatePasswordSecurityInternalServerError() *UpdatePasswordSecurityInter
 	return &UpdatePasswordSecurityInternalServerError{}
 }
 
-/* UpdatePasswordSecurityInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdatePasswordSecurityInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

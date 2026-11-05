@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetApplications get applications API
+GetApplications get applications API
 */
 func (a *Client) GetApplications(params *GetApplicationsParams, opts ...ClientOption) (*GetApplicationsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetApplications(params *GetApplicationsParams, opts ...ClientOp
 }
 
 /*
-  GetApplicationsConnection get applications connection API
+GetApplicationsConnection get applications connection API
 */
 func (a *Client) GetApplicationsConnection(params *GetApplicationsConnectionParams, opts ...ClientOption) (*GetApplicationsConnectionOK, error) {
 	// TODO: Validate the params before sending

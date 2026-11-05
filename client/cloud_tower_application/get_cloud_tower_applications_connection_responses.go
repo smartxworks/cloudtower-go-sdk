@@ -57,7 +57,8 @@ func NewGetCloudTowerApplicationsConnectionOK() *GetCloudTowerApplicationsConnec
 	return &GetCloudTowerApplicationsConnectionOK{}
 }
 
-/* GetCloudTowerApplicationsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetCloudTowerApplicationsConnectionOK describes a response with status code 200, with default header values.
 
 GetCloudTowerApplicationsConnectionOK get cloud tower applications connection o k
 */
@@ -98,7 +99,8 @@ func NewGetCloudTowerApplicationsConnectionBadRequest() *GetCloudTowerApplicatio
 	return &GetCloudTowerApplicationsConnectionBadRequest{}
 }
 
-/* GetCloudTowerApplicationsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetCloudTowerApplicationsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetCloudTowerApplicationsConnectionNotFound() *GetCloudTowerApplications
 	return &GetCloudTowerApplicationsConnectionNotFound{}
 }
 
-/* GetCloudTowerApplicationsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetCloudTowerApplicationsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetCloudTowerApplicationsConnectionInternalServerError() *GetCloudTowerA
 	return &GetCloudTowerApplicationsConnectionInternalServerError{}
 }
 
-/* GetCloudTowerApplicationsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetCloudTowerApplicationsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

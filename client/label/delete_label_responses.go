@@ -57,7 +57,8 @@ func NewDeleteLabelOK() *DeleteLabelOK {
 	return &DeleteLabelOK{}
 }
 
-/* DeleteLabelOK describes a response with status code 200, with default header values.
+/*
+DeleteLabelOK describes a response with status code 200, with default header values.
 
 DeleteLabelOK delete label o k
 */
@@ -96,7 +97,8 @@ func NewDeleteLabelBadRequest() *DeleteLabelBadRequest {
 	return &DeleteLabelBadRequest{}
 }
 
-/* DeleteLabelBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteLabelBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteLabelNotFound() *DeleteLabelNotFound {
 	return &DeleteLabelNotFound{}
 }
 
-/* DeleteLabelNotFound describes a response with status code 404, with default header values.
+/*
+DeleteLabelNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteLabelInternalServerError() *DeleteLabelInternalServerError {
 	return &DeleteLabelInternalServerError{}
 }
 
-/* DeleteLabelInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteLabelInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

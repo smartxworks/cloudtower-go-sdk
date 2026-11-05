@@ -57,7 +57,8 @@ func NewGetEverouteClustersOK() *GetEverouteClustersOK {
 	return &GetEverouteClustersOK{}
 }
 
-/* GetEverouteClustersOK describes a response with status code 200, with default header values.
+/*
+GetEverouteClustersOK describes a response with status code 200, with default header values.
 
 GetEverouteClustersOK get everoute clusters o k
 */
@@ -96,7 +97,8 @@ func NewGetEverouteClustersBadRequest() *GetEverouteClustersBadRequest {
 	return &GetEverouteClustersBadRequest{}
 }
 
-/* GetEverouteClustersBadRequest describes a response with status code 400, with default header values.
+/*
+GetEverouteClustersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetEverouteClustersNotFound() *GetEverouteClustersNotFound {
 	return &GetEverouteClustersNotFound{}
 }
 
-/* GetEverouteClustersNotFound describes a response with status code 404, with default header values.
+/*
+GetEverouteClustersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetEverouteClustersInternalServerError() *GetEverouteClustersInternalSer
 	return &GetEverouteClustersInternalServerError{}
 }
 
-/* GetEverouteClustersInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEverouteClustersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

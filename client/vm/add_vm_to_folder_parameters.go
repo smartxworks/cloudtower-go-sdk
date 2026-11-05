@@ -54,10 +54,12 @@ func NewAddVMToFolderParamsWithHTTPClient(client *http.Client) *AddVMToFolderPar
 	}
 }
 
-/* AddVMToFolderParams contains all the parameters to send to the API endpoint
-   for the add Vm to folder operation.
+/*
+AddVMToFolderParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add Vm to folder operation.
+
+	Typically these are written to a http.Request.
 */
 type AddVMToFolderParams struct {
 

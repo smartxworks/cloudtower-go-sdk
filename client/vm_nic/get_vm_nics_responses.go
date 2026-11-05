@@ -57,7 +57,8 @@ func NewGetVMNicsOK() *GetVMNicsOK {
 	return &GetVMNicsOK{}
 }
 
-/* GetVMNicsOK describes a response with status code 200, with default header values.
+/*
+GetVMNicsOK describes a response with status code 200, with default header values.
 
 GetVMNicsOK get Vm nics o k
 */
@@ -96,7 +97,8 @@ func NewGetVMNicsBadRequest() *GetVMNicsBadRequest {
 	return &GetVMNicsBadRequest{}
 }
 
-/* GetVMNicsBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMNicsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVMNicsNotFound() *GetVMNicsNotFound {
 	return &GetVMNicsNotFound{}
 }
 
-/* GetVMNicsNotFound describes a response with status code 404, with default header values.
+/*
+GetVMNicsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVMNicsInternalServerError() *GetVMNicsInternalServerError {
 	return &GetVMNicsInternalServerError{}
 }
 
-/* GetVMNicsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMNicsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

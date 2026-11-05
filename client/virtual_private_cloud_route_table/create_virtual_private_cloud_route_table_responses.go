@@ -57,7 +57,8 @@ func NewCreateVirtualPrivateCloudRouteTableOK() *CreateVirtualPrivateCloudRouteT
 	return &CreateVirtualPrivateCloudRouteTableOK{}
 }
 
-/* CreateVirtualPrivateCloudRouteTableOK describes a response with status code 200, with default header values.
+/*
+CreateVirtualPrivateCloudRouteTableOK describes a response with status code 200, with default header values.
 
 CreateVirtualPrivateCloudRouteTableOK create virtual private cloud route table o k
 */
@@ -96,7 +97,8 @@ func NewCreateVirtualPrivateCloudRouteTableBadRequest() *CreateVirtualPrivateClo
 	return &CreateVirtualPrivateCloudRouteTableBadRequest{}
 }
 
-/* CreateVirtualPrivateCloudRouteTableBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVirtualPrivateCloudRouteTableBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVirtualPrivateCloudRouteTableNotFound() *CreateVirtualPrivateCloud
 	return &CreateVirtualPrivateCloudRouteTableNotFound{}
 }
 
-/* CreateVirtualPrivateCloudRouteTableNotFound describes a response with status code 404, with default header values.
+/*
+CreateVirtualPrivateCloudRouteTableNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVirtualPrivateCloudRouteTableInternalServerError() *CreateVirtualP
 	return &CreateVirtualPrivateCloudRouteTableInternalServerError{}
 }
 
-/* CreateVirtualPrivateCloudRouteTableInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVirtualPrivateCloudRouteTableInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

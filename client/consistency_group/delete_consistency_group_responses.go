@@ -57,7 +57,8 @@ func NewDeleteConsistencyGroupOK() *DeleteConsistencyGroupOK {
 	return &DeleteConsistencyGroupOK{}
 }
 
-/* DeleteConsistencyGroupOK describes a response with status code 200, with default header values.
+/*
+DeleteConsistencyGroupOK describes a response with status code 200, with default header values.
 
 DeleteConsistencyGroupOK delete consistency group o k
 */
@@ -96,7 +97,8 @@ func NewDeleteConsistencyGroupBadRequest() *DeleteConsistencyGroupBadRequest {
 	return &DeleteConsistencyGroupBadRequest{}
 }
 
-/* DeleteConsistencyGroupBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteConsistencyGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteConsistencyGroupNotFound() *DeleteConsistencyGroupNotFound {
 	return &DeleteConsistencyGroupNotFound{}
 }
 
-/* DeleteConsistencyGroupNotFound describes a response with status code 404, with default header values.
+/*
+DeleteConsistencyGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteConsistencyGroupInternalServerError() *DeleteConsistencyGroupInter
 	return &DeleteConsistencyGroupInternalServerError{}
 }
 
-/* DeleteConsistencyGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteConsistencyGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

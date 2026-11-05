@@ -54,10 +54,12 @@ func NewGetVirtualPrivateCloudRouteTablesParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* GetVirtualPrivateCloudRouteTablesParams contains all the parameters to send to the API endpoint
-   for the get virtual private cloud route tables operation.
+/*
+GetVirtualPrivateCloudRouteTablesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get virtual private cloud route tables operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVirtualPrivateCloudRouteTablesParams struct {
 

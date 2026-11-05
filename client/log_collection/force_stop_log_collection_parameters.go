@@ -54,10 +54,12 @@ func NewForceStopLogCollectionParamsWithHTTPClient(client *http.Client) *ForceSt
 	}
 }
 
-/* ForceStopLogCollectionParams contains all the parameters to send to the API endpoint
-   for the force stop log collection operation.
+/*
+ForceStopLogCollectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the force stop log collection operation.
+
+	Typically these are written to a http.Request.
 */
 type ForceStopLogCollectionParams struct {
 

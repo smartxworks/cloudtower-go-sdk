@@ -54,10 +54,12 @@ func NewDeleteCloudTowerApplicationPackageParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* DeleteCloudTowerApplicationPackageParams contains all the parameters to send to the API endpoint
-   for the delete cloud tower application package operation.
+/*
+DeleteCloudTowerApplicationPackageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete cloud tower application package operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteCloudTowerApplicationPackageParams struct {
 

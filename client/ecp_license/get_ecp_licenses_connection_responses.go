@@ -57,7 +57,8 @@ func NewGetEcpLicensesConnectionOK() *GetEcpLicensesConnectionOK {
 	return &GetEcpLicensesConnectionOK{}
 }
 
-/* GetEcpLicensesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetEcpLicensesConnectionOK describes a response with status code 200, with default header values.
 
 GetEcpLicensesConnectionOK get ecp licenses connection o k
 */
@@ -98,7 +99,8 @@ func NewGetEcpLicensesConnectionBadRequest() *GetEcpLicensesConnectionBadRequest
 	return &GetEcpLicensesConnectionBadRequest{}
 }
 
-/* GetEcpLicensesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetEcpLicensesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetEcpLicensesConnectionNotFound() *GetEcpLicensesConnectionNotFound {
 	return &GetEcpLicensesConnectionNotFound{}
 }
 
-/* GetEcpLicensesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetEcpLicensesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetEcpLicensesConnectionInternalServerError() *GetEcpLicensesConnectionI
 	return &GetEcpLicensesConnectionInternalServerError{}
 }
 
-/* GetEcpLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEcpLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

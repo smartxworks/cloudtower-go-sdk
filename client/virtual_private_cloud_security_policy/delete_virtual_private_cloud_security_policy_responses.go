@@ -57,7 +57,8 @@ func NewDeleteVirtualPrivateCloudSecurityPolicyOK() *DeleteVirtualPrivateCloudSe
 	return &DeleteVirtualPrivateCloudSecurityPolicyOK{}
 }
 
-/* DeleteVirtualPrivateCloudSecurityPolicyOK describes a response with status code 200, with default header values.
+/*
+DeleteVirtualPrivateCloudSecurityPolicyOK describes a response with status code 200, with default header values.
 
 DeleteVirtualPrivateCloudSecurityPolicyOK delete virtual private cloud security policy o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVirtualPrivateCloudSecurityPolicyBadRequest() *DeleteVirtualPrivat
 	return &DeleteVirtualPrivateCloudSecurityPolicyBadRequest{}
 }
 
-/* DeleteVirtualPrivateCloudSecurityPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVirtualPrivateCloudSecurityPolicyBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVirtualPrivateCloudSecurityPolicyNotFound() *DeleteVirtualPrivateC
 	return &DeleteVirtualPrivateCloudSecurityPolicyNotFound{}
 }
 
-/* DeleteVirtualPrivateCloudSecurityPolicyNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVirtualPrivateCloudSecurityPolicyNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVirtualPrivateCloudSecurityPolicyInternalServerError() *DeleteVirt
 	return &DeleteVirtualPrivateCloudSecurityPolicyInternalServerError{}
 }
 
-/* DeleteVirtualPrivateCloudSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVirtualPrivateCloudSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

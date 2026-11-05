@@ -35,6 +35,12 @@ type VmdkDiskModify struct {
 	// elf storage policy
 	ElfStoragePolicy *VMVolumeElfStoragePolicyType `json:"elf_storage_policy,omitempty"`
 
+	// provision policy
+	ProvisionPolicy *VMVolumeProvisionPolicy `json:"provision_policy,omitempty"`
+
+	// storage config
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
 	// vmdk name
 	// Required: true
 	VmdkName *string `json:"vmdk_name"`
@@ -55,6 +61,10 @@ type VmdkDiskModifyMarshalOpts struct {
 	ElfReplicaStoragePolicy_Explicit_Null_When_Empty bool
 
 	ElfStoragePolicy_Explicit_Null_When_Empty bool
+
+	ProvisionPolicy_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
 
 	VmdkName_Explicit_Null_When_Empty bool
 
@@ -167,6 +177,46 @@ func (m VmdkDiskModify) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field provision_policy
+	if m.ProvisionPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":null")
+		first = false
+	}
+
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
 	// handle nullable field vmdk_name
 	if m.VmdkName != nil {
 		if !first {
@@ -228,6 +278,14 @@ func (m *VmdkDiskModify) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateElfStoragePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProvisionPolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -317,6 +375,44 @@ func (m *VmdkDiskModify) validateElfStoragePolicy(formats strfmt.Registry) error
 	return nil
 }
 
+func (m *VmdkDiskModify) validateProvisionPolicy(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProvisionPolicy) { // not required
+		return nil
+	}
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("provision_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VmdkDiskModify) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VmdkDiskModify) validateVmdkName(formats strfmt.Registry) error {
 
 	if err := validate.Required("vmdk_name", "body", m.VmdkName); err != nil {
@@ -343,6 +439,14 @@ func (m *VmdkDiskModify) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateElfStoragePolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProvisionPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -408,6 +512,38 @@ func (m *VmdkDiskModify) contextValidateElfStoragePolicy(ctx context.Context, fo
 				return ve.ValidateName("elf_storage_policy")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("elf_storage_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VmdkDiskModify) contextValidateProvisionPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ProvisionPolicy != nil {
+		if err := m.ProvisionPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("provision_policy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("provision_policy")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VmdkDiskModify) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
 			}
 			return err
 		}

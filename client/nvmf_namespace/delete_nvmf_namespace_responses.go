@@ -57,7 +57,8 @@ func NewDeleteNvmfNamespaceOK() *DeleteNvmfNamespaceOK {
 	return &DeleteNvmfNamespaceOK{}
 }
 
-/* DeleteNvmfNamespaceOK describes a response with status code 200, with default header values.
+/*
+DeleteNvmfNamespaceOK describes a response with status code 200, with default header values.
 
 DeleteNvmfNamespaceOK delete nvmf namespace o k
 */
@@ -96,7 +97,8 @@ func NewDeleteNvmfNamespaceBadRequest() *DeleteNvmfNamespaceBadRequest {
 	return &DeleteNvmfNamespaceBadRequest{}
 }
 
-/* DeleteNvmfNamespaceBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteNvmfNamespaceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteNvmfNamespaceNotFound() *DeleteNvmfNamespaceNotFound {
 	return &DeleteNvmfNamespaceNotFound{}
 }
 
-/* DeleteNvmfNamespaceNotFound describes a response with status code 404, with default header values.
+/*
+DeleteNvmfNamespaceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteNvmfNamespaceInternalServerError() *DeleteNvmfNamespaceInternalSer
 	return &DeleteNvmfNamespaceInternalServerError{}
 }
 
-/* DeleteNvmfNamespaceInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteNvmfNamespaceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

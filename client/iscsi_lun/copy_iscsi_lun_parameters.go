@@ -54,10 +54,12 @@ func NewCopyIscsiLunParamsWithHTTPClient(client *http.Client) *CopyIscsiLunParam
 	}
 }
 
-/* CopyIscsiLunParams contains all the parameters to send to the API endpoint
-   for the copy iscsi lun operation.
+/*
+CopyIscsiLunParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the copy iscsi lun operation.
+
+	Typically these are written to a http.Request.
 */
 type CopyIscsiLunParams struct {
 

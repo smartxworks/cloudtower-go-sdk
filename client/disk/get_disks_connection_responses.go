@@ -57,7 +57,8 @@ func NewGetDisksConnectionOK() *GetDisksConnectionOK {
 	return &GetDisksConnectionOK{}
 }
 
-/* GetDisksConnectionOK describes a response with status code 200, with default header values.
+/*
+GetDisksConnectionOK describes a response with status code 200, with default header values.
 
 GetDisksConnectionOK get disks connection o k
 */
@@ -98,7 +99,8 @@ func NewGetDisksConnectionBadRequest() *GetDisksConnectionBadRequest {
 	return &GetDisksConnectionBadRequest{}
 }
 
-/* GetDisksConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetDisksConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetDisksConnectionNotFound() *GetDisksConnectionNotFound {
 	return &GetDisksConnectionNotFound{}
 }
 
-/* GetDisksConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetDisksConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetDisksConnectionInternalServerError() *GetDisksConnectionInternalServe
 	return &GetDisksConnectionInternalServerError{}
 }
 
-/* GetDisksConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDisksConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

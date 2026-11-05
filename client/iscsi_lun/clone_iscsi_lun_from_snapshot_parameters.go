@@ -54,10 +54,12 @@ func NewCloneIscsiLunFromSnapshotParamsWithHTTPClient(client *http.Client) *Clon
 	}
 }
 
-/* CloneIscsiLunFromSnapshotParams contains all the parameters to send to the API endpoint
-   for the clone iscsi lun from snapshot operation.
+/*
+CloneIscsiLunFromSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clone iscsi lun from snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type CloneIscsiLunFromSnapshotParams struct {
 

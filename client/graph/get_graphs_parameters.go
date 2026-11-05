@@ -54,10 +54,12 @@ func NewGetGraphsParamsWithHTTPClient(client *http.Client) *GetGraphsParams {
 	}
 }
 
-/* GetGraphsParams contains all the parameters to send to the API endpoint
-   for the get graphs operation.
+/*
+GetGraphsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get graphs operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGraphsParams struct {
 

@@ -57,7 +57,8 @@ func NewGetVMFoldersConnectionOK() *GetVMFoldersConnectionOK {
 	return &GetVMFoldersConnectionOK{}
 }
 
-/* GetVMFoldersConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVMFoldersConnectionOK describes a response with status code 200, with default header values.
 
 GetVMFoldersConnectionOK get Vm folders connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVMFoldersConnectionBadRequest() *GetVMFoldersConnectionBadRequest {
 	return &GetVMFoldersConnectionBadRequest{}
 }
 
-/* GetVMFoldersConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMFoldersConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVMFoldersConnectionNotFound() *GetVMFoldersConnectionNotFound {
 	return &GetVMFoldersConnectionNotFound{}
 }
 
-/* GetVMFoldersConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVMFoldersConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVMFoldersConnectionInternalServerError() *GetVMFoldersConnectionInter
 	return &GetVMFoldersConnectionInternalServerError{}
 }
 
-/* GetVMFoldersConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMFoldersConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

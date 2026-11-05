@@ -57,7 +57,8 @@ func NewRemoveVMGpuDeviceOK() *RemoveVMGpuDeviceOK {
 	return &RemoveVMGpuDeviceOK{}
 }
 
-/* RemoveVMGpuDeviceOK describes a response with status code 200, with default header values.
+/*
+RemoveVMGpuDeviceOK describes a response with status code 200, with default header values.
 
 RemoveVMGpuDeviceOK remove Vm gpu device o k
 */
@@ -96,7 +97,8 @@ func NewRemoveVMGpuDeviceBadRequest() *RemoveVMGpuDeviceBadRequest {
 	return &RemoveVMGpuDeviceBadRequest{}
 }
 
-/* RemoveVMGpuDeviceBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveVMGpuDeviceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRemoveVMGpuDeviceNotFound() *RemoveVMGpuDeviceNotFound {
 	return &RemoveVMGpuDeviceNotFound{}
 }
 
-/* RemoveVMGpuDeviceNotFound describes a response with status code 404, with default header values.
+/*
+RemoveVMGpuDeviceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRemoveVMGpuDeviceInternalServerError() *RemoveVMGpuDeviceInternalServerE
 	return &RemoveVMGpuDeviceInternalServerError{}
 }
 
-/* RemoveVMGpuDeviceInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveVMGpuDeviceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewGetVMVncInfoParamsWithHTTPClient(client *http.Client) *GetVMVncInfoParam
 	}
 }
 
-/* GetVMVncInfoParams contains all the parameters to send to the API endpoint
-   for the get Vm vnc info operation.
+/*
+GetVMVncInfoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm vnc info operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMVncInfoParams struct {
 

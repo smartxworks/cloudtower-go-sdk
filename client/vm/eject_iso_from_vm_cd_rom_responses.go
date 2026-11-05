@@ -57,7 +57,8 @@ func NewEjectIsoFromVMCdRomOK() *EjectIsoFromVMCdRomOK {
 	return &EjectIsoFromVMCdRomOK{}
 }
 
-/* EjectIsoFromVMCdRomOK describes a response with status code 200, with default header values.
+/*
+EjectIsoFromVMCdRomOK describes a response with status code 200, with default header values.
 
 EjectIsoFromVMCdRomOK eject iso from Vm cd rom o k
 */
@@ -96,7 +97,8 @@ func NewEjectIsoFromVMCdRomBadRequest() *EjectIsoFromVMCdRomBadRequest {
 	return &EjectIsoFromVMCdRomBadRequest{}
 }
 
-/* EjectIsoFromVMCdRomBadRequest describes a response with status code 400, with default header values.
+/*
+EjectIsoFromVMCdRomBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewEjectIsoFromVMCdRomNotFound() *EjectIsoFromVMCdRomNotFound {
 	return &EjectIsoFromVMCdRomNotFound{}
 }
 
-/* EjectIsoFromVMCdRomNotFound describes a response with status code 404, with default header values.
+/*
+EjectIsoFromVMCdRomNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewEjectIsoFromVMCdRomInternalServerError() *EjectIsoFromVMCdRomInternalSer
 	return &EjectIsoFromVMCdRomInternalServerError{}
 }
 
-/* EjectIsoFromVMCdRomInternalServerError describes a response with status code 500, with default header values.
+/*
+EjectIsoFromVMCdRomInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

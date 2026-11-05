@@ -57,7 +57,8 @@ func NewUpdateNamespaceGroupOK() *UpdateNamespaceGroupOK {
 	return &UpdateNamespaceGroupOK{}
 }
 
-/* UpdateNamespaceGroupOK describes a response with status code 200, with default header values.
+/*
+UpdateNamespaceGroupOK describes a response with status code 200, with default header values.
 
 UpdateNamespaceGroupOK update namespace group o k
 */
@@ -96,7 +97,8 @@ func NewUpdateNamespaceGroupBadRequest() *UpdateNamespaceGroupBadRequest {
 	return &UpdateNamespaceGroupBadRequest{}
 }
 
-/* UpdateNamespaceGroupBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateNamespaceGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateNamespaceGroupNotFound() *UpdateNamespaceGroupNotFound {
 	return &UpdateNamespaceGroupNotFound{}
 }
 
-/* UpdateNamespaceGroupNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNamespaceGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateNamespaceGroupInternalServerError() *UpdateNamespaceGroupInternalS
 	return &UpdateNamespaceGroupInternalServerError{}
 }
 
-/* UpdateNamespaceGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateNamespaceGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

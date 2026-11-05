@@ -57,7 +57,8 @@ func NewGetVMTemplatesConnectionOK() *GetVMTemplatesConnectionOK {
 	return &GetVMTemplatesConnectionOK{}
 }
 
-/* GetVMTemplatesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVMTemplatesConnectionOK describes a response with status code 200, with default header values.
 
 GetVMTemplatesConnectionOK get Vm templates connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVMTemplatesConnectionBadRequest() *GetVMTemplatesConnectionBadRequest
 	return &GetVMTemplatesConnectionBadRequest{}
 }
 
-/* GetVMTemplatesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMTemplatesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVMTemplatesConnectionNotFound() *GetVMTemplatesConnectionNotFound {
 	return &GetVMTemplatesConnectionNotFound{}
 }
 
-/* GetVMTemplatesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVMTemplatesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVMTemplatesConnectionInternalServerError() *GetVMTemplatesConnectionI
 	return &GetVMTemplatesConnectionInternalServerError{}
 }
 
-/* GetVMTemplatesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMTemplatesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

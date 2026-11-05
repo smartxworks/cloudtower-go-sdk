@@ -63,7 +63,8 @@ func NewRebuildVMVolumeOK() *RebuildVMVolumeOK {
 	return &RebuildVMVolumeOK{}
 }
 
-/* RebuildVMVolumeOK describes a response with status code 200, with default header values.
+/*
+RebuildVMVolumeOK describes a response with status code 200, with default header values.
 
 RebuildVMVolumeOK rebuild Vm volume o k
 */
@@ -102,7 +103,8 @@ func NewRebuildVMVolumeNotModified() *RebuildVMVolumeNotModified {
 	return &RebuildVMVolumeNotModified{}
 }
 
-/* RebuildVMVolumeNotModified describes a response with status code 304, with default header values.
+/*
+RebuildVMVolumeNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewRebuildVMVolumeBadRequest() *RebuildVMVolumeBadRequest {
 	return &RebuildVMVolumeBadRequest{}
 }
 
-/* RebuildVMVolumeBadRequest describes a response with status code 400, with default header values.
+/*
+RebuildVMVolumeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewRebuildVMVolumeNotFound() *RebuildVMVolumeNotFound {
 	return &RebuildVMVolumeNotFound{}
 }
 
-/* RebuildVMVolumeNotFound describes a response with status code 404, with default header values.
+/*
+RebuildVMVolumeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewRebuildVMVolumeInternalServerError() *RebuildVMVolumeInternalServerError
 	return &RebuildVMVolumeInternalServerError{}
 }
 
-/* RebuildVMVolumeInternalServerError describes a response with status code 500, with default header values.
+/*
+RebuildVMVolumeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

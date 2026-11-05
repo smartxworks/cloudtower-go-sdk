@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  AddClustersToDatacenter add clusters to datacenter API
+AddClustersToDatacenter add clusters to datacenter API
 */
 func (a *Client) AddClustersToDatacenter(params *AddClustersToDatacenterParams, opts ...ClientOption) (*AddClustersToDatacenterOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) AddClustersToDatacenter(params *AddClustersToDatacenterParams, 
 }
 
 /*
-  CreateDatacenter create datacenter API
+CreateDatacenter create datacenter API
 */
 func (a *Client) CreateDatacenter(params *CreateDatacenterParams, opts ...ClientOption) (*CreateDatacenterOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) CreateDatacenter(params *CreateDatacenterParams, opts ...Client
 }
 
 /*
-  DeleteDatacenter delete datacenter API
+DeleteDatacenter delete datacenter API
 */
 func (a *Client) DeleteDatacenter(params *DeleteDatacenterParams, opts ...ClientOption) (*DeleteDatacenterOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) DeleteDatacenter(params *DeleteDatacenterParams, opts ...Client
 }
 
 /*
-  GetDatacenters get datacenters API
+GetDatacenters get datacenters API
 */
 func (a *Client) GetDatacenters(params *GetDatacentersParams, opts ...ClientOption) (*GetDatacentersOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) GetDatacenters(params *GetDatacentersParams, opts ...ClientOpti
 }
 
 /*
-  GetDatacentersConnection get datacenters connection API
+GetDatacentersConnection get datacenters connection API
 */
 func (a *Client) GetDatacentersConnection(params *GetDatacentersConnectionParams, opts ...ClientOption) (*GetDatacentersConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -238,7 +238,7 @@ func (a *Client) GetDatacentersConnection(params *GetDatacentersConnectionParams
 }
 
 /*
-  RemoveClustersFromDatacenter remove clusters from datacenter API
+RemoveClustersFromDatacenter remove clusters from datacenter API
 */
 func (a *Client) RemoveClustersFromDatacenter(params *RemoveClustersFromDatacenterParams, opts ...ClientOption) (*RemoveClustersFromDatacenterOK, error) {
 	// TODO: Validate the params before sending
@@ -276,7 +276,7 @@ func (a *Client) RemoveClustersFromDatacenter(params *RemoveClustersFromDatacent
 }
 
 /*
-  UpdateDatacenter update datacenter API
+UpdateDatacenter update datacenter API
 */
 func (a *Client) UpdateDatacenter(params *UpdateDatacenterParams, opts ...ClientOption) (*UpdateDatacenterOK, error) {
 	// TODO: Validate the params before sending

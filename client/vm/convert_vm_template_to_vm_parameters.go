@@ -54,10 +54,12 @@ func NewConvertVMTemplateToVMParamsWithHTTPClient(client *http.Client) *ConvertV
 	}
 }
 
-/* ConvertVMTemplateToVMParams contains all the parameters to send to the API endpoint
-   for the convert Vm template to Vm operation.
+/*
+ConvertVMTemplateToVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the convert Vm template to Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type ConvertVMTemplateToVMParams struct {
 

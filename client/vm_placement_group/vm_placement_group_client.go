@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVMPlacementGroup create Vm placement group API
+CreateVMPlacementGroup create Vm placement group API
 */
 func (a *Client) CreateVMPlacementGroup(params *CreateVMPlacementGroupParams, opts ...ClientOption) (*CreateVMPlacementGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVMPlacementGroup(params *CreateVMPlacementGroupParams, op
 }
 
 /*
-  DeleteVMPlacementGroup delete Vm placement group API
+DeleteVMPlacementGroup delete Vm placement group API
 */
 func (a *Client) DeleteVMPlacementGroup(params *DeleteVMPlacementGroupParams, opts ...ClientOption) (*DeleteVMPlacementGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVMPlacementGroup(params *DeleteVMPlacementGroupParams, op
 }
 
 /*
-  GetVMPlacementGroups get Vm placement groups API
+GetVMPlacementGroups get Vm placement groups API
 */
 func (a *Client) GetVMPlacementGroups(params *GetVMPlacementGroupsParams, opts ...ClientOption) (*GetVMPlacementGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVMPlacementGroups(params *GetVMPlacementGroupsParams, opts .
 }
 
 /*
-  GetVMPlacementGroupsConnection get Vm placement groups connection API
+GetVMPlacementGroupsConnection get Vm placement groups connection API
 */
 func (a *Client) GetVMPlacementGroupsConnection(params *GetVMPlacementGroupsConnectionParams, opts ...ClientOption) (*GetVMPlacementGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVMPlacementGroupsConnection(params *GetVMPlacementGroupsConn
 }
 
 /*
-  UpdateVMPlacementGroup update Vm placement group API
+UpdateVMPlacementGroup update Vm placement group API
 */
 func (a *Client) UpdateVMPlacementGroup(params *UpdateVMPlacementGroupParams, opts ...ClientOption) (*UpdateVMPlacementGroupOK, error) {
 	// TODO: Validate the params before sending

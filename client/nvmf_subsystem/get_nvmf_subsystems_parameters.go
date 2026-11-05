@@ -54,10 +54,12 @@ func NewGetNvmfSubsystemsParamsWithHTTPClient(client *http.Client) *GetNvmfSubsy
 	}
 }
 
-/* GetNvmfSubsystemsParams contains all the parameters to send to the API endpoint
-   for the get nvmf subsystems operation.
+/*
+GetNvmfSubsystemsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get nvmf subsystems operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNvmfSubsystemsParams struct {
 

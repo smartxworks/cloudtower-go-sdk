@@ -54,10 +54,12 @@ func NewConnectClusterParamsWithHTTPClient(client *http.Client) *ConnectClusterP
 	}
 }
 
-/* ConnectClusterParams contains all the parameters to send to the API endpoint
-   for the connect cluster operation.
+/*
+ConnectClusterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the connect cluster operation.
+
+	Typically these are written to a http.Request.
 */
 type ConnectClusterParams struct {
 

@@ -57,7 +57,8 @@ func NewGetVMDisksOK() *GetVMDisksOK {
 	return &GetVMDisksOK{}
 }
 
-/* GetVMDisksOK describes a response with status code 200, with default header values.
+/*
+GetVMDisksOK describes a response with status code 200, with default header values.
 
 GetVMDisksOK get Vm disks o k
 */
@@ -96,7 +97,8 @@ func NewGetVMDisksBadRequest() *GetVMDisksBadRequest {
 	return &GetVMDisksBadRequest{}
 }
 
-/* GetVMDisksBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMDisksBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVMDisksNotFound() *GetVMDisksNotFound {
 	return &GetVMDisksNotFound{}
 }
 
-/* GetVMDisksNotFound describes a response with status code 404, with default header values.
+/*
+GetVMDisksNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVMDisksInternalServerError() *GetVMDisksInternalServerError {
 	return &GetVMDisksInternalServerError{}
 }
 
-/* GetVMDisksInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMDisksInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

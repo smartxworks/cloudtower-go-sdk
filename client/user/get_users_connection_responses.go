@@ -57,7 +57,8 @@ func NewGetUsersConnectionOK() *GetUsersConnectionOK {
 	return &GetUsersConnectionOK{}
 }
 
-/* GetUsersConnectionOK describes a response with status code 200, with default header values.
+/*
+GetUsersConnectionOK describes a response with status code 200, with default header values.
 
 GetUsersConnectionOK get users connection o k
 */
@@ -98,7 +99,8 @@ func NewGetUsersConnectionBadRequest() *GetUsersConnectionBadRequest {
 	return &GetUsersConnectionBadRequest{}
 }
 
-/* GetUsersConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetUsersConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetUsersConnectionNotFound() *GetUsersConnectionNotFound {
 	return &GetUsersConnectionNotFound{}
 }
 
-/* GetUsersConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetUsersConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetUsersConnectionInternalServerError() *GetUsersConnectionInternalServe
 	return &GetUsersConnectionInternalServerError{}
 }
 
-/* GetUsersConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetUsersConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

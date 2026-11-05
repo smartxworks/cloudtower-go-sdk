@@ -57,7 +57,8 @@ func NewCreateVMVolumeOK() *CreateVMVolumeOK {
 	return &CreateVMVolumeOK{}
 }
 
-/* CreateVMVolumeOK describes a response with status code 200, with default header values.
+/*
+CreateVMVolumeOK describes a response with status code 200, with default header values.
 
 CreateVMVolumeOK create Vm volume o k
 */
@@ -96,7 +97,8 @@ func NewCreateVMVolumeBadRequest() *CreateVMVolumeBadRequest {
 	return &CreateVMVolumeBadRequest{}
 }
 
-/* CreateVMVolumeBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVMVolumeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVMVolumeNotFound() *CreateVMVolumeNotFound {
 	return &CreateVMVolumeNotFound{}
 }
 
-/* CreateVMVolumeNotFound describes a response with status code 404, with default header values.
+/*
+CreateVMVolumeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVMVolumeInternalServerError() *CreateVMVolumeInternalServerError {
 	return &CreateVMVolumeInternalServerError{}
 }
 
-/* CreateVMVolumeInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVMVolumeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

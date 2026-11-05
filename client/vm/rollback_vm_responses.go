@@ -57,7 +57,8 @@ func NewRollbackVMOK() *RollbackVMOK {
 	return &RollbackVMOK{}
 }
 
-/* RollbackVMOK describes a response with status code 200, with default header values.
+/*
+RollbackVMOK describes a response with status code 200, with default header values.
 
 RollbackVMOK rollback Vm o k
 */
@@ -96,7 +97,8 @@ func NewRollbackVMBadRequest() *RollbackVMBadRequest {
 	return &RollbackVMBadRequest{}
 }
 
-/* RollbackVMBadRequest describes a response with status code 400, with default header values.
+/*
+RollbackVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRollbackVMNotFound() *RollbackVMNotFound {
 	return &RollbackVMNotFound{}
 }
 
-/* RollbackVMNotFound describes a response with status code 404, with default header values.
+/*
+RollbackVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRollbackVMInternalServerError() *RollbackVMInternalServerError {
 	return &RollbackVMInternalServerError{}
 }
 
-/* RollbackVMInternalServerError describes a response with status code 500, with default header values.
+/*
+RollbackVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

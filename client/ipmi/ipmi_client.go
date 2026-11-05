@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetIpmis get ipmis API
+GetIpmis get ipmis API
 */
 func (a *Client) GetIpmis(params *GetIpmisParams, opts ...ClientOption) (*GetIpmisOK, error) {
 	// TODO: Validate the params before sending

@@ -57,7 +57,8 @@ func NewUpdateTaskOK() *UpdateTaskOK {
 	return &UpdateTaskOK{}
 }
 
-/* UpdateTaskOK describes a response with status code 200, with default header values.
+/*
+UpdateTaskOK describes a response with status code 200, with default header values.
 
 UpdateTaskOK update task o k
 */
@@ -96,7 +97,8 @@ func NewUpdateTaskBadRequest() *UpdateTaskBadRequest {
 	return &UpdateTaskBadRequest{}
 }
 
-/* UpdateTaskBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateTaskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateTaskNotFound() *UpdateTaskNotFound {
 	return &UpdateTaskNotFound{}
 }
 
-/* UpdateTaskNotFound describes a response with status code 404, with default header values.
+/*
+UpdateTaskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateTaskInternalServerError() *UpdateTaskInternalServerError {
 	return &UpdateTaskInternalServerError{}
 }
 
-/* UpdateTaskInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateTaskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

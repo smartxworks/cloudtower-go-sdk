@@ -57,7 +57,8 @@ func NewDeleteViewOK() *DeleteViewOK {
 	return &DeleteViewOK{}
 }
 
-/* DeleteViewOK describes a response with status code 200, with default header values.
+/*
+DeleteViewOK describes a response with status code 200, with default header values.
 
 DeleteViewOK delete view o k
 */
@@ -96,7 +97,8 @@ func NewDeleteViewBadRequest() *DeleteViewBadRequest {
 	return &DeleteViewBadRequest{}
 }
 
-/* DeleteViewBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteViewBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteViewNotFound() *DeleteViewNotFound {
 	return &DeleteViewNotFound{}
 }
 
-/* DeleteViewNotFound describes a response with status code 404, with default header values.
+/*
+DeleteViewNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteViewInternalServerError() *DeleteViewInternalServerError {
 	return &DeleteViewInternalServerError{}
 }
 
-/* DeleteViewInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteViewInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

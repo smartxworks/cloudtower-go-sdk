@@ -35,6 +35,9 @@ const (
 
 	// BackupRestorePointTypeINCREMENTAL captures enum value "INCREMENTAL"
 	BackupRestorePointTypeINCREMENTAL BackupRestorePointType = "INCREMENTAL"
+
+	// BackupRestorePointTypeSYNTHETICFULL captures enum value "SYNTHETIC_FULL"
+	BackupRestorePointTypeSYNTHETICFULL BackupRestorePointType = "SYNTHETIC_FULL"
 )
 
 // for schema
@@ -42,7 +45,7 @@ var backupRestorePointTypeEnum []interface{}
 
 func init() {
 	var res []BackupRestorePointType
-	if err := json.Unmarshal([]byte(`["FULL","INCREMENTAL"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["FULL","INCREMENTAL","SYNTHETIC_FULL"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

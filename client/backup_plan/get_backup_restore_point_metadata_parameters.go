@@ -54,10 +54,12 @@ func NewGetBackupRestorePointMetadataParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetBackupRestorePointMetadataParams contains all the parameters to send to the API endpoint
-   for the get backup restore point metadata operation.
+/*
+GetBackupRestorePointMetadataParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backup restore point metadata operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackupRestorePointMetadataParams struct {
 

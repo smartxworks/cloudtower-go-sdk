@@ -54,10 +54,12 @@ func NewUpdateVMNicVpcInfoParamsWithHTTPClient(client *http.Client) *UpdateVMNic
 	}
 }
 
-/* UpdateVMNicVpcInfoParams contains all the parameters to send to the API endpoint
-   for the update Vm nic vpc info operation.
+/*
+UpdateVMNicVpcInfoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm nic vpc info operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMNicVpcInfoParams struct {
 

@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateIscsiLunSnapshot create iscsi lun snapshot API
+CreateIscsiLunSnapshot create iscsi lun snapshot API
 */
 func (a *Client) CreateIscsiLunSnapshot(params *CreateIscsiLunSnapshotParams, opts ...ClientOption) (*CreateIscsiLunSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) CreateIscsiLunSnapshot(params *CreateIscsiLunSnapshotParams, op
 }
 
 /*
-  DeleteIscsiLunSnapshot delete iscsi lun snapshot API
+DeleteIscsiLunSnapshot delete iscsi lun snapshot API
 */
 func (a *Client) DeleteIscsiLunSnapshot(params *DeleteIscsiLunSnapshotParams, opts ...ClientOption) (*DeleteIscsiLunSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) DeleteIscsiLunSnapshot(params *DeleteIscsiLunSnapshotParams, op
 }
 
 /*
-  GetIscsiLunSnapshots get iscsi lun snapshots API
+GetIscsiLunSnapshots get iscsi lun snapshots API
 */
 func (a *Client) GetIscsiLunSnapshots(params *GetIscsiLunSnapshotsParams, opts ...ClientOption) (*GetIscsiLunSnapshotsOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) GetIscsiLunSnapshots(params *GetIscsiLunSnapshotsParams, opts .
 }
 
 /*
-  GetIscsiLunSnapshotsConnection get iscsi lun snapshots connection API
+GetIscsiLunSnapshotsConnection get iscsi lun snapshots connection API
 */
 func (a *Client) GetIscsiLunSnapshotsConnection(params *GetIscsiLunSnapshotsConnectionParams, opts ...ClientOption) (*GetIscsiLunSnapshotsConnectionOK, error) {
 	// TODO: Validate the params before sending

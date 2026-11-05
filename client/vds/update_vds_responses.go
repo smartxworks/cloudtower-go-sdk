@@ -57,7 +57,8 @@ func NewUpdateVdsOK() *UpdateVdsOK {
 	return &UpdateVdsOK{}
 }
 
-/* UpdateVdsOK describes a response with status code 200, with default header values.
+/*
+UpdateVdsOK describes a response with status code 200, with default header values.
 
 UpdateVdsOK update vds o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVdsBadRequest() *UpdateVdsBadRequest {
 	return &UpdateVdsBadRequest{}
 }
 
-/* UpdateVdsBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVdsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVdsNotFound() *UpdateVdsNotFound {
 	return &UpdateVdsNotFound{}
 }
 
-/* UpdateVdsNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVdsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVdsInternalServerError() *UpdateVdsInternalServerError {
 	return &UpdateVdsInternalServerError{}
 }
 
-/* UpdateVdsInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVdsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

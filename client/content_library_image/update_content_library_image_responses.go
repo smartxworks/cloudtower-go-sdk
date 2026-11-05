@@ -57,7 +57,8 @@ func NewUpdateContentLibraryImageOK() *UpdateContentLibraryImageOK {
 	return &UpdateContentLibraryImageOK{}
 }
 
-/* UpdateContentLibraryImageOK describes a response with status code 200, with default header values.
+/*
+UpdateContentLibraryImageOK describes a response with status code 200, with default header values.
 
 UpdateContentLibraryImageOK update content library image o k
 */
@@ -96,7 +97,8 @@ func NewUpdateContentLibraryImageBadRequest() *UpdateContentLibraryImageBadReque
 	return &UpdateContentLibraryImageBadRequest{}
 }
 
-/* UpdateContentLibraryImageBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateContentLibraryImageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateContentLibraryImageNotFound() *UpdateContentLibraryImageNotFound {
 	return &UpdateContentLibraryImageNotFound{}
 }
 
-/* UpdateContentLibraryImageNotFound describes a response with status code 404, with default header values.
+/*
+UpdateContentLibraryImageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateContentLibraryImageInternalServerError() *UpdateContentLibraryImag
 	return &UpdateContentLibraryImageInternalServerError{}
 }
 
-/* UpdateContentLibraryImageInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateContentLibraryImageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

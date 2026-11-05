@@ -57,7 +57,8 @@ func NewGetNodeTopoesConnectionOK() *GetNodeTopoesConnectionOK {
 	return &GetNodeTopoesConnectionOK{}
 }
 
-/* GetNodeTopoesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetNodeTopoesConnectionOK describes a response with status code 200, with default header values.
 
 GetNodeTopoesConnectionOK get node topoes connection o k
 */
@@ -98,7 +99,8 @@ func NewGetNodeTopoesConnectionBadRequest() *GetNodeTopoesConnectionBadRequest {
 	return &GetNodeTopoesConnectionBadRequest{}
 }
 
-/* GetNodeTopoesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetNodeTopoesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetNodeTopoesConnectionNotFound() *GetNodeTopoesConnectionNotFound {
 	return &GetNodeTopoesConnectionNotFound{}
 }
 
-/* GetNodeTopoesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetNodeTopoesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetNodeTopoesConnectionInternalServerError() *GetNodeTopoesConnectionInt
 	return &GetNodeTopoesConnectionInternalServerError{}
 }
 
-/* GetNodeTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNodeTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

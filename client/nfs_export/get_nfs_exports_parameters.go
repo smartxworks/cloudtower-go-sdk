@@ -54,10 +54,12 @@ func NewGetNfsExportsParamsWithHTTPClient(client *http.Client) *GetNfsExportsPar
 	}
 }
 
-/* GetNfsExportsParams contains all the parameters to send to the API endpoint
-   for the get nfs exports operation.
+/*
+GetNfsExportsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get nfs exports operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNfsExportsParams struct {
 

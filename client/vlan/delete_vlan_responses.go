@@ -57,7 +57,8 @@ func NewDeleteVlanOK() *DeleteVlanOK {
 	return &DeleteVlanOK{}
 }
 
-/* DeleteVlanOK describes a response with status code 200, with default header values.
+/*
+DeleteVlanOK describes a response with status code 200, with default header values.
 
 DeleteVlanOK delete vlan o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVlanBadRequest() *DeleteVlanBadRequest {
 	return &DeleteVlanBadRequest{}
 }
 
-/* DeleteVlanBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVlanNotFound() *DeleteVlanNotFound {
 	return &DeleteVlanNotFound{}
 }
 
-/* DeleteVlanNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVlanInternalServerError() *DeleteVlanInternalServerError {
 	return &DeleteVlanInternalServerError{}
 }
 
-/* DeleteVlanInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

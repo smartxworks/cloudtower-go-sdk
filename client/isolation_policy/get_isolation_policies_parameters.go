@@ -54,10 +54,12 @@ func NewGetIsolationPoliciesParamsWithHTTPClient(client *http.Client) *GetIsolat
 	}
 }
 
-/* GetIsolationPoliciesParams contains all the parameters to send to the API endpoint
-   for the get isolation policies operation.
+/*
+GetIsolationPoliciesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get isolation policies operation.
+
+	Typically these are written to a http.Request.
 */
 type GetIsolationPoliciesParams struct {
 

@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetEveroutePackages get everoute packages API
+GetEveroutePackages get everoute packages API
 */
 func (a *Client) GetEveroutePackages(params *GetEveroutePackagesParams, opts ...ClientOption) (*GetEveroutePackagesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetEveroutePackages(params *GetEveroutePackagesParams, opts ...
 }
 
 /*
-  GetEveroutePackagesConnection get everoute packages connection API
+GetEveroutePackagesConnection get everoute packages connection API
 */
 func (a *Client) GetEveroutePackagesConnection(params *GetEveroutePackagesConnectionParams, opts ...ClientOption) (*GetEveroutePackagesConnectionOK, error) {
 	// TODO: Validate the params before sending

@@ -57,7 +57,8 @@ func NewGetGlobalSettingsesConnectionOK() *GetGlobalSettingsesConnectionOK {
 	return &GetGlobalSettingsesConnectionOK{}
 }
 
-/* GetGlobalSettingsesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetGlobalSettingsesConnectionOK describes a response with status code 200, with default header values.
 
 GetGlobalSettingsesConnectionOK get global settingses connection o k
 */
@@ -98,7 +99,8 @@ func NewGetGlobalSettingsesConnectionBadRequest() *GetGlobalSettingsesConnection
 	return &GetGlobalSettingsesConnectionBadRequest{}
 }
 
-/* GetGlobalSettingsesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetGlobalSettingsesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetGlobalSettingsesConnectionNotFound() *GetGlobalSettingsesConnectionNo
 	return &GetGlobalSettingsesConnectionNotFound{}
 }
 
-/* GetGlobalSettingsesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetGlobalSettingsesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetGlobalSettingsesConnectionInternalServerError() *GetGlobalSettingsesC
 	return &GetGlobalSettingsesConnectionInternalServerError{}
 }
 
-/* GetGlobalSettingsesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGlobalSettingsesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

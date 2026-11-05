@@ -54,10 +54,12 @@ func NewDeleteRackTopoParamsWithHTTPClient(client *http.Client) *DeleteRackTopoP
 	}
 }
 
-/* DeleteRackTopoParams contains all the parameters to send to the API endpoint
-   for the delete rack topo operation.
+/*
+DeleteRackTopoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete rack topo operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteRackTopoParams struct {
 

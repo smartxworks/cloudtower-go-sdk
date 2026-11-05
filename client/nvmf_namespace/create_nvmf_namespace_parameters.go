@@ -54,10 +54,12 @@ func NewCreateNvmfNamespaceParamsWithHTTPClient(client *http.Client) *CreateNvmf
 	}
 }
 
-/* CreateNvmfNamespaceParams contains all the parameters to send to the API endpoint
-   for the create nvmf namespace operation.
+/*
+CreateNvmfNamespaceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create nvmf namespace operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateNvmfNamespaceParams struct {
 

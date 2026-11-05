@@ -54,10 +54,12 @@ func NewUpdateVlanParamsWithHTTPClient(client *http.Client) *UpdateVlanParams {
 	}
 }
 
-/* UpdateVlanParams contains all the parameters to send to the API endpoint
-   for the update vlan operation.
+/*
+UpdateVlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update vlan operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVlanParams struct {
 

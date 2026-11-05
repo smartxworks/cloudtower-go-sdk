@@ -54,10 +54,12 @@ func NewDeleteElfImageParamsWithHTTPClient(client *http.Client) *DeleteElfImageP
 	}
 }
 
-/* DeleteElfImageParams contains all the parameters to send to the API endpoint
-   for the delete elf image operation.
+/*
+DeleteElfImageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete elf image operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteElfImageParams struct {
 

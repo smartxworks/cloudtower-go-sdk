@@ -57,7 +57,8 @@ func NewCreateIscsiLunOK() *CreateIscsiLunOK {
 	return &CreateIscsiLunOK{}
 }
 
-/* CreateIscsiLunOK describes a response with status code 200, with default header values.
+/*
+CreateIscsiLunOK describes a response with status code 200, with default header values.
 
 CreateIscsiLunOK create iscsi lun o k
 */
@@ -96,7 +97,8 @@ func NewCreateIscsiLunBadRequest() *CreateIscsiLunBadRequest {
 	return &CreateIscsiLunBadRequest{}
 }
 
-/* CreateIscsiLunBadRequest describes a response with status code 400, with default header values.
+/*
+CreateIscsiLunBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateIscsiLunNotFound() *CreateIscsiLunNotFound {
 	return &CreateIscsiLunNotFound{}
 }
 
-/* CreateIscsiLunNotFound describes a response with status code 404, with default header values.
+/*
+CreateIscsiLunNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateIscsiLunInternalServerError() *CreateIscsiLunInternalServerError {
 	return &CreateIscsiLunInternalServerError{}
 }
 
-/* CreateIscsiLunInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateIscsiLunInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

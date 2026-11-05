@@ -57,7 +57,8 @@ func NewUpdateNicOK() *UpdateNicOK {
 	return &UpdateNicOK{}
 }
 
-/* UpdateNicOK describes a response with status code 200, with default header values.
+/*
+UpdateNicOK describes a response with status code 200, with default header values.
 
 UpdateNicOK update nic o k
 */
@@ -96,7 +97,8 @@ func NewUpdateNicBadRequest() *UpdateNicBadRequest {
 	return &UpdateNicBadRequest{}
 }
 
-/* UpdateNicBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateNicBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateNicNotFound() *UpdateNicNotFound {
 	return &UpdateNicNotFound{}
 }
 
-/* UpdateNicNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNicNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateNicInternalServerError() *UpdateNicInternalServerError {
 	return &UpdateNicInternalServerError{}
 }
 
-/* UpdateNicInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateNicInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

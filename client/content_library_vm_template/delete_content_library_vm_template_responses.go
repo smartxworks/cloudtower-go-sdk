@@ -57,7 +57,8 @@ func NewDeleteContentLibraryVMTemplateOK() *DeleteContentLibraryVMTemplateOK {
 	return &DeleteContentLibraryVMTemplateOK{}
 }
 
-/* DeleteContentLibraryVMTemplateOK describes a response with status code 200, with default header values.
+/*
+DeleteContentLibraryVMTemplateOK describes a response with status code 200, with default header values.
 
 DeleteContentLibraryVMTemplateOK delete content library Vm template o k
 */
@@ -96,7 +97,8 @@ func NewDeleteContentLibraryVMTemplateBadRequest() *DeleteContentLibraryVMTempla
 	return &DeleteContentLibraryVMTemplateBadRequest{}
 }
 
-/* DeleteContentLibraryVMTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteContentLibraryVMTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteContentLibraryVMTemplateNotFound() *DeleteContentLibraryVMTemplate
 	return &DeleteContentLibraryVMTemplateNotFound{}
 }
 
-/* DeleteContentLibraryVMTemplateNotFound describes a response with status code 404, with default header values.
+/*
+DeleteContentLibraryVMTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteContentLibraryVMTemplateInternalServerError() *DeleteContentLibrar
 	return &DeleteContentLibraryVMTemplateInternalServerError{}
 }
 
-/* DeleteContentLibraryVMTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteContentLibraryVMTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewGetUsbDevicesOK() *GetUsbDevicesOK {
 	return &GetUsbDevicesOK{}
 }
 
-/* GetUsbDevicesOK describes a response with status code 200, with default header values.
+/*
+GetUsbDevicesOK describes a response with status code 200, with default header values.
 
 GetUsbDevicesOK get usb devices o k
 */
@@ -96,7 +97,8 @@ func NewGetUsbDevicesBadRequest() *GetUsbDevicesBadRequest {
 	return &GetUsbDevicesBadRequest{}
 }
 
-/* GetUsbDevicesBadRequest describes a response with status code 400, with default header values.
+/*
+GetUsbDevicesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetUsbDevicesNotFound() *GetUsbDevicesNotFound {
 	return &GetUsbDevicesNotFound{}
 }
 
-/* GetUsbDevicesNotFound describes a response with status code 404, with default header values.
+/*
+GetUsbDevicesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetUsbDevicesInternalServerError() *GetUsbDevicesInternalServerError {
 	return &GetUsbDevicesInternalServerError{}
 }
 
-/* GetUsbDevicesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetUsbDevicesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

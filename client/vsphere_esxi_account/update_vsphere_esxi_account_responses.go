@@ -63,7 +63,8 @@ func NewUpdateVsphereEsxiAccountOK() *UpdateVsphereEsxiAccountOK {
 	return &UpdateVsphereEsxiAccountOK{}
 }
 
-/* UpdateVsphereEsxiAccountOK describes a response with status code 200, with default header values.
+/*
+UpdateVsphereEsxiAccountOK describes a response with status code 200, with default header values.
 
 UpdateVsphereEsxiAccountOK update vsphere esxi account o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVsphereEsxiAccountNotModified() *UpdateVsphereEsxiAccountNotModifi
 	return &UpdateVsphereEsxiAccountNotModified{}
 }
 
-/* UpdateVsphereEsxiAccountNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVsphereEsxiAccountNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVsphereEsxiAccountBadRequest() *UpdateVsphereEsxiAccountBadRequest
 	return &UpdateVsphereEsxiAccountBadRequest{}
 }
 
-/* UpdateVsphereEsxiAccountBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVsphereEsxiAccountBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVsphereEsxiAccountNotFound() *UpdateVsphereEsxiAccountNotFound {
 	return &UpdateVsphereEsxiAccountNotFound{}
 }
 
-/* UpdateVsphereEsxiAccountNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVsphereEsxiAccountNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVsphereEsxiAccountInternalServerError() *UpdateVsphereEsxiAccountI
 	return &UpdateVsphereEsxiAccountInternalServerError{}
 }
 
-/* UpdateVsphereEsxiAccountInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVsphereEsxiAccountInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewUpdateClusterEnableISCSISettingOK() *UpdateClusterEnableISCSISettingOK {
 	return &UpdateClusterEnableISCSISettingOK{}
 }
 
-/* UpdateClusterEnableISCSISettingOK describes a response with status code 200, with default header values.
+/*
+UpdateClusterEnableISCSISettingOK describes a response with status code 200, with default header values.
 
 UpdateClusterEnableISCSISettingOK update cluster enable i s c s i setting o k
 */
@@ -96,7 +97,8 @@ func NewUpdateClusterEnableISCSISettingBadRequest() *UpdateClusterEnableISCSISet
 	return &UpdateClusterEnableISCSISettingBadRequest{}
 }
 
-/* UpdateClusterEnableISCSISettingBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateClusterEnableISCSISettingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateClusterEnableISCSISettingNotFound() *UpdateClusterEnableISCSISetti
 	return &UpdateClusterEnableISCSISettingNotFound{}
 }
 
-/* UpdateClusterEnableISCSISettingNotFound describes a response with status code 404, with default header values.
+/*
+UpdateClusterEnableISCSISettingNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateClusterEnableISCSISettingInternalServerError() *UpdateClusterEnabl
 	return &UpdateClusterEnableISCSISettingInternalServerError{}
 }
 
-/* UpdateClusterEnableISCSISettingInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateClusterEnableISCSISettingInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewGetVirtualPrivateCloudEdgeGatewayGroupsOK() *GetVirtualPrivateCloudEdgeG
 	return &GetVirtualPrivateCloudEdgeGatewayGroupsOK{}
 }
 
-/* GetVirtualPrivateCloudEdgeGatewayGroupsOK describes a response with status code 200, with default header values.
+/*
+GetVirtualPrivateCloudEdgeGatewayGroupsOK describes a response with status code 200, with default header values.
 
 GetVirtualPrivateCloudEdgeGatewayGroupsOK get virtual private cloud edge gateway groups o k
 */
@@ -96,7 +97,8 @@ func NewGetVirtualPrivateCloudEdgeGatewayGroupsBadRequest() *GetVirtualPrivateCl
 	return &GetVirtualPrivateCloudEdgeGatewayGroupsBadRequest{}
 }
 
-/* GetVirtualPrivateCloudEdgeGatewayGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+GetVirtualPrivateCloudEdgeGatewayGroupsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVirtualPrivateCloudEdgeGatewayGroupsNotFound() *GetVirtualPrivateClou
 	return &GetVirtualPrivateCloudEdgeGatewayGroupsNotFound{}
 }
 
-/* GetVirtualPrivateCloudEdgeGatewayGroupsNotFound describes a response with status code 404, with default header values.
+/*
+GetVirtualPrivateCloudEdgeGatewayGroupsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVirtualPrivateCloudEdgeGatewayGroupsInternalServerError() *GetVirtual
 	return &GetVirtualPrivateCloudEdgeGatewayGroupsInternalServerError{}
 }
 
-/* GetVirtualPrivateCloudEdgeGatewayGroupsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVirtualPrivateCloudEdgeGatewayGroupsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

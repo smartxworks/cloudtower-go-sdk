@@ -54,10 +54,12 @@ func NewDownloadNvramParamsWithHTTPClient(client *http.Client) *DownloadNvramPar
 	}
 }
 
-/* DownloadNvramParams contains all the parameters to send to the API endpoint
-   for the download nvram operation.
+/*
+DownloadNvramParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the download nvram operation.
+
+	Typically these are written to a http.Request.
 */
 type DownloadNvramParams struct {
 

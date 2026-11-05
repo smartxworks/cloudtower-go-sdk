@@ -57,7 +57,8 @@ func NewGetTasksConnectionOK() *GetTasksConnectionOK {
 	return &GetTasksConnectionOK{}
 }
 
-/* GetTasksConnectionOK describes a response with status code 200, with default header values.
+/*
+GetTasksConnectionOK describes a response with status code 200, with default header values.
 
 GetTasksConnectionOK get tasks connection o k
 */
@@ -98,7 +99,8 @@ func NewGetTasksConnectionBadRequest() *GetTasksConnectionBadRequest {
 	return &GetTasksConnectionBadRequest{}
 }
 
-/* GetTasksConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetTasksConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetTasksConnectionNotFound() *GetTasksConnectionNotFound {
 	return &GetTasksConnectionNotFound{}
 }
 
-/* GetTasksConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetTasksConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetTasksConnectionInternalServerError() *GetTasksConnectionInternalServe
 	return &GetTasksConnectionInternalServerError{}
 }
 
-/* GetTasksConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetTasksConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateSecurityPolicy create security policy API
+CreateSecurityPolicy create security policy API
 */
 func (a *Client) CreateSecurityPolicy(params *CreateSecurityPolicyParams, opts ...ClientOption) (*CreateSecurityPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateSecurityPolicy(params *CreateSecurityPolicyParams, opts .
 }
 
 /*
-  DeleteSecurityPolicy delete security policy API
+DeleteSecurityPolicy delete security policy API
 */
 func (a *Client) DeleteSecurityPolicy(params *DeleteSecurityPolicyParams, opts ...ClientOption) (*DeleteSecurityPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteSecurityPolicy(params *DeleteSecurityPolicyParams, opts .
 }
 
 /*
-  GetSecurityPolicies get security policies API
+GetSecurityPolicies get security policies API
 */
 func (a *Client) GetSecurityPolicies(params *GetSecurityPoliciesParams, opts ...ClientOption) (*GetSecurityPoliciesOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetSecurityPolicies(params *GetSecurityPoliciesParams, opts ...
 }
 
 /*
-  GetSecurityPoliciesConnection get security policies connection API
+GetSecurityPoliciesConnection get security policies connection API
 */
 func (a *Client) GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnectionParams, opts ...ClientOption) (*GetSecurityPoliciesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetSecurityPoliciesConnection(params *GetSecurityPoliciesConnec
 }
 
 /*
-  UpdateSecurityPolicy update security policy API
+UpdateSecurityPolicy update security policy API
 */
 func (a *Client) UpdateSecurityPolicy(params *UpdateSecurityPolicyParams, opts ...ClientOption) (*UpdateSecurityPolicyOK, error) {
 	// TODO: Validate the params before sending

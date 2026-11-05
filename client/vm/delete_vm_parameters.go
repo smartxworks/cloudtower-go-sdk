@@ -54,10 +54,12 @@ func NewDeleteVMParamsWithHTTPClient(client *http.Client) *DeleteVMParams {
 	}
 }
 
-/* DeleteVMParams contains all the parameters to send to the API endpoint
-   for the delete Vm operation.
+/*
+DeleteVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVMParams struct {
 

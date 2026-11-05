@@ -54,7 +54,7 @@ type ClientService interface {
 }
 
 /*
-  CloneVMVolume clone Vm volume API
+CloneVMVolume clone Vm volume API
 */
 func (a *Client) CloneVMVolume(params *CloneVMVolumeParams, opts ...ClientOption) (*CloneVMVolumeOK, error) {
 	// TODO: Validate the params before sending
@@ -92,7 +92,7 @@ func (a *Client) CloneVMVolume(params *CloneVMVolumeParams, opts ...ClientOption
 }
 
 /*
-  CreateVMVolume create Vm volume API
+CreateVMVolume create Vm volume API
 */
 func (a *Client) CreateVMVolume(params *CreateVMVolumeParams, opts ...ClientOption) (*CreateVMVolumeOK, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +130,7 @@ func (a *Client) CreateVMVolume(params *CreateVMVolumeParams, opts ...ClientOpti
 }
 
 /*
-  DeleteVMVolumeFromVM delete Vm volume from Vm API
+DeleteVMVolumeFromVM delete Vm volume from Vm API
 */
 func (a *Client) DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, opts ...ClientOption) (*DeleteVMVolumeFromVMOK, error) {
 	// TODO: Validate the params before sending
@@ -168,7 +168,7 @@ func (a *Client) DeleteVMVolumeFromVM(params *DeleteVMVolumeFromVMParams, opts .
 }
 
 /*
-  ExportVMVolume export Vm volume API
+ExportVMVolume export Vm volume API
 */
 func (a *Client) ExportVMVolume(params *ExportVMVolumeParams, opts ...ClientOption) (*ExportVMVolumeOK, error) {
 	// TODO: Validate the params before sending
@@ -206,7 +206,7 @@ func (a *Client) ExportVMVolume(params *ExportVMVolumeParams, opts ...ClientOpti
 }
 
 /*
-  GetVMVolumes get Vm volumes API
+GetVMVolumes get Vm volumes API
 */
 func (a *Client) GetVMVolumes(params *GetVMVolumesParams, opts ...ClientOption) (*GetVMVolumesOK, error) {
 	// TODO: Validate the params before sending
@@ -244,7 +244,7 @@ func (a *Client) GetVMVolumes(params *GetVMVolumesParams, opts ...ClientOption) 
 }
 
 /*
-  GetVMVolumesConnection get Vm volumes connection API
+GetVMVolumesConnection get Vm volumes connection API
 */
 func (a *Client) GetVMVolumesConnection(params *GetVMVolumesConnectionParams, opts ...ClientOption) (*GetVMVolumesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -282,7 +282,7 @@ func (a *Client) GetVMVolumesConnection(params *GetVMVolumesConnectionParams, op
 }
 
 /*
-  ImportVMVolume import Vm volume API
+ImportVMVolume import Vm volume API
 */
 func (a *Client) ImportVMVolume(params *ImportVMVolumeParams, opts ...ClientOption) (*ImportVMVolumeOK, error) {
 	// TODO: Validate the params before sending
@@ -320,7 +320,7 @@ func (a *Client) ImportVMVolume(params *ImportVMVolumeParams, opts ...ClientOpti
 }
 
 /*
-  RebuildVMVolume rebuild Vm volume API
+RebuildVMVolume rebuild Vm volume API
 */
 func (a *Client) RebuildVMVolume(params *RebuildVMVolumeParams, opts ...ClientOption) (*RebuildVMVolumeOK, error) {
 	// TODO: Validate the params before sending
@@ -358,7 +358,7 @@ func (a *Client) RebuildVMVolume(params *RebuildVMVolumeParams, opts ...ClientOp
 }
 
 /*
-  RollbackVMVolume rollback Vm volume API
+RollbackVMVolume rollback Vm volume API
 */
 func (a *Client) RollbackVMVolume(params *RollbackVMVolumeParams, opts ...ClientOption) (*RollbackVMVolumeOK, error) {
 	// TODO: Validate the params before sending
@@ -396,7 +396,7 @@ func (a *Client) RollbackVMVolume(params *RollbackVMVolumeParams, opts ...Client
 }
 
 /*
-  UpdateVMVolume update Vm volume API
+UpdateVMVolume update Vm volume API
 */
 func (a *Client) UpdateVMVolume(params *UpdateVMVolumeParams, opts ...ClientOption) (*UpdateVMVolumeOK, error) {
 	// TODO: Validate the params before sending

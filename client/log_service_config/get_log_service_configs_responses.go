@@ -57,7 +57,8 @@ func NewGetLogServiceConfigsOK() *GetLogServiceConfigsOK {
 	return &GetLogServiceConfigsOK{}
 }
 
-/* GetLogServiceConfigsOK describes a response with status code 200, with default header values.
+/*
+GetLogServiceConfigsOK describes a response with status code 200, with default header values.
 
 GetLogServiceConfigsOK get log service configs o k
 */
@@ -96,7 +97,8 @@ func NewGetLogServiceConfigsBadRequest() *GetLogServiceConfigsBadRequest {
 	return &GetLogServiceConfigsBadRequest{}
 }
 
-/* GetLogServiceConfigsBadRequest describes a response with status code 400, with default header values.
+/*
+GetLogServiceConfigsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetLogServiceConfigsNotFound() *GetLogServiceConfigsNotFound {
 	return &GetLogServiceConfigsNotFound{}
 }
 
-/* GetLogServiceConfigsNotFound describes a response with status code 404, with default header values.
+/*
+GetLogServiceConfigsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetLogServiceConfigsInternalServerError() *GetLogServiceConfigsInternalS
 	return &GetLogServiceConfigsInternalServerError{}
 }
 
-/* GetLogServiceConfigsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetLogServiceConfigsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

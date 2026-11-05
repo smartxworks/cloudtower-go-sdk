@@ -54,10 +54,12 @@ func NewGetEveroutePackagesParamsWithHTTPClient(client *http.Client) *GetEverout
 	}
 }
 
-/* GetEveroutePackagesParams contains all the parameters to send to the API endpoint
-   for the get everoute packages operation.
+/*
+GetEveroutePackagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get everoute packages operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEveroutePackagesParams struct {
 

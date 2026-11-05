@@ -57,7 +57,8 @@ func NewGetNamespaceGroupsOK() *GetNamespaceGroupsOK {
 	return &GetNamespaceGroupsOK{}
 }
 
-/* GetNamespaceGroupsOK describes a response with status code 200, with default header values.
+/*
+GetNamespaceGroupsOK describes a response with status code 200, with default header values.
 
 GetNamespaceGroupsOK get namespace groups o k
 */
@@ -96,7 +97,8 @@ func NewGetNamespaceGroupsBadRequest() *GetNamespaceGroupsBadRequest {
 	return &GetNamespaceGroupsBadRequest{}
 }
 
-/* GetNamespaceGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+GetNamespaceGroupsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetNamespaceGroupsNotFound() *GetNamespaceGroupsNotFound {
 	return &GetNamespaceGroupsNotFound{}
 }
 
-/* GetNamespaceGroupsNotFound describes a response with status code 404, with default header values.
+/*
+GetNamespaceGroupsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetNamespaceGroupsInternalServerError() *GetNamespaceGroupsInternalServe
 	return &GetNamespaceGroupsInternalServerError{}
 }
 
-/* GetNamespaceGroupsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNamespaceGroupsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

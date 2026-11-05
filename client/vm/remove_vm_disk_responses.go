@@ -57,7 +57,8 @@ func NewRemoveVMDiskOK() *RemoveVMDiskOK {
 	return &RemoveVMDiskOK{}
 }
 
-/* RemoveVMDiskOK describes a response with status code 200, with default header values.
+/*
+RemoveVMDiskOK describes a response with status code 200, with default header values.
 
 RemoveVMDiskOK remove Vm disk o k
 */
@@ -96,7 +97,8 @@ func NewRemoveVMDiskBadRequest() *RemoveVMDiskBadRequest {
 	return &RemoveVMDiskBadRequest{}
 }
 
-/* RemoveVMDiskBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveVMDiskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRemoveVMDiskNotFound() *RemoveVMDiskNotFound {
 	return &RemoveVMDiskNotFound{}
 }
 
-/* RemoveVMDiskNotFound describes a response with status code 404, with default header values.
+/*
+RemoveVMDiskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRemoveVMDiskInternalServerError() *RemoveVMDiskInternalServerError {
 	return &RemoveVMDiskInternalServerError{}
 }
 
-/* RemoveVMDiskInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveVMDiskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

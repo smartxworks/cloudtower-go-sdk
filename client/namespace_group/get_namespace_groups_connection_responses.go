@@ -57,7 +57,8 @@ func NewGetNamespaceGroupsConnectionOK() *GetNamespaceGroupsConnectionOK {
 	return &GetNamespaceGroupsConnectionOK{}
 }
 
-/* GetNamespaceGroupsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetNamespaceGroupsConnectionOK describes a response with status code 200, with default header values.
 
 GetNamespaceGroupsConnectionOK get namespace groups connection o k
 */
@@ -98,7 +99,8 @@ func NewGetNamespaceGroupsConnectionBadRequest() *GetNamespaceGroupsConnectionBa
 	return &GetNamespaceGroupsConnectionBadRequest{}
 }
 
-/* GetNamespaceGroupsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetNamespaceGroupsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetNamespaceGroupsConnectionNotFound() *GetNamespaceGroupsConnectionNotF
 	return &GetNamespaceGroupsConnectionNotFound{}
 }
 
-/* GetNamespaceGroupsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetNamespaceGroupsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetNamespaceGroupsConnectionInternalServerError() *GetNamespaceGroupsCon
 	return &GetNamespaceGroupsConnectionInternalServerError{}
 }
 
-/* GetNamespaceGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNamespaceGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

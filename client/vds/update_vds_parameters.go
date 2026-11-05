@@ -54,10 +54,12 @@ func NewUpdateVdsParamsWithHTTPClient(client *http.Client) *UpdateVdsParams {
 	}
 }
 
-/* UpdateVdsParams contains all the parameters to send to the API endpoint
-   for the update vds operation.
+/*
+UpdateVdsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update vds operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVdsParams struct {
 

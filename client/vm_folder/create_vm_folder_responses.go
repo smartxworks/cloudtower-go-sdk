@@ -57,7 +57,8 @@ func NewCreateVMFolderOK() *CreateVMFolderOK {
 	return &CreateVMFolderOK{}
 }
 
-/* CreateVMFolderOK describes a response with status code 200, with default header values.
+/*
+CreateVMFolderOK describes a response with status code 200, with default header values.
 
 CreateVMFolderOK create Vm folder o k
 */
@@ -96,7 +97,8 @@ func NewCreateVMFolderBadRequest() *CreateVMFolderBadRequest {
 	return &CreateVMFolderBadRequest{}
 }
 
-/* CreateVMFolderBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVMFolderBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVMFolderNotFound() *CreateVMFolderNotFound {
 	return &CreateVMFolderNotFound{}
 }
 
-/* CreateVMFolderNotFound describes a response with status code 404, with default header values.
+/*
+CreateVMFolderNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVMFolderInternalServerError() *CreateVMFolderInternalServerError {
 	return &CreateVMFolderInternalServerError{}
 }
 
-/* CreateVMFolderInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVMFolderInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

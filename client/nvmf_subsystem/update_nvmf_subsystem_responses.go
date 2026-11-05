@@ -57,7 +57,8 @@ func NewUpdateNvmfSubsystemOK() *UpdateNvmfSubsystemOK {
 	return &UpdateNvmfSubsystemOK{}
 }
 
-/* UpdateNvmfSubsystemOK describes a response with status code 200, with default header values.
+/*
+UpdateNvmfSubsystemOK describes a response with status code 200, with default header values.
 
 UpdateNvmfSubsystemOK update nvmf subsystem o k
 */
@@ -96,7 +97,8 @@ func NewUpdateNvmfSubsystemBadRequest() *UpdateNvmfSubsystemBadRequest {
 	return &UpdateNvmfSubsystemBadRequest{}
 }
 
-/* UpdateNvmfSubsystemBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateNvmfSubsystemBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateNvmfSubsystemNotFound() *UpdateNvmfSubsystemNotFound {
 	return &UpdateNvmfSubsystemNotFound{}
 }
 
-/* UpdateNvmfSubsystemNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNvmfSubsystemNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateNvmfSubsystemInternalServerError() *UpdateNvmfSubsystemInternalSer
 	return &UpdateNvmfSubsystemInternalServerError{}
 }
 
-/* UpdateNvmfSubsystemInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateNvmfSubsystemInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

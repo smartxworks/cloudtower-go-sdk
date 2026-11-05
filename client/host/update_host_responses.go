@@ -57,7 +57,8 @@ func NewUpdateHostOK() *UpdateHostOK {
 	return &UpdateHostOK{}
 }
 
-/* UpdateHostOK describes a response with status code 200, with default header values.
+/*
+UpdateHostOK describes a response with status code 200, with default header values.
 
 UpdateHostOK update host o k
 */
@@ -96,7 +97,8 @@ func NewUpdateHostBadRequest() *UpdateHostBadRequest {
 	return &UpdateHostBadRequest{}
 }
 
-/* UpdateHostBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateHostBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateHostNotFound() *UpdateHostNotFound {
 	return &UpdateHostNotFound{}
 }
 
-/* UpdateHostNotFound describes a response with status code 404, with default header values.
+/*
+UpdateHostNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateHostInternalServerError() *UpdateHostInternalServerError {
 	return &UpdateHostInternalServerError{}
 }
 
-/* UpdateHostInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateHostInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateIscsiTarget create iscsi target API
+CreateIscsiTarget create iscsi target API
 */
 func (a *Client) CreateIscsiTarget(params *CreateIscsiTargetParams, opts ...ClientOption) (*CreateIscsiTargetOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateIscsiTarget(params *CreateIscsiTargetParams, opts ...Clie
 }
 
 /*
-  DeleteIscsiTarget delete iscsi target API
+DeleteIscsiTarget delete iscsi target API
 */
 func (a *Client) DeleteIscsiTarget(params *DeleteIscsiTargetParams, opts ...ClientOption) (*DeleteIscsiTargetOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteIscsiTarget(params *DeleteIscsiTargetParams, opts ...Clie
 }
 
 /*
-  GetIscsiTargets get iscsi targets API
+GetIscsiTargets get iscsi targets API
 */
 func (a *Client) GetIscsiTargets(params *GetIscsiTargetsParams, opts ...ClientOption) (*GetIscsiTargetsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetIscsiTargets(params *GetIscsiTargetsParams, opts ...ClientOp
 }
 
 /*
-  GetIscsiTargetsConnection get iscsi targets connection API
+GetIscsiTargetsConnection get iscsi targets connection API
 */
 func (a *Client) GetIscsiTargetsConnection(params *GetIscsiTargetsConnectionParams, opts ...ClientOption) (*GetIscsiTargetsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetIscsiTargetsConnection(params *GetIscsiTargetsConnectionPara
 }
 
 /*
-  UpdateIscsiTarget update iscsi target API
+UpdateIscsiTarget update iscsi target API
 */
 func (a *Client) UpdateIscsiTarget(params *UpdateIscsiTargetParams, opts ...ClientOption) (*UpdateIscsiTargetOK, error) {
 	// TODO: Validate the params before sending

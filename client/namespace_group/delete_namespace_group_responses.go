@@ -57,7 +57,8 @@ func NewDeleteNamespaceGroupOK() *DeleteNamespaceGroupOK {
 	return &DeleteNamespaceGroupOK{}
 }
 
-/* DeleteNamespaceGroupOK describes a response with status code 200, with default header values.
+/*
+DeleteNamespaceGroupOK describes a response with status code 200, with default header values.
 
 DeleteNamespaceGroupOK delete namespace group o k
 */
@@ -96,7 +97,8 @@ func NewDeleteNamespaceGroupBadRequest() *DeleteNamespaceGroupBadRequest {
 	return &DeleteNamespaceGroupBadRequest{}
 }
 
-/* DeleteNamespaceGroupBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteNamespaceGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteNamespaceGroupNotFound() *DeleteNamespaceGroupNotFound {
 	return &DeleteNamespaceGroupNotFound{}
 }
 
-/* DeleteNamespaceGroupNotFound describes a response with status code 404, with default header values.
+/*
+DeleteNamespaceGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteNamespaceGroupInternalServerError() *DeleteNamespaceGroupInternalS
 	return &DeleteNamespaceGroupInternalServerError{}
 }
 
-/* DeleteNamespaceGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteNamespaceGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

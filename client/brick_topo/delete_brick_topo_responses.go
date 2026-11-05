@@ -57,7 +57,8 @@ func NewDeleteBrickTopoOK() *DeleteBrickTopoOK {
 	return &DeleteBrickTopoOK{}
 }
 
-/* DeleteBrickTopoOK describes a response with status code 200, with default header values.
+/*
+DeleteBrickTopoOK describes a response with status code 200, with default header values.
 
 DeleteBrickTopoOK delete brick topo o k
 */
@@ -96,7 +97,8 @@ func NewDeleteBrickTopoBadRequest() *DeleteBrickTopoBadRequest {
 	return &DeleteBrickTopoBadRequest{}
 }
 
-/* DeleteBrickTopoBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteBrickTopoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteBrickTopoNotFound() *DeleteBrickTopoNotFound {
 	return &DeleteBrickTopoNotFound{}
 }
 
-/* DeleteBrickTopoNotFound describes a response with status code 404, with default header values.
+/*
+DeleteBrickTopoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteBrickTopoInternalServerError() *DeleteBrickTopoInternalServerError
 	return &DeleteBrickTopoInternalServerError{}
 }
 
-/* DeleteBrickTopoInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteBrickTopoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

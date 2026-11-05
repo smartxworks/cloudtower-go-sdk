@@ -57,7 +57,8 @@ func NewCreateRootUserOK() *CreateRootUserOK {
 	return &CreateRootUserOK{}
 }
 
-/* CreateRootUserOK describes a response with status code 200, with default header values.
+/*
+CreateRootUserOK describes a response with status code 200, with default header values.
 
 CreateRootUserOK create root user o k
 */
@@ -98,7 +99,8 @@ func NewCreateRootUserBadRequest() *CreateRootUserBadRequest {
 	return &CreateRootUserBadRequest{}
 }
 
-/* CreateRootUserBadRequest describes a response with status code 400, with default header values.
+/*
+CreateRootUserBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewCreateRootUserNotFound() *CreateRootUserNotFound {
 	return &CreateRootUserNotFound{}
 }
 
-/* CreateRootUserNotFound describes a response with status code 404, with default header values.
+/*
+CreateRootUserNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewCreateRootUserInternalServerError() *CreateRootUserInternalServerError {
 	return &CreateRootUserInternalServerError{}
 }
 
-/* CreateRootUserInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateRootUserInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

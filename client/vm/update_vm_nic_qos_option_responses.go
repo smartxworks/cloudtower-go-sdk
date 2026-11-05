@@ -63,7 +63,8 @@ func NewUpdateVMNicQosOptionOK() *UpdateVMNicQosOptionOK {
 	return &UpdateVMNicQosOptionOK{}
 }
 
-/* UpdateVMNicQosOptionOK describes a response with status code 200, with default header values.
+/*
+UpdateVMNicQosOptionOK describes a response with status code 200, with default header values.
 
 UpdateVMNicQosOptionOK update Vm nic qos option o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVMNicQosOptionNotModified() *UpdateVMNicQosOptionNotModified {
 	return &UpdateVMNicQosOptionNotModified{}
 }
 
-/* UpdateVMNicQosOptionNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVMNicQosOptionNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVMNicQosOptionBadRequest() *UpdateVMNicQosOptionBadRequest {
 	return &UpdateVMNicQosOptionBadRequest{}
 }
 
-/* UpdateVMNicQosOptionBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMNicQosOptionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVMNicQosOptionNotFound() *UpdateVMNicQosOptionNotFound {
 	return &UpdateVMNicQosOptionNotFound{}
 }
 
-/* UpdateVMNicQosOptionNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMNicQosOptionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVMNicQosOptionInternalServerError() *UpdateVMNicQosOptionInternalS
 	return &UpdateVMNicQosOptionInternalServerError{}
 }
 
-/* UpdateVMNicQosOptionInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMNicQosOptionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

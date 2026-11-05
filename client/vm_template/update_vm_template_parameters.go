@@ -54,10 +54,12 @@ func NewUpdateVMTemplateParamsWithHTTPClient(client *http.Client) *UpdateVMTempl
 	}
 }
 
-/* UpdateVMTemplateParams contains all the parameters to send to the API endpoint
-   for the update Vm template operation.
+/*
+UpdateVMTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm template operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMTemplateParams struct {
 

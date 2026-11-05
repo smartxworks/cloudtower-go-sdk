@@ -57,7 +57,8 @@ func NewExpandVMDiskOK() *ExpandVMDiskOK {
 	return &ExpandVMDiskOK{}
 }
 
-/* ExpandVMDiskOK describes a response with status code 200, with default header values.
+/*
+ExpandVMDiskOK describes a response with status code 200, with default header values.
 
 ExpandVMDiskOK expand Vm disk o k
 */
@@ -96,7 +97,8 @@ func NewExpandVMDiskBadRequest() *ExpandVMDiskBadRequest {
 	return &ExpandVMDiskBadRequest{}
 }
 
-/* ExpandVMDiskBadRequest describes a response with status code 400, with default header values.
+/*
+ExpandVMDiskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewExpandVMDiskNotFound() *ExpandVMDiskNotFound {
 	return &ExpandVMDiskNotFound{}
 }
 
-/* ExpandVMDiskNotFound describes a response with status code 404, with default header values.
+/*
+ExpandVMDiskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewExpandVMDiskInternalServerError() *ExpandVMDiskInternalServerError {
 	return &ExpandVMDiskInternalServerError{}
 }
 
-/* ExpandVMDiskInternalServerError describes a response with status code 500, with default header values.
+/*
+ExpandVMDiskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

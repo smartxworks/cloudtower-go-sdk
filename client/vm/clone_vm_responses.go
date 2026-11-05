@@ -57,7 +57,8 @@ func NewCloneVMOK() *CloneVMOK {
 	return &CloneVMOK{}
 }
 
-/* CloneVMOK describes a response with status code 200, with default header values.
+/*
+CloneVMOK describes a response with status code 200, with default header values.
 
 CloneVMOK clone Vm o k
 */
@@ -96,7 +97,8 @@ func NewCloneVMBadRequest() *CloneVMBadRequest {
 	return &CloneVMBadRequest{}
 }
 
-/* CloneVMBadRequest describes a response with status code 400, with default header values.
+/*
+CloneVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCloneVMNotFound() *CloneVMNotFound {
 	return &CloneVMNotFound{}
 }
 
-/* CloneVMNotFound describes a response with status code 404, with default header values.
+/*
+CloneVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCloneVMInternalServerError() *CloneVMInternalServerError {
 	return &CloneVMInternalServerError{}
 }
 
-/* CloneVMInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

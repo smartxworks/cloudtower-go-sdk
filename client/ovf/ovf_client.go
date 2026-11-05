@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetExportFileDownloadLinks get export file download links API
+GetExportFileDownloadLinks get export file download links API
 */
 func (a *Client) GetExportFileDownloadLinks(params *GetExportFileDownloadLinksParams, opts ...ClientOption) (*GetExportFileDownloadLinksOK, error) {
 	// TODO: Validate the params before sending
@@ -78,7 +78,7 @@ func (a *Client) GetExportFileDownloadLinks(params *GetExportFileDownloadLinksPa
 }
 
 /*
-  ParseOvf parse ovf API
+ParseOvf parse ovf API
 */
 func (a *Client) ParseOvf(params *ParseOvfParams, opts ...ClientOption) (*ParseOvfOK, error) {
 	// TODO: Validate the params before sending
@@ -116,7 +116,7 @@ func (a *Client) ParseOvf(params *ParseOvfParams, opts ...ClientOption) (*ParseO
 }
 
 /*
-  UploadElfFile upload elf file API
+UploadElfFile upload elf file API
 */
 func (a *Client) UploadElfFile(params *UploadElfFileParams, opts ...ClientOption) (*UploadElfFileOK, error) {
 	// TODO: Validate the params before sending

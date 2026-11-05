@@ -57,7 +57,8 @@ func NewDeployCloudTowerApplicationOK() *DeployCloudTowerApplicationOK {
 	return &DeployCloudTowerApplicationOK{}
 }
 
-/* DeployCloudTowerApplicationOK describes a response with status code 200, with default header values.
+/*
+DeployCloudTowerApplicationOK describes a response with status code 200, with default header values.
 
 DeployCloudTowerApplicationOK deploy cloud tower application o k
 */
@@ -98,7 +99,8 @@ func NewDeployCloudTowerApplicationBadRequest() *DeployCloudTowerApplicationBadR
 	return &DeployCloudTowerApplicationBadRequest{}
 }
 
-/* DeployCloudTowerApplicationBadRequest describes a response with status code 400, with default header values.
+/*
+DeployCloudTowerApplicationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewDeployCloudTowerApplicationNotFound() *DeployCloudTowerApplicationNotFou
 	return &DeployCloudTowerApplicationNotFound{}
 }
 
-/* DeployCloudTowerApplicationNotFound describes a response with status code 404, with default header values.
+/*
+DeployCloudTowerApplicationNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewDeployCloudTowerApplicationInternalServerError() *DeployCloudTowerApplic
 	return &DeployCloudTowerApplicationInternalServerError{}
 }
 
-/* DeployCloudTowerApplicationInternalServerError describes a response with status code 500, with default header values.
+/*
+DeployCloudTowerApplicationInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

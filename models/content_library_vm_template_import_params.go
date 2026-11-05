@@ -54,7 +54,15 @@ type ContentLibraryVMTemplateImportParams struct {
 	// Required: true
 	ParsedOvf *ParsedOVF `json:"parsed_ovf"`
 
-	// upload tasks
+	// storage config
+	StorageConfig *StorageConfig `json:"storage_config,omitempty"`
+
+	// Required for datastore and ZBS template imports.
+	TemplateArchitecture *Architecture `json:"template_architecture,omitempty"`
+
+	// Successful VMDK upload task IDs. For clustered-storage template imports,
+	// upload to the explicit or inferred storage_config.storage_cluster_id;
+	// otherwise upload to cluster_id. Use that target as cluster_id of /upload-elf-file.
 	// Required: true
 	UploadTasks []string `json:"upload_tasks"`
 
@@ -87,6 +95,10 @@ type ContentLibraryVMTemplateImportParamsMarshalOpts struct {
 	Name_Explicit_Null_When_Empty bool
 
 	ParsedOvf_Explicit_Null_When_Empty bool
+
+	StorageConfig_Explicit_Null_When_Empty bool
+
+	TemplateArchitecture_Explicit_Null_When_Empty bool
 
 	UploadTasks_Explicit_Null_When_Empty bool
 
@@ -301,6 +313,46 @@ func (m ContentLibraryVMTemplateImportParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field storage_config
+	if m.StorageConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":")
+		bytes, err := swag.WriteJSON(m.StorageConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_config\":null")
+		first = false
+	}
+
+	// handle nullable field template_architecture
+	if m.TemplateArchitecture != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"template_architecture\":")
+		bytes, err := swag.WriteJSON(m.TemplateArchitecture)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.TemplateArchitecture_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"template_architecture\":null")
+		first = false
+	}
+
 	// handle non nullable field upload_tasks without omitempty
 	{
 		if !first {
@@ -374,6 +426,14 @@ func (m *ContentLibraryVMTemplateImportParams) Validate(formats strfmt.Registry)
 	}
 
 	if err := m.validateParsedOvf(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTemplateArchitecture(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -467,6 +527,44 @@ func (m *ContentLibraryVMTemplateImportParams) validateParsedOvf(formats strfmt.
 	return nil
 }
 
+func (m *ContentLibraryVMTemplateImportParams) validateStorageConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfig) { // not required
+		return nil
+	}
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateImportParams) validateTemplateArchitecture(formats strfmt.Registry) error {
+	if swag.IsZero(m.TemplateArchitecture) { // not required
+		return nil
+	}
+
+	if m.TemplateArchitecture != nil {
+		if err := m.TemplateArchitecture.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("template_architecture")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("template_architecture")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplateImportParams) validateUploadTasks(formats strfmt.Registry) error {
 
 	if err := validate.Required("upload_tasks", "body", m.UploadTasks); err != nil {
@@ -515,6 +613,14 @@ func (m *ContentLibraryVMTemplateImportParams) ContextValidate(ctx context.Conte
 	}
 
 	if err := m.contextValidateParsedOvf(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTemplateArchitecture(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -568,6 +674,38 @@ func (m *ContentLibraryVMTemplateImportParams) contextValidateParsedOvf(ctx cont
 				return ve.ValidateName("parsed_ovf")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("parsed_ovf")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateImportParams) contextValidateStorageConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageConfig != nil {
+		if err := m.StorageConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateImportParams) contextValidateTemplateArchitecture(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TemplateArchitecture != nil {
+		if err := m.TemplateArchitecture.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("template_architecture")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("template_architecture")
 			}
 			return err
 		}

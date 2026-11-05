@@ -57,7 +57,8 @@ func NewRollbackSnapshotGroupOK() *RollbackSnapshotGroupOK {
 	return &RollbackSnapshotGroupOK{}
 }
 
-/* RollbackSnapshotGroupOK describes a response with status code 200, with default header values.
+/*
+RollbackSnapshotGroupOK describes a response with status code 200, with default header values.
 
 RollbackSnapshotGroupOK rollback snapshot group o k
 */
@@ -96,7 +97,8 @@ func NewRollbackSnapshotGroupBadRequest() *RollbackSnapshotGroupBadRequest {
 	return &RollbackSnapshotGroupBadRequest{}
 }
 
-/* RollbackSnapshotGroupBadRequest describes a response with status code 400, with default header values.
+/*
+RollbackSnapshotGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRollbackSnapshotGroupNotFound() *RollbackSnapshotGroupNotFound {
 	return &RollbackSnapshotGroupNotFound{}
 }
 
-/* RollbackSnapshotGroupNotFound describes a response with status code 404, with default header values.
+/*
+RollbackSnapshotGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRollbackSnapshotGroupInternalServerError() *RollbackSnapshotGroupInterna
 	return &RollbackSnapshotGroupInternalServerError{}
 }
 
-/* RollbackSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+RollbackSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewUpdateClusterHaSettingOK() *UpdateClusterHaSettingOK {
 	return &UpdateClusterHaSettingOK{}
 }
 
-/* UpdateClusterHaSettingOK describes a response with status code 200, with default header values.
+/*
+UpdateClusterHaSettingOK describes a response with status code 200, with default header values.
 
 UpdateClusterHaSettingOK update cluster ha setting o k
 */
@@ -96,7 +97,8 @@ func NewUpdateClusterHaSettingBadRequest() *UpdateClusterHaSettingBadRequest {
 	return &UpdateClusterHaSettingBadRequest{}
 }
 
-/* UpdateClusterHaSettingBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateClusterHaSettingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateClusterHaSettingNotFound() *UpdateClusterHaSettingNotFound {
 	return &UpdateClusterHaSettingNotFound{}
 }
 
-/* UpdateClusterHaSettingNotFound describes a response with status code 404, with default header values.
+/*
+UpdateClusterHaSettingNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateClusterHaSettingInternalServerError() *UpdateClusterHaSettingInter
 	return &UpdateClusterHaSettingInternalServerError{}
 }
 
-/* UpdateClusterHaSettingInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateClusterHaSettingInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

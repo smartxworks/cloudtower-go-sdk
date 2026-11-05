@@ -54,10 +54,12 @@ func NewUpdateVirtualPrivateCloudSubnetParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* UpdateVirtualPrivateCloudSubnetParams contains all the parameters to send to the API endpoint
-   for the update virtual private cloud subnet operation.
+/*
+UpdateVirtualPrivateCloudSubnetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update virtual private cloud subnet operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVirtualPrivateCloudSubnetParams struct {
 

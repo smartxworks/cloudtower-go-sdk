@@ -57,7 +57,8 @@ func NewUpdateUserOK() *UpdateUserOK {
 	return &UpdateUserOK{}
 }
 
-/* UpdateUserOK describes a response with status code 200, with default header values.
+/*
+UpdateUserOK describes a response with status code 200, with default header values.
 
 UpdateUserOK update user o k
 */
@@ -96,7 +97,8 @@ func NewUpdateUserBadRequest() *UpdateUserBadRequest {
 	return &UpdateUserBadRequest{}
 }
 
-/* UpdateUserBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateUserBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateUserNotFound() *UpdateUserNotFound {
 	return &UpdateUserNotFound{}
 }
 
-/* UpdateUserNotFound describes a response with status code 404, with default header values.
+/*
+UpdateUserNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateUserInternalServerError() *UpdateUserInternalServerError {
 	return &UpdateUserInternalServerError{}
 }
 
-/* UpdateUserInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateUserInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

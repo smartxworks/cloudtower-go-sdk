@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetClusterUpgradeHistories get cluster upgrade histories API
+GetClusterUpgradeHistories get cluster upgrade histories API
 */
 func (a *Client) GetClusterUpgradeHistories(params *GetClusterUpgradeHistoriesParams, opts ...ClientOption) (*GetClusterUpgradeHistoriesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetClusterUpgradeHistories(params *GetClusterUpgradeHistoriesPa
 }
 
 /*
-  GetClusterUpgradeHistoriesConnection get cluster upgrade histories connection API
+GetClusterUpgradeHistoriesConnection get cluster upgrade histories connection API
 */
 func (a *Client) GetClusterUpgradeHistoriesConnection(params *GetClusterUpgradeHistoriesConnectionParams, opts ...ClientOption) (*GetClusterUpgradeHistoriesConnectionOK, error) {
 	// TODO: Validate the params before sending

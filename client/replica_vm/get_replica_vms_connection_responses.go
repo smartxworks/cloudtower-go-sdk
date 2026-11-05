@@ -57,7 +57,8 @@ func NewGetReplicaVmsConnectionOK() *GetReplicaVmsConnectionOK {
 	return &GetReplicaVmsConnectionOK{}
 }
 
-/* GetReplicaVmsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetReplicaVmsConnectionOK describes a response with status code 200, with default header values.
 
 GetReplicaVmsConnectionOK get replica vms connection o k
 */
@@ -98,7 +99,8 @@ func NewGetReplicaVmsConnectionBadRequest() *GetReplicaVmsConnectionBadRequest {
 	return &GetReplicaVmsConnectionBadRequest{}
 }
 
-/* GetReplicaVmsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetReplicaVmsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetReplicaVmsConnectionNotFound() *GetReplicaVmsConnectionNotFound {
 	return &GetReplicaVmsConnectionNotFound{}
 }
 
-/* GetReplicaVmsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetReplicaVmsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetReplicaVmsConnectionInternalServerError() *GetReplicaVmsConnectionInt
 	return &GetReplicaVmsConnectionInternalServerError{}
 }
 
-/* GetReplicaVmsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetReplicaVmsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

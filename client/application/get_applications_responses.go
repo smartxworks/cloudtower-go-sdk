@@ -57,7 +57,8 @@ func NewGetApplicationsOK() *GetApplicationsOK {
 	return &GetApplicationsOK{}
 }
 
-/* GetApplicationsOK describes a response with status code 200, with default header values.
+/*
+GetApplicationsOK describes a response with status code 200, with default header values.
 
 GetApplicationsOK get applications o k
 */
@@ -96,7 +97,8 @@ func NewGetApplicationsBadRequest() *GetApplicationsBadRequest {
 	return &GetApplicationsBadRequest{}
 }
 
-/* GetApplicationsBadRequest describes a response with status code 400, with default header values.
+/*
+GetApplicationsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetApplicationsNotFound() *GetApplicationsNotFound {
 	return &GetApplicationsNotFound{}
 }
 
-/* GetApplicationsNotFound describes a response with status code 404, with default header values.
+/*
+GetApplicationsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetApplicationsInternalServerError() *GetApplicationsInternalServerError
 	return &GetApplicationsInternalServerError{}
 }
 
-/* GetApplicationsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetApplicationsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewUpdateNfsExportOK() *UpdateNfsExportOK {
 	return &UpdateNfsExportOK{}
 }
 
-/* UpdateNfsExportOK describes a response with status code 200, with default header values.
+/*
+UpdateNfsExportOK describes a response with status code 200, with default header values.
 
 UpdateNfsExportOK update nfs export o k
 */
@@ -96,7 +97,8 @@ func NewUpdateNfsExportBadRequest() *UpdateNfsExportBadRequest {
 	return &UpdateNfsExportBadRequest{}
 }
 
-/* UpdateNfsExportBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateNfsExportBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateNfsExportNotFound() *UpdateNfsExportNotFound {
 	return &UpdateNfsExportNotFound{}
 }
 
-/* UpdateNfsExportNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNfsExportNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateNfsExportInternalServerError() *UpdateNfsExportInternalServerError
 	return &UpdateNfsExportInternalServerError{}
 }
 
-/* UpdateNfsExportInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateNfsExportInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

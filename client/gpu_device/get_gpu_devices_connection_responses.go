@@ -57,7 +57,8 @@ func NewGetGpuDevicesConnectionOK() *GetGpuDevicesConnectionOK {
 	return &GetGpuDevicesConnectionOK{}
 }
 
-/* GetGpuDevicesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetGpuDevicesConnectionOK describes a response with status code 200, with default header values.
 
 GetGpuDevicesConnectionOK get gpu devices connection o k
 */
@@ -98,7 +99,8 @@ func NewGetGpuDevicesConnectionBadRequest() *GetGpuDevicesConnectionBadRequest {
 	return &GetGpuDevicesConnectionBadRequest{}
 }
 
-/* GetGpuDevicesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetGpuDevicesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetGpuDevicesConnectionNotFound() *GetGpuDevicesConnectionNotFound {
 	return &GetGpuDevicesConnectionNotFound{}
 }
 
-/* GetGpuDevicesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetGpuDevicesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetGpuDevicesConnectionInternalServerError() *GetGpuDevicesConnectionInt
 	return &GetGpuDevicesConnectionInternalServerError{}
 }
 
-/* GetGpuDevicesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGpuDevicesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewUpdateVirtualPrivateCloudSubnetOK() *UpdateVirtualPrivateCloudSubnetOK {
 	return &UpdateVirtualPrivateCloudSubnetOK{}
 }
 
-/* UpdateVirtualPrivateCloudSubnetOK describes a response with status code 200, with default header values.
+/*
+UpdateVirtualPrivateCloudSubnetOK describes a response with status code 200, with default header values.
 
 UpdateVirtualPrivateCloudSubnetOK update virtual private cloud subnet o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVirtualPrivateCloudSubnetBadRequest() *UpdateVirtualPrivateCloudSu
 	return &UpdateVirtualPrivateCloudSubnetBadRequest{}
 }
 
-/* UpdateVirtualPrivateCloudSubnetBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVirtualPrivateCloudSubnetBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVirtualPrivateCloudSubnetNotFound() *UpdateVirtualPrivateCloudSubn
 	return &UpdateVirtualPrivateCloudSubnetNotFound{}
 }
 
-/* UpdateVirtualPrivateCloudSubnetNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVirtualPrivateCloudSubnetNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVirtualPrivateCloudSubnetInternalServerError() *UpdateVirtualPriva
 	return &UpdateVirtualPrivateCloudSubnetInternalServerError{}
 }
 
-/* UpdateVirtualPrivateCloudSubnetInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVirtualPrivateCloudSubnetInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

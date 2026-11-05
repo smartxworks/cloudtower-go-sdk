@@ -54,10 +54,12 @@ func NewGetClusterUpgradeHistoriesConnectionParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* GetClusterUpgradeHistoriesConnectionParams contains all the parameters to send to the API endpoint
-   for the get cluster upgrade histories connection operation.
+/*
+GetClusterUpgradeHistoriesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get cluster upgrade histories connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetClusterUpgradeHistoriesConnectionParams struct {
 

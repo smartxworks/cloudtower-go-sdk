@@ -54,10 +54,12 @@ func NewCreateVMFromTemplateParamsWithHTTPClient(client *http.Client) *CreateVMF
 	}
 }
 
-/* CreateVMFromTemplateParams contains all the parameters to send to the API endpoint
-   for the create Vm from template operation.
+/*
+CreateVMFromTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create Vm from template operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVMFromTemplateParams struct {
 

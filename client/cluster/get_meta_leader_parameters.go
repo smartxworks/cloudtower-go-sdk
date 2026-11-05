@@ -54,10 +54,12 @@ func NewGetMetaLeaderParamsWithHTTPClient(client *http.Client) *GetMetaLeaderPar
 	}
 }
 
-/* GetMetaLeaderParams contains all the parameters to send to the API endpoint
-   for the get meta leader operation.
+/*
+GetMetaLeaderParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get meta leader operation.
+
+	Typically these are written to a http.Request.
 */
 type GetMetaLeaderParams struct {
 

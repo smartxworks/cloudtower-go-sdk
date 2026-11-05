@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetNfsInodes get nfs inodes API
+GetNfsInodes get nfs inodes API
 */
 func (a *Client) GetNfsInodes(params *GetNfsInodesParams, opts ...ClientOption) (*GetNfsInodesOK, error) {
 	// TODO: Validate the params before sending
@@ -78,7 +78,7 @@ func (a *Client) GetNfsInodes(params *GetNfsInodesParams, opts ...ClientOption) 
 }
 
 /*
-  GetNfsInodesConnection get nfs inodes connection API
+GetNfsInodesConnection get nfs inodes connection API
 */
 func (a *Client) GetNfsInodesConnection(params *GetNfsInodesConnectionParams, opts ...ClientOption) (*GetNfsInodesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -116,7 +116,7 @@ func (a *Client) GetNfsInodesConnection(params *GetNfsInodesConnectionParams, op
 }
 
 /*
-  UpdateNfsInode update nfs inode API
+UpdateNfsInode update nfs inode API
 */
 func (a *Client) UpdateNfsInode(params *UpdateNfsInodeParams, opts ...ClientOption) (*UpdateNfsInodeOK, error) {
 	// TODO: Validate the params before sending

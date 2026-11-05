@@ -57,7 +57,8 @@ func NewCreateSnmpTransportOK() *CreateSnmpTransportOK {
 	return &CreateSnmpTransportOK{}
 }
 
-/* CreateSnmpTransportOK describes a response with status code 200, with default header values.
+/*
+CreateSnmpTransportOK describes a response with status code 200, with default header values.
 
 CreateSnmpTransportOK create snmp transport o k
 */
@@ -96,7 +97,8 @@ func NewCreateSnmpTransportBadRequest() *CreateSnmpTransportBadRequest {
 	return &CreateSnmpTransportBadRequest{}
 }
 
-/* CreateSnmpTransportBadRequest describes a response with status code 400, with default header values.
+/*
+CreateSnmpTransportBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateSnmpTransportNotFound() *CreateSnmpTransportNotFound {
 	return &CreateSnmpTransportNotFound{}
 }
 
-/* CreateSnmpTransportNotFound describes a response with status code 404, with default header values.
+/*
+CreateSnmpTransportNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateSnmpTransportInternalServerError() *CreateSnmpTransportInternalSer
 	return &CreateSnmpTransportInternalServerError{}
 }
 
-/* CreateSnmpTransportInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateSnmpTransportInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

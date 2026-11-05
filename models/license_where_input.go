@@ -29,6 +29,48 @@ type LicenseWhereInput struct {
 	// o r
 	OR []*LicenseWhereInput `json:"OR,omitempty"`
 
+	// bundle type
+	BundleType *string `json:"bundle_type,omitempty"`
+
+	// bundle type contains
+	BundleTypeContains *string `json:"bundle_type_contains,omitempty"`
+
+	// bundle type ends with
+	BundleTypeEndsWith *string `json:"bundle_type_ends_with,omitempty"`
+
+	// bundle type gt
+	BundleTypeGt *string `json:"bundle_type_gt,omitempty"`
+
+	// bundle type gte
+	BundleTypeGte *string `json:"bundle_type_gte,omitempty"`
+
+	// bundle type in
+	BundleTypeIn []string `json:"bundle_type_in,omitempty"`
+
+	// bundle type lt
+	BundleTypeLt *string `json:"bundle_type_lt,omitempty"`
+
+	// bundle type lte
+	BundleTypeLte *string `json:"bundle_type_lte,omitempty"`
+
+	// bundle type not
+	BundleTypeNot *string `json:"bundle_type_not,omitempty"`
+
+	// bundle type not contains
+	BundleTypeNotContains *string `json:"bundle_type_not_contains,omitempty"`
+
+	// bundle type not ends with
+	BundleTypeNotEndsWith *string `json:"bundle_type_not_ends_with,omitempty"`
+
+	// bundle type not in
+	BundleTypeNotIn []string `json:"bundle_type_not_in,omitempty"`
+
+	// bundle type not starts with
+	BundleTypeNotStartsWith *string `json:"bundle_type_not_starts_with,omitempty"`
+
+	// bundle type starts with
+	BundleTypeStartsWith *string `json:"bundle_type_starts_with,omitempty"`
+
 	// expire date
 	ExpireDate *string `json:"expire_date,omitempty"`
 
@@ -291,6 +333,34 @@ type LicenseWhereInputMarshalOpts struct {
 
 	OR_Explicit_Null_When_Empty bool
 
+	BundleType_Explicit_Null_When_Empty bool
+
+	BundleTypeContains_Explicit_Null_When_Empty bool
+
+	BundleTypeEndsWith_Explicit_Null_When_Empty bool
+
+	BundleTypeGt_Explicit_Null_When_Empty bool
+
+	BundleTypeGte_Explicit_Null_When_Empty bool
+
+	BundleTypeIn_Explicit_Null_When_Empty bool
+
+	BundleTypeLt_Explicit_Null_When_Empty bool
+
+	BundleTypeLte_Explicit_Null_When_Empty bool
+
+	BundleTypeNot_Explicit_Null_When_Empty bool
+
+	BundleTypeNotContains_Explicit_Null_When_Empty bool
+
+	BundleTypeNotEndsWith_Explicit_Null_When_Empty bool
+
+	BundleTypeNotIn_Explicit_Null_When_Empty bool
+
+	BundleTypeNotStartsWith_Explicit_Null_When_Empty bool
+
+	BundleTypeStartsWith_Explicit_Null_When_Empty bool
+
 	ExpireDate_Explicit_Null_When_Empty bool
 
 	ExpireDateGt_Explicit_Null_When_Empty bool
@@ -505,6 +575,274 @@ func (m LicenseWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field bundle_type
+	if m.BundleType != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type\":")
+		bytes, err := swag.WriteJSON(m.BundleType)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleType_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_contains
+	if m.BundleTypeContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_contains\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_contains\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_ends_with
+	if m.BundleTypeEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_ends_with\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_gt
+	if m.BundleTypeGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_gt\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_gt\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_gte
+	if m.BundleTypeGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_gte\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field bundle_type_in with omitempty
+	if !swag.IsZero(m.BundleTypeIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_in\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field bundle_type_lt
+	if m.BundleTypeLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_lt\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_lt\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_lte
+	if m.BundleTypeLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_lte\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_lte\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_not
+	if m.BundleTypeNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_not_contains
+	if m.BundleTypeNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not_contains\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_not_ends_with
+	if m.BundleTypeNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field bundle_type_not_in with omitempty
+	if !swag.IsZero(m.BundleTypeNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not_in\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field bundle_type_not_starts_with
+	if m.BundleTypeNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field bundle_type_starts_with
+	if m.BundleTypeStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_starts_with\":")
+		bytes, err := swag.WriteJSON(m.BundleTypeStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.BundleTypeStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"bundle_type_starts_with\":null")
 		first = false
 	}
 

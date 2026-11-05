@@ -57,7 +57,8 @@ func NewGetSecurityPoliciesConnectionOK() *GetSecurityPoliciesConnectionOK {
 	return &GetSecurityPoliciesConnectionOK{}
 }
 
-/* GetSecurityPoliciesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetSecurityPoliciesConnectionOK describes a response with status code 200, with default header values.
 
 GetSecurityPoliciesConnectionOK get security policies connection o k
 */
@@ -98,7 +99,8 @@ func NewGetSecurityPoliciesConnectionBadRequest() *GetSecurityPoliciesConnection
 	return &GetSecurityPoliciesConnectionBadRequest{}
 }
 
-/* GetSecurityPoliciesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetSecurityPoliciesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetSecurityPoliciesConnectionNotFound() *GetSecurityPoliciesConnectionNo
 	return &GetSecurityPoliciesConnectionNotFound{}
 }
 
-/* GetSecurityPoliciesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetSecurityPoliciesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetSecurityPoliciesConnectionInternalServerError() *GetSecurityPoliciesC
 	return &GetSecurityPoliciesConnectionInternalServerError{}
 }
 
-/* GetSecurityPoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSecurityPoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

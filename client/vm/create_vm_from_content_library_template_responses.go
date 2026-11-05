@@ -57,7 +57,8 @@ func NewCreateVMFromContentLibraryTemplateOK() *CreateVMFromContentLibraryTempla
 	return &CreateVMFromContentLibraryTemplateOK{}
 }
 
-/* CreateVMFromContentLibraryTemplateOK describes a response with status code 200, with default header values.
+/*
+CreateVMFromContentLibraryTemplateOK describes a response with status code 200, with default header values.
 
 CreateVMFromContentLibraryTemplateOK create Vm from content library template o k
 */
@@ -96,7 +97,8 @@ func NewCreateVMFromContentLibraryTemplateBadRequest() *CreateVMFromContentLibra
 	return &CreateVMFromContentLibraryTemplateBadRequest{}
 }
 
-/* CreateVMFromContentLibraryTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVMFromContentLibraryTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVMFromContentLibraryTemplateNotFound() *CreateVMFromContentLibrary
 	return &CreateVMFromContentLibraryTemplateNotFound{}
 }
 
-/* CreateVMFromContentLibraryTemplateNotFound describes a response with status code 404, with default header values.
+/*
+CreateVMFromContentLibraryTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVMFromContentLibraryTemplateInternalServerError() *CreateVMFromCon
 	return &CreateVMFromContentLibraryTemplateInternalServerError{}
 }
 
-/* CreateVMFromContentLibraryTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVMFromContentLibraryTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

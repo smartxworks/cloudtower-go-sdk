@@ -57,7 +57,8 @@ func NewUpdateOrganizationOK() *UpdateOrganizationOK {
 	return &UpdateOrganizationOK{}
 }
 
-/* UpdateOrganizationOK describes a response with status code 200, with default header values.
+/*
+UpdateOrganizationOK describes a response with status code 200, with default header values.
 
 UpdateOrganizationOK update organization o k
 */
@@ -96,7 +97,8 @@ func NewUpdateOrganizationBadRequest() *UpdateOrganizationBadRequest {
 	return &UpdateOrganizationBadRequest{}
 }
 
-/* UpdateOrganizationBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateOrganizationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateOrganizationNotFound() *UpdateOrganizationNotFound {
 	return &UpdateOrganizationNotFound{}
 }
 
-/* UpdateOrganizationNotFound describes a response with status code 404, with default header values.
+/*
+UpdateOrganizationNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateOrganizationInternalServerError() *UpdateOrganizationInternalServe
 	return &UpdateOrganizationInternalServerError{}
 }
 
-/* UpdateOrganizationInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateOrganizationInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

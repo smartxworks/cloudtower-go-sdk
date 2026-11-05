@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  GetUsbDevices get usb devices API
+GetUsbDevices get usb devices API
 */
 func (a *Client) GetUsbDevices(params *GetUsbDevicesParams, opts ...ClientOption) (*GetUsbDevicesOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) GetUsbDevices(params *GetUsbDevicesParams, opts ...ClientOption
 }
 
 /*
-  GetUsbDevicesConnection get usb devices connection API
+GetUsbDevicesConnection get usb devices connection API
 */
 func (a *Client) GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, opts ...ClientOption) (*GetUsbDevicesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) GetUsbDevicesConnection(params *GetUsbDevicesConnectionParams, 
 }
 
 /*
-  MountUsbDevice mount usb device API
+MountUsbDevice mount usb device API
 */
 func (a *Client) MountUsbDevice(params *MountUsbDeviceParams, opts ...ClientOption) (*MountUsbDeviceOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) MountUsbDevice(params *MountUsbDeviceParams, opts ...ClientOpti
 }
 
 /*
-  UnmountUsbDevice unmount usb device API
+UnmountUsbDevice unmount usb device API
 */
 func (a *Client) UnmountUsbDevice(params *UnmountUsbDeviceParams, opts ...ClientOption) (*UnmountUsbDeviceOK, error) {
 	// TODO: Validate the params before sending

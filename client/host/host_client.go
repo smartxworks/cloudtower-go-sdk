@@ -56,7 +56,7 @@ type ClientService interface {
 }
 
 /*
-  CreateHost create host API
+CreateHost create host API
 */
 func (a *Client) CreateHost(params *CreateHostParams, opts ...ClientOption) (*CreateHostOK, error) {
 	// TODO: Validate the params before sending
@@ -94,7 +94,7 @@ func (a *Client) CreateHost(params *CreateHostParams, opts ...ClientOption) (*Cr
 }
 
 /*
-  EnterMaintenanceMode enter maintenance mode API
+EnterMaintenanceMode enter maintenance mode API
 */
 func (a *Client) EnterMaintenanceMode(params *EnterMaintenanceModeParams, opts ...ClientOption) (*EnterMaintenanceModeOK, error) {
 	// TODO: Validate the params before sending
@@ -132,7 +132,7 @@ func (a *Client) EnterMaintenanceMode(params *EnterMaintenanceModeParams, opts .
 }
 
 /*
-  EnterMaintenanceModePreCheck enter maintenance mode pre check API
+EnterMaintenanceModePreCheck enter maintenance mode pre check API
 */
 func (a *Client) EnterMaintenanceModePreCheck(params *EnterMaintenanceModePreCheckParams, opts ...ClientOption) (*EnterMaintenanceModePreCheckOK, error) {
 	// TODO: Validate the params before sending
@@ -170,7 +170,7 @@ func (a *Client) EnterMaintenanceModePreCheck(params *EnterMaintenanceModePreChe
 }
 
 /*
-  EnterMaintenanceModePrecheckResult enter maintenance mode precheck result API
+EnterMaintenanceModePrecheckResult enter maintenance mode precheck result API
 */
 func (a *Client) EnterMaintenanceModePrecheckResult(params *EnterMaintenanceModePrecheckResultParams, opts ...ClientOption) (*EnterMaintenanceModePrecheckResultOK, error) {
 	// TODO: Validate the params before sending
@@ -208,7 +208,7 @@ func (a *Client) EnterMaintenanceModePrecheckResult(params *EnterMaintenanceMode
 }
 
 /*
-  ExitMaintenanceMode exit maintenance mode API
+ExitMaintenanceMode exit maintenance mode API
 */
 func (a *Client) ExitMaintenanceMode(params *ExitMaintenanceModeParams, opts ...ClientOption) (*ExitMaintenanceModeOK, error) {
 	// TODO: Validate the params before sending
@@ -246,7 +246,7 @@ func (a *Client) ExitMaintenanceMode(params *ExitMaintenanceModeParams, opts ...
 }
 
 /*
-  ExitMaintenanceModePrecheckResult exit maintenance mode precheck result API
+ExitMaintenanceModePrecheckResult exit maintenance mode precheck result API
 */
 func (a *Client) ExitMaintenanceModePrecheckResult(params *ExitMaintenanceModePrecheckResultParams, opts ...ClientOption) (*ExitMaintenanceModePrecheckResultOK, error) {
 	// TODO: Validate the params before sending
@@ -284,7 +284,7 @@ func (a *Client) ExitMaintenanceModePrecheckResult(params *ExitMaintenanceModePr
 }
 
 /*
-  GetHosts get hosts API
+GetHosts get hosts API
 */
 func (a *Client) GetHosts(params *GetHostsParams, opts ...ClientOption) (*GetHostsOK, error) {
 	// TODO: Validate the params before sending
@@ -322,7 +322,7 @@ func (a *Client) GetHosts(params *GetHostsParams, opts ...ClientOption) (*GetHos
 }
 
 /*
-  GetHostsConnection get hosts connection API
+GetHostsConnection get hosts connection API
 */
 func (a *Client) GetHostsConnection(params *GetHostsConnectionParams, opts ...ClientOption) (*GetHostsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -360,7 +360,7 @@ func (a *Client) GetHostsConnection(params *GetHostsConnectionParams, opts ...Cl
 }
 
 /*
-  PowerOffHost power off host API
+PowerOffHost power off host API
 */
 func (a *Client) PowerOffHost(params *PowerOffHostParams, opts ...ClientOption) (*PowerOffHostOK, error) {
 	// TODO: Validate the params before sending
@@ -398,7 +398,7 @@ func (a *Client) PowerOffHost(params *PowerOffHostParams, opts ...ClientOption) 
 }
 
 /*
-  TriggerDiskBlink trigger disk blink API
+TriggerDiskBlink trigger disk blink API
 */
 func (a *Client) TriggerDiskBlink(params *TriggerDiskBlinkParams, opts ...ClientOption) (*TriggerDiskBlinkOK, error) {
 	// TODO: Validate the params before sending
@@ -436,7 +436,7 @@ func (a *Client) TriggerDiskBlink(params *TriggerDiskBlinkParams, opts ...Client
 }
 
 /*
-  UpdateHost update host API
+UpdateHost update host API
 */
 func (a *Client) UpdateHost(params *UpdateHostParams, opts ...ClientOption) (*UpdateHostOK, error) {
 	// TODO: Validate the params before sending

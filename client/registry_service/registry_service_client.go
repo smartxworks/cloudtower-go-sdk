@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetRegistryServices get registry services API
+GetRegistryServices get registry services API
 */
 func (a *Client) GetRegistryServices(params *GetRegistryServicesParams, opts ...ClientOption) (*GetRegistryServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetRegistryServices(params *GetRegistryServicesParams, opts ...
 }
 
 /*
-  GetRegistryServicesConnection get registry services connection API
+GetRegistryServicesConnection get registry services connection API
 */
 func (a *Client) GetRegistryServicesConnection(params *GetRegistryServicesConnectionParams, opts ...ClientOption) (*GetRegistryServicesConnectionOK, error) {
 	// TODO: Validate the params before sending

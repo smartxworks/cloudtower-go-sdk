@@ -54,10 +54,12 @@ func NewRollbackNvmfNamespaceFromSnapshotParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* RollbackNvmfNamespaceFromSnapshotParams contains all the parameters to send to the API endpoint
-   for the rollback nvmf namespace from snapshot operation.
+/*
+RollbackNvmfNamespaceFromSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the rollback nvmf namespace from snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type RollbackNvmfNamespaceFromSnapshotParams struct {
 

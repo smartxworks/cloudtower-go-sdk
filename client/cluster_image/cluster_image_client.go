@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetClusterImages get cluster images API
+GetClusterImages get cluster images API
 */
 func (a *Client) GetClusterImages(params *GetClusterImagesParams, opts ...ClientOption) (*GetClusterImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetClusterImages(params *GetClusterImagesParams, opts ...Client
 }
 
 /*
-  GetClusterImagesConnection get cluster images connection API
+GetClusterImagesConnection get cluster images connection API
 */
 func (a *Client) GetClusterImagesConnection(params *GetClusterImagesConnectionParams, opts ...ClientOption) (*GetClusterImagesConnectionOK, error) {
 	// TODO: Validate the params before sending

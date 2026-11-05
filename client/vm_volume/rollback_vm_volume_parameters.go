@@ -54,10 +54,12 @@ func NewRollbackVMVolumeParamsWithHTTPClient(client *http.Client) *RollbackVMVol
 	}
 }
 
-/* RollbackVMVolumeParams contains all the parameters to send to the API endpoint
-   for the rollback Vm volume operation.
+/*
+RollbackVMVolumeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the rollback Vm volume operation.
+
+	Typically these are written to a http.Request.
 */
 type RollbackVMVolumeParams struct {
 

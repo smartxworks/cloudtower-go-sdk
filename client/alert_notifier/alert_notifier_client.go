@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  CreateAlertNotifier create alert notifier API
+CreateAlertNotifier create alert notifier API
 */
 func (a *Client) CreateAlertNotifier(params *CreateAlertNotifierParams, opts ...ClientOption) (*CreateAlertNotifierOK, error) {
 	// TODO: Validate the params before sending
@@ -84,7 +84,7 @@ func (a *Client) CreateAlertNotifier(params *CreateAlertNotifierParams, opts ...
 }
 
 /*
-  DeleteAlertNotifier delete alert notifier API
+DeleteAlertNotifier delete alert notifier API
 */
 func (a *Client) DeleteAlertNotifier(params *DeleteAlertNotifierParams, opts ...ClientOption) (*DeleteAlertNotifierOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) DeleteAlertNotifier(params *DeleteAlertNotifierParams, opts ...
 }
 
 /*
-  GetAlertNotifiers get alert notifiers API
+GetAlertNotifiers get alert notifiers API
 */
 func (a *Client) GetAlertNotifiers(params *GetAlertNotifiersParams, opts ...ClientOption) (*GetAlertNotifiersOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) GetAlertNotifiers(params *GetAlertNotifiersParams, opts ...Clie
 }
 
 /*
-  GetAlertNotifiersConnection get alert notifiers connection API
+GetAlertNotifiersConnection get alert notifiers connection API
 */
 func (a *Client) GetAlertNotifiersConnection(params *GetAlertNotifiersConnectionParams, opts ...ClientOption) (*GetAlertNotifiersConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +198,7 @@ func (a *Client) GetAlertNotifiersConnection(params *GetAlertNotifiersConnection
 }
 
 /*
-  UpdateAlertNotifier update alert notifier API
+UpdateAlertNotifier update alert notifier API
 */
 func (a *Client) UpdateAlertNotifier(params *UpdateAlertNotifierParams, opts ...ClientOption) (*UpdateAlertNotifierOK, error) {
 	// TODO: Validate the params before sending
@@ -236,7 +236,7 @@ func (a *Client) UpdateAlertNotifier(params *UpdateAlertNotifierParams, opts ...
 }
 
 /*
-  UpdateManyAlertNotifiers update many alert notifiers API
+UpdateManyAlertNotifiers update many alert notifiers API
 */
 func (a *Client) UpdateManyAlertNotifiers(params *UpdateManyAlertNotifiersParams, opts ...ClientOption) (*UpdateManyAlertNotifiersOK, error) {
 	// TODO: Validate the params before sending

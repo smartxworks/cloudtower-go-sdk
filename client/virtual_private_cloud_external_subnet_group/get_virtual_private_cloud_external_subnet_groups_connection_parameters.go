@@ -54,10 +54,12 @@ func NewGetVirtualPrivateCloudExternalSubnetGroupsConnectionParamsWithHTTPClient
 	}
 }
 
-/* GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams contains all the parameters to send to the API endpoint
-   for the get virtual private cloud external subnet groups connection operation.
+/*
+GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get virtual private cloud external subnet groups connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams struct {
 

@@ -54,10 +54,12 @@ func NewUpdateNicParamsWithHTTPClient(client *http.Client) *UpdateNicParams {
 	}
 }
 
-/* UpdateNicParams contains all the parameters to send to the API endpoint
-   for the update nic operation.
+/*
+UpdateNicParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update nic operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateNicParams struct {
 

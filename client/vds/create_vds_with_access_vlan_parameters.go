@@ -54,10 +54,12 @@ func NewCreateVdsWithAccessVlanParamsWithHTTPClient(client *http.Client) *Create
 	}
 }
 
-/* CreateVdsWithAccessVlanParams contains all the parameters to send to the API endpoint
-   for the create vds with access vlan operation.
+/*
+CreateVdsWithAccessVlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create vds with access vlan operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVdsWithAccessVlanParams struct {
 

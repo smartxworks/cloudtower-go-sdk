@@ -57,7 +57,8 @@ func NewDeleteDatacenterOK() *DeleteDatacenterOK {
 	return &DeleteDatacenterOK{}
 }
 
-/* DeleteDatacenterOK describes a response with status code 200, with default header values.
+/*
+DeleteDatacenterOK describes a response with status code 200, with default header values.
 
 DeleteDatacenterOK delete datacenter o k
 */
@@ -96,7 +97,8 @@ func NewDeleteDatacenterBadRequest() *DeleteDatacenterBadRequest {
 	return &DeleteDatacenterBadRequest{}
 }
 
-/* DeleteDatacenterBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteDatacenterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteDatacenterNotFound() *DeleteDatacenterNotFound {
 	return &DeleteDatacenterNotFound{}
 }
 
-/* DeleteDatacenterNotFound describes a response with status code 404, with default header values.
+/*
+DeleteDatacenterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteDatacenterInternalServerError() *DeleteDatacenterInternalServerErr
 	return &DeleteDatacenterInternalServerError{}
 }
 
-/* DeleteDatacenterInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteDatacenterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

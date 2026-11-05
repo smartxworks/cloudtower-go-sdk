@@ -54,10 +54,12 @@ func NewDeleteVlanParamsWithHTTPClient(client *http.Client) *DeleteVlanParams {
 	}
 }
 
-/* DeleteVlanParams contains all the parameters to send to the API endpoint
-   for the delete vlan operation.
+/*
+DeleteVlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete vlan operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVlanParams struct {
 

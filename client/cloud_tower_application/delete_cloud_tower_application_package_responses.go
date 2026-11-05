@@ -57,7 +57,8 @@ func NewDeleteCloudTowerApplicationPackageOK() *DeleteCloudTowerApplicationPacka
 	return &DeleteCloudTowerApplicationPackageOK{}
 }
 
-/* DeleteCloudTowerApplicationPackageOK describes a response with status code 200, with default header values.
+/*
+DeleteCloudTowerApplicationPackageOK describes a response with status code 200, with default header values.
 
 DeleteCloudTowerApplicationPackageOK delete cloud tower application package o k
 */
@@ -96,7 +97,8 @@ func NewDeleteCloudTowerApplicationPackageBadRequest() *DeleteCloudTowerApplicat
 	return &DeleteCloudTowerApplicationPackageBadRequest{}
 }
 
-/* DeleteCloudTowerApplicationPackageBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteCloudTowerApplicationPackageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteCloudTowerApplicationPackageNotFound() *DeleteCloudTowerApplicatio
 	return &DeleteCloudTowerApplicationPackageNotFound{}
 }
 
-/* DeleteCloudTowerApplicationPackageNotFound describes a response with status code 404, with default header values.
+/*
+DeleteCloudTowerApplicationPackageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteCloudTowerApplicationPackageInternalServerError() *DeleteCloudTowe
 	return &DeleteCloudTowerApplicationPackageInternalServerError{}
 }
 
-/* DeleteCloudTowerApplicationPackageInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteCloudTowerApplicationPackageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

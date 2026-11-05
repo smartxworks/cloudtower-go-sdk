@@ -54,10 +54,12 @@ func NewGetElfImagesConnectionParamsWithHTTPClient(client *http.Client) *GetElfI
 	}
 }
 
-/* GetElfImagesConnectionParams contains all the parameters to send to the API endpoint
-   for the get elf images connection operation.
+/*
+GetElfImagesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get elf images connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetElfImagesConnectionParams struct {
 

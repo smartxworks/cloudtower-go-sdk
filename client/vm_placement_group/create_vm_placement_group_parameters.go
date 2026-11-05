@@ -54,10 +54,12 @@ func NewCreateVMPlacementGroupParamsWithHTTPClient(client *http.Client) *CreateV
 	}
 }
 
-/* CreateVMPlacementGroupParams contains all the parameters to send to the API endpoint
-   for the create Vm placement group operation.
+/*
+CreateVMPlacementGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create Vm placement group operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVMPlacementGroupParams struct {
 

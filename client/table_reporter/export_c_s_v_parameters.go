@@ -54,10 +54,12 @@ func NewExportCSVParamsWithHTTPClient(client *http.Client) *ExportCSVParams {
 	}
 }
 
-/* ExportCSVParams contains all the parameters to send to the API endpoint
-   for the export c s v operation.
+/*
+ExportCSVParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the export c s v operation.
+
+	Typically these are written to a http.Request.
 */
 type ExportCSVParams struct {
 

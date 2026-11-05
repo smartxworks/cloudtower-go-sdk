@@ -57,7 +57,8 @@ func NewDeleteVirtualPrivateCloudSubnetOK() *DeleteVirtualPrivateCloudSubnetOK {
 	return &DeleteVirtualPrivateCloudSubnetOK{}
 }
 
-/* DeleteVirtualPrivateCloudSubnetOK describes a response with status code 200, with default header values.
+/*
+DeleteVirtualPrivateCloudSubnetOK describes a response with status code 200, with default header values.
 
 DeleteVirtualPrivateCloudSubnetOK delete virtual private cloud subnet o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVirtualPrivateCloudSubnetBadRequest() *DeleteVirtualPrivateCloudSu
 	return &DeleteVirtualPrivateCloudSubnetBadRequest{}
 }
 
-/* DeleteVirtualPrivateCloudSubnetBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVirtualPrivateCloudSubnetBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVirtualPrivateCloudSubnetNotFound() *DeleteVirtualPrivateCloudSubn
 	return &DeleteVirtualPrivateCloudSubnetNotFound{}
 }
 
-/* DeleteVirtualPrivateCloudSubnetNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVirtualPrivateCloudSubnetNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVirtualPrivateCloudSubnetInternalServerError() *DeleteVirtualPriva
 	return &DeleteVirtualPrivateCloudSubnetInternalServerError{}
 }
 
-/* DeleteVirtualPrivateCloudSubnetInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVirtualPrivateCloudSubnetInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

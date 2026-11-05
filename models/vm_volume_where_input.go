@@ -458,6 +458,48 @@ type VMVolumeWhereInput struct {
 	// path starts with
 	PathStartsWith *string `json:"path_starts_with,omitempty"`
 
+	// provision policy
+	ProvisionPolicy *string `json:"provision_policy,omitempty"`
+
+	// provision policy contains
+	ProvisionPolicyContains *string `json:"provision_policy_contains,omitempty"`
+
+	// provision policy ends with
+	ProvisionPolicyEndsWith *string `json:"provision_policy_ends_with,omitempty"`
+
+	// provision policy gt
+	ProvisionPolicyGt *string `json:"provision_policy_gt,omitempty"`
+
+	// provision policy gte
+	ProvisionPolicyGte *string `json:"provision_policy_gte,omitempty"`
+
+	// provision policy in
+	ProvisionPolicyIn []string `json:"provision_policy_in,omitempty"`
+
+	// provision policy lt
+	ProvisionPolicyLt *string `json:"provision_policy_lt,omitempty"`
+
+	// provision policy lte
+	ProvisionPolicyLte *string `json:"provision_policy_lte,omitempty"`
+
+	// provision policy not
+	ProvisionPolicyNot *string `json:"provision_policy_not,omitempty"`
+
+	// provision policy not contains
+	ProvisionPolicyNotContains *string `json:"provision_policy_not_contains,omitempty"`
+
+	// provision policy not ends with
+	ProvisionPolicyNotEndsWith *string `json:"provision_policy_not_ends_with,omitempty"`
+
+	// provision policy not in
+	ProvisionPolicyNotIn []string `json:"provision_policy_not_in,omitempty"`
+
+	// provision policy not starts with
+	ProvisionPolicyNotStartsWith *string `json:"provision_policy_not_starts_with,omitempty"`
+
+	// provision policy starts with
+	ProvisionPolicyStartsWith *string `json:"provision_policy_starts_with,omitempty"`
+
 	// resident in cache
 	ResidentInCache *bool `json:"resident_in_cache,omitempty"`
 
@@ -493,6 +535,9 @@ type VMVolumeWhereInput struct {
 
 	// size not in
 	SizeNotIn []int64 `json:"size_not_in,omitempty"`
+
+	// storage cluster config
+	StorageClusterConfig *StorageClusterConfigWhereInput `json:"storage_cluster_config,omitempty"`
 
 	// type
 	Type *VMVolumeType `json:"type,omitempty"`
@@ -907,6 +952,34 @@ type VMVolumeWhereInputMarshalOpts struct {
 
 	PathStartsWith_Explicit_Null_When_Empty bool
 
+	ProvisionPolicy_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyContains_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyEndsWith_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyGt_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyGte_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyIn_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyLt_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyLte_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyNot_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyNotContains_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyNotEndsWith_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyNotIn_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyNotStartsWith_Explicit_Null_When_Empty bool
+
+	ProvisionPolicyStartsWith_Explicit_Null_When_Empty bool
+
 	ResidentInCache_Explicit_Null_When_Empty bool
 
 	ResidentInCacheNot_Explicit_Null_When_Empty bool
@@ -930,6 +1003,8 @@ type VMVolumeWhereInputMarshalOpts struct {
 	SizeNot_Explicit_Null_When_Empty bool
 
 	SizeNotIn_Explicit_Null_When_Empty bool
+
+	StorageClusterConfig_Explicit_Null_When_Empty bool
 
 	Type_Explicit_Null_When_Empty bool
 
@@ -3750,6 +3825,274 @@ func (m VMVolumeWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field provision_policy
+	if m.ProvisionPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_contains
+	if m.ProvisionPolicyContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_contains\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_contains\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_ends_with
+	if m.ProvisionPolicyEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_ends_with\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_ends_with\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_gt
+	if m.ProvisionPolicyGt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_gt\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyGt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyGt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_gt\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_gte
+	if m.ProvisionPolicyGte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_gte\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyGte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyGte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_gte\":null")
+		first = false
+	}
+
+	// handle non nullable field provision_policy_in with omitempty
+	if !swag.IsZero(m.ProvisionPolicyIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_in\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field provision_policy_lt
+	if m.ProvisionPolicyLt != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_lt\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyLt)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyLt_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_lt\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_lte
+	if m.ProvisionPolicyLte != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_lte\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyLte)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyLte_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_lte\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_not
+	if m.ProvisionPolicyNot != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyNot)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyNot_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_not_contains
+	if m.ProvisionPolicyNotContains != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not_contains\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyNotContains)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyNotContains_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not_contains\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_not_ends_with
+	if m.ProvisionPolicyNotEndsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not_ends_with\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyNotEndsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyNotEndsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not_ends_with\":null")
+		first = false
+	}
+
+	// handle non nullable field provision_policy_not_in with omitempty
+	if !swag.IsZero(m.ProvisionPolicyNotIn) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not_in\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyNotIn)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field provision_policy_not_starts_with
+	if m.ProvisionPolicyNotStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not_starts_with\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyNotStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyNotStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_not_starts_with\":null")
+		first = false
+	}
+
+	// handle nullable field provision_policy_starts_with
+	if m.ProvisionPolicyStartsWith != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_starts_with\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicyStartsWith)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicyStartsWith_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy_starts_with\":null")
+		first = false
+	}
+
 	// handle nullable field resident_in_cache
 	if m.ResidentInCache != nil {
 		if !first {
@@ -3975,6 +4318,26 @@ func (m VMVolumeWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field storage_cluster_config
+	if m.StorageClusterConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_cluster_config\":")
+		bytes, err := swag.WriteJSON(m.StorageClusterConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageClusterConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_cluster_config\":null")
 		first = false
 	}
 
@@ -4770,6 +5133,10 @@ func (m *VMVolumeWhereInput) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateStorageClusterConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -5137,6 +5504,25 @@ func (m *VMVolumeWhereInput) validateLun(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMVolumeWhereInput) validateStorageClusterConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageClusterConfig) { // not required
+		return nil
+	}
+
+	if m.StorageClusterConfig != nil {
+		if err := m.StorageClusterConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_cluster_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_cluster_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMVolumeWhereInput) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
@@ -5339,6 +5725,10 @@ func (m *VMVolumeWhereInput) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateLun(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageClusterConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -5644,6 +6034,22 @@ func (m *VMVolumeWhereInput) contextValidateLun(ctx context.Context, formats str
 				return ve.ValidateName("lun")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("lun")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VMVolumeWhereInput) contextValidateStorageClusterConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageClusterConfig != nil {
+		if err := m.StorageClusterConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_cluster_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_cluster_config")
 			}
 			return err
 		}

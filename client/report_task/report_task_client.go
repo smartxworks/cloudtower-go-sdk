@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetReportTasks get report tasks API
+GetReportTasks get report tasks API
 */
 func (a *Client) GetReportTasks(params *GetReportTasksParams, opts ...ClientOption) (*GetReportTasksOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetReportTasks(params *GetReportTasksParams, opts ...ClientOpti
 }
 
 /*
-  GetReportTasksConnection get report tasks connection API
+GetReportTasksConnection get report tasks connection API
 */
 func (a *Client) GetReportTasksConnection(params *GetReportTasksConnectionParams, opts ...ClientOption) (*GetReportTasksConnectionOK, error) {
 	// TODO: Validate the params before sending

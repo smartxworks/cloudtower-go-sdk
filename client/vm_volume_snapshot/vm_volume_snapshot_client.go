@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVMVolumeSnapshot create Vm volume snapshot API
+CreateVMVolumeSnapshot create Vm volume snapshot API
 */
 func (a *Client) CreateVMVolumeSnapshot(params *CreateVMVolumeSnapshotParams, opts ...ClientOption) (*CreateVMVolumeSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) CreateVMVolumeSnapshot(params *CreateVMVolumeSnapshotParams, op
 }
 
 /*
-  DeleteVMVolumeSnapshot delete Vm volume snapshot API
+DeleteVMVolumeSnapshot delete Vm volume snapshot API
 */
 func (a *Client) DeleteVMVolumeSnapshot(params *DeleteVMVolumeSnapshotParams, opts ...ClientOption) (*DeleteVMVolumeSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) DeleteVMVolumeSnapshot(params *DeleteVMVolumeSnapshotParams, op
 }
 
 /*
-  GetVMVolumeSnapshots get Vm volume snapshots API
+GetVMVolumeSnapshots get Vm volume snapshots API
 */
 func (a *Client) GetVMVolumeSnapshots(params *GetVMVolumeSnapshotsParams, opts ...ClientOption) (*GetVMVolumeSnapshotsOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) GetVMVolumeSnapshots(params *GetVMVolumeSnapshotsParams, opts .
 }
 
 /*
-  GetVMVolumeSnapshotsConnection get Vm volume snapshots connection API
+GetVMVolumeSnapshotsConnection get Vm volume snapshots connection API
 */
 func (a *Client) GetVMVolumeSnapshotsConnection(params *GetVMVolumeSnapshotsConnectionParams, opts ...ClientOption) (*GetVMVolumeSnapshotsConnectionOK, error) {
 	// TODO: Validate the params before sending

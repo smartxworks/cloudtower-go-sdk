@@ -52,10 +52,12 @@ func NewUploadSvtImageParamsWithHTTPClient(client *http.Client) *UploadSvtImageP
 	}
 }
 
-/* UploadSvtImageParams contains all the parameters to send to the API endpoint
-   for the upload svt image operation.
+/*
+UploadSvtImageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the upload svt image operation.
+
+	Typically these are written to a http.Request.
 */
 type UploadSvtImageParams struct {
 

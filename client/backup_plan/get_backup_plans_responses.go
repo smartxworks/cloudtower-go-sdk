@@ -57,7 +57,8 @@ func NewGetBackupPlansOK() *GetBackupPlansOK {
 	return &GetBackupPlansOK{}
 }
 
-/* GetBackupPlansOK describes a response with status code 200, with default header values.
+/*
+GetBackupPlansOK describes a response with status code 200, with default header values.
 
 GetBackupPlansOK get backup plans o k
 */
@@ -96,7 +97,8 @@ func NewGetBackupPlansBadRequest() *GetBackupPlansBadRequest {
 	return &GetBackupPlansBadRequest{}
 }
 
-/* GetBackupPlansBadRequest describes a response with status code 400, with default header values.
+/*
+GetBackupPlansBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetBackupPlansNotFound() *GetBackupPlansNotFound {
 	return &GetBackupPlansNotFound{}
 }
 
-/* GetBackupPlansNotFound describes a response with status code 404, with default header values.
+/*
+GetBackupPlansNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetBackupPlansInternalServerError() *GetBackupPlansInternalServerError {
 	return &GetBackupPlansInternalServerError{}
 }
 
-/* GetBackupPlansInternalServerError describes a response with status code 500, with default header values.
+/*
+GetBackupPlansInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

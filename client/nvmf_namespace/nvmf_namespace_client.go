@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  CloneNvmfNamespaceFromSnapshot clone nvmf namespace from snapshot API
+CloneNvmfNamespaceFromSnapshot clone nvmf namespace from snapshot API
 */
 func (a *Client) CloneNvmfNamespaceFromSnapshot(params *CloneNvmfNamespaceFromSnapshotParams, opts ...ClientOption) (*CloneNvmfNamespaceFromSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) CloneNvmfNamespaceFromSnapshot(params *CloneNvmfNamespaceFromSn
 }
 
 /*
-  CreateNvmfNamespace create nvmf namespace API
+CreateNvmfNamespace create nvmf namespace API
 */
 func (a *Client) CreateNvmfNamespace(params *CreateNvmfNamespaceParams, opts ...ClientOption) (*CreateNvmfNamespaceOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) CreateNvmfNamespace(params *CreateNvmfNamespaceParams, opts ...
 }
 
 /*
-  DeleteNvmfNamespace delete nvmf namespace API
+DeleteNvmfNamespace delete nvmf namespace API
 */
 func (a *Client) DeleteNvmfNamespace(params *DeleteNvmfNamespaceParams, opts ...ClientOption) (*DeleteNvmfNamespaceOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) DeleteNvmfNamespace(params *DeleteNvmfNamespaceParams, opts ...
 }
 
 /*
-  GetNvmfNamespaces get nvmf namespaces API
+GetNvmfNamespaces get nvmf namespaces API
 */
 func (a *Client) GetNvmfNamespaces(params *GetNvmfNamespacesParams, opts ...ClientOption) (*GetNvmfNamespacesOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) GetNvmfNamespaces(params *GetNvmfNamespacesParams, opts ...Clie
 }
 
 /*
-  GetNvmfNamespacesConnection get nvmf namespaces connection API
+GetNvmfNamespacesConnection get nvmf namespaces connection API
 */
 func (a *Client) GetNvmfNamespacesConnection(params *GetNvmfNamespacesConnectionParams, opts ...ClientOption) (*GetNvmfNamespacesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -238,7 +238,7 @@ func (a *Client) GetNvmfNamespacesConnection(params *GetNvmfNamespacesConnection
 }
 
 /*
-  RollbackNvmfNamespaceFromSnapshot rollback nvmf namespace from snapshot API
+RollbackNvmfNamespaceFromSnapshot rollback nvmf namespace from snapshot API
 */
 func (a *Client) RollbackNvmfNamespaceFromSnapshot(params *RollbackNvmfNamespaceFromSnapshotParams, opts ...ClientOption) (*RollbackNvmfNamespaceFromSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -276,7 +276,7 @@ func (a *Client) RollbackNvmfNamespaceFromSnapshot(params *RollbackNvmfNamespace
 }
 
 /*
-  UpdateNvmfNamespace update nvmf namespace API
+UpdateNvmfNamespace update nvmf namespace API
 */
 func (a *Client) UpdateNvmfNamespace(params *UpdateNvmfNamespaceParams, opts ...ClientOption) (*UpdateNvmfNamespaceOK, error) {
 	// TODO: Validate the params before sending

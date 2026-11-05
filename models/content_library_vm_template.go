@@ -45,6 +45,9 @@ type ContentLibraryVMTemplate struct {
 	// Required: true
 	CreatedAt *string `json:"createdAt"`
 
+	// datastores
+	Datastores []*NestedDatastore `json:"datastores,omitempty"`
+
 	// description
 	// Required: true
 	Description *string `json:"description"`
@@ -114,6 +117,9 @@ type ContentLibraryVMTemplate struct {
 	// vm nics
 	VMNics []*NestedContentLibraryVMTemplateNic `json:"vm_nics,omitempty"`
 
+	// vm template configs
+	VMTemplateConfigs []*NestedVMTemplateConfig `json:"vm_template_configs,omitempty"`
+
 	// vm template uuids
 	// Required: true
 	VMTemplateUuids []string `json:"vm_template_uuids"`
@@ -144,6 +150,8 @@ type ContentLibraryVMTemplateMarshalOpts struct {
 	CPUModel_Explicit_Null_When_Empty bool
 
 	CreatedAt_Explicit_Null_When_Empty bool
+
+	Datastores_Explicit_Null_When_Empty bool
 
 	Description_Explicit_Null_When_Empty bool
 
@@ -186,6 +194,8 @@ type ContentLibraryVMTemplateMarshalOpts struct {
 	VMDisks_Explicit_Null_When_Empty bool
 
 	VMNics_Explicit_Null_When_Empty bool
+
+	VMTemplateConfigs_Explicit_Null_When_Empty bool
 
 	VMTemplateUuids_Explicit_Null_When_Empty bool
 
@@ -333,6 +343,20 @@ func (m ContentLibraryVMTemplate) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"createdAt\":null")
+		first = false
+	}
+
+	// handle non nullable field datastores with omitempty
+	if !swag.IsZero(m.Datastores) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores\":")
+		bytes, err := swag.WriteJSON(m.Datastores)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
 		first = false
 	}
 
@@ -738,6 +762,20 @@ func (m ContentLibraryVMTemplate) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle non nullable field vm_template_configs with omitempty
+	if !swag.IsZero(m.VMTemplateConfigs) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_template_configs\":")
+		bytes, err := swag.WriteJSON(m.VMTemplateConfigs)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle non nullable field vm_template_uuids without omitempty
 	{
 		if !first {
@@ -832,6 +870,10 @@ func (m *ContentLibraryVMTemplate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastores(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDescription(formats); err != nil {
 		res = append(res, err)
 	}
@@ -893,6 +935,10 @@ func (m *ContentLibraryVMTemplate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVMNics(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMTemplateConfigs(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1015,6 +1061,32 @@ func (m *ContentLibraryVMTemplate) validateCreatedAt(formats strfmt.Registry) er
 
 	if err := validate.Required("createdAt", "body", m.CreatedAt); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) validateDatastores(formats strfmt.Registry) error {
+	if swag.IsZero(m.Datastores) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Datastores); i++ {
+		if swag.IsZero(m.Datastores[i]) { // not required
+			continue
+		}
+
+		if m.Datastores[i] != nil {
+			if err := m.Datastores[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("datastores" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("datastores" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -1285,6 +1357,32 @@ func (m *ContentLibraryVMTemplate) validateVMNics(formats strfmt.Registry) error
 	return nil
 }
 
+func (m *ContentLibraryVMTemplate) validateVMTemplateConfigs(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMTemplateConfigs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VMTemplateConfigs); i++ {
+		if swag.IsZero(m.VMTemplateConfigs[i]) { // not required
+			continue
+		}
+
+		if m.VMTemplateConfigs[i] != nil {
+			if err := m.VMTemplateConfigs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_template_configs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_template_configs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplate) validateVMTemplateUuids(formats strfmt.Registry) error {
 
 	if err := validate.Required("vm_template_uuids", "body", m.VMTemplateUuids); err != nil {
@@ -1366,6 +1464,10 @@ func (m *ContentLibraryVMTemplate) ContextValidate(ctx context.Context, formats 
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDatastores(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1403,6 +1505,10 @@ func (m *ContentLibraryVMTemplate) ContextValidate(ctx context.Context, formats 
 	}
 
 	if err := m.contextValidateVMNics(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMTemplateConfigs(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1483,6 +1589,26 @@ func (m *ContentLibraryVMTemplate) contextValidateCPU(ctx context.Context, forma
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateDatastores(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Datastores); i++ {
+
+		if m.Datastores[i] != nil {
+			if err := m.Datastores[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("datastores" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("datastores" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -1650,6 +1776,26 @@ func (m *ContentLibraryVMTemplate) contextValidateVMNics(ctx context.Context, fo
 					return ve.ValidateName("vm_nics" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("vm_nics" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplate) contextValidateVMTemplateConfigs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VMTemplateConfigs); i++ {
+
+		if m.VMTemplateConfigs[i] != nil {
+			if err := m.VMTemplateConfigs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vm_template_configs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vm_template_configs" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

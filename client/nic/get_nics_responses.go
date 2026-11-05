@@ -57,7 +57,8 @@ func NewGetNicsOK() *GetNicsOK {
 	return &GetNicsOK{}
 }
 
-/* GetNicsOK describes a response with status code 200, with default header values.
+/*
+GetNicsOK describes a response with status code 200, with default header values.
 
 GetNicsOK get nics o k
 */
@@ -96,7 +97,8 @@ func NewGetNicsBadRequest() *GetNicsBadRequest {
 	return &GetNicsBadRequest{}
 }
 
-/* GetNicsBadRequest describes a response with status code 400, with default header values.
+/*
+GetNicsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetNicsNotFound() *GetNicsNotFound {
 	return &GetNicsNotFound{}
 }
 
-/* GetNicsNotFound describes a response with status code 404, with default header values.
+/*
+GetNicsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetNicsInternalServerError() *GetNicsInternalServerError {
 	return &GetNicsInternalServerError{}
 }
 
-/* GetNicsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNicsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

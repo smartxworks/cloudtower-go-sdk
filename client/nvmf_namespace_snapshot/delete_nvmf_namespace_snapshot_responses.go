@@ -57,7 +57,8 @@ func NewDeleteNvmfNamespaceSnapshotOK() *DeleteNvmfNamespaceSnapshotOK {
 	return &DeleteNvmfNamespaceSnapshotOK{}
 }
 
-/* DeleteNvmfNamespaceSnapshotOK describes a response with status code 200, with default header values.
+/*
+DeleteNvmfNamespaceSnapshotOK describes a response with status code 200, with default header values.
 
 DeleteNvmfNamespaceSnapshotOK delete nvmf namespace snapshot o k
 */
@@ -96,7 +97,8 @@ func NewDeleteNvmfNamespaceSnapshotBadRequest() *DeleteNvmfNamespaceSnapshotBadR
 	return &DeleteNvmfNamespaceSnapshotBadRequest{}
 }
 
-/* DeleteNvmfNamespaceSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteNvmfNamespaceSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteNvmfNamespaceSnapshotNotFound() *DeleteNvmfNamespaceSnapshotNotFou
 	return &DeleteNvmfNamespaceSnapshotNotFound{}
 }
 
-/* DeleteNvmfNamespaceSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+DeleteNvmfNamespaceSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteNvmfNamespaceSnapshotInternalServerError() *DeleteNvmfNamespaceSna
 	return &DeleteNvmfNamespaceSnapshotInternalServerError{}
 }
 
-/* DeleteNvmfNamespaceSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteNvmfNamespaceSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

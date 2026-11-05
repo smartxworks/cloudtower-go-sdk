@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateLogCollection create log collection API
+CreateLogCollection create log collection API
 */
 func (a *Client) CreateLogCollection(params *CreateLogCollectionParams, opts ...ClientOption) (*CreateLogCollectionOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateLogCollection(params *CreateLogCollectionParams, opts ...
 }
 
 /*
-  DeleteLogCollection delete log collection API
+DeleteLogCollection delete log collection API
 */
 func (a *Client) DeleteLogCollection(params *DeleteLogCollectionParams, opts ...ClientOption) (*DeleteLogCollectionOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteLogCollection(params *DeleteLogCollectionParams, opts ...
 }
 
 /*
-  ForceStopLogCollection force stop log collection API
+ForceStopLogCollection force stop log collection API
 */
 func (a *Client) ForceStopLogCollection(params *ForceStopLogCollectionParams, opts ...ClientOption) (*ForceStopLogCollectionOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) ForceStopLogCollection(params *ForceStopLogCollectionParams, op
 }
 
 /*
-  GetLogCollections get log collections API
+GetLogCollections get log collections API
 */
 func (a *Client) GetLogCollections(params *GetLogCollectionsParams, opts ...ClientOption) (*GetLogCollectionsOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetLogCollections(params *GetLogCollectionsParams, opts ...Clie
 }
 
 /*
-  GetLogCollectionsConnection get log collections connection API
+GetLogCollectionsConnection get log collections connection API
 */
 func (a *Client) GetLogCollectionsConnection(params *GetLogCollectionsConnectionParams, opts ...ClientOption) (*GetLogCollectionsConnectionOK, error) {
 	// TODO: Validate the params before sending

@@ -54,10 +54,12 @@ func NewDeleteConsistencyGroupParamsWithHTTPClient(client *http.Client) *DeleteC
 	}
 }
 
-/* DeleteConsistencyGroupParams contains all the parameters to send to the API endpoint
-   for the delete consistency group operation.
+/*
+DeleteConsistencyGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete consistency group operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteConsistencyGroupParams struct {
 

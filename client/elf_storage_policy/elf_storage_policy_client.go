@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetElfStoragePolicies get elf storage policies API
+GetElfStoragePolicies get elf storage policies API
 */
 func (a *Client) GetElfStoragePolicies(params *GetElfStoragePoliciesParams, opts ...ClientOption) (*GetElfStoragePoliciesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetElfStoragePolicies(params *GetElfStoragePoliciesParams, opts
 }
 
 /*
-  GetElfStoragePoliciesConnection get elf storage policies connection API
+GetElfStoragePoliciesConnection get elf storage policies connection API
 */
 func (a *Client) GetElfStoragePoliciesConnection(params *GetElfStoragePoliciesConnectionParams, opts ...ClientOption) (*GetElfStoragePoliciesConnectionOK, error) {
 	// TODO: Validate the params before sending

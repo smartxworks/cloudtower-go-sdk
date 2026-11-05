@@ -54,10 +54,12 @@ func NewDeleteContentLibraryImageParamsWithHTTPClient(client *http.Client) *Dele
 	}
 }
 
-/* DeleteContentLibraryImageParams contains all the parameters to send to the API endpoint
-   for the delete content library image operation.
+/*
+DeleteContentLibraryImageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete content library image operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteContentLibraryImageParams struct {
 

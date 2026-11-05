@@ -54,10 +54,12 @@ func NewGetVMMetricsParamsWithHTTPClient(client *http.Client) *GetVMMetricsParam
 	}
 }
 
-/* GetVMMetricsParams contains all the parameters to send to the API endpoint
-   for the get Vm metrics operation.
+/*
+GetVMMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMMetricsParams struct {
 

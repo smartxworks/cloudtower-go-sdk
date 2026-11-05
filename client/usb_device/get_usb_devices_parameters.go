@@ -54,10 +54,12 @@ func NewGetUsbDevicesParamsWithHTTPClient(client *http.Client) *GetUsbDevicesPar
 	}
 }
 
-/* GetUsbDevicesParams contains all the parameters to send to the API endpoint
-   for the get usb devices operation.
+/*
+GetUsbDevicesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get usb devices operation.
+
+	Typically these are written to a http.Request.
 */
 type GetUsbDevicesParams struct {
 

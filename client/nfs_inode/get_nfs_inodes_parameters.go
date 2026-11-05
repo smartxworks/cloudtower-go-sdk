@@ -54,10 +54,12 @@ func NewGetNfsInodesParamsWithHTTPClient(client *http.Client) *GetNfsInodesParam
 	}
 }
 
-/* GetNfsInodesParams contains all the parameters to send to the API endpoint
-   for the get nfs inodes operation.
+/*
+GetNfsInodesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get nfs inodes operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNfsInodesParams struct {
 

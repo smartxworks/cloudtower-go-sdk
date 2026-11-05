@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetVMEntityFilterResults get Vm entity filter results API
+GetVMEntityFilterResults get Vm entity filter results API
 */
 func (a *Client) GetVMEntityFilterResults(params *GetVMEntityFilterResultsParams, opts ...ClientOption) (*GetVMEntityFilterResultsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetVMEntityFilterResults(params *GetVMEntityFilterResultsParams
 }
 
 /*
-  GetVMEntityFilterResultsConnection get Vm entity filter results connection API
+GetVMEntityFilterResultsConnection get Vm entity filter results connection API
 */
 func (a *Client) GetVMEntityFilterResultsConnection(params *GetVMEntityFilterResultsConnectionParams, opts ...ClientOption) (*GetVMEntityFilterResultsConnectionOK, error) {
 	// TODO: Validate the params before sending

@@ -57,7 +57,8 @@ func NewGetNvmfSubsystemsConnectionOK() *GetNvmfSubsystemsConnectionOK {
 	return &GetNvmfSubsystemsConnectionOK{}
 }
 
-/* GetNvmfSubsystemsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetNvmfSubsystemsConnectionOK describes a response with status code 200, with default header values.
 
 GetNvmfSubsystemsConnectionOK get nvmf subsystems connection o k
 */
@@ -98,7 +99,8 @@ func NewGetNvmfSubsystemsConnectionBadRequest() *GetNvmfSubsystemsConnectionBadR
 	return &GetNvmfSubsystemsConnectionBadRequest{}
 }
 
-/* GetNvmfSubsystemsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetNvmfSubsystemsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetNvmfSubsystemsConnectionNotFound() *GetNvmfSubsystemsConnectionNotFou
 	return &GetNvmfSubsystemsConnectionNotFound{}
 }
 
-/* GetNvmfSubsystemsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetNvmfSubsystemsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetNvmfSubsystemsConnectionInternalServerError() *GetNvmfSubsystemsConne
 	return &GetNvmfSubsystemsConnectionInternalServerError{}
 }
 
-/* GetNvmfSubsystemsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNvmfSubsystemsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

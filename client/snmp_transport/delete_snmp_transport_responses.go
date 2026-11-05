@@ -57,7 +57,8 @@ func NewDeleteSnmpTransportOK() *DeleteSnmpTransportOK {
 	return &DeleteSnmpTransportOK{}
 }
 
-/* DeleteSnmpTransportOK describes a response with status code 200, with default header values.
+/*
+DeleteSnmpTransportOK describes a response with status code 200, with default header values.
 
 DeleteSnmpTransportOK delete snmp transport o k
 */
@@ -96,7 +97,8 @@ func NewDeleteSnmpTransportBadRequest() *DeleteSnmpTransportBadRequest {
 	return &DeleteSnmpTransportBadRequest{}
 }
 
-/* DeleteSnmpTransportBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteSnmpTransportBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteSnmpTransportNotFound() *DeleteSnmpTransportNotFound {
 	return &DeleteSnmpTransportNotFound{}
 }
 
-/* DeleteSnmpTransportNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSnmpTransportNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteSnmpTransportInternalServerError() *DeleteSnmpTransportInternalSer
 	return &DeleteSnmpTransportInternalServerError{}
 }
 
-/* DeleteSnmpTransportInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteSnmpTransportInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

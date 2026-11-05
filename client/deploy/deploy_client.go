@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetDeploys get deploys API
+GetDeploys get deploys API
 */
 func (a *Client) GetDeploys(params *GetDeploysParams, opts ...ClientOption) (*GetDeploysOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetDeploys(params *GetDeploysParams, opts ...ClientOption) (*Ge
 }
 
 /*
-  GetDeploysConnection get deploys connection API
+GetDeploysConnection get deploys connection API
 */
 func (a *Client) GetDeploysConnection(params *GetDeploysConnectionParams, opts ...ClientOption) (*GetDeploysConnectionOK, error) {
 	// TODO: Validate the params before sending

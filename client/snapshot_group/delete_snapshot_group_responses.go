@@ -57,7 +57,8 @@ func NewDeleteSnapshotGroupOK() *DeleteSnapshotGroupOK {
 	return &DeleteSnapshotGroupOK{}
 }
 
-/* DeleteSnapshotGroupOK describes a response with status code 200, with default header values.
+/*
+DeleteSnapshotGroupOK describes a response with status code 200, with default header values.
 
 DeleteSnapshotGroupOK delete snapshot group o k
 */
@@ -96,7 +97,8 @@ func NewDeleteSnapshotGroupBadRequest() *DeleteSnapshotGroupBadRequest {
 	return &DeleteSnapshotGroupBadRequest{}
 }
 
-/* DeleteSnapshotGroupBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteSnapshotGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteSnapshotGroupNotFound() *DeleteSnapshotGroupNotFound {
 	return &DeleteSnapshotGroupNotFound{}
 }
 
-/* DeleteSnapshotGroupNotFound describes a response with status code 404, with default header values.
+/*
+DeleteSnapshotGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteSnapshotGroupInternalServerError() *DeleteSnapshotGroupInternalSer
 	return &DeleteSnapshotGroupInternalServerError{}
 }
 
-/* DeleteSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteSnapshotGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

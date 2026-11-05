@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateNetworkPolicyRuleService create network policy rule service API
+CreateNetworkPolicyRuleService create network policy rule service API
 */
 func (a *Client) CreateNetworkPolicyRuleService(params *CreateNetworkPolicyRuleServiceParams, opts ...ClientOption) (*CreateNetworkPolicyRuleServiceOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateNetworkPolicyRuleService(params *CreateNetworkPolicyRuleS
 }
 
 /*
-  DeleteNetworkPolicyRuleService delete network policy rule service API
+DeleteNetworkPolicyRuleService delete network policy rule service API
 */
 func (a *Client) DeleteNetworkPolicyRuleService(params *DeleteNetworkPolicyRuleServiceParams, opts ...ClientOption) (*DeleteNetworkPolicyRuleServiceOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteNetworkPolicyRuleService(params *DeleteNetworkPolicyRuleS
 }
 
 /*
-  GetNetworkPolicyRuleServices get network policy rule services API
+GetNetworkPolicyRuleServices get network policy rule services API
 */
 func (a *Client) GetNetworkPolicyRuleServices(params *GetNetworkPolicyRuleServicesParams, opts ...ClientOption) (*GetNetworkPolicyRuleServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetNetworkPolicyRuleServices(params *GetNetworkPolicyRuleServic
 }
 
 /*
-  GetNetworkPolicyRuleServicesConnection get network policy rule services connection API
+GetNetworkPolicyRuleServicesConnection get network policy rule services connection API
 */
 func (a *Client) GetNetworkPolicyRuleServicesConnection(params *GetNetworkPolicyRuleServicesConnectionParams, opts ...ClientOption) (*GetNetworkPolicyRuleServicesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetNetworkPolicyRuleServicesConnection(params *GetNetworkPolicy
 }
 
 /*
-  UpdateNetworkPolicyRuleService update network policy rule service API
+UpdateNetworkPolicyRuleService update network policy rule service API
 */
 func (a *Client) UpdateNetworkPolicyRuleService(params *UpdateNetworkPolicyRuleServiceParams, opts ...ClientOption) (*UpdateNetworkPolicyRuleServiceOK, error) {
 	// TODO: Validate the params before sending

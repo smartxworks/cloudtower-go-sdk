@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetVirtualPrivateCloudExternalSubnetGroups get virtual private cloud external subnet groups API
+GetVirtualPrivateCloudExternalSubnetGroups get virtual private cloud external subnet groups API
 */
 func (a *Client) GetVirtualPrivateCloudExternalSubnetGroups(params *GetVirtualPrivateCloudExternalSubnetGroupsParams, opts ...ClientOption) (*GetVirtualPrivateCloudExternalSubnetGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetVirtualPrivateCloudExternalSubnetGroups(params *GetVirtualPr
 }
 
 /*
-  GetVirtualPrivateCloudExternalSubnetGroupsConnection get virtual private cloud external subnet groups connection API
+GetVirtualPrivateCloudExternalSubnetGroupsConnection get virtual private cloud external subnet groups connection API
 */
 func (a *Client) GetVirtualPrivateCloudExternalSubnetGroupsConnection(params *GetVirtualPrivateCloudExternalSubnetGroupsConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudExternalSubnetGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending

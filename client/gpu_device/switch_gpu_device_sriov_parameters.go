@@ -54,10 +54,12 @@ func NewSwitchGpuDeviceSriovParamsWithHTTPClient(client *http.Client) *SwitchGpu
 	}
 }
 
-/* SwitchGpuDeviceSriovParams contains all the parameters to send to the API endpoint
-   for the switch gpu device sriov operation.
+/*
+SwitchGpuDeviceSriovParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the switch gpu device sriov operation.
+
+	Typically these are written to a http.Request.
 */
 type SwitchGpuDeviceSriovParams struct {
 

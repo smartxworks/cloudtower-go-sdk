@@ -54,10 +54,12 @@ func NewUpdateClusterEnableISCSISettingParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* UpdateClusterEnableISCSISettingParams contains all the parameters to send to the API endpoint
-   for the update cluster enable i s c s i setting operation.
+/*
+UpdateClusterEnableISCSISettingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update cluster enable i s c s i setting operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateClusterEnableISCSISettingParams struct {
 

@@ -57,7 +57,8 @@ func NewAbortMigrateVMAcrossClusterOK() *AbortMigrateVMAcrossClusterOK {
 	return &AbortMigrateVMAcrossClusterOK{}
 }
 
-/* AbortMigrateVMAcrossClusterOK describes a response with status code 200, with default header values.
+/*
+AbortMigrateVMAcrossClusterOK describes a response with status code 200, with default header values.
 
 AbortMigrateVMAcrossClusterOK abort migrate Vm across cluster o k
 */
@@ -96,7 +97,8 @@ func NewAbortMigrateVMAcrossClusterBadRequest() *AbortMigrateVMAcrossClusterBadR
 	return &AbortMigrateVMAcrossClusterBadRequest{}
 }
 
-/* AbortMigrateVMAcrossClusterBadRequest describes a response with status code 400, with default header values.
+/*
+AbortMigrateVMAcrossClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewAbortMigrateVMAcrossClusterNotFound() *AbortMigrateVMAcrossClusterNotFou
 	return &AbortMigrateVMAcrossClusterNotFound{}
 }
 
-/* AbortMigrateVMAcrossClusterNotFound describes a response with status code 404, with default header values.
+/*
+AbortMigrateVMAcrossClusterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewAbortMigrateVMAcrossClusterInternalServerError() *AbortMigrateVMAcrossCl
 	return &AbortMigrateVMAcrossClusterInternalServerError{}
 }
 
-/* AbortMigrateVMAcrossClusterInternalServerError describes a response with status code 500, with default header values.
+/*
+AbortMigrateVMAcrossClusterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

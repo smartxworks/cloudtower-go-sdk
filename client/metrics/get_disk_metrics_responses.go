@@ -57,7 +57,8 @@ func NewGetDiskMetricsOK() *GetDiskMetricsOK {
 	return &GetDiskMetricsOK{}
 }
 
-/* GetDiskMetricsOK describes a response with status code 200, with default header values.
+/*
+GetDiskMetricsOK describes a response with status code 200, with default header values.
 
 GetDiskMetricsOK get disk metrics o k
 */
@@ -96,7 +97,8 @@ func NewGetDiskMetricsBadRequest() *GetDiskMetricsBadRequest {
 	return &GetDiskMetricsBadRequest{}
 }
 
-/* GetDiskMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetDiskMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetDiskMetricsNotFound() *GetDiskMetricsNotFound {
 	return &GetDiskMetricsNotFound{}
 }
 
-/* GetDiskMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetDiskMetricsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetDiskMetricsInternalServerError() *GetDiskMetricsInternalServerError {
 	return &GetDiskMetricsInternalServerError{}
 }
 
-/* GetDiskMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDiskMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewUploadSvtImageOK() *UploadSvtImageOK {
 	return &UploadSvtImageOK{}
 }
 
-/* UploadSvtImageOK describes a response with status code 200, with default header values.
+/*
+UploadSvtImageOK describes a response with status code 200, with default header values.
 
 UploadSvtImageOK upload svt image o k
 */
@@ -96,7 +97,8 @@ func NewUploadSvtImageBadRequest() *UploadSvtImageBadRequest {
 	return &UploadSvtImageBadRequest{}
 }
 
-/* UploadSvtImageBadRequest describes a response with status code 400, with default header values.
+/*
+UploadSvtImageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUploadSvtImageNotFound() *UploadSvtImageNotFound {
 	return &UploadSvtImageNotFound{}
 }
 
-/* UploadSvtImageNotFound describes a response with status code 404, with default header values.
+/*
+UploadSvtImageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUploadSvtImageInternalServerError() *UploadSvtImageInternalServerError {
 	return &UploadSvtImageInternalServerError{}
 }
 
-/* UploadSvtImageInternalServerError describes a response with status code 500, with default header values.
+/*
+UploadSvtImageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

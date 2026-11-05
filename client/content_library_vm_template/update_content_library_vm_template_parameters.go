@@ -54,10 +54,12 @@ func NewUpdateContentLibraryVMTemplateParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* UpdateContentLibraryVMTemplateParams contains all the parameters to send to the API endpoint
-   for the update content library Vm template operation.
+/*
+UpdateContentLibraryVMTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update content library Vm template operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateContentLibraryVMTemplateParams struct {
 

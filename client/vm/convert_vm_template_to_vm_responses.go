@@ -57,7 +57,8 @@ func NewConvertVMTemplateToVMOK() *ConvertVMTemplateToVMOK {
 	return &ConvertVMTemplateToVMOK{}
 }
 
-/* ConvertVMTemplateToVMOK describes a response with status code 200, with default header values.
+/*
+ConvertVMTemplateToVMOK describes a response with status code 200, with default header values.
 
 ConvertVMTemplateToVMOK convert Vm template to Vm o k
 */
@@ -96,7 +97,8 @@ func NewConvertVMTemplateToVMBadRequest() *ConvertVMTemplateToVMBadRequest {
 	return &ConvertVMTemplateToVMBadRequest{}
 }
 
-/* ConvertVMTemplateToVMBadRequest describes a response with status code 400, with default header values.
+/*
+ConvertVMTemplateToVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewConvertVMTemplateToVMNotFound() *ConvertVMTemplateToVMNotFound {
 	return &ConvertVMTemplateToVMNotFound{}
 }
 
-/* ConvertVMTemplateToVMNotFound describes a response with status code 404, with default header values.
+/*
+ConvertVMTemplateToVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewConvertVMTemplateToVMInternalServerError() *ConvertVMTemplateToVMInterna
 	return &ConvertVMTemplateToVMInternalServerError{}
 }
 
-/* ConvertVMTemplateToVMInternalServerError describes a response with status code 500, with default header values.
+/*
+ConvertVMTemplateToVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

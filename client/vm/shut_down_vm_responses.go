@@ -57,7 +57,8 @@ func NewShutDownVMOK() *ShutDownVMOK {
 	return &ShutDownVMOK{}
 }
 
-/* ShutDownVMOK describes a response with status code 200, with default header values.
+/*
+ShutDownVMOK describes a response with status code 200, with default header values.
 
 ShutDownVMOK shut down Vm o k
 */
@@ -96,7 +97,8 @@ func NewShutDownVMBadRequest() *ShutDownVMBadRequest {
 	return &ShutDownVMBadRequest{}
 }
 
-/* ShutDownVMBadRequest describes a response with status code 400, with default header values.
+/*
+ShutDownVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewShutDownVMNotFound() *ShutDownVMNotFound {
 	return &ShutDownVMNotFound{}
 }
 
-/* ShutDownVMNotFound describes a response with status code 404, with default header values.
+/*
+ShutDownVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewShutDownVMInternalServerError() *ShutDownVMInternalServerError {
 	return &ShutDownVMInternalServerError{}
 }
 
-/* ShutDownVMInternalServerError describes a response with status code 500, with default header values.
+/*
+ShutDownVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

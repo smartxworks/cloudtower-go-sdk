@@ -57,7 +57,8 @@ func NewCreateTaskOK() *CreateTaskOK {
 	return &CreateTaskOK{}
 }
 
-/* CreateTaskOK describes a response with status code 200, with default header values.
+/*
+CreateTaskOK describes a response with status code 200, with default header values.
 
 CreateTaskOK create task o k
 */
@@ -96,7 +97,8 @@ func NewCreateTaskBadRequest() *CreateTaskBadRequest {
 	return &CreateTaskBadRequest{}
 }
 
-/* CreateTaskBadRequest describes a response with status code 400, with default header values.
+/*
+CreateTaskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateTaskNotFound() *CreateTaskNotFound {
 	return &CreateTaskNotFound{}
 }
 
-/* CreateTaskNotFound describes a response with status code 404, with default header values.
+/*
+CreateTaskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateTaskInternalServerError() *CreateTaskInternalServerError {
 	return &CreateTaskInternalServerError{}
 }
 
-/* CreateTaskInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateTaskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

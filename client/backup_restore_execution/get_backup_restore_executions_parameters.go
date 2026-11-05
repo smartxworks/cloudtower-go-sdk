@@ -54,10 +54,12 @@ func NewGetBackupRestoreExecutionsParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetBackupRestoreExecutionsParams contains all the parameters to send to the API endpoint
-   for the get backup restore executions operation.
+/*
+GetBackupRestoreExecutionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backup restore executions operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackupRestoreExecutionsParams struct {
 

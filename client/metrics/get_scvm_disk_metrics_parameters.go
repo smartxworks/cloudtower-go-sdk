@@ -54,10 +54,12 @@ func NewGetScvmDiskMetricsParamsWithHTTPClient(client *http.Client) *GetScvmDisk
 	}
 }
 
-/* GetScvmDiskMetricsParams contains all the parameters to send to the API endpoint
-   for the get scvm disk metrics operation.
+/*
+GetScvmDiskMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get scvm disk metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetScvmDiskMetricsParams struct {
 

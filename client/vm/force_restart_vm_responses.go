@@ -57,7 +57,8 @@ func NewForceRestartVMOK() *ForceRestartVMOK {
 	return &ForceRestartVMOK{}
 }
 
-/* ForceRestartVMOK describes a response with status code 200, with default header values.
+/*
+ForceRestartVMOK describes a response with status code 200, with default header values.
 
 ForceRestartVMOK force restart Vm o k
 */
@@ -96,7 +97,8 @@ func NewForceRestartVMBadRequest() *ForceRestartVMBadRequest {
 	return &ForceRestartVMBadRequest{}
 }
 
-/* ForceRestartVMBadRequest describes a response with status code 400, with default header values.
+/*
+ForceRestartVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewForceRestartVMNotFound() *ForceRestartVMNotFound {
 	return &ForceRestartVMNotFound{}
 }
 
-/* ForceRestartVMNotFound describes a response with status code 404, with default header values.
+/*
+ForceRestartVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewForceRestartVMInternalServerError() *ForceRestartVMInternalServerError {
 	return &ForceRestartVMInternalServerError{}
 }
 
-/* ForceRestartVMInternalServerError describes a response with status code 500, with default header values.
+/*
+ForceRestartVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

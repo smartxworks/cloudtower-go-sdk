@@ -57,7 +57,8 @@ func NewGetClusterUpgradeHistoriesConnectionOK() *GetClusterUpgradeHistoriesConn
 	return &GetClusterUpgradeHistoriesConnectionOK{}
 }
 
-/* GetClusterUpgradeHistoriesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetClusterUpgradeHistoriesConnectionOK describes a response with status code 200, with default header values.
 
 GetClusterUpgradeHistoriesConnectionOK get cluster upgrade histories connection o k
 */
@@ -98,7 +99,8 @@ func NewGetClusterUpgradeHistoriesConnectionBadRequest() *GetClusterUpgradeHisto
 	return &GetClusterUpgradeHistoriesConnectionBadRequest{}
 }
 
-/* GetClusterUpgradeHistoriesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetClusterUpgradeHistoriesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetClusterUpgradeHistoriesConnectionNotFound() *GetClusterUpgradeHistori
 	return &GetClusterUpgradeHistoriesConnectionNotFound{}
 }
 
-/* GetClusterUpgradeHistoriesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetClusterUpgradeHistoriesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetClusterUpgradeHistoriesConnectionInternalServerError() *GetClusterUpg
 	return &GetClusterUpgradeHistoriesConnectionInternalServerError{}
 }
 
-/* GetClusterUpgradeHistoriesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetClusterUpgradeHistoriesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

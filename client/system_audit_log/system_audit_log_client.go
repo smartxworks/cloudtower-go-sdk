@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetSystemAuditLogs get system audit logs API
+GetSystemAuditLogs get system audit logs API
 */
 func (a *Client) GetSystemAuditLogs(params *GetSystemAuditLogsParams, opts ...ClientOption) (*GetSystemAuditLogsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetSystemAuditLogs(params *GetSystemAuditLogsParams, opts ...Cl
 }
 
 /*
-  GetSystemAuditLogsConnection get system audit logs connection API
+GetSystemAuditLogsConnection get system audit logs connection API
 */
 func (a *Client) GetSystemAuditLogsConnection(params *GetSystemAuditLogsConnectionParams, opts ...ClientOption) (*GetSystemAuditLogsConnectionOK, error) {
 	// TODO: Validate the params before sending

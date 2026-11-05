@@ -57,7 +57,8 @@ func NewGetV2EverouteLicensesConnectionOK() *GetV2EverouteLicensesConnectionOK {
 	return &GetV2EverouteLicensesConnectionOK{}
 }
 
-/* GetV2EverouteLicensesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetV2EverouteLicensesConnectionOK describes a response with status code 200, with default header values.
 
 GetV2EverouteLicensesConnectionOK get v2 everoute licenses connection o k
 */
@@ -68,7 +69,7 @@ type GetV2EverouteLicensesConnectionOK struct {
 }
 
 func (o *GetV2EverouteLicensesConnectionOK) Error() string {
-	return fmt.Sprintf("[POST /get-v-2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /get-v2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionOK  %+v", 200, o.Payload)
 }
 func (o *GetV2EverouteLicensesConnectionOK) GetPayload() *models.V2EverouteLicenseConnection {
 	return o.Payload
@@ -98,7 +99,8 @@ func NewGetV2EverouteLicensesConnectionBadRequest() *GetV2EverouteLicensesConnec
 	return &GetV2EverouteLicensesConnectionBadRequest{}
 }
 
-/* GetV2EverouteLicensesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetV2EverouteLicensesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -109,7 +111,7 @@ type GetV2EverouteLicensesConnectionBadRequest struct {
 }
 
 func (o *GetV2EverouteLicensesConnectionBadRequest) Error() string {
-	return fmt.Sprintf("[POST /get-v-2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /get-v2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionBadRequest  %+v", 400, o.Payload)
 }
 func (o *GetV2EverouteLicensesConnectionBadRequest) GetPayload() *models.ErrorBody {
 	return o.Payload
@@ -139,7 +141,8 @@ func NewGetV2EverouteLicensesConnectionNotFound() *GetV2EverouteLicensesConnecti
 	return &GetV2EverouteLicensesConnectionNotFound{}
 }
 
-/* GetV2EverouteLicensesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetV2EverouteLicensesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -150,7 +153,7 @@ type GetV2EverouteLicensesConnectionNotFound struct {
 }
 
 func (o *GetV2EverouteLicensesConnectionNotFound) Error() string {
-	return fmt.Sprintf("[POST /get-v-2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /get-v2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionNotFound  %+v", 404, o.Payload)
 }
 func (o *GetV2EverouteLicensesConnectionNotFound) GetPayload() *models.ErrorBody {
 	return o.Payload
@@ -180,7 +183,8 @@ func NewGetV2EverouteLicensesConnectionInternalServerError() *GetV2EverouteLicen
 	return &GetV2EverouteLicensesConnectionInternalServerError{}
 }
 
-/* GetV2EverouteLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetV2EverouteLicensesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */
@@ -191,7 +195,7 @@ type GetV2EverouteLicensesConnectionInternalServerError struct {
 }
 
 func (o *GetV2EverouteLicensesConnectionInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /get-v-2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /get-v2-everoute-licenses-connection][%d] getV2EverouteLicensesConnectionInternalServerError  %+v", 500, o.Payload)
 }
 func (o *GetV2EverouteLicensesConnectionInternalServerError) GetPayload() *models.ErrorBody {
 	return o.Payload

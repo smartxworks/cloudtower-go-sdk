@@ -57,7 +57,8 @@ func NewRemoveClustersFromDatacenterOK() *RemoveClustersFromDatacenterOK {
 	return &RemoveClustersFromDatacenterOK{}
 }
 
-/* RemoveClustersFromDatacenterOK describes a response with status code 200, with default header values.
+/*
+RemoveClustersFromDatacenterOK describes a response with status code 200, with default header values.
 
 RemoveClustersFromDatacenterOK remove clusters from datacenter o k
 */
@@ -96,7 +97,8 @@ func NewRemoveClustersFromDatacenterBadRequest() *RemoveClustersFromDatacenterBa
 	return &RemoveClustersFromDatacenterBadRequest{}
 }
 
-/* RemoveClustersFromDatacenterBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveClustersFromDatacenterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRemoveClustersFromDatacenterNotFound() *RemoveClustersFromDatacenterNotF
 	return &RemoveClustersFromDatacenterNotFound{}
 }
 
-/* RemoveClustersFromDatacenterNotFound describes a response with status code 404, with default header values.
+/*
+RemoveClustersFromDatacenterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRemoveClustersFromDatacenterInternalServerError() *RemoveClustersFromDat
 	return &RemoveClustersFromDatacenterInternalServerError{}
 }
 
-/* RemoveClustersFromDatacenterInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveClustersFromDatacenterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

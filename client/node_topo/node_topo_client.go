@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetNodeTopoes get node topoes API
+GetNodeTopoes get node topoes API
 */
 func (a *Client) GetNodeTopoes(params *GetNodeTopoesParams, opts ...ClientOption) (*GetNodeTopoesOK, error) {
 	// TODO: Validate the params before sending
@@ -78,7 +78,7 @@ func (a *Client) GetNodeTopoes(params *GetNodeTopoesParams, opts ...ClientOption
 }
 
 /*
-  GetNodeTopoesConnection get node topoes connection API
+GetNodeTopoesConnection get node topoes connection API
 */
 func (a *Client) GetNodeTopoesConnection(params *GetNodeTopoesConnectionParams, opts ...ClientOption) (*GetNodeTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -116,7 +116,7 @@ func (a *Client) GetNodeTopoesConnection(params *GetNodeTopoesConnectionParams, 
 }
 
 /*
-  UpdateNodeTopo update node topo API
+UpdateNodeTopo update node topo API
 */
 func (a *Client) UpdateNodeTopo(params *UpdateNodeTopoParams, opts ...ClientOption) (*UpdateNodeTopoOK, error) {
 	// TODO: Validate the params before sending

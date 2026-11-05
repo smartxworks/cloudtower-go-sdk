@@ -57,7 +57,8 @@ func NewGetZoneTopoesConnectionOK() *GetZoneTopoesConnectionOK {
 	return &GetZoneTopoesConnectionOK{}
 }
 
-/* GetZoneTopoesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetZoneTopoesConnectionOK describes a response with status code 200, with default header values.
 
 GetZoneTopoesConnectionOK get zone topoes connection o k
 */
@@ -98,7 +99,8 @@ func NewGetZoneTopoesConnectionBadRequest() *GetZoneTopoesConnectionBadRequest {
 	return &GetZoneTopoesConnectionBadRequest{}
 }
 
-/* GetZoneTopoesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetZoneTopoesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetZoneTopoesConnectionNotFound() *GetZoneTopoesConnectionNotFound {
 	return &GetZoneTopoesConnectionNotFound{}
 }
 
-/* GetZoneTopoesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetZoneTopoesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetZoneTopoesConnectionInternalServerError() *GetZoneTopoesConnectionInt
 	return &GetZoneTopoesConnectionInternalServerError{}
 }
 
-/* GetZoneTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetZoneTopoesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

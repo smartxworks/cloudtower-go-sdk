@@ -57,7 +57,8 @@ func NewGetOrganizationsConnectionOK() *GetOrganizationsConnectionOK {
 	return &GetOrganizationsConnectionOK{}
 }
 
-/* GetOrganizationsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetOrganizationsConnectionOK describes a response with status code 200, with default header values.
 
 GetOrganizationsConnectionOK get organizations connection o k
 */
@@ -98,7 +99,8 @@ func NewGetOrganizationsConnectionBadRequest() *GetOrganizationsConnectionBadReq
 	return &GetOrganizationsConnectionBadRequest{}
 }
 
-/* GetOrganizationsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetOrganizationsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetOrganizationsConnectionNotFound() *GetOrganizationsConnectionNotFound
 	return &GetOrganizationsConnectionNotFound{}
 }
 
-/* GetOrganizationsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetOrganizationsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetOrganizationsConnectionInternalServerError() *GetOrganizationsConnect
 	return &GetOrganizationsConnectionInternalServerError{}
 }
 
-/* GetOrganizationsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetOrganizationsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

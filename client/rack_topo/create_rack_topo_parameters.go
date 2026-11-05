@@ -54,10 +54,12 @@ func NewCreateRackTopoParamsWithHTTPClient(client *http.Client) *CreateRackTopoP
 	}
 }
 
-/* CreateRackTopoParams contains all the parameters to send to the API endpoint
-   for the create rack topo operation.
+/*
+CreateRackTopoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create rack topo operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateRackTopoParams struct {
 

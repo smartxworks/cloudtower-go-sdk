@@ -57,7 +57,8 @@ func NewUpdateClusterOK() *UpdateClusterOK {
 	return &UpdateClusterOK{}
 }
 
-/* UpdateClusterOK describes a response with status code 200, with default header values.
+/*
+UpdateClusterOK describes a response with status code 200, with default header values.
 
 UpdateClusterOK update cluster o k
 */
@@ -96,7 +97,8 @@ func NewUpdateClusterBadRequest() *UpdateClusterBadRequest {
 	return &UpdateClusterBadRequest{}
 }
 
-/* UpdateClusterBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateClusterNotFound() *UpdateClusterNotFound {
 	return &UpdateClusterNotFound{}
 }
 
-/* UpdateClusterNotFound describes a response with status code 404, with default header values.
+/*
+UpdateClusterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateClusterInternalServerError() *UpdateClusterInternalServerError {
 	return &UpdateClusterInternalServerError{}
 }
 
-/* UpdateClusterInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateClusterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

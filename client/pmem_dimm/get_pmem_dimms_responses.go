@@ -57,7 +57,8 @@ func NewGetPmemDimmsOK() *GetPmemDimmsOK {
 	return &GetPmemDimmsOK{}
 }
 
-/* GetPmemDimmsOK describes a response with status code 200, with default header values.
+/*
+GetPmemDimmsOK describes a response with status code 200, with default header values.
 
 GetPmemDimmsOK get pmem dimms o k
 */
@@ -96,7 +97,8 @@ func NewGetPmemDimmsBadRequest() *GetPmemDimmsBadRequest {
 	return &GetPmemDimmsBadRequest{}
 }
 
-/* GetPmemDimmsBadRequest describes a response with status code 400, with default header values.
+/*
+GetPmemDimmsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetPmemDimmsNotFound() *GetPmemDimmsNotFound {
 	return &GetPmemDimmsNotFound{}
 }
 
-/* GetPmemDimmsNotFound describes a response with status code 404, with default header values.
+/*
+GetPmemDimmsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetPmemDimmsInternalServerError() *GetPmemDimmsInternalServerError {
 	return &GetPmemDimmsInternalServerError{}
 }
 
-/* GetPmemDimmsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetPmemDimmsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

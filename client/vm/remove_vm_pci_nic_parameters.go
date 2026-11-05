@@ -54,10 +54,12 @@ func NewRemoveVMPciNicParamsWithHTTPClient(client *http.Client) *RemoveVMPciNicP
 	}
 }
 
-/* RemoveVMPciNicParams contains all the parameters to send to the API endpoint
-   for the remove Vm pci nic operation.
+/*
+RemoveVMPciNicParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove Vm pci nic operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveVMPciNicParams struct {
 

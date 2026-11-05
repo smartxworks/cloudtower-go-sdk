@@ -57,7 +57,8 @@ func NewGetBackupRestorePointMetadataOK() *GetBackupRestorePointMetadataOK {
 	return &GetBackupRestorePointMetadataOK{}
 }
 
-/* GetBackupRestorePointMetadataOK describes a response with status code 200, with default header values.
+/*
+GetBackupRestorePointMetadataOK describes a response with status code 200, with default header values.
 
 GetBackupRestorePointMetadataOK get backup restore point metadata o k
 */
@@ -98,7 +99,8 @@ func NewGetBackupRestorePointMetadataBadRequest() *GetBackupRestorePointMetadata
 	return &GetBackupRestorePointMetadataBadRequest{}
 }
 
-/* GetBackupRestorePointMetadataBadRequest describes a response with status code 400, with default header values.
+/*
+GetBackupRestorePointMetadataBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetBackupRestorePointMetadataNotFound() *GetBackupRestorePointMetadataNo
 	return &GetBackupRestorePointMetadataNotFound{}
 }
 
-/* GetBackupRestorePointMetadataNotFound describes a response with status code 404, with default header values.
+/*
+GetBackupRestorePointMetadataNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetBackupRestorePointMetadataInternalServerError() *GetBackupRestorePoin
 	return &GetBackupRestorePointMetadataInternalServerError{}
 }
 
-/* GetBackupRestorePointMetadataInternalServerError describes a response with status code 500, with default header values.
+/*
+GetBackupRestorePointMetadataInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

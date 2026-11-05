@@ -54,10 +54,12 @@ func NewSuspendSnapshotPlanParamsWithHTTPClient(client *http.Client) *SuspendSna
 	}
 }
 
-/* SuspendSnapshotPlanParams contains all the parameters to send to the API endpoint
-   for the suspend snapshot plan operation.
+/*
+SuspendSnapshotPlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the suspend snapshot plan operation.
+
+	Typically these are written to a http.Request.
 */
 type SuspendSnapshotPlanParams struct {
 

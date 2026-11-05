@@ -54,10 +54,12 @@ func NewCloneContentLibraryVMTemplateFromVMParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* CloneContentLibraryVMTemplateFromVMParams contains all the parameters to send to the API endpoint
-   for the clone content library Vm template from Vm operation.
+/*
+CloneContentLibraryVMTemplateFromVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clone content library Vm template from Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type CloneContentLibraryVMTemplateFromVMParams struct {
 

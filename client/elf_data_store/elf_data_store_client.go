@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetElfDataStores get elf data stores API
+GetElfDataStores get elf data stores API
 */
 func (a *Client) GetElfDataStores(params *GetElfDataStoresParams, opts ...ClientOption) (*GetElfDataStoresOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetElfDataStores(params *GetElfDataStoresParams, opts ...Client
 }
 
 /*
-  GetElfDataStoresConnection get elf data stores connection API
+GetElfDataStoresConnection get elf data stores connection API
 */
 func (a *Client) GetElfDataStoresConnection(params *GetElfDataStoresConnectionParams, opts ...ClientOption) (*GetElfDataStoresConnectionOK, error) {
 	// TODO: Validate the params before sending

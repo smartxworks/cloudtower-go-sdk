@@ -57,7 +57,8 @@ func NewDeleteBackupPlanOK() *DeleteBackupPlanOK {
 	return &DeleteBackupPlanOK{}
 }
 
-/* DeleteBackupPlanOK describes a response with status code 200, with default header values.
+/*
+DeleteBackupPlanOK describes a response with status code 200, with default header values.
 
 DeleteBackupPlanOK delete backup plan o k
 */
@@ -96,7 +97,8 @@ func NewDeleteBackupPlanBadRequest() *DeleteBackupPlanBadRequest {
 	return &DeleteBackupPlanBadRequest{}
 }
 
-/* DeleteBackupPlanBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteBackupPlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteBackupPlanNotFound() *DeleteBackupPlanNotFound {
 	return &DeleteBackupPlanNotFound{}
 }
 
-/* DeleteBackupPlanNotFound describes a response with status code 404, with default header values.
+/*
+DeleteBackupPlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteBackupPlanInternalServerError() *DeleteBackupPlanInternalServerErr
 	return &DeleteBackupPlanInternalServerError{}
 }
 
-/* DeleteBackupPlanInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteBackupPlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

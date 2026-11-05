@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetPmemDimms get pmem dimms API
+GetPmemDimms get pmem dimms API
 */
 func (a *Client) GetPmemDimms(params *GetPmemDimmsParams, opts ...ClientOption) (*GetPmemDimmsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetPmemDimms(params *GetPmemDimmsParams, opts ...ClientOption) 
 }
 
 /*
-  GetPmemDimmsConnection get pmem dimms connection API
+GetPmemDimmsConnection get pmem dimms connection API
 */
 func (a *Client) GetPmemDimmsConnection(params *GetPmemDimmsConnectionParams, opts ...ClientOption) (*GetPmemDimmsConnectionOK, error) {
 	// TODO: Validate the params before sending

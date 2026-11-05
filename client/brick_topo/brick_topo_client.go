@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  CreateBrickTopo create brick topo API
+CreateBrickTopo create brick topo API
 */
 func (a *Client) CreateBrickTopo(params *CreateBrickTopoParams, opts ...ClientOption) (*CreateBrickTopoOK, error) {
 	// TODO: Validate the params before sending
@@ -84,7 +84,7 @@ func (a *Client) CreateBrickTopo(params *CreateBrickTopoParams, opts ...ClientOp
 }
 
 /*
-  DeleteBrickTopo delete brick topo API
+DeleteBrickTopo delete brick topo API
 */
 func (a *Client) DeleteBrickTopo(params *DeleteBrickTopoParams, opts ...ClientOption) (*DeleteBrickTopoOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) DeleteBrickTopo(params *DeleteBrickTopoParams, opts ...ClientOp
 }
 
 /*
-  GetBrickTopoes get brick topoes API
+GetBrickTopoes get brick topoes API
 */
 func (a *Client) GetBrickTopoes(params *GetBrickTopoesParams, opts ...ClientOption) (*GetBrickTopoesOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) GetBrickTopoes(params *GetBrickTopoesParams, opts ...ClientOpti
 }
 
 /*
-  GetBrickTopoesConnection get brick topoes connection API
+GetBrickTopoesConnection get brick topoes connection API
 */
 func (a *Client) GetBrickTopoesConnection(params *GetBrickTopoesConnectionParams, opts ...ClientOption) (*GetBrickTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +198,7 @@ func (a *Client) GetBrickTopoesConnection(params *GetBrickTopoesConnectionParams
 }
 
 /*
-  MoveBrickTopo move brick topo API
+MoveBrickTopo move brick topo API
 */
 func (a *Client) MoveBrickTopo(params *MoveBrickTopoParams, opts ...ClientOption) (*MoveBrickTopoOK, error) {
 	// TODO: Validate the params before sending
@@ -236,7 +236,7 @@ func (a *Client) MoveBrickTopo(params *MoveBrickTopoParams, opts ...ClientOption
 }
 
 /*
-  UpdateBrickTopo update brick topo API
+UpdateBrickTopo update brick topo API
 */
 func (a *Client) UpdateBrickTopo(params *UpdateBrickTopoParams, opts ...ClientOption) (*UpdateBrickTopoOK, error) {
 	// TODO: Validate the params before sending

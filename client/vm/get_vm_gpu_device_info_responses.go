@@ -57,7 +57,8 @@ func NewGetVMGpuDeviceInfoOK() *GetVMGpuDeviceInfoOK {
 	return &GetVMGpuDeviceInfoOK{}
 }
 
-/* GetVMGpuDeviceInfoOK describes a response with status code 200, with default header values.
+/*
+GetVMGpuDeviceInfoOK describes a response with status code 200, with default header values.
 
 GetVMGpuDeviceInfoOK get Vm gpu device info o k
 */
@@ -96,7 +97,8 @@ func NewGetVMGpuDeviceInfoBadRequest() *GetVMGpuDeviceInfoBadRequest {
 	return &GetVMGpuDeviceInfoBadRequest{}
 }
 
-/* GetVMGpuDeviceInfoBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMGpuDeviceInfoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVMGpuDeviceInfoNotFound() *GetVMGpuDeviceInfoNotFound {
 	return &GetVMGpuDeviceInfoNotFound{}
 }
 
-/* GetVMGpuDeviceInfoNotFound describes a response with status code 404, with default header values.
+/*
+GetVMGpuDeviceInfoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVMGpuDeviceInfoInternalServerError() *GetVMGpuDeviceInfoInternalServe
 	return &GetVMGpuDeviceInfoInternalServerError{}
 }
 
-/* GetVMGpuDeviceInfoInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMGpuDeviceInfoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

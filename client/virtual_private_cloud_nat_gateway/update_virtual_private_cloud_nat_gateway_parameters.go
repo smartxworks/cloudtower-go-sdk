@@ -54,10 +54,12 @@ func NewUpdateVirtualPrivateCloudNatGatewayParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* UpdateVirtualPrivateCloudNatGatewayParams contains all the parameters to send to the API endpoint
-   for the update virtual private cloud nat gateway operation.
+/*
+UpdateVirtualPrivateCloudNatGatewayParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update virtual private cloud nat gateway operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVirtualPrivateCloudNatGatewayParams struct {
 

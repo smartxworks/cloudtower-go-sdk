@@ -54,10 +54,12 @@ func NewGetDeploysParamsWithHTTPClient(client *http.Client) *GetDeploysParams {
 	}
 }
 
-/* GetDeploysParams contains all the parameters to send to the API endpoint
-   for the get deploys operation.
+/*
+GetDeploysParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get deploys operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDeploysParams struct {
 

@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  CloneSnapshotGroup clone snapshot group API
+CloneSnapshotGroup clone snapshot group API
 */
 func (a *Client) CloneSnapshotGroup(params *CloneSnapshotGroupParams, opts ...ClientOption) (*CloneSnapshotGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -84,7 +84,7 @@ func (a *Client) CloneSnapshotGroup(params *CloneSnapshotGroupParams, opts ...Cl
 }
 
 /*
-  DeleteSnapshotGroup delete snapshot group API
+DeleteSnapshotGroup delete snapshot group API
 */
 func (a *Client) DeleteSnapshotGroup(params *DeleteSnapshotGroupParams, opts ...ClientOption) (*DeleteSnapshotGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) DeleteSnapshotGroup(params *DeleteSnapshotGroupParams, opts ...
 }
 
 /*
-  GetSnapshotGroups get snapshot groups API
+GetSnapshotGroups get snapshot groups API
 */
 func (a *Client) GetSnapshotGroups(params *GetSnapshotGroupsParams, opts ...ClientOption) (*GetSnapshotGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) GetSnapshotGroups(params *GetSnapshotGroupsParams, opts ...Clie
 }
 
 /*
-  GetSnapshotGroupsConnection get snapshot groups connection API
+GetSnapshotGroupsConnection get snapshot groups connection API
 */
 func (a *Client) GetSnapshotGroupsConnection(params *GetSnapshotGroupsConnectionParams, opts ...ClientOption) (*GetSnapshotGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +198,7 @@ func (a *Client) GetSnapshotGroupsConnection(params *GetSnapshotGroupsConnection
 }
 
 /*
-  KeepSnapshotGroup keep snapshot group API
+KeepSnapshotGroup keep snapshot group API
 */
 func (a *Client) KeepSnapshotGroup(params *KeepSnapshotGroupParams, opts ...ClientOption) (*KeepSnapshotGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -236,7 +236,7 @@ func (a *Client) KeepSnapshotGroup(params *KeepSnapshotGroupParams, opts ...Clie
 }
 
 /*
-  RollbackSnapshotGroup rollback snapshot group API
+RollbackSnapshotGroup rollback snapshot group API
 */
 func (a *Client) RollbackSnapshotGroup(params *RollbackSnapshotGroupParams, opts ...ClientOption) (*RollbackSnapshotGroupOK, error) {
 	// TODO: Validate the params before sending

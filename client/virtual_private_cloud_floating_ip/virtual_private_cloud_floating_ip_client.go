@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  BatchCreateVirtualPrivateCloudFloatingIps batch create virtual private cloud floating ips API
+BatchCreateVirtualPrivateCloudFloatingIps batch create virtual private cloud floating ips API
 */
 func (a *Client) BatchCreateVirtualPrivateCloudFloatingIps(params *BatchCreateVirtualPrivateCloudFloatingIpsParams, opts ...ClientOption) (*BatchCreateVirtualPrivateCloudFloatingIpsOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) BatchCreateVirtualPrivateCloudFloatingIps(params *BatchCreateVi
 }
 
 /*
-  CreateVirtualPrivateCloudFloatingIP create virtual private cloud floating Ip API
+CreateVirtualPrivateCloudFloatingIP create virtual private cloud floating Ip API
 */
 func (a *Client) CreateVirtualPrivateCloudFloatingIP(params *CreateVirtualPrivateCloudFloatingIPParams, opts ...ClientOption) (*CreateVirtualPrivateCloudFloatingIPOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) CreateVirtualPrivateCloudFloatingIP(params *CreateVirtualPrivat
 }
 
 /*
-  DeleteVirtualPrivateCloudFloatingIP delete virtual private cloud floating Ip API
+DeleteVirtualPrivateCloudFloatingIP delete virtual private cloud floating Ip API
 */
 func (a *Client) DeleteVirtualPrivateCloudFloatingIP(params *DeleteVirtualPrivateCloudFloatingIPParams, opts ...ClientOption) (*DeleteVirtualPrivateCloudFloatingIPOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) DeleteVirtualPrivateCloudFloatingIP(params *DeleteVirtualPrivat
 }
 
 /*
-  GetVirtualPrivateCloudFloatingIps get virtual private cloud floating ips API
+GetVirtualPrivateCloudFloatingIps get virtual private cloud floating ips API
 */
 func (a *Client) GetVirtualPrivateCloudFloatingIps(params *GetVirtualPrivateCloudFloatingIpsParams, opts ...ClientOption) (*GetVirtualPrivateCloudFloatingIpsOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVirtualPrivateCloudFloatingIps(params *GetVirtualPrivateClou
 }
 
 /*
-  GetVirtualPrivateCloudFloatingIpsConnection get virtual private cloud floating ips connection API
+GetVirtualPrivateCloudFloatingIpsConnection get virtual private cloud floating ips connection API
 */
 func (a *Client) GetVirtualPrivateCloudFloatingIpsConnection(params *GetVirtualPrivateCloudFloatingIpsConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudFloatingIpsConnectionOK, error) {
 	// TODO: Validate the params before sending

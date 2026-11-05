@@ -57,7 +57,8 @@ func NewBackupRebuildVMOK() *BackupRebuildVMOK {
 	return &BackupRebuildVMOK{}
 }
 
-/* BackupRebuildVMOK describes a response with status code 200, with default header values.
+/*
+BackupRebuildVMOK describes a response with status code 200, with default header values.
 
 BackupRebuildVMOK backup rebuild Vm o k
 */
@@ -96,7 +97,8 @@ func NewBackupRebuildVMBadRequest() *BackupRebuildVMBadRequest {
 	return &BackupRebuildVMBadRequest{}
 }
 
-/* BackupRebuildVMBadRequest describes a response with status code 400, with default header values.
+/*
+BackupRebuildVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewBackupRebuildVMNotFound() *BackupRebuildVMNotFound {
 	return &BackupRebuildVMNotFound{}
 }
 
-/* BackupRebuildVMNotFound describes a response with status code 404, with default header values.
+/*
+BackupRebuildVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewBackupRebuildVMInternalServerError() *BackupRebuildVMInternalServerError
 	return &BackupRebuildVMInternalServerError{}
 }
 
-/* BackupRebuildVMInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupRebuildVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

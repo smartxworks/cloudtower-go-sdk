@@ -54,10 +54,12 @@ func NewShutDownVMParamsWithHTTPClient(client *http.Client) *ShutDownVMParams {
 	}
 }
 
-/* ShutDownVMParams contains all the parameters to send to the API endpoint
-   for the shut down Vm operation.
+/*
+ShutDownVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the shut down Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type ShutDownVMParams struct {
 

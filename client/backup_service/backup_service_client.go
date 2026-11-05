@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetBackupServices get backup services API
+GetBackupServices get backup services API
 */
 func (a *Client) GetBackupServices(params *GetBackupServicesParams, opts ...ClientOption) (*GetBackupServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetBackupServices(params *GetBackupServicesParams, opts ...Clie
 }
 
 /*
-  GetBackupServicesConnection get backup services connection API
+GetBackupServicesConnection get backup services connection API
 */
 func (a *Client) GetBackupServicesConnection(params *GetBackupServicesConnectionParams, opts ...ClientOption) (*GetBackupServicesConnectionOK, error) {
 	// TODO: Validate the params before sending

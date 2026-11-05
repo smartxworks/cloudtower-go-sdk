@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateSnmpTransport create snmp transport API
+CreateSnmpTransport create snmp transport API
 */
 func (a *Client) CreateSnmpTransport(params *CreateSnmpTransportParams, opts ...ClientOption) (*CreateSnmpTransportOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateSnmpTransport(params *CreateSnmpTransportParams, opts ...
 }
 
 /*
-  DeleteSnmpTransport delete snmp transport API
+DeleteSnmpTransport delete snmp transport API
 */
 func (a *Client) DeleteSnmpTransport(params *DeleteSnmpTransportParams, opts ...ClientOption) (*DeleteSnmpTransportOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteSnmpTransport(params *DeleteSnmpTransportParams, opts ...
 }
 
 /*
-  GetSnmpTransports get snmp transports API
+GetSnmpTransports get snmp transports API
 */
 func (a *Client) GetSnmpTransports(params *GetSnmpTransportsParams, opts ...ClientOption) (*GetSnmpTransportsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetSnmpTransports(params *GetSnmpTransportsParams, opts ...Clie
 }
 
 /*
-  GetSnmpTransportsConnection get snmp transports connection API
+GetSnmpTransportsConnection get snmp transports connection API
 */
 func (a *Client) GetSnmpTransportsConnection(params *GetSnmpTransportsConnectionParams, opts ...ClientOption) (*GetSnmpTransportsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetSnmpTransportsConnection(params *GetSnmpTransportsConnection
 }
 
 /*
-  UpdateSnmpTransport update snmp transport API
+UpdateSnmpTransport update snmp transport API
 */
 func (a *Client) UpdateSnmpTransport(params *UpdateSnmpTransportParams, opts ...ClientOption) (*UpdateSnmpTransportOK, error) {
 	// TODO: Validate the params before sending

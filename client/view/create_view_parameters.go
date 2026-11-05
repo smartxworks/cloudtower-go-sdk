@@ -54,10 +54,12 @@ func NewCreateViewParamsWithHTTPClient(client *http.Client) *CreateViewParams {
 	}
 }
 
-/* CreateViewParams contains all the parameters to send to the API endpoint
-   for the create view operation.
+/*
+CreateViewParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create view operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateViewParams struct {
 

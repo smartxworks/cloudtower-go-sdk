@@ -57,7 +57,8 @@ func NewAddVMToFolderOK() *AddVMToFolderOK {
 	return &AddVMToFolderOK{}
 }
 
-/* AddVMToFolderOK describes a response with status code 200, with default header values.
+/*
+AddVMToFolderOK describes a response with status code 200, with default header values.
 
 AddVMToFolderOK add Vm to folder o k
 */
@@ -96,7 +97,8 @@ func NewAddVMToFolderBadRequest() *AddVMToFolderBadRequest {
 	return &AddVMToFolderBadRequest{}
 }
 
-/* AddVMToFolderBadRequest describes a response with status code 400, with default header values.
+/*
+AddVMToFolderBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewAddVMToFolderNotFound() *AddVMToFolderNotFound {
 	return &AddVMToFolderNotFound{}
 }
 
-/* AddVMToFolderNotFound describes a response with status code 404, with default header values.
+/*
+AddVMToFolderNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewAddVMToFolderInternalServerError() *AddVMToFolderInternalServerError {
 	return &AddVMToFolderInternalServerError{}
 }
 
-/* AddVMToFolderInternalServerError describes a response with status code 500, with default header values.
+/*
+AddVMToFolderInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

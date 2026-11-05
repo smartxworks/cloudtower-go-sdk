@@ -57,7 +57,8 @@ func NewRollbackNvmfNamespaceFromSnapshotOK() *RollbackNvmfNamespaceFromSnapshot
 	return &RollbackNvmfNamespaceFromSnapshotOK{}
 }
 
-/* RollbackNvmfNamespaceFromSnapshotOK describes a response with status code 200, with default header values.
+/*
+RollbackNvmfNamespaceFromSnapshotOK describes a response with status code 200, with default header values.
 
 RollbackNvmfNamespaceFromSnapshotOK rollback nvmf namespace from snapshot o k
 */
@@ -96,7 +97,8 @@ func NewRollbackNvmfNamespaceFromSnapshotBadRequest() *RollbackNvmfNamespaceFrom
 	return &RollbackNvmfNamespaceFromSnapshotBadRequest{}
 }
 
-/* RollbackNvmfNamespaceFromSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+RollbackNvmfNamespaceFromSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRollbackNvmfNamespaceFromSnapshotNotFound() *RollbackNvmfNamespaceFromSn
 	return &RollbackNvmfNamespaceFromSnapshotNotFound{}
 }
 
-/* RollbackNvmfNamespaceFromSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+RollbackNvmfNamespaceFromSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRollbackNvmfNamespaceFromSnapshotInternalServerError() *RollbackNvmfName
 	return &RollbackNvmfNamespaceFromSnapshotInternalServerError{}
 }
 
-/* RollbackNvmfNamespaceFromSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+RollbackNvmfNamespaceFromSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

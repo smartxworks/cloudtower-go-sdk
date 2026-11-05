@@ -54,10 +54,12 @@ func NewUpdateReportTemplateParamsWithHTTPClient(client *http.Client) *UpdateRep
 	}
 }
 
-/* UpdateReportTemplateParams contains all the parameters to send to the API endpoint
-   for the update report template operation.
+/*
+UpdateReportTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update report template operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateReportTemplateParams struct {
 

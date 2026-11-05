@@ -54,10 +54,12 @@ func NewCreateEntityFilterParamsWithHTTPClient(client *http.Client) *CreateEntit
 	}
 }
 
-/* CreateEntityFilterParams contains all the parameters to send to the API endpoint
-   for the create entity filter operation.
+/*
+CreateEntityFilterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create entity filter operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateEntityFilterParams struct {
 

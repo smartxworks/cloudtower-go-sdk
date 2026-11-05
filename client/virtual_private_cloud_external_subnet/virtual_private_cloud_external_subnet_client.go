@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetVirtualPrivateCloudExternalSubnets get virtual private cloud external subnets API
+GetVirtualPrivateCloudExternalSubnets get virtual private cloud external subnets API
 */
 func (a *Client) GetVirtualPrivateCloudExternalSubnets(params *GetVirtualPrivateCloudExternalSubnetsParams, opts ...ClientOption) (*GetVirtualPrivateCloudExternalSubnetsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetVirtualPrivateCloudExternalSubnets(params *GetVirtualPrivate
 }
 
 /*
-  GetVirtualPrivateCloudExternalSubnetsConnection get virtual private cloud external subnets connection API
+GetVirtualPrivateCloudExternalSubnetsConnection get virtual private cloud external subnets connection API
 */
 func (a *Client) GetVirtualPrivateCloudExternalSubnetsConnection(params *GetVirtualPrivateCloudExternalSubnetsConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudExternalSubnetsConnectionOK, error) {
 	// TODO: Validate the params before sending

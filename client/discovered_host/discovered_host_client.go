@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetDiscoverHosts get discover hosts API
+GetDiscoverHosts get discover hosts API
 */
 func (a *Client) GetDiscoverHosts(params *GetDiscoverHostsParams, opts ...ClientOption) (*GetDiscoverHostsOK, error) {
 	// TODO: Validate the params before sending

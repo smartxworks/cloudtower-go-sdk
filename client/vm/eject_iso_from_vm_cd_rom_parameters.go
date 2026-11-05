@@ -54,10 +54,12 @@ func NewEjectIsoFromVMCdRomParamsWithHTTPClient(client *http.Client) *EjectIsoFr
 	}
 }
 
-/* EjectIsoFromVMCdRomParams contains all the parameters to send to the API endpoint
-   for the eject iso from Vm cd rom operation.
+/*
+EjectIsoFromVMCdRomParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the eject iso from Vm cd rom operation.
+
+	Typically these are written to a http.Request.
 */
 type EjectIsoFromVMCdRomParams struct {
 

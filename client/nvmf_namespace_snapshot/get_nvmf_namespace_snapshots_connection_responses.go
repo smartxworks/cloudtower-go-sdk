@@ -57,7 +57,8 @@ func NewGetNvmfNamespaceSnapshotsConnectionOK() *GetNvmfNamespaceSnapshotsConnec
 	return &GetNvmfNamespaceSnapshotsConnectionOK{}
 }
 
-/* GetNvmfNamespaceSnapshotsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetNvmfNamespaceSnapshotsConnectionOK describes a response with status code 200, with default header values.
 
 GetNvmfNamespaceSnapshotsConnectionOK get nvmf namespace snapshots connection o k
 */
@@ -98,7 +99,8 @@ func NewGetNvmfNamespaceSnapshotsConnectionBadRequest() *GetNvmfNamespaceSnapsho
 	return &GetNvmfNamespaceSnapshotsConnectionBadRequest{}
 }
 
-/* GetNvmfNamespaceSnapshotsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetNvmfNamespaceSnapshotsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetNvmfNamespaceSnapshotsConnectionNotFound() *GetNvmfNamespaceSnapshots
 	return &GetNvmfNamespaceSnapshotsConnectionNotFound{}
 }
 
-/* GetNvmfNamespaceSnapshotsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetNvmfNamespaceSnapshotsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetNvmfNamespaceSnapshotsConnectionInternalServerError() *GetNvmfNamespa
 	return &GetNvmfNamespaceSnapshotsConnectionInternalServerError{}
 }
 
-/* GetNvmfNamespaceSnapshotsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNvmfNamespaceSnapshotsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */
