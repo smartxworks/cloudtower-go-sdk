@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetEverouteClusters get everoute clusters API
+GetEverouteClusters get everoute clusters API
 */
 func (a *Client) GetEverouteClusters(params *GetEverouteClustersParams, opts ...ClientOption) (*GetEverouteClustersOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetEverouteClusters(params *GetEverouteClustersParams, opts ...
 }
 
 /*
-  GetEverouteClustersConnection get everoute clusters connection API
+GetEverouteClustersConnection get everoute clusters connection API
 */
 func (a *Client) GetEverouteClustersConnection(params *GetEverouteClustersConnectionParams, opts ...ClientOption) (*GetEverouteClustersConnectionOK, error) {
 	// TODO: Validate the params before sending

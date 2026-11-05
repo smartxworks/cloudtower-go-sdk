@@ -57,7 +57,8 @@ func NewGetWitnessesOK() *GetWitnessesOK {
 	return &GetWitnessesOK{}
 }
 
-/* GetWitnessesOK describes a response with status code 200, with default header values.
+/*
+GetWitnessesOK describes a response with status code 200, with default header values.
 
 GetWitnessesOK get witnesses o k
 */
@@ -96,7 +97,8 @@ func NewGetWitnessesBadRequest() *GetWitnessesBadRequest {
 	return &GetWitnessesBadRequest{}
 }
 
-/* GetWitnessesBadRequest describes a response with status code 400, with default header values.
+/*
+GetWitnessesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetWitnessesNotFound() *GetWitnessesNotFound {
 	return &GetWitnessesNotFound{}
 }
 
-/* GetWitnessesNotFound describes a response with status code 404, with default header values.
+/*
+GetWitnessesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetWitnessesInternalServerError() *GetWitnessesInternalServerError {
 	return &GetWitnessesInternalServerError{}
 }
 
-/* GetWitnessesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetWitnessesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

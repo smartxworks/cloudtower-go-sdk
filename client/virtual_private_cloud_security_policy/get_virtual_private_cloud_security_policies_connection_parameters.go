@@ -54,10 +54,12 @@ func NewGetVirtualPrivateCloudSecurityPoliciesConnectionParamsWithHTTPClient(cli
 	}
 }
 
-/* GetVirtualPrivateCloudSecurityPoliciesConnectionParams contains all the parameters to send to the API endpoint
-   for the get virtual private cloud security policies connection operation.
+/*
+GetVirtualPrivateCloudSecurityPoliciesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get virtual private cloud security policies connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVirtualPrivateCloudSecurityPoliciesConnectionParams struct {
 

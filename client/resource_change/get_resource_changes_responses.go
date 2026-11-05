@@ -57,7 +57,8 @@ func NewGetResourceChangesOK() *GetResourceChangesOK {
 	return &GetResourceChangesOK{}
 }
 
-/* GetResourceChangesOK describes a response with status code 200, with default header values.
+/*
+GetResourceChangesOK describes a response with status code 200, with default header values.
 
 GetResourceChangesOK get resource changes o k
 */
@@ -89,7 +90,8 @@ func NewGetResourceChangesBadRequest() *GetResourceChangesBadRequest {
 	return &GetResourceChangesBadRequest{}
 }
 
-/* GetResourceChangesBadRequest describes a response with status code 400, with default header values.
+/*
+GetResourceChangesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -121,7 +123,8 @@ func NewGetResourceChangesNotFound() *GetResourceChangesNotFound {
 	return &GetResourceChangesNotFound{}
 }
 
-/* GetResourceChangesNotFound describes a response with status code 404, with default header values.
+/*
+GetResourceChangesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -153,7 +156,8 @@ func NewGetResourceChangesInternalServerError() *GetResourceChangesInternalServe
 	return &GetResourceChangesInternalServerError{}
 }
 
-/* GetResourceChangesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetResourceChangesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

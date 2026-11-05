@@ -8,6 +8,7 @@ package models
 import (
 	"bytes"
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -23,9 +24,8 @@ type ContentLibraryVMTemplateCreationParams struct {
 	// cloud init supported
 	CloudInitSupported *bool `json:"cloud_init_supported,omitempty"`
 
-	// clusters
-	// Required: true
-	Clusters *ClusterWhereInput `json:"clusters"`
+	// Template copies on clustered storage. An empty filter selects all clusters. Provide clusters or nonempty storage_configs.
+	Clusters *ClusterWhereInput `json:"clusters,omitempty"`
 
 	// description
 	Description *string `json:"description,omitempty"`
@@ -33,6 +33,9 @@ type ContentLibraryVMTemplateCreationParams struct {
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	// Template file placements. Provide nonempty storage_configs or clusters.
+	StorageConfigs []*ContentLibraryVMTemplateStoragePlacement `json:"storage_configs,omitempty"`
 
 	// vm
 	// Required: true
@@ -49,6 +52,8 @@ type ContentLibraryVMTemplateCreationParamsMarshalOpts struct {
 	Description_Explicit_Null_When_Empty bool
 
 	Name_Explicit_Null_When_Empty bool
+
+	StorageConfigs_Explicit_Null_When_Empty bool
 
 	VM_Explicit_Null_When_Empty bool
 }
@@ -139,6 +144,20 @@ func (m ContentLibraryVMTemplateCreationParams) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle non nullable field storage_configs with omitempty
+	if !swag.IsZero(m.StorageConfigs) {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_configs\":")
+		bytes, err := swag.WriteJSON(m.StorageConfigs)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	}
+
 	// handle nullable field vm
 	if m.VM != nil {
 		if !first {
@@ -175,6 +194,10 @@ func (m *ContentLibraryVMTemplateCreationParams) Validate(formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.validateStorageConfigs(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVM(formats); err != nil {
 		res = append(res, err)
 	}
@@ -186,9 +209,8 @@ func (m *ContentLibraryVMTemplateCreationParams) Validate(formats strfmt.Registr
 }
 
 func (m *ContentLibraryVMTemplateCreationParams) validateClusters(formats strfmt.Registry) error {
-
-	if err := validate.Required("clusters", "body", m.Clusters); err != nil {
-		return err
+	if swag.IsZero(m.Clusters) { // not required
+		return nil
 	}
 
 	if m.Clusters != nil {
@@ -209,6 +231,32 @@ func (m *ContentLibraryVMTemplateCreationParams) validateName(formats strfmt.Reg
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateCreationParams) validateStorageConfigs(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageConfigs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StorageConfigs); i++ {
+		if swag.IsZero(m.StorageConfigs[i]) { // not required
+			continue
+		}
+
+		if m.StorageConfigs[i] != nil {
+			if err := m.StorageConfigs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("storage_configs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("storage_configs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -242,6 +290,10 @@ func (m *ContentLibraryVMTemplateCreationParams) ContextValidate(ctx context.Con
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateStorageConfigs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVM(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -263,6 +315,26 @@ func (m *ContentLibraryVMTemplateCreationParams) contextValidateClusters(ctx con
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateCreationParams) contextValidateStorageConfigs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StorageConfigs); i++ {
+
+		if m.StorageConfigs[i] != nil {
+			if err := m.StorageConfigs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("storage_configs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("storage_configs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

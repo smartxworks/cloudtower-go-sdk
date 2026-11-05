@@ -54,10 +54,12 @@ func NewGetSvtImagesConnectionParamsWithHTTPClient(client *http.Client) *GetSvtI
 	}
 }
 
-/* GetSvtImagesConnectionParams contains all the parameters to send to the API endpoint
-   for the get svt images connection operation.
+/*
+GetSvtImagesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get svt images connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSvtImagesConnectionParams struct {
 

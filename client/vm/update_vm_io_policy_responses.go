@@ -63,7 +63,8 @@ func NewUpdateVMIoPolicyOK() *UpdateVMIoPolicyOK {
 	return &UpdateVMIoPolicyOK{}
 }
 
-/* UpdateVMIoPolicyOK describes a response with status code 200, with default header values.
+/*
+UpdateVMIoPolicyOK describes a response with status code 200, with default header values.
 
 UpdateVMIoPolicyOK update Vm io policy o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVMIoPolicyNotModified() *UpdateVMIoPolicyNotModified {
 	return &UpdateVMIoPolicyNotModified{}
 }
 
-/* UpdateVMIoPolicyNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVMIoPolicyNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVMIoPolicyBadRequest() *UpdateVMIoPolicyBadRequest {
 	return &UpdateVMIoPolicyBadRequest{}
 }
 
-/* UpdateVMIoPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMIoPolicyBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVMIoPolicyNotFound() *UpdateVMIoPolicyNotFound {
 	return &UpdateVMIoPolicyNotFound{}
 }
 
-/* UpdateVMIoPolicyNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMIoPolicyNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVMIoPolicyInternalServerError() *UpdateVMIoPolicyInternalServerErr
 	return &UpdateVMIoPolicyInternalServerError{}
 }
 
-/* UpdateVMIoPolicyInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMIoPolicyInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

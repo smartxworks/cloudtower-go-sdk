@@ -63,7 +63,8 @@ func NewRollbackVMVolumeOK() *RollbackVMVolumeOK {
 	return &RollbackVMVolumeOK{}
 }
 
-/* RollbackVMVolumeOK describes a response with status code 200, with default header values.
+/*
+RollbackVMVolumeOK describes a response with status code 200, with default header values.
 
 RollbackVMVolumeOK rollback Vm volume o k
 */
@@ -102,7 +103,8 @@ func NewRollbackVMVolumeNotModified() *RollbackVMVolumeNotModified {
 	return &RollbackVMVolumeNotModified{}
 }
 
-/* RollbackVMVolumeNotModified describes a response with status code 304, with default header values.
+/*
+RollbackVMVolumeNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewRollbackVMVolumeBadRequest() *RollbackVMVolumeBadRequest {
 	return &RollbackVMVolumeBadRequest{}
 }
 
-/* RollbackVMVolumeBadRequest describes a response with status code 400, with default header values.
+/*
+RollbackVMVolumeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewRollbackVMVolumeNotFound() *RollbackVMVolumeNotFound {
 	return &RollbackVMVolumeNotFound{}
 }
 
-/* RollbackVMVolumeNotFound describes a response with status code 404, with default header values.
+/*
+RollbackVMVolumeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewRollbackVMVolumeInternalServerError() *RollbackVMVolumeInternalServerErr
 	return &RollbackVMVolumeInternalServerError{}
 }
 
-/* RollbackVMVolumeInternalServerError describes a response with status code 500, with default header values.
+/*
+RollbackVMVolumeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

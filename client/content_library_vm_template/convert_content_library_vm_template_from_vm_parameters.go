@@ -54,10 +54,12 @@ func NewConvertContentLibraryVMTemplateFromVMParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* ConvertContentLibraryVMTemplateFromVMParams contains all the parameters to send to the API endpoint
-   for the convert content library Vm template from Vm operation.
+/*
+ConvertContentLibraryVMTemplateFromVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the convert content library Vm template from Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type ConvertContentLibraryVMTemplateFromVMParams struct {
 

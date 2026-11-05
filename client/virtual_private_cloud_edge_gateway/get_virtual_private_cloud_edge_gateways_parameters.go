@@ -54,10 +54,12 @@ func NewGetVirtualPrivateCloudEdgeGatewaysParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* GetVirtualPrivateCloudEdgeGatewaysParams contains all the parameters to send to the API endpoint
-   for the get virtual private cloud edge gateways operation.
+/*
+GetVirtualPrivateCloudEdgeGatewaysParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get virtual private cloud edge gateways operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVirtualPrivateCloudEdgeGatewaysParams struct {
 

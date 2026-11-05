@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetCloudTowerApplicationPackages get cloud tower application packages API
+GetCloudTowerApplicationPackages get cloud tower application packages API
 */
 func (a *Client) GetCloudTowerApplicationPackages(params *GetCloudTowerApplicationPackagesParams, opts ...ClientOption) (*GetCloudTowerApplicationPackagesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetCloudTowerApplicationPackages(params *GetCloudTowerApplicati
 }
 
 /*
-  GetCloudTowerApplicationPackagesConnection get cloud tower application packages connection API
+GetCloudTowerApplicationPackagesConnection get cloud tower application packages connection API
 */
 func (a *Client) GetCloudTowerApplicationPackagesConnection(params *GetCloudTowerApplicationPackagesConnectionParams, opts ...ClientOption) (*GetCloudTowerApplicationPackagesConnectionOK, error) {
 	// TODO: Validate the params before sending

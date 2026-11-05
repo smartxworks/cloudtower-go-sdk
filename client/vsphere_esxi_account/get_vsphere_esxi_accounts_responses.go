@@ -57,7 +57,8 @@ func NewGetVsphereEsxiAccountsOK() *GetVsphereEsxiAccountsOK {
 	return &GetVsphereEsxiAccountsOK{}
 }
 
-/* GetVsphereEsxiAccountsOK describes a response with status code 200, with default header values.
+/*
+GetVsphereEsxiAccountsOK describes a response with status code 200, with default header values.
 
 GetVsphereEsxiAccountsOK get vsphere esxi accounts o k
 */
@@ -96,7 +97,8 @@ func NewGetVsphereEsxiAccountsBadRequest() *GetVsphereEsxiAccountsBadRequest {
 	return &GetVsphereEsxiAccountsBadRequest{}
 }
 
-/* GetVsphereEsxiAccountsBadRequest describes a response with status code 400, with default header values.
+/*
+GetVsphereEsxiAccountsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVsphereEsxiAccountsNotFound() *GetVsphereEsxiAccountsNotFound {
 	return &GetVsphereEsxiAccountsNotFound{}
 }
 
-/* GetVsphereEsxiAccountsNotFound describes a response with status code 404, with default header values.
+/*
+GetVsphereEsxiAccountsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVsphereEsxiAccountsInternalServerError() *GetVsphereEsxiAccountsInter
 	return &GetVsphereEsxiAccountsInternalServerError{}
 }
 
-/* GetVsphereEsxiAccountsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVsphereEsxiAccountsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

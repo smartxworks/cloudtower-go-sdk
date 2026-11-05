@@ -673,7 +673,7 @@ type VMAddDiskParamsDataVMDisks struct {
 	MountDisks []*MountDisksParams `json:"mount_disks,omitempty"`
 
 	// mount new create disks
-	MountNewCreateDisks []*MountNewCreateDisksParams `json:"mount_new_create_disks,omitempty"`
+	MountNewCreateDisks []*AddVMDiskMountNewCreateDisksParams `json:"mount_new_create_disks,omitempty"`
 
 	MarshalOpts *VMAddDiskParamsDataVMDisksMarshalOpts `json:"-"`
 }

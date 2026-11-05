@@ -57,7 +57,8 @@ func NewCloneContentLibraryVMTemplateFromVMOK() *CloneContentLibraryVMTemplateFr
 	return &CloneContentLibraryVMTemplateFromVMOK{}
 }
 
-/* CloneContentLibraryVMTemplateFromVMOK describes a response with status code 200, with default header values.
+/*
+CloneContentLibraryVMTemplateFromVMOK describes a response with status code 200, with default header values.
 
 CloneContentLibraryVMTemplateFromVMOK clone content library Vm template from Vm o k
 */
@@ -96,7 +97,8 @@ func NewCloneContentLibraryVMTemplateFromVMBadRequest() *CloneContentLibraryVMTe
 	return &CloneContentLibraryVMTemplateFromVMBadRequest{}
 }
 
-/* CloneContentLibraryVMTemplateFromVMBadRequest describes a response with status code 400, with default header values.
+/*
+CloneContentLibraryVMTemplateFromVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCloneContentLibraryVMTemplateFromVMNotFound() *CloneContentLibraryVMTemp
 	return &CloneContentLibraryVMTemplateFromVMNotFound{}
 }
 
-/* CloneContentLibraryVMTemplateFromVMNotFound describes a response with status code 404, with default header values.
+/*
+CloneContentLibraryVMTemplateFromVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCloneContentLibraryVMTemplateFromVMInternalServerError() *CloneContentLi
 	return &CloneContentLibraryVMTemplateFromVMInternalServerError{}
 }
 
-/* CloneContentLibraryVMTemplateFromVMInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneContentLibraryVMTemplateFromVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

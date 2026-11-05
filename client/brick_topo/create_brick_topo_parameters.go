@@ -54,10 +54,12 @@ func NewCreateBrickTopoParamsWithHTTPClient(client *http.Client) *CreateBrickTop
 	}
 }
 
-/* CreateBrickTopoParams contains all the parameters to send to the API endpoint
-   for the create brick topo operation.
+/*
+CreateBrickTopoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create brick topo operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBrickTopoParams struct {
 

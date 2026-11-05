@@ -57,7 +57,8 @@ func NewGetBrickTopoesOK() *GetBrickTopoesOK {
 	return &GetBrickTopoesOK{}
 }
 
-/* GetBrickTopoesOK describes a response with status code 200, with default header values.
+/*
+GetBrickTopoesOK describes a response with status code 200, with default header values.
 
 GetBrickTopoesOK get brick topoes o k
 */
@@ -96,7 +97,8 @@ func NewGetBrickTopoesBadRequest() *GetBrickTopoesBadRequest {
 	return &GetBrickTopoesBadRequest{}
 }
 
-/* GetBrickTopoesBadRequest describes a response with status code 400, with default header values.
+/*
+GetBrickTopoesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetBrickTopoesNotFound() *GetBrickTopoesNotFound {
 	return &GetBrickTopoesNotFound{}
 }
 
-/* GetBrickTopoesNotFound describes a response with status code 404, with default header values.
+/*
+GetBrickTopoesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetBrickTopoesInternalServerError() *GetBrickTopoesInternalServerError {
 	return &GetBrickTopoesInternalServerError{}
 }
 
-/* GetBrickTopoesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetBrickTopoesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

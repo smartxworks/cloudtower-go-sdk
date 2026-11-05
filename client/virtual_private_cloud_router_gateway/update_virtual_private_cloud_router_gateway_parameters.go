@@ -54,10 +54,12 @@ func NewUpdateVirtualPrivateCloudRouterGatewayParamsWithHTTPClient(client *http.
 	}
 }
 
-/* UpdateVirtualPrivateCloudRouterGatewayParams contains all the parameters to send to the API endpoint
-   for the update virtual private cloud router gateway operation.
+/*
+UpdateVirtualPrivateCloudRouterGatewayParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update virtual private cloud router gateway operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVirtualPrivateCloudRouterGatewayParams struct {
 

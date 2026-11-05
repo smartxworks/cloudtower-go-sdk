@@ -54,10 +54,12 @@ func NewUpdateClusterHaSettingParamsWithHTTPClient(client *http.Client) *UpdateC
 	}
 }
 
-/* UpdateClusterHaSettingParams contains all the parameters to send to the API endpoint
-   for the update cluster ha setting operation.
+/*
+UpdateClusterHaSettingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update cluster ha setting operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateClusterHaSettingParams struct {
 

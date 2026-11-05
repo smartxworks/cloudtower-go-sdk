@@ -57,7 +57,8 @@ func NewUpdateClusterDisablePinInPerformanceOK() *UpdateClusterDisablePinInPerfo
 	return &UpdateClusterDisablePinInPerformanceOK{}
 }
 
-/* UpdateClusterDisablePinInPerformanceOK describes a response with status code 200, with default header values.
+/*
+UpdateClusterDisablePinInPerformanceOK describes a response with status code 200, with default header values.
 
 UpdateClusterDisablePinInPerformanceOK update cluster disable pin in performance o k
 */
@@ -96,7 +97,8 @@ func NewUpdateClusterDisablePinInPerformanceBadRequest() *UpdateClusterDisablePi
 	return &UpdateClusterDisablePinInPerformanceBadRequest{}
 }
 
-/* UpdateClusterDisablePinInPerformanceBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateClusterDisablePinInPerformanceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateClusterDisablePinInPerformanceNotFound() *UpdateClusterDisablePinI
 	return &UpdateClusterDisablePinInPerformanceNotFound{}
 }
 
-/* UpdateClusterDisablePinInPerformanceNotFound describes a response with status code 404, with default header values.
+/*
+UpdateClusterDisablePinInPerformanceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateClusterDisablePinInPerformanceInternalServerError() *UpdateCluster
 	return &UpdateClusterDisablePinInPerformanceInternalServerError{}
 }
 
-/* UpdateClusterDisablePinInPerformanceInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateClusterDisablePinInPerformanceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

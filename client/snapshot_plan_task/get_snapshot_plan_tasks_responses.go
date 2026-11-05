@@ -57,7 +57,8 @@ func NewGetSnapshotPlanTasksOK() *GetSnapshotPlanTasksOK {
 	return &GetSnapshotPlanTasksOK{}
 }
 
-/* GetSnapshotPlanTasksOK describes a response with status code 200, with default header values.
+/*
+GetSnapshotPlanTasksOK describes a response with status code 200, with default header values.
 
 GetSnapshotPlanTasksOK get snapshot plan tasks o k
 */
@@ -96,7 +97,8 @@ func NewGetSnapshotPlanTasksBadRequest() *GetSnapshotPlanTasksBadRequest {
 	return &GetSnapshotPlanTasksBadRequest{}
 }
 
-/* GetSnapshotPlanTasksBadRequest describes a response with status code 400, with default header values.
+/*
+GetSnapshotPlanTasksBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetSnapshotPlanTasksNotFound() *GetSnapshotPlanTasksNotFound {
 	return &GetSnapshotPlanTasksNotFound{}
 }
 
-/* GetSnapshotPlanTasksNotFound describes a response with status code 404, with default header values.
+/*
+GetSnapshotPlanTasksNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetSnapshotPlanTasksInternalServerError() *GetSnapshotPlanTasksInternalS
 	return &GetSnapshotPlanTasksInternalServerError{}
 }
 
-/* GetSnapshotPlanTasksInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSnapshotPlanTasksInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

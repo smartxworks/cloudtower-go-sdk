@@ -54,10 +54,12 @@ func NewDeleteAlertNotifierParamsWithHTTPClient(client *http.Client) *DeleteAler
 	}
 }
 
-/* DeleteAlertNotifierParams contains all the parameters to send to the API endpoint
-   for the delete alert notifier operation.
+/*
+DeleteAlertNotifierParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete alert notifier operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteAlertNotifierParams struct {
 

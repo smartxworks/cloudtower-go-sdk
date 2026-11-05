@@ -57,7 +57,8 @@ func NewGetReplicationPlanWithoutExecutionsOK() *GetReplicationPlanWithoutExecut
 	return &GetReplicationPlanWithoutExecutionsOK{}
 }
 
-/* GetReplicationPlanWithoutExecutionsOK describes a response with status code 200, with default header values.
+/*
+GetReplicationPlanWithoutExecutionsOK describes a response with status code 200, with default header values.
 
 GetReplicationPlanWithoutExecutionsOK get replication plan without executions o k
 */
@@ -96,7 +97,8 @@ func NewGetReplicationPlanWithoutExecutionsBadRequest() *GetReplicationPlanWitho
 	return &GetReplicationPlanWithoutExecutionsBadRequest{}
 }
 
-/* GetReplicationPlanWithoutExecutionsBadRequest describes a response with status code 400, with default header values.
+/*
+GetReplicationPlanWithoutExecutionsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetReplicationPlanWithoutExecutionsNotFound() *GetReplicationPlanWithout
 	return &GetReplicationPlanWithoutExecutionsNotFound{}
 }
 
-/* GetReplicationPlanWithoutExecutionsNotFound describes a response with status code 404, with default header values.
+/*
+GetReplicationPlanWithoutExecutionsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetReplicationPlanWithoutExecutionsInternalServerError() *GetReplication
 	return &GetReplicationPlanWithoutExecutionsInternalServerError{}
 }
 
-/* GetReplicationPlanWithoutExecutionsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetReplicationPlanWithoutExecutionsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

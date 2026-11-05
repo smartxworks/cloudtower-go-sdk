@@ -57,7 +57,8 @@ func NewDeleteConsistencyGroupSnapshotOK() *DeleteConsistencyGroupSnapshotOK {
 	return &DeleteConsistencyGroupSnapshotOK{}
 }
 
-/* DeleteConsistencyGroupSnapshotOK describes a response with status code 200, with default header values.
+/*
+DeleteConsistencyGroupSnapshotOK describes a response with status code 200, with default header values.
 
 DeleteConsistencyGroupSnapshotOK delete consistency group snapshot o k
 */
@@ -96,7 +97,8 @@ func NewDeleteConsistencyGroupSnapshotBadRequest() *DeleteConsistencyGroupSnapsh
 	return &DeleteConsistencyGroupSnapshotBadRequest{}
 }
 
-/* DeleteConsistencyGroupSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteConsistencyGroupSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteConsistencyGroupSnapshotNotFound() *DeleteConsistencyGroupSnapshot
 	return &DeleteConsistencyGroupSnapshotNotFound{}
 }
 
-/* DeleteConsistencyGroupSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+DeleteConsistencyGroupSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteConsistencyGroupSnapshotInternalServerError() *DeleteConsistencyGr
 	return &DeleteConsistencyGroupSnapshotInternalServerError{}
 }
 
-/* DeleteConsistencyGroupSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteConsistencyGroupSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewDeleteVMVolumeFromVMOK() *DeleteVMVolumeFromVMOK {
 	return &DeleteVMVolumeFromVMOK{}
 }
 
-/* DeleteVMVolumeFromVMOK describes a response with status code 200, with default header values.
+/*
+DeleteVMVolumeFromVMOK describes a response with status code 200, with default header values.
 
 DeleteVMVolumeFromVMOK delete Vm volume from Vm o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVMVolumeFromVMBadRequest() *DeleteVMVolumeFromVMBadRequest {
 	return &DeleteVMVolumeFromVMBadRequest{}
 }
 
-/* DeleteVMVolumeFromVMBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVMVolumeFromVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVMVolumeFromVMNotFound() *DeleteVMVolumeFromVMNotFound {
 	return &DeleteVMVolumeFromVMNotFound{}
 }
 
-/* DeleteVMVolumeFromVMNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVMVolumeFromVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVMVolumeFromVMInternalServerError() *DeleteVMVolumeFromVMInternalS
 	return &DeleteVMVolumeFromVMInternalServerError{}
 }
 
-/* DeleteVMVolumeFromVMInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVMVolumeFromVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewCreateVirtualPrivateCloudSecurityPolicyOK() *CreateVirtualPrivateCloudSe
 	return &CreateVirtualPrivateCloudSecurityPolicyOK{}
 }
 
-/* CreateVirtualPrivateCloudSecurityPolicyOK describes a response with status code 200, with default header values.
+/*
+CreateVirtualPrivateCloudSecurityPolicyOK describes a response with status code 200, with default header values.
 
 CreateVirtualPrivateCloudSecurityPolicyOK create virtual private cloud security policy o k
 */
@@ -96,7 +97,8 @@ func NewCreateVirtualPrivateCloudSecurityPolicyBadRequest() *CreateVirtualPrivat
 	return &CreateVirtualPrivateCloudSecurityPolicyBadRequest{}
 }
 
-/* CreateVirtualPrivateCloudSecurityPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVirtualPrivateCloudSecurityPolicyBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVirtualPrivateCloudSecurityPolicyNotFound() *CreateVirtualPrivateC
 	return &CreateVirtualPrivateCloudSecurityPolicyNotFound{}
 }
 
-/* CreateVirtualPrivateCloudSecurityPolicyNotFound describes a response with status code 404, with default header values.
+/*
+CreateVirtualPrivateCloudSecurityPolicyNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVirtualPrivateCloudSecurityPolicyInternalServerError() *CreateVirt
 	return &CreateVirtualPrivateCloudSecurityPolicyInternalServerError{}
 }
 
-/* CreateVirtualPrivateCloudSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVirtualPrivateCloudSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

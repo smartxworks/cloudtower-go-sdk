@@ -57,7 +57,8 @@ func NewUpdateRackTopoOK() *UpdateRackTopoOK {
 	return &UpdateRackTopoOK{}
 }
 
-/* UpdateRackTopoOK describes a response with status code 200, with default header values.
+/*
+UpdateRackTopoOK describes a response with status code 200, with default header values.
 
 UpdateRackTopoOK update rack topo o k
 */
@@ -96,7 +97,8 @@ func NewUpdateRackTopoBadRequest() *UpdateRackTopoBadRequest {
 	return &UpdateRackTopoBadRequest{}
 }
 
-/* UpdateRackTopoBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateRackTopoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateRackTopoNotFound() *UpdateRackTopoNotFound {
 	return &UpdateRackTopoNotFound{}
 }
 
-/* UpdateRackTopoNotFound describes a response with status code 404, with default header values.
+/*
+UpdateRackTopoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateRackTopoInternalServerError() *UpdateRackTopoInternalServerError {
 	return &UpdateRackTopoInternalServerError{}
 }
 
-/* UpdateRackTopoInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateRackTopoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

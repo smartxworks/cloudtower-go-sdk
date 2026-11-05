@@ -57,7 +57,8 @@ func NewUpdateVcenterAccountOK() *UpdateVcenterAccountOK {
 	return &UpdateVcenterAccountOK{}
 }
 
-/* UpdateVcenterAccountOK describes a response with status code 200, with default header values.
+/*
+UpdateVcenterAccountOK describes a response with status code 200, with default header values.
 
 UpdateVcenterAccountOK update vcenter account o k
 */
@@ -98,7 +99,8 @@ func NewUpdateVcenterAccountBadRequest() *UpdateVcenterAccountBadRequest {
 	return &UpdateVcenterAccountBadRequest{}
 }
 
-/* UpdateVcenterAccountBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVcenterAccountBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewUpdateVcenterAccountNotFound() *UpdateVcenterAccountNotFound {
 	return &UpdateVcenterAccountNotFound{}
 }
 
-/* UpdateVcenterAccountNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVcenterAccountNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewUpdateVcenterAccountInternalServerError() *UpdateVcenterAccountInternalS
 	return &UpdateVcenterAccountInternalServerError{}
 }
 
-/* UpdateVcenterAccountInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVcenterAccountInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

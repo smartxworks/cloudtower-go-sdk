@@ -54,10 +54,12 @@ func NewCreateVMFolderParamsWithHTTPClient(client *http.Client) *CreateVMFolderP
 	}
 }
 
-/* CreateVMFolderParams contains all the parameters to send to the API endpoint
-   for the create Vm folder operation.
+/*
+CreateVMFolderParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create Vm folder operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVMFolderParams struct {
 

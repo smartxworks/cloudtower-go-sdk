@@ -57,7 +57,8 @@ func NewParseOvfOK() *ParseOvfOK {
 	return &ParseOvfOK{}
 }
 
-/* ParseOvfOK describes a response with status code 200, with default header values.
+/*
+ParseOvfOK describes a response with status code 200, with default header values.
 
 ParseOvfOK parse ovf o k
 */
@@ -98,7 +99,8 @@ func NewParseOvfBadRequest() *ParseOvfBadRequest {
 	return &ParseOvfBadRequest{}
 }
 
-/* ParseOvfBadRequest describes a response with status code 400, with default header values.
+/*
+ParseOvfBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewParseOvfNotFound() *ParseOvfNotFound {
 	return &ParseOvfNotFound{}
 }
 
-/* ParseOvfNotFound describes a response with status code 404, with default header values.
+/*
+ParseOvfNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewParseOvfInternalServerError() *ParseOvfInternalServerError {
 	return &ParseOvfInternalServerError{}
 }
 
-/* ParseOvfInternalServerError describes a response with status code 500, with default header values.
+/*
+ParseOvfInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewUpdateLabelParamsWithHTTPClient(client *http.Client) *UpdateLabelParams 
 	}
 }
 
-/* UpdateLabelParams contains all the parameters to send to the API endpoint
-   for the update label operation.
+/*
+UpdateLabelParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update label operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateLabelParams struct {
 
@@ -71,6 +73,9 @@ type UpdateLabelParams struct {
 
 	// RequestBody.
 	RequestBody *models.LabelUpdationParams
+
+	// XSkipResources.
+	XSkipResources *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -169,6 +174,17 @@ func (o *UpdateLabelParams) SetRequestBody(requestBody *models.LabelUpdationPara
 	o.RequestBody = requestBody
 }
 
+// WithXSkipResources adds the xSkipResources to the update label params
+func (o *UpdateLabelParams) WithXSkipResources(xSkipResources *string) *UpdateLabelParams {
+	o.SetXSkipResources(xSkipResources)
+	return o
+}
+
+// SetXSkipResources adds the xSkipResources to the update label params
+func (o *UpdateLabelParams) SetXSkipResources(xSkipResources *string) {
+	o.XSkipResources = xSkipResources
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *UpdateLabelParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -194,6 +210,14 @@ func (o *UpdateLabelParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
+			return err
+		}
+	}
+
+	if o.XSkipResources != nil {
+
+		// header param x-skip-resources
+		if err := r.SetHeaderParam("x-skip-resources", *o.XSkipResources); err != nil {
 			return err
 		}
 	}

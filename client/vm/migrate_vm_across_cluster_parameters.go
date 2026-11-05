@@ -54,10 +54,12 @@ func NewMigrateVMAcrossClusterParamsWithHTTPClient(client *http.Client) *Migrate
 	}
 }
 
-/* MigrateVMAcrossClusterParams contains all the parameters to send to the API endpoint
-   for the migrate Vm across cluster operation.
+/*
+MigrateVMAcrossClusterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the migrate Vm across cluster operation.
+
+	Typically these are written to a http.Request.
 */
 type MigrateVMAcrossClusterParams struct {
 

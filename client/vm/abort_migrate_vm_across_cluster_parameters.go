@@ -54,10 +54,12 @@ func NewAbortMigrateVMAcrossClusterParamsWithHTTPClient(client *http.Client) *Ab
 	}
 }
 
-/* AbortMigrateVMAcrossClusterParams contains all the parameters to send to the API endpoint
-   for the abort migrate Vm across cluster operation.
+/*
+AbortMigrateVMAcrossClusterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the abort migrate Vm across cluster operation.
+
+	Typically these are written to a http.Request.
 */
 type AbortMigrateVMAcrossClusterParams struct {
 

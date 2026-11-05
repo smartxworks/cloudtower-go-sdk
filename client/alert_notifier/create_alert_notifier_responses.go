@@ -57,7 +57,8 @@ func NewCreateAlertNotifierOK() *CreateAlertNotifierOK {
 	return &CreateAlertNotifierOK{}
 }
 
-/* CreateAlertNotifierOK describes a response with status code 200, with default header values.
+/*
+CreateAlertNotifierOK describes a response with status code 200, with default header values.
 
 CreateAlertNotifierOK create alert notifier o k
 */
@@ -96,7 +97,8 @@ func NewCreateAlertNotifierBadRequest() *CreateAlertNotifierBadRequest {
 	return &CreateAlertNotifierBadRequest{}
 }
 
-/* CreateAlertNotifierBadRequest describes a response with status code 400, with default header values.
+/*
+CreateAlertNotifierBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateAlertNotifierNotFound() *CreateAlertNotifierNotFound {
 	return &CreateAlertNotifierNotFound{}
 }
 
-/* CreateAlertNotifierNotFound describes a response with status code 404, with default header values.
+/*
+CreateAlertNotifierNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateAlertNotifierInternalServerError() *CreateAlertNotifierInternalSer
 	return &CreateAlertNotifierInternalServerError{}
 }
 
-/* CreateAlertNotifierInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateAlertNotifierInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

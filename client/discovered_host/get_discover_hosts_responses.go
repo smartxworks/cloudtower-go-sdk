@@ -57,7 +57,8 @@ func NewGetDiscoverHostsOK() *GetDiscoverHostsOK {
 	return &GetDiscoverHostsOK{}
 }
 
-/* GetDiscoverHostsOK describes a response with status code 200, with default header values.
+/*
+GetDiscoverHostsOK describes a response with status code 200, with default header values.
 
 GetDiscoverHostsOK get discover hosts o k
 */
@@ -96,7 +97,8 @@ func NewGetDiscoverHostsBadRequest() *GetDiscoverHostsBadRequest {
 	return &GetDiscoverHostsBadRequest{}
 }
 
-/* GetDiscoverHostsBadRequest describes a response with status code 400, with default header values.
+/*
+GetDiscoverHostsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetDiscoverHostsNotFound() *GetDiscoverHostsNotFound {
 	return &GetDiscoverHostsNotFound{}
 }
 
-/* GetDiscoverHostsNotFound describes a response with status code 404, with default header values.
+/*
+GetDiscoverHostsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetDiscoverHostsInternalServerError() *GetDiscoverHostsInternalServerErr
 	return &GetDiscoverHostsInternalServerError{}
 }
 
-/* GetDiscoverHostsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDiscoverHostsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

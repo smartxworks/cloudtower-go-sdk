@@ -57,7 +57,8 @@ func NewGetVMVolumesOK() *GetVMVolumesOK {
 	return &GetVMVolumesOK{}
 }
 
-/* GetVMVolumesOK describes a response with status code 200, with default header values.
+/*
+GetVMVolumesOK describes a response with status code 200, with default header values.
 
 GetVMVolumesOK get Vm volumes o k
 */
@@ -96,7 +97,8 @@ func NewGetVMVolumesBadRequest() *GetVMVolumesBadRequest {
 	return &GetVMVolumesBadRequest{}
 }
 
-/* GetVMVolumesBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMVolumesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVMVolumesNotFound() *GetVMVolumesNotFound {
 	return &GetVMVolumesNotFound{}
 }
 
-/* GetVMVolumesNotFound describes a response with status code 404, with default header values.
+/*
+GetVMVolumesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVMVolumesInternalServerError() *GetVMVolumesInternalServerError {
 	return &GetVMVolumesInternalServerError{}
 }
 
-/* GetVMVolumesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMVolumesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

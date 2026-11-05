@@ -57,7 +57,8 @@ func NewUninstallCloudTowerApplicationOK() *UninstallCloudTowerApplicationOK {
 	return &UninstallCloudTowerApplicationOK{}
 }
 
-/* UninstallCloudTowerApplicationOK describes a response with status code 200, with default header values.
+/*
+UninstallCloudTowerApplicationOK describes a response with status code 200, with default header values.
 
 UninstallCloudTowerApplicationOK uninstall cloud tower application o k
 */
@@ -96,7 +97,8 @@ func NewUninstallCloudTowerApplicationBadRequest() *UninstallCloudTowerApplicati
 	return &UninstallCloudTowerApplicationBadRequest{}
 }
 
-/* UninstallCloudTowerApplicationBadRequest describes a response with status code 400, with default header values.
+/*
+UninstallCloudTowerApplicationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUninstallCloudTowerApplicationNotFound() *UninstallCloudTowerApplication
 	return &UninstallCloudTowerApplicationNotFound{}
 }
 
-/* UninstallCloudTowerApplicationNotFound describes a response with status code 404, with default header values.
+/*
+UninstallCloudTowerApplicationNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUninstallCloudTowerApplicationInternalServerError() *UninstallCloudTower
 	return &UninstallCloudTowerApplicationInternalServerError{}
 }
 
-/* UninstallCloudTowerApplicationInternalServerError describes a response with status code 500, with default header values.
+/*
+UninstallCloudTowerApplicationInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

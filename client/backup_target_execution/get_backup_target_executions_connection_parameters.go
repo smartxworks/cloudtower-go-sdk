@@ -54,10 +54,12 @@ func NewGetBackupTargetExecutionsConnectionParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* GetBackupTargetExecutionsConnectionParams contains all the parameters to send to the API endpoint
-   for the get backup target executions connection operation.
+/*
+GetBackupTargetExecutionsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backup target executions connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackupTargetExecutionsConnectionParams struct {
 

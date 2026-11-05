@@ -54,10 +54,12 @@ func NewGetGpuDevicesConnectionParamsWithHTTPClient(client *http.Client) *GetGpu
 	}
 }
 
-/* GetGpuDevicesConnectionParams contains all the parameters to send to the API endpoint
-   for the get gpu devices connection operation.
+/*
+GetGpuDevicesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get gpu devices connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGpuDevicesConnectionParams struct {
 

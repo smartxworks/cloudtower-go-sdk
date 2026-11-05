@@ -57,7 +57,8 @@ func NewGetBackupTargetExecutionsOK() *GetBackupTargetExecutionsOK {
 	return &GetBackupTargetExecutionsOK{}
 }
 
-/* GetBackupTargetExecutionsOK describes a response with status code 200, with default header values.
+/*
+GetBackupTargetExecutionsOK describes a response with status code 200, with default header values.
 
 GetBackupTargetExecutionsOK get backup target executions o k
 */
@@ -96,7 +97,8 @@ func NewGetBackupTargetExecutionsBadRequest() *GetBackupTargetExecutionsBadReque
 	return &GetBackupTargetExecutionsBadRequest{}
 }
 
-/* GetBackupTargetExecutionsBadRequest describes a response with status code 400, with default header values.
+/*
+GetBackupTargetExecutionsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetBackupTargetExecutionsNotFound() *GetBackupTargetExecutionsNotFound {
 	return &GetBackupTargetExecutionsNotFound{}
 }
 
-/* GetBackupTargetExecutionsNotFound describes a response with status code 404, with default header values.
+/*
+GetBackupTargetExecutionsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetBackupTargetExecutionsInternalServerError() *GetBackupTargetExecution
 	return &GetBackupTargetExecutionsInternalServerError{}
 }
 
-/* GetBackupTargetExecutionsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetBackupTargetExecutionsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

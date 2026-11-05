@@ -54,10 +54,12 @@ func NewTriggerDiskBlinkParamsWithHTTPClient(client *http.Client) *TriggerDiskBl
 	}
 }
 
-/* TriggerDiskBlinkParams contains all the parameters to send to the API endpoint
-   for the trigger disk blink operation.
+/*
+TriggerDiskBlinkParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the trigger disk blink operation.
+
+	Typically these are written to a http.Request.
 */
 type TriggerDiskBlinkParams struct {
 

@@ -57,7 +57,8 @@ func NewCreateVMPlacementGroupOK() *CreateVMPlacementGroupOK {
 	return &CreateVMPlacementGroupOK{}
 }
 
-/* CreateVMPlacementGroupOK describes a response with status code 200, with default header values.
+/*
+CreateVMPlacementGroupOK describes a response with status code 200, with default header values.
 
 CreateVMPlacementGroupOK create Vm placement group o k
 */
@@ -96,7 +97,8 @@ func NewCreateVMPlacementGroupBadRequest() *CreateVMPlacementGroupBadRequest {
 	return &CreateVMPlacementGroupBadRequest{}
 }
 
-/* CreateVMPlacementGroupBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVMPlacementGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVMPlacementGroupNotFound() *CreateVMPlacementGroupNotFound {
 	return &CreateVMPlacementGroupNotFound{}
 }
 
-/* CreateVMPlacementGroupNotFound describes a response with status code 404, with default header values.
+/*
+CreateVMPlacementGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVMPlacementGroupInternalServerError() *CreateVMPlacementGroupInter
 	return &CreateVMPlacementGroupInternalServerError{}
 }
 
-/* CreateVMPlacementGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVMPlacementGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

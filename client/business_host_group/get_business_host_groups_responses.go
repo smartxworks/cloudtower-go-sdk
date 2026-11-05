@@ -57,7 +57,8 @@ func NewGetBusinessHostGroupsOK() *GetBusinessHostGroupsOK {
 	return &GetBusinessHostGroupsOK{}
 }
 
-/* GetBusinessHostGroupsOK describes a response with status code 200, with default header values.
+/*
+GetBusinessHostGroupsOK describes a response with status code 200, with default header values.
 
 GetBusinessHostGroupsOK get business host groups o k
 */
@@ -96,7 +97,8 @@ func NewGetBusinessHostGroupsBadRequest() *GetBusinessHostGroupsBadRequest {
 	return &GetBusinessHostGroupsBadRequest{}
 }
 
-/* GetBusinessHostGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+GetBusinessHostGroupsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetBusinessHostGroupsNotFound() *GetBusinessHostGroupsNotFound {
 	return &GetBusinessHostGroupsNotFound{}
 }
 
-/* GetBusinessHostGroupsNotFound describes a response with status code 404, with default header values.
+/*
+GetBusinessHostGroupsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetBusinessHostGroupsInternalServerError() *GetBusinessHostGroupsInterna
 	return &GetBusinessHostGroupsInternalServerError{}
 }
 
-/* GetBusinessHostGroupsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetBusinessHostGroupsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

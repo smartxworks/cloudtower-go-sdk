@@ -57,7 +57,8 @@ func NewEnterMaintenanceModePreCheckOK() *EnterMaintenanceModePreCheckOK {
 	return &EnterMaintenanceModePreCheckOK{}
 }
 
-/* EnterMaintenanceModePreCheckOK describes a response with status code 200, with default header values.
+/*
+EnterMaintenanceModePreCheckOK describes a response with status code 200, with default header values.
 
 EnterMaintenanceModePreCheckOK enter maintenance mode pre check o k
 */
@@ -98,7 +99,8 @@ func NewEnterMaintenanceModePreCheckBadRequest() *EnterMaintenanceModePreCheckBa
 	return &EnterMaintenanceModePreCheckBadRequest{}
 }
 
-/* EnterMaintenanceModePreCheckBadRequest describes a response with status code 400, with default header values.
+/*
+EnterMaintenanceModePreCheckBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewEnterMaintenanceModePreCheckNotFound() *EnterMaintenanceModePreCheckNotF
 	return &EnterMaintenanceModePreCheckNotFound{}
 }
 
-/* EnterMaintenanceModePreCheckNotFound describes a response with status code 404, with default header values.
+/*
+EnterMaintenanceModePreCheckNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewEnterMaintenanceModePreCheckInternalServerError() *EnterMaintenanceModeP
 	return &EnterMaintenanceModePreCheckInternalServerError{}
 }
 
-/* EnterMaintenanceModePreCheckInternalServerError describes a response with status code 500, with default header values.
+/*
+EnterMaintenanceModePreCheckInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

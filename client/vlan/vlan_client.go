@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVMVlan create Vm vlan API
+CreateVMVlan create Vm vlan API
 */
 func (a *Client) CreateVMVlan(params *CreateVMVlanParams, opts ...ClientOption) (*CreateVMVlanOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) CreateVMVlan(params *CreateVMVlanParams, opts ...ClientOption) 
 }
 
 /*
-  DeleteVlan delete vlan API
+DeleteVlan delete vlan API
 */
 func (a *Client) DeleteVlan(params *DeleteVlanParams, opts ...ClientOption) (*DeleteVlanOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) DeleteVlan(params *DeleteVlanParams, opts ...ClientOption) (*De
 }
 
 /*
-  GetVlans get vlans API
+GetVlans get vlans API
 */
 func (a *Client) GetVlans(params *GetVlansParams, opts ...ClientOption) (*GetVlansOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) GetVlans(params *GetVlansParams, opts ...ClientOption) (*GetVla
 }
 
 /*
-  GetVlansConnection get vlans connection API
+GetVlansConnection get vlans connection API
 */
 func (a *Client) GetVlansConnection(params *GetVlansConnectionParams, opts ...ClientOption) (*GetVlansConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) GetVlansConnection(params *GetVlansConnectionParams, opts ...Cl
 }
 
 /*
-  UpdateManagementVlan update management vlan API
+UpdateManagementVlan update management vlan API
 */
 func (a *Client) UpdateManagementVlan(params *UpdateManagementVlanParams, opts ...ClientOption) (*UpdateManagementVlanOK, error) {
 	// TODO: Validate the params before sending
@@ -238,7 +238,7 @@ func (a *Client) UpdateManagementVlan(params *UpdateManagementVlanParams, opts .
 }
 
 /*
-  UpdateMigrationVlan update migration vlan API
+UpdateMigrationVlan update migration vlan API
 */
 func (a *Client) UpdateMigrationVlan(params *UpdateMigrationVlanParams, opts ...ClientOption) (*UpdateMigrationVlanOK, error) {
 	// TODO: Validate the params before sending
@@ -276,7 +276,7 @@ func (a *Client) UpdateMigrationVlan(params *UpdateMigrationVlanParams, opts ...
 }
 
 /*
-  UpdateVlan update vlan API
+UpdateVlan update vlan API
 */
 func (a *Client) UpdateVlan(params *UpdateVlanParams, opts ...ClientOption) (*UpdateVlanOK, error) {
 	// TODO: Validate the params before sending

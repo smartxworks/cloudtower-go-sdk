@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetEcpLicenses get ecp licenses API
+GetEcpLicenses get ecp licenses API
 */
 func (a *Client) GetEcpLicenses(params *GetEcpLicensesParams, opts ...ClientOption) (*GetEcpLicensesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetEcpLicenses(params *GetEcpLicensesParams, opts ...ClientOpti
 }
 
 /*
-  GetEcpLicensesConnection get ecp licenses connection API
+GetEcpLicensesConnection get ecp licenses connection API
 */
 func (a *Client) GetEcpLicensesConnection(params *GetEcpLicensesConnectionParams, opts ...ClientOption) (*GetEcpLicensesConnectionOK, error) {
 	// TODO: Validate the params before sending

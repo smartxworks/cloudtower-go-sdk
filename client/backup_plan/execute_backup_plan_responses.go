@@ -57,7 +57,8 @@ func NewExecuteBackupPlanOK() *ExecuteBackupPlanOK {
 	return &ExecuteBackupPlanOK{}
 }
 
-/* ExecuteBackupPlanOK describes a response with status code 200, with default header values.
+/*
+ExecuteBackupPlanOK describes a response with status code 200, with default header values.
 
 ExecuteBackupPlanOK execute backup plan o k
 */
@@ -96,7 +97,8 @@ func NewExecuteBackupPlanBadRequest() *ExecuteBackupPlanBadRequest {
 	return &ExecuteBackupPlanBadRequest{}
 }
 
-/* ExecuteBackupPlanBadRequest describes a response with status code 400, with default header values.
+/*
+ExecuteBackupPlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewExecuteBackupPlanNotFound() *ExecuteBackupPlanNotFound {
 	return &ExecuteBackupPlanNotFound{}
 }
 
-/* ExecuteBackupPlanNotFound describes a response with status code 404, with default header values.
+/*
+ExecuteBackupPlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewExecuteBackupPlanInternalServerError() *ExecuteBackupPlanInternalServerE
 	return &ExecuteBackupPlanInternalServerError{}
 }
 
-/* ExecuteBackupPlanInternalServerError describes a response with status code 500, with default header values.
+/*
+ExecuteBackupPlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

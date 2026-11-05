@@ -57,7 +57,8 @@ func NewDeleteContentLibraryImageOK() *DeleteContentLibraryImageOK {
 	return &DeleteContentLibraryImageOK{}
 }
 
-/* DeleteContentLibraryImageOK describes a response with status code 200, with default header values.
+/*
+DeleteContentLibraryImageOK describes a response with status code 200, with default header values.
 
 DeleteContentLibraryImageOK delete content library image o k
 */
@@ -96,7 +97,8 @@ func NewDeleteContentLibraryImageBadRequest() *DeleteContentLibraryImageBadReque
 	return &DeleteContentLibraryImageBadRequest{}
 }
 
-/* DeleteContentLibraryImageBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteContentLibraryImageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteContentLibraryImageNotFound() *DeleteContentLibraryImageNotFound {
 	return &DeleteContentLibraryImageNotFound{}
 }
 
-/* DeleteContentLibraryImageNotFound describes a response with status code 404, with default header values.
+/*
+DeleteContentLibraryImageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteContentLibraryImageInternalServerError() *DeleteContentLibraryImag
 	return &DeleteContentLibraryImageInternalServerError{}
 }
 
-/* DeleteContentLibraryImageInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteContentLibraryImageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

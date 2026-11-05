@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetSnapshotPlanTasks get snapshot plan tasks API
+GetSnapshotPlanTasks get snapshot plan tasks API
 */
 func (a *Client) GetSnapshotPlanTasks(params *GetSnapshotPlanTasksParams, opts ...ClientOption) (*GetSnapshotPlanTasksOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetSnapshotPlanTasks(params *GetSnapshotPlanTasksParams, opts .
 }
 
 /*
-  GetSnapshotPlanTasksConnection get snapshot plan tasks connection API
+GetSnapshotPlanTasksConnection get snapshot plan tasks connection API
 */
 func (a *Client) GetSnapshotPlanTasksConnection(params *GetSnapshotPlanTasksConnectionParams, opts ...ClientOption) (*GetSnapshotPlanTasksConnectionOK, error) {
 	// TODO: Validate the params before sending

@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetClusterTopoes get cluster topoes API
+GetClusterTopoes get cluster topoes API
 */
 func (a *Client) GetClusterTopoes(params *GetClusterTopoesParams, opts ...ClientOption) (*GetClusterTopoesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetClusterTopoes(params *GetClusterTopoesParams, opts ...Client
 }
 
 /*
-  GetClusterTopoesConnection get cluster topoes connection API
+GetClusterTopoesConnection get cluster topoes connection API
 */
 func (a *Client) GetClusterTopoesConnection(params *GetClusterTopoesConnectionParams, opts ...ClientOption) (*GetClusterTopoesConnectionOK, error) {
 	// TODO: Validate the params before sending

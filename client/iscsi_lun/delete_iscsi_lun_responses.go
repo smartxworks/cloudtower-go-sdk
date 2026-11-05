@@ -57,7 +57,8 @@ func NewDeleteIscsiLunOK() *DeleteIscsiLunOK {
 	return &DeleteIscsiLunOK{}
 }
 
-/* DeleteIscsiLunOK describes a response with status code 200, with default header values.
+/*
+DeleteIscsiLunOK describes a response with status code 200, with default header values.
 
 DeleteIscsiLunOK delete iscsi lun o k
 */
@@ -96,7 +97,8 @@ func NewDeleteIscsiLunBadRequest() *DeleteIscsiLunBadRequest {
 	return &DeleteIscsiLunBadRequest{}
 }
 
-/* DeleteIscsiLunBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteIscsiLunBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteIscsiLunNotFound() *DeleteIscsiLunNotFound {
 	return &DeleteIscsiLunNotFound{}
 }
 
-/* DeleteIscsiLunNotFound describes a response with status code 404, with default header values.
+/*
+DeleteIscsiLunNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteIscsiLunInternalServerError() *DeleteIscsiLunInternalServerError {
 	return &DeleteIscsiLunInternalServerError{}
 }
 
-/* DeleteIscsiLunInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteIscsiLunInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

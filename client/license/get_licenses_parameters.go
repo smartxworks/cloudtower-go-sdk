@@ -54,10 +54,12 @@ func NewGetLicensesParamsWithHTTPClient(client *http.Client) *GetLicensesParams 
 	}
 }
 
-/* GetLicensesParams contains all the parameters to send to the API endpoint
-   for the get licenses operation.
+/*
+GetLicensesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get licenses operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLicensesParams struct {
 

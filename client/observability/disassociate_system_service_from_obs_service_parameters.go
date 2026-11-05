@@ -54,10 +54,12 @@ func NewDisassociateSystemServiceFromObsServiceParamsWithHTTPClient(client *http
 	}
 }
 
-/* DisassociateSystemServiceFromObsServiceParams contains all the parameters to send to the API endpoint
-   for the disassociate system service from obs service operation.
+/*
+DisassociateSystemServiceFromObsServiceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the disassociate system service from obs service operation.
+
+	Typically these are written to a http.Request.
 */
 type DisassociateSystemServiceFromObsServiceParams struct {
 

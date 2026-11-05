@@ -63,7 +63,8 @@ func NewGetDetailVMInfoByGpuDevicesOK() *GetDetailVMInfoByGpuDevicesOK {
 	return &GetDetailVMInfoByGpuDevicesOK{}
 }
 
-/* GetDetailVMInfoByGpuDevicesOK describes a response with status code 200, with default header values.
+/*
+GetDetailVMInfoByGpuDevicesOK describes a response with status code 200, with default header values.
 
 GetDetailVMInfoByGpuDevicesOK get detail Vm info by gpu devices o k
 */
@@ -102,7 +103,8 @@ func NewGetDetailVMInfoByGpuDevicesNotModified() *GetDetailVMInfoByGpuDevicesNot
 	return &GetDetailVMInfoByGpuDevicesNotModified{}
 }
 
-/* GetDetailVMInfoByGpuDevicesNotModified describes a response with status code 304, with default header values.
+/*
+GetDetailVMInfoByGpuDevicesNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewGetDetailVMInfoByGpuDevicesBadRequest() *GetDetailVMInfoByGpuDevicesBadR
 	return &GetDetailVMInfoByGpuDevicesBadRequest{}
 }
 
-/* GetDetailVMInfoByGpuDevicesBadRequest describes a response with status code 400, with default header values.
+/*
+GetDetailVMInfoByGpuDevicesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewGetDetailVMInfoByGpuDevicesNotFound() *GetDetailVMInfoByGpuDevicesNotFou
 	return &GetDetailVMInfoByGpuDevicesNotFound{}
 }
 
-/* GetDetailVMInfoByGpuDevicesNotFound describes a response with status code 404, with default header values.
+/*
+GetDetailVMInfoByGpuDevicesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewGetDetailVMInfoByGpuDevicesInternalServerError() *GetDetailVMInfoByGpuDe
 	return &GetDetailVMInfoByGpuDevicesInternalServerError{}
 }
 
-/* GetDetailVMInfoByGpuDevicesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDetailVMInfoByGpuDevicesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

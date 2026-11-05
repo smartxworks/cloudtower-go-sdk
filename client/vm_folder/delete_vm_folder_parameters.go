@@ -54,10 +54,12 @@ func NewDeleteVMFolderParamsWithHTTPClient(client *http.Client) *DeleteVMFolderP
 	}
 }
 
-/* DeleteVMFolderParams contains all the parameters to send to the API endpoint
-   for the delete Vm folder operation.
+/*
+DeleteVMFolderParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete Vm folder operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVMFolderParams struct {
 

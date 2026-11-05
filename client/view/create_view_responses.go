@@ -57,7 +57,8 @@ func NewCreateViewOK() *CreateViewOK {
 	return &CreateViewOK{}
 }
 
-/* CreateViewOK describes a response with status code 200, with default header values.
+/*
+CreateViewOK describes a response with status code 200, with default header values.
 
 CreateViewOK create view o k
 */
@@ -96,7 +97,8 @@ func NewCreateViewBadRequest() *CreateViewBadRequest {
 	return &CreateViewBadRequest{}
 }
 
-/* CreateViewBadRequest describes a response with status code 400, with default header values.
+/*
+CreateViewBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateViewNotFound() *CreateViewNotFound {
 	return &CreateViewNotFound{}
 }
 
-/* CreateViewNotFound describes a response with status code 404, with default header values.
+/*
+CreateViewNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateViewInternalServerError() *CreateViewInternalServerError {
 	return &CreateViewInternalServerError{}
 }
 
-/* CreateViewInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateViewInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

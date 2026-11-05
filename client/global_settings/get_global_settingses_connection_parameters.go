@@ -54,10 +54,12 @@ func NewGetGlobalSettingsesConnectionParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetGlobalSettingsesConnectionParams contains all the parameters to send to the API endpoint
-   for the get global settingses connection operation.
+/*
+GetGlobalSettingsesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get global settingses connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGlobalSettingsesConnectionParams struct {
 

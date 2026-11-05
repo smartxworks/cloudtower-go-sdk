@@ -54,10 +54,12 @@ func NewGetPciDevicesParamsWithHTTPClient(client *http.Client) *GetPciDevicesPar
 	}
 }
 
-/* GetPciDevicesParams contains all the parameters to send to the API endpoint
-   for the get pci devices operation.
+/*
+GetPciDevicesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get pci devices operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPciDevicesParams struct {
 

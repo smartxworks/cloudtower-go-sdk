@@ -57,7 +57,8 @@ func NewGetDeploysOK() *GetDeploysOK {
 	return &GetDeploysOK{}
 }
 
-/* GetDeploysOK describes a response with status code 200, with default header values.
+/*
+GetDeploysOK describes a response with status code 200, with default header values.
 
 GetDeploysOK get deploys o k
 */
@@ -96,7 +97,8 @@ func NewGetDeploysBadRequest() *GetDeploysBadRequest {
 	return &GetDeploysBadRequest{}
 }
 
-/* GetDeploysBadRequest describes a response with status code 400, with default header values.
+/*
+GetDeploysBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetDeploysNotFound() *GetDeploysNotFound {
 	return &GetDeploysNotFound{}
 }
 
-/* GetDeploysNotFound describes a response with status code 404, with default header values.
+/*
+GetDeploysNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetDeploysInternalServerError() *GetDeploysInternalServerError {
 	return &GetDeploysInternalServerError{}
 }
 
-/* GetDeploysInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDeploysInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

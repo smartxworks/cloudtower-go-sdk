@@ -54,10 +54,12 @@ func NewEnterMaintenanceModePreCheckParamsWithHTTPClient(client *http.Client) *E
 	}
 }
 
-/* EnterMaintenanceModePreCheckParams contains all the parameters to send to the API endpoint
-   for the enter maintenance mode pre check operation.
+/*
+EnterMaintenanceModePreCheckParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enter maintenance mode pre check operation.
+
+	Typically these are written to a http.Request.
 */
 type EnterMaintenanceModePreCheckParams struct {
 

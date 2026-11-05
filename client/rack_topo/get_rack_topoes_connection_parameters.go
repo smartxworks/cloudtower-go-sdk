@@ -54,10 +54,12 @@ func NewGetRackTopoesConnectionParamsWithHTTPClient(client *http.Client) *GetRac
 	}
 }
 
-/* GetRackTopoesConnectionParams contains all the parameters to send to the API endpoint
-   for the get rack topoes connection operation.
+/*
+GetRackTopoesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get rack topoes connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRackTopoesConnectionParams struct {
 

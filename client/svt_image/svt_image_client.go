@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetSvtImages get svt images API
+GetSvtImages get svt images API
 */
 func (a *Client) GetSvtImages(params *GetSvtImagesParams, opts ...ClientOption) (*GetSvtImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -78,7 +78,7 @@ func (a *Client) GetSvtImages(params *GetSvtImagesParams, opts ...ClientOption) 
 }
 
 /*
-  GetSvtImagesConnection get svt images connection API
+GetSvtImagesConnection get svt images connection API
 */
 func (a *Client) GetSvtImagesConnection(params *GetSvtImagesConnectionParams, opts ...ClientOption) (*GetSvtImagesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -116,7 +116,7 @@ func (a *Client) GetSvtImagesConnection(params *GetSvtImagesConnectionParams, op
 }
 
 /*
-  UploadSvtImage upload svt image API
+UploadSvtImage upload svt image API
 */
 func (a *Client) UploadSvtImage(params *UploadSvtImageParams, opts ...ClientOption) (*UploadSvtImageOK, error) {
 	// TODO: Validate the params before sending

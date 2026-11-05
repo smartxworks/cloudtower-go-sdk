@@ -54,10 +54,12 @@ func NewGetVMVolumeSnapshotsConnectionParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetVMVolumeSnapshotsConnectionParams contains all the parameters to send to the API endpoint
-   for the get Vm volume snapshots connection operation.
+/*
+GetVMVolumeSnapshotsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm volume snapshots connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMVolumeSnapshotsConnectionParams struct {
 

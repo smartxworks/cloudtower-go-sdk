@@ -57,7 +57,8 @@ func NewGetViewsConnectionOK() *GetViewsConnectionOK {
 	return &GetViewsConnectionOK{}
 }
 
-/* GetViewsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetViewsConnectionOK describes a response with status code 200, with default header values.
 
 GetViewsConnectionOK get views connection o k
 */
@@ -98,7 +99,8 @@ func NewGetViewsConnectionBadRequest() *GetViewsConnectionBadRequest {
 	return &GetViewsConnectionBadRequest{}
 }
 
-/* GetViewsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetViewsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetViewsConnectionNotFound() *GetViewsConnectionNotFound {
 	return &GetViewsConnectionNotFound{}
 }
 
-/* GetViewsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetViewsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetViewsConnectionInternalServerError() *GetViewsConnectionInternalServe
 	return &GetViewsConnectionInternalServerError{}
 }
 
-/* GetViewsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetViewsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

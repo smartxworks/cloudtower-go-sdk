@@ -54,10 +54,12 @@ func NewGetVMEntityFilterResultsConnectionParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* GetVMEntityFilterResultsConnectionParams contains all the parameters to send to the API endpoint
-   for the get Vm entity filter results connection operation.
+/*
+GetVMEntityFilterResultsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm entity filter results connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMEntityFilterResultsConnectionParams struct {
 

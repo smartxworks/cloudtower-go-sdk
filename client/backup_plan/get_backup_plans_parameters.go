@@ -54,10 +54,12 @@ func NewGetBackupPlansParamsWithHTTPClient(client *http.Client) *GetBackupPlansP
 	}
 }
 
-/* GetBackupPlansParams contains all the parameters to send to the API endpoint
-   for the get backup plans operation.
+/*
+GetBackupPlansParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get backup plans operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBackupPlansParams struct {
 

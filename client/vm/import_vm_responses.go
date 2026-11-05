@@ -57,7 +57,8 @@ func NewImportVMOK() *ImportVMOK {
 	return &ImportVMOK{}
 }
 
-/* ImportVMOK describes a response with status code 200, with default header values.
+/*
+ImportVMOK describes a response with status code 200, with default header values.
 
 ImportVMOK import Vm o k
 */
@@ -96,7 +97,8 @@ func NewImportVMBadRequest() *ImportVMBadRequest {
 	return &ImportVMBadRequest{}
 }
 
-/* ImportVMBadRequest describes a response with status code 400, with default header values.
+/*
+ImportVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewImportVMNotFound() *ImportVMNotFound {
 	return &ImportVMNotFound{}
 }
 
-/* ImportVMNotFound describes a response with status code 404, with default header values.
+/*
+ImportVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewImportVMInternalServerError() *ImportVMInternalServerError {
 	return &ImportVMInternalServerError{}
 }
 
-/* ImportVMInternalServerError describes a response with status code 500, with default header values.
+/*
+ImportVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

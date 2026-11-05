@@ -34,6 +34,8 @@ type ClientService interface {
 
 	DeleteCluster(params *DeleteClusterParams, opts ...ClientOption) (*DeleteClusterOK, error)
 
+	GetClusterNtpServices(params *GetClusterNtpServicesParams, opts ...ClientOption) (*GetClusterNtpServicesOK, error)
+
 	GetClusterPinInPerformanceInfo(params *GetClusterPinInPerformanceInfoParams, opts ...ClientOption) (*GetClusterPinInPerformanceInfoOK, error)
 
 	GetClusterStorageInfo(params *GetClusterStorageInfoParams, opts ...ClientOption) (*GetClusterStorageInfoOK, error)
@@ -64,7 +66,7 @@ type ClientService interface {
 }
 
 /*
-  ConnectCluster connect cluster API
+ConnectCluster connect cluster API
 */
 func (a *Client) ConnectCluster(params *ConnectClusterParams, opts ...ClientOption) (*ConnectClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -102,7 +104,7 @@ func (a *Client) ConnectCluster(params *ConnectClusterParams, opts ...ClientOpti
 }
 
 /*
-  DeleteCluster delete cluster API
+DeleteCluster delete cluster API
 */
 func (a *Client) DeleteCluster(params *DeleteClusterParams, opts ...ClientOption) (*DeleteClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -140,7 +142,45 @@ func (a *Client) DeleteCluster(params *DeleteClusterParams, opts ...ClientOption
 }
 
 /*
-  GetClusterPinInPerformanceInfo get cluster pin in performance info API
+GetClusterNtpServices get cluster ntp services API
+*/
+func (a *Client) GetClusterNtpServices(params *GetClusterNtpServicesParams, opts ...ClientOption) (*GetClusterNtpServicesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetClusterNtpServicesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "GetClusterNtpServices",
+		Method:             "POST",
+		PathPattern:        "/get-cluster-ntp-services",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetClusterNtpServicesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetClusterNtpServicesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for GetClusterNtpServices: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetClusterPinInPerformanceInfo get cluster pin in performance info API
 */
 func (a *Client) GetClusterPinInPerformanceInfo(params *GetClusterPinInPerformanceInfoParams, opts ...ClientOption) (*GetClusterPinInPerformanceInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -178,7 +218,7 @@ func (a *Client) GetClusterPinInPerformanceInfo(params *GetClusterPinInPerforman
 }
 
 /*
-  GetClusterStorageInfo get cluster storage info API
+GetClusterStorageInfo get cluster storage info API
 */
 func (a *Client) GetClusterStorageInfo(params *GetClusterStorageInfoParams, opts ...ClientOption) (*GetClusterStorageInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -216,7 +256,7 @@ func (a *Client) GetClusterStorageInfo(params *GetClusterStorageInfoParams, opts
 }
 
 /*
-  GetClusters get clusters API
+GetClusters get clusters API
 */
 func (a *Client) GetClusters(params *GetClustersParams, opts ...ClientOption) (*GetClustersOK, error) {
 	// TODO: Validate the params before sending
@@ -254,7 +294,7 @@ func (a *Client) GetClusters(params *GetClustersParams, opts ...ClientOption) (*
 }
 
 /*
-  GetClustersConnection get clusters connection API
+GetClustersConnection get clusters connection API
 */
 func (a *Client) GetClustersConnection(params *GetClustersConnectionParams, opts ...ClientOption) (*GetClustersConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -292,7 +332,7 @@ func (a *Client) GetClustersConnection(params *GetClustersConnectionParams, opts
 }
 
 /*
-  GetMetaLeader get meta leader API
+GetMetaLeader get meta leader API
 */
 func (a *Client) GetMetaLeader(params *GetMetaLeaderParams, opts ...ClientOption) (*GetMetaLeaderOK, error) {
 	// TODO: Validate the params before sending
@@ -330,7 +370,7 @@ func (a *Client) GetMetaLeader(params *GetMetaLeaderParams, opts ...ClientOption
 }
 
 /*
-  UpdateCluster update cluster API
+UpdateCluster update cluster API
 */
 func (a *Client) UpdateCluster(params *UpdateClusterParams, opts ...ClientOption) (*UpdateClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -368,7 +408,7 @@ func (a *Client) UpdateCluster(params *UpdateClusterParams, opts ...ClientOption
 }
 
 /*
-  UpdateClusterDisablePinInPerformance update cluster disable pin in performance API
+UpdateClusterDisablePinInPerformance update cluster disable pin in performance API
 */
 func (a *Client) UpdateClusterDisablePinInPerformance(params *UpdateClusterDisablePinInPerformanceParams, opts ...ClientOption) (*UpdateClusterDisablePinInPerformanceOK, error) {
 	// TODO: Validate the params before sending
@@ -406,7 +446,7 @@ func (a *Client) UpdateClusterDisablePinInPerformance(params *UpdateClusterDisab
 }
 
 /*
-  UpdateClusterEnableISCSISetting update cluster enable i s c s i setting API
+UpdateClusterEnableISCSISetting update cluster enable i s c s i setting API
 */
 func (a *Client) UpdateClusterEnableISCSISetting(params *UpdateClusterEnableISCSISettingParams, opts ...ClientOption) (*UpdateClusterEnableISCSISettingOK, error) {
 	// TODO: Validate the params before sending
@@ -444,7 +484,7 @@ func (a *Client) UpdateClusterEnableISCSISetting(params *UpdateClusterEnableISCS
 }
 
 /*
-  UpdateClusterEnablePinInPerformance update cluster enable pin in performance API
+UpdateClusterEnablePinInPerformance update cluster enable pin in performance API
 */
 func (a *Client) UpdateClusterEnablePinInPerformance(params *UpdateClusterEnablePinInPerformanceParams, opts ...ClientOption) (*UpdateClusterEnablePinInPerformanceOK, error) {
 	// TODO: Validate the params before sending
@@ -482,7 +522,7 @@ func (a *Client) UpdateClusterEnablePinInPerformance(params *UpdateClusterEnable
 }
 
 /*
-  UpdateClusterHaSetting update cluster ha setting API
+UpdateClusterHaSetting update cluster ha setting API
 */
 func (a *Client) UpdateClusterHaSetting(params *UpdateClusterHaSettingParams, opts ...ClientOption) (*UpdateClusterHaSettingOK, error) {
 	// TODO: Validate the params before sending
@@ -520,7 +560,7 @@ func (a *Client) UpdateClusterHaSetting(params *UpdateClusterHaSettingParams, op
 }
 
 /*
-  UpdateClusterLicense update cluster license API
+UpdateClusterLicense update cluster license API
 */
 func (a *Client) UpdateClusterLicense(params *UpdateClusterLicenseParams, opts ...ClientOption) (*UpdateClusterLicenseOK, error) {
 	// TODO: Validate the params before sending
@@ -558,7 +598,7 @@ func (a *Client) UpdateClusterLicense(params *UpdateClusterLicenseParams, opts .
 }
 
 /*
-  UpdateClusterNetworkSetting update cluster network setting API
+UpdateClusterNetworkSetting update cluster network setting API
 */
 func (a *Client) UpdateClusterNetworkSetting(params *UpdateClusterNetworkSettingParams, opts ...ClientOption) (*UpdateClusterNetworkSettingOK, error) {
 	// TODO: Validate the params before sending
@@ -596,7 +636,7 @@ func (a *Client) UpdateClusterNetworkSetting(params *UpdateClusterNetworkSetting
 }
 
 /*
-  UpdateClusterVirtualizationSetting update cluster virtualization setting API
+UpdateClusterVirtualizationSetting update cluster virtualization setting API
 */
 func (a *Client) UpdateClusterVirtualizationSetting(params *UpdateClusterVirtualizationSettingParams, opts ...ClientOption) (*UpdateClusterVirtualizationSettingOK, error) {
 	// TODO: Validate the params before sending

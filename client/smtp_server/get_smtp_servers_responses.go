@@ -57,7 +57,8 @@ func NewGetSMTPServersOK() *GetSMTPServersOK {
 	return &GetSMTPServersOK{}
 }
 
-/* GetSMTPServersOK describes a response with status code 200, with default header values.
+/*
+GetSMTPServersOK describes a response with status code 200, with default header values.
 
 GetSMTPServersOK get Smtp servers o k
 */
@@ -96,7 +97,8 @@ func NewGetSMTPServersBadRequest() *GetSMTPServersBadRequest {
 	return &GetSMTPServersBadRequest{}
 }
 
-/* GetSMTPServersBadRequest describes a response with status code 400, with default header values.
+/*
+GetSMTPServersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetSMTPServersNotFound() *GetSMTPServersNotFound {
 	return &GetSMTPServersNotFound{}
 }
 
-/* GetSMTPServersNotFound describes a response with status code 404, with default header values.
+/*
+GetSMTPServersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetSMTPServersInternalServerError() *GetSMTPServersInternalServerError {
 	return &GetSMTPServersInternalServerError{}
 }
 
-/* GetSMTPServersInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSMTPServersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

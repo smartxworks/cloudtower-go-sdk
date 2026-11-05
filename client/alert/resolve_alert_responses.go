@@ -57,7 +57,8 @@ func NewResolveAlertOK() *ResolveAlertOK {
 	return &ResolveAlertOK{}
 }
 
-/* ResolveAlertOK describes a response with status code 200, with default header values.
+/*
+ResolveAlertOK describes a response with status code 200, with default header values.
 
 ResolveAlertOK resolve alert o k
 */
@@ -96,7 +97,8 @@ func NewResolveAlertBadRequest() *ResolveAlertBadRequest {
 	return &ResolveAlertBadRequest{}
 }
 
-/* ResolveAlertBadRequest describes a response with status code 400, with default header values.
+/*
+ResolveAlertBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewResolveAlertNotFound() *ResolveAlertNotFound {
 	return &ResolveAlertNotFound{}
 }
 
-/* ResolveAlertNotFound describes a response with status code 404, with default header values.
+/*
+ResolveAlertNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewResolveAlertInternalServerError() *ResolveAlertInternalServerError {
 	return &ResolveAlertInternalServerError{}
 }
 
-/* ResolveAlertInternalServerError describes a response with status code 500, with default header values.
+/*
+ResolveAlertInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

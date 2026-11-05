@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  ExportCSV export c s v API
+ExportCSV export c s v API
 */
 func (a *Client) ExportCSV(params *ExportCSVParams, opts ...ClientOption) (*ExportCSVOK, error) {
 	// TODO: Validate the params before sending

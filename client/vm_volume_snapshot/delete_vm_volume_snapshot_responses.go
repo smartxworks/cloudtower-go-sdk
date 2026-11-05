@@ -57,7 +57,8 @@ func NewDeleteVMVolumeSnapshotOK() *DeleteVMVolumeSnapshotOK {
 	return &DeleteVMVolumeSnapshotOK{}
 }
 
-/* DeleteVMVolumeSnapshotOK describes a response with status code 200, with default header values.
+/*
+DeleteVMVolumeSnapshotOK describes a response with status code 200, with default header values.
 
 DeleteVMVolumeSnapshotOK delete Vm volume snapshot o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVMVolumeSnapshotBadRequest() *DeleteVMVolumeSnapshotBadRequest {
 	return &DeleteVMVolumeSnapshotBadRequest{}
 }
 
-/* DeleteVMVolumeSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVMVolumeSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVMVolumeSnapshotNotFound() *DeleteVMVolumeSnapshotNotFound {
 	return &DeleteVMVolumeSnapshotNotFound{}
 }
 
-/* DeleteVMVolumeSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVMVolumeSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVMVolumeSnapshotInternalServerError() *DeleteVMVolumeSnapshotInter
 	return &DeleteVMVolumeSnapshotInternalServerError{}
 }
 
-/* DeleteVMVolumeSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVMVolumeSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

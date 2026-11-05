@@ -54,10 +54,12 @@ func NewPoweroffVMParamsWithHTTPClient(client *http.Client) *PoweroffVMParams {
 	}
 }
 
-/* PoweroffVMParams contains all the parameters to send to the API endpoint
-   for the poweroff Vm operation.
+/*
+PoweroffVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the poweroff Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type PoweroffVMParams struct {
 

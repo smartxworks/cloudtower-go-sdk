@@ -54,10 +54,12 @@ func NewGetEcpLicensesConnectionParamsWithHTTPClient(client *http.Client) *GetEc
 	}
 }
 
-/* GetEcpLicensesConnectionParams contains all the parameters to send to the API endpoint
-   for the get ecp licenses connection operation.
+/*
+GetEcpLicensesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get ecp licenses connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEcpLicensesConnectionParams struct {
 

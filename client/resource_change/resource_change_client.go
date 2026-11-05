@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetResourceChanges get resource changes API
+GetResourceChanges get resource changes API
 */
 func (a *Client) GetResourceChanges(params *GetResourceChangesParams, opts ...ClientOption) (*GetResourceChangesOK, error) {
 	// TODO: Validate the params before sending

@@ -57,7 +57,8 @@ func NewDeleteGraphOK() *DeleteGraphOK {
 	return &DeleteGraphOK{}
 }
 
-/* DeleteGraphOK describes a response with status code 200, with default header values.
+/*
+DeleteGraphOK describes a response with status code 200, with default header values.
 
 DeleteGraphOK delete graph o k
 */
@@ -96,7 +97,8 @@ func NewDeleteGraphBadRequest() *DeleteGraphBadRequest {
 	return &DeleteGraphBadRequest{}
 }
 
-/* DeleteGraphBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteGraphBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteGraphNotFound() *DeleteGraphNotFound {
 	return &DeleteGraphNotFound{}
 }
 
-/* DeleteGraphNotFound describes a response with status code 404, with default header values.
+/*
+DeleteGraphNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteGraphInternalServerError() *DeleteGraphInternalServerError {
 	return &DeleteGraphInternalServerError{}
 }
 
-/* DeleteGraphInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteGraphInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

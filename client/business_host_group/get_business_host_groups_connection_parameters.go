@@ -54,10 +54,12 @@ func NewGetBusinessHostGroupsConnectionParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* GetBusinessHostGroupsConnectionParams contains all the parameters to send to the API endpoint
-   for the get business host groups connection operation.
+/*
+GetBusinessHostGroupsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get business host groups connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBusinessHostGroupsConnectionParams struct {
 

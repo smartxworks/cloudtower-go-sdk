@@ -57,7 +57,8 @@ func NewGetElfDataStoresOK() *GetElfDataStoresOK {
 	return &GetElfDataStoresOK{}
 }
 
-/* GetElfDataStoresOK describes a response with status code 200, with default header values.
+/*
+GetElfDataStoresOK describes a response with status code 200, with default header values.
 
 GetElfDataStoresOK get elf data stores o k
 */
@@ -96,7 +97,8 @@ func NewGetElfDataStoresBadRequest() *GetElfDataStoresBadRequest {
 	return &GetElfDataStoresBadRequest{}
 }
 
-/* GetElfDataStoresBadRequest describes a response with status code 400, with default header values.
+/*
+GetElfDataStoresBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetElfDataStoresNotFound() *GetElfDataStoresNotFound {
 	return &GetElfDataStoresNotFound{}
 }
 
-/* GetElfDataStoresNotFound describes a response with status code 404, with default header values.
+/*
+GetElfDataStoresNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetElfDataStoresInternalServerError() *GetElfDataStoresInternalServerErr
 	return &GetElfDataStoresInternalServerError{}
 }
 
-/* GetElfDataStoresInternalServerError describes a response with status code 500, with default header values.
+/*
+GetElfDataStoresInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

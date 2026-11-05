@@ -54,10 +54,12 @@ func NewDistributeContentLibraryVmtemplateClustersParamsWithHTTPClient(client *h
 	}
 }
 
-/* DistributeContentLibraryVmtemplateClustersParams contains all the parameters to send to the API endpoint
-   for the distribute content library vmtemplate clusters operation.
+/*
+DistributeContentLibraryVmtemplateClustersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the distribute content library vmtemplate clusters operation.
+
+	Typically these are written to a http.Request.
 */
 type DistributeContentLibraryVmtemplateClustersParams struct {
 

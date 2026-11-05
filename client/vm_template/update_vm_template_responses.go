@@ -57,7 +57,8 @@ func NewUpdateVMTemplateOK() *UpdateVMTemplateOK {
 	return &UpdateVMTemplateOK{}
 }
 
-/* UpdateVMTemplateOK describes a response with status code 200, with default header values.
+/*
+UpdateVMTemplateOK describes a response with status code 200, with default header values.
 
 UpdateVMTemplateOK update Vm template o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVMTemplateBadRequest() *UpdateVMTemplateBadRequest {
 	return &UpdateVMTemplateBadRequest{}
 }
 
-/* UpdateVMTemplateBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMTemplateBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVMTemplateNotFound() *UpdateVMTemplateNotFound {
 	return &UpdateVMTemplateNotFound{}
 }
 
-/* UpdateVMTemplateNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMTemplateNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVMTemplateInternalServerError() *UpdateVMTemplateInternalServerErr
 	return &UpdateVMTemplateInternalServerError{}
 }
 
-/* UpdateVMTemplateInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMTemplateInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

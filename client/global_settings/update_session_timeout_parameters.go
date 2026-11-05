@@ -54,10 +54,12 @@ func NewUpdateSessionTimeoutParamsWithHTTPClient(client *http.Client) *UpdateSes
 	}
 }
 
-/* UpdateSessionTimeoutParams contains all the parameters to send to the API endpoint
-   for the update session timeout operation.
+/*
+UpdateSessionTimeoutParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update session timeout operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateSessionTimeoutParams struct {
 

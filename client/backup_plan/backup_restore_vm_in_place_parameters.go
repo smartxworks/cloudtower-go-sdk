@@ -54,10 +54,12 @@ func NewBackupRestoreVMInPlaceParamsWithHTTPClient(client *http.Client) *BackupR
 	}
 }
 
-/* BackupRestoreVMInPlaceParams contains all the parameters to send to the API endpoint
-   for the backup restore Vm in place operation.
+/*
+BackupRestoreVMInPlaceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup restore Vm in place operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupRestoreVMInPlaceParams struct {
 

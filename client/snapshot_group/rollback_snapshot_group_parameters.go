@@ -54,10 +54,12 @@ func NewRollbackSnapshotGroupParamsWithHTTPClient(client *http.Client) *Rollback
 	}
 }
 
-/* RollbackSnapshotGroupParams contains all the parameters to send to the API endpoint
-   for the rollback snapshot group operation.
+/*
+RollbackSnapshotGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the rollback snapshot group operation.
+
+	Typically these are written to a http.Request.
 */
 type RollbackSnapshotGroupParams struct {
 

@@ -57,7 +57,8 @@ func NewUpdateBrickTopoOK() *UpdateBrickTopoOK {
 	return &UpdateBrickTopoOK{}
 }
 
-/* UpdateBrickTopoOK describes a response with status code 200, with default header values.
+/*
+UpdateBrickTopoOK describes a response with status code 200, with default header values.
 
 UpdateBrickTopoOK update brick topo o k
 */
@@ -96,7 +97,8 @@ func NewUpdateBrickTopoBadRequest() *UpdateBrickTopoBadRequest {
 	return &UpdateBrickTopoBadRequest{}
 }
 
-/* UpdateBrickTopoBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateBrickTopoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateBrickTopoNotFound() *UpdateBrickTopoNotFound {
 	return &UpdateBrickTopoNotFound{}
 }
 
-/* UpdateBrickTopoNotFound describes a response with status code 404, with default header values.
+/*
+UpdateBrickTopoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateBrickTopoInternalServerError() *UpdateBrickTopoInternalServerError
 	return &UpdateBrickTopoInternalServerError{}
 }
 
-/* UpdateBrickTopoInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateBrickTopoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

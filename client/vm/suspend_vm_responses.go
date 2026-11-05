@@ -57,7 +57,8 @@ func NewSuspendVMOK() *SuspendVMOK {
 	return &SuspendVMOK{}
 }
 
-/* SuspendVMOK describes a response with status code 200, with default header values.
+/*
+SuspendVMOK describes a response with status code 200, with default header values.
 
 SuspendVMOK suspend Vm o k
 */
@@ -96,7 +97,8 @@ func NewSuspendVMBadRequest() *SuspendVMBadRequest {
 	return &SuspendVMBadRequest{}
 }
 
-/* SuspendVMBadRequest describes a response with status code 400, with default header values.
+/*
+SuspendVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewSuspendVMNotFound() *SuspendVMNotFound {
 	return &SuspendVMNotFound{}
 }
 
-/* SuspendVMNotFound describes a response with status code 404, with default header values.
+/*
+SuspendVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewSuspendVMInternalServerError() *SuspendVMInternalServerError {
 	return &SuspendVMInternalServerError{}
 }
 
-/* SuspendVMInternalServerError describes a response with status code 500, with default header values.
+/*
+SuspendVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

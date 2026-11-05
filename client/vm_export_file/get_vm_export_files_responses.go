@@ -57,7 +57,8 @@ func NewGetVMExportFilesOK() *GetVMExportFilesOK {
 	return &GetVMExportFilesOK{}
 }
 
-/* GetVMExportFilesOK describes a response with status code 200, with default header values.
+/*
+GetVMExportFilesOK describes a response with status code 200, with default header values.
 
 GetVMExportFilesOK get Vm export files o k
 */
@@ -96,7 +97,8 @@ func NewGetVMExportFilesBadRequest() *GetVMExportFilesBadRequest {
 	return &GetVMExportFilesBadRequest{}
 }
 
-/* GetVMExportFilesBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMExportFilesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVMExportFilesNotFound() *GetVMExportFilesNotFound {
 	return &GetVMExportFilesNotFound{}
 }
 
-/* GetVMExportFilesNotFound describes a response with status code 404, with default header values.
+/*
+GetVMExportFilesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVMExportFilesInternalServerError() *GetVMExportFilesInternalServerErr
 	return &GetVMExportFilesInternalServerError{}
 }
 
-/* GetVMExportFilesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMExportFilesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

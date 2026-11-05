@@ -57,7 +57,8 @@ func NewGetNtpServiceURLOK() *GetNtpServiceURLOK {
 	return &GetNtpServiceURLOK{}
 }
 
-/* GetNtpServiceURLOK describes a response with status code 200, with default header values.
+/*
+GetNtpServiceURLOK describes a response with status code 200, with default header values.
 
 GetNtpServiceURLOK get ntp service Url o k
 */
@@ -98,7 +99,8 @@ func NewGetNtpServiceURLBadRequest() *GetNtpServiceURLBadRequest {
 	return &GetNtpServiceURLBadRequest{}
 }
 
-/* GetNtpServiceURLBadRequest describes a response with status code 400, with default header values.
+/*
+GetNtpServiceURLBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetNtpServiceURLNotFound() *GetNtpServiceURLNotFound {
 	return &GetNtpServiceURLNotFound{}
 }
 
-/* GetNtpServiceURLNotFound describes a response with status code 404, with default header values.
+/*
+GetNtpServiceURLNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetNtpServiceURLInternalServerError() *GetNtpServiceURLInternalServerErr
 	return &GetNtpServiceURLInternalServerError{}
 }
 
-/* GetNtpServiceURLInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNtpServiceURLInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewGetNodeTopoesParamsWithHTTPClient(client *http.Client) *GetNodeTopoesPar
 	}
 }
 
-/* GetNodeTopoesParams contains all the parameters to send to the API endpoint
-   for the get node topoes operation.
+/*
+GetNodeTopoesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get node topoes operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNodeTopoesParams struct {
 

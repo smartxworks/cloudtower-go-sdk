@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetVMExportFiles get Vm export files API
+GetVMExportFiles get Vm export files API
 */
 func (a *Client) GetVMExportFiles(params *GetVMExportFilesParams, opts ...ClientOption) (*GetVMExportFilesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetVMExportFiles(params *GetVMExportFilesParams, opts ...Client
 }
 
 /*
-  GetVMExportFilesConnection get Vm export files connection API
+GetVMExportFilesConnection get Vm export files connection API
 */
 func (a *Client) GetVMExportFilesConnection(params *GetVMExportFilesConnectionParams, opts ...ClientOption) (*GetVMExportFilesConnectionOK, error) {
 	// TODO: Validate the params before sending

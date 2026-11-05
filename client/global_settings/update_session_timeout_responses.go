@@ -57,7 +57,8 @@ func NewUpdateSessionTimeoutOK() *UpdateSessionTimeoutOK {
 	return &UpdateSessionTimeoutOK{}
 }
 
-/* UpdateSessionTimeoutOK describes a response with status code 200, with default header values.
+/*
+UpdateSessionTimeoutOK describes a response with status code 200, with default header values.
 
 UpdateSessionTimeoutOK update session timeout o k
 */
@@ -98,7 +99,8 @@ func NewUpdateSessionTimeoutBadRequest() *UpdateSessionTimeoutBadRequest {
 	return &UpdateSessionTimeoutBadRequest{}
 }
 
-/* UpdateSessionTimeoutBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateSessionTimeoutBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewUpdateSessionTimeoutNotFound() *UpdateSessionTimeoutNotFound {
 	return &UpdateSessionTimeoutNotFound{}
 }
 
-/* UpdateSessionTimeoutNotFound describes a response with status code 404, with default header values.
+/*
+UpdateSessionTimeoutNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewUpdateSessionTimeoutInternalServerError() *UpdateSessionTimeoutInternalS
 	return &UpdateSessionTimeoutInternalServerError{}
 }
 
-/* UpdateSessionTimeoutInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateSessionTimeoutInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewBackupRebuildVMParamsWithHTTPClient(client *http.Client) *BackupRebuildV
 	}
 }
 
-/* BackupRebuildVMParams contains all the parameters to send to the API endpoint
-   for the backup rebuild Vm operation.
+/*
+BackupRebuildVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup rebuild Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupRebuildVMParams struct {
 

@@ -54,10 +54,12 @@ func NewMountUsbDeviceParamsWithHTTPClient(client *http.Client) *MountUsbDeviceP
 	}
 }
 
-/* MountUsbDeviceParams contains all the parameters to send to the API endpoint
-   for the mount usb device operation.
+/*
+MountUsbDeviceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the mount usb device operation.
+
+	Typically these are written to a http.Request.
 */
 type MountUsbDeviceParams struct {
 

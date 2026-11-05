@@ -57,7 +57,8 @@ func NewCreateLabelOK() *CreateLabelOK {
 	return &CreateLabelOK{}
 }
 
-/* CreateLabelOK describes a response with status code 200, with default header values.
+/*
+CreateLabelOK describes a response with status code 200, with default header values.
 
 CreateLabelOK create label o k
 */
@@ -96,7 +97,8 @@ func NewCreateLabelBadRequest() *CreateLabelBadRequest {
 	return &CreateLabelBadRequest{}
 }
 
-/* CreateLabelBadRequest describes a response with status code 400, with default header values.
+/*
+CreateLabelBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateLabelNotFound() *CreateLabelNotFound {
 	return &CreateLabelNotFound{}
 }
 
-/* CreateLabelNotFound describes a response with status code 404, with default header values.
+/*
+CreateLabelNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateLabelInternalServerError() *CreateLabelInternalServerError {
 	return &CreateLabelInternalServerError{}
 }
 
-/* CreateLabelInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateLabelInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

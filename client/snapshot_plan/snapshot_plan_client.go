@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  CreateSnapshotPlan create snapshot plan API
+CreateSnapshotPlan create snapshot plan API
 */
 func (a *Client) CreateSnapshotPlan(params *CreateSnapshotPlanParams, opts ...ClientOption) (*CreateSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -88,7 +88,7 @@ func (a *Client) CreateSnapshotPlan(params *CreateSnapshotPlanParams, opts ...Cl
 }
 
 /*
-  DeleteSnapshotPlan delete snapshot plan API
+DeleteSnapshotPlan delete snapshot plan API
 */
 func (a *Client) DeleteSnapshotPlan(params *DeleteSnapshotPlanParams, opts ...ClientOption) (*DeleteSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +126,7 @@ func (a *Client) DeleteSnapshotPlan(params *DeleteSnapshotPlanParams, opts ...Cl
 }
 
 /*
-  ExecuteSnapshotPlan execute snapshot plan API
+ExecuteSnapshotPlan execute snapshot plan API
 */
 func (a *Client) ExecuteSnapshotPlan(params *ExecuteSnapshotPlanParams, opts ...ClientOption) (*ExecuteSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +164,7 @@ func (a *Client) ExecuteSnapshotPlan(params *ExecuteSnapshotPlanParams, opts ...
 }
 
 /*
-  GetSnapshotPlans get snapshot plans API
+GetSnapshotPlans get snapshot plans API
 */
 func (a *Client) GetSnapshotPlans(params *GetSnapshotPlansParams, opts ...ClientOption) (*GetSnapshotPlansOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) GetSnapshotPlans(params *GetSnapshotPlansParams, opts ...Client
 }
 
 /*
-  GetSnapshotPlansConnection get snapshot plans connection API
+GetSnapshotPlansConnection get snapshot plans connection API
 */
 func (a *Client) GetSnapshotPlansConnection(params *GetSnapshotPlansConnectionParams, opts ...ClientOption) (*GetSnapshotPlansConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -240,7 +240,7 @@ func (a *Client) GetSnapshotPlansConnection(params *GetSnapshotPlansConnectionPa
 }
 
 /*
-  ResumeSnapshotPlan resume snapshot plan API
+ResumeSnapshotPlan resume snapshot plan API
 */
 func (a *Client) ResumeSnapshotPlan(params *ResumeSnapshotPlanParams, opts ...ClientOption) (*ResumeSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -278,7 +278,7 @@ func (a *Client) ResumeSnapshotPlan(params *ResumeSnapshotPlanParams, opts ...Cl
 }
 
 /*
-  SuspendSnapshotPlan suspend snapshot plan API
+SuspendSnapshotPlan suspend snapshot plan API
 */
 func (a *Client) SuspendSnapshotPlan(params *SuspendSnapshotPlanParams, opts ...ClientOption) (*SuspendSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -316,7 +316,7 @@ func (a *Client) SuspendSnapshotPlan(params *SuspendSnapshotPlanParams, opts ...
 }
 
 /*
-  UpdateSnapshotPlan update snapshot plan API
+UpdateSnapshotPlan update snapshot plan API
 */
 func (a *Client) UpdateSnapshotPlan(params *UpdateSnapshotPlanParams, opts ...ClientOption) (*UpdateSnapshotPlanOK, error) {
 	// TODO: Validate the params before sending

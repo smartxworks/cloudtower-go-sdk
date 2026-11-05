@@ -54,10 +54,12 @@ func NewImportVMParamsWithHTTPClient(client *http.Client) *ImportVMParams {
 	}
 }
 
-/* ImportVMParams contains all the parameters to send to the API endpoint
-   for the import Vm operation.
+/*
+ImportVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the import Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type ImportVMParams struct {
 

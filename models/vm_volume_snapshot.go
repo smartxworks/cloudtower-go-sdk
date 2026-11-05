@@ -73,6 +73,9 @@ type VMVolumeSnapshot struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// provision policy
+	ProvisionPolicy *string `json:"provision_policy,omitempty"`
+
 	// resident in cache
 	ResidentInCache *bool `json:"resident_in_cache,omitempty"`
 
@@ -81,6 +84,9 @@ type VMVolumeSnapshot struct {
 
 	// size
 	Size *float64 `json:"size,omitempty"`
+
+	// storage cluster config
+	StorageClusterConfig *NestedStorageClusterConfig `json:"storage_cluster_config,omitempty"`
 
 	// type
 	// Required: true
@@ -135,11 +141,15 @@ type VMVolumeSnapshotMarshalOpts struct {
 
 	Name_Explicit_Null_When_Empty bool
 
+	ProvisionPolicy_Explicit_Null_When_Empty bool
+
 	ResidentInCache_Explicit_Null_When_Empty bool
 
 	SharedSize_Explicit_Null_When_Empty bool
 
 	Size_Explicit_Null_When_Empty bool
+
+	StorageClusterConfig_Explicit_Null_When_Empty bool
 
 	Type_Explicit_Null_When_Empty bool
 
@@ -454,6 +464,26 @@ func (m VMVolumeSnapshot) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field provision_policy
+	if m.ProvisionPolicy != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":")
+		bytes, err := swag.WriteJSON(m.ProvisionPolicy)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.ProvisionPolicy_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"provision_policy\":null")
+		first = false
+	}
+
 	// handle nullable field resident_in_cache
 	if m.ResidentInCache != nil {
 		if !first {
@@ -511,6 +541,26 @@ func (m VMVolumeSnapshot) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"size\":null")
+		first = false
+	}
+
+	// handle nullable field storage_cluster_config
+	if m.StorageClusterConfig != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_cluster_config\":")
+		bytes, err := swag.WriteJSON(m.StorageClusterConfig)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.StorageClusterConfig_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"storage_cluster_config\":null")
 		first = false
 	}
 
@@ -678,6 +728,10 @@ func (m *VMVolumeSnapshot) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateStorageClusterConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -826,6 +880,25 @@ func (m *VMVolumeSnapshot) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *VMVolumeSnapshot) validateStorageClusterConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.StorageClusterConfig) { // not required
+		return nil
+	}
+
+	if m.StorageClusterConfig != nil {
+		if err := m.StorageClusterConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_cluster_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_cluster_config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *VMVolumeSnapshot) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
@@ -886,6 +959,10 @@ func (m *VMVolumeSnapshot) ContextValidate(ctx context.Context, formats strfmt.R
 	}
 
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageClusterConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -966,6 +1043,22 @@ func (m *VMVolumeSnapshot) contextValidateLabels(ctx context.Context, formats st
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *VMVolumeSnapshot) contextValidateStorageClusterConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StorageClusterConfig != nil {
+		if err := m.StorageClusterConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storage_cluster_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("storage_cluster_config")
+			}
+			return err
+		}
 	}
 
 	return nil

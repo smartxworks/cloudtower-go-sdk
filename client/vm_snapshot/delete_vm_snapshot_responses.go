@@ -57,7 +57,8 @@ func NewDeleteVMSnapshotOK() *DeleteVMSnapshotOK {
 	return &DeleteVMSnapshotOK{}
 }
 
-/* DeleteVMSnapshotOK describes a response with status code 200, with default header values.
+/*
+DeleteVMSnapshotOK describes a response with status code 200, with default header values.
 
 DeleteVMSnapshotOK delete Vm snapshot o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVMSnapshotBadRequest() *DeleteVMSnapshotBadRequest {
 	return &DeleteVMSnapshotBadRequest{}
 }
 
-/* DeleteVMSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVMSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVMSnapshotNotFound() *DeleteVMSnapshotNotFound {
 	return &DeleteVMSnapshotNotFound{}
 }
 
-/* DeleteVMSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVMSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVMSnapshotInternalServerError() *DeleteVMSnapshotInternalServerErr
 	return &DeleteVMSnapshotInternalServerError{}
 }
 
-/* DeleteVMSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVMSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

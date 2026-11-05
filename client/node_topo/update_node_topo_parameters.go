@@ -54,10 +54,12 @@ func NewUpdateNodeTopoParamsWithHTTPClient(client *http.Client) *UpdateNodeTopoP
 	}
 }
 
-/* UpdateNodeTopoParams contains all the parameters to send to the API endpoint
-   for the update node topo operation.
+/*
+UpdateNodeTopoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update node topo operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateNodeTopoParams struct {
 

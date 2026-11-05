@@ -57,7 +57,8 @@ func NewGetSecurityGroupsConnectionOK() *GetSecurityGroupsConnectionOK {
 	return &GetSecurityGroupsConnectionOK{}
 }
 
-/* GetSecurityGroupsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetSecurityGroupsConnectionOK describes a response with status code 200, with default header values.
 
 GetSecurityGroupsConnectionOK get security groups connection o k
 */
@@ -98,7 +99,8 @@ func NewGetSecurityGroupsConnectionBadRequest() *GetSecurityGroupsConnectionBadR
 	return &GetSecurityGroupsConnectionBadRequest{}
 }
 
-/* GetSecurityGroupsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetSecurityGroupsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetSecurityGroupsConnectionNotFound() *GetSecurityGroupsConnectionNotFou
 	return &GetSecurityGroupsConnectionNotFound{}
 }
 
-/* GetSecurityGroupsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetSecurityGroupsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetSecurityGroupsConnectionInternalServerError() *GetSecurityGroupsConne
 	return &GetSecurityGroupsConnectionInternalServerError{}
 }
 
-/* GetSecurityGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSecurityGroupsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

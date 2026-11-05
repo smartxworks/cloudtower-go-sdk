@@ -54,10 +54,12 @@ func NewDeleteNamespaceGroupParamsWithHTTPClient(client *http.Client) *DeleteNam
 	}
 }
 
-/* DeleteNamespaceGroupParams contains all the parameters to send to the API endpoint
-   for the delete namespace group operation.
+/*
+DeleteNamespaceGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete namespace group operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteNamespaceGroupParams struct {
 

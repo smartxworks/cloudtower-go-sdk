@@ -57,7 +57,8 @@ func NewGetVMDisksConnectionOK() *GetVMDisksConnectionOK {
 	return &GetVMDisksConnectionOK{}
 }
 
-/* GetVMDisksConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVMDisksConnectionOK describes a response with status code 200, with default header values.
 
 GetVMDisksConnectionOK get Vm disks connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVMDisksConnectionBadRequest() *GetVMDisksConnectionBadRequest {
 	return &GetVMDisksConnectionBadRequest{}
 }
 
-/* GetVMDisksConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMDisksConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVMDisksConnectionNotFound() *GetVMDisksConnectionNotFound {
 	return &GetVMDisksConnectionNotFound{}
 }
 
-/* GetVMDisksConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVMDisksConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVMDisksConnectionInternalServerError() *GetVMDisksConnectionInternalS
 	return &GetVMDisksConnectionInternalServerError{}
 }
 
-/* GetVMDisksConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMDisksConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

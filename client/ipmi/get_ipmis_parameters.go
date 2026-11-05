@@ -54,10 +54,12 @@ func NewGetIpmisParamsWithHTTPClient(client *http.Client) *GetIpmisParams {
 	}
 }
 
-/* GetIpmisParams contains all the parameters to send to the API endpoint
-   for the get ipmis operation.
+/*
+GetIpmisParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get ipmis operation.
+
+	Typically these are written to a http.Request.
 */
 type GetIpmisParams struct {
 

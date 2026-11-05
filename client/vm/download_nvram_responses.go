@@ -57,7 +57,8 @@ func NewDownloadNvramOK() *DownloadNvramOK {
 	return &DownloadNvramOK{}
 }
 
-/* DownloadNvramOK describes a response with status code 200, with default header values.
+/*
+DownloadNvramOK describes a response with status code 200, with default header values.
 
 DownloadNvramOK download nvram o k
 */
@@ -98,7 +99,8 @@ func NewDownloadNvramBadRequest() *DownloadNvramBadRequest {
 	return &DownloadNvramBadRequest{}
 }
 
-/* DownloadNvramBadRequest describes a response with status code 400, with default header values.
+/*
+DownloadNvramBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewDownloadNvramNotFound() *DownloadNvramNotFound {
 	return &DownloadNvramNotFound{}
 }
 
-/* DownloadNvramNotFound describes a response with status code 404, with default header values.
+/*
+DownloadNvramNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewDownloadNvramInternalServerError() *DownloadNvramInternalServerError {
 	return &DownloadNvramInternalServerError{}
 }
 
-/* DownloadNvramInternalServerError describes a response with status code 500, with default header values.
+/*
+DownloadNvramInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

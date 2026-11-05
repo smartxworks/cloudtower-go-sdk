@@ -57,7 +57,8 @@ func NewGetElfStoragePoliciesConnectionOK() *GetElfStoragePoliciesConnectionOK {
 	return &GetElfStoragePoliciesConnectionOK{}
 }
 
-/* GetElfStoragePoliciesConnectionOK describes a response with status code 200, with default header values.
+/*
+GetElfStoragePoliciesConnectionOK describes a response with status code 200, with default header values.
 
 GetElfStoragePoliciesConnectionOK get elf storage policies connection o k
 */
@@ -98,7 +99,8 @@ func NewGetElfStoragePoliciesConnectionBadRequest() *GetElfStoragePoliciesConnec
 	return &GetElfStoragePoliciesConnectionBadRequest{}
 }
 
-/* GetElfStoragePoliciesConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetElfStoragePoliciesConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetElfStoragePoliciesConnectionNotFound() *GetElfStoragePoliciesConnecti
 	return &GetElfStoragePoliciesConnectionNotFound{}
 }
 
-/* GetElfStoragePoliciesConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetElfStoragePoliciesConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetElfStoragePoliciesConnectionInternalServerError() *GetElfStoragePolic
 	return &GetElfStoragePoliciesConnectionInternalServerError{}
 }
 
-/* GetElfStoragePoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetElfStoragePoliciesConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

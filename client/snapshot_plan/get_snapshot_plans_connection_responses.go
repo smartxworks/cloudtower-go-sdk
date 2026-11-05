@@ -57,7 +57,8 @@ func NewGetSnapshotPlansConnectionOK() *GetSnapshotPlansConnectionOK {
 	return &GetSnapshotPlansConnectionOK{}
 }
 
-/* GetSnapshotPlansConnectionOK describes a response with status code 200, with default header values.
+/*
+GetSnapshotPlansConnectionOK describes a response with status code 200, with default header values.
 
 GetSnapshotPlansConnectionOK get snapshot plans connection o k
 */
@@ -98,7 +99,8 @@ func NewGetSnapshotPlansConnectionBadRequest() *GetSnapshotPlansConnectionBadReq
 	return &GetSnapshotPlansConnectionBadRequest{}
 }
 
-/* GetSnapshotPlansConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetSnapshotPlansConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetSnapshotPlansConnectionNotFound() *GetSnapshotPlansConnectionNotFound
 	return &GetSnapshotPlansConnectionNotFound{}
 }
 
-/* GetSnapshotPlansConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetSnapshotPlansConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetSnapshotPlansConnectionInternalServerError() *GetSnapshotPlansConnect
 	return &GetSnapshotPlansConnectionInternalServerError{}
 }
 
-/* GetSnapshotPlansConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSnapshotPlansConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewUpdateRoleOK() *UpdateRoleOK {
 	return &UpdateRoleOK{}
 }
 
-/* UpdateRoleOK describes a response with status code 200, with default header values.
+/*
+UpdateRoleOK describes a response with status code 200, with default header values.
 
 UpdateRoleOK update role o k
 */
@@ -96,7 +97,8 @@ func NewUpdateRoleBadRequest() *UpdateRoleBadRequest {
 	return &UpdateRoleBadRequest{}
 }
 
-/* UpdateRoleBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateRoleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateRoleNotFound() *UpdateRoleNotFound {
 	return &UpdateRoleNotFound{}
 }
 
-/* UpdateRoleNotFound describes a response with status code 404, with default header values.
+/*
+UpdateRoleNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateRoleInternalServerError() *UpdateRoleInternalServerError {
 	return &UpdateRoleInternalServerError{}
 }
 
-/* UpdateRoleInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateRoleInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewGetVMVolumeSnapshotsOK() *GetVMVolumeSnapshotsOK {
 	return &GetVMVolumeSnapshotsOK{}
 }
 
-/* GetVMVolumeSnapshotsOK describes a response with status code 200, with default header values.
+/*
+GetVMVolumeSnapshotsOK describes a response with status code 200, with default header values.
 
 GetVMVolumeSnapshotsOK get Vm volume snapshots o k
 */
@@ -96,7 +97,8 @@ func NewGetVMVolumeSnapshotsBadRequest() *GetVMVolumeSnapshotsBadRequest {
 	return &GetVMVolumeSnapshotsBadRequest{}
 }
 
-/* GetVMVolumeSnapshotsBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMVolumeSnapshotsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVMVolumeSnapshotsNotFound() *GetVMVolumeSnapshotsNotFound {
 	return &GetVMVolumeSnapshotsNotFound{}
 }
 
-/* GetVMVolumeSnapshotsNotFound describes a response with status code 404, with default header values.
+/*
+GetVMVolumeSnapshotsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVMVolumeSnapshotsInternalServerError() *GetVMVolumeSnapshotsInternalS
 	return &GetVMVolumeSnapshotsInternalServerError{}
 }
 
-/* GetVMVolumeSnapshotsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMVolumeSnapshotsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

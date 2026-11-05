@@ -57,7 +57,8 @@ func NewCreateVirtualPrivateCloudOK() *CreateVirtualPrivateCloudOK {
 	return &CreateVirtualPrivateCloudOK{}
 }
 
-/* CreateVirtualPrivateCloudOK describes a response with status code 200, with default header values.
+/*
+CreateVirtualPrivateCloudOK describes a response with status code 200, with default header values.
 
 CreateVirtualPrivateCloudOK create virtual private cloud o k
 */
@@ -96,7 +97,8 @@ func NewCreateVirtualPrivateCloudBadRequest() *CreateVirtualPrivateCloudBadReque
 	return &CreateVirtualPrivateCloudBadRequest{}
 }
 
-/* CreateVirtualPrivateCloudBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVirtualPrivateCloudBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVirtualPrivateCloudNotFound() *CreateVirtualPrivateCloudNotFound {
 	return &CreateVirtualPrivateCloudNotFound{}
 }
 
-/* CreateVirtualPrivateCloudNotFound describes a response with status code 404, with default header values.
+/*
+CreateVirtualPrivateCloudNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVirtualPrivateCloudInternalServerError() *CreateVirtualPrivateClou
 	return &CreateVirtualPrivateCloudInternalServerError{}
 }
 
-/* CreateVirtualPrivateCloudInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVirtualPrivateCloudInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewGetEntityFiltersParamsWithHTTPClient(client *http.Client) *GetEntityFilt
 	}
 }
 
-/* GetEntityFiltersParams contains all the parameters to send to the API endpoint
-   for the get entity filters operation.
+/*
+GetEntityFiltersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get entity filters operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEntityFiltersParams struct {
 

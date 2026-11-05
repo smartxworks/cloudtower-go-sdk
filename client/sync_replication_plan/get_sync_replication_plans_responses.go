@@ -57,7 +57,8 @@ func NewGetSyncReplicationPlansOK() *GetSyncReplicationPlansOK {
 	return &GetSyncReplicationPlansOK{}
 }
 
-/* GetSyncReplicationPlansOK describes a response with status code 200, with default header values.
+/*
+GetSyncReplicationPlansOK describes a response with status code 200, with default header values.
 
 GetSyncReplicationPlansOK get sync replication plans o k
 */
@@ -96,7 +97,8 @@ func NewGetSyncReplicationPlansBadRequest() *GetSyncReplicationPlansBadRequest {
 	return &GetSyncReplicationPlansBadRequest{}
 }
 
-/* GetSyncReplicationPlansBadRequest describes a response with status code 400, with default header values.
+/*
+GetSyncReplicationPlansBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetSyncReplicationPlansNotFound() *GetSyncReplicationPlansNotFound {
 	return &GetSyncReplicationPlansNotFound{}
 }
 
-/* GetSyncReplicationPlansNotFound describes a response with status code 404, with default header values.
+/*
+GetSyncReplicationPlansNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetSyncReplicationPlansInternalServerError() *GetSyncReplicationPlansInt
 	return &GetSyncReplicationPlansInternalServerError{}
 }
 
-/* GetSyncReplicationPlansInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSyncReplicationPlansInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

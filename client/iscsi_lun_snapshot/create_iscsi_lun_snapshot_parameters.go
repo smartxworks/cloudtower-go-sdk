@@ -54,10 +54,12 @@ func NewCreateIscsiLunSnapshotParamsWithHTTPClient(client *http.Client) *CreateI
 	}
 }
 
-/* CreateIscsiLunSnapshotParams contains all the parameters to send to the API endpoint
-   for the create iscsi lun snapshot operation.
+/*
+CreateIscsiLunSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create iscsi lun snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateIscsiLunSnapshotParams struct {
 

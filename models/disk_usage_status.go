@@ -42,6 +42,9 @@ const (
 	// DiskUsageStatusPARTIALMOUNTED captures enum value "PARTIAL_MOUNTED"
 	DiskUsageStatusPARTIALMOUNTED DiskUsageStatus = "PARTIAL_MOUNTED"
 
+	// DiskUsageStatusUNKNOWN captures enum value "UNKNOWN"
+	DiskUsageStatusUNKNOWN DiskUsageStatus = "UNKNOWN"
+
 	// DiskUsageStatusUNMOUNTED captures enum value "UNMOUNTED"
 	DiskUsageStatusUNMOUNTED DiskUsageStatus = "UNMOUNTED"
 
@@ -54,7 +57,7 @@ var diskUsageStatusEnum []interface{}
 
 func init() {
 	var res []DiskUsageStatus
-	if err := json.Unmarshal([]byte(`["ISOLATED","MOUNTED","MOUNTING","PARTIAL_MOUNTED","UNMOUNTED","UNMOUNTING"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ISOLATED","MOUNTED","MOUNTING","PARTIAL_MOUNTED","UNKNOWN","UNMOUNTED","UNMOUNTING"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

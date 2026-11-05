@@ -57,7 +57,8 @@ func NewConvertContentLibraryVMTemplateFromVMOK() *ConvertContentLibraryVMTempla
 	return &ConvertContentLibraryVMTemplateFromVMOK{}
 }
 
-/* ConvertContentLibraryVMTemplateFromVMOK describes a response with status code 200, with default header values.
+/*
+ConvertContentLibraryVMTemplateFromVMOK describes a response with status code 200, with default header values.
 
 ConvertContentLibraryVMTemplateFromVMOK convert content library Vm template from Vm o k
 */
@@ -96,7 +97,8 @@ func NewConvertContentLibraryVMTemplateFromVMBadRequest() *ConvertContentLibrary
 	return &ConvertContentLibraryVMTemplateFromVMBadRequest{}
 }
 
-/* ConvertContentLibraryVMTemplateFromVMBadRequest describes a response with status code 400, with default header values.
+/*
+ConvertContentLibraryVMTemplateFromVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewConvertContentLibraryVMTemplateFromVMNotFound() *ConvertContentLibraryVM
 	return &ConvertContentLibraryVMTemplateFromVMNotFound{}
 }
 
-/* ConvertContentLibraryVMTemplateFromVMNotFound describes a response with status code 404, with default header values.
+/*
+ConvertContentLibraryVMTemplateFromVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewConvertContentLibraryVMTemplateFromVMInternalServerError() *ConvertConte
 	return &ConvertContentLibraryVMTemplateFromVMInternalServerError{}
 }
 
-/* ConvertContentLibraryVMTemplateFromVMInternalServerError describes a response with status code 500, with default header values.
+/*
+ConvertContentLibraryVMTemplateFromVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

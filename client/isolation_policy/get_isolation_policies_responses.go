@@ -57,7 +57,8 @@ func NewGetIsolationPoliciesOK() *GetIsolationPoliciesOK {
 	return &GetIsolationPoliciesOK{}
 }
 
-/* GetIsolationPoliciesOK describes a response with status code 200, with default header values.
+/*
+GetIsolationPoliciesOK describes a response with status code 200, with default header values.
 
 GetIsolationPoliciesOK get isolation policies o k
 */
@@ -96,7 +97,8 @@ func NewGetIsolationPoliciesBadRequest() *GetIsolationPoliciesBadRequest {
 	return &GetIsolationPoliciesBadRequest{}
 }
 
-/* GetIsolationPoliciesBadRequest describes a response with status code 400, with default header values.
+/*
+GetIsolationPoliciesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetIsolationPoliciesNotFound() *GetIsolationPoliciesNotFound {
 	return &GetIsolationPoliciesNotFound{}
 }
 
-/* GetIsolationPoliciesNotFound describes a response with status code 404, with default header values.
+/*
+GetIsolationPoliciesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetIsolationPoliciesInternalServerError() *GetIsolationPoliciesInternalS
 	return &GetIsolationPoliciesInternalServerError{}
 }
 
-/* GetIsolationPoliciesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetIsolationPoliciesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

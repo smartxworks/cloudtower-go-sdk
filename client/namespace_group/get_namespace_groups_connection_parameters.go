@@ -54,10 +54,12 @@ func NewGetNamespaceGroupsConnectionParamsWithHTTPClient(client *http.Client) *G
 	}
 }
 
-/* GetNamespaceGroupsConnectionParams contains all the parameters to send to the API endpoint
-   for the get namespace groups connection operation.
+/*
+GetNamespaceGroupsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get namespace groups connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNamespaceGroupsConnectionParams struct {
 

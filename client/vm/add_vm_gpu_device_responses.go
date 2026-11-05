@@ -57,7 +57,8 @@ func NewAddVMGpuDeviceOK() *AddVMGpuDeviceOK {
 	return &AddVMGpuDeviceOK{}
 }
 
-/* AddVMGpuDeviceOK describes a response with status code 200, with default header values.
+/*
+AddVMGpuDeviceOK describes a response with status code 200, with default header values.
 
 AddVMGpuDeviceOK add Vm gpu device o k
 */
@@ -96,7 +97,8 @@ func NewAddVMGpuDeviceBadRequest() *AddVMGpuDeviceBadRequest {
 	return &AddVMGpuDeviceBadRequest{}
 }
 
-/* AddVMGpuDeviceBadRequest describes a response with status code 400, with default header values.
+/*
+AddVMGpuDeviceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewAddVMGpuDeviceNotFound() *AddVMGpuDeviceNotFound {
 	return &AddVMGpuDeviceNotFound{}
 }
 
-/* AddVMGpuDeviceNotFound describes a response with status code 404, with default header values.
+/*
+AddVMGpuDeviceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewAddVMGpuDeviceInternalServerError() *AddVMGpuDeviceInternalServerError {
 	return &AddVMGpuDeviceInternalServerError{}
 }
 
-/* AddVMGpuDeviceInternalServerError describes a response with status code 500, with default header values.
+/*
+AddVMGpuDeviceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

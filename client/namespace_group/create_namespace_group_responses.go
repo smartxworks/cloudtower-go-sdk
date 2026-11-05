@@ -57,7 +57,8 @@ func NewCreateNamespaceGroupOK() *CreateNamespaceGroupOK {
 	return &CreateNamespaceGroupOK{}
 }
 
-/* CreateNamespaceGroupOK describes a response with status code 200, with default header values.
+/*
+CreateNamespaceGroupOK describes a response with status code 200, with default header values.
 
 CreateNamespaceGroupOK create namespace group o k
 */
@@ -96,7 +97,8 @@ func NewCreateNamespaceGroupBadRequest() *CreateNamespaceGroupBadRequest {
 	return &CreateNamespaceGroupBadRequest{}
 }
 
-/* CreateNamespaceGroupBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNamespaceGroupBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateNamespaceGroupNotFound() *CreateNamespaceGroupNotFound {
 	return &CreateNamespaceGroupNotFound{}
 }
 
-/* CreateNamespaceGroupNotFound describes a response with status code 404, with default header values.
+/*
+CreateNamespaceGroupNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateNamespaceGroupInternalServerError() *CreateNamespaceGroupInternalS
 	return &CreateNamespaceGroupInternalServerError{}
 }
 
-/* CreateNamespaceGroupInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateNamespaceGroupInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

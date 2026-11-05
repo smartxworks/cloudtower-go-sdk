@@ -57,7 +57,8 @@ func NewSuspendBackupPlanOK() *SuspendBackupPlanOK {
 	return &SuspendBackupPlanOK{}
 }
 
-/* SuspendBackupPlanOK describes a response with status code 200, with default header values.
+/*
+SuspendBackupPlanOK describes a response with status code 200, with default header values.
 
 SuspendBackupPlanOK suspend backup plan o k
 */
@@ -96,7 +97,8 @@ func NewSuspendBackupPlanBadRequest() *SuspendBackupPlanBadRequest {
 	return &SuspendBackupPlanBadRequest{}
 }
 
-/* SuspendBackupPlanBadRequest describes a response with status code 400, with default header values.
+/*
+SuspendBackupPlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewSuspendBackupPlanNotFound() *SuspendBackupPlanNotFound {
 	return &SuspendBackupPlanNotFound{}
 }
 
-/* SuspendBackupPlanNotFound describes a response with status code 404, with default header values.
+/*
+SuspendBackupPlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewSuspendBackupPlanInternalServerError() *SuspendBackupPlanInternalServerE
 	return &SuspendBackupPlanInternalServerError{}
 }
 
-/* SuspendBackupPlanInternalServerError describes a response with status code 500, with default header values.
+/*
+SuspendBackupPlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

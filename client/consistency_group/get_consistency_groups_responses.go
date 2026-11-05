@@ -57,7 +57,8 @@ func NewGetConsistencyGroupsOK() *GetConsistencyGroupsOK {
 	return &GetConsistencyGroupsOK{}
 }
 
-/* GetConsistencyGroupsOK describes a response with status code 200, with default header values.
+/*
+GetConsistencyGroupsOK describes a response with status code 200, with default header values.
 
 GetConsistencyGroupsOK get consistency groups o k
 */
@@ -96,7 +97,8 @@ func NewGetConsistencyGroupsBadRequest() *GetConsistencyGroupsBadRequest {
 	return &GetConsistencyGroupsBadRequest{}
 }
 
-/* GetConsistencyGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+GetConsistencyGroupsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetConsistencyGroupsNotFound() *GetConsistencyGroupsNotFound {
 	return &GetConsistencyGroupsNotFound{}
 }
 
-/* GetConsistencyGroupsNotFound describes a response with status code 404, with default header values.
+/*
+GetConsistencyGroupsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetConsistencyGroupsInternalServerError() *GetConsistencyGroupsInternalS
 	return &GetConsistencyGroupsInternalServerError{}
 }
 
-/* GetConsistencyGroupsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetConsistencyGroupsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

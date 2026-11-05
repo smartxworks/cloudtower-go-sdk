@@ -57,7 +57,8 @@ func NewResumeBackupPlanOK() *ResumeBackupPlanOK {
 	return &ResumeBackupPlanOK{}
 }
 
-/* ResumeBackupPlanOK describes a response with status code 200, with default header values.
+/*
+ResumeBackupPlanOK describes a response with status code 200, with default header values.
 
 ResumeBackupPlanOK resume backup plan o k
 */
@@ -96,7 +97,8 @@ func NewResumeBackupPlanBadRequest() *ResumeBackupPlanBadRequest {
 	return &ResumeBackupPlanBadRequest{}
 }
 
-/* ResumeBackupPlanBadRequest describes a response with status code 400, with default header values.
+/*
+ResumeBackupPlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewResumeBackupPlanNotFound() *ResumeBackupPlanNotFound {
 	return &ResumeBackupPlanNotFound{}
 }
 
-/* ResumeBackupPlanNotFound describes a response with status code 404, with default header values.
+/*
+ResumeBackupPlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewResumeBackupPlanInternalServerError() *ResumeBackupPlanInternalServerErr
 	return &ResumeBackupPlanInternalServerError{}
 }
 
-/* ResumeBackupPlanInternalServerError describes a response with status code 500, with default header values.
+/*
+ResumeBackupPlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

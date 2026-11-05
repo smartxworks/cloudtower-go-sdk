@@ -57,7 +57,8 @@ func NewGetScvmDiskMetricsOK() *GetScvmDiskMetricsOK {
 	return &GetScvmDiskMetricsOK{}
 }
 
-/* GetScvmDiskMetricsOK describes a response with status code 200, with default header values.
+/*
+GetScvmDiskMetricsOK describes a response with status code 200, with default header values.
 
 GetScvmDiskMetricsOK get scvm disk metrics o k
 */
@@ -96,7 +97,8 @@ func NewGetScvmDiskMetricsBadRequest() *GetScvmDiskMetricsBadRequest {
 	return &GetScvmDiskMetricsBadRequest{}
 }
 
-/* GetScvmDiskMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetScvmDiskMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetScvmDiskMetricsNotFound() *GetScvmDiskMetricsNotFound {
 	return &GetScvmDiskMetricsNotFound{}
 }
 
-/* GetScvmDiskMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetScvmDiskMetricsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetScvmDiskMetricsInternalServerError() *GetScvmDiskMetricsInternalServe
 	return &GetScvmDiskMetricsInternalServerError{}
 }
 
-/* GetScvmDiskMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetScvmDiskMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

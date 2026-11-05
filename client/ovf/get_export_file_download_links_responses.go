@@ -57,7 +57,8 @@ func NewGetExportFileDownloadLinksOK() *GetExportFileDownloadLinksOK {
 	return &GetExportFileDownloadLinksOK{}
 }
 
-/* GetExportFileDownloadLinksOK describes a response with status code 200, with default header values.
+/*
+GetExportFileDownloadLinksOK describes a response with status code 200, with default header values.
 
 GetExportFileDownloadLinksOK get export file download links o k
 */
@@ -96,7 +97,8 @@ func NewGetExportFileDownloadLinksBadRequest() *GetExportFileDownloadLinksBadReq
 	return &GetExportFileDownloadLinksBadRequest{}
 }
 
-/* GetExportFileDownloadLinksBadRequest describes a response with status code 400, with default header values.
+/*
+GetExportFileDownloadLinksBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetExportFileDownloadLinksNotFound() *GetExportFileDownloadLinksNotFound
 	return &GetExportFileDownloadLinksNotFound{}
 }
 
-/* GetExportFileDownloadLinksNotFound describes a response with status code 404, with default header values.
+/*
+GetExportFileDownloadLinksNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetExportFileDownloadLinksInternalServerError() *GetExportFileDownloadLi
 	return &GetExportFileDownloadLinksInternalServerError{}
 }
 
-/* GetExportFileDownloadLinksInternalServerError describes a response with status code 500, with default header values.
+/*
+GetExportFileDownloadLinksInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

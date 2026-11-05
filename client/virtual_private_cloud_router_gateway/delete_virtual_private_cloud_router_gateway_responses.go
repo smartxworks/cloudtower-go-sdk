@@ -57,7 +57,8 @@ func NewDeleteVirtualPrivateCloudRouterGatewayOK() *DeleteVirtualPrivateCloudRou
 	return &DeleteVirtualPrivateCloudRouterGatewayOK{}
 }
 
-/* DeleteVirtualPrivateCloudRouterGatewayOK describes a response with status code 200, with default header values.
+/*
+DeleteVirtualPrivateCloudRouterGatewayOK describes a response with status code 200, with default header values.
 
 DeleteVirtualPrivateCloudRouterGatewayOK delete virtual private cloud router gateway o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVirtualPrivateCloudRouterGatewayBadRequest() *DeleteVirtualPrivate
 	return &DeleteVirtualPrivateCloudRouterGatewayBadRequest{}
 }
 
-/* DeleteVirtualPrivateCloudRouterGatewayBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVirtualPrivateCloudRouterGatewayBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVirtualPrivateCloudRouterGatewayNotFound() *DeleteVirtualPrivateCl
 	return &DeleteVirtualPrivateCloudRouterGatewayNotFound{}
 }
 
-/* DeleteVirtualPrivateCloudRouterGatewayNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVirtualPrivateCloudRouterGatewayNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVirtualPrivateCloudRouterGatewayInternalServerError() *DeleteVirtu
 	return &DeleteVirtualPrivateCloudRouterGatewayInternalServerError{}
 }
 
-/* DeleteVirtualPrivateCloudRouterGatewayInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVirtualPrivateCloudRouterGatewayInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

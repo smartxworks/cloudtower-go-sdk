@@ -57,7 +57,8 @@ func NewCreateBrickTopoOK() *CreateBrickTopoOK {
 	return &CreateBrickTopoOK{}
 }
 
-/* CreateBrickTopoOK describes a response with status code 200, with default header values.
+/*
+CreateBrickTopoOK describes a response with status code 200, with default header values.
 
 CreateBrickTopoOK create brick topo o k
 */
@@ -96,7 +97,8 @@ func NewCreateBrickTopoBadRequest() *CreateBrickTopoBadRequest {
 	return &CreateBrickTopoBadRequest{}
 }
 
-/* CreateBrickTopoBadRequest describes a response with status code 400, with default header values.
+/*
+CreateBrickTopoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateBrickTopoNotFound() *CreateBrickTopoNotFound {
 	return &CreateBrickTopoNotFound{}
 }
 
-/* CreateBrickTopoNotFound describes a response with status code 404, with default header values.
+/*
+CreateBrickTopoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateBrickTopoInternalServerError() *CreateBrickTopoInternalServerError
 	return &CreateBrickTopoInternalServerError{}
 }
 
-/* CreateBrickTopoInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateBrickTopoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

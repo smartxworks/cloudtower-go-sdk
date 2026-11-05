@@ -54,10 +54,12 @@ func NewExitMaintenanceModeParamsWithHTTPClient(client *http.Client) *ExitMainte
 	}
 }
 
-/* ExitMaintenanceModeParams contains all the parameters to send to the API endpoint
-   for the exit maintenance mode operation.
+/*
+ExitMaintenanceModeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the exit maintenance mode operation.
+
+	Typically these are written to a http.Request.
 */
 type ExitMaintenanceModeParams struct {
 

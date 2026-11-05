@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateEntityFilter create entity filter API
+CreateEntityFilter create entity filter API
 */
 func (a *Client) CreateEntityFilter(params *CreateEntityFilterParams, opts ...ClientOption) (*CreateEntityFilterOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateEntityFilter(params *CreateEntityFilterParams, opts ...Cl
 }
 
 /*
-  DeleteEntityFilter delete entity filter API
+DeleteEntityFilter delete entity filter API
 */
 func (a *Client) DeleteEntityFilter(params *DeleteEntityFilterParams, opts ...ClientOption) (*DeleteEntityFilterOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteEntityFilter(params *DeleteEntityFilterParams, opts ...Cl
 }
 
 /*
-  GetEntityFilters get entity filters API
+GetEntityFilters get entity filters API
 */
 func (a *Client) GetEntityFilters(params *GetEntityFiltersParams, opts ...ClientOption) (*GetEntityFiltersOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetEntityFilters(params *GetEntityFiltersParams, opts ...Client
 }
 
 /*
-  GetEntityFiltersConnection get entity filters connection API
+GetEntityFiltersConnection get entity filters connection API
 */
 func (a *Client) GetEntityFiltersConnection(params *GetEntityFiltersConnectionParams, opts ...ClientOption) (*GetEntityFiltersConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetEntityFiltersConnection(params *GetEntityFiltersConnectionPa
 }
 
 /*
-  UpdateEntityFilter update entity filter API
+UpdateEntityFilter update entity filter API
 */
 func (a *Client) UpdateEntityFilter(params *UpdateEntityFilterParams, opts ...ClientOption) (*UpdateEntityFilterOK, error) {
 	// TODO: Validate the params before sending

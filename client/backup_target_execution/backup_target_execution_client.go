@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetBackupTargetExecutions get backup target executions API
+GetBackupTargetExecutions get backup target executions API
 */
 func (a *Client) GetBackupTargetExecutions(params *GetBackupTargetExecutionsParams, opts ...ClientOption) (*GetBackupTargetExecutionsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetBackupTargetExecutions(params *GetBackupTargetExecutionsPara
 }
 
 /*
-  GetBackupTargetExecutionsConnection get backup target executions connection API
+GetBackupTargetExecutionsConnection get backup target executions connection API
 */
 func (a *Client) GetBackupTargetExecutionsConnection(params *GetBackupTargetExecutionsConnectionParams, opts ...ClientOption) (*GetBackupTargetExecutionsConnectionOK, error) {
 	// TODO: Validate the params before sending

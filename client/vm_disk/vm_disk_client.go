@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetVMDisks get Vm disks API
+GetVMDisks get Vm disks API
 */
 func (a *Client) GetVMDisks(params *GetVMDisksParams, opts ...ClientOption) (*GetVMDisksOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetVMDisks(params *GetVMDisksParams, opts ...ClientOption) (*Ge
 }
 
 /*
-  GetVMDisksConnection get Vm disks connection API
+GetVMDisksConnection get Vm disks connection API
 */
 func (a *Client) GetVMDisksConnection(params *GetVMDisksConnectionParams, opts ...ClientOption) (*GetVMDisksConnectionOK, error) {
 	// TODO: Validate the params before sending

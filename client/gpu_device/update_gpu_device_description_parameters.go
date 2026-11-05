@@ -54,10 +54,12 @@ func NewUpdateGpuDeviceDescriptionParamsWithHTTPClient(client *http.Client) *Upd
 	}
 }
 
-/* UpdateGpuDeviceDescriptionParams contains all the parameters to send to the API endpoint
-   for the update gpu device description operation.
+/*
+UpdateGpuDeviceDescriptionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update gpu device description operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateGpuDeviceDescriptionParams struct {
 

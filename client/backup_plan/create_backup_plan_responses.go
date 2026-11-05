@@ -57,7 +57,8 @@ func NewCreateBackupPlanOK() *CreateBackupPlanOK {
 	return &CreateBackupPlanOK{}
 }
 
-/* CreateBackupPlanOK describes a response with status code 200, with default header values.
+/*
+CreateBackupPlanOK describes a response with status code 200, with default header values.
 
 CreateBackupPlanOK create backup plan o k
 */
@@ -96,7 +97,8 @@ func NewCreateBackupPlanBadRequest() *CreateBackupPlanBadRequest {
 	return &CreateBackupPlanBadRequest{}
 }
 
-/* CreateBackupPlanBadRequest describes a response with status code 400, with default header values.
+/*
+CreateBackupPlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateBackupPlanNotFound() *CreateBackupPlanNotFound {
 	return &CreateBackupPlanNotFound{}
 }
 
-/* CreateBackupPlanNotFound describes a response with status code 404, with default header values.
+/*
+CreateBackupPlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateBackupPlanInternalServerError() *CreateBackupPlanInternalServerErr
 	return &CreateBackupPlanInternalServerError{}
 }
 
-/* CreateBackupPlanInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateBackupPlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

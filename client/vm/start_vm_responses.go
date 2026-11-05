@@ -57,7 +57,8 @@ func NewStartVMOK() *StartVMOK {
 	return &StartVMOK{}
 }
 
-/* StartVMOK describes a response with status code 200, with default header values.
+/*
+StartVMOK describes a response with status code 200, with default header values.
 
 StartVMOK start Vm o k
 */
@@ -96,7 +97,8 @@ func NewStartVMBadRequest() *StartVMBadRequest {
 	return &StartVMBadRequest{}
 }
 
-/* StartVMBadRequest describes a response with status code 400, with default header values.
+/*
+StartVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewStartVMNotFound() *StartVMNotFound {
 	return &StartVMNotFound{}
 }
 
-/* StartVMNotFound describes a response with status code 404, with default header values.
+/*
+StartVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewStartVMInternalServerError() *StartVMInternalServerError {
 	return &StartVMInternalServerError{}
 }
 
-/* StartVMInternalServerError describes a response with status code 500, with default header values.
+/*
+StartVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

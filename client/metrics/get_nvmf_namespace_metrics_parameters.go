@@ -54,10 +54,12 @@ func NewGetNvmfNamespaceMetricsParamsWithHTTPClient(client *http.Client) *GetNvm
 	}
 }
 
-/* GetNvmfNamespaceMetricsParams contains all the parameters to send to the API endpoint
-   for the get nvmf namespace metrics operation.
+/*
+GetNvmfNamespaceMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get nvmf namespace metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNvmfNamespaceMetricsParams struct {
 

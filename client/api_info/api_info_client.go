@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetAPIVersion get Api version API
+GetAPIVersion get Api version API
 */
 func (a *Client) GetAPIVersion(params *GetAPIVersionParams, opts ...ClientOption) (*GetAPIVersionOK, error) {
 	// TODO: Validate the params before sending

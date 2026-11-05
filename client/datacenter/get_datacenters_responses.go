@@ -57,7 +57,8 @@ func NewGetDatacentersOK() *GetDatacentersOK {
 	return &GetDatacentersOK{}
 }
 
-/* GetDatacentersOK describes a response with status code 200, with default header values.
+/*
+GetDatacentersOK describes a response with status code 200, with default header values.
 
 GetDatacentersOK get datacenters o k
 */
@@ -96,7 +97,8 @@ func NewGetDatacentersBadRequest() *GetDatacentersBadRequest {
 	return &GetDatacentersBadRequest{}
 }
 
-/* GetDatacentersBadRequest describes a response with status code 400, with default header values.
+/*
+GetDatacentersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetDatacentersNotFound() *GetDatacentersNotFound {
 	return &GetDatacentersNotFound{}
 }
 
-/* GetDatacentersNotFound describes a response with status code 404, with default header values.
+/*
+GetDatacentersNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetDatacentersInternalServerError() *GetDatacentersInternalServerError {
 	return &GetDatacentersInternalServerError{}
 }
 
-/* GetDatacentersInternalServerError describes a response with status code 500, with default header values.
+/*
+GetDatacentersInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

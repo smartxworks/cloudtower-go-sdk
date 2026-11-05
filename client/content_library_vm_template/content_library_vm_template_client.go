@@ -54,7 +54,7 @@ type ClientService interface {
 }
 
 /*
-  CloneContentLibraryVMTemplateFromVM clone content library Vm template from Vm API
+CloneContentLibraryVMTemplateFromVM clone content library Vm template from Vm API
 */
 func (a *Client) CloneContentLibraryVMTemplateFromVM(params *CloneContentLibraryVMTemplateFromVMParams, opts ...ClientOption) (*CloneContentLibraryVMTemplateFromVMOK, error) {
 	// TODO: Validate the params before sending
@@ -92,7 +92,7 @@ func (a *Client) CloneContentLibraryVMTemplateFromVM(params *CloneContentLibrary
 }
 
 /*
-  ConvertContentLibraryVMTemplateFromVM convert content library Vm template from Vm API
+ConvertContentLibraryVMTemplateFromVM convert content library Vm template from Vm API
 */
 func (a *Client) ConvertContentLibraryVMTemplateFromVM(params *ConvertContentLibraryVMTemplateFromVMParams, opts ...ClientOption) (*ConvertContentLibraryVMTemplateFromVMOK, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +130,7 @@ func (a *Client) ConvertContentLibraryVMTemplateFromVM(params *ConvertContentLib
 }
 
 /*
-  DeleteContentLibraryVMTemplate delete content library Vm template API
+DeleteContentLibraryVMTemplate delete content library Vm template API
 */
 func (a *Client) DeleteContentLibraryVMTemplate(params *DeleteContentLibraryVMTemplateParams, opts ...ClientOption) (*DeleteContentLibraryVMTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -168,7 +168,7 @@ func (a *Client) DeleteContentLibraryVMTemplate(params *DeleteContentLibraryVMTe
 }
 
 /*
-  DistributeContentLibraryVmtemplateClusters distribute content library vmtemplate clusters API
+DistributeContentLibraryVmtemplateClusters distribute content library vmtemplate clusters API
 */
 func (a *Client) DistributeContentLibraryVmtemplateClusters(params *DistributeContentLibraryVmtemplateClustersParams, opts ...ClientOption) (*DistributeContentLibraryVmtemplateClustersOK, error) {
 	// TODO: Validate the params before sending
@@ -206,7 +206,7 @@ func (a *Client) DistributeContentLibraryVmtemplateClusters(params *DistributeCo
 }
 
 /*
-  ExportContentLibraryVMTemplate export content library Vm template API
+ExportContentLibraryVMTemplate export content library Vm template API
 */
 func (a *Client) ExportContentLibraryVMTemplate(params *ExportContentLibraryVMTemplateParams, opts ...ClientOption) (*ExportContentLibraryVMTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -244,7 +244,7 @@ func (a *Client) ExportContentLibraryVMTemplate(params *ExportContentLibraryVMTe
 }
 
 /*
-  GetContentLibraryVMTemplates get content library Vm templates API
+GetContentLibraryVMTemplates get content library Vm templates API
 */
 func (a *Client) GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplatesParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesOK, error) {
 	// TODO: Validate the params before sending
@@ -282,7 +282,7 @@ func (a *Client) GetContentLibraryVMTemplates(params *GetContentLibraryVMTemplat
 }
 
 /*
-  GetContentLibraryVMTemplatesConnection get content library Vm templates connection API
+GetContentLibraryVMTemplatesConnection get content library Vm templates connection API
 */
 func (a *Client) GetContentLibraryVMTemplatesConnection(params *GetContentLibraryVMTemplatesConnectionParams, opts ...ClientOption) (*GetContentLibraryVMTemplatesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -320,7 +320,7 @@ func (a *Client) GetContentLibraryVMTemplatesConnection(params *GetContentLibrar
 }
 
 /*
-  ImportContentLibraryVMTemplate import content library Vm template API
+ImportContentLibraryVMTemplate import content library Vm template API
 */
 func (a *Client) ImportContentLibraryVMTemplate(params *ImportContentLibraryVMTemplateParams, opts ...ClientOption) (*ImportContentLibraryVMTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -358,7 +358,7 @@ func (a *Client) ImportContentLibraryVMTemplate(params *ImportContentLibraryVMTe
 }
 
 /*
-  RemoveContentLibraryVMTemplateClusters remove content library Vm template clusters API
+RemoveContentLibraryVMTemplateClusters remove content library Vm template clusters API
 */
 func (a *Client) RemoveContentLibraryVMTemplateClusters(params *RemoveContentLibraryVMTemplateClustersParams, opts ...ClientOption) (*RemoveContentLibraryVMTemplateClustersOK, error) {
 	// TODO: Validate the params before sending
@@ -396,7 +396,7 @@ func (a *Client) RemoveContentLibraryVMTemplateClusters(params *RemoveContentLib
 }
 
 /*
-  UpdateContentLibraryVMTemplate update content library Vm template API
+UpdateContentLibraryVMTemplate update content library Vm template API
 */
 func (a *Client) UpdateContentLibraryVMTemplate(params *UpdateContentLibraryVMTemplateParams, opts ...ClientOption) (*UpdateContentLibraryVMTemplateOK, error) {
 	// TODO: Validate the params before sending

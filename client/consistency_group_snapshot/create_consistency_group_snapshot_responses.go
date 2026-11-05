@@ -57,7 +57,8 @@ func NewCreateConsistencyGroupSnapshotOK() *CreateConsistencyGroupSnapshotOK {
 	return &CreateConsistencyGroupSnapshotOK{}
 }
 
-/* CreateConsistencyGroupSnapshotOK describes a response with status code 200, with default header values.
+/*
+CreateConsistencyGroupSnapshotOK describes a response with status code 200, with default header values.
 
 CreateConsistencyGroupSnapshotOK create consistency group snapshot o k
 */
@@ -96,7 +97,8 @@ func NewCreateConsistencyGroupSnapshotBadRequest() *CreateConsistencyGroupSnapsh
 	return &CreateConsistencyGroupSnapshotBadRequest{}
 }
 
-/* CreateConsistencyGroupSnapshotBadRequest describes a response with status code 400, with default header values.
+/*
+CreateConsistencyGroupSnapshotBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateConsistencyGroupSnapshotNotFound() *CreateConsistencyGroupSnapshot
 	return &CreateConsistencyGroupSnapshotNotFound{}
 }
 
-/* CreateConsistencyGroupSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+CreateConsistencyGroupSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateConsistencyGroupSnapshotInternalServerError() *CreateConsistencyGr
 	return &CreateConsistencyGroupSnapshotInternalServerError{}
 }
 
-/* CreateConsistencyGroupSnapshotInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateConsistencyGroupSnapshotInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewUpdateVlanOK() *UpdateVlanOK {
 	return &UpdateVlanOK{}
 }
 
-/* UpdateVlanOK describes a response with status code 200, with default header values.
+/*
+UpdateVlanOK describes a response with status code 200, with default header values.
 
 UpdateVlanOK update vlan o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVlanBadRequest() *UpdateVlanBadRequest {
 	return &UpdateVlanBadRequest{}
 }
 
-/* UpdateVlanBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVlanNotFound() *UpdateVlanNotFound {
 	return &UpdateVlanNotFound{}
 }
 
-/* UpdateVlanNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVlanInternalServerError() *UpdateVlanInternalServerError {
 	return &UpdateVlanInternalServerError{}
 }
 
-/* UpdateVlanInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

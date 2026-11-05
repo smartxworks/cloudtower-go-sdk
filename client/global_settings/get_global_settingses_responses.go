@@ -57,7 +57,8 @@ func NewGetGlobalSettingsesOK() *GetGlobalSettingsesOK {
 	return &GetGlobalSettingsesOK{}
 }
 
-/* GetGlobalSettingsesOK describes a response with status code 200, with default header values.
+/*
+GetGlobalSettingsesOK describes a response with status code 200, with default header values.
 
 GetGlobalSettingsesOK get global settingses o k
 */
@@ -96,7 +97,8 @@ func NewGetGlobalSettingsesBadRequest() *GetGlobalSettingsesBadRequest {
 	return &GetGlobalSettingsesBadRequest{}
 }
 
-/* GetGlobalSettingsesBadRequest describes a response with status code 400, with default header values.
+/*
+GetGlobalSettingsesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetGlobalSettingsesNotFound() *GetGlobalSettingsesNotFound {
 	return &GetGlobalSettingsesNotFound{}
 }
 
-/* GetGlobalSettingsesNotFound describes a response with status code 404, with default header values.
+/*
+GetGlobalSettingsesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetGlobalSettingsesInternalServerError() *GetGlobalSettingsesInternalSer
 	return &GetGlobalSettingsesInternalServerError{}
 }
 
-/* GetGlobalSettingsesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGlobalSettingsesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

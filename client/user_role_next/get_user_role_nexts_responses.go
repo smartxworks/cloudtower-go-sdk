@@ -57,7 +57,8 @@ func NewGetUserRoleNextsOK() *GetUserRoleNextsOK {
 	return &GetUserRoleNextsOK{}
 }
 
-/* GetUserRoleNextsOK describes a response with status code 200, with default header values.
+/*
+GetUserRoleNextsOK describes a response with status code 200, with default header values.
 
 GetUserRoleNextsOK get user role nexts o k
 */
@@ -96,7 +97,8 @@ func NewGetUserRoleNextsBadRequest() *GetUserRoleNextsBadRequest {
 	return &GetUserRoleNextsBadRequest{}
 }
 
-/* GetUserRoleNextsBadRequest describes a response with status code 400, with default header values.
+/*
+GetUserRoleNextsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetUserRoleNextsNotFound() *GetUserRoleNextsNotFound {
 	return &GetUserRoleNextsNotFound{}
 }
 
-/* GetUserRoleNextsNotFound describes a response with status code 404, with default header values.
+/*
+GetUserRoleNextsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetUserRoleNextsInternalServerError() *GetUserRoleNextsInternalServerErr
 	return &GetUserRoleNextsInternalServerError{}
 }
 
-/* GetUserRoleNextsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetUserRoleNextsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

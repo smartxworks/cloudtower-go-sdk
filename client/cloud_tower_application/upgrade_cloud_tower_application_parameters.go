@@ -54,10 +54,12 @@ func NewUpgradeCloudTowerApplicationParamsWithHTTPClient(client *http.Client) *U
 	}
 }
 
-/* UpgradeCloudTowerApplicationParams contains all the parameters to send to the API endpoint
-   for the upgrade cloud tower application operation.
+/*
+UpgradeCloudTowerApplicationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the upgrade cloud tower application operation.
+
+	Typically these are written to a http.Request.
 */
 type UpgradeCloudTowerApplicationParams struct {
 

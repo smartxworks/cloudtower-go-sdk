@@ -54,10 +54,12 @@ func NewDeleteSnmpTransportParamsWithHTTPClient(client *http.Client) *DeleteSnmp
 	}
 }
 
-/* DeleteSnmpTransportParams contains all the parameters to send to the API endpoint
-   for the delete snmp transport operation.
+/*
+DeleteSnmpTransportParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete snmp transport operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteSnmpTransportParams struct {
 

@@ -39,7 +39,8 @@ func NewGetAPIVersionOK() *GetAPIVersionOK {
 	return &GetAPIVersionOK{}
 }
 
-/* GetAPIVersionOK describes a response with status code 200, with default header values.
+/*
+GetAPIVersionOK describes a response with status code 200, with default header values.
 
 GetAPIVersionOK get Api version o k
 */

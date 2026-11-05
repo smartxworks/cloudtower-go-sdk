@@ -57,7 +57,8 @@ func NewGetEntityFiltersConnectionOK() *GetEntityFiltersConnectionOK {
 	return &GetEntityFiltersConnectionOK{}
 }
 
-/* GetEntityFiltersConnectionOK describes a response with status code 200, with default header values.
+/*
+GetEntityFiltersConnectionOK describes a response with status code 200, with default header values.
 
 GetEntityFiltersConnectionOK get entity filters connection o k
 */
@@ -98,7 +99,8 @@ func NewGetEntityFiltersConnectionBadRequest() *GetEntityFiltersConnectionBadReq
 	return &GetEntityFiltersConnectionBadRequest{}
 }
 
-/* GetEntityFiltersConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetEntityFiltersConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetEntityFiltersConnectionNotFound() *GetEntityFiltersConnectionNotFound
 	return &GetEntityFiltersConnectionNotFound{}
 }
 
-/* GetEntityFiltersConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetEntityFiltersConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetEntityFiltersConnectionInternalServerError() *GetEntityFiltersConnect
 	return &GetEntityFiltersConnectionInternalServerError{}
 }
 
-/* GetEntityFiltersConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEntityFiltersConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

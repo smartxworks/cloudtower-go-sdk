@@ -54,10 +54,12 @@ func NewGetLabelsParamsWithHTTPClient(client *http.Client) *GetLabelsParams {
 	}
 }
 
-/* GetLabelsParams contains all the parameters to send to the API endpoint
-   for the get labels operation.
+/*
+GetLabelsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get labels operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLabelsParams struct {
 
@@ -71,6 +73,9 @@ type GetLabelsParams struct {
 
 	// RequestBody.
 	RequestBody *models.GetLabelsRequestBody
+
+	// XSkipResources.
+	XSkipResources *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -169,6 +174,17 @@ func (o *GetLabelsParams) SetRequestBody(requestBody *models.GetLabelsRequestBod
 	o.RequestBody = requestBody
 }
 
+// WithXSkipResources adds the xSkipResources to the get labels params
+func (o *GetLabelsParams) WithXSkipResources(xSkipResources *string) *GetLabelsParams {
+	o.SetXSkipResources(xSkipResources)
+	return o
+}
+
+// SetXSkipResources adds the xSkipResources to the get labels params
+func (o *GetLabelsParams) SetXSkipResources(xSkipResources *string) {
+	o.XSkipResources = xSkipResources
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetLabelsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -194,6 +210,14 @@ func (o *GetLabelsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 	}
 	if o.RequestBody != nil {
 		if err := r.SetBodyParam(o.RequestBody); err != nil {
+			return err
+		}
+	}
+
+	if o.XSkipResources != nil {
+
+		// header param x-skip-resources
+		if err := r.SetHeaderParam("x-skip-resources", *o.XSkipResources); err != nil {
 			return err
 		}
 	}

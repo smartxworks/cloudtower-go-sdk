@@ -57,7 +57,8 @@ func NewAddClustersToDatacenterOK() *AddClustersToDatacenterOK {
 	return &AddClustersToDatacenterOK{}
 }
 
-/* AddClustersToDatacenterOK describes a response with status code 200, with default header values.
+/*
+AddClustersToDatacenterOK describes a response with status code 200, with default header values.
 
 AddClustersToDatacenterOK add clusters to datacenter o k
 */
@@ -96,7 +97,8 @@ func NewAddClustersToDatacenterBadRequest() *AddClustersToDatacenterBadRequest {
 	return &AddClustersToDatacenterBadRequest{}
 }
 
-/* AddClustersToDatacenterBadRequest describes a response with status code 400, with default header values.
+/*
+AddClustersToDatacenterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewAddClustersToDatacenterNotFound() *AddClustersToDatacenterNotFound {
 	return &AddClustersToDatacenterNotFound{}
 }
 
-/* AddClustersToDatacenterNotFound describes a response with status code 404, with default header values.
+/*
+AddClustersToDatacenterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewAddClustersToDatacenterInternalServerError() *AddClustersToDatacenterInt
 	return &AddClustersToDatacenterInternalServerError{}
 }
 
-/* AddClustersToDatacenterInternalServerError describes a response with status code 500, with default header values.
+/*
+AddClustersToDatacenterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

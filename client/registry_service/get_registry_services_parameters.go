@@ -54,10 +54,12 @@ func NewGetRegistryServicesParamsWithHTTPClient(client *http.Client) *GetRegistr
 	}
 }
 
-/* GetRegistryServicesParams contains all the parameters to send to the API endpoint
-   for the get registry services operation.
+/*
+GetRegistryServicesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get registry services operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRegistryServicesParams struct {
 

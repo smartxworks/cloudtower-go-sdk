@@ -54,10 +54,12 @@ func NewGetReportTemplatesParamsWithHTTPClient(client *http.Client) *GetReportTe
 	}
 }
 
-/* GetReportTemplatesParams contains all the parameters to send to the API endpoint
-   for the get report templates operation.
+/*
+GetReportTemplatesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get report templates operation.
+
+	Typically these are written to a http.Request.
 */
 type GetReportTemplatesParams struct {
 

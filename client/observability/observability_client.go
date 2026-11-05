@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  ClearSystemServiceAlertNotificationConfig clear system service alert notification config API
+ClearSystemServiceAlertNotificationConfig clear system service alert notification config API
 */
 func (a *Client) ClearSystemServiceAlertNotificationConfig(params *ClearSystemServiceAlertNotificationConfigParams, opts ...ClientOption) (*ClearSystemServiceAlertNotificationConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) ClearSystemServiceAlertNotificationConfig(params *ClearSystemSe
 }
 
 /*
-  DisassociateSystemServiceFromObsService disassociate system service from obs service API
+DisassociateSystemServiceFromObsService disassociate system service from obs service API
 */
 func (a *Client) DisassociateSystemServiceFromObsService(params *DisassociateSystemServiceFromObsServiceParams, opts ...ClientOption) (*DisassociateSystemServiceFromObsServiceOK, error) {
 	// TODO: Validate the params before sending

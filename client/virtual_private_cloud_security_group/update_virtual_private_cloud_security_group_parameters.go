@@ -54,10 +54,12 @@ func NewUpdateVirtualPrivateCloudSecurityGroupParamsWithHTTPClient(client *http.
 	}
 }
 
-/* UpdateVirtualPrivateCloudSecurityGroupParams contains all the parameters to send to the API endpoint
-   for the update virtual private cloud security group operation.
+/*
+UpdateVirtualPrivateCloudSecurityGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update virtual private cloud security group operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVirtualPrivateCloudSecurityGroupParams struct {
 

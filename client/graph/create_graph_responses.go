@@ -57,7 +57,8 @@ func NewCreateGraphOK() *CreateGraphOK {
 	return &CreateGraphOK{}
 }
 
-/* CreateGraphOK describes a response with status code 200, with default header values.
+/*
+CreateGraphOK describes a response with status code 200, with default header values.
 
 CreateGraphOK create graph o k
 */
@@ -96,7 +97,8 @@ func NewCreateGraphBadRequest() *CreateGraphBadRequest {
 	return &CreateGraphBadRequest{}
 }
 
-/* CreateGraphBadRequest describes a response with status code 400, with default header values.
+/*
+CreateGraphBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateGraphNotFound() *CreateGraphNotFound {
 	return &CreateGraphNotFound{}
 }
 
-/* CreateGraphNotFound describes a response with status code 404, with default header values.
+/*
+CreateGraphNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateGraphInternalServerError() *CreateGraphInternalServerError {
 	return &CreateGraphInternalServerError{}
 }
 
-/* CreateGraphInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateGraphInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

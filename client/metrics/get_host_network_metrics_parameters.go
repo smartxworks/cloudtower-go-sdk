@@ -54,10 +54,12 @@ func NewGetHostNetworkMetricsParamsWithHTTPClient(client *http.Client) *GetHostN
 	}
 }
 
-/* GetHostNetworkMetricsParams contains all the parameters to send to the API endpoint
-   for the get host network metrics operation.
+/*
+GetHostNetworkMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get host network metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetHostNetworkMetricsParams struct {
 

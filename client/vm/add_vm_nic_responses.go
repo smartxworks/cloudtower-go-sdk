@@ -57,7 +57,8 @@ func NewAddVMNicOK() *AddVMNicOK {
 	return &AddVMNicOK{}
 }
 
-/* AddVMNicOK describes a response with status code 200, with default header values.
+/*
+AddVMNicOK describes a response with status code 200, with default header values.
 
 AddVMNicOK add Vm nic o k
 */
@@ -96,7 +97,8 @@ func NewAddVMNicBadRequest() *AddVMNicBadRequest {
 	return &AddVMNicBadRequest{}
 }
 
-/* AddVMNicBadRequest describes a response with status code 400, with default header values.
+/*
+AddVMNicBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewAddVMNicNotFound() *AddVMNicNotFound {
 	return &AddVMNicNotFound{}
 }
 
-/* AddVMNicNotFound describes a response with status code 404, with default header values.
+/*
+AddVMNicNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewAddVMNicInternalServerError() *AddVMNicInternalServerError {
 	return &AddVMNicInternalServerError{}
 }
 
-/* AddVMNicInternalServerError describes a response with status code 500, with default header values.
+/*
+AddVMNicInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

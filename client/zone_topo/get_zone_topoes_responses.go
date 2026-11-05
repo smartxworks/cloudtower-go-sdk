@@ -57,7 +57,8 @@ func NewGetZoneTopoesOK() *GetZoneTopoesOK {
 	return &GetZoneTopoesOK{}
 }
 
-/* GetZoneTopoesOK describes a response with status code 200, with default header values.
+/*
+GetZoneTopoesOK describes a response with status code 200, with default header values.
 
 GetZoneTopoesOK get zone topoes o k
 */
@@ -96,7 +97,8 @@ func NewGetZoneTopoesBadRequest() *GetZoneTopoesBadRequest {
 	return &GetZoneTopoesBadRequest{}
 }
 
-/* GetZoneTopoesBadRequest describes a response with status code 400, with default header values.
+/*
+GetZoneTopoesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetZoneTopoesNotFound() *GetZoneTopoesNotFound {
 	return &GetZoneTopoesNotFound{}
 }
 
-/* GetZoneTopoesNotFound describes a response with status code 404, with default header values.
+/*
+GetZoneTopoesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetZoneTopoesInternalServerError() *GetZoneTopoesInternalServerError {
 	return &GetZoneTopoesInternalServerError{}
 }
 
-/* GetZoneTopoesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetZoneTopoesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

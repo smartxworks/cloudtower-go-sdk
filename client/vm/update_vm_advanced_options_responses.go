@@ -63,7 +63,8 @@ func NewUpdateVMAdvancedOptionsOK() *UpdateVMAdvancedOptionsOK {
 	return &UpdateVMAdvancedOptionsOK{}
 }
 
-/* UpdateVMAdvancedOptionsOK describes a response with status code 200, with default header values.
+/*
+UpdateVMAdvancedOptionsOK describes a response with status code 200, with default header values.
 
 UpdateVMAdvancedOptionsOK update Vm advanced options o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVMAdvancedOptionsNotModified() *UpdateVMAdvancedOptionsNotModified
 	return &UpdateVMAdvancedOptionsNotModified{}
 }
 
-/* UpdateVMAdvancedOptionsNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVMAdvancedOptionsNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVMAdvancedOptionsBadRequest() *UpdateVMAdvancedOptionsBadRequest {
 	return &UpdateVMAdvancedOptionsBadRequest{}
 }
 
-/* UpdateVMAdvancedOptionsBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMAdvancedOptionsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVMAdvancedOptionsNotFound() *UpdateVMAdvancedOptionsNotFound {
 	return &UpdateVMAdvancedOptionsNotFound{}
 }
 
-/* UpdateVMAdvancedOptionsNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMAdvancedOptionsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVMAdvancedOptionsInternalServerError() *UpdateVMAdvancedOptionsInt
 	return &UpdateVMAdvancedOptionsInternalServerError{}
 }
 
-/* UpdateVMAdvancedOptionsInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMAdvancedOptionsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

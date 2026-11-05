@@ -54,10 +54,12 @@ func NewUpdateVMIoPolicyParamsWithHTTPClient(client *http.Client) *UpdateVMIoPol
 	}
 }
 
-/* UpdateVMIoPolicyParams contains all the parameters to send to the API endpoint
-   for the update Vm io policy operation.
+/*
+UpdateVMIoPolicyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm io policy operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMIoPolicyParams struct {
 

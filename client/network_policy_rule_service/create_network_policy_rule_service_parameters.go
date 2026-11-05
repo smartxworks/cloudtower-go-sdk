@@ -54,10 +54,12 @@ func NewCreateNetworkPolicyRuleServiceParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* CreateNetworkPolicyRuleServiceParams contains all the parameters to send to the API endpoint
-   for the create network policy rule service operation.
+/*
+CreateNetworkPolicyRuleServiceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create network policy rule service operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateNetworkPolicyRuleServiceParams struct {
 

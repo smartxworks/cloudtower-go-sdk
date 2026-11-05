@@ -54,10 +54,12 @@ func NewGetVMDisksParamsWithHTTPClient(client *http.Client) *GetVMDisksParams {
 	}
 }
 
-/* GetVMDisksParams contains all the parameters to send to the API endpoint
-   for the get Vm disks operation.
+/*
+GetVMDisksParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm disks operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMDisksParams struct {
 

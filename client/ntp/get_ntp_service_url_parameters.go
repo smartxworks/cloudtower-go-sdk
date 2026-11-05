@@ -52,10 +52,12 @@ func NewGetNtpServiceURLParamsWithHTTPClient(client *http.Client) *GetNtpService
 	}
 }
 
-/* GetNtpServiceURLParams contains all the parameters to send to the API endpoint
-   for the get ntp service Url operation.
+/*
+GetNtpServiceURLParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get ntp service Url operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNtpServiceURLParams struct {
 

@@ -57,7 +57,8 @@ func NewExportCSVOK() *ExportCSVOK {
 	return &ExportCSVOK{}
 }
 
-/* ExportCSVOK describes a response with status code 200, with default header values.
+/*
+ExportCSVOK describes a response with status code 200, with default header values.
 
 ExportCSVOK export c s v o k
 */
@@ -96,7 +97,8 @@ func NewExportCSVBadRequest() *ExportCSVBadRequest {
 	return &ExportCSVBadRequest{}
 }
 
-/* ExportCSVBadRequest describes a response with status code 400, with default header values.
+/*
+ExportCSVBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewExportCSVNotFound() *ExportCSVNotFound {
 	return &ExportCSVNotFound{}
 }
 
-/* ExportCSVNotFound describes a response with status code 404, with default header values.
+/*
+ExportCSVNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewExportCSVInternalServerError() *ExportCSVInternalServerError {
 	return &ExportCSVInternalServerError{}
 }
 
-/* ExportCSVInternalServerError describes a response with status code 500, with default header values.
+/*
+ExportCSVInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

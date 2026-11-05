@@ -57,7 +57,8 @@ func NewGetVMPlacementGroupsOK() *GetVMPlacementGroupsOK {
 	return &GetVMPlacementGroupsOK{}
 }
 
-/* GetVMPlacementGroupsOK describes a response with status code 200, with default header values.
+/*
+GetVMPlacementGroupsOK describes a response with status code 200, with default header values.
 
 GetVMPlacementGroupsOK get Vm placement groups o k
 */
@@ -96,7 +97,8 @@ func NewGetVMPlacementGroupsBadRequest() *GetVMPlacementGroupsBadRequest {
 	return &GetVMPlacementGroupsBadRequest{}
 }
 
-/* GetVMPlacementGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMPlacementGroupsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVMPlacementGroupsNotFound() *GetVMPlacementGroupsNotFound {
 	return &GetVMPlacementGroupsNotFound{}
 }
 
-/* GetVMPlacementGroupsNotFound describes a response with status code 404, with default header values.
+/*
+GetVMPlacementGroupsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVMPlacementGroupsInternalServerError() *GetVMPlacementGroupsInternalS
 	return &GetVMPlacementGroupsInternalServerError{}
 }
 
-/* GetVMPlacementGroupsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMPlacementGroupsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

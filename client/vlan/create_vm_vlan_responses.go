@@ -57,7 +57,8 @@ func NewCreateVMVlanOK() *CreateVMVlanOK {
 	return &CreateVMVlanOK{}
 }
 
-/* CreateVMVlanOK describes a response with status code 200, with default header values.
+/*
+CreateVMVlanOK describes a response with status code 200, with default header values.
 
 CreateVMVlanOK create Vm vlan o k
 */
@@ -96,7 +97,8 @@ func NewCreateVMVlanBadRequest() *CreateVMVlanBadRequest {
 	return &CreateVMVlanBadRequest{}
 }
 
-/* CreateVMVlanBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVMVlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVMVlanNotFound() *CreateVMVlanNotFound {
 	return &CreateVMVlanNotFound{}
 }
 
-/* CreateVMVlanNotFound describes a response with status code 404, with default header values.
+/*
+CreateVMVlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVMVlanInternalServerError() *CreateVMVlanInternalServerError {
 	return &CreateVMVlanInternalServerError{}
 }
 
-/* CreateVMVlanInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVMVlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

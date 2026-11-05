@@ -57,7 +57,8 @@ func NewDisassociateSystemServiceFromObsServiceOK() *DisassociateSystemServiceFr
 	return &DisassociateSystemServiceFromObsServiceOK{}
 }
 
-/* DisassociateSystemServiceFromObsServiceOK describes a response with status code 200, with default header values.
+/*
+DisassociateSystemServiceFromObsServiceOK describes a response with status code 200, with default header values.
 
 DisassociateSystemServiceFromObsServiceOK disassociate system service from obs service o k
 */
@@ -98,7 +99,8 @@ func NewDisassociateSystemServiceFromObsServiceBadRequest() *DisassociateSystemS
 	return &DisassociateSystemServiceFromObsServiceBadRequest{}
 }
 
-/* DisassociateSystemServiceFromObsServiceBadRequest describes a response with status code 400, with default header values.
+/*
+DisassociateSystemServiceFromObsServiceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewDisassociateSystemServiceFromObsServiceNotFound() *DisassociateSystemSer
 	return &DisassociateSystemServiceFromObsServiceNotFound{}
 }
 
-/* DisassociateSystemServiceFromObsServiceNotFound describes a response with status code 404, with default header values.
+/*
+DisassociateSystemServiceFromObsServiceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewDisassociateSystemServiceFromObsServiceInternalServerError() *Disassocia
 	return &DisassociateSystemServiceFromObsServiceInternalServerError{}
 }
 
-/* DisassociateSystemServiceFromObsServiceInternalServerError describes a response with status code 500, with default header values.
+/*
+DisassociateSystemServiceFromObsServiceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

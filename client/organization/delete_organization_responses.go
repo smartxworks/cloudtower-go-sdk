@@ -57,7 +57,8 @@ func NewDeleteOrganizationOK() *DeleteOrganizationOK {
 	return &DeleteOrganizationOK{}
 }
 
-/* DeleteOrganizationOK describes a response with status code 200, with default header values.
+/*
+DeleteOrganizationOK describes a response with status code 200, with default header values.
 
 DeleteOrganizationOK delete organization o k
 */
@@ -96,7 +97,8 @@ func NewDeleteOrganizationBadRequest() *DeleteOrganizationBadRequest {
 	return &DeleteOrganizationBadRequest{}
 }
 
-/* DeleteOrganizationBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteOrganizationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteOrganizationNotFound() *DeleteOrganizationNotFound {
 	return &DeleteOrganizationNotFound{}
 }
 
-/* DeleteOrganizationNotFound describes a response with status code 404, with default header values.
+/*
+DeleteOrganizationNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteOrganizationInternalServerError() *DeleteOrganizationInternalServe
 	return &DeleteOrganizationInternalServerError{}
 }
 
-/* DeleteOrganizationInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteOrganizationInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

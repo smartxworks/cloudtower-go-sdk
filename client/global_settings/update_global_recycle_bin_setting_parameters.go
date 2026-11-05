@@ -54,10 +54,12 @@ func NewUpdateGlobalRecycleBinSettingParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* UpdateGlobalRecycleBinSettingParams contains all the parameters to send to the API endpoint
-   for the update global recycle bin setting operation.
+/*
+UpdateGlobalRecycleBinSettingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update global recycle bin setting operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateGlobalRecycleBinSettingParams struct {
 

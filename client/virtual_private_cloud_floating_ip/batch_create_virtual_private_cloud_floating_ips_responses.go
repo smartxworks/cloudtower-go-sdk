@@ -57,7 +57,8 @@ func NewBatchCreateVirtualPrivateCloudFloatingIpsOK() *BatchCreateVirtualPrivate
 	return &BatchCreateVirtualPrivateCloudFloatingIpsOK{}
 }
 
-/* BatchCreateVirtualPrivateCloudFloatingIpsOK describes a response with status code 200, with default header values.
+/*
+BatchCreateVirtualPrivateCloudFloatingIpsOK describes a response with status code 200, with default header values.
 
 BatchCreateVirtualPrivateCloudFloatingIpsOK batch create virtual private cloud floating ips o k
 */
@@ -96,7 +97,8 @@ func NewBatchCreateVirtualPrivateCloudFloatingIpsBadRequest() *BatchCreateVirtua
 	return &BatchCreateVirtualPrivateCloudFloatingIpsBadRequest{}
 }
 
-/* BatchCreateVirtualPrivateCloudFloatingIpsBadRequest describes a response with status code 400, with default header values.
+/*
+BatchCreateVirtualPrivateCloudFloatingIpsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewBatchCreateVirtualPrivateCloudFloatingIpsNotFound() *BatchCreateVirtualP
 	return &BatchCreateVirtualPrivateCloudFloatingIpsNotFound{}
 }
 
-/* BatchCreateVirtualPrivateCloudFloatingIpsNotFound describes a response with status code 404, with default header values.
+/*
+BatchCreateVirtualPrivateCloudFloatingIpsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewBatchCreateVirtualPrivateCloudFloatingIpsInternalServerError() *BatchCre
 	return &BatchCreateVirtualPrivateCloudFloatingIpsInternalServerError{}
 }
 
-/* BatchCreateVirtualPrivateCloudFloatingIpsInternalServerError describes a response with status code 500, with default header values.
+/*
+BatchCreateVirtualPrivateCloudFloatingIpsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

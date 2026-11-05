@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateSnmpTrapReceiver create snmp trap receiver API
+CreateSnmpTrapReceiver create snmp trap receiver API
 */
 func (a *Client) CreateSnmpTrapReceiver(params *CreateSnmpTrapReceiverParams, opts ...ClientOption) (*CreateSnmpTrapReceiverOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateSnmpTrapReceiver(params *CreateSnmpTrapReceiverParams, op
 }
 
 /*
-  DeleteSnmpTrapReceiver delete snmp trap receiver API
+DeleteSnmpTrapReceiver delete snmp trap receiver API
 */
 func (a *Client) DeleteSnmpTrapReceiver(params *DeleteSnmpTrapReceiverParams, opts ...ClientOption) (*DeleteSnmpTrapReceiverOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteSnmpTrapReceiver(params *DeleteSnmpTrapReceiverParams, op
 }
 
 /*
-  GetSnmpTrapReceivers get snmp trap receivers API
+GetSnmpTrapReceivers get snmp trap receivers API
 */
 func (a *Client) GetSnmpTrapReceivers(params *GetSnmpTrapReceiversParams, opts ...ClientOption) (*GetSnmpTrapReceiversOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetSnmpTrapReceivers(params *GetSnmpTrapReceiversParams, opts .
 }
 
 /*
-  GetSnmpTrapReceiversConnection get snmp trap receivers connection API
+GetSnmpTrapReceiversConnection get snmp trap receivers connection API
 */
 func (a *Client) GetSnmpTrapReceiversConnection(params *GetSnmpTrapReceiversConnectionParams, opts ...ClientOption) (*GetSnmpTrapReceiversConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetSnmpTrapReceiversConnection(params *GetSnmpTrapReceiversConn
 }
 
 /*
-  UpdateSnmpTrapReceiver update snmp trap receiver API
+UpdateSnmpTrapReceiver update snmp trap receiver API
 */
 func (a *Client) UpdateSnmpTrapReceiver(params *UpdateSnmpTrapReceiverParams, opts ...ClientOption) (*UpdateSnmpTrapReceiverOK, error) {
 	// TODO: Validate the params before sending

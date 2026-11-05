@@ -57,7 +57,8 @@ func NewLoginOK() *LoginOK {
 	return &LoginOK{}
 }
 
-/* LoginOK describes a response with status code 200, with default header values.
+/*
+LoginOK describes a response with status code 200, with default header values.
 
 LoginOK login o k
 */
@@ -98,7 +99,8 @@ func NewLoginBadRequest() *LoginBadRequest {
 	return &LoginBadRequest{}
 }
 
-/* LoginBadRequest describes a response with status code 400, with default header values.
+/*
+LoginBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewLoginNotFound() *LoginNotFound {
 	return &LoginNotFound{}
 }
 
-/* LoginNotFound describes a response with status code 404, with default header values.
+/*
+LoginNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewLoginInternalServerError() *LoginInternalServerError {
 	return &LoginInternalServerError{}
 }
 
-/* LoginInternalServerError describes a response with status code 500, with default header values.
+/*
+LoginInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

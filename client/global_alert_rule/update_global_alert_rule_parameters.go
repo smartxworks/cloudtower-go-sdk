@@ -54,10 +54,12 @@ func NewUpdateGlobalAlertRuleParamsWithHTTPClient(client *http.Client) *UpdateGl
 	}
 }
 
-/* UpdateGlobalAlertRuleParams contains all the parameters to send to the API endpoint
-   for the update global alert rule operation.
+/*
+UpdateGlobalAlertRuleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update global alert rule operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateGlobalAlertRuleParams struct {
 

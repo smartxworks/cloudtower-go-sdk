@@ -57,7 +57,8 @@ func NewGetUserAuditLogsOK() *GetUserAuditLogsOK {
 	return &GetUserAuditLogsOK{}
 }
 
-/* GetUserAuditLogsOK describes a response with status code 200, with default header values.
+/*
+GetUserAuditLogsOK describes a response with status code 200, with default header values.
 
 GetUserAuditLogsOK get user audit logs o k
 */
@@ -96,7 +97,8 @@ func NewGetUserAuditLogsBadRequest() *GetUserAuditLogsBadRequest {
 	return &GetUserAuditLogsBadRequest{}
 }
 
-/* GetUserAuditLogsBadRequest describes a response with status code 400, with default header values.
+/*
+GetUserAuditLogsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetUserAuditLogsNotFound() *GetUserAuditLogsNotFound {
 	return &GetUserAuditLogsNotFound{}
 }
 
-/* GetUserAuditLogsNotFound describes a response with status code 404, with default header values.
+/*
+GetUserAuditLogsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetUserAuditLogsInternalServerError() *GetUserAuditLogsInternalServerErr
 	return &GetUserAuditLogsInternalServerError{}
 }
 
-/* GetUserAuditLogsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetUserAuditLogsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

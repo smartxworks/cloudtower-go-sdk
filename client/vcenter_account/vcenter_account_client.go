@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVcenterAccount create vcenter account API
+CreateVcenterAccount create vcenter account API
 */
 func (a *Client) CreateVcenterAccount(params *CreateVcenterAccountParams, opts ...ClientOption) (*CreateVcenterAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) CreateVcenterAccount(params *CreateVcenterAccountParams, opts .
 }
 
 /*
-  GetVcenterAccounts get vcenter accounts API
+GetVcenterAccounts get vcenter accounts API
 */
 func (a *Client) GetVcenterAccounts(params *GetVcenterAccountsParams, opts ...ClientOption) (*GetVcenterAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) GetVcenterAccounts(params *GetVcenterAccountsParams, opts ...Cl
 }
 
 /*
-  GetVcenterAccountsConnection get vcenter accounts connection API
+GetVcenterAccountsConnection get vcenter accounts connection API
 */
 func (a *Client) GetVcenterAccountsConnection(params *GetVcenterAccountsConnectionParams, opts ...ClientOption) (*GetVcenterAccountsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) GetVcenterAccountsConnection(params *GetVcenterAccountsConnecti
 }
 
 /*
-  UpdateVcenterAccount update vcenter account API
+UpdateVcenterAccount update vcenter account API
 */
 func (a *Client) UpdateVcenterAccount(params *UpdateVcenterAccountParams, opts ...ClientOption) (*UpdateVcenterAccountOK, error) {
 	// TODO: Validate the params before sending

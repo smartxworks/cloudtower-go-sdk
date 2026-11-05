@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetReplicationPlanWithoutExecutions get replication plan without executions API
+GetReplicationPlanWithoutExecutions get replication plan without executions API
 */
 func (a *Client) GetReplicationPlanWithoutExecutions(params *GetReplicationPlanWithoutExecutionsParams, opts ...ClientOption) (*GetReplicationPlanWithoutExecutionsOK, error) {
 	// TODO: Validate the params before sending
@@ -78,7 +78,7 @@ func (a *Client) GetReplicationPlanWithoutExecutions(params *GetReplicationPlanW
 }
 
 /*
-  GetReplicationPlans get replication plans API
+GetReplicationPlans get replication plans API
 */
 func (a *Client) GetReplicationPlans(params *GetReplicationPlansParams, opts ...ClientOption) (*GetReplicationPlansOK, error) {
 	// TODO: Validate the params before sending
@@ -116,7 +116,7 @@ func (a *Client) GetReplicationPlans(params *GetReplicationPlansParams, opts ...
 }
 
 /*
-  GetReplicationPlansConnection get replication plans connection API
+GetReplicationPlansConnection get replication plans connection API
 */
 func (a *Client) GetReplicationPlansConnection(params *GetReplicationPlansConnectionParams, opts ...ClientOption) (*GetReplicationPlansConnectionOK, error) {
 	// TODO: Validate the params before sending

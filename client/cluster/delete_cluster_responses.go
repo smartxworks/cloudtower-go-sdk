@@ -57,7 +57,8 @@ func NewDeleteClusterOK() *DeleteClusterOK {
 	return &DeleteClusterOK{}
 }
 
-/* DeleteClusterOK describes a response with status code 200, with default header values.
+/*
+DeleteClusterOK describes a response with status code 200, with default header values.
 
 DeleteClusterOK delete cluster o k
 */
@@ -96,7 +97,8 @@ func NewDeleteClusterBadRequest() *DeleteClusterBadRequest {
 	return &DeleteClusterBadRequest{}
 }
 
-/* DeleteClusterBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteClusterNotFound() *DeleteClusterNotFound {
 	return &DeleteClusterNotFound{}
 }
 
-/* DeleteClusterNotFound describes a response with status code 404, with default header values.
+/*
+DeleteClusterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteClusterInternalServerError() *DeleteClusterInternalServerError {
 	return &DeleteClusterInternalServerError{}
 }
 
-/* DeleteClusterInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteClusterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

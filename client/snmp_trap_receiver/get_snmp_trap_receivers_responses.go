@@ -57,7 +57,8 @@ func NewGetSnmpTrapReceiversOK() *GetSnmpTrapReceiversOK {
 	return &GetSnmpTrapReceiversOK{}
 }
 
-/* GetSnmpTrapReceiversOK describes a response with status code 200, with default header values.
+/*
+GetSnmpTrapReceiversOK describes a response with status code 200, with default header values.
 
 GetSnmpTrapReceiversOK get snmp trap receivers o k
 */
@@ -96,7 +97,8 @@ func NewGetSnmpTrapReceiversBadRequest() *GetSnmpTrapReceiversBadRequest {
 	return &GetSnmpTrapReceiversBadRequest{}
 }
 
-/* GetSnmpTrapReceiversBadRequest describes a response with status code 400, with default header values.
+/*
+GetSnmpTrapReceiversBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetSnmpTrapReceiversNotFound() *GetSnmpTrapReceiversNotFound {
 	return &GetSnmpTrapReceiversNotFound{}
 }
 
-/* GetSnmpTrapReceiversNotFound describes a response with status code 404, with default header values.
+/*
+GetSnmpTrapReceiversNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetSnmpTrapReceiversInternalServerError() *GetSnmpTrapReceiversInternalS
 	return &GetSnmpTrapReceiversInternalServerError{}
 }
 
-/* GetSnmpTrapReceiversInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSnmpTrapReceiversInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

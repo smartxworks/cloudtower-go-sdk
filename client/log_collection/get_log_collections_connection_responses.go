@@ -57,7 +57,8 @@ func NewGetLogCollectionsConnectionOK() *GetLogCollectionsConnectionOK {
 	return &GetLogCollectionsConnectionOK{}
 }
 
-/* GetLogCollectionsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetLogCollectionsConnectionOK describes a response with status code 200, with default header values.
 
 GetLogCollectionsConnectionOK get log collections connection o k
 */
@@ -98,7 +99,8 @@ func NewGetLogCollectionsConnectionBadRequest() *GetLogCollectionsConnectionBadR
 	return &GetLogCollectionsConnectionBadRequest{}
 }
 
-/* GetLogCollectionsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetLogCollectionsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetLogCollectionsConnectionNotFound() *GetLogCollectionsConnectionNotFou
 	return &GetLogCollectionsConnectionNotFound{}
 }
 
-/* GetLogCollectionsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetLogCollectionsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetLogCollectionsConnectionInternalServerError() *GetLogCollectionsConne
 	return &GetLogCollectionsConnectionInternalServerError{}
 }
 
-/* GetLogCollectionsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetLogCollectionsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

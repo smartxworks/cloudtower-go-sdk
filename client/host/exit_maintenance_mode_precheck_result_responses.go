@@ -57,7 +57,8 @@ func NewExitMaintenanceModePrecheckResultOK() *ExitMaintenanceModePrecheckResult
 	return &ExitMaintenanceModePrecheckResultOK{}
 }
 
-/* ExitMaintenanceModePrecheckResultOK describes a response with status code 200, with default header values.
+/*
+ExitMaintenanceModePrecheckResultOK describes a response with status code 200, with default header values.
 
 ExitMaintenanceModePrecheckResultOK exit maintenance mode precheck result o k
 */
@@ -98,7 +99,8 @@ func NewExitMaintenanceModePrecheckResultBadRequest() *ExitMaintenanceModePreche
 	return &ExitMaintenanceModePrecheckResultBadRequest{}
 }
 
-/* ExitMaintenanceModePrecheckResultBadRequest describes a response with status code 400, with default header values.
+/*
+ExitMaintenanceModePrecheckResultBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewExitMaintenanceModePrecheckResultNotFound() *ExitMaintenanceModePrecheck
 	return &ExitMaintenanceModePrecheckResultNotFound{}
 }
 
-/* ExitMaintenanceModePrecheckResultNotFound describes a response with status code 404, with default header values.
+/*
+ExitMaintenanceModePrecheckResultNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewExitMaintenanceModePrecheckResultInternalServerError() *ExitMaintenanceM
 	return &ExitMaintenanceModePrecheckResultInternalServerError{}
 }
 
-/* ExitMaintenanceModePrecheckResultInternalServerError describes a response with status code 500, with default header values.
+/*
+ExitMaintenanceModePrecheckResultInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

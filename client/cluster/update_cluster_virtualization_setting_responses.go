@@ -57,7 +57,8 @@ func NewUpdateClusterVirtualizationSettingOK() *UpdateClusterVirtualizationSetti
 	return &UpdateClusterVirtualizationSettingOK{}
 }
 
-/* UpdateClusterVirtualizationSettingOK describes a response with status code 200, with default header values.
+/*
+UpdateClusterVirtualizationSettingOK describes a response with status code 200, with default header values.
 
 UpdateClusterVirtualizationSettingOK update cluster virtualization setting o k
 */
@@ -96,7 +97,8 @@ func NewUpdateClusterVirtualizationSettingBadRequest() *UpdateClusterVirtualizat
 	return &UpdateClusterVirtualizationSettingBadRequest{}
 }
 
-/* UpdateClusterVirtualizationSettingBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateClusterVirtualizationSettingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateClusterVirtualizationSettingNotFound() *UpdateClusterVirtualizatio
 	return &UpdateClusterVirtualizationSettingNotFound{}
 }
 
-/* UpdateClusterVirtualizationSettingNotFound describes a response with status code 404, with default header values.
+/*
+UpdateClusterVirtualizationSettingNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateClusterVirtualizationSettingInternalServerError() *UpdateClusterVi
 	return &UpdateClusterVirtualizationSettingInternalServerError{}
 }
 
-/* UpdateClusterVirtualizationSettingInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateClusterVirtualizationSettingInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

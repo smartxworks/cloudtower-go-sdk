@@ -54,10 +54,12 @@ func NewGetWitnessMetricsParamsWithHTTPClient(client *http.Client) *GetWitnessMe
 	}
 }
 
-/* GetWitnessMetricsParams contains all the parameters to send to the API endpoint
-   for the get witness metrics operation.
+/*
+GetWitnessMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get witness metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetWitnessMetricsParams struct {
 

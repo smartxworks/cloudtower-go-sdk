@@ -57,7 +57,8 @@ func NewGetGraphsConnectionOK() *GetGraphsConnectionOK {
 	return &GetGraphsConnectionOK{}
 }
 
-/* GetGraphsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetGraphsConnectionOK describes a response with status code 200, with default header values.
 
 GetGraphsConnectionOK get graphs connection o k
 */
@@ -98,7 +99,8 @@ func NewGetGraphsConnectionBadRequest() *GetGraphsConnectionBadRequest {
 	return &GetGraphsConnectionBadRequest{}
 }
 
-/* GetGraphsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetGraphsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetGraphsConnectionNotFound() *GetGraphsConnectionNotFound {
 	return &GetGraphsConnectionNotFound{}
 }
 
-/* GetGraphsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetGraphsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetGraphsConnectionInternalServerError() *GetGraphsConnectionInternalSer
 	return &GetGraphsConnectionInternalServerError{}
 }
 
-/* GetGraphsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGraphsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

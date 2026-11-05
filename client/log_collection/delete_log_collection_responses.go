@@ -57,7 +57,8 @@ func NewDeleteLogCollectionOK() *DeleteLogCollectionOK {
 	return &DeleteLogCollectionOK{}
 }
 
-/* DeleteLogCollectionOK describes a response with status code 200, with default header values.
+/*
+DeleteLogCollectionOK describes a response with status code 200, with default header values.
 
 DeleteLogCollectionOK delete log collection o k
 */
@@ -96,7 +97,8 @@ func NewDeleteLogCollectionBadRequest() *DeleteLogCollectionBadRequest {
 	return &DeleteLogCollectionBadRequest{}
 }
 
-/* DeleteLogCollectionBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteLogCollectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteLogCollectionNotFound() *DeleteLogCollectionNotFound {
 	return &DeleteLogCollectionNotFound{}
 }
 
-/* DeleteLogCollectionNotFound describes a response with status code 404, with default header values.
+/*
+DeleteLogCollectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteLogCollectionInternalServerError() *DeleteLogCollectionInternalSer
 	return &DeleteLogCollectionInternalServerError{}
 }
 
-/* DeleteLogCollectionInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteLogCollectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

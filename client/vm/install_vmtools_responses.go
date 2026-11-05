@@ -57,7 +57,8 @@ func NewInstallVmtoolsOK() *InstallVmtoolsOK {
 	return &InstallVmtoolsOK{}
 }
 
-/* InstallVmtoolsOK describes a response with status code 200, with default header values.
+/*
+InstallVmtoolsOK describes a response with status code 200, with default header values.
 
 InstallVmtoolsOK install vmtools o k
 */
@@ -96,7 +97,8 @@ func NewInstallVmtoolsBadRequest() *InstallVmtoolsBadRequest {
 	return &InstallVmtoolsBadRequest{}
 }
 
-/* InstallVmtoolsBadRequest describes a response with status code 400, with default header values.
+/*
+InstallVmtoolsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewInstallVmtoolsNotFound() *InstallVmtoolsNotFound {
 	return &InstallVmtoolsNotFound{}
 }
 
-/* InstallVmtoolsNotFound describes a response with status code 404, with default header values.
+/*
+InstallVmtoolsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewInstallVmtoolsInternalServerError() *InstallVmtoolsInternalServerError {
 	return &InstallVmtoolsInternalServerError{}
 }
 
-/* InstallVmtoolsInternalServerError describes a response with status code 500, with default header values.
+/*
+InstallVmtoolsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

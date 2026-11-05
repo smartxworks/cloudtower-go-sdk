@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateNamespaceGroup create namespace group API
+CreateNamespaceGroup create namespace group API
 */
 func (a *Client) CreateNamespaceGroup(params *CreateNamespaceGroupParams, opts ...ClientOption) (*CreateNamespaceGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateNamespaceGroup(params *CreateNamespaceGroupParams, opts .
 }
 
 /*
-  DeleteNamespaceGroup delete namespace group API
+DeleteNamespaceGroup delete namespace group API
 */
 func (a *Client) DeleteNamespaceGroup(params *DeleteNamespaceGroupParams, opts ...ClientOption) (*DeleteNamespaceGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteNamespaceGroup(params *DeleteNamespaceGroupParams, opts .
 }
 
 /*
-  GetNamespaceGroups get namespace groups API
+GetNamespaceGroups get namespace groups API
 */
 func (a *Client) GetNamespaceGroups(params *GetNamespaceGroupsParams, opts ...ClientOption) (*GetNamespaceGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetNamespaceGroups(params *GetNamespaceGroupsParams, opts ...Cl
 }
 
 /*
-  GetNamespaceGroupsConnection get namespace groups connection API
+GetNamespaceGroupsConnection get namespace groups connection API
 */
 func (a *Client) GetNamespaceGroupsConnection(params *GetNamespaceGroupsConnectionParams, opts ...ClientOption) (*GetNamespaceGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetNamespaceGroupsConnection(params *GetNamespaceGroupsConnecti
 }
 
 /*
-  UpdateNamespaceGroup update namespace group API
+UpdateNamespaceGroup update namespace group API
 */
 func (a *Client) UpdateNamespaceGroup(params *UpdateNamespaceGroupParams, opts ...ClientOption) (*UpdateNamespaceGroupOK, error) {
 	// TODO: Validate the params before sending

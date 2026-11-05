@@ -57,7 +57,8 @@ func NewGetVcenterAccountsConnectionOK() *GetVcenterAccountsConnectionOK {
 	return &GetVcenterAccountsConnectionOK{}
 }
 
-/* GetVcenterAccountsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVcenterAccountsConnectionOK describes a response with status code 200, with default header values.
 
 GetVcenterAccountsConnectionOK get vcenter accounts connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVcenterAccountsConnectionBadRequest() *GetVcenterAccountsConnectionBa
 	return &GetVcenterAccountsConnectionBadRequest{}
 }
 
-/* GetVcenterAccountsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVcenterAccountsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVcenterAccountsConnectionNotFound() *GetVcenterAccountsConnectionNotF
 	return &GetVcenterAccountsConnectionNotFound{}
 }
 
-/* GetVcenterAccountsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVcenterAccountsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVcenterAccountsConnectionInternalServerError() *GetVcenterAccountsCon
 	return &GetVcenterAccountsConnectionInternalServerError{}
 }
 
-/* GetVcenterAccountsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVcenterAccountsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

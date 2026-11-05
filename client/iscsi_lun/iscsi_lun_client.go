@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  CloneIscsiLunFromSnapshot clone iscsi lun from snapshot API
+CloneIscsiLunFromSnapshot clone iscsi lun from snapshot API
 */
 func (a *Client) CloneIscsiLunFromSnapshot(params *CloneIscsiLunFromSnapshotParams, opts ...ClientOption) (*CloneIscsiLunFromSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -88,7 +88,7 @@ func (a *Client) CloneIscsiLunFromSnapshot(params *CloneIscsiLunFromSnapshotPara
 }
 
 /*
-  CopyIscsiLun copy iscsi lun API
+CopyIscsiLun copy iscsi lun API
 */
 func (a *Client) CopyIscsiLun(params *CopyIscsiLunParams, opts ...ClientOption) (*CopyIscsiLunOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +126,7 @@ func (a *Client) CopyIscsiLun(params *CopyIscsiLunParams, opts ...ClientOption) 
 }
 
 /*
-  CreateIscsiLun create iscsi lun API
+CreateIscsiLun create iscsi lun API
 */
 func (a *Client) CreateIscsiLun(params *CreateIscsiLunParams, opts ...ClientOption) (*CreateIscsiLunOK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +164,7 @@ func (a *Client) CreateIscsiLun(params *CreateIscsiLunParams, opts ...ClientOpti
 }
 
 /*
-  DeleteIscsiLun delete iscsi lun API
+DeleteIscsiLun delete iscsi lun API
 */
 func (a *Client) DeleteIscsiLun(params *DeleteIscsiLunParams, opts ...ClientOption) (*DeleteIscsiLunOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) DeleteIscsiLun(params *DeleteIscsiLunParams, opts ...ClientOpti
 }
 
 /*
-  GetIscsiLuns get iscsi luns API
+GetIscsiLuns get iscsi luns API
 */
 func (a *Client) GetIscsiLuns(params *GetIscsiLunsParams, opts ...ClientOption) (*GetIscsiLunsOK, error) {
 	// TODO: Validate the params before sending
@@ -240,7 +240,7 @@ func (a *Client) GetIscsiLuns(params *GetIscsiLunsParams, opts ...ClientOption) 
 }
 
 /*
-  GetIscsiLunsConnection get iscsi luns connection API
+GetIscsiLunsConnection get iscsi luns connection API
 */
 func (a *Client) GetIscsiLunsConnection(params *GetIscsiLunsConnectionParams, opts ...ClientOption) (*GetIscsiLunsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -278,7 +278,7 @@ func (a *Client) GetIscsiLunsConnection(params *GetIscsiLunsConnectionParams, op
 }
 
 /*
-  RollbackIscsiLunFromSnapshot rollback iscsi lun from snapshot API
+RollbackIscsiLunFromSnapshot rollback iscsi lun from snapshot API
 */
 func (a *Client) RollbackIscsiLunFromSnapshot(params *RollbackIscsiLunFromSnapshotParams, opts ...ClientOption) (*RollbackIscsiLunFromSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -316,7 +316,7 @@ func (a *Client) RollbackIscsiLunFromSnapshot(params *RollbackIscsiLunFromSnapsh
 }
 
 /*
-  UpdateIscsiLun update iscsi lun API
+UpdateIscsiLun update iscsi lun API
 */
 func (a *Client) UpdateIscsiLun(params *UpdateIscsiLunParams, opts ...ClientOption) (*UpdateIscsiLunOK, error) {
 	// TODO: Validate the params before sending

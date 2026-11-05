@@ -54,10 +54,12 @@ func NewGetVirtualPrivateCloudsParamsWithHTTPClient(client *http.Client) *GetVir
 	}
 }
 
-/* GetVirtualPrivateCloudsParams contains all the parameters to send to the API endpoint
-   for the get virtual private clouds operation.
+/*
+GetVirtualPrivateCloudsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get virtual private clouds operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVirtualPrivateCloudsParams struct {
 

@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVMFolder create Vm folder API
+CreateVMFolder create Vm folder API
 */
 func (a *Client) CreateVMFolder(params *CreateVMFolderParams, opts ...ClientOption) (*CreateVMFolderOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVMFolder(params *CreateVMFolderParams, opts ...ClientOpti
 }
 
 /*
-  DeleteVMFolder delete Vm folder API
+DeleteVMFolder delete Vm folder API
 */
 func (a *Client) DeleteVMFolder(params *DeleteVMFolderParams, opts ...ClientOption) (*DeleteVMFolderOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVMFolder(params *DeleteVMFolderParams, opts ...ClientOpti
 }
 
 /*
-  GetVMFolders get Vm folders API
+GetVMFolders get Vm folders API
 */
 func (a *Client) GetVMFolders(params *GetVMFoldersParams, opts ...ClientOption) (*GetVMFoldersOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVMFolders(params *GetVMFoldersParams, opts ...ClientOption) 
 }
 
 /*
-  GetVMFoldersConnection get Vm folders connection API
+GetVMFoldersConnection get Vm folders connection API
 */
 func (a *Client) GetVMFoldersConnection(params *GetVMFoldersConnectionParams, opts ...ClientOption) (*GetVMFoldersConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVMFoldersConnection(params *GetVMFoldersConnectionParams, op
 }
 
 /*
-  UpdateVMFolder update Vm folder API
+UpdateVMFolder update Vm folder API
 */
 func (a *Client) UpdateVMFolder(params *UpdateVMFolderParams, opts ...ClientOption) (*UpdateVMFolderOK, error) {
 	// TODO: Validate the params before sending

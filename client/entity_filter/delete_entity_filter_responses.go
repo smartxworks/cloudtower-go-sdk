@@ -57,7 +57,8 @@ func NewDeleteEntityFilterOK() *DeleteEntityFilterOK {
 	return &DeleteEntityFilterOK{}
 }
 
-/* DeleteEntityFilterOK describes a response with status code 200, with default header values.
+/*
+DeleteEntityFilterOK describes a response with status code 200, with default header values.
 
 DeleteEntityFilterOK delete entity filter o k
 */
@@ -96,7 +97,8 @@ func NewDeleteEntityFilterBadRequest() *DeleteEntityFilterBadRequest {
 	return &DeleteEntityFilterBadRequest{}
 }
 
-/* DeleteEntityFilterBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteEntityFilterBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteEntityFilterNotFound() *DeleteEntityFilterNotFound {
 	return &DeleteEntityFilterNotFound{}
 }
 
-/* DeleteEntityFilterNotFound describes a response with status code 404, with default header values.
+/*
+DeleteEntityFilterNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteEntityFilterInternalServerError() *DeleteEntityFilterInternalServe
 	return &DeleteEntityFilterInternalServerError{}
 }
 
-/* DeleteEntityFilterInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteEntityFilterInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

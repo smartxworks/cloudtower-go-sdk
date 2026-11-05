@@ -54,10 +54,12 @@ func NewGetLunMetricsParamsWithHTTPClient(client *http.Client) *GetLunMetricsPar
 	}
 }
 
-/* GetLunMetricsParams contains all the parameters to send to the API endpoint
-   for the get lun metrics operation.
+/*
+GetLunMetricsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get lun metrics operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLunMetricsParams struct {
 

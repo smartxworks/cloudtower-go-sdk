@@ -54,10 +54,12 @@ func NewCreateVMSnapshotParamsWithHTTPClient(client *http.Client) *CreateVMSnaps
 	}
 }
 
-/* CreateVMSnapshotParams contains all the parameters to send to the API endpoint
-   for the create Vm snapshot operation.
+/*
+CreateVMSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create Vm snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVMSnapshotParams struct {
 

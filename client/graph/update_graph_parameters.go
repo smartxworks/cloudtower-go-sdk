@@ -54,10 +54,12 @@ func NewUpdateGraphParamsWithHTTPClient(client *http.Client) *UpdateGraphParams 
 	}
 }
 
-/* UpdateGraphParams contains all the parameters to send to the API endpoint
-   for the update graph operation.
+/*
+UpdateGraphParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update graph operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateGraphParams struct {
 

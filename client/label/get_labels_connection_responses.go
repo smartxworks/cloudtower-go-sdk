@@ -57,7 +57,8 @@ func NewGetLabelsConnectionOK() *GetLabelsConnectionOK {
 	return &GetLabelsConnectionOK{}
 }
 
-/* GetLabelsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetLabelsConnectionOK describes a response with status code 200, with default header values.
 
 GetLabelsConnectionOK get labels connection o k
 */
@@ -98,7 +99,8 @@ func NewGetLabelsConnectionBadRequest() *GetLabelsConnectionBadRequest {
 	return &GetLabelsConnectionBadRequest{}
 }
 
-/* GetLabelsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetLabelsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetLabelsConnectionNotFound() *GetLabelsConnectionNotFound {
 	return &GetLabelsConnectionNotFound{}
 }
 
-/* GetLabelsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetLabelsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetLabelsConnectionInternalServerError() *GetLabelsConnectionInternalSer
 	return &GetLabelsConnectionInternalServerError{}
 }
 
-/* GetLabelsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetLabelsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

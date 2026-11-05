@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  DeleteCloudTowerApplicationPackage delete cloud tower application package API
+DeleteCloudTowerApplicationPackage delete cloud tower application package API
 */
 func (a *Client) DeleteCloudTowerApplicationPackage(params *DeleteCloudTowerApplicationPackageParams, opts ...ClientOption) (*DeleteCloudTowerApplicationPackageOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) DeleteCloudTowerApplicationPackage(params *DeleteCloudTowerAppl
 }
 
 /*
-  DeployCloudTowerApplication deploy cloud tower application API
+DeployCloudTowerApplication deploy cloud tower application API
 */
 func (a *Client) DeployCloudTowerApplication(params *DeployCloudTowerApplicationParams, opts ...ClientOption) (*DeployCloudTowerApplicationOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) DeployCloudTowerApplication(params *DeployCloudTowerApplication
 }
 
 /*
-  GetCloudTowerApplications get cloud tower applications API
+GetCloudTowerApplications get cloud tower applications API
 */
 func (a *Client) GetCloudTowerApplications(params *GetCloudTowerApplicationsParams, opts ...ClientOption) (*GetCloudTowerApplicationsOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) GetCloudTowerApplications(params *GetCloudTowerApplicationsPara
 }
 
 /*
-  GetCloudTowerApplicationsConnection get cloud tower applications connection API
+GetCloudTowerApplicationsConnection get cloud tower applications connection API
 */
 func (a *Client) GetCloudTowerApplicationsConnection(params *GetCloudTowerApplicationsConnectionParams, opts ...ClientOption) (*GetCloudTowerApplicationsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) GetCloudTowerApplicationsConnection(params *GetCloudTowerApplic
 }
 
 /*
-  UninstallCloudTowerApplication uninstall cloud tower application API
+UninstallCloudTowerApplication uninstall cloud tower application API
 */
 func (a *Client) UninstallCloudTowerApplication(params *UninstallCloudTowerApplicationParams, opts ...ClientOption) (*UninstallCloudTowerApplicationOK, error) {
 	// TODO: Validate the params before sending
@@ -238,7 +238,7 @@ func (a *Client) UninstallCloudTowerApplication(params *UninstallCloudTowerAppli
 }
 
 /*
-  UpgradeCloudTowerApplication upgrade cloud tower application API
+UpgradeCloudTowerApplication upgrade cloud tower application API
 */
 func (a *Client) UpgradeCloudTowerApplication(params *UpgradeCloudTowerApplicationParams, opts ...ClientOption) (*UpgradeCloudTowerApplicationOK, error) {
 	// TODO: Validate the params before sending
@@ -276,7 +276,7 @@ func (a *Client) UpgradeCloudTowerApplication(params *UpgradeCloudTowerApplicati
 }
 
 /*
-  UploadCloudTowerApplicationPackage upload cloud tower application package API
+UploadCloudTowerApplicationPackage upload cloud tower application package API
 */
 func (a *Client) UploadCloudTowerApplicationPackage(params *UploadCloudTowerApplicationPackageParams, opts ...ClientOption) (*UploadCloudTowerApplicationPackageOK, error) {
 	// TODO: Validate the params before sending

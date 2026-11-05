@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateTask create task API
+CreateTask create task API
 */
 func (a *Client) CreateTask(params *CreateTaskParams, opts ...ClientOption) (*CreateTaskOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) CreateTask(params *CreateTaskParams, opts ...ClientOption) (*Cr
 }
 
 /*
-  GetTasks get tasks API
+GetTasks get tasks API
 */
 func (a *Client) GetTasks(params *GetTasksParams, opts ...ClientOption) (*GetTasksOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) GetTasks(params *GetTasksParams, opts ...ClientOption) (*GetTas
 }
 
 /*
-  GetTasksConnection get tasks connection API
+GetTasksConnection get tasks connection API
 */
 func (a *Client) GetTasksConnection(params *GetTasksConnectionParams, opts ...ClientOption) (*GetTasksConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) GetTasksConnection(params *GetTasksConnectionParams, opts ...Cl
 }
 
 /*
-  UpdateTask update task API
+UpdateTask update task API
 */
 func (a *Client) UpdateTask(params *UpdateTaskParams, opts ...ClientOption) (*UpdateTaskOK, error) {
 	// TODO: Validate the params before sending

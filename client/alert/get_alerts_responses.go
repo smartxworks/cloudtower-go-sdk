@@ -57,7 +57,8 @@ func NewGetAlertsOK() *GetAlertsOK {
 	return &GetAlertsOK{}
 }
 
-/* GetAlertsOK describes a response with status code 200, with default header values.
+/*
+GetAlertsOK describes a response with status code 200, with default header values.
 
 GetAlertsOK get alerts o k
 */
@@ -96,7 +97,8 @@ func NewGetAlertsBadRequest() *GetAlertsBadRequest {
 	return &GetAlertsBadRequest{}
 }
 
-/* GetAlertsBadRequest describes a response with status code 400, with default header values.
+/*
+GetAlertsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetAlertsNotFound() *GetAlertsNotFound {
 	return &GetAlertsNotFound{}
 }
 
-/* GetAlertsNotFound describes a response with status code 404, with default header values.
+/*
+GetAlertsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetAlertsInternalServerError() *GetAlertsInternalServerError {
 	return &GetAlertsInternalServerError{}
 }
 
-/* GetAlertsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetAlertsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

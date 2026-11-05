@@ -57,7 +57,8 @@ func NewGetVirtualPrivateCloudClusterBindingsConnectionOK() *GetVirtualPrivateCl
 	return &GetVirtualPrivateCloudClusterBindingsConnectionOK{}
 }
 
-/* GetVirtualPrivateCloudClusterBindingsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVirtualPrivateCloudClusterBindingsConnectionOK describes a response with status code 200, with default header values.
 
 GetVirtualPrivateCloudClusterBindingsConnectionOK get virtual private cloud cluster bindings connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVirtualPrivateCloudClusterBindingsConnectionBadRequest() *GetVirtualP
 	return &GetVirtualPrivateCloudClusterBindingsConnectionBadRequest{}
 }
 
-/* GetVirtualPrivateCloudClusterBindingsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVirtualPrivateCloudClusterBindingsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVirtualPrivateCloudClusterBindingsConnectionNotFound() *GetVirtualPri
 	return &GetVirtualPrivateCloudClusterBindingsConnectionNotFound{}
 }
 
-/* GetVirtualPrivateCloudClusterBindingsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVirtualPrivateCloudClusterBindingsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVirtualPrivateCloudClusterBindingsConnectionInternalServerError() *Ge
 	return &GetVirtualPrivateCloudClusterBindingsConnectionInternalServerError{}
 }
 
-/* GetVirtualPrivateCloudClusterBindingsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVirtualPrivateCloudClusterBindingsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

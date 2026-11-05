@@ -52,10 +52,12 @@ func NewParseOvfParamsWithHTTPClient(client *http.Client) *ParseOvfParams {
 	}
 }
 
-/* ParseOvfParams contains all the parameters to send to the API endpoint
-   for the parse ovf operation.
+/*
+ParseOvfParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the parse ovf operation.
+
+	Typically these are written to a http.Request.
 */
 type ParseOvfParams struct {
 

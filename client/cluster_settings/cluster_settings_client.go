@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetClusterSettingses get cluster settingses API
+GetClusterSettingses get cluster settingses API
 */
 func (a *Client) GetClusterSettingses(params *GetClusterSettingsesParams, opts ...ClientOption) (*GetClusterSettingsesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetClusterSettingses(params *GetClusterSettingsesParams, opts .
 }
 
 /*
-  GetClusterSettingsesConnection get cluster settingses connection API
+GetClusterSettingsesConnection get cluster settingses connection API
 */
 func (a *Client) GetClusterSettingsesConnection(params *GetClusterSettingsesConnectionParams, opts ...ClientOption) (*GetClusterSettingsesConnectionOK, error) {
 	// TODO: Validate the params before sending

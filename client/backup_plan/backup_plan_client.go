@@ -60,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  BackupRebuildVM backup rebuild Vm API
+BackupRebuildVM backup rebuild Vm API
 */
 func (a *Client) BackupRebuildVM(params *BackupRebuildVMParams, opts ...ClientOption) (*BackupRebuildVMOK, error) {
 	// TODO: Validate the params before sending
@@ -98,7 +98,7 @@ func (a *Client) BackupRebuildVM(params *BackupRebuildVMParams, opts ...ClientOp
 }
 
 /*
-  BackupRestoreVMInPlace backup restore Vm in place API
+BackupRestoreVMInPlace backup restore Vm in place API
 */
 func (a *Client) BackupRestoreVMInPlace(params *BackupRestoreVMInPlaceParams, opts ...ClientOption) (*BackupRestoreVMInPlaceOK, error) {
 	// TODO: Validate the params before sending
@@ -136,7 +136,7 @@ func (a *Client) BackupRestoreVMInPlace(params *BackupRestoreVMInPlaceParams, op
 }
 
 /*
-  CreateBackupPlan create backup plan API
+CreateBackupPlan create backup plan API
 */
 func (a *Client) CreateBackupPlan(params *CreateBackupPlanParams, opts ...ClientOption) (*CreateBackupPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -174,7 +174,7 @@ func (a *Client) CreateBackupPlan(params *CreateBackupPlanParams, opts ...Client
 }
 
 /*
-  DeleteBackupPlan delete backup plan API
+DeleteBackupPlan delete backup plan API
 */
 func (a *Client) DeleteBackupPlan(params *DeleteBackupPlanParams, opts ...ClientOption) (*DeleteBackupPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -212,7 +212,7 @@ func (a *Client) DeleteBackupPlan(params *DeleteBackupPlanParams, opts ...Client
 }
 
 /*
-  DeleteBackupRestorePoint delete backup restore point API
+DeleteBackupRestorePoint delete backup restore point API
 */
 func (a *Client) DeleteBackupRestorePoint(params *DeleteBackupRestorePointParams, opts ...ClientOption) (*DeleteBackupRestorePointOK, error) {
 	// TODO: Validate the params before sending
@@ -250,7 +250,7 @@ func (a *Client) DeleteBackupRestorePoint(params *DeleteBackupRestorePointParams
 }
 
 /*
-  ExecuteBackupPlan execute backup plan API
+ExecuteBackupPlan execute backup plan API
 */
 func (a *Client) ExecuteBackupPlan(params *ExecuteBackupPlanParams, opts ...ClientOption) (*ExecuteBackupPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -288,7 +288,7 @@ func (a *Client) ExecuteBackupPlan(params *ExecuteBackupPlanParams, opts ...Clie
 }
 
 /*
-  GetBackupPlanWithoutExecutions get backup plan without executions API
+GetBackupPlanWithoutExecutions get backup plan without executions API
 */
 func (a *Client) GetBackupPlanWithoutExecutions(params *GetBackupPlanWithoutExecutionsParams, opts ...ClientOption) (*GetBackupPlanWithoutExecutionsOK, error) {
 	// TODO: Validate the params before sending
@@ -326,7 +326,7 @@ func (a *Client) GetBackupPlanWithoutExecutions(params *GetBackupPlanWithoutExec
 }
 
 /*
-  GetBackupPlans get backup plans API
+GetBackupPlans get backup plans API
 */
 func (a *Client) GetBackupPlans(params *GetBackupPlansParams, opts ...ClientOption) (*GetBackupPlansOK, error) {
 	// TODO: Validate the params before sending
@@ -364,7 +364,7 @@ func (a *Client) GetBackupPlans(params *GetBackupPlansParams, opts ...ClientOpti
 }
 
 /*
-  GetBackupPlansConnection get backup plans connection API
+GetBackupPlansConnection get backup plans connection API
 */
 func (a *Client) GetBackupPlansConnection(params *GetBackupPlansConnectionParams, opts ...ClientOption) (*GetBackupPlansConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -402,7 +402,7 @@ func (a *Client) GetBackupPlansConnection(params *GetBackupPlansConnectionParams
 }
 
 /*
-  GetBackupRestorePointMetadata get backup restore point metadata API
+GetBackupRestorePointMetadata get backup restore point metadata API
 */
 func (a *Client) GetBackupRestorePointMetadata(params *GetBackupRestorePointMetadataParams, opts ...ClientOption) (*GetBackupRestorePointMetadataOK, error) {
 	// TODO: Validate the params before sending
@@ -440,7 +440,7 @@ func (a *Client) GetBackupRestorePointMetadata(params *GetBackupRestorePointMeta
 }
 
 /*
-  ResumeBackupPlan resume backup plan API
+ResumeBackupPlan resume backup plan API
 */
 func (a *Client) ResumeBackupPlan(params *ResumeBackupPlanParams, opts ...ClientOption) (*ResumeBackupPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -478,7 +478,7 @@ func (a *Client) ResumeBackupPlan(params *ResumeBackupPlanParams, opts ...Client
 }
 
 /*
-  SuspendBackupPlan suspend backup plan API
+SuspendBackupPlan suspend backup plan API
 */
 func (a *Client) SuspendBackupPlan(params *SuspendBackupPlanParams, opts ...ClientOption) (*SuspendBackupPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -516,7 +516,7 @@ func (a *Client) SuspendBackupPlan(params *SuspendBackupPlanParams, opts ...Clie
 }
 
 /*
-  UpdateBackupPlan update backup plan API
+UpdateBackupPlan update backup plan API
 */
 func (a *Client) UpdateBackupPlan(params *UpdateBackupPlanParams, opts ...ClientOption) (*UpdateBackupPlanOK, error) {
 	// TODO: Validate the params before sending

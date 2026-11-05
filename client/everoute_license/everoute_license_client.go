@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetEverouteLicenses get everoute licenses API
+GetEverouteLicenses get everoute licenses API
 */
 func (a *Client) GetEverouteLicenses(params *GetEverouteLicensesParams, opts ...ClientOption) (*GetEverouteLicensesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetEverouteLicenses(params *GetEverouteLicensesParams, opts ...
 }
 
 /*
-  GetEverouteLicensesConnection get everoute licenses connection API
+GetEverouteLicensesConnection get everoute licenses connection API
 */
 func (a *Client) GetEverouteLicensesConnection(params *GetEverouteLicensesConnectionParams, opts ...ClientOption) (*GetEverouteLicensesConnectionOK, error) {
 	// TODO: Validate the params before sending

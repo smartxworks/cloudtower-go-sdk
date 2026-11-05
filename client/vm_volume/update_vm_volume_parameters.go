@@ -54,10 +54,12 @@ func NewUpdateVMVolumeParamsWithHTTPClient(client *http.Client) *UpdateVMVolumeP
 	}
 }
 
-/* UpdateVMVolumeParams contains all the parameters to send to the API endpoint
-   for the update Vm volume operation.
+/*
+UpdateVMVolumeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update Vm volume operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVMVolumeParams struct {
 

@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetBackupStoreRepositories get backup store repositories API
+GetBackupStoreRepositories get backup store repositories API
 */
 func (a *Client) GetBackupStoreRepositories(params *GetBackupStoreRepositoriesParams, opts ...ClientOption) (*GetBackupStoreRepositoriesOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetBackupStoreRepositories(params *GetBackupStoreRepositoriesPa
 }
 
 /*
-  GetBackupStoreRepositoriesConnection get backup store repositories connection API
+GetBackupStoreRepositoriesConnection get backup store repositories connection API
 */
 func (a *Client) GetBackupStoreRepositoriesConnection(params *GetBackupStoreRepositoriesConnectionParams, opts ...ClientOption) (*GetBackupStoreRepositoriesConnectionOK, error) {
 	// TODO: Validate the params before sending

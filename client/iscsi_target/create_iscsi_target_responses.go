@@ -57,7 +57,8 @@ func NewCreateIscsiTargetOK() *CreateIscsiTargetOK {
 	return &CreateIscsiTargetOK{}
 }
 
-/* CreateIscsiTargetOK describes a response with status code 200, with default header values.
+/*
+CreateIscsiTargetOK describes a response with status code 200, with default header values.
 
 CreateIscsiTargetOK create iscsi target o k
 */
@@ -96,7 +97,8 @@ func NewCreateIscsiTargetBadRequest() *CreateIscsiTargetBadRequest {
 	return &CreateIscsiTargetBadRequest{}
 }
 
-/* CreateIscsiTargetBadRequest describes a response with status code 400, with default header values.
+/*
+CreateIscsiTargetBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateIscsiTargetNotFound() *CreateIscsiTargetNotFound {
 	return &CreateIscsiTargetNotFound{}
 }
 
-/* CreateIscsiTargetNotFound describes a response with status code 404, with default header values.
+/*
+CreateIscsiTargetNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateIscsiTargetInternalServerError() *CreateIscsiTargetInternalServerE
 	return &CreateIscsiTargetInternalServerError{}
 }
 
-/* CreateIscsiTargetInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateIscsiTargetInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

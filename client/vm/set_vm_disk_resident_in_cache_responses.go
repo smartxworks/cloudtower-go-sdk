@@ -57,7 +57,8 @@ func NewSetVMDiskResidentInCacheOK() *SetVMDiskResidentInCacheOK {
 	return &SetVMDiskResidentInCacheOK{}
 }
 
-/* SetVMDiskResidentInCacheOK describes a response with status code 200, with default header values.
+/*
+SetVMDiskResidentInCacheOK describes a response with status code 200, with default header values.
 
 SetVMDiskResidentInCacheOK set Vm disk resident in cache o k
 */
@@ -96,7 +97,8 @@ func NewSetVMDiskResidentInCacheBadRequest() *SetVMDiskResidentInCacheBadRequest
 	return &SetVMDiskResidentInCacheBadRequest{}
 }
 
-/* SetVMDiskResidentInCacheBadRequest describes a response with status code 400, with default header values.
+/*
+SetVMDiskResidentInCacheBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewSetVMDiskResidentInCacheNotFound() *SetVMDiskResidentInCacheNotFound {
 	return &SetVMDiskResidentInCacheNotFound{}
 }
 
-/* SetVMDiskResidentInCacheNotFound describes a response with status code 404, with default header values.
+/*
+SetVMDiskResidentInCacheNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewSetVMDiskResidentInCacheInternalServerError() *SetVMDiskResidentInCacheI
 	return &SetVMDiskResidentInCacheInternalServerError{}
 }
 
-/* SetVMDiskResidentInCacheInternalServerError describes a response with status code 500, with default header values.
+/*
+SetVMDiskResidentInCacheInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

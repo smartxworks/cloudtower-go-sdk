@@ -54,10 +54,12 @@ func NewDeleteContentLibraryVMTemplateParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* DeleteContentLibraryVMTemplateParams contains all the parameters to send to the API endpoint
-   for the delete content library Vm template operation.
+/*
+DeleteContentLibraryVMTemplateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete content library Vm template operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteContentLibraryVMTemplateParams struct {
 

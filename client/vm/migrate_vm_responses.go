@@ -57,7 +57,8 @@ func NewMigrateVMOK() *MigrateVMOK {
 	return &MigrateVMOK{}
 }
 
-/* MigrateVMOK describes a response with status code 200, with default header values.
+/*
+MigrateVMOK describes a response with status code 200, with default header values.
 
 MigrateVMOK migrate Vm o k
 */
@@ -96,7 +97,8 @@ func NewMigrateVMBadRequest() *MigrateVMBadRequest {
 	return &MigrateVMBadRequest{}
 }
 
-/* MigrateVMBadRequest describes a response with status code 400, with default header values.
+/*
+MigrateVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewMigrateVMNotFound() *MigrateVMNotFound {
 	return &MigrateVMNotFound{}
 }
 
-/* MigrateVMNotFound describes a response with status code 404, with default header values.
+/*
+MigrateVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewMigrateVMInternalServerError() *MigrateVMInternalServerError {
 	return &MigrateVMInternalServerError{}
 }
 
-/* MigrateVMInternalServerError describes a response with status code 500, with default header values.
+/*
+MigrateVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewUpdateNfsInodeParamsWithHTTPClient(client *http.Client) *UpdateNfsInodeP
 	}
 }
 
-/* UpdateNfsInodeParams contains all the parameters to send to the API endpoint
-   for the update nfs inode operation.
+/*
+UpdateNfsInodeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update nfs inode operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateNfsInodeParams struct {
 

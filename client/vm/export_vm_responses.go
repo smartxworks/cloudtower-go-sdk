@@ -63,7 +63,8 @@ func NewExportVMOK() *ExportVMOK {
 	return &ExportVMOK{}
 }
 
-/* ExportVMOK describes a response with status code 200, with default header values.
+/*
+ExportVMOK describes a response with status code 200, with default header values.
 
 ExportVMOK export Vm o k
 */
@@ -102,7 +103,8 @@ func NewExportVMNotModified() *ExportVMNotModified {
 	return &ExportVMNotModified{}
 }
 
-/* ExportVMNotModified describes a response with status code 304, with default header values.
+/*
+ExportVMNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewExportVMBadRequest() *ExportVMBadRequest {
 	return &ExportVMBadRequest{}
 }
 
-/* ExportVMBadRequest describes a response with status code 400, with default header values.
+/*
+ExportVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewExportVMNotFound() *ExportVMNotFound {
 	return &ExportVMNotFound{}
 }
 
-/* ExportVMNotFound describes a response with status code 404, with default header values.
+/*
+ExportVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewExportVMInternalServerError() *ExportVMInternalServerError {
 	return &ExportVMInternalServerError{}
 }
 
-/* ExportVMInternalServerError describes a response with status code 500, with default header values.
+/*
+ExportVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

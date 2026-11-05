@@ -57,7 +57,8 @@ func NewCreateNvmfNamespaceOK() *CreateNvmfNamespaceOK {
 	return &CreateNvmfNamespaceOK{}
 }
 
-/* CreateNvmfNamespaceOK describes a response with status code 200, with default header values.
+/*
+CreateNvmfNamespaceOK describes a response with status code 200, with default header values.
 
 CreateNvmfNamespaceOK create nvmf namespace o k
 */
@@ -96,7 +97,8 @@ func NewCreateNvmfNamespaceBadRequest() *CreateNvmfNamespaceBadRequest {
 	return &CreateNvmfNamespaceBadRequest{}
 }
 
-/* CreateNvmfNamespaceBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNvmfNamespaceBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateNvmfNamespaceNotFound() *CreateNvmfNamespaceNotFound {
 	return &CreateNvmfNamespaceNotFound{}
 }
 
-/* CreateNvmfNamespaceNotFound describes a response with status code 404, with default header values.
+/*
+CreateNvmfNamespaceNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateNvmfNamespaceInternalServerError() *CreateNvmfNamespaceInternalSer
 	return &CreateNvmfNamespaceInternalServerError{}
 }
 
-/* CreateNvmfNamespaceInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateNvmfNamespaceInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

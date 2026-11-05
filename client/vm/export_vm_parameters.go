@@ -54,10 +54,12 @@ func NewExportVMParamsWithHTTPClient(client *http.Client) *ExportVMParams {
 	}
 }
 
-/* ExportVMParams contains all the parameters to send to the API endpoint
-   for the export Vm operation.
+/*
+ExportVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the export Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type ExportVMParams struct {
 

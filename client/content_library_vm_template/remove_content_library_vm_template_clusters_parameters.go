@@ -54,10 +54,12 @@ func NewRemoveContentLibraryVMTemplateClustersParamsWithHTTPClient(client *http.
 	}
 }
 
-/* RemoveContentLibraryVMTemplateClustersParams contains all the parameters to send to the API endpoint
-   for the remove content library Vm template clusters operation.
+/*
+RemoveContentLibraryVMTemplateClustersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the remove content library Vm template clusters operation.
+
+	Typically these are written to a http.Request.
 */
 type RemoveContentLibraryVMTemplateClustersParams struct {
 

@@ -57,7 +57,8 @@ func NewDeleteVirtualPrivateCloudRouteTableOK() *DeleteVirtualPrivateCloudRouteT
 	return &DeleteVirtualPrivateCloudRouteTableOK{}
 }
 
-/* DeleteVirtualPrivateCloudRouteTableOK describes a response with status code 200, with default header values.
+/*
+DeleteVirtualPrivateCloudRouteTableOK describes a response with status code 200, with default header values.
 
 DeleteVirtualPrivateCloudRouteTableOK delete virtual private cloud route table o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVirtualPrivateCloudRouteTableBadRequest() *DeleteVirtualPrivateClo
 	return &DeleteVirtualPrivateCloudRouteTableBadRequest{}
 }
 
-/* DeleteVirtualPrivateCloudRouteTableBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVirtualPrivateCloudRouteTableBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVirtualPrivateCloudRouteTableNotFound() *DeleteVirtualPrivateCloud
 	return &DeleteVirtualPrivateCloudRouteTableNotFound{}
 }
 
-/* DeleteVirtualPrivateCloudRouteTableNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVirtualPrivateCloudRouteTableNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVirtualPrivateCloudRouteTableInternalServerError() *DeleteVirtualP
 	return &DeleteVirtualPrivateCloudRouteTableInternalServerError{}
 }
 
-/* DeleteVirtualPrivateCloudRouteTableInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVirtualPrivateCloudRouteTableInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

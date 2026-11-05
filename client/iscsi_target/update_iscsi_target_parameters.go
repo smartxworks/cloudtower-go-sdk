@@ -54,10 +54,12 @@ func NewUpdateIscsiTargetParamsWithHTTPClient(client *http.Client) *UpdateIscsiT
 	}
 }
 
-/* UpdateIscsiTargetParams contains all the parameters to send to the API endpoint
-   for the update iscsi target operation.
+/*
+UpdateIscsiTargetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update iscsi target operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateIscsiTargetParams struct {
 

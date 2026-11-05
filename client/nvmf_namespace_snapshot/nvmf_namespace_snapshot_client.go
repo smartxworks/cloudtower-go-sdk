@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateNvmfNamespaceSnapshot create nvmf namespace snapshot API
+CreateNvmfNamespaceSnapshot create nvmf namespace snapshot API
 */
 func (a *Client) CreateNvmfNamespaceSnapshot(params *CreateNvmfNamespaceSnapshotParams, opts ...ClientOption) (*CreateNvmfNamespaceSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) CreateNvmfNamespaceSnapshot(params *CreateNvmfNamespaceSnapshot
 }
 
 /*
-  DeleteNvmfNamespaceSnapshot delete nvmf namespace snapshot API
+DeleteNvmfNamespaceSnapshot delete nvmf namespace snapshot API
 */
 func (a *Client) DeleteNvmfNamespaceSnapshot(params *DeleteNvmfNamespaceSnapshotParams, opts ...ClientOption) (*DeleteNvmfNamespaceSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) DeleteNvmfNamespaceSnapshot(params *DeleteNvmfNamespaceSnapshot
 }
 
 /*
-  GetNvmfNamespaceSnapshots get nvmf namespace snapshots API
+GetNvmfNamespaceSnapshots get nvmf namespace snapshots API
 */
 func (a *Client) GetNvmfNamespaceSnapshots(params *GetNvmfNamespaceSnapshotsParams, opts ...ClientOption) (*GetNvmfNamespaceSnapshotsOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) GetNvmfNamespaceSnapshots(params *GetNvmfNamespaceSnapshotsPara
 }
 
 /*
-  GetNvmfNamespaceSnapshotsConnection get nvmf namespace snapshots connection API
+GetNvmfNamespaceSnapshotsConnection get nvmf namespace snapshots connection API
 */
 func (a *Client) GetNvmfNamespaceSnapshotsConnection(params *GetNvmfNamespaceSnapshotsConnectionParams, opts ...ClientOption) (*GetNvmfNamespaceSnapshotsConnectionOK, error) {
 	// TODO: Validate the params before sending

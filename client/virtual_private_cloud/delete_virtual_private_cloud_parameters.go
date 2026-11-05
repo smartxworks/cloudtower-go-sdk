@@ -54,10 +54,12 @@ func NewDeleteVirtualPrivateCloudParamsWithHTTPClient(client *http.Client) *Dele
 	}
 }
 
-/* DeleteVirtualPrivateCloudParams contains all the parameters to send to the API endpoint
-   for the delete virtual private cloud operation.
+/*
+DeleteVirtualPrivateCloudParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete virtual private cloud operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVirtualPrivateCloudParams struct {
 

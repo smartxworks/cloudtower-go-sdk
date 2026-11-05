@@ -148,13 +148,15 @@ type ClientService interface {
 
 	UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption) (*UpdateVMOwnerOK, error)
 
+	UpdateVMSyncTimeOnResume(params *UpdateVMSyncTimeOnResumeParams, opts ...ClientOption) (*UpdateVMSyncTimeOnResumeOK, error)
+
 	UploadNvram(params *UploadNvramParams, opts ...ClientOption) (*UploadNvramOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  AbortMigrateVMAcrossCluster abort migrate Vm across cluster API
+AbortMigrateVMAcrossCluster abort migrate Vm across cluster API
 */
 func (a *Client) AbortMigrateVMAcrossCluster(params *AbortMigrateVMAcrossClusterParams, opts ...ClientOption) (*AbortMigrateVMAcrossClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -192,7 +194,7 @@ func (a *Client) AbortMigrateVMAcrossCluster(params *AbortMigrateVMAcrossCluster
 }
 
 /*
-  AddVMCdRom add Vm cd rom API
+AddVMCdRom add Vm cd rom API
 */
 func (a *Client) AddVMCdRom(params *AddVMCdRomParams, opts ...ClientOption) (*AddVMCdRomOK, error) {
 	// TODO: Validate the params before sending
@@ -230,7 +232,7 @@ func (a *Client) AddVMCdRom(params *AddVMCdRomParams, opts ...ClientOption) (*Ad
 }
 
 /*
-  AddVMDisk add Vm disk API
+AddVMDisk add Vm disk API
 */
 func (a *Client) AddVMDisk(params *AddVMDiskParams, opts ...ClientOption) (*AddVMDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -268,7 +270,7 @@ func (a *Client) AddVMDisk(params *AddVMDiskParams, opts ...ClientOption) (*AddV
 }
 
 /*
-  AddVMGpuDevice add Vm gpu device API
+AddVMGpuDevice add Vm gpu device API
 */
 func (a *Client) AddVMGpuDevice(params *AddVMGpuDeviceParams, opts ...ClientOption) (*AddVMGpuDeviceOK, error) {
 	// TODO: Validate the params before sending
@@ -306,7 +308,7 @@ func (a *Client) AddVMGpuDevice(params *AddVMGpuDeviceParams, opts ...ClientOpti
 }
 
 /*
-  AddVMNic add Vm nic API
+AddVMNic add Vm nic API
 */
 func (a *Client) AddVMNic(params *AddVMNicParams, opts ...ClientOption) (*AddVMNicOK, error) {
 	// TODO: Validate the params before sending
@@ -344,7 +346,7 @@ func (a *Client) AddVMNic(params *AddVMNicParams, opts ...ClientOption) (*AddVMN
 }
 
 /*
-  AddVMPciNic add Vm pci nic API
+AddVMPciNic add Vm pci nic API
 */
 func (a *Client) AddVMPciNic(params *AddVMPciNicParams, opts ...ClientOption) (*AddVMPciNicOK, error) {
 	// TODO: Validate the params before sending
@@ -382,7 +384,7 @@ func (a *Client) AddVMPciNic(params *AddVMPciNicParams, opts ...ClientOption) (*
 }
 
 /*
-  AddVMToFolder add Vm to folder API
+AddVMToFolder add Vm to folder API
 */
 func (a *Client) AddVMToFolder(params *AddVMToFolderParams, opts ...ClientOption) (*AddVMToFolderOK, error) {
 	// TODO: Validate the params before sending
@@ -420,7 +422,7 @@ func (a *Client) AddVMToFolder(params *AddVMToFolderParams, opts ...ClientOption
 }
 
 /*
-  CloneVM clone Vm API
+CloneVM clone Vm API
 */
 func (a *Client) CloneVM(params *CloneVMParams, opts ...ClientOption) (*CloneVMOK, error) {
 	// TODO: Validate the params before sending
@@ -458,7 +460,7 @@ func (a *Client) CloneVM(params *CloneVMParams, opts ...ClientOption) (*CloneVMO
 }
 
 /*
-  ConvertVMTemplateToVM convert Vm template to Vm API
+ConvertVMTemplateToVM convert Vm template to Vm API
 */
 func (a *Client) ConvertVMTemplateToVM(params *ConvertVMTemplateToVMParams, opts ...ClientOption) (*ConvertVMTemplateToVMOK, error) {
 	// TODO: Validate the params before sending
@@ -496,7 +498,7 @@ func (a *Client) ConvertVMTemplateToVM(params *ConvertVMTemplateToVMParams, opts
 }
 
 /*
-  CreateVM create Vm API
+CreateVM create Vm API
 */
 func (a *Client) CreateVM(params *CreateVMParams, opts ...ClientOption) (*CreateVMOK, error) {
 	// TODO: Validate the params before sending
@@ -534,7 +536,7 @@ func (a *Client) CreateVM(params *CreateVMParams, opts ...ClientOption) (*Create
 }
 
 /*
-  CreateVMFromContentLibraryTemplate create Vm from content library template API
+CreateVMFromContentLibraryTemplate create Vm from content library template API
 */
 func (a *Client) CreateVMFromContentLibraryTemplate(params *CreateVMFromContentLibraryTemplateParams, opts ...ClientOption) (*CreateVMFromContentLibraryTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -572,7 +574,7 @@ func (a *Client) CreateVMFromContentLibraryTemplate(params *CreateVMFromContentL
 }
 
 /*
-  CreateVMFromContentLibraryTemplateBatch create Vm from content library template batch API
+CreateVMFromContentLibraryTemplateBatch create Vm from content library template batch API
 */
 func (a *Client) CreateVMFromContentLibraryTemplateBatch(params *CreateVMFromContentLibraryTemplateBatchParams, opts ...ClientOption) (*CreateVMFromContentLibraryTemplateBatchOK, error) {
 	// TODO: Validate the params before sending
@@ -610,7 +612,7 @@ func (a *Client) CreateVMFromContentLibraryTemplateBatch(params *CreateVMFromCon
 }
 
 /*
-  CreateVMFromTemplate create Vm from template API
+CreateVMFromTemplate create Vm from template API
 */
 func (a *Client) CreateVMFromTemplate(params *CreateVMFromTemplateParams, opts ...ClientOption) (*CreateVMFromTemplateOK, error) {
 	// TODO: Validate the params before sending
@@ -648,7 +650,7 @@ func (a *Client) CreateVMFromTemplate(params *CreateVMFromTemplateParams, opts .
 }
 
 /*
-  DeleteVM delete Vm API
+DeleteVM delete Vm API
 */
 func (a *Client) DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*DeleteVMOK, error) {
 	// TODO: Validate the params before sending
@@ -686,7 +688,7 @@ func (a *Client) DeleteVM(params *DeleteVMParams, opts ...ClientOption) (*Delete
 }
 
 /*
-  DownloadNvram download nvram API
+DownloadNvram download nvram API
 */
 func (a *Client) DownloadNvram(params *DownloadNvramParams, opts ...ClientOption) (*DownloadNvramOK, error) {
 	// TODO: Validate the params before sending
@@ -724,7 +726,7 @@ func (a *Client) DownloadNvram(params *DownloadNvramParams, opts ...ClientOption
 }
 
 /*
-  EjectIsoFromVMCdRom eject iso from Vm cd rom API
+EjectIsoFromVMCdRom eject iso from Vm cd rom API
 */
 func (a *Client) EjectIsoFromVMCdRom(params *EjectIsoFromVMCdRomParams, opts ...ClientOption) (*EjectIsoFromVMCdRomOK, error) {
 	// TODO: Validate the params before sending
@@ -762,7 +764,7 @@ func (a *Client) EjectIsoFromVMCdRom(params *EjectIsoFromVMCdRomParams, opts ...
 }
 
 /*
-  ExpandVMDisk expand Vm disk API
+ExpandVMDisk expand Vm disk API
 */
 func (a *Client) ExpandVMDisk(params *ExpandVMDiskParams, opts ...ClientOption) (*ExpandVMDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -800,7 +802,7 @@ func (a *Client) ExpandVMDisk(params *ExpandVMDiskParams, opts ...ClientOption) 
 }
 
 /*
-  ExportVM export Vm API
+ExportVM export Vm API
 */
 func (a *Client) ExportVM(params *ExportVMParams, opts ...ClientOption) (*ExportVMOK, error) {
 	// TODO: Validate the params before sending
@@ -838,7 +840,7 @@ func (a *Client) ExportVM(params *ExportVMParams, opts ...ClientOption) (*Export
 }
 
 /*
-  ForceRestartVM force restart Vm API
+ForceRestartVM force restart Vm API
 */
 func (a *Client) ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOption) (*ForceRestartVMOK, error) {
 	// TODO: Validate the params before sending
@@ -876,7 +878,7 @@ func (a *Client) ForceRestartVM(params *ForceRestartVMParams, opts ...ClientOpti
 }
 
 /*
-  GetVMGpuDeviceInfo get Vm gpu device info API
+GetVMGpuDeviceInfo get Vm gpu device info API
 */
 func (a *Client) GetVMGpuDeviceInfo(params *GetVMGpuDeviceInfoParams, opts ...ClientOption) (*GetVMGpuDeviceInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -914,7 +916,7 @@ func (a *Client) GetVMGpuDeviceInfo(params *GetVMGpuDeviceInfoParams, opts ...Cl
 }
 
 /*
-  GetVMVncInfo get Vm vnc info API
+GetVMVncInfo get Vm vnc info API
 */
 func (a *Client) GetVMVncInfo(params *GetVMVncInfoParams, opts ...ClientOption) (*GetVMVncInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -952,7 +954,7 @@ func (a *Client) GetVMVncInfo(params *GetVMVncInfoParams, opts ...ClientOption) 
 }
 
 /*
-  GetVms get vms API
+GetVms get vms API
 */
 func (a *Client) GetVms(params *GetVmsParams, opts ...ClientOption) (*GetVmsOK, error) {
 	// TODO: Validate the params before sending
@@ -990,7 +992,7 @@ func (a *Client) GetVms(params *GetVmsParams, opts ...ClientOption) (*GetVmsOK, 
 }
 
 /*
-  GetVmsConnection get vms connection API
+GetVmsConnection get vms connection API
 */
 func (a *Client) GetVmsConnection(params *GetVmsConnectionParams, opts ...ClientOption) (*GetVmsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -1028,7 +1030,7 @@ func (a *Client) GetVmsConnection(params *GetVmsConnectionParams, opts ...Client
 }
 
 /*
-  ImportVM import Vm API
+ImportVM import Vm API
 */
 func (a *Client) ImportVM(params *ImportVMParams, opts ...ClientOption) (*ImportVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1066,7 +1068,7 @@ func (a *Client) ImportVM(params *ImportVMParams, opts ...ClientOption) (*Import
 }
 
 /*
-  InstallVmtools install vmtools API
+InstallVmtools install vmtools API
 */
 func (a *Client) InstallVmtools(params *InstallVmtoolsParams, opts ...ClientOption) (*InstallVmtoolsOK, error) {
 	// TODO: Validate the params before sending
@@ -1104,7 +1106,7 @@ func (a *Client) InstallVmtools(params *InstallVmtoolsParams, opts ...ClientOpti
 }
 
 /*
-  MigrateVM migrate Vm API
+MigrateVM migrate Vm API
 */
 func (a *Client) MigrateVM(params *MigrateVMParams, opts ...ClientOption) (*MigrateVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1142,7 +1144,7 @@ func (a *Client) MigrateVM(params *MigrateVMParams, opts ...ClientOption) (*Migr
 }
 
 /*
-  MigrateVMAcrossCluster migrate Vm across cluster API
+MigrateVMAcrossCluster migrate Vm across cluster API
 */
 func (a *Client) MigrateVMAcrossCluster(params *MigrateVMAcrossClusterParams, opts ...ClientOption) (*MigrateVMAcrossClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -1180,7 +1182,7 @@ func (a *Client) MigrateVMAcrossCluster(params *MigrateVMAcrossClusterParams, op
 }
 
 /*
-  MoveVMToRecycleBin move Vm to recycle bin API
+MoveVMToRecycleBin move Vm to recycle bin API
 */
 func (a *Client) MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, opts ...ClientOption) (*MoveVMToRecycleBinOK, error) {
 	// TODO: Validate the params before sending
@@ -1218,7 +1220,7 @@ func (a *Client) MoveVMToRecycleBin(params *MoveVMToRecycleBinParams, opts ...Cl
 }
 
 /*
-  PoweroffVM poweroff Vm API
+PoweroffVM poweroff Vm API
 */
 func (a *Client) PoweroffVM(params *PoweroffVMParams, opts ...ClientOption) (*PoweroffVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1256,7 +1258,7 @@ func (a *Client) PoweroffVM(params *PoweroffVMParams, opts ...ClientOption) (*Po
 }
 
 /*
-  RebuildVM rebuild Vm API
+RebuildVM rebuild Vm API
 */
 func (a *Client) RebuildVM(params *RebuildVMParams, opts ...ClientOption) (*RebuildVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1294,7 +1296,7 @@ func (a *Client) RebuildVM(params *RebuildVMParams, opts ...ClientOption) (*Rebu
 }
 
 /*
-  RecoverVMFromRecycleBin recover Vm from recycle bin API
+RecoverVMFromRecycleBin recover Vm from recycle bin API
 */
 func (a *Client) RecoverVMFromRecycleBin(params *RecoverVMFromRecycleBinParams, opts ...ClientOption) (*RecoverVMFromRecycleBinOK, error) {
 	// TODO: Validate the params before sending
@@ -1332,7 +1334,7 @@ func (a *Client) RecoverVMFromRecycleBin(params *RecoverVMFromRecycleBinParams, 
 }
 
 /*
-  RemoveVMCdRom remove Vm cd rom API
+RemoveVMCdRom remove Vm cd rom API
 */
 func (a *Client) RemoveVMCdRom(params *RemoveVMCdRomParams, opts ...ClientOption) (*RemoveVMCdRomOK, error) {
 	// TODO: Validate the params before sending
@@ -1370,7 +1372,7 @@ func (a *Client) RemoveVMCdRom(params *RemoveVMCdRomParams, opts ...ClientOption
 }
 
 /*
-  RemoveVMDisk remove Vm disk API
+RemoveVMDisk remove Vm disk API
 */
 func (a *Client) RemoveVMDisk(params *RemoveVMDiskParams, opts ...ClientOption) (*RemoveVMDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -1408,7 +1410,7 @@ func (a *Client) RemoveVMDisk(params *RemoveVMDiskParams, opts ...ClientOption) 
 }
 
 /*
-  RemoveVMGpuDevice remove Vm gpu device API
+RemoveVMGpuDevice remove Vm gpu device API
 */
 func (a *Client) RemoveVMGpuDevice(params *RemoveVMGpuDeviceParams, opts ...ClientOption) (*RemoveVMGpuDeviceOK, error) {
 	// TODO: Validate the params before sending
@@ -1446,7 +1448,7 @@ func (a *Client) RemoveVMGpuDevice(params *RemoveVMGpuDeviceParams, opts ...Clie
 }
 
 /*
-  RemoveVMNic remove Vm nic API
+RemoveVMNic remove Vm nic API
 */
 func (a *Client) RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*RemoveVMNicOK, error) {
 	// TODO: Validate the params before sending
@@ -1484,7 +1486,7 @@ func (a *Client) RemoveVMNic(params *RemoveVMNicParams, opts ...ClientOption) (*
 }
 
 /*
-  RemoveVMNicByWhere remove Vm nic by where API
+RemoveVMNicByWhere remove Vm nic by where API
 */
 func (a *Client) RemoveVMNicByWhere(params *RemoveVMNicByWhereParams, opts ...ClientOption) (*RemoveVMNicByWhereOK, error) {
 	// TODO: Validate the params before sending
@@ -1522,7 +1524,7 @@ func (a *Client) RemoveVMNicByWhere(params *RemoveVMNicByWhereParams, opts ...Cl
 }
 
 /*
-  RemoveVMPciNic remove Vm pci nic API
+RemoveVMPciNic remove Vm pci nic API
 */
 func (a *Client) RemoveVMPciNic(params *RemoveVMPciNicParams, opts ...ClientOption) (*RemoveVMPciNicOK, error) {
 	// TODO: Validate the params before sending
@@ -1560,7 +1562,7 @@ func (a *Client) RemoveVMPciNic(params *RemoveVMPciNicParams, opts ...ClientOpti
 }
 
 /*
-  RemoveVMToFolder remove Vm to folder API
+RemoveVMToFolder remove Vm to folder API
 */
 func (a *Client) RemoveVMToFolder(params *RemoveVMToFolderParams, opts ...ClientOption) (*RemoveVMToFolderOK, error) {
 	// TODO: Validate the params before sending
@@ -1598,7 +1600,7 @@ func (a *Client) RemoveVMToFolder(params *RemoveVMToFolderParams, opts ...Client
 }
 
 /*
-  ResetVMGuestOsPassword reset Vm guest os password API
+ResetVMGuestOsPassword reset Vm guest os password API
 */
 func (a *Client) ResetVMGuestOsPassword(params *ResetVMGuestOsPasswordParams, opts ...ClientOption) (*ResetVMGuestOsPasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -1636,7 +1638,7 @@ func (a *Client) ResetVMGuestOsPassword(params *ResetVMGuestOsPasswordParams, op
 }
 
 /*
-  RestartVM restart Vm API
+RestartVM restart Vm API
 */
 func (a *Client) RestartVM(params *RestartVMParams, opts ...ClientOption) (*RestartVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1674,7 +1676,7 @@ func (a *Client) RestartVM(params *RestartVMParams, opts ...ClientOption) (*Rest
 }
 
 /*
-  ResumeVM resume Vm API
+ResumeVM resume Vm API
 */
 func (a *Client) ResumeVM(params *ResumeVMParams, opts ...ClientOption) (*ResumeVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1712,7 +1714,7 @@ func (a *Client) ResumeVM(params *ResumeVMParams, opts ...ClientOption) (*Resume
 }
 
 /*
-  RollbackVM rollback Vm API
+RollbackVM rollback Vm API
 */
 func (a *Client) RollbackVM(params *RollbackVMParams, opts ...ClientOption) (*RollbackVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1750,7 +1752,7 @@ func (a *Client) RollbackVM(params *RollbackVMParams, opts ...ClientOption) (*Ro
 }
 
 /*
-  SetVMDiskResidentInCache set Vm disk resident in cache API
+SetVMDiskResidentInCache set Vm disk resident in cache API
 */
 func (a *Client) SetVMDiskResidentInCache(params *SetVMDiskResidentInCacheParams, opts ...ClientOption) (*SetVMDiskResidentInCacheOK, error) {
 	// TODO: Validate the params before sending
@@ -1788,7 +1790,7 @@ func (a *Client) SetVMDiskResidentInCache(params *SetVMDiskResidentInCacheParams
 }
 
 /*
-  ShutDownVM shut down Vm API
+ShutDownVM shut down Vm API
 */
 func (a *Client) ShutDownVM(params *ShutDownVMParams, opts ...ClientOption) (*ShutDownVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1826,7 +1828,7 @@ func (a *Client) ShutDownVM(params *ShutDownVMParams, opts ...ClientOption) (*Sh
 }
 
 /*
-  StartVM start Vm API
+StartVM start Vm API
 */
 func (a *Client) StartVM(params *StartVMParams, opts ...ClientOption) (*StartVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1864,7 +1866,7 @@ func (a *Client) StartVM(params *StartVMParams, opts ...ClientOption) (*StartVMO
 }
 
 /*
-  StopVMInCutoverMigration stop Vm in cutover migration API
+StopVMInCutoverMigration stop Vm in cutover migration API
 */
 func (a *Client) StopVMInCutoverMigration(params *StopVMInCutoverMigrationParams, opts ...ClientOption) (*StopVMInCutoverMigrationOK, error) {
 	// TODO: Validate the params before sending
@@ -1902,7 +1904,7 @@ func (a *Client) StopVMInCutoverMigration(params *StopVMInCutoverMigrationParams
 }
 
 /*
-  SuspendVM suspend Vm API
+SuspendVM suspend Vm API
 */
 func (a *Client) SuspendVM(params *SuspendVMParams, opts ...ClientOption) (*SuspendVMOK, error) {
 	// TODO: Validate the params before sending
@@ -1940,7 +1942,7 @@ func (a *Client) SuspendVM(params *SuspendVMParams, opts ...ClientOption) (*Susp
 }
 
 /*
-  ToggleVMCdRomDisable toggle Vm cd rom disable API
+ToggleVMCdRomDisable toggle Vm cd rom disable API
 */
 func (a *Client) ToggleVMCdRomDisable(params *ToggleVMCdRomDisableParams, opts ...ClientOption) (*ToggleVMCdRomDisableOK, error) {
 	// TODO: Validate the params before sending
@@ -1978,7 +1980,7 @@ func (a *Client) ToggleVMCdRomDisable(params *ToggleVMCdRomDisableParams, opts .
 }
 
 /*
-  UpdateVM update Vm API
+UpdateVM update Vm API
 */
 func (a *Client) UpdateVM(params *UpdateVMParams, opts ...ClientOption) (*UpdateVMOK, error) {
 	// TODO: Validate the params before sending
@@ -2016,7 +2018,7 @@ func (a *Client) UpdateVM(params *UpdateVMParams, opts ...ClientOption) (*Update
 }
 
 /*
-  UpdateVMAdvancedOptions update Vm advanced options API
+UpdateVMAdvancedOptions update Vm advanced options API
 */
 func (a *Client) UpdateVMAdvancedOptions(params *UpdateVMAdvancedOptionsParams, opts ...ClientOption) (*UpdateVMAdvancedOptionsOK, error) {
 	// TODO: Validate the params before sending
@@ -2054,7 +2056,7 @@ func (a *Client) UpdateVMAdvancedOptions(params *UpdateVMAdvancedOptionsParams, 
 }
 
 /*
-  UpdateVMDisk update Vm disk API
+UpdateVMDisk update Vm disk API
 */
 func (a *Client) UpdateVMDisk(params *UpdateVMDiskParams, opts ...ClientOption) (*UpdateVMDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -2092,7 +2094,7 @@ func (a *Client) UpdateVMDisk(params *UpdateVMDiskParams, opts ...ClientOption) 
 }
 
 /*
-  UpdateVMHostOptions update Vm host options API
+UpdateVMHostOptions update Vm host options API
 */
 func (a *Client) UpdateVMHostOptions(params *UpdateVMHostOptionsParams, opts ...ClientOption) (*UpdateVMHostOptionsOK, error) {
 	// TODO: Validate the params before sending
@@ -2130,7 +2132,7 @@ func (a *Client) UpdateVMHostOptions(params *UpdateVMHostOptionsParams, opts ...
 }
 
 /*
-  UpdateVMIoPolicy update Vm io policy API
+UpdateVMIoPolicy update Vm io policy API
 */
 func (a *Client) UpdateVMIoPolicy(params *UpdateVMIoPolicyParams, opts ...ClientOption) (*UpdateVMIoPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -2168,7 +2170,7 @@ func (a *Client) UpdateVMIoPolicy(params *UpdateVMIoPolicyParams, opts ...Client
 }
 
 /*
-  UpdateVMNic update Vm nic API
+UpdateVMNic update Vm nic API
 */
 func (a *Client) UpdateVMNic(params *UpdateVMNicParams, opts ...ClientOption) (*UpdateVMNicOK, error) {
 	// TODO: Validate the params before sending
@@ -2206,7 +2208,7 @@ func (a *Client) UpdateVMNic(params *UpdateVMNicParams, opts ...ClientOption) (*
 }
 
 /*
-  UpdateVMNicAdvanceInfo update Vm nic advance info API
+UpdateVMNicAdvanceInfo update Vm nic advance info API
 */
 func (a *Client) UpdateVMNicAdvanceInfo(params *UpdateVMNicAdvanceInfoParams, opts ...ClientOption) (*UpdateVMNicAdvanceInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -2244,7 +2246,7 @@ func (a *Client) UpdateVMNicAdvanceInfo(params *UpdateVMNicAdvanceInfoParams, op
 }
 
 /*
-  UpdateVMNicBasicInfo update Vm nic basic info API
+UpdateVMNicBasicInfo update Vm nic basic info API
 */
 func (a *Client) UpdateVMNicBasicInfo(params *UpdateVMNicBasicInfoParams, opts ...ClientOption) (*UpdateVMNicBasicInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -2282,7 +2284,7 @@ func (a *Client) UpdateVMNicBasicInfo(params *UpdateVMNicBasicInfoParams, opts .
 }
 
 /*
-  UpdateVMNicQosOption update Vm nic qos option API
+UpdateVMNicQosOption update Vm nic qos option API
 */
 func (a *Client) UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts ...ClientOption) (*UpdateVMNicQosOptionOK, error) {
 	// TODO: Validate the params before sending
@@ -2320,7 +2322,7 @@ func (a *Client) UpdateVMNicQosOption(params *UpdateVMNicQosOptionParams, opts .
 }
 
 /*
-  UpdateVMNicVpcInfo update Vm nic vpc info API
+UpdateVMNicVpcInfo update Vm nic vpc info API
 */
 func (a *Client) UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...ClientOption) (*UpdateVMNicVpcInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -2358,7 +2360,7 @@ func (a *Client) UpdateVMNicVpcInfo(params *UpdateVMNicVpcInfoParams, opts ...Cl
 }
 
 /*
-  UpdateVMOwner update Vm owner API
+UpdateVMOwner update Vm owner API
 */
 func (a *Client) UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption) (*UpdateVMOwnerOK, error) {
 	// TODO: Validate the params before sending
@@ -2396,7 +2398,45 @@ func (a *Client) UpdateVMOwner(params *UpdateVMOwnerParams, opts ...ClientOption
 }
 
 /*
-  UploadNvram upload nvram API
+UpdateVMSyncTimeOnResume update Vm sync time on resume API
+*/
+func (a *Client) UpdateVMSyncTimeOnResume(params *UpdateVMSyncTimeOnResumeParams, opts ...ClientOption) (*UpdateVMSyncTimeOnResumeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVMSyncTimeOnResumeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UpdateVmSyncTimeOnResume",
+		Method:             "POST",
+		PathPattern:        "/update-vm-sync-time-on-resume",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &UpdateVMSyncTimeOnResumeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVMSyncTimeOnResumeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UpdateVmSyncTimeOnResume: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UploadNvram upload nvram API
 */
 func (a *Client) UploadNvram(params *UploadNvramParams, opts ...ClientOption) (*UploadNvramOK, error) {
 	// TODO: Validate the params before sending

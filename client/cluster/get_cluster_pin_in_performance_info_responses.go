@@ -57,7 +57,8 @@ func NewGetClusterPinInPerformanceInfoOK() *GetClusterPinInPerformanceInfoOK {
 	return &GetClusterPinInPerformanceInfoOK{}
 }
 
-/* GetClusterPinInPerformanceInfoOK describes a response with status code 200, with default header values.
+/*
+GetClusterPinInPerformanceInfoOK describes a response with status code 200, with default header values.
 
 GetClusterPinInPerformanceInfoOK get cluster pin in performance info o k
 */
@@ -96,7 +97,8 @@ func NewGetClusterPinInPerformanceInfoBadRequest() *GetClusterPinInPerformanceIn
 	return &GetClusterPinInPerformanceInfoBadRequest{}
 }
 
-/* GetClusterPinInPerformanceInfoBadRequest describes a response with status code 400, with default header values.
+/*
+GetClusterPinInPerformanceInfoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetClusterPinInPerformanceInfoNotFound() *GetClusterPinInPerformanceInfo
 	return &GetClusterPinInPerformanceInfoNotFound{}
 }
 
-/* GetClusterPinInPerformanceInfoNotFound describes a response with status code 404, with default header values.
+/*
+GetClusterPinInPerformanceInfoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetClusterPinInPerformanceInfoInternalServerError() *GetClusterPinInPerf
 	return &GetClusterPinInPerformanceInfoInternalServerError{}
 }
 
-/* GetClusterPinInPerformanceInfoInternalServerError describes a response with status code 500, with default header values.
+/*
+GetClusterPinInPerformanceInfoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

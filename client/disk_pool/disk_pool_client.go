@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetDiskPools get disk pools API
+GetDiskPools get disk pools API
 */
 func (a *Client) GetDiskPools(params *GetDiskPoolsParams, opts ...ClientOption) (*GetDiskPoolsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetDiskPools(params *GetDiskPoolsParams, opts ...ClientOption) 
 }
 
 /*
-  GetDiskPoolsConnection get disk pools connection API
+GetDiskPoolsConnection get disk pools connection API
 */
 func (a *Client) GetDiskPoolsConnection(params *GetDiskPoolsConnectionParams, opts ...ClientOption) (*GetDiskPoolsConnectionOK, error) {
 	// TODO: Validate the params before sending

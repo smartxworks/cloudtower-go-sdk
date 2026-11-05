@@ -54,10 +54,12 @@ func NewResumeBackupPlanParamsWithHTTPClient(client *http.Client) *ResumeBackupP
 	}
 }
 
-/* ResumeBackupPlanParams contains all the parameters to send to the API endpoint
-   for the resume backup plan operation.
+/*
+ResumeBackupPlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the resume backup plan operation.
+
+	Typically these are written to a http.Request.
 */
 type ResumeBackupPlanParams struct {
 

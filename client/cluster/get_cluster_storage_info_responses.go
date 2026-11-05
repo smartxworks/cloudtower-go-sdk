@@ -57,7 +57,8 @@ func NewGetClusterStorageInfoOK() *GetClusterStorageInfoOK {
 	return &GetClusterStorageInfoOK{}
 }
 
-/* GetClusterStorageInfoOK describes a response with status code 200, with default header values.
+/*
+GetClusterStorageInfoOK describes a response with status code 200, with default header values.
 
 GetClusterStorageInfoOK get cluster storage info o k
 */
@@ -96,7 +97,8 @@ func NewGetClusterStorageInfoBadRequest() *GetClusterStorageInfoBadRequest {
 	return &GetClusterStorageInfoBadRequest{}
 }
 
-/* GetClusterStorageInfoBadRequest describes a response with status code 400, with default header values.
+/*
+GetClusterStorageInfoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetClusterStorageInfoNotFound() *GetClusterStorageInfoNotFound {
 	return &GetClusterStorageInfoNotFound{}
 }
 
-/* GetClusterStorageInfoNotFound describes a response with status code 404, with default header values.
+/*
+GetClusterStorageInfoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetClusterStorageInfoInternalServerError() *GetClusterStorageInfoInterna
 	return &GetClusterStorageInfoInternalServerError{}
 }
 
-/* GetClusterStorageInfoInternalServerError describes a response with status code 500, with default header values.
+/*
+GetClusterStorageInfoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

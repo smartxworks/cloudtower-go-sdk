@@ -54,10 +54,12 @@ func NewAddVMCdRomParamsWithHTTPClient(client *http.Client) *AddVMCdRomParams {
 	}
 }
 
-/* AddVMCdRomParams contains all the parameters to send to the API endpoint
-   for the add Vm cd rom operation.
+/*
+AddVMCdRomParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the add Vm cd rom operation.
+
+	Typically these are written to a http.Request.
 */
 type AddVMCdRomParams struct {
 

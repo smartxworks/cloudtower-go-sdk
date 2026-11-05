@@ -36,6 +36,9 @@ const (
 	// BackupStoreTypeISCSI captures enum value "ISCSI"
 	BackupStoreTypeISCSI BackupStoreType = "ISCSI"
 
+	// BackupStoreTypeNETBACKUP captures enum value "NETBACKUP"
+	BackupStoreTypeNETBACKUP BackupStoreType = "NETBACKUP"
+
 	// BackupStoreTypeNFS3 captures enum value "NFS3"
 	BackupStoreTypeNFS3 BackupStoreType = "NFS3"
 
@@ -48,7 +51,7 @@ var backupStoreTypeEnum []interface{}
 
 func init() {
 	var res []BackupStoreType
-	if err := json.Unmarshal([]byte(`["BOOSTFS","ISCSI","NFS3","NFS4"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BOOSTFS","ISCSI","NETBACKUP","NFS3","NFS4"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

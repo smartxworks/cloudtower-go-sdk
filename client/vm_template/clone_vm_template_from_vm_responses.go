@@ -57,7 +57,8 @@ func NewCloneVMTemplateFromVMOK() *CloneVMTemplateFromVMOK {
 	return &CloneVMTemplateFromVMOK{}
 }
 
-/* CloneVMTemplateFromVMOK describes a response with status code 200, with default header values.
+/*
+CloneVMTemplateFromVMOK describes a response with status code 200, with default header values.
 
 CloneVMTemplateFromVMOK clone Vm template from Vm o k
 */
@@ -96,7 +97,8 @@ func NewCloneVMTemplateFromVMBadRequest() *CloneVMTemplateFromVMBadRequest {
 	return &CloneVMTemplateFromVMBadRequest{}
 }
 
-/* CloneVMTemplateFromVMBadRequest describes a response with status code 400, with default header values.
+/*
+CloneVMTemplateFromVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCloneVMTemplateFromVMNotFound() *CloneVMTemplateFromVMNotFound {
 	return &CloneVMTemplateFromVMNotFound{}
 }
 
-/* CloneVMTemplateFromVMNotFound describes a response with status code 404, with default header values.
+/*
+CloneVMTemplateFromVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCloneVMTemplateFromVMInternalServerError() *CloneVMTemplateFromVMInterna
 	return &CloneVMTemplateFromVMInternalServerError{}
 }
 
-/* CloneVMTemplateFromVMInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneVMTemplateFromVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

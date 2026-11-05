@@ -57,7 +57,8 @@ func NewUpdateVirtualPrivateCloudSecurityPolicyOK() *UpdateVirtualPrivateCloudSe
 	return &UpdateVirtualPrivateCloudSecurityPolicyOK{}
 }
 
-/* UpdateVirtualPrivateCloudSecurityPolicyOK describes a response with status code 200, with default header values.
+/*
+UpdateVirtualPrivateCloudSecurityPolicyOK describes a response with status code 200, with default header values.
 
 UpdateVirtualPrivateCloudSecurityPolicyOK update virtual private cloud security policy o k
 */
@@ -96,7 +97,8 @@ func NewUpdateVirtualPrivateCloudSecurityPolicyBadRequest() *UpdateVirtualPrivat
 	return &UpdateVirtualPrivateCloudSecurityPolicyBadRequest{}
 }
 
-/* UpdateVirtualPrivateCloudSecurityPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVirtualPrivateCloudSecurityPolicyBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateVirtualPrivateCloudSecurityPolicyNotFound() *UpdateVirtualPrivateC
 	return &UpdateVirtualPrivateCloudSecurityPolicyNotFound{}
 }
 
-/* UpdateVirtualPrivateCloudSecurityPolicyNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVirtualPrivateCloudSecurityPolicyNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateVirtualPrivateCloudSecurityPolicyInternalServerError() *UpdateVirt
 	return &UpdateVirtualPrivateCloudSecurityPolicyInternalServerError{}
 }
 
-/* UpdateVirtualPrivateCloudSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVirtualPrivateCloudSecurityPolicyInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

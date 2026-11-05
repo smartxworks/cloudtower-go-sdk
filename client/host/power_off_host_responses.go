@@ -57,7 +57,8 @@ func NewPowerOffHostOK() *PowerOffHostOK {
 	return &PowerOffHostOK{}
 }
 
-/* PowerOffHostOK describes a response with status code 200, with default header values.
+/*
+PowerOffHostOK describes a response with status code 200, with default header values.
 
 PowerOffHostOK power off host o k
 */
@@ -98,7 +99,8 @@ func NewPowerOffHostBadRequest() *PowerOffHostBadRequest {
 	return &PowerOffHostBadRequest{}
 }
 
-/* PowerOffHostBadRequest describes a response with status code 400, with default header values.
+/*
+PowerOffHostBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewPowerOffHostNotFound() *PowerOffHostNotFound {
 	return &PowerOffHostNotFound{}
 }
 
-/* PowerOffHostNotFound describes a response with status code 404, with default header values.
+/*
+PowerOffHostNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewPowerOffHostInternalServerError() *PowerOffHostInternalServerError {
 	return &PowerOffHostInternalServerError{}
 }
 
-/* PowerOffHostInternalServerError describes a response with status code 500, with default header values.
+/*
+PowerOffHostInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

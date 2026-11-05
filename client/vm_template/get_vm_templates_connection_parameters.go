@@ -54,10 +54,12 @@ func NewGetVMTemplatesConnectionParamsWithHTTPClient(client *http.Client) *GetVM
 	}
 }
 
-/* GetVMTemplatesConnectionParams contains all the parameters to send to the API endpoint
-   for the get Vm templates connection operation.
+/*
+GetVMTemplatesConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm templates connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMTemplatesConnectionParams struct {
 

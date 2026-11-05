@@ -57,7 +57,8 @@ func NewGetSnapshotGroupsOK() *GetSnapshotGroupsOK {
 	return &GetSnapshotGroupsOK{}
 }
 
-/* GetSnapshotGroupsOK describes a response with status code 200, with default header values.
+/*
+GetSnapshotGroupsOK describes a response with status code 200, with default header values.
 
 GetSnapshotGroupsOK get snapshot groups o k
 */
@@ -96,7 +97,8 @@ func NewGetSnapshotGroupsBadRequest() *GetSnapshotGroupsBadRequest {
 	return &GetSnapshotGroupsBadRequest{}
 }
 
-/* GetSnapshotGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+GetSnapshotGroupsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetSnapshotGroupsNotFound() *GetSnapshotGroupsNotFound {
 	return &GetSnapshotGroupsNotFound{}
 }
 
-/* GetSnapshotGroupsNotFound describes a response with status code 404, with default header values.
+/*
+GetSnapshotGroupsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetSnapshotGroupsInternalServerError() *GetSnapshotGroupsInternalServerE
 	return &GetSnapshotGroupsInternalServerError{}
 }
 
-/* GetSnapshotGroupsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetSnapshotGroupsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

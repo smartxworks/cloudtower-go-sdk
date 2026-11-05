@@ -54,10 +54,12 @@ func NewExecuteBackupPlanParamsWithHTTPClient(client *http.Client) *ExecuteBacku
 	}
 }
 
-/* ExecuteBackupPlanParams contains all the parameters to send to the API endpoint
-   for the execute backup plan operation.
+/*
+ExecuteBackupPlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the execute backup plan operation.
+
+	Typically these are written to a http.Request.
 */
 type ExecuteBackupPlanParams struct {
 

@@ -57,7 +57,8 @@ func NewGetZonesOK() *GetZonesOK {
 	return &GetZonesOK{}
 }
 
-/* GetZonesOK describes a response with status code 200, with default header values.
+/*
+GetZonesOK describes a response with status code 200, with default header values.
 
 GetZonesOK get zones o k
 */
@@ -96,7 +97,8 @@ func NewGetZonesBadRequest() *GetZonesBadRequest {
 	return &GetZonesBadRequest{}
 }
 
-/* GetZonesBadRequest describes a response with status code 400, with default header values.
+/*
+GetZonesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetZonesNotFound() *GetZonesNotFound {
 	return &GetZonesNotFound{}
 }
 
-/* GetZonesNotFound describes a response with status code 404, with default header values.
+/*
+GetZonesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetZonesInternalServerError() *GetZonesInternalServerError {
 	return &GetZonesInternalServerError{}
 }
 
-/* GetZonesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetZonesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

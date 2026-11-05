@@ -57,7 +57,8 @@ func NewDeleteClusterRecycleBinSettingOK() *DeleteClusterRecycleBinSettingOK {
 	return &DeleteClusterRecycleBinSettingOK{}
 }
 
-/* DeleteClusterRecycleBinSettingOK describes a response with status code 200, with default header values.
+/*
+DeleteClusterRecycleBinSettingOK describes a response with status code 200, with default header values.
 
 DeleteClusterRecycleBinSettingOK delete cluster recycle bin setting o k
 */
@@ -96,7 +97,8 @@ func NewDeleteClusterRecycleBinSettingBadRequest() *DeleteClusterRecycleBinSetti
 	return &DeleteClusterRecycleBinSettingBadRequest{}
 }
 
-/* DeleteClusterRecycleBinSettingBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteClusterRecycleBinSettingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteClusterRecycleBinSettingNotFound() *DeleteClusterRecycleBinSetting
 	return &DeleteClusterRecycleBinSettingNotFound{}
 }
 
-/* DeleteClusterRecycleBinSettingNotFound describes a response with status code 404, with default header values.
+/*
+DeleteClusterRecycleBinSettingNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteClusterRecycleBinSettingInternalServerError() *DeleteClusterRecycl
 	return &DeleteClusterRecycleBinSettingInternalServerError{}
 }
 
-/* DeleteClusterRecycleBinSettingInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteClusterRecycleBinSettingInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

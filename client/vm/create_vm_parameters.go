@@ -54,10 +54,12 @@ func NewCreateVMParamsWithHTTPClient(client *http.Client) *CreateVMParams {
 	}
 }
 
-/* CreateVMParams contains all the parameters to send to the API endpoint
-   for the create Vm operation.
+/*
+CreateVMParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create Vm operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVMParams struct {
 

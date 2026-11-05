@@ -57,7 +57,8 @@ func NewUploadCloudTowerApplicationPackageOK() *UploadCloudTowerApplicationPacka
 	return &UploadCloudTowerApplicationPackageOK{}
 }
 
-/* UploadCloudTowerApplicationPackageOK describes a response with status code 200, with default header values.
+/*
+UploadCloudTowerApplicationPackageOK describes a response with status code 200, with default header values.
 
 UploadCloudTowerApplicationPackageOK upload cloud tower application package o k
 */
@@ -96,7 +97,8 @@ func NewUploadCloudTowerApplicationPackageBadRequest() *UploadCloudTowerApplicat
 	return &UploadCloudTowerApplicationPackageBadRequest{}
 }
 
-/* UploadCloudTowerApplicationPackageBadRequest describes a response with status code 400, with default header values.
+/*
+UploadCloudTowerApplicationPackageBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUploadCloudTowerApplicationPackageNotFound() *UploadCloudTowerApplicatio
 	return &UploadCloudTowerApplicationPackageNotFound{}
 }
 
-/* UploadCloudTowerApplicationPackageNotFound describes a response with status code 404, with default header values.
+/*
+UploadCloudTowerApplicationPackageNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUploadCloudTowerApplicationPackageInternalServerError() *UploadCloudTowe
 	return &UploadCloudTowerApplicationPackageInternalServerError{}
 }
 
-/* UploadCloudTowerApplicationPackageInternalServerError describes a response with status code 500, with default header values.
+/*
+UploadCloudTowerApplicationPackageInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewGetTasksConnectionParamsWithHTTPClient(client *http.Client) *GetTasksCon
 	}
 }
 
-/* GetTasksConnectionParams contains all the parameters to send to the API endpoint
-   for the get tasks connection operation.
+/*
+GetTasksConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get tasks connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTasksConnectionParams struct {
 

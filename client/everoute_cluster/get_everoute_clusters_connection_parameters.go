@@ -54,10 +54,12 @@ func NewGetEverouteClustersConnectionParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetEverouteClustersConnectionParams contains all the parameters to send to the API endpoint
-   for the get everoute clusters connection operation.
+/*
+GetEverouteClustersConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get everoute clusters connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEverouteClustersConnectionParams struct {
 

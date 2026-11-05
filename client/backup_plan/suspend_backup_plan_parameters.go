@@ -54,10 +54,12 @@ func NewSuspendBackupPlanParamsWithHTTPClient(client *http.Client) *SuspendBacku
 	}
 }
 
-/* SuspendBackupPlanParams contains all the parameters to send to the API endpoint
-   for the suspend backup plan operation.
+/*
+SuspendBackupPlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the suspend backup plan operation.
+
+	Typically these are written to a http.Request.
 */
 type SuspendBackupPlanParams struct {
 

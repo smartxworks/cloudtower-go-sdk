@@ -57,7 +57,8 @@ func NewGetReportTemplatesOK() *GetReportTemplatesOK {
 	return &GetReportTemplatesOK{}
 }
 
-/* GetReportTemplatesOK describes a response with status code 200, with default header values.
+/*
+GetReportTemplatesOK describes a response with status code 200, with default header values.
 
 GetReportTemplatesOK get report templates o k
 */
@@ -96,7 +97,8 @@ func NewGetReportTemplatesBadRequest() *GetReportTemplatesBadRequest {
 	return &GetReportTemplatesBadRequest{}
 }
 
-/* GetReportTemplatesBadRequest describes a response with status code 400, with default header values.
+/*
+GetReportTemplatesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetReportTemplatesNotFound() *GetReportTemplatesNotFound {
 	return &GetReportTemplatesNotFound{}
 }
 
-/* GetReportTemplatesNotFound describes a response with status code 404, with default header values.
+/*
+GetReportTemplatesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetReportTemplatesInternalServerError() *GetReportTemplatesInternalServe
 	return &GetReportTemplatesInternalServerError{}
 }
 
-/* GetReportTemplatesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetReportTemplatesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

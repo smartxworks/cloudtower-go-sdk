@@ -57,7 +57,8 @@ func NewGetV2EverouteLicensesOK() *GetV2EverouteLicensesOK {
 	return &GetV2EverouteLicensesOK{}
 }
 
-/* GetV2EverouteLicensesOK describes a response with status code 200, with default header values.
+/*
+GetV2EverouteLicensesOK describes a response with status code 200, with default header values.
 
 GetV2EverouteLicensesOK get v2 everoute licenses o k
 */
@@ -96,7 +97,8 @@ func NewGetV2EverouteLicensesBadRequest() *GetV2EverouteLicensesBadRequest {
 	return &GetV2EverouteLicensesBadRequest{}
 }
 
-/* GetV2EverouteLicensesBadRequest describes a response with status code 400, with default header values.
+/*
+GetV2EverouteLicensesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetV2EverouteLicensesNotFound() *GetV2EverouteLicensesNotFound {
 	return &GetV2EverouteLicensesNotFound{}
 }
 
-/* GetV2EverouteLicensesNotFound describes a response with status code 404, with default header values.
+/*
+GetV2EverouteLicensesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetV2EverouteLicensesInternalServerError() *GetV2EverouteLicensesInterna
 	return &GetV2EverouteLicensesInternalServerError{}
 }
 
-/* GetV2EverouteLicensesInternalServerError describes a response with status code 500, with default header values.
+/*
+GetV2EverouteLicensesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

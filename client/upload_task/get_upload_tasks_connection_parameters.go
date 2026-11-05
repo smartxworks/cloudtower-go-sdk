@@ -54,10 +54,12 @@ func NewGetUploadTasksConnectionParamsWithHTTPClient(client *http.Client) *GetUp
 	}
 }
 
-/* GetUploadTasksConnectionParams contains all the parameters to send to the API endpoint
-   for the get upload tasks connection operation.
+/*
+GetUploadTasksConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get upload tasks connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetUploadTasksConnectionParams struct {
 

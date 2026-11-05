@@ -68,7 +68,7 @@ type ClientService interface {
 }
 
 /*
-  GetClusterMetrics get cluster metrics API
+GetClusterMetrics get cluster metrics API
 */
 func (a *Client) GetClusterMetrics(params *GetClusterMetricsParams, opts ...ClientOption) (*GetClusterMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -106,7 +106,7 @@ func (a *Client) GetClusterMetrics(params *GetClusterMetricsParams, opts ...Clie
 }
 
 /*
-  GetDiskMetrics get disk metrics API
+GetDiskMetrics get disk metrics API
 */
 func (a *Client) GetDiskMetrics(params *GetDiskMetricsParams, opts ...ClientOption) (*GetDiskMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -144,7 +144,7 @@ func (a *Client) GetDiskMetrics(params *GetDiskMetricsParams, opts ...ClientOpti
 }
 
 /*
-  GetHostMetrics get host metrics API
+GetHostMetrics get host metrics API
 */
 func (a *Client) GetHostMetrics(params *GetHostMetricsParams, opts ...ClientOption) (*GetHostMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -182,7 +182,7 @@ func (a *Client) GetHostMetrics(params *GetHostMetricsParams, opts ...ClientOpti
 }
 
 /*
-  GetHostNetworkMetrics get host network metrics API
+GetHostNetworkMetrics get host network metrics API
 */
 func (a *Client) GetHostNetworkMetrics(params *GetHostNetworkMetricsParams, opts ...ClientOption) (*GetHostNetworkMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -220,7 +220,7 @@ func (a *Client) GetHostNetworkMetrics(params *GetHostNetworkMetricsParams, opts
 }
 
 /*
-  GetHostServicekMetrics get host servicek metrics API
+GetHostServicekMetrics get host servicek metrics API
 */
 func (a *Client) GetHostServicekMetrics(params *GetHostServicekMetricsParams, opts ...ClientOption) (*GetHostServicekMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -258,7 +258,7 @@ func (a *Client) GetHostServicekMetrics(params *GetHostServicekMetricsParams, op
 }
 
 /*
-  GetLunMetrics get lun metrics API
+GetLunMetrics get lun metrics API
 */
 func (a *Client) GetLunMetrics(params *GetLunMetricsParams, opts ...ClientOption) (*GetLunMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -296,7 +296,7 @@ func (a *Client) GetLunMetrics(params *GetLunMetricsParams, opts ...ClientOption
 }
 
 /*
-  GetNvmfNamespaceMetrics get nvmf namespace metrics API
+GetNvmfNamespaceMetrics get nvmf namespace metrics API
 */
 func (a *Client) GetNvmfNamespaceMetrics(params *GetNvmfNamespaceMetricsParams, opts ...ClientOption) (*GetNvmfNamespaceMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -334,7 +334,7 @@ func (a *Client) GetNvmfNamespaceMetrics(params *GetNvmfNamespaceMetricsParams, 
 }
 
 /*
-  GetSCVMMetrics get s c VM metrics API
+GetSCVMMetrics get s c VM metrics API
 */
 func (a *Client) GetSCVMMetrics(params *GetSCVMMetricsParams, opts ...ClientOption) (*GetSCVMMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -372,7 +372,7 @@ func (a *Client) GetSCVMMetrics(params *GetSCVMMetricsParams, opts ...ClientOpti
 }
 
 /*
-  GetSCVMServicekMetrics get s c VM servicek metrics API
+GetSCVMServicekMetrics get s c VM servicek metrics API
 */
 func (a *Client) GetSCVMServicekMetrics(params *GetSCVMServicekMetricsParams, opts ...ClientOption) (*GetSCVMServicekMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -410,7 +410,7 @@ func (a *Client) GetSCVMServicekMetrics(params *GetSCVMServicekMetricsParams, op
 }
 
 /*
-  GetScvmDiskMetrics get scvm disk metrics API
+GetScvmDiskMetrics get scvm disk metrics API
 */
 func (a *Client) GetScvmDiskMetrics(params *GetScvmDiskMetricsParams, opts ...ClientOption) (*GetScvmDiskMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -448,7 +448,7 @@ func (a *Client) GetScvmDiskMetrics(params *GetScvmDiskMetricsParams, opts ...Cl
 }
 
 /*
-  GetScvmNetworkMetrics get scvm network metrics API
+GetScvmNetworkMetrics get scvm network metrics API
 */
 func (a *Client) GetScvmNetworkMetrics(params *GetScvmNetworkMetricsParams, opts ...ClientOption) (*GetScvmNetworkMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -486,7 +486,7 @@ func (a *Client) GetScvmNetworkMetrics(params *GetScvmNetworkMetricsParams, opts
 }
 
 /*
-  GetTopNVMVolumeMetrics get top n Vm volume metrics API
+GetTopNVMVolumeMetrics get top n Vm volume metrics API
 */
 func (a *Client) GetTopNVMVolumeMetrics(params *GetTopNVMVolumeMetricsParams, opts ...ClientOption) (*GetTopNVMVolumeMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -524,7 +524,7 @@ func (a *Client) GetTopNVMVolumeMetrics(params *GetTopNVMVolumeMetricsParams, op
 }
 
 /*
-  GetVMMetrics get Vm metrics API
+GetVMMetrics get Vm metrics API
 */
 func (a *Client) GetVMMetrics(params *GetVMMetricsParams, opts ...ClientOption) (*GetVMMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -562,7 +562,7 @@ func (a *Client) GetVMMetrics(params *GetVMMetricsParams, opts ...ClientOption) 
 }
 
 /*
-  GetVMNetWorkMetrics get Vm net work metrics API
+GetVMNetWorkMetrics get Vm net work metrics API
 */
 func (a *Client) GetVMNetWorkMetrics(params *GetVMNetWorkMetricsParams, opts ...ClientOption) (*GetVMNetWorkMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -600,7 +600,7 @@ func (a *Client) GetVMNetWorkMetrics(params *GetVMNetWorkMetricsParams, opts ...
 }
 
 /*
-  GetVMVolumeMetrics get Vm volume metrics API
+GetVMVolumeMetrics get Vm volume metrics API
 */
 func (a *Client) GetVMVolumeMetrics(params *GetVMVolumeMetricsParams, opts ...ClientOption) (*GetVMVolumeMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -638,7 +638,7 @@ func (a *Client) GetVMVolumeMetrics(params *GetVMVolumeMetricsParams, opts ...Cl
 }
 
 /*
-  GetWitnessMetrics get witness metrics API
+GetWitnessMetrics get witness metrics API
 */
 func (a *Client) GetWitnessMetrics(params *GetWitnessMetricsParams, opts ...ClientOption) (*GetWitnessMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -676,7 +676,7 @@ func (a *Client) GetWitnessMetrics(params *GetWitnessMetricsParams, opts ...Clie
 }
 
 /*
-  GetZoneMetrics get zone metrics API
+GetZoneMetrics get zone metrics API
 */
 func (a *Client) GetZoneMetrics(params *GetZoneMetricsParams, opts ...ClientOption) (*GetZoneMetricsOK, error) {
 	// TODO: Validate the params before sending

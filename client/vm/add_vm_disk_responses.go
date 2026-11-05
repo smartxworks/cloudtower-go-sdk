@@ -57,7 +57,8 @@ func NewAddVMDiskOK() *AddVMDiskOK {
 	return &AddVMDiskOK{}
 }
 
-/* AddVMDiskOK describes a response with status code 200, with default header values.
+/*
+AddVMDiskOK describes a response with status code 200, with default header values.
 
 AddVMDiskOK add Vm disk o k
 */
@@ -96,7 +97,8 @@ func NewAddVMDiskBadRequest() *AddVMDiskBadRequest {
 	return &AddVMDiskBadRequest{}
 }
 
-/* AddVMDiskBadRequest describes a response with status code 400, with default header values.
+/*
+AddVMDiskBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewAddVMDiskNotFound() *AddVMDiskNotFound {
 	return &AddVMDiskNotFound{}
 }
 
-/* AddVMDiskNotFound describes a response with status code 404, with default header values.
+/*
+AddVMDiskNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewAddVMDiskInternalServerError() *AddVMDiskInternalServerError {
 	return &AddVMDiskInternalServerError{}
 }
 
-/* AddVMDiskInternalServerError describes a response with status code 500, with default header values.
+/*
+AddVMDiskInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

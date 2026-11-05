@@ -54,10 +54,12 @@ func NewStopVMInCutoverMigrationParamsWithHTTPClient(client *http.Client) *StopV
 	}
 }
 
-/* StopVMInCutoverMigrationParams contains all the parameters to send to the API endpoint
-   for the stop Vm in cutover migration operation.
+/*
+StopVMInCutoverMigrationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stop Vm in cutover migration operation.
+
+	Typically these are written to a http.Request.
 */
 type StopVMInCutoverMigrationParams struct {
 

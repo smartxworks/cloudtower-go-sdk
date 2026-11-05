@@ -57,7 +57,8 @@ func NewRecoverVMFromRecycleBinOK() *RecoverVMFromRecycleBinOK {
 	return &RecoverVMFromRecycleBinOK{}
 }
 
-/* RecoverVMFromRecycleBinOK describes a response with status code 200, with default header values.
+/*
+RecoverVMFromRecycleBinOK describes a response with status code 200, with default header values.
 
 RecoverVMFromRecycleBinOK recover Vm from recycle bin o k
 */
@@ -96,7 +97,8 @@ func NewRecoverVMFromRecycleBinBadRequest() *RecoverVMFromRecycleBinBadRequest {
 	return &RecoverVMFromRecycleBinBadRequest{}
 }
 
-/* RecoverVMFromRecycleBinBadRequest describes a response with status code 400, with default header values.
+/*
+RecoverVMFromRecycleBinBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRecoverVMFromRecycleBinNotFound() *RecoverVMFromRecycleBinNotFound {
 	return &RecoverVMFromRecycleBinNotFound{}
 }
 
-/* RecoverVMFromRecycleBinNotFound describes a response with status code 404, with default header values.
+/*
+RecoverVMFromRecycleBinNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRecoverVMFromRecycleBinInternalServerError() *RecoverVMFromRecycleBinInt
 	return &RecoverVMFromRecycleBinInternalServerError{}
 }
 
-/* RecoverVMFromRecycleBinInternalServerError describes a response with status code 500, with default header values.
+/*
+RecoverVMFromRecycleBinInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

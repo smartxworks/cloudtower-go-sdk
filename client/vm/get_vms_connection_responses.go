@@ -57,7 +57,8 @@ func NewGetVmsConnectionOK() *GetVmsConnectionOK {
 	return &GetVmsConnectionOK{}
 }
 
-/* GetVmsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetVmsConnectionOK describes a response with status code 200, with default header values.
 
 GetVmsConnectionOK get vms connection o k
 */
@@ -98,7 +99,8 @@ func NewGetVmsConnectionBadRequest() *GetVmsConnectionBadRequest {
 	return &GetVmsConnectionBadRequest{}
 }
 
-/* GetVmsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetVmsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetVmsConnectionNotFound() *GetVmsConnectionNotFound {
 	return &GetVmsConnectionNotFound{}
 }
 
-/* GetVmsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetVmsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetVmsConnectionInternalServerError() *GetVmsConnectionInternalServerErr
 	return &GetVmsConnectionInternalServerError{}
 }
 
-/* GetVmsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVmsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

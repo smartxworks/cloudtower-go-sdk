@@ -54,10 +54,12 @@ func NewGetVirtualPrivateCloudSecurityGroupsConnectionParamsWithHTTPClient(clien
 	}
 }
 
-/* GetVirtualPrivateCloudSecurityGroupsConnectionParams contains all the parameters to send to the API endpoint
-   for the get virtual private cloud security groups connection operation.
+/*
+GetVirtualPrivateCloudSecurityGroupsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get virtual private cloud security groups connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVirtualPrivateCloudSecurityGroupsConnectionParams struct {
 

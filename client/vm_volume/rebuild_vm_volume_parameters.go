@@ -54,10 +54,12 @@ func NewRebuildVMVolumeParamsWithHTTPClient(client *http.Client) *RebuildVMVolum
 	}
 }
 
-/* RebuildVMVolumeParams contains all the parameters to send to the API endpoint
-   for the rebuild Vm volume operation.
+/*
+RebuildVMVolumeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the rebuild Vm volume operation.
+
+	Typically these are written to a http.Request.
 */
 type RebuildVMVolumeParams struct {
 

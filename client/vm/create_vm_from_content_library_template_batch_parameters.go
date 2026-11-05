@@ -54,10 +54,12 @@ func NewCreateVMFromContentLibraryTemplateBatchParamsWithHTTPClient(client *http
 	}
 }
 
-/* CreateVMFromContentLibraryTemplateBatchParams contains all the parameters to send to the API endpoint
-   for the create Vm from content library template batch operation.
+/*
+CreateVMFromContentLibraryTemplateBatchParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create Vm from content library template batch operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVMFromContentLibraryTemplateBatchParams struct {
 

@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetVirtualPrivateCloudEdgeGatewayGroups get virtual private cloud edge gateway groups API
+GetVirtualPrivateCloudEdgeGatewayGroups get virtual private cloud edge gateway groups API
 */
 func (a *Client) GetVirtualPrivateCloudEdgeGatewayGroups(params *GetVirtualPrivateCloudEdgeGatewayGroupsParams, opts ...ClientOption) (*GetVirtualPrivateCloudEdgeGatewayGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetVirtualPrivateCloudEdgeGatewayGroups(params *GetVirtualPriva
 }
 
 /*
-  GetVirtualPrivateCloudEdgeGatewayGroupsConnection get virtual private cloud edge gateway groups connection API
+GetVirtualPrivateCloudEdgeGatewayGroupsConnection get virtual private cloud edge gateway groups connection API
 */
 func (a *Client) GetVirtualPrivateCloudEdgeGatewayGroupsConnection(params *GetVirtualPrivateCloudEdgeGatewayGroupsConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudEdgeGatewayGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending

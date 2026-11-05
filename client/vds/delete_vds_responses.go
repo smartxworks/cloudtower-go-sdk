@@ -57,7 +57,8 @@ func NewDeleteVdsOK() *DeleteVdsOK {
 	return &DeleteVdsOK{}
 }
 
-/* DeleteVdsOK describes a response with status code 200, with default header values.
+/*
+DeleteVdsOK describes a response with status code 200, with default header values.
 
 DeleteVdsOK delete vds o k
 */
@@ -96,7 +97,8 @@ func NewDeleteVdsBadRequest() *DeleteVdsBadRequest {
 	return &DeleteVdsBadRequest{}
 }
 
-/* DeleteVdsBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteVdsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteVdsNotFound() *DeleteVdsNotFound {
 	return &DeleteVdsNotFound{}
 }
 
-/* DeleteVdsNotFound describes a response with status code 404, with default header values.
+/*
+DeleteVdsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteVdsInternalServerError() *DeleteVdsInternalServerError {
 	return &DeleteVdsInternalServerError{}
 }
 
-/* DeleteVdsInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVdsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

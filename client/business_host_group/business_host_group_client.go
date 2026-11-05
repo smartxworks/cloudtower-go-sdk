@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetBusinessHostGroups get business host groups API
+GetBusinessHostGroups get business host groups API
 */
 func (a *Client) GetBusinessHostGroups(params *GetBusinessHostGroupsParams, opts ...ClientOption) (*GetBusinessHostGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetBusinessHostGroups(params *GetBusinessHostGroupsParams, opts
 }
 
 /*
-  GetBusinessHostGroupsConnection get business host groups connection API
+GetBusinessHostGroupsConnection get business host groups connection API
 */
 func (a *Client) GetBusinessHostGroupsConnection(params *GetBusinessHostGroupsConnectionParams, opts ...ClientOption) (*GetBusinessHostGroupsConnectionOK, error) {
 	// TODO: Validate the params before sending

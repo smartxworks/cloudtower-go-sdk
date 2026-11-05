@@ -54,10 +54,12 @@ func NewGetVMExportFilesParamsWithHTTPClient(client *http.Client) *GetVMExportFi
 	}
 }
 
-/* GetVMExportFilesParams contains all the parameters to send to the API endpoint
-   for the get Vm export files operation.
+/*
+GetVMExportFilesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get Vm export files operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVMExportFilesParams struct {
 

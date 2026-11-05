@@ -54,10 +54,12 @@ func NewCreateLogCollectionParamsWithHTTPClient(client *http.Client) *CreateLogC
 	}
 }
 
-/* CreateLogCollectionParams contains all the parameters to send to the API endpoint
-   for the create log collection operation.
+/*
+CreateLogCollectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create log collection operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateLogCollectionParams struct {
 

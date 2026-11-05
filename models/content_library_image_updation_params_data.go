@@ -22,6 +22,9 @@ type ContentLibraryImageUpdationParamsData struct {
 	// clusters
 	Clusters *ClusterWhereInput `json:"clusters,omitempty"`
 
+	// datastores
+	Datastores *DatastoreWhereInput `json:"datastores,omitempty"`
+
 	// description
 	Description *string `json:"description,omitempty"`
 
@@ -33,6 +36,8 @@ type ContentLibraryImageUpdationParamsData struct {
 
 type ContentLibraryImageUpdationParamsDataMarshalOpts struct {
 	Clusters_Explicit_Null_When_Empty bool
+
+	Datastores_Explicit_Null_When_Empty bool
 
 	Description_Explicit_Null_When_Empty bool
 
@@ -62,6 +67,26 @@ func (m ContentLibraryImageUpdationParamsData) MarshalJSON() ([]byte, error) {
 			b.WriteString(",")
 		}
 		b.WriteString("\"clusters\":null")
+		first = false
+	}
+
+	// handle nullable field datastores
+	if m.Datastores != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores\":")
+		bytes, err := swag.WriteJSON(m.Datastores)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.Datastores_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores\":null")
 		first = false
 	}
 
@@ -117,6 +142,10 @@ func (m *ContentLibraryImageUpdationParamsData) Validate(formats strfmt.Registry
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastores(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -142,11 +171,34 @@ func (m *ContentLibraryImageUpdationParamsData) validateClusters(formats strfmt.
 	return nil
 }
 
+func (m *ContentLibraryImageUpdationParamsData) validateDatastores(formats strfmt.Registry) error {
+	if swag.IsZero(m.Datastores) { // not required
+		return nil
+	}
+
+	if m.Datastores != nil {
+		if err := m.Datastores.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this content library image updation params data based on the context it is used
 func (m *ContentLibraryImageUpdationParamsData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateClusters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastores(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -164,6 +216,22 @@ func (m *ContentLibraryImageUpdationParamsData) contextValidateClusters(ctx cont
 				return ve.ValidateName("clusters")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("clusters")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryImageUpdationParamsData) contextValidateDatastores(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Datastores != nil {
+		if err := m.Datastores.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores")
 			}
 			return err
 		}

@@ -57,7 +57,8 @@ func NewCreateRoleOK() *CreateRoleOK {
 	return &CreateRoleOK{}
 }
 
-/* CreateRoleOK describes a response with status code 200, with default header values.
+/*
+CreateRoleOK describes a response with status code 200, with default header values.
 
 CreateRoleOK create role o k
 */
@@ -96,7 +97,8 @@ func NewCreateRoleBadRequest() *CreateRoleBadRequest {
 	return &CreateRoleBadRequest{}
 }
 
-/* CreateRoleBadRequest describes a response with status code 400, with default header values.
+/*
+CreateRoleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateRoleNotFound() *CreateRoleNotFound {
 	return &CreateRoleNotFound{}
 }
 
-/* CreateRoleNotFound describes a response with status code 404, with default header values.
+/*
+CreateRoleNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateRoleInternalServerError() *CreateRoleInternalServerError {
 	return &CreateRoleInternalServerError{}
 }
 
-/* CreateRoleInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateRoleInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

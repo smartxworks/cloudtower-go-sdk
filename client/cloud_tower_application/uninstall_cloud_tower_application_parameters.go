@@ -54,10 +54,12 @@ func NewUninstallCloudTowerApplicationParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* UninstallCloudTowerApplicationParams contains all the parameters to send to the API endpoint
-   for the uninstall cloud tower application operation.
+/*
+UninstallCloudTowerApplicationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the uninstall cloud tower application operation.
+
+	Typically these are written to a http.Request.
 */
 type UninstallCloudTowerApplicationParams struct {
 

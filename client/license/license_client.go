@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  GetLicenses get licenses API
+GetLicenses get licenses API
 */
 func (a *Client) GetLicenses(params *GetLicensesParams, opts ...ClientOption) (*GetLicensesOK, error) {
 	// TODO: Validate the params before sending
@@ -78,7 +78,7 @@ func (a *Client) GetLicenses(params *GetLicensesParams, opts ...ClientOption) (*
 }
 
 /*
-  GetLicensesConnection get licenses connection API
+GetLicensesConnection get licenses connection API
 */
 func (a *Client) GetLicensesConnection(params *GetLicensesConnectionParams, opts ...ClientOption) (*GetLicensesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -116,7 +116,7 @@ func (a *Client) GetLicensesConnection(params *GetLicensesConnectionParams, opts
 }
 
 /*
-  UpdateDeploy update deploy API
+UpdateDeploy update deploy API
 */
 func (a *Client) UpdateDeploy(params *UpdateDeployParams, opts ...ClientOption) (*UpdateDeployOK, error) {
 	// TODO: Validate the params before sending

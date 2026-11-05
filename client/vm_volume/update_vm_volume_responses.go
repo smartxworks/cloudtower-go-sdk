@@ -63,7 +63,8 @@ func NewUpdateVMVolumeOK() *UpdateVMVolumeOK {
 	return &UpdateVMVolumeOK{}
 }
 
-/* UpdateVMVolumeOK describes a response with status code 200, with default header values.
+/*
+UpdateVMVolumeOK describes a response with status code 200, with default header values.
 
 UpdateVMVolumeOK update Vm volume o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVMVolumeNotModified() *UpdateVMVolumeNotModified {
 	return &UpdateVMVolumeNotModified{}
 }
 
-/* UpdateVMVolumeNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVMVolumeNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVMVolumeBadRequest() *UpdateVMVolumeBadRequest {
 	return &UpdateVMVolumeBadRequest{}
 }
 
-/* UpdateVMVolumeBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMVolumeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVMVolumeNotFound() *UpdateVMVolumeNotFound {
 	return &UpdateVMVolumeNotFound{}
 }
 
-/* UpdateVMVolumeNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMVolumeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVMVolumeInternalServerError() *UpdateVMVolumeInternalServerError {
 	return &UpdateVMVolumeInternalServerError{}
 }
 
-/* UpdateVMVolumeInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMVolumeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

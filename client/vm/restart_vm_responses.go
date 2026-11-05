@@ -57,7 +57,8 @@ func NewRestartVMOK() *RestartVMOK {
 	return &RestartVMOK{}
 }
 
-/* RestartVMOK describes a response with status code 200, with default header values.
+/*
+RestartVMOK describes a response with status code 200, with default header values.
 
 RestartVMOK restart Vm o k
 */
@@ -96,7 +97,8 @@ func NewRestartVMBadRequest() *RestartVMBadRequest {
 	return &RestartVMBadRequest{}
 }
 
-/* RestartVMBadRequest describes a response with status code 400, with default header values.
+/*
+RestartVMBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewRestartVMNotFound() *RestartVMNotFound {
 	return &RestartVMNotFound{}
 }
 
-/* RestartVMNotFound describes a response with status code 404, with default header values.
+/*
+RestartVMNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewRestartVMInternalServerError() *RestartVMInternalServerError {
 	return &RestartVMInternalServerError{}
 }
 
-/* RestartVMInternalServerError describes a response with status code 500, with default header values.
+/*
+RestartVMInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

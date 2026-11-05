@@ -57,7 +57,8 @@ func NewUpdateViewOK() *UpdateViewOK {
 	return &UpdateViewOK{}
 }
 
-/* UpdateViewOK describes a response with status code 200, with default header values.
+/*
+UpdateViewOK describes a response with status code 200, with default header values.
 
 UpdateViewOK update view o k
 */
@@ -96,7 +97,8 @@ func NewUpdateViewBadRequest() *UpdateViewBadRequest {
 	return &UpdateViewBadRequest{}
 }
 
-/* UpdateViewBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateViewBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateViewNotFound() *UpdateViewNotFound {
 	return &UpdateViewNotFound{}
 }
 
-/* UpdateViewNotFound describes a response with status code 404, with default header values.
+/*
+UpdateViewNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateViewInternalServerError() *UpdateViewInternalServerError {
 	return &UpdateViewInternalServerError{}
 }
 
-/* UpdateViewInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateViewInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -57,7 +57,8 @@ func NewGetNvmfNamespaceMetricsOK() *GetNvmfNamespaceMetricsOK {
 	return &GetNvmfNamespaceMetricsOK{}
 }
 
-/* GetNvmfNamespaceMetricsOK describes a response with status code 200, with default header values.
+/*
+GetNvmfNamespaceMetricsOK describes a response with status code 200, with default header values.
 
 GetNvmfNamespaceMetricsOK get nvmf namespace metrics o k
 */
@@ -96,7 +97,8 @@ func NewGetNvmfNamespaceMetricsBadRequest() *GetNvmfNamespaceMetricsBadRequest {
 	return &GetNvmfNamespaceMetricsBadRequest{}
 }
 
-/* GetNvmfNamespaceMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+GetNvmfNamespaceMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetNvmfNamespaceMetricsNotFound() *GetNvmfNamespaceMetricsNotFound {
 	return &GetNvmfNamespaceMetricsNotFound{}
 }
 
-/* GetNvmfNamespaceMetricsNotFound describes a response with status code 404, with default header values.
+/*
+GetNvmfNamespaceMetricsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetNvmfNamespaceMetricsInternalServerError() *GetNvmfNamespaceMetricsInt
 	return &GetNvmfNamespaceMetricsInternalServerError{}
 }
 
-/* GetNvmfNamespaceMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetNvmfNamespaceMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

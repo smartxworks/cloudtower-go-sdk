@@ -57,7 +57,8 @@ func NewUpdateClusterRecycleBinSettingOK() *UpdateClusterRecycleBinSettingOK {
 	return &UpdateClusterRecycleBinSettingOK{}
 }
 
-/* UpdateClusterRecycleBinSettingOK describes a response with status code 200, with default header values.
+/*
+UpdateClusterRecycleBinSettingOK describes a response with status code 200, with default header values.
 
 UpdateClusterRecycleBinSettingOK update cluster recycle bin setting o k
 */
@@ -96,7 +97,8 @@ func NewUpdateClusterRecycleBinSettingBadRequest() *UpdateClusterRecycleBinSetti
 	return &UpdateClusterRecycleBinSettingBadRequest{}
 }
 
-/* UpdateClusterRecycleBinSettingBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateClusterRecycleBinSettingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateClusterRecycleBinSettingNotFound() *UpdateClusterRecycleBinSetting
 	return &UpdateClusterRecycleBinSettingNotFound{}
 }
 
-/* UpdateClusterRecycleBinSettingNotFound describes a response with status code 404, with default header values.
+/*
+UpdateClusterRecycleBinSettingNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateClusterRecycleBinSettingInternalServerError() *UpdateClusterRecycl
 	return &UpdateClusterRecycleBinSettingInternalServerError{}
 }
 
-/* UpdateClusterRecycleBinSettingInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateClusterRecycleBinSettingInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

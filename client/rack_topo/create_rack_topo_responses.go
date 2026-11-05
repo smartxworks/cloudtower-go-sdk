@@ -57,7 +57,8 @@ func NewCreateRackTopoOK() *CreateRackTopoOK {
 	return &CreateRackTopoOK{}
 }
 
-/* CreateRackTopoOK describes a response with status code 200, with default header values.
+/*
+CreateRackTopoOK describes a response with status code 200, with default header values.
 
 CreateRackTopoOK create rack topo o k
 */
@@ -96,7 +97,8 @@ func NewCreateRackTopoBadRequest() *CreateRackTopoBadRequest {
 	return &CreateRackTopoBadRequest{}
 }
 
-/* CreateRackTopoBadRequest describes a response with status code 400, with default header values.
+/*
+CreateRackTopoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateRackTopoNotFound() *CreateRackTopoNotFound {
 	return &CreateRackTopoNotFound{}
 }
 
-/* CreateRackTopoNotFound describes a response with status code 404, with default header values.
+/*
+CreateRackTopoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateRackTopoInternalServerError() *CreateRackTopoInternalServerError {
 	return &CreateRackTopoInternalServerError{}
 }
 
-/* CreateRackTopoInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateRackTopoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

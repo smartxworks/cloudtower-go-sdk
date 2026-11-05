@@ -54,10 +54,12 @@ func NewUpdateNfsExportParamsWithHTTPClient(client *http.Client) *UpdateNfsExpor
 	}
 }
 
-/* UpdateNfsExportParams contains all the parameters to send to the API endpoint
-   for the update nfs export operation.
+/*
+UpdateNfsExportParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update nfs export operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateNfsExportParams struct {
 

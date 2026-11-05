@@ -57,7 +57,8 @@ func NewUpdateNodeTopoOK() *UpdateNodeTopoOK {
 	return &UpdateNodeTopoOK{}
 }
 
-/* UpdateNodeTopoOK describes a response with status code 200, with default header values.
+/*
+UpdateNodeTopoOK describes a response with status code 200, with default header values.
 
 UpdateNodeTopoOK update node topo o k
 */
@@ -96,7 +97,8 @@ func NewUpdateNodeTopoBadRequest() *UpdateNodeTopoBadRequest {
 	return &UpdateNodeTopoBadRequest{}
 }
 
-/* UpdateNodeTopoBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateNodeTopoBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateNodeTopoNotFound() *UpdateNodeTopoNotFound {
 	return &UpdateNodeTopoNotFound{}
 }
 
-/* UpdateNodeTopoNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNodeTopoNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateNodeTopoInternalServerError() *UpdateNodeTopoInternalServerError {
 	return &UpdateNodeTopoInternalServerError{}
 }
 
-/* UpdateNodeTopoInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateNodeTopoInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

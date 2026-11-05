@@ -54,10 +54,12 @@ func NewMountDiskParamsWithHTTPClient(client *http.Client) *MountDiskParams {
 	}
 }
 
-/* MountDiskParams contains all the parameters to send to the API endpoint
-   for the mount disk operation.
+/*
+MountDiskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the mount disk operation.
+
+	Typically these are written to a http.Request.
 */
 type MountDiskParams struct {
 

@@ -57,7 +57,8 @@ func NewCreateVdsWithAccessVlanOK() *CreateVdsWithAccessVlanOK {
 	return &CreateVdsWithAccessVlanOK{}
 }
 
-/* CreateVdsWithAccessVlanOK describes a response with status code 200, with default header values.
+/*
+CreateVdsWithAccessVlanOK describes a response with status code 200, with default header values.
 
 CreateVdsWithAccessVlanOK create vds with access vlan o k
 */
@@ -96,7 +97,8 @@ func NewCreateVdsWithAccessVlanBadRequest() *CreateVdsWithAccessVlanBadRequest {
 	return &CreateVdsWithAccessVlanBadRequest{}
 }
 
-/* CreateVdsWithAccessVlanBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVdsWithAccessVlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVdsWithAccessVlanNotFound() *CreateVdsWithAccessVlanNotFound {
 	return &CreateVdsWithAccessVlanNotFound{}
 }
 
-/* CreateVdsWithAccessVlanNotFound describes a response with status code 404, with default header values.
+/*
+CreateVdsWithAccessVlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVdsWithAccessVlanInternalServerError() *CreateVdsWithAccessVlanInt
 	return &CreateVdsWithAccessVlanInternalServerError{}
 }
 
-/* CreateVdsWithAccessVlanInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVdsWithAccessVlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

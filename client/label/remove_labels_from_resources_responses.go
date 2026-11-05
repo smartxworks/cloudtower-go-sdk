@@ -63,7 +63,8 @@ func NewRemoveLabelsFromResourcesOK() *RemoveLabelsFromResourcesOK {
 	return &RemoveLabelsFromResourcesOK{}
 }
 
-/* RemoveLabelsFromResourcesOK describes a response with status code 200, with default header values.
+/*
+RemoveLabelsFromResourcesOK describes a response with status code 200, with default header values.
 
 RemoveLabelsFromResourcesOK remove labels from resources o k
 */
@@ -102,7 +103,8 @@ func NewRemoveLabelsFromResourcesNotModified() *RemoveLabelsFromResourcesNotModi
 	return &RemoveLabelsFromResourcesNotModified{}
 }
 
-/* RemoveLabelsFromResourcesNotModified describes a response with status code 304, with default header values.
+/*
+RemoveLabelsFromResourcesNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewRemoveLabelsFromResourcesBadRequest() *RemoveLabelsFromResourcesBadReque
 	return &RemoveLabelsFromResourcesBadRequest{}
 }
 
-/* RemoveLabelsFromResourcesBadRequest describes a response with status code 400, with default header values.
+/*
+RemoveLabelsFromResourcesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewRemoveLabelsFromResourcesNotFound() *RemoveLabelsFromResourcesNotFound {
 	return &RemoveLabelsFromResourcesNotFound{}
 }
 
-/* RemoveLabelsFromResourcesNotFound describes a response with status code 404, with default header values.
+/*
+RemoveLabelsFromResourcesNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewRemoveLabelsFromResourcesInternalServerError() *RemoveLabelsFromResource
 	return &RemoveLabelsFromResourcesInternalServerError{}
 }
 
-/* RemoveLabelsFromResourcesInternalServerError describes a response with status code 500, with default header values.
+/*
+RemoveLabelsFromResourcesInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

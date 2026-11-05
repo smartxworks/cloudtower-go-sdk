@@ -54,10 +54,12 @@ func NewGetElfStoragePoliciesParamsWithHTTPClient(client *http.Client) *GetElfSt
 	}
 }
 
-/* GetElfStoragePoliciesParams contains all the parameters to send to the API endpoint
-   for the get elf storage policies operation.
+/*
+GetElfStoragePoliciesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get elf storage policies operation.
+
+	Typically these are written to a http.Request.
 */
 type GetElfStoragePoliciesParams struct {
 

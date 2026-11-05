@@ -57,7 +57,8 @@ func NewGetVMEntityFilterResultsOK() *GetVMEntityFilterResultsOK {
 	return &GetVMEntityFilterResultsOK{}
 }
 
-/* GetVMEntityFilterResultsOK describes a response with status code 200, with default header values.
+/*
+GetVMEntityFilterResultsOK describes a response with status code 200, with default header values.
 
 GetVMEntityFilterResultsOK get Vm entity filter results o k
 */
@@ -96,7 +97,8 @@ func NewGetVMEntityFilterResultsBadRequest() *GetVMEntityFilterResultsBadRequest
 	return &GetVMEntityFilterResultsBadRequest{}
 }
 
-/* GetVMEntityFilterResultsBadRequest describes a response with status code 400, with default header values.
+/*
+GetVMEntityFilterResultsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewGetVMEntityFilterResultsNotFound() *GetVMEntityFilterResultsNotFound {
 	return &GetVMEntityFilterResultsNotFound{}
 }
 
-/* GetVMEntityFilterResultsNotFound describes a response with status code 404, with default header values.
+/*
+GetVMEntityFilterResultsNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewGetVMEntityFilterResultsInternalServerError() *GetVMEntityFilterResultsI
 	return &GetVMEntityFilterResultsInternalServerError{}
 }
 
-/* GetVMEntityFilterResultsInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVMEntityFilterResultsInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

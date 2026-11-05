@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVirtualPrivateCloudRouterGateway create virtual private cloud router gateway API
+CreateVirtualPrivateCloudRouterGateway create virtual private cloud router gateway API
 */
 func (a *Client) CreateVirtualPrivateCloudRouterGateway(params *CreateVirtualPrivateCloudRouterGatewayParams, opts ...ClientOption) (*CreateVirtualPrivateCloudRouterGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVirtualPrivateCloudRouterGateway(params *CreateVirtualPri
 }
 
 /*
-  DeleteVirtualPrivateCloudRouterGateway delete virtual private cloud router gateway API
+DeleteVirtualPrivateCloudRouterGateway delete virtual private cloud router gateway API
 */
 func (a *Client) DeleteVirtualPrivateCloudRouterGateway(params *DeleteVirtualPrivateCloudRouterGatewayParams, opts ...ClientOption) (*DeleteVirtualPrivateCloudRouterGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVirtualPrivateCloudRouterGateway(params *DeleteVirtualPri
 }
 
 /*
-  GetVirtualPrivateCloudRouterGateways get virtual private cloud router gateways API
+GetVirtualPrivateCloudRouterGateways get virtual private cloud router gateways API
 */
 func (a *Client) GetVirtualPrivateCloudRouterGateways(params *GetVirtualPrivateCloudRouterGatewaysParams, opts ...ClientOption) (*GetVirtualPrivateCloudRouterGatewaysOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVirtualPrivateCloudRouterGateways(params *GetVirtualPrivateC
 }
 
 /*
-  GetVirtualPrivateCloudRouterGatewaysConnection get virtual private cloud router gateways connection API
+GetVirtualPrivateCloudRouterGatewaysConnection get virtual private cloud router gateways connection API
 */
 func (a *Client) GetVirtualPrivateCloudRouterGatewaysConnection(params *GetVirtualPrivateCloudRouterGatewaysConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudRouterGatewaysConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVirtualPrivateCloudRouterGatewaysConnection(params *GetVirtu
 }
 
 /*
-  UpdateVirtualPrivateCloudRouterGateway update virtual private cloud router gateway API
+UpdateVirtualPrivateCloudRouterGateway update virtual private cloud router gateway API
 */
 func (a *Client) UpdateVirtualPrivateCloudRouterGateway(params *UpdateVirtualPrivateCloudRouterGatewayParams, opts ...ClientOption) (*UpdateVirtualPrivateCloudRouterGatewayOK, error) {
 	// TODO: Validate the params before sending

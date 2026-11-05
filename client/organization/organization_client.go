@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateOrganization create organization API
+CreateOrganization create organization API
 */
 func (a *Client) CreateOrganization(params *CreateOrganizationParams, opts ...ClientOption) (*CreateOrganizationOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateOrganization(params *CreateOrganizationParams, opts ...Cl
 }
 
 /*
-  DeleteOrganization delete organization API
+DeleteOrganization delete organization API
 */
 func (a *Client) DeleteOrganization(params *DeleteOrganizationParams, opts ...ClientOption) (*DeleteOrganizationOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteOrganization(params *DeleteOrganizationParams, opts ...Cl
 }
 
 /*
-  GetOrganizations get organizations API
+GetOrganizations get organizations API
 */
 func (a *Client) GetOrganizations(params *GetOrganizationsParams, opts ...ClientOption) (*GetOrganizationsOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetOrganizations(params *GetOrganizationsParams, opts ...Client
 }
 
 /*
-  GetOrganizationsConnection get organizations connection API
+GetOrganizationsConnection get organizations connection API
 */
 func (a *Client) GetOrganizationsConnection(params *GetOrganizationsConnectionParams, opts ...ClientOption) (*GetOrganizationsConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetOrganizationsConnection(params *GetOrganizationsConnectionPa
 }
 
 /*
-  UpdateOrganization update organization API
+UpdateOrganization update organization API
 */
 func (a *Client) UpdateOrganization(params *UpdateOrganizationParams, opts ...ClientOption) (*UpdateOrganizationOK, error) {
 	// TODO: Validate the params before sending

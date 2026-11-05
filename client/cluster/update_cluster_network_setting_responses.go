@@ -57,7 +57,8 @@ func NewUpdateClusterNetworkSettingOK() *UpdateClusterNetworkSettingOK {
 	return &UpdateClusterNetworkSettingOK{}
 }
 
-/* UpdateClusterNetworkSettingOK describes a response with status code 200, with default header values.
+/*
+UpdateClusterNetworkSettingOK describes a response with status code 200, with default header values.
 
 UpdateClusterNetworkSettingOK update cluster network setting o k
 */
@@ -96,7 +97,8 @@ func NewUpdateClusterNetworkSettingBadRequest() *UpdateClusterNetworkSettingBadR
 	return &UpdateClusterNetworkSettingBadRequest{}
 }
 
-/* UpdateClusterNetworkSettingBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateClusterNetworkSettingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewUpdateClusterNetworkSettingNotFound() *UpdateClusterNetworkSettingNotFou
 	return &UpdateClusterNetworkSettingNotFound{}
 }
 
-/* UpdateClusterNetworkSettingNotFound describes a response with status code 404, with default header values.
+/*
+UpdateClusterNetworkSettingNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewUpdateClusterNetworkSettingInternalServerError() *UpdateClusterNetworkSe
 	return &UpdateClusterNetworkSettingInternalServerError{}
 }
 
-/* UpdateClusterNetworkSettingInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateClusterNetworkSettingInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -54,10 +54,12 @@ func NewUpdateSnapshotPlanParamsWithHTTPClient(client *http.Client) *UpdateSnaps
 	}
 }
 
-/* UpdateSnapshotPlanParams contains all the parameters to send to the API endpoint
-   for the update snapshot plan operation.
+/*
+UpdateSnapshotPlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update snapshot plan operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateSnapshotPlanParams struct {
 

@@ -57,7 +57,8 @@ func NewDeleteAlertNotifierOK() *DeleteAlertNotifierOK {
 	return &DeleteAlertNotifierOK{}
 }
 
-/* DeleteAlertNotifierOK describes a response with status code 200, with default header values.
+/*
+DeleteAlertNotifierOK describes a response with status code 200, with default header values.
 
 DeleteAlertNotifierOK delete alert notifier o k
 */
@@ -96,7 +97,8 @@ func NewDeleteAlertNotifierBadRequest() *DeleteAlertNotifierBadRequest {
 	return &DeleteAlertNotifierBadRequest{}
 }
 
-/* DeleteAlertNotifierBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteAlertNotifierBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteAlertNotifierNotFound() *DeleteAlertNotifierNotFound {
 	return &DeleteAlertNotifierNotFound{}
 }
 
-/* DeleteAlertNotifierNotFound describes a response with status code 404, with default header values.
+/*
+DeleteAlertNotifierNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteAlertNotifierInternalServerError() *DeleteAlertNotifierInternalSer
 	return &DeleteAlertNotifierInternalServerError{}
 }
 
-/* DeleteAlertNotifierInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteAlertNotifierInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

@@ -134,6 +134,15 @@ type ContentLibraryVMTemplateWhereInput struct {
 	// created at not in
 	CreatedAtNotIn []string `json:"createdAt_not_in,omitempty"`
 
+	// datastores every
+	DatastoresEvery *DatastoreWhereInput `json:"datastores_every,omitempty"`
+
+	// datastores none
+	DatastoresNone *DatastoreWhereInput `json:"datastores_none,omitempty"`
+
+	// datastores some
+	DatastoresSome *DatastoreWhereInput `json:"datastores_some,omitempty"`
+
 	// description
 	Description *string `json:"description,omitempty"`
 
@@ -551,6 +560,15 @@ type ContentLibraryVMTemplateWhereInput struct {
 	// video type starts with
 	VideoTypeStartsWith *string `json:"video_type_starts_with,omitempty"`
 
+	// vm template configs every
+	VMTemplateConfigsEvery *VMTemplateConfigWhereInput `json:"vm_template_configs_every,omitempty"`
+
+	// vm template configs none
+	VMTemplateConfigsNone *VMTemplateConfigWhereInput `json:"vm_template_configs_none,omitempty"`
+
+	// vm template configs some
+	VMTemplateConfigsSome *VMTemplateConfigWhereInput `json:"vm_template_configs_some,omitempty"`
+
 	// vm templates every
 	VMTemplatesEvery *VMTemplateWhereInput `json:"vm_templates_every,omitempty"`
 
@@ -645,6 +663,12 @@ type ContentLibraryVMTemplateWhereInputMarshalOpts struct {
 	CreatedAtNot_Explicit_Null_When_Empty bool
 
 	CreatedAtNotIn_Explicit_Null_When_Empty bool
+
+	DatastoresEvery_Explicit_Null_When_Empty bool
+
+	DatastoresNone_Explicit_Null_When_Empty bool
+
+	DatastoresSome_Explicit_Null_When_Empty bool
 
 	Description_Explicit_Null_When_Empty bool
 
@@ -923,6 +947,12 @@ type ContentLibraryVMTemplateWhereInputMarshalOpts struct {
 	VideoTypeNotStartsWith_Explicit_Null_When_Empty bool
 
 	VideoTypeStartsWith_Explicit_Null_When_Empty bool
+
+	VMTemplateConfigsEvery_Explicit_Null_When_Empty bool
+
+	VMTemplateConfigsNone_Explicit_Null_When_Empty bool
+
+	VMTemplateConfigsSome_Explicit_Null_When_Empty bool
 
 	VMTemplatesEvery_Explicit_Null_When_Empty bool
 
@@ -1632,6 +1662,66 @@ func (m ContentLibraryVMTemplateWhereInput) MarshalJSON() ([]byte, error) {
 			return nil, err
 		}
 		b.Write(bytes)
+		first = false
+	}
+
+	// handle nullable field datastores_every
+	if m.DatastoresEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_every\":")
+		bytes, err := swag.WriteJSON(m.DatastoresEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoresEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_every\":null")
+		first = false
+	}
+
+	// handle nullable field datastores_none
+	if m.DatastoresNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_none\":")
+		bytes, err := swag.WriteJSON(m.DatastoresNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoresNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_none\":null")
+		first = false
+	}
+
+	// handle nullable field datastores_some
+	if m.DatastoresSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_some\":")
+		bytes, err := swag.WriteJSON(m.DatastoresSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.DatastoresSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"datastores_some\":null")
 		first = false
 	}
 
@@ -4223,6 +4313,66 @@ func (m ContentLibraryVMTemplateWhereInput) MarshalJSON() ([]byte, error) {
 		first = false
 	}
 
+	// handle nullable field vm_template_configs_every
+	if m.VMTemplateConfigsEvery != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_template_configs_every\":")
+		bytes, err := swag.WriteJSON(m.VMTemplateConfigsEvery)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMTemplateConfigsEvery_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_template_configs_every\":null")
+		first = false
+	}
+
+	// handle nullable field vm_template_configs_none
+	if m.VMTemplateConfigsNone != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_template_configs_none\":")
+		bytes, err := swag.WriteJSON(m.VMTemplateConfigsNone)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMTemplateConfigsNone_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_template_configs_none\":null")
+		first = false
+	}
+
+	// handle nullable field vm_template_configs_some
+	if m.VMTemplateConfigsSome != nil {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_template_configs_some\":")
+		bytes, err := swag.WriteJSON(m.VMTemplateConfigsSome)
+		if err != nil {
+			return nil, err
+		}
+		b.Write(bytes)
+		first = false
+	} else if m.MarshalOpts != nil && m.MarshalOpts.VMTemplateConfigsSome_Explicit_Null_When_Empty {
+		if !first {
+			b.WriteString(",")
+		}
+		b.WriteString("\"vm_template_configs_some\":null")
+		first = false
+	}
+
 	// handle nullable field vm_templates_every
 	if m.VMTemplatesEvery != nil {
 		if !first {
@@ -4387,6 +4537,18 @@ func (m *ContentLibraryVMTemplateWhereInput) Validate(formats strfmt.Registry) e
 		res = append(res, err)
 	}
 
+	if err := m.validateDatastoresEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDatastoresNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDatastoresSome(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEntityAsyncStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -4492,6 +4654,18 @@ func (m *ContentLibraryVMTemplateWhereInput) Validate(formats strfmt.Registry) e
 	}
 
 	if err := m.validateUsageNotIn(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMTemplateConfigsEvery(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMTemplateConfigsNone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMTemplateConfigsSome(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -4800,6 +4974,63 @@ func (m *ContentLibraryVMTemplateWhereInput) validateClustersSome(formats strfmt
 				return ve.ValidateName("clusters_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("clusters_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateDatastoresEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoresEvery) { // not required
+		return nil
+	}
+
+	if m.DatastoresEvery != nil {
+		if err := m.DatastoresEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateDatastoresNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoresNone) { // not required
+		return nil
+	}
+
+	if m.DatastoresNone != nil {
+		if err := m.DatastoresNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateDatastoresSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.DatastoresSome) { // not required
+		return nil
+	}
+
+	if m.DatastoresSome != nil {
+		if err := m.DatastoresSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_some")
 			}
 			return err
 		}
@@ -5345,6 +5576,63 @@ func (m *ContentLibraryVMTemplateWhereInput) validateUsageNotIn(formats strfmt.R
 	return nil
 }
 
+func (m *ContentLibraryVMTemplateWhereInput) validateVMTemplateConfigsEvery(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMTemplateConfigsEvery) { // not required
+		return nil
+	}
+
+	if m.VMTemplateConfigsEvery != nil {
+		if err := m.VMTemplateConfigsEvery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_template_configs_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_template_configs_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateVMTemplateConfigsNone(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMTemplateConfigsNone) { // not required
+		return nil
+	}
+
+	if m.VMTemplateConfigsNone != nil {
+		if err := m.VMTemplateConfigsNone.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_template_configs_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_template_configs_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) validateVMTemplateConfigsSome(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMTemplateConfigsSome) { // not required
+		return nil
+	}
+
+	if m.VMTemplateConfigsSome != nil {
+		if err := m.VMTemplateConfigsSome.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_template_configs_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_template_configs_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ContentLibraryVMTemplateWhereInput) validateVMTemplatesEvery(formats strfmt.Registry) error {
 	if swag.IsZero(m.VMTemplatesEvery) { // not required
 		return nil
@@ -5462,6 +5750,18 @@ func (m *ContentLibraryVMTemplateWhereInput) ContextValidate(ctx context.Context
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDatastoresEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastoresNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDatastoresSome(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEntityAsyncStatus(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -5567,6 +5867,18 @@ func (m *ContentLibraryVMTemplateWhereInput) ContextValidate(ctx context.Context
 	}
 
 	if err := m.contextValidateUsageNotIn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMTemplateConfigsEvery(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMTemplateConfigsNone(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVMTemplateConfigsSome(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -5824,6 +6136,54 @@ func (m *ContentLibraryVMTemplateWhereInput) contextValidateClustersSome(ctx con
 				return ve.ValidateName("clusters_some")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("clusters_some")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateDatastoresEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoresEvery != nil {
+		if err := m.DatastoresEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateDatastoresNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoresNone != nil {
+		if err := m.DatastoresNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateDatastoresSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DatastoresSome != nil {
+		if err := m.DatastoresSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("datastores_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("datastores_some")
 			}
 			return err
 		}
@@ -6283,6 +6643,54 @@ func (m *ContentLibraryVMTemplateWhereInput) contextValidateUsageNotIn(ctx conte
 			return err
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateVMTemplateConfigsEvery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMTemplateConfigsEvery != nil {
+		if err := m.VMTemplateConfigsEvery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_template_configs_every")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_template_configs_every")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateVMTemplateConfigsNone(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMTemplateConfigsNone != nil {
+		if err := m.VMTemplateConfigsNone.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_template_configs_none")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_template_configs_none")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ContentLibraryVMTemplateWhereInput) contextValidateVMTemplateConfigsSome(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.VMTemplateConfigsSome != nil {
+		if err := m.VMTemplateConfigsSome.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vm_template_configs_some")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vm_template_configs_some")
+			}
+			return err
+		}
 	}
 
 	return nil

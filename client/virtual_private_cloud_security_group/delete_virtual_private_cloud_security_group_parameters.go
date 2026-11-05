@@ -54,10 +54,12 @@ func NewDeleteVirtualPrivateCloudSecurityGroupParamsWithHTTPClient(client *http.
 	}
 }
 
-/* DeleteVirtualPrivateCloudSecurityGroupParams contains all the parameters to send to the API endpoint
-   for the delete virtual private cloud security group operation.
+/*
+DeleteVirtualPrivateCloudSecurityGroupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete virtual private cloud security group operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVirtualPrivateCloudSecurityGroupParams struct {
 

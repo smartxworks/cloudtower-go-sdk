@@ -54,10 +54,12 @@ func NewGetClusterTopoesParamsWithHTTPClient(client *http.Client) *GetClusterTop
 	}
 }
 
-/* GetClusterTopoesParams contains all the parameters to send to the API endpoint
-   for the get cluster topoes operation.
+/*
+GetClusterTopoesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get cluster topoes operation.
+
+	Typically these are written to a http.Request.
 */
 type GetClusterTopoesParams struct {
 

@@ -54,10 +54,12 @@ func NewGetVmsConnectionParamsWithHTTPClient(client *http.Client) *GetVmsConnect
 	}
 }
 
-/* GetVmsConnectionParams contains all the parameters to send to the API endpoint
-   for the get vms connection operation.
+/*
+GetVmsConnectionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get vms connection operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVmsConnectionParams struct {
 

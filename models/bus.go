@@ -33,6 +33,9 @@ const (
 	// BusIDE captures enum value "IDE"
 	BusIDE Bus = "IDE"
 
+	// BusSATA captures enum value "SATA"
+	BusSATA Bus = "SATA"
+
 	// BusSCSI captures enum value "SCSI"
 	BusSCSI Bus = "SCSI"
 
@@ -48,7 +51,7 @@ var busEnum []interface{}
 
 func init() {
 	var res []Bus
-	if err := json.Unmarshal([]byte(`["IDE","SCSI","USB","VIRTIO"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["IDE","SATA","SCSI","USB","VIRTIO"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

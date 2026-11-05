@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetVMNics get Vm nics API
+GetVMNics get Vm nics API
 */
 func (a *Client) GetVMNics(params *GetVMNicsParams, opts ...ClientOption) (*GetVMNicsOK, error) {
 	// TODO: Validate the params before sending
@@ -76,7 +76,7 @@ func (a *Client) GetVMNics(params *GetVMNicsParams, opts ...ClientOption) (*GetV
 }
 
 /*
-  GetVMNicsConnection get Vm nics connection API
+GetVMNicsConnection get Vm nics connection API
 */
 func (a *Client) GetVMNicsConnection(params *GetVMNicsConnectionParams, opts ...ClientOption) (*GetVMNicsConnectionOK, error) {
 	// TODO: Validate the params before sending

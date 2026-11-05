@@ -54,10 +54,12 @@ func NewExpandVMDiskParamsWithHTTPClient(client *http.Client) *ExpandVMDiskParam
 	}
 }
 
-/* ExpandVMDiskParams contains all the parameters to send to the API endpoint
-   for the expand Vm disk operation.
+/*
+ExpandVMDiskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the expand Vm disk operation.
+
+	Typically these are written to a http.Request.
 */
 type ExpandVMDiskParams struct {
 

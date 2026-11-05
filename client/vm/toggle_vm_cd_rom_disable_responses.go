@@ -57,7 +57,8 @@ func NewToggleVMCdRomDisableOK() *ToggleVMCdRomDisableOK {
 	return &ToggleVMCdRomDisableOK{}
 }
 
-/* ToggleVMCdRomDisableOK describes a response with status code 200, with default header values.
+/*
+ToggleVMCdRomDisableOK describes a response with status code 200, with default header values.
 
 ToggleVMCdRomDisableOK toggle Vm cd rom disable o k
 */
@@ -96,7 +97,8 @@ func NewToggleVMCdRomDisableBadRequest() *ToggleVMCdRomDisableBadRequest {
 	return &ToggleVMCdRomDisableBadRequest{}
 }
 
-/* ToggleVMCdRomDisableBadRequest describes a response with status code 400, with default header values.
+/*
+ToggleVMCdRomDisableBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewToggleVMCdRomDisableNotFound() *ToggleVMCdRomDisableNotFound {
 	return &ToggleVMCdRomDisableNotFound{}
 }
 
-/* ToggleVMCdRomDisableNotFound describes a response with status code 404, with default header values.
+/*
+ToggleVMCdRomDisableNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewToggleVMCdRomDisableInternalServerError() *ToggleVMCdRomDisableInternalS
 	return &ToggleVMCdRomDisableInternalServerError{}
 }
 
-/* ToggleVMCdRomDisableInternalServerError describes a response with status code 500, with default header values.
+/*
+ToggleVMCdRomDisableInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

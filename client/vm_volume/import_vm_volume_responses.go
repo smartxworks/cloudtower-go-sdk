@@ -57,7 +57,8 @@ func NewImportVMVolumeOK() *ImportVMVolumeOK {
 	return &ImportVMVolumeOK{}
 }
 
-/* ImportVMVolumeOK describes a response with status code 200, with default header values.
+/*
+ImportVMVolumeOK describes a response with status code 200, with default header values.
 
 ImportVMVolumeOK import Vm volume o k
 */
@@ -96,7 +97,8 @@ func NewImportVMVolumeBadRequest() *ImportVMVolumeBadRequest {
 	return &ImportVMVolumeBadRequest{}
 }
 
-/* ImportVMVolumeBadRequest describes a response with status code 400, with default header values.
+/*
+ImportVMVolumeBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewImportVMVolumeNotFound() *ImportVMVolumeNotFound {
 	return &ImportVMVolumeNotFound{}
 }
 
-/* ImportVMVolumeNotFound describes a response with status code 404, with default header values.
+/*
+ImportVMVolumeNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewImportVMVolumeInternalServerError() *ImportVMVolumeInternalServerError {
 	return &ImportVMVolumeInternalServerError{}
 }
 
-/* ImportVMVolumeInternalServerError describes a response with status code 500, with default header values.
+/*
+ImportVMVolumeInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

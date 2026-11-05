@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  GetGlobalAlertRules get global alert rules API
+GetGlobalAlertRules get global alert rules API
 */
 func (a *Client) GetGlobalAlertRules(params *GetGlobalAlertRulesParams, opts ...ClientOption) (*GetGlobalAlertRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) GetGlobalAlertRules(params *GetGlobalAlertRulesParams, opts ...
 }
 
 /*
-  GetGlobalAlertRulesConnection get global alert rules connection API
+GetGlobalAlertRulesConnection get global alert rules connection API
 */
 func (a *Client) GetGlobalAlertRulesConnection(params *GetGlobalAlertRulesConnectionParams, opts ...ClientOption) (*GetGlobalAlertRulesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) GetGlobalAlertRulesConnection(params *GetGlobalAlertRulesConnec
 }
 
 /*
-  UpdateCustomizeAlertRule update customize alert rule API
+UpdateCustomizeAlertRule update customize alert rule API
 */
 func (a *Client) UpdateCustomizeAlertRule(params *UpdateCustomizeAlertRuleParams, opts ...ClientOption) (*UpdateCustomizeAlertRuleOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) UpdateCustomizeAlertRule(params *UpdateCustomizeAlertRuleParams
 }
 
 /*
-  UpdateGlobalAlertRule update global alert rule API
+UpdateGlobalAlertRule update global alert rule API
 */
 func (a *Client) UpdateGlobalAlertRule(params *UpdateGlobalAlertRuleParams, opts ...ClientOption) (*UpdateGlobalAlertRuleOK, error) {
 	// TODO: Validate the params before sending

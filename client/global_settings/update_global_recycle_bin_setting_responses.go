@@ -57,7 +57,8 @@ func NewUpdateGlobalRecycleBinSettingOK() *UpdateGlobalRecycleBinSettingOK {
 	return &UpdateGlobalRecycleBinSettingOK{}
 }
 
-/* UpdateGlobalRecycleBinSettingOK describes a response with status code 200, with default header values.
+/*
+UpdateGlobalRecycleBinSettingOK describes a response with status code 200, with default header values.
 
 UpdateGlobalRecycleBinSettingOK update global recycle bin setting o k
 */
@@ -98,7 +99,8 @@ func NewUpdateGlobalRecycleBinSettingBadRequest() *UpdateGlobalRecycleBinSetting
 	return &UpdateGlobalRecycleBinSettingBadRequest{}
 }
 
-/* UpdateGlobalRecycleBinSettingBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateGlobalRecycleBinSettingBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewUpdateGlobalRecycleBinSettingNotFound() *UpdateGlobalRecycleBinSettingNo
 	return &UpdateGlobalRecycleBinSettingNotFound{}
 }
 
-/* UpdateGlobalRecycleBinSettingNotFound describes a response with status code 404, with default header values.
+/*
+UpdateGlobalRecycleBinSettingNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewUpdateGlobalRecycleBinSettingInternalServerError() *UpdateGlobalRecycleB
 	return &UpdateGlobalRecycleBinSettingInternalServerError{}
 }
 
-/* UpdateGlobalRecycleBinSettingInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateGlobalRecycleBinSettingInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

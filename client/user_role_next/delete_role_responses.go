@@ -57,7 +57,8 @@ func NewDeleteRoleOK() *DeleteRoleOK {
 	return &DeleteRoleOK{}
 }
 
-/* DeleteRoleOK describes a response with status code 200, with default header values.
+/*
+DeleteRoleOK describes a response with status code 200, with default header values.
 
 DeleteRoleOK delete role o k
 */
@@ -96,7 +97,8 @@ func NewDeleteRoleBadRequest() *DeleteRoleBadRequest {
 	return &DeleteRoleBadRequest{}
 }
 
-/* DeleteRoleBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteRoleBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewDeleteRoleNotFound() *DeleteRoleNotFound {
 	return &DeleteRoleNotFound{}
 }
 
-/* DeleteRoleNotFound describes a response with status code 404, with default header values.
+/*
+DeleteRoleNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewDeleteRoleInternalServerError() *DeleteRoleInternalServerError {
 	return &DeleteRoleInternalServerError{}
 }
 
-/* DeleteRoleInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteRoleInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

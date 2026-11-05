@@ -57,7 +57,8 @@ func NewCreateVdsWithMigrateVlanOK() *CreateVdsWithMigrateVlanOK {
 	return &CreateVdsWithMigrateVlanOK{}
 }
 
-/* CreateVdsWithMigrateVlanOK describes a response with status code 200, with default header values.
+/*
+CreateVdsWithMigrateVlanOK describes a response with status code 200, with default header values.
 
 CreateVdsWithMigrateVlanOK create vds with migrate vlan o k
 */
@@ -96,7 +97,8 @@ func NewCreateVdsWithMigrateVlanBadRequest() *CreateVdsWithMigrateVlanBadRequest
 	return &CreateVdsWithMigrateVlanBadRequest{}
 }
 
-/* CreateVdsWithMigrateVlanBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVdsWithMigrateVlanBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -137,7 +139,8 @@ func NewCreateVdsWithMigrateVlanNotFound() *CreateVdsWithMigrateVlanNotFound {
 	return &CreateVdsWithMigrateVlanNotFound{}
 }
 
-/* CreateVdsWithMigrateVlanNotFound describes a response with status code 404, with default header values.
+/*
+CreateVdsWithMigrateVlanNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -178,7 +181,8 @@ func NewCreateVdsWithMigrateVlanInternalServerError() *CreateVdsWithMigrateVlanI
 	return &CreateVdsWithMigrateVlanInternalServerError{}
 }
 
-/* CreateVdsWithMigrateVlanInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVdsWithMigrateVlanInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

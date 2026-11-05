@@ -63,7 +63,8 @@ func NewUpdateVMOwnerOK() *UpdateVMOwnerOK {
 	return &UpdateVMOwnerOK{}
 }
 
-/* UpdateVMOwnerOK describes a response with status code 200, with default header values.
+/*
+UpdateVMOwnerOK describes a response with status code 200, with default header values.
 
 UpdateVMOwnerOK update Vm owner o k
 */
@@ -102,7 +103,8 @@ func NewUpdateVMOwnerNotModified() *UpdateVMOwnerNotModified {
 	return &UpdateVMOwnerNotModified{}
 }
 
-/* UpdateVMOwnerNotModified describes a response with status code 304, with default header values.
+/*
+UpdateVMOwnerNotModified describes a response with status code 304, with default header values.
 
 Not modified
 */
@@ -123,7 +125,8 @@ func NewUpdateVMOwnerBadRequest() *UpdateVMOwnerBadRequest {
 	return &UpdateVMOwnerBadRequest{}
 }
 
-/* UpdateVMOwnerBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVMOwnerBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -164,7 +167,8 @@ func NewUpdateVMOwnerNotFound() *UpdateVMOwnerNotFound {
 	return &UpdateVMOwnerNotFound{}
 }
 
-/* UpdateVMOwnerNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMOwnerNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -205,7 +209,8 @@ func NewUpdateVMOwnerInternalServerError() *UpdateVMOwnerInternalServerError {
 	return &UpdateVMOwnerInternalServerError{}
 }
 
-/* UpdateVMOwnerInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVMOwnerInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

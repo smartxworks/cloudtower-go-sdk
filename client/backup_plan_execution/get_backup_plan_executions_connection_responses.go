@@ -57,7 +57,8 @@ func NewGetBackupPlanExecutionsConnectionOK() *GetBackupPlanExecutionsConnection
 	return &GetBackupPlanExecutionsConnectionOK{}
 }
 
-/* GetBackupPlanExecutionsConnectionOK describes a response with status code 200, with default header values.
+/*
+GetBackupPlanExecutionsConnectionOK describes a response with status code 200, with default header values.
 
 GetBackupPlanExecutionsConnectionOK get backup plan executions connection o k
 */
@@ -98,7 +99,8 @@ func NewGetBackupPlanExecutionsConnectionBadRequest() *GetBackupPlanExecutionsCo
 	return &GetBackupPlanExecutionsConnectionBadRequest{}
 }
 
-/* GetBackupPlanExecutionsConnectionBadRequest describes a response with status code 400, with default header values.
+/*
+GetBackupPlanExecutionsConnectionBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
@@ -139,7 +141,8 @@ func NewGetBackupPlanExecutionsConnectionNotFound() *GetBackupPlanExecutionsConn
 	return &GetBackupPlanExecutionsConnectionNotFound{}
 }
 
-/* GetBackupPlanExecutionsConnectionNotFound describes a response with status code 404, with default header values.
+/*
+GetBackupPlanExecutionsConnectionNotFound describes a response with status code 404, with default header values.
 
 Not found
 */
@@ -180,7 +183,8 @@ func NewGetBackupPlanExecutionsConnectionInternalServerError() *GetBackupPlanExe
 	return &GetBackupPlanExecutionsConnectionInternalServerError{}
 }
 
-/* GetBackupPlanExecutionsConnectionInternalServerError describes a response with status code 500, with default header values.
+/*
+GetBackupPlanExecutionsConnectionInternalServerError describes a response with status code 500, with default header values.
 
 Server error
 */

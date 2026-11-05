@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreateVirtualPrivateCloudSecurityPolicy create virtual private cloud security policy API
+CreateVirtualPrivateCloudSecurityPolicy create virtual private cloud security policy API
 */
 func (a *Client) CreateVirtualPrivateCloudSecurityPolicy(params *CreateVirtualPrivateCloudSecurityPolicyParams, opts ...ClientOption) (*CreateVirtualPrivateCloudSecurityPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateVirtualPrivateCloudSecurityPolicy(params *CreateVirtualPr
 }
 
 /*
-  DeleteVirtualPrivateCloudSecurityPolicy delete virtual private cloud security policy API
+DeleteVirtualPrivateCloudSecurityPolicy delete virtual private cloud security policy API
 */
 func (a *Client) DeleteVirtualPrivateCloudSecurityPolicy(params *DeleteVirtualPrivateCloudSecurityPolicyParams, opts ...ClientOption) (*DeleteVirtualPrivateCloudSecurityPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteVirtualPrivateCloudSecurityPolicy(params *DeleteVirtualPr
 }
 
 /*
-  GetVirtualPrivateCloudSecurityPolicies get virtual private cloud security policies API
+GetVirtualPrivateCloudSecurityPolicies get virtual private cloud security policies API
 */
 func (a *Client) GetVirtualPrivateCloudSecurityPolicies(params *GetVirtualPrivateCloudSecurityPoliciesParams, opts ...ClientOption) (*GetVirtualPrivateCloudSecurityPoliciesOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetVirtualPrivateCloudSecurityPolicies(params *GetVirtualPrivat
 }
 
 /*
-  GetVirtualPrivateCloudSecurityPoliciesConnection get virtual private cloud security policies connection API
+GetVirtualPrivateCloudSecurityPoliciesConnection get virtual private cloud security policies connection API
 */
 func (a *Client) GetVirtualPrivateCloudSecurityPoliciesConnection(params *GetVirtualPrivateCloudSecurityPoliciesConnectionParams, opts ...ClientOption) (*GetVirtualPrivateCloudSecurityPoliciesConnectionOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) GetVirtualPrivateCloudSecurityPoliciesConnection(params *GetVir
 }
 
 /*
-  UpdateVirtualPrivateCloudSecurityPolicy update virtual private cloud security policy API
+UpdateVirtualPrivateCloudSecurityPolicy update virtual private cloud security policy API
 */
 func (a *Client) UpdateVirtualPrivateCloudSecurityPolicy(params *UpdateVirtualPrivateCloudSecurityPolicyParams, opts ...ClientOption) (*UpdateVirtualPrivateCloudSecurityPolicyOK, error) {
 	// TODO: Validate the params before sending
