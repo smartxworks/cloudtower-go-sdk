@@ -1,5 +1,3 @@
-# RELEASE NOTE
-
 ## release 日期 2026-05-27
 
 v2.23.0 release (tower version 4.9.0)
