@@ -1,3 +1,11 @@
+## release 日期 2026-11-06
+
+v2.24.1 release (tower version 4.10.0)
+
+### bugfix
+
+- [VmApi]: 修复 [AddVmDisk] 的 `MountNewCreateDisks` 参数类型被意外变更的问题，恢复与创建虚拟机共用 `MountNewCreateDisksParams` 类型，移除意外引入的 `AddVmDiskMountNewCreateDisksParams` 与 `AddVmDiskVmVolumeParams` 类型
+
 ## release 日期 2026-11-05
 
 v2.24.0 release (tower version 4.10.0)
